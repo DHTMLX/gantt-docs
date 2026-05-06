@@ -1,14 +1,14 @@
 ---
 sidebar_label: undo
-title: undo config
-description: "включает функцию Undo для gantt"
+title: конфигурация undo
+description: "включает функциональность Undo для gantt"
 ---
 
 # undo
 
 ### Description
 
-@short: Включает функцию Undo для gantt
+@short: Включает функциональность Undo для gantt
 
 @signature: undo: boolean
 
@@ -18,7 +18,7 @@ description: "включает функцию Undo для gantt"
 gantt.config.undo = true;
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Related samples
 - [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
@@ -26,7 +26,7 @@ gantt.config.undo = true;
 ### Details
 
 :::note
- Эта опция является частью расширения **undo**, поэтому убедитесь, что активировали плагин [undo](guides/extensions-list.md#undo). Подробнее можно узнать в статье [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md). 
+Эта опция определяется в расширении **undo**, поэтому необходимо включить плагин [undo](guides/extensions-list.md#undo). Прочтите детали в статье [Undo/Redo Functionality](guides/undo-redo.md).
 :::
 
 ### Related API
@@ -36,8 +36,7 @@ gantt.config.undo = true;
 - [undo_types](api/config/undo_types.md)
 
 ### Related Guides
-- [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md)
+- [Undo/Redo Functionality](guides/undo-redo.md)
 
 ### Change log
 - добавлено в версии 4.0
-

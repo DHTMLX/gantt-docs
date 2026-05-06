@@ -3,82 +3,82 @@ title: "Расширение Formatters"
 sidebar_label: "Расширение Formatters"
 ---
 
-# Расширение Formatters
+# Расширение форматтеров
 
-:::info
-Эта функция доступна только в редакции PRO.
+:::note
+Эта функциональность доступна только в версии PRO.
 :::
 
-Расширение **gantt.ext.formatters** предоставляет два способа форматирования значений:
+Расширение **gantt.ext.formatters** предоставляет два метода форматирования:
 
 - [durationFormatter()](guides/formatters-ext.md#durationformatter)
 - [linkFormatter()](guides/formatters-ext.md#linkformatter)
 
-Вы также можете создать [пользовательский форматтер](#customformatter), используя существующие в качестве основы.
+Вы также можете указать [пользовательский форматтер](#customformatter), основанный на существующих.
 
-## Форматтер длительности {#durationformatter}
+## Форматтер продолжительности {#durationformatter}
 
-Метод **gantt.ext.formatters.durationFormatter(config)** создает новый экземпляр *DurationFormatter*.
+Метод **gantt.ext.formatters.durationFormatter(config)** возвращает новый экземпляр *DurationFormatter*.
 
 ### **Конфигурация**
 
-- <span class="submethod">**durationFormatter (config): DurationFormatter**</span> - создает форматтер длительности
-    - **_config?_** - (*object*) - необязательный объект конфигурации с такими опциями:
-        - **_enter?_** - (*string*) - устанавливает формат по умолчанию, используемый методом **parse**, если во входном значении отсутствуют единицы измерения. По умолчанию "day".
-        - **_store?_** - (*string*) - определяет формат хранения значений длительности в Gantt. Это влияет на результат метода **parse**. По умолчанию "hour".
-        - **_format?_** - (*string | Array &lt;string&gt;*) - задает формат вывода. Поддерживаются значения: "auto", "minute", "hour", "day", "week", "month", "year" или массив из этих значений. "auto" означает, что форматтер сам выбирает подходящую единицу в зависимости от размера значения (для больших значений - дни/месяцы/годы, для меньших - минуты/часы).
-        - **_short?_** - (*boolean*) - включает короткие обозначения (аббревиатуры) для единиц времени. По умолчанию *false*.
-        - **_minutesPerHour?_** - (*number*) - задает соотношение минут в часе. По умолчанию 60.
-        - **_hoursPerDay?_** - (*number*) - задает соотношение часов в дне. По умолчанию 8.
-        - **_hoursPerWeek?_** - (*number*) - задает соотношение часов в неделе. По умолчанию 40.
-        - **_daysPerMonth?_** - (*number*) - задает соотношение дней в месяце. По умолчанию 30.
-        - **_daysPerYear?_** - (*number*) - задает соотношение дней в году. По умолчанию 365.
-        - **_labels?_** - (*object*) - задает текстовые подписи для разных единиц времени, используемые при разборе и форматировании:
-            - **_minute?_** - (*object*) - подписи для минут
-                - **_full?_** - (*string*) - полное название для минут
-                - **_plural?_** - (*string*) - множественное число для минут
-                - **_short?_** - (*string*) - короткое название для минут
-            - **_hour?_** - (*object*) - подписи для часов
-                - **_full?_** - (*string*) - полное название для часов
-                - **_plural?_** - (*string*) - множественное число для часов
-                - **_short?_** - (*string*) - короткое название для часов
-            - **_day?_** - (*object*) - подписи для дней
-                - **_full?_** - (*string*) - полное название для дней
-                - **_plural?_** - (*string*) - множественное число для дней
-                - **_short?_** - (*string*) - короткое название для дней
-            - **_week?_** - (*object*) - подписи для недель
-                - **_full?_** - (*string*) - полное название для недель
-                - **_plural?_** - (*string*) - множественное число для недель
-                - **_short?_** - (*string*) - короткое название для недель
-            - **_month?_** - (*object*) - подписи для месяцев
-                - **_full?_** - (*string*) - полное название для месяцев
-                - **_plural?_** - (*string*) - множественное число для месяцев
-                - **_short?_** - (*string*) - короткое название для месяцев
-            - **_year?_** - (*object*) - подписи для лет
-                - **_full?_** - (*string*) - полное название для лет
-                - **_plural?_** - (*string*) - множественное число для лет
-                - **_short?_** - (*string*) - короткое название для лет
+- <span class="submethod">**durationFormatter (config): DurationFormatter**</span> - создаёт Форматтер продолжительности
+    - **_config?_** - (*object*) - необязательный, объект конфигурации, который может включать следующие атрибуты:
+        - **_enter?_** - (*string*) - задаёт формат по умолчанию для метода **parse**, который используется, когда входное значение поступает без единиц измерения. Значение по умолчанию: "day".
+        - **_store?_** - (*string*) - задаёт формат для сохранения значений продолжительности в gantt. Эта настройка влияет на выходное значение метода **parse**. Значение по умолчанию: "hour".
+        - **_format?_** - (*string | Array &lt;string&gt;*) - задаёт формат выходного значения. Поддерживаемые значения: "auto", "minute", "hour", "day", "week", "month", "year", или массив, содержащий любой из этих значений. Значение "auto" означает, что форматтер попытается выбрать подходящую единицу в зависимости от переданного значения (то есть крупные значения будут форматироваться как дни/месяцы/годы, меньшие — как минуты/часы).
+        - **_short?_** - (*boolean*) - устанавливает короткие метки (аббревиатуры) для единиц времени. Значение по умолчанию: *false*
+        - **_minutesPerHour?_** - (*number*) - определяет, как значения продолжительности будут преобразовываться из минут в часы и наоборот. *Значение по умолчанию: 60*
+        - **_hoursPerDay?_** - (*number*) - определяет, как значения продолжительности будут преобразовываться из часов в дни и наоборот. *Значение по умолчанию: 8*
+        - **_hoursPerWeek?_** - (*number*) - определяет, как значения продолжительности будут преобразовываться из часов в недели и обратно. *Значение по умолчанию: 40*
+        - **_daysPerMonth?_** - (*number*) - определяет, как значения продолжительности будут преобразовываться из дней в месяцы и обратно. *Значение по умолчанию: 30*
+        - **_daysPerYear?_** - (*number*) - определяет, как значения продолжительности будут преобразовываться из дней в годы и обратно. *Значение по умолчанию: 365*
+        - **_labels?_** - (*object*) - определяет текстовые метки для разных единиц времени. Эти метки используются как для разобранных, так и для форматированных значений.
+            - **_minute?_** - (*object*) - конфигурация для минут
+                - **_full?_** - (*string*) - полная текстовая метка для минут
+                - **_plural?_** - (*string*) - форма во множественном числе для минут
+                - **_short?_** - (*string*) - короткая текстовая метка для минут
+            - **_hour?_** - (*object*) - конфигурация для часов
+                - **_full?_** - (*string*) - полная текстовая метка для часов
+                - **_plural?_** - (*string*) - форма во множественном числе для часов
+                - **_short?_** - (*string*) - короткая текстовая метка для часов
+            - **_day?_** - (*object*) - конфигурация для дней
+                - **_full?_** - (*string*) - полная текстовая метка для дней
+                - **_plural?_** - (*string*) - форма во множественном числе для дней
+                - **_short?_** - (*string*) - короткая текстовая метка для дней
+            - **_week?_** - (*object*) - конфигурация для недель
+                - **_full?_** - (*string*) - полная текстовая метка для недель
+                - **_plural?_** - (*string*) - форма во множественном числе для недель
+                - **_short?_** - (*string*) - короткая текстовая метка для недель
+            - **_month?_** - (*object*) - конфигурация для месяцев
+                - **_full?_** - (*string*) - полная текстовая метка для месяцев
+                - **_plural?_** - (*string*) - форма во множественном числе для месяцев
+                - **_short?_** - (*string*) - короткая текстовая метка для месяцев
+            - **_year?_** - (*object*) - конфигурация для лет
+                - **_full?_** - (*string*) - полная текстовая метка для лет
+                - **_plural?_** - (*string*) - форма во множественном числе для лет
+                - **_short?_** - (*string*) - короткая текстовая метка для лет
 
 
 **Примеры:**
 
-Создание форматтера длительности с настройками по умолчанию:
+Инициализация Форматтера продолжительности с настройками по умолчанию:
 ~~~js
 const formatter = gantt.ext.formatters.durationFormatter();
-// экземпляр форматтера создается с помощью фабричного метода
+// экземпляр объекта форматтера создаётся фабричным методом
 ~~~
 
 - **_enter_**:
 ~~~js
-formatter.parse("1"); // интерпретируется как 1 день, если enter:"day" (по умолчанию)
-formatter.parse("1"); // интерпретируется как 1 час, если enter:"hour"
+formatter.parse("1"); // entered value: 1 day - если enter:"day" (default)
+formatter.parse("1"); // entered value: 1 hour - если enter:"hour"
 ~~~
 
 - **_store_**:
 
 ~~~js
-formatter.parse("1 day"); // сохраняется как 8, если store:"hour"
-formatter.parse("1 day"); // сохраняется как 480, если store:"minute" 
+formatter.parse("1 day"); // stored value: 8 - если store:"hour"
+formatter.parse("1 day"); // stored value: 480 - store:"minute" 
 ~~~
 
 
@@ -87,12 +87,12 @@ formatter.parse("1 day"); // сохраняется как 480, если store:"
 gantt.ext.formatters.durationFormatter({
     format: ["hour", "minute"], /*!*/
     store:"minute"
-}).format(260); // результат: "4 hours 20 minutes"
+}).format(260); // 4 hours 20 minutes
 
 gantt.ext.formatters.durationFormatter({
     format: "hour", /*!*/
     store:"minute"    
-}).format(260);// результат: "4.33 hours"
+}).format(260);// 4.33 hours
 ~~~
 
 
@@ -112,7 +112,7 @@ gantt.ext.formatters.durationFormatter({
 ~~~
 
 
-Пример с полной конфигурацией:
+Пример полной конфигурации:
 ~~~js
 const formatter = gantt.ext.formatters.durationFormatter({
     // значения по умолчанию
@@ -160,12 +160,13 @@ const formatter = gantt.ext.formatters.durationFormatter({
 });
 ~~~
 
+
 ### **API**
 
-Экземпляр *DurationFormatter* предоставляет следующие методы:
+Созданный экземпляр *DurationFormatter* предоставляет следующие методы:
 
-- <span class="submethod">**canParse (value): boolean**</span> - проверяет, может ли строка быть преобразована в значение длительности; возвращает *true*, если да, иначе *false*
-    - **_value_** - (*string*) - строка для проверки
+- <span class="submethod">**canParse (value): boolean**</span> - возвращает *true*, если переданная строка может быть разобрана в значение продолжительности, в противном случае возвращает *false*
+    - **_value_** - (*string*) - строка, которая будет проверяться
 
 
 ~~~js
@@ -177,50 +178,49 @@ console.log(formatter.canParse("abc"));
 // false
 ~~~
 
-- <span class="submethod">**format (value): string**</span> - преобразует значение длительности в форматированную строку
-    - **_value_** - (*number*) - значение длительности для преобразования
+- <span class="submethod">**format (value): string**</span> - преобразует указанное значение продолжительности в строку продолжительности
+    - **_value_** - (*number*) - величина продолжительности, которая будет преобразована
 
 ~~~js
 const formatter = gantt.ext.formatters.durationFormatter();
 console.log(formatter.format(24));
-// результат: 3 days
+// 3 days
 ~~~
 
-- <span class="submethod">**parse (value): number**</span> - преобразует строку в значение длительности или возвращает 'null', если преобразование невозможно
-    - **_value_** - (*string*) - строка для разбора
+- <span class="submethod">**parse (value): number**</span> - парсит указанную строку в значение продолжительности. Если значение нельзя разобрать, вернётся 'null'
+    - **_value_** - (*string*) - строка, которая будет преобразована
 
 
 ~~~js
 const formatter = gantt.ext.formatters.durationFormatter();
 console.log(formatter.parse("1 day"));
-// результат: 8
+// 8
 ~~~
 
-Подробнее о **durationFormatter** можно узнать в статье [Расчёт рабочего времени](guides/working-time.md#taskdurationindecimalformat).
+Подробнее о методе **durationFormatter** можно узнать в статье [Расчёт рабочего времени](guides/working-time.md#taskdurationindecimalformat).
 
-## Форматтер связей {#linkformatter}
+## Link Formatter {#linkformatter}
 
-Метод **gantt.ext.formatters.linkFormatter(config)** создает новый экземпляр *LinkFormatter*. Он имеет схожие методы и параметры конфигурации с форматтером длительности.
+Метод **gantt.ext.formatters.linkFormatter(config)** возвращает новый экземпляр *LinkFormatter*. Он повторно использует некоторые методы и конфигурацию Форматтера продолжительности
 
 ### **Конфигурация**
 
-- <span class="submethod">**linkFormatter (config): LinkFormatter**</span> - создает форматтер связей
-    - **_config?_** - (*object*) - необязательный объект конфигурации с такими опциями:
-        - **_durationFormatter?_** - (*DurationFormatter*) - экземпляр, созданный с помощью *gantt.ext.formatters.durationFormatter()*, который влияет на разбор и форматирование значений лагов/опережения.
-        - **_labels?_** - (*object*) - подписи для различных типов связей:
-            - **_finish_to_start?_** - (*string*) - подпись для связей "Finish to Start"
-            - **_start_to_start?_** - (*string*) - подпись для связей "Start to Start"
-            - **_finish_to_finish?_** - (*string*) - подпись для связей "Finish to Finish"
-            - **_start_to_finish?_** - (*string*) - подпись для связей "Start to Finish"
+- <span class="submethod">**linkFormatter (config): LinkFormatter**</span> - создать Link Formatter
+    - **_config?_** - (*object*) - необязательный, объект конфигурации, который может включать следующие атрибуты:
+        - **_durationFormatter?_** - (*DurationFormatter*) - экземпляр *DurationFormatter*, созданный функцией *gantt.ext.formatters.durationFormatter()*. Он влияет на то, как парсятся и форматируются значения задержки/опережения ссылок:
+        - **_labels?_** - (*object*) - локальные метки для разных типов связей
+            - **_finish_to_start?_** - (*string*) - метки для связей Finish to Start
+            - **_start_to_start?_** - (*string*) - метки для связей Start to Start
+            - **_finish_to_finish?_** - (*string*) - метки для связей Finish to Finish
+            - **_start_to_finish?_** - (*string*) - метки для связей Start to Finish
 
 **Примеры:**
 
-
-Создание форматтера связей с настройками по умолчанию:
+Инициализация Link Formatter со значениями по умолчанию:
 
 ~~~js
 const formatter = gantt.ext.formatters.linkFormatter();
-// экземпляр форматтера создается с помощью фабричного метода
+// экземпляр объекта форматтера создаётся фабричным методом
 ~~~
 
 - **_short_**:
@@ -228,21 +228,21 @@ const formatter = gantt.ext.formatters.linkFormatter();
 ~~~js
 gantt.ext.formatters.linkFormatter()
    .format({id:1, type:"1", source: 1, target: 2, lag: 5});
-// результат: "1SS+5 days"
+//"1SS+5 days"
  
 var durationFormatter = gantt.ext.formatters.durationFormatter({
     short: true
 });
 gantt.ext.formatters.linkFormatter({durationFormatter: durationFormatter})
     .format({id:1, type:"2", source: 1, target: 2, lag: -1});
-// результат: "1FF-1d"
+//"1FF-1d"
 ~~~
 
 
 - **_labels_**:
 ~~~js
 const formatter = gantt.ext.formatters.linkFormatter({
-    // значения по умолчанию
+    //значения по умолчанию
     durationFormatter: gantt.ext.formatters.durationFormatter(),
     labels: {
         finish_to_start: "FS",
@@ -256,11 +256,11 @@ const formatter = gantt.ext.formatters.linkFormatter({
 
 ### **API**
 
-Экземпляр *LinkFormatter* предоставляет следующие методы:
+Созданный экземпляр *LinkFormatter* предоставляет следующие методы:
 
 
-- <span class="submethod">**canParse (value): boolean**</span> - проверяет, может ли строка быть преобразована в объект связи; возвращает *true*, если да, иначе *false*
-    - **_value_** - (*string*) - строка для проверки
+- <span class="submethod">**canParse (value): boolean**</span> - возвращает *true*, если переданная строка может быть разобрана в объект link, в противном случае возвращает *false*
+    - **_value_** - (*string*) - строка, которая будет проверяться
 
 ~~~js
 const formatter = gantt.ext.formatters.linkFormatter();
@@ -271,29 +271,31 @@ console.log(formatter.canParse("abc"));
 // false
 ~~~
 
-- <span class="submethod">**format (link): string**</span> - преобразует объект связи в строку
-    - **_link_** - (*Link*) - объект связи для преобразования
+- <span class="submethod">**format (link): string**</span> - преобразует указанное значение ссылки в строку
+    - **_value_** - (*Link*) - объект ссылки, который будет преобразован
 
 ~~~js
 const formatter = gantt.ext.formatters.linkFormatter();
 
 formatter.format({id:1, type:"1", source: 1, target: 2, lag: 5});
-// результат: "1SS+5 days"
+//"1SS+5 days"
 ~~~
 
-- <span class="submethod">**parse (value): object**</span> - преобразует строку в объект связи или возвращает 'null', если разбор невозможен. Обратите внимание, что *link.target* в разобранном объекте будет установлен в "null".
-    - **_value_** - (*string*) - строка для разбора
+
+- <span class="submethod">**parse (value): object**</span> - парсит указанную строку в объект ссылки. Если значение нельзя разобрать, вернётся 'null'. Обратите внимание, что *link.target* заданной ссылки будет иметь значение 'null'
+    - **_value_** - (*string*) - строка, которая будет преобразована
 
 ~~~js
 const formatter = gantt.ext.formatters.linkFormatter();
 
 formatter.parse("1SS+5 days");
-// результат: {id:1, type:"1", source: 1, target: null, lag: 5}
+// {id:1, type:"1", source: 1, target: null, lag: 5}
 ~~~
 
-### **Информация о форматах**
 
-*LinkFormatter* работает с двумя форматами ссылок:
+### **Форматирование информации**
+
+*LinkFormatter* поддерживает два формата ссылок:
 
  - **$(WBS)** - короткий формат
    - **$(WBS)** - [код WBS задачи](api/method/getwbscode.md)
@@ -308,10 +310,11 @@ console.log(formatter.format({id:2, type:"0", source: 1, target: 3, lag: 0}));
 // 1.1
 ~~~
 
+
  - **$(WBS)$(TYPE)$(LAG)** - полный формат
    - **$(WBS)** - [код WBS задачи](api/method/getwbscode.md)
-   - **$(TYPE)** - [тип связи](api/config/links.md). **Поддерживаемые значения:** 'FF', 'FS', 'SS', 'SF', либо как определено в конфигурации **labels** для *LinkFormatter*.
-   - **$(LAG)** - [лаг связи](guides/auto-scheduling.md#settinglagandleadtimesbetweentasks). Может быть положительным или отрицательным, например, **+1 day** или **-1 day**. Поддерживаемый формат зависит от параметра **durationFormatter**, переданного в конструктор *LinkFormatter*.
+   - **$(TYPE)** - [тип связи](api/config/links.md). Поддерживаемые значения: 'FF', 'FS', 'SS', 'SF', или как определено в конфигурации **labels** *LinkFormatter*.
+   - **$(LAG)** - [задержка связи](guides/auto-scheduling.md#settinglagandleadtimesbetweentasks). Это значение может быть как положительным, так и отрицательным - **+1 day**, **-1 day**. Поддерживаемый формат определяется параметром **durationFormatter**, переданным в конструктор *LinkFormatter*.
 
 ~~~js
 const formatter = gantt.ext.formatters.linkFormatter();
@@ -323,31 +326,31 @@ console.log(formatter.format({id:1, type:"1", source: 2, target: 3, lag: 1}));
 // 1.1SS + 1 day
 ~~~
 
-Связи типа Finish-To-Start без лага или опережения будут отображаться в коротком формате, остальные связи - в полном формате. Аналогично, если в метод **parse** передан только код WBS задачи, форматтер предполагает тип Finish-to-Start с нулевым лагом.
+Связи Finish-To-Start без лаг/опережения будут форматироваться с использованием краткого формата, тогда как остальные связи — с использованием полного формата.
+Аналогично, если в метод **parse** передаётся только код WBS задачи, форматтер будет считать тип Finish-to-Start и нулевое время задержки.
 
-Более подробно о методе linkFormatter можно узнать в статье [Редактирование 'на месте' в гриде](guides/inline-editing.md#linkformatter).
-
+Подробнее о методе linkFormatter можно узнать в статье [Inline Editing in Grid](guides/inline-editing.md#linkformatter).
 
 ## Пользовательский форматтер {#customformatter}
 
-В Gantt можно создавать пользовательские форматтеры на основе встроенных. Эти пользовательские форматтеры можно подключать к редактору inline. Внутри грид Gantt хранит данные в своем ожидаемом формате, но при открытии редактора пользователю отображается значение в нужном формате.
+Функциональность Gantt позволяет создать пользовательский форматтер на базе существующих форматтеров Gantt. Вы можете добавить пользовательский форматтер в встроенный редактор. Под капотом Gantt будет хранить данные в формате, который ожидается системой, в то время как при открытии встроенного редактора будет показываться значение, требуемое пользователем.
 
-Пользовательский форматтер - это объект с двумя функциями: **format()** и **parse()**.
+Пользовательский форматтер — это объект с двумя функциями: **format()** и **parse()**.
 
-Функция **format()** преобразует число (для пользовательского форматтера длительности) или ссылку (для пользовательского форматтера ссылок) в нужное отображаемое значение. Функция **parse()** преобразует отформатированное значение обратно в число или объект ссылки.
+Функция **format()** преобразует либо число (пользовательный форматтер продолжительности) либо ссылку (пользовательный форматтер ссылки) в нужное значение. Функция **parse()** преобразует форматированное значение либо в число (пользовательный форматтер продолжительности) либо в ссылку (пользовательный форматтер ссылки).
 
-Пример пользовательских форматтеров:
+Так выглядят пользовательские форматтеры:
 
 ~~~js
 const customDurationFormatter = {
     format: function (duration) {
         let formattedDuration;
-        // код преобразования числа в нужное значение
+        // код для преобразования из числа в нужное значение
         return formattedDuration;
     },
     parse: function (formattedValue) {
         let duration;
-        // код преобразования значения в число
+        // код для преобразования из нужного значения в число
         return duration;
     }
 };
@@ -355,20 +358,21 @@ const customDurationFormatter = {
 const customLinkFormatter = {
     format: function (link) {
         let formattedLink;
-        // код преобразования объекта ссылки в нужное значение
+        // код для преобразования из объекта ссылки в нужное значение
         return formattedLink;
     },
     parse: function (formattedValue) {
         let link;
-        // код преобразования значения в объект `link`
+        // код для преобразования из нужного значения в объект `link`
         return link
     }
 };
 ~~~
 
-Можно использовать существующие форматтеры внутри пользовательских и при необходимости изменять их вывод.
 
-Пользовательские форматтеры назначаются редакторам так же, как и стандартные. Например:
+Вы можете использовать существующие форматтеры в пользовательских форматтерах и изменять возвращаемые ими значения.
+
+Пользовательские форматтеры задаются для встроенных редакторов так же, как и обычные форматтеры. Например:
 
 ~~~js
 const durationEditor = { 
@@ -376,18 +380,15 @@ const durationEditor = {
 };
 ~~~
 
-Ниже приведён пример с пользовательскими форматтерами для длительности и ссылок:
 
+Вот пример пользовательских длительных и ссылочных форматтеров:
 
-**Related example:** [Custom duration and link formatters](https://snippet.dhtmlx.com/gcvw2a6c)
+Связанный пример [Custom duration and link formatters](https://snippet.dhtmlx.com/gcvw2a6c)
 
+## Пользовательские правила для форм множественного числа
 
-## Пользовательские правила для форм множественного числа {#customrulesforpluralforms}
+Конфигурация стандартного [Duration Formatter](guides/formatters-ext.md#durationformatter) позволяет использовать только одну форму множественного числа существительного, поскольку в английском языке форма множественного числа образуется добавлением суффикса или изменением самого существительного.
 
-Стандартный [Duration Formatter](guides/formatters-ext.md#durationformatter) предназначен для работы с английскими формами множественного числа, где обычно достаточно добавить суффикс или немного изменить существительное.
+В других языках слово может иметь несколько вариантов формы во множественном числе. Кроме того, могут существовать разные правила использования разных форм множественного числа. Вы можете использовать пользовательский форматтер и задать правила для вашего языка. Ниже приведён пример того, как применить необходимые правила в пользовательском форматтере для японского языка:
 
-В других языках часто есть несколько форм множественного числа и разные правила их использования. Для этого можно создать пользовательский форматтер, реализующий нужные правила для вашего языка. Пример ниже показывает, как реализовать такие правила для японского языка:
-
-
-**Related example:** [Custom duration formatter with different plural values for Japanese locale](https://snippet.dhtmlx.com/jyvsiqop)
-
+Связанный образец [Custom duration formatter with different plural values for Japanese locale]

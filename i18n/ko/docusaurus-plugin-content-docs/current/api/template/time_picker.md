@@ -1,23 +1,23 @@
 ---
 sidebar_label: time_picker
-title: time_picker template
-description: "라이트박스 내 드롭다운 시간 선택기에 사용되는 형식을 정의합니다."
+title: time_picker 템플릿
+description: "라이트박스에서 드롭다운 시간 선택기의 형식을 지정합니다"
 ---
 
 # time_picker
 
 ### Description
 
-@short: 라이트박스 내 드롭다운 시간 선택기에 사용되는 형식을 정의합니다.
+@short: 라이트박스에서 드롭다운 시간 선택기의 형식을 지정합니다
 
-@signature: time_picker: string
+@signature: time_picker: (date: Date) =\> string
 
 ### Parameters
 
-- `date` - (required) *Date* - 형식을 지정해야 하는 날짜입니다.
+- `date` - (required) *Date* - 형식을 적용해야 하는 날짜
 
 ### Returns
-- ` text` - (string) - gantt에 표시될 html 콘텐츠입니다.
+- ` text` - (string) - Gantt 차트에 렌더링될 HTML 텍스트
 
 ### Example
 

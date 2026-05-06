@@ -1,24 +1,24 @@
 ---
 sidebar_label: onBeforeTaskDisplay
-title: onBeforeTaskDisplay event
-description: "任务加载到甘特图中后，且显示之前触发"
+title: onBeforeTaskDisplay 事件
+description: "在任务已加载到甘特图后，但在显示之前触发"
 ---
 
 # onBeforeTaskDisplay
 
 ### Description
 
-@short: 任务加载到甘特图中后，且显示之前触发
+@short: 在任务已加载到甘特图后，但在显示之前触发
 
-@signature: onBeforeTaskDisplay: (id: string | number, task: Task) =\> boolean;
+@signature: onBeforeTaskDisplay: (id: string | number, task: Task) => boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - 任务ID
-- `task` - (required) *Task* - 任务对象
+- `id` - (必填) *字符串 | 数字* - 任务 ID
+- `task` - (必填) *Task* - 任务对象
 
 ### Returns
-- ` result` - (boolean) - 控制事件的默认动作是否继续执行（<b>true</b>）或停止（<b>false</b>）
+- ` result` - (布尔值) - 定义事件的默认操作是否会被触发（<b>true</b>）还是取消（<b>false</b>）
 
 ### Example
 
@@ -33,11 +33,10 @@ gantt.attachEvent("onBeforeTaskDisplay", function(id, task){
 
 ### Details
 
-此事件可以被阻止。返回 false 将阻止任务出现在图表中。
+该事件是可阻塞的。返回 false 将阻止任务被显示
 
 ### Related API
 - [onBeforeLinkDisplay](api/event/onbeforelinkdisplay.md)
 
 ### Related Guides
-- [任务过滤](guides/filtering.md)
-
+- [Filtering Tasks](guides/filtering.md)

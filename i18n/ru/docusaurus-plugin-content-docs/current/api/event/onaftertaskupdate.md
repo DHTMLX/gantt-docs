@@ -1,21 +1,21 @@
 ---
 sidebar_label: onAfterTaskUpdate
 title: onAfterTaskUpdate event
-description: "срабатывает сразу после того, как пользователь обновляет задачу"
+description: "срабатывает после того, как пользователь обновляет задачу"
 ---
 
 # onAfterTaskUpdate
 
 ### Description
 
-@short: Срабатывает сразу после того, как пользователь обновляет задачу
+@short: Срабатывает после того, как пользователь обновляет задачу
 
 @signature: onAfterTaskUpdate: (id: string | number, task: Task) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - id задачи
-- `task` - (required) *Task* - объект задачи
+- `id` - (обязателен) *string | number* - идентификатор задачи
+- `task` - (обязателен) *Task* - объект задачи
 
 ### Example
 
@@ -28,4 +28,3 @@ gantt.attachEvent("onAfterTaskUpdate", function(id,task){
 ### Related API
 - [updateTask](api/method/updatetask.md)
 - [onBeforeTaskUpdate](api/event/onbeforetaskupdate.md)
-

@@ -3,59 +3,60 @@ title: "Как установить dhtmlxGantt"
 sidebar_label: "Установка"
 ---
 
-# Как установить dhtmlxGantt
+# Как установить dhtmlxGantt 
 
-dhtmlxGantt можно добавить в ваш проект с помощью менеджеров пакетов, таких как [NuGet](https://www.nuget.org/), [Bower](https://bower.io/) или [npm](https://www.npmjs.com/).
+Вы можете использовать [npm](https://www.npmjs.com/), [NuGet](https://www.nuget.org/) или [Bower](https://bower.io/) как менеджеры пакетов для установки пакета dhtmlxGantt в ваш проект.
 
-Кроме того, вы можете подключить необходимые JS и CSS файлы напрямую с CDN.
+Также возможно подключить необходимые файлы JS/CSS через CDN.
 
-## npm - Оценочная и PRO версии {#npmevaluationandproversions}
+## npm - версии Evaluation и PRO {#npmevaluationandproversions}
 
-**Оценочная версия Professional**
+**Профессиональная оценочная версия**
 
-Вы можете скачать [пробный пакет Gantt](https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml) и следовать инструкциям в файле README. Обратите внимание, что пробная версия действительна только в течение 30 дней.
+Скачайте [пробный пакет Gantt](https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml) и следуйте шагам, указанным в файле README. 
+Обратите внимание, что пробная версия Gantt доступна только 30 дней.
 
-**Professional версия**
+**Профессиональная версия**
 
-Доступ к приватному npm-репозиторию DHTMLX предоставляется через [Client's Area](https://dhtmlx.com/clients/) после генерации логина и пароля для npm. Подробная инструкция по установке доступна там же. Обратите внимание, что доступ к приватному npm предоставляется только при активной лицензии на проприетарную версию Gantt.
+Вы можете получить доступ к приватному npm DHTMLX напрямую в [Личном кабинете](https://dhtmlx.com/clients/) путем создания логина и пароля для npm. Подробная инструкция по установке доступна там же. Обратите внимание, что доступ к приватному npm доступен только пока активна ваша проприетарная лицензия на Gantt.
 
-## npm - стандартная бесплатная версия {#npmstandardfreeversion}
+## npm - стандартная бесплатная версия
 
-Стандартную версию dhtmlxGantt можно установить с сайта [npmjs.com](https://www.npmjs.com/package/dhtmlx-gantt) с помощью команды:
+Вы можете установить стандартную версию dhtmlxGantt из [npmjs.com](https://www.npmjs.com/package/dhtmlx-gantt), выполнив следующую командную строку:
 
 ~~~html
 npm install dhtmlx-gantt
 ~~~
 
 :::note
-На [npmjs.com](https://www.npmjs.com/package/dhtmlx-gantt) доступна только стандартная версия Gantt
+Только стандартная версия Gantt доступна на [npmjs.com](https://www.npmjs.com/package/dhtmlx-gantt)
 :::
 
-## NuGet {#nuget}
+## NuGet
 
-Чтобы добавить dhtmlxGantt с помощью [NuGet](https://www.nuget.org/), выполните следующую команду:
+Чтобы установить dhtmlxGantt через [NuGet](https://www.nuget.org/), выполните следующую командную строку:
 
 ~~~html
 nuget install DHTMLX.Gantt
 ~~~
 
-Если вы работаете в Microsoft Visual Studio, установите его через Package Manager Console командой:
+Если вы используете Microsoft Visual Studio, выполните следующую команду из консоли менеджера пакетов:
 
 ~~~html
 install-package DHTMLX.Gantt
 ~~~
 
-## Bower {#bower}
+## Bower
 
-Вы можете установить dhtmlxGantt через [Bower](https://bower.io/), выполнив команду:
+Чтобы установить dhtmlxGantt через [Bower](https://bower.io/), выполните следующую командную строку:
 
 ~~~html
 bower install gantt
 ~~~
 
-## CDN {#cdn}
+## CDN
 
-Для подключения dhtmlxGantt через CDN добавьте ссылки на файлы **dhtmlxgantt.js** и **dhtmlxgantt.css**:
+Чтобы подключить файлы JS/CSS через CDN, следует задать прямые ссылки на файлы **dhtmlxgantt.js** и **dhtmlxgantt.css**:
 
 ~~~html
 <link rel="stylesheet" href="http://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css" 
@@ -63,83 +64,85 @@ bower install gantt
 <script src="http://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
 ~~~
 
-Полный список CDN-ссылок для разных версий dhtmlxGantt смотрите в [отдельной статье](guides/cdn-links-list.md).
+Полный список ссылок для CDN, зависящий от версии dhtmlxGantt, можно найти в отдельной статье (guides/cdn-links-list.md).
 
-## Скачивание пакета {#downloadthepackage}
+## Загрузка пакета
 
 ### GPL версия
 
-Вы можете получить GPL-версию dhtmlxGantt, скачав пакет [здесь](https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml).
+[Скачать пакет dhtmlxGantt GPL версии](https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml).
 
 ### PRO версия
 
-Если у вас есть лицензия на PRO-версию, скачайте PRO-пакет из [Client Area](https://dhtmlx.com/clients/).
+Если у вас есть PRO-версия компонента, перейдите в [Личный кабинет](https://dhtmlx.com/clients/) и скачайте PRO-пакет оттуда.
 
-После загрузки распакуйте пакет в папку вашего проекта. Затем подключите файлы **dhtmlxgantt.js** и **dhtmlxgantt.css** на вашей странице, убедившись, что относительные пути указаны корректно:
+Независимо от версии, распакуйте загруженный пакет в папку вашего проекта. 
+Затем подключите файлы **dhtmlxgantt.js** и **dhtmlxgantt.css** на страницу. Убедитесь, что указаны корректные относительные пути к этим файлам:
 
 ~~~html
 <script type="text/javascript" src="codebase/dhtmlxgantt.js"></script>  
 <link rel="stylesheet" href="codebase/dhtmlxgantt.css">
 ~~~
 
-## Добавление PRO-редакции в проект {#addingproeditionintoproject}
+## Добавление PRO-версии в проект
 
-### **Установка Pro версии**
+### **Установить Pro-версию**
 
 :::note
-Если у вас ранее была установлена пробная версия, рекомендуется [удалить её](#uninstalltrialversion) перед установкой Pro версии.
-:::
+Перед установкой Pro-версии Gantt следует [удалить пакет пробной версии](#uninstall-trial-version) (если он установлен)
+::: 
 
-Публичные источники (CDN, NuGet, Bower и npm) предоставляют стандартную редакцию dhtmlxGantt, распространяемую по лицензии GPL.
+Все публичные источники (CDN, NuGet, Bower и npm) содержат стандартную версию компонента, распространяемую по лицензии GPL.
 
-Для Professional и Evaluation редакций вы можете использовать наш [приватный npm-репозиторий](#npmevaluationandproversions).
+Мы также предоставляем наш приватный npm-реестр, откуда можно устанавливать Professional и Evaluation версии компонента.
 
-Если эти варианты вам не подходят, есть две альтернативы:
+Если по какой-то причине описанные выше методы недоступны, есть два варианта выхода:
 
-- добавить Pro-версию в проект вручную
-- установить Pro-версию через npm из локального каталога
+- вы можете добавить Pro-версию в ваш проект вручную
+- вы можете установить Pro-версию в ваш проект через npm из локального каталога
 
-### Установка пакета из локальной папки (#installfromlocalfolder)
+### Установка пакета из локальной папки {#installfromlocalfolder}
 
-Если вы используете **npm**, Pro-пакет можно установить из локальной папки с помощью [`npm install ./local_path`](https://docs.npmjs.com/cli/install/) или [`npm link`](https://docs.npmjs.com/cli/link/). Инструкции для обоих способов приведены ниже:
+Если используется **npm**, вы можете установить Pro-пакет из локальной папки с помощью  [`npm install ./local_path`](https://docs.npmjs.com/cli/install/) или [`npm link`](https://docs.npmjs.com/cli/link/).
+Существует пошаговая инструкция для обоих вариантов:
 
 ### npm install
 
-1. Скопируйте пакет Gantt в локальный каталог.
-2. Перейдите в каталог вашего проекта.
-3. Выполните команду `npm install ../gantt-local-package-path`.
+1. Скопируйте пакет Gantt в локальную директорию.
+2. Перейдите в каталог вашего проекта. 
+3. Выполните `npm install ../gantt-local-package-path`.
 
 ### npm link
 
-1. Скопируйте пакет Gantt в локальный каталог.
-2. Выполните `npm link` внутри папки пакета.
+1. Скопируйте пакет Gantt в локальную директорию.
+2. Выполните `npm link` в папке с пакетом.
 3. Перейдите в каталог вашего проекта.
 4. Выполните `npm link dhtmlx-gantt`.
 
-Сравнение стандартной и PRO-версий dhtmlxGantt смотрите в соответствующей статье [Стандартная и PRO версии библиотеки](guides/editions-comparison.md).
+Чтобы увидеть различия между стандартной и PRO-версиями библиотеки dhtmlxGantt, ознакомьтесь со статьей [Standard vs PRO Library Versions](guides/editions-comparison.md).
 
-### **Удаление пробной версии** (#uninstalltrialversion)
+### **Удаление пробной версии**
 
-Перед установкой Pro-версии рекомендуется удалить пробный пакет:
+Правильный способ установки Pro-версии — удалить пакет пробной версии:
 
 ~~~js
 npm uninstall dhtmlx-gantt
 ~~~
 
-Убедитесь, что в приложении не осталось файлов *dhtmlxgantt.js*.
+Затем обязательно убедитесь, что файл *dhtmlxgantt.js* нигде не встречается в ваших приложениях.
 
-На **Linux и MacOS** можно выполнить поиск с помощью:
+**Для Linux и MacOS**, вы можете использовать следующие команды в терминале:
 
 ~~~js
 grep -rin "dhtmlxGantt v"
 grep -rin evaluation
 ~~~
 
-На **Windows** используйте следующие команды в командной строке:
+**Для Windows**, вы можете использовать следующие команды в командной строке:
 
 ~~~js
 findstr /mis "dhtmlxGantt v" path_to_your_app*
 findstr /mis "evaluation" path_to_your_app*
 ~~~
 
-После подтверждения удаления можно переходить к установке Pro-версии, как описано выше.
+После этого можно установить Pro-версию диаграммы Ганта, как описано выше.

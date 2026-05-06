@@ -5,21 +5,19 @@ sidebar_label: "复选框控件"
 
 # 复选框控件
 
-这是一个简单的双状态复选框控件，用于切换某个选项或多个值的开启和关闭。
+一个两态复选框控件。该控件用于开启/关闭一个选项或多个值。
 
-它在以下场景中非常有用:
+例如，它在以下场景中很有帮助：
 
-- [为任务分配资源](guides/resource-management.md)
+- [将资源分配给任务](guides/resource-management.md)
 
-![Checkbox control](/img/checkbox_control.png)
+![复选框控件](/img/checkbox_control.png)
 
+[复选框控件](https://docs.dhtmlx.com/gantt/samples/05_lightbox/02_checkbox.html)
 
-[Checkbox control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/02_checkbox.html)
+- 切换 [拆分任务的分割模式和树形模式之间](guides/split-tasks.md)
 
-
-- 切换[拆分任务的分割模式和树状模式](guides/split-tasks.md)
-
-![Split task checkbox](/img/split_task_checkbox.png)
+![拆分任务复选框](/img/split_task_checkbox.png)
 
 
 ~~~js
@@ -33,14 +31,14 @@ gantt.config.lightbox.project_sections = [
 ~~~
 
 
-[Split task](https://docs.dhtmlx.com/gantt/samples/04_customization/11_split_task.html)
+[拆分任务](https://docs.dhtmlx.com/gantt/samples/04_customization/11_split_task.html)
 
 
 ## 初始化
 
-要在 lightbox 中包含 **checkbox** 控件，需要:
+要将 **复选框控件** 添加到灯箱，请遵循以下步骤：
 
-1) 在 lightbox 配置中添加一个 section:
+1) 向灯箱配置中添加一个部分：
 
 ~~~js
 var opts = [
@@ -54,34 +52,35 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-2) 为该 section 定义一个标签:
+
+2) 为该部分设置标签：
 
 ~~~js
 gantt.locale.labels.section_split = "Display";
 ~~~
   
 
-[Split task](https://docs.dhtmlx.com/gantt/samples/04_customization/11_split_task.html)
+[拆分任务](https://docs.dhtmlx.com/gantt/samples/04_customization/11_split_task.html)
 
 
 ## 属性
 
-以下是 **checkbox** 控件常用的一些关键属性（完整列表请参见[此处](api/config/lightbox.md)）:
+以下属性对 **复选框控件** 来说最重要且常用（完整列表请参阅 [这里](api/config/lightbox.md)）：
 
-- **name** - (*string*) section 的名称 
-- **map_to** - (*string*) 映射到该 section 的数据属性名称
-- **type** - (*string*) [section 控件的类型](guides/default-edit-form.md#lightboxcontrols)
-- **options** - (*array*) 定义该控件可选项的对象数组（*用于 **select**、**checkbox** 和 **radio** 控件*）。每个对象包含:
-    - **key** - (*string*) 选项 ID，用于与任务数据属性匹配
-    - **label** - (*string*) 选项的显示标签
-- **focus** - (*boolean*) 如果为 true，lightbox 打开时该 section 会获得焦点
-- **default_value** - (*any*) 控件的默认值，仅在输入值为 undefined 时应用
+- **name** - (*string*) 该部分的名称
+- **map_to** - (*string*) 将映射到该部分的数据属性的名称
+- **type** - (*string*) [该部分控件的类型](guides/default-edit-form.md#lightboxcontrols)
+- **options** - (*array*) 一个对象数组。定义控件的选项（用于 **select**、**checkbox**  和 **radio** 控件）。数组中的每个对象表示一个选项，并包含以下属性：
+    - **key** - (*string*) 选项的标识符
+    - **label** - (*string*) 选项标签
+- **focus** - (*boolean*) 如果设置为 *true*，打开灯箱时该部分将获得焦点
+- **default_value** - (*any*) 该部分控件的默认值。仅在输入值未定义时应用
   
 
 
-## 为控件填充数据
+## 使用数据填充控件
 
-要为 **checkbox** 控件设置值，通常使用 [options](api/config/lightbox.md) 参数:
+通常，要为 **复选框控件** 设置值，请使用 [options](api/config/lightbox.md) 参数：
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -91,8 +90,8 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-[options](api/config/lightbox.md) 数组中的每一项都必须包含以下两个属性:
 
-- **key** - 选项的 ID
-- **label** - 选项的标签
+-[options](api/config/lightbox.md) 参数中的条目有 2 个必填属性：
 
+- **key** - (*string*) 选项的标识符
+- **label** - (*string*) 选项标签

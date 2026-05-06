@@ -1,24 +1,24 @@
 ---
 sidebar_label: getColumnIndex
-title: getColumnIndex method
-description: "gibt die Position der Spalte basierend auf ihrem Namen zurück"
+title: getColumnIndex Methode
+description: "gibt den Index der Spalte anhand ihres Namens zurück"
 ---
 
 # getColumnIndex
 
 ### Description
 
-@short: Gibt die Position der Spalte basierend auf ihrem Namen zurück
+@short: Gibt den Index der Spalte anhand ihres Namens
 
 @signature: getColumnIndex: (name: string | number, excludeHidden?: boolean) =\> number
 
 ### Parameters
 
 - `name` - (required) *string | number* - der Name der Spalte
-- `excludeHidden` - (optional) *boolean* - ignoriert ausgeblendete Spalten bei der Zählung der Indizes
+- `excludeHidden` - (optional) *boolean* - überspringt Indizes der versteckten Spalten
 
 ### Returns
-- ` index` - (number) - die Position der Spalte
+- ` index` - (number) - der Index der Spalte
 
 ### Example
 
@@ -28,7 +28,7 @@ var index = gantt.getColumnIndex("start_date"); // => 1
 
 ### Details
 
-Wenn der Parameter `excludeHidden` auf *true* gesetzt ist, überspringt die Methode Spalten, die in der Konfiguration mit der Einstellung *hide:true* [versteckt](guides/specifying-columns.md#visibility) sind:
+Wenn der `excludeHidden` Parameter auf *true* gesetzt ist, zählt die Methode die Spalten, die [hidden](guides/specifying-columns.md#visibility) über die Konfigurationsoption *hide:true* versteckt sind, nicht mit:
 
 ~~~js
 gantt.config.columns = [

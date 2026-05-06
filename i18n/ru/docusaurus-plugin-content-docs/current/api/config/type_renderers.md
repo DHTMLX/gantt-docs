@@ -1,12 +1,12 @@
 ---
 sidebar_label: type_renderers
-title: type_renderers config
+title: type_renderers конфигурация
 description: "переопределяет функции, отвечающие за отображение различных типов задач"
 ---
 
 # type_renderers
 :::info
- Эта функция доступна только в PRO-версии. 
+This functionality is available in the PRO edition only. 
 :::
 ### Description
 
@@ -32,7 +32,7 @@ gantt.config.type_renderers[gantt.config.types.project] = function(task,defaultR
 
       return main_el;
 };
-~~~
+~~~ 
 
 **Default value:** \{\}
 
@@ -41,35 +41,28 @@ gantt.config.type_renderers[gantt.config.types.project] = function(task,defaultR
 
 ### Details
 
-Эта возможность позволяет настраивать отображение различных типов задач, определяя собственные функции рендеринга.
+Функция, которая рендерит задачи, принимает 2 параметра:
 
-Функция рендеринга принимает два аргумента:
-
-- **typeRenderer (task, defaultRender): HTMLElement | boolean | void | undefined** - функция, которая принимает объект задачи и возвращает DOM-элемент, заменяющий стандартную панель задачи.
+- **typeRenderer (task, defaultRender): HTMLElement | boolean | void | undefined** - функция принимает объект задачи в качестве параметра и должна вернуть DOM-элемент, который будет отображаться вместо полосы задачи.
     - **_task_** - (*Task*) - объект задачи
-    - **_defaultRender?_** - (*TaskLayerRender*) - необязательный, функция рендеринга по умолчанию, предоставляемая dhtmlxGantt
+    - **_defaultRender?_** - (*TaskLayerRender*) - необязательная, функция рендера по умолчанию, используемая в dhtmlxGantt
 
-Доступные type_renderers включают:
+Вот возможные типы type_renderers:
 
-- **type_renderers** - (*object*) - пользовательские функции рендеринга для разных типов задач
-    - **_task?_** - (*typeRenderer*) - необязательный, пользовательская функция рендеринга для стандартных задач
-    - **_project?_** - (*typeRenderer*) - необязательный, пользовательская функция рендеринга для проектных задач
-    - **_milestone?_** - (*typeRenderer*) - необязательный, пользовательская функция рендеринга для вех
-    - **_[typeName: string]_** - (*typeRenderer | undefined*) - необязательный, пользовательская функция рендеринга для любого кастомного типа задачи
-
-
-Этот параметр позволяет создавать индивидуальный внешний вид для конкретных типов задач. Например, можно сделать более классический вид для проектных или сводных задач.
+- **type_renderers** - (*object*) - пользовательская функция рендера для типа *task*
+    - **_task?_** - (*typeRenderer*) - необязательная, пользовательская функция рендера для типа *task*
+    - **_project?_** - (*typeRenderer*) - необязательная, пользовательская функция рендера для типа *project*
+    - **_milestone?_** - (*typeRenderer*) - необязательная, пользовательская функция рендера для типа *milestone*
+    - **_[typeName: string]_** - (*typeRenderer | undefined*) - необязательная, пользовательская функция рендера для настраиваемого типа задачи
 
 
-![custom_look](/img/custom_look.png)
+Вы можете использовать эту опцию для определения пользовательского отображения для определённых типов задач.
+Например, настройка позволяет реализовать более консервативный вид для задач проекта или сводных задач.
 
 
 :::note
-sample
-[Classic Look](https://docs.dhtmlx.com/gantt/samples/04_customization/17_classic_gantt_look.html)
- 
+пример [Classic Look](https://docs.dhtmlx.com/gantt/samples/04_customization/17_classic_gantt_look.html)
 :::
 
 ### Related API
 - [getTaskPosition](api/method/gettaskposition.md)
-

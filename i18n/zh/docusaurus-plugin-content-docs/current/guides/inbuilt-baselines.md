@@ -1,58 +1,57 @@
----
-title: "时间线中的额外元素"
-sidebar_label: "时间线中的额外元素"
+--- 
+title: "时间线中的额外元素" 
+sidebar_label: "时间线中的额外元素" 
 ---
 
 # 时间线中的额外元素
 
 :::info
-此功能仅在 PRO 版本中提供
+此功能仅在 PRO 版中可用
 :::
 
-默认情况下，dhtmlxGantt 会按以下顺序将时间线元素作为图层渲染:
+
+默认情况下，dhtmlxGantt 将时间线区域的元素渲染为层，并按以下顺序进行：
 
 1. 时间线的网格
-2. 依赖线（Links）
-3. 任务（Tasks）
-4. 额外元素
+2. 连线
+3. 任务
+4. 附加元素
 
-Gantt 包含内置的元素，如基线（baselines）、截止日期（deadlines）和时间约束（time constraints）。除了默认的额外元素外，您还可以[创建自定义元素作为额外图层](guides/baselines.md)。
+Gantt 包括一些内置元素，如基线、截止日期和时间约束。除了默认的额外元素，您也可以 [创建自定义的附加层](guides/baselines.md)。
 
-## 基线（Baselines）
+## 基线
 
-基线在像 Gantt 图这样的项目管理工具中起着至关重要的作用，它允许比较计划时间线与实际进度。Gantt API 提供了对基线的内置支持，使得使用这一关键特性变得更加简单。
+在像甘特图这样的项目管理工具中，基线对于将计划的项目时间线与实际进度进行比较至关重要。Gantt API 提供对基线实体的内置支持，极大地简化了与这一重要元素相关的工作。
 
-![内置基线](/img/inbuilt_baselines.png)
+![Inbuilt baselines](/img/inbuilt_baselines.png)
 
+[显示基线](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
 
-[Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
+### 自定义 baselines
 
-
-### 基线自定义
-
-如果默认的基线选项不完全符合您的项目需求，可以通过 [baselines](api/config/baselines.md) 配置项将其关闭。
+如果默认的 baselines 功能不符合您的项目要求，您可以使用 [baselines] 配置选项将其禁用。
 
 ~~~js
 gantt.config.baselines = false;
 ~~~
 
-关闭后，您可以通过以下方式之一自定义基线的显示方式:
+之后，您可以通过以下任一方式自定义 baselines 的显示：
 
 1. 使用 **gantt.config.baselines** 配置对象
 
-该对象允许您在将其设置为对象时调整基线的渲染方式。它包含以下属性:
+**baselines** 配置选项允许在将其设置为对象时自定义甘特图中基线的呈现。对象配置包含以下属性：
 
-- **datastore** (*string*) - 存储基线条目的数据存储名称。相关细节请参见 `getDatastore` 方法。
-- **render_mode** (*boolean | string*) - 控制基线的显示方式:
-    - `false` - 隐藏基线。
-    - `"taskRow"` - 基线显示在任务条同一行。
-    - `"separateRow"` - 基线显示在独立的子行中，增加任务行高度。
-    - `"individualRow"` - 每条基线在任务下方各有一行。
-- **dataprocessor_baselines** (*boolean*) - 是否在更新基线时单独触发 DataProcessor。
-- **row_height** (*number*) - 基线子行的高度，仅在 `render_mode` 为 `"separateRow"` 或 `"individualRow"` 时有效。
-- **bar_height** (*number*) - 基线条的高度。
+- **datastore** (*string*) - 用于存储基线条目的数据存储名称。有关相关功能，请参阅 `getDatastore` 方法。
+- **render_mode** (*boolean | string*) - 决定基线的显示方式：
+    - `false` - 基线不显示。
+    - `"taskRow"` - 基线在与任务条同一行显示。
+    - `"separateRow"` - 基线在一个单独的子行中显示，扩大任务行高度。
+    - `"individualRow"` - 每个基线在其下面的独立子行中显示。
+- **dataprocessor_baselines** (*boolean*) - 指定基线更新是否作为单独条目触发 DataProcessor。
+- **row_height** (*number*) - 定义 baselines 子行的高度，仅在 render_mode 设置为 `"separateRow"` 或 `"individualRow"` 时适用。
+- **bar_height** (*number*) - 设置基线条的高度。
 
-示例:
+例如：
 
 ~~~js
 gantt.config.baselines = {
@@ -65,7 +64,7 @@ gantt.config.baselines = {
 gantt.init("gantt_here");
 ~~~
 
-如果您动态更改 **gantt.config.baselines** 的显示设置，建议使用 [adjustTaskHeightForBaselines](api/method/adjusttaskheightforbaselines.md) 方法，以确保基线正确显示。
+如果你动态修改 **gantt.config.baselines** 配置的显示设置，应该使用 [adjustTaskHeightForBaselines](api/method/adjusttaskheightforbaselines.md) 方法以便正确显示基线元素。
 
 ~~~js
 const task = gantt.getTask(taskId);
@@ -73,11 +72,11 @@ gantt.adjustTaskHeightForBaselines(task); /*!*/
 gantt.render();
 ~~~
 
-2. [创建自定义基线元素](guides/baselines.md) 并添加到时间线中。
+2. [创建自定义基线元素](guides/baselines.md) 以添加到时间线中。
 
 ### 与任务一起加载基线
 
-可以像下面这样与任务一起加载基线:
+基线可以直接与任务一起加载。请查看下面的示例：
 
 ~~~js
 gantt.parse({
@@ -108,19 +107,20 @@ gantt.parse({
 });
 ~~~
 
-一旦加载，Gantt 会自动在时间线上显示基线，无需额外设置。
 
-### 获取任务的基线
+一旦 baselines 加载完成，Gantt 将在时间线中自动显示它们，无需额外配置。
 
-您可以使用 [getTaskBaselines](api/method/gettaskbaselines.md) 方法获取指定任务的基线。
+### 获取任务基线
+
+您可以使用 [getTaskBaselines](api/method/gettaskbaselines.md) 方法获取特定任务的基线。
 
 ~~~js
 gantt.getTaskBaselines(5);
 ~~~
 
-该方法返回与任务关联的基线对象数组，来源于数据存储。
+该方法将返回数据存储中指定任务的基线对象数组。
 
-~~~js
+~~~
 [
     {
         task_id: 5,
@@ -139,9 +139,9 @@ gantt.getTaskBaselines(5);
 ]
 ~~~
 
-### 基线在弹窗（lightbox）中的管理
+### 基线在灯箱中的显示
 
-基线可以通过弹窗控件直接进行管理，支持在任务详情中添加、编辑和删除。
+您可以通过灯箱控件管理基线。直接从任务详情中添加、编辑和删除基线。
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -151,15 +151,15 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-![基线弹窗](/img/baselines_lightbox.png)
+![基线灯箱](/img/baselines_lightbox.png)
 
-### 基线渲染模式
+### Baselines rendering modes
 
-有三种基线显示方式，可以通过 **gantt.config.baselines.render_mode** 选项进行选择:
+Gantt 提供三种基线显示模式。您可以通过将 **gantt.config.baselines.render_mode** 配置选项设置为相应的值来选择最适合您需求的呈现模式。共有三种模式可用：
 
-- 与任务同一行显示（"taskRow"）
+- 在与任务同一行显示（"taskRow"）
 
-基线直接显示在任务条旁边:
+基线直接在与任务条同一行中显示：
 
 ~~~js
 gantt.config.baselines.render_mode = "taskRow";
@@ -167,9 +167,9 @@ gantt.config.baselines.render_mode = "taskRow";
 
 ![任务行模式](/img/baselines_task_row.png)
 
-- 在任务下方的独立子行显示（"separateRow"）
+- 在任务下方的单独子行中显示（"separateRow"）
 
-所有基线在每个任务下方的一个子行中显示:
+所有基线都显示在每个任务下方的一个单独子行中：
 
 ~~~js
 gantt.config.baselines.render_mode = "separateRow";
@@ -177,19 +177,19 @@ gantt.config.baselines.render_mode = "separateRow";
 
 ![子行模式](/img/baselines_subrow.png)
 
-- 每条基线独立一行显示（"individualRow"）
+- 在一个单独的子行中显示（"individualRow"）
 
-每条基线在任务下方各有一行，便于区分:
+每个基线都显示在其子行中，以达到最大清晰度：
 
 ~~~js
 gantt.config.baselines.render_mode = "individualRow";
 ~~~
 
-![独立行模式](/img/baselines_individual_row.png)
+![单独行模式](/img/baselines_individual_row.png)
 
 ### 设置基线文本
 
-如需在基线元素中添加自定义文本，可使用 [baseline_text](api/template/baseline_text.md) 模板:
+要指定应在基线元素内显示的文本，请使用 [baseline_text](api/template/baseline_text.md) 模板：
 
 ~~~js
 gantt.templates.baseline_text = function(task, baseline, index) {
@@ -199,17 +199,15 @@ gantt.templates.baseline_text = function(task, baseline, index) {
 
 ## 截止日期与约束
 
-跟踪截止日期和任务约束对于项目成功交付至关重要。DHTMLX Gantt 提供了截止日期和约束的内置可视化，帮助提升项目时间线管理。
+在项目管理中，跟踪截止日期以及理解任务约束对于按时交付至关重要。DHTMLX Gantt 具备内置的截止日期和约束可视化，提升了有效管理项目时间线的能力。
 
 ![截止日期](/img/deadlines.png)
 
-
-[Displaying deadlines](https://docs.dhtmlx.com/gantt/samples/04_customization/14_deadline.html)
-
+[显示截止日期](https://docs.dhtmlx.com/gantt/samples/04_customization/14_deadline.html)
 
 ### 截止日期可视化
 
-Gantt 支持 **task.deadline** 字段。设置后，会在图表上显示一个可视化标记，帮助监控截止日期。
+Gantt 支持 **task.deadline** 字段。若已指定，它将在图表上显示一个可视化指示器，从而简化对任务截止日期的跟踪。
 
 ~~~js
 gantt.parse({
@@ -219,28 +217,28 @@ gantt.parse({
       text: "Task with Deadline",
       start_date: "2025-04-04",
       duration: 5,
-      deadline: new Date(2025, 3, 10), // 2025年4月10日 /*!*/
+      deadline: new Date(2025, 3, 10), // April 10, 2025 /*!*/
     },
     // 其他任务...
   ],
 });
 ~~~
 
-### 截止日期自定义
+### 自定义截止日期
 
-如果默认的截止日期功能不符合您的需求，可以通过 [deadlines](api/config/deadlines.md) 选项将其禁用。
+如果默认的截止日期功能不符合您的项目需求，您可以使用 [deadlines](api/config/deadlines.md) 配置选项将其禁用。
 
 ~~~js
 gantt.config.deadlines = false;
 ~~~
 
-关闭后，您可以通过[创建自定义截止日期元素](guides/baselines.md)来添加到时间线中。
+之后，您可以通过 [创建自定义截止日期元素](guides/baselines.md) 将其添加到时间线并自定义显示。
 
-**gantt.config.deadlines** 设置用于切换截止日期元素的显示。当启用时，Gantt 会检查 **task.deadline** 属性，如果包含有效日期，则在时间线上显示截止日期标记。
+配置项 **gantt.config.deadlines** 启用或禁用任务的截止日期元素的显示。如果启用，Gantt 将检查 **task.deadline** 属性；如果包含有效日期，则在时间线中显示截止日期元素。
 
-### 任务约束 (#taskconstraints)
+### 任务约束
 
-自 v9.0 起，当[自动调度](guides/auto-scheduling.md)启用并处于约束模式（[auto_scheduling_compatibility](api/config/auto_scheduling_compatibility.md) 设置为 *false*）时，Gantt 会自动在图表上显示约束日期。
+从 v9.0 开始，当启用并在约束模式下工作时（[自动排程](guides/auto-scheduling.md) 并且 [auto_scheduling_compatibility](api/config/auto_scheduling_compatibility.md) 设置为 *false*），Gantt 将在图表中自动显示约束日期。
 
 ~~~js
 gantt.parse({
@@ -259,7 +257,7 @@ gantt.parse({
 })
 ~~~
 
-您可以通过 [auto_scheduling](api/config/auto_scheduling.md) 配置中的 `show_constraints` 选项来控制约束的显示。默认情况下约束是可见的，但可以通过将 `show_constraints` 设置为 `false` 隐藏:
+约束的显示可以通过在 [auto_scheduling](api/config/auto_scheduling.md) 配置中的 `show_constraints` 选项进行控制。默认情况下会显示约束，但您可以通过将 `show_constraints` 设置为 `false` 来禁用它们：
 
 ~~~js
 gantt.config.auto_scheduling = {
@@ -268,6 +266,4 @@ gantt.config.auto_scheduling = {
 };
 ~~~
 
-
-[Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
-
+[从项目开始的自动排程与约束](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)

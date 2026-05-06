@@ -1,14 +1,14 @@
 ---
 sidebar_label: onGanttRender
-title: onGanttRender event
-description: "Wird ausgelöst, sobald das Gantt-Diagramm vollständig auf der Seite gerendert wurde"
+title: onGanttRender Ereignis
+description: "Wird ausgelöst, nachdem das Gantt-Diagramm auf der Seite gerendert wurde"
 ---
 
 # onGanttRender
 
 ### Description
 
-@short: Wird ausgelöst, sobald das Gantt-Diagramm vollständig auf der Seite gerendert wurde
+@short: Wird ausgelöst, nachdem das Gantt-Diagramm auf der Seite gerendert wurde
 
 @signature: onGanttRender: () =\> void;
 
@@ -29,4 +29,3 @@ gantt.attachEvent("onGanttRender", function(){
 - [onBeforeDataRender](api/event/onbeforedatarender.md)
 - [onDataRender](api/event/ondatarender.md)
 - [onLoadEnd](api/event/onloadend.md)
-

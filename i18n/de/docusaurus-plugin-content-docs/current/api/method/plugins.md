@@ -8,15 +8,16 @@ description: "aktiviert die angegebenen Extensions"
 
 ### Description
 
-@short: Aktiviert die angegebenen Extensions
+@short: Aktiviert die angegebenen Erweiterungen
 
 @signature: plugins: (ext?: GanttPlugins) =\> GanttPlugins
 
 ### Parameters
-- `ext` - (optional) *GanttPlugins* - ein Objekt, das die zu aktivierenden Extensions auflistet
+
+- `ext` - (optional) *GanttPlugins* - ein Objekt mit den Namen der Erweiterungen, die aktiviert werden müssen
 
 ### Returns
-- ` activatedPlugins` - (GanttPlugins) - ein Objekt, das die aktivierten Extensions enthält
+- `activatedPlugins` - (GanttPlugins) - ein Objekt der aktivierten Erweiterungen
 
 ### Example
 
@@ -29,8 +30,8 @@ gantt.plugins({
 ~~~
 
 ### Related Guides
-- ["Vollständige Liste der Erweiterungen"](guides/extensions-list.md)
+- [Vollständige Liste der Erweiterungen](guides/extensions-list.md)
 
 ### Change log
-- Ab Version 8.0 ist das **export_api** Plugin Teil der plugins-Liste. Für frühere Versionen muss das Script **https://export.dhtmlx.com/gantt/api.js** in die Seite eingebunden werden. Details finden Sie im [Migration](migration.md#71---80) Leitfaden.
-- Eingeführt in Version 7.0
+- Das **export_api** Plugin wurde in die Liste der Plugins in v8.0 aufgenommen. Um den Export-Service in früheren Versionen zu aktivieren, müssen Sie die **https://export.dhtmlx.com/gantt/api.js** Datei auf Ihrer Seite einbinden. Lesen Sie den [Migration](migration.md#71---80) Artikel.
+- In v7.0 hinzugefügt

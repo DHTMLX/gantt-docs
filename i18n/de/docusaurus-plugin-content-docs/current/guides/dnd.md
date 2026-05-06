@@ -1,287 +1,229 @@
 ---
-title: "Verschieben von Aufgaben innerhalb der Zeitleiste"
-sidebar_label: "Verschieben von Aufgaben innerhalb der Zeitleiste"
+title: "Aufgaben innerhalb der Timeline ziehen"
+sidebar_label: "Aufgaben innerhalb der Timeline ziehen"
 ---
 
-# Verschieben von Aufgaben innerhalb der Zeitleiste
+# Aufgaben innerhalb der Timeline ziehen
 
-Das Ziehen ermöglicht es, Start- oder Enddaten sowie die Dauer von Aufgaben einfach anzupassen. 
+Durch Ziehen können Benutzer schnell die Start- (End-)Daten der Aufgaben sowie deren Dauer ändern. 
+Standardmäßig ist Drag-and-Drop aktiviert, und der Benutzer kann eine Aufgabe entlang ihrer Zeile in der Timeline ziehen.
 
+Um das Drag-and-Drop-Verhalten anzupassen, verwenden Sie die folgenden Events:
 
-Standardmäßig ist Drag-and-Drop aktiviert, sodass Benutzer Aufgaben entlang ihrer Zeilen in der Zeitleiste verschieben können.
+- [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) - um das Ziehen bestimmter Aufgaben zu verweigern
+- [onTaskDrag](api/event/ontaskdrag.md) - um den Bereich für das Ziehen zu begrenzen oder eine andere Logik bereitzustellen, wenn der Benutzer eine Aufgabe zieht
+- [onAfterTaskDrag](api/event/onaftertaskdrag.md) - um Aufgaben nach dem Verschieben an einen neuen Ort nachzubearbeiten
 
-Um das Drag-and-Drop-Verhalten anzupassen, können die folgenden Events verwendet werden:
+Betrachten wir typische Fälle, in denen das Standard-Drag-Verhalten angepasst werden muss:
 
-- [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) - um das Verschieben bestimmter Aufgaben zu blockieren
-- [onTaskDrag](api/event/ontaskdrag.md) - um den Verschiebebereich einzuschränken oder eigene Logik während des Ziehens anzuwenden
-- [onAfterTaskDrag](api/event/onaftertaskdrag.md) - um Aufgaben nach dem Verschieben zu verarbeiten
+1. [Verweigern des Ziehens bestimmter Aufgaben](#denying-dragging-of-specific-tasks).
+2. [Verweigern des Ziehens von Aufgaben außerhalb bestimmter Termine](#denying-dragging-tasks-out-of-specific-dates).
+3. [Ziehen von Kindern zusammen mit der Elternaufgabe](#dragging-children-together-with-the-parent).
+4. [Ziehen von Projekten mit Unteraufgaben](#draggingprojectswithsubtasks).
+5. [Festlegen der minimalen Aufgabendauer](#setting-minimal-task-duration).
+6. [Autoscroll während des Ziehens von Aufgaben](#autoscrollduringtasksdragging).
 
-Hier sind einige typische Szenarien, in denen die Anpassung des Standard-Drag-Verhaltens sinnvoll ist:
+## Verweigern des Ziehens bestimmter Aufgaben
 
-
-1. [Blockieren des Verschiebens für bestimmte Aufgaben](#denyingdraggingofspecifictasks).
-2. [Verhindern, dass Aufgaben außerhalb bestimmter Daten verschoben werden](#denyingdraggingtasksoutofspecificdates).
-3. [Verschieben von untergeordneten Aufgaben zusammen mit ihrer übergeordneten Aufgabe](#draggingchildrentogetherwiththeparent).
-4. [Verschieben von Projekten zusammen mit deren Unteraufgaben](#draggingprojectswithsubtasks).
-5. [Festlegen einer minimalen Aufgabendauer](#settingminimaltaskduration).
-6. [Aktivieren des automatischen Bildlaufs beim Verschieben von Aufgaben](#autoscrollduringtasksdragging).
-
-
-## Blockieren des Verschiebens für bestimmte Aufgaben {#denyingdraggingofspecifictasks}
-
-Um das Verschieben bestimmter Aufgaben zu deaktivieren, nutzen Sie das Event [onBeforeTaskDrag](api/event/onbeforetaskdrag.md):
+Um das Ziehen bestimmter Aufgaben zu verweigern, verwenden Sie das [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) Event:
 
 ~~~js
-gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
-    if(gantt.getGlobalTaskIndex(id)%2==0){
-        return false;      // blockiert das Verschieben, wenn der globale Aufgabenindex ungerade ist
+gantt.attachEvent("onBeforeTaskDrag", (taskId, dragMode, event) => {
+    if (gantt.getGlobalTaskIndex(taskId) % 2 === 0) {
+        return false; // verweigert das Ziehen, wenn der globale Aufgabenindex gerade ist
     }
-    return true;           // erlaubt das Verschieben, wenn der globale Aufgabenindex gerade ist
+    return true; // erlaubt das Ziehen, wenn der globale Aufgabenindex ungerade ist
 });
 ~~~
 
+## Verweigern des Ziehens von Aufgaben außerhalb bestimmter Termine
 
-## Verhindern, dass Aufgaben außerhalb bestimmter Daten verschoben werden {#denyingdraggingtasksoutofspecificdates}
+Um das Ziehen von Aufgaben außerhalb bestimmter Termine zu verweigern, verwenden Sie das [onTaskDrag](api/event/ontaskdrag.md) Event.
 
-Um zu verhindern, dass Aufgaben außerhalb eines bestimmten Datumsbereichs verschoben werden, verwenden Sie das Event [onTaskDrag](api/event/ontaskdrag.md).
-
-<p style="margin-top: 20px; font-weight: bold;"> Das onTaskDrag-Event: </p>
+<p style="margin-top: 20px; font-weight: bold;"> Das onTaskDrag-Ereignis: </p>
 
 <ul style="margin-top:5px;">
-  <li>Wird jedes Mal ausgelöst, wenn der Benutzer die Maus bewegt, während er eine Aufgabe in der Zeitleiste verschiebt, die Größe ändert oder den Fortschritt aktualisiert.</li>
-  <li>Die Art der Drag-Aktion wird als zweites Argument übergeben - <b>mode</b>.</li> 
-  <li>Alle möglichen Drag-Modi sind in der Eigenschaft [drag_mode](api/config/drag_mode.md) aufgeführt.</li>
+  <li>Wird jedes Mal ausgelöst, wenn der Benutzer eine Drag-Bewegung mit der Maus im Timeline-Bereich ausführt: Verschieben, Ändern der Größe einer Aufgabe oder Ändern des Fortschritts der Aufgabe.</li>
+  <li>Der Typ einer Drag-Bewegung wird als zweites Argument übergeben - <b>mode</b>.</li>
+  <li>Alle verfügbaren Werte des Typs der Drag-Bewegung sind in der [drag_mode](api/config/drag_mode.md)-Eigenschaft gespeichert.</li>
 </ul>
 
-<p style="margin-top: 20px; font-weight: bold;">Kurz zusammengefasst läuft der Prozess wie folgt ab:</p>
+<p style="margin-top: 20px; font-weight: bold;">Kurz gesagt, läuft alles in folgender Reihenfolge ab:</p>
 
 <ol style="margin-top:5px;">
-  <li>Der Benutzer zieht die Aufgabe.</li>
-  <li>dhtmlxGantt berechnet das Datum der Aufgabe basierend auf der neuen Position neu.</li>
-  <li>dhtmlxGantt löst das Event [onTaskDrag](api/event/ontaskdrag.md) aus.</li>
-  <li>dhtmlxGantt zeichnet die Aufgabe im Diagramm neu. <i>Da das Event [onTaskDrag](api/event/ontaskdrag.md) nach der Neuberechnung ausgelöst wird, können Sie im Event-Handler eigene Werte für die verschobene Aufgabe festlegen, ohne befürchten zu müssen, dass diese überschrieben werden. So wird sichergestellt, dass die Aufgabe genau dort angezeigt wird, wo Sie es möchten.</i></li>
+    <li>Der Benutzer führt eine Bewegung aus.</li>
+    <li>dhtmlxGantt berechnet das Datum der Aufgabe entsprechend der neuen Position neu.</li>
+    <li>dhtmlxGantt löst das [onTaskDrag](api/event/ontaskdrag.md) Event aus.</li>
+    <li>dhtmlxGantt rendert die Aufgabe im Gantt-Diagramm neu. <br><i>Da das [onTaskDrag](api/event/ontaskdrag.md) Event nach der Neuberechnung ausgelöst wird, können Sie beliebige benutzerdefinierte Werte für die verschobene Aufgabe im Handler des Events festlegen, ohne befürchten zu müssen, dass diese Werte überschrieben werden. Dadurch wird die Aufgabe in der gewünschten Position dargestellt.</i></li>
 </ol>
 
-
-Um beispielsweise zu verhindern, dass Benutzer Aufgaben außerhalb des Bereichs **"31. März 2020 - 11. April 2020"** verschieben:
+Angenommen, Sie möchten verhindern, dass Benutzer Aufgaben außerhalb des **„31. März 2028 – 11. April 2028“** Intervalls ziehen.
 
 ![custom_dnd](/img/custom_dnd.png)
 
-Können Sie diesen Code verwenden:
+Dann können Sie den Code wie folgt verwenden:
 
-[Verschieben von Aufgaben außerhalb des Intervalls verweigern - [31.03.2020, 11.04.2020]](Verschieben von Aufgaben außerhalb des Intervalls verweigern - [31.03.2020, 11.04.2020])
 ~~~js
-var leftLimit = new Date(2020, 2 ,31), rightLimit = new Date(2020, 3 ,12);
+const leftLimit = new Date(2028, 2, 31);
+const rightLimit = new Date(2028, 3, 12);
+const millisecondsInDay = 24 * 60 * 60 * 1000;
 
-gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
-    var modes = gantt.config.drag_mode;
-    if(mode == modes.move || mode == modes.resize){
-    
-        var diff = original.duration*(1000*60*60*24);
-       
-        if(+task.end_date > +rightLimit){
+gantt.attachEvent("onTaskDrag", (taskId, dragMode, task, originalTask) => {
+    const dragModes = gantt.config.drag_mode;
+
+    if (dragMode === dragModes.move || dragMode === dragModes.resize) {
+        const taskDuration = originalTask.duration * millisecondsInDay;
+
+        if (+task.end_date > +rightLimit) {
             task.end_date = new Date(rightLimit);
-            if(mode == modes.move)
-                task.start_date = new Date(task.end_date - diff);
+            if (dragMode === dragModes.move) {
+                task.start_date = new Date(task.end_date - taskDuration);
             }
-        if(+task.start_date < +leftLimit){
+        }
+
+        if (+task.start_date < +leftLimit) {
             task.start_date = new Date(leftLimit);
-            if(mode == modes.move)
-                task.end_date = new Date(+task.start_date + diff);
+            if (dragMode === dragModes.move) {
+                task.end_date = new Date(+task.start_date + taskDuration);
+            }
         }
     }
 });
 ~~~
 
+## Ziehen von Kindaufgaben zusammen mit der Elternaufgabe
 
-[Drag parent task with its children](https://docs.dhtmlx.com/gantt/samples/08_api/05_limit_drag_dates.html)
-
-
-## Verschieben von untergeordneten Aufgaben zusammen mit der übergeordneten Aufgabe {#draggingchildrentogetherwiththeparent}
-
-Um das Verschieben von untergeordneten Aufgaben zu ermöglichen, wenn die übergeordnete Aufgabe verschoben wird, verwenden Sie das Event [onTaskDrag](api/event/ontaskdrag.md) (weitere Details zu diesem Event finden Sie [oben](guides/dnd.md#preventingdraggingtasksoutsidecertaindates)):
+Um das Ziehen von Kindaufgaben zu ermöglichen, während der Benutzer die Aufgabe des Elternteils zieht, verwenden Sie das [onTaskDrag](api/event/ontaskdrag.md) Event (siehe weiter oben auf das Event [oben](guides/dnd.md#denying-dragging-tasks-out-of-specific-dates)):
 
 ~~~js
-gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
-    var modes = gantt.config.drag_mode;
-    if(mode == modes.move){
-        var diff = task.start_date - original.start_date;
-        gantt.eachTask(function(child){
-            child.start_date = new Date(+child.start_date + diff);
-            child.end_date = new Date(+child.end_date + diff);
+gantt.attachEvent("onTaskDrag", (taskId, dragMode, task, originalTask) => {
+    const dragModes = gantt.config.drag_mode;
+
+    if (dragMode === dragModes.move) {
+        const dateShift = task.start_date - originalTask.start_date;
+        gantt.eachTask((child) => {
+            child.start_date = new Date(+child.start_date + dateShift);
+            child.end_date = new Date(+child.end_date + dateShift);
             gantt.refreshTask(child.id, true);
-        },id );
+        }, taskId);
     }
 });
-// Rundet die Positionen der untergeordneten Aufgaben auf die aktuelle Skala
-gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
-    var modes = gantt.config.drag_mode;
-    if(mode == modes.move ){
-        var state = gantt.getState();
-        gantt.eachTask(function(child){          
+
+// rundet die Positionen der Kindobjekte an den Maßstab an
+gantt.attachEvent("onAfterTaskDrag", (taskId, dragMode, event) => {
+    const dragModes = gantt.config.drag_mode;
+
+    if (dragMode === dragModes.move) {
+        const ganttState = gantt.getState();
+        gantt.eachTask((child) => {
             child.start_date = gantt.roundDate({
-                date:child.start_date, 
-                unit:state.scale_unit, 
-                step:state.scale_step
-              });            
-              child.end_date = gantt.calculateEndDate(child.start_date, 
-                child.duration, gantt.config.duration_unit);
-              gantt.updateTask(child.id);
-        },id );
+                date: child.start_date,
+                unit: ganttState.scale_unit,
+                step: ganttState.scale_step
+            });
+            child.end_date = gantt.calculateEndDate(
+                child.start_date,
+                child.duration,
+                gantt.config.duration_unit
+            );
+            gantt.updateTask(child.id);
+        }, taskId);
     }
 });
 ~~~
 
-## Verschieben von Projekten zusammen mit deren Unteraufgaben
+**Related sample**: [Drag parent task with its children](https://docs.dhtmlx.com/gantt/samples/08_api/05_limit_drag_dates.html)
 
-:::note
-Dieses Feature ist nur in der Gantt PRO Edition verfügbar.
+## Ziehen von Projekten mit Unteraufgaben {#draggingprojectswithsubtasks}
+
+:::info
+Diese Funktionalität ist nur in der Gantt PRO-Edition verfügbar.
 :::
 
-Standardmäßig können Aufgaben vom [Typ Projekt](api/config/types.md) nicht verschoben werden.
-Sie können das Verschieben von Projekten aktivieren, indem Sie die Option [drag_project](api/config/drag_project.md) setzen:
+Aufgaben des [Projekt-Typs](api/config/types.md) sind standardmäßig nicht verschiebbar. 
+Sie können Drag & Drop von Projekten über die Konfiguration [drag_project](api/config/drag_project.md) aktivieren:
 
 ~~~js
 gantt.config.drag_project = true;
 ~~~
 
+**Related sample**: [Draggable projects](https://docs.dhtmlx.com/gantt/samples/08_api/19_draggable_projects.html)
 
-[Draggable projects](https://docs.dhtmlx.com/gantt/samples/08_api/19_draggable_projects.html)
+## Ziehen abhängiger Aufgaben zusammen mit unabhängigen Aufgaben
 
+Es gibt mehrere Wege, Aufgaben zusammen mit ihren abhängigen Aufgaben zu verschieben.
+Sie können alles darüber in einem separaten Artikel [Dragging Tasks Together with Their Dependent Tasks](guides/dragging-dependent-tasks.md) nachlesen.
 
-## Verschieben von abhängigen Aufgaben zusammen mit unabhängigen Aufgaben
-
-Es gibt verschiedene Ansätze, um Aufgaben gemeinsam mit ihren abhängigen Aufgaben zu verschieben.
-Detaillierte Informationen finden Sie in einem eigenen Artikel: [Dragging Tasks Together with Their Dependent Tasks](guides/dragging-dependent-tasks.md).
-
-
-## Festlegen einer minimalen Aufgabendauer 
+## Minimale Aufgabendauer festlegen
 
 Die minimale Aufgabendauer kann über die Einstellung [min_duration](api/config/min_duration.md) festgelegt werden.
 
-Diese Option legt die kleinste erlaubte Aufgabengröße beim Ändern der Größe fest und verhindert, dass Aufgaben eine Dauer von Null haben.
+Die Option definiert die minimale Größe der Aufgabe, die beim Ändern der Größe festgelegt werden kann, und kann verwendet werden, um zu verhindern, dass Benutzer eine Null-Dauer festlegen.
 
-Der Wert wird in Millisekunden angegeben:
+Der Wert wird in Millisekunden festgelegt:
 ~~~js
 // 1 Tag
-gantt.config.min_duration = 24*60*60*1000;
+gantt.config.min_duration = 24 * 60 * 60 * 1000;
 
-//ODER
+// ODER
 
 // 1 Stunde
-gantt.config.min_duration = 60*60*1000;
+gantt.config.min_duration = 60 * 60 * 1000;
 ~~~
 
-## Automatischer Bildlauf beim Ziehen von Aufgaben
+## Autoscroll während des Ziehens von Aufgaben {#autoscrollduringtasksdragging}
 
-Beim Arbeiten mit großen Gantt-Diagrammen kann das Ziehen einer Aufgabe über eine große Entfernung oder das Erstellen von Verbindungen zwischen weit entfernten Aufgaben schwierig sein.
+Wenn Sie einen großen Datensatz im Gantt-Diagramm haben, müssen Sie oft eine Aufgabe zu einer weit entfernten Position ziehen oder Verbindungen zwischen Aufgaben herstellen, die weit voneinander entfernt liegen.
 
-Die **Autoscroll**-Funktion unterstützt Sie, indem das Diagramm während des Ziehens automatisch gescrollt wird. Sie ist standardmäßig aktiviert, kann aber über die Option [autoscroll](api/config/autoscroll.md) gesteuert werden.
+In diesem Fall ist die Autoscroll-Funktionalität sehr hilfreich. Sie ist standardmäßig aktiviert, aber Sie können dieses Verhalten über
+die Konfigurationsoption [autoscroll](api/config/autoscroll.md) steuern.
 
 ~~~js
 gantt.config.autoscroll = false;
 gantt.init("gantt_here");
 ~~~
 
-Sie können die Geschwindigkeit des automatischen Bildlaufs in Millisekunden mit der Eigenschaft [autoscroll_speed](api/config/autoscroll_speed.md) anpassen:
+Außerdem können Sie die Geschwindigkeit des Autoscrollings in Millisekunden mit der entsprechenden Eigenschaft - [autoscroll_speed](api/config/autoscroll_speed.md) - anpassen:
 
 ~~~js
 gantt.config.autoscroll = true;
 gantt.config.autoscroll_speed = 50;
- 
+
 gantt.init("gantt_here");
 ~~~
 
-## Deaktivieren der Größenänderung bestimmter Aufgaben {#disablingresizingofspecifictasks}
+## Deaktivieren der Größenänderung bestimmter Aufgaben
 
-Um zu verhindern, dass bestimmte Aufgaben in der Größe verändert werden, gibt es zwei Ansätze:
+Wenn Sie verhindern möchten, dass bestimmte Aufgaben ihre Größe ändern, gibt es zwei Möglichkeiten:
 
-1. Blenden Sie die Anfasser zur Größenänderung im UI per CSS aus.
-Nutzen Sie das Template **task_class**, um einer bestimmten Aufgabe eine eigene CSS-Klasse zuzuweisen:
+1. Entfernen Sie die Griffe zum Ändern der Größe einer Aufgabe aus der Benutzeroberfläche über CSS.
+Dazu verwenden Sie die **task_class**-Vorlage, um den betreffenden Elementen eine zusätzliche CSS-Klasse hinzuzufügen, sodass Sie sie über den Selektor finden können:
 
 ~~~js
-gantt.templates.task_class = function(start, end, task){
-    if(task.no_resize) { // no_resize ist eine benutzerdefinierte Eigenschaft zur Demonstration
+gantt.templates.task_class = (startDate, endDate, task) => {
+    if (task.no_resize) { // no_resize ist eine benutzerdefinierte Eigenschaft, die der Demonstration dient
         return "no_resize";
     }
     return "";
+};
 ~~~
 
-Blenden Sie dann die Anfasser mit folgendem CSS aus:
+Dann können Sie die Griffe zum Ändern der Größe mit folgendem CSS ausblenden:
 
 ~~~css
-.no_resize .gantt_task_drag{
-   display: none !important;
+.no_resize .gantt_task_drag {
+    display: none !important;
 }
 ~~~
 
-2. Blockieren Sie die Größenänderung programmatisch mit dem [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) Event.
-Wird *false* vom Handler zurückgegeben, wird die Größenänderung verhindert:
+2. Verhindern Sie Drag & Drop aus dem Code über das [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) Event.
+Wenn der Handler false zurückgibt, wird das Größenändern verhindert:
 
 ~~~js
-gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
-    if(mode === "resize" && gantt.getTask(id).no_resize){
+gantt.attachEvent("onBeforeTaskDrag", (taskId, dragMode, event) => {
+    if (dragMode === "resize" && gantt.getTask(taskId).no_resize) {
         return false;
     }
     return true;
 });
 ~~~
-
-## Erkennen, welche Seite einer Aufgabe in der Größe verändert wird {#identifyingwhichsideofataskisbeingresized}
-
-Der "resize"-Modus beim Drag-and-Drop bedeutet, dass der Benutzer entweder das Start- oder das Enddatum einer Aufgabe ändert.
-
-Um zu erkennen, welches Datum geändert wird, prüfen Sie das Flag **gantt.getState().drag_from_start**:
-
-~~~js
-gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
-    if(mode === "resize"){
-        if(gantt.getState().drag_from_start === true) {
-            // Das Startdatum wird geändert
-        } else {
-            // Das Enddatum wird geändert
-        }
-    }
-    return true;
-});
-~~~
-
-## Deaktivieren der Größenänderung des Start- oder Enddatums einer Aufgabe {#disablingresizingofthestartorenddateofatask}
-
-Die Anfasser zur Größenänderung können mit folgenden Selektoren angesprochen werden:
-
-- .gantt_task_drag[data-bind-property="start_date"]
-- .gantt_task_drag[data-bind-property="end_date"]
-
-Um die Größenänderung des Startdatums zu deaktivieren, verwenden Sie dieses CSS:
-
-~~~css
-.gantt_task_drag[data-bind-property="start_date"]{
-   display: none !important;
-}
-~~~
-
-Ebenso können Sie die Größenänderung des Enddatums deaktivieren:
-
-~~~css
-.gantt_task_drag[data-bind-property="end_date"]{
-   display: none !important;
-}
-~~~
-
-Alternativ können Sie die Größenänderung über das [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) Event blockieren.
-Wird *false* vom Handler zurückgegeben, wird die Größenänderung verhindert:
-
-~~~js
-gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
-    if(mode === "resize"){
-        if(gantt.getState().drag_from_start === true) {
-             return false;
-        } else {
-             // Das Ändern des Enddatums ist erlaubt
-        }
-    }
-    return true;
-});
-~~~
-

@@ -1,14 +1,14 @@
 ---
 sidebar_label: task_attribute
 title: task_attribute config
-description: "определяет имя атрибута, используемого для указания id HTML-элемента задачи"
+description: "задает имя атрибута, который будет указывать идентификатор элемента HTML задачи"
 ---
 
 # task_attribute
 
 ### Description
 
-@short: Определяет имя атрибута, используемого для указания id HTML-элемента задачи
+@short: Устанавливает имя атрибута, который будет указывать идентификатор HTML-элемента задачи
 
 @signature: task_attribute: string
 
@@ -18,16 +18,15 @@ description: "определяет имя атрибута, используем
 gantt.config.task_attribute = "data-task-id"
 ~~~
 
-**Default value:** "data-task-id"
+**Значение по умолчанию:** "data-task-id"
 
 ### Details
 
-HTML-элементы задачи с использованием атрибута по умолчанию **task_attribute** (*data-task-id*) выглядят следующим образом:
-
 ![data_task_id](/img/data_task_id.png)
 
-Атрибут *task_id* по-прежнему включён для сохранения совместимости с предыдущими версиями.
+HTML-элементы задач с использованием значения по умолчанию **task_attribute** (*data-task-id*) выглядят так:
+
+Атрибут *task_id* включён, чтобы обеспечить обратную совместимость с предыдущими версиями.
 
 ### Related API
 - [locate](api/method/locate.md)
-

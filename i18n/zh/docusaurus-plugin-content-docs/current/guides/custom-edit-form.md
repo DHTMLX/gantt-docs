@@ -1,43 +1,45 @@
 ---
-title: "自定义 Lightbox"
-sidebar_label: "自定义 Lightbox"
+title: "自定义灯箱"
+sidebar_label: "自定义灯箱"
 ---
 
-# 自定义 Lightbox
+# 自定义灯箱
 
-## 创建自定义 Lightbox 的方法
+## 创建自定义灯箱的方式
 
-可以为 gantt 创建完全自定义的 lightbox，并替换默认的 lightbox。主要有两种方法:
+你可以为甘特图创建一个完全自定义的灯箱，并用它替换默认的灯箱。共有两种实现方式：
 
-1）通过重写 @[showLightbox](api/method/showlightbox.md) 方法:
+1) 通过重新定义 [showLightbox](api/method/showlightbox.md) 方法：
 
 ~~~js
 gantt.showLightbox = function(id){
-    // 自定义表单的代码
+    // code of the custom form
 }
 ~~~
 
-- id - (string/number) - 任务 id
+- id - (string/number) - 任务 ID
 
-同时也可以使用 @[hideLightbox](api/method/hidelightbox.md) 方法来辅助实现 lightbox。
+还有 [hideLightbox](api/method/hidelightbox.md) 方法，可以在灯箱实现中帮助到你。
 
-我们先定义一个 HTML 容器 "my-form" 来承载自定义的 lightbox:
+让我们创建一个 HTML 容器 "my-form"，将在其中放置自定义灯箱：
 
 ~~~html
 <div id="my-form">
- <label for="description">Task text
+ <label for="description">任务文本
   <input type="text" name="description" value="" >
  </label>
  
 
-
+ 
  <input type="button" name="save" value="Save">
  <input type="button" name="close" value="Close">
  <input type="button" name="delete" value="Delete">
 </div>
 ~~~
 
-要创建自定义 lightbox，可以使用如下配置:
+
+然后要创建自定义灯箱，可以使用如下配置：
+
 
 ~~~js
 var taskId = null;
@@ -97,11 +99,12 @@ function remove() {
 }
 ~~~
 
-2）使用 @[onBeforeLightbox](api/event/onbeforelightbox.md) 事件。这种方式包括:
+2) 使用 [onBeforeLightbox](api/event/onbeforelightbox.md) 事件。在这种情况下，动作的算法如下：
 
-- 检测 lightbox 即将打开的时机
-- 阻止默认的 lightbox 显示
-- 显示自定义表单，并填充任务数据
+- 检测灯箱即将显示
+- 阻止默认灯箱
+- 显示自定义表单并填写任务数据。
+
 
 ~~~js
 gantt.attachEvent("onBeforeLightbox", function(id) {
@@ -111,7 +114,7 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
             text:"Create task?",
             callback: function(res){
                 if(res){
-                    //..应用表单中的值
+                    //..apply values
                     delete task.$new;
                     gantt.addTask(task);
                 }else{
@@ -125,20 +128,21 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 });
 ~~~
 
+
 ## 在自定义表单中处理操作
 
-当保存表单时，需要手动获取表单的值，并通过公开 API 更新对应的任务:@[addTask](api/method/addtask.md)、@[updateTask](api/method/updatetask.md) 和 @[deleteTask](api/method/deletetask.md)。
+当用户保存表单时，你需要手动获取表单值并使用公共 API 更新相应的任务：[addTask](api/method/addtask.md)、[updateTask](api/method/updatetask.md) 和 [deleteTask](api/method/deletetask.md)。
 
-请注意，如果 lightbox 是由新建任务触发的（比如点击"加号"按钮），并且用户点击"Cancel"撤销了任务创建，则任务对象会有 '$new' 属性。
+请注意，当灯箱由新任务触发（点击“plus”按钮）时，如果用户点击“Cancel”以撤销任务创建，应将任务对象的 '$new' 属性设置。
+你可以按下例处理灯箱关闭。一个操作的类型 - 'save'、'cancel' 或 'delete' 将作为 "action" 参数传入：
 
-可以按照下面的示例处理 lightbox 的关闭。操作类型 -- 'save'、'cancel' 或 'delete' -- 作为 "action" 参数传递:
 
 ~~~js
 switch(action){
    case "save":
-      task.text = '';// 从表单中应用值
+      task.text = '';// apply values from form
 
-      // 新增任务或更新已有任务
+      // add new task or update already existing one
       if(task.$new){
         delete task.$new;
         gantt.addTask(task,task.parent)
@@ -148,7 +152,7 @@ switch(action){
 
       break;
    case "cancel":
-      // 如果是撤销新建任务，则删除该任务；否则无需操作
+      // if cancel popup for creating a new task - delete it, otherwise do nothing
       if(task.$new)
          gantt.deleteTask(id);
       break;
@@ -157,4 +161,3 @@ switch(action){
       break;
 }
 ~~~
-

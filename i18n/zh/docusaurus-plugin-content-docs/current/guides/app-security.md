@@ -5,32 +5,27 @@ sidebar_label: "应用程序安全"
 
 # 应用程序安全
 
-DHTMLX Gantt 是一个客户端 JavaScript 库，可无缝集成 Gantt 功能到各种 Web 应用程序中。 
-我们不会通过限制 Gantt 的功能来提升安全性，但这也意味着不会限制其能力。 
-这样，您可以根据项目需求自定义大部分 Gantt 功能。
+DHTMLX Gantt 是一个客户端 JavaScript 库，旨在将甘特功能无缝集成到各种网络应用中。因此，我们不会限制 Gantt 的功能能力，这既可以提升应用的安全性，又可能限制可用性。因此，你可以根据项目需求自定义大多数 Gantt 功能。
 
-需要注意的是，DHTMLX Gantt 本身并不负责防护诸如 SQL 注入、XSS 和 CSRF 攻击等威胁。 
-确保项目安全，取决于您如何配置和保护您的应用程序。 
-本文将为您提供关于 HTML 清洗的有用见解和建议。
+然而，请记住，DHTMLX Gantt 自身并不提供任何用于保护应用免受诸如 SQL 注入、XSS 和 CSRF 攻击等威胁的手段。因此，确保你项目的安全性取决于你通过提供必要的配置设置来实现。本文中你将找到有关 HTML 清洗的相关信息和建议。
 
-## 基本安全措施
+## 基本安全步骤
 
-网络安全是一个广泛且复杂的领域，不可能用一个简单的清单完全覆盖。 
-不过，以下实用步骤涵盖了基础内容，有助于降低常见风险。
+网络安全是一个复杂的领域，不能仅凭单一步骤来覆盖，我们建议遵循一些实用步骤，覆盖基础内容并有助于减轻最常见的威胁。
 
-**1. 在应用程序中使用内容安全策略（CSP）**
+**1. 在你的应用中使用内容安全策略（CSP）**
 
-添加如下 CSP 头部可以阻止 XSS 脚本在您的应用中运行:
+像下面这样简单地添加 CSP 头就能够防止 XSS 代码在你的应用中执行：
 
 ~~~
 Content-Security-Policy: script-src 'self'
 ~~~
 
-您的应用可能需要更详细的策略，但阻止内联脚本执行可以防止许多 XSS 和 CSRF 攻击。
+你的应用可能需要更复杂的策略，但禁用内联脚本执行将防止大量的 XSS 和 CSRF 攻击。
 
-**2. 在后端对用户输入进行清洗后再保存到数据库**
+**2. 在保存到数据库之前，在后端对用户输入进行清洗（sanitization）**
 
-添加新记录时，避免直接原样保存用户输入:
+当你插入一条新记录时，不要按原样保存值：
 
 ~~~
 db.query("INSERT INTO gantt_tasks(text, start_date, duration, progress, parent)"
@@ -38,8 +33,8 @@ db.query("INSERT INTO gantt_tasks(text, start_date, duration, progress, parent)"
     [task.text, task.start_date, task.duration, task.progress, task.parent])
 ~~~
 
-建议先验证输入格式并清除有害内容。 
-例如，在 Node.js 中可以使用 [DOMPurify](https://www.npmjs.com/package/dompurify) 这类库:
+你可能希望确保它们符合预期格式并移除潜在的恶意内容。
+如果你使用 Node.js，这可以通过众多可用的库来完成，例如 [DOMPurify](https://www.npmjs.com/package/dompurify)：
 
 ~~~js
 const createDOMPurify = require('dompurify');
@@ -56,10 +51,9 @@ db.query("INSERT INTO gantt_tasks(text, start_date, duration, progress, parent)"
         .map((input) => DOMPurify.sanitize(input))
 ~~~
 
-**3. 在渲染数据前对 HTML 实体进行转义**
+**3. 在渲染数据之前对 HTML 实体进行转义**
 
-为了防止显示数据时执行 HTML 标记，务必在将用户输入传递给 Gantt 前转义 HTML 字符。 
-可以使用 [validator](https://www.npmjs.com/package/validator) 库实现:
+如果你不想让可显示的值在渲染过程中包含将被执行的 HTML 标记，请确保在将数据输入 Gantt 之前对用户可能输入的 HTML 字符进行转义。以下是使用 [validator] 库的示例：
 
 ~~~js
 const validator = require('validator');
@@ -99,20 +93,19 @@ Promise.all([
    });
 ~~~
 
-**4. 如果使用 SQL 数据库，避免通过字符串拼接创建 SQL 查询。应使用参数化查询、ORM 或 Query Builder。**
+**4. 如果你使用 SQL 数据库，避免通过串联字符串值来创建 SQL 查询。请改用参数化查询、ORM 或查询构建器。**
 
-这样可以防止 SQL 注入攻击。 
-切勿在 SQL 查询中直接使用未经转义或未检查的用户输入。 
-如果目前代码存在这种情况，请考虑切换到参数化查询或使用 SQL 库提供的转义函数。
+此项涉及 SQL 注入攻击类型。一般而言，你不应在 SQL 查询中使用未经过转义或未验证的用户输入。如果你发现自己在这样做，考虑使用参数化查询重写代码，或使用你所用 SQL 提供商支持的转义函数。
 
-**5. 最后但同样重要:请咨询网络安全专家并遵循公司认可的安全策略**
+如果你使用 [dhtmlxConnector](integrations/php/howtostart-connector.md) 并按照相关文档中所示为表配置，所有值将自动转义。否则，你将不得不按照你使用的平台的最佳实践，使用安全的 CRUD 实现。入门指南中展示的实现应在 SQL 注入方面是安全的。
 
-安全是一个持续的过程。 
-通过遵循上述步骤、遵守组织政策，并让安全专家审核您的工作，可以最大限度减少常见 Web 威胁。
+**5. 最后但同样重要：咨询网络安全专家并遵循贵公司认可的安全策略**
 
-基础措施介绍完毕后，下面来看一些 Gantt 相关的具体安全注意事项。
+安全工作从来不是完全完成，但通过执行这些步骤、遵循贵公司的政策并让安全专家对你的工作进行审查，你将避免大多数可能在网络上找到你的威胁。
 
-## 客户端 Gantt 的易受攻击区域
+现在，基础知识已覆盖，我们来看看与 Gantt 相关的内容。
+
+## 客户端的易受攻击的 Gantt 区域
 
 首先，在客户端添加像 Gantt 这样复杂功能时需要注意以下要点:
 
@@ -132,22 +125,20 @@ DHTMLX Gantt 中可能存在安全问题的易受攻击区域包括:
 
 下面我们将详细探讨这些问题。
 
-## 隔离 Gantt 访问
+## 将对 Gantt 的访问隔离开
 
-保护 Gantt 的第一步是将其与被攻破的组件或被诱导的用户（自我 XSS）隔离开来。
+在讨论保护 Gantt 的可能措施时，首要任务是将 Gantt 与被破解的组件或被误导的用户（自 XSS 攻击）隔离，防止非法访问。
 
 :::note
 如果攻击者获得了应用配置文件（包括 Gantt 配置文件）的访问权限，
 任何已采取的 XSS 防护措施都可能失效，因此本场景不在本文讨论范围内。
 :::
 
-应用完全加载后，如果攻击者能访问 Gantt 实例对象，就可以修改任何内容并重写函数。 
-因此，将 Gantt 隔离在项目内部非常重要。
+当应用完全加载并且攻击者能够访问 Gantt 实例对象时，他们几乎可以改变 Gantt 的一切并重新定义所有函数。因此，你需要知道如何在你的项目中对 Gantt 进行隔离。
 
-实现方法是在函数内部创建独立的 Gantt 实例，这样函数内部的代码外部无法访问。
+为此，你需要在一个函数中创建一个独立的 Gantt 实例。这里的目标是让在该函数内运行的代码对外不可访问。
 
-默认情况下，Gantt 会在 *gantt* 对象上创建新实例。 
-在您的函数内部，使用 *const* 或 *let* 声明新变量并存储 Gantt 实例，使其在外部作用域不可见。
+此外，默认情况下 Gantt 会在 *gantt* 对象中创建一个新的实例。重要的是在函数内部使用 *const* 或 *let* 关键字添加一个新变量，以使其在函数外不可访问，并将 Gantt 实例安全地放在该变量中。
 
 ~~~js
 function addGantt(){
@@ -156,7 +147,7 @@ function addGantt(){
 addGantt()
 ~~~
 
-您也可以使用不同的变量名，以避免与全局 gantt 对象混淆:
+你也可以为 Gantt 实例使用不同的名称，以避免与 gantt 对象的混淆：
 
 ~~~js
 function addGantt(){
@@ -165,14 +156,13 @@ function addGantt(){
 addGantt()
 ~~~
 
-在防止非授权访问 Gantt 后，接下来要关注数据在 Gantt 图中的输入和展示方式。
+在确保 Gantt 受到保护，防止未经授权的访问之后，你应关注在 Gantt 图中输入和显示数据。
 
-## Gantt 中的数据输入
+## 在 Gantt 中输入数据
 
-这是攻击者可能利用的关键领域，可能危及您的 Gantt 安全。
+这是一个敏感区域，网络犯罪分子可能利用它来削弱你应用中的 Gantt 安全性。
 
-数据输入点是 XSS 攻击的常见目标。 
-在 Gantt 组件中，数据可通过以下方式修改:
+数据输入区域被视为 XSS 攻击的主要目标。在我们的 Gantt 组件中，可以通过以下方式更改数据：
 
 - lightbox  
 - 行内编辑器  
@@ -185,12 +175,11 @@ addGantt()
 任务对象有 [许多属性](guides/task-properties.md)，具体使用哪些取决于启用的功能。 
 可编辑属性越多，输入清洗就越重要。
 
-### 示例说明
+### 以示例说明
 
-以下示例演示了在使用 DHTMLX Gantt 时，通过 HTML 清洗提升 XSS 防护的多种方式。
+我们准备了一个示例，演示在使用 DHTMLX Gantt 时，通过 HTML 清洗来增强对 XSS 攻击的防护的各种步骤。
 
-
-**Related example:** [Example to prevent XSS attacks (security, csp)](https://snippet.dhtmlx.com/cdy9p0yl)
+**相关示例**：[Example to prevent XSS attacks (security, CSP)](https://snippet.dhtmlx.com/cdy9p0yl)
 
 
 在本示例中，您可以修改任务名称、调整日期和工期、变更资源分配以及添加文本备注。 
@@ -201,16 +190,13 @@ addGantt()
 如果有人试图通过 DOM 检查器更改元素类型，则会生成无效的日期或工期值。 
 这会触发错误，导致 Gantt 无法继续工作，直到页面重新加载。同时，由于图表不会重绘，也不会将数据发送到服务器。
 
-然而，任务名称使用的是 **string** 类型，因此可能受到 XSS 攻击。 
-因此，输入清洗非常必要。示例中演示了一种 XSS 攻击方式及其防护方法。
+然而，我们对任务名称使用的是 **string** 值类型，这可能成为 XSS 攻击的薄弱点。因此，你需要对输入的值进行清洗。在我们的示例中，你可以看到一种 XSS 攻击的变体以及一种防止它的方法。
 
-![](/img/preventing_xss_attack.png)
+![preventing_xss_attack](/img/preventing_xss_attack.png)
 
-在实际项目中，务必做好全面的数据清洗。 
-本例中，我们仅将 "\<" 和 "\>" 字符替换为 HTML 实体 **`&lt;`** 和 **`&gt;`**，  
-从而防止 HTML 元素在任务文本中被渲染。
+在实际项目中，你需要添加所有可能的数据清洗选项。在我们的实现中，我们只是将 "\<" 和 "\>" 符号替换为相应的 HTML 实体 - **`&lt;`** 和 **`&gt;`**。因此，我们排除了在任务文本中显示 HTML 元素的可能性。
 
-此替换操作在 **sanitizeText()** 函数中实现，如下所示:
+上述符号替换在 **sanitizeText()** 函数中实现，如下：
 
 ~~~js
 function sanitizeText(text){
@@ -222,10 +208,9 @@ function sanitizeText(text){
 }
 ~~~
 
-该函数在事件处理器中调用:lightbox 使用 **onLightboxSave**，行内编辑器使用 **onBeforeSave**。
+该函数在事件处理程序中被调用：在 lightbox 的 **onLightboxSave** 中，以及在内联编辑器的 **onBeforeSave** 中。
 
-在本例中，您可以通过自定义行内编辑器或 lightbox 部分为任务添加文本备注。 
-可以在这些自定义组件的函数中进行清洗--即在渲染前和从 DOM 元素读取变更前:
+在我们的示例中，你还可以通过自定义内联编辑器或自定义灯箱部分向任务添加文本注释。在这两种情况下，清洗可以在这些自定义对象的函数中实现（在值渲染前、从 DOM 元素获得更改前）：
 
 ~~~js
 // for an inline editor:
@@ -245,7 +230,7 @@ get_value: function(node, task){
 },
 ~~~
 
-不过，更简单的做法是在 **onLightboxSave** 和 **onBeforeSave** 事件处理器中统一处理文本备注清洗:
+但通过 onLightboxSave 和 onBeforeSave 事件处理程序来控制文本注释的工作更为简单：
 
 ~~~js
 protectedGantt.attachEvent("onLightboxSave", function(id, task, is_new){
@@ -263,9 +248,9 @@ protectedGantt.ext.inlineEditors.attachEvent("onBeforeSave", function(state){
 });
 ~~~
 
-资源分配也可以在 lightbox 中编辑。由于 Gantt 并未将值限制为 **number** 类型，因此字符串值也是可能的，这可能导致 XSS 攻击。
+你也可以在灯箱中进行资源分配。由于 Gantt 并不限于仅允许数字类型的输入，因此也可以使用字符串值，这也带来了 XSS 攻击的可能性。
 
-资源值存储在任务属性中，因此 **sanitizeResourceValues()** 函数会遍历所有资源值并用 **sanitizeText()** 进行清洗:
+资源值写入任务的属性中，因此 sanitizeResourceValues() 函数遍历所有这些值并使用 sanitizeText() 对资源分配值进行清洗：
 
 ~~~js
 function sanitizeResourceValues(task){
@@ -280,7 +265,7 @@ function sanitizeResourceValues(task){
 }
 ~~~
 
-该函数在 **onLightboxSave** 事件处理器中调用:
+sanitizeResourceValues() 会在 onLightboxSave 事件处理程序中被调用：
 
 ~~~js
 protectedGantt.attachEvent("onLightboxSave", function(id, task, is_new) {
@@ -289,16 +274,15 @@ protectedGantt.attachEvent("onLightboxSave", function(id, task, is_new) {
 });
 ~~~
 
-*您在 Gantt 配置中涉及的其他字符串参数也应进行清洗。*
+*如果你在 Gantt 配置中使用任何其他字符串参数，它们也应进行清洗。*
 
-在本例中，如果您尝试在资源时间线的资源分配中输入不合规内容，仅会接受数字值，非数字内容不会被保存。
+在我们的示例中，如果你尝试在资源时间线中的资源分配中插入不需要的内容，将只接受数字值。若使用其他值类型，更改将不会被保存。
 
-### 通过第三方工具录入数据
+### 通过第三方工具输入数据
 
-DHTMLX Gantt 提供了广泛的自定义选项，包括通过第三方表单、工具或库编辑任务。 
-由于在这些场景下 Gantt API 负责管理任务操作，因此关于数据净化的通用建议较难给出，因为这取决于具体的自定义实现方式。
+我们的 Gantt 组件提供了多种自定义机会，包括通过第三方表单、工具和库编辑任务的能力。在这种情况下，Gantt API 被用于处理任务。在这种情形下，很难给出关于数据清洗的通用建议，因为一切取决于自定义实现的方式。
 
-下例展示了一个用于编辑任务名称的自定义表单，同时使用 **sanitizeText()** 函数对文本进行转义:
+在我们的示例中，有一个用于编辑任务名称的自定义表单。该表单还包含用于转义文本的 sanitizeText() 函数：
 
 ~~~js
 document.body.querySelector("[name='save']").onclick = function(){
@@ -308,21 +292,19 @@ document.body.querySelector("[name='save']").onclick = function(){
 }
 ~~~
 
-这些方法涵盖了大多数数据录入方式。在数据进入 Gantt 时进行净化，可以有效过滤不安全内容，使 XSS 攻击在 Gantt 图表内失效，并防止恶意数据传递到服务器。
+这些几乎涵盖了所有数据输入的类别。如果在数据输入到 Gantt 时进行清洗，数据就会被一定程度地过滤。因此，XSS 攻击在 Gantt 图中将无效，且肯定无法到达服务器。
 
-## 在 Gantt 中展示数据
+## 在 Gantt 中显示数据
 
-另一个需要关注的方面是数据在 Gantt 图表中的展示方式。 
-虽然对展示数据进行净化不如对输入数据净化有效，但它仍有助于阻止或中断 XSS 攻击链。 
-例如，如果服务器被攻破但 Gantt 本身未受影响，客户端的净化操作将阻止恶意脚本执行。
+接下来需要提及的易受攻击区域是 Gantt 图中数据的显示。虽然不如数据输入高效，清洗显示数据仍有助于阻止或中断 XSS 攻击链。
 
-最安全的做法是对 Gantt 中所有展示数据的部分都进行净化。 
-这涉及在[配置每个网格列时使用模板](guides/specifying-columns.md#shujuyingsheyumoban)，并应用[所有相关模板](api/overview/templates-overview.md)以防止渲染不安全内容。
+例如，如果携带数据的服务器已被攻击，但仍然无法访问 Gantt，则 XSS 攻击将在 Gantt 上被中断。
 
-不过，更简单的方式是控制两大数据来源:用户输入和服务器数据。 
-通过净化输入数据，可以降低恶意内容出现在 Gantt 图表中的可能性。
+最安全的做法是对所有显示数据的 Gantt 区域进行清洗。这需要在每个网格列的配置中使用模板。对 [所有可能的模板](api/overview/templates-overview.md) 的使用将有助于防止显示可能导致 XSS 攻击的内容。
 
-例如，可以在通过 **onTaskLoading** 事件从服务器加载任务时对任务属性进行净化:
+然而，对于在 Gantt 图中显示数据的潜在问题，也有一个更简单的解决方案。由于数据可以通过用户输入或从服务器上传到 Gantt 图，我们可以限制这两种数据流。这样就没有机会影响 Gantt 内容并将恶意代码嵌入数据。
+
+在从服务器加载数据时，可以在服务器加载时对任务的属性进行保护。这可以在 onTaskLoading 事件处理程序中完成：
 
 ~~~js
 protectedGantt.attachEvent("onTaskLoading", function (task) {
@@ -335,8 +317,9 @@ protectedGantt.attachEvent("onTaskLoading", function (task) {
 });
 ~~~
 
-其他加载数据的方式也可能存在，比如从服务器单独获取任务对象并在添加或更新到 Gantt 前进行处理。 
-在这些情况下，净化操作应在处理函数内部、任务被添加前进行:
+还有其他将数据加载到 Gantt 图中的方式。例如，任务对象可能从服务器单独来，并由某个函数进行处理。之后，将新任务添加到 Gantt 图或更新现有任务。在这种情况下，在将数据加载到 Gantt 之前，你需要在该函数内部对任务进行清洗。
+
+看起来可能像这样：
 
 ~~~js
 let newTask = await loadFromServer(23);
@@ -344,38 +327,29 @@ sanitizeTaskProperties(newTask);
 gantt.addTask(newTask);
 ~~~
 
-如果有人利用浏览器的元素检查器，直接将恶意代码插入到 Gantt 的 DOM 元素中，这是无法防止的。 
-但此类更改会在 Gantt 下次重新渲染时丢失，并且不会被保存到服务器。
+如果网络犯罪分子诱使用户在某个浏览器中使用元素检查器并将恶意代码插入 Gantt DOM 元素，你无法避免。但同时，所有应用的更改在下一次重新渲染 Gantt 时会丢失，并且不会保存到服务器。
 
 ## 服务器端问题
 
-请注意，客户端校验很容易被绕过或禁用，因此不能依赖其保障安全。 
-其主要作用是为不正确的输入提供即时反馈，无需等待服务器响应。 
-最终的校验和安全检查必须在服务器端完成。
-
-后端应正确校验、转义和清洗传入数据，强制执行用户访问规则等。
+请注意，客户端验证很容易被破坏或完全绕过，因此不能被视为安全手段。它的目的是在输入错误时给用户即时反馈，而无需等待服务器响应，而最终验证应在服务器端完成。后端必须正确验证/转义/清洗传入数据、用户访问规则等。
 
 ### SQL 注入
 
-由于 dhtmlxGantt 完全在客户端运行，防止 SQL 注入的责任在于后端。
+dhtmlxGantt 是一个 100% 客户端组件，因此 SQL 注入必须由开发人员在后端防止。
 
-需要注意两点:
+有两点需要考虑：
 
-- lightbox 不包含默认校验，因此除非自行处理，用户可以在可编辑字段中输入任意值。
-- 后端 API 可被直接通过带有恶意值的 PUT/POST 请求调用，从而绕过客户端界面。
+- lightbox 没有任何默认验证，如果不处理，会允许用户在可编辑输入中输入任何值
+- 你的后端 API 可能被直接通过 PUT/POST 请求调用，其中包含危险值，绕过客户端 UI
 
-因此，后端需要实现 SQL 注入防护。 
-如果你使用 [dhtmlxConnector](integrations/php/howtostart-connector.md) 并按照[文档](https://docs.dhtmlx.com/connector__php__basis.html#loadingfromdatabase)配置数据表，值会自动转义。 
-否则，应遵循平台推荐的安全 CRUD 实践。[入门指南](integrations/howtostart-guides.md)中展示的实现方式设计上已能安全防御 SQL 注入。
+因此，你需要在后端实现某种 SQL 注入的转义。如果你使用 [dhtmlxConnector] 并按照相关文档中所示为表配置，所有值将自动转义。否则，你将不得不按照你所使用的平台的最佳实践，使用安全的 CRUD 实现。入门指南中展示的实现应在 SQL 注入方面是安全的。
 
 ### CSRF 攻击
 
-关于为 Gantt 向后端发送的请求添加自定义授权令牌或头部的信息，请参阅[此文档](guides/server-side.md#zidingyiqingqiutouhecanshu)。
+请查看[这篇文章](guides/server-side.md#custom-request-headers-and-parameters)，了解为 Gantt 向后端发送的请求添加自定义授权标头的做法。
 
 ## 内容安全策略
 
-该库包含一个特殊的配置选项，可帮助你的 dhtmlxGantt 应用符合内容安全策略（CSP）标准。 
-这能提升安全性，防止多种代码注入攻击。
+该库提供了一个特殊配置，允许你调整使用 dhtmlxGantt 创建的应用程序代码，以符合 CSP（内容安全策略）标准。它有助于防止各种代码注入攻击并提高应用的安全性。
 
-[了解如何在 dhtmlxGantt 应用中应用 CSP](api/config/csp.md)。
-
+[了解将 CSP 标准应用于 dhtmlxGantt 应用的更多信息](api/config/csp.md).

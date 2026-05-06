@@ -1,19 +1,19 @@
 ---
 sidebar_label: license
 title: license config
-description: "返回 dhtmlxGantt 的 license 名称"
+description: "返回 dhtmlxGantt 的许可证名称"
 ---
 
 # license
 
 ### Description
 
-@short: 返回 dhtmlxGantt 的 license 名称
+@short: 返回 dhtmlxGantt 的许可证名称
 
 @signature: license: string
 
 ### Returns
-- ` license` - (string) - license 的名称
+- ` license` - (string) - 许可证的名称
 
 ### Example
 
@@ -26,7 +26,7 @@ console.log(gantt.license);
 
 此方法返回一个简短的 license 名称，适用于诊断用途。
 
-可能的取值包括:
+可能的取值有：
 
 - "gpl"
 - "evaluation"
@@ -37,4 +37,4 @@ console.log(gantt.license);
 - "site"
 
 ### Change log
-- 于 v6.2.2 版本添加
+- 在 v6.2.2 中新增

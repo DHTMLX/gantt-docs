@@ -1,22 +1,22 @@
 ---
 sidebar_label: onRowResize
-title: onRowResize event
-description: "Wird ausgelöst, wenn der Benutzer die Zeilengrenze zieht, um die Höhe zu ändern"
+title: onRowResize Event
+description: "Feuert, wenn der Benutzer den Rand der Zeile zieht, um die Zeilenhöhe anzupassen"
 ---
 
 # onRowResize
 
 ### Description
 
-@short: Wird ausgelöst, wenn der Benutzer die Zeilengrenze zieht, um die Höhe zu ändern
+@short: Wird ausgelöst, wenn der Benutzer den Rand der Zeile zieht, um die Zeilenhöhe anzupassen
 
 @signature: onRowResize: (id: string | number, task: Task, currentHeight: number) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die Aufgaben-ID
-- `task` - (required) *Task* - das Aufgabenobjekt
-- `currentHeight` - (required) *number* - die aktuelle Höhe der Zeile
+- `id` - (erforderlich) *string | number* - die Task-ID
+- `task` - (erforderlich) *Task* - das Task-Objekt
+- `currentHeight` - (erforderlich) *number* - die aktuelle Höhe der Zeile
 
 ### Example
 
@@ -40,4 +40,3 @@ gantt.attachEvent("onRowResize", function (id, task, currentHeight) {
 
 ### Change log
 - hinzugefügt in v7.1
-

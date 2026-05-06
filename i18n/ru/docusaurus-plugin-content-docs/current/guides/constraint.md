@@ -1,17 +1,17 @@
 ---
-title: "Управление ограничениями"
-sidebar_label: "Управление ограничениями"
+title: "Контроль ограничений"
+sidebar_label: "Контроль ограничений"
 ---
 
-# Управление ограничениями
+## Контроль ограничений
 
 :::info
-Эта функция доступна только в редакции PRO.
+Эта функциональность доступна только в PRO-версии.
 :::
 
-Это специализированный контрол, предназначенный для задания [временных ограничений для задач Gantt](guides/auto-scheduling.md#timeconstraintsfortasks).
+Сложный элемент управления, используемый для задания [временных ограничений для задач Gantt](guides/auto-scheduling.md#timeconstraintsfortasks).
 
-![Constraint control](/img/constraint_control.png)
+![Контроль ограничений](/img/constraint_control.png)
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -21,15 +21,14 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-
-[Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
+[Авто-планирование от начала проекта и ограничений](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
 ## Инициализация
 
-Чтобы добавить контрол **constraint** в лайтбокс, выполните следующие шаги:
+Чтобы добавить элемент управления **constraint** в lightbox, выполните следующие шаги:
 
-1. Добавьте секцию в конфигурацию лайтбокса:
+1. Добавьте секцию в конфигурацию lightbox:
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -39,20 +38,19 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-2. Установите метку для секции:
+2. Задайте метку для секции:
 
 ~~~js
 gantt.locale.labels.section_constraint = "Constraint";
 ~~~
 
 
-[Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
+[Авто-планирование от начала проекта и ограничений](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
 ## Свойства
 
-Ниже приведены основные свойства, которые обычно используются с контролом **constraint** (полный список смотрите [здесь](api/config/lightbox.md)):
+Следующие свойства в основном важны и обычно устанавливаются для элемента управления **constraint** (см. полный список [здесь](api/config/lightbox.md)):
 
-- **name** - (*string*) идентификатор названия секции
-- **type** - (*string*) определяет тип [контрола секции](guides/default-edit-form.md#lightboxcontrols)
-
+- **name** - (*string*) имя секции 
+- **type** - (*string*) тип [контроля секции](guides/default-edit-form.md#lightboxcontrols)

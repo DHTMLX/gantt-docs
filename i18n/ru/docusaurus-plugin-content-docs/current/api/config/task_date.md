@@ -1,14 +1,14 @@
 ---
 sidebar_label: task_date
 title: task_date config
-description: "определяет формат отображения даты в метке, показанной в разделе 'Time period' в лайтбоксе"
+description: "устанавливает формат метки даты в разделе 'период времени' светового окна"
 ---
 
 # task_date
 
 ### Description
 
-@short: Определяет формат отображения даты в метке, показанной в разделе «Time period» в лайтбоксе
+@short: Устанавливает формат метки даты в разделе 'период времени' светового окна
 
 @signature: task_date: string
 
@@ -19,11 +19,10 @@ gantt.config.task_date = "%d-%m-%Y";
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** "%d %F %Y"
+**Значение по умолчанию:** "%d %F %Y"
 
 ### Related API
 - [task_date](api/template/task_date.md)
 
 ### Related Guides
-- [Спецификация формата даты](guides/date-format.md)
-
+- [Date Format Specification](guides/date-format.md)

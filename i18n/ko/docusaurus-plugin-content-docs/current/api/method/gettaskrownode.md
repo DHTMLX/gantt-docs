@@ -1,23 +1,23 @@
 ---
 sidebar_label: getTaskRowNode
 title: getTaskRowNode method
-description: "테이블에서 작업 행을 나타내는 HTML 요소를 반환합니다"
+description: "테이블에서 태스크 태스크의 HTML 요소를 반환합니다"
 ---
 
 # getTaskRowNode
 
 ### Description
 
-@short: 테이블에서 작업 행을 나타내는 HTML 요소를 반환합니다
+@short: 테이블의 태스크 행 HTML 요소를 반환합니다
 
 @signature: getTaskRowNode: (id: string | number) =\> HTMLElement
 
 ### Parameters
 
-- `id` - (required) *string | number* -    작업 ID
+- `id` - (필수) *string | number* - 태스크 ID
 
 ### Returns
-- `node` - (HTMLElement) - 작업 행에 해당하는 HTML 요소
+- `node` - (HTMLElement) - 태스크 행의 HTML 요소
 
 ### Example
 
@@ -34,9 +34,9 @@ gantt.getTaskRowNode(10);//-><div class=​"gantt_row" task_id=​"2">​…​<
 
 ### Details
 
-작업이 업데이트되어 다시 그려질 때 이전의 DOM 요소는 폐기되고 새로운 요소로 교체된다는 점을 유의하세요. 따라서 요소에 직접 적용한 수정사항은 다음 리페인트 시 사라집니다.
+다음 사항에 유의하십시오. 태스크가 다시 그려질 때 기존의 DOM 요소는 폐기되고 새 요소로 대체됩니다. 이는 다음 재도색 후에 요소에 대해 수행한 모든 변경 사항이 초기화됨을 의미합니다.
 
-요소의 외관을 커스터마이징하려면 템플릿을 사용하는 것이 가장 좋으며, 이는 간트 컴포넌트의 모양을 조정하는 권장 방법입니다.
+요소의 표시 모양을 수정해야 하는 경우 템플릿 사용을 권장합니다. 템플릿은 Gantt 요소의 모양을 커스터마이즈하는 기본 방법이기 때문입니다.
 
 ### Related API
 - [getTaskNode](api/method/gettasknode.md)

@@ -1,23 +1,23 @@
 ---
 sidebar_label: getNext
 title: getNext method
-description: "중첩 레벨에 상관없이, 동일하거나 다른 항목이든 다음 항목의 id를 제공합니다."
+description: "다음 항목의 ID를 반환합니다(중첩 깊이가 얼마나 깊든, 같은 레벨이든 다른 레벨이든 상관없이)"
 ---
 
 # getNext
 
 ### Description
 
-@short: 중첩 레벨에 상관없이, 동일하거나 다른 항목이든 다음 항목의 id를 제공합니다.
+@short: 다음 항목의 ID를 반환합니다(중첩 깊이가 얼마나 깊든, 같은 레벨이든 다른 레벨이든 상관없이)
 
 @signature: getNext: (id: string | number) =\> string | number
 
 ### Parameters
 
-- `id` - (required) *string | number* -    작업 id
+- `id` - (필수) *string | number* - 작업 ID
 
 ### Returns
-- ` id` - (string | number) - 다음 항목의 id
+- ` id` - (string | number) - 다음 항목의 ID
 
 ### Example
 
@@ -50,4 +50,3 @@ gantt.getNext("t_2"); -> null  /*!*/
 
 ### Related Guides
 - [Task Parent/Child](guides/task-tree-operations.md)
-

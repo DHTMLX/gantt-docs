@@ -1,14 +1,14 @@
 ---
 sidebar_label: root_id
-title: root_id config
-description: "가상 루트 요소의 id를 설정합니다"
+title: root_id 구성
+description: "가상 루트 요소의 ID를 설정합니다"
 ---
 
 # root_id
 
 ### Description
 
-@short: 가상 루트 요소의 id를 설정합니다
+@short: 가상 루트 요소의 ID를 설정합니다
 
 @signature: root_id: string | number
 
@@ -35,11 +35,10 @@ gantt.parse(tasks);
 
 ### Details
 
-**root_id**는 작업 트리 내의 가상 루트 노드를 정의합니다.  
-작업의 *parent* 속성이 **root_id** 값과 일치할 경우, 해당 작업은 간트 트리의 최상위 레벨에 표시됩니다.
+**root_id**는 작업 트리의 가상 루트 노드를 가리킵니다.
+작업의 *parent* 속성 값이 **root_id** 구성 값으로 설정되면, 해당 작업은 간트 차트 트리의 최상위 레벨에 표시됩니다.
 
-- 작업의 [parent](guides/loading.md#dataproperties) 속성은 작업 트리 내 상위 작업의 id를 지정해야 합니다.
-- 부모 값이 [존재하는 작업](api/method/istaskexists.md)과 일치하는 작업은 그 작업의 하위 작업으로 표시됩니다.
-- 부모 값이 *gantt.config.root_id* (기본값은 숫자 0)와 같거나 정의되지 않은 작업은 작업 트리 최상위 레벨에 나타납니다.
-- 부모 값이 [존재하지 않는 작업 id](api/method/istaskexists.md)를 참조하며 **root_id**와 [엄격히 같지 않은 경우](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality), 해당 작업은 작업 트리에 표시되지 않습니다.
-
+- The [parent](guides/loading.md#dataproperties) property of a task should contain the id of the parent task in a task tree.
+- Tasks, whose parent value contains the id of an [existing task](api/method/istaskexists.md), will appear as subtasks of the referred items.
+- Tasks, whose parent value equals *gantt.config.root_id* (numeric 0 by default) or is undefined, will be located at the top level of the tasks tree.
+- Tasks, whose parent contains a [non-existing task id](api/method/istaskexists.md) and is [not strictly equal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality) to the **root_id**, won't be displayed in the tasks tree.

@@ -1,36 +1,36 @@
 ---
 sidebar_label: onMouseMove
-title: onMouseMove event
-description: "Wird ausgelöst, wenn sich die Maus über dem Gantt-Container bewegt"
+title: onMouseMove-Ereignis
+description: "feuert, wenn sich die Maus über dem Gantt-Container bewegt"
 ---
 
 # onMouseMove
 
 ### Description
 
-@short: Wird ausgelöst, wenn sich die Maus über dem Gantt-Container bewegt
+@short: Feuert, wenn sich die Maus über dem Gantt-Container bewegt
 
 @signature: onMouseMove: (id: string | number, e: Event) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die ID der Aufgabe, über der sich die Maus gerade befindet
-- `e` - (required) *Event* - das native Event-Objekt
+- `id` - (required) *string | number* - die ID der Aufgabe, über der sich die Maus bewegt
+- `e` - (required) *Event* - ein natives Event-Objekt
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onMouseMove", function (id, e){
-    // hier Ihre eigene Logik einfügen
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Details
 
-Dieses Event fungiert als Alias für den nativen [mousemove](https://developer.mozilla.org/en-US/docs/Web/API/Element/mousemove_event) Event-Listener, der am **gantt.$root** Element angebracht ist.
+Dieses Event ist ein Alias des nativen [mousemove](https://developer.mozilla.org/en-US/docs/Web/API/Element/mousemove_event) Event-Handler, der an das **gantt.$root**-Element gebunden ist.
 
-Wenn das Event-Target Teil eines Aufgaben-Elements ist, wird die ID der Aufgabe als erstes Argument übergeben.
-Falls nicht, ist das erste Argument null.
+Wenn das Eventziel ein Knoten eines Aufgaben-Elements ist, wird die zugehörige Aufgaben-ID im ersten Argument übergeben.
+Andernfalls wird das erste Argument auf null gesetzt.
 
 ~~~js
 gantt.message({
@@ -49,13 +49,13 @@ gantt.attachEvent("onMouseMove", function (id, e){
     }
 });
 ~~~
+
 :::note
-Sample: [Datum und Uhrzeit unter dem Mauszeiger ermitteln](https://snippet.dhtmlx.com/3rn86wwq) 
+sample: [Datum-Uhrzeit unter dem Mauszeiger](https://snippet.dhtmlx.com/3rn86wwq)
 :::
 
 ### Related API
 - [utils](api/other/utils.md)
 
 ### Related Guides
-- ["How-tos"](guides/how-to.md#howtohaveaninfinitescrollinthetimeline)
-
+- [How-tos](guides/how-to.md#how-to-have-an-infinite-scroll-in-the-timeline)

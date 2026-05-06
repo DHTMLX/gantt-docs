@@ -1,14 +1,14 @@
 ---
 sidebar_label: form_blocks
-title: form_blocks config
-description: "一个包含 lightbox 控件的对象"
+title: form_blocks 配置
+description: "一个 Lightbox 控件对象"
 ---
 
 # form_blocks
 
 ### Description
 
-@short: 一个包含 lightbox 控件的对象
+@short: Lightbox 控件对象
 
 @signature: form_blocks: \{ checkbox?: LightboxControl; constraint?: LightboxControl; duration?: LightboxControl; duration_optional?: LightboxControl; parent?: LightboxControl; radio?: LightboxControl; resources?: LightboxControl; select?: LightboxControl; template?: LightboxControl; textarea?: LightboxControl; time?: LightboxControl; time_optional?: LightboxControl; typeselect?: LightboxControl; [ControlName: string]: LightboxControl | undefined \}
 

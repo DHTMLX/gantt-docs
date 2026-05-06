@@ -1,20 +1,20 @@
 ---
 sidebar_label: adjustTaskHeightForBaselines
 title: adjustTaskHeightForBaselines method
-description: "корректирует высоту строки задачи для правильного отображения элементов baseline"
+description: "регулирует высоту строки задачи для корректного отображения элементов базовых линий"
 ---
 
 # adjustTaskHeightForBaselines
 
 ### Description
 
-@short: Корректирует высоту строки задачи для правильного отображения элементов baseline
+@short: Регулирует высоту строки задачи для корректного отображения элементов базовых линий
 
-@signature: adjustTaskHeightForBaselines: (task: Task) =\> void
+@signature: adjustTaskHeightForBaselines: (task: Task) => void
 
 ### Parameters
 
-- `task` - (required) *Task* - объект задачи, у которого будет обновлено свойство `row_height`
+- `task` - (обязательный) *Task* - объект задачи, у которого будет скорректировано значение `row_height`
 
 ### Example
 
@@ -25,20 +25,19 @@ gantt.render();
 ~~~
 
 ### Related samples
-- [Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
+- [Отображение базовых линий](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
 
 ### Details
 
-Этот метод обновляет [`row_height`](guides/resizing-rows.md) указанной задачи, чтобы элементы baseline отображались корректно.
+Этот метод изменяет значение [`row_height`](guides/resizing-rows.md) предоставленной задачи, чтобы обеспечить корректное отображение элементов базовых линий. 
 
-Обычно вызов этого метода не требуется. Он используется преимущественно при изменении настроек отображения конфигурации [gantt.config.baselines](api/config/baselines.md) на лету.
+Как правило, вызывать этот метод напрямую не требуется. Он необходим только в случае динамического изменения настроек отображения конфигурации [gantt.config.baselines](api/config/baselines.md).
 
 ### Related API
 - [baselines](api/config/baselines.md)
 
 ### Related Guides
-- [Дополнительные элементы на временной шкале](guides/inbuilt-baselines.md)
+- [Extra Elements in Timeline](guides/inbuilt-baselines.md)
 
 ### Change log
-- добавлено в версии 9.0
-
+- добавлено в версии v9.0

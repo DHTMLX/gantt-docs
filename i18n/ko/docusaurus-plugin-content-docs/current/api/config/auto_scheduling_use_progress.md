@@ -1,16 +1,22 @@
 ---
 sidebar_label: auto_scheduling_use_progress
 title: auto_scheduling_use_progress config
-description: "완료된 작업을 스케줄링 알고리즘에서 처리하는 방식을 설정합니다."
+description: "스케줄링 알고리즘이 완료된 작업을 처리하는 방식을 설정합니다"
 ---
 
 # auto_scheduling_use_progress
+
 :::info
 이 기능은 PRO 에디션에서만 사용할 수 있습니다. 
 :::
+
+:::warning
+The property has been deprecated in v9.1, use the `use_progress` property of [gantt.config.auto_scheduling](api/config/auto_scheduling.md#use_progress) instead.
+:::
+
 ### Description
 
-@short: 완료된 작업을 스케줄링 알고리즘에서 처리하는 방식을 설정합니다.
+@short: 스케줄링 알고리즘이 완료된 작업을 처리하는 방식을 설정합니다
 
 @signature: auto_scheduling_use_progress: boolean
 
@@ -24,24 +30,23 @@ gantt.init("gantt_here");
 
 **Default value:** false
 
+
 ### Details
 
 :::note
- 이 설정은 **auto_scheduling** 또는 **critical_path** 확장 기능의 일부입니다. 사용하려면 [auto_scheduling](guides/extensions-list.md#autoscheduling) 또는 [critical_path](guides/extensions-list.md#criticalpath) 플러그인을 활성화해야 합니다. 자세한 내용은 [자동 스케줄링](guides/auto-scheduling.md) 및 [Critical Path](guides/critical-path.md) 문서를 참조하세요. 
+이 구성은 **auto_scheduling** 또는 **critical_path** 확장에 정의되므로 [auto_scheduling](guides/extensions-list.md#autoscheduling) 또는 [critical_path](guides/extensions-list.md#critical-path) 플러그인 중 하나를 활성화해야 합니다. Auto Scheduling 및 Critical Path 문서에서 자세한 내용을 확인하십시오. 
 :::
 
-이 설정을 활성화하면, MS Project와 유사하게 진행률을 고려하여 크리티컬 패스, 슬랙 및 자동 스케줄링 알고리즘이 작동합니다. 구체적으로는:
+정의가 활성화되면, 크리티컬 패스, Slack 및 자동 스케줄링 알고리즘은 작업 진행률 값을 고려하게 됩니다. 이는 MS Project에서 이들 메서드가 작동하는 방식과 유사합니다, 즉:
 
-1) 완료된 작업(진행률 100%로 표시된 작업)은 항상 슬랙이 0입니다;
+1) 완료된 작업(진행률이 100%인 작업)은 항상 슬랙이 0입니다;
 
-2) 완료된 작업은 자동 스케줄링 계산에서 제외됩니다. 완료된 작업과 연결된 선행 작업의 의존성은 무시됩니다;
+2) 완료된 작업은 auto_scheduling 계산에서 제외됩니다. 선행 작업과 완료된 작업을 연결하는 관계는 무시됩니다;
 
-3) 완료된 작업은 크리티컬 패스의 일부가 될 수 없습니다.
+3) 완료된 작업은 크리티컬로 간주될 수 없습니다.
 
 :::note
-
-**Related example:** [자동 스케줄링, 크리티컬 패스 및 슬랙 계산에 진행률 사용](https://snippet.dhtmlx.com/ju3km1uy)
-
+샘플: [자동 스케줄링, 크리티컬 패스 및 슬랙 계산에 진행 상황 사용](https://snippet.dhtmlx.com/ju3km1uy )
 :::
 
 ### Related API
@@ -60,9 +65,9 @@ gantt.init("gantt_here");
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- [자동 스케줄링](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 - [Critical Path](guides/critical-path.md)
 
 ### Change log
-- v8.0에서 추가됨
-
+- 이 속성은 v9.1에서 더 이상 사용되지 않습니다
+- v8.0에서 추가되었습니다

@@ -1,19 +1,20 @@
 ---
 sidebar_label: getLink
-title: getLink method
-description: "ruft das Abhängigkeits-Link-Objekt anhand der angegebenen ID ab"
+title: getLink Methode
+description: "gibt das Link-Objekt der Abhängigkeit anhand der angegebenen ID zurück"
 ---
 
 # getLink
 
-### Description
+### Beschreibung
 
-@short: Ruft das Abhängigkeits-Link-Objekt anhand der angegebenen ID ab
+@short: Gibt das Link-Objekt der Abhängigkeit anhand der angegebenen ID zurück
 
 @signature: getLink: (id: string | number) =\> Link
 
-### Parameters
-- `id` - (required) *string | number* -    die Link-ID
+### Parameter
+
+- `id` - (erforderlich) *string | number* - die Link-ID
 
 ### Returns
 - `link` - (Link) - das Link-Objekt
@@ -32,4 +33,4 @@ gantt.getLink(1);// -> {id:1, source:1, target:2, type:1}
 
 ### Details
 
-Um herauszufinden, wie man alle Links abruft, die mit einer bestimmten Aufgabe verbunden sind, siehe den Artikel ["Abrufen des Link-Objekts/der Link-ID"](guides/link-object-operations.md#gettingthelinksrelatedtoacertaintask).
+Für Informationen darüber, wie man alle mit einer bestimmten Aufgabe verbundenen Links erhält, siehe den Artikel [Getting the Link Object/Id](guides/link-object-operations.md#getting-the-links-related-to-a-certain-task).

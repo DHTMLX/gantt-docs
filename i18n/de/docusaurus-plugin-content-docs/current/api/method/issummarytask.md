@@ -1,20 +1,24 @@
 ---
 sidebar_label: isSummaryTask
-title: isSummaryTask method
-description: "prüft, ob die angegebene Aufgabe eine Summary-Task ist"
+title: isSummaryTask-Methode
+description: "prüft, ob die angegebene Aufgabe eine Summenaufgabe ist"
 ---
 
 # isSummaryTask
 
-### Description
+:::info
+Die Methode funktioniert nur in der PRO-Version, da die Möglichkeit, den Typ einer Aufgabe festzulegen, in dieser Version nur verfügbar ist. Andernfalls gibt die Methode false zurück.
+:::
 
-@short: Prüft, ob die angegebene Aufgabe eine Summary-Task ist
+### Beschreibung
+
+@short: Prüft, ob die angegebene Aufgabe eine Summenaufgabe ist
 
 @signature: isSummaryTask: (task: Task) =\> boolean
 
-### Parameters
+### Parameter
 
-- `task` - (required) *Task* - das zu überprüfende Task-Objekt
+- `task` - (erforderlich) *Task* - das Objekt einer Aufgabe
 
 ### Returns
 - ` mode` - (boolean) - <i>true</i>, wenn die Aufgabe eine Summary-Task ist, andernfalls <i>false</i>

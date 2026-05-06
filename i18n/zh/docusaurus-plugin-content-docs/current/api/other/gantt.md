@@ -1,18 +1,20 @@
 ---
 sidebar_label: getGanttInstance
 title: getGanttInstance
-description: "a factory object that can be used to create new instances of dhtmlxGantt chart"
+description: "一個可用於建立 dhtmlxGantt 圖表新實例的工廠對象"
 ---
 
 # getGanttInstance
 
 :::info
-This functionality is available in the Gantt PRO version under the Commercial (since October 6, 2021), Enterprise and Ultimate licenses 
+该功能在 Gantt PRO 版本中提供，适用于 Commercial（自 2021 年 10 月 6 日起）、Enterprise 与 Ultimate 许可。
 :::
 
 ### Description
 
-@short: A factory object that can be used to create new instances of dhtmlxGantt chart
+@short: 一个可用于创建 dhtmlxGantt 图表新实例的工厂对象
+
+@signature: Gantt: object
 
 ### Example
 
@@ -26,10 +28,10 @@ import { Gantt } from 'dhtmlx-gantt';
 const myGantt = Gantt.getGanttInstance();
 ~~~
 
-## Methods
+## 方法
 
-- **getGanttInstance(ganttConfig)** - creates a new instance of dhtmlxGantt. Takes the following parameter:
-    - **ganttConfig** - (*object*) optional, a [configuration object](guides/multiple-gantts.md#ganttinstanceconfiguration) for a new gantt
+- **getGanttInstance(ganttConfig)** - 用于创建一个新的 dhtmlxGantt 实例。参数如下：
+    - **ganttConfig** - (*object*) 可选，用于新建甘特图实例的 [配置对象](guides/multiple-gantts.md#gantt-instance-configuration)。
 
 Example:
 
@@ -37,7 +39,7 @@ Example:
 const myGantt = Gantt.getGanttInstance();
 ~~~
 
-When no longer needed, an instance of gantt can be destroyed using the `destructor()` method of the instance, for example:
+当不再需要时，可以使用该实例的 `destructor()` 方法销毁 gantt 实例，例如：
 
 ~~~js
 const myGantt = Gantt.getGanttInstance();

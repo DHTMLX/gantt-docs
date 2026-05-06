@@ -1,21 +1,21 @@
 ---
 sidebar_label: onGanttScroll
 title: onGanttScroll event
-description: "Срабатывает при прокрутке Gantt-диаграммы до определённой позиции"
+description: "срабатывает, когда диаграмма Ганта прокручивается до конкретной точки"
 ---
 
 # onGanttScroll
 
 ### Description
 
-@short: Срабатывает при прокрутке Gantt-диаграммы до определённой позиции
+@short: Срабатывает, когда диаграмма Ганта прокручивается до конкретной точки
 
 @signature: onGanttScroll: (left: number, top: number) =\> void;
 
 ### Parameters
 
-- `left` - (required) *number* - горизонтальная позиция прокрутки
-- `top` - (required) *number* - вертикальная позиция прокрутки
+- `left` - (required) *number* - позиция горизонтальной прокрутки
+- `top` - (required) *number* - позиция вертикальной прокрутки
 
 ### Example
 
@@ -32,6 +32,5 @@ gantt.attachEvent("onGanttScroll", function (left, top){
 - [showDate](api/method/showdate.md)
 
 ### Related Guides
-- [Решения](guides/how-to.md#howtohaveaninfinitescrollinthetimeline) (см. как настроить бесконечную прокрутку)
-- [Решения](guides/how-to.md#howtoloadtasksdynamically) (см. как динамически загружать задачи)
-
+- [How-tos](guides/how-to.md#how-to-have-an-infinite-scroll-in-the-timeline) (прочитайте, как реализовать бесконечную прокрутку)
+- [How-tos](guides/how-to.md#how-to-load-tasks-dynamically) (прочитайте, как загружать задачи динамически)

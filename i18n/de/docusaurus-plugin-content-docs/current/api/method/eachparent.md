@@ -1,22 +1,21 @@
 ---
 sidebar_label: eachParent
-title: eachParent method
-description: "iteriert durch alle übergeordneten Aufgaben einer bestimmten Aufgabe im Gantt-Diagramm"
+title: eachParent Methode
+description: "Durchläuft alle übergeordneten Aufgaben der angegebenen Aufgabe im Gantt-Diagramm"
 ---
 
 # eachParent
 
 ### Description
 
-@short: Iteriert durch alle übergeordneten Aufgaben einer bestimmten Aufgabe im Gantt-Diagramm
+@short: Durchläuft alle übergeordneten Aufgaben der angegebenen Aufgabe im Gantt-Diagramm
 
 @signature: eachParent: (code: GanttCallback, startTask: string | number, master?: any) =\> void
 
 ### Parameters
 
-- `code` - (required) *function* - eine Callback-Funktion, die jedes Aufgabenobjekt verarbeitet
-- `startTask` - (required) *string | number* - die ID der Aufgabe, deren übergeordnete Aufgaben durchlaufen werden sollen
-- `master` - (required) *object* - das Kontextobjekt, das innerhalb der Callback-Funktion als 'this' verwendet wird
+- `code` - (erfordert) *Funktion* - eine Funktion, die über Aufgaben iteriert. Nimmt ein Task-Objekt als Parameter
+- `startTask` - (erfordert) *string | number* - die ID des Elements, dessen Elternaufgaben durchlaufen werden sollen
 
 ### Example
 
@@ -28,4 +27,3 @@ gantt.eachParent(function(task){
 
 ### Related API
 - [calculateTaskLevel](api/method/calculatetasklevel.md)
-

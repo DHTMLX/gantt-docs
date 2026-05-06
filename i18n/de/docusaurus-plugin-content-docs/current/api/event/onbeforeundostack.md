@@ -1,29 +1,29 @@
 ---
 sidebar_label: onBeforeUndoStack
 title: onBeforeUndoStack event
-description: "Löst unmittelbar aus, bevor eine Aktion auf den Undo-Stack gelegt wird."
+description: "löst aus, bevor eine Aktion dem Undo-Stack hinzugefügt wird"
 ---
 
 # onBeforeUndoStack
 
 ### Description
 
-@short: Löst unmittelbar aus, bevor eine Aktion auf den Undo-Stack gelegt wird.
+@short: Löst aus, bevor eine Aktion dem Undo-Stack hinzugefügt wird
 
 @signature: onBeforeUndoStack: (action: UndoRedoAction) =\> boolean;
 
 ### Parameters
 
-- `action` - (required) *UndoRedoAction* - ein Array von Befehlsobjekten, die eine Benutzeraktion repräsentieren
+- `action` - (required) *UndoRedoAction* - eine Benutzeraktion als Array von Befehlsobjekten
 
 ### Returns
-- ` result` - (boolean) - bestimmt, ob das Standardverhalten des Events fortgesetzt werden soll (true) oder gestoppt wird (false)
+- ` result` - (boolean) - definiert, ob die Standardaktion des Ereignisses ausgelöst wird (true) oder abgebrochen wird (false)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeUndoStack",function(action){
-    // Ihr Code hier
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
     return true;
 });
 ~~~
@@ -31,21 +31,19 @@ gantt.attachEvent("onBeforeUndoStack",function(action){
 ### Details
 
 :::note
- Dieses Event ist Teil der **undo**-Erweiterung, daher stellen Sie sicher, dass das [undo](guides/extensions-list.md#undo) Plugin aktiviert ist. Für weitere Informationen siehe den Artikel ["Undo/Redo-Funktionalität"](guides/undo-redo.md). 
+Dieses Ereignis ist in der **undo**-Erweiterung definiert, daher müssen Sie das [undo](guides/extensions-list.md#undo) Plugin aktivieren. Lesen Sie die Details im Artikel [Undo/Redo Functionality](guides/undo-redo.md). 
 :::
 
-
-- Dieses Event kann blockiert werden; die Rückgabe von false stoppt die weitere Verarbeitung.
-- Das Blockieren des Events verhindert, dass Undo Aktionen aus den Event-Argumenten erfasst.
-- Sie können die Aktionen im Event modifizieren.
+- Das Ereignis ist blockierbar; wenn false zurückgegeben wird, wird die weitere Verarbeitung abgebrochen.
+- Wenn das Ereignis blockiert wird, erfasst der Undo keine Aktionen aus den Ereignisargumenten.
+- Ereignisaktionen können geändert werden.
 
 ### Related API
 - [onBeforeRedoStack](api/event/onbeforeredostack.md)
 - [onBeforeUndo](api/event/onbeforeundo.md)
 
 ### Related Guides
-- ["Undo/Redo-Funktionalität"](guides/undo-redo.md)
+- [Undo/Redo Functionality](guides/undo-redo.md)
 
 ### Change log
-- hinzugefügt in Version 5.2
-
+- Hinzugefügt in Version 5.2

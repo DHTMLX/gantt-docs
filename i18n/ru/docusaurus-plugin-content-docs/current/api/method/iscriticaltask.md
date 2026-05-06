@@ -1,25 +1,27 @@
 ---
 sidebar_label: isCriticalTask
-title: isCriticalTask method
+title: isCriticalTask метод
 description: "проверяет, является ли указанная задача критической"
 ---
 
 # isCriticalTask
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в PRO-версии.
 :::
+
 ### Description
 
 @short: Проверяет, является ли указанная задача критической
 
-@signature: isCriticalTask: (task: Task) =\> boolean
+@signature: isCriticalTask: (task: Task) => boolean
 
 ### Parameters
 
-- `task` - (required) *Task* - объект задачи для проверки
+- `task` - (required) *Task* - объект задачи
 
 ### Returns
-- ` value` - (boolean) - возвращает 'true', если задача критическая, иначе 'false'
+- ` value` - (boolean) - 'true' если указанная задача критическая, 'false' в противном случае
 
 ### Example
 
@@ -50,10 +52,8 @@ gantt.isCriticalTask(gantt.getTask(3));// ->'true' /*!*/
 ### Details
 
 :::note
-Этот метод является частью расширения **critical_path**, поэтому убедитесь, что плагин [critical_path](guides/extensions-list.md#criticalpath) включён. Для дополнительной информации смотрите статью [Критический путь](guides/critical-path.md). 
+Этот метод определён в расширении **critical_path**, поэтому нужно активировать плагин [critical_path](guides/extensions-list.md#critical-path). Подробности см. в статье [Critical Path](guides/critical-path.md).
 :::
-
-![iscritical_path](/img/iscritical_path.png)
 
 ### Related API
 - [highlight_critical_path](api/config/highlight_critical_path.md)
@@ -61,5 +61,4 @@ gantt.isCriticalTask(gantt.getTask(3));// ->'true' /*!*/
 - [getSlack](api/method/getslack.md)
 
 ### Related Guides
-- [Критический путь](guides/critical-path.md)
-
+- [Critical Path](guides/critical-path.md)

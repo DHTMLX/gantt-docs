@@ -1,22 +1,23 @@
 ---
 sidebar_label: isWorkTime
-title: isWorkTime method
-description: "bestimmt, ob das angegebene Datum innerhalb der Arbeitszeit liegt"
+title: isWorkTime Methode
+description: "prüft, ob das angegebene Datum Arbeitszeit ist"
 ---
 
 # isWorkTime
 
 ### Description
 
-@short: Bestimmt, ob das angegebene Datum innerhalb der Arbeitszeit liegt
+@short: Prüft, ob das angegebene Datum Arbeitszeit ist
 
 @signature: isWorkTime: (config: Date | object, time_unit?: string)
 
 ### Parameters
-- `config` - (required) *object | Date* -        kann entweder ein Konfigurationsobjekt sein, das einen Zeitraum beschreibt, oder ein spezifisches Datum
+
+- `config` - (required) *object | Date* -        entweder das Konfigurationsobjekt einer Zeitspanne oder ein spezifisches Datum
 
 ### Returns
-- ` isWorkTime` - (boolean) - <i>true</i>, wenn das angegebene Datum innerhalb der Arbeitszeit liegt; andernfalls <i>false</i>
+- `isWorkTime` - (boolean) - <i>true</i>, falls das angegebene Datum Arbeitszeit ist. Andernfalls, <i>false</i>
 
 ### Example
 
@@ -33,41 +34,38 @@ gantt.isWorkTime({date: new Date(2023,3,5), task: task});
 ### Details
 
 :::note
-
-Wenn die Option [work_time](api/config/work_time.md) deaktiviert ist, gibt diese Methode immer `true` zurück. 
- 
+Wenn die [work_time](api/config/work_time.md) Option deaktiviert ist, gibt die Methode immer `true` zurück. 
 :::
 
-- Wenn keine Aufgabe angegeben wird, bezieht sich die Methode auf den [globalen Arbeitszeitkalender](guides/working-time.md#multipleworktimecalendars). <br>
-- Diese Methode kann auch direkt von einem [Kalenderobjekt](api/other/calendar.md) aufgerufen werden.
+- Die Methode wird den [globalen Arbeitszeitkalender](guides/working-time.md#multipleworktimecalendars) verwenden, wenn keine Aufgabe angegeben ist. 
+- Außerdem kann die Methode direkt von einem [calendar object](api/other/calendar.md) aufgerufen werden.
 
+Angenommen, Sie setzen die folgende Arbeitszeit für das Diagramm:
 
-Betrachten Sie die folgende Arbeitszeiteinstellung für das Diagramm:
+- **Arbeitstage**: Montag - Freitag
+- **Arbeitsstunden**: 6:00 - 15:00
 
-- **Arbeitstage**: Montag bis Freitag
-- **Arbeitszeiten**: 6:00 Uhr bis 15:00 Uhr
-
-Wenn Sie Montag, den 3. April 2023, wie unten gezeigt prüfen, sind die Ergebnisse:
+Dann erhalten Sie, wenn Sie Montag, 3. April 2023 wie im obigen Beispiel prüfen:
 
 ~~~js
 gantt.isWorkTime({date: new Date(2023,3,3,17,00), unit: "hour"}); 
-//->false, weil 17:00 bis 18:00 Uhr außerhalb der Arbeitszeit liegt
+//->false, da 17:00-18:00 nicht in der Arbeitszeit liegt
 
 gantt.isWorkTime({date: new Date(2023,3,3,17,00), unit:  "day"}); 
 //-> true, da Montag ein Arbeitstag ist
 ~~~
 
-## Eigenschaften des Konfigurationsobjekts {#configurationobjectproperties}
+## Konfigurationsobjekt-Eigenschaften
 
-Das Konfigurationsobjekt kann folgende Eigenschaften enthalten:
+Das Konfigurationsobjekt kann die folgenden Eigenschaften enthalten:
 
-- **date** - (*Date*) das zu prüfende Datum 
-* **unit** - (string)    optionale Angabe der Zeiteinheit: "minute", "hour", "day", "week", "month", "year"
-* **task** - (*object*)    optionale Angabe des Aufgabenobjekts, für das die Arbeitsdauer bestimmt werden soll
+- **date** - (*Date*) ein zu prüfendes Datum
+- * **unit** - (string)    optional, eine Zeit-Einheit: "minute", "hour", "day", "week", "month", "year"
+- * **task** - (*object*)    optional, das Objekt der Aufgabe, deren Dauer berechnet werden soll
 
 ~~~js
 if (gantt.isWorkTime({date: date, task: task})){
-    alert("Arbeitszeit der Aufgabe " + task.text);
+    alert("worktime of task" + task.text);
 }
 ~~~
 
@@ -77,5 +75,4 @@ if (gantt.isWorkTime({date: date, task: task})){
 - [getWorkHours](api/method/getworkhours.md)
 
 ### Related Guides
-- ["Arbeitszeitberechnung"](guides/working-time.md)
-
+- [Work Time Calculation](guides/working-time.md)

@@ -1,14 +1,14 @@
 ---
 sidebar_label: quickinfo_buttons
-title: quickinfo_buttons config
-description: "enthält eine Reihe von Buttons, die im Pop-up-Formular mit den Aufgabendetails angezeigt werden"
+title: quickinfo_buttons Konfiguration
+description: "Speichert eine Sammlung von Schaltflächen, die im Pop-up-Detailsformular der Aufgabe enthalten sind"
 ---
 
 # quickinfo_buttons
 
 ### Description
 
-@short: Enthält eine Reihe von Buttons, die im Pop-up-Formular mit den Aufgabendetails angezeigt werden
+@short: Stores a collection of buttons resided in the pop-up task's details form
 
 @signature: quickinfo_buttons: any[]
 
@@ -16,7 +16,7 @@ description: "enthält eine Reihe von Buttons, die im Pop-up-Formular mit den Au
 
 ~~~jsx
 gantt.config.quickinfo_buttons=["icon_delete","icon_edit","advanced_details_button"];
-gantt.locale.labels["advanced_details_button"] = "Erweiterte Infos";
+gantt.locale.labels["advanced_details_button"] = "Advanced Info";
 gantt.init("gantt_here");
 
 gantt.$click.buttons.advanced_details_button=function(id){
@@ -33,7 +33,7 @@ gantt.$click.buttons.advanced_details_button=function(id){
 ### Details
 
 :::note
- Diese Option ist Teil der **Quick Info**-Erweiterung, daher stellen Sie sicher, dass das [quick_info](guides/extensions-list.md#quickinfo) Plugin aktiviert ist. 
+Diese Option ist in der **Quick Info**-Erweiterung definiert, daher müssen Sie das [quick_info](guides/extensions-list.md#quick-info) Plugin aktivieren.
 :::
 
 ### Related API
@@ -45,5 +45,4 @@ gantt.$click.buttons.advanced_details_button=function(id){
 - [onAfterQuickInfo](api/event/onafterquickinfo.md)
 
 ### Related Guides
-- ["Vollständige Liste der Erweiterungen"](guides/extensions-list.md#quickinfo)
-
+- [Vollständige Liste der Erweiterungen](guides/extensions-list.md#quick-info)

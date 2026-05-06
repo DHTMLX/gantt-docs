@@ -1,20 +1,20 @@
 ---
 sidebar_label: deleteLink
-title: deleteLink method
-description: "entfernt den angegebenen Abhängigkeits-Link"
+title: deleteLink Methode
+description: "löscht den angegebenen Abhängigkeitslink"
 ---
 
 # deleteLink
 
 ### Description
 
-@short: Entfernt den angegebenen Abhängigkeits-Link
+@short: Löscht den angegebenen Abhängigkeitslink
 
 @signature: deleteLink: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -     die ID des Abhängigkeits-Links
+- `id` - (erforderlich) *string | number* - die ID des Abhängigkeitslinks
 
 ### Example
 
@@ -31,7 +31,7 @@ gantt.deleteLink(1); /*!*/
 
 ### Details
 
-Diese Methode löst die Events [onBeforeLinkDelete](api/event/onbeforelinkdelete.md) und [onAfterLinkDelete](api/event/onafterlinkdelete.md) aus.
+Die Methode ruft die Ereignisse [onBeforeLinkDelete](api/event/onbeforelinkdelete.md) und [onAfterLinkDelete](api/event/onafterlinkdelete.md) auf.
 
 ### Related API
 - [addLink](api/method/addlink.md)
@@ -39,5 +39,4 @@ Diese Methode löst die Events [onBeforeLinkDelete](api/event/onbeforelinkdelete
 - [onAfterLinkDelete](api/event/onafterlinkdelete.md)
 
 ### Related Guides
-- ["Hinzufügen/Aktualisieren/Löschen von Verknüpfungen"](guides/crud-dependency.md)
-
+- [Hinzufügen/Aktualisieren/Löschen von Verknüpfungen](guides/crud-dependency.md)

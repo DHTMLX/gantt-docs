@@ -1,16 +1,16 @@
 ---
 sidebar_label: resource_store
 title: resource_store config
-description: "gibt den Namen des dataStore an, der mit den Ansichten resourceGrid/resourceTimeline/resourceHistogram verknüpft ist"
+description: "legt den Namen des dataStore fest, der mit den resourceGrid/resourceTimeline/resourceHistogram-Views verbunden ist"
 ---
 
 # resource_store
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO Edition verfügbar.
 :::
 ### Description
 
-@short: Gibt den Namen des dataStore an, der mit den Ansichten resourceGrid/resourceTimeline/resourceHistogram verknüpft ist
+@short: Gibt den Namen des dataStore an, der mit den resourceGrid/resourceTimeline/resourceHistogram-Ansichten verbunden ist
 
 @signature: resource_store: string
 
@@ -71,19 +71,18 @@ resourcesStore.parse([
 ]);
 ~~~
 
-**Default value:** "resource"
+**Standardwert:** "resource"
 
-### Related samples
-- [Resource load diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
-- [Templates of the Resource diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/05_resource_usage_templates.html)
+### Verwandte Beispiele
+- [Ressourcen-Auslastungsdiagramm](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
+- [Vorlagen des Ressourcen-Diagramms](https://docs.dhtmlx.com/gantt/samples/11_resources/05_resource_usage_templates.html)
 
 ### Details
 
-Definiert einen datastore, der mit den Ansichten "resourceGrid" und "resourceTimeline" verbunden ist. Alternativ kann die "bind"-Eigenschaft der Ansicht gesetzt werden.
+Gibt einen Datenspeicher an, der an die Ansichten "resourceGrid" und "resourceTimeline" gebunden wird. Alternativ kann die Eigenschaft "bind" der Ansicht angegeben werden.
 
 ### Related API
 - [resource_property](api/config/resource_property.md)
 
 ### Related Guides
-- ["Ressourcenmanagement"](guides/resource-management.md)
-
+- [Ressourcenverwaltung](guides/resource-management.md)

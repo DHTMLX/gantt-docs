@@ -1,14 +1,14 @@
 ---
-title: "导出和导入数据"
-sidebar_label: "导出和导入数据"
+title: "数据导出与导入"
+sidebar_label: "数据导出与导入"
 ---
 
-# 导出和导入数据
+# 数据导出与导入
 
-- [Export to PDF and PNG](guides/export.md)
-- [Export/Import for Excel, Export to iCal](guides/excel.md)
-- [MS Project로부터의 내보내기 및 가져오기](guides/export-msproject.md)
-- [Export and Import from Primavera P6](guides/export-primavera.md)
-- [데이터를 XML 및 JSON으로 직렬화하기](guides/serialization.md)
-- [Node.js에서 데이터 내보내기 및 가져오기](guides/export-nodejs.md)
-- [모듈 내보내기](guides/export-modules.md)
+- [导出为 PDF 和 PNG](guides/export.md)
+- [Excel 的导出/导入，导出到 iCal](guides/excel.md)
+- [从 MS Project 导出与导入](guides/export-msproject.md)
+- [从 Primavera P6 导出与导入](guides/export-primavera.md)
+- [将数据序列化为 XML 和 JSON](guides/serialization.md)
+- [在 Node.js 上导出与导入数据](guides/export-nodejs.md)
+- [导出模块](guides/export-modules.md)

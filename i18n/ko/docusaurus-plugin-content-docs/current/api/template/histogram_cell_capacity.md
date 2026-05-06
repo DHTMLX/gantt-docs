@@ -1,26 +1,26 @@
 ---
 sidebar_label: histogram_cell_capacity
-title: histogram_cell_capacity template
-description: "리소스의 사용 가능 용량을 나타내는 선의 높이를 정의합니다."
+title: histogram_cell_capacity 템플릿
+description: "리소스의 사용 가능 용량을 정의하는 선의 높이를 지정합니다"
 ---
 
 # histogram_cell_capacity
 :::info
-이 기능은 PRO 에디션에서만 사용할 수 있습니다. 
+이 기능은 PRO 에디션에서만 사용할 수 있습니다.
 :::
 ### Description
 
-@short: 리소스의 사용 가능 용량을 나타내는 선의 높이를 정의합니다.
+@short: 리소스의 사용 가능 용량을 정의하는 선의 높이를 지정합니다
 
 @signature: histogram_cell_capacity: (start_date: Date, end_date: Date, resource: any, tasks: Array\<Task\>, assignments: any[]) =\> number | void;
 
 ### Parameters
 
-- `start_date` - (required) *Date* - 스케일 셀의 시작 날짜  
-- `end_date` - (required) *Date* - 스케일 셀의 종료 날짜
-- `resource` - (required) *object* - 리소스 객체 자체
-- `tasks` - (required) *Array* - &lt;Task&gt;        셀의 시작/종료 날짜와 겹치는 리소스에 할당된 작업들
-- `assignments` - (required) *array* - 작업의 지정된 시작/종료 날짜와 연결된 리소스 할당 정보
+- `start_date` - (필수) *Date* - 눈금 셀의 시작 날짜
+- `end_date` - (필수) *Date* - 눈금 셀의 종료 날짜
+- `resource` - (필수) *object* - 리소스 객체
+- `tasks` - (필수) *Array* - &lt;Task&gt;        지정된 리소스에 할당되고 셀의 시작/종료 날짜와 겹치는 작업들
+- `assignments` - (필수) *array* - 작업의 시작/종료 날짜에 할당된 리소스 할당들
 
 ### Returns
 - ` height` - (number | void) - 리소스 사용 가능 용량을 나타내는 선의 높이
@@ -42,27 +42,25 @@ gantt.templates.histogram_cell_capacity=function(start_date,end_date,resource,ta
 ### Details
 
 :::note
- "assignments" 파라미터는 [process_resource_assignments](api/config/process_resource_assignments.md) 설정이 활성화된 경우에만 접근 가능합니다. 
+"assignments" 매개변수는 [](api/config/process_resource_assignments.md) 구성(config)이 활성화될 때에만 사용할 수 있습니다.
 :::
 
-템플릿의 반환 값은 -1에서 maxCapacity까지의 범위를 가질 수 있습니다. 0 미만의 값은 선이 렌더링되지 않도록 합니다.
+템플릿 값은 -1에서 maxCapacity까지 설정할 수 있습니다. 0보다 작은 값은 선을 렌더링하지 않습니다.
 
-**maxCapacity 설명**
+**maxCapacity 정의**
 
-각 히스토그램 행을 막대 그래프로 생각해보세요. maxCapacity는 그 차트의 Y축 높이를 나타냅니다. 아래 이미지에서 maxCapacity는 24입니다:
+히스토그램의 각 행이 막대 차트로 간주되면, maxCapacity는 이 차트의 Y축 눈금의 높이입니다. 아래 그림에서 maxCapacity = 24:
 
 ![maxCapacity](/img/maxcapacity.png)
 
-기본적으로, 모든 리소스의 **maxCapacity**는 24로 설정되어 있습니다. *histogram_cell_capacity* 템플릿에서 24를 초과하는 값을 반환해도 계산은 올바르게 수행되지만, 리소스 패널의 셀 영역이 예상대로 채워지지 않을 수 있습니다.
+기본적으로 모든 리소스에 대해 **maxCapacity**는 24입니다. 이는 *histogram_cell_capacity* 템플릿에서 24보다 큰 값을 반환하면 숫자는 올바르게 계산되지만 리소스 패널의 셀 영역이 기대한 대로 채워지지 않을 수 있음을 의미합니다.
 
 ![filled_capacity](/img/filled_capacity.png)
 
-또한 전체 히스토그램에 대해 전역적으로 또는 각 리소스별로 **maxCapacity**를 설정할 수 있는 옵션도 있습니다. 아래 예제를 참고하세요:
+하지만 모든 히스토그램에 대해 한 번에, 그리고 각 리소스별로 **maxCapacity**를 구성하는 기능이 있습니다. 아래 예제를 확인하세요:
 
 :::note
-
-**Related example:** [maxCapacity 설정 예제](https://snippet.dhtmlx.com/glnqcsgq)
-
+  https://snippet.dhtmlx.com/glnqcsgq maxCapacity 구성
 :::
 
 ### Related API

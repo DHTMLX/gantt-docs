@@ -1,7 +1,7 @@
 ---
 sidebar_label: parse
-title: parse method
-description: "lädt Daten aus einer clientseitigen Ressource"
+title: Parse-Methode
+description: "Lädt Daten aus einer clientseitigen Ressource"
 ---
 
 # parse
@@ -14,19 +14,18 @@ description: "lädt Daten aus einer clientseitigen Ressource"
 
 ### Parameters
 
-- `data` - (required) *string | DataToLoad* -    ein String oder Objekt, das <a href="https://docs.dhtmlx.com/gantt/desktop__loading.html#dataproperties">Daten</a> repräsentiert
-- `type` - (optional) *string* - ('json', 'xml') spezifiziert den Datentyp. Standard ist 'json'
-
+- `data` - (required) *string | DataToLoad* -    eine Zeichenkette oder ein Objekt, das [Daten](guides/loading.md#dataproperties) darstellt
+- `type`	-	(optional) *string*	 	-	 optional, (<i>'json', 'xml'</i>) der Datentyp. Der Standardwert - <i>'json'</i>
 
 ### Example
 
 ~~~jsx
 gantt.parse({
     data:[
-        {id:1, text:"Project #2", start_date:"01-04-2023", duration:18},
-        {id:2, text:"Task #1",    start_date:"02-04-2023", duration:8,
+        {id:1, text:"Projekt #2", start_date:"01-04-2023", duration:18},
+        {id:2, text:"Aufgabe #1",    start_date:"02-04-2023", duration:8,
             progress:0.6, parent:1},
-        {id:3, text:"Task #2",    start_date:"11-04-2023", duration:8,
+        {id:3, text:"Aufgabe #2",    start_date:"11-04-2023", duration:8,
             progress:0.6, parent:1}
     ],
     links:[
@@ -41,29 +40,29 @@ gantt.parse({
 
 ### Details
 
-Gantt erwartet, dass das Aufgaben-Array entweder **data** oder **tasks** heißt, während das Array mit Links **links** benannt sein sollte.
+Gantt erwartet, dass *ein Array mit Tasks* entweder **data** oder **tasks** genannt wird, während *ein Array mit Links* **links** genannt wird.
 
-So sieht die Datenstruktur aus:
+Dies ist die Liste der erwarteten Eigenschaften:
 
-- **data** - (*[] | NewTask[]*) - das Array mit den Aufgabendaten
-- **links?** - (*Link[]*) - das Array mit den Link-Daten
-- **resources?** - (*NewResourceItem[]*) - das Array mit Ressourcendaten
-- **assignments?** - (*NewAssignmentItem[]*) - das Array mit Zuweisungsdaten
-- **collections?** - (*Сollections*) - ein Objekt, das Arrays mit benutzerdefinierten Daten enthält
+- **data** - (*[] | NewTask[]*) - das Array mit den Taskdaten
+- **links?** - (*Link[]*) - das Array mit den Linkdaten
+- **resources?** - (*NewResourceItem[]*) - das Array mit den Ressourcendaten
+- **assignments?** - (*NewAssignmentItem[]*) - das Array mit den Zuweisungsdaten
+- **collections?** - (*Сollections*) - das Objekt, das die Arrays mit benutzerdefinierten Daten enthält
 
 ~~~js
 gantt.parse({
     data: [
         { id: 1, start_date: "2025-09-23", duration: 42, 
-            text: "House Construction" },
+            text: "Hausbau" },
         { id: 2, start_date: "2025-12-02", duration: 60, 
-            text: "House Construction" },
+            text: "Hausbau" },
     ],
     "links": [
         { id: "1", source: "1", target: "2", type: "0" },
     ],
     "resources": [
-        { id: 1, text: "Anna, Architect", unit: "hours/day", 
+        { id: 1, text: "Anna, Architekt", unit: "hours/day", 
             default_value: 8, type: "work" },
     ],
     "assignments": [
@@ -78,22 +77,20 @@ gantt.parse({
 })
 ~~~
 
-Das **data**- oder **tasks**-Array sollte **NewTask**-Objekte enthalten, die sich von **Task**-Objekten unterscheiden. Sie können Strings oder leere Objekte sein. Diese Objekte können dieselben Eigenschaften wie das [**Task**-Objekt](guides/task-properties.md) besitzen, und es können auch benutzerdefinierte Eigenschaften hinzugefügt werden. Anders als beim **Task**-Objekt werden Eigenschaften, die mit *$* beginnen, ignoriert, und Datumsangaben können Strings sein.
+Der **data**- oder **tasks**-Array erwartet das **NewTask**-Objekt, das sich vom **Task**-Objekt unterscheidet. Es kann ein String oder ein leeres Objekt sein. Es kann dieselben Eigenschaften wie das [**Task**-Objekt](guides/task-properties.md) haben, und Sie können dort auch beliebige benutzerdefinierte Eigenschaften hinzufügen. Der Unterschied besteht darin, dass einige Eigenschaften des **Task**-Objekts, die mit dem Symbol `$` beginnen, ignoriert werden und die Datumswerte den Typ *string* haben können. Hier ist die Typbeschreibung:
 
-Hier eine Übersicht:
+- **NewTask** - (*string | {} | object*) - das Task-Objekt, das dem Gantt hinzugefügt wird. Es kann die folgenden Eigenschaften haben:
+    - **_id?_** - (*string | number*) - optional, die Aufgaben-ID, automatisch generiert, wenn sie nicht gesetzt ist.
+    - **_start_date?_** - (*string | Date*) - optional, das Datum, an dem eine Aufgabe beginnen soll.
+    - **_duration?_** - (*number*) - optional, die Dauer der Aufgabe.
+    - **_end_date?_** - (*string | Date*) - optional, das Datum, an dem die Aufgabe beendet wird.
+    - **_text?_** - (*string*) - optional, der Aufgabenname.
+    - **_open?_** - (*boolean*) - optional, gibt an, ob die Aufgabe beim Laden geöffnet wird (um Kindaufgaben anzuzeigen).
+    - **_parent?_** - (*string | number*) - optional, die ID der übergeordneten Aufgabe.
+    - **_constraint_date?_** - (*string | Date*) - optional, das Datum der Aufgabenbeschränkung.
+    - **_[customProperty: string]_** - (*any*) - jede andere Eigenschaft, die Sie hinzufügen möchten, einschließlich der aus dem [**Task**-Objekt](guides/task-properties.md)
 
-- **NewTask** - (*string | {} | object*) - das Task-Objekt, das zu Gantt hinzugefügt wird. Mögliche Eigenschaften sind:
-    - **_id?_** - (*string | number*) - optional, Task-ID, wird automatisch generiert, falls nicht vorhanden.
-    - **_start_date?_** - (*string | Date*) - optional, Startdatum der Aufgabe.
-    - **_duration?_** - (*number*) - optional, Dauer der Aufgabe.
-    - **_end_date?_** - (*string | Date*) - optional, Enddatum der Aufgabe.
-    - **_text?_** - (*string*) - optional, Aufgabenname.
-    - **_open?_** - (*boolean*) - optional, ob die Aufgabe beim Laden aufgeklappt ist.
-    - **_parent?_** - (*string | number*) - optional, ID der übergeordneten Aufgabe.
-    - **_constraint_date?_** - (*string | Date*) - optional, Einschränkungsdatum.
-    - **_[customProperty: string]_** - (*any*) - beliebige weitere Eigenschaften, auch solche aus dem [**Task**-Objekt](guides/task-properties.md).
-
-Dies ist keine vollständige Liste der Task-Eigenschaften; weitere Informationen finden Sie in [diesem Artikel](guides/task-properties.md).
+Dies ist nicht die vollständige Liste möglicher Task-Eigenschaften. Dafür verweisen Sie bitte auf diesen Artikel (guides/task-properties.md).
 
 ~~~js
 gantt.parse({
@@ -106,7 +103,7 @@ gantt.parse({
 
 ---
 
-Das **links**-Array sollte [**Link**-Objekte](guides/link-properties.md) enthalten.
+Die **links**-Array erwartet die [**Link**-Objekte](guides/link-properties.md).
 
 ~~~js
 gantt.parse({
@@ -119,22 +116,22 @@ gantt.parse({
 
 ---
 
-Das **resources**-Array erwartet **NewResourceItem**-Objekte, die enthalten können:
+Die **resources**-Array erwartet das **NewResourceItem**-Objekt, das die folgenden Eigenschaften haben kann:
 
-- **NewResourceItem** - (*object*) - Ressourceneintrag, der zu Gantt hinzugefügt wird, mit Eigenschaften wie:
-    - **_id?_** - (*string | number*) - optional, Ressourcen-ID, wird automatisch generiert, falls nicht vorhanden.
-    - **_parent?_** - (*string | number*) - optional, ID der übergeordneten Ressource.
-    - **_text?_** - (*string*) - optional, Ressourcenname.
-    - **_open?_** - (*boolean*) - optional, ob die Ressource beim Laden aufgeklappt ist.
-    - **_unit?_** - (*string | number*) - optional, Einheit der Ressourcenzuweisung.
-    - **_default_value?_** - (*string | number*) - optional, Standardwert der Zuweisung, der im Lightbox angezeigt wird.
-    - **_[customProperty: string]_** - (*any*) - beliebige weitere Eigenschaften.
+- **NewResourceItem** - (*object*) - das Resource-Item-Objekt, das dem Gantt hinzugefügt wird. Es kann die folgenden Eigenschaften haben:
+    - **_id?_** - (*string | number*) - optional, die Resource-ID, automatisch generiert, wenn sie nicht gesetzt ist
+    - **_parent?_** - (*string | number*) - optional, die ID der übergeordneten Ressource
+    - **_text?_** - (*string*) - optional, der Ressourcenname
+    - **_open?_** - (*boolean*) - optional, gibt an, ob die Ressource beim Laden geöffnet wird (um Kindobjekte anzuzeigen)
+    - **_unit?_** - (*string | number*) - optional, die Einheit der Zuweisung
+    - **_default_value?_** - (*string | number*) - optional, der Standardwert beim Hinzufügen der Zuordnung im Lightbox-Abschnitt
+    - **_[customProperty: string]_** - (*any*) - jede andere Eigenschaft, die Sie hinzufügen möchten
 
 ~~~js
 gantt.parse({
     data: [],
     resources: [
-        { id: 1, text: "Anna, Architect", unit: "hours/day", 
+        { id: 1, text: "Anna, Architekt", unit: "hours/day", 
             default_value: 8, type: "work" },
     ]
 })
@@ -142,23 +139,23 @@ gantt.parse({
 
 ---
 
-Das **assignments**-Array erwartet **NewAssignmentItem**-Objekte mit Eigenschaften wie:
+Die **assignments**-Array erwartet das **NewAssignmentItem**-Objekt, das die folgenden Eigenschaften haben kann:
 
-- **NewAssignmentItem** - (*object*) - Zuweisungseintrag, der zu Gantt hinzugefügt wird, und folgende Eigenschaften enthalten kann:
-    - **_id?_** - (*string | number*) - optional, Zuweisungs-ID, wird automatisch generiert, falls nicht vorhanden.
-    - **_task_id_** - (*string | number*) - ID der zugewiesenen Aufgabe.
-    - **_resource_id_** - (*string | number*) - ID der zugewiesenen Ressource.
-    - **_value_** - (*number | string*) - optional, Wert der Zuweisung.
-    - **_mode?_** - (*string*) - optional, Berechnungsmodus: "default"|"fixedDates"|"fixedDuration".
-    - **_delay?_** - (*number*) - optional, Differenz zwischen Zuweisungsstart und Aufgabenstart.
-    - **_start_date?_** - (*string | Date*) - optional, Startdatum der Zuweisung.
-    - **_duration?_** - (*number*) - optional, Dauer der Zuweisung.
-    - **_end_date?_** - (*string | Date*) - optional, Enddatum der Zuweisung.
-    - **_[customProperty: string]_** - (*any*) - beliebige weitere benutzerdefinierte Eigenschaften.
+- **NewAssignmentItem** - (*object*) - das Zuordnungsitem-Objekt, das dem Gantt hinzugefügt wird. Es kann die folgenden Eigenschaften haben:
+    - **_id?_** - (*string | number*) - optional, die Zuweisungs-ID, automatisch generiert, wenn sie nicht gesetzt ist
+    - **_task_id_** - (*string | number*) - Die ID der Aufgabe, der die Ressource zugewiesen ist
+    - **_resource_id_** - (*string | number*) - Die ID der Ressource, die der Aufgabe zugewiesen ist
+    - **_value_** - (*number | string*) - optional, der Zuweisungswert
+    - **_mode?_** - (*string*) - optional, der Berechnungsmodus der Zeit der Ressourcenzuweisung: "default"|"fixedDates"|"fixedDuration"
+    - **_delay?_** - (*number*) - optional, die Differenz zwischen Startdatum der Zuordnung und Startdatum der Aufgabe
+    - **_start_date?_** - (*string | Date*) - optional, das Datum, wann die Zuordnung beginnen soll
+    - **_duration?_** - (*number*) - optional, die Zuweisungsdauer
+    - **_end_date?_** - (*string | Date*) - optional, das Datum, wann die Zuordnung enden soll
+    - **_[customProperty: string]_** - (*any*) - jede andere Eigenschaft, die Sie hinzufügen möchten
 
 ~~~js
 gantt.parse({
-    data: [],
+    data: [], 
     assignments: [
       { task_id: "1", resource_id: "1", value: "8" },
     ]
@@ -167,13 +164,13 @@ gantt.parse({
 
 ---
 
-Das **collections**-Objekt dient zum Laden benutzerdefinierter Daten. Seine Eigenschaften können beliebige Namen haben, die Werte sind Arrays mit Collection-Items:
+Das **collections**-Objekt erlaubt das Laden beliebiger benutzerdefinierter Daten. Die Eigenschaften können jeden Namen haben, und der Wert sollte ein Array sein, das die Sammlungselemente enthält:
 
-- **[collectionName: string]** - (*[] | СollectionItem[]*) - Array von Collection-Items.
+- **[collectionName: string]** - (*[] | СollectionItem[]*) - ein Array, das die Sammlungselemente enthält.
 
-Jedes **СollectionItem** ist ein Objekt mit beliebigen Eigenschaften:
+Das **СollectionItem** ist ein Objekt, das beliebige Eigenschaften haben kann. Es hat die folgenden Typen für seine Eigenschaften:
 
-- **[itemProperty: string]** - (*any*) - beliebige benutzerdefinierte Eigenschaft.
+- **[itemProperty: string]** - (*any*) - Beliebige benutzerdefinierte Eigenschaft des Sammlungselements.
 
 ~~~js
 gantt.parse({
@@ -200,7 +197,7 @@ gantt.parse({
 
 ---
 
-Wenn die Daten keine Aufgaben enthalten, muss trotzdem ein leeres Aufgaben-Array definiert werden:
+If you want to load data which doesn't contain tasks, you still need to define an array of tasks in the object with data but it can be empty:
 
 ~~~js
 gantt.parse({
@@ -212,8 +209,7 @@ gantt.parse({
 });
 ~~~
 
-<br>
-Ab Version 8.0 können Sie mit der Methode **parse()** auch Ressourcen und Ressourcenzuweisungen zusammen mit Aufgaben und Links laden:
+From v8.0, besides tasks and links, you can load resources and resource assignments into the gantt via the **parse()** method:
 
 ~~~js
 gantt.parse({
@@ -248,13 +244,12 @@ gantt.parse({
 });
 ~~~
 
-Weitere Details finden Sie [hier](guides/resource-management.md#loadingresourcesandresourceassignments).
+You can read more [here](guides/resource-management.md#loading-resources-and-resource-assignments).
 
 ### Related API
 - [load](api/method/load.md)
 
 ### Related Guides
-- ["Datenladen"](guides/loading.md)
-- ["Unterstützte Datenformate"](guides/supported-data-formats.md)
-- ["Unterstützte Datenformate"](guides/supported-data-formats.md#jsonwithcollections) (siehe, wie JSON mit Collections geladen wird)
-
+- [Data Loading](guides/loading.md)
+- [Supported Data Formats](guides/supported-data-formats.md)
+- [Supported Data Formats](guides/supported-data-formats.md#jsonwithcollections) (lesen, wie man JSON mit Collections lädt)

@@ -1,31 +1,31 @@
 ---
 sidebar_label: onBeforeRowResizeEnd
-title: onBeforeRowResizeEnd event
-description: "Wird unmittelbar vor dem Abschluss des Prozesses zur Größenänderung der Zeilenhöhe ausgelöst"
+title: onBeforeRowResizeEnd Ereignis
+description: "Wird ausgelöst, bevor das Ändern der Zeilenhöhe abgeschlossen ist"
 ---
 
 # onBeforeRowResizeEnd
 
 ### Description
 
-@short: Wird unmittelbar vor dem Abschluss des Prozesses zur Größenänderung der Zeilenhöhe ausgelöst
+@short: Wird ausgelöst, bevor das Ändern der Zeilenhöhe abgeschlossen ist
 
 @signature: onBeforeRowResizeEnd: (id: number | string, task: Task, newHeight: number) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *number | string* - die Aufgaben-ID
-- `task` - (required) *Task* - das Aufgabenobjekt selbst
-- `newHeight` - (required) *number* - die aktualisierte Höhe der Zeile
+- `id` - (required) *number | string* - die Task-ID
+- `task` - (required) *Task* - das Task-Objekt
+- `newHeight` - (required) *number* - die neue Höhe der Zeile
 
 ### Returns
-- ` result` - (boolean) - gibt an, ob die Standardaktion des Events ausgeführt werden soll (<b>true</b>) oder gestoppt wird (<b>false</b>)
+- ` result` - (boolean) - bestimmt, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeRowResizeEnd", function (id, task, newHeight) {
-    gantt.message(`<b>${task.text}</b> ist jetzt <b>${newHeight}px</b> hoch`);
+    gantt.message(`<b>${task.text}</b> hat jetzt eine Höhe von <b>${newHeight}px</b>`);
     return true;
 });
 ~~~
@@ -40,5 +40,4 @@ gantt.attachEvent("onBeforeRowResizeEnd", function (id, task, newHeight) {
 - [onAfterRowResize](api/event/onafterrowresize.md)
 
 ### Change log
-- eingeführt in Version 7.1
-
+- hinzugefügt in v7.1

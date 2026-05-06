@@ -1,22 +1,24 @@
 ---
 sidebar_label: removeTaskLayer
 title: removeTaskLayer method
-description: "移除与任务相关的特定图层"
+description: "移除与任务相关的指定图层"
 ---
 
 # removeTaskLayer
+
 :::info
- 此功能仅包含在PRO版本中。
+此功能仅在 PRO 版中可用。
 :::
+
 ### Description
 
-@short: 移除与任务相关的特定图层
+@short: 移除与任务相关的指定图层
 
 @signature: removeTaskLayer: (layerId: string | number) =\> void
 
 ### Parameters
 
-- `layerId` - (required) *string | number* -        表示要移除图层的DOM元素
+- `layerId` - (required) *string | number* - 将在该图层中显示的 DOM 元素
 
 ### Example
 
@@ -35,15 +37,13 @@ var layer_id = gantt.addTaskLayer(function draw_deadline(task) {
     }
     return false;
 });
-//...
+ //...
 gantt.removeTaskLayer(layer_id);/*!*/
 gantt.render();
 ~~~
-
 
 ### Related API
 - [addTaskLayer](api/method/addtasklayer.md)
 
 ### Related Guides
-- [时间线区域中的自定义元素](guides/baselines.md)
-
+- [Custom Elements in Timeline Area](guides/baselines.md)

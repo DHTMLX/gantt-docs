@@ -1,27 +1,27 @@
 ---
 sidebar_label: scale_cell_class
-title: scale_cell_class template
-description: "타임라인 영역의 시간 스케일 내 셀에 할당될 CSS 클래스를 정의합니다"
+title: scale_cell_class 템플릿
+description: "타임라인 영역의 시간 눈금 셀에 적용될 CSS 클래스를 지정합니다"
 ---
 
 # scale_cell_class
 
 ### Description
 
-@short: 타임라인 영역의 시간 스케일 내 셀에 할당될 CSS 클래스를 정의합니다
+@short: 타임라인 영역의 시간 눈금 셀에 적용될 CSS 클래스를 지정합니다
 
 @signature: scale_cell_class: (date: Date) =\> string | void;
 
 ### Parameters
 
-- `date` - (required) *Date* - 셀에 해당하는 특정 날짜
+- `date` - (필수) *Date* - 셀의 날짜
 
 ### Returns
-- ` text` - (string | void) - 해당 항목에 적용할 CSS 클래스
+- `text` - (string | void) - 해당 항목의 CSS 클래스
 
 ### Example
 
-~~~jsx
+~~~js
 <style>
 .weekend{ background: #f4f7f4 !important;}
 </style>
@@ -39,7 +39,7 @@ gantt.templates.scale_cell_class = function(date){
 
 ### Details
 
-[work time calculations](guides/working-time.md)를 사용할 때, 고정값 대신 [isWorkTime](api/method/isworktime.md)를 활용할 수 있습니다:
+참고: [work time calculations](guides/working-time.md)을 사용할 때, 하드코딩된 값 대신 [isWorkTime](api/method/isworktime.md)을 사용할 수 있습니다:
 
 ~~~js
 gantt.config.work_time = true;
@@ -50,7 +50,7 @@ gantt.templates.scale_cell_class = function(date){
 };
 ~~~
 
-[gantt.config.scales](api/config/scales.md) 속성을 통해 여러 스케일이 설정된 경우, 이 템플릿은 첫 번째 스케일에만 영향을 줍니다. 다른 스케일의 셀에 CSS 클래스를 할당하려면 [gantt.config.scales](api/config/scales.md) 설정 내 **css** 속성을 사용하세요:
+여러 스케일을 [gantt.config.scales](api/config/scales.md) 속성으로 지정한 경우, 템플릿은 첫 번째 스케일에만 적용됩니다. 다른 스케일의 셀에 CSS 클래스를 지정하려면 [gantt.config.scales](api/config/scales.md)의 css 속성을 사용하세요:
 
 ~~~js
 gantt.config.scales = [

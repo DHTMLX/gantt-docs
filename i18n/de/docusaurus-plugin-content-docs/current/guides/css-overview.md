@@ -1,27 +1,27 @@
 ---
-title: "CSS Dokumentation"
-sidebar_label: "CSS Dokumentation"
+title: "CSS-Dokumentation"
+sidebar_label: "CSS-Dokumentation"
 ---
 
-# CSS Dokumentation
+# CSS-Dokumentation
 
-Dieser Artikel erklärt, wie Sie die Standardfarbeinstellungen der Gantt-Diagramm-Elemente mit eigenen benutzerdefinierten Stilen überschreiben können. Er behandelt die wichtigsten Klassenselektoren und Templates zum Stylen verschiedener Bereiche des Gantt-Diagramms: des [Gitterbereichs](guides/css-overview.md#stylinggrid), des [Zeitachsenbereichs](guides/css-overview.md#stylingtimeline) und des [Ressourcenpanels](guides/css-overview.md#resourcepanel).
+Dieser Artikel zeigt Ihnen die Möglichkeiten, die standardmäßigen Farbeinstellungen der Elemente des Gantt-Diagramms mit benutzerdefinierten Farben zu überschreiben. Der Artikel behandelt die Hauptklassen-Selektoren und Templates für das Styling der folgenden Teile des Gantt: [Grid-Bereich](guides/css-overview.md#styling-grid), [Timeline-Bereich](guides/css-overview.md#styling-timeline), [Resource-Panel](guides/css-overview.md#resource-panel).
 
-## Styling des Gitters {#stylinggrid}
+## Rastergestaltung
 
-Hier finden Sie die CSS-Selektoren, die verwendet werden, um die Hauptelemente des [Gitterbereichs](guides/table.md) zu gestalten.
+In diesem Abschnitt finden Sie CSS-Selektoren zum Styling der Hauptelemente des [Grid-Bereichs](guides/table.md).
 
 ![grid_area](/img/grid_area.png)
 
-Die DOM-Struktur des Gitterelements sieht folgendermaßen aus:
+Die allgemeine Struktur des DOM-Elements des Grids ist unten angegeben:
 
 ~~~js
 - .gantt_grid
     - .gantt_grid_scale
         - .gantt_grid_head_cell
     - .gantt_grid_data
-        - .gantt_row.odd 
-        - .gantt_row 
+        - .gantt_row.odd
+        - .gantt_row
         - .gantt_row.gantt_row_task
         - .gantt_row.gantt_row_project
         - .gantt_row.gantt_row_milestone
@@ -34,17 +34,17 @@ Die DOM-Struktur des Gitterelements sieht folgendermaßen aus:
                 - .gantt_tree_content
 ~~~
 
-<h3 id="grid_header"><b>Gitterkopfzeile</b></h3>
+### Rasterkopfzeile
 
-Der Stil der Gitterkopfzeile kann mit dem Klassenselektor **.gantt_grid_scale** angepasst werden.
+Sie können die Gestaltung des Rasterkopfzeilen-Elements über den Klassenselektor `.gantt_grid_scale` ändern.
 
-Hier ein Beispiel, wie Sie einen gemeinsamen Hintergrund und Schriftfarbe für die Kopfzeilen von Gitter und Zeitachse setzen:
+Hier ist ein Beispiel für die Anwendung von Hintergrund- und Schriftfarbe für die Kopfzeilen des Grids und der Timeline:
 
 ~~~css
 .gantt_grid_scale, .gantt_task_scale, .gantt_task_vscroll {
     background-color: #eee;
 }
-.gantt_grid_scale, .gantt_task_scale, 
+.gantt_grid_scale, .gantt_task_scale,
 .gantt_task .gantt_task_scale .gantt_scale_cell,
 .gantt_grid_scale .gantt_grid_head_cell {
     color: #000;
@@ -55,33 +55,33 @@ Hier ein Beispiel, wie Sie einen gemeinsamen Hintergrund und Schriftfarbe für d
 
 ![grid_header](/img/grid_header.png)
 
-**Related example:** [Styling grid and timeline headers](https://snippet.dhtmlx.com/akr9tz4h)
+**Verwandtes Beispiel**: [Styling grid and timeline headers](https://snippet.dhtmlx.com/akr9tz4h)
 
 ### Skalenhöhe {#scale_height}
 
-Vermeiden Sie es, die Höhe der Gitterkopfzeile und der Zeitskala per CSS zu ändern.
+Verändern Sie die Höhe des Rasterkopfs und der Zeitachse nicht über CSS.
 
-Stellen Sie stattdessen die Skalenhöhe über die [scale_height](api/config/scale_height.md) Konfigurationseigenschaft von Gantt ein:
+Die Höhe der Skala muss über die [scale_height](api/config/scale_height.md) Konfigurations-Eigenschaft von Gantt festgelegt werden:
 
 ~~~js
 gantt.config.scale_height = 50;
 ~~~
 
-### Eine Zelle der Gitterkopfzeile {#grid_header_cell}
+### Eine Zelle der Rasterkopfzeile {#grid_header_cell}
 
-Um eine Zelle in der Gitterkopfzeile zu gestalten, verwenden Sie den Selektor **.gantt_grid_head_cell**.
+Sie können einer Zelle der Rasterkopfzeile einen benutzerdefinierten Stil zuweisen über `.gantt_grid_head_cell`.
 
-Selektoren, um eine Zelle gezielt anzusprechen, sind:
+Die Selektoren zur Stilgebung einer Zelle sind unten angegeben:
 
-- **.gantt_grid_head_cell[data-column-id='columnName']** - wählt eine Zelle in einer bestimmten Spalte aus;
+- `.gantt_grid_head_cell[data-column-id="columnName"]` – wählt eine Zelle einer bestimmten Spalte aus;
 
-Hierbei entspricht **columnName** der **name**-Eigenschaft der [Spalte](guides/specifying-columns.md):
+**columnName** entspricht dem Wert der **name** Eigenschaft der [Spalte](guides/specifying-columns.md):
 
 ~~~css
 <style>
-    .gantt_grid_head_cell[data-column-id='columnName'] {
+    .gantt_grid_head_cell[data-column-id="columnName"] {
         background-color: #ededed;
-        color:black;
+        color: black;
     }
 </style>
 ~~~
@@ -89,50 +89,50 @@ Hierbei entspricht **columnName** der **name**-Eigenschaft der [Spalte](guides/s
 ~~~js
 gantt.config.columns = [
     ...
-    {name: "columnName", align: "center"},
+    { name: "columnName", align: "center" },
     ...
 ];
 ~~~
 
 ![header_cell](/img/header_cell.png)
 
-**Related example:** [Styling a particular cell in the grid header](https://snippet.dhtmlx.com/pf5q56kl)
+**Verwandtes Beispiel**: [Styling a particular cell in the grid header](https://snippet.dhtmlx.com/pf5q56kl)
 
-- **.gantt_grid_head_cell[data-column-index='1']** - wählt eine Spalte anhand ihres Index aus;
+- `.gantt_grid_head_cell[data-column-index="1"]` – wählt eine bestimmte Spalte nach ihrem Index aus;
 
-- **.gantt_grid_head_cell[data-column-name='start_date']** - wählt eine Spalte anhand ihres Namens aus.
+- `.gantt_grid_head_cell[data-column-name="start_date"]` – wählt eine bestimmte Spalte nach dem Namen aus.
 
-<h3 id="grid_body"><b>Gitterkörper</b></h3>
+### Rasterkörper
 
-Sie können die Farbe des Gitterkörpers anpassen, indem Sie CSS-Stile auf den Selektor **.gantt_grid_data** anwenden.
+Sie können dem Rasterkörper-Element eine benutzerdefinierte Farbe hinzufügen, indem Sie CSS-Stile auf den Selektor `.gantt_grid_data` anwenden.
 
 ![grid_body](/img/grid_body.png)
 
-### Styling der Gitterzeilen {#styling_grid_rows}
+### Styling der Rasterzeilen {#styling_grid_rows}
 
-Der Stil der Gitterzeilen kann mit dem Selektor **.gantt_row** geändert werden.
+Der Stil der Rasterzeile wird über `.gantt_row` angepasst.
 
 ![grid_row](/img/grid_row.png)
 
 #### Jede zweite Zeile
 
-Um abwechselnde Zeilen zu gestalten, wenden Sie CSS auf den Selektor **.gantt_row.odd** an, zum Beispiel:
+Um jede zweite Zeile des Grids zu färben, müssen Sie CSS-Stile für den Selektor `.gantt_row.odd` festlegen, zum Beispiel:
 
 ~~~css
-.gantt_row.odd{
-    background-color:#f4f4fb;
+.gantt_row.odd {
+    background-color: #f4f4fb;
 }
 ~~~
 
 ![odd_row_style](/img/odd_row_style.png)
 
-**Related example:** [Styling every other row in grid](https://snippet.dhtmlx.com/ayr3sgov)
+**Verwandtes Beispiel**: [Styling every other row in grid](https://snippet.dhtmlx.com/ayr3sgov)
 
-Obwohl die geraden Zeilen auf dem Bildschirm hervorgehoben erscheinen, wird der Stil auf Zeilen mit ungeraden Indizes (1, 3, 5 usw.) angewendet, wie in den [Zeilenindizes](api/method/gettaskindex.md) dargestellt.
+Sie sehen, dass die geraden Zeilen auf dem Bildschirm hervorgehoben werden statt der ungeraden. Wenn Sie jedoch die [Indexes der Zeilen](api/method/gettaskindex.md) überprüfen, werden Sie sehen, dass der Stil auf Zeilen mit ungeraden Indizes (1, 3, 5 usw.) angewendet wird.
 
 #### Ausgewählte Zeile
 
-Um eine ausgewählte Zeile im Gitter zu gestalten, verwenden Sie den Selektor **.gantt_row.gantt_selected**:
+Sie können eine ausgewählte Zeile im Grid mithilfe des Selektors `.gantt_row.gantt_selected` stylen:
 
 ~~~css
 .gantt_grid_data .gantt_row.gantt_selected,
@@ -142,97 +142,96 @@ Um eine ausgewählte Zeile im Gitter zu gestalten, verwenden Sie den Selektor **
 }
 ~~~
 
-**Related example:** [Styling selected row](https://snippet.dhtmlx.com/c177qsgx)
+**Verwandtes Beispiel**: [Styling selected row](https://snippet.dhtmlx.com/c177qsgx)
 
-#### Aufgaben-, Projekt- und Meilensteinzeilen
+#### Aufgabenzeilen, Projektzeilen und Meilensteine
 
-Zeilen, die Aufgaben, Projekte oder Meilensteine darstellen, können mit diesen Selektoren gestaltet werden:
+Um Zeilen von Aufgaben, Projekten oder Meilensteinen zu stylen, verwenden Sie die folgenden Selektoren:
 
-- **.gantt_row.gantt_row_task**
-- **.gantt_row.gantt_row_project**
-- **.gantt_row.gantt_row_milestone**
+- `.gantt_row.gantt_row_task`
+- `.gantt_row.gantt_row_project`
+- `.gantt_row.gantt_row_milestone`
 
 Zum Beispiel:
 
 ~~~css
-.gantt_row.gantt_row_project{
-   background-color:#fafafa;
-   font-weight: bold;
+.gantt_row.gantt_row_project {
+    background-color: #fafafa;
+    font-weight: bold;
 }
 ~~~
 
-**Related example:** [Styling rows of project tasks](https://snippet.dhtmlx.com/g5oxrq5v)
+**Verwandtes Beispiel**: [Styling rows of project tasks](https://snippet.dhtmlx.com/g5oxrq5v)
 
 #### Bestimmte Zeilen
 
-Um benutzerdefinierte Klassen zu bestimmten Zeilen hinzuzufügen, verwenden Sie das [grid_row_class](api/template/grid_row_class.md) Template wie folgt:
+Wenn Sie einer bestimmten Zeile benutzerdefinierte Klassen hinzufügen möchten, können Sie die [grid_row_class](api/template/grid_row_class.md) Vorlage wie folgt verwenden:
 
 ~~~css
 <style>
-    .highlighted_task.gantt_row { 
+    .highlighted_task.gantt_row {
         background-color: #ff9668;
         border-color: rgba(0,0,0,0.3);
-    }    
+    }
 </style>
 ~~~
 
-~~~js
-gantt.templates.grid_row_class = function(start, end, task){
-    if(task.highlight){
-        return "highlighted_task"; /*!*/
+~~~js {3}
+gantt.templates.grid_row_class = (startDate, endDate, task) => {
+    if (task.highlight) {
+        return "highlighted_task";
     }
     return "";
 };
 ~~~
 
-**Related example:** [Styling a particular row in the grid](https://snippet.dhtmlx.com/9o8pbq8z)
+**Verwandtes Beispiel**: [Styling a particular row in the grid](https://snippet.dhtmlx.com/9o8pbq8z)
 
 #### Zeilenhöhe
 
-Die Zeilenhöhe kann entweder durch Setzen der [row_height](api/config/row_height.md) Konfiguration angepasst werden:
+Die Höhe der Zeile kann entweder durch die Verwendung der [row_height](api/config/row_height.md) Konfiguration geändert werden:
 
 ~~~js
 gantt.config.row_height = 40;
 ~~~
 
-oder durch die Angabe der [row_height](guides/resizing-rows.md#settingtherowheight) Eigenschaft für eine Aufgabe:
+oder über die [row_height](guides/resizing-rows.md#setting-the-row-height) Eigenschaft einer Aufgabe:
 
 ~~~js
-{ id: 2, text: "Task #1", start_date: "02-04-2018", 
-    duration: 8, row_height:40, parent: 1 },
+{ id: 2, text: "Task #1", start_date: "02-04-2028", duration: 8, row_height: 40 },
 ~~~
 
-Vermeiden Sie es, die Zeilenhöhe per CSS zu ändern, da dies das Layout beschädigen kann.
+Versuchen Sie nicht, die Zeilenhöhe über CSS zu ändern, dies bricht das Layout.
 
-### Styling der Zellen/Spalten des Gitters {#styling_grid_cells}
+### Styling von Zellen/Spalten des Grids {#styling_grid_cells}
 
-Zellen oder Spalten des Gitters können über **.gantt_row .gantt_cell** gestaltet werden.
+Das Styling von Zellen oder Spalten des Grids kann über `.gantt_row .gantt_cell` implementiert werden.
 
-Um eine bestimmte Spalte zu stylen, können Sie verwenden:
+Sie können CSS-Stile auf eine bestimmte Spalte auf zwei Arten anwenden:
 
-- **.gantt_row .gantt_cell[data-column-name='columnName']** - spricht die Spalte anhand des Namens an, zum Beispiel:
+- über den Selektor `.gantt_row .gantt_cell[data-column-name="columnName"]`, der die Spalte nach ihrem Namen definiert, zum Beispiel:
 
 ~~~css
-.gantt_grid_head_cell[data-column-id='start_date'],
-.gantt_row .gantt_cell[data-column-name='start_date'] {
+.gantt_grid_head_cell[data-column-id="start_date"],
+.gantt_row .gantt_cell[data-column-name="start_date"] {
     background-color: #ededed;
-    color:black;
+    color: black;
 }
 ~~~
 
-**Related example:** [Styling a column in grid](https://snippet.dhtmlx.com/hq5q2hpz)
+**Verwandtes Beispiel**: [Styling a column in grid](https://snippet.dhtmlx.com/hq5q2hpz)
 
-Beachten Sie, dass **.gantt_grid_head_cell** und **.gantt_cell** unterschiedliche Datenattribute verwenden: `data-column-id` bzw. `data-column-name`. Diese Inkonsistenz wird in einer zukünftigen Version behoben.
+Beachten Sie, dass `.gantt_grid_head_cell` und `.gantt_cell` verschiedene Datenattribute verwenden: `data-column-id` bzw. `data-column-name`. Diese Inkonsistenz in den CSS-Regeln von Gantt wird in einer der zukünftigen Versionen behoben.
 
-- Alternativ können Sie **.gantt_row .gantt_cell[data-column-index='1']** verwenden, um eine Spalte anhand ihres Index anzusprechen.
+- oder Sie können dasselbe Ergebnis erzielen, indem Sie den Selektor `.gantt_row .gantt_cell[data-column-index="1"]` anwenden, der die Spalte nach ihrem Index definiert.
 
-## Styling der Zeitachse {#stylingtimeline}
+## Styling der Timeline
 
-In diesem Abschnitt werden die CSS-Selektoren beschrieben, die zum Anpassen der Standardstile von Elementen im [Zeitachsenbereich](guides/time-scale.md) verfügbar sind.
+Der Abschnitt "Styling Timeline" wird Sie durch die CSS-Selektoren führen, die Sie anwenden können, um die Standard-Stile der Elemente des [Timeline-Bereichs](guides/time-scale.md) zu ändern.
 
 ![timeline](/img/timeline.png)
 
-Die DOM-Struktur des Zeitachsenbereichs ist wie folgt:
+Die allgemeine Struktur des DOM-Elements des Timeline-Bereichs wird unten dargestellt:
 
 ~~~js
 - .gantt_task
@@ -247,22 +246,22 @@ Die DOM-Struktur des Zeitachsenbereichs ist wie folgt:
         - .gantt_links_area
             - .gantt_task_link
         - .gantt_bars_area
-            - .gantt_task_line 
-                - .gantt_task_progress_wrapper 
-                    - .gantt_task_progress 
-                - .gantt_task_progress_drag 
-                - .gantt_task_content 
-                - .gantt_task_drag.task_start_date 
+            - .gantt_task_line
+                - .gantt_task_progress_wrapper
+                    - .gantt_task_progress
+                - .gantt_task_progress_drag
+                - .gantt_task_content
+                - .gantt_task_drag.task_start_date
                 - .gantt_task_drag.task_end_date
                 - .gantt_link_control.task_start_date
                 - .gantt_link_control.task_end_date
                     - .gantt_link_point
-        - div - custom layers
+        - div - benutzerdefinierte Ebenen
 ~~~
 
-<h3 id="time_scale"><b>Zeitskala</b></h3>
+### Zeitmaßstab
 
-Die DOM-Struktur der Zeitskala ist:
+Das DOM-Element des Zeitmaßstabs hat folgende Struktur:
 
 ~~~js
 - .gantt_task_scale
@@ -270,79 +269,78 @@ Die DOM-Struktur der Zeitskala ist:
         - .gantt_scale_cell
 ~~~
 
-### Zeitskalen-Container {#time_scale_container}
+### Zeitmaßstabs-Container {#time_scale_container}
 
-Der Selektor **.gantt_task_scale** spricht den Container der Zeitskala an.
+Der `.gantt_task_scale` Selektor wird verwendet, um benutzerdefiniertes CSS auf den Container des Zeitmaßstabs anzuwenden.
 
-Zum Beispiel, um Schriftfarbe und Rahmen der Zeitskala zu ändern:
+Beispielsweise sieht das Ändern der Schriftfarbe und der Umrandungen des Zeitmaßstabs so aus:
 
 ~~~css
 .gantt_grid_scale, .gantt_task_scale {
     border-bottom: 1px solid #0e0e0e;
 }
-  
+
 .gantt_task .gantt_task_scale .gantt_scale_cell {
     color: #000;
 }
+
 .gantt_grid_scale .gantt_grid_head_cell {
     color: #000;
 }
 ~~~
 
-**Related example:** [Styling text and borders of the time scale](https://snippet.dhtmlx.com/qt0ttw64)
-
+**Verwandtes Beispiel**: [Styling text and borders of the time scale](https://snippet.dhtmlx.com/qt0ttw64)
 
 ### Zeitskalen {#time_scales}
 
-Verwenden Sie den Selektor **.gantt_scale_line**, um die gesamte Zeitskala zu gestalten. Um eine bestimmte Zeitskala anhand ihrer Position anzusprechen, verwenden Sie **.gantt_scale_line:nth-child(n)**.
+Der Selektor `.gantt_scale_line` wird verwendet, um die gesamte Zeitachse zu färben. Um eine bestimmte Zeitstufe nach ihrer Reihenfolge anzusprechen, verwenden Sie einfach den Selektor `.gantt_scale_line:nth-child(n)`.
 
-Zum Beispiel, um verschiedene Hintergrundfarben für unterschiedliche Skalen zu setzen:
+Ein Beispiel zur Festlegung der Hintergrundfarbe der Zeitachse:
 
 ~~~css
-.gantt_scale_line:nth-child(1){
-    font-weight:bold;
-    background-color:#eee;
+.gantt_scale_line:nth-child(1) {
+    font-weight: bold;
+    background-color: #eee;
 }
-.gantt_scale_line:nth-child(2){
-    background-color:#fff;
+
+.gantt_scale_line:nth-child(2) {
+    background-color: #fff;
 }
 ~~~
 
-**Related example:** [Background color of the time scale](https://snippet.dhtmlx.com/jl1k7kxr)
+**Verwandtes Beispiel**: [Background color of the time scale](https://snippet.dhtmlx.com/jl1k7kxr)
 
-Standardmäßig gibt es keine CSS-Klassen, um Zeitskalen anhand ihrer Einheiten anzusprechen, aber Sie können diese Klassen mit dem [scale_row_class](api/template/scale_row_class.md) Template hinzufügen.
+Standardmäßig gibt es keine CSS-Klassen, um Zeitstufen nach Einheiten zu adressieren, aber Sie können solche Klassen über die Vorlage [scale_row_class](api/template/scale_row_class.md) hinzufügen.
 
-So gestalten Sie verschiedene Skalen wie **month**, **week** und **day**:
+Beispiel zum Festlegen unterschiedlicher Stile für die **Monats-, Wochen- und Tages-Skalen** finden Sie unten:
 
 ~~~css
 <style>
-    .gantt_scale_line.month_scale{
-        font-weight:bold;
-        background-color:#ddd;
+    .gantt_scale_line.month_scale {
+        font-weight: bold;
+        background-color: #ddd;
     }
-    .gantt_scale_line.week_scale{
-        background-color:#e1e1e1;
-    }  
-  
-    .gantt_scale_line.day_scale{
-        background-color:#efefef;
+
+    .gantt_scale_line.week_scale {
+        background-color: #e1e1e1;
+    }
+
+    .gantt_scale_line.day_scale {
+        background-color: #efefef;
     }
 </style>
 ~~~
 
 ~~~js
-gantt.templates.scale_row_class = function(scale){
-    return scale.unit + "_scale";
-};
+gantt.templates.scale_row_class = (scaleConfig) => `${scaleConfig.unit}_scale`;
 ~~~
 
-**Related example:** [Styling different time scales](https://snippet.dhtmlx.com/g6ogfvvb)
+**Verwandtes Beispiel**: [Styling different time scales](https://snippet.dhtmlx.com/g6ogfvvb)
 
-### Zellen der Zeitskala {#timescale_cells}
+### Zellen der Zeitachse {#timescale_cells}
 
-Sie können einzelne Zellen der Zeitskala mit dem Selektor **.gantt_scale_cell** gestalten.
-
-Zum Beispiel, um Schriftfarbe und Rahmen zu ändern:
+Sie können den Zellen der Zeitachse eigene Stile hinzufügen, indem Sie den Selektor `.gantt_scale_cell` verwenden.
+Beispielsweise können Sie die Schriftfarbe und die Umrandungen der Zellen ändern:
 
 ~~~css
 .gantt_task .gantt_task_scale .gantt_scale_cell {
@@ -351,19 +349,19 @@ Zum Beispiel, um Schriftfarbe und Rahmen zu ändern:
 }
 ~~~
 
-**Related example:** [Styling text and borders of the scale cells](https://snippet.dhtmlx.com/dcfo1yek)
+**Verwandtes Beispiel**: [Styling text and borders of the scale cells](https://snippet.dhtmlx.com/dcfo1yek)
 
-Um [bestimmte Daten hervorzuheben](guides/configuring-time-scale.md#styling) in der Zeitskala, verwenden Sie die **css**-Eigenschaft des [gantt.config.scales](api/config/scales.md) Objekts wie folgt:
+Um bestimmte Daten zu färben, verwenden Sie die CSS-Eigenschaft des [gantt.config.scales](api/config/scales.md) Objekts, wie unten gezeigt:
 
 ~~~js
 gantt.config.scales = [
-    {unit: "month", step: 1, format: "%Y %M"},
-    {unit: "day", step: 1, format: "%l, %F %d", css: function(date){
-        if(!gantt.isWorkTime({date: date, unit: "day"})){
+    { unit: "month", step: 1, format: "%Y %M" },
+    { unit: "day", step: 1, format: "%l, %F %d", css: (date) => {
+        if (!gantt.isWorkTime({ date: date, unit: "day" })) {
             return "weekend";
         }
         return "";
-    }}
+    } }
 ];
 ~~~
 
@@ -375,15 +373,13 @@ gantt.config.scales = [
 </style>
 ~~~
 
+**Verwandtes Beispiel**: [Duration includes only working days](https://docs.dhtmlx.com/gantt/samples/09_worktime/02_working_days.html)
 
-[Duration includes only working days](https://docs.dhtmlx.com/gantt/samples/09_worktime/02_working_days.html)
+Wenn Sie die gesamte Spalte färben müssen, verwenden Sie die **timeline_cell_class** Vorlage, wie unten beschrieben.
 
+### Datenbereich
 
-Wenn Sie eine ganze Spalte einfärben möchten, verwenden Sie das Template **timeline_cell_class**, das später beschrieben wird.
-
-<h3 id="data_area"><b>Datenbereich</b></h3>
-
-Die DOM-Struktur des Datenbereichs ist:
+Das DOM-Element des Datenbereichs hat folgende Struktur:
 
 ~~~js
 - .gantt_data_area
@@ -394,26 +390,26 @@ Die DOM-Struktur des Datenbereichs ist:
     - .gantt_links_area
         - .gantt_task_link
     - .gantt_bars_area
-        - .gantt_task_line 
-            - .gantt_task_progress_wrapper 
-                - .gantt_task_progress 
-            - .gantt_task_progress_drag 
-            - .gantt_task_content 
-            - .gantt_task_drag.task_start_date 
+        - .gantt_task_line
+            - .gantt_task_progress_wrapper
+                - .gantt_task_progress
+            - .gantt_task_progress_drag
+            - .gantt_task_content
+            - .gantt_task_drag.task_start_date
             - .gantt_task_drag.task_end_date
             - .gantt_link_control.task_start_date
             - .gantt_link_control.task_end_date
                 - .gantt_link_point
-    - div - custom layers
+    - div - benutzerdefinierte Ebenen
 ~~~
 
 ### Aufgabe {#task}
 
-#### Taskleiste
+#### Aufgabenbalken
 
-Um das Aussehen der Taskleiste anzupassen, definieren Sie Ihren eigenen Stil im **.gantt_task_line**-Selektor.
+Um das Aussehen des Aufgabenbalkens zu ändern, sollten Sie einen benutzerdefinierten Stil im Selektor `.gantt_task_line` deklarieren.
 
-Hier ein Beispiel, das den Rahmenstil der Leiste ändert:
+Ein Beispiel zur Änderung des Rahmenstils des Balkens ist unten angegeben:
 
 ~~~css
 .gantt_task_line {
@@ -421,43 +417,43 @@ Hier ein Beispiel, das den Rahmenstil der Leiste ändert:
 }
 ~~~
 
-**Related example:** [Styling borders of the task bars](https://snippet.dhtmlx.com/c24kdh89)
+**Verwandtes Beispiel**: [Styling borders of the task bars](https://snippet.dhtmlx.com/c24kdh89)
 
+Um die Farbe der Aufgabenbalken zu ändern, müssen Sie die folgenden zwei Schritte ausführen:
 
-Um die Farbe der Taskleisten anzupassen, gehen Sie wie folgt vor:
-
-1. Überschreiben Sie die Stile für Rahmen und Fortschrittsbalken, sodass deren Farben zu den benutzerdefinierten Farben der Taskleiste passen:
+1. Überschreiben Sie die Stile der Rahmenlinien und Fortschrittsbalken, damit deren Farben zu jeder benutzerdefinierten Farbe passen, die auf den Balken angewendet wird:
 
 ~~~css
-.gantt_task_line{
-    border-color: rgba(0, 0, 0, 0.25); /* Schwarze Farbe mit 25% Transparenz */
+.gantt_task_line {
+    border-color: rgba(0, 0, 0, 0.25); /* Schwarze Farbe mit 25% Transparenz/Alpha */
 }
+
 .gantt_task_line .gantt_task_progress {
     background-color: rgba(0, 0, 0, 0.25);
 }
 ~~~
 
-2. Legen Sie die gewünschte Farbe für die Taskleiste und deren Inhalt fest:
+2. Wenden Sie die notwendige Farbe sowohl auf den Balken als auch auf den Inhalt innerhalb des Balkens an:
 
 ~~~css
-.gantt_task_line{
+.gantt_task_line {
     background-color: #03A9F4;
 }
+
 .gantt_task_line.gantt_task_content {
     color: #fff;
 }
 ~~~
 
-Ein Beispiel, wie passende Farben für Rahmen und Fortschrittsbalken bei Taskleisten mit unterschiedlichen Farben angewendet werden können, finden Sie im Artikel [Task Coloring](guides/colouring-tasks.md#redefiningthetaskstemplate).
+Sie finden ein Beispiel für das Anwenden einer gemeinsamen Rahmen- und Fortschrittfarbe auf die Aufgabenbalken mit unterschiedlichen Farben im Artikel [Task Coloring](guides/colouring-tasks.md#redefiningthetaskstemplate).
 
+Um Zeilen von [Aufgaben](guides/task-types.md#regular-tasks), [Projekten](guides/task-types.md#project-tasks) oder [Meilensteinen](guides/task-types.md#milestones) zu färben, müssen Sie benutzerdefiniertes CSS zur entsprechenden Klassen-Selektor hinzufügen:
 
-Um Zeilen für [Tasks](guides/task-types.md#regulartasks), [Projekte](guides/task-types.md#projecttasks) oder [Meilensteine](guides/task-types.md#milestones) einzufärben, fügen Sie benutzerdefiniertes CSS für die entsprechenden Klassen-Selektoren hinzu:
+- `.gantt_task_line.gantt_bar_task`
+- `.gantt_task_line.gantt_bar_project`
+- `.gantt_task_line.gantt_bar_milestone`
 
-- **.gantt_task_line.gantt_bar_task**
-- **.gantt_task_line.gantt_bar_project**
-- **.gantt_task_line.gantt_bar_milestone**
-
-Hier ein Beispiel für das Styling einer ausgewählten Leiste:
+Ein Beispiel zum Styling eines ausgewählten Balkens:
 
 ~~~css
 .gantt_task_line.gantt_selected {
@@ -469,34 +465,29 @@ Hier ein Beispiel für das Styling einer ausgewählten Leiste:
 }
 ~~~
 
-**Related example:** [Styling selected bar](https://snippet.dhtmlx.com/9c6w6o78)
+**Verwandtes Beispiel**: [Styling selected bar](https://snippet.dhtmlx.com/9c6w6o78)
 
-Tasks eines [benutzerdefinierten Typs](guides/task-types.md#creatingacustomtype) erhalten einen Klassennamen, der diesen Typ widerspiegelt:
+Aufgaben eines [benutzerdefinierten Typs](guides/task-types.md#creating-a-custom-type) erhalten den entsprechenden Klassennamen:
 
-~~~js
-{ 
-    id: 2, text: "Task #1", start_date: "02-04-2018", duration: 8, 
-    type:"custom_type", parent: 1 /*!*/
-},
+~~~js {3}
+{ id: 2, text: "Task #1", start_date: "02-04-2028", duration: 8, type: "custom_type" },
 ~~~
 
-Dies entspricht dem Selektor **.gantt_task_line.gantt_bar_custom_type**.
+Der Aufgabenbalken erhält die CSS-Klasse `.gantt_task_line.gantt_bar_custom_type`.
 
-#### Geteilte Tasks
+#### Geteilte Aufgaben (Split tasks)
 
-[Geteilte Tasks](guides/split-tasks.md) sind Unteraufgaben eines übergeordneten Elements. Der hellgrüne Balken im Hintergrund stellt den Balken des übergeordneten Elements dar und ist anders gestylt.
+[Split tasks](guides/split-tasks.md) sind als Unteraufgaben eines übergeordneten Elements definiert, und der hellgrüne Balken im Hintergrund ist der Balken dieses übergeordneten Elements mit zusätzlichen angewendeten Stilen.
 
 ![](/img/split_parent_css.png)
 
+**Verwandtes Beispiel**: [Expand and collapse split tasks](https://docs.dhtmlx.com/gantt/samples/04_customization/21_open_split_task.html)
 
-[Expand and collapse split tasks](https://docs.dhtmlx.com/gantt/samples/04_customization/21_open_split_task.html)
+Wenn Sie das Beispiel öffnen und „Task #2“ erweitern, sehen Sie einen grünen Balken des zusammengefassten Elements „Task #2“.
 
+Wenn Split-Aufgaben in einer einzigen Zeile angezeigt werden, wird dieser grüne Balken immer noch an derselben Position gerendert, jedoch mit modifizierten Opacity- und Z-Index-Werten.
 
-Wenn Sie [das Beispiel](https://docs.dhtmlx.com/gantt/samples/) öffnen und „Task #2" erweitern, sehen Sie den grünen Balken des „Task #2"-Summenelements.
-
-Wenn geteilte Tasks in einer einzigen Zeile erscheinen, bleibt dieser grüne Balken an derselben Position, jedoch mit angepasster Transparenz und z-index.
-
-Sie können ihn wie jeden anderen Balken in der [Zeitleiste](guides/css-overview.md#stylingtimeline) stylen oder komplett mit folgendem CSS ausblenden:
+Sie können ihn auf dieselbe Weise stylen, wie Sie es auch bei allen Balken im [Timeline]-Bereich tun können, und ihn vollständig mit dem folgenden CSS ausblenden:
 
 ~~~css
 .gantt_task_line.gantt_split_parent {
@@ -504,24 +495,23 @@ Sie können ihn wie jeden anderen Balken in der [Zeitleiste](guides/css-overview
 }
 ~~~
 
-
-Wenn es nur einen geteilten Task gibt, wird das Summenelement (type="„project")" unsichtbar, da es vollständig vom geteilten Task überdeckt wird. Existieren keine geteilten Unteraufgaben, behält das Summenelement ein Standarddatum und eine Standarddauer.
+Wenn Sie nur eine einzige Split-Aufgabe haben, wird das Zusammenfassungs-Element (`type: "project"`) unsichtbar, da es vollständig von der Split-Aufgabe überdeckt wird. Falls es keine Split-Unteraufgaben gibt, hat das Zusammenfassungs-Element ein Standarddatum und eine Standarddauer.
 
 #### Fortschrittsbalken
 
-Verwenden Sie diese Selektoren, um den Fortschrittsbalken zu stylen:
+Die folgenden Selektoren können verwendet werden, um den Fortschrittsbalken zu färben:
 
-- **.gantt_task_progress** - zum Ändern der Füllfarbe des Fortschrittsbalkens;
-- **.gantt_task_progress_drag** - zum Stylen des Ziehgriffs des Fortschrittsbalkens.
+- `.gantt_task_progress` – zum Ändern der Farbe der Fortschrittsanzeige;
+- `.gantt_task_progress_drag` – zum Stylen des Griffs zum Ziehen des Fortschrittsbalkens.
 
-Hier einige Beispiele zur Anpassung von Task- und Fortschrittsbalken mit CSS:
+Sie können das Aussehen der Aufgaben- und Fortschrittsbalken durch Anwendung von CSS-Regeln wie folgt ändern:
 
-- Hintergrund, Text und Fortschrittsfarben ändern:
+- ein Beispiel zur Änderung von Hintergrund-, Vordergrund- und Fortschrittsfarben:
 
 ~~~css
 /* task */
 
-/* Hintergrundfarbe der Taskleisten */
+/* Hintergrundfarbe der Aufgabenbalken*/
 .gantt_task_line {
     background-color: #3db9d3;
     border: 1px solid #2898b0;
@@ -538,11 +528,11 @@ Hier einige Beispiele zur Anpassung von Task- und Fortschrittsbalken mit CSS:
 }
 ~~~
 
-- Styling von Projekt-(Summary-)Balken:
+- ein Beispiel zur Stilgebung von Projekt-(Zusammenfassungs) Balken:
 
 ~~~css
 /* project */
-/* Hintergrundfarbe der Projektbalken */
+/* Hintergrundfarbe der Projektbalken*/
 .gantt_task_line.gantt_bar_project {
     background-color: #65c16f;
     border: 1px solid #3c9445;
@@ -554,7 +544,7 @@ Hier einige Beispiele zur Anpassung von Task- und Fortschrittsbalken mit CSS:
 }
 ~~~
 
-- Styling von Meilenstein-Balken:
+- ein Beispiel zur Stilgebung von Meilenstein-Balken:
 
 ~~~css
 /* milestone */
@@ -564,28 +554,29 @@ Hier einige Beispiele zur Anpassung von Task- und Fortschrittsbalken mit CSS:
 }
 ~~~
 
-**Related example:** [Background, foreground, and progress colors. Styling Project and Milestone bars.](https://snippet.dhtmlx.com/f2rmc1oc)
+**Verwandtes Beispiel**: [Background, foreground, and progress colors. Styling Project and Milestone bars.](https://snippet.dhtmlx.com/f2rmc1oc)
 
-#### Benutzerdefinierte Farbe für bestimmte Taskleisten
+#### Benutzerdefinierte Farbe für bestimmte Aufgabenbalken
 
-Um bestimmten Taskleisten Farben zuzuweisen, fügen Sie eine benutzerdefinierte Klasse über das Template [gantt.templates.task_class](api/template/task_class.md) hinzu:
+Wenn Sie eine Farbe für bestimmte Aufgabenbalken festlegen möchten, müssen Sie ihnen eine benutzerdefinierte Klasse über das [gantt.templates.task_class](api/template/task_class.md) Template zuweisen:
 
 ~~~js
-gantt.templates.task_class = function(start, end, task){
-    if(task.highlight){
+gantt.templates.task_class = (startDate, endDate, task) => {
+    if (task.highlight) {
         return "highlighted_task";
     }
     return "";
 };
 ~~~
 
-Stylen Sie diese Klasse dann im CSS:
+und diese benutzerdefinierte Klasse im Selektor verwenden:
 
 ~~~css
 .highlighted_task.gantt_task_line {
     background-color: #ff9668;
     border-color: rgba(0,0,0,0.3);
 }
+
 .highlighted_task .gantt_task_progress {
     text-align: center;
     z-index: 0;
@@ -593,21 +584,21 @@ Stylen Sie diese Klasse dann im CSS:
 }
 ~~~
 
-**Related example:** [Styling particular task bars](https://snippet.dhtmlx.com/yyoe31vo)
+**Verwandtes Beispiel**: [Styling particular task bars](https://snippet.dhtmlx.com/yyoe31vo)
 
-#### Bereich innerhalb der Taskleiste hervorheben
+#### Hervorhebung von Bereichen innerhalb des Aufgabenbalkens
 
-Um bestimmte Bereiche innerhalb einer Taskleiste hervorzuheben, fügen Sie mit dem Template [gantt.templates.task_text](api/template/task_text.md) zusätzliche Elemente in die Leiste ein:
+Wenn Sie einige Bereiche innerhalb des Aufgabenbalkens hervorheben möchten, müssen Sie zusätzliche Elemente in den Balken über das [gantt.templates.task_text](api/template/task_text.md) Template einfügen:
 
 ~~~js
-gantt.templates.task_text = function(start, end, task){
-    return '<div class="custom_progress warm_up" style="width:20%"></div>' +
-      '<div class="custom_progress in_progress" style="width:60%">'+task.text+'</div>'
-      '<div class="custom_progress cool_down" style="width:20%"></div>';
-};
+gantt.templates.task_text = (startDate, endDate, task) => `
+    <div class="custom_progress warm_up" style="width: 20%"></div>
+    <div class="custom_progress in_progress" style="width: 60%">${task.text}</div>
+    <div class="custom_progress cool_down" style="width: 20%"></div>
+`;
 ~~~
 
-Definieren Sie anschließend die Stile für diese Elemente:
+und CSS anwenden:
 
 ~~~css
 .custom_progress {
@@ -630,13 +621,11 @@ Definieren Sie anschließend die Stile für diese Elemente:
 }
 ~~~
 
+**Verwandtes Beispiel**: [Custom html content (Stackbar)](https://docs.dhtmlx.com/gantt/samples/04_customization/09_html_content.html)
 
-[Custom html content (Stackbar)](https://docs.dhtmlx.com/gantt/samples/04_customization/09_html_content.html)
+### Verknüpfung {#link}
 
-
-### Verbindung {#link}
-
-Die DOM-Struktur einer Verbindung sieht folgendermaßen aus:
+Die Struktur des DOM-Elements der Verknüpfung ist unten angegeben:
 
 ~~~js
 - .gantt_task_link
@@ -649,7 +638,7 @@ Die DOM-Struktur einer Verbindung sieht folgendermaßen aus:
 - .gantt_link_arrow.gantt_link_arrow_left
 ~~~
 
-Hier ein Beispiel, wie Sie die Elemente der Abhängigkeitsverbindung einfärben können:
+Hier ist ein Beispiel, wie Sie die Elemente der Abhängigkeitsverbindungen färben können:
 
 ~~~css
 .gantt_line_wrapper div {
@@ -666,49 +655,49 @@ Hier ein Beispiel, wie Sie die Elemente der Abhängigkeitsverbindung einfärben 
 }
 ~~~
 
-**Related example:** [Styling links](https://snippet.dhtmlx.com/unlr4jbw)
+**Verwandtes Beispiel**: [Styling links](https://snippet.dhtmlx.com/unlr4jbw)
 
-Die Dicke der Verbindungslinie wird über die Einstellung [gantt.config.link_line_width](api/config/link_line_width.md) gesteuert.
+Die Dicke der Verbindungs-Linie wird über die Konfiguration [gantt.config.link_line_width](api/config/link_line_width.md) festgelegt.
 
-## Resizer {#.resizer}
+### Resizer {#resizer}
 
-Diese Selektoren richten sich an die Resizer-Elemente:
+Die folgenden Selektoren können angewendet werden, um das DOM-Element des Resizers zu stylen:
 
-- **.gantt_task_drag**
-- **.gantt_task_drag.task_start_date**
-- **.gantt_task_drag.task_end_date**
+- `.gantt_task_drag`
+- `.gantt_task_drag.task_start_date`
+- `.gantt_task_drag.task_end_date`
 
-Um den Resizer für das Startdatum zu deaktivieren, verwenden Sie:
+Ein Beispiel zum Deaktivieren des Resizers des Startdatums:
 
 ~~~css
-.gantt_task_line:hover .gantt_task_drag.task_start_date{
+.gantt_task_line:hover .gantt_task_drag.task_start_date {
     display: none;
 }
 ~~~
 
-**Related example:** [Disabling resizer of the start date](https://snippet.dhtmlx.com/x8lpcu2d)
+**Verwandtes Beispiel**: [Disabling resizer of the start date](https://snippet.dhtmlx.com/x8lpcu2d)
 
-Um den Resizer für das Enddatum zu deaktivieren, verwenden Sie:
+Ein Beispiel zum Deaktivieren des Resizers des Enddatums:
 
 ~~~css
-.gantt_task_line:hover .gantt_task_drag.task_end_date{
+.gantt_task_line:hover .gantt_task_drag.task_end_date {
     display: none;
 }
 ~~~
 
-**Related example:** [Disabling resizer of the end date](https://snippet.dhtmlx.com/9gtsg4s8)
+**Verwandtes Beispiel**: [Disabling resizer of the end date](https://snippet.dhtmlx.com/9gtsg4s8)
 
-### Verbindungssteuerung {#link_control}
+### Verknüpfungssteuerung {#link_control}
 
-Verwenden Sie diese Selektoren, um die runden Handle-Elemente am Anfang oder Ende eines Tasks zu stylen:
+Die folgenden Selektoren können verwendet werden, um Stile auf das Element des runden Griffs am Anfang (Ende) der Aufgabe anzuwenden:
 
-- **.gantt_link_control .gantt_link_point**
-- **.gantt_link_control.task_start_date .gantt_link_point**
-- **.gantt_link_control.task_end_date .gantt_link_point**
+- `.gantt_link_control .gantt_link_point`
+- `.gantt_link_control.task_start_date .gantt_link_point`
+- `.gantt_link_control.task_end_date .gantt_link_point`
 
-### Hintergrundraster {#background_grid}
+### Hintergrund-Raster {#background_grid}
 
-Die DOM-Struktur des Hintergrundrasters ist wie folgt:
+Die Struktur des DOM-Elements des Hintergrund-Rasters sieht wie folgt aus:
 
 ~~~js
 - .gantt_data_area
@@ -718,10 +707,9 @@ Die DOM-Struktur des Hintergrundrasters ist wie folgt:
             - .gantt_task_cell
 ~~~
 
-
 #### Hintergrundzeilen:
 
-Um den Standardstil der Hintergrundzeilen anzupassen, fügen Sie eigene Stile zum **.gantt_task_row**-Selektor hinzu. Zum Beispiel:
+Um die Standardstil-Einstellungen der Hintergrundzeilen zu ändern, müssen Sie dem Selektor `.gantt_task_row` einen benutzerdefinierten Stil hinzufügen. Zum Beispiel:
 
 ~~~css
 .gantt_row,
@@ -731,9 +719,9 @@ Um den Standardstil der Hintergrundzeilen anzupassen, fügen Sie eigene Stile zu
 }
 ~~~
 
-Um jede zweite Hintergrundzeile unterschiedlich einzufärben, definieren Sie benutzerdefinierte Stile im **.gantt_task_row.odd**-Selektor.
+Um jede zweite Hintergrundzeile zu färben, sollten Sie benutzerdefinierte CSS-Eigenschaften im Selektor `.gantt_task_row.odd` definieren.
 
-Sie können auch Stile für ausgewählte Zeilen wie folgt festlegen:
+Sie können einfach benutzerdefinierte Farben für die ausgewählte Zeile festlegen, zum Beispiel:
 
 ~~~css
 .gantt_grid_data .gantt_row.gantt_selected,
@@ -741,29 +729,29 @@ Sie können auch Stile für ausgewählte Zeilen wie folgt festlegen:
 .gantt_task_row.gantt_selected {
     background-color: #fff3a1;
 }
-.gantt_task_row.gantt_selected .gantt_task_cell{
+.gantt_task_row.gantt_selected .gantt_task_cell {
     border-right-color: #ffec6e;
 }
 ~~~
 
-**Related example:** [Styling selected row](https://snippet.dhtmlx.com/y393xnmv)
+**Verwandtes Beispiel**: [Styling selected row](https://snippet.dhtmlx.com/y393xnmv)
 
 #### Hintergrundzellen
 
-Um den Standardstil der Hintergrundzellen anzupassen, definieren Sie einen benutzerdefinierten Stil mit dem **.gantt_task_cell**-Selektor.
+Um die Standardeinstellungen der Hintergrundzellen zu ändern, sollten Sie einen benutzerdefinierten Stil im Selektor `.gantt_task_cell` festlegen.
 
-Zum Einfärben von Hintergrundspalten verwenden Sie das [timeline_cell_class](api/template/timeline_cell_class.md) Template:
+Um die Hintergrundspalten zu färben, verwenden Sie die Vorlage [timeline_cell_class](api/template/timeline_cell_class.md):
 
 ~~~js
-gantt.templates.timeline_cell_class = function (task, date) {
-    if(!gantt.isWorkTime({date: date, unit: "day", task: task})){
+gantt.templates.timeline_cell_class = (task, date) => {
+    if (!gantt.isWorkTime({ date: date, unit: "day", task: task })) {
         return "weekend";
     }
     return "";
 };
 ~~~
 
-Anschließend wenden Sie folgendes CSS an:
+und CSS anwenden:
 
 ~~~css
 .gantt_task_cell.weekend {
@@ -775,17 +763,15 @@ Anschließend wenden Sie folgendes CSS an:
 }
 ~~~
 
+**Verwandtes Beispiel**: [Duration includes only working days](https://docs.dhtmlx.com/gantt/samples/09_worktime/02_working_days.html)
 
-[Duration includes only working days](https://docs.dhtmlx.com/gantt/samples/09_worktime/02_working_days.html)
+## Ressourcenbereich
 
+Der [Ressourcenbereich](guides/resource-management.md#resourceviewpanel) besteht aus Grids und Timelines, ähnlich dem Haupt-Gantt-Bereich.
 
-## Ressourcen-Panel {#resourcepanel}
+Standardmäßig verwenden Grids und Timelines der Ressourcenansicht globale Templates und Konfigurationen. Sie können unterschiedliche Konfigurationen und Templates für den Ressourcenbereich verwenden, indem Sie diese in die [layout config](guides/layout-config.md#configs-and-templates-of-views) übergeben.
 
-Das [Ressourcen-Panel](guides/resource-management.md#resourceviewpanel) enthält Grids und Zeitachsen, ähnlich wie im Hauptbereich von Gantt.
-
-Standardmäßig verwenden die Grids und Zeitachsen in der Ressourcenansicht globale Templates und Konfigurationen. Sie können jedoch spezifische Templates und Konfigurationen für das Ressourcen-Panel zuweisen, indem Sie diese in der [layout config](guides/layout-config.md#configsandtemplatesofviews) übergeben.
-
-Um das Ressourcen-Grid und die Zeitachse zu stylen, verwenden Sie CSS-Selektoren, die auf die entsprechenden View-Namen abzielen:
+Sie können das Ressourcen-Grid und die Ressourcen-Timeline anhand des entsprechenden View-Namens im CSS-Selektor anvisieren:
 
 ~~~css
 .resourceGrid_cell .gantt_row,
@@ -795,26 +781,26 @@ Um das Ressourcen-Grid und die Zeitachse zu stylen, verwenden Sie CSS-Selektoren
 }
 ~~~
 
-Die DOM-Struktur des Ressourcen-Panels sieht folgendermaßen aus:
+Die allgemeine Struktur des DOM-Elements des Ressourcenbereichs sieht unten so aus:
 
 ~~~js
 - .gantt_layout_root
-    - .grid_cell 
-    - .timeline_cell 
-    - .resourceGrid_cell 
-    - .resourceHistogram_cell 
+    - .grid_cell
+    - .timeline_cell
+    - .resourceGrid_cell
+    - .resourceHistogram_cell
     - .resourceTimeline_cell
 ~~~
 
-Die Klassennamen unter **.gantt_layout_root** entsprechen den **view**-Eigenschaften in der Layout-Konfiguration:
+Die Namen der Klassen unter `.gantt_layout_root` stammen aus der Layout-Konfiguration und stimmen mit dem Wert der Eigenschaft **view** einer Layout-Zelle überein:
 
-~~~js
+~~~js {6,14,16}
 gantt.config.layout = {
     css: "gantt_container",
     rows: [
         {
             cols: [
-                {view: "grid", group:"grids", scrollY: "scrollVer"}, /*!*/
+                { view: "grid", group: "grids", scrollY: "scrollVer" },
                 ...
             ]
         },
@@ -822,10 +808,10 @@ gantt.config.layout = {
         {
             id: "resources",
             cols: [
-                { view: "resourceGrid", group:"grids", scrollY: "resourceVScroll" }, /*!*/
+                { view: "resourceGrid", group: "grids", scrollY: "resourceVScroll" },
                 ...
-                { view: "resourceHistogram", capacity:24, scrollX: "scrollHor", /*!*/ 
-                    scrollY: "resourceVScroll" }, 
+                { view: "resourceHistogram", capacity: 24, scrollX: "scrollHor",
+                    scrollY: "resourceVScroll" },
                 ...
             ]
         },
@@ -834,41 +820,41 @@ gantt.config.layout = {
 };
 ~~~
 
-### Ressourcen-Grid {#resource_grid}
+### Ressourcengrid {#resource_grid}
 
-![](//img/resource_grid.png)
+![resource_grid](/img/resource_grid.png)
 
-Das Ressourcen-Grid verwendet die gleichen Selektoren wie das Aufgaben-Grid, wobei **.resourceGrid_cell** als Top-Level-Selektor dient:
+Sie können dieselben Selektoren wie beim Aufgaben-Grid verwenden, der oberste Selektor ist `.resourceGrid_cell`:
 
 ~~~css
 .resourceGrid_cell .gantt_row,
-.resourceGrid_cell .gantt_row.odd{
+.resourceGrid_cell .gantt_row.odd {
     background-color: rgba(232, 232, 232, 0.6);
 }
 ~~~
 
-### Ressourcen-Histogramm {#resource_histogram}
+### Ressourcenhistogramm {#resource_histogram}
 
-![](//img/resource_histogram_css.png)
+![resource_histogram_css](/img/resource_histogram_css.png)
 
-Das Ressourcen-Histogramm teilt sich Elemente mit der Haupt-Zeitachse. Standardmäßig gelten Selektoren, die auf die Haupt-Zeitachse abzielen, auch für die Ressourcen-Zeitachse, sofern die Selektoren nicht speziell Klassen wie **.timeline_cell** oder **.resourceHistogram_cell** verwenden.
+Das Ressourcenhistogramm hat die gleichen Elemente wie die Haupt-Timeline. Standardmäßig zielen alle Selektoren, die auf die Haupt-Timeline abzielen, auch auf die Ressourcen-Timeline ab, sofern Sie nicht die Layout-Zellenklasse (`.timeline_cell`, `.resourceHistogram_cell`) in Ihren Selektoren verwenden.
 
-Um gezielt das Ressourcen-Histogramm anzusprechen, nutzen Sie den Selektor **.resourceHistogram_cell**.
+Sie können das Ressourcenhistogramm mit dem folgenden Selektor anvisieren: `.resourceHistogram_cell`.
 
-Die DOM-Struktur des Ressourcen-Histogramms beinhaltet:
+Die allgemeine Struktur des DOM-Elements des Ressourcenhistogramms:
 
 ~~~js
 - .gantt_task_bg
 - .gantt_bars_area
     - div
-        - .gantt_histogram_fill 
-        - .gantt_histogram_cell 
+        - .gantt_histogram_fill
+        - .gantt_histogram_cell
     - div
         - .gantt_histogram_hor_bar
         - .gantt_histogram_vert_bar
 ~~~
 
-Hier ein Beispiel für das Styling von Histogramm-Elementen:
+Ein Beispiel zur Änderung der Farbe der Histogramm-Elemente:
 
 ~~~css
 .gantt_histogram_cell {
@@ -885,17 +871,17 @@ Hier ein Beispiel für das Styling von Histogramm-Elementen:
 }
 ~~~
 
-Um bestimmte Zellen zu stylen, verwenden Sie das [gantt.templates.histogram_cell_class](api/template/histogram_cell_class.md) Template:
+Um die Farbe bestimmter Zellen zu ändern, verwenden Sie die [gantt.templates.histogram_cell_class](api/template/histogram_cell_class.md) Vorlage:
 
 ~~~js
-gantt.templates.histogram_cell_class = function(start_date,end_date,resource,tasks) {
-    if (getAllocatedValue(tasks, resource) > getCapacity(start_date, resource)) {
-        return "column_overload"
+gantt.templates.histogram_cell_class = (startDate, endDate, resource, resourceTasks) => {
+    if (getAllocatedValue(resourceTasks, resource) > getCapacity(startDate, resource)) {
+        return "column_overload";
     }
 };
 ~~~
 
-Wenden Sie CSS an, um diese Zellen hervorzuheben:
+und CSS anwenden:
 
 ~~~css
 .column_overload .gantt_histogram_fill {
@@ -903,12 +889,12 @@ Wenden Sie CSS an, um diese Zellen hervorzuheben:
 }
 ~~~
 
-Um die Histogramm-Linien anzupassen, verwenden Sie CSS für die folgenden Selektoren:
+Um die Histogramm-Linie zu färben, können Sie benutzerdefinierte CSS auf die folgenden Klassen-Selektoren anwenden:
 
-- **.gantt_histogram_hor_bar**
-- **.gantt_histogram_vert_bar**
+- `.gantt_histogram_hor_bar`
+- `.gantt_histogram_vert_bar`
 
-Beispielsweise können Sie deren Farbe so ändern:
+Die Farbe der Histogramm-Linie ändern Sie so:
 
 ~~~css
 .gantt_histogram_hor_bar, .gantt_histogram_vert_bar {
@@ -918,13 +904,13 @@ Beispielsweise können Sie deren Farbe so ändern:
 
 ### Ressourcen-Diagramm {#resource_diagram}
 
-![](//img/resource_diagram.png)
+![resource_diagram](/img/resource_diagram.png)
 
-Das Ressourcen-Diagramm verwendet die gleichen Elemente wie die Haupt-Zeitachse. Standardmäßig gelten Selektoren, die auf die Haupt-Zeitachse abzielen, auch hier, sofern sie nicht mit layout cell-Klassen wie **.timeline_cell** oder **.resourceTimeline_cell** eingeschränkt sind.
+Das Ressourcen-Diagramm hat dieselben Elemente wie die Haupttimeline. Standardmäßig zielen alle Selektoren, die auf die Haupttimeline abzielen, auch auf die Ressourcen-Timeline ab, sofern Sie nicht die Layout-Zellenklasse (`.timeline_cell`, `.resourceTimeline_cell`) in Ihren Selektoren verwenden.
 
-Mit dem Selektor **.resourceTimeline_cell** können Sie gezielt das Ressourcen-Diagramm ansprechen.
+Sie können das Ressourcen-Diagramm mit dem folgenden Selektor anvisieren: `.resourceTimeline_cell`.
 
-Die DOM-Struktur des Ressourcen-Diagramms umfasst:
+Die allgemeine Struktur des DOM-Elements des Ressourcen-Diagramms:
 
 ~~~js
 - .gantt_task_bg
@@ -934,9 +920,9 @@ Die DOM-Struktur des Ressourcen-Diagramms umfasst:
             - div
 ~~~
 
-Der Top-Level-Selektor ist **.resourceTimeline_cell**.
+Der oberste Selektor ist `.resourceTimeline_cell`.
 
-Ein Beispielstil für Ressourcen-Diagramm-Labels:
+Beispiel für Style der Beschriftungen des Ressourcen-Diagramms:
 
 ~~~css
 .gantt_resource_marker div {
@@ -950,7 +936,7 @@ Ein Beispielstil für Ressourcen-Diagramm-Labels:
 }
 ~~~
 
-Um Stile für spezifische Marker anzupassen, verwenden Sie das [gantt.templates.resource_cell_class](api/template/resource_cell_class.md) Template:
+Um Styles bestimmter Marker zu ändern, verwenden Sie die [gantt.templates.resource_cell_class](api/template/resource_cell_class.md) Vorlage:
 
 ~~~css
 <style>
@@ -961,15 +947,14 @@ Um Stile für spezifische Marker anzupassen, verwenden Sie das [gantt.templates.
 ~~~
 
 ~~~js
-gantt.templates.resource_cell_class = function(start_date, end_date, resource, tasks){
-    var css = [];
-    css.push("resource_marker");
-    if (tasks.length <= 1) {
-        css.push("workday_ok");
+gantt.templates.resource_cell_class = (startDate, endDate, resource, resourceTasks) => {
+    const cssClasses = [];
+    cssClasses.push("resource_marker");
+    if (resourceTasks.length <= 1) {
+        cssClasses.push("workday_ok");
     } else {
-        css.push("workday_over");
+        cssClasses.push("workday_over");
     }
-    return css.join(" ");
+    return cssClasses.join(" ");
 };
 ~~~
-

@@ -6,25 +6,25 @@ sidebar_label: "Несколько диаграмм Gantt на одной стр
 # Несколько диаграмм Gantt на одной странице
 
 :::info
-Эта функция включена в Gantt PRO версии, доступной с лицензиями Commercial (начиная с 6 октября 2021), Enterprise и Ultimate
+Эта функциональность доступна в версиях Gantt PRO под коммерческой лицензией (с 6 октября 2021 года), а также в лицензиях Enterprise и Ultimate
 :::
 
-По своей сути, dhtmlxGantt работает как статический объект, и его экземпляр по умолчанию всегда присутствует на странице. Вы можете получить к нему доступ в любое время через глобальный объект **gantt**. Однако при необходимости вы также можете создать новый экземпляр gantt.
+По сути, DHTMLX Gantt представляет собой статический объект, и его экземпляр по умолчанию постоянно существует на странице. Вы можете получить к нему доступ через глобальный объект `gantt` в любое время. Но при необходимости можно также создать новый объект Gantt.
 
-## Конфигурация экземпляра Gantt {#ganttinstanceconfiguration}
+## Конфигурация экземпляра Gantt
 
-Для создания нового экземпляра dhtmlxGantt используйте метод **Gantt.getGanttInstance()**:
+Чтобы создать новый экземпляр DHTMLX Gantt, используйте метод `Gantt.getGanttInstance()`:
 
 ~~~js
-// обратите внимание, что "Gantt" начинается с заглавной буквы
+// beware, "Gantt" in the command goes with the capital letter
 const ganttChart = Gantt.getGanttInstance();
 ~~~
 
-Этот метод может принимать объект конфигурации в качестве аргумента:
+Метод может принимать в качестве параметра объект конфигурации:
 
 ~~~js
-const gantt = Gantt.getGanttInstance({
-    plugins:{
+const ganttInstance = Gantt.getGanttInstance({
+    plugins: {
         auto_scheduling: true,
     },
     container: "gantt_here",
@@ -35,27 +35,27 @@ const gantt = Gantt.getGanttInstance({
         auto_scheduling: true,
         auto_scheduling_strict: true,
         auto_scheduling_initial: true,
-        start_date: new Date(2020, 0, 1),
-        end_date: new Date(2021, 0, 1),
+        start_date: new Date(2027, 0, 1),
+        end_date: new Date(2028, 0, 1),
     },
     calendars: [
         {
-            id:"global",
+            id: "global",
             worktime: {
                 hours: ["8:00-17:00"],
-                days: [ 0, 1, 1, 1, 1, 0 ,0],
+                days: [0, 1, 1, 1, 1, 0, 0],
                 customWeeks: {
                     lastMonthOfYear: {
-                        from: new Date(2020, 11, 1),// 1 декабря 2020
-                        to: new Date(2021, 0, 1),// 1 января 00:00, 2021,
+                        from: new Date(2027, 11, 1),
+                        to: new Date(2028, 0, 1),
                         hours: ["9:00-13:00"],
-                        days: [ 0, 1, 1, 1, 1, 1, 0]
+                        days: [0, 1, 1, 1, 1, 1, 0]
                     },
-                    firstMonthOfNextYear:{
-                        from: new Date(2021, 0, 1),// 1 января 2021
-                        to: new Date(2021, 1, 1),// 1 февраля 00:00, 2021,
+                    firstMonthOfNextYear: {
+                        from: new Date(2028, 0, 1),
+                        to: new Date(2028, 1, 1),
                         hours: ["14:00-16:00"],
-                        days: [ 1, 1, 1, 1, 1, 0, 1]
+                        days: [1, 1, 1, 1, 1, 0, 1]
                     }
                 }
             }
@@ -64,17 +64,12 @@ const gantt = Gantt.getGanttInstance({
     data: {
         tasks: [
             { id: 11, text: "Project #1", type: "project", "open": true, "parent": 0 },
-            { id: 1, start_date: "05-04-2020", text: "1", duration: 1, parent: "11", 
-            type: "task" },
-            { id: 2, start_date: "05-04-2020", text: "2", duration: 3, parent: "11", 
-            type: "task" },
-            { id: 3, start_date: "05-04-2020", text: "3", duration: 3, parent: "11", 
-            type: "task" },
-            { id: 4, start_date: "05-04-2020", text: "4", duration: 3, parent: "11", 
-            type: "task" },
-            { id: 5, start_date: "05-04-2020", text: "5", duration: 1, parent: "11", 
-            type: "task" }
-        ], 
+            { id: 1, text: "1", start_date: "2027-04-05", duration: 1, parent: "11" },
+            { id: 2, text: "2", start_date: "2027-04-05", duration: 3, parent: "11" },
+            { id: 3, text: "3", start_date: "2027-04-05", duration: 3, parent: "11" },
+            { id: 4, text: "4", start_date: "2027-04-05", duration: 3, parent: "11" },
+            { id: 5, text: "5", start_date: "2027-04-05", duration: 1, parent: "11" }
+        ],
         links: [
             { source: "1", target: "2", type: "0", id: 1 },
             { source: "1", target: "3", type: "0", id: 2 },
@@ -87,158 +82,170 @@ const gantt = Gantt.getGanttInstance({
 });
 ~~~
 
-Это создаст диаграмму Gantt, инициализированную с заданными параметрами.
+В итоге получится инициализированная диаграмма Gantt с указанными настройками.
 
-Объект config поддерживает следующие свойства:
+Объект конфигурации может содержать следующие поля:
 
-- **container** - (*string|HTMLElement*) HTML-контейнер (или его id), в котором будет отрисована диаграмма Gantt. Если не указано, Gantt инициализируется без контейнера.
-- **config** - (*object*) параметры конфигурации диаграммы Gantt
-- **calendars** - (*array*) массив рабочих календарей для загрузки в gantt. Календарь должен быть в формате, поддерживаемом методом [gantt.addCalendar](api/method/addcalendar.md).
-- **templates** - (*object*) объект, содержащий шаблоны
-- **events** - (*object*) объект с обработчиками событий. 
+- `container` - (*string|HTMLElement*) HTML-контейнер или его ID, в котором будет отображаться диаграмма Gantt. Если не указан, Gantt будет инициализирован без контейнера.
+- `config` - (*object*) объект с настройками конфигурации диаграммы Gantt
+- `calendars` - (*array*) массив календарей рабочего времени, которые будут загружены в экземпляр Gantt. Календари должны задаваться в формате, поддерживаемом методом [`gantt.addCalendar()`](api/method/addcalendar.md)
+- `templates` - (*object*) объект с шаблонами
+- `events` - (*object*) объект обработчиков событий
 
-
-При указании обработчиков событий для нового экземпляра Gantt используйте следующий формат:
+Необходимо использовать следующий формат при указании обработчиков событий для нового экземпляра Gantt:
 
 ~~~js
-const gantt = Gantt.getGanttInstance({
-     events: {
-          onTaskCreated: function(task){
-               task.owner = null;
-               return true;
-          },
-          onTaskClick: function(id){
-               alert(gantt.getTask(id).text);
-               return true;
-          }
-     }
-})
+const ganttInstance = Gantt.getGanttInstance({
+    events: {
+        onTaskCreated: (task) => {
+            task.owner = null;
+            return true;
+        },
+        onTaskClick: (taskId) => {
+            alert(ganttInstance.getTask(taskId).text);
+            return true;
+        }
+    }
+});
 ~~~
 
-- **data** - (*object|string*) данные для загрузки или URL для получения данных
-- **plugins** - (*object*) плагины для активации
-- **locale** - (*string|object*) двухбуквенный код языка или объект локали для активации
+- `data` - (*object|string*) объект с данными для загрузки или URL для загрузки данных
+- `plugins` - (*object*) расширения, которые нужно активировать
+- `locale` - (*string|object*) двухбуквенный код языка или объект локали, которую нужно активировать
 
-**Обратите внимание**, что вызов **Gantt.getGanttInstance()** без аргументов возвращает объект gantt с настройками по умолчанию. В этом случае вам потребуется настроить, инициализировать и загрузить данные в новый экземпляр как обычно.
+Обратите внимание, что вызов метода `Gantt.getGanttInstance()` без параметров вернёт объект Gantt с настройками конфигурации по умолчанию. Поэтому вам нужно будет сконфигурировать ваш новый экземпляр, инициализировать его и заполнить данными, как обычно.
 
-Простой пример с двумя диаграммами Gantt, размещёнными вертикально:
+Рассмотрим простой пример: две диаграммы Gantt, одна под другой:
 
 ~~~js
-window.addEventListener("DOMContentLoaded", function(){
-    var gantt1 = Gantt.getGanttInstance();
-    gantt1.init("gantt_here");
-    gantt1.parse(tasksA);
+window.addEventListener("DOMContentLoaded", () => {
+    const firstGantt = Gantt.getGanttInstance();
+    firstGantt.init("gantt_here");
+    firstGantt.parse(tasksA);
 
-    var gantt2 = Gantt.getGanttInstance();
-    gantt2.init("gantt_here_2");
-    gantt2.parse(tasksB);
+    const secondGantt = Gantt.getGanttInstance();
+    secondGantt.init("gantt_here_2");
+    secondGantt.parse(tasksB);
 });
+~~~
 
+~~~html
 <body>
-<div id="gantt_here" style="width:100%; height: 50%;"></div>
-<div id="gantt_here_2" style="width:100%; height: 50%;"></div>
+    <div id="gantt_here" style="width: 100%; height: 50%;"></div>
+    <div id="gantt_here_2" style="width: 100%; height: 50%;"></div>
 </body>
 ~~~
 
-## Интеграция с dhtmlxLayout {#integrationwithdhtmlxlayout}
+## Интеграция с DHTMLX Layout
 
-Один из эффективных способов организации нескольких диаграмм Gantt на странице - использование [dhtmlxLayout](https://docs.dhtmlx.com/layout__index.html). Он предоставляет удобный фреймворк для компоновки и корректно обрабатывает взаимодействие с другими элементами страницы и события изменения размеров.
+Хороший способ разместить несколько диаграмм Gantt на странице — использовать [DHTMLX Layout](https://docs.dhtmlx.com/suite/layout/).
+Он не только предоставляет удобную рамку макета, но и обеспечивает корректное взаимодействие с другими элементами на странице и адаптацию к изменениям размера страницы.
 
 :::note
-Обратите внимание, что dhtmlxLayout - это отдельный продукт, не входящий в библиотеку dhtmlxGantt. Для использования dhtmlxLayout в вашем проекте требуется отдельная покупка лицензии.
-Пожалуйста, [ознакомьтесь с вариантами лицензирования](https://dhtmlx.com/docs/products/dhtmlxLayout/#editions-licenses).
+Обратите внимание, что DHTMLX Layout — отдельный продукт и не является частью библиотеки DHTMLX Gantt. Если вы хотите использовать DHTMLX Layout в своем приложении, следует приобрести лицензию.
+Пожалуйста [проверьте варианты лицензирования](https://dhtmlx.com/docs/products/licenses.shtml).
 :::
 
-**Чтобы прикрепить экземпляр dhtmlxGantt к ячейке layout**, используйте метод **attachGantt()**.
-
-**Примечание:** при прикреплении dhtmlxGantt к ячейке он автоматически инициализируется. Поэтому убедитесь, что вы настроили экземпляр gantt до его прикрепления к layout.
+Объект DHTMLX Gantt можно поместить в элемент макета, определив контейнер в ячейке и инициализировав Gantt внутри него.
 
 ~~~js
-function init() {
-    var dhxLayout = new dhtmlXLayoutObject(document.body, "2U");
+new dhx.Layout("layout_container", {
+    rows: [
+        {
+            id: "top",
+            height: "50%",
+            html: '<div id="gantt_here" style="width: 100%; height: 100%;"></div>'
+        },
+        {
+            id: "bottom",
+            height: "50%",
+            html: '<div id="gantt_here_2" style="width: 100%; height: 100%;"></div>'
+        }
+    ]
+});
 
-    gantt1 = Gantt.getGanttInstance();
-    gantt1.config.min_column_width = 50;
-    gantt1.config.scale_height = 90;
-    dhxLayout.cells("a").attachGantt(null, null, gantt1); /*!*/
-    gantt1.parse(tasksA);
-        
-    gantt2 = Gantt.getGanttInstance();
-    gantt2.config.date_grid = "%Y-%m-%d %H:%i";
-    gantt2.config.xml_date = "%Y-%m-%d %H:%i:%s";
-    dhxLayout.cells("b").attachGantt(null, null, gantt2); /*!*/
-    gantt2.parse(tasksB);
-}
+const firstGantt = Gantt.getGanttInstance();
+firstGantt.init("gantt_here");
+firstGantt.parse(tasksA);
+
+const secondGantt = Gantt.getGanttInstance();
+secondGantt.init("gantt_here_2");
+secondGantt.parse(tasksB);
 ~~~
 
-## Деструктор экземпляров Gantt и DataProcessor {#destructorofganttanddataprocessorinstances}
+## Уничтожение экземпляров Gantt и DataProcessor {#destructorofganttanddataprocessorinstances}
 
-Начиная с версии 5.1, объект dhtmlxGantt предоставляет [destructor](api/method/destructor.md) для очистки ненужных экземпляров gantt.
+Начиная с версии 5.1 объект DHTMLX Gantt имеет метод [`destructor()`](api/method/destructor.md), который можно использовать для уничтожения лишних экземпляров Gantt.
 
-Пример использования деструктора для экземпляра gantt:
+Метод `destructor()` экземпляра gantt может использоваться следующим образом:
 
 ~~~js
-var gantt = Gantt.getGanttInstance();
-gantt.destructor();
+const ganttInstance = Gantt.getGanttInstance();
+ganttInstance.destructor();
 ~~~
 
-Этот деструктор выполняет следующие действия:
+Деструктор выполнит следующие задачи:
 
-- очищает данные, загруженные в экземпляр gantt
-- уничтожает dataProcessor, если он был прикреплён
-- отсоединяет gantt от DOM
-- удаляет все DOM-события, добавленные через метод [gantt.event()](api/method/event.md)
+- очистить данные, загруженные в экземпляр gantt
+- уничтожить обработчик данных, если он присоединён к Gantt
+- отсоединить gantt от DOM
+- отсоединить все DOM-события, привязанные через метод [`gantt.event()`](api/method/event.md)
 
-Имейте в виду, что деструктор не удаляет хранилища данных, созданные методом [gantt.createDatastore()](api/method/createdatastore.md). Их необходимо уничтожать вручную, например так:
+Обратите внимание, что деструктор не уничтожает хранилища данных, созданные методом [`gantt.createDatastore()`](api/method/createdatastore.md). Их нужно удалять вручную, вот так:
 
 ~~~js
 // создание хранилища данных
-var resourcesStore = gantt.createDatastore({
-    name:"resource",
-    initItem: function(item){
-        item.id = item.key || gantt.uid();
+const ganttInstance = Gantt.getGanttInstance();
+const resourcesStore = ganttInstance.createDatastore({
+    name: "resource",
+    initItem: (item) => {
+        item.id = item.key || ganttInstance.uid();
         return item;
     }
 });
 
-// уничтожение хранилища данных позже
+// удаление хранилища позже
 resourcesStore.destructor();
 ~~~
 
 ### Использование деструктора с Angular
 
-Пример удаления экземпляра gantt при использовании Angular:
+Вот пример использования деструктора для уничтожения экземпляра gantt при работе с фреймворком Angular:
 
-~~~js
-@Component({selector: 'app-gantt', template: `...`})
-class MyGanttComponent implements OnDestroy {
-  ngOnInit() {
-     this.$gantt = Gantt.getGanttInstance();
+~~~ts
+@Component({ template: '...' })
+class MyGanttComponent implements OnInit, OnDestroy {
+    private ganttInstance;
 
-     // настройка и инициализация
-  }
-  
-  ngOnDestroy() {
-     this.$gantt.destructor();
-     this.$gantt = null;
-  }
+    ngOnInit() {
+        this.ganttInstance = Gantt.getGanttInstance();
+
+        // настройка и инициализация
+    }
+
+    ngOnDestroy() {
+        if (this.ganttInstance) {
+            this.ganttInstance.destructor();
+        }
+    }
 }
 ~~~
 
 ### Отсоединение dataProcessor
 
-Вызов деструктора у dataProcessor очищает экземпляр и отсоединяет его от gantt. Например:
+Вызов деструктора обработчика данных очистит экземпляр обработчика данных и отсоединит его от Gantt. Например:
 
 ~~~js
-var gantt = Gantt.getGanttInstance();
-var dp = new gantt.dataProcessor("url");
-dp.init(gantt);
+const ganttInstance = Gantt.getGanttInstance();
+const dataProcessor = ganttInstance.createDataProcessor({
+    url: "url",
+    mode: "REST"
+});
 
-// уничтожение dataProcessor и отсоединение от gantt
-dp.destructor();
+// уничтожает data processor и отсоединяет его от gantt
+dataProcessor.destructor();
 ~~~
 
 :::note
-Если вы используете пакет, не поддерживающий несколько экземпляров gantt (GPL или Commercial издания), вызов деструктора gantt сделает gantt недоступным до перезагрузки страницы.
+Если вы используете пакет, который не позволяет создавать несколько экземпляров объекта gantt (GPL или Commercial редакции), вызов деструктора gantt сделает gantt недоступным до перезагрузки страницы.
 :::
-

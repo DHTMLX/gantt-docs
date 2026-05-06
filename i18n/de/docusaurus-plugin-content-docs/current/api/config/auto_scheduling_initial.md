@@ -1,14 +1,22 @@
 ---
 sidebar_label: auto_scheduling_initial
-title: auto_scheduling_initial config
-description: "definiert, ob das Gantt eine automatische Planung durchführt, wenn Daten geladen oder geparst werden"
+title: auto_scheduling_initial Konfiguration
+description: "definiert, ob Gantt Autoscheduling beim Laden/Parsen von Daten durchführt"
 ---
 
 # auto_scheduling_initial
 
+:::info
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
+:::
+
+:::warning
+Die Eigenschaft wurde in v9.1 veraltet; verwenden Sie stattdessen die `schedule_on_parse`-Eigenschaft von [gantt.config.auto_scheduling](api/config/auto_scheduling.md#schedule_on_parse).
+:::
+
 ### Description
 
-@short: Definiert, ob das Gantt eine automatische Planung durchführt, wenn Daten geladen oder geparst werden
+@short: Definiert, ob Gantt Autoscheduling beim Laden/Parsen von Daten durchführt
 
 @signature: auto_scheduling_initial: boolean
 
@@ -20,19 +28,16 @@ gantt.config.auto_scheduling_initial = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Standardwert:** true
+
 
 ### Related samples
-- [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
+- [Auto Scheduling-Erweiterung](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
 
 :::note
- Diese Funktion ist nur in der PRO-Version verfügbar. 
-:::
-
-:::note
- Diese Einstellung ist Teil der **auto_scheduling**-Erweiterung, daher stellen Sie sicher, dass das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin aktiviert ist. Weitere Details finden Sie im Artikel ["Auto Scheduling"](guides/auto-scheduling.md). 
+Diese Konfiguration ist in der **auto_scheduling**-Erweiterung definiert, daher müssen Sie das [auto_scheduling](guides/extensions-list.md#autoscheduling)-Plugin aktivieren. Lesen Sie die Details im Artikel [Auto Scheduling](guides/auto-scheduling.md).
 :::
 
 ### Related API
@@ -52,5 +57,8 @@ gantt.init("gantt_here");
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- ["Auto Scheduling"](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
+### Change log
+- Die Eigenschaft wurde in v9.1 veraltet
+- In Version 4.0 eingeführt

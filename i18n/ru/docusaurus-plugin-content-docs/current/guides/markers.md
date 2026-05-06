@@ -5,12 +5,12 @@ sidebar_label: "Добавление вертикальных маркеров"
 
 # Добавление вертикальных маркеров
 
-Библиотека включает расширение **marker**, которое позволяет выделять определённые даты или диапазоны дат на временной шкале.
+Библиотека предоставляет расширение **marker**, которое позволяет помечать (выделять) конкретные даты или диапазоны дат.
 
 <div style="text-align:center;">![today_marker](/img/today_marker.png)</div>
 
 :::note
-Чтобы начать использовать это расширение, включите плагин **marker**, вызвав метод [gantt.plugins](api/method/plugins.md).
+Чтобы начать использовать расширение, включите плагин **marker** с помощью метода [gantt.plugins](api/method/plugins.md).
 :::
 
 ~~~js
@@ -24,36 +24,36 @@ sidebar_label: "Добавление вертикальных маркеров"
     gantt.plugins({ /*!*/
         marker: true /*!*/
     }); /*!*/
-    //ваш код будет здесь
+    //your code will be here
 </body>
 </html>
 ~~~
 
-[Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
+[Сегодня и линии статуса в Gantt (вертикальные маркеры)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
 
 
 ## Добавление маркера
 
-Чтобы разместить маркер на временной шкале, например, маркер для сегодняшней даты, используйте метод [addMarker](api/method/addmarker.md):
+Чтобы добавить маркер на временную шкалу, например маркер сегодняшнего дня, вызовите метод [addMarker](api/method/addmarker.md):
 
 ~~~js
 var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
 var markerId = gantt.addMarker({
-    start_date: new Date(), // объект Date, указывающий дату маркера
-    css: "today", // CSS-класс, применяемый к маркеру
-    text: "Now", // подпись маркера
-    title: dateToStr(new Date()) // текст тултипа для маркера
+    start_date: new Date(), //a Date object that sets the marker's date
+    css: "today", //a CSS class applied to the marker
+    text: "Now", //the marker title
+    title: dateToStr( new Date()) // the marker's tooltip
 });
 ~~~
 
-[Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
+[Сегодня и линии статуса в Gantt (вертикальные маркеры)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
 
 
 :::note
-Обратите внимание, что свойство 'text' может принимать любой HTML-контент.
+Примечание: значение свойства 'text' может принимать любой HTML
 :::
 
-Чтобы получить объект, представляющий добавленный маркер, используйте метод [getMarker](api/method/getmarker.md):
+Чтобы получить объект добавленного маркера, используйте метод [getMarker](api/method/getmarker.md):
 
 ~~~js
 var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
@@ -63,10 +63,10 @@ var markerId = gantt.addMarker({  /*!*/
     text: "Now", 
     title: dateToStr(new Date()) 
 });
-gantt.getMarker(markerId); // возвращает {css:"today", text:"Now", id:...}
+gantt.getMarker(markerId); //->{css:"today", text:"Now", id:...}
 ~~~
 
-[Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
+[Сегодня и линии статуса в Gantt (вертикальные маркеры)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
 
 
 ## Удаление маркера
@@ -83,23 +83,23 @@ var markerId = gantt.addMarker({  /*!*/
 });
 
 gantt.deleteMarker(markerId); /*!*/
-~~~
+~~~ 
 
 ## Скрытие маркеров
 
-Чтобы скрыть все добавленные маркеры, установите опцию [show_markers](api/config/show_markers.md) в значение 'false': 
+Чтобы скрыть все добавленные маркеры, установите конфигурационный параметр [show_markers](api/config/show_markers.md) в значение 'false': 
 
 ~~~js
 var marker1 = gantt.addMarker({ ...}); 
 var marker2 = gantt.addMarker({ ...}); 
 var marker3 = gantt.addMarker({ ...}); 
 
-gantt.config.show_markers = false; // скрывает все 3 маркера
-~~~
+gantt.config.show_markers = false;// hides all 3 markers
+~~~ 
 
 ## Обновление маркера
 
-Чтобы изменить маркер, используйте метод [updateMarker](api/method/updatemarker.md):
+Чтобы обновить маркер, используйте метод [updateMarker](api/method/updatemarker.md):
 
 ~~~js
 var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
@@ -114,7 +114,7 @@ gantt.getMarker(markerId).css = "today_new";
 gantt.updateMarker(markerId); /*!*/
 ~~~
 
-Чтобы обновить все маркеры одновременно, используйте метод [renderMarkers](api/method/rendermarkers.md): 
+Чтобы обновить все добавленные маркеры, используйте метод [renderMarkers](api/method/rendermarkers.md): 
 
 ~~~js
 var marker1 = gantt.addMarker({ ...}); 
@@ -124,9 +124,9 @@ var marker3 = gantt.addMarker({ ...});
 gantt.renderMarkers(); /*!*/
 ~~~
 
-## Стилизация маркеров 
+## Стилизация маркеров
 
-Маркер можно стилизовать с помощью шаблона [gantt.templates.marker_class](api/template/marker_class.md):
+Чтобы стилизовать маркеры, используйте шаблон [gantt.templates.marker_class](api/template/marker_class.md):
 
 ~~~js
 var showAdvancedMarkers;
@@ -139,7 +139,7 @@ gantt.templates.marker_class = function(marker){
 
 ## Маркер сегодняшнего дня
 
-Если вы хотите отображать маркер для текущего дня в вашем Gantt, необходимо не только добавить маркер, но и реализовать функцию для обновления его позиции по мере изменения времени. Это можно сделать следующим образом:
+Предположим, что вы хотите иметь на диаграмме Ганта маркер сегодняшнего дня. В этом случае вам понадобятся оба действия: добавить маркер на страницу и предоставить функцию, которая будет перемещать маркер по мере изменения времени. Это можно сделать с помощью следующего кода:
 
 ~~~js
 var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
@@ -147,15 +147,14 @@ var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
 var id = gantt.addMarker({ 
     start_date: new Date(), 
     css: "today", 
-    title: dateToStr(new Date())
+    title:dateToStr(new Date())
 });
 setInterval(function(){
     var today = gantt.getMarker(id);
     today.start_date = new Date();
-    today.title = dateToStr(today.start_date);
+    today.title = date_to_str(today.start_date);
     gantt.updateMarker(id);
 }, 1000*60);
 ~~~
 
-[Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
-
+[Сегодня и линии статуса в Gantt (вертикальные маркеры)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)

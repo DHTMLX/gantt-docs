@@ -1,19 +1,19 @@
----
+--- 
 sidebar_label: getLinkCount
-title: getLinkCount method
-description: "возвращает количество зависимостей, которые в данный момент отображаются на диаграмме Ганта"
+title: Метод getLinkCount
+description: "возвращает общее число связей зависимостей, представленных на диаграмме Ганта"
 ---
 
 # getLinkCount
 
 ### Description
 
-@short: Возвращает количество зависимостей, которые в данный момент отображаются на диаграмме Ганта
+@short: Возвращает общее число связей зависимостей, представленных на диаграмме Ганта
 
-@signature: getLinkCount: () =\> number
+@signature: getLinkCount: () => number
 
 ### Returns
-- ` count` - (number) - общее количество зависимостей
+- `count` - (number) - количество связей зависимостей
 
 ### Example
 

@@ -1,20 +1,20 @@
 ---
 sidebar_label: updateCollection
 title: updateCollection method
-description: "обновляет указанную коллекцию с новыми опциями"
+description: "Обновляет указанную коллекцию новыми опциями"
 ---
 
 # updateCollection
 
 ### Description
 
-@short: Обновляет указанную коллекцию с новыми опциями
+@short: Обновляет указанную коллекцию новыми опциями
 
 @signature: updateCollection: (collection: string | number, options: any[]) =\> boolean
 
 ### Parameters
 
-- `collection` - (required) *string | number* -         имя коллекции для обновления
+- `collection` - (required) *string | number* - имя коллекции, которую нужно обновить
 - `options` - (required) *array* - новые значения коллекции
 
 ### Returns
@@ -25,8 +25,8 @@ description: "обновляет указанную коллекцию с нов
 ~~~jsx
 gantt.config.lightbox.sections = [
     {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-    {name:"priority", height:22, map_to:"priority", type:"select", /*!*/     
-        options:gantt.serverList("priorities", values_array)},     /*!*/                                                                
+    {name:"priority", height:22, map_to:"priority", type:"select", /*!*/
+        options:gantt.serverList("priorities", values_array)},     /*!*/
     {name:"time", height:72, type:"duration", map_to:"auto"}
 ];
 
@@ -35,26 +35,26 @@ gantt.updateCollection("priorities", new_values_array); /*!*/
 
 ### Details
 
-- Этот метод вызывает событие [onOptionsLoad](api/event/onoptionsload.md) и обновляет lightbox. 
-- Коллекции можно создавать изначально с помощью метода [serverList](api/method/serverlist.md).
+- Метод вызывает событие [onOptionsLoad](api/event/onoptionsload.md) и сбрасывает lightbox.
+- Коллекция может быть создана с помощью метода [serverList](api/method/serverlist.md).
 
-## Примеры
+### Examples
 
-#### Select control
+#### Контроль select
 
-Рассмотрим lightbox, сконфигурированный так:
+Предположим, что у вас lightbox, как показано ниже:
 
 ~~~js
 gantt.config.lightbox.sections = [
     {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
     {name:"priority", map_to:"priority", type:"select", 
-        options:gantt.serverList("priorities")},  /*!*/                                                                  
+        options:gantt.serverList("priorities")},  /*!*/
     {name:"time", height:72, type:"duration", map_to:"auto"}
 ];
 ~~~
 
-С такой настройкой можно обновлять опции в select контроле через коллекцию с именем 'priorities'. <br>
-Чтобы обновить коллекцию 'priorities', просто вызовите:
+Такое объявление позволит обновлять опции в контроле select через список с именем 'priorities'. 
+Чтобы обновить список 'priorities', можно использовать:
 ~~~js
 gantt.updateCollection("priorities", new_priorities_array);
 ~~~
@@ -62,4 +62,3 @@ gantt.updateCollection("priorities", new_priorities_array);
 ### Related API
 - [serverList](api/method/serverlist.md)
 - [onOptionsLoad](api/event/onoptionsload.md)
-

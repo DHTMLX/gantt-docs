@@ -29,7 +29,7 @@ If you're new to DHTMLX Gantt, see the [DHTMLX Gantt documentation](guides.md) f
 
 
 :::tip AI-assisted development
-If you use an AI coding assistant, the [DHTMLX React Gantt agent skill](integrations/ai-tools/agent-skills.md#available-skills) can help it follow correct integration patterns and avoid common mistakes. For real-time API reference, connect the [DHTMLX MCP server](integrations/ai-tools/mcp-server.md).
+If you use an AI coding assistant, the [DHTMLX React Gantt agent skill](integrations/ai-tools/agent-skills.md#available-skills) can help it follow correct integration patterns and avoid common mistakes. For real-time API reference, connect the [DHTMLX MCP server](integrations/ai-tools/mcp-server.md). For Lovable-based generation, see the [Lovable AI guide](integrations/ai-tools/lovable-ai.md) and the [React Gantt Lovable Starter](https://github.com/DHTMLX/react-gantt-lovable-starter).
 :::
 
 
@@ -126,6 +126,8 @@ The **React Gantt** wrapper offers flexible ways of loading and saving data. Con
 - **Gantt as the source of truth**
 
 Either approach is valid, but you should pick one and follow it consistently to avoid unexpected behavior.
+
+When typing externally-owned data (store state, API responses, initial data), use `SerializedTask` for tasks and `SerializedLink` for links. These types accept string dates and exclude Gantt's internal properties. Use `Task` and `Link` only for data inside Gantt event handlers, where Gantt has already parsed the values.
 
 :::info Looking for a deeper explanation?
 

@@ -1,32 +1,31 @@
 ---
 sidebar_label: onAfterSort
 title: onAfterSort event
-description: "当 grid 中的任务排序完成后触发"
+description: "fires after tasks are sorted in the grid"
 ---
 
 # onAfterSort
 
 ### Description
 
-@short: 当 grid 中的任务排序完成后触发
+@short: 在网格中对任务排序后触发
 
 @signature: onAfterSort: (field: string | GanttCallback, desc?: boolean, parent?: string | number) =\> void;
 
 ### Parameters
 
-- `field` - (required) *string | function* - 用于排序的列名或自定义排序函数
-- `desc` - (optional) *boolean* - 可选，表示排序顺序:<i>true</i> 表示降序，<i>false</i> 表示升序<br>
-- `parent` - (optional) *string | number* - 可选，如果排序仅限于特定分支，则为该父任务的 ID
+- `field` - (必填) *string | function* - 网格按排序的列名，或一个自定义排序函数
+- `desc`	- (可选)	*boolean*	 	-	可选，排序方向：<i>true</i> - 降序，<i>false</i> - 升序<br/>
+- `parent`	- (可选) *string | number*	-	可选，父任务的 ID，如果任务仅在指定父任务的分支中排序
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAfterSort",function(field, direction, parent){
-    // your code here
+    // 在这里插入您的自定义逻辑
 });
 ~~~
 
 ### Related API
 - [sort](api/method/sort.md)
 - [sort](api/config/sort.md)
-

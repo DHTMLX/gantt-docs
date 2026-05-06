@@ -1,23 +1,23 @@
 ---
 sidebar_label: getWBSCode
 title: getWBSCode method
-description: "возвращает WBS код (номер структуры) задачи"
+description: "возвращает WBS-код (номер структуры) задачи"
 ---
 
 # getWBSCode
 
 ### Description
 
-@short: Возвращает WBS код (номер структуры) задачи
+@short: Возвращает WBS-код (номер структуры) задачи
 
-@signature: getWBSCode: (task: Task) =\> string
+@signature: getWBSCode: (task: Task) => string
 
 ### Parameters
 
 - `task` - (required) *Task* - объект задачи
 
 ### Returns
-- ` wbs_code` - (string) - WBS код задачи в gantt диаграмме
+- `wbs_code` - (string) - WBS-код задачи в диаграмме Ганта
 
 ### Example
 
@@ -34,19 +34,18 @@ gantt.parse({
  "links":[]
 });
 
-const wbs_code = gantt.getWBSCode(gantt.getTask(3)) // -> возвращает "1.2"
+const wbs_code = gantt.getWBSCode(gantt.getTask(3)) // -> returns "1.2"
 ~~~
 
 ### Related samples
-- [Show Task WBS Codes (Outline Numbers)](https://docs.dhtmlx.com/gantt/samples/07_grid/09_wbs_column.html)
+- [Показать WBS-коды задач (номера контуров)](https://docs.dhtmlx.com/gantt/samples/07_grid/09_wbs_column.html)
 
 ### Details
 
-добавлено в версии 4.2
+added in version 4.2
 
 ### Related API
 - [getTaskByWBSCode](api/method/gettaskbywbscode.md)
 
 ### Related Guides
-- [Указание колонок](guides/specifying-columns.md#wbscode)
-
+- [Указание столбцов](guides/specifying-columns.md#wbscode)

@@ -1,14 +1,14 @@
 ---
 sidebar_label: resize_rows
-title: resize_rows config
-description: "행의 높이를 드래그하여 조절할 수 있도록 합니다"
+title: resize_rows 설정
+description: "드래그 앤 드롭으로 행 높이를 조절할 수 있도록 활성화합니다"
 ---
 
 # resize_rows
 
 ### Description
 
-@short: 행의 높이를 드래그하여 조절할 수 있도록 합니다
+@short: 드래그 앤 드롭으로 행 높이를 조절할 수 있게 해줍니다
 
 @signature: resize_rows: boolean
 
@@ -34,5 +34,4 @@ gantt.config.resize_rows = true;
 - [onAfterRowResize](api/event/onafterrowresize.md)
 
 ### Change log
-- v7.1에 추가됨
-
+- v7.1에서 추가됨

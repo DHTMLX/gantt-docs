@@ -1,30 +1,29 @@
 ---
 sidebar_label: onLightboxCancel
-title: onLightboxCancel event
-description: "Wird ausgelöst, wenn der Benutzer im Lightbox das 'Cancel'-Button drückt"
+title: onLightboxCancel-Ereignis
+description: "Auslöst, wenn der Benutzer auf die 'Abbrechen'-Schaltfläche im Lightbox klickt"
 ---
 
 # onLightboxCancel
 
 ### Description
 
-@short: Wird ausgelöst, wenn der Benutzer im Lightbox das 'Cancel'-Button drückt
+@short: Wird ausgelöst, wenn der Benutzer auf die 'Abbrechen'-Schaltfläche im Lightbox klickt
 
-@signature: onLightboxCancel: (id: string | number) =\> void;
+@signature: onLightboxCancel: (id: string | number) => void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die Task-ID (der aktuell in der Lightbox geöffnete Task)
+- `id` - (erforderlich) *string | number* - die Aufgabe-ID (die im Lightbox geöffnete Aufgabe)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onLightboxCancel", function(id){
-    //beliebige benutzerdefinierte Logik hier
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 })
 ~~~
 
 ### Related Guides
 - [onLightboxSave](api/event/onlightboxsave.md)
 - [onLightboxDelete](api/event/onlightboxdelete.md)
-

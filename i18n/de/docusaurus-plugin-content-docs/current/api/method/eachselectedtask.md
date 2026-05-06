@@ -1,20 +1,20 @@
 ---
 sidebar_label: eachSelectedTask
-title: eachSelectedTask method
-description: "geht alle ausgewählten Tasks im Gantt-Chart durch"
+title: eachSelectedTask-Methode
+description: "Durchläuft alle ausgewählten Aufgaben im Gantt-Diagramm"
 ---
 
 # eachSelectedTask
 
 ### Description
 
-@short: Geht alle ausgewählten Tasks im Gantt-Chart durch
+@short: Durchläuft alle ausgewählten Aufgaben im Gantt-Diagramm
 
 @signature: eachSelectedTask: (code: GanttCallback) =\> void
 
 ### Parameters
 
-- `code` - (required) *function* - eine Funktion, die für jeden ausgewählten Task ausgeführt wird. Sie erhält die Task-ID als Argument
+- `code` - (erforderlich) *Funktion* - eine Funktion, die über Aufgaben iteriert. Nimmt eine Aufgaben-ID als Parameter entgegen
 
 ### Example
 
@@ -33,8 +33,8 @@ gantt.batchUpdate(function () {
 ### Details
 
 :::note
- Diese Methode ist Teil der **multiselect**-Erweiterung, daher stellen Sie sicher, dass das [multiselect](guides/extensions-list.md#multitaskselection) Plugin aktiviert ist. Weitere Details finden Sie im Artikel ["Multi-Task-Auswahl"](guides/multiselection.md). 
-:::
+Diese Methode ist in der Erweiterung **multiselect** definiert, daher müssen Sie das [multiselect](guides/extensions-list.md#multitaskselection) Plugin aktivieren. Lesen Sie die Details im Artikel [Multi-Task Selection](guides/multiselection.md).
+::: 
 
 ### Related API
 - [eachTask](api/method/eachtask.md)
@@ -47,5 +47,4 @@ gantt.batchUpdate(function () {
 - [batchUpdate](api/method/batchupdate.md)
 
 ### Related Guides
-- ["Multi-Task-Auswahl"](guides/multiselection.md)
-
+- [Multi-Task Selection](guides/multiselection.md)

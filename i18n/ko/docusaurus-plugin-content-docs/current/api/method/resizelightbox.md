@@ -1,16 +1,16 @@
 ---
 sidebar_label: resizeLightbox
-title: resizeLightbox method
-description: "라이트박스 크기를 강제로 조정합니다"
+title: resizeLightbox 메서드
+description: "라이트박스의 크기를 강제로 재조정합니다"
 ---
 
 # resizeLightbox
 
 ### Description
 
-@short: 라이트박스 크기를 강제로 조정합니다
+@short: 라이트박스의 크기를 재조정합니다
 
-@signature: resizeLightbox: () =\> void
+@signature: resizeLightbox: () => void
 
 ### Example
 
@@ -23,8 +23,7 @@ gantt.resizeLightbox();
 
 ### Details
 
-이 메서드는 섹션의 가시성을 변경할 때마다 라이트박스 크기를 업데이트합니다.
+이 메서드는 일부 섹션을 숨기거나 표시한 후 라이트박스의 크기를 업데이트하는 데 사용할 수 있습니다.
 
 ### Related API
 - [wide_form](api/config/wide_form.md)
-

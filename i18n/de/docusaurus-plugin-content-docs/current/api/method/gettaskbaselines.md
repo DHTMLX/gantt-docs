@@ -1,25 +1,27 @@
 ---
 sidebar_label: getTaskBaselines
-title: getTaskBaselines method
-description: "Ruft ein Array von Baselines ab, die mit einer bestimmten Aufgabe im Datenspeicher verknüpft sind"
+title: getTaskBaselines Methode
+description: "Gibt ein Array von Baseline-Objekten eines bestimmten Tasks aus dem Datenspeicher zurück"
 ---
 
 # getTaskBaselines
+
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
-:::
+Diese Funktionalität ist nur in der PRO Edition verfügbar. 
+::: 
+
 ### Description
 
-@short: Ruft ein Array von Baselines ab, die mit einer bestimmten Aufgabe im Datenspeicher verknüpft sind
+@short: Gibt ein Array von Baseline-Objekten eines bestimmten Tasks aus dem Datenspeicher
 
 @signature: getTaskBaselines: (taskId: string | number) =\> Baseline[]
 
 ### Parameters
 
-- `taskId` - (required) *string | number* -    Die eindeutige Kennung der Aufgabe
+- `taskId` - (required) *string | number* - die Aufgaben-ID
 
 ### Returns
-- ` param` - (Baseline[]) - Ein Array, das Baseline-Objekte enthält
+- ` param` - (Baseline[]) - ein Array von Baseline-Objekten
 
 ### Example
 
@@ -28,25 +30,26 @@ gantt.getTaskBaselines(5); // -> siehe Details
 ~~~
 
 ### Related samples
-- [Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
+- [Baselines anzeigen](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
 
 ### Details
 
 :::note
- Die **getTaskBaselines** Methode funktioniert nicht, wenn die [baselines](api/config/baselines.md) Konfiguration deaktiviert ist. 
-:::
+Die Methode **getTaskBaselines** ist nicht verfügbar, wenn die [baselines](api/config/baselines.md) Konfiguration deaktiviert ist. 
+::: 
 
-Diese Methode liefert ein Array von **Baseline**-Objekten, die jeweils folgende Eigenschaften besitzen:
+Die Methode gibt ein Array der **Baseline-Objekte** zurück, die folgende Eigenschaften besitzen:
 
-- **id** - (*string | number*) - die eindeutige ID der Baseline
-- **task_id** - (*string | number*) - die ID der Aufgabe, mit der diese Baseline verknüpft ist
-- **start_date** - (*Date*) - Startzeitpunkt der Baseline
-- **duration** - (*number*) - Dauer der Baseline
-- **end_date** - (*Date | number*) - Endzeitpunkt der Baseline
-- **[customProperty: string]** - (*any*) - beliebige zusätzliche benutzerdefinierte Eigenschaften
+- **id** - (*string | number*) - die Baseline-ID
+- **task_id** - (*string | number*) - die ID der Aufgabe, zu der die Baseline gehört
+- **start_date** - (*Date*) - das Startdatum der Baseline
+- **duration** - (*number*) - die Dauer der Baseline
+- **end_date** - (*Date | number*) - das Enddatum der Baseline
+- **[customProperty: string]** - (*any*) - beliebige benutzerdefinierte Eigenschaft
+- **className** - (*string | number*) - der Wert dieser Eigenschaft wird von Gantt als benutzerdefinierte Klasse für ein HTML-Element verwendet
 
 
-Hier ein Beispiel:
+Zum Beispiel:
 
 ~~~js
 [
@@ -68,8 +71,7 @@ Hier ein Beispiel:
 ~~~
 
 ### Related Guides
-- ["Zusätzliche Elemente in der Zeitleiste"](guides/inbuilt-baselines.md)
+- [Extras Elemente in der Timeline](guides/inbuilt-baselines.md)
 
 ### Change log
 - hinzugefügt in v9.0
-

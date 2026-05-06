@@ -5,56 +5,62 @@ sidebar_label: "ASP.NET MVC"
 
 # dhtmlxGantt mit ASP.NET MVC 
 
-Dieses Tutorial bietet eine klare, schrittweise Anleitung zur Erstellung eines Gantt-Diagramms mit [ASP.NET](https://dotnet.microsoft.com/apps/aspnet) und einer REST-API auf der Serverseite.
+Dieses Tutorial liefert Ihnen Schritt-für-Schritt-Anleitungen zum Erstellen von Gantt mit [ASP.NET](https://dotnet.microsoft.com/en-us/apps/aspnet) und REST-API auf der Serverseite. 
 
-Weitere Integrationsoptionen für andere serverseitige Technologien finden Sie in diesen Tutorials:
+Sie können auch andere serverseitige Integrationsmöglichkeiten von Gantt erkunden, indem Sie eine der folgenden Tutorials auswählen:
 
-- [dhtmlxGantt with ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md)
-- [dhtmlxGantt with Node.js](integrations/node/howtostart-nodejs.md)
-- [dhtmlxGantt with Python](integrations/other/howtostart-python.md)
-- [dhtmlxGantt with PHP: Laravel](integrations/php/howtostart-php-laravel.md)
-- [dhtmlxGantt with PHP:Slim](integrations/php/howtostart-php-slim4.md)
-- [dhtmlxGantt with Salesforce LWC](integrations/salesforce/howtostart-salesforce.md)
-- [dhtmlxGantt with Ruby on Rails](integrations/other/howtostart-ruby.md)
+- [dhtmlxGantt mit ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md)
+- [dhtmlxGantt mit Node.js](integrations/node/howtostart-nodejs.md)
+- [dhtmlxGantt mit Python](integrations/other/howtostart-python.md)
+- [dhtmlxGantt mit PHP: Laravel](integrations/php/howtostart-php-laravel.md)
+- [dhtmlxGantt mit PHP:Slim](integrations/php/howtostart-php-slim4.md)
+- [dhtmlxGantt mit Salesforce LWC](integrations/salesforce/howtostart-salesforce.md)
+- [dhtmlxGantt mit Ruby on Rails](integrations/other/howtostart-ruby.md)
 
-In diesem Beispiel wird das ASP.NET MVC 5 Framework zusammen mit Web API 2 Controllern verwendet, um die REST-API für die Gantt-Anwendung zu erstellen. Das [Entity Framework](https://learn.microsoft.com/en-us/aspnet/entity-framework) übernimmt die Datenbankinteraktionen. Für die Entwicklung wird die Visual Studio IDE verwendet.
+Wir werden die ASP.NET MVC 5-Webplattform und den Web API 2-Controller für REST-API verwenden, um eine Gantt-Anwendung zu erstellen. 
+Zur Organisation der Kommunikation mit einer Datenbank verwenden wir das [Entity Framework](https://learn.microsoft.com/en-us/aspnet/entity-framework). 
+Wir bauen unsere Anwendung mit Hilfe der Visual Studio IDE.
 
 :::note
 Der vollständige Quellcode ist [auf GitHub verfügbar](https://github.com/DHTMLX/gantt-howto-dotnet).
 :::
 
-## Schritt 1. Projekt erstellen
+## Schritt 1. Erstellen eines Projekts
 
-### Ein neues Visual Studio-Projekt erstellen
+### Erstellen eines neuen Visual Studio-Projekts 
 
-Starten Sie Visual Studio 2022 und wählen Sie *Create a new project*.
+Starten Sie Visual Studio 2022 und wählen Sie *Neues Projekt erstellen*.
 
 ![how_to_start_net_create_project](/img/how_to_start_net_create_project.png)
 
-Wählen Sie anschließend "ASP.NET Web Application" und geben Sie als Namen *DHX.Gantt.Web* ein. Falls die Vorlage nicht sichtbar ist, beachten Sie den Abschnitt [Troubleshooting](#troubleshooting).
+Wählen Sie anschließend "ASP.NET Webanwendung" und nennen Sie das Projekt *DHX.Gantt.Web*. Falls Sie die benötigte Vorlage nicht finden können, prüfen Sie den Abschnitt [Troubleshooting](#trouble-shooting).
+
 
 ![how_to_start_net_project_template](/img/how_to_start_net_project_template.png)
 
 ![how_to_start_net_configure_project](/img/how_to_start_net_configure_project.png)
 
-Wählen Sie die Projektvorlage *Empty* und aktivieren Sie sowohl die Optionen für MVC als auch für Web API.
+Wählen Sie unter den verfügbaren Vorlagen ein *Leeres* Projekt aus und deaktivieren Sie die Checkboxen MVC und Web API neben der Vorlagenliste.
 
 ![how_to_start_net_app](/img/how_to_start_net_app.png)
 
-## Schritt 2. Gantt zur Seite hinzufügen
+## Schritt 2. Hinzufügen von Gantt zur Seite
 
-### Einen Controller erstellen
+### Erstellen eines Controllers
 
-Nachdem das Projekt eingerichtet ist, fügen Sie einen MVC-Controller hinzu, der die Gantt-Seite anzeigen wird.
+Nun haben wir ein leeres Projekt und alles ist bereit, um unseren Gantt zu implementieren.
 
-Klicken Sie mit der rechten Maustaste auf den Ordner Controllers, wählen Sie Add->Controller und dann MVC 5 Controller -> Empty. Benennen Sie den neuen Controller "HomeController".
+Zunächst fügen wir einen MVC-Controller hinzu, der eine Seite mit einem Gantt-Diagramm anzeigt.
+
+Um ihn zu erstellen, rufen Sie das Kontextmenü für den Ordner Controllers auf und wählen Sie Add->Controller. 
+Im geöffneten Fenster wählen Sie MVC 5 Controller -> Empty und nennen den neu hinzugefügten Controller "HomeController".
 
 ![how_to_start_net_controller](/img/how_to_start_net_controller.png)
 
-Der HomeController enthält standardmäßig die Methode *Index()* der Klasse *ActionResult*, sodass hier keine zusätzliche Logik erforderlich ist. Für diese Methode wird eine View hinzugefügt.
+Der HomeController besitzt standardmäßig die *Index()*-Methode der *ActionResult*-Klasse, daher ist keine zusätzliche Logik erforderlich. Wir fügen lediglich eine View dafür hinzu.
 
-**Controllers/HomeController.cs**
-~~~js
+
+~~~js title="Controllers/HomeController.cs"
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -74,15 +80,15 @@ namespace DHX.Gantt.Web.Controllers
 }
 ~~~
 
-### Eine View erstellen
+### Erstellen einer View
 
-Erstellen Sie nun die Index-Seite. Navigieren Sie zu Views/Home und fügen Sie eine leere View mit dem Namen Index hinzu:
+Nun ist es Zeit, unsere Index-Seite zu erstellen. Gehen Sie zu Views/Home und fügen Sie eine leere View mit dem Namen Index hinzu:
 
 ![how_to_start_net_view](/img/how_to_start_net_view.png)
 
-Öffnen Sie die View und fügen Sie folgenden Code ein:
-**Views/Home/Index.cshtml**
-~~~html
+Öffnen Sie die neugelegte View und fügen Sie den folgenden Code dort ein:
+
+~~~html title="Views/Home/Index.cshtml"
 @{
     Layout = null;
 }
@@ -120,25 +126,23 @@ Erstellen Sie nun die Index-Seite. Navigieren Sie zu Views/Home und fügen Sie e
 </html>
 ~~~
 
-Dieser Code führt folgende Aufgaben aus:
+Was haben wir hier gemacht:
 
-- richtet ein einfaches Seitenlayout für die Gantt-Anwendung ein
-- bindet dhtmlxGantt JavaScript und CSS über [CDN-Links](guides/cdn-links-list.md) ein
-- initialisiert das Gantt-Diagramm auf der Seite
+- eine einfache Seitenmarkup für unsere Gantt-Anwendung definiert
+- dhtmlx gantt js/css-Quellen über [CDN-Links](guides/cdn-links-list.md) hinzugefügt
+- Gantt auf der Seite erstellt
 
-Beachten Sie die Konfiguration des Datumsformats:
+Achten Sie auf die Konfiguration: Wir haben das [Datumsformat](api/config/date_format.md) festgelegt, das aus der Datenquelle stammt. 
 
-**Views/Home/Index.cshtml**
-~~~js
+~~~js title="Views/Home/Index.cshtml"
 gantt.config.date_format = "%Y-%m-%d %H:%i";
 ~~~
 
-Dies stellt sicher, dass der Client Datumsangaben vom Server korrekt interpretieren kann.
+Es ist notwendig, damit unser Client Datumswerte vom Server parsen kann.
 
-Außerdem ist Gantt so konfiguriert, dass es mit einer RESTful API im Backend arbeitet, wobei ["/api/"](guides/server-side.md#technique) als Basisroute verwendet wird:
+Und wir haben dem Gantt auch mitgeteilt, dass es mit einer RESTful-API auf dem Backend arbeiten wird und standardmäßig ["/api/"](guides/server-side.md#technique) als Route verwenden soll:
 
-**Views/Home/Index.cshtml**
-~~~js
+~~~js title="Views/Home/Index.cshtml"
 gantt.load("/api/data");
 // initializing dataProcessor
 var dp = new gantt.dataProcessor("/api/");
@@ -148,7 +152,8 @@ dp.init(gantt);
 dp.setTransactionMode("REST");
 ~~~
 
-Die serverseitige Implementierung wird im nächsten Schritt behandelt. Sie können die Anwendung aber bereits ausführen und sehen, wie das Gantt-Diagramm auf der Seite erscheint.
+
+Die Serverseite selbst wird später implementiert. Vorerst können Sie die Anwendung ausführen und sehen, dass ein Gantt auf der Seite gerendert wird.
 
 ![adding_gantt](/img/adding_gantt.png)
 
@@ -157,20 +162,19 @@ Die serverseitige Implementierung wird im nächsten Schritt behandelt. Sie könn
 
 ### Modelle erstellen
 
-Definieren Sie als Nächstes die Modellklassen für das Gantt-Diagramm. Das Datenmodell besteht aus [Links und Tasks](guides/loading.md#standarddatabasestructure).
+Nun sollten wir Modellklassen für das Gantt-Diagramm definieren. Ein Gantt-Datenmodell besteht aus [Links und Tasks]. 
+Wie Sie sehen können, verwendet dhtmlxGantt eine bestimmte Namenskonvention für das Datenmodell, die sich von der in C# traditionell verwendeten unterscheidet. 
+Das clientseitige Modell kann auch einige Eigenschaften enthalten, die Sie nicht in einer Datenbank speichern müssen, die jedoch entweder auf dem Client oder in der Backend-Logik verwendet werden.
 
-dhtmlxGantt verwendet für sein Datenmodell eine eigene Namenskonvention, die von der üblichen C#-Konvention abweichen kann. Einige clientseitige Eigenschaften müssen nicht in der Datenbank gespeichert werden, sondern werden nur im Client oder in der Backend-Logik verwendet.
+Aus diesem Grund verwenden wir hier das [Data Transfer Object]-Muster: Wir definieren Domänenmodell-Klassen, die mit EF und innerhalb der App verwendet werden, sowie DTO-Klassen, die zur Kommunikation mit der Web API genutzt werden. Dann implementieren wir eine Art Mapping zwischen den beiden Modellen.
 
-Um dies zu handhaben, wird das [Data Transfer Object](https://learn.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5)-Muster angewendet: Domänenmodellklassen werden mit EF und intern verwendet, während DTO-Klassen die Kommunikation mit der Web API übernehmen. Die Zuordnung (Mapping) zwischen diesen Modellen wird implementiert.
-
-Los geht's!
+Legen wir los!
 
 #### Task-Modell
 
-Beginnen Sie mit einer Klasse für Task. Sie könnte wie folgt aussehen:
+Zuerst erstellen wir eine Klasse für Task. Ihr Inhalt kann dem Folgenden ähneln: 
 
-**Models/Task.cs**
-~~~js
+~~~js title="Models/Task.cs"
 using System;
 
 namespace DHX.Gantt.Web.Models
@@ -188,15 +192,14 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-Eine vollständige Liste der verfügbaren Eigenschaften für das Task-Objekt, sowohl erforderliche als auch optionale, finden Sie in der 
-[entsprechenden Dokumentation](guides/loading.md#task_properties).
+Sie finden die vollständige Liste der Eigenschaften, sowohl Pflicht- als auch optionale, die für das Task-Objekt verfügbar sind, im
+[entsprechenden Artikel](guides/loading.md#task_properties) der Dokumentation.
 
-#### Link-Modell
+#### Link-Modell 
 
-Erstellen Sie nun die Link-Klasse wie folgt:
+Nun ist es Zeit für die Link-Klasse, die wie folgt aussehen könnte:
 
-**Models/Link.cs**
-~~~js
+~~~js title="Models/Link.cs"
 namespace DHX.Gantt.Web.Models
 {
     public class Link
@@ -209,26 +212,26 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-### Datenbankverbindung konfigurieren
+### Konfiguration der Datenbankverbindung
 
-#### Entity Framework installieren
+#### Installation von Entity Framework
 
-Wie bereits erwähnt, werden die Datenbankoperationen mit dem [Entity Framework](https://learn.microsoft.com/en-us/aspnet/entity-framework) ausgeführt.
+Wie Sie sich erinnern, werden wir die Arbeit mit einer Datenbank mithilfe des [Entity Framework] organisieren.
 
-Um es zu installieren, führen Sie diesen Befehl in der Package Manager Console aus:
+Zunächst müssen wir das Framework installieren. Führen Sie dazu den folgenden Befehl in der Package Manager Console aus:
 
 ~~~js
 Install-Package EntityFramework
 ~~~
 
-#### Datenbankkontext erstellen
+#### Erstellen des Datenbankkontexts
 
-Erstellen Sie als Nächstes den Datenbankkontext. Der Kontext stellt eine Sitzung mit der Datenbank dar und verwaltet das Abrufen und Speichern von Daten.
+Der nächste Schritt ist die Erstellung des Contexts. Der Context repräsentiert eine Sitzung mit der Datenbank. Er ermöglicht das Abrufen und Speichern von Daten.
 
-Klicken Sie mit der rechten Maustaste auf den Ordner *Models* und wählen Sie Add->Class. Benennen Sie die Klasse "GanttContext" und verwenden Sie diesen Inhalt:
+Rufen Sie das Kontextmenü für den Ordner *Models* auf und wählen Sie Add->Class. Die neue Klasse wird "GanttContext" heißen und den folgenden Inhalt haben:
 
-**Models/GanttContext.cs**
-~~~js
+
+~~~js title="Models/GanttContext.cs"
 using System.Data.Entity;
 
 namespace DHX.Gantt.Web.Models
@@ -241,20 +244,21 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-#### Anfangsdaten zur Datenbank hinzufügen
+#### Initiale Datensätze zur Datenbank hinzufügen
 
-Jetzt können einige Anfangsdaten in die Datenbank eingefügt werden.
+Nun können wir einige Datensätze in die Datenbank hinzufügen.
 
-Entity Framework kann die Datenbank automatisch beim Start der Anwendung erstellen. Damit die Datenbank bei Modelländerungen aktualisiert wird, konfigurieren Sie sie so, dass sie dann gelöscht und neu erstellt wird.
+Das Entity Framework kann eine Datenbank automatisch erstellen, wenn eine Anwendung läuft. 
+Wir sollten festlegen, dass die Datenbank gelöscht und neu erstellt wird, wann immer sich das Modell ändert.
 
-Beginnen Sie mit dem Erstellen eines Datenbank-Initialisierers. Fügen Sie im Ordner *App_Start* eine neue Klasse hinzu, die von *DropCreateDatabaseIfModelChanges* erbt. Nennen Sie sie "GanttInitializer".
+Zuerst sollten wir einen Datenbank-Initializer erstellen. Zu diesem Zweck müssen wir eine neue Klasse im Ordner *App_Start* hinzufügen, die von der Klasse *DropCreateDatabaseIfModelChanges* abgeleitet wird. Nennen wir sie "GanttInitializer".
 
-Überschreiben Sie in dieser Klasse die Methode *Seed()*, um Testdaten einzufügen. Verwenden Sie die Methode *Add()*, um Entitäten zum Kontext hinzuzufügen.
+In dieser Klasse redefinieren wir die *Seed()*-Methode, um sie mit Testdaten zu füllen. Anschließend fügen wir die Entitäten-Sammlung dem Kontext mit der *Add()*-Methode hinzu.
 
-Hier ist die vollständige Klasse *GanttInitializer*:
+Der vollständige Code der *GanttInitializer*-Klasse ist unten angegeben:
 
-**App_Start/GanttInitializer.cs**
-~~~js
+
+~~~js title="App_Start/GanttInitializer.cs"
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -313,10 +317,11 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-Öffnen Sie die Datei *Global.asax*, die Code enthält, der beim Start der Anwendung ausgeführt wird. Fügen Sie den notwendigen Namespace hinzu und diese Zeile in die Methode *Application_Start()*, um den Initialisierer für den Kontext zu setzen:
+Öffnen Sie die *Global.asax*-Datei. Dort finden Sie den Code, der beim Start der Anwendung ausgeführt wird.
+Fügen Sie den notwendigen Namespace und die Codezeile hinzu, die Initializer für unseren Kontext in der *Application_Start()*-Methode setzen:
 
-**Global.asax.cs**
-~~~js
+
+~~~js title="Global.asax.cs"
 using System;
 using System.Web;
 using System.Web.Mvc;
@@ -343,14 +348,15 @@ namespace DHX.Gantt.Web
 }
 ~~~
 
-### Definition von DTOs und Mapping
+### Definieren von DTOs und Mapping
 
-Als Nächstes werden DTO-Klassen für die Web API deklariert. Zur Vereinfachung werden explizite Konvertierungsoperatoren definiert, um zwischen Model- und DTO-Klassen zu mappen.
+Es ist Zeit, DTO-Klassen zu deklarieren, die für Web API verwendet werden.
+Was das Mapping zwischen Model und DTO betrifft, gehen wir den einfachsten Weg und definieren nur einen expliziten Umwandlungsoperator für diese Klassen.
 
-Die TaskDto-Klasse ist wie folgt aufgebaut:
+Die TaskDto-Klasse wird wie folgt aussehen: 
 
-**Models/TaskDto.cs**
-~~~js
+
+~~~js title="Models/TaskDto.cs"
 using System;
 
 namespace DHX.Gantt.Web.Models
@@ -403,10 +409,10 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-Analog dazu ist die LinkDto-Klasse wie folgt definiert:
+Und der Code der LinkDto-Klasse ist unten angegeben:
 
-**Models/LinkDto.cs**
-~~~js
+
+~~~js title="Models/LinkDto.cs"
 namespace DHX.Gantt.Web.Models
 {
     public class LinkDto
@@ -441,10 +447,11 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-Um das Datenmodell für die [Datenquelle](guides/supported-data-formats.md#json) zu vervollständigen, wird folgende Klasse hinzugefügt:
 
-**Models/GanttDto.cs**
-~~~js
+Zuletzt fügen wir ein Modell für die [Datenquelle] hinzu:
+
+
+~~~js title="Models/GanttDto.cs"
 using System.Collections.Generic;
 
 namespace DHX.Gantt.Web.Models
@@ -457,25 +464,26 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-## Schritt 4. Implementierung der Web API
+## Schritt 4. Implementierung von Web API
 
-### Allgemeine Technik zum Laden von Daten mit REST API
+### Allgemeine Technik zum Laden von Daten über REST API
 
-Die Implementierung der API ist der nächste Schritt.
+Schließlich ist es Zeit, die API zu implementieren. 
 
-Basierend auf den [API-Details](guides/server-side.md#requestresponsedetails) sind zwei Controller erforderlich: einer für Tasks und einer für Links. Zusätzlich wird ein separater Controller für die Aktion "Daten laden" benötigt, da gantt in diesem Fall ein [gemischtes Ergebnis](guides/supported-data-formats.md#json) erwartet.
+Wie Sie aus den [API-Details](guides/server-side.md#requestresponsedetails) sehen können, benötigen wir zwei Controller: einen für Tasks und einen für Links. 
+Außerdem benötigen wir einen weiteren Controller für die 'Daten laden'-Aktion, da Gantt dort ein [gemischtes Ergebnis] erwartet.
 
-### Task Controller
+### Task-Controller
 
-So fügen Sie einen neuen Controller hinzu:
+Um einen neuen Controller zu erstellen:
 
-- Klicken Sie mit der rechten Maustaste auf den Ordner Controllers und wählen Sie Add -> Controller.
-- Wählen Sie Web API 2 Controller -> Empty und benennen Sie den neuen Controller "TaskController".
+- Öffnen Sie das Kontextmenü für den Ordner Controllers und wählen Sie Add -> Controller.
+- Wählen Sie Web API 2 Controller -> Empty. Der neue Controller wird "TaskController" heißen. 
 
-Die grundlegenden CRUD-Aktionen für Task-Einträge werden wie folgt implementiert:
+Nun müssen wir grundlegende CRUD-Aktionen für den Task-Eintrag implementieren:
 
-**Controllers/TaskController.cs**
-~~~js
+
+~~~js title="Controllers/TaskController.cs"
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -568,19 +576,19 @@ namespace DHX.Gantt.Web.Controllers
 
 ~~~
 
-Die Logik ist hier klar:
+Alles ist hier ziemlich geradlinig:
 
-- Die GET-Methoden holen Tasks aus der Datenbank und wandeln sie in ihre DTO-Repräsentation um.
-- Die PUT- und POST-Methoden nehmen DTOs entgegen, wandeln sie zurück in Task-Modelle und übernehmen die Änderungen im Datenbankkontext.
+- in den GET-Aktionen laden wir Tasks aus der Datenbank und geben deren Data Transfer Objects aus 
+- in den PUT/POST-Aktionen erhalten wir DTOs als Eingabe, konvertieren sie in ein Task-Modell und speichern Änderungen im DB-Kontext
 
-Das gleiche Vorgehen gilt für die Links.
+Nun machen wir dasselbe für die Links.
 
-### Link Controller
+### Link-Controller
 
-Ein leerer Web API Controller wird für die Links wie folgt erstellt:
+Wir erstellen einen leeren Web API-Controller für Links wie folgt:
 
-**Controllers/LinkController.cs**
-~~~js
+
+~~~js title="Controllers/LinkController.cs"
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -674,10 +682,10 @@ namespace DHX.Gantt.Web.Controllers
 
 ### Data Controller
 
-Abschließend wird der Controller für die Datenaktion hinzugefügt:
+Schließlich fügen wir einen Controller für die Datenaktion hinzu:
 
-**Controllers/DataController.cs**
-~~~js
+
+~~~js title="Controllers/DataController.cs"
 using System.Web.Http;
 
 using DHX.Gantt.Web.Models;
@@ -700,22 +708,23 @@ namespace DHX.Gantt.Web.Controllers
 }
 ~~~
 
-Mit dieser Konfiguration zeigt die Anwendung beim Ausführen ein voll funktionsfähiges Gantt-Diagramm auf der Seite an:
+Nun ist alles bereit. Starten Sie die Anwendung und es sollte ein vollwertiges Gantt auf der Seite erscheinen:
 
 ![ready_gantt_dotnet](/img/ready_gantt_dotnet.png)
 
-[Eine fertige Demo ist auf GitHub verfügbar](https://github.com/DHTMLX/gantt-howto-dotnet).
+[Sie können eine fertige Demo auf GitHub finden](https://github.com/DHTMLX/gantt-howto-dotnet).
+
 
 ## Fehlerbehandlung 
 
-[Exception filters](https://learn.microsoft.com/en-us/previous-versions/aspnet/gg416513(v="vs.98))" bieten eine Möglichkeit, Ausnahmen in CRUD-Handlern abzufangen und Antworten zu senden, die vom Client-seitigen gantt [interpretiert](guides/server-side.md#errorhandling) werden können.
+[Exception-Filter](https://learn.microsoft.com/en-us/previous-versions/aspnet/gg416513(v="vs.98))" können verwendet werden, um Ausnahmen in CRUD-Handlern zu erfassen und eine Client-Antwort zurückzugeben, die vom client-seitigen Gantt erkannt werden kann.
 
-Um die Fehlerbehandlung in der gantt API zu aktivieren, gehen Sie wie folgt vor:
+Um eine Fehlerbehandlung für das Gantt bereitzustellen, folgen Sie bitte den nachstehenden Schritten:
 
-Fügen Sie im Ordner *App_Start* eine neue Klasse mit dem Namen *GanttAPIExceptionFilterAttribute* hinzu:
+Gehen Sie zu *App_Start* und fügen Sie eine neue Klasse namens *GanttAPIExceptionFilterAttribute* hinzu:
 
-**App_Start/GanttAPIExceptionFilterAttribute.cs**
-~~~js
+
+~~~js title="App_Start/GanttAPIExceptionFilterAttribute.cs"
 using System.Net;
 using System.Net.Http;
 using System.Web.Http.Filters;
@@ -739,70 +748,71 @@ namespace DHX.Gantt.Web
 }
 ~~~
 
-Wenden Sie diesen Filter dann auf die WebAPI-Controller an:
+Dann fügen wir diese Klasse unseren WebAPI-Controllern hinzu:
 
-- Im Data Controller:
-**Controllers/DataController.cs**
-~~~js
+- Data-Controller:
+
+~~~js title="Controllers/DataController.cs"
 namespace DHX.Gantt.Web.Controllers
 {
     [GanttAPIExceptionFilter]/*!*/
     public class DataController : ApiController
 ~~~
 
-- Im Link Controller:
-**Controllers/LinkController.cs**
-~~~js
+- Link-Controller:
+
+~~~js title="Controllers/LinkController.cs"
 namespace DHX.Gantt.Web.Controllers
 {
     [GanttAPIExceptionFilter]/*!*/
     public class LinkController : ApiController
 ~~~
 
-- Und im Task Controller:
-**Controllers/TaskController.cs**
-~~~js
+- und Task-Controller:
+
+~~~js title="Controllers/TaskController.cs"
 namespace DHX.Gantt.Web.Controllers
 {
     [GanttAPIExceptionFilter]/*!*/
     public class TaskController : ApiController
 ~~~
 
-Mit dieser Konfiguration erhält der Client bei jeder während der Web API-Verarbeitung ausgelösten Ausnahme einen Fehlerstatus und eine Fehlermeldung, die verarbeitet oder angezeigt werden kann.
+Nun, wenn irgendein Web API-Controller eine Ausnahme während der Verarbeitung der Anfrage auslöst, erhält der Client eine Fehlstatus-Antwort und eine Fehlermeldung, die entweder weiterverarbeitet oder dem Benutzer angezeigt werden kann.
 
-Beachten Sie, dass das direkte Übermitteln von Ausnahme-Meldungen an Clients für produktive Umgebungen möglicherweise nicht geeignet ist.
+Beachten Sie, dass das Zurückgeben einer Ausnahmemeldung an den Client unter Umständen nicht die beste Lösung für eine Produktionsumgebung ist.
 
-## Speichern der Aufgabenreihenfolge {#storingtheorderoftasks}
+## Speichern der Reihenfolge der Tasks {#storingtheorderoftasks}
 
-Das clientseitige gantt unterstützt das [Umsortieren von Aufgaben](guides/reordering-tasks.md) per Drag & Drop. Bei Nutzung dieser Funktion ist es notwendig, die Aufgabenreihenfolge in der Datenbank zu speichern. Weitere Informationen finden Sie in der [allgemeinen Beschreibung hier](guides/server-side.md#storingtheorderoftasks).
+Die clientseitige Gantt ermöglicht [das Neuanordnen der Tasks] mittels Drag & Drop. Wenn Sie diese Funktion verwenden, müssen Sie diese Reihenfolge in der Datenbank speichern.
+Sie können [hier die allgemeine Beschreibung lesen](guides/server-side.md#storingtheorderoftasks).
 
-Im nächsten Schritt wird diese Funktionalität in die Anwendung integriert.
+Fügen wir diese Funktion nun zu unserer App hinzu.
 
-### Aufgaben-Neuanordnung im Client aktivieren
+### Aktivieren der Neuanordnung der Tasks im Client
 
-Zunächst sollten Benutzer in der Lage sein, Aufgaben direkt in der Benutzeroberfläche neu anzuordnen.
+Zuerst müssen wir es den Benutzern ermöglichen, die Reihenfolge der Tasks in der UI zu ändern.
 
-Öffnen Sie die *Index*-Ansicht und passen Sie die Gantt-Konfiguration wie folgt an:
+Öffnen Sie die *Index*-View und aktualisieren Sie die Konfiguration von gantt:
 
-**Views/Home/Index.cshtml**
-~~~js
+
+~~~js title="Views/Home/Index.cshtml"
 gantt.config.order_branch = true;/*!*/
 gantt.config.order_branch_free = true;/*!*/
 
-// Datumsformat festlegen
+// specifying the date format
 gantt.config.date_format = "%Y-%m-%d %H:%i";
-// Gantt initialisieren
+// initializing gantt
 gantt.init("gantt_here");
 ~~~
 
-### Aufgabenreihenfolge zum Modell hinzufügen
+### Neue Aufgaben-Reihenfolge zum Modell hinzufügen
 
-Als Nächstes aktualisieren wir das Backend, um diese Änderungen zu unterstützen.
+Nun spiegeln wir diese Änderungen im Backend wider.
 
-Die Aufgabenreihenfolge wird in einer Eigenschaft namens SortOrder gespeichert, daher muss die *Task*-Klasse entsprechend angepasst werden:
+Wir speichern die Reihenfolge in der Eigenschaft SortOrder, daher aktualisieren wir die *Task*-Klasse entsprechend:
 
-**Models/Task.cs**
-~~~js
+
+~~~js title="Models/Task.cs"
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -823,12 +833,12 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-Auch der *TaskController* benötigt einige Anpassungen:
+Nun müssen wir TaskController aktualisieren, nämlich:
 
-- Aufgaben, die an den Client gesendet werden, sollten nach ihrem SortOrder-Wert sortiert werden:
+- Die Client-Seite soll Tasks nach dem Wert SortOrder sortiert erhalten:
 
-**Controllers/TaskController.cs**
-~~~js
+
+~~~js title="Controllers/TaskController.cs"
 namespace DHX.Gantt.Web.Controllers
 {
     [GanttAPIExceptionFilter]
@@ -846,10 +856,10 @@ namespace DHX.Gantt.Web.Controllers
         }
 ~~~
 
-- Beim Erstellen neuer Aufgaben sollte ein Standardwert für SortOrder zugewiesen werden:
+- Neue Tasks sollen den Standardwert SortOrder erhalten:
 
-**Controllers/TaskController.cs**
-~~~js
+
+~~~js title="Controllers/TaskController.cs"
 namespace DHX.Gantt.Web.Controllers
 {
     [System.Web.Http.HttpPost]
@@ -870,14 +880,14 @@ namespace DHX.Gantt.Web.Controllers
     }
 ~~~
 
-- Der SortOrder sollte aktualisiert werden, wann immer sich die Aufgabenreihenfolge auf der Clientseite ändert.
+- SortOrder sollte aktualisiert werden, wenn die Task-Reihenfolge auf dem Client geändert wird. 
 
-Wenn Aufgaben neu angeordnet werden, löst Gantt eine PUT-Anfrage aus, die die neue Position in der ['target'](guides/server-side.md#storingtheorderoftasks)-Eigenschaft zusammen mit weiteren Aufgabendetails enthält.
+Wenn ein Benutzer die Reihenfolge der Tasks ändert, ruft Gantt eine PUT-Aktion auf und übermittelt Informationen über die neue Position der Aufgabe im Property ['target'](guides/server-side.md#storingtheorderoftasks) der Anfrage zusammen mit den übrigen Task-Eigenschaften. 
 
-Um dies zu verarbeiten, fügen Sie der Task-DTO-Klasse eine neue Eigenschaft hinzu:
+Daher sollten wir eine zusätzliche Eigenschaft zur TaskDto-Klasse hinzufügen:
 
-**Models/TaskDto.cs**
-~~~js
+
+~~~js title="Models/TaskDto.cs"
 namespace DHX.Gantt.Web.Models
 {
   public class TaskDto
@@ -885,7 +895,7 @@ namespace DHX.Gantt.Web.Models
     public int id { get; set; }
     public string text { get; set; }
     public string start_date { get; set; }
-    public int duration { get; set; }
+    public int duration { get;; set; }
     public decimal progress { get; set; }
     public int? parent { get; set; }
     public string type { get; set; }
@@ -897,10 +907,10 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-Nun implementieren Sie die Logik zur Neuanordnung in der PUT- (EditTask-) Aktion:
+Und nun implementieren wir die Neuanordnung in unserer PUT (EditTask)-Aktion:
 
-**Controllers/TaskController.cs**
-~~~js
+
+~~~js title="Controllers/TaskController.cs"
     // PUT api/Task/5
     [System.Web.Http.HttpPut]
     public IHttpActionResult EditTask(int id, TaskDto taskDto)
@@ -910,7 +920,7 @@ Nun implementieren Sie die Logik zur Neuanordnung in der PUT- (EditTask-) Aktion
 
       if (!string.IsNullOrEmpty(taskDto.target))
       {
-        // Neuanordnung wurde durchgeführt
+        // reordering occurred
         this._UpdateOrders(updatedTask, taskDto.target);/*!*/
       }
 
@@ -930,8 +940,8 @@ Nun implementieren Sie die Logik zur Neuanordnung in der PUT- (EditTask-) Aktion
 
       var targetId = orderTarget;
 
-      // Die ID der benachbarten Aufgabe wird entweder als '{id}' oder als 'next:{id}' gesendet, 
-      // abhängig davon, ob es sich um das nächste oder vorherige Geschwister handelt
+      // adjacent task id is sent either as '{id}' or as 'next:{id}' depending 
+      // on whether it's the next or the previous sibling
       if (targetId.StartsWith("next:"))
       {
         targetId = targetId.Replace("next:", "");
@@ -965,44 +975,45 @@ Nun implementieren Sie die Logik zur Neuanordnung in der PUT- (EditTask-) Aktion
 
 ## Bekannte Probleme
 
-Beim Ausführen der App auf IIS können HTTP PUT- und DELETE-Anfragen Fehler 405 oder 401 zurückgeben. Dies kann daran liegen, dass das **WebDAV**-Modul mit RESTful-Handlern in Konflikt steht.
+HTTP PUT- und DELETE-Anfragen geben 405- oder 401-Fehler zurück, wenn eine Anwendung unter IIS läuft.
+Das Problem kann durch das WebDAV-Modul verursacht werden, das mit RESTful-Handlern in Konflikt geraten kann. 
 
-Eine übliche Lösung ist, das WebDAV-Modul in der **web.config**-Datei zu deaktivieren. Weitere Details finden Sie [hier](https://forums.iis.net/t/1166025.aspx).
+Als gängige Lösung kann das Modul im Web.config deaktiviert werden. Weitere Details finden Sie [hier](https://learn.microsoft.com/en-us/answers/tags/828/developer-technologies).
 
 ## Anwendungssicherheit
 
-Gantt selbst bietet keinen Schutz vor Bedrohungen wie SQL-Injection, XSS oder CSRF-Angriffen. Die Sicherstellung der Anwendungssicherheit liegt in der Verantwortung des Entwicklers bei der Implementierung des Backends. Weitere Informationen finden Sie [im zugehörigen Artikel](guides/app-security.md).
+Gantt bietet keinerlei Mittel, um eine Anwendung vor verschiedenen Bedrohungen zu schützen, z. B. vor SQL-Injektionen oder XSS- und CSRF-Angriffen. Es ist wichtig, dass die Verantwortung für die Sicherheit einer Anwendung von den Entwicklern übernommen wird, die das Backend implementieren. Lesen Sie die Details [im entsprechenden Artikel](guides/app-security.md).
 
-## Fehlerbehebung
+## Trouble shooting
 
 ### ASP.NET Web Application-Vorlage fehlt
 
-Falls die Projektvorlage "ASP.NET Web Application" in Visual Studio 2022 fehlt, gehen Sie wie folgt vor:
+Wenn Sie die notwendige Vorlage "ASP.NET Web Application" in Visual Studio 2022 nicht finden können, folgen Sie den untenstehenden Schritten:
 
-1. Schließen Sie Visual Studio 2022
+1. Visual Studio 2022 schließen
 
-2. Öffnen Sie das Startmenü und starten Sie den Visual Studio Installer
+2. Öffnen Sie den Visual Studio Installer über das Startmenü
 
-3. Suchen Sie *Visual Studio Community 2022* und klicken Sie auf *Ändern*
+3. Finden Sie *Visual Studio Community 2022* -> klicken Sie auf *Ändern*
 
 ![vsinstaller](/img/vsinstaller.png)
 
-4. Gehen Sie im Dialog zu *Individuelle Komponenten*, aktivieren Sie das Kontrollkästchen für *".NET Framework Project and item templates"* und klicken Sie anschließend auf *Ändern*
+4. Im geöffneten Fenster wählen Sie *Einzelne Komponenten*, aktivieren Sie *".NET Framework-Projekt- und Item-Vorlagen"*, markieren Sie den entsprechenden Punkt in der Liste und klicken Sie auf *Ändern*
 
 ![components](/img/components.png)
 
-Öffnen Sie danach Visual Studio 2022 erneut - die Vorlage sollte nun verfügbar sein.
+Danach können Sie Visual Studio 2022 starten und die benötigte Vorlage finden.
 
-### Ausnahme beim Initialisieren der Datenbank
+### Eine Ausnahme beim Initialisieren der Datenbank aufgetreten
 
-Gelegentlich kann es passieren, dass der DropCreateDatabaseIfModelChanges-Initializer die vorhandene Datenbank löscht, aber keine neue erstellt.
+Manchmal kann es vorkommen, dass der Initializer DropCreateDatabaseIfModelChanges eine vorhandene Datenbank löscht, aber keine neue erstellt.
 
 ![exception_error](/img/exception_error.png)
 
-Falls dies auftritt, öffnen Sie *GanttInitializer.cs* und ersetzen Sie *DropCreateDatabaseIfModelChanges* durch *DropCreateDatabaseAlways*:
+In diesem Fall öffnen Sie *GanttInitializer.cs* und ersetzen Sie *DropCreateDatabaseIfModelChanges* durch *DropCreateDatabaseAlways*:
 
-**App_Start/GanttInitializer.cs**
-~~~js
+
+~~~js title="App_Start/GanttInitializer.cs"
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -1016,14 +1027,14 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-Führen Sie die Anwendung anschließend erneut aus.
+Dann starten Sie die Anwendung erneut.
 
-### Probleme beim Rendern von Aufgaben und Verknüpfungen
+### Probleme beim Rendern von Tasks und Links
 
-Wenn Aufgaben und Verknüpfungen nach der Integration von Gantt mit ASP.NET MVC nicht angezeigt werden, lesen Sie bitte den Artikel [Troubleshooting Backend Integration Issues](guides/troubleshooting.md). Dort finden Sie Hinweise zur Ursachenermittlung.
+Falls Sie die obigen Schritte zur Implementierung der Gantt-Integration mit ASP.NET MVC abgeschlossen haben, Gantt jedoch keine Aufgaben und Verknüpfungen auf der Seite rendert, werfen Sie einen Blick in den Artikel [Troubleshooting Backend Integration Issues](guides/troubleshooting.md). Dort werden Wege beschrieben, wie man die Ursachen der Probleme identifiziert.
 
-## Wie geht es weiter?
+## Was kommt als Nächstes
 
-An diesem Punkt ist das Gantt-Diagramm voll funktionsfähig. Der vollständige Code ist auf [GitHub](https://github.com/DHTMLX/gantt-howto-dotnet) verfügbar und kann für eigene Projekte geklont oder heruntergeladen werden.
+Sie haben jetzt eine voll funktionsfähige Gantt-Anwendung. Den gesamten Code können Sie auf [GitHub](https://github.com/DHTMLX/gantt-howto-dotnet) einsehen, klonen oder herunterladen und in Ihren Projekten verwenden.
 
-Zusätzlich können Sie [Leitfäden zu verschiedenen Gantt-Funktionen](guides.md) oder Tutorials zur [Integration von Gantt mit anderen Backend-Frameworks](integrations/howtostart-guides.md) erkunden.
+Sie können auch [Guides zu den zahlreichen Funktionen von Gantt](guides.md) oder Tutorials zur [Integration von Gantt mit anderen Backend-Frameworks](integrations/howtostart-guides.md) prüfen.

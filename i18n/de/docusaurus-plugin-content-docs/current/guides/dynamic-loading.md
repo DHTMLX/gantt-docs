@@ -1,39 +1,39 @@
 ---
-title: "Dynamisches Laden (bei Bedarf)"
-sidebar_label: "Dynamisches Laden (bei Bedarf)"
+title: "Dynamisches Laden (auf Abruf)"
+sidebar_label: "Dynamisches Laden (auf Abruf)"
 ---
 
-# Dynamisches Laden (bei Bedarf)
+# Dynamisches Laden (auf Abruf)
 
 :::info
-pronote Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO Edition verfügbar
 :::
 
-Standardmäßig lädt dhtmlxGantt alle Daten auf einmal, was bei einer großen Anzahl von Aufgaben problematisch sein kann.
+Standardmäßig lädt dhtmlxGantt alle Daten auf einmal. Das kann problematisch werden, wenn Sie eine große Anzahl von Aufgaben haben.
 
-In solchen Fällen kann der Modus für dynamisches Laden verwendet werden, um Daten nach Zweigen (Teilprojekten), Ebene für Ebene, zu laden, während der Nutzer sie erweitert.
+In einem solchen Fall können Sie den dynamischen Ladevorgang verwenden und Daten nach Verzweigungen (Unterprojekten) schichtweise laden, während der Benutzer sie öffnet.
 
 ## Funktionsweise
 
-Wenn das dynamische Laden [aktiviert](#enablingdynamicloading) ist, sendet der Aufruf von [gantt.load("url")](api/method/load.md) eine GET-Anfrage an die angegebene URL und erwartet als Antwort nur die Aufgaben der obersten Ebene, wobei alle verschachtelten Zweige zunächst geschlossen sind.
+Wenn dynamisches Laden aktiviert ist, sendet der Aufruf gantt.load("url") eine GET-Anfrage an die angegebene URL, und es wird erwartet, dass die Antwort nur die Aufgaben der obersten Ebene enthält, wobei alle verschachtelten Zweige als geschlossen angezeigt werden.
 
-Wenn der Nutzer auf das Symbol zum Erweitern klickt, ruft gantt automatisch die Methode [load](api/method/load.md) auf und sendet die ID der angeklickten Aufgabe an den Server:
+Wenn der Benutzer auf das Expand-Symbol klickt, ruft gantt automatisch die [load](api/method/load.md) Methode auf und sendet die ID der angeklickten Aufgabe an den Server:
 
 ~~~js
 gantt.load("url?parent_id="123"");
 ~~~
 
-Der Server sollte dann mit den Unteraufgaben des erweiterten Elements antworten.
+Und erwartet die Antwort, die Unteraufgaben des erweiterten Elements enthält.
 
 :::note
-Das Ereignis [onBeforeBranchLoading](api/event/onbeforebranchloading.md) kann verwendet werden, um die Anfrage-URL zu ändern oder zusätzliche Parameter hinzuzufügen.
+Sie können das [onBeforeBranchLoading](api/event/onbeforebranchloading.md) Ereignis verwenden, um die Request-URL zu ändern oder zusätzliche Parameter zu ihr hinzuzufügen.
 :::
 
-## Dynamisches Laden aktivieren  {#enablingdynamicloading}
+## Aktivierung des dynamischen Ladens {#enablingdynamicloading}
 
-<span id="enabledynload">Um das dynamische Laden im Gantt-Diagramm zu aktivieren</span>, sind sowohl clientseitige als auch serverseitige Konfigurationen erforderlich.
+Um das dynamische Laden im Gantt-Diagramm zu aktivieren, müssen Sie sowohl die Client- als auch die Serverseite berücksichtigen.
 
-- Clientseitig (verwenden Sie die Option [branch_loading](api/config/branch_loading.md)):
+- Clientenseite (verwenden Sie die Option [branch_loading](api/config/branch_loading.md)):
 
 ~~~js
 gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
@@ -44,7 +44,7 @@ gantt.init("gantt_here");
 gantt.load("/dynamic_loading");
 ~~~
 
-- Serverseitig:
+- Serverseite:
 
 ~~~php
 <?php
@@ -67,14 +67,12 @@ $gantt->render_table(
     "parent"
 );
 ~~~
-  
 
-[Loading subtasks on demand (branch loading)](https://docs.dhtmlx.com/gantt/samples/02_extensions/06_dynamic_loading.html)
+**Verwandtes Beispiel**: [Unteraufgaben bei Bedarf laden (Branch Loading)](https://docs.dhtmlx.com/gantt/samples/02_extensions/06_dynamic_loading.html)
 
+Im Allgemeinen besitzt die Client-Seite keine Informationen über die Kind-Elemente der angezeigten Dateneinträge (da diese Kinder nicht von der Serverseite geladen wurden).
 
-Im Allgemeinen hat die Clientseite keine Informationen über die untergeordneten Elemente der angezeigten Daten, da diese Kinder zunächst nicht vom Server geladen werden.
-
-Um diese Information bereitzustellen, kann eine spezielle Dateneigenschaft '$has_child' (die mit [branch_loading_property](api/config/branch_loading_property.md) angepasst werden kann) verwendet werden, um die Anzahl der Kindelemente einer Aufgabe anzugeben.
+Um diese Information zu übermitteln, können Sie eine spezielle Dateneigenschaft '$has_child' verwenden (kann geändert werden über [branch_loading_property](api/config/branch_loading_property.md)), die die Anzahl der Kind-Elemente für die Aufgabe angibt.
 
 ~~~php
 function check_children($row){
@@ -91,13 +89,12 @@ function check_children($row){
 $gantt->event->attach("beforeRender","check_children");
 ~~~
 
-
-[Loading subtasks on demand (branch loading)](https://docs.dhtmlx.com/gantt/samples/02_extensions/06_dynamic_loading.html)
+**Verwandtes Beispiel**: [Unteraufgaben bei Bedarf laden (Branch Loading)](https://docs.dhtmlx.com/gantt/samples/02_extensions/06_dynamic_loading.html)
 
 
 ## Datenformat für dynamisches Laden
 
-Das Datenformat für das dynamische Laden sieht folgendermaßen aus:
+Das Format der Daten für dynamisches Laden ist folgendes:
 
 ~~~js
 {
@@ -132,35 +129,41 @@ Das Datenformat für das dynamische Laden sieht folgendermaßen aus:
 }
 ~~~
 
-Dies ist dasselbe JSON-Format wie beim regulären Laden von Daten; zum Vergleich siehe den Artikel [Supported Data Formats](guides/supported-data-formats.md).
+Wie Sie sehen können, handelt es sich um dasselbe JSON wie das, das für das reguläre Laden von Daten verwendet wird. Zum Vergleich lesen Sie den Artikel über [Unterstützte Datenformate](guides/supported-data-formats.md).
 
-Der Hauptunterschied ist die **$has_child**-Eigenschaft, die bestimmt, ob eine Aufgabe als 'Blatt'-Element (ohne 'Erweitern'-Schalter) oder als erweiterbarer Knoten angezeigt wird:
+Der einzige Unterschied besteht in der Eigenschaft **$has_child**, die angibt, ob eine Aufgabe als ein 'Blatts'-Element (ohne Expand-Umschalter) oder als erweiterbarer Knoten angezeigt wird:
 
-- Wenn die *$has_child*-Eigenschaft vorhanden ist und einen ['truthy'](https://developer.mozilla.org/en-US/docs/Glossary/Truthy) Wert enthält (wie eine von Null verschiedene Zahl, true oder ein nicht-leerer String), wird das Element mit dem Ein-/Ausklappschalter angezeigt. Das Erweitern löst eine Ajax-Anfrage an den Server aus;
-- Wenn *$has_child* fehlt oder einen ['falsy'](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) Wert enthält (wie Null, false, NaN, undefined, leerer String oder null), wird das Element ohne Schalter angezeigt, was darauf hinweist, dass es keine untergeordneten Aufgaben gibt.
+- Wenn die Eigenschaft *$has_child* angegeben ist und einen [truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)-Wert enthält (eine nicht-null Zahl, true, eine nicht-leere Zeichenkette usw.), wird der Eintrag mit dem Expand-/Kollaps-Schalter angezeigt. Beim Erweitern des Schalters wird eine Ajax-Anfrage an den Server gesendet;
+- Wenn *$has_child* nicht angegeben ist oder einen [falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)-Wert enthält (0, false, NaN, undefined, leerer String, null), wird der Eintrag ohne Umschalter angezeigt, als Aufgabe ohne Kind-Elemente.
 
-Wenn die Anfrage den Parameter *parent_id* enthält, sollte die Antwort die Kinder der Aufgabe mit dieser ID enthalten. Ist *parent_id* nicht enthalten, sollte die Antwort Aufgaben auf Root-Ebene enthalten:
+Wenn die Anfrage den Parameter *parent_id* enthält, muss die Antwort Kinder der Aufgabe mit der angegebenen ID enthalten. Enthält *parent_id* keinen Wert, muss die Anfrage Aufgaben der Wurzelebene enthalten:
 
 <table class="dp_table">
   <tr>
   <th><b>Aktion</b></th><th><b>HTTP-Methode</b></th><th><b>URL</b></th><th><b>Antwort</b></th>
   </tr>
   <tr>
-  <td>Root-Ebene laden</td>
+  <td>load root level</td>
   <td>GET</td>
   <td>/loadUrl</td>
-  <td>[Format für dynamisches Laden](#dynamicloadingformatofdata)</td>
+  <td>Dynamic loading format</td>
   </tr>
   <tr>
-  <td>Kinder einer Aufgabe laden</td>
+  <td>load children on the task</td>
   <td>GET</td>
-  <td>/loadUrl?parent_id="id"</td>
-  <td>[Format für dynamisches Laden](#dynamicloadingformatofdata)</td>
+  <td>/loadUrl?parent_id=id</td>
+  <td>Dynamic loading format</td>
   </tr>
 
 </table>
 
-## Aufgaben dynamisch laden
+### Aufgaben dynamisch laden
 
-Das dynamische Laden von Aufgaben kann auch so implementiert werden, dass neue Aufgaben geladen werden, wenn Sie zur letzten sichtbaren Aufgabe scrollen. Weitere Details finden Sie im Artikel [How to load tasks dynamically](guides/how-to.md#howtoloadtasksdynamically).
+Sie können das dynamische Laden von Aufgaben so implementieren, dass neue Aufgaben geladen werden, nachdem Sie bis zur letzten sichtbaren Aufgabe gescrollt haben. Details finden Sie im Artikel [Wie man Aufgaben dynamisch lädt](guides/how-to.md#how-to-load-tasks-dynamically).
 
+### Verwandte API
+
+- [branch_loading](api/config/branch_loading.md)
+- [branch_loading_property](api/config/branch_loading_property.md)
+- [onBeforeBranchLoading](api/event/onbeforebranchloading.md)
+- [onAfterBranchLoading](api/event/onafterbranchloading.md)

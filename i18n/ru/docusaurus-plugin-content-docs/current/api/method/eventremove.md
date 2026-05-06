@@ -1,23 +1,23 @@
 ---
 sidebar_label: eventRemove
 title: eventRemove method
-description: "удаляет обработчик события с указанного HTML-элемента"
+description: "удаляет обработчик события из элемента HTML"
 ---
 
 # eventRemove
 
 ### Description
 
-@short: Удаляет обработчик события с указанного HTML-элемента
+@short: Удаляет обработчик события из элемента HTML
 
-@signature: eventRemove: (node: HTMLElement | string, event: string, handler: GanttCallback, options?: boolean | HandlerSettings) =\> void
+@signature: eventRemove: (node: HTMLElement | string, event: string, handler: GanttCallback, options?: boolean | HandlerSettings) => void
 
 ### Parameters
 
-- `node` - (required) *HTMLElement | string* -            HTML-элемент или его ID
-- `event` - (required) *string* - название события (без префикса 'on')
-- `handler` - (required) *function* - функция, обрабатывающая событие
-- `options` - (optional) *boolean | HandlerSettings* -                необязательно, либо флаг <i>useCapture</i>, либо объект <i>options</i>. [Подробнее](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)
+- `node` - (required) *HTMLElement | string* -  the HTML node or its id
+- `event` - (required) *string* - имя HTML-события (без префикса 'on')
+- `handler` - (required) *function* - обработчик события
+- `options` - (optional) *boolean | HandlerSettings* - необязательный, значение параметра useCapture или options. См. детали
 
 ### Example
 
@@ -34,14 +34,13 @@ gantt.eventRemove(element, "click", handler);
 
 ### Details
 
-Любые слушатели событий, добавленные через [event](api/method/event.md), будут автоматически удалены при вызове [destructor](api/method/destructor.md).
+Все обработчики событий, подключенные с использованием [event](api/method/event.md) будут автоматически отсоединены при вызове [destructor](api/method/destructor.md).
 
 ### Related API
 - [event](api/method/event.md)
 
 ### Related Guides
-- [Обработка событий](guides/handling-events.md)
+- [Event Handling](guides/handling-events.md)
 
 ### Change log
 - добавлено в версии 4.0
-

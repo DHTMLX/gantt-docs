@@ -1,14 +1,14 @@
 ---
 sidebar_label: showDate
-title: showDate method
-description: "滚动图表区域以显示指定日期"
+title: showDate 方法
+description: "将图表区域滚动到使指定日期可见"
 ---
 
 # showDate
 
 ### Description
 
-@short: 滚动图表区域以显示指定日期
+@short: 将图表区域滚动以使指定日期可见
 
 @signature: showDate: (date: Date) =\> void
 
@@ -24,13 +24,14 @@ gantt.showDate(new Date()); //滚动到当前日期
 
 ### Details
 
-默认情况下，调用 [showDate](api/method/showdate.md) 方法会使甘特图滚动到指定日期。 
-但是，当启用 **autosize** 模式时，甘特图不会滚动，而是会扩展其容器的大小以在页面上显示该日期。 
-有关如何处理此行为的更多详情，请参阅[滚动到隐藏元素](api/config/autosize.md)一文。
+在默认模式下，当你使用 [showDate](api/method/showdate.md) 方法时，Gantt 会自动滚动。
+
+但如果启用 **autosize** 模式，Gantt 会增大其容器的尺寸，以便在页面上显示自身，而不是显示指定日期。
+
+请阅读 [滚动到隐藏元素](api/config/autosize.md) 文章，了解如何解决此问题。
 
 ### Related API
 - [showTask](api/method/showtask.md)
 - [scrollTo](api/method/scrollto.md)
 - [getScrollState](api/method/getscrollstate.md)
 - [onGanttScroll](api/event/onganttscroll.md)
-

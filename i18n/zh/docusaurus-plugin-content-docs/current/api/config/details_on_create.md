@@ -1,7 +1,7 @@
 ---
 sidebar_label: details_on_create
-title: details_on_create config
-description: "允许在点击'+'按钮创建新事件时，lightbox 自动打开。"
+title: details_on_create 配置
+description: "'says' 用于在通过点击 '+' 按钮创建新事件时打开 lightbox"
 ---
 
 # details_on_create
@@ -19,4 +19,4 @@ gantt.config.details_on_create = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**默认值：** true

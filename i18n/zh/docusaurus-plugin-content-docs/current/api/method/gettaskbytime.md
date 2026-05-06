@@ -1,24 +1,23 @@
 ---
 sidebar_label: getTaskByTime
-title: getTaskByTime method
-description: "获取在指定时间范围内发生的任务列表"
+title: getTaskByTime 方法
+description: "返回在指定时间段内发生的任务集合"
 ---
 
 # getTaskByTime
 
 ### Description
 
-@short: 获取在指定时间范围内发生的任务列表
+@short: 返回在指定时间段内发生的任务集合
 
 @signature: getTaskByTime: (from?: Date, to?: Date) =\> Array\<Task\>
 
 ### Parameters
-
-- `from` - (optional) *Date* - 时间段的开始日期
-- `to` - (optional) *Date* - 时间段的结束日期
+- `from` - (optional) *Date* -  该时间段的开始日期
+- `to`- (optional) *Date* -  该时间段的结束日期
 
 ### Returns
-- ` array` - (Array &lt;Task&gt;) - 包含任务对象的数组
+- ` array` - (Array &lt;Task&gt;) - 一个 Task 对象的数组
 
 ### Example
 

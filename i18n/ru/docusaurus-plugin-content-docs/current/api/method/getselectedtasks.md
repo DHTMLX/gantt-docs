@@ -1,19 +1,19 @@
 ---
 sidebar_label: getSelectedTasks
 title: getSelectedTasks method
-description: "возвращает массив выбранных в данный момент задач"
+description: "возвращает массив текущих выбранных задач"
 ---
 
 # getSelectedTasks
 
 ### Description
 
-@short: Возвращает массив выбранных в данный момент задач
+@short: Возвращает массив текущих выбранных задач
 
 @signature: getSelectedTasks: () =\> any[]
 
 ### Returns
-- ` tasks` - (массив) - массив идентификаторов задач
+- ` tasks` - (array) - массив идентификаторов задач
 
 ### Example
 
@@ -24,7 +24,7 @@ gantt.getSelectedTasks();
 ### Details
 
 :::note
- Этот метод предоставляется расширением **multiselect**, поэтому убедитесь, что плагин [multiselect](guides/extensions-list.md#multitaskselection) включен. Для подробностей смотрите статью [Множественный выбор задач](guides/multiselection.md). 
+Этот метод определён в расширении **multiselect**, поэтому нужно активировать плагин [multiselect](guides/extensions-list.md#multitaskselection). Подробности смотрите в статье [Multi-Task Selection](guides/multiselection.md).
 :::
 
 ### Related API
@@ -37,5 +37,4 @@ gantt.getSelectedTasks();
 - [toggleTaskSelection](api/method/toggletaskselection.md)
 
 ### Related Guides
-- [Множественный выбор задач](guides/multiselection.md)
-
+- [Multi-Task Selection](guides/multiselection.md)

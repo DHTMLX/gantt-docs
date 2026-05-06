@@ -329,6 +329,15 @@ The package exports both a default `VueGantt` component export and named exports
 
 From `@dhtmlx/trial-vue-gantt` or `@dhx/vue-gantt`:
 
+### Type Exports
+
+| Export | Description |
+|--------|------------|
+| `SerializedTask` | User-facing task shape with `Date \| string` dates. Use for store state, initial data, and `batchSave` payloads. |
+| `SerializedLink` | User-facing link shape. Use alongside `SerializedTask` in store state and data definitions. |
+
+Use `SerializedTask` and `SerializedLink` for data you own (Pinia state, `ref<>`, API responses, initial literals). Use `Task` and `Link` for data gantt owns (inside event handlers, template callbacks, filter functions), where runtime task objects include internal `$`-prefixed properties.
+
 ### Helper Factories
 
 - `defineGanttConfig(config)` for typed config authoring

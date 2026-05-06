@@ -14,40 +14,38 @@ description: "wird unmittelbar nach der Ausführung der Methode redo() ausgelös
 
 ### Parameters
 
-- `action` - (required) *array* - ein Array von Befehlsobjekten, die eine Benutzeraktion repräsentieren
+- `action` - (required) *array* - eine Benutzeraktion als Array von Befehlsobjekten
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAfterRedo",function(action){
-    // Ihr Code hier
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Related samples
-- [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
+- [Undo/Redo-Änderungen in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
 ### Details
 
 :::note
- Dieses Event ist Teil der **undo**-Erweiterung. Stellen Sie daher sicher, dass das [undo](guides/extensions-list.md#undo) Plugin aktiviert ist. Weitere Details finden Sie im Artikel ["Undo/Redo-Funktionalität"](guides/undo-redo.md). 
+Dieses Ereignis ist in der **undo**-Erweiterung definiert, daher müssen Sie das [undo](guides/extensions-list.md#undo) Plugin aktivieren. Lesen Sie die Details im Artikel [Undo/Redo Functionality](guides/undo-redo.md).
 :::
 
+Der **action**-Parameter ist ein Array von Befehls-Objekten, von denen jedes die folgenden Attribute enthält:
 
-Der **action**-Parameter enthält ein Array von Befehlsobjekten mit folgenden Attributen:
- 
-- **type** - (*string*) gibt den Befehlstyp an: "add", "remove" oder "update"
-- **entity** - (*string*) gibt die Art des geänderten Objekts an: "task" oder "link"
-- **value** - (*object*) das Task- oder Link-Objekt nach der Änderung
-- **oldValue** - (*object*) das Task- oder Link-Objekt vor der Änderung
+- **type** - (*string*) der Typ eines Befehls: "add/remove/update"
+- **entity** - (*string*) der Typ des Objekts, das geändert wurde: "task" oder "link"
+- **value** - (*object*) das geänderte Task-/Link-Objekt
+- **oldValue** - (*object*) das Task-/Link-Objekt vor den Änderungen
 
-Wenn keine Änderungen angewendet wurden, ist der **action**-Parameter === null. Dies kann auftreten, wenn [gantt.redo()](api/method/redo.md) aufgerufen wurde, die Änderungen jedoch durch [onBeforeRedo](api/event/onbeforeredo.md) verhindert wurden oder wenn der Redo-Stack leer war.
+Falls keine Änderungen vorgenommen wurden, ist das **action**-Argument === null. Dies kann passieren, wenn [gantt.redo()](api/method/redo.md) aufgerufen wurde, die Änderungen jedoch durch [onBeforeRedo](api/event/onbeforeredo.md) abgebrochen oder der Stack leer war.
 
 ### Related API
 - [redo](api/method/redo.md)
 - [onBeforeRedo](api/event/onbeforeredo.md)
 
 ### Change log
-- eingeführt in Version 4.0
-- der **action**-Parameter wurde in Version 5.2 hinzugefügt
-
+- in Version 4.0 hinzugefügt
+- Der **action**-Parameter wurde in Version 5.2 hinzugefügt

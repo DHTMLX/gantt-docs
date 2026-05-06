@@ -1,20 +1,20 @@
 ---
 sidebar_label: close
-title: close method
-description: "закрывает ветку, идентифицированную заданным id"
+title: метод close
+description: "закрывает ветку с указанным id"
 ---
 
 # close
 
 ### Description
 
-@short: Закрывает ветку, идентифицированную заданным id
+@short: Закрывает ветку с указанным id
 
 @signature: close: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -   id ветки
+- `id` - (required) *string | number* - идентификатор ветки
 
 ### Example
 
@@ -37,12 +37,11 @@ gantt.close("p_1");/*!*/
 
 ### Details
 
-Учтите, что этот метод вызывает событие [onTaskClosed](api/event/ontaskclosed.md).
+Примечание: метод вызывает событие [onTaskClosed](api/event/ontaskclosed.md).
 
 ### Related API
 - [open](api/method/open.md)
 - [onTaskClosed](api/event/ontaskclosed.md)
 
 ### Related Guides
-- [Настройка древовидной колонки](guides/tree-column.md)
-
+- [Configuring the Tree Column](guides/tree-column.md)

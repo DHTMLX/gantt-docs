@@ -1,23 +1,23 @@
 ---
 sidebar_label: getSiblings
-title: getSiblings method
-description: "提供指定任务的兄弟任务，包括任务本身"
+title: getSiblings 方法
+description: "返回指定任务的同级任务（包括自身）"
 ---
 
 # getSiblings
 
 ### Description
 
-@short: 提供指定任务的兄弟任务，包括任务本身
+@short: 返回指定任务的同级任务（包括自身）
 
 @signature: getSiblings: (id: string | number) =\> any[]
 
 ### Parameters
 
-- `id` - (required) *string | number* -    任务的ID
+- `id` - (required) *string | number* -    任务 ID
 
 ### Returns
-- ` siblings` - (array) - 包含任务兄弟任务ID的数组
+- ` siblings` - （数组）- 该任务同级的 ID 列表
 
 ### Example
 
@@ -40,7 +40,7 @@ gantt.getSiblings("t_1"); ->  ["t_1", "t_2] /*!*/
 
 ### Details
 
-兄弟任务是指在任务层级中处于同一级别的任务
+同级任务是处于同一树层级的任务
 
 ### Related API
 - [getNextSibling](api/method/getnextsibling.md)
@@ -48,4 +48,3 @@ gantt.getSiblings("t_1"); ->  ["t_1", "t_2] /*!*/
 - [getParent](api/method/getparent.md)
 - [hasChild](api/method/haschild.md)
 - [getChildren](api/method/getchildren.md)
-

@@ -1,7 +1,7 @@
 ---
 sidebar_label: static_background_cells
-title: static_background_cells config
-description: "允许在使用 static_background 模式时渲染高亮单元格"
+title: static_background_cells 配置
+description: "在 static_background 模式中启用高亮单元格的呈现"
 ---
 
 # static_background_cells
@@ -10,7 +10,7 @@ description: "允许在使用 static_background 模式时渲染高亮单元格"
 :::
 ### Description
 
-@short: 允许在使用 static_background 模式时渲染高亮单元格
+@short: 在 static_background 模式中启用高亮单元格的呈现
 
 @signature: static_background_cells: boolean
 
@@ -18,7 +18,7 @@ description: "允许在使用 static_background 模式时渲染高亮单元格"
 
 ~~~jsx
 gantt.config.static_background_cells = false;
-~~~
+~~~ 
 
 **Default value:** true
 
@@ -43,7 +43,7 @@ gantt.config.static_background_cells = false;
 
 ~~~js
 gantt.config.static_background = false;
-~~~
+~~~ 
 
 此选项可用于将 **static_background** 行为恢复到 6.1 版本的状态。
 

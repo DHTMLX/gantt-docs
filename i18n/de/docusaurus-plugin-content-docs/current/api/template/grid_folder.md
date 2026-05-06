@@ -1,7 +1,7 @@
 ---
 sidebar_label: grid_folder
-title: grid_folder template
-description: "definiert das Icon, das für übergeordnete Elemente in der Tree-Spalte verwendet wird"
+title: grid_folder Vorlage
+description: "legt das Symbol der übergeordneten Elemente in der Baumspalte fest"
 ---
 
 # grid_folder
@@ -14,21 +14,21 @@ description: "definiert das Icon, das für übergeordnete Elemente in der Tree-S
 
 ### Parameters
 
-- `task` - (required) *Task* - das Task-Objekt
+- `task` - (erforderlich) *Task* - das Task-Objekt
 
 ### Returns
-- ` text` - (string) - html-Text, der im Gantt gerendert wird
+- ` text` - (string) - HTML-Text, der im Gantt gerendert wird
 
 ### Example
 
 ~~~jsx
 gantt.templates.grid_folder = function(item) {
   return `<div 
-   class='gantt_tree_icon gantt_folder_${(item.$open ? "open" : "closed")}'>
+   class='gantt_tree_icon gantt_folder_${(item.$open ? "open" : "closed")}' >
    </div>`;
 };
 ~~~
 
 ### Related Guides
-- ["Vorlagen des Grids"](guides/table-templates.md)
-- ["Konfiguration der Baumspalte"](guides/tree-column.md)
+- [Vorlagen des Grids](guides/table-templates.md)
+- [Konfiguration der Baumspalte](guides/tree-column.md)

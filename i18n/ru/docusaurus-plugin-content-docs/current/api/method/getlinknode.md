@@ -1,23 +1,23 @@
 ---
 sidebar_label: getLinkNode
-title: getLinkNode method
-description: "получает HTML-элемент, соответствующий указанной ссылке зависимости"
+title: метод getLinkNode
+description: "возвращает HTML-элемент указанной зависимости-ссылки"
 ---
 
 # getLinkNode
 
 ### Description
 
-@short: Получает HTML-элемент, соответствующий указанной ссылке зависимости
+@short: Возвращает HTML-элемент указанной зависимости-ссылки
 
 @signature: getLinkNode: (id: string | number) =\> HTMLElement
 
 ### Parameters
 
-- `id` - (required) *string | number* -    ID ссылки
+- `id` - (required) *string | number* - идентификатор ссылки
 
 ### Returns
-- `node` - (HTMLElement) - HTML-элемент, представляющий ссылку
+- `node` - (HTMLElement) - HTML-элемент ссылки
 
 ### Example
 

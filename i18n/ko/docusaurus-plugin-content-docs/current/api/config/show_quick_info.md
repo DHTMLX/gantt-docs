@@ -1,14 +1,14 @@
 ---
 sidebar_label: show_quick_info
-title: show_quick_info config
-description: "'quick_info' 확장 기능을 켜거나 끕니다 (작업 세부 정보를 보여주는 팝업)"
+title: show_quick_info 구성
+description: "활성화/비활성화 'quick_info' 확장(팝업 작업의 세부 양식)"
 ---
 
 # show_quick_info
 
 ### Description
 
-@short: 'quick_info' 확장 기능을 켜거나 끕니다 (작업 세부 정보를 보여주는 팝업)
+@short: 'quick_info' 확장을 활성화/비활성화합니다(팝업 작업의 세부 양식)
 
 @signature: show_quick_info: boolean
 
@@ -28,4 +28,4 @@ gantt.init("gantt_here");
 :::
 
 ### Related Guides
-- ['Quick Info' 확장(터치 지원)의 템플릿](guides/touch-templates.md)
+- [Templates of the 'Quick Info' Extension (Touch Support)](guides/touch-templates.md)

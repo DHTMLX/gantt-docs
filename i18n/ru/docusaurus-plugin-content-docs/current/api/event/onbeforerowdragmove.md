@@ -1,44 +1,43 @@
 ---
 sidebar_label: onBeforeRowDragMove
-title: onBeforeRowDragMove event
-description: "срабатывает непосредственно перед вертикальным перетаскиванием строки в grid на новое место"
+title: onBeforeRowDragMove событие
+description: "Срабатывает перед тем, как строка сетки будет перетащена вертикально в другое положение"
 ---
 
 # onBeforeRowDragMove
 
 ### Description
 
-@short: Срабатывает непосредственно перед вертикальным перетаскиванием строки в grid на новое место
+@short: Вызывается перед тем, как строка сетки будет перетащена вертикально в другое положение
 
 @signature: onBeforeRowDragMove: (id: string | number, parent: string | number, tindex: number) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - id задачи, которая перемещается внутри grid
-- `parent` - (required) *string | number* - id нового родителя
-- `tindex` - (required) *number* - целевой индекс внутри родительской ветки, куда будет помещена задача
+- `id` - (required) *string | number* - идентификатор задачи для перемещения в сетке
+- `parent` - (required) *string | number* - идентификатор родителя
+- `tindex` - (required) *number* - индекс позиции в ветке родителя, куда будет перемещена задача
 
 ### Returns
-- ` result` - (boolean) - указывает, должно ли стандартное действие события выполниться (<b>true</b>) или быть остановлено (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли срабатывать стандартное действие события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeRowDragMove", function(id, parent, tindex){
-    // return true/false;
+     // return true/false;
 });
 ~~~
 
 ### Details
 
-Это событие можно заблокировать. Возврат *false* предотвратит перемещение строки.
+Событие можно заблокировать. Возвращайте *false*, чтобы отменить перемещение строки.
 
 :::note
- Это событие срабатывает только если опция [order_branch](api/config/order_branch.md) установлена в значение "marker". 
+Событие срабатывает только если опция [order_branch](api/config/order_branch.md) установлена в значение "marker". 
 :::
 
 ### Related API
 - [order_branch](api/config/order_branch.md)
 - [onAfterTaskMove](api/event/onaftertaskmove.md)
 - [onBeforeTaskMove](api/event/onbeforetaskmove.md)
-

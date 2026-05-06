@@ -1,14 +1,14 @@
 ---
 sidebar_label: keyboard_navigation
-title: keyboard_navigation config
-description: "启用甘特图中的键盘导航"
+title: keyboard_navigation 配置
+description: "在甘特图中启用键盘导航"
 ---
 
 # keyboard_navigation
 
 ### Description
 
-@short: 启用甘特图中的键盘导航
+@short: 在甘特图中启用键盘导航
 
 @signature: keyboard_navigation: boolean
 
@@ -18,7 +18,7 @@ description: "启用甘特图中的键盘导航"
 gantt.config.keyboard_navigation = true;
 ~~~
 
-**Default value:** true
+**默认值：** true
 
 ### Related samples
 - [Keyboard Navigation](https://docs.dhtmlx.com/gantt/samples/02_extensions/16_keyboard_navigation.html)
@@ -26,10 +26,10 @@ gantt.config.keyboard_navigation = true;
 ### Details
 
 :::note
- 此设置属于 **keyboard_navigation** 扩展的一部分，请确保已启用 [keyboard_navigation](guides/extensions-list.md) 插件。更多信息请参见 [键盘导航](guides/keyboard-navigation.md) 文章。 
+此选项在 **keyboard_navigation** 扩展中定义，因此需要激活 [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) 插件。请在 [Keyboard Navigation](guides/keyboard-navigation.md) 文章中阅读详细信息。
 :::
 
-added in version 4.1
+新增于 4.1 版本
 
 ### Related API
 - [keyboard_navigation_cells](api/config/keyboard_navigation_cells.md)
@@ -39,5 +39,4 @@ added in version 4.1
 - [removeShortcut](api/method/removeshortcut.md)
 
 ### Related Guides
-- [键盘导航](guides/keyboard-navigation.md)
-
+- [Keyboard Navigation](guides/keyboard-navigation.md)

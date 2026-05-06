@@ -1,49 +1,51 @@
 ---
-title: "Экспорт и импорт из MS Project"
-sidebar_label: "Экспорт и импорт из MS Project"
----
+title: "Экспорт и импорт из MS Project" 
+sidebar_label: "Экспорт и импорт из MS Project" 
+--- 
 
 # Экспорт и импорт из MS Project
 
-Библиотека dhtmlxGantt поддерживает экспорт данных из диаграммы Gantt в MS Project, а также импорт данных из MS Project в диаграмму Gantt.
+Библиотека dhtmlxGantt позволяет экспортировать данные из диаграммы Gantt в MS Project. Также можно импортировать данные в Gantt из MS Project.
 
 :::note
-Сервис экспорта предоставляется бесплатно, однако итоговый файл будет содержать водяной знак библиотеки при использовании по лицензии GPL. 
-Если у вас есть приобретённая лицензия, экспорт будет выполняться без водяных знаков в течение активного периода поддержки (12 месяцев для всех PRO-лицензий).
+Сервис бесплатный, но выходной файл будет содержать водяной знак библиотеки под лицензией GPL. 
+При покупке лицензии результат экспорта будет доступен без водяного знака в течение срока действующей поддержки
+(12 месяцев для всех PRO лицензий).
 :::
 
-Существует несколько сервисов экспорта, которые можно установить локально на ваш компьютер для экспорта диаграмм Gantt в MS Project. 
-Обратите внимание, что эти сервисы экспорта не входят в комплект поставки Gantt. 
-Подробнее об условиях использования каждого сервиса смотрите в [соответствующей статье](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml).
+Существуют несколько сервисов экспорта. Их можно устанавливать на ваш компьютер и экспортировать диаграмму Gantt в MS Project локально.
+Обратите внимание, что сервисы экспорта не включены в пакет Gantt, 
+прочитайте соответствующую статью ([corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)), чтобы узнать условия использования каждого из них.
 
 ## Ограничения онлайн-сервиса экспорта
 
 :::note
-Сервис экспорта имеет ограничения по времени обработки и размеру запроса.
+Сервис экспорта имеет ограничения по времени выполнения и размеру запроса.
 :::
 
 ### Ограничения по времени
 
-Если процесс экспорта занимает больше 20 секунд, он будет прерван, и вы увидите следующую ошибку:
+Если процесс занимает более 20 секунд, экспорт будет отменён и возникнет следующая ошибка:
 
 ~~~html
 Error: Timeout trigger 20 seconds
 ~~~
 
-Когда несколько пользователей одновременно экспортируют диаграммы Gantt, общая обработка может занять больше времени. Однако для каждого отдельного запроса пользователя отслеживается время отдельно.
+Если несколько человек экспортируют Gantt одновременно, процесс может занять больше обычного. Но это нормально, потому что время, потраченное на экспортный запрос от конкретного пользователя, считывается отдельно.
 
-### Ограничения на размер запроса
+### Ограничения по размеру запроса
 
-Общий API-эндпоинт **https://export.dhtmlx.com/gantt** обрабатывает все типы экспорта (*exportToPDF*, *exportToPNG*, *exportToMSProject* и др.) с максимальным размером запроса в **10 МБ**.
+Существует общий API-эндпойнт `https://export.dhtmlx.com/gantt`, который обслуживает все методы экспорта (*exportToPDF*, *exportToPNG*, *exportToMSProject* и пр.). **Максимальный размер запроса — 10 МБ**.
 
-Также существует отдельный API-эндпоинт **https://export.dhtmlx.com/gantt/project** специально для сервисов экспорта/импорта [MSProject](#limitsonrequestsizeandimportoflargefiles) и 
-[Primavera P6](guides/export-primavera.md) (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*). Этот эндпоинт позволяет отправлять запросы размером до **40 МБ**.
+Также существует отдельный API-эндпойнт `https://export.dhtmlx.com/gantt/project`, предназначенный для [MSProject](#limits-on-request-size-and-import-of-large-files) и 
+[Primavera P6](guides/export-primavera.md) 
+сервисов экспорта/импорта (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* только). **Максимальный размер запроса: 40 МБ**.
 
-## Использование модулей экспорта
+## Использование экспортных модулей
 
 :::note
-Для экспорта крупных диаграмм рекомендуется использовать [отдельный модуль экспорта](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). 
-Этот модуль предоставляется бесплатно при наличии лицензии [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) или [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), либо может быть приобретён отдельно [здесь](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
+Если вам нужно экспортировать крупные диаграммы, вы можете использовать [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). 
+Модуль экспорта предоставляется бесплатно, если вы получили Gantt по лицензии [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) или [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), или вы можете [приобрести модуль отдельно](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
 :::
 
 [Подробнее об использовании модуля экспорта для MS Project](guides/msp-export-module.md). 
@@ -51,20 +53,22 @@ Error: Timeout trigger 20 seconds
 
 ## Экспорт в MS Project
 
-Компонент Gantt поддерживает экспорт связей, задач и ресурсов в MS Project.
+Компонент Gantt позволяет экспортировать связи, задачи и ресурсы в MS Project.
 
-Чтобы экспортировать данные из диаграммы Gantt в MS Project, выполните следующие шаги:
+Чтобы экспортировать данные из диаграммы Gantt в MS Project, выполните следующее:
 
-- Включите плагин <b>export_api</b> через метод [plugins](api/method/plugins.md) для использования онлайн-сервиса экспорта:
+- Чтобы использовать функциональность экспорта/импорта, включите плагин <b>export_api</b> через метод [plugins](api/method/plugins.md):
 
 ~~~js
 gantt.plugins({
-      export_api: true
+    export_api: true
 });
 ~~~
 
+Он позволяет использовать либо онлайн-сервис экспорта, либо локальный модуль экспорта.
+
 :::note
-Для версий Gantt ниже 8.0 необходимо подключить **https://export.dhtmlx.com/gantt/api.js** на вашей странице для активации онлайн-сервиса экспорта, например:
+Если вы используете версию Gantt старше 8.0, вам нужно включить на странице `https://export.dhtmlx.com/gantt/api.js`, чтобы включить функциональность экспорта, например:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -72,47 +76,23 @@ gantt.plugins({
 ~~~
 :::
 
-- Используйте метод [exportToMSProject](api/method/exporttomsproject.md) для экспорта данных из вашей диаграммы Gantt.
+- Вызовите метод [exportToMSProject](api/method/exporttomsproject.md) для экспорта данных из диаграммы Gantt в MS Project.
 
 ~~~js
 gantt.exportToMSProject();
 ~~~
 
-Этот метод отправляет запрос на удалённый сервис, который либо сгенерирует XML-файл Project, либо предоставит ссылку для его загрузки.
+Метод отправит запрос к удалённому сервису, который либо создаст XML-файл проекта, либо вернёт URL для загрузки сгенерированного файла.
 
 
-[Export data : MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
-
-
-### Ответ
-
-Ответ содержит JSON-объект следующей структуры:
-
-~~~js
-{
-   data: {},
-   config: {},
-   resources: [],
-   worktimes: []
-}
-~~~
-
-- **data** - [объект данных](guides/supported-data-formats.md#json) Gantt. Каждая задача содержит свойства, такие как *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. Даты представлены в формате строки "%Y-%m-%d %H:%i".
-- **config** - объект [конфигурации](api/overview/properties-overview.md) Gantt, содержащий параметры, извлечённые из project-файла.
-- **resources** - массив объектов ресурсов, каждый из которых содержит свойства (*id: string, name:string, type:string*), соответствующих ресурсам из project-файла.
-- **worktimes** - массив объектов, используемых для создания новых календарей. Каждый объект календаря может содержать:
-    - **id** - (необязательно) идентификатор календаря
-    - **hours** - (массив) глобальные рабочие часы, определяющие начало и конец задач
-    - **dates** - (массив), который может включать:
-        - Семь дней недели (0 = воскресенье, 6 = суббота), где 1/true - рабочий день, 0/false - выходной
-        - Конкретные даты
+**Связанный пример**: [Export data : MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
 
 
 ### Настройки экспорта
 
-Метод **exportToMSProject()** принимает необязательный объект с различными параметрами:
+Метод **exportToMSProject()** принимает в качестве параметра объект с набором свойств (все свойства являются необязательными):
 
-- **name** - (строка) имя экспортируемого файла (по умолчанию 'gantt.xml').
+- **name** - (string) имя полученного файла ('gantt.xml' по умолчанию).
 
 ~~~js
 gantt.exportToMSProject({
@@ -120,7 +100,7 @@ gantt.exportToMSProject({
 });
 ~~~
 
-- **auto_scheduling** - (логический) определяет режим планирования для экспортируемых задач. **true** - задачи автоматически планируются, **false** - вручную (по умолчанию).
+- **auto_scheduling** - (boolean) задаёт режим планирования задач в экспортируемом проекте. **true** пометит задачи как автоматизированно запланированные, **false** пометит задачи как вручную запланированные (по умолчанию).
 
 ~~~js
 gantt.exportToMSProject({
@@ -128,7 +108,7 @@ gantt.exportToMSProject({
 });
 ~~~
 
-- **skip_circular_links** - (логический) определяет, будут ли удаляться циклические связи (по умолчанию true).
+- **skip_circular_links** - (boolean) указывает, будут ли удалены циклические связи (true — удалятся (режим по умолчанию), false — не удаляются).
 
 ~~~js
 gantt.exportToMSProject({
@@ -136,7 +116,7 @@ gantt.exportToMSProject({
 });
 ~~~
 
-- **project** - (объект) позволяет задать пользовательские свойства для экспортируемого объекта проекта.
+- **project** - (object) позволяет задать пользовательские свойства экспортируемого проекта
 
 ~~~js
 gantt.exportToMSProject({
@@ -149,10 +129,10 @@ gantt.exportToMSProject({
 });
 ~~~
 
-Свойства соответствуют [свойствам Project](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))." 
-Поддерживаемые свойства перечислены [здесь](guides/tags.md). Значения могут быть как фиксированными, так и функциями, выполняемыми во время экспорта.
+Свойства этого объекта соответствуют соответствующим свойствам [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)).
+Список поддерживаемых свойств можно найти [здесь](guides/tags.md). Свойства могут содержать фиксированные значения или функции, которые будут выполнены при вызове экспорта.
 
-- **tasks** - (объект) позволяет задать пользовательские свойства для экспортируемых задач.
+- **tasks** - (object) позволяет задать пользовательские свойства экспортируемых элементов задач
 
 ~~~js
 gantt.exportToMSProject({
@@ -174,13 +154,14 @@ gantt.exportToMSProject({
 });
 ~~~
 
-Эти свойства соответствуют [свойствам Task](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)), поддерживаемые свойства перечислены [здесь](guides/tags.md#tasksproperties).
-Значения могут быть фиксированными или функциями, вызываемыми для каждой задачи при экспорте.
+Свойства этого объекта соответствуют соответствующим свойствам [Task entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)), 
+здесь приведён список поддерживаемых [properties](guides/tags.md#tasks-properties).
+Свойства могут содержать либо фиксированные значения, либо функции, которые будут вызываться для каждой задачи в наборе данных при вызове экспорта.
 
-- **data** - (объект) позволяет предоставить собственный источник данных для экспортируемой диаграммы Gantt.
+- **data** - (object) позволяет задать пользовательский источник данных, который будет представлен в выходной диаграмме Gantt
 
 :::note
-**start_date** и **end_date** должны быть указаны в формате, включающем дату и время (*%d-%m-%Y %H:%i*).
+Ожидается, что свойства **start_date** и **end_date** будут указаны в формате, включающем дату и время (*%d-%m-%Y %H:%i*).
 :::
 
 ~~~js
@@ -209,12 +190,9 @@ gantt.exportToMSProject({
 });
 ~~~
 
+**Связанный пример**: [Gantt. Export custom data](https://snippet.dhtmlx.com/10ytgdxs)
 
-**Related example:** [Gantt. Export custom data](https://snippet.dhtmlx.com/10ytgdxs)
-
-))
-
-- **callback** - (функция) для получения URL для скачивания сгенерированного XML-файла. В функцию передаётся JSON-объект со свойством *url*:
+- **callback** - (function) Если вы хотите получить URL для загрузки сгенерированного XML, свойство *callback* можно использовать. Оно получает JSON-объект с свойством *url*:
 
 ~~~js
 gantt.exportToMSProject({
@@ -223,33 +201,33 @@ gantt.exportToMSProject({
     }
 });
 ~~~
- 
-- **resources** - (массив) для добавления списка ресурсов в файл MS Project.
+
+- **resources** - (array) позволяет экспортировать список ресурсов в файл MS Project
 
 ~~~js
 gantt.exportToMSProject({
-  resources: [
-    {"id":"1","name":"John","type":"work"},
-    {"id":"2","name":"Mike","type":"work"},
-    {"id":"3","name":"Anna","type":"work"}
-  ]
+    resources: [
+        { "id": "1", "name": "John", "type": "work" },
+        { "id": "2", "name": "Mike", "type": "work" },
+        { "id": "3", "name": "Anna", "type": "work" }
+    ]
 });
 ~~~
 
-Типы ресурсов могут быть "work", "cost" или "material". Назначения ресурсов указываются через свойство **ResourceAssignments** в конфигурации задач:
+Возможные типы ресурсов — "work", "cost", "material". Назначения ресурсов задаются с использованием свойства **ResourceAssignments** конфигурации задач:
 
-~~~js
-var users = [// ресурсы
-  {key:'0', label: "N/A"},
-  {key:'1', label: "John"},
-  {key:'2', label: "Mike"},
-  {key:'3', label: "Anna"}
+~~~js {23-25}
+var users = [// resources
+    { key:'0', label: "N/A" },
+    { key:'1', label: "John" },
+    { key:'2', label: "Mike" },
+    { key:'3', label: "Anna" }
 ];
 
 gantt.exportToMSProject({
   resources: users
      .filter(function(u){
-        if(u.key === '0')//пропустить вариант по умолчанию 
+        if(u.key === '0')//skip the default option 
            return false;
         return true;
      })
@@ -258,17 +236,17 @@ gantt.exportToMSProject({
            id: u.key,
            name: u.label,
            type: "work"
-           };
-       }),
+        };
+     }),
   tasks: {
-     ResourceAssignments: function(task){  /*!*/
-        return task.user;                   /*!*/
-     }                                       /*!*/
+     ResourceAssignments: function(task){  
+        return task.user;                   
+     }                                       
   }
 });
 ~~~
 
-Свойство **ResourceAssignments** - это функция, которая получает объект задачи и возвращает строку/число либо массив строк/чисел:
+Свойство **ResourceAssignments** задаётся как функция, которая принимает объект задачи в качестве параметра и возвращает либо строковое/числовое значение, либо массив значений строк/чисел:
 
 ~~~js
 tasks: {
@@ -278,30 +256,58 @@ tasks: {
 }
 ~~~
 
-- **server** - (строка) указывает API-эндпоинт для запроса экспорта. Используется при запуске локального сервиса экспорта. По умолчанию - **https://export.dhtmlx.com/gantt**.
+Возможна настройка параметра *units* для назначений ресурсов путём возврата следующего объекта в свойстве **ResourceAssignments**:
+
+~~~js
+{
+    resource_id: "id",
+    units: "units value"
+}
+~~~
+
+- **resource calendars**
+
+По умолчанию каждой задаче сопутствует некоторый календарь. Если используются календари ресурсов, необходимо указать -1 для задачи в свойстве
+*CalendarUID* во время экспорта (в объекте [tasks](#export-settings)). Тогда задача будет использовать календарь ресурса.
+
+Во время экспорта [resource calendars](api/config/resource_calendars.md) можно указать календарь ресурса внутри объекта массива [resources](#export-settings):
 
 ~~~js
 gantt.exportToMSProject({
-   server:"https://myapp.com/myexport/gantt"
+  resources: [
+    {
+      id: "10",
+      name: "John",
+      type: "work",
+      calendar: gantt.config.resource_calendars[10]
+    }
+  ]
+});    
+~~~
+
+- **server** - (string) конечная точка API для запроса. Может использоваться с локальной установкой сервиса экспорта. Значение по умолчанию: `https://export.dhtmlx.com/gantt`.
+
+~~~js
+gantt.exportToMSProject({
+    server: "https://myapp.com/myexport/gantt"
 });
 ~~~
 
-
 ## Импорт из MS Project
 
-Чтобы преобразовать XML- или MPP-файл MS Project, отправьте запрос на сервис экспорта со следующими параметрами:
+Чтобы конвертировать XML или MPP файл MS Project, нужно отправить следующий запрос к сервису экспорта:
 
- - URL запроса: **https://export.dhtmlx.com/gantt**
- - Метод запроса: **POST**
- - Content-Type: **multipart/form-data**
+ - URL запроса - `https://export.dhtmlx.com/gantt`
+ - Метод запроса - **POST**
+ - Content-Type - **multipart/form-data**
 
 Параметры запроса:
 
- - **file** - MPP или XML-файл MS Project
+ - **file** - файл MS Project в формате MPP или XML
  - **type** - "msproject-parse"
- - **data** - (*необязательно*) JSON-строка с настройками
+ - **data** - (*необязательно*) строка JSON с настройками
 
-Пример формы:
+Например:
 
 ~~~html
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
@@ -312,7 +318,7 @@ gantt.exportToMSProject({
 </form>
 ~~~
 
-Альтернативно вы можете использовать [клиентский API](api/method/importfrommsproject.md), как показано ниже:
+ alternatively, you can use the [client-side API](api/method/importfrommsproject.md), like this:
 
 ~~~js
 gantt.importFromMSProject({
@@ -330,7 +336,11 @@ gantt.importFromMSProject({
 });
 ~~~
 
-Здесь *file* должен быть экземпляром [File](https://developer.mozilla.org/en-US/docs/Web/API/File), содержащим XML или MPP-файл Project.
+
+**Связанный пример**: [Import MSP файла](https://docs.dhtmlx.com/gantt/samples/08_api/18_load_from_mpp.html)
+
+
+Где *file* — это экземпляр [File](https://developer.mozilla.org/en-US/docs/Web/API/File), который должен содержать либо XML, либо файл проекта MPP.
 
 :::note
 **gantt.importFromMSProject** требует поддержки HTML5 File API.
@@ -345,20 +355,35 @@ gantt.importFromMSProject({
    data: {},
    config: {},
    resources: [],
-   worktime: {}
+   worktime: {},
+   calendars: []
 }
 ~~~
 
-- **data** - [объект данных](guides/supported-data-formats.md#json) Gantt. Каждая задача содержит свойства: *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. Даты представлены строкой в формате "%Y-%m-%d %H:%i".
-- **config** - объект [конфигурации](api/overview/properties-overview.md) Gantt, содержащий параметры, извлечённые из project-файла.
-- **resources** - массив объектов, каждый из которых содержит свойства (*id:string, name:string, type:string*), соответствующие ресурсам из project-файла.
-- **worktime** - объект с настройками рабочего времени, взятыми из календаря проекта.
 
+- **data** - (*object*) gantt [data object](guides/supported-data-formats.md). У каждой задачи есть следующие свойства: *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. Даты приведены в строковом формате "%Y-%m-%d %H:%i". 
+- **config** - (*object*) объект конфигурации [Gantt](api/overview/properties-overview.md) с настройками, полученными из файла проекта.
+- **resources** - (*array*) массив объектов (каждый имеет свойства: (*id: string, name: string, type: string, calendar: string*) ), которые представляют список ресурсов из файла проекта.
+- **worktime** - (*object*) объект, содержащий настройки рабочего времени из календаря проекта. Может содержать следующие атрибуты:
+    - **id** - (*string | number*) необязательно, идентификатор календаря
+    - **hours** - (*array*) массив глобальных рабочих часов, устанавливает начало и конец рабочего времени задачи
+    - **dates** - (*array*) массив дат, который может содержать:
+        - 7 дней недели (от 0 — воскресенье до 6 — суббота), где 1/true обозначает рабочий день, 0/false — нерабочий день
+        - другие записи — даты 
+- **calendars** - (*array*) массив конфигурационных объектов календарей для создания нового календаря. 
+    - **calendarConfig** - (*object*) конфигурационный объект календаря, который может содержать следующие атрибуты:
+        - **id** - (*string | number*) необязательно, идентификатор календаря
+        - **name** - (*string*) имя календаря
+        - **hours** - (*array*) массив глобальных рабочих часов, устанавливает начало и конец рабочего времени задач
+        - **dates** - (*array*) массив дат, который может содержать:
+            - 7 дней недели (от 0 — воскресенье до 6 — суббота), где 1/true обозначает рабочий день и 0/false — нерабочий день
+            - другие записи — даты
+  
 ### Настройки импорта
 
-#### Установка единицы измерения длительности
+#### Установка единицы продолжительности
 
-Чтобы указать ожидаемую единицу измерения длительности, в отправляемых на сервер данных можно добавить строку **durationUnit** ("minute", "hour", "day", "week", "month", "year").
+Чтобы задать ожидаемую единицу продолжительности, строка **durationUnit** ("minute", "hour", "day", "week", "month", "year") также может быть отправлена на сервер.
 
 ~~~html
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
@@ -383,9 +408,11 @@ gantt.importFromMSProject({
 
 #### Получение свойств проекта
 
-Чтобы получить поля проекта, в параметре **projectProperties** можно указать массив нужных полей, который будет отправлен на сервер. Это позволит получить произвольные свойства [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))" в свойство **config** ответа. Доступные [свойства](guides/tags.md#projectproperties) перечислены в документации.
+Чтобы получить поля проекта, можно отправить на сервер входной параметр **projectProperties** с массивом необходимых полей.
+Он извлекает произвольные свойства [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))
+во входящую в выходной объект конфигурации (**config**). Ниже приведён список поддерживаемых [properties](guides/tags.md#project-properties).
 
-- **projectProperties** - определяет массив свойств проекта, которые будут включены в ответ.
+ - **projectProperties** - задаёт массив свойств проекта, которые должны попасть в ответ.
 
 ~~~html
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
@@ -414,9 +441,11 @@ gantt.importFromMSProject({
 
 #### Получение свойств задач
 
-Чтобы получить поля задач, в параметре **taskProperties** можно указать массив нужных полей, который будет отправлен на сервер. Это позволяет получить произвольные свойства [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))." Доступные [свойства](guides/tags.md#tasksproperties) перечислены в документации.
+Чтобы получить поля задач, можно отправить на сервер входной параметр **taskProperties** с массивом нужных полей.
+Он извлекает произвольные свойства [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Ниже приводён список поддерживаемых [properties](guides/tags.md#tasks-properties):
 
-- **taskProperties** - определяет массив дополнительных свойств задач для импорта.
+ - **taskProperties** - указывает массив дополнительных свойств задач, которые нужно импортировать.
+
 
 ~~~html
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
@@ -428,9 +457,7 @@ gantt.importFromMSProject({
     <button type="submit">Get</button>
 </form>
 ~~~
-
 или
-
 ~~~js
 gantt.importFromMSProject({
     data: file,
@@ -454,32 +481,32 @@ gantt.attachEvent("onTaskLoading", function(task) {
 
 #### Получение типов задач
 
-Этот способ позволяет определить тип задачи: задачи с пометкой **Project** имеют свойство `Summary: "1"`, а задачи с пометкой **Milestone** - свойство `Milestone: "1"`. Импортируя эти свойства, можно соответствующим образом задать тип задачи.
+Следующая логика позволяет определить тип задачи: задачи типа Project имеют свойство Summary: "1", а задачи типа Milestone — Milestone: "1". Нужно импортировать данные с этими свойствами, а затем установить тип задачи в зависимости от этих свойств.
 
-Вызов импорта выглядит так:
+Вызов импортируемой функции будет выглядеть так:
 
 ~~~js
 gantt.importFromMSProject({
-        data: file,
-        taskProperties: [
-            "Summary",
-            "Milestone",
-        ],
-        callback: function (project) {
-            if (project) {
-                console.log(project)
-                gantt.clearAll();
-                if (project.config.duration_unit) {
-                    gantt.config.duration_unit = project.config.duration_unit;
-                }
-                console.log('import: ', project.data);
-                gantt.parse(project.data);
+    data: file,
+    taskProperties: [
+        "Summary",
+        "Milestone",
+    ],
+    callback: function (project) {
+        if (project) {
+            console.log(project)
+            gantt.clearAll();
+            if (project.config.duration_unit) {
+                gantt.config.duration_unit = project.config.duration_unit;
             }
+            console.log('import: ', project.data);
+            gantt.parse(project.data);
         }
-    });
+    }
+});
 ~~~
 
-Далее типы задач можно скорректировать на основе этих свойств следующим образом:
+После этого можно преобразовать типы задач на основе полученных свойств следующим образом:
 
 ~~~js
 gantt.attachEvent("onTaskLoading", function (task) {
@@ -496,65 +523,194 @@ gantt.attachEvent("onTaskLoading", function (task) {
 });
 ~~~
 
+**Связанный пример**: [Gantt. Import MSP files. Get task type from properties](https://snippet.dhtmlx.com/sjka4br8)
 
-**Related example:** [Gantt. Import MSP files. Get task type from properties](https://snippet.dhtmlx.com/sjka4br8)
+#### Добавление и настройка календарей
 
-
-## Ограничения на размер запроса и импорт больших файлов
-
-Существует два конечных API-адреса для сервисов экспорта/импорта MSProject:
-
-- **https://export.dhtmlx.com/gantt** - основной адрес, обрабатывающий все методы экспорта (*exportToPDF*, *exportToPNG*, *exportToMSProject*, и др.). **Максимальный размер запроса - 10 МБ**.
-- **https://export.dhtmlx.com/gantt/project** - адрес, предназначенный для сервисов экспорта/импорта [MSProject](guides/export-msproject.md) и [Primavera P6](guides/export-primavera.md) (*exportToMSProject*, *importFromMSProject*, *exportToPrimaveraP6*, *importFromPrimaveraP6*). **Максимальный размер запроса: 40 МБ**.
-
-Конечный адрес можно указать через свойство **server** в объекте конфигурации экспорта:
-
-~~~js
-gantt.importFromMSProject({
-    server:"https://export.dhtmlx.com/gantt",
-    data: file,
-    callback: function(project){
-       // some logic
-    }
-}); 
-~~~
-
-Если конечный адрес не указан, по умолчанию используется <b>*https://export.dhtmlx.com/gantt*</b>. Следующий вызов эквивалентен:
+Обратите внимание, что календари не добавляются автоматически во время импорта. Их нужно добавлять с помощью метода [addCalendar()](api/method/addcalendar.md). 
+После этого следует задать настройки календаря через метод [setWorkTime()](api/method/setworktime.md). Например:
 
 ~~~js
 gantt.importFromMSProject({
     data: file,
-    callback: function(project){
-       // some logic
+    taskProperties: ["Notes", "Name"],
+    callback: function (project) {
+        if (project) {
+            // настройки для добавления календарей
+            project.calendars.forEach(function (calendar) {
+                let addedCalendar;
+                // настройка рабочих часов для глобального календаря
+                if (calendar.id == project.config.global_calendar_id) {
+                    addedCalendar = gantt.getCalendar("global");
+                }
+                else {
+                    // Gantt не добавляет календарь,
+                    // если параметр `hours` пустой массив
+                    let calendarHours = calendar.hours;
+                    if (!calendarHours.length) {
+                        calendarHours = undefined
+                    }
+                    gantt.addCalendar({
+                        id: calendar.id,
+                        hours: calendarHours,
+                        name: calendar.name
+                    });
+
+                    addedCalendar = gantt.getCalendar(calendar.id);
+                }
+                const worktimeDates = calendar.dates;
+                for (let element in worktimeDates) {
+                    const date = new Date(+element)
+                    if (element < 10) {
+                        addedCalendar.setWorkTime({ 
+                            day: element, 
+                            hours: worktimeDates[element] 
+                        })
+                    }
+                    else {
+                        addedCalendar.setWorkTime({ 
+                            date: date, 
+                            hours: worktimeDates[element] 
+                        })
+                    }
+                }
+            })
+        }
     }
 });
 ~~~
 
-Для экспорта или импорта больших проектов, превышающих лимит в 4 МБ, используйте второй адрес:
+**Связанный пример**: [Gantt. Calendars settings for export/import in MSProject and Primavera6](https://snippet.dhtmlx.com/668xqts7)
+
+#### Календари ресурсов
+
+Если есть календари ресурсов, укажите их через свойство [gantt.config.resource_calendars](api/config/resource_calendars.md):
 
 ~~~js
 gantt.importFromMSProject({
-    server:"https://export.dhtmlx.com/gantt/project",
+    data: file,
+    taskProperties: ["Notes", "Name"],
+    callback: function (project) {
+        if (project) {
+            // настройки для календарей
+            project.calendars.forEach(function (calendar) {
+                // добавление календарей и настройка рабочего времени для них 
+            })
+
+            // настройки для календарей ресурсов
+            gantt.config.resource_calendars = {}
+
+            project.resources.forEach(function (resource) {
+                if (resource.calendar) {
+                    gantt.config.resource_calendars[resource.id] = resource.calendar;
+                }
+            })
+        }
+    }
+});
+~~~
+
+**Связанный пример**: [Gantt. Resource calendars settings for export/import in MSProject and Primavera6](https://snippet.dhtmlx.com/10czv54b)
+
+#### Ресурсы и назначения ресурсов
+
+Если в файле есть ресурсы, они попадают в массив **resources** во время импорта. Параметр календаря у свойства 
+**resources** задаёт календарь ресурса:
+
+~~~js
+{
+    resources: [
+        { id: 6, name: "John", type: "work", calendar: "8" },
+        // другие ресурсы
+    ]
+}
+~~~
+
+Если есть назначения ресурсов, они будут импортированы во время массива **assignments**, где объект назначения содержит параметры
+*resource_id: string* и *value: number*. Например:
+
+~~~js
+{
+    tasks: [
+        {
+            id: 5,
+            text: "Interior office",
+            type: "task",
+            start_date: "03-04-2024 00:00",
+            duration: 7,
+            parent: "2",
+            priority: 1
+        },
+        // другие задачи
+    ],
+    links: [],
+    assignments: [
+        { id: 1, task_id: 5, resource_id: 6, value: 3},
+        // другие назначения
+    ],
+    resources: [
+        {id: 6, text: "John", unit: "hours/day" },
+        {id: 7, text: "Mike", unit: "hours/day" },
+        // другие ресурсы
+    ]
+}
+~~~
+
+## Ограничения по размеру запроса и импорт крупных файлов
+
+Существуют два API-эндпойнта для сервисов экспорта/импорта MSProject:
+
+- `https://export.dhtmlx.com/gantt` - стандартный эндпойнт, обслуживающий все методы экспорта (*exportToPDF*, *exportToPNG*, *exportToMSProject* и пр.). Максимальный размер запроса — 10 МБ.
+- `https://export.dhtmlx.com/gantt/project` - эндпойнт, специфичный для сервисов экспорта/import MSProject (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*). Максимальный размер запроса: 40 МБ.
+
+Эндпойнт можно задать через свойство **server** объекта конфигурации экспорта:
+
+~~~js
+gantt.importFromMSProject({
+    server: "https://export.dhtmlx.com/gantt",
     data: file,
     callback: function(project){
-       // some logic
+       // некоторый код
     }
 }); 
 ~~~
 
-Этот адрес поддерживает запросы до 40 МБ и предназначен для экспорта и импорта MS Project. Он может использоваться только для экспорта MS Project.
+Если эндпойнт не указан, по умолчанию используется `https://export.dhtmlx.com/gantt`. Следующий вызов эквивалентен приведённому выше:
 
-Использование других методов, например *gantt.exportToPDF((server:"https://export.dhtmlx.com/gantt/project"))*, приведет к ошибке сервера.
+~~~js
+gantt.importFromMSProject({
+    data: file,
+    callback: function(project){
+       // некоторый код
+    }
+});
+~~~
 
-## dhtmlxGantt vs MS Project: вычисление времени
+Чтобы экспортировать или импортировать крупные проекты, превышающие ограничение 4 МБ, можно использовать второй эндпойнт:
 
-Существуют ключевые различия в том, как dhtmlxGantt и MS Project рассчитывают даты, что иногда может приводить к разным результатам.
+~~~js
+gantt.importFromMSProject({
+    server: "https://export.dhtmlx.com/gantt/project",
+    data: file,
+    callback: function(project){
+       // некоторый код
+    }
+}); 
+~~~
 
-Эти различия зависят от используемых настроек gantt. Некоторые параметры gantt влияют на результаты вычислений:
+Он позволяет отправлять запросы размером до 40 МБ и поддерживает экспорты и импорты MS Project. Он может использоваться только для экспорта MS Project.
 
-1. Преобразование длительности отличается между dhtmlxGantt и [MS Project](https://blog.epmainc.com/start-and-end-date-do-not-align-task-duration/).
+Любые другие методы, например, `gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})` должны возвращать ошибку сервера.
 
-Это можно скорректировать, указав *HoursPerDay* и *MinutesPerDay* при экспорте в MS Project:
+## dhtmlxGantt против расчета времени в MS Project
+
+Существует принципиальная разница в том, как работают вычисления дат в dhtmlxGantt и MS Project, и в некоторых случаях это приводит к разным результатам.
+
+Различия также зависят от сочетания настроек, применяемых в gantt. Но вы можете изменить настройки gantt, что может повлиять на результаты расчетов:
+
+1. В первую очередь, различаются конверсии продолжительности между dhtmlxGantt и [MS Project](https://blog.epmainc.com/start-and-end-date-do-not-align-task-duration/).
+
+Это можно обойти, указав *HoursPerDay* и *MinutesPerDay* при экспорте gantt в MS Project:
 
 ~~~js
 gantt.exportToMSProject({
@@ -569,19 +725,18 @@ gantt.exportToMSProject({
 });
 ~~~
 
+**Связанный пример**: [Export to MSProject без настроек "work_time"](https://snippet.dhtmlx.com/92fje5jq)
 
-**Related example:** [Export to MSProject without the "work_time" settings](https://snippet.dhtmlx.com/92fje5jq)
-
-
-2. В проекте может быть отключена настройка [work_time](guides/working-time.md):
+2. Во-вторых, ваш проект может иметь отключённую настройку [work_time](guides/working-time.md):
 
 ~~~js
 gantt.config.work_time = false;
 ~~~
 
-Обратите внимание, что даже при отключенных расчетах рабочего времени gantt по-прежнему использует настройки календаря по умолчанию (8 часов в день, рабочая неделя - с понедельника по пятницу). Клиент экспорта всегда отправляет этот календарь MS Project, в результате чего MS Project рассчитывает длительность задач иначе.
+Обратите внимание, даже если вычисления рабочего времени отключены, gantt все равно имеет настройки календаря по умолчанию в конфигурации (8 часов в день, рабочая неделя с понедельника по пятницу).
+И наш клиент экспорта всегда отправляет календарь по умолчанию в MS Project, даже если рабочее время отключено в gantt. Именно поэтому MS Project рассчитывает длительности задач по-разному.
 
-В качестве обходного решения можно очистить календарь по умолчанию, чтобы длительности задач рассчитывались одинаково в gantt и MS Project:
+Как обходной вариант можно очистить календарь по умолчанию, чтобы даже если он отправлен в MS Project, длительности задач рассчитывались так же, как в gantt:
 
 ~~~js
 gantt.setWorkTime({day:0, hours:[0,24]});
@@ -593,20 +748,18 @@ gantt.setWorkTime({day:5, hours:[0,24]});
 gantt.setWorkTime({day:6, hours:[0,24]});
 ~~~
 
-3. Вы можете заметить различия в датах сводных элементов, если [gantt.config.duration_unit](api/config/duration_unit.md) установлен в "day":
+3. Кроме того, вы можете заметить расхождение между датами элементов резюме, если вы указали [gantt.config.duration_unit](api/config/duration_unit.md) как "day":
 
 ~~~js
 gantt.config.duration_unit = "day";
 ~~~
 
-В этом случае gantt округляет длительности до целых дней, а MS Project показывает дробные значения. Например, длительность проекта может быть 439 дней в gantt, но 438.58 в MS Project.
+В этом случае gantt будет округлять продолжительности до общего количества дней. Но MS Project не будет этого делать и покажет дробные продолжительности. Например, верхний проект в gantt может иметь длительность 439, а в MS Project — 438.58.
 
-Решение - переключить [duration_unit](api/config/duration_unit.md) на часы:
+Единственным обходным вариантом будет переключение [duration_unit](api/config/duration_unit.md) на часы:
 
 ~~~js
 gantt.config.duration_unit = "hour";
 ~~~
 
-
-**Related example:** [Export to MSProject without the "work_time" settings](https://snippet.dhtmlx.com/92fje5jq)
-
+**Связанный пример**: [Export to MSProject без настроек "work_time"](https://snippet.dhtmlx.com/92fje5jq)

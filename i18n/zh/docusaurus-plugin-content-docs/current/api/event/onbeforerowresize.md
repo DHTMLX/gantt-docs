@@ -1,14 +1,14 @@
 ---
 sidebar_label: onBeforeRowResize
 title: onBeforeRowResize event
-description: "当用户开始通过拖拽调整行高之前触发"
+description: "在用户开始通过拖拽调整行高之前触发"
 ---
 
 # onBeforeRowResize
 
 ### Description
 
-@short: 当用户开始通过拖拽调整行高之前触发
+@short: 在用户开始通过拖拽调整行高之前触发
 
 @signature: onBeforeRowResize: (task: Task) =\> boolean;
 
@@ -17,13 +17,13 @@ description: "当用户开始通过拖拽调整行高之前触发"
 - `task` - (required) *Task* - 任务对象
 
 ### Returns
-- ` param` - (boolean) - 指示事件的默认操作是否继续执行（<b>true</b>）或被阻止（<b>false</b>）
+- ` param` - (boolean) - 定义事件的默认操作是否会被触发（<b>true</b>）或取消（<b>false</b>）
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeRowResize", function (task) {
-    gantt.message(`开始调整 <b>${task.text}</b> 的大小`);
+    gantt.message(`Start resizing <b>${task.text}</b>`);
     return true;
 });
 ~~~
@@ -33,7 +33,7 @@ gantt.attachEvent("onBeforeRowResize", function (task) {
 
 ### Details
 
-此事件可以被阻止。返回 *false* 将阻止行高的更改。
+该事件是可阻塞的。返回 *false* 将阻止行高被调整。
 
 ### Related API
 - [resize_rows](api/config/resize_rows.md)
@@ -42,5 +42,4 @@ gantt.attachEvent("onBeforeRowResize", function (task) {
 - [onAfterRowResize](api/event/onafterrowresize.md)
 
 ### Change log
-- 在 v7.1 中添加
-
+- 新增于 v7.1

@@ -1,23 +1,23 @@
 ---
 sidebar_label: hasChild
-title: hasChild method
-description: "자식 작업의 개수를 제공합니다"
+title: hasChild 메서드
+description: "자식 작업의 수를 반환합니다"
 ---
 
 # hasChild
 
 ### Description
 
-@short: 자식 작업의 개수를 제공합니다
+@short: 자식 작업의 수를 반환합니다
 
-@signature: hasChild: (id: string | number) =\> number | undefined
+@signature: hasChild: (id: string | number) => number | undefined
 
 ### Parameters
 
-- `id` - (required) *string | number* -    작업 ID
+- `id` - (필수) *string | number* -    작업 ID
 
 ### Returns
-- ` childs` - (number | undefined) - 자식 작업이 존재하면 그 개수, 없으면 "undefined"
+- `자식 수` - (number | undefined) - 존재하는 경우 자식 작업의 수, 그렇지 않으면 undefined
 
 ### Example
 
@@ -35,8 +35,8 @@ const tasks = {
 gantt.init("gantt_here");
 gantt.parse(tasks);
 
-gantt.hasChild("p_1"); //-> 2 /*!*/
-gantt.hasChild("t_1"); //-> undefined /*!*/
+gantt.hasChild("p_1"); //-> 2 (자식 수: 2) /*!*/
+gantt.hasChild("t_1"); //-> undefined (정의되지 않음) /*!*/
 ~~~
 
 ### Related API
@@ -46,4 +46,3 @@ gantt.hasChild("t_1"); //-> undefined /*!*/
 - [getSiblings](api/method/getsiblings.md)
 - [getNextSibling](api/method/getnextsibling.md)
 - [getPrevSibling](api/method/getprevsibling.md)
-

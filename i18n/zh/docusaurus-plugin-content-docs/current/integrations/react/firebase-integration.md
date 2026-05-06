@@ -1,79 +1,106 @@
 ---
-title: "dhtmlxReactGantt and Firebase Integration"
-sidebar_label: "Firebase 快速开始"
+title: React Gantt 与 Firebase 集成
+sidebar_label: Firebase 快速入门
+description: "通过 Firebase Firestore 实时同步构建协作的 React Gantt"
 ---
 
-# dhtmlxReactGantt and Firebase Integration
+# React Gantt 与 Firebase 集成
 
-This tutorial describes how to build a [React Gantt](integrations/react.md) chart that synchronizes task and link data across multiple clients 
-in real time using Firebase Firestore. This functionality is especially useful for:
+本教程描述了如何构建一个 [React Gantt](integrations/react.md) 图表，使任务和连线数据能够在多端客户端之间通过 Firebase Firestore 实时同步。这种功能对于以下场景尤为有用：
 
-- project management tools
-- team collaboration apps
-- scheduling platforms where multi-user synchronization is critical
+- 项目管理工具
+- 团队协作应用
+- 多人同步至关重要的排程平台
 
-You'll learn how to:
+你将学习如何：
 
-- set up Firebase for real-time updates
-- initialize and render the Gantt chart
-- handle CRUD operations (create, read, update, delete) with live synchronization
-- efficiently process real-time changes in the Gantt state
+- 设置 Firebase 以实现实时更新
+- 初始化并渲染 Gantt 图
+- 使用实时同步处理 CRUD（创建、读取、更新、删除）操作
+- 高效处理 Gantt 状态的实时变更
 
-You can check the corresponding example on GitHub: [DHTMLX React Gantt with Firebase Firestore Demo](https://github.com/DHTMLX/firebase-react-gantt-demo).
+你可以在 GitHub 上查看相应的示例：[DHTMLX React Gantt 与 Firebase Firestore 演示](https://github.com/DHTMLX/firebase-react-gantt-demo)。
 
-## Step 1: Project setup
+## 第一步：项目设置
 
-Start by creating a React + Vite project. Install the required dependencies as follows:
+首先创建一个 React + Vite 项目。
 
-~~~js
-npm install @dhx/trial-react-gantt firebase
+要创建一个 React 项目并进入项目目录，请运行以下命令：
+
+~~~bash
+npm create vite@latest react-gantt-firebase -- --template react-ts
+cd react-gantt-firebase
 ~~~
 
-## Step 2: Configure Firebase
+按如下所述安装所需的依赖：
 
-First, create a Firebase project by implementing the following steps:
+~~~js
+npm install firebase
+~~~
 
-- go to the Firebase Console
-- click **Create a project**
-- enter the project name (e.g., `react-gantt-firebase`) and follow the setup prompts
+### 安装 React Gantt
 
-Then set up Firestore by completing the steps below:
+按照 [React Gantt 安装指南](integrations/react/installation.md) 的说明安装 React Gantt。
 
-- navigate to **Firestore Database** in your Firebase project dashboard 
-- click **Create database**
-- select your preferred location
-- start in the **test mode** for ease during development (remember to configure the security rules before production)
-- click **Create**
+在本教程中我们使用评估版包：
 
-After that, register your web app in the following way:
+~~~bash
+npm install @dhtmlx/trial-react-gantt
+~~~
 
-- select **Project Overview** in the Firebase Console sidebar
-- click the web app icon `</>` to register a new web app
-- provide the app nickname (e.g., `react-gantt-firebase`)
-- enable Firebase Hosting
-- click **Register app**
-- copy the generated Firebase configuration (you'll use it in your project)
+或者
 
-Finally, configure Firebase in your project as described below:
+~~~bash
+yarn add @dhtmlx/trial-react-gantt
+~~~
 
-- paste your Firebase configuration into the `.env` file in the following way:
+如果你已经在使用 Professional 包，请在命令和导入中将 `@dhtmlx/trial-react-gantt` 替换为 `@dhx/react-gantt`。
+
+## 第二步：配置 Firebase
+
+首先，通过以下步骤创建一个 Firebase 项目：
+
+- 打开 Firebase 控制台
+- 点击“创建一个项目”
+- 输入项目名称（例如 `react-gantt-firebase`），并按照设置提示进行
+
+然后按以下步骤设置 Firestore：
+
+- 在 Firebase 项目仪表板中导航到 **Firestore 数据库**
+- 点击 **创建数据库**
+- 选择你偏好的位置
+- 为开发阶段的便利，将起始模式设为 **测试模式**（在生产前请务必配置安全规则）
+- 点击 **创建**
+
+之后，以如下方式在 Web 应用中进行注册：
+
+- 在 Firebase 控制台侧边栏选择 **项目概览**
+- 点击网页应用图标 `</>` 注册一个新网页应用
+- 提供应用昵称（例如 `react-gantt-firebase`）
+- 启用 Firebase Hosting
+- 点击 **注册应用**
+- 复制生成的 Firebase 配置（你将在项目中使用它）
+
+最后，按照下面的描述在项目中配置 Firebase：
+
+- 将 Firebase 配置粘贴到 `.env` 文件中，格式如下：
 
 ~~~js
 VITE_FIREBASE_CONFIGURATION = {
-	"apiKey": "YOUR_API_KEY",
-	"authDomain":"react-gantt-firebase.firebaseapp.com",
-	"projectId": "react-gantt-firebase",
-	"storageBucket": "react-gantt-firebase.firebasestorage.app",
-	"messagingSenderId": "693536970600",
-	"appId": "1:693536970600:web:1b3fa4e4b032acaab368dd"
+    "apiKey": "YOUR_API_KEY",
+    "authDomain":"react-gantt-firebase.firebaseapp.com",
+    "projectId": "react-gantt-firebase",
+    "storageBucket": "react-gantt-firebase.firebasestorage.app",
+    "messagingSenderId": "693536970600",
+    "appId": "1:693536970600:web:1b3fa4e4b032acaab368dd"
 }
 ~~~
 
 :::note
- Replace the `YOUR_API_KEY` placeholder with your actual Firebase project credentials.
-:::
+ 将 `YOUR_API_KEY` 占位符替换为您实际的 Firebase 项目凭据。
+ :::
 
-- create a new file **firebase.ts** and initialize Firebase and Firestore. Also, export references to collections, as shown below:
+- 创建一个新文件 **firebase.ts**，初始化 Firebase 和 Firestore。同时，导出对集合的引用，如下所示：
 
 
 ~~~js title=firebase.ts
@@ -92,95 +119,88 @@ const linksQuery = query(linksCollection);
 export { db, tasksQuery, linksQuery, tasksCollection, linksCollection };
 ~~~
 
-## Step 3: Create the Gantt component
+## 第三步：创建 Gantt 组件
 
-To begin with, set up the core Gantt component with [**React state** for tasks and links](integrations/react.md#bindingdata) with the following configuration: 
+首先，使用以下配置用 [**React state** 用于任务和链接](integrations/react/overview.md#bindingdata) 来搭建核心 Gantt 组件：
 
 ~~~js
 const [tasks, setTasks] = useState<Task[]>([]);
 const [links, setLinks] = useState<Link[]>([]);
 
 const templates: GanttTemplates = {
-	parse_date: (date) => new Date(date),
-	format_date: (dateString) => dateString.toISOString(),
+    parse_date: (date) => new Date(date),
+    format_date: (dateString) => dateString.toISOString(),
 };
 
 const config: GanttConfig = {
-	auto_scheduling: true,
+    auto_scheduling: true,
 };
 ~~~
 
-In the snippet above:
+在上述片段中：
 
 - **Templates**
 
-Templates allow us to control how dates are parsed and formatted inside the Gantt component. 
-Since Firestore stores dates as strings, we need to convert them back to `Date` objects ([parse_date](api/template/parse_date.md)) and correctly format them for storage ([format_date](api/template/format_date.md)).
+ 模板让我们控制在 Gantt 组件中日期的解析和格式化方式。由于 Firestore 将日期以字符串存储，我们需要将其转换回 `Date` 对象（[parse_date](api/template/parse_date.md)）并正确地将其格式化以便存储（[format_date](api/template/format_date.md)）。
 
 - **Config**
 
-The `auto_scheduling` option enables automatic recalculation of dependent tasks when a parent task is moved or changed.
-This is useful for project management scenarios.
+ `auto_scheduling` 选项在父任务被移动或改变时自动重新计算相关任务。这对于项目管理场景很有用。
 
-Now, create **state handlers** to manage the Gantt's internal state as in:
+现在，创建 **state handlers** 来管理 Gantt 的内部状态，如下所示：
 
 ~~~js
 const createStateHandlers = <T extends { id: string | number }>(
-	setState: React.Dispatch<React.SetStateAction<T[]>>
+    setState: React.Dispatch<React.SetStateAction<T[]>>
 ): EntityHandler<T> => ({
-	added: (item) => setState((prev) => (prev.find((i) => i.id === 
-item.id) ? prev : [...prev, item])),
-	modified: (item) => setState((prev) => prev.map((i) => (i.id === 
-item.id ? { ...i, ...item } : i))),
-	removed: (item) => setState((prev) => prev.filter((i) => i.id !== 
-item.id)),
+    added: (item) => setState((prev) => (prev.find((i) => i.id === item.id) ? prev : [...prev, item])),
+    modified: (item) => setState((prev) => prev.map((i) => (i.id === item.id ? { ...i, ...item } : i))),
+    removed: (item) => setState((prev) => prev.filter((i) => i.id !== item.id)),
 });
 
 const taskHandlers = createStateHandlers<Task>(setTasks);
 const linkHandlers = createStateHandlers<Link>(setLinks);
 ~~~
 
-This provides a unified way to update local state when Firebase data changes.
+这为 Firebase 数据变化时的本地状态更新提供了统一的方式。
 
-Since, we are working with two types of entities - tasks and links, we can create a unified configuration
-object to handle both instead of duplicating the code. 
-This object maps each entity type to its Firestore collection, API path, and state handlers. Check the code snippet below:
+由于我们处理的实体类型有两种 —— tasks 与 links，我们可以创建一个统一的配置对象来同时处理两者，而不是重复代码。这个对象将每种实体类型映射到其 Firestore 集合、API 路径和状态处理器。请参见下方的代码片段：
 
 ~~~js
 const entityConfig = {
-	task: {
-		collection: tasksCollection,
-		path: "tasks",
-		handlers: taskHandlers,
-	},
-	link: {
-		collection: linksCollection,
-		path: "links",
-		handlers: linkHandlers,
-	},
+    task: {
+        collection: tasksCollection,
+        path: "tasks",
+        handlers: taskHandlers,
+    },
+    link: {
+        collection: linksCollection,
+        path: "links",
+        handlers: linkHandlers,
+    },
 };
 ~~~
 
-### Project Structure Overview
+### 项目结构概览
 
-You can check the overview of the resulting project structure in the following scheme:
+你可以在下述结构中查看结果项目的大致结构：
 
-~~~
+~~~ 
 src/
-├── App.tsx                 # Entry point
-├── App.css                 # Styles
+├── App.tsx                 # 入口
+├── App.css                 # 样式
 ├── components/
 │   └── Gantt/
-│       ├── Gantt.tsx       # Main logic
-│       └── types.ts        # Type declarations
+│       ├── Gantt.tsx       # 主要逻辑
+│       └── types.ts        # 类型声明
 ├── config/
-│   └── firebase.ts         # Firebase setup
-└── main.tsx                # React root
+│   └── firebase.ts         # Firebase 设置
+└── main.tsx                # React 根节点
 ~~~
 
-## Step 4: Load initial data
+## 第四步：加载初始数据
 
-When the component mounts, you should load all tasks and links like this:
+组件挂载时，应按如下方式加载所有任务和链接：
 
 ~~~js
 useEffect(() => {
@@ -208,49 +228,49 @@ useEffect(() => {
 }, []);
 ~~~
 
-To convert Firebase documents to Gantt-compatible objects, use `processEntity` as provided below:
+要将 Firebase 文档转换为 Gantt 兼容对象，请使用下面提供的 `processEntity`：
 
 ~~~js
 const processEntity = (docSnapshot: QueryDocumentSnapshot): Task | Link => {
-	return { ...docSnapshot.data(), id: docSnapshot.id };
+    return { ...docSnapshot.data(), id: docSnapshot.id };
 };
 ~~~
 
-## Step 5: Set up real-time synchronization
+## 第五步：建立实时同步
 
-Use Firebase's `onSnapshot` to subscribe to changes in both collections and unsubscribe when the component is unmounted:
+使用 Firebase 的 `onSnapshot` 订阅两个集合中的变更，并在组件卸载时取消订阅：
   
 ~~~js  
 function watchRealtime() {
     let tasksLoaded = false;
-	let linksLoaded = false;
+    let linksLoaded = false;
 
-	const unsubscribeTasks = onSnapshot(tasksQuery, (querySnapshot) => {
+    const unsubscribeTasks = onSnapshot(tasksQuery, (querySnapshot) => {
         if (!tasksLoaded) {
-	       tasksLoaded = true;
-	       return;
+            tasksLoaded = true;
+            return;
         }
 
-	   handleRealtimeUpdates(querySnapshot, "task");
-	});
+        handleRealtimeUpdates(querySnapshot, "task");
+    });
 
-	const unsubscribeLinks = onSnapshot(linksQuery, (querySnapshot) => {
+    const unsubscribeLinks = onSnapshot(linksQuery, (querySnapshot) => {
         if (!linksLoaded) {
             linksLoaded = true;
             return;
         }
         handleRealtimeUpdates(querySnapshot, "link");
-	});
+    });
 
-	return { unsubscribeTasks, unsubscribeLinks };
+    return { unsubscribeTasks, unsubscribeLinks };
 }
 ~~~
 
-The first `onSnapshot` call returns the initial data, not the changes, that's why in `watchRealtime` we ignore the first call (since we've already loaded the initial data).
+第一次 `onSnapshot` 调用返回初始数据，因此在 `watchRealtime` 中忽略第一次调用（因为我们已经加载了初始数据）。
 
-### Processing real-time updates
+### 处理实时更新
 
-You can process the real-time updates using the function specified in the following code sample:
+你可以使用下面代码示例中的函数来处理实时更新：
 
 ~~~js
 function handleRealtimeUpdates(querySnapshot: QuerySnapshot, type: GanttEntityType) {
@@ -269,19 +289,18 @@ function handleRealtimeUpdates(querySnapshot: QuerySnapshot, type: GanttEntityTy
 }
 ~~~
 
-This method ensures that only the server-confirmed changes are processed, avoiding local duplication.
+该方法确保只处理服务器确认的变更，避免本地重复。
 
-`docChanges()` returns the list of changes (added, modified, removed) that have been made in the Firestore collection since the last snapshot. Firestore provides the type of change (`added`, `modified`, `removed`), and we route it to the 
-corresponding handler to update the React state.
+`docChanges()` 返回自上次快照以来在 Firestore 集合中所做的变更（新增、修改、删除）。Firestore 提供了变更类型（`added`、`modified`、`removed`），并将其路由到相应的处理程序以更新 React 状态。
 
-## Step 6: Implement CRUD operations with Firebase
+## 第六步：使用 Firebase 实现 CRUD 操作
 
-To handle the create, update, and delete requests from the Gantt component, use the logic of the `data.save` method which is given below:
+为了处理来自 Gantt 组件的创建、更新和删除请求，请使用下面给出的 `data.save` 方法逻辑：
 
 ~~~js
 const data = {
     save: async (
-    	entity: GanttEntityType, 
+        entity: GanttEntityType, 
         action: GanttActionType, 
         raw: any, id: string | number
     ) => {
@@ -316,17 +335,17 @@ const data = {
         }
     },
 };
-~~~
+~~~ 
 
-Firebase will automatically propagate these changes to all connected clients via the snapshot listeners.
+Firebase 将通过快照监听器自动将这些变更传播到所有连接的客户端。
 
-Then, render the Gantt Chart with the following code:
+接着，使用下面的代码渲染 Gantt 图：
 
 ~~~js
 return (
     <div style={{ height: "100%", display: "flex", flexDirection: "column" }}>
         <ReactGantt 
-        	tasks={tasks} 
+            tasks={tasks} 
             links={links} 
             templates={templates} 
             config={config} 
@@ -336,82 +355,80 @@ return (
 );
 ~~~
 
-The `data` prop connects Gantt's built-in editing to the Firebase save logic provided above.
+`data` 属性将 Gantt 内置的编辑与上述 Firebase 保存逻辑连接起来。
 
-## Step 7: Deploying the project to Firebase
+## 第七步：将项目部署到 Firebase
 
-Once your project is fully working and real-time synchronization is functioning correctly, you can deploy it to make it publicly accessible on the web. There are two ways to deploy the project you can choose from: via the Firebase CLI and via the Firebase console.
+一旦项目完全工作且实时同步功能正常运行，你就可以将其部署到 Web 上，让其公开可访问。有两种部署方式可供选择：通过 Firebase CLI 和通过 Firebase 控制台。
 
-### Deployment via the Firebase CLI (Recommended)
+### 通过 Firebase CLI 部署（推荐）
 
-This is the most efficient method, especially if you plan to update your project regularly. Follow the steps below:
+这是最为高效的方法，尤其是如果你打算定期更新项目。请按以下步骤操作：
 
-1\. First, if you haven't installed the Firebase CLI yet, install it using the following command:
+1\. 如果尚未安装 Firebase CLI，请使用以下命令安装：
 
-~~~
+~~~ 
 npm install -g firebase-tools
 ~~~ 
 
-2\. Then, log in to Firebase by using the command given below:
+2\. 然后，使用下面的命令登录 Firebase：
 
-~~~
+~~~ 
 firebase login
-~~~
+~~~ 
 
-3\. After that, initialize Firebase in your project with the following command:
+3\. 之后，使用下面的命令在你的项目中初始化 Firebase：
 
-~~~
+~~~ 
 firebase init
-~~~
+~~~ 
 
-During the initialization complete the steps provided below:
+在初始化过程中完成以下步骤：
 
-- select *Hosting* (you can also select Firestore, if you haven't configured it yet)
-- specify the build folder (for example, `dist` or `build`, depending on your `vite.config.ts` or `package.json` setup)
-- when asked about configuring as a Single Page App (SPA), choose *Yes* to ensure all routes are handled via `index.html`
+- 选择 Hosting（如果尚未配置 Firestore，也可以选择 Firestore）
+- 指定构建输出文件夹（例如 `dist` 或 `build`，取决于你的 `vite.config.ts` 或 `package.json` 的设置）
+- 当被询问是否将应用配置为单页面应用（SPA）时，选择 Yes，以确保所有路由都通过 `index.html` 处理
 
-4\. Now, build the project using this code line:
+4\. 现在，使用以下命令构建项目：
 
-~~~
+~~~ 
 npm run build
-~~~
+~~~ 
 
-It will generate the production-ready files in the `dist` (or `build`) folder.
+它将在 `dist`（或 `build`）文件夹中生成生产就绪的文件。
 
-5\. Finally, you can deploy to Firebase by running the following code line:
+5\. 最后，通过以下命令部署到 Firebase：
 
-~~~
+~~~ 
 firebase deploy
-~~~
+~~~ 
 
-After deployment has finished, Firebase will provide you with a link to your hosted project.
+部署完成后，Firebase 将为你提供一个托管项目的链接。
 
-### Quick deployment via Firebase Console
+### 通过 Firebase 控制台快速部署
 
-If you prefer to quickly publish the app without using the CLI, you can do it directly through the Firebase Console.
-These are the steps you need to complete:
+如果你更愿意直接通过控制台发布应用，而不使用 CLI，可以按以下步骤完成：
 
-1\. Build the project by running the code line below:
+1\. 运行以下命令构建项目：
 
-~~~
+~~~ 
 npm run build
-~~~
+~~~ 
 
-2\. Go to Firebase Hosting → Your Project → Hosting
+2\. 打开 Firebase Hosting → Your Project → Hosting
 
-3\. Click "Get Started" or "Upload"
+3\. 点击“开始使用”或“上传”
 
-4\. Upload the contents of the `dist` (or `build`) folder
+4\. 上传 `dist`（或 `build`）文件夹的内容
 
-5\. Confirm the upload and Firebase will provide you with a public URL for your site
+5\. 确认上传，Firebase 将为你提供一个公开 URL
 
-## Conclusion
+## 结论
 
-In this tutorial we've built a real-time Gantt chart with Firebase synchronization. You've learned how to:
+在本教程中，我们构建了一个具有 Firebase 同步的实时 Gantt 图。你已经学习了如何：
 
-- connect React Gantt to Firebase Firestore
-- set up real-time subscriptions to Firestore
-- handle the create, update, and delete events with instant multi-client synchronization
+- 将 React Gantt 连接到 Firebase Firestore
+- 设置对 Firestore 的实时订阅
+- 使用即时多客户端同步处理创建、更新和删除事件
 
-This approach is perfect for collaborative project management tools, where all users need to see live updates without refreshing the page.
-
+这种方法非常适合协作型项目管理工具，在这种场景下，所有用户无需刷新的情况下也能看到实时更新。

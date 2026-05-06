@@ -5,30 +5,30 @@ sidebar_label: "Besonderheiten der Gantt-Instanz"
 
 # Besonderheiten der Gantt-Instanz
 
-Dieser Artikel behandelt die wichtigsten Aspekte bei der Arbeit mit einer Gantt-Instanz.
+Dieser Artikel hebt die wichtigsten Merkmale der Verwendung der Gantt-Instanz hervor.
 
-Betrachten wir ein häufiges Szenario: Der Aufbau einer Anwendung mit mehreren Seiten, Tabs oder Ansichten.
+Betrachten wir den häufigsten Fall – der Aufbau einer Anwendung mit mehreren Seiten/Tabs/Ansichten. 
 
-Die folgende Methode gilt für Angular-basierte (oder React-basierte) Anwendungen und ist nur in den Commercial-, Enterprise- oder Ultimate-Editionen von dhtmlxGantt verfügbar (sie wird in den GPL- oder Individual-Editionen nicht unterstützt):
+Der folgende Ansatz kann auf Angular-basierten (oder React-basierten) Apps anwendbar sein und ist nur in der Commercial-, Enterprise- oder Ultimate-Version von dhtmlxGantt verfügbar (und nicht in der GPL- oder Individual-Edition):
 
-- Beim Öffnen einer Seite, eines Tabs oder einer Ansicht, die ein Gantt-Diagramm enthält, sollte eine neue Gantt-Instanz erstellt werden.
-- Beim Wechsel zu einer anderen Seite, einem anderen Tab oder einer anderen Ansicht muss die aktuelle Gantt-Instanz [zerstört](guides/multiple-gantts.md#destructorofganttanddataprocessorinstances) werden.
+- Wenn Sie eine Seite/Tab/Ansicht mit Gantt öffnen, müssen Sie eine neue Gantt-Instanz erstellen;
+- Wenn Sie zu einer anderen Seite/zu einem anderen Tab/zu einer anderen Ansicht wechseln, müssen Sie die Gantt-Instanz [destroy the Gantt instance](guides/multiple-gantts.md#destructorofganttanddataprocessorinstances).
 
-**Alternativ** (diese Methode funktioniert mit allen Versionen) können Sie alles manuell zurücksetzen. 
+**Der alternative Ansatz** (der für alle Versionen funktioniert) besteht darin, alles manuell selbst zurückzusetzen. 
 
 
 :::note
-Sehen Sie sich das [Beispiel](https://snippet.dhtmlx.com/5/abec296e0) an, das zeigt, wie dieser Ansatz umgesetzt werden kann. 
+Prüfen Sie das [Beispiel](https://snippet.dhtmlx.com/5/abec296e0), das demonstriert, wie der Ansatz implementiert werden kann. 
 
 
-Durch Klicken auf die Schaltfläche **Recreate Gantt** wird Gantt initialisiert, Aufgaben geladen und Events angehängt. Das Zerstören von Gantt trennt diese Events wieder.
+Wenn Sie auf die **Recreate Gantt**-Schaltfläche klicken, initialisiert sich Gantt, lädt Aufgaben und hängt die Ereignisse an. Wenn Sie Gantt zerstören, werden die Ereignisse abgetrennt.
 :::
 
-Beachten Sie bei der Verwendung dieses manuellen Reset-Ansatzes folgende wichtige Punkte:
+Hier ist die Liste der Dinge, die Sie beachten sollten, wenn Sie diesen Weg verwenden:
 
-## Benutzerdefinierte Events
+## Benutzerdefinierte Ereignisse
 
-Wenn die Seite mit Gantt geladen wird, speichern Sie die Event-IDs in einem Array, bevor Sie diese hinzufügen:
+Wenn Sie die Seite mit Gantt laden, müssen Sie die IDs der Ereignisse manuell in einem Array speichern, bevor Sie sie hinzufügen:
 
 ~~~js
 const onTaskClick = gantt.attachEvent('onTaskClick', (id) => {
@@ -38,42 +38,41 @@ const onTaskClick = gantt.attachEvent('onTaskClick', (id) => {
 eventIDs.push(onTaskClick);
 ~~~
 
-Beim Wechsel zu einer anderen Seite trennen Sie die Events manuell mit den gespeicherten IDs:
+Wenn Sie zu einer anderen Seite wechseln, müssen Sie die Ereignisse manuell mithilfe der IDs lösen, die Sie in einem Array gespeichert haben:
 
 ~~~js
 eventIDs.forEach(event => gantt.detachEvent(event));
 eventIDs = [];
 ~~~
 
-Weitere Informationen finden Sie im Abschnitt [Events trennen](guides/handling-events.md#detachingevents).
+Für weitere Details siehe den Abschnitt [das Lösen von Ereignissen](guides/handling-events.md#detaching-events).
 
-## Data Processor
+## Datenprozessor
 
-Der [dataProcessor](api/method/dataprocessor.md) muss manuell zerstört werden:
+Sie müssen [dataProcessor](api/method/dataprocessor.md) manuell zerstören:
 
 ~~~js
 dp.destructor();
 ~~~
 
-Beachten Sie, dass nur der dataProcessor zerstört werden sollte, nicht die Gantt-Instanz selbst. Das Zerstören von Gantt verhindert die weitere Nutzung, bis die Seite neu geladen wird.
+Bitte beachten Sie, dass Sie nur dataProcessor zerstören müssen, nicht Gantt. Andernfalls können Sie Gantt erst nach Neuladen der Seite wieder verwenden.
 
-## Aufgaben, Verknüpfungen, Ressourcendaten, Marker, benutzerdefinierte Hotkeys
+## Aufgaben, Verknüpfungen, Ressourcendaten, Markierungen, benutzerdefinierte Tastenkombinationen
 
-Diese können Sie sicher mit der Methode [clearAll()](api/method/clearall.md) aus der Gantt-Instanz entfernen.
+Sie können diese Daten sicher aus der Gantt-Instanz entfernen, indem Sie die Methode [clearAll()](api/method/clearall.md) verwenden.
 
 ## Gantt-Konfiguration
 
-Es gibt keine integrierte Option, um die Gantt-Konfiguration zu speichern oder auf die Standardwerte zurückzusetzen. Die meisten Einstellungen werden im Objekt [gantt.config](api/overview/properties-overview.md) gespeichert.
+Es gibt keinen eingebauten Weg, ihn zu speichern oder die Gantt-Konfiguration auf die Standardwerte zurückzusetzen. Der Großteil der Gantt-Konfiguration wird im [gantt.config](api/overview/properties-overview.md) Objekt gespeichert.
 
 ## CSS
 
-Falls benutzerdefiniertes CSS hinzugefügt wurde und Probleme verursacht, muss dieses manuell entfernt werden.
+Wenn Sie benutzerdefiniertes CSS hinzugefügt haben, müssen Sie es manuell entfernen, falls es Probleme verursacht.
 
-## Kalendereinstellungen
+## Kalender-Einstellungen
 
-Kalendereinstellungen sollten manuell mit der Methode [gantt.deleteCalendar()](api/method/deletecalendar.md) entfernt werden.
+Sie müssen sie manuell mit der Methode [gantt.deleteCalendar()](api/method/deletecalendar.md) entfernen.
 
-## Weitere Fälle
+## Andere Fälle
 
-Neben den oben genannten Punkten kann es weitere Szenarien geben, die zusätzliche Maßnahmen erfordern. Allerdings wurden mit diesem Ansatz noch nicht alle möglichen Fälle vollständig getestet.
-
+Abgesehen von den oben beschriebenen Punkten müssen Sie möglicherweise noch weitere Optionen implementieren, aber wir haben noch nicht alle möglichen Szenarien dieses Ansatzes getestet.

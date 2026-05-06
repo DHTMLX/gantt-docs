@@ -1,12 +1,12 @@
 ---
 sidebar_label: onColumnResize
-title: onColumnResize event
-description: "当用户拖动列边界调整列宽时触发"
+title: onColumnResize 事件
+description: "当用户拖动列边框以调整列宽时触发"
 ---
 
 # onColumnResize
 :::info
- 此功能仅在 PRO 版本中可用。 
+此功能仅在 PRO 版本中可用。 
 :::
 ### Description
 
@@ -17,8 +17,8 @@ description: "当用户拖动列边界调整列宽时触发"
 ### Parameters
 
 - `index` - (required) *number* - 列的索引
-- `column` - (required) *GridColumn* - 列对象本身
-- `new_width` - (required) *number* - 列的新宽度
+- `column` - (required) *GridColumn* - 列对象
+- `new_width` - (required) *number* - 新列的宽度
 
 ### Example
 
@@ -34,9 +34,7 @@ gantt.attachEvent("onColumnResize", function(index, column, new_width){
 ~~~
 
 ### Related samples
-- [Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
-
-### Details
+- [Grid 列调整大小事件](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
 
 ### Related API
 - [onColumnResizeStart](api/event/oncolumnresizestart.md)
@@ -45,4 +43,3 @@ gantt.attachEvent("onColumnResize", function(index, column, new_width){
 
 ### Related Guides
 - [指定列](guides/specifying-columns.md#resizing)
-

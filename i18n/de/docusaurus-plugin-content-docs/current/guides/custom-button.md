@@ -1,32 +1,29 @@
----
-title: "Ändern der Schaltflächen im Lightbox"
-sidebar_label: "Ändern der Schaltflächen im Lightbox"
+--- 
+title: "Schaltflächen im Lightbox ändern"
+sidebar_label: "Schaltflächen im Lightbox ändern"
 ---
 
-# Ändern der Schaltflächen im Lightbox
+# Schaltflächen im Lightbox ändern
 
-Es ist möglich, die Standardschaltflächen im Lightbox anzupassen. Zum Beispiel kann die 'Edit'-Schaltfläche für Benutzer, die Aufgaben nur ansehen dürfen, ausgeblendet werden, oder eine neue "Drucken"-Schaltfläche kann hinzugefügt werden, um die Aufgabenbeschreibung zu drucken.
+Es besteht die Möglichkeit, die Standard-Buttons im Lightbox zu ändern. Zum Beispiel können Sie den 'Bearbeiten'-Button für eine Gruppe von Benutzern ausblenden, die nur Aufgaben ansehen können, oder einen neuen Button "Drucken" hinzufügen, der es den Benutzern ermöglicht, die Aufgabenbeschreibung zu drucken. 
 
 ![complete_button](/img/complete_button.png)
 
+[Benutzerdefinierte Schaltfläche im Lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/06_custom_button.html)
 
-[Custom button in the lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/06_custom_button.html)
-
-
-Standardmäßig enthält das Lightbox drei Schaltflächen ('Save', 'Cancel', 'Delete'), die durch die Konfigurationsoptionen in [buttons_left](api/config/buttons_left.md) und [buttons_right](api/config/buttons_right.md) definiert sind.
+Standardmäßig enthält der Lightbox 3 Buttons ('Save', 'Cancel', 'Delete'), die durch die [buttons_left](api/config/buttons_left.md) und [buttons_right](api/config/buttons_right.md) Konfigurationsoptionen festgelegt werden.
 
 ~~~js
 gantt.config.buttons_left = ["gantt_save_btn", "gantt_cancel_btn"];
 gantt.config.buttons_right = ["gantt_delete_btn"];
 ~~~
 
-Um die Standardschaltflächen zu ändern, gehen Sie wie folgt vor:
+Um die Standard-Buttons festzulegen, befolgen Sie die folgenden Schritte:
 
-- Aktualisieren Sie die Arrays <b>buttons_left</b> oder <b>buttons_right</b> mit den gewünschten Schaltflächen-IDs.
+- Geben Sie neue Elemente des <b>buttons_left</b>- oder <b>buttons_right</b>-Arrays an. 
 
 :::note
-Beachten Sie, dass die [Material Skin](guides/skins.md#materialskin) die Schaltflächenkonfiguration überschreibt.
-Um dies zu vermeiden, legen Sie die Schaltflächenkonfiguration innerhalb des [onGanttReady](api/event/onganttready.md) Event-Handlers fest:
+Beachten Sie, dass bei Verwendung des [Material skin](guides/skins.md#materialskin) die Button-Konfiguration neu definiert wird. Um dies zu verhindern, müssen Sie die Button-Konfiguration innerhalb des [onGanttReady](api/event/onganttready.md) Event-Handlers festlegen:
 :::
 
 ~~~js
@@ -36,15 +33,15 @@ gantt.attachEvent("onGanttReady", function(){
 });
 ~~~
 
-- Definieren Sie die Beschriftung für die neue Schaltfläche:
+- Die Beschriftung des Buttons festlegen:
 
 ~~~js
-gantt.locale.labels["complete_button"] = "Fertigstellen";
+gantt.locale.labels["complete_button"] = "Complete";
 ~~~
 
-- Um der Schaltfläche ein Icon zuzuweisen oder ein anderes Styling anzuwenden, fügen Sie eine CSS-Klasse wie folgt hinzu:
+- Um das Symbol für den Button festzulegen (und/oder weitere Stilgebungen anzuwenden), geben Sie die CSS-Klasse wie folgt an:
 
-~~~css
+~~~js
 .complete_button{
     margin-top: 1px;
     background-image:url("common/v_complete.png");
@@ -52,7 +49,7 @@ gantt.locale.labels["complete_button"] = "Fertigstellen";
 }
 ~~~
 
-- Implementieren Sie den [onLightboxButton](api/event/onlightboxbutton.md) Event-Handler, um Klicks auf die Schaltfläche zu behandeln:
+- Geben Sie den [onLightboxButton](api/event/onlightboxbutton.md) Handler an, der Klicks auf den Button behandelt:
 
 ~~~js
 gantt.attachEvent("onLightboxButton", function(button_id, node, e){
@@ -65,41 +62,39 @@ gantt.attachEvent("onLightboxButton", function(button_id, node, e){
 });
 ~~~
 
+[Benutzerdefinierte Schaltfläche im Lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/06_custom_button.html)
 
-[Custom button in the lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/06_custom_button.html)
 
+## Schaltflächen-Bezeichnungen ändern
 
-## Schaltflächenbeschriftungen ändern
-
-Die Beschriftungen der Schaltflächen können vor der Initialisierung von Gantt mit folgender Syntax geändert werden:
+Sie können die Bezeichnungen der Buttons vor der Initialisierung von Gantt mit dem folgenden Syntax neu festlegen:
 
 ~~~js
-gantt.locale.labels.icon_save = "Neue Beschriftung";
-gantt.locale.labels.icon_cancel = "Neue Beschriftung";
-gantt.locale.labels.icon_delete= "Neue Beschriftung";
+gantt.locale.labels.icon_save = "New Label";
+gantt.locale.labels.icon_cancel = "New Label";
+gantt.locale.labels.icon_delete= "New Label";
 
 gantt.init("gantt_here");
 ~~~
 
-Alternativ können die Beschriftungen auch nach der Initialisierung von Gantt wie folgt aktualisiert werden:
+Sie können die Bezeichnungen auch nach der Initialisierung von Gantt mit einer anderen Syntax wie folgt ändern:
 
 ~~~js
 gantt.attachEvent("onGanttReady", function(){
-  gantt.locale.labels.gantt_save_btn = "Neue Beschriftung";
-  gantt.locale.labels.gantt_cancel_btn = "Neue Beschriftung";
-  gantt.locale.labels.gantt_delete_btn = "Neue Beschriftung";
+  gantt.locale.labels.gantt_save_btn = "New Label";
+  gantt.locale.labels.gantt_cancel_btn = "New Label";
+  gantt.locale.labels.gantt_delete_btn = "New Label";
 });
 ~~~
 
-Ab Version 7.0 können die Beschriftungen auch über das [i18n](api/other/i18n.md) Objekt geändert werden:
+Ab Version 7.0 können die Bezeichnungen auch über das [i18n](api/other/i18n.md) Objekt geändert werden:
 
 ~~~js
 gantt.i18n.setLocale({
    labels: {
-      gantt_save_btn: "Neue Beschriftung",
-      gantt_cancel_btn: "Neue Beschriftung",
-      gantt_delete_btn: "Neue Beschriftung"
+      gantt_save_btn: "New Label",
+      gantt_cancel_btn: "New Label",
+      gantt_delete_btn: "New Label"
    }
 });
 ~~~
-

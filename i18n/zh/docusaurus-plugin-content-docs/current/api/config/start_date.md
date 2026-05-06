@@ -1,14 +1,14 @@
 ---
 sidebar_label: start_date
 title: start_date config
-description: "定义时间刻度的起始点"
+description: "设置时间刻度的起始值"
 ---
 
 # start_date
 
 ### Description
 
-@short: 定义时间刻度的起始点
+@short: 设置时间刻度的起始值
 
 @signature: start_date: Date | undefined
 
@@ -27,11 +27,11 @@ gantt.init("gantt_here");
  要正确使用 **start_date** 选项，应与 [end_date](api/config/end_date.md) 选项配合使用。 
 :::
 
-- 当同时设置了 **start_date** 和 **end_date** 时，位于该时间范围之外的任务将不会显示在图表上。
-- 你可以使用 [init](api/method/init.md) 方法的可选参数作为 [start_date](api/config/start_date.md) 和 [end_date](api/config/end_date.md) 的初始值。
-- 请注意，[start_date](api/config/start_date.md) 和 [end_date](api/config/end_date.md) 优先于 [fit_tasks](api/config/fit_tasks.md)。如果计划同时使用它们，需要[通过编程方式控制时间刻度](guides/configuring-time-scale.md#fanwei)。
+- 如果同时指定 **start_date** 和 **end_date** 选项，并且你创建一个超出范围的任务，该任务将从图表中消失。
+- [init](api/method/init.md) 方法的可选参数可用作 [start_date](api/config/start_date.md) 与 [end_date](api/config/end_date.md) 的初始值。
+- [start_date](api/config/start_date.md) 与 [end_date](api/config/end_date.md) 会覆盖 [fit_tasks](api/config/fit_tasks.md)。如果你想一起使用这些设置，你需要 [从代码中管理时间刻度](guides/configuring-time-scale.md#range)。
 
-下面示例展示了如何动态扩展时间范围:
+在这种情况下，我们可以扩展范围：
 
 ~~~js
 gantt.attachEvent("onLightboxSave", function(id, task, is_new){
@@ -80,5 +80,4 @@ gantt.attachEvent("onLightboxSave", function(id, task, is_new){
 - [show_tasks_outside_timescale](api/config/show_tasks_outside_timescale.md)
 
 ### Related Guides
-- [设置时间刻度](guides/configuring-time-scale.md)
-
+- [Setting up Scale](guides/configuring-time-scale.md)

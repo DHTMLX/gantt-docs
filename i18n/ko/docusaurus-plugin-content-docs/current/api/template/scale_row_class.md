@@ -1,23 +1,23 @@
 ---
 sidebar_label: scale_row_class
 title: scale_row_class template
-description: "타임 스케일에 적용되는 CSS 클래스를 정의합니다."
+description: "시간 축에 적용될 CSS 클래스를 지정합니다"
 ---
 
 # scale_row_class
 
 ### Description
 
-@short: 타임 스케일에 적용되는 CSS 클래스를 정의합니다.
+@short: 시간 축에 적용될 CSS 클래스를 지정합니다
 
 @signature: scale_row_class: (scale: Scale) =\> string | void;
 
 ### Parameters
 
-- `scale` - (required) *Scale* - 스케일 구성 객체
+- `scale` - (required) *Scale* - 스케일의 구성 객체
 
 ### Returns
-- ` text` - (string | void) - 해당 항목에 할당된 CSS 클래스
+- ` text` - (string | void) - 해당 항목에 대한 CSS 클래스
 
 ### Example
 
@@ -37,7 +37,7 @@ gantt.templates.scale_row_class = function(scale){
         case "month":
         return "month_scale";
            
-        default:// "week"
+        default:// "주"
            return "week_scale";
     }
 }

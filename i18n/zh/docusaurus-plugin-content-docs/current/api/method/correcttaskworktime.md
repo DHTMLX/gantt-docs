@@ -1,20 +1,20 @@
 ---
 sidebar_label: correctTaskWorkTime
-title: correctTaskWorkTime method
-description: "根据工作时间重新计算任务持续时间"
+title: correctTaskWorkTime 方法
+description: "在工作时间内重新计算任务的持续时间"
 ---
 
 # correctTaskWorkTime
 
 ### Description
 
-@short: 根据工作时间重新计算任务持续时间
+@short: 在工作时间内重新计算任务的时长
 
 @signature: correctTaskWorkTime: (task: Task) =\> void
 
 ### Parameters
 
-- `task` - (required) *Task* - 任务对象
+- `task` - (required) *Task* - 该任务对象
 
 ### Example
 
@@ -26,7 +26,7 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 
 ### Details
 
-此方法在以下配置选项启用时有效:
+该方法需要指定以下配置选项：
 
 ~~~js
 gantt.config.work_time = true;

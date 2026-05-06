@@ -1,19 +1,20 @@
 ---
 sidebar_label: exportToPDF
-title: exportToPDF method
-description: "exportiert ein Gantt-Diagramm in eine PDF-Datei"
+title: exportToPDF-Methode
+description: "exportiert ein Gantt-Diagramm im PDF-Format"
 ---
 
 # exportToPDF
 
 ### Description
 
-@short: Exportiert ein Gantt-Diagramm in eine PDF-Datei
+@short: Exportiert ein Gantt-Diagramm ins PDF-Format
 
-@signature: exportToPDF: (_export_?: any) =\> void
+@signature: exportToPDF: (_export_?: any) => void
 
 ### Parameters
-- `export` - (optional) *object* - optionale Einstellungen für den Export (siehe Details unten)
+
+- `export`	- Objekt - optional, ein Objekt mit Export-Einstellungen (siehe Details)
 
 ### Example
 
@@ -26,17 +27,17 @@ gantt.exportToPDF({
 });
 
 gantt.exportToPDF({
-    name:"mygantt.pdf",
-    header:"<h1>My company</h1>",
-    footer:"<h4>Bottom line</h4>",
-    locale:"en",
-    start:"01-04-2013",
-    end:"11-04-2013",
-    skin:'terrace',
-    data:{ },
-    server:"https://myapp.com/myexport/gantt",
-    raw:true,
-    callback: function(res){
+    name: "mygantt.pdf",
+    header: "<h1>My company</h1>",
+    footer: "<h4>Bottom line</h4>",
+    locale: "en",
+    start: "01-04-2026",
+    end: "11-04-2026",
+    skin: "terrace",
+    data: { },
+    server: "https://myapp.com/myexport/gantt",
+    raw: true,
+    callback: (res) => {
         alert(res.url);
     }
 });
@@ -45,13 +46,11 @@ gantt.exportToPDF({
 ### Details
 
 :::note
- Diese Methode ist Teil der **export**-Erweiterung, daher stellen Sie sicher, dass das Plugin [export_api](guides/extensions-list.md#exportservice) aktiviert ist. Weitere Informationen finden Sie im Artikel [Export to PDF and PNG](guides/export.md).
-
- 
+Dieses Verfahren ist im **export**-Erweiterung definiert, daher müssen Sie das [export_api](guides/extensions-list.md#export-service) Plugin aktivieren. Lesen Sie die Details im [](guides/export.md) Artikel.
 :::
 
 :::note
- Für Gantt-Versionen vor 8.0 müssen Sie **https://export.dhtmlx.com/gantt/api.js** in Ihre Seite einbinden, um den Online-Exportservice zu aktivieren, zum Beispiel:
+Wenn Sie die Gantt-Version älter als 8.0 verwenden, müssen Sie auf Ihrer Seite das `https://export.dhtmlx.com/gantt/api.js`-Skript einbinden, um den Online-Exportdienst zu aktivieren, z. B.:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -60,117 +59,114 @@ gantt.exportToPDF({
  
 :::
 
+The [](api/method/exporttopdf.md) method takes as a parameter an object with a number of properties (all of the properties are optional):
 
-Die Methode [exportToPDF](api/method/exporttopdf.md) akzeptiert ein Objekt als Parameter mit verschiedenen optionalen Eigenschaften:
-
-<table class="webixdoc_links">
-  <tbody>
+ <table class="webixdoc_links">
+	<tbody>
+  	<tr>
+			<td class="webixdoc_links0"><b>name</b></td>
+			<td>(<i>string</i>) the name of the output file</td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>name</b></td>
-  <td>(<i>string</i>) der Dateiname für die exportierte PDF</td>
-  </tr>
+			<td class="webixdoc_links0"><b>skin</b></td>
+			<td>(<i>'terrace', 'skyblue', 'meadow', 'broadway'</i>) the skin of the output Gantt chart</td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>skin</b></td>
-  <td>(<i>'terrace', 'skyblue', 'meadow', 'broadway'</i>) das Theme, das auf das exportierte Gantt-Diagramm angewendet wird</td>
-  </tr>
+			<td class="webixdoc_links0"><b>locale</b></td>
+			<td>(<i>string</i>) sets the language that will be used in the output Gantt chart</td>
+		</tr> 
   <tr>
-  <td class="webixdoc_links0"><b>locale</b></td>
-  <td>(<i>string</i>) legt die Sprache fest, die im exportierten Gantt-Diagramm verwendet wird</td>
-  </tr> 
+			<td class="webixdoc_links0"><b>start</b></td>
+			<td>(<i>string</i>) sets the start date of the data range that will be presented in the output Gantt chart. The date format is defined by the [](api/config/date_format.md) config</td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>start</b></td>
-  <td>(<i>string</i>) definiert das Startdatum für den angezeigten Datenbereich im exportierten Diagramm. Das Datumsformat folgt den Einstellungen in [date_format](api/config/date_format.md)</td>
-  </tr>
+			<td class="webixdoc_links0"><b>end</b></td>
+			<td>(<i>string</i>) sets the end date of the data range that will be presented in the output Gantt chart. The date format is defined by the [](api/config/date_format.md) config</td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>end</b></td>
-  <td>(<i>string</i>) definiert das Enddatum für den angezeigten Datenbereich im exportierten Diagramm. Das Datumsformat folgt den Einstellungen in [date_format](api/config/date_format.md)</td>
-  </tr>
+			<td class="webixdoc_links0"><b>data</b></td>
+			<td>(<i>object</i>) sets a custom data source that will be presented in the output Gantt chart </td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>data</b></td>
-  <td>(<i>object</i>) ermöglicht die Angabe einer benutzerdefinierten Datenquelle für das exportierte Diagramm</td>
-  </tr>
+			<td class="webixdoc_links0"><b>header</b></td>
+			<td>(<i>string</i>) specifies the header that will be added to the output PDF image. Note, you can use any HTML here</td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>header</b></td>
-  <td>(<i>string</i>) HTML-Inhalt, der als Kopfzeile in der exportierten PDF eingefügt wird</td>
-  </tr>
+			<td class="webixdoc_links0"><b>footer</b></td>
+			<td>(<i>string</i>) specifies the footer that will be added to the output PDF image. Note, you can use any HTML here</td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>footer</b></td>
-  <td>(<i>string</i>) HTML-Inhalt, der als Fußzeile in der exportierten PDF eingefügt wird</td>
-  </tr>
+			<td class="webixdoc_links0"><b>server</b></td>
+			<td>(<i>string</i>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is <strong>https://export.dhtmlx.com/gantt</strong></td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) URL des API-Endpunkts, der die Exportanfrage verarbeitet. Kann für einen lokalen Exportservice verwendet werden. Standard ist <strong>https://export.dhtmlx.com/gantt</strong></td>
-  </tr>
-  <tr>
-  <td class="webixdoc_links0"><b>raw</b></td>
-  <td>(<i>boolean</i>) wenn true, wird das Gantt-Markup exakt so exportiert, inklusive benutzerdefinierter Elemente. Standard ist <em>false</em>.[Mehr Details](guides/export.md#exportingcustommarkupandstyles)</td>
-  </tr>
-  <tr>
-  <td class="webixdoc_links0"><b>callback</b></td>
-  <td>(<i>function</i>) Funktion, die ein JSON-Objekt mit einer url-Eigenschaft erhält, um die generierte PDF-Datei herunterzuladen</td>
-  </tr>
-  <tr>
-  <td class="webixdoc_links0"><b>additional_settings</b></td>
-  <td>(<i>object</i>) zusätzliche Einstellungen, die Folgendes umfassen können:
-  <ul><li><b>format</b> - (<i>string</i>) Ausgabe-Dateiformat: <i>'A3', 'A4', 'A5', 'Legal', 'Letter', 'Tabloid'</i></li><li><b>landscape</b> - (<i>boolean</i>) legt Hoch- oder Querformat fest; funktioniert nur, wenn "format" angegeben ist</li><li><b>width</b> - (<i>string|number|"content"</i>) Seitenbreite, verwendet beim Export mehrerer Seiten</li><li><b>height</b> - (<i>string|number|"content"</i>) Seitenhöhe, verwendet beim Export mehrerer Seiten</li><li><b>merge_pages</b> - (<i>boolean</i>) ermöglicht den Export mehrerer Seiten in eine einzelne Datei; wenn false, sind mehrere Exporte nötig, um alle Daten abzudecken</li><li><b>fixed_headers</b> - (<i>boolean</i>) zeigt Grid- und Timeline-Kopfzeilen auf jeder Seite; Standard ist false und erfordert aktiviertes <b>merge_pages</b></li></ul></td>
-  </tr>
+			<td class="webixdoc_links0"><b>raw</b></td>
+			<td>(<i>boolean</i>) defines that all Gantt markup will be exported as it is, with all custom elements. <em>false</em> by default. 
+  	[Read the details](guides/export.md#exportingcustommarkupandstyles)</td>
+		</tr>
+		<tr>
+			<td class="webixdoc_links0"><b>callback</b></td>
+			<td>(<i>function</i>) If you want to receive an url to download a generated PDF file, the callback property can be used. It receives a JSON object with the url property</td>
+		</tr>
+		<tr>
+			<td class="webixdoc_links0"><b>additional_settings</b></td>
+			<td>(<i>object</i>) an object with additional settings. The object can contain the following attributes:<ul><li><b>format</b> - (<i>string</i>) the format of the output file:<i>"A0", "A1", "A2", "A3", "A4", "A5", "A6", "Legal", "Ledger", "Letter", "Tabloid"</i></li><li><b>landscape</b> - (<i>boolean</i>) the portrait or landscape orientation of the output file. The attribute works only when the "format" attribute is specified</li><li><b>width</b> - (<i>string|number|"content"</i>) the width of the output page. The attribute is used when exporting multiple pages</li><li><b>height</b> - (<i>string|number|"content"</i>) the height of the output page. The attribute is used when exporting multiple pages</li><li><b>merge_pages</b> - (<i>boolean</i>) enables the <a href="#multi-page-export">multipage export</a> in one file; if set to <i>false</i> you will have to make export several times to get all the Gantt data</li><li><b>fixed_headers</b> - (<i>boolean</i>) enables displaying of the grid and timeline headers on each page; <i>false</i> by default. Works only with the enabled <b>merge_pages</b> setting</li><li><b>margins</b> - (<i>object</i>) the object with the top, bottom, left and right margins for the output PDF file. [Read the details](guides/export.md#margins-of-the-output-pdf-file)</li><li><b>header</b> - (<i>string</i>) specifies the header that will be added to each page of the output PDF file. [Read the details](guides/export.md#headerfooter-of-the-output-file)</li><li><b>footer</b> - (<i>string</i>) specifies the footer that will be added to each page of the output PDF file. [Read the details](guides/export.md#headerfooter-of-the-output-file)</li></ul></td>
+		</tr>
   </tbody>
 </table>
 
-## Zeitliche Beschränkungen
+### Time restrictions
 
 :::note
- Der Exportservice erzwingt Zeitlimits. 
+Der Exportdienst unterliegt Zeitbeschränkungen. 
 :::
 
-Wenn der Export länger als 20 Sekunden dauert, wird der Vorgang abgebrochen und folgender Fehler erscheint:
+Wenn der Prozess länger als 20 Sekunden dauert, wird der Export abgebrochen und der folgende Fehler tritt auf:
 
 ~~~html
 Error: Timeout trigger 20 seconds
 ~~~
 
-Wenn viele Benutzer gleichzeitig Gantt-Diagramme exportieren, kann der Prozess länger dauern als gewöhnlich. Die Exportzeit wird jedoch für jeden Benutzer separat erfasst.
+Wenn mehrere Personen gleichzeitig Gantt exportieren, kann der Prozess mehr Zeit in Anspruch nehmen als üblich. Aber das ist in Ordnung, da die Zeit, die für die Exportanfrage eines bestimmten Benutzers aufgewendet wird, separat gezählt wird.
 
 :::note
- Für den Export großer Diagramme empfiehlt sich die Verwendung des [Standalone-Exportmoduls](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). Dieses Modul ist kostenlos mit einer [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) oder [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing)-Lizenz oder kann separat [hier](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210) erworben werden. 
+Wenn Sie große Diagramme exportieren müssen, können Sie ein eigenständiges Exportmodul verwenden. Das Exportmodul wird kostenlos bereitgestellt, falls Sie Gantt unter einer [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) oder [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) Lizenz erhalten haben, oder Sie können das Modul separat [kaufen](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
 :::
 
+### Multi-page export
 
-## Mehrseitiger Export
+Bitte beachten Sie, dass das Exportmodul nicht die technischen Möglichkeiten besitzt, Folgendes zu tun:
 
-Beachten Sie, dass das Exportmodul nicht in der Lage ist:
+- die Abtrenntposition zu kontrollieren (damit Aufgaben möglicherweise mitten zwischen den Seiten geschnitten werden)
+- Skalen auf jeder Seite anzuzeigen, ohne dass Aufgaben überlagert werden
+- Kopf- und Fußzeile auf jeder Seite anzuzeigen, ohne die Aufgabenzeilen zu überlagern
 
-- Seitenumbrüche zu kontrollieren, sodass Aufgaben über Seiten verteilt werden können
-- Skalen auf jeder Seite anzuzeigen, ohne dass sich Aufgaben überlappen
-- Kopf- und Fußzeilen auf jeder Seite anzuzeigen, ohne dass sich Aufgabenreihen überlappen
+Um die oben beschriebenen Aufgaben zu erfüllen, müssen Sie benutzerdefinierte Lösungen anwenden. Einige davon finden Sie unten.
 
-Für diese Fälle sind benutzerdefinierte Lösungen erforderlich. Einige Beispiele finden Sie unten.
+#### Exportieren von Daten automatisch in einer Datei
 
-## Automatischer Export der Daten in eine Datei 
-
-Für den Export mehrerer Seiten in eine einzige Datei können Sie den Online-Exportservice (mit [Zeitlimits](#timerestrictions)) oder das standalone [Exportmodul](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) (ohne Limits) verwenden.
-Setzen Sie einfach die Option **merge_pages** innerhalb von **additional_settings**:
+Für den Multi-Page-Export in einer Datei können Sie entweder den Online-Exportdienst (mit Zeitbeschränkungen) verwenden oder das eigenständige Exportmodul (ohne Beschränkungen). Alles, was Sie tun müssen, ist das Attribut **merge_pages** des Objekts **additional_settings** zu verwenden:
 
 ~~~js
 gantt.exportToPDF({
     additional_settings: {
-        merge_pages: true, /*!*/
+        merge_pages: true, 
         format: "A4"
     }
 });
 ~~~
 
-Der Online-Exportservice arbeitet gut bei kleineren Diagrammen. Bei großen Diagrammen kann es vorkommen, dass die Daten in Teilen exportiert werden. In diesem Fall können Sie [mehrere manuelle Exporte durchführen](#manual_export) oder das Exportmodul verwenden, das alle Daten verarbeitet und eine einzelne Datei mit allen Seiten erzeugt.
+Der Exportdienst eignet sich gut, wenn ein Diagramm nicht sehr groß ist. Ist es groß, werden die Daten teilweise exportiert. In diesem Fall können Sie [mehrere Datenausgaben manuell durchführen](#making-several-data-exports-manually) oder das Exportmodul verwenden. Das Exportmodul exportiert alle Daten von selbst und liefert eine einzige Datei mit allen Seiten.
 
-:::note
-Sample: [Mehrseitiger Export in einer Datei ](https://snippet.dhtmlx.com/2qzecnke) 
-:::
+**Related sample**: [Multi-page export in one file ](https://snippet.dhtmlx.com/2qzecnke)
 
-Beachten Sie, dass der mehrseitige Export länger dauert als der Export aller Daten auf einer Seite. Um den Vorgang zu beschleunigen, können Sie die Zoomstufe auf Wochen, Monate oder Jahre einstellen, was die Breite des Gantt-Diagramms und somit die Exportzeit reduziert.
 
-Weitere Details finden Sie im [zugehörigen Blogartikel](https://dhtmlx.com/blog/maintenance-release-pdf-export-module-gantt-0-6-4-scheduler-0-6-5-suite-8-3-10-kanban-1-5-12/#:~:text=Multipage%20Export%20in%20One%20PDF%20File).
+Der Nachteil dieser Methode besteht darin, dass der Datenaustausch deutlich mehr Zeit in Anspruch nimmt als der Export aller Daten auf einer Seite. Um weniger Zeit für den Export der Gantt-Daten zu verwenden,
+können Sie den Zoom-Level ändern und die Daten in Wochen, Monaten oder Jahren rendern, since dann Gantt weniger Breite einnimmt und Sie den Export weniger oft durchführen müssen.
 
-### Mehrfache Exporte manuell durchführen {#manual_export}
+Check the detailed overview of the multi-page export in one PDF file in the [related blog article](https://dhtmlx.com/blog/maintenance-release-pdf-export-module-gantt-0-6-4-scheduler-0-6-5-suite-8-3-10-kanban-1-5-12/#:~:text=Multipage%20Export%20in%20One%20PDF%20File).
+
+#### Making several data exports manually
 
 Da Gantt-Diagramme meist größer als Standard-Seitengrößen sind, erfasst der Export jedes Mal nur den linken Teil.
 Um alle Daten zu exportieren, sind mehrere Exporte nötig, wobei das Diagramm jeweils nach links verschoben wird.
@@ -183,41 +179,37 @@ const height = 1000;
 const total_width = gantt.$task_bg.scrollWidth + gantt.$grid.scrollWidth;
 
 for (let i = 0; i < total_width; i += width) {
-  gantt.exportToPDF({
-    header:`<style>#gantt_here{left:-${i}px;position: absolute;}</style>`,
-    //raw: true,
-    additional_settings:{
-      width: width,
-      height: height,
-    }
-  });
+    gantt.exportToPDF({
+        header:`<style>#gantt_here{left:-${i}px;position: absolute;}</style>`,
+        //raw: true,
+        additional_settings: {
+            width: width,
+            height: height,
+        }
+    });
 }
 ~~~
 
-:::note
-Sample: [Export in Datei mit spezifizierter Größe](https://snippet.dhtmlx.com/zbhc506m) 
-:::
+**Related sample**: [Export to the file of defined sizes ](https://snippet.dhtmlx.com/zbhc506m)
 
-Wenn Sie in ein bestimmtes Format wie 'A3' exportieren, beachten Sie, dass das Dateiformat in Millimetern angegeben ist, während HTML-Größen in Pixeln gemessen werden.
-Sie müssen Millimeter in Pixel umrechnen für den Verschiebungswert:
+In case you want to export Gantt to the specific format ('A3', for example), note, that the file format is defined in millimeters but the size in HTML is specified in pixels.
+Therefore, you need to convert the shift value from millimeters to pixels. 
 
 ~~~js
 const widthMM = 297;
 const width = widthMM / (25.4 inch / 96 PDF PPI);
 ~~~
 
-:::note
-Sample: [Export in Datei mit spezifiziertem Format ](https://snippet.dhtmlx.com/qt54zfuw) 
-:::
+**Related sample**: [Export to the file of defined format ](https://snippet.dhtmlx.com/qt54zfuw )
 
-<br>
+
 **Hinweis:** Wenn beim mehrseitigen Export nur eine PDF-Datei erzeugt wird, blockiert Ihr Browser möglicherweise Pop-ups, da mehrere Exporte gleichzeitig Pop-ups öffnen.
 Aktivieren Sie Pop-ups und versuchen Sie den Export erneut.
 
 ![blocked_popup](/img/popup_blocked.png)
 
 
-## Anzeige von Timeline- und Grid-Kopfzeilen auf jeder Seite
+#### Displaying timeline and grid headers on every page in the exported file
 
 Um Timeline- und Grid-Kopfzeilen auf jeder Seite der exportierten Datei anzuzeigen, aktivieren Sie die Option **fixed_headers** innerhalb von **additional_settings**.
 Dies funktioniert nur, wenn **merge_pages** ebenfalls aktiviert ist:
@@ -225,8 +217,8 @@ Dies funktioniert nur, wenn **merge_pages** ebenfalls aktiviert ist:
 ~~~js
 gantt.exportToPDF({
     additional_settings: {
-        merge_pages: true,  /*!*/
-        fixed_headers: true,  /*!*/
+        merge_pages: true, 
+        fixed_headers: true,  
         format: "A4"
     }
 });
@@ -245,13 +237,15 @@ Wenn Sie dies ohne Konfiguration möchten, beispielsweise beim Export mehrerer D
 ~~~css
 .grid_cell .gantt_grid_scale,
 .timeline_cell .gantt_task_scale {
-  position: fixed;
-  top:0;
-  z-index:99999;
+    position: fixed;
+    top:0;
+    z-index:99999;
 }
 ~~~
 
+
 ### Related API
+
 - [exportToMSProject](api/method/exporttomsproject.md)
 - [exportToPrimaveraP6](api/method/exporttoprimaverap6.md)
 - [exportToExcel](api/method/exporttoexcel.md)
@@ -263,6 +257,6 @@ Wenn Sie dies ohne Konfiguration möchten, beispielsweise beim Export mehrerer D
 - [importFromMSProject](api/method/importfrommsproject.md)
 
 ### Related Guides
-- [Export to PDF and PNG](guides/export.md)
-- [How-tos](guides/how-to.md#howtoaddresourcechartorcustomstylesintheexportedpdffile)
 
+- [Export to PDF and PNG](guides/export.md)
+- [How-tos: How to add resource chart or custom styles in the exported PDF file](guides/how-to.md#how-to-add-resource-chart-or-custom-styles-in-the-exported-pdf-file)

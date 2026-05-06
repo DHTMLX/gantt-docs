@@ -1,49 +1,48 @@
 ---
 sidebar_label: getFreeSlack
-title: getFreeSlack method
-description: "작업의 free slack을 반환합니다"
+title: getFreeSlack 메서드
+description: "작업의 자유 여유시간을 반환합니다"
 ---
 
 # getFreeSlack
 
-### Description
+:::info 
+이 기능은 PRO 에디션에서만 사용할 수 있습니다.
+:::
 
-@short: 작업의 free slack을 반환합니다
+### 설명
+
+@short: 작업의 자유 여유시간을 반환합니다
 
 @signature: getFreeSlack: (task: Task) =\> number
 
-### Parameters
+### 매개변수
 
-- `task` - (required) *Task* - 작업 객체
+- `task` - (필수) *Task* - 작업의 객체
 
-### Returns
-- ` free_slack` - (number) - 작업의 free slack 값
+### 반환값
+- ` free_slack` - (number) - 작업의 자유 여유시간
 
-### Example
+### 예제
 
 ~~~jsx
 const task = gantt.getTask(7);
 gantt.getFreeSlack(task);
 ~~~
 
-### Related samples
+### 관련 샘플
 - [Show Slack time](https://docs.dhtmlx.com/gantt/samples/08_api/17_show_task_slack.html)
 
-### Details
+### 세부 정보
 
 :::note
-pronote 이 기능은 PRO 에디션에서만 제공됩니다. 
+이 메서드는 **critical_path** 확장에 정의되어 있으므로 [critical_path](guides/extensions-list.md#critical-path) 플러그인을 활성화하기 위해 [gantt.plugins](api/method/plugins.md) 메서드를 사용해야 합니다. 자세한 내용은 [Critical Path](guides/critical-path.md) 문서를 참조하십시오.
 :::
 
-:::note
-note 이 메서드는 **critical_path** 확장 기능의 일부이므로, [gantt.plugins](api/method/plugins.md) 메서드를 사용하여 [critical_path](guides/extensions-list.md#criticalpath) 플러그인을 활성화해야 합니다. 자세한 내용은 [Critical Path](guides/critical-path.md) 문서에서 확인할 수 있습니다. 
-:::
+자유 여유시간은 연결된 다음 작업에 영향을 주지 않으면서 작업의 기간을 늘리거나 타임라인에서 위치를 이동하는 데 사용할 수 있는 시간의 기간입니다.
 
-Free slack은 작업 기간에 추가할 수 있는 시간 또는 타임라인 상에서 작업을 이동시킬 수 있는 시간으로, 이후 연결된 작업에 영향을 주지 않는 시간을 의미합니다.
-
-### Related API
+### 관련 API
 - [getTotalSlack](api/method/gettotalslack.md)
 
-### Related Guides
+### 관련 가이드
 - [Critical Path](guides/critical-path.md#gettingfreeandtotalslack)
-

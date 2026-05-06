@@ -1,20 +1,20 @@
 ---
 sidebar_label: setSkin
 title: setSkin method
-description: "изменяет активный скин"
+description: "устанавливает активный скин"
 ---
 
 # setSkin
 
 ### Description
 
-@short: Изменяет активный скин
+@short: Устанавливает активный скин
 
-@signature: setSkin: (skin: string) =\> void
+@signature: setSkin: (skin: string) => void
 
 ### Parameters
 
-- `skin` - (required) *string* - название скина. Доступные варианты включают: "terrace", "dark", "material", "contrast-white", "contrast-black", "meadow", "skyblue", "broadway"
+- `skin` - (required) *string* - имя скина. Допустимые значения: "terrace", "dark", "material", "contrast-white", "contrast-black", "meadow", "skyblue", "broadway"
 
 ### Example
 
@@ -23,13 +23,13 @@ gantt.setSkin("dark");
 ~~~
 
 ### Related samples
-- [Dark skin](https://docs.dhtmlx.com/gantt/samples/06_skins/10_dark.html)
+- [Темный скин](https://docs.dhtmlx.com/gantt/samples/06_skins/10_dark.html)
 
 ### Details
 
-Вызов этого метода после инициализации gantt приведёт к выполнению метода [render](api/method/render.md).
+Если метод вызывается после инициализации gantt, он вызовет метод [render](api/method/render.md). 
 
-Если использовать его до инициализации, он работает так же, как прямое присвоение свойства `gantt.skin`:
+Если вызван до инициализации, метод будет иметь тот же эффект, что и присваивание свойства `gantt.skin`:
 
 ~~~js
 gantt.skin = "dark";
@@ -40,4 +40,3 @@ gantt.skin = "dark";
 
 ### Change log
 - добавлено в версии v9.0
-

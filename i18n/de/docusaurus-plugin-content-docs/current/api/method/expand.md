@@ -8,7 +8,7 @@ description: "Schaltet das Gantt-Diagramm in den Vollbildmodus, sodass es den ge
 
 ### Description
 
-@short: Schaltet das Gantt-Diagramm in den Vollbildmodus, sodass es den gesamten Bildschirmbereich einnimmt.
+@short: Vergrößert das Gantt-Diagramm in den Vollbildmodus
 
 @signature: expand: () =\> void
 
@@ -19,12 +19,12 @@ gantt.expand();
 ~~~
 
 ### Related samples
-- [Full Screen](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
+- [Vollbild](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
 
 ### Details
 
 :::note
- Diese Methode ist Teil der **fullscreen**-Erweiterung und erfordert daher das Aktivieren des [fullscreen](guides/extensions-list.md#fullscreen) Plugins über die Methode [gantt.plugins](api/method/plugins.md). Weitere Informationen finden Sie in der ausführlichen Erklärung im Artikel ["Vollbildmodus"](guides/fullscreen-mode.md). 
+Diese Methode ist in der **fullscreen**-Erweiterung definiert, daher müssen Sie das [fullscreen](guides/extensions-list.md#fullscreen)-Plugin über die [gantt.plugins](api/method/plugins.md) Methode aktivieren. Lesen Sie die Details im Artikel [Vollbildmodus](guides/fullscreen-mode.md).
 :::
 
 ### Related API
@@ -35,5 +35,4 @@ gantt.expand();
 - [onCollapse](api/event/oncollapse.md)
 
 ### Related Guides
-- ["Vollbildmodus"](guides/fullscreen-mode.md)
-
+- [Vollbildmodus](guides/fullscreen-mode.md)

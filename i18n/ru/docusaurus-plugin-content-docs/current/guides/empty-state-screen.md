@@ -5,25 +5,23 @@ sidebar_label: "Экран пустого состояния"
 
 # Экран пустого состояния
 
-Начиная с версии 8.0, библиотека поддерживает отображение пустого экрана ("пустое состояние") с элементом-заполнителем в гриде, когда в диаграмме Gantt не загружены данные.
+Начиная с версии v8.0, библиотека предоставляет возможность отображать пустой экран ("empty state") с элементом-заглушкой в гриде, если данные не загружены в диаграмму Gantt.
 
-![empty screen tip](/img/empty_screen.png)
+![подсказка пустого экрана](/img/empty_screen.png)
 
-По умолчанию элемент-заполнитель скрыт. Чтобы включить его, установите следующую настройку:
+По умолчанию элемент-заглушка скрыт. Чтобы показать его, используйте конфигурацию [show_empty_state](api/config/show_empty_state.md):
 
 ~~~js
 gantt.config.show_empty_state = true;
 ~~~
 
-
-[Show empty state screen](https://docs.dhtmlx.com/gantt/samples/08_api/24_empty_state_screen.html)
-
+[Показать экран пустого состояния](https://docs.dhtmlx.com/gantt/samples/08_api/24_empty_state_screen.html)
 
 ## Объект EmptyStateElement
 
-Функционал "пустого состояния" предоставляет различные методы API через расширение [emptyStateElement](guides/empty-state-element-ext.md).
+«пустое состояние» поставляется с набором API-методов, предоставляемых расширением [emptyStateElement](guides/empty-state-element-ext.md).
 
-Пустое состояние может отображаться не только когда в Gantt не загружено ни одной задачи, но и когда задачи загружены, но отфильтрованы и не видны на странице. Для обработки этой ситуации используйте метод **isEnabled()**:
+Отображение «пустого состояния» возможно не только когда в диаграмме Gantt не загружены задачи. Вы можете отобразить его также если задачи загружены, но отфильтрованы и не видны на странице. Для этого используйте метод **isEnabled()**:
 
 ~~~js
 gantt.ext.emptyStateElement.isEnabled = function (){
@@ -31,7 +29,7 @@ gantt.ext.emptyStateElement.isEnabled = function (){
 }
 ~~~
 
-Если вы хотите показывать пустое состояние в области временной шкалы вместо грида, используйте метод **getContainer()**:
+Если вы хотите отобразить «пустое состояние» в области таймлайна, а не в гриде, используйте метод **getContainer()**:
 
 ~~~js
 gantt.ext.emptyStateElement.getContainer = function() {
@@ -39,7 +37,7 @@ gantt.ext.emptyStateElement.getContainer = function() {
 };
 ~~~
 
-Чтобы настроить содержимое, отображаемое в пустом состоянии, переопределите метод **renderContent()**:
+Чтобы изменить содержимое, отображаемое в «пустом состоянии», применяйте метод **renderContent()**:
 
 ~~~js
 gantt.ext.emptyStateElement.renderContent = function (container) {

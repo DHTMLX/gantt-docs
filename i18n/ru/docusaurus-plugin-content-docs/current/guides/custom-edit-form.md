@@ -1,28 +1,27 @@
 ---
-title: "Кастомный Lightbox"
-sidebar_label: "Кастомный Lightbox"
+title: "Настраиваемый Lightbox"
+sidebar_label: "Настраиваемый Lightbox"
 ---
 
-# Кастомный Lightbox
+# Настраиваемый Lightbox
 
-## Способы создания кастомного lightbox
+## Способы создания настраиваемого Lightbox
 
-Можно создать полностью кастомный lightbox для Gantt и заменить им стандартный. Существует два основных подхода:
+Вы можете создать полностью настраиваемый Lightbox для Gantt и заменить им дефолтную реализацию. Есть два возможных способа сделать это:
 
-1) Путём переопределения метода @[showLightbox](api/method/showlightbox.md):
+1) Переопределив метод [showLightbox](api/method/showlightbox.md):
 
 ~~~js
 gantt.showLightbox = function(id){
-    // код кастомной формы
+    // code of the custom form
 }
 ~~~
 
-- id - (string/number) - id задачи
+- id - (string/number) - идентификатор задачи
 
-Также для реализации lightbox доступен метод @[hideLightbox](api/method/hidelightbox.md).
+Также существует метод [hideLightbox](api/method/hidelightbox.md), который поможет в реализации Lightbox.
 
-
-Определим HTML-контейнер "my-form" для размещения кастомного lightbox:
+Давайте создадим HTML-контейнер "my-form", в который поместим наш настраиваемый Lightbox:
 
 ~~~html
 <div id="my-form">
@@ -38,9 +37,7 @@ gantt.showLightbox = function(id){
 </div>
 ~~~
 
-
-Для создания кастомного lightbox можно использовать следующую конфигурацию:
-
+Затем, чтобы сделать настраиваемый Lightbox, можно использовать конфигурацию, похожую на следующую:
 
 ~~~js
 var taskId = null;
@@ -100,12 +97,11 @@ function remove() {
 }
 ~~~
 
-2) Использование события @[onBeforeLightbox](api/event/onbeforelightbox.md). Этот подход включает:
+2) Использование события [onBeforeLightbox](api/event/onbeforelightbox.md). В этом случае алгоритм действий следующий:
 
-- определение момента, когда lightbox должен открыться
-- предотвращение отображения стандартного lightbox
-- показ кастомной формы и заполнение её данными задачи
-
+- определить момент, когда Lightbox собирается быть показан
+- заблокировать стандартный Lightbox
+- показать настраиваемую форму и заполнить данные задачи.
 
 ~~~js
 gantt.attachEvent("onBeforeLightbox", function(id) {
@@ -115,7 +111,7 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
             text:"Create task?",
             callback: function(res){
                 if(res){
-                    //..применить значения
+                    //..apply values
                     delete task.$new;
                     gantt.addTask(task);
                 }else{
@@ -129,21 +125,21 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 });
 ~~~
 
-## Обработка действий в кастомной форме
+## Обработка действий в настраиваемой форме
 
-При сохранении формы необходимо вручную получить значения из формы и обновить соответствующую задачу с помощью публичного API: @[addTask](api/method/addtask.md), @[updateTask](api/method/updatetask.md) и @[deleteTask](api/method/deletetask.md).
+Когда пользователь saves форму, вам нужно будет вручную получить значения формы и обновить соответствующую задачу с использованием публичного API: [addTask](api/method/addtask.md), [updateTask](api/method/updatetask.md) и [deleteTask](api/method/deletetask.md).
 
-Обратите внимание, что если lightbox был вызван для новой задачи (например, при нажатии на кнопку 'plus'), и пользователь нажал 'Cancel' для отмены создания задачи, в объекте задачи будет установлено свойство '$new'.
+Обратите внимание, что когда Lightbox вызывается для новой задачи (при нажатии на кнопку 'плюс'), которая должна быть удалена, если пользователь нажимает 'Cancel' для отката создания задачи, у объекта задачи будет установлено свойство '$new'.
 
-Обработка закрытия lightbox может быть реализована, как показано в примере ниже. Тип действия - 'save', 'cancel' или 'delete' - передаётся в параметре "action":
+Вы можете обрабатывать закрытие Lightbox, как показано в примере ниже. Тип действия — 'save', 'cancel' или 'delete' передаётся как параметр "action":
 
 ~~~js
 switch(action){
    case "save":
       task.text = '';// применить значения из формы
 
-      // добавить новую задачу или обновить существующую
-      if(task.$new){
+      // добавить новую задачу или обновить уже существующую
+      если(task.$new){
         delete task.$new;
         gantt.addTask(task,task.parent)
       }else{
@@ -152,7 +148,7 @@ switch(action){
 
       break;
    case "cancel":
-      // если отменяется создание новой задачи - удалить её, иначе ничего не делать
+      // если отмена для создания новой задачи - удалить её, иначе ничего не делать
       if(task.$new)
          gantt.deleteTask(id);
       break;
@@ -161,4 +157,3 @@ switch(action){
       break;
 }
 ~~~
-

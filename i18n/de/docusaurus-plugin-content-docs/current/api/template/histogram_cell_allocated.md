@@ -1,12 +1,12 @@
 ---
 sidebar_label: histogram_cell_allocated
-title: histogram_cell_allocated template
-description: "spezifiziert die Höhe des ausgefüllten Abschnitts im resourceHistogram"
+title: histogram_cell_allocated Vorlage
+description: "definiert die Höhe des ausgefüllten Bereichs im resourceHistogram"
 ---
 
 # histogram_cell_allocated
 :::info
- Diese Funktion ist nur in der PRO Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO Edition verfügbar. 
 :::
 ### Description
 
@@ -16,14 +16,14 @@ description: "spezifiziert die Höhe des ausgefüllten Abschnitts im resourceHis
 
 ### Parameters
 
-- `start_date` - (required) *Date* - Anfangsdatum der Skalen-Zelle  
-- `end_date` - (required) *Date* - Enddatum der Skalen-Zelle
-- `resource` - (required) *object* - das Ressourcenobjekt
-- `tasks` - (required) *Array* - &lt;Task&gt;        den gegebenen Ressourcen zugewiesene Aufgaben, die sich mit den Start-/Enddaten der Zelle überschneiden
-- `assignments` - (required) *array* - Ressourcenzuweisungen, die mit den angegebenen Start-/Enddaten der Aufgabe verknüpft sind
+- `start_date` - (erforderlich) *Date* - Startdatum der Skalenzelle
+- `end_date` - (erforderlich) *Date* - Enddatum der Skalenzelle
+- `resource` - (erforderlich) *object* - das Ressourcenobjekt
+- `tasks` - (erforderlich) *Array* - &lt;Task&gt;  Tasks, die dem angegebenen Ressourcenobjekt zugeordnet sind und die Start-/Enddaten der Zelle überschneiden
+- `assignments` - (erforderlich) *array* - Ressourcenzuweisungen, die den angegebenen Start- bzw. Enddaten der Aufgabe zugeordnet sind
 
 ### Returns
-- ` height` - (number | void) - die Höhe des ausgefüllten Abschnitts im resourceHistogram
+- ` height` - (number | void) - die Höhe des ausgefüllten Bereichs im resourceHistogram
 
 ### Example
 
@@ -35,21 +35,21 @@ gantt.templates.histogram_cell_allocated=function(start_date,end_date,resource,t
 ~~~
 
 ### Related samples
-- [Resource histogram](https://docs.dhtmlx.com/gantt/samples/11_resources/09_resource_histogram.html)
-- [Assign workload in percents](https://docs.dhtmlx.com/gantt/samples/11_resources/10_resource_histogram_workload_percents.html)
-- [Assign resource values to specific days](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
+- [Ressourcen-Histogram](https://docs.dhtmlx.com/gantt/samples/11_resources/09_resource_histogram.html)
+- [Arbeitslast in Prozenten zuweisen](https://docs.dhtmlx.com/gantt/samples/11_resources/10_resource_histogram_workload_percents.html)
+- [Ressourcenzuweisungen für bestimmte Tage](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
 
 ### Details
 
 :::note
- Der Parameter "assignments" ist nur zugänglich, wenn die [process_resource_assignments](api/config/process_resource_assignments.md) Konfiguration aktiviert ist. 
+Die "assignments"-Argument ist nur verfügbar, wenn die [process_resource_assignments](api/config/process_resource_assignments.md) Konfiguration aktiviert ist. 
 :::
 
-Der Rückgabewert der Template-Funktion kann von 0 bis zu *maxCapacity* reichen.
+Der Wert der Vorlage kann von 0 bis *maxCapacity* festgelegt werden.
 
-**maxCapacity erklärt**
+**maxCapacity-Definition**
 
-Wenn jede Histogramm-Zeile als Balkendiagramm betrachtet wird, repräsentiert maxCapacity die Höhe der Y-Achse dieses Diagramms. Im Beispielbild unten entspricht maxCapacity dem Wert 24:
+Wenn jede Zeile des Histogramms als Balkendiagramm betrachtet wird, entspricht maxCapacity der Höhe der Y-Skala dieses Diagramms. Im unten gezeigten Bild beträgt maxCapacity = 24:
 
 ### Related API
 - [histogram_cell_class](api/template/histogram_cell_class.md)
@@ -59,8 +59,7 @@ Wenn jede Histogramm-Zeile als Balkendiagramm betrachtet wird, repräsentiert ma
 - [resource_property](api/config/resource_property.md)
 
 ### Related Guides
-- ["Ressourcenmanagement"](guides/resource-management.md#resourceviewpanel)
+- [Ressourcenverwaltung](guides/resource-management.md#resourceviewpanel)
 
 ### Change log
-- der **assignments** Parameter wurde in Version 7.1 eingeführt
-
+- der **assignments**-Parameter wurde in Version v7.1 hinzugefügt.

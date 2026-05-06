@@ -1,18 +1,21 @@
 ---
-sidebar_label: getGanttInstance
-title: getGanttInstance
-description: "a factory object that can be used to create new instances of dhtmlxGantt chart"
+sidebar_label: Gantt
+title: Gantt
+description: "фабрика объектов, которая может использоваться для создания новых экземпляров диаграммы dhtmlxGantt"
 ---
 
-# getGanttInstance
+# Gantt
 
 :::info
 This functionality is available in the Gantt PRO version under the Commercial (since October 6, 2021), Enterprise and Ultimate licenses 
 :::
 
+
 ### Description
 
-@short: A factory object that can be used to create new instances of dhtmlxGantt chart
+@short: Фабрика объектов, которая может использоваться для создания новых экземпляров диаграммы dhtmlxGantt
+
+@signature: Gantt: object
 
 ### Example
 
@@ -29,7 +32,7 @@ const myGantt = Gantt.getGanttInstance();
 ## Methods
 
 - **getGanttInstance(ganttConfig)** - creates a new instance of dhtmlxGantt. Takes the following parameter:
-    - **ganttConfig** - (*object*) optional, a [configuration object](guides/multiple-gantts.md#ganttinstanceconfiguration) for a new gantt
+    - **ganttConfig** - (*object*) optional, a [configuration object](guides/multiple-gantts.md#gantt-instance-configuration) for a new gantt
 
 Example:
 

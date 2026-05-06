@@ -1,38 +1,36 @@
 ---
 sidebar_label: moveTask
-title: moveTask method
-description: "verschiebt eine Aufgabe an eine andere Stelle"
+title: moveTask Methode
+description: "verschiebt eine Aufgabe an eine neue Position"
 ---
 
 # moveTask
 
 ### Description
 
-@short: Verschiebt eine Aufgabe an eine andere Stelle
+@short: Verschiebt eine Aufgabe an eine neue Position
 
 @signature: moveTask: (sid: string | number, tindex: number, parent?: string | number) =\> boolean | void
 
 ### Parameters
 
-- `sid` - (required) *string | number* -  die Kennung der zu verschiebenden Aufgabe
-- `tindex` - (required) *number* - 	der Zielpositionsindex, an dem die Aufgabe platziert wird
-(der Index innerhalb eines Branches)
-- `parent` - (optional) *string | number* - die ID des übergeordneten Elements. Wenn angegeben, entspricht der tindex dem Index innerhalb des
-'parent' Branches
+- `sid` - (required) *string | number* - die ID der Aufgabe, die verschoben werden soll
+- `tindex` - (required) *number* - der Index der Position, zu der die Aufgabe verschoben wird <br/> (der Index innerhalb eines Zweigs)
+- `parent`	- (optional) *string | number*		- die Parent-ID. Falls angegeben, bezieht sich der <b>tindex</b> auf den Index im <br/> <b>'parent'</b> Zweig
 
 ### Returns
-- ` result` - (boolean | void) - gibt `false` zurück, wenn die Verschiebung über [onBeforeTaskMove](api/event/onbeforetaskmove.md) abgebrochen wird, andernfalls `undefined`
+- ` result` - (boolean | void) - gibt `false` zurück, wenn die Aktion durch [onBeforeTaskMove](api/event/onbeforetaskmove.md) abgebrochen wurde, ansonsten `undefined`
 
 ### Example
 
 ~~~jsx
 const tasks = {
   data:[
-     {id:"p_1", text:"Projekt #1", start_date:"01-04-2023", duration:18, 
+     {id:"p_1", text:"Project #1", start_date:"01-04-2023", duration:18, 
      open:true},
-     {id:"t_1", text:"Aufgabe #1", start_date:"02-04-2023", duration:8,
+     {id:"t_1", text:"Task #1", start_date:"02-04-2023", duration:8,
      parent:"p_1"},
-     {id:"t_2", text:"Aufgabe #2", start_date:"11-04-2023", duration:8,
+     {id:"t_2", text:"Task #2", start_date:"11-04-2023", duration:8,
      parent:"p_1"}
    ]
 };
@@ -47,4 +45,3 @@ gantt.moveTask("t_1", 1); /*!*/
 - [getTaskIndex](api/method/gettaskindex.md)
 - [onBeforeTaskMove](api/event/onbeforetaskmove.md)
 - [onAfterTaskMove](api/event/onaftertaskmove.md)
-

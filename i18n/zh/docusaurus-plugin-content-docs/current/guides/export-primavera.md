@@ -1,70 +1,72 @@
 ---
-title: "从 Primavera P6 导出和导入"
-sidebar_label: "从 Primavera P6 导出和导入"
+title: "导出与从 Primavera P6 导入"
+sidebar_label: "导出与从 Primavera P6 导入"
 ---
 
-# 从 Primavera P6 导出和导入
+# 导出与从 Primavera P6 导入
 
-dhtmlxGantt 库支持将甘特图数据导出到 Primavera P6，以及从 Primavera P6 导入数据到甘特图。
+dhtmlxGantt 库允许将甘特图中的数据导出到 Primavera P6。你也可以将 Primavera P6 的数据导入到 Gantt。
 
 :::note
-该服务可免费使用，但导出的文件将在 GPL 许可下包含库的水印。
-购买授权后，在有效支持期内（所有 PRO 授权为 12 个月）导出文件将不再包含水印。
+服务是免费的，但输出文件将包含该库在 GPL 许可下的水印。若你购买了许可证，在有效的支持期内（所有 PRO 许可证均为 12 个月）导出的结果将无水印。
 :::
 
-有多种导出服务可供本地安装在您的计算机上，允许您直接将甘特图导出到 Primavera P6。
-请注意，导出服务并未与甘特图包捆绑。
-有关使用条款的详细信息，请参阅[相关文档](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)。
+有多种导出服务可用。你可以在本地计算机上安装它们，将甘特图本地导出到 Primavera P6。请注意，导出服务不包含在 Gantt 包中，
+请阅读 [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) 以了解每种服务的使用条款。
 
 ## 在线导出服务限制
 
 :::note
-导出服务在处理时间和请求大小上有限制。
+导出服务有时间和请求大小的限制。
 :::
 
 ### 时间限制
 
-如果导出过程超过 20 秒，将会被取消，并显示以下错误:
+如果进程超过 20 秒，导出将被取消，并出现以下错误：
 
 ~~~html
 Error: Timeout trigger 20 seconds
 ~~~
 
-当多个用户同时导出甘特图时，处理时间可能会比平时更长。然而，每个用户的导出请求计时是独立的，这是预期行为。
+如果多个人同时导出 Gantt，处理时间可能比平时更长。但没关系，因为来自特定用户的导出请求所耗费的时间是单独计算的。
 
 ### 请求大小限制
 
-通用 API 端点 **https://export.dhtmlx.com/gantt** 处理所有导出方法（如 *exportToPDF*、*exportToPNG*、*exportToMSProject* 等），**最大请求大小为 10 MB**。
+存在一个通用 API 端点 `https://export.dhtmlx.com/gantt`，用于所有导出方法（*exportToPDF*、*exportToPNG*、*exportToMSProject* 等）。**最大请求大小为 10 MB**。
 
-此外，还有专用 API 端点 **https://export.dhtmlx.com/gantt/project** 用于 [MSProject](guides/export-msproject.md) 和
-[Primavera P6](#limitsonrequestsizeandimportoflargefiles)
-的导出/导入服务（*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*）。该端点支持**最大请求大小为 40 MB**。
+还有一个针对 [MSProject](guides/export-msproject.md) 与
+[Primavera P6](#limits-on-request-size-and-import-of-large-files) 的单独 API 端点 `https://export.dhtmlx.com/gantt/project`，
+用于特定的导出/导入服务（仅 *exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*）。**最大请求大小：40 MB**。
 
 ## 使用导出模块
 
 :::note
-对于大型甘特图的导出，提供了[独立导出模块](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)。
-如果您拥有 [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing)、[Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 或 [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 授权，则该模块免费；也可通过[此链接](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210)单独购买。
+如果你需要导出大型图表，可以使用一个 [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)。
+若你在 [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing)、[Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 或 [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 许可下取得 Gantt，导出模块免费提供，或者你也可以单独购买模块使用。
+
 :::
 
-有关与 MS Project 配合使用导出模块的更多信息，请参见[本指南](guides/msp-export-module.md)。该模块支持 MS Project 和 Primavera P6 的导出/导入。
+[在 MS Project 上使用导出模块的更多用法](guides/msp-export-module.md)。该导出模块提供 MS Project 和
+Primavera P6 的导出/导入功能。
 
 ## 导出到 Primavera P6 {#exporttoprimaverap6}
 
-Gantt 组件可以将链接、任务和资源导出到 Primavera P6。
+Gantt 组件支持将链接、任务和资源导出到 Primavera P6。
 
-要将甘特图中的数据导出到 Primavera P6，请按以下步骤操作:
+要将数据从 Gantt 图导出到 Primavera P6，请执行下列操作：
 
-- 启用 <b>export_api</b> 插件，具体方法请参见 [plugins](api/method/plugins.md) 文档:
+- 要使用导出/导入功能，请通过 [plugins](api/method/plugins.md) 方法启用 <b>export_api</b> 插件：
 
 ~~~js
 gantt.plugins({
-      export_api: true
+    export_api: true
 });
 ~~~
 
+它允许你使用在线导出服务或本地导出模块。
+
 :::note
-对于 8.0 之前的 Gantt 版本，您需要在页面中引入 **https://export.dhtmlx.com/gantt/api.js** 以启用在线导出服务，例如:
+如果你使用的 Gantt 版本低于 8.0，在页面上需要包含 `https://export.dhtmlx.com/gantt/api.js` 以启用导出功能，例如：
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -72,19 +74,19 @@ gantt.plugins({
 ~~~
 :::
 
-- 使用 [exportToPrimaveraP6()](api/method/exporttoprimaverap6.md) 方法从甘特图中导出数据:
+- 调用 [exportToPrimaveraP6()](api/method/exporttoprimaverap6.md) 方法以从 Gantt 图导出数据。
 
 ~~~js
 gantt.exportToPrimaveraP6();
 ~~~
 
-该方法会向远程服务发送请求，服务将生成并返回 XML Project 文件，或提供下载文件的 URL。
+该方法将向远程服务发送请求，服务要么输出一个 XML Project 文件，要么返回一个用于下载生成文件的 URL。
 
 
-[Export data : MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
+**相关示例**： [Export data : MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
 
 
-导出数据到 Primavera 时，确保项目任务的 **Summary** 属性返回 *true* 以保证正常功能:
+请注意，当将数据导出到 Primavera 时，需要为项目任务的 **Summary** 属性返回 **true**，以使该功能正确工作：
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -102,33 +104,13 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-
-**Related example:** [为 WBS 任务（PrimaveraP6 的 Summary 任务）添加自定义属性](https://snippet.dhtmlx.com/r90hjlvo?tag="gantt")
-
-
-### 响应
-
-导出服务返回的响应为如下结构的 JSON 对象:
-
-~~~js
-{
-    data: {},
-    config: {},
-    resources: [],
-    worktime: {}
-}
-~~~
-
-- **data** - 一个 gantt [数据对象](guides/supported-data-formats.md#json)，包含任务及其属性，如 *id*、*open*、*parent*、*progress*、*start_date*、*text* 和 *resource*。日期格式为 "%Y-%m-%d %H:%i" 的字符串。
-- **config** - 一个 gantt [配置对象](api/overview/properties-overview.md)，包含从项目文件中提取的设置。
-- **resources** - 资源对象数组，每个资源包含 (*id: string, name:string, type:string*)，对应项目文件中的资源。
-- **worktime** - 一个对象，保存项目日历中的工作时间设置。
+**相关示例**： [Custom properties for WBS tasks (PrimaveraP6's Summary tasks)](https://snippet.dhtmlx.com/r90hjlvo?tag="gantt")
 
 ### 导出设置
 
-**exportToPrimaveraP6()** 方法可接收包含若干可选属性的对象:
+**exportToPrimaveraP6()** 方法接收一个对象作为参数，该对象包含若干属性（所有属性均为可选）：
 
-- **name** - (string) 指定导出文件的文件名（默认为 'gantt.xml'）。
+- **name** - (string) 获取到的文件名（默认为 'gantt.xml'）。  
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -136,7 +118,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-- **auto_scheduling** - (boolean) 定义导出项目任务的排程模式。设置为 **true** 时任务为自动排程，**false** 时为手动排程（默认）。
+- **auto_scheduling** - (boolean) 指示导出项目中任务的排程模式。**true** 表示任务为自动排程，**false** 表示任务为手动排程（默认状态）。
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -144,7 +126,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-- **skip_circular_links** - (boolean) 是否移除循环链接。**true**（默认）移除，**false** 保留。
+- **skip_circular_links** - (boolean) 指示是否移除循环链接（true - 将移除（默认模式），false - 不移除）。
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -152,7 +134,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-- **project** - (object) 允许为导出的项目实体分配自定义属性。
+- **project** - (object) 允许为导出的 project 实体设置自定义属性
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -165,9 +147,9 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-这些属性对应于 [Project 实体](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 。支持属性列表见[此处](guides/properties.md)。属性值可以为固定值，也可以为导出时执行的函数。
+该对象的属性对应 [Project entity] 的相应属性。支持的属性列表可在 [这里](guides/properties.md) 找到。属性可以包含固定值或在导出调用时执行的函数。
 
-- **tasks** - (object) 允许为导出的任务项定义自定义属性。
+- **tasks** - (object) 允许为导出的任务项设置自定义属性
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -189,12 +171,12 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-这些属性与 [Task 实体](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))" 相关；支持的[属性列表](guides/properties.md#renwushuxing)可查阅。属性值可以为固定值，也可以为每个任务导出时调用的函数。
+该对象的属性对应 [Task entity] 的相应属性，这里是 [properties] 的支持列表。属性可以包含固定值或在导出调用时对每个任务执行的函数。
 
-- **data** - (object) 允许为输出的甘特图提供自定义数据源。
+- **data** - (object) 允许设置将在导出 Gantt 图中呈现的自定义数据源。 
 
 :::note
-需要确保 **start_date** 和 **end_date** 格式为带日期和时间的字符串（*%d-%m-%Y %H:%i*）。
+预计在 start_date 和 end_date 属性中指定包含日期和时间的格式（*%d-%m-%Y %H:%i*）。
 :::
 
 ~~~js
@@ -223,11 +205,9 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
+**相关示例**： [Gantt. Export custom data](https://snippet.dhtmlx.com/10ytgdxs)
 
-**Related example:** [Gantt. 导出自定义数据](https://snippet.dhtmlx.com/10ytgdxs)
-
-
-- **callback** - (function) 可用于获取生成 XML 文件的下载 URL。回调函数接收一个带 *url* 属性的 JSON 对象:
+- **callback** - (function) 如果你想获取用于下载生成的 XML 的 URL，可以使用 *callback* 属性。它接收一个带有 *url* 属性的 JSON 对象：
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -237,26 +217,26 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
  
-- **resources** - (array) 允许将资源列表导出到 Primavera P6 文件中。
+- **resources** - (array) 允许将资源列表导出到 Primavera P6 文件
 
 ~~~js
 gantt.exportToPrimaveraP6({
     resources: [
-        {"id":"1","name":"John","type":"work"},
-        {"id":"2","name":"Mike","type":"work"},
-        {"id":"3","name":"Anna","type":"work"}
+        { "id": "1", "name": "John", "type": "work" },
+        { "id": "2", "name": "Mike", "type": "work" },
+        { "id": "3", "name": "Anna", "type": "work" }
     ]
 });
 ~~~
 
-资源类型可以为 "work"、"cost" 或 "material"。资源分配通过任务配置中的 **ResourceAssignments** 属性指定:
+可用的资源类型为 "work"、"cost"、"material"。资源分配通过任务配置的 **ResourceAssignments** 属性来指定：
 
-~~~js
-var users = [// 资源
-    {key:'0', label: "N/A"},
-    {key:'1', label: "John"},
-    {key:'2', label: "Mike"},
-    {key:'3', label: "Anna"}
+~~~js {23-25}
+var users = [// resources
+    { key: '0', label: "N/A" },
+    { key: '1', label: "John" },
+    { key: '2', label: "Mike" },
+    { key: '3', label: "Anna" }
 ];
 
 gantt.exportToPrimaveraP6({
@@ -274,9 +254,9 @@ gantt.exportToPrimaveraP6({
                };
           }),
     tasks: {
-        ResourceAssignments: function(task){  /*!*/
-            return task.user;                   /*!*/
-        }                                       /*!*/
+        ResourceAssignments: function(task){  
+            return task.user;                   
+        }                                       
     }
 });
 ~~~
@@ -291,34 +271,61 @@ tasks: {
 }
 ~~~
 
+**相关示例**： [Export Gantt with resources to Primavera P6](https://snippet.dhtmlx.com/6bfbwp8g)
 
-**Related example:** [将带资源的甘特图导出到 Primavera P6](https://snippet.dhtmlx.com/6bfbwp8g)
+可以在 **ResourceAssignments** 属性中返回以下对象以指定 *units* 参数：
 
+~~~js
+{
+    resource_id: "id",
+    units: "units value"
+}
+~~~
 
-- **server** - (string) 指定导出请求的 API 端点。如果您已安装本地导出服务，可使用此项。默认值为 **https://export.dhtmlx.com/gantt**。
+- **resource calendars**
+
+默认情况下，每个任务都会添加一个日历。如果使用资源日历，需要在导出期间在
+*CalendarUID* 属性中为任务指定 -1（在 [tasks](#export-settings) 对象中）。那么该任务将使用资源日历。
+
+在导出 [resource calendars](api/config/resource_calendars.md) 时，可以在 [resources](#export-settings) 数组的对象中指定资源日历： 
 
 ~~~js
 gantt.exportToPrimaveraP6({
-    server:"https://myapp.com/myexport/gantt"
-});
+    resources: [
+        {
+            id: "10",
+            name: "John",
+            type: "work",
+            calendar: gantt.config.resource_calendars[10]
+        }
+    ]
+});    
 ~~~
 
 
+- **server** - (string) 请求的 API 端点。可用于本地安装的导出服务。默认值为 `https://export.dhtmlx.com/gantt`。
+
+~~~js
+gantt.exportToPrimaveraP6({
+    server: "https://myapp.com/myexport/gantt"
+});
+~~~
+
 ## 从 Primavera P6 导入
 
-要转换 XML 或 XER 文件，请向导出服务发送包含以下内容的 POST 请求:
+为了转换 XML 或 XER 文件，你需要向导出服务发送以下请求：
 
- - 请求 URL: **https://export.dhtmlx.com/gantt**
- - 方法: **POST**
- - Content-Type: **multipart/form-data**
+ - 请求 URL - `https://export.dhtmlx.com/gantt`
+ - 请求方法 - **POST**
+ - 内容类型 - **multipart/form-data**
 
-请求参数包括:
+请求参数为：
 
- - **file** - 一个 XER 或 XML 格式的 Primavera P6 文件
- - **type** - 设为 "primaveraP6-parse"
- - **data** - (*可选*) 包含导入设置的 JSON 字符串
+ - **file** - XER 或 XML Primavera P6 文件
+ - **type** - "primaveraP6-parse"
+ - **data** - (*可选*) 带有设置的 JSON 字符串
 
-例如:
+例如：
 
 ~~~html
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
@@ -329,7 +336,7 @@ gantt.exportToPrimaveraP6({
 </form>
 ~~~
 
-也可以使用 [客户端 API](api/method/importfromprimaverap6.md) 如下操作:
+或者，你也可以使用 [client-side API](api/method/importfromprimaverap6.md)，如下所示：
 
 ~~~js
 gantt.importFromPrimaveraP6({
@@ -343,15 +350,15 @@ gantt.importFromPrimaveraP6({
             }                    
             gantt.parse(project.data);
         }
-     }
+    }
 });
 ~~~
 
 
-[Import Primavera P6 file](https://docs.dhtmlx.com/gantt/samples/08_api/18_load_from_primaverap6.html)
+**相关示例**： [Import Primavera P6 file](https://docs.dhtmlx.com/gantt/samples/08_api/18_load_from_primaverap6.html)
 
 
-其中 *file* 应为包含 XML 或 XER 项目文件的 [File](https://developer.mozilla.org/en-US/docs/Web/API/File) 对象。
+其中 *file* 是一个 [File](https://developer.mozilla.org/en-US/docs/Web/API/File) 的实例，应包含一个 XML 或 XER Project 文件。
 
 :::note
 **gantt.importFromPrimaveraP6** 需要 HTML5 File API 的支持。
@@ -359,28 +366,42 @@ gantt.importFromPrimaveraP6({
 
 ### 响应
 
-响应返回一个结构如下的 JSON 对象:
+响应将包含以下结构的 JSON：
 
 ~~~js
 {
     data: {},
     config: {},
     resources: [],
-    worktime: {}
+    worktime: {},
+    calendars: []
 }
 ~~~
 
-- **data** - 一个 gantt [数据对象](guides/supported-data-formats.md#json)。每个任务包含如 *id*、*open*、*parent*、*progress*、*start_date*、*text*、*resource* 等属性。日期格式为 "%Y-%m-%d %H:%i"。
-- **config** - 一个 gantt [配置对象](api/overview/properties-overview.md)，包含从项目文件中提取的设置。
-- **resources** - 表示项目文件中资源的资源对象数组（每个对象包含 *id*、*name* 和 *type*）。
-- **worktime** - 包含项目日历工作时间设置的对象。
-
+- **data** - (*object*) 一个甘特图 [data object](guides/supported-data-formats.md)。每个任务具有以下属性：*id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*。日期以字符串形式表示，格式为 "%Y-%m-%d %H:%i"。
+- **config** - (*object*) 一个甘特图 [configuration](api/overview/properties-overview.md) 对象，包含从项目文件中检索的设置。
+- **resources** - (*array*) 一个对象数组（每个对象具有以下属性：
+  (*id: string, name: string, type: string, calendar: string*)）表示来自项目文件的资源列表。
+- **worktime** - (*object*) 包含来自项目日历的工作时间设置的对象。它可以包含以下属性：
+   - **id** - (*string | number*) 可选，日历 ID
+   - **hours** - (*array*) 全局工作时间数组，设置任务的开始和结束时间
+   - **dates** - (*array*) 日期数组，可包含：
+        - 每周的 7 天（从 0 - 星期日，到 6 - 星期六），其中 1/true 代表工作日，0/false 代表非工作日
+        - 其他记录为日期 
+- **calendars** - (*array*) 包含用于创建新日历的日历配置对象的数组。
+    - **calendarConfig** - (*object*) 日历配置对象，可能包含以下属性：
+      - **id** - (*string | number*) 可选，日历 id
+      - **name** - (*string*) 日历名称
+      - **hours** - (*array*) 全局工作时间数组，设置任务的开始和结束时间
+      - **dates** - (*array*) 日期数组，可包含：
+            - 每周的 7 天（从 0 - 星期日，到 6 - 星期六），其中 1/true 代表工作日，0/false 代表非工作日
+            - 其他记录为日期
 
 ### 导入设置
 
-#### 设置工期单位
+#### 设置持续时间单位
 
-你可以通过向服务器发送 **durationUnit** 字符串（"minute"、"hour"、"day"、"week"、"month"、"year"）来指定期望的工期单位。
+要设置期望的持续时间单位，可以将 durationUnit（"minute"、"hour"、"day"、"week"、"month"、"year"）字符串也发送到服务器。
 
 ~~~html
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
@@ -405,9 +426,10 @@ gantt.importFromPrimaveraP6({
 
 #### 获取项目属性
 
-要获取特定的项目字段，可以将 **projectProperties** 输入与所需字段数组一起发送到服务器。这会将[项目实体](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 中的属性提取到响应的" **config** 属性中。支持的[属性列表](guides/properties.md#xiangmushuxing)可参考。
+要获取项目字段，可以向服务器发送带有所需字段数组的 **projectProperties** 输入。
+它将 [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 的任意属性提取到输出的 config 属性中。支持的 [properties](guides/properties.md#project-properties) 列表如下。
 
- - **projectProperties** - 指定响应中包含哪些项目属性的数组。
+ - **projectProperties** - 指定应放入响应中的项目属性数组。
 
 ~~~html
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
@@ -436,9 +458,11 @@ gantt.importFromPrimaveraP6({
 
 #### 获取任务属性
 
-要导入特定任务字段，可以将 **taskProperties** 输入与所需字段数组一起发送到服务器。这会从 [任务实体](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 中提取属性。支持的[属性列表](guides/properties.md#renwushuxing)可参考。
+要获取任务字段，可以向服务器发送带有必要字段的 **taskProperties** 输入。
+它将 [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 的任意属性提取到输出中的任务属性。下面是 [properties](guides/properties.md#tasks-properties) 的支持列表：
 
- - **taskProperties** - 指定要导入的附加任务属性的数组。
+ - **taskProperties** - 指定要导入的额外任务属性数组。
+
 
 ~~~html
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
@@ -472,12 +496,11 @@ gantt.attachEvent("onTaskLoading", function(task) {
 });
 ~~~
 
-
 #### 获取任务类型
 
-以下方式可判断任务类型:标记为 **Project** 的任务有属性 `Summary: "1"`，标记为 **Milestone** 的任务有属性 `Milestone: "1"`。导入数据时，这些属性有助于判断任务类型。
+以下逻辑可帮助你获取任务类型：Project 类型的任务具有 Summary: "1" 属性，Milestone 类型的任务具有 Milestone: "1" 属性。我们需要导入带有这些属性的数据，然后根据这些属性设置任务类型。
 
-导入函数的调用方式如下:
+调用导入函数的示例看起来像这样：
 
 ~~~js
 gantt.importFromPrimaveraP6({
@@ -500,7 +523,7 @@ gantt.importFromPrimaveraP6({
 });
 ~~~
 
-导入后，你可以根据这些属性设置任务类型，如下所示:
+之后你可以基于接收到的属性将任务类型转换如下：
 
 ~~~js
 gantt.attachEvent("onTaskLoading", function (task) {
@@ -517,53 +540,177 @@ gantt.attachEvent("onTaskLoading", function (task) {
 });
 ~~~
 
+**相关示例**： [Gantt. Import Primavera P6 files. Get task type from properties](https://snippet.dhtmlx.com/y95rsxor)
 
-**Related example:** [Gantt. Import Primavera P6 files. Get task type from properties](https://snippet.dhtmlx.com/y95rsxor)
+#### 添加和调整日历
 
-
-## 请求大小限制与大文件导入
-
-Primavera P6 导出/导入服务有两个 API 端点:
-
-- **https://export.dhtmlx.com/gantt** - 默认端点，适用于所有导出方法（如 *exportToPDF*、*exportToPNG*、*exportToPrimaveraP6* 等）。**最大请求大小为 10 MB**。
-- **https://export.dhtmlx.com/gantt/project** - 专用于 [MSProject](guides/export-msproject.md) 和 [Primavera P6](guides/export-primavera.md) 的导出/导入服务端点（如 *exportToMSProject*、*importFromMSProject*、*exportToPrimaveraP6*、*importFromPrimaveraP6*）。此端点支持**最大 40 MB** 的请求。
-
-你可以通过导出配置对象中的 **server** 属性指定端点:
-
-~~~js
-gantt.importFromPrimaveraP6({
-    server:"https://export.dhtmlx.com/gantt",
-    data: file,
-    callback: function(project){
-       // some logic
-    }
-}); 
-~~~
-
-如果未指定端点，则默认使用 <b>https://export.dhtmlx.com/gantt</b>。以下调用方式与上述相同:
+请注意，在导入期间日历不会自动添加。你需要使用 [addCalendar()](api/method/addcalendar.md) 方法将它们添加进去。
+之后，应该通过 [setWorkTime()](api/method/setworktime.md) 方法来设置日历设置。例如：
 
 ~~~js
 gantt.importFromPrimaveraP6({
     data: file,
-    callback: function(project){
-       // some logic
+    taskProperties: ["Notes", "Name"],
+    callback: function (project) {
+        if (project) {
+            // 添加日历的设置
+            project.calendars.forEach(function (calendar) {
+                let addedCalendar;
+                // 为全局日历添加工作时间设置
+                if (calendar.id == project.config.global_calendar_id) {
+                    addedCalendar = gantt.getCalendar("global");
+                }
+                else {
+                    // Gantt 不会在 hours 参数为空数组时添加日历
+                    let calendarHours = calendar.hours;
+                    if (!calendarHours.length) {
+                        calendarHours = undefined
+                    }
+                    gantt.addCalendar({
+                        id: calendar.id,
+                        hours: calendarHours,
+                        name: calendar.name
+                    });
+
+                    addedCalendar = gantt.getCalendar(calendar.id);
+                }
+                const worktimeDates = calendar.dates;
+                for (let element in worktimeDates) {
+                    const date = new Date(+element)
+                    if (element < 10) {
+                        addedCalendar.setWorkTime({ 
+                            day: element, 
+                            hours: worktimeDates[element] 
+                        })
+                    }
+                    else {
+                        addedCalendar.setWorkTime({ 
+                            date: date, 
+                            hours: worktimeDates[element] 
+                        })
+                    }
+                }
+            })
+        }
     }
 });
 ~~~
 
-对于超过 4MB 的大型项目，可以使用第二个端点:
+**相关示例**： [Gantt. Calendars settings for export/import in MSProject and Primavera P6](https://snippet.dhtmlx.com/668xqts7)
+
+#### 资源日历
+
+如果存在资源日历，需要通过 [gantt.config.resource_calendars](api/config/resource_calendars.md) 属性来指定：
 
 ~~~js
 gantt.importFromPrimaveraP6({
-    server:"https://export.dhtmlx.com/gantt/project",
+    data: file,
+    taskProperties: ["Notes", "Name"],
+    callback: function (project) {
+        if (project) {
+            // 日历设置
+            project.calendars.forEach(function (calendar) {
+                // 添加日历及其工作时间设置
+            })
+
+            // 资源日历设置
+            gantt.config.resource_calendars = {}
+
+            project.resources.forEach(function (resource) {
+                if (resource.calendar) {
+                    gantt.config.resource_calendars[resource.id] = resource.calendar;
+                }
+            })
+        }
+    }
+});
+~~~
+
+**相关示例**： [Gantt. Resource calendars settings for export/import in MSProject and Primavera P6](https://snippet.dhtmlx.com/10czv54b)
+
+#### 资源与资源分配
+
+如果文件中存在资源，它们在导入时会出现在 **resources** 数组中。**resources** 属性的 calendar 参数指定资源日历：
+
+~~~js
+{
+    resources: [
+        { id: 6, name: "John", type: "work", calendar: "8" },
+        // 更多资源
+    ]
+}
+~~~
+
+如果存在资源分配，它们将导入到 **assignments** 数组，其中分配对象包含 *resource_id: string* 和 *value: number* 参数。例如：
+
+~~~js
+{
+    tasks: [
+        {
+            id: 5,
+            text: "Interior office",
+            type: "task",
+            start_date: "03-04-2024 00:00",
+            duration: 7,
+            parent: "2",
+            priority: 1
+        },
+        // 更多任务
+    ],
+    links: [],
+    assignments: [
+        { id: 1, task_id: 5, resource_id: 6, value: 3},
+        // 更多分配
+    ],
+    resources: [
+        { id: 6, text: "John", unit: "hours/day" },
+        { id: 7, text: "Mike", unit: "hours/day" },
+        // 更多资源
+    ]
+}
+~~~
+
+## 请求大小限制与大文件导入
+
+ Primavera P6 导出/导入服务有两个 API 端点：
+
+- `https://export.dhtmlx.com/gantt` - 默认端点，提供所有导出方法（*exportToPDF*、*exportToPNG*、*exportToPrimaveraP6* 等）。**最大请求大小为 10 MB**。
+- `https://export.dhtmlx.com/gantt/project` - 针对 [MSProject](guides/export-msproject.md) 与
+[Primavera P6](guides/export-primavera.md) 的导出/导入服务专用端点（仅 *exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*）。**最大请求大小：40 MB**。
+
+该端点可以通过导出配置对象的 **server** 属性指定：
+
+~~~js
+gantt.importFromPrimaveraP6({
+    server: "https://export.dhtmlx.com/gantt",
     data: file,
     callback: function(project){
-       // some logic
+       // 某些逻辑
     }
 }); 
 ~~~
 
-该端点支持最大 40MB 的请求，并支持 Primavera P6 的导出和导入。它专为 Primavera P6 的导出和导入而设计。
+如果未指定端点，默认使用 `https://export.dhtmlx.com/gantt`。下述调用等价于上面的调用：
 
-请注意，其他方法如 *gantt.exportToPDF((server:"https://export.dhtmlx.com/gantt/project"))* 会导致服务器错误。
+~~~js
+gantt.importFromPrimaveraP6({
+    data: file,
+    callback: function(project){
+       // 某些逻辑
+    }
+});
+~~~
 
+为了导出或导入超过 4MB 限制的大型项目，可以使用第二个端点：
+
+~~~js
+gantt.importFromPrimaveraP6({
+    server: "https://export.dhtmlx.com/gantt/project",
+    data: file,
+    callback: function(project){
+       // 某些逻辑
+    }
+}); 
+~~~
+
+它允许发送高达 40MB 的请求，并支持 Primavera P6 的导出和导入。它可用于 Primavera P6 的导出，但其他方法（例如，`gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})`）应返回服务器错误。

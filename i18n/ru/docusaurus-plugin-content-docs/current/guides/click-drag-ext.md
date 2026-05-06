@@ -1,15 +1,15 @@
 ---
-title: "clickDrag Расширение"
-sidebar_label: "clickDrag Расширение"
+title: "Расширение clickDrag"
+sidebar_label: "Расширение clickDrag"
 ---
 
-# clickDrag Расширение
+# Расширение clickDrag
 
-Более подробную информацию о расширении clickDrag можно найти в статье [Создание/Выделение задач с помощью DnD](guides/advanced-dnd.md).
+Подробнее об расширении clickDrag можно узнать в статье [Создание/Выбор задач с DnD](guides/advanced-dnd.md).
 
 ## Объект конфигурации
 
-Чтобы включить расширенные функции drag-and-drop, установите опцию конфигурации [click_drag](api/config/click_drag.md) и добавьте нужные свойства из списка ниже в данный объект:
+Чтобы включить расширенное drag-n-drop, укажите конфигурационный параметр [click_drag](api/config/click_drag.md) и задайте необходимые свойства из списка ниже внутри его объекта: 
 
 ~~~js
 gantt.config.click_drag = {
@@ -18,54 +18,53 @@ gantt.config.click_drag = {
 };
 ~~~
 
-- <span class="subproperty">**className?**</span> -  (*string*) - применяет пользовательский CSS-класс к выбранному элементу
-- <span class="subproperty">**viewPort?**</span> - (*HTMLElement*) - элемент, на который будет навешено событие и в котором происходит выделение
-- <span class="subproperty">**useRequestAnimationFrame?**</span> - (*boolean*) - определяет, используется ли requestAnimationFrame во время рендеринга
-- <span class="submethod">**callback? (startPoint, endPoint, startDate, endDate, tasksBetweenDates, tasksInRows): any**</span> - функция, вызываемая при отпускании кнопки мыши. Принимает 6 параметров:
-    - **_startPoint?_** - (*object*) - содержит следующие свойства:
-        - **_absolute_** - (*object*) - координаты относительно левого верхнего угла документа
-            - **_left_** - (*number*) - горизонтальная позиция
-            - **_top_** - (*number*) - вертикальная позиция
-        - **_relative_** - (*object*) - координаты относительно левого верхнего угла элемента viewPort
-            - **_left_** - (*number*) - горизонтальная позиция
-            - **_top_** - (*number*) - вертикальная позиция
-    - **_endPoint?_** - (*object*) - структура аналогична startPoint и представляет конечную позицию drag'а
-        - **_absolute_** - (*object*) - координаты относительно левого верхнего угла документа
-            - **_left_** - (*number*) - горизонтальная позиция
-            - **_top_** - (*number*) - вертикальная позиция
-        - **_relative_** - (*object*) - координаты относительно элемента viewPort
-            - **_left_** - (*number*) - горизонтальная позиция
-            - **_top_** - (*number*) - вертикальная позиция
-    - **_startDate?_** - (*Date*) - дата, соответствующая startPoint
-    - **_endDate?_** - (*Date*) - дата, соответствующая endPoint
-    - **_tasksBetweenDates?_** - (*Array&lt;Task&gt;*) - задачи, попадающие между начальной и конечной датой
-    - **_tasksInRows?_** - (*Array&lt;Task&gt;*) - задачи, выделенные вертикально между стартовыми и конечными координатами
-- <span class="subproperty">**singleRow?**</span> - (*boolean*) - если true, выделение ограничено одной строкой по высоте задачи
-- <span class="subproperty">**ignore?**</span> - (*string*) - CSS-селектор для элементов, которые не должны активировать drag-and-drop
-- <span class="subproperty">**useKey?**</span> - (*string | boolean*) - drag-and-drop активируется только при удерживании указанной клавиши-модификатора. Поддерживаемые клавиши: "ctrlKey", "shiftKey", "metaKey", "altKey"
-- <span class="submethod">**render? (startPoint, endPoint): any**</span> - функция, возвращающая элемент, отображаемый во время перетаскивания. Принимает два параметра:
-    - **_startPoint?_** - (*object*) - включает:
-        - **_absolute_** - (*object*) - координаты относительно левого верхнего угла документа
-            - **_left_** - (*number*) - горизонтальная позиция
-            - **_top_** - (*number*) - вертикальная позиция
-        - **_relative_** - (*object*) - координаты относительно элемента viewPort
-            - **_left_** - (*number*) - горизонтальная позиция
-            - **_top_** - (*number*) - вертикальная позиция
-    - **_endPoint?_** - (*object*) - структура аналогична startPoint, представляет текущую позицию drag'а
-        - **_absolute_** - (*object*) - координаты относительно документа
-            - **_left_** - (*number*) - горизонтальная позиция
-            - **_top_** - (*number*) - вертикальная позиция
-        - **_relative_** - (*object*) - координаты относительно элемента viewPort
-            - **_left_** - (*number*) - горизонтальная позиция
-            - **_top_** - (*number*) - вертикальная позиция
+- <span class="subproperty">**className?**</span> -  (*string*) - устанавливает пользовательский CSS-класс для выбранного элемента
+- <span class="subproperty">**viewPort?**</span> - (*HTMLElement*) - элемент, к которому привязывается событие и который используется как область просмотра
+- <span class="subproperty">**useRequestAnimationFrame?**</span> - (*boolean*) - определяет, используется ли requestAnimationFrame во время отрисовки
+- <span class="submethod">**callback? (startPoint, endPoint, startDate, endDate, tasksBetweenDates, tasksInRows): any**</span> - функция, которая будет вызываться после отпускания кнопки мыши. Принимает 6 параметров:
+    - <span class="subproperty">_startPoint?_</span> - (*object*) - объект со следующими атрибутами:
+        - <span class="subproperty">_absolute_</span> - (*object*) - координаты левого верхнего угла документа
+            - <span class="subproperty">_left_</span> - (*number*) - левая координата
+            - <span class="subproperty">_top_</span> - (*number*) - верхняя координата
+        - <span class="subproperty">_relative_</span> - (*object*) - координаты левого верхнего элемента, который используется как viewPort
+            - <span class="subproperty">_left_</span> - (*number*) - левая координата
+            - <span class="subproperty">_top_</span> - (*number*) - верхняя координата
+    - <span class="subproperty">_endPoint?_</span> - (*object*) - объект со следующими атрибутами:
+        - <span class="subproperty">_absolute_</span> - (*object*) - координаты левого верхнего угла документа
+            - <span class="subproperty">_left_</span> - (*number*) - левая координата
+            - <span class="subproperty">_top_</span> - (*number*) - верхняя координата
+        - <span class="subproperty">_relative_</span> - (*object*) - координаты левого верхнего элемента, который используется как viewPort
+            - <span class="subproperty">_left_</span> - (*number*) - левая координата
+            - <span class="subproperty">_top_</span> - (*number*) - верхняя координата
+    - <span class="subproperty">_startDate?_</span> - (*Date*) - дата, соответствующая стартовой точке
+    - <span class="subproperty">_endDate?_</span> - (*Date*) - дата, соответствующая конечной точке
+    - <span class="subproperty">_tasksBetweenDates?_</span> - (*Array&lt;Task&gt;*) - массив задач между точками начала и конца по времени
+    - <span class="subproperty">_tasksInRows?_</span> - (*Array&lt;Task&gt;*) - массив задач, выбранных между начальной и конечной координатами по вертикали
+- <span class="subproperty">**singleRow?**</span> - (*boolean*) - true, чтобы выделение происходило только в одной строке, равной высоте задачи
+- <span class="subproperty">**ignore?**</span> - (*string*) - CSS-селектор. Drag-n-drop не будет активировано для элементов, которые соответствуют селектору
+- <span class="subproperty">**useKey?**</span> - (*string | boolean*) - если свойство указано, drag-n-drop будет активирован только при нажатии указанной клавиши-модификатора. Поддерживаемые значения: "ctrlKey", "shiftKey", "metaKey", "altKey"
+- <span class="submethod">**render? (startPoint, endPoint): any**</span> - функция, которая создает элемент, отображаемый во время перетаскивания. Принимает два параметра:
+    - <span class="subproperty">_startPoint?_</span> - (*object*) - объект со следующими атрибутами:
+        - <span class="subproperty">_absolute_</span> - (*object*) - координаты левого верхнего угла документа
+            - <span class="subproperty">_left_</span> - (*number*) - левая координата
+            - <span class="subproperty">_top_</span> - (*number*) - верхняя координата
+        - <span class="subproperty">_relative_</span> - (*object*) - координаты левого верхнего элемента, который используется как viewPort
+            - <span class="subproperty">_left_</span> - (*number*) - левая координата
+            - <span class="subproperty">_top_</span> - (*number*) - верхняя координата
+    - <span class="subproperty">_endPoint?_</span> - (*object*) - объект со следующими атрибутами:
+        - <span class="subproperty">_absolute_</span> - (*object*) - координаты левого верхнего угла документа
+            - <span class="subproperty">_left_</span> - (*number*) - левая координата
+            - <span class="subproperty">_top_</span> - (*number*) - верхняя координата
+        - <span class="subproperty">_relative_</span> - (*object*) - координаты левого верхнего элемента, который используется как viewPort
+            - <span class="subproperty">_left_</span> - (*number*) - левая координата
+            - <span class="subproperty">_top_</span> - (*number*) - верхняя координата
 
 
 ## События
 
-Следующие события могут быть привязаны к элементу, используемому как viewPort (по умолчанию gantt.$task_data, то есть область временной шкалы, содержащая бары задач):
+Вы можете привязать следующие события к элементу, переданному в качестве viewPort (Gantt.$task_data по умолчанию — часть временной шкалы с задачами):
 
-- **onBeforeDrag** - срабатывает сразу после нажатия кнопки мыши, до начала перетаскивания
-- **onDrag** - срабатывает многократно во время перетаскивания, до отпускания кнопки мыши
-- **onBeforeDragEnd** - срабатывает после отпускания кнопки мыши, но до удаления элемента рендера drag'а и определения задач в выделенной области
-- **onDragEnd** - срабатывает после удаления элемента drag'а и нахождения задач в выделении, но до вызова callback-функции (если она задана)
-
+- onBeforeDrag - вызывается после нажатия кнопки мыши до начала перетаскивания
+- onDrag - вызывается каждый раз после начала перетаскивания, но до отпускания кнопки мыши
+- onBeforeDragEnd - вызывается после отпускания кнопки мыши, но до удаления отрисованного элемента и до поиска задач, попадающих под выделение
+- onDragEnd - вызывается после удаления отрисованного элемента и нахождения задач, попадающих под выделение, но перед вызовом функции обратного вызова (если она задана)

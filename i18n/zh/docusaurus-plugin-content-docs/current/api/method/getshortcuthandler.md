@@ -1,31 +1,31 @@
 ---
 sidebar_label: getShortcutHandler
-title: getShortcutHandler method
-description: "获取一个键盘导航快捷键的处理函数"
+title: getShortcutHandler 方法
+description: "获取一个键盘导航快捷键处理程序"
 ---
 
 # getShortcutHandler
 
 ### Description
 
-@short: 获取一个键盘导航快捷键的处理函数
+@short: 获取一个键盘导航快捷键处理程序
 
 @signature: getShortcutHandler: (shortcut: string, scope: string) =\> GanttCallback
 
 ### Parameters
 
-- `shortcut` - (required) *string* - 定义快捷键的按键或按键组合 ([快捷键语法](guides/keyboard-navigation.md))
-- `scope` - (required) *string* - 处理函数绑定的上下文元素名称 ([作用域列表](guides/keyboard-navigation.md))
+- `shortcut` - (required) *string* - 快捷键的键名，或快捷键组合的名称（[shortcut syntax](guides/keyboard-navigation.md#shortcutsyntax)）
+- `scope` - (required) *string* - 要附加处理函数的上下文元素名称（[scopes 列表](guides/keyboard-navigation.md#scopes)）
 
 ### Returns
-- ` shortcut_handler` - (function) - 分配来处理该快捷键的函数
+- `shortcut_handler` - (function) - 快捷键调用的处理程序
 
 ### Example
 
 ~~~jsx
-gantt.addShortcut("shift+w", function(e){ 
-    const task = gantt.locate(e); 
-    if(task) 
+gantt.addShortcut("shift+w", function(e){
+    const task = gantt.locate(e);
+    if(task)
         gantt.showQuickInfo(task)
 },"taskRow");
 
@@ -33,13 +33,13 @@ gantt.getShortcutHandler("shift+w", "taskRow")
 ~~~
 
 ### Related samples
-- [Keyboard Navigation](https://docs.dhtmlx.com/gantt/samples/02_extensions/16_keyboard_navigation.html)
-- [Keyboard Navigation - navigate cells](https://docs.dhtmlx.com/gantt/samples/02_extensions/17_keyboard_navigation_cell.html)
+- [键盘导航](https://docs.dhtmlx.com/gantt/samples/02_extensions/16_keyboard_navigation.html)
+- [键盘导航 - 导航单元格](https://docs.dhtmlx.com/gantt/samples/02_extensions/17_keyboard_navigation_cell.html)
 
 ### Details
 
 :::note
- 该方法属于**keyboard_navigation**扩展的一部分，因此请确保启用[keyboard_navigation](guides/extensions-list.md)插件。更多详情请参见[键盘导航](guides/keyboard-navigation.md)文档。 
+此方法在 **keyboard_navigation** 扩展中定义，因此需要激活 [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) 插件。请参阅 [Keyboard Navigation](guides/keyboard-navigation.md) 文章的详细信息。
 :::
 
 
@@ -54,4 +54,3 @@ gantt.getShortcutHandler("shift+w", "taskRow")
 
 ### Related Guides
 - [键盘导航](guides/keyboard-navigation.md)
-

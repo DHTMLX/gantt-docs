@@ -1,14 +1,14 @@
 ---
 sidebar_label: smart_rendering
-title: smart_rendering config
-description: "активирует режим smart rendering для отображения задач и связей в gantt"
+title: Настройки smart_rendering
+description: "включает режим умного рендеринга для отображения задач и связей в Gantt"
 ---
 
 # smart_rendering
 
 ### Description
 
-@short: Активирует режим smart rendering для отображения задач и связей в gantt
+@short: Включает режим умного рендеринга для отрисовки задач и связей в Gantt
 
 @signature: smart_rendering: boolean
 
@@ -20,15 +20,15 @@ gantt.config.smart_rendering = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Details
 
-Начиная с версии 6.2, smart rendering включён по умолчанию, так как теперь он является частью основного файла *dhtmlxgantt.js*. Это означает, что нет необходимости отдельно подключать файл *dhtmlxgantt_smart_rendering.js* для активации smart rendering.
+Начиная с версии v6.2, умный рендеринг включен по умолчанию, так как он встроен в ядро файла *dhtmlxgantt.js*. Следовательно, вам не нужно подключать файл *dhtmlxgantt_smart_rendering.js* на страницу, чтобы умный рендеринг работал.
 
 :::note
- Подключение старого файла *dhtmlxgantt_smart_rendering.js* перезапишет улучшения обновлённой встроенной функции **smart_rendering**. 
+Если вы подключите файл *dhtmlxgantt_smart_rendering.js*, который относится к старой версии, он перекроет улучшения нового встроенного расширения **smart_rendering**.
 :::
 
 ### Related Guides
-- [Производительность: Способы улучшения](guides/performance.md#smartrendering)
+- [Производительность: способы повышения](guides/performance.md#smart-rendering)

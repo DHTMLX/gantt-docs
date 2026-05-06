@@ -1,30 +1,29 @@
 ---
 sidebar_label: onOptionsLoad
 title: onOptionsLoad event
-description: "在从服务器加载一组选项后立即触发，但在解析它们之前触发"
+description: "在从服务器加载完一组选项后触发，但尚未被解析"
 ---
 
 # onOptionsLoad
 
 ### Description
 
-@short: 在从服务器加载一组选项后立即触发，但在解析它们之前触发
+@short: 当从服务器加载完一组选项后触发，但尚未被解析
 
-@signature: onOptionsLoad: () =\> void;
+@signature: onOptionsLoad: () => void;
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onOptionsLoad", function (){
-    //在这里编写任何自定义逻辑
+    // 在这里插入您的自定义逻辑 
 });
 ~~~
 
 ### Details
 
-当调用 [updateCollection](api/method/updatecollection.md) 或解析[带有附加信息的 JSON](guides/supported-data-formats.md)时，会触发此事件。
+该事件在调用 [updateCollection](api/method/updatecollection.md) 时触发，或在解析 [JSON with additional info](guides/supported-data-formats.md#jsonwithcollections) 时触发。
 
 ### Related API
 - [serverList](api/method/serverlist.md)
 - [updateCollection](api/method/updatecollection.md)
-

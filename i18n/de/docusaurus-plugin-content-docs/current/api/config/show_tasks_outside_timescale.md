@@ -1,14 +1,14 @@
 ---
 sidebar_label: show_tasks_outside_timescale
-title: show_tasks_outside_timescale config
-description: "Ermöglicht die Anzeige von Tasks, die außerhalb des definierten Datumsbereichs im Gantt-Diagramm liegen."
+title: show_tasks_outside_timescale Konfiguration
+description: "ermöglicht das Anzeigen von Aufgaben, die außerhalb des angegebenen Datumsbereichs im Gantt-Diagramm liegen"
 ---
 
 # show_tasks_outside_timescale
 
 ### Description
 
-@short: Ermöglicht die Anzeige von Tasks, die außerhalb des definierten Datumsbereichs im Gantt-Diagramm liegen.
+@short: Aktiviert das Anzeigen von Aufgaben, die außerhalb des angegebenen Datumsbereichs im Gantt-Diagramm liegen
 
 @signature: show_tasks_outside_timescale: boolean
 
@@ -22,18 +22,17 @@ gantt.config.show_tasks_outside_timescale = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Related samples
-- [Tasks outside timescale](https://docs.dhtmlx.com/gantt/samples/01_initialization/20_tasks_outside_timescale.html)
+- [Aufgaben außerhalb der Zeitskala](https://docs.dhtmlx.com/gantt/samples/01_initialization/20_tasks_outside_timescale.html)
 
 ### Related API
 - [start_date](api/config/start_date.md)
 - [end_date](api/config/end_date.md)
 
 ### Related Guides
-- ["Einrichten der Skala"](guides/configuring-time-scale.md#tasksoutsidetimescale)
+- [Einrichten der Zeitskala](guides/configuring-time-scale.md)
 
 ### Change log
-- hinzugefügt in v6.3
-
+- Hinzugefügt in v6.3

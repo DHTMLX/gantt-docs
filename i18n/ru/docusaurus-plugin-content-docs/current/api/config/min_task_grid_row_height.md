@@ -1,14 +1,14 @@
 ---
 sidebar_label: min_task_grid_row_height
 title: min_task_grid_row_height config
-description: "определяет минимальную высоту строки задачи при изменении размера"
+description: "устанавливает минимальную высоту строки, которую можно задать для задачи во время изменения размера"
 ---
 
 # min_task_grid_row_height
 
 ### Description
 
-@short: Определяет минимальную высоту строки задачи при изменении размера
+@short: Устанавливает минимальную высоту строки, которую можно задать для задачи во время изменения размера
 
 @signature: min_task_grid_row_height: number
 
@@ -22,8 +22,7 @@ gantt.config.min_task_grid_row_height = 45;
 
 ### Details
 
-Этот параметр действует только если включена опция [gantt.config.resize_rows](api/config/resize_rows.md) (*true*).
+Свойство будет работать, если [gantt.config.resize_rows](api/config/resize_rows.md) установлен в значение *true*.
 
 ### Change log
-- добавлено в версии v7.1
-
+- добавлено в v7.1

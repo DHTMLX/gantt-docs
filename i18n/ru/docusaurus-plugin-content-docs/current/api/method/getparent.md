@@ -1,23 +1,23 @@
 ---
 sidebar_label: getParent
 title: getParent method
-description: "получает id родительской задачи"
+description: "возвращает идентификатор родительской задачи"
 ---
 
 # getParent
 
 ### Description
 
-@short: Получает id родительской задачи
+@short: Возвращает идентификатор родительской задачи
 
 @signature: getParent: (id: string | number) =\> string | number
 
 ### Parameters
 
-- `id` - (required) *string | number* -        id задачи
+- `id` - (required) *string | number* - идентификатор задачи
 
 ### Returns
-- ` id` - (string | number) - id родительской задачи. Возвращает id корня, если у указанной задачи нет родителя
+- ` id` - (string | number) - идентификатор родительской задачи. Идентификатор корня по умолчанию, если у указанной задачи нет родителя
 
 ### Example
 
@@ -36,7 +36,7 @@ gantt.init("gantt_here");
 gantt.parse(tasks);
 
 gantt.getParent("t_1"); //-> "p_1" /*!*/
-gantt.getParent("p_1"); //-> 0 (id корня по умолчанию) /*!*/
+gantt.getParent("p_1"); //-> 0 (the default root id) /*!*/
 ~~~
 
 ### Related API
@@ -47,4 +47,3 @@ gantt.getParent("p_1"); //-> 0 (id корня по умолчанию) /*!*/
 
 ### Related Guides
 - [Task Parent/Child](guides/task-tree-operations.md)
-

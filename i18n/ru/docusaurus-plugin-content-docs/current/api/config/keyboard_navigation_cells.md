@@ -1,43 +1,42 @@
 ---
 sidebar_label: keyboard_navigation_cells
-title: keyboard_navigation_cells config
-description: "позволяет осуществлять навигацию с клавиатуры по отдельным ячейкам"
+title: Конфигурация keyboard_navigation_cells
+description: "включает навигацию по ячейкам с клавиатуры"
 ---
 
 # keyboard_navigation_cells
 
-### Description
+### Описание
 
-@short: Позволяет осуществлять навигацию с клавиатуры по отдельным ячейкам
+@short: Включает навигацию по ячейкам с клавиатуры
 
 @signature: keyboard_navigation_cells: boolean
 
-### Example
+### Пример
 
 ~~~jsx
 gantt.config.keyboard_navigation_cells = true;
 ~~~
 
-**Default value:** false
+**Значение по умолчанию:** false
 
-### Related samples
+### Связанные примеры
 - [Keyboard Navigation - navigate cells](https://docs.dhtmlx.com/gantt/samples/02_extensions/17_keyboard_navigation_cell.html)
 
-### Details
+### Детали
 
 :::note
-note Эта настройка является частью расширения **keyboard_navigation**, поэтому убедитесь, что плагин [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) включён. Более подробную информацию можно найти в руководстве [Навигация с клавиатуры](guides/keyboard-navigation.md). 
+Эта опция определяется в расширении **keyboard_navigation**, поэтому нужно активировать плагин [keyboard_navigation](guides/extensions-list.md#keyboardnavigation). Подробности читайте в статье [Keyboard Navigation](guides/keyboard-navigation.md).
 :::
 
-добавлено в версии 4.1
+Добавлено в версии 4.1
 
-### Related API
+### Связанные API
 - [keyboard_navigation](api/config/keyboard_navigation.md)
 - [focus](api/method/focus.md)
 - [addShortcut](api/method/addshortcut.md)
 - [getShortcutHandler](api/method/getshortcuthandler.md)
 - [removeShortcut](api/method/removeshortcut.md)
 
-### Related Guides
-- [Навигация с клавиатуры](guides/keyboard-navigation.md)
-
+### Связанные руководства
+- [Навигация по клавиатуре](guides/keyboard-navigation.md)

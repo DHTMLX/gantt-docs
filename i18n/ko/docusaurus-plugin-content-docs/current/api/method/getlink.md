@@ -1,20 +1,20 @@
 ---
 sidebar_label: getLink
 title: getLink method
-description: "주어진 id를 사용하여 dependency link 객체를 가져옵니다."
+description: "지정된 id로 의존성 링크 객체를 반환합니다"
 ---
 
 # getLink
 
 ### Description
 
-@short: 주어진 id를 사용하여 dependency link 객체를 가져옵니다.
+@short: 지정된 id로 의존성 링크 객체를 반환합니다
 
-@signature: getLink: (id: string | number) =\> Link
+@signature: getLink: (id: string | number) => Link
 
 ### Parameters
 
-- `id` - (required) *string | number* -    링크 id
+- `id` - (required) *string | number* -    링크 ID
 
 ### Returns
 - `link` - (Link) - 링크 객체
@@ -33,4 +33,4 @@ gantt.getLink(1);// -> {id:1, source:1, target:2, type:1}
 
 ### Details
 
-특정 작업에 연결된 모든 링크를 가져오는 방법은 [링크 객체/ID 가져오기](guides/link-object-operations.md#gettingthelinksrelatedtoacertaintask) 문서를 참조하세요.
+특정 작업에 연결된 모든 링크를 얻는 방법에 대한 정보는 [Getting the Link Object/Id](guides/link-object-operations.md#getting-the-links-related-to-a-certain-task) 문서를 참조하십시오.

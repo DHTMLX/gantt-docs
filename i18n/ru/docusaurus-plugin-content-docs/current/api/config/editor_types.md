@@ -1,39 +1,39 @@
 ---
 sidebar_label: editor_types
-title: editor_types config
-description: "объект, содержащий определения для inline редакторов"
+title: Конфигурация editor_types
+description: "объект, содержащий определения встроенных редакторов"
 ---
 
 # editor_types
 
 ### Description
 
-@short: Объект, содержащий определения для inline редакторов
+@short: Объект, содержащий определения встроенных редакторов
 
 @signature: editor_types: \{ text?: InlineEditor; number?: InlineEditor; duration?: InlineEditor; date?: InlineEditor; select?: InlineEditor; predecessor?: InlineEditor; [customEditorName: string]: InlineEditor | undefined; \}
 
 ### Example
 
 ~~~jsx
-gantt.config.editor_types.custom_editor = {// логика кастомного редактора}
+gantt.config.editor_types.custom_editor = {// custom editor logic}
 ~~~
 
 ### Details
 
-Эта конфигурация используется для создания кастомных редакторов (как показано в примере выше).
+Конфигурацию можно использовать для создания собственных редакторов (см. приведённый выше пример).
 
-Доступны несколько встроенных inline редакторов:
+Существует несколько заранее определённых inline editors:
 
-- **text** - (*InlineEditor*) - используется для редактирования текстовых полей, например, названий задач
-- **number** - (*InlineEditor*) - используется для редактирования числовых полей, таких как длительность задачи или порядок
-- **duration** - (*InlineEditor*) - для редактирования полей длительности, т.е. длительности задачи.
-Работает только при применении конфигурации ***map_to:"duration"*** и установке [типа редактора](guides/inline-editing.md#typesofeditors) в **"duration"**
-- **date** - (*InlineEditor*) - для редактирования полей с датами, таких как дата начала и окончания задачи
-- **select** - (*InlineEditor*) - для выбора опции из выпадающего списка
-- **predecessor** - (*InlineEditor*) - для назначения предшествующей задачи текущей задаче. Этот редактор использует [WBS коды](guides/specifying-columns.md#wbscode) для связи предшествующей задачи
-- **[customEditorName: string]** - (*InlineEditor | undefined*) - для определения кастомных inline редакторов
+- **text** - (*InlineEditor*) - для редактирования текстовых столбцов, например названия задачи
+- **number** - (*InlineEditor*) - для редактирования числовых столбцов, например продолжительности задачи, порядка и т.д.
+- **duration** - (*InlineEditor*) - для редактирования столбцов продолжительности, т.е. продолжительности задачи. Работает только когда используется конфигурация ***map_to:"duration"*** и [тип редактора](guides/inline-editing.md#types-of-editors) установлен как **"duration"** тип
+- **date** - (*InlineEditor*) - для редактирования дат столбцов, например дат начала и окончания задачи
+- **select** - (*InlineEditor*) - для выбора варианта из списка
+- **predecessor** - (*InlineEditor*) - для установки зависимости задачи для текущей редактируемой задачи. Этот редактор получает [коды WBS задач](guides/specifying-columns.md#wbscode) для установки связи с задачей-предшественником
+- **[customEditorName: string]** - (*InlineEditor | undefined*) - пользовательские inline editors
 
-Редакторы, определённые здесь, могут быть назначены колонкам gantt:
+
+Редакторы, определённые в этом объекте, можно привязать к колонкам диаграммы Гантта:
 
 ~~~js
 const textEditor = {type: "text", map_to: "text"};
@@ -48,4 +48,4 @@ gantt.config.columns = [
 ~~~
 
 ### Related Guides
-- [Редактирование 'на месте' в гриде](guides/inline-editing.md#typesofeditors)
+- [Встроенное редактирование в Grid](guides/inline-editing.md#types-of-editors)

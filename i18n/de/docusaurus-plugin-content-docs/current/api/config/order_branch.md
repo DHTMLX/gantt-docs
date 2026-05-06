@@ -1,14 +1,14 @@
 ---
 sidebar_label: order_branch
-title: order_branch config
-description: "ermöglicht den 'branch'-Modus zum vertikalen Umordnen von Aufgaben innerhalb derselben Tree-Ebene"
+title: order_branch Konfiguration
+description: "Aktiviert den 'branch'-Modus, der das vertikale Neuanordnen von Aufgaben innerhalb derselben Baum-Ebene ermöglicht"
 ---
 
 # order_branch
 
 ### Description
 
-@short: Ermöglicht den 'branch'-Modus zum vertikalen Umordnen von Aufgaben innerhalb derselben Tree-Ebene
+@short: Aktiviert den 'branch'-Modus, der das vertikale Neuanordnen von Aufgaben innerhalb derselben Baum-Ebene ermöglicht
 
 @signature: order_branch: string | boolean
 
@@ -20,19 +20,19 @@ gantt.config.order_branch = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Related samples
-- [Branch ordering](https://docs.dhtmlx.com/gantt/samples/07_grid/02_branch_ordering.html)
+- [Branch-Ordnung](https://docs.dhtmlx.com/gantt/samples/07_grid/02_branch_ordering.html)
 
 ### Details
 
-Diese Einstellung erlaubt es, Aufgaben neu anzuordnen, während sie auf ihrer aktuellen Tree-Ebene bleiben. Beispielsweise bleibt eine Unteraufgabe eine Unteraufgabe und wird nicht zu einer übergeordneten Aufgabe.
+Diese Option ermöglicht das Neuanordnen von Aufgaben, während deren Position in der Baumstruktur beibehalten wird. Zum Beispiel wird eine Unteraufgabe niemals zur übergeordneten Aufgabe.
 
 ## Leistungssteigerung
 
-Bei einer großen Anzahl von Aufgaben kann das standardmäßige Branch-Reordering die Performance verlangsamen.
-Zur Verbesserung der Leistung kann man in den **"marker"**-Modus wechseln.
+Wenn Ihr Gantt viele Aufgaben enthält, kann der Standardmodus der Branch-Neuanordnung die Leistung verlangsamen.
+Um dies zu beschleunigen, können Sie den **"Marker"-Modus** verwenden.
 
 ~~~js
 gantt.config.order_branch = "marker";
@@ -42,10 +42,10 @@ gantt.config.order_branch = "marker";
 sample [Branch ordering - highlighting mode](https://docs.dhtmlx.com/gantt/samples/07_grid/14_branch_ordering_highlight.html) 
 :::
 
-In diesem Modus wird nur der Name der Aufgabe beim Halten der linken Maustaste verschoben, und das Gantt-Chart wird erst aktualisiert, wenn die Aufgabe an ihrer neuen Position abgelegt wird (wenn die Taste losgelassen wird).
-Im Gegensatz zum Standardmodus löst das Verschieben von Aufgaben auf diese Weise nicht die Events onBeforeTaskMove oder onAfterTaskMove aus.
+In diesem Modus wird nur der Name der Aufgabe neu angeordnet (bei gedrückter linker Maustaste) und Gantt wird neu gerendert, erst wenn eine Aufgabe an der Zielposition abgelegt wird (bei Loslassen der Taste).
+Im Gegensatz zum Standardmodus führt das Ändern der Aufgabenposition nicht zur Auslösung der Ereignisse onBeforeTaskMove/onAfterTaskMove.
 
-Wenn Sie das Ablegen einer Aufgabe an bestimmten Positionen blockieren möchten, verwenden Sie das Event [onBeforeRowDragMove](api/event/onbeforerowdragmove.md) (dies funktioniert nur im "marker"-Modus).
+Um das Ablegen einer Aufgabe in einer bestimmten Position zu verhindern, verwenden Sie stattdessen das Event onBeforeRowDragMove (api/event/onbeforerowdragmove.md) — funktioniert nur im 'Marker'-Modus.
 
 ### Related API
 - [order_branch_free](api/config/order_branch_free.md)
@@ -54,5 +54,4 @@ Wenn Sie das Ablegen einer Aufgabe an bestimmten Positionen blockieren möchten,
 - [onBeforeRowDragMove](api/event/onbeforerowdragmove.md)
 
 ### Related Guides
-- ["Aufgaben neu anordnen"](guides/reordering-tasks.md)
-
+- [Aufgaben neu anordnen](guides/reordering-tasks.md)

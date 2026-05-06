@@ -1,29 +1,29 @@
 ---
-title: "排序列"
-sidebar_label: "排序列"
+title: "列排序"
+sidebar_label: "列排序"
 ---
 
-# 排序列
+# 列排序
 
-dhtmlxGantt 提供了在客户端对网格列中的数据进行排序的功能。
+dhtmlxGantt 允许您在网格的列中对数据进行排序（在客户端完成）。
 
+有两种方式可以在网格中提供排序：
 
-在网格中启用排序有两种方式:
-
-1. 点击带有 [sort](api/config/sort.md) 属性的列头一次；
-2. 使用 [sort](api/method/sort.md) 方法的 API 调用，此方法可以通过事件或操作（如按钮点击或页面加载时）触发。
+1. 通过在启用 [sort](api/config/sort.md) 属性的列头上单击一次；
+2. 通过对 [sort](api/method/sort.md) 方法的 API 调用（可以在某些事件或操作中调用，例如按钮点击或页面加载）来实现排序。
 
 :::note
-请注意，Gantt 仅根据实际数据值对任务排序，不会对由列的 template 属性生成的值进行排序。
+请注意，Gantt 只能按数据中的值对任务进行排序，而不会按列的模板属性设置的值进行排序。
 :::
 
-## 通过点击表头进行排序
+## 通过单击列头进行排序
 
-当点击表头时，Gantt 图会显示一个可视化指示器，突出显示当前排序的列以及排序顺序（升序或降序）。每次再次点击同一个表头会切换排序方向。
+一旦用户单击列头，Gantt 图表将显示一个特殊控件，指示当前按哪个列进行排序以及排序方向（升序或降序）。
+再次点击同一列头将反转排序方向。
 
 ![gantt_sorting](/img/gantt_sorting.png)
 
-要在 Gantt 图中启用排序功能，需要将 [sort](api/config/sort.md) 属性设置为 *true*:
+要在 Gantt 图表中启用排序，请将 [sort](api/config/sort.md) 属性设置为 *true*：
 
 ~~~js
 gantt.config.sort = true; 
@@ -31,12 +31,12 @@ gantt.init("gantt_here");
 ~~~
 
 
-[Built-in sorting](https://docs.dhtmlx.com/gantt/samples/07_grid/01_builtin_sorting.html)
+[内置排序](https://docs.dhtmlx.com/gantt/samples/07_grid/01_builtin_sorting.html)
 
 
-## 通过编程方式排序
+## 编程排序
 
-如果需要基于某个事件或操作（如点击按钮或页面加载时）对网格进行排序，可以使用 [sort](api/method/sort.md) 方法。
+要在某个动作或事件（例如按钮点击或页面加载）对网格进行排序，请调用 [sort](api/method/sort.md) 方法。
 
 **按钮点击时排序**
 ~~~html
@@ -49,20 +49,21 @@ gantt.init("gantt_here");
 ~~~
 
 
-[Using sorting methods](https://docs.dhtmlx.com/gantt/samples/07_grid/05_sort_api.html)
+[使用排序方法](https://docs.dhtmlx.com/gantt/samples/07_grid/05_sort_api.html)
 
 
 ## 自定义排序函数
 
-可以通过将自定义函数的名称作为 [sort](api/method/sort.md) 方法的第一个（也是唯一一个）参数，实现自定义排序功能。
+要将自定义排序函数应用于网格，请在调用 [sort](api/method/sort.md) 方法时，将自定义函数的名称作为第一个（且唯一）参数传入。
 
-该函数会针对每一对相邻的值调用，并应返回 1、-1 或 0:
+自定义排序函数会针对每对相邻的值进行调用，并返回 1、-1 或 0：
 
-- **1** - 第一对象排在第二对象之前；
-- **-1** - 第二对象排在第一对象之前；
-- **0** - 两个对象的顺序保持不变。
+- **1** - 对成对中第一个值的对象必须排在第二个之前；
+- **-1** - 第二个对象排在第一个对象之前；
+- **0** - 两个对象的顺序不变。
 
-**使用自定义函数对 Gantt 图进行排序**
+
+**使用自定义函数对 Gantt 图表进行排序**
 ~~~html
 <input type='button' value='Sort by the number of holders' 
        onclick='sortByHolders(direction)'>
@@ -88,20 +89,20 @@ gantt.init("gantt_here");
 ~~~
 
 
-[Custom sorting function](https://docs.dhtmlx.com/gantt/samples/07_grid/04_custom_sorting.html)
+[自定义排序函数](https://docs.dhtmlx.com/gantt/samples/07_grid/04_custom_sorting.html)
 
 
-## 按列单独设置排序规则
+## 每列网格排序 {#percolumngridsorting}
 
-可以为每一列单独定义自定义排序规则。以下是三种常见的按列排序处理方式:
+可以为每一列指定自定义排序规则。每列最常见的三种排序情景如下：
 
-1) 通过将 *sort* 设置为 false 禁用某一列的排序
+1) 将 *sort* 设置为 false 以禁用某列的排序
 
 ~~~js
 gantt.config.columns[1].sort = false;
 ~~~
 
-2) 通过将 *sort* 设置为自定义函数，对某一列进行自定义排序
+2) 将 *sort* 设置为一个函数 based on the provided sorting functions，使某列按该函数进行排序
 
 ~~~js
 gantt.config.columns[1].sort = function(a,b){
@@ -109,15 +110,42 @@ gantt.config.columns[1].sort = function(a,b){
 };
 ~~~
 
-该自定义函数接收两个任务对象（a 和 b），并返回 1、-1 或 0:
+自定义排序函数对一对任务对象（a 和 b）进行调用并返回 1、-1 或 0：
 
-- **1** - 第一个对象排在第二个对象之前；
+
+- **1** - 对成对中第一个值的对象必须排在第二个之前；
 - **-1** - 第二个对象排在第一个对象之前；
-- **0** - 顺序不变。
+- **0** - 两个对象的顺序不变。
 
-3) 通过将 *sort* 设置为其他任务字段名，基于该字段值对某一列排序
+
+3) 将 *sort* 设置为任务的另一字段名，以按该字段的值对列进行排序 
 
 ~~~js
 gantt.config.columns[1].sort = 'other_field';
 ~~~
 
+
+## 按多个字段排序
+
+您可以使用自定义排序函数按多个属性（字段）对 Gantt 图表的网格进行排序。
+在下面的示例中，数据按 *duration* 和 *priority* 字段排序：
+
+~~~js
+let sortDirection = -1
+function customSort() {
+    sortDirection *= -1;
+    gantt.sort(function (task1, task2) {
+        // 按 priority 排序
+        if (task1.duration == task2.duration) {
+            return (task1.priority - task2.priority) * sortDirection
+        }
+        // 按 duration 排序
+        return (task1.duration - task2.duration) * sortDirection
+    });
+}
+~~~
+
+[按多个属性（字段）使用自定义排序函数排序](https://snippet.dhtmlx.com/upu86azw)
+
+- 当任务的 duration 相同时时，按该字段排序不会生效，任务将按 *priority* 字段排序。 
+- 如果任务的 duration 不同，网格将按 *duration* 属性排序。

@@ -5,23 +5,23 @@ sidebar_label: "Документация по CSS"
 
 # Документация по CSS
 
-В этой статье объясняется, как переопределить стандартные цветовые настройки элементов диаграммы Gantt с помощью собственных стилей. Описаны основные CSS-селекторы и шаблоны для стилизации различных частей диаграммы Gantt: [Грид](guides/css-overview.md#stylinggrid), [Таймлайн](guides/css-overview.md#stylingtimeline) и [Панель ресурсов](guides/css-overview.md#resourcepanel).
+Эта статья показывает способы переопределения настроек цвета по умолчанию для элементов Gantt с использованием пользовательских значений. В статье рассмотрены основные селекторы классов и шаблоны для стилизации следующих частей Gantt: [Grid area](guides/css-overview.md#styling-grid), [Timeline area](guides/css-overview.md#styling-timeline), [Resource panel](guides/css-overview.md#resource-panel).
 
-## Стилизация грида {#stylinggrid}
+## Стилизация грида
 
-Здесь приведены CSS-селекторы, используемые для стилизации основных элементов [грида](guides/table.md).
+В этом разделе вы найдете CSS-селекторы для стилизации основных элементов [ Grid area ].
 
 ![grid_area](/img/grid_area.png)
 
-DOM-структура элемента грида выглядит следующим образом:
+Общая структура DOM-элемента грида приведена ниже:
 
 ~~~js
 - .gantt_grid
     - .gantt_grid_scale
         - .gantt_grid_head_cell
     - .gantt_grid_data
-        - .gantt_row.odd 
-        - .gantt_row 
+        - .gantt_row.odd
+        - .gantt_row
         - .gantt_row.gantt_row_task
         - .gantt_row.gantt_row_project
         - .gantt_row.gantt_row_milestone
@@ -34,17 +34,17 @@ DOM-структура элемента грида выглядит следую
                 - .gantt_tree_content
 ~~~
 
-<h3 id="grid_header"><b>Заголовок грида</b></h3>
+### Заголовок грида
 
-Стиль заголовка грида можно изменить с помощью селектора класса **.gantt_grid_scale**.
+Вы можете изменить стиль элемента Заголовок грида через селектор класса `.gantt_grid_scale`.
 
-Пример задания общего фона и цвета шрифта для заголовков грида и таймлайна:
+Ниже приведён пример применения общего фонового цвета и цвета шрифта для заголовков грида и таймлайна:
 
 ~~~css
 .gantt_grid_scale, .gantt_task_scale, .gantt_task_vscroll {
     background-color: #eee;
 }
-.gantt_grid_scale, .gantt_task_scale, 
+.gantt_grid_scale, .gantt_task_scale,
 .gantt_task .gantt_task_scale .gantt_scale_cell,
 .gantt_grid_scale .gantt_grid_head_cell {
     color: #000;
@@ -55,15 +55,13 @@ DOM-структура элемента грида выглядит следую
 
 ![grid_header](/img/grid_header.png)
 
-
-**Related example:** [Styling grid and timeline headers](https://snippet.dhtmlx.com/akr9tz4h)
-
+**Связанный пример**: [Styling grid and timeline headers](https://snippet.dhtmlx.com/akr9tz4h)
 
 ### Высота шкалы {#scale_height}
 
-Избегайте изменения высоты заголовка грида и временной шкалы через CSS.
+Не изменяйте высоту заголовка грида и шкалы времени через CSS.
 
-Вместо этого используйте свойство конфигурации [scale_height](api/config/scale_height.md) для Gantt:
+Высота шкалы должна задаваться через конфигурационное свойство Gantt: [scale_height](api/config/scale_height.md):
 
 ~~~js
 gantt.config.scale_height = 50;
@@ -71,19 +69,19 @@ gantt.config.scale_height = 50;
 
 ### Ячейка заголовка грида {#grid_header_cell}
 
-Для стилизации ячейки в заголовке грида используйте селектор **.gantt_grid_head_cell**.
+Вы можете применить пользовательский стиль к ячейке заголовка грида через `.gantt_grid_head_cell`.
 
-Селекторы для выбора ячейки:
+Селекторы для стилизации ячейки приведены ниже:
 
-- **.gantt_grid_head_cell[data-column-id='columnName']** - выбирает ячейку определённой колонки;
+- `.gantt_grid_head_cell[data-column-id="columnName"]` - выбирает ячейку конкретного столбца;
 
-Здесь **columnName** соответствует свойству **name** у [колонки](guides/specifying-columns.md):
+**columnName** совпадает со значением свойства **name** у [столбца](guides/specifying-columns.md):
 
 ~~~css
 <style>
-    .gantt_grid_head_cell[data-column-id='columnName'] {
+    .gantt_grid_head_cell[data-column-id="columnName"] {
         background-color: #ededed;
-        color:black;
+        color: black;
     }
 </style>
 ~~~
@@ -91,54 +89,50 @@ gantt.config.scale_height = 50;
 ~~~js
 gantt.config.columns = [
     ...
-    {name: "columnName", align: "center"},
+    { name: "columnName", align: "center" },
     ...
 ];
 ~~~
 
 ![header_cell](/img/header_cell.png)
 
+**Связанный пример**: [Styling a particular cell in the grid header](https://snippet.dhtmlx.com/pf5q56kl)
 
-**Related example:** [Styling a particular cell in the grid header](https://snippet.dhtmlx.com/pf5q56kl)
+- `.gantt_grid_head_cell[data-column-index="1"]` - выбирает конкретный столбец по индексу;
 
+- `.gantt_grid_head_cell[data-column-name="start_date"]` - выбирает конкретный столбец по имени.
 
-- **.gantt_grid_head_cell[data-column-index='1']** - выбор колонки по индексу;
+### Грид-тело
 
-- **.gantt_grid_head_cell[data-column-name='start_date']** - выбор колонки по имени.
-
-<h3 id="grid_body"><b>Тело грида</b></h3>
-
-Вы можете изменить цвет фона тела грида, применяя стили к селектору **.gantt_grid_data**.
+Вы можете добавить собственный цвет элементу тела грида, применив CSS-стили к селектору `.gantt_grid_data`.
 
 ![grid_body](/img/grid_body.png)
 
 ### Стилизация строк грида {#styling_grid_rows}
 
-Стиль строк грида можно изменить с помощью селектора **.gantt_row**.
+Стиль строки грида настраивается через `.gantt_row`.
 
 ![grid_row](/img/grid_row.png)
 
 #### Каждая вторая строка
 
-Чтобы стилизовать чередующиеся строки, используйте селектор **.gantt_row.odd**, например:
+Чтобы окрасить каждую вторую строку грида, необходимо задать стили CSS для селектора `.gantt_row.odd`, например:
 
 ~~~css
-.gantt_row.odd{
-    background-color:#f4f4fb;
+.gantt_row.odd {
+    background-color: #f4f4fb;
 }
 ~~~
 
 ![odd_row_style](/img/odd_row_style.png)
 
+**Связанный пример**: [Styling every other row in grid](https://snippet.dhtmlx.com/ayr3sgov)
 
-**Related example:** [Styling every other row in grid](https://snippet.dhtmlx.com/ayr3sgov)
+Вы можете увидеть, что даже строки подсвечиваются на экране, а не нечетные. Но если посмотреть индексы строк (см. gettaskindex), стиль применяется к строкам с нечетными индексами (1, 3, 5 и т.д.).
 
+#### Выбранная строка
 
-Хотя на экране выделяются чётные строки, стиль применяется к строкам с нечётными индексами (1, 3, 5 и т.д.), как указано в [индексах строк](api/method/gettaskindex.md).
-
-#### Выделенная строка
-
-Для стилизации выделенной строки в гриде используйте селектор **.gantt_row.gantt_selected**:
+Вы можете стилизовать выбранную строку грида с помощью селектора `.gantt_row.gantt_selected`:
 
 ~~~css
 .gantt_grid_data .gantt_row.gantt_selected,
@@ -148,105 +142,96 @@ gantt.config.columns = [
 }
 ~~~
 
+**Связанный пример**: [Styling selected row](https://snippet.dhtmlx.com/c177qsgx)
 
-**Related example:** [Styling selected row](https://snippet.dhtmlx.com/c177qsgx)
+#### Задачи, строки проектов и вехи
 
+Для стилизации строк задач, проектов или вех используйте следующие селекторы:
 
-#### Строки задач, проектов и вех
-
-Строки, представляющие задачи, проекты или вехи, можно стилизовать с помощью следующих селекторов:
-
-- **.gantt_row.gantt_row_task**
-- **.gantt_row.gantt_row_project**
-- **.gantt_row.gantt_row_milestone**
+- `.gantt_row.gantt_row_task`
+- `.gantt_row.gantt_row_project`
+- `.gantt_row.gantt_row_milestone`
 
 Например:
 
 ~~~css
-.gantt_row.gantt_row_project{
-   background-color:#fafafa;
-   font-weight: bold;
+.gantt_row.gantt_row_project {
+    background-color: #fafafa;
+    font-weight: bold;
 }
 ~~~
 
+**Связанный пример**: [Styling rows of project tasks](https://snippet.dhtmlx.com/g5oxrq5v)
 
-**Related example:** [Styling rows of project tasks](https://snippet.dhtmlx.com/g5oxrq5v)
+#### Частные строки
 
-
-#### Отдельные строки
-
-Чтобы добавить собственные классы к определённым строкам, используйте шаблон [grid_row_class](api/template/grid_row_class.md) следующим образом:
+Если вы хотите добавить пользовательские классы к конкретной строке, можно применить шаблон [grid_row_class](api/template/grid_row_class.md) следующим образом:
 
 ~~~css
 <style>
-    .highlighted_task.gantt_row { 
+    .highlighted_task.gantt_row {
         background-color: #ff9668;
         border-color: rgba(0,0,0,0.3);
-    }    
+    }
 </style>
 ~~~
 
-~~~js
-gantt.templates.grid_row_class = function(start, end, task){
-    if(task.highlight){
-        return "highlighted_task"; /*!*/
+~~~js {3}
+gantt.templates.grid_row_class = (startDate, endDate, task) => {
+    if (task.highlight) {
+        return "highlighted_task";
     }
     return "";
 };
 ~~~
 
+**Связанный пример**: [Styling a particular row in the grid](https://snippet.dhtmlx.com/9o8pbq8z)
 
-**Related example:** [Styling a particular row in the grid](https://snippet.dhtmlx.com/9o8pbq8z)
+#### Высота ряда
 
-
-#### Высота строки
-
-Высоту строки можно изменить, установив параметр конфигурации [row_height](api/config/row_height.md):
+Высоту ряда можно изменить либо с помощью конфигурации [row_height](api/config/row_height.md):
 
 ~~~js
 gantt.config.row_height = 40;
 ~~~
 
-или задав свойство [row_height](guides/resizing-rows.md#settingtherowheight) для задачи:
+или через свойство [row_height](guides/resizing-rows.md#setting-the-row-height) задачи:
 
 ~~~js
-{ id: 2, text: "Task #1", start_date: "02-04-2018", 
-    duration: 8, row_height:40, parent: 1 },
+{ id: 2, text: "Task #1", start_date: "02-04-2028", duration: 8, row_height: 40 },
 ~~~
 
-Не рекомендуется изменять высоту строки через CSS, так как это может нарушить верстку.
+Не пытайтесь изменять высоту ряда через CSS, это может сломать верстку.
 
-### Стилизация ячеек/колонок грида {#styling_grid_cells}
+### Стилизация ячеек/столбцов грида {#styling_grid_cells}
 
-Ячейки или колонки грида можно стилизовать через **.gantt_row .gantt_cell**.
+Стилизацию ячеек или столбцов грида можно осуществлять через `.gantt_row .gantt_cell`.
 
-Для стилизации конкретной колонки используйте:
+Вы можете применять CSS-стили к конкретному столбцу двумя способами:
 
-- **.gantt_row .gantt_cell[data-column-name='columnName']** - выбор колонки по имени, например:
+- через селектор `.gantt_row .gantt_cell[data-column-name="columnName"]`, который определяет столбец по его имени, например:
 
 ~~~css
-.gantt_grid_head_cell[data-column-id='start_date'],
-.gantt_row .gantt_cell[data-column-name='start_date'] {
+.gantt_grid_head_cell[data-column-id="start_date"],
+.gantt_row .gantt_cell[data-column-name="start_date"] {
     background-color: #ededed;
-    color:black;
+    color: black;
 }
 ~~~
 
+**Связанный пример**: [Styling a column in grid](https://snippet.dhtmlx.com/hq5q2hpz)
 
-**Related example:** [Styling a column in grid](https://snippet.dhtmlx.com/hq5q2hpz)
+Обратите внимание, что `.gantt_grid_head_cell` и `.gantt_cell` используют разные дата-атрибуты: `data-column-id` и `data-column-name` соответственно. Это несоответствие в правилах CSS Gantt будет исправлено в одной из будущих версий.
 
+- или же можно добиться того же результата, применив селектор `.gantt_row .gantt_cell[data-column-index="1"]`, который определяет столбец по индексу.
 
-Обратите внимание, что **.gantt_grid_head_cell** и **.gantt_cell** используют разные data-атрибуты: `data-column-id` и `data-column-name` соответственно. Это несоответствие будет исправлено в будущих версиях.
+## Стилизация таймлайна
 
-- Также можно использовать **.gantt_row .gantt_cell[data-column-index='1']** для выбора колонки по индексу.
-
-## Стилизация таймлайна {#stylingtimeline}
-
-В этом разделе описаны CSS-селекторы для изменения стандартных стилей элементов [таймлайна](guides/time-scale.md).
+Раздел "Styling Timeline" приведёт вас через CSS-селекторы, которые можно применить, чтобы изменить стиль по умолчанию элементов [таймлайна](guides/time-scale.md).
 
 ![timeline](/img/timeline.png)
 
-DOM-структура области таймлайна:
+Общая структура DOM-элемента области таймлайна приведена ниже:
 
 ~~~js
 - .gantt_task
@@ -261,12 +246,12 @@ DOM-структура области таймлайна:
         - .gantt_links_area
             - .gantt_task_link
         - .gantt_bars_area
-            - .gantt_task_line 
-                - .gantt_task_progress_wrapper 
-                    - .gantt_task_progress 
-                - .gantt_task_progress_drag 
-                - .gantt_task_content 
-                - .gantt_task_drag.task_start_date 
+            - .gantt_task_line
+                - .gantt_task_progress_wrapper
+                    - .gantt_task_progress
+                - .gantt_task_progress_drag
+                - .gantt_task_content
+                - .gantt_task_drag.task_start_date
                 - .gantt_task_drag.task_end_date
                 - .gantt_link_control.task_start_date
                 - .gantt_link_control.task_end_date
@@ -274,9 +259,9 @@ DOM-структура области таймлайна:
         - div - custom layers
 ~~~
 
-<h3 id="time_scale"><b>Временная шкала</b></h3>
+### Шкала времени
 
-DOM-структура временной шкалы:
+DOM-элемент шкалы времени имеет следующую структуру:
 
 ~~~js
 - .gantt_task_scale
@@ -284,84 +269,78 @@ DOM-структура временной шкалы:
         - .gantt_scale_cell
 ~~~
 
-### Контейнер временной шкалы {#time_scale_container}
+### Контейнер шкалы времени {#time_scale_container}
 
-Селектор **.gantt_task_scale** применяется к контейнеру временной шкалы.
+Селектор `.gantt_task_scale` используется для применения пользовательского CSS к контейнеру шкалы времени.
 
-Например, для изменения цвета шрифта и границ временной шкалы:
+Например, изменение цвета шрифта и границ шкалы времени выглядит так:
 
 ~~~css
 .gantt_grid_scale, .gantt_task_scale {
     border-bottom: 1px solid #0e0e0e;
 }
-  
+
 .gantt_task .gantt_task_scale .gantt_scale_cell {
     color: #000;
 }
+
 .gantt_grid_scale .gantt_grid_head_cell {
     color: #000;
 }
 ~~~
 
+**Связанный пример**: [Styling text and borders of the time scale](https://snippet.dhtmlx.com/qt0ttw64)
 
-**Related example:** [Styling text and borders of the time scale](https://snippet.dhtmlx.com/qt0ttw64)
+### Шкалы времени {#time_scales}
 
+Селектор `.gantt_scale_line` используется для раскрашивания всей шкалы времени. Чтобы нацелиться на конкретную шкалу по её порядку, просто используйте селектор `.gantt_scale_line:nth-child(n)`.
 
-### Временные шкалы {#time_scales}
-
-Используйте селектор **.gantt_scale_line** для стилизации всей временной шкалы. Для выбора определённой шкалы по позиции используйте **.gantt_scale_line:nth-child(n)**.
-
-Пример задания разных цветов фона для разных шкал:
+Пример установки цвета фона шкалы времени:
 
 ~~~css
-.gantt_scale_line:nth-child(1){
-    font-weight:bold;
-    background-color:#eee;
+.gantt_scale_line:nth-child(1) {
+    font-weight: bold;
+    background-color: #eee;
 }
-.gantt_scale_line:nth-child(2){
-    background-color:#fff;
+
+.gantt_scale_line:nth-child(2) {
+    background-color: #fff;
 }
 ~~~
 
+**Связанный пример**: [Background color of the time scale](https://snippet.dhtmlx.com/jl1k7kxr)
 
-**Related example:** [Background color of the time scale](https://snippet.dhtmlx.com/jl1k7kxr)
+По умолчанию CSS-классов для таргетинга шкал по единицам нет, но такие классы можно добавить с помощью шаблона [scale_row_class](api/template/scale_row_class.md).
 
-
-По умолчанию нет CSS-классов для выбора шкал по их единицам времени, но вы можете добавить их через шаблон [scale_row_class](api/template/scale_row_class.md).
-
-Пример стилизации различных шкал - **month**, **week**, **day**:
+Ниже приведён пример задания различных стилей для шкал месяцев, недель и дней:
 
 ~~~css
 <style>
-    .gantt_scale_line.month_scale{
-        font-weight:bold;
-        background-color:#ddd;
+    .gantt_scale_line.month_scale {
+        font-weight: bold;
+        background-color: #ddd;
     }
-    .gantt_scale_line.week_scale{
-        background-color:#e1e1e1;
-    }  
-  
-    .gantt_scale_line.day_scale{
-        background-color:#efefef;
+
+    .gantt_scale_line.week_scale {
+        background-color: #e1e1e1;
+    }
+
+    .gantt_scale_line.day_scale {
+        background-color: #efefef;
     }
 </style>
 ~~~
 
 ~~~js
-gantt.templates.scale_row_class = function(scale){
-    return scale.unit + "_scale";
-};
+gantt.templates.scale_row_class = (scaleConfig) => `${scaleConfig.unit}_scale`;
 ~~~
 
+**Связанный пример**: [Styling different time scales](https://snippet.dhtmlx.com/g6ogfvvb)
 
-**Related example:** [Styling different time scales](https://snippet.dhtmlx.com/g6ogfvvb)
+### Ячейки шкалы времени {#timescale_cells}
 
-
-### Ячейки временной шкалы {#timescale_cells}
-
-Стилизация отдельных ячеек временной шкалы осуществляется с помощью селектора **.gantt_scale_cell**.
-
-Например, изменение цвета шрифта и границ:
+Вы можете добавлять собственные стили к ячейкам шкалы времени через селектор `.gantt_scale_cell`.
+Например, можно изменить цвет шрифта и границы ячеек:
 
 ~~~css
 .gantt_task .gantt_task_scale .gantt_scale_cell {
@@ -370,21 +349,19 @@ gantt.templates.scale_row_class = function(scale){
 }
 ~~~
 
+**Связанный пример**: [Styling text and borders of the scale cells](https://snippet.dhtmlx.com/dcfo1yek)
 
-**Related example:** [Styling text and borders of the scale cells](https://snippet.dhtmlx.com/dcfo1yek)
-
-
-Чтобы [выделить определённые даты](guides/configuring-time-scale.md#styling) на временной шкале, используйте свойство **css** объекта [gantt.config.scales](api/config/scales.md) следующим образом:
+Чтобы окрасить конкретные даты, используйте свойство **css** объекта [gantt.config.scales](api/config/scales.md), как показано ниже:
 
 ~~~js
 gantt.config.scales = [
-    {unit: "month", step: 1, format: "%Y %M"},
-    {unit: "day", step: 1, format: "%l, %F %d", css: function(date){
-        if(!gantt.isWorkTime({date: date, unit: "day"})){
+    { unit: "month", step: 1, format: "%Y %M" },
+    { unit: "day", step: 1, format: "%l, %F %d", css: (date) => {
+        if (!gantt.isWorkTime({ date: date, unit: "day" })) {
             return "weekend";
         }
         return "";
-    }}
+    } }
 ];
 ~~~
 
@@ -396,15 +373,13 @@ gantt.config.scales = [
 </style>
 ~~~
 
+**Связанный пример**: [Duration includes only working days](https://docs.dhtmlx.com/gantt/samples/09_worktime/02_working_days.html)
 
-[Duration includes only working days](https://docs.dhtmlx.com/gantt/samples/09_worktime/02_working_days.html)
+Если нужно закрасить всю колонку, используйте шаблон timeline_cell_class, как описано ниже.
 
+### Область данных {#time_area?}
 
-Если требуется окрасить целый столбец, используйте шаблон **timeline_cell_class**, который будет рассмотрен далее.
-
-<h3 id="data_area"><b>Область данных</b></h3>
-
-DOM-структура области данных:
+Структура DOM-элемента области данных имеет следующую форму:
 
 ~~~js
 - .gantt_data_area
@@ -415,12 +390,12 @@ DOM-структура области данных:
     - .gantt_links_area
         - .gantt_task_link
     - .gantt_bars_area
-        - .gantt_task_line 
-            - .gantt_task_progress_wrapper 
-                - .gantt_task_progress 
-            - .gantt_task_progress_drag 
-            - .gantt_task_content 
-            - .gantt_task_drag.task_start_date 
+        - .gantt_task_line
+            - .gantt_task_progress_wrapper
+                - .gantt_task_progress
+            - .gantt_task_progress_drag
+            - .gantt_task_content
+            - .gantt_task_drag.task_start_date
             - .gantt_task_drag.task_end_date
             - .gantt_link_control.task_start_date
             - .gantt_link_control.task_end_date
@@ -432,9 +407,9 @@ DOM-структура области данных:
 
 #### Панель задачи
 
-Чтобы настроить внешний вид панели задачи, определите собственный стиль для селектора **.gantt_task_line**.
+Чтобы изменить внешний вид панели задачи, нужно объявить пользовательский стиль в селекторе `.gantt_task_line`.
 
-Вот пример, который изменяет стиль границы панели:
+Пример изменения границы панели приведён ниже:
 
 ~~~css
 .gantt_task_line {
@@ -442,44 +417,43 @@ DOM-структура области данных:
 }
 ~~~
 
+**Связанный пример**: [Styling borders of the task bars](https://snippet.dhtmlx.com/c24kdh89)
 
-**Related example:** [Styling borders of the task bars](https://snippet.dhtmlx.com/c24kdh89)
+Чтобы изменить цвет панелей задач, выполните следующие два шага:
 
-
-Чтобы изменить цвет панелей задач, выполните два шага:
-
-1. Переопределите стили для границ и индикаторов прогресса, чтобы их цвета соответствовали любым пользовательским цветам, применённым к панели задачи:
+1. Переопределите стили границ и полей прогресса так, чтобы их цвета совпали с любым пользовательским цветом, применяемым к панели задачи:
 
 ~~~css
-.gantt_task_line{
-    border-color: rgba(0, 0, 0, 0.25); /* Чёрный цвет с 25% прозрачностью */
+.gantt_task_line {
+    border-color: rgba(0, 0, 0, 0.25); /* Черный цвет с 25%-ной непрозрачностью */
 }
+
 .gantt_task_line .gantt_task_progress {
     background-color: rgba(0, 0, 0, 0.25);
 }
 ~~~
 
-2. Задайте желаемый цвет для панели задачи и содержимого внутри неё:
+2. Примените необходимый цвет к самой панели задачи и к содержимому внутри панели задачи:
 
 ~~~css
-.gantt_task_line{
+.gantt_task_line {
     background-color: #03A9F4;
 }
+
 .gantt_task_line.gantt_task_content {
     color: #fff;
 }
 ~~~
 
-Пример того, как применить совпадающие цвета границ и индикаторов прогресса для панелей задач с разными цветами, можно найти в статье [Task Coloring](guides/colouring-tasks.md#redefiningthetaskstemplate).
+Вы можете найти пример применения общего цвета для границ и индикаторов прогресса на панелях задач с разными цветами в статье [Task Coloring](guides/colouring-tasks.md#redefiningthetaskstemplate).
 
+Чтобы окрасить ряды [задач](guides/task-types.md#regular-tasks), [проектов](guides/task-types.md#project-tasks) или [вех](guides/task-types.md#milestones), нужно добавить пользовательский CSS к соответствующему селектору класса:
 
-Чтобы окрасить строки для [задач](guides/task-types.md#regulartasks), [проектов](guides/task-types.md#projecttasks) или [вех](guides/task-types.md#milestones), добавьте пользовательский CSS для соответствующих классов-селекторов:
+- `.gantt_task_line.gantt_bar_task`
+- `.gantt_task_line.gantt_bar_project`
+- `.gantt_task_line.gantt_bar_milestone`
 
-- **.gantt_task_line.gantt_bar_task**
-- **.gantt_task_line.gantt_bar_project**
-- **.gantt_task_line.gantt_bar_milestone**
-
-Вот пример стилизации выбранной панели:
+Пример стилизации выбранной панели:
 
 ~~~css
 .gantt_task_line.gantt_selected {
@@ -491,36 +465,29 @@ DOM-структура области данных:
 }
 ~~~
 
+**Связанный пример**: [Styling selected bar](https://snippet.dhtmlx.com/9c6w6o78)
 
-**Related example:** [Styling selected bar](https://snippet.dhtmlx.com/9c6w6o78)
+Задачи [пользовательского типа](guides/task-types.md#creating-a-custom-type) будут иметь соответствующее имя класса:
 
-
-Задачи [пользовательского типа](guides/task-types.md#creatingacustomtype) получают имя класса, отражающее этот тип:
-
-~~~js
-{ 
-    id: 2, text: "Task #1", start_date: "02-04-2018", duration: 8, 
-    type:"custom_type", parent: 1 /*!*/
-},
+~~~js {3}
+{ id: 2, text: "Task #1", start_date: "02-04-2028", duration: 8, type: "custom_type" },
 ~~~
 
-Это соответствует селектору **.gantt_task_line.gantt_bar_custom_type**.
+Панель задачи получит CSS-класс `.gantt_task_line.gantt_bar_custom_type`.
 
 #### Разделённые задачи
 
-[Разделённые задачи](guides/split-tasks.md) являются подзадачами родительского элемента. Светло-зелёная панель на заднем плане представляет панель родительского элемента, стилизованную иначе.
+[Split tasks](guides/split-tasks.md) определяются как подзадачи родительского элемента, а светло-зеленая полоса на заднем плане является полосой этого родительского элемента с дополнительными стилями.
 
 ![](/img/split_parent_css.png)
 
+**Связанный пример**: [Expand and collapse split tasks](https://docs.dhtmlx.com/gantt/samples/04_customization/21_open_split_task.html)
 
-[Expand and collapse split tasks](https://docs.dhtmlx.com/gantt/samples/04_customization/21_open_split_task.html)
+Если открыть [пример](https://docs.dhtmlx.com/gantt/samples/04_customization/21_open_split_task.html) и развернуть "Task #2", вы увидите зеленую полосу сводного элемента "Task #2".
 
+Когда разделённые задачи отображаются в одной строке, эта зеленая полоса всё равно рисуется в той же позиции, но с изменённой непрозрачностью и значениями z-index.
 
-Если открыть [пример](https://docs.dhtmlx.com/gantt/samples/) и развернуть 'Task #2', вы увидите зелёную панель элемента 'Task #2' (суммарная задача).
-
-Когда разделённые задачи отображаются в одной строке, эта зелёная панель остаётся на том же месте, но с изменённой прозрачностью и z-index.
-
-Вы можете стилизовать её так же, как любую другую панель на [таймлайне](guides/css-overview.md#stylingtimeline), либо полностью скрыть с помощью следующего CSS:
+Её можно оформить так же, как и все полосы в [таймлайне](guides/css-overview.md#styling-timeline), и полностью скрыть с помощью следующего CSS:
 
 ~~~css
 .gantt_task_line.gantt_split_parent {
@@ -528,24 +495,23 @@ DOM-структура области данных:
 }
 ~~~
 
+Когда у вас есть только одна разделённая задача, сводный элемент (`type: "project"`) становится невидимым, потому что полностью перекрывается разделённой задачей. Если разделённых подзадач нет, сводный элемент имеет заданную по умолчанию дату и продолжительность.
 
-Если существует только одна разделённая задача, суммарный элемент (type=""project")" становится невидимым, так как полностью перекрывается разделённой задачей. Если подзадачи отсутствуют, суммарный элемент сохраняет дату и длительность по умолчанию.
+#### Полоса прогресса
 
-#### Индикатор прогресса
+Следующие селекторы можно использовать для задания цвета полосы прогресса:
 
-Используйте следующие селекторы для стилизации индикатора прогресса:
+- `.gantt_task_progress` - чтобы изменить цвет заполнения полосы прогресса;
+- `.gantt_task_progress_drag` - чтобы стилизовать ручку перетаскивания прогресса.
 
-- **.gantt_task_progress** - чтобы изменить цвет заливки индикатора прогресса;
-- **.gantt_task_progress_drag** - для стилизации элемента перетаскивания индикатора прогресса.
+Вы можете изменить внешний вид задач и полос прогресса, применив CSS-правила следующим образом:
 
-Примеры настройки панелей задач и индикаторов прогресса с помощью CSS:
-
-- Изменение фона, цвета текста и прогресса:
+- пример изменения фонового, переднего цвета и цветов прогресса:
 
 ~~~css
 /* задача */
 
-/* цвет фона панели задачи */
+/* фоновый цвет панелей задач */
 .gantt_task_line {
     background-color: #3db9d3;
     border: 1px solid #2898b0;
@@ -562,56 +528,55 @@ DOM-структура области данных:
 }
 ~~~
 
-- Стилизация панелей проектов (суммарных задач):
+- пример стилизации Project(Summary) bars:
 
 ~~~css
-/* проект */
-/* цвет фона панели проекта */
+/* project */
+/* фоновый цвет бара проекта */
 .gantt_task_line.gantt_bar_project {
     background-color: #65c16f;
     border: 1px solid #3c9445;
 }
 
-/* прогресс панели проекта */
+/* прогресс бара проекта */
 .gantt_task_line.gantt_bar_project .gantt_task_progress {
     background-color: #46ad51;
 }
 ~~~
 
-- Стилизация панелей вех:
+- пример стилизации Milestone bars:
 
 ~~~css
-/* веха */
+/* milestone */
 .gantt_task_line.gantt_milestone {
     background-color: #d33daf;
     border: 0 solid #61164f;
 }
 ~~~
 
+**Связанный пример**: [Background, foreground, and progress colors. Styling Project and Milestone bars.](https://snippet.dhtmlx.com/f2rmc1oc)
 
-**Related example:** [Background, foreground, and progress colors. Styling Project and Milestone bars.](https://snippet.dhtmlx.com/f2rmc1oc)
+#### Пользовательский цвет для конкретных панелей задач
 
-
-#### Пользовательский цвет для отдельных панелей задач
-
-Чтобы назначить цвет определённым панелям задач, добавьте пользовательский класс через шаблон [gantt.templates.task_class](api/template/task_class.md):
+Если вам нужно задать цвет для отдельных панелей задач, необходимо присвоить им пользовательский класс, используя шаблон [gantt.templates.task_class](api/template/task_class.md):
 
 ~~~js
-gantt.templates.task_class = function(start, end, task){
-    if(task.highlight){
+gantt.templates.task_class = (startDate, endDate, task) => {
+    if (task.highlight) {
         return "highlighted_task";
     }
     return "";
 };
 ~~~
 
-Затем стилизуйте этот класс в CSS:
+и применить этот пользовательский класс в селекторе:
 
 ~~~css
 .highlighted_task.gantt_task_line {
     background-color: #ff9668;
     border-color: rgba(0,0,0,0.3);
 }
+
 .highlighted_task .gantt_task_progress {
     text-align: center;
     z-index: 0;
@@ -619,23 +584,21 @@ gantt.templates.task_class = function(start, end, task){
 }
 ~~~
 
+**Связанный пример**: [Styling particular task bars](https://snippet.dhtmlx.com/yyoe31vo)
 
-**Related example:** [Styling particular task bars](https://snippet.dhtmlx.com/yyoe31vo)
+#### Выделение области внутри панели задачи
 
-
-#### Подсветка области внутри панели задачи
-
-Чтобы подсветить определённые области внутри панели задачи, добавьте дополнительные элементы в панель с помощью шаблона [gantt.templates.task_text](api/template/task_text.md):
+Если вы хотите выделить определённые области внутри панели задачи, вам нужно внедрить дополнительные элементы в саму панель с использованием шаблона [gantt.templates.task_text](api/template/task_text.md):
 
 ~~~js
-gantt.templates.task_text = function(start, end, task){
-    return '<div class="custom_progress warm_up" style="width:20%"></div>' +
-      '<div class="custom_progress in_progress" style="width:60%">'+task.text+'</div>'
-      '<div class="custom_progress cool_down" style="width:20%"></div>';
-};
+gantt.templates.task_text = (startDate, endDate, task) => `
+    <div class="custom_progress warm_up" style="width: 20%"></div>
+    <div class="custom_progress in_progress" style="width: 60%">${task.text}</div>
+    <div class="custom_progress cool_down" style="width: 20%"></div>
+`;
 ~~~
 
-Затем определите стили для этих элементов:
+и применить CSS:
 
 ~~~css
 .custom_progress {
@@ -658,13 +621,11 @@ gantt.templates.task_text = function(start, end, task){
 }
 ~~~
 
-
-[Custom html content (Stackbar)](https://docs.dhtmlx.com/gantt/samples/04_customization/09_html_content.html)
-
+**Связанный пример**: [Custom html content (Stackbar)](https://docs.dhtmlx.com/gantt/samples/04_customization/09_html_content.html)
 
 ### Связь {#link}
 
-DOM-структура связи выглядит так:
+Структура DOM-элемента связи приведена ниже:
 
 ~~~js
 - .gantt_task_link
@@ -677,7 +638,7 @@ DOM-структура связи выглядит так:
 - .gantt_link_arrow.gantt_link_arrow_left
 ~~~
 
-Пример окраски элементов связи:
+Ниже пример того, как можно окрасить элементы зависимых связей:
 
 ~~~css
 .gantt_line_wrapper div {
@@ -694,55 +655,49 @@ DOM-структура связи выглядит так:
 }
 ~~~
 
+**Связанный пример**: [Styling links](https://snippet.dhtmlx.com/unlr4jbw)
 
-**Related example:** [Styling links](https://snippet.dhtmlx.com/unlr4jbw)
+Толщина линии связи устанавливается через конфигурацию [gantt.config.link_line_width](api/config/link_line_width.md) конфигурацию.
 
+### Резайзер {#resizer}
 
-Толщина линии связи регулируется параметром [gantt.config.link_line_width](api/config/link_line_width.md).
+Ниже приведены селекторы, которые можно применить для стилизации DOM-элемента резайзера:
 
-### Изменение размера {#resizer}
+- `.gantt_task_drag`
+- `.gantt_task_drag.task_start_date`
+- `.gantt_task_drag.task_end_date`
 
-Эти селекторы предназначены для элементов изменения размера:
-
-- **.gantt_task_drag**
-- **.gantt_task_drag.task_start_date**
-- **.gantt_task_drag.task_end_date**
-
-Чтобы отключить изменение размера для даты начала, используйте:
+Пример отключения резайзера для даты начала:
 
 ~~~css
-.gantt_task_line:hover .gantt_task_drag.task_start_date{
+.gantt_task_line:hover .gantt_task_drag.task_start_date {
     display: none;
 }
 ~~~
 
+**Связанный пример**: [Disabling resizer of the start date](https://snippet.dhtmlx.com/x8lpcu2d)
 
-**Related example:** [Disabling resizer of the start date](https://snippet.dhtmlx.com/x8lpcu2d)
-
-
-Чтобы отключить изменение размера для даты окончания, используйте:
+Пример отключения резайзера для даты конца:
 
 ~~~css
-.gantt_task_line:hover .gantt_task_drag.task_end_date{
+.gantt_task_line:hover .gantt_task_drag.task_end_date {
     display: none;
 }
 ~~~
 
+**Связанный пример**: [Disabling resizer of the end date](https://snippet.dhtmlx.com/9gtsg4s8)
 
-**Related example:** [Disabling resizer of the end date](https://snippet.dhtmlx.com/9gtsg4s8)
+### Контроль связи {#link_control}
 
+Следующие селекторы можно использовать для применения стилей к элементу круглой ручки в начале (конце) задачи:
 
-### Контрол связи {#link_control}
-
-Используйте эти селекторы для стилизации круглых элементов управления связью в начале или конце задачи:
-
-- **.gantt_link_control .gantt_link_point**
-- **.gantt_link_control.task_start_date .gantt_link_point**
-- **.gantt_link_control.task_end_date .gantt_link_point**
+- `.gantt_link_control .gantt_link_point`
+- `.gantt_link_control.task_start_date .gantt_link_point`
+- `.gantt_link_control.task_end_date .gantt_link_point`
 
 ### Фоновый грид {#background_grid}
 
-DOM-структура фонового грида следующая:
+Структура DOM-элемента фоновой сетки имеет вид:
 
 ~~~js
 - .gantt_data_area
@@ -752,10 +707,9 @@ DOM-структура фонового грида следующая:
             - .gantt_task_cell
 ~~~
 
-
 #### Фоновые строки:
 
-Чтобы изменить стиль фоновых строк по умолчанию, добавьте свои стили к селектору **.gantt_task_row**. Например:
+Чтобы изменить настройки стиля по умолчанию для фоновых строк, добавьте пользовательский стиль к селектору `.gantt_task_row`. Например:
 
 ~~~css
 .gantt_row,
@@ -765,9 +719,9 @@ DOM-структура фонового грида следующая:
 }
 ~~~
 
-Чтобы окрасить каждую вторую фоновую строку иначе, определите пользовательские стили для **.gantt_task_row.odd**.
+Чтобы окрасить каждую вторую фоновую строку, нужно определить пользовательские свойства CSS в селекторе `.gantt_task_row.odd`.
 
-Также можно задать стили для выбранных строк следующим образом:
+Вы можете легко задать пользовательские цвета для выбранной строки, например:
 
 ~~~css
 .gantt_grid_data .gantt_row.gantt_selected,
@@ -775,31 +729,29 @@ DOM-структура фонового грида следующая:
 .gantt_task_row.gantt_selected {
     background-color: #fff3a1;
 }
-.gantt_task_row.gantt_selected .gantt_task_cell{
+.gantt_task_row.gantt_selected .gantt_task_cell {
     border-right-color: #ffec6e;
 }
 ~~~
 
-
-**Related example:** [Styling selected row](https://snippet.dhtmlx.com/y393xnmv)
-
+**Связанный пример**: [Styling selected row](https://snippet.dhtmlx.com/y393xnmv)
 
 #### Фоновые ячейки
 
-Чтобы изменить стиль фоновых ячеек по умолчанию, определите собственный стиль с помощью селектора **.gantt_task_cell**.
+Чтобы изменить настройки стиля по умолчанию для фоновых ячеек, следует задать стиль в селекторе `.gantt_task_cell`.
 
-Для окрашивания фоновых колонок используйте шаблон [timeline_cell_class](api/template/timeline_cell_class.md):
+Чтобы окрасить фоновый столбец, используйте шаблон [timeline_cell_class](api/template/timeline_cell_class.md):
 
 ~~~js
-gantt.templates.timeline_cell_class = function (task, date) {
-    if(!gantt.isWorkTime({date: date, unit: "day", task: task})){
+gantt.templates.timeline_cell_class = (task, date) => {
+    if (!gantt.isWorkTime({ date: date, unit: "day", task: task })) {
         return "weekend";
     }
     return "";
 };
 ~~~
 
-Затем примените следующий CSS:
+и примените CSS:
 
 ~~~css
 .gantt_task_cell.weekend {
@@ -811,17 +763,15 @@ gantt.templates.timeline_cell_class = function (task, date) {
 }
 ~~~
 
+**Связанный пример**: [Duration includes only working days](https://docs.dhtmlx.com/gantt/samples/09_worktime/02_working_days.html)
 
-[Duration includes only working days](https://docs.dhtmlx.com/gantt/samples/09_worktime/02_working_days.html)
+## Панель ресурсов
 
+[Панель ресурсов](guides/resource-management.md#resourceviewpanel) состоит из гридов и таймлайнов, аналогичных основной зоне Gantt.
 
-## Панель ресурсов {#resourcepanel}
+По умолчанию гриды и таймлайны ресурсного вида используют глобальные шаблоны и конфигурации. Вы можете использовать разные конфигурации и шаблоны для панели ресурсов, передав их в конфигурацию раскладки ([layout config](guides/layout-config.md#configs-and-templates-of-views)).
 
-[Панель ресурсов](guides/resource-management.md#resourceviewpanel) включает гриды и временные шкалы, аналогичные тем, что используются в основной области Gantt.
-
-По умолчанию гриды и временные шкалы в представлении ресурсов используют глобальные шаблоны и конфигурации. Для панели ресурсов можно назначить отдельные шаблоны и конфиги, передав их в [layout config](guides/layout-config.md#configsandtemplatesofviews).
-
-Для стилизации грида и временной шкалы ресурсов используйте CSS-селекторы, нацеленные на соответствующие имена представлений:
+Вы можете нацелить ресурсную сетку и таймлайн, используя соответствующее имя вида в CSS-селекторе:
 
 ~~~css
 .resourceGrid_cell .gantt_row,
@@ -831,26 +781,26 @@ gantt.templates.timeline_cell_class = function (task, date) {
 }
 ~~~
 
-DOM-структура панели ресурсов выглядит следующим образом:
+Общая структура DOM-элемента панели ресурсов приведена ниже:
 
 ~~~js
 - .gantt_layout_root
-    - .grid_cell 
-    - .timeline_cell 
-    - .resourceGrid_cell 
-    - .resourceHistogram_cell 
+    - .grid_cell
+    - .timeline_cell
+    - .resourceGrid_cell
+    - .resourceHistogram_cell
     - .resourceTimeline_cell
 ~~~
 
-Названия классов под **.gantt_layout_root** соответствуют значениям свойства **view** в layout config:
+Имена классов под `.gantt_layout_root` берутся из конфигурации раскладки и соответствуют значению свойства **view** у ячейки раскладки:
 
-~~~js
+~~~js {6,14,16}
 gantt.config.layout = {
     css: "gantt_container",
     rows: [
         {
             cols: [
-                {view: "grid", group:"grids", scrollY: "scrollVer"}, /*!*/
+                { view: "grid", group: "grids", scrollY: "scrollVer" },
                 ...
             ]
         },
@@ -858,10 +808,10 @@ gantt.config.layout = {
         {
             id: "resources",
             cols: [
-                { view: "resourceGrid", group:"grids", scrollY: "resourceVScroll" }, /*!*/
+                { view: "resourceGrid", group: "grids", scrollY: "resourceVScroll" },
                 ...
-                { view: "resourceHistogram", capacity:24, scrollX: "scrollHor", /*!*/ 
-                    scrollY: "resourceVScroll" }, 
+                { view: "resourceHistogram", capacity: 24, scrollX: "scrollHor",
+                    scrollY: "resourceVScroll" },
                 ...
             ]
         },
@@ -870,41 +820,41 @@ gantt.config.layout = {
 };
 ~~~
 
-### Грид ресурсов {#resource_grid}
+### Ресурсная грид {#resource_grid}
 
-![](//img/resource_grid.png)
+![resource_grid](/img/resource_grid.png)
 
-Грид ресурсов использует те же селекторы, что и грид задач, с **.resourceGrid_cell** в качестве верхнего селектора:
+Вы можете использовать те же селекторы, что и для задачи грида; верхний уровень селектора — `.resourceGrid_cell`:
 
 ~~~css
 .resourceGrid_cell .gantt_row,
-.resourceGrid_cell .gantt_row.odd{
+.resourceGrid_cell .gantt_row.odd {
     background-color: rgba(232, 232, 232, 0.6);
 }
 ~~~
 
-### Гистограмма ресурсов {#resource_histogram}
+### Ресурсная гистограмма {#resource_histogram}
 
-![](//img/resource_histogram_css.png)
+![resource_histogram_css](/img/resource_histogram_css.png)
 
-Гистограмма ресурсов использует элементы основной временной шкалы. По умолчанию селекторы, нацеленные на основную временную шкалу, также применяются к временной шкале ресурсов, если селекторы не уточнены с помощью классов layout cell, таких как **.timeline_cell** или **.resourceHistogram_cell**.
+Ресурсная гистограмма имеет те же элементы, что и основная временная шкала. По умолчанию все селекторы, нацеленные на основную временную шкалу, будут нацелены и на ресурсную шкалу, если только вы не используете класс ячейки раскладки (`.timeline_cell`, `.resourceHistogram_cell`) в своих селекторах.
 
-Чтобы нацелить стиль именно на гистограмму ресурсов, используйте селектор **.resourceHistogram_cell**.
+Вы можете нацелить ресурсную гистограмму с помощью следующего селектора: `.resourceHistogram_cell`.
 
-DOM-структура гистограммы ресурсов включает:
+Общая структура DOM-элемента ресурсной гистограммы:
 
 ~~~js
 - .gantt_task_bg
 - .gantt_bars_area
     - div
-        - .gantt_histogram_fill 
-        - .gantt_histogram_cell 
+        - .gantt_histogram_fill
+        - .gantt_histogram_cell
     - div
         - .gantt_histogram_hor_bar
         - .gantt_histogram_vert_bar
 ~~~
 
-Пример стилизации элементов гистограммы:
+Пример изменения цвета элементов гистограммы:
 
 ~~~css
 .gantt_histogram_cell {
@@ -921,17 +871,17 @@ DOM-структура гистограммы ресурсов включает:
 }
 ~~~
 
-Чтобы стилизовать отдельные ячейки, используйте шаблон [gantt.templates.histogram_cell_class](api/template/histogram_cell_class.md):
+Чтобы изменить цвет конкретных ячеек, используйте шаблон [gantt.templates.histogram_cell_class](api/template/histogram_cell_class.md):
 
 ~~~js
-gantt.templates.histogram_cell_class = function(start_date,end_date,resource,tasks) {
-    if (getAllocatedValue(tasks, resource) > getCapacity(start_date, resource)) {
-        return "column_overload"
+gantt.templates.histogram_cell_class = (startDate, endDate, resource, resourceTasks) => {
+    if (getAllocatedValue(resourceTasks, resource) > getCapacity(startDate, resource)) {
+        return "column_overload";
     }
 };
 ~~~
 
-Примените CSS для выделения таких ячеек:
+и примените CSS:
 
 ~~~css
 .column_overload .gantt_histogram_fill {
@@ -939,12 +889,12 @@ gantt.templates.histogram_cell_class = function(start_date,end_date,resource,tas
 }
 ~~~
 
-Для настройки линий гистограммы используйте CSS для следующих селекторов:
+Чтобы окрасить линию гистограммы, можно применить пользовательский CSS к следующим классам селекторов:
 
-- **.gantt_histogram_hor_bar**
-- **.gantt_histogram_vert_bar**
+- `.gantt_histogram_hor_bar`
+- `.gantt_histogram_vert_bar`
 
-Например, чтобы изменить их цвет:
+Изменение цвета линии гистограммы выглядит так:
 
 ~~~css
 .gantt_histogram_hor_bar, .gantt_histogram_vert_bar {
@@ -952,15 +902,15 @@ gantt.templates.histogram_cell_class = function(start_date,end_date,resource,tas
 }
 ~~~
 
-### Диаграмма ресурсов {#resource_diagram}
+### Рисунок ресурса {#resource_diagram}
 
-![](//img/resource_diagram.png)
+![resource_diagram](/img/resource_diagram.png)
 
-Диаграмма ресурсов использует те же элементы, что и основная временная шкала. По умолчанию селекторы, нацеленные на основную временную шкалу, также применяются здесь, если не ограничены классами layout cell, такими как **.timeline_cell** или **.resourceTimeline_cell**.
+Рисунок ресурса имеет те же элементы, что и основная временная шкала. По умолчанию все селекторы, нацеленные на основную временную шкалу, будут нацелены и на ресурсную шкалу, если только вы не используете класс ячейки раскладки (`.timeline_cell`, `.resourceTimeline_cell`) в своих селекторах.
 
-Селектор **.resourceTimeline_cell** можно использовать для стилизации именно диаграммы ресурсов.
+Вы можете нацелить ресурсную диаграмму с помощью следующего селектора: `.resourceTimeline_cell`.
 
-DOM-структура диаграммы ресурсов включает:
+Общая структура DOM-элемента ресурсной диаграммы:
 
 ~~~js
 - .gantt_task_bg
@@ -970,9 +920,9 @@ DOM-структура диаграммы ресурсов включает:
             - div
 ~~~
 
-Верхний селектор - **.resourceTimeline_cell**.
+Верхний уровень селектора — `.resourceTimeline_cell`.
 
-Пример стиля для меток диаграммы ресурсов:
+Пример стиля для меток ресурсной диаграммы:
 
 ~~~css
 .gantt_resource_marker div {
@@ -986,7 +936,7 @@ DOM-структура диаграммы ресурсов включает:
 }
 ~~~
 
-Для настройки стилей отдельных маркеров используйте шаблон [gantt.templates.resource_cell_class](api/template/resource_cell_class.md):
+Чтобы изменить стиль конкретных маркеров, используйте шаблон [gantt.templates.resource_cell_class](api/template/resource_cell_class.md):
 
 ~~~css
 <style>
@@ -997,15 +947,14 @@ DOM-структура диаграммы ресурсов включает:
 ~~~
 
 ~~~js
-gantt.templates.resource_cell_class = function(start_date, end_date, resource, tasks){
-    var css = [];
-    css.push("resource_marker");
-    if (tasks.length <= 1) {
-        css.push("workday_ok");
+gantt.templates.resource_cell_class = (startDate, endDate, resource, resourceTasks) => {
+    const cssClasses = [];
+    cssClasses.push("resource_marker");
+    if (resourceTasks.length <= 1) {
+        cssClasses.push("workday_ok");
     } else {
-        css.push("workday_over");
+        cssClasses.push("workday_over");
     }
-    return css.join(" ");
+    return cssClasses.join(" ");
 };
 ~~~
-

@@ -1,14 +1,14 @@
 ---
 sidebar_label: onGanttReady
-title: onGanttReady event
-description: "dhtmlxGantt가 초기화를 완료했을 때 트리거되며, 이 시점에서는 Gantt 차트가 페이지에 아직 표시되지 않은 상태입니다."
+title: onGanttReady 이벤트
+description: "dhtmlxGantt 초기화가 완료되었지만 Gantt 차트가 아직 페이지에 렌더링되지 않았습니다"
 ---
 
 # onGanttReady
 
 ### Description
 
-@short: DhtmlxGantt가 초기화를 완료했을 때 트리거되며, 이 시점에서는 Gantt 차트가 페이지에 아직 표시되지 않은 상태입니다.
+@short: dhtmlxGantt 초기화가 완료되었지만 Gantt 차트가 아직 페이지에 렌더링되지 않았습니다
 
 @signature: onGanttReady: () =\> void;
 
@@ -16,10 +16,9 @@ description: "dhtmlxGantt가 초기화를 완료했을 때 트리거되며, 이 
 
 ~~~jsx
 gantt.attachEvent("onGanttReady", function(){
-    //여기에 커스텀 로직을 작성할 수 있습니다.
+    // 여기에 코드 작성
 });
 ~~~
 
 ### Related API
 - [onBeforeGanttReady](api/event/onbeforeganttready.md)
-

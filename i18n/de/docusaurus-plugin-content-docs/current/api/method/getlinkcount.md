@@ -1,19 +1,19 @@
 ---
 sidebar_label: getLinkCount
 title: getLinkCount method
-description: "gibt zurück, wie viele Abhängigkeitslinks derzeit im Gantt-Diagramm angezeigt werden"
+description: "Gibt die Anzahl aller Abhängigkeits-Links im Gantt-Diagramm zurück"
 ---
 
 # getLinkCount
 
 ### Description
 
-@short: Gibt zurück, wie viele Abhängigkeitslinks derzeit im Gantt-Diagramm angezeigt werden
+@short: Gibt die Anzahl aller Abhängigkeits-Links im Gantt-Diagramm zurück
 
 @signature: getLinkCount: () =\> number
 
 ### Returns
-- ` count` - (number) - die Gesamtanzahl der Abhängigkeitslinks
+- ` count` - (number) - die Anzahl der Abhängigkeits-Links
 
 ### Example
 

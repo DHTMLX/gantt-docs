@@ -1,16 +1,18 @@
 ---
 sidebar_label: inherit_calendar
-title: inherit_calendar config
-description: "定义任务是否应继承其汇总父任务的工作日历"
+title: inherit_calendar 配置
+description: "定义任务是否应从其汇总父任务继承工作日历"
 ---
 
 # inherit_calendar
+
 :::info
- 此功能仅在PRO版本中可用。 
+该功能仅在 PRO 版中可用。 
 :::
+
 ### Description
 
-@short: 定义任务是否应继承其汇总父任务的工作日历
+@short: 定义任务是否应从其汇总父任务继承工作日历
 
 @signature: inherit_calendar: boolean
 
@@ -20,16 +22,20 @@ description: "定义任务是否应继承其汇总父任务的工作日历"
 gantt.config.inherit_calendar = true;
 ~~~
 
-**Default value:** false
+**默认值:** false
 
 ### Related samples
-- [Project level calendars](https://docs.dhtmlx.com/gantt/samples/09_worktime/08_project_calendars.html)
+- [项目级日历](https://docs.dhtmlx.com/gantt/samples/09_worktime/08_project_calendars.html)
 
 ### Details
 
+:::note
+该功能仅在 PRO 版中可用。
+:::
+
 默认情况下，未指定工作日历的任务将使用全局工作日历。
 
-当此选项设置为 `true` 时，这些任务将采用其汇总（项目）父任务的日历。
+将此配置设置为 `true` 后，此类任务将使用其汇总（项目）父任务的日历。
 
 ### Related Guides
 - [工作时间计算](guides/working-time.md)

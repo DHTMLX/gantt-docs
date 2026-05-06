@@ -1,21 +1,21 @@
 ---
 sidebar_label: mergeCalendars
 title: mergeCalendars method
-description: "将多个工作日历合并为一个日历"
+description: "将多个工作日历合并为一个"
 ---
 
 # mergeCalendars
 
 ### Description
 
-@short: 将多个工作日历合并为一个日历
+@short: 将多个工作日历合并为一个
 
 @signature: mergeCalendars: (calendars: Calendar[] | Calendar, calendar2?: Calendar) =\> void
 
 ### Parameters
 
-- `calendars` - (required) *Calendar[]* - | Calendar       可以是日历对象数组，也可以是单个日历对象
-- `calendar2` - (optional) *Calendar* - 可选，第二个日历对象
+- `calendars` - (required) *Calendar[] | Calendar* -    -    一个日历对象数组，或第一个日历对象
+-  `calendar2` -    (optional) *Calendar*   -     可选，第二个日历对象
 
 ### Example
 
@@ -42,7 +42,7 @@ const joinedCalendar = gantt.mergeCalendars([
 
 ### Details
 
-你也可以将多个日历对象作为独立参数传递给 **mergeCalendars** 方法:
+你也可以将一组 [日历对象集合](api/other/calendar.md) 作为 **mergeCalendars** 方法的参数：[日历对象集合](api/other/calendar.md)：
 
 ~~~js
 // 以独立参数形式提供日历
@@ -71,7 +71,7 @@ const joinedCalendar = gantt.mergeCalendars(
 
 例如，给定两个日历:
 
-- 第一个日历在周一和周三为工作日:
+- 第一个日历的工作日为：周一和周三：
 
 ~~~js
 const calendar1Id = gantt.addCalendar({
@@ -82,7 +82,7 @@ const calendar1Id = gantt.addCalendar({
 });
 ~~~
 
-- 第二个日历在周一、周二和周四为工作日:
+- 第二个日历的工作日为：周一、周二和周四：
 
 ~~~js
 const calendar2Id = gantt.addCalendar({
@@ -93,7 +93,7 @@ const calendar2Id = gantt.addCalendar({
 });
 ~~~
 
-合并这两个日历:
+当日历合并时：
 
 ~~~js
 const joinedCalendar = gantt.mergeCalendars([
@@ -102,7 +102,7 @@ const joinedCalendar = gantt.mergeCalendars([
 ]);
 ~~~
 
-结果是一个只有周一为工作日的日历:
+得到一个新的日历，其工作日仅在周一：
 
 ~~~html
 // days: [ 0, 1, 0, 1, 0, 0, 0 ]
@@ -116,10 +116,10 @@ const joinedCalendar = gantt.mergeCalendars([
 // days: [ 0, 1, 0, 0, 0, 0, 0 ]
 ~~~
 
-**相关示例:** [Gantt. Merge work calendars (via mergeCalendars() method)](https://snippet.dhtmlx.com/56vubu7a)
+**相关示例：** [Gantt. 合并工作日历（通过 mergeCalendars() 方法）](https://snippet.dhtmlx.com/56vubu7a)
 
 :::note
- 合并逻辑不考虑 [customWeeks](api/method/addcalendar.md)。 
+该逻辑不考虑 [customWeeks](api/method/addcalendar.md)。
 :::
 
 ### Related API
@@ -128,8 +128,7 @@ const joinedCalendar = gantt.mergeCalendars([
 - [getResourceCalendar](api/method/getresourcecalendar.md)
 
 ### Related Guides
-- [工作时间计算](guides/working-time.md)
+- [工作时间计算](guides/working-time.md#assigningcalendartoresource)
 
 ### Change log
-- v7.0 新增
-
+- 在 v7.0 中新增

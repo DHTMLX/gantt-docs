@@ -1,12 +1,12 @@
 ---
-title: "Создание диаграммы Gantt на странице"
-sidebar_label: "Создание диаграммы Gantt на странице"
+title: "Создание Gantt-диаграммы на странице"
+sidebar_label: "Создание Gantt-диаграммы на странице"
 ---
 
-# Создание диаграммы Gantt на странице
+# Создание Gantt-диаграммы на странице
 
 ![gantt_basic](/img/gantt_basic.png)
 
 - [Как установить dhtmlxGantt](guides/installation.md)
-- [dhtmlxGantt на чистом JS/HTML](guides/initializing-gantt-chart.md)
+- [dhtmlxGantt в Plain JS/HTML](guides/initializing-gantt-chart.md)
 - [Полный список расширений](guides/extensions-list.md)

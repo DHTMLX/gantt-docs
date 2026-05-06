@@ -8,7 +8,7 @@ description: "当出现意外错误时，开启错误提醒"
 
 ### Description
 
-@short: 当出现意外错误时，开启错误提醒
+@short: 在出现意外行为时启用显示错误警报
 
 @signature: show_errors: boolean
 
@@ -18,7 +18,7 @@ description: "当出现意外错误时，开启错误提醒"
 gantt.config.show_errors = false;
 ~~~
 
-**Default value:** true
+**默认值：** true
 
 ### Related Guides
-- [FAQ](faq.md)
+- [常见问题解答](faq.md#an-error-alert-appears-in-the-right-top-corner)

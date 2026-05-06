@@ -1,14 +1,14 @@
 ---
 sidebar_label: date_grid
-title: date_grid config
-description: "legt das Format fest, das für Daten in der Spalte 'Start time' der Tabelle verwendet wird"
+title: date_grid Konfiguration
+description: "legt das Datumsformat in der 'Startzeit'-Spalte der Tabelle fest"
 ---
 
 # date_grid
 
 ### Description
 
-@short: Legt das Format fest, das für Daten in der Spalte "Start time" der Tabelle verwendet wird
+@short: Legt das Datumsformat in der "Startzeit"-Spalte der Tabelle fest
 
 @signature: date_grid: string
 
@@ -24,7 +24,7 @@ gantt.init("gantt_here");
 
 ### Details
 
-Um die Einstellung **grid_date** dynamisch zu aktualisieren (z. B. wenn der Benutzer die Locale ändert), können Sie die [grid_date_format](api/template/grid_date_format.md) Vorlage neu definieren:
+Um die **grid_date**-Konfiguration dynamisch zu ändern (z. B. nachdem der Benutzer die Locale-Sprache ändert), müssen Sie die [grid_date_format](api/template/grid_date_format.md) Vorlage neu definieren:
 
 ~~~js
 function change_grid_date(){
@@ -36,8 +36,7 @@ gantt.templates.grid_date_format = function(date, column){
 };
 ~~~
 
-**Verwandtes Beispiel:** [Datum im grid dynamisch ändern](https://snippet.dhtmlx.com/qo5s7lfs)
+**Zugehöriges Beispiel:** [Datum im Grid dynamisch ändern](https://snippet.dhtmlx.com/qo5s7lfs)
 
 ### Related API
 - [date_grid](api/template/date_grid.md)
-

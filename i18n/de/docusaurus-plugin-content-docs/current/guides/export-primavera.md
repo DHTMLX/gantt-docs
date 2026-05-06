@@ -5,66 +5,66 @@ sidebar_label: "Export und Import aus Primavera P6"
 
 # Export und Import aus Primavera P6
 
-Die dhtmlxGantt-Bibliothek unterstützt das Exportieren von Daten aus dem Gantt-Diagramm nach Primavera P6 sowie das Importieren von Daten aus Primavera P6 in das Gantt-Diagramm.
+Die dhtmlxGantt-Bibliothek ermöglicht das Exportieren von Daten aus dem Gantt-Diagramm nach Primavera P6. Sie können außerdem Daten aus Primavera P6 in Gantt importieren.
 
 :::note
-Dieser Service ist kostenlos nutzbar, allerdings enthält die exportierte Datei ein Wasserzeichen der Bibliothek unter der GPL-Lizenz.
-Der Erwerb einer Lizenz entfernt das Wasserzeichen während des gültigen Supportzeitraums (12 Monate für alle PRO-Lizenzen).
+Der Dienst ist kostenlos, aber die Ausgabedatei enthält unter der GPL-Lizenz das Wasserzeichen der Bibliothek. Falls Sie eine Lizenz erwerben, steht das Exportergebnis während des gültigen Supportzeitraums (12 Monate für alle PRO-Lizenzen) ohne Wasserzeichen zur Verfügung.
 :::
 
-Mehrere Exportdienste stehen zur lokalen Installation auf Ihrem Computer zur Verfügung, sodass Sie das Gantt-Diagramm direkt nach Primavera P6 exportieren können.
-Beachten Sie, dass Exportdienste nicht im Gantt-Paket enthalten sind.
-Detaillierte Informationen zu den Nutzungsbedingungen finden Sie im [entsprechenden Artikel](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml).
+Es gibt mehrere Exportdienste. Sie können sie lokal auf Ihrem Computer installieren und das Gantt-Diagramm lokal nach Primavera P6 exportieren. Beachten Sie, dass Exportdienste nicht im Gantt-Paket enthalten sind; lesen Sie den [entsprechenden Artikel], um die Nutzungsbedingungen jedes einzelnen Dienstes zu erfahren.
 
 ## Einschränkungen des Online-Exportdienstes
 
 :::note
-Der Exportdienst hat Einschränkungen hinsichtlich der Verarbeitungszeit und der Anfragegröße.
+Der Exportdienst hat Zeit- und Größenbeschränkungen für Anfragen.
 :::
 
 ### Zeitlimits
 
-Wenn der Exportvorgang länger als 20 Sekunden dauert, wird er abgebrochen und die folgende Fehlermeldung erscheint:
+Falls der Prozess länger als 20 Sekunden dauert, wird der Export abgebrochen und folgender Fehler tritt auf:
 
 ~~~html
 Error: Timeout trigger 20 seconds
 ~~~
 
-Wenn mehrere Benutzer gleichzeitig Gantt-Diagramme exportieren, kann die Verarbeitung länger dauern als üblich. Die für jede Exportanfrage eines Benutzers aufgewendete Zeit wird jedoch separat gezählt - dies ist erwartetes Verhalten.
+Wenn mehrere Personen gleichzeitig Gantt exportieren, kann der Prozess länger dauern als üblich. Das ist jedoch unproblematisch, da die für einen bestimmten Benutzer aufgewendete Exportanforderung separat gezählt wird.
 
-### Begrenzungen der Anfragegröße
+### Begrenzung der Anfragengröße
 
-Ein gemeinsamer API-Endpunkt **https://export.dhtmlx.com/gantt** verarbeitet alle Exportmethoden (*exportToPDF*, *exportToPNG*, *exportToMSProject* usw.) mit einer **maximalen Anfragegröße von 10 MB**.
+Es gibt einen gemeinsamen API-Endpunkt `https://export.dhtmlx.com/gantt`, der alle Exportmethoden bedient (*exportToPDF*, *exportToPNG*, *exportToMSProject*, etc.). **Maximale Anfragengröße ist 10 MB**.
 
-Es gibt außerdem einen dedizierten API-Endpunkt **https://export.dhtmlx.com/gantt/project** für die [MSProject](guides/export-msproject.md) und
-[Primavera P6](#limitsonrequestsizeandimportoflargefiles)
-Export-/Importdienste (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*). Dieser Endpunkt unterstützt eine **maximale Anfragegröße von 40 MB**.
+Es gibt zudem einen separaten API-Endpunkt `https://export.dhtmlx.com/gantt/project`, der speziell für die [MSProject](guides/export-msproject.md) und 
+[Primavera P6](#limits-on-request-size-and-import-of-large-files) 
+Export/Import-Dienste (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* nur). **Maximale Anfragengröße: 40 MB**.
 
-## Verwendung von Exportmodulen
+## Verwendung von Export-Modulen
 
 :::note
-Für den Export großer Diagramme steht ein [eigenständiges Exportmodul](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) zur Verfügung.
-Dieses Modul ist kostenlos, wenn Sie eine [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing)-, [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing)- oder [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing)-Lizenz besitzen, oder kann separat über [diesen Link](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210) erworben werden.
+Wenn Sie große Diagramme exportieren müssen, können Sie ein [Standalone-Exportmodul](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) verwenden. 
+Das Exportmodul ist kostenlos, wenn Sie Gantt unter einer der Lizenzen [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) oder [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) erworben haben, oder Sie können das Modul auch [separat kaufen](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
 :::
 
-Weitere Informationen zur Nutzung des Exportmoduls mit MS Project finden Sie in [dieser Anleitung](guides/msp-export-module.md). Das Modul unterstützt Export/Import sowohl für MS Project als auch für Primavera P6.
+[Weitere Informationen zur Nutzung des Exportmoduls für MS Project lesen](guides/msp-export-module.md). Dieses Exportmodul bietet Export/Import-Funktionalität für MS Project und 
+Primavera P6.
 
 ## Export nach Primavera P6 {#exporttoprimaverap6}
 
-Die Gantt-Komponente kann Verknüpfungen, Aufgaben und Ressourcen nach Primavera P6 exportieren.
+Die Gantt-Komponente ermöglicht das Exportieren von Verknüpfungen, Aufgaben und Ressourcen nach Primavera P6.
 
-Um Daten aus dem Gantt-Diagramm nach Primavera P6 zu exportieren, gehen Sie wie folgt vor:
+Um Daten aus dem Gantt-Diagramm nach Primavera P6 zu exportieren, führen Sie Folgendes aus:
 
-- Aktivieren Sie das <b>export_api</b>-Plugin wie in der Dokumentation zu [plugins](api/method/plugins.md) beschrieben:
+- Um die Export/Import-Funktionalität zu verwenden, aktivieren Sie das <b>export_api</b>-Plugin über die [Plugins](api/method/plugins.md)-Methode:
 
 ~~~js
 gantt.plugins({
-      export_api: true
+    export_api: true
 });
 ~~~
 
+Dadurch können Sie entweder den Online-Exportdienst oder ein lokales Exportmodul verwenden.
+
 :::note
-Für Gantt-Versionen vor 8.0 müssen Sie **https://export.dhtmlx.com/gantt/api.js** auf Ihrer Seite einbinden, um den Online-Exportdienst zu aktivieren, zum Beispiel:
+Wenn Sie eine Gantt-Version älter als 8.0 verwenden, müssen Sie `https://export.dhtmlx.com/gantt/api.js` auf Ihrer Seite einbinden, um die Exportfunktionalität zu aktivieren, z.B.:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -72,19 +72,17 @@ Für Gantt-Versionen vor 8.0 müssen Sie **https://export.dhtmlx.com/gantt/api.j
 ~~~
 :::
 
-- Verwenden Sie die Methode [exportToPrimaveraP6()](api/method/exporttoprimaverap6.md), um Daten aus dem Gantt-Diagramm zu exportieren:
+- Rufen Sie die Methode [exportToPrimaveraP6()](api/method/exporttoprimaverap6.md) auf, um Daten aus dem Gantt-Diagramm zu exportieren.
 
 ~~~js
 gantt.exportToPrimaveraP6();
 ~~~
 
-Diese Methode sendet eine Anfrage an den entfernten Dienst, der entweder eine XML-Projektdatei generiert und zurückgibt oder eine URL zum Herunterladen der Datei bereitstellt.
+Die Methode sendet eine Anfrage an den Remote-Service, der entweder eine XML-Projekt-Datei ausgibt oder eine URL zum Herunterladen einer generierten Datei zurückgibt.
 
+**Zugehöriges Beispiel**: [Export data : MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
 
-[Export data : MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
-
-
-Beim Export nach Primavera ist es wichtig, dass die **Summary**-Eigenschaft für Projektaufgaben *true* zurückgibt, um eine korrekte Funktion zu gewährleisten:
+Beachten Sie, dass beim Export von Daten nach Primavera Sie für die Eigenschaft **Summary** des Projekts true zurückgeben müssen, damit diese Funktion korrekt funktioniert:
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -102,31 +100,13 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-**Related example:** [Custom properties for WBS tasks (PrimaveraP6's Summary tasks)](https://snippet.dhtmlx.com/r90hjlvo?tag="gantt")
-
-### Antwort
-
-Die Antwort des Exportdienstes ist ein JSON-Objekt mit folgender Struktur:
-
-~~~js
-{
-    data: {},
-    config: {},
-    resources: [],
-    worktime: {}
-}
-~~~
-
-- **data** - ein Gantt-[Datenobjekt](guides/supported-data-formats.md#json), das Aufgaben mit Eigenschaften wie *id*, *open*, *parent*, *progress*, *start_date*, *text* und *resource* enthält. Datumsangaben sind als Strings im Format "%Y-%m-%d %H:%i" formatiert.
-- **config** - ein Gantt-[Konfigurationsobjekt](api/overview/properties-overview.md) mit Einstellungen, die aus der Projektdatei extrahiert wurden.
-- **resources** - ein Array von Ressourcenobjekten, jeweils mit (*id: string, name:string, type:string*), das die Ressourcen aus der Projektdatei repräsentiert.
-- **worktime** - ein Objekt, das die Arbeitszeiteinstellungen aus dem Projektkalender enthält.
+**Zugehöriges Beispiel**: [Custom properties for WBS tasks (PrimaveraP6's Summary tasks)](https://snippet.dhtmlx.com/r90hjlvo?tag="gantt")
 
 ### Exporteinstellungen
 
-Die Methode **exportToPrimaveraP6()** akzeptiert ein Objekt mit mehreren optionalen Eigenschaften:
+Die Methode **exportToPrimaveraP6()** nimmt als Parameter ein Objekt mit mehreren Eigenschaften (alle Eigenschaften sind optional):
 
-- **name** - (string) gibt den Dateinamen für die exportierte Datei an (Standard: 'gantt.xml').
+- **name** - (string) der Name der erhaltenen Datei ('gantt.xml' standardmäßig).
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -134,7 +114,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-- **auto_scheduling** - (boolean) legt den Planungsmodus für Aufgaben im exportierten Projekt fest. Bei **true** werden Aufgaben automatisch geplant, bei **false** manuell (Standard).
+- **auto_scheduling** - (boolean) gibt den Planungsmodus für Aufgaben im exportierten Projekt an. **true** markiert Aufgaben als auto geplant, **false** markiert Aufgaben als manuell geplant (Standardzustand).
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -142,7 +122,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-- **skip_circular_links** - (boolean) bestimmt, ob zirkuläre Verknüpfungen entfernt werden sollen. **true** (Standard) entfernt sie, **false** behält sie bei.
+- **skip_circular_links** - (boolean) gibt an, ob zirkuläre Verknüpfungen entfernt werden sollen (true – werden entfernt (Standardmodus), false – werden nicht entfernt).
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -150,7 +130,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-- **project** - (object) ermöglicht das Zuweisen benutzerdefinierter Eigenschaften an die exportierte Projekteigenschaft.
+- **project** - (object) ermöglicht das Festlegen benutzerdefinierter Eigenschaften des exportierten Projekt-Objekts
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -163,9 +143,9 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-Diese Eigenschaften entsprechen denen der [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))." Eine Liste unterstützter Eigenschaften finden Sie [hier](guides/properties.md). Werte können fest oder Funktionen sein, die während des Exports ausgeführt werden.
+Die Eigenschaften dieses Objekts entsprechen den entsprechenden Eigenschaften der [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Die Liste der unterstützten Eigenschaften finden Sie [hier](guides/properties.md). Die Eigenschaften können feste Werte oder Funktionen enthalten, die beim Aufruf des Exports ausgeführt werden.
 
-- **tasks** - (object) ermöglicht das Definieren benutzerdefinierter Eigenschaften für die exportierten Aufgaben.
+- **tasks** - (object) ermöglicht das Festlegen benutzerdefinierter Eigenschaften für die exportierten Task-Einträge
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -187,12 +167,12 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-Diese Eigenschaften beziehen sich auf die [Task entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12));" eine Liste unterstützter [Eigenschaften](guides/properties.md#tasksproperties) ist verfügbar. Werte können fest oder Funktionen sein, die für jede Aufgabe während des Exports aufgerufen werden.
+Die Eigenschaften dieses Objekts entsprechen den entsprechenden Eigenschaften der [Task entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)), hier finden Sie eine Liste der unterstützten [Eigenschaften](guides/properties.md#tasks-properties). Die Eigenschaften können feste Werte oder Funktionen enthalten, die für jeden Datensatz beim Export aufgerufen werden.
 
-- **data** - (object) ermöglicht das Bereitstellen einer benutzerdefinierten Datenquelle für das exportierte Gantt-Diagramm.
+- **data** - (object) ermöglicht das Festlegen einer benutzerdefinierten Datenquelle, die in der Output-Gantt-Diagramm angezeigt wird.
 
 :::note
-Es wird erwartet, dass **start_date** und **end_date** sowohl Datum als auch Uhrzeit enthalten (*%d-%m-%Y %H:%i*).
+Es wird erwartet, dass die Eigenschaften **start_date** und **end_date** im Format angegeben werden, das Datum und Uhrzeit enthält (*%d-%m-%Y %H:%i*).
 :::
 
 ~~~js
@@ -221,10 +201,9 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-**Related example:** [Gantt. Export custom data](https://snippet.dhtmlx.com/10ytgdxs)
-))
+**Zugehöriges Beispiel**: [Gantt. Export benutzerdefinierter Daten](https://snippet.dhtmlx.com/10ytgdxs)
 
-- **callback** - (function) kann verwendet werden, um eine Download-URL für die generierte XML-Datei zu erhalten. Der Callback erhält ein JSON-Objekt mit einer *url*-Eigenschaft:
+- **callback** - (function) Wenn Sie eine URL zum Herunterladen einer generierten XML-Datei erhalten möchten, kann die *callback*-Eigenschaft verwendet werden. Sie erhält ein JSON-Objekt mit der Eigenschaft *url*:
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -234,32 +213,32 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
  
-- **resources** - (array) ermöglicht das Exportieren einer Ressourcenliste in die Primavera P6-Datei.
+- **resources** - (array) ermöglicht das Exportieren der Liste von Ressourcen in eine Primavera P6-Datei
 
 ~~~js
 gantt.exportToPrimaveraP6({
     resources: [
-        {"id":"1","name":"John","type":"work"},
-        {"id":"2","name":"Mike","type":"work"},
-        {"id":"3","name":"Anna","type":"work"}
+        { "id": "1", "name": "John", "type": "work" },
+        { "id": "2", "name": "Mike", "type": "work" },
+        { "id": "3", "name": "Anna", "type": "work" }
     ]
 });
 ~~~
 
-Ressourcentypen können "work", "cost" oder "material" sein. Ressourcen-Zuweisungen werden über die Eigenschaft **ResourceAssignments** in der Aufgaben-Konfiguration angegeben:
+Mögliche Ressourcentypen sind "work", "cost", "material". Zuweisungen von Ressourcen werden über die Eigenschaft **ResourceAssignments** der Aufgaben-Konfiguration festgelegt:
 
-~~~js
+~~~js {23-25}
 var users = [// resources
-    {key:'0', label: "N/A"},
-    {key:'1', label: "John"},
-    {key:'2', label: "Mike"},
-    {key:'3', label: "Anna"}
+    { key: '0', label: "N/A" },
+    { key: '1', label: "John" },
+    { key: '2', label: "Mike" },
+    { key: '3', label: "Anna" }
 ];
 
 gantt.exportToPrimaveraP6({
     resources: users
         .filter(function(u){
-            if(u.key === '0')//Standardoption überspringen 
+            if(u.key === '0')//skip the default option 
                 return false;
             return true;
         })
@@ -271,14 +250,14 @@ gantt.exportToPrimaveraP6({
                };
           }),
     tasks: {
-        ResourceAssignments: function(task){  /*!*/
-            return task.user;                   /*!*/
-        }                                       /*!*/
+        ResourceAssignments: function(task){  
+            return task.user;                   
+        }                                       
     }
 });
 ~~~
 
-Die Eigenschaft **ResourceAssignments** kann eine Funktion sein, die ein Aufgabenobjekt erhält und entweder einen String/eine Zahl oder ein Array von Strings/Zahlen zurückgibt:
+Die **ResourceAssignments**-Eigenschaft ist als Funktion definiert, die das Task-Objekt als Parameter entgegennimmt und entweder einen String/Number-Wert oder ein Array von Strings/Numbers zurückgibt:
 
 ~~~js
 tasks: {
@@ -288,32 +267,61 @@ tasks: {
 }
 ~~~
 
-**Related example:** [Export Gantt with resources to Primavera P6](https://snippet.dhtmlx.com/6bfbwp8g)
+**Zugehöriges Beispiel**: [Export Gantt mit Ressourcen nach Primavera P6](https://snippet.dhtmlx.com/6bfbwp8g)
 
-- **server** - (string) gibt den API-Endpunkt für die Exportanfrage an. Dies kann verwendet werden, wenn Sie einen lokalen Exportdienst installiert haben. Standard ist **https://export.dhtmlx.com/gantt**.
+Es ist möglich, den Parameter *units* für ResourceAssignments durch Zurückgabe des folgenden Objekts in der **ResourceAssignments**-Eigenschaft festzulegen:
+
+~~~js
+{
+    resource_id: "id",
+    units: "units value"
+}
+~~~
+
+- **resource calendars**
+
+Standardmäßig hat jede Aufgabe einen Kalender. Wenn die Ressourcenkalender verwendet werden, müssen Sie -1 für eine Aufgabe in der 
+*CalendarUID*-Eigenschaft während des Exports angeben (im Objekt [tasks](#export-settings)) . Dann verwendet die Aufgabe den Ressourcen-Kalender.
+
+Beim Export von [Resource Calendars](api/config/resource_calendars.md) ist es möglich, den Ressourcen-Kalender in einem Objekt des Arrays [resources](#export-settings) anzugeben: 
 
 ~~~js
 gantt.exportToPrimaveraP6({
-    server:"https://myapp.com/myexport/gantt"
-});
+    resources: [
+        {
+            id: "10",
+            name: "John",
+            type: "work",
+            calendar: gantt.config.resource_calendars[10]
+        }
+    ]
+});    
 ~~~
 
 
+- **server** - (string) der API-Endpunkt für die Anforderung. Kann mit der lokalen Installation des Exportdienstes verwendet werden. Der Standardwert ist `https://export.dhtmlx.com/gantt`.
+
+~~~js
+gantt.exportToPrimaveraP6({
+    server: "https://myapp.com/myexport/gantt"
+});
+~~~
+
 ## Import aus Primavera P6
 
-Um eine XML- oder XER-Datei zu konvertieren, senden Sie eine POST-Anfrage an den Exportdienst mit folgenden Angaben:
+Um eine XML- oder XER-Datei zu konvertieren, senden Sie die folgende Anfrage an den Exportdienst:
 
- - Request-URL: **https://export.dhtmlx.com/gantt**
- - Methode: **POST**
- - Content-Type: **multipart/form-data**
+ - Request URL - `https://export.dhtmlx.com/gantt`
+ - Request Method - **POST**
+ - Content-Type - **multipart/form-data**
 
-Die Anfrageparameter umfassen:
+Die Request-Parameter sind:
 
- - **file** - eine XER- oder XML-Primavera P6-Datei
- - **type** - auf "primaveraP6-parse" setzen
- - **data** - (*optional*) ein JSON-String mit Importeinstellungen
+ - **file** - eine XER- oder XML-Datei von Primavera P6
+ - **type** - "primaveraP6-parse"
+ - **data** - (*optional*) ein JSON-String mit Einstellungen
 
-Beispiel:
+Zum Beispiel:
 
 ~~~html
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
@@ -324,7 +332,7 @@ Beispiel:
 </form>
 ~~~
 
-Alternativ kann die [Client-seitige API](api/method/importfromprimaverap6.md) wie folgt verwendet werden:
+Alternativ können Sie die [client-side API](api/method/importfromprimaverap6.md) verwenden, wie hier:
 
 ~~~js
 gantt.importFromPrimaveraP6({
@@ -338,44 +346,59 @@ gantt.importFromPrimaveraP6({
             }                    
             gantt.parse(project.data);
         }
-     }
+    }
 });
 ~~~
 
 
-[Import Primavera P6 file](https://docs.dhtmlx.com/gantt/samples/08_api/18_load_from_primaverap6.html)
+**Zugehöriges Beispiel**: [Import Primavera P6-Datei](https://docs.dhtmlx.com/gantt/samples/08_api/18_load_from_primaverap6.html)
 
 
-Hier sollte *file* ein [File](https://developer.mozilla.org/en-US/docs/Web/API/File)-Objekt sein, das eine XML- oder XER-Projektdatei enthält.
+Wobei *file* eine Instanz von [File](https://developer.mozilla.org/en-US/docs/Web/API/File) ist und entweder eine XML- oder XER-Project-Datei enthalten sollte.
 
 :::note
-**gantt.importFromPrimaveraP6** erfordert Unterstützung für die HTML5 File API.
+**gantt.importFromPrimaveraP6** erfordert Unterstützung der HTML5 File API.
 :::
 
-### Antwort
+### Response
 
-Die Antwort gibt ein JSON-Objekt mit folgender Struktur zurück:
+Die Antwort enthält JSON mit folgender Struktur:
 
 ~~~js
 {
     data: {},
     config: {},
     resources: [],
-    worktime: {}
+    worktime: {},
+    calendars: []
 }
 ~~~
 
-- **data** - ein Gantt-[Datenobjekt](guides/supported-data-formats.md#json). Jede Aufgabe enthält Eigenschaften wie *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. Datumsangaben sind im Format "%Y-%m-%d %H:%i".
-- **config** - ein Gantt-[Konfigurationsobjekt](api/overview/properties-overview.md) mit Einstellungen, die aus der Projektdatei extrahiert wurden.
-- **resources** - ein Array von Ressourcenobjekten (jeweils mit *id*, *name* und *type*), die die Ressourcen aus der Projektdatei darstellen.
-- **worktime** - ein Objekt mit Arbeitseinstellungen aus dem Projektkalender.
+- **data** - (*object*) ein Gantt [data object](guides/supported-data-formats.md). Jede Aufgabe besitzt folgende Eigenschaften: *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. 
+Dates werden im Format "%Y-%m-%d %H:%i" als Strings angegeben. 
+- **config** - (*object*) ein Gantt [Configuration](api/overview/properties-overview.md)-Objekt mit aus der Projektdatei stammenden Einstellungen.
+- **resources** - (*array*) ein Array von Objekten (jeweils mit den Eigenschaften: 
+(*id: string, name: string, type: string, calendar: string*)), das die Liste der Ressourcen aus der Projektdatei repräsentiert.
+- **worktime** - (*object*) ein Objekt, das die Arbeitszeit-Einstellungen aus dem Projektkalender enthält. Es kann die folgenden Attribute enthalten:
+   - **id** - (*string | number*) optional, die Kalender-ID
+   - **hours** - (*array*) ein Array mit globalen Arbeitszeiten, setzt die Start- und Endzeiten der Aufgabe
+    - **dates** - (*array*) ein Array von Daten, das Folgendes enthalten kann:
+        - 7 Tage der Woche (von 0 - Sonntag bis 6 - Samstag), wobei 1/true für einen Arbeitstag steht und 0/false für einen Nicht-Arbeitstag
+        - andere Datensätze sind Daten 
+- **calendars** - (*array*) ein Array mit Kalenderkonfigurationsobjekten zur Erstellung eines neuen Kalenders. 
+    - **calendarConfig** - (*object*) ein Kalender-Konfigurationsobjekt, das folgende Attribute enthalten kann:
+      - **id** - (*string | number*) optional, die Kalender-ID
+      - **name** - (*string*) der Kalendername
+      - **hours** - (*array*) ein Array mit globalen Arbeitszeiten, setzt die Start- und Endzeiten der Aufgabe
+      - **dates** - (*array*) ein Array von Daten, das Folgendes enthalten kann:
+            - 7 Tage der Woche (von 0 - Sonntag bis 6 - Samstag), wobei 1/true für einen Arbeitstag steht und 0/false - ein Nicht-Arbeitstag
+            - andere Datensätze sind Daten
 
+### Import-Einstellungen
 
-### Importeinstellungen
+#### Festlegung der Dauer-Einheit
 
-#### Festlegen der Dauereinheit
-
-Sie können die erwartete Dauereinheit festlegen, indem Sie einen **durationUnit**-String ("minute", "hour", "day", "week", "month", "year") an den Server senden.
+Um eine erwartete Dauer-Einheit festzulegen, kann der **durationUnit**-String ("minute", "hour", "day", "week", "month", "year") auch an den Server gesendet werden.
 
 ~~~html
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
@@ -398,11 +421,12 @@ gantt.importFromPrimaveraP6({
 });
 ~~~
 
-#### Abrufen von Projekteigenschaften
+#### Abrufen von Eigenschaften des Projekts
 
-Um bestimmte Projektfelder abzurufen, senden Sie den **projectProperties**-Parameter mit einem Array der gewünschten Felder an den Server. Dadurch werden Eigenschaften aus [der Project-Entität](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))" in die **config**-Eigenschaft der Antwort extrahiert. Unterstützte [Eigenschaften](guides/properties.md#projectproperties) sind aufgelistet.
+Um Felder des Projekts abzurufen, kann die Eingabe **projectProperties** mit einem Array der benötigten Felder an den Server gesendet werden.
+Sie extrahiert beliebige Eigenschaften der [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) in die **config**-Eigenschaft der Ausgabe. Hier ist die Liste der unterstützten [Eigenschaften](guides/properties.md#project-properties).
 
- - **projectProperties** - ein Array, das angibt, welche Projekteigenschaften in der Antwort enthalten sein sollen.
+ - **projectProperties** - gibt ein Array von Projekt-Eigenschaften an, die in die Antwort aufgenommen werden sollen.
 
 ~~~html
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
@@ -429,11 +453,12 @@ gantt.importFromPrimaveraP6({
 });
 ~~~
 
-#### Abrufen von Aufgabeneigenschaften
+#### Abrufen von Aufgaben-Eigenschaften
 
-Um bestimmte Aufgabenfelder zu importieren, senden Sie den **taskProperties**-Parameter mit einem Array der gewünschten Felder an den Server. Dadurch werden Eigenschaften aus den [Task-Entitäten](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))" extrahiert. Unterstützte [Eigenschaften](guides/properties.md#tasksproperties) sind verfügbar.
+Um Felder der Aufgaben abzurufen, kann die Eingabe **taskProperties** mit einem Array der benötigten Felder an den Server gesendet werden.
+Sie extrahiert beliebige Eigenschaften der [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Hier ist die Liste der unterstützten [Eigenschaften](guides/properties.md#tasks-properties):
 
- - **taskProperties** - ein Array, das zusätzliche aufzunehmende Aufgabeneigenschaften angibt.
+ - **taskProperties** - geben Sie ein Array zusätzlicher Aufgaben-Eigenschaften an, die importiert werden sollen.
 
 ~~~html
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
@@ -467,12 +492,11 @@ gantt.attachEvent("onTaskLoading", function(task) {
 });
 ~~~
 
+#### Abholen von Aufgabentypen
 
-#### Ermitteln von Aufgabentypen
+Die folgende Logik ermöglicht das Erhalten des Aufgabentyps: Aufgaben des Typs Project haben die Eigenschaft Summary: "1" und Aufgaben des Typs Milestone haben die Eigenschaft Milestone: "1". Wir müssen die Daten mit diesen Eigenschaften importieren und dann den Aufgabentyp basierend auf diesen Eigenschaften setzen.
 
-So ermitteln Sie den Aufgabentyp: Aufgaben mit dem Label **Project** haben die Eigenschaft `Summary: "1"`, während Aufgaben mit dem Label **Milestone** die Eigenschaft `Milestone: "1"` besitzen. Beim Importieren der Daten helfen diese Eigenschaften, den Aufgabentyp zu bestimmen.
-
-Die Importfunktion wird wie folgt aufgerufen:
+Der Aufruf der Import-Funktion sieht wie folgt aus:
 
 ~~~js
 gantt.importFromPrimaveraP6({
@@ -495,7 +519,7 @@ gantt.importFromPrimaveraP6({
 });
 ~~~
 
-Nach dem Import können Sie die Aufgabentypen anhand dieser Eigenschaften wie folgt festlegen:
+Anschließend können Sie die Typen der Aufgaben anhand der erhaltenen Eigenschaften wie folgt konvertieren:
 
 ~~~js
 gantt.attachEvent("onTaskLoading", function (task) {
@@ -512,21 +536,152 @@ gantt.attachEvent("onTaskLoading", function (task) {
 });
 ~~~
 
-**Related example:** [Gantt. Import Primavera P6 files. Get task type from properties](https://snippet.dhtmlx.com/y95rsxor)
-))
+**Zugehöriges Beispiel**: [Gantt. Import Primavera P6-Dateien. Aufgabentyp aus Eigenschaften abrufen](https://snippet.dhtmlx.com/y95rsxor)
 
-## Begrenzungen der Anfragengröße und Import großer Dateien
+#### Hinzufügen und Anpassen von Kalendern
 
-Für die Export-/Importdienste von Primavera P6 stehen zwei API-Endpunkte zur Verfügung:
-
-- **https://export.dhtmlx.com/gantt** - der Standardendpunkt, der für alle Exportmethoden verwendet wird (*exportToPDF*, *exportToPNG*, *exportToPrimaveraP6*, usw.). Er hat eine **maximale Anfragengröße von 10 MB**.
-- **https://export.dhtmlx.com/gantt/project** - ein dedizierter Endpunkt für [MSProject](guides/export-msproject.md) und [Primavera P6](guides/export-primavera.md) Export-/Importdienste (*exportToMSProject*, *importFromMSProject*, *exportToPrimaveraP6*, *importFromPrimaveraP6*). Dieser Endpunkt unterstützt **Anfragen bis zu 40 MB**.
-
-Sie können den Endpunkt über die **server**-Eigenschaft im Export-Konfigurationsobjekt angeben:
+Beachten Sie, dass Kalender beim Import nicht automatisch hinzugefügt werden. Sie müssen sie mit der Methode [addCalendar()](api/method/addcalendar.md) hinzufügen. 
+Danach sollten Sie die Kalendereinstellungen über die Methode [setWorkTime()](api/method/setworktime.md) festlegen. Zum Beispiel:
 
 ~~~js
 gantt.importFromPrimaveraP6({
-    server:"https://export.dhtmlx.com/gantt",
+    data: file,
+    taskProperties: ["Notes", "Name"],
+    callback: function (project) {
+        if (project) {
+            // Einstellungen zum Hinzufügen von Kalendern
+            project.calendars.forEach(function (calendar) {
+                let addedCalendar;
+                // Arbeitszeiteinstellungen für den globalen Kalender hinzufügen
+                if (calendar.id == project.config.global_calendar_id) {
+                    addedCalendar = gantt.getCalendar("global");
+                }
+                else {
+                    // Gantt fügt keinen Kalender hinzu 
+                    // wenn der `hours`-Parameter ein leeres Array ist
+                    let calendarHours = calendar.hours;
+                    if (!calendarHours.length) {
+                        calendarHours = undefined
+                    }
+                    gantt.addCalendar({
+                        id: calendar.id,
+                        hours: calendarHours,
+                        name: calendar.name
+                    });
+
+                    addedCalendar = gantt.getCalendar(calendar.id);
+                }
+                const worktimeDates = calendar.dates;
+                for (let element in worktimeDates) {
+                    const date = new Date(+element)
+                    if (element < 10) {
+                        addedCalendar.setWorkTime({ 
+                            day: element, 
+                            hours: worktimeDates[element] 
+                        })
+                    }
+                    else {
+                        addedCalendar.setWorkTime({ 
+                            date: date, 
+                            hours: worktimeDates[element] 
+                        })
+                    }
+                }
+            })
+        }
+    }
+});
+~~~
+
+**Zugehöriges Beispiel**: [Gantt. Kalendereinstellungen für Export/Import in MSProject und Primavera P6](https://snippet.dhtmlx.com/668xqts7)
+
+#### Ressourcenkalender
+
+Wenn es Ressourcenkalender gibt, müssen Sie diese über die Eigenschaft [gantt.config.resource_calendars](api/config/resource_calendars.md) festlegen:
+
+~~~js
+gantt.importFromPrimaveraP6({
+    data: file,
+    taskProperties: ["Notes", "Name"],
+    callback: function (project) {
+        if (project) {
+            // Kalendereinstellungen
+            project.calendars.forEach(function (calendar) {
+                // Kalender hinzufügen und Arbeitszeiteinstellungen setzen
+            })
+
+            // Einstellungen für Ressourcenkalender
+            gantt.config.resource_calendars = {}
+
+            project.resources.forEach(function (resource) {
+                if (resource.calendar) {
+                    gantt.config.resource_calendars[resource.id] = resource.calendar;
+                }
+            })
+        }
+    }
+});
+~~~
+
+**Zugehöriges Beispiel**: [Gantt. Ressourcenkalender-Einstellungen für Export/Import in MSProject und Primavera P6](https://snippet.dhtmlx.com/10czv54b)
+
+#### Ressourcen und Ressourcen-Zuweisungen
+
+Wenn es Ressourcen in der Datei gibt, gelangen sie beim Import in das Array **resources**. Der Parameter *calendar* des 
+Eigenschaftsobjekts **resources** gibt den Ressourcen-Kalender an:
+
+~~~js
+{
+    resources: [
+        { id: 6, name: "John", type: "work", calendar: "8" },
+        // weitere Ressourcen
+    ]
+}
+~~~
+
+Falls es Ressourcen-Zuweisungen gibt, werden sie im Array **assignments** importiert, wobei das Zuweisungsobjekt die Parameter *resource_id: string* und *value: number* enthält. Zum Beispiel:
+
+~~~js
+{
+    tasks: [
+        {
+            id: 5,
+            text: "Interior office",
+            type: "task",
+            start_date: "03-04-2024 00:00",
+            duration: 7,
+            parent: "2",
+            priority: 1
+        },
+        // weitere Aufgaben
+    ],
+    links: [],
+    assignments: [
+        { id: 1, task_id: 5, resource_id: 6, value: 3},
+        // weitere Zuweisungen
+    ],
+    resources: [
+        { id: 6, text: "John", unit: "hours/day" },
+        { id: 7, text: "Mike", unit: "hours/day" },
+        // weitere Ressourcen
+    ]
+}
+~~~
+
+## Grenzen bei der Anfragengröße und Import großer Dateien
+
+Es gibt zwei API-Endpunkte für die Primavera P6 Export/Import-Dienste:
+
+- `https://export.dhtmlx.com/gantt` - der Standard-Endpunkt, der alle Exportmethoden bedient (*exportToPDF*, *exportToPNG*, *exportToPrimaveraP6*, etc.). **Maximale Anfragengröße 10 MB**.
+- `https://export.dhtmlx.com/gantt/project` - der Endpunkt, der speziell für die [MSProject](guides/export-msproject.md) und 
+[Primavera P6](guides/export-primavera.md) 
+Export/Import-Dienste (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* nur). **Maximale Anfragengröße: 40 MB**.
+
+Der Endpunkt kann durch die Eigenschaft **server** des Export-Konfigurationsobjekts festgelegt werden:
+
+~~~js
+gantt.importFromPrimaveraP6({
+    server: "https://export.dhtmlx.com/gantt",
     data: file,
     callback: function(project){
        // some logic
@@ -534,7 +689,7 @@ gantt.importFromPrimaveraP6({
 }); 
 ~~~
 
-Wenn kein Endpunkt angegeben wird, wird standardmäßig <b>https://export.dhtmlx.com/gantt</b> verwendet. Der folgende Aufruf verhält sich genauso wie oben:
+Wenn kein Endpunkt angegeben wird, gilt standardmäßig `https://export.dhtmlx.com/gantt`. Der folgende Aufruf entspricht dem oben Gezeigten:
 
 ~~~js
 gantt.importFromPrimaveraP6({
@@ -545,11 +700,11 @@ gantt.importFromPrimaveraP6({
 });
 ~~~
 
-Um große Projekte zu verarbeiten, die das 4MB-Limit überschreiten, können Sie den zweiten Endpunkt verwenden:
+Um große Projekte zu exportieren oder zu importieren, die die 4 MB-Grenze überschreiten, kann der zweite Endpunkt verwendet werden:
 
 ~~~js
 gantt.importFromPrimaveraP6({
-    server:"https://export.dhtmlx.com/gantt/project",
+    server: "https://export.dhtmlx.com/gantt/project",
     data: file,
     callback: function(project){
        // some logic
@@ -557,7 +712,6 @@ gantt.importFromPrimaveraP6({
 }); 
 ~~~
 
-Dieser Endpunkt akzeptiert Anfragen bis zu 40MB und unterstützt sowohl den Export als auch den Import für Primavera P6. Er ist speziell für Exporte und Importe von Primavera P6 vorgesehen.
+Dieser Endpunkt ermöglicht das Senden von Anfragen bis zu 40 MB und unterstützt Primavera P6 Exporte und Importe. Er kann ausschließlich für Primavera P6-Exporte verwendet werden. 
 
-Beachten Sie, dass andere Methoden wie *gantt.exportToPDF((server:"https://export.dhtmlx.com/gantt/project"))* zu einem Serverfehler führen.
-
+Andere Methoden, zum Beispiel `gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})`, sollten dagegen einen Serverfehler zurückgeben.

@@ -1,41 +1,36 @@
----
+--- 
 sidebar_label: constraint_types
 title: constraint_types config
-description: "사용할 수 있는 모든 제약 조건 유형을 보유합니다."
+description: "모든 사용 가능한 제약 유형을 포함"
 ---
 
 # constraint_types
 :::info
 이 기능은 PRO 에디션에서만 사용할 수 있습니다. 
 :::
+
 ### Description
 
-@short: 사용할 수 있는 모든 제약 조건 유형을 보유합니다.
+@short: 가능한 모든 제약 유형 포함
 
 @signature: constraint_types: \{ ASAP?: string; ALAP?: string; SNET?: string; SNLT?: string; FNET?: string; FNLT?: string; MSO?: string; MFO?: string; \}
 
-### Example
-
-~~~jsx
-
-~~~
-
 ### Related samples
-- [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
-- [Auto-Schedule From Project End (backward)](https://docs.dhtmlx.com/gantt/samples/02_extensions/20_backwards_scheduling.html)
+- [프로젝트 시작 및 제약 조건으로 자동 스케줄링](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
+- [프로젝트 종료 시점에서의 자동 스케줄링(역방향)](https://docs.dhtmlx.com/gantt/samples/02_extensions/20_backwards_scheduling.html)
 
 ### Details
 
-객체에는 다음 항목들이 포함되어 있습니다:
+The object definition:
 
-- **ASAP** - (*string*) - 가능한 한 빨리 (As Soon As Possible)
-- **ALAP** - (*string*) - 가능한 한 늦게 (As Late As Possible)
-- **SNET** - (*string*) - 해당 날짜 이전에는 시작 불가 (Start No Earlier Than)
-- **SNLT** - (*string*) - 해당 날짜 이후에는 시작 불가 (Start No Later Than)
-- **FNET** - (*string*) - 해당 날짜 이전에는 종료 불가 (Finish No Earlier Than)
-- **FNLT** - (*string*) - 해당 날짜 이후에는 종료 불가 (Finish No Later Than)
-- **MSO** - (*string*) - 반드시 해당 날짜에 시작해야 함 (Must Start On)
-- **MFO** - (*string*) - 반드시 해당 날짜에 종료해야 함 (Must Finish On)
+- **ASAP** - (*string*) - 가능하면 가능한 한 빨리
+- **ALAP** - (*string*) - 가능한 한 늦게
+- **SNET** - (*string*) - 시작은 지정 시점보다 이르게 시작하지 않음
+- **SNLT** - (*string*) - 시작은 지정 시점보다 늦지 않게
+- **FNET** - (*string*) - 종료는 지정 시점보다 이르게 종료하지 않음
+- **FNLT** - (*string*) - 종료는 지정 시점보다 늦지 않게
+- **MSO** - (*string*) - 반드시 시작해야 하는 시점
+- **MFO** - (*string*) - 반드시 종료해야 하는 시점
 
 ~~~js
 gantt.config.constraint_types = {
@@ -56,9 +51,9 @@ gantt.config.constraint_types = {
  // 반드시 해당 날짜에 종료해야 함
  MFO: "mfo"
 };
-~~~
+~~~ 
 
-이 값들은 제약 조건 값을 코드에 하드코딩하지 않도록 도와줍니다:
+It is added in order to avoid hardcoding constraint values in code:
 
 ~~~js
 gantt.addTaskLayer(function draw_deadline(task) {

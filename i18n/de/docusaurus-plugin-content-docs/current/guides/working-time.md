@@ -5,88 +5,88 @@ sidebar_label: "Arbeitszeitberechnung"
 
 # Arbeitszeitberechnung
 
-Standardmäßig berechnet dhtmlxGantt die Dauern von Aufgaben anhand der Kalenderzeit, das heißt, Wochenenden und Feiertage werden in die Gesamtdauer einbezogen.
+Standardmäßig berechnet dhtmlxGantt die Aufgaben-Dauer in Kalenderzeit. Es wird angenommen, dass die endgültige Dauer der Aufgaben Wochenenden und Feiertage einschließen kann.
 
 :::note
-Weitere Details zur Formatierung von Aufgabenenddaten finden Sie im Artikel [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates).
+Lesen Sie den Artikel [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates), um das Format des Enddatums einer Aufgabe zu erfahren.
 :::
 
 
-## Aktivieren der Arbeitszeitberechnung
+## Aktivierung der Arbeitszeitberechnung
 
-Um die Aufgabendauer ausschließlich auf Basis der Arbeitsstunden zu berechnen, aktivieren Sie die in [work_time](api/config/work_time.md) beschriebene Option:
+Um die Berechnung der Aufgaben-Dauer in Arbeitszeit zu ermöglichen, verwenden Sie die [work_time](api/config/work_time.md) Option:
 
-**Aktivieren der Arbeitszeitberechnung für Aufgabendauern**
+**Aktivierung des Modus, in dem die Aufgaben-Dauer in Arbeitszeit berechnet wird**
 ~~~js
-gantt.config.work_time = true;     // schließt Nicht-Arbeitszeit von der Dauernberechnung aus /*!*/
-gantt.config.skip_off_time = true; /*!*/   // blendet Nicht-Arbeitszeit im Diagramm aus
+gantt.config.work_time = true;     // entfernt Nicht-Arbeitszeit aus den Berechnungen /*!*/
+gantt.config.skip_off_time = true; /*!*/   // versteckt Nicht-Arbeitszeit im Diagramm
  
 gantt.init("gantt_here");
 ~~~
 
-Beachten Sie, dass die Option [skip_off_time](api/config/skip_off_time.md) nur in der PRO-Version verfügbar ist.
+Bitte beachten Sie, dass die [skip_off_time](api/config/skip_off_time.md) Konfigurationsoption nur in der PRO-Version verfügbar ist.
 
 
 [Duration includes only working days](https://docs.dhtmlx.com/gantt/samples/09_worktime/02_working_days.html)
 
 
 :::note
-Je nach Einstellung von [duration_unit](api/config/duration_unit.md) berechnet dhtmlxGantt die Aufgabendauern in unterschiedlichen Einheiten (z. B. wenn
-duration_unit = "hour", werden Dauern in Arbeitsstunden berechnet).
+Je nach Wert von [duration_unit](api/config/duration_unit.md) berechnet dhtmlxGantt die Dauer der Aufgaben in unterschiedlichen Zeiteinheiten (z.B. falls
+duration_unit = "hour", wird die Dauer in den Arbeitsstunden berechnet).
 :::
 
 ![calculating_different_time](/img/calculating_different_time.png)
 
 
-## Aufgabendauer im Dezimalformat {#taskdurationindecimalformat}
+## Task-Dauer im Dezimalformat {#taskdurationindecimalformat}
 
 :::info
-Diese Funktion ist ausschließlich in der PRO-Edition verfügbar.
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
 
-Ab Version 6.3 unterstützt dhtmlxGantt die Angabe von Aufgabendauern im Dezimalformat ("2.5 days", 
+Ab Version v6.3 ermöglicht dhtmlxGantt das Spezifizieren der Aufgaben-Dauer im Dezimalformat ("2.5 days", 
 
-"0.5 hours", "3.75 hours") mithilfe des [Duration Formatter](guides/formatters-ext.md) Moduls.
+"0.5 hours", "3.75 hours") über das [Duration Formatter](guides/formatters-ext.md)-Modul.
 
-Es ist wichtig zu beachten, dass Gantt intern Aufgabendauern als Ganzzahlen speichert.
+Wichtiger Punkt: Intern speichert Gantt die Dauer von Aufgaben immer als Ganzzahlen. 
 
-Das Formatter-Modul hilft dabei, vom Benutzer eingegebene Dezimalwerte in das von Gantt verwendete interne Format umzuwandeln (zum Beispiel wird "1.5 hours" vom Benutzer eingegeben und als `90` Minuten gespeichert). Ebenso werden gespeicherte Werte wieder in ein lesbares Format umgewandelt (wie z. B. `12` Stunden zu "0.5 days").
+Während das bereitgestellte Modul das Parsen der Aufgaben-Dauer aus dem vom Benutzer eingegebenen Format in das in Gantt gespeicherte Format ermöglicht 
+(beispielsweise wird statt eingegebener "1.5 hours" die Anzahl der Minuten - `90` - gespeichert). Darüber hinaus können die gespeicherten Werte in ein lesbares Format zurück konvertiert werden (von `12` Stunden zu "0.5 Tage").
 
 ![decimal_duration](/img/decimal_duration.png)
 
 :::note
-Aufgabendauern können als Bruchteile einer Stunde, eines Tages oder jeder anderen von [duration_unit](api/config/duration_unit.md) unterstützten Einheit angegeben werden, mit Ausnahme von Minuten.
+Die Dauer von Aufgaben kann als Bruchteil einer Stunde, eines Tages oder jeder anderen vom [duration_unit](api/config/duration_unit.md) konfigurierten Einheit dargestellt werden, mit Ausnahme von Minuten.
 :::
 
 
 ### Implementierung des Dezimalformats
 
-Um Aufgabendauern im Dezimalformat anzuzeigen, gehen Sie wie folgt vor:
+Um die Anzeige der Aufgaben-Dauer im Dezimalformat bereitzustellen, folgen Sie der untenstehenden Logik:
 
-- Setzen Sie [duration_unit](api/config/duration_unit.md) auf "minute"
+- Setzen Sie [duration_unit](api/config/duration_unit.md) auf minute
  
 ~~~js
 gantt.config.work_time = true;
 gantt.config.duration_unit = "minute"; /*!*/
 ~~~
 
-Beachten Sie, dass die Einheit zur Speicherung der Dauern kleiner sein sollte als die Einheit, die im Dezimalformat angezeigt wird. Einfach gesagt:
+Beachten Sie, dass Sie Aufgabendauern in einer kleineren Einheit speichern müssen als die Einheiten der Werte, die im Dezimalformat angezeigt werden. Einfach ausgedrückt:
+
+    - wenn Sie möchten, dass ein Benutzer Dauern als Bruchteil einer Stunde angeben kann (z.B. "0.5 hours"), setzen Sie [duration_unit](api/config/duration_unit.md) auf minute
 
 
-    - Um Benutzern zu erlauben, Dauern als Bruchteile einer Stunde anzugeben (z. B. "0.5 hours"), setzen Sie [duration_unit](api/config/duration_unit.md) auf "minute" 
-
-
-    - Um Bruchteile eines Tages zu erlauben, setzen Sie [duration_unit](api/config/duration_unit.md) auf "hour". In diesem Fall können Benutzer Dauern wie "0.5 day" eingeben, aber "0.5 hour" wird auf 1 Stunde aufgerundet, da Dauern als ganze Stunden gespeichert werden.
+    - Wenn Sie möchten, dass ein Benutzer Dauern als Bruchteil eines Tages angeben kann, setzen Sie [duration_unit](api/config/duration_unit.md) auf hour. In diesem Fall kann der Benutzer die Dauer der Aufgabe als "0.5 day" eingeben, aber "0.5 hour" wird auf 1 Stunde aufgerundet, da die Dauer in ganzzahligen Stunden gespeichert wird.
 
 :::note
-Standardmäßig rasten Aufgabendaten an der Zeitskala ein. Wenn Ihre Skala auf Tagen basiert, möchten Sie dies eventuell deaktivieren, um Aufgaben auf verschiedene Stunden innerhalb eines Tages zu verschieben.
+Standardmäßig werden Aufgaben-Daten an den Zeitmaßstab angepasst. Wenn Sie einen Zeitmaßstab in Tagen haben, möchten Sie ihn möglicherweise deaktivieren, um eine Aufgabe innerhalb eines Tages auf unterschiedliche Stunden ziehen zu können. 
 
-Um dies zu ermöglichen, deaktivieren Sie [round_dnd_dates](api/config/round_dnd_dates.md) und wählen Sie einen passenden Wert für [time_step](api/config/time_step.md).
+Um dieses Drag-and-Drop zu aktivieren, müssen Sie [round_dnd_dates](api/config/round_dnd_dates.md) deaktivieren und einen passenden Wert für [time_step](api/config/time_step.md) festlegen.
 :::
-Beispiel:
+Zum Beispiel:
 
 ~~~js
-// globaler Zeitintervall beträgt 15 Minuten, benötigt "minute" als Dauereinheit
+// globaler Time-Step beträgt 15 Minuten, benötigt "minute" als Dauer-Einheiten
 gantt.config.time_step = 15;
 gantt.config.round_dnd_dates = false;
 ~~~
@@ -94,16 +94,16 @@ gantt.config.round_dnd_dates = false;
 oder 
 
 ~~~js
-// globaler Zeitintervall ist eine Stunde,
-// geeignet, wenn die Dauereinheit "hour" ist
+// globaler Time-Step beträgt eine Stunde, 
+// dieser Wert kann verwendet werden, wenn die Dauer-Einheit auf "hour" gesetzt ist
 gantt.config.time_step = 60;
 gantt.config.round_dnd_dates = false;
 ~~~
 
-- Erstellen Sie ein *formatter*-Objekt, das die Dauerformate verarbeitet:
+- erstellen Sie das *formatter*-Objekt zur Formatierung der Aufgaben-Dauer:
 
 ~~~js
-// Einrichten des Duration Formatters
+// Formatierung der Dauer
 const formatter = gantt.ext.formatters.durationFormatter({
     enter: "day", 
     store: "minute", // duration_unit
@@ -114,7 +114,7 @@ const formatter = gantt.ext.formatters.durationFormatter({
 });
 ~~~
 
-- Fügen Sie den *formatter* der "Duration"-Spalte hinzu, indem Sie eine Template-Funktion definieren, die die formatierte Dauer zurückgibt:
+- fügen Sie das *formatter*-Objekt der Spalte "Duration" hinzu, indem Sie die Template-Funktion definieren, die die *formatierte Dauer der Aufgabe* über das **template**-Attribut des Columns-Parameters zurückgibt:
 
 ~~~js
 gantt.config.columns = [
@@ -126,7 +126,7 @@ gantt.config.columns = [
 ];
 ~~~
 
-- Fügen Sie den *formatter* dem Lightbox hinzu, indem Sie ihn der **formatter**-Eigenschaft des **time**-Controls zuweisen:
+- fügen Sie das *formatter*-Objekt der Lightbox-Sektion hinzu, indem Sie die **formatter**-Eigenschaft für die **time**-Steuerung setzen:
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -135,7 +135,7 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-- Wenn das Inline-Editing im Grid aktiviert ist, fügen Sie den *formatter* auch dem durationEditor-Objekt über die **formatter**-Eigenschaft hinzu:
+- falls Inline-Bearbeitung im Grid aktiviert ist, müssen Sie außerdem das *formatter*-Objekt dem durationEditor-Objekt über das **formatter**-Attribut hinzufügen:
 
 ~~~js
 const durationEditor = {
@@ -157,61 +157,58 @@ gantt.config.columns = [
 ~~~
 
 :::note
-Wenn Ihr Gantt bereits Aufgabendauern in Minuten, Stunden oder einer anderen Einheit speichert, können Sie das [Duration Formatter](guides/formatters-ext.md) Modul verwenden, um Dauern im Dezimalformat anzuzeigen.
+Wenn Sie bereits Gantt mit Aufgaben-Dauern in Minuten, Stunden oder einer anderen Einheit verwenden, können Sie auch das [Duration Formatter](guides/formatters-ext.md) Modul verwenden, um die Dauern im Dezimalformat darzustellen.
 :::
 
 
-## Globale Einstellungen {#globalsettings}
+## Globale Einstellungen
 
-### Festlegen der Arbeitszeit {#setworktime}
+### Arbeitszeit festlegen
 
-Standardmäßig sind die Arbeitszeiten wie folgt definiert:
+Die Standard-Arbeitszeit ist folgende:
 
-- Arbeitstage: Montag bis Freitag.
-- Arbeitsstunden: 8:00 - 12:00, 13:00 - 17:00.
+- Arbeitstage: Montag - Freitag.
+- Arbeitszeiten: 8:00 - 12:00, 13:00 - 17:00.
 
-Um die Arbeitszeit anzupassen, verwenden Sie die Methode [setWorkTime](api/method/setworktime.md):
+Um die Standard-Arbeitszeit zu ändern, verwenden Sie die Methode [setWorkTime](api/method/setworktime.md):
 
-**Anpassen der Arbeitszeit**
-
-~~~js
-// Ändert die Arbeitsstunden an Arbeitstagen
+~~~js title="Festlegen einer benutzerdefinierten Arbeitszeit"
+// ändert die Arbeitszeit der Arbeitstage
 gantt.setWorkTime({ hours: ["9:00-18:00"] });
 
-// Macht alle Freitage zu arbeitsfreien Tagen
+// macht jeden Freitag freier Tag
 gantt.setWorkTime({ day: 5, hours: false });
 
-// Setzt die Arbeitsstunden für Freitage und Samstage
+// ändert die Arbeitszeit für Freitage und Samstage
 gantt.setWorkTime({ day: 5, hours: ["8:00-12:00"] });
 gantt.setWorkTime({ day: 6, hours: ["8:00-12:00"] });
 
-// Legt ein bestimmtes Datum als Arbeitstag fest
+// macht ein bestimmtes Datum einen Arbeitstag
 gantt.setWorkTime({ date: new Date(2025, 2, 31) });
 
-// Legt ein bestimmtes Datum als arbeitsfreien Tag fest
+// macht ein bestimmtes Datum einen freien Tag
 gantt.setWorkTime({ date: new Date(2025, 0, 1), hours: false });
 ~~~
 
+**Related sample**: [Custom working days and time](https://docs.dhtmlx.com/gantt/samples/09_worktime/04_custom_workday_duration.html)
 
-[Custom working days and time](https://docs.dhtmlx.com/gantt/samples/09_worktime/04_custom_workday_duration.html)
 
+### Arbeitszeit für Nachtschicht festlegen
 
-### Arbeitszeiten für Nachtschichten festlegen
-
-Beim Konfigurieren des **hours**-Attributs in der [setWorkTime](api/method/setworktime.md)-Methode sollten Zeitintervalle in aufsteigender Reihenfolge angegeben werden. Wenn die Intervalle nicht sortiert sind, können einige ignoriert werden. Zum Beispiel werden Intervalle nach `18:00` in den folgenden falschen Einstellungen ignoriert:
+Die Arbeitszeiteinstellungen für das **hours**-Attribut des Konfigurationsobjekts der [setWorkTime](api/method/setworktime.md)-Methode sollten von der geringeren in die größere Zeitspanne angegeben werden, das heißt in aufsteigender Reihenfolge. Falls die Zeiteinstellungen in absteigender Reihenfolge vorliegen, werden Teile davon ignoriert. Im untenstehenden Beispiel würden die Zeitintervalle nach `18:00` ignoriert:
 
 ~~~js
-// Beispiel für falsche Reihenfolge
+// die untenstehenden Einstellungen sind falsch 
 gantt.setWorkTime({ day: 5, hours: ["16:00-18:00", "14:00-15:00", "08:00-10:00"] });
 gantt.setWorkTime({ day: 5, hours: ["16:00-18:00", "00:00-04:00", "05:00-06:00"] });
 ~~~
 
-Um Arbeitszeiten anzugeben, die Nachtschichten abdecken, teilen Sie die Intervalle auf zwei Tage auf:
+Wenn Sie Arbeitszeit-Einstellungen für die Nachtschicht festlegen müssen, sollten Sie sie wie folgt setzen: 
 
 - innerhalb von 24 Stunden für den ersten Tag
 - innerhalb von 24 Stunden für den folgenden Tag
 
-Beispiel:
+Zum Beispiel:
 
 ~~~js
 gantt.setWorkTime({ day: 5, hours: ["16:00-18:00"] });
@@ -219,17 +216,17 @@ gantt.setWorkTime({ day: 6, hours: ["00:00-04:00", "05:00-06:00"] });
 ~~~
 
 
-### Arbeitszeitregeln konfigurieren
+### Konfiguration der Arbeitszeitregeln
 
-Sie können verschiedene Arbeitszeitregeln für unterschiedliche Zeiträume mit dem **customWeeks**-Attribut der [setWorkTime](api/method/setworktime.md)-Methode definieren. Beispiel: Anpassung der Arbeitszeiten für die Wintermonate:
+Es besteht die Möglichkeit, verschiedene Arbeitszeitregeln für unterschiedliche Zeiträume über das Attribut **customWeeks** der [setWorkTime](api/method/setworktime.md)-Methode zu konfigurieren. Beispielsweise können Sie die Standard-Arbeitszeit für Wintermonate ändern:
 
 ~~~js
-// Ändert die Arbeitsstunden für die Wintermonate
+//ändert die Arbeitszeit für Wintermonate
 gantt.setWorkTime({
     customWeeks: {
         winter: {
             from: new Date(2025, 11, 1), // 1. Dezember 2025
-            to: new Date(2026, 2, 1), // 1. März 2026
+            to: new Date(2026, 2, 1), // 1. März 2026 00:00
             hours: ["9:00-13:00", "14:00-16:00"],
             days: [1, 1, 1, 1, 0, 0, 0]
         }
@@ -237,18 +234,17 @@ gantt.setWorkTime({
 });
 ~~~
 
-Um Arbeitszeiten inklusive Minuten (z. B. "8:15-12:45") statt nur voller Stunden anzugeben, setzen Sie [duration_unit](api/config/duration_unit.md) auf *"minute"*.
+Um die Arbeitszeit nicht nur von Stunde zu Stunde (z.B. "8:00-12:00") zu spezifizieren, sondern auch Minuten einzuschließen (z.B. "8:15-12:45"), setzen Sie die Konfiguration duration_unit auf *"minute"*.
 
-**Festlegen der Arbeitszeit mit Minuten-Genauigkeit**
-~~~js
+~~~js title="Festlegen einer benutzerdefinierten Arbeitszeit bis zu Minuten"
 gantt.config.duration_unit = "minute";
 
-// Setzt Arbeitsstunden mit Minuten-Genauigkeit
+// setzt die Arbeitszeit bis zu Minuten
 gantt.setWorkTime({ hours: ["8:15-12:45"] });
 ~~~
 
 :::note
-Das Arbeitszeitformat, das vor Version 7.0 verwendet wurde, wird weiterhin unterstützt:
+Das Format der Arbeitszeit, das bis Version 7.0 verwendet wurde, funktioniert weiterhin wie zuvor:
 
 ~~~js
 gantt.setWorkTime({ hours: [9, 18] });
@@ -258,18 +254,19 @@ gantt.setWorkTime({ hours: [9, 18] });
 
 ### Überschreiben einer Arbeitszeitregel
 
-Jeder Aufruf der Methode für dasselbe Datum überschreibt die vorherige Arbeitszeitregel. Um eine Regel aufzuheben, rufen Sie [setWorkTime](api/method/setworktime.md) mit einer anderen Konfiguration auf:
+Hinweis: Bei jedem nächsten Aufruf der Methode für dasselbe Datum wird die vorherige Arbeitszeit-Regel überschrieben. Wenn Sie also eine Regel zurücksetzen möchten, rufen Sie die [setWorkTime](api/method/setworktime.md) Methode mit einer anderen Konfiguration auf: 
 
 ~~~js
 gantt.setWorkTime({ hours: ["8:00-12:00"] });
 gantt.setWorkTime({ hours: ["13:00-17:00"] });
-// Die endgültige Arbeitszeit ist 13:00-17:00,
-// nicht eine Kombination beider Einstellungen
+// das Ergebnis der obigen Befehle ist die Arbeitszeit 13:00-17:00
+// und nicht eine Mischung aus beiden Befehlen
 ~~~
 
-### Benutzerdefinierte Arbeitstage/Feiertage festlegen
 
-Beachten Sie, dass Sie keine Arbeitszeiteinstellungen anwenden können, die alle Arbeitstage oder -stunden ausschließen. Zum Beispiel funktioniert Folgendes nicht:
+### Festlegen benutzerdefinierter Arbeitszeiten / arbeitsfreier Tage
+
+Beachten Sie, dass es nicht möglich ist, Arbeitszeiteinstellungen anzuwenden, die keine Arbeitsstunden enthalten. Zum Beispiel wie folgt:
 
 ~~~js
 gantt.setWorkTime({ day: 0, hours: [] });
@@ -281,14 +278,15 @@ gantt.setWorkTime({ day: 5, hours: [] });
 gantt.setWorkTime({ day: 6, hours: [] });
 ~~~
 
-In diesem Fall ignoriert Gantt den Methodenaufruf für mindestens einen Arbeitstag, und dieser Tag wird weiterhin Arbeitsstunden haben.
+Infolgedessen wird Gantt das Anwenden der Methode auf einen der Arbeitstage ignorieren, und es werden dennoch Arbeitsstunden enthalten sein. 
 
-Wenn Sie versuchen, die nächstgelegene Arbeitszeit oder -dauer ab einem bestimmten Datum zu berechnen, wird kein gültiges Datum oder keine gültige Dauer gefunden. Das bedeutet, dass eine solche Kalendereinstellung nicht wirklich funktioniert. Selbst wenn Sie Arbeitszeiten für bestimmte Daten festlegen, verhält es sich nicht korrekt, da Gantt nur Daten innerhalb von Bereichen berechnen kann, die Arbeitstage und -stunden enthalten. Berechnungen außerhalb dieser Bereiche schlagen fehl oder verursachen Fehler.
+Wenn Sie versuchen würden, die nächste Arbeitszeit oder Dauer von einem Datum aus zu berechnen, gäbe es weder solch ein Datum noch eine Dauer.
+Das bedeutet, dass das Festlegen eines solchen Kalenders keinen Sinn ergibt. Selbst wenn Sie bestimmte Daten mit Arbeitsstunden festlegen, würde es nicht korrekt funktionieren, da Gantt Daten nur innerhalb eines Datumsbereichs mit Arbeitsstunden berechnen kann. Versuche, Daten außerhalb des Bereichs zu berechnen, würden das Fehlen des Datums und verschiedene Fehler verursachen. 
 
-Wenn Sie einen Kalender erstellen möchten, in dem einige Monate oder sogar Jahre ausschließlich aus arbeitsfreien Tagen bestehen, sollten Sie die Option *customWeeks* in der **setWorkTime()**-Methode verwenden. Um Arbeitstage und Arbeitszeiten innerhalb des gewünschten Bereichs festzulegen, sollten Sie:
+Wenn Sie einen Kalender erstellen möchten, in dem einige Monate oder sogar Jahre nur arbeitsfreie Tage haben, sollten Sie die *customWeeks*-Einstellung der **setWorkTime()**-Methode verwenden. Um Arbeitstage/-stunden innerhalb des erforderlichen Bereichs festzulegen, müssen Sie:
 
-- den Bereich in Perioden ohne Arbeitsstunden unterteilen
-- Arbeitsstunden an den erforderlichen Daten festlegen
+- ihn in Abschnitte ohne Arbeitsstunden unterteilen
+- Arbeitsstunden für die erforderlichen Daten festlegen
 
 ~~~js
 gantt.setWorkTime({ date: new Date(2025, 3, 10), hours: ["8:00-12:00"] })
@@ -312,68 +310,72 @@ gantt.setWorkTime({
 });
 ~~~
 
-**Related example:** [Using `customWeeks` to make all days in the calendar days-off](https://snippet.dhtmlx.com/i0o74zg7)
+**Related sample** [Using `customWeeks` to make all days in the calendar days-off](https://snippet.dhtmlx.com/i0o74zg7)
 
 
-### Arbeitszeit entfernen {#unsetworktime}
+### Arbeitszeit zurücksetzen
 
-Sie können eine Arbeitszeiteinstellung mit der Methode [unsetWorkTime](api/method/unsetworktime.md) entfernen:
+Sie können die Arbeitszeit mit der [unsetWorkTime](api/method/unsetworktime.md)-Methode zurücksetzen:
 
 ~~~js
-// ändert die Arbeitszeit an Arbeitstagen von ["8:00-17:00"] auf ["8:00-12:00"]
+// Änderung der Arbeitszeit der Arbeitstage von ["8:00-17:00"] zu ["8:00-12:00"]
 gantt.setWorkTime({ hours: ["8:00-12:00"] });
-// entfernt die Arbeitszeiteinstellung
+// setzt die Arbeitszeit zurück
 gantt.unsetWorkTime({ hours: ["8:00-12:00"] });
 ~~~
 
 
-### Arbeitszeit prüfen {#checkworktime}
+### Arbeitszeit prüfen
 
-Um herauszufinden, ob ein bestimmtes Datum in die Arbeitszeit fällt, verwenden Sie die Methode [isWorkTime](api/method/isworktime.md):
+Um zu prüfen, ob ein angegebenes Datum Arbeitszeit ist, verwenden Sie die [isWorkTime](api/method/isworktime.md)-Methode:
 
 ~~~js
-// markiert den 1. Januar 2025 als arbeitsfreien Tag
+// macht den 1. Januar 2025 zu einem freien Tag
 gantt.setWorkTime({ date: new Date(2025, 0, 1), hours: false });
 gantt.isWorkTime(new Date(2025, 0, 1)); // -> false  /*!*/
 
-// markiert den 15. März 2025 als Arbeitstag von 8:00 bis 17:00 Uhr
+// macht den 15. März 2025 zu einem Arbeitstag von 9:00 bis 18:00
 gantt.setWorkTime({ date: new Date(2025, 2, 15), hours: ["8:00-17:00"] });
 gantt.isWorkTime(new Date(2025, 2, 15, 10, 0), "hour"); // -> true  /*!*/
 gantt.isWorkTime(new Date(2025, 2, 15, 8, 0), "hour"); // -> false  /*!*/
 ~~~
 
 
-[Correct task position on drag](https://docs.dhtmlx.com/gantt/samples/09_worktime/05_adjust_to_worktime.html)
+**Related sample**: [Correct task position on drag](https://docs.dhtmlx.com/gantt/samples/09_worktime/05_adjust_to_worktime.html)
 
 
-### Arbeitszeit abrufen {#getworktime}
+### Arbeitszeit abrufen
 
-Um die Arbeitsstunden für ein bestimmtes Datum zu erhalten, verwenden Sie die Methode [getWorkHours](api/method/getworkhours.md):
+Um die Arbeitsstunden des angegebenen Datums zu erhalten, verwenden Sie die Methode [getWorkHours](api/method/getworkhours.md):
 
 ~~~js
 gantt.getWorkHours(new Date(2025, 3, 30)); // -> ["8:00-17:00"]
 ~~~
 
-Um den nächstgelegenen Arbeitstag zu einem bestimmten Datum zu finden, verwenden Sie die Methode [getClosestWorkTime](api/method/getclosestworktime.md):
+Um den nächstgelegenen Arbeitstag zum angegebenen Datum zu erhalten, verwenden Sie die Methode [getClosestWorkTime](api/method/getclosestworktime.md):
 
 ~~~js
 gantt.getClosestWorkTime(new Date(2025, 3, 30));
 ~~~
 
 
-### Wiederholung bestimmter Arbeitszeiten {#repeat_worktime}
+### Wiederholung der spezifischen Arbeitszeit
 
-Manchmal ist es notwendig, Arbeitszeiten festzulegen, die sich nur an bestimmten Tagen wiederholen (z. B. der letzte Freitag eines Monats als kurzer Arbeitstag oder der 25. Dezember als Feiertag) über die gesamte Projektdauer hinweg.
+Sie müssen häufig eine Arbeitszeit festlegen, die sich nur an bestimmten Tagen wiederholt (z. B. der letzte Freitag eines Monats ist ein kurzer Tag, der 25. Dezember ist ein Feiertag), aber über die gesamte Projektdauer hinweg.
 
-Derzeit bietet dhtmlxGantt keine integrierten Konfigurationen für diese Art von wiederkehrender Arbeitszeit. Es werden nur folgende Einstellungen unterstützt:
+Die aktuelle Version von dhtmlxGantt bietet keine Konfigurationen zur Festlegung dieses Typs von Arbeitszeit.
 
-- Arbeitszeit nach Wochentag festlegen (Montag, Dienstag, usw.)
-- Arbeitszeit für bestimmte Daten festlegen (z. B. 4. Juni 2025)
-- Arbeitszeitregeln für Datumsbereiche überschreiben (z. B. 1. Juni bis 1. September 2025)
+Die Bibliothek erlaubt Ihnen lediglich:
 
-Wenn Sie also Ausnahmen von den Arbeitszeitregeln haben, müssen Sie die Daten, die Ihren Kriterien entsprechen, manuell ermitteln und die Arbeitszeiteinstellungen für jedes Datum einzeln anwenden.
+- die Arbeitszeit für einen Wochentag festzulegen (Montag, Dienstag, ...)
+- die Arbeitszeit für ein bestimmtes Datum festzulegen (4. Juni 2025)
+- Arbeitszeitregeln für einen Datumsbereich zu überschreiben (1. Juni 2025 – 1. September 2025)
 
-Wenn Ihr Projekt beispielsweise 5 Jahre umfasst und Sie den 1. Januar als arbeitsfreien Tag festlegen möchten und der letzte Freitag jedes Monats ein kurzer Tag sein soll, können Sie die arbeitsfreien Tage am 1. Januar wie folgt fest codieren:
+Wenn Sie also Ausnahmen zu den Arbeitszeitregeln haben, müssen Sie manuell die Daten finden, die Ihrer Regel entsprechen, und die Arbeitszeiteinstellungen auf jedes dieser Daten separat anwenden.
+
+Beispielsweise haben Sie ein Projekt, das 5 Jahre dauert, und Sie möchten den 1. Januar als freien Tag festlegen und den letzten Freitag jedes Monats als kurzen Tag. 
+
+Um den 1. Januar als freien Tag festzulegen, können Sie einfach Werte wie folgt hartkodieren:
 
 ~~~js
 gantt.setWorkTime({ hours: false, date: new Date(2025, 0, 1) });
@@ -383,7 +385,7 @@ gantt.setWorkTime({ hours: false, date: new Date(2028, 0, 1) });
 gantt.setWorkTime({ hours: false, date: new Date(2029, 0, 1) });
 ~~~
 
-Hier ein Beispiel, wie Sie den letzten Freitag jedes Monats über das gesamte Projekt hinweg als kurzen Tag markieren können:
+Und hier ist ein Code-Beispiel, wie man den letzten Freitag eines Monats als kurzen Tag während des gesamten Projekts festlegt:
 
 ~~~js
 const lastFridayOfMonth = (date) => {
@@ -409,61 +411,162 @@ while (currentDate <= projectEnd) {
 }
 ~~~
 
+**Related sample** [Using `customWeeks` to make all days in the calendar days-off](https://snippet.dhtmlx.com/i0o74zg7)
 
-### Freie Zeiten farblich hervorheben {#color_dayoff_times}
 
-Um arbeitsfreie Zeiten im Diagrammbereich hervorzuheben, verwenden Sie das Template [timeline_cell_class](api/template/timeline_cell_class.md):
+### Arbeitszeit entfernen
+
+Sie können eine Arbeitszeit durch die Verwendung der [unsetWorkTime](api/method/unsetworktime.md)-Methode entfernen:
+
+~~~js
+// ändert die Arbeitszeit der Arbeitstage von ["8:00-17:00"] zu ["8:00-12:00"]
+gantt.setWorkTime({ hours: ["8:00-12:00"] });
+// setzt die Arbeitszeit zurück
+gantt.unsetWorkTime({ hours: ["8:00-12:00"] });
+~~~
+
+
+### Arbeitszeit prüfen
+
+Um zu prüfen, ob das angegebene Datum Arbeitszeit ist, verwenden Sie die [isWorkTime](api/method/isworktime.md)-Methode:
+
+~~~js
+// macht der 1. Januar 2025 zu einem freien Tag
+gantt.setWorkTime({ date: new Date(2025, 0, 1), hours: false });
+gantt.isWorkTime(new Date(2025, 0, 1)); // -> false  /*!*/
+
+// macht der 15. März 2025 zu einem Arbeitstag von 9:00 bis 18:00
+gantt.setWorkTime({ date: new Date(2025, 2, 15), hours: ["8:00-17:00"] });
+gantt.isWorkTime(new Date(2025, 2, 15, 10, 0), "hour"); // -> true  /*!*/
+gantt.isWorkTime(new Date(2025, 2, 15, 8, 0), "hour"); // -> false  /*!*/
+~~~
+
+
+**Related sample**: [Correct task position on drag](https://docs.dhtmlx.com/gantt/samples/09_worktime/05_adjust_to_worktime.html)
+
+
+### Die Arbeitszeit abrufen
+
+Um die Arbeitsstunden des angegebenen Datums abzurufen, verwenden Sie die Methode [getWorkHours](api/method/getworkhours.md):
+
+~~~js
+gantt.getWorkHours(new Date(2025, 3, 30)); // -> ["8:00-17:00"]
+~~~
+
+Um den nächstgelegenen Arbeitstag zum angegebenen Datum zu erhalten, verwenden Sie die Methode [getClosestWorkTime](api/method/getclosestworktime.md):
+
+~~~js
+gantt.getClosestWorkTime(new Date(2025, 3, 30));
+~~~
+
+
+### Wiederholung der spezifischen Arbeitszeit
+
+Sie müssen oft eine Arbeitszeit festlegen, die sich nur an bestimmten Tagen wiederholt (z. B. der letzte Freitag eines Monats ist ein kurzer Tag, der 25. Dezember ist ein Feiertag), aber über die gesamte Projektdauer hinweg.
+
+Die aktuelle Version von dhtmlxGantt bietet keine Configs zur Festlegung dieser Art von Arbeitszeit. Die Bibliothek erlaubt Ihnen lediglich:
+
+- die Arbeitszeit für einen Wochentag festzulegen (Montag, Dienstag, ...)
+- die Arbeitszeit für ein bestimmtes Datum festzulegen (4. Juni 2025)
+- Arbeitszeitregeln für einen Datumsbereich zu überschreiben (1. Juni 2025 - 1. September 2025)
+
+Wenn Sie Ausnahmen zu den Arbeitszeitregeln haben, müssen Sie manuell die Daten finden, die Ihrer Regel entsprechen, und die Arbeitszeiteinstellungen auf jedes dieser Daten separat anwenden.
+
+Beispielsweise haben Sie ein Projekt, das 5 Jahre dauert, und Sie möchten den 1. Januar als freien Tag festlegen und den letzten Freitag jedes Monats als kurzen Tag. 
+
+Um den 1. Januar als freien Tag festzulegen, können Sie einfach Werte hartkodieren, wie in:
+
+~~~js
+gantt.setWorkTime({ hours: false, date: new Date(2025, 0, 1) });
+gantt.setWorkTime({ hours: false, date: new Date(2026, 0, 1) });
+gantt.setWorkTime({ hours: false, date: new Date(2027, 0, 1) });
+gantt.setWorkTime({ hours: false, date: new Date(2028, 0, 1) });
+gantt.setWorkTime({ hours: false, date: new Date(2029, 0, 1) });
+~~~
+
+Und hier ist ein Code-Beispiel, wie man den letzten Freitag eines Monats als kurzen Tag während des gesamten Projekts festlegt:
+
+~~~js
+const lastFridayOfMonth = (date) => {
+    let lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+    if (lastDay.getDay() < 5) {
+        lastDay.setDate(lastDay.getDate() - 7);
+    }
+
+    lastDay.setDate(lastDay.getDate() - (lastDay.getDay() - 5));
+
+    return lastDay;
+};
+
+const projectStart = new Date(2025, 5, 1);
+const projectEnd = new Date(2026, 5, 1);
+let currentDate = new Date(projectStart);
+
+while (currentDate <= projectEnd) {
+    const lastFriday = lastFridayOfMonth(currentDate);
+    gantt.setWorkTime({ hours: ["8:00-12:00", "13:00-15:00"], date: lastFriday });
+    currentDate = gantt.date.add(currentDate, 1, "month");
+}
+~~~
+
+**Related sample** [Using `customWeeks` to make all days in the calendar days-off](https://snippet.dhtmlx.com/i0o74zg7)
+
+### Die Nicht-Arbeitszeiten einfärben
+
+Um die Nicht-Arbeitszeiten im Diagrammbereich zu färben, verwenden Sie die [timeline_cell_class](api/template/timeline_cell_class.md) Vorlage:
 
 ~~~js
 gantt.templates.timeline_cell_class = (task, date) => 
     !gantt.isWorkTime({ task, date }) ? "week_end" : "";
 ~~~
 
+**Verwandtes Beispiel**: [Custom working days and time](https://docs.dhtmlx.com/gantt/samples/09_worktime/04_custom_workday_duration.html)
 
-[Custom working days and time](https://docs.dhtmlx.com/gantt/samples/09_worktime/04_custom_workday_duration.html)
-
-
-Weitere Details finden Sie im Artikel [Highlighting Time Slots](guides/highlighting-time-slots.md).
+Weitere Informationen finden Sie im Artikel [Highlighting Time Slots](guides/highlighting-time-slots.md).
 
 :::note
-Wenn Sie arbeitsfreie Zeiten ausblenden möchten, sehen Sie sich die Methode in [Hiding Time Units in the Scale](guides/custom-scale.md) an.
+Um die Nicht-Arbeitszeit auszublenden, verwenden Sie die im Artikel beschriebenen Techniken - [Hiding Time Units in the Scale](guides/custom-scale.md).
 :::
+
 
 ## Mehrere Arbeitszeitkalender {#multipleworktimecalendars}
 
-Neben den globalen Arbeitszeiteinstellungen unterstützt Gantt die Erstellung mehrerer Arbeitszeitkalender. Diese können bestimmten Aufgaben oder Gruppen von Aufgaben zugewiesen werden.
+Zusätzlich zu den globalen Arbeitszeiteinstellungen ermöglicht Gantt das Erstellen mehrerer Arbeitszeitkalender. Sie können sie einzelnen Aufgaben oder Aufgaben-Gruppen zuweisen.
 
-### Einen Arbeitszeitkalender erstellen {#createcalendar}
 
-Sie können eine neue Kalenderinstanz mit der Methode [createCalendar](api/method/createcalendar.md) erstellen.
+### Einen Arbeitskalender erstellen
 
-Es gibt zwei Möglichkeiten, diese Methode zu verwenden:
+Eine neue Kalenderinstanz kann mit der [createCalendar](api/method/createcalendar.md) Methode erstellt werden.
 
-- Wenn Sie sie ohne Parameter aufrufen, wird ein Vollzeitkalender mit 24 Arbeitsstunden pro Tag, 7 Tage die Woche erstellt:
+Diese Methode geht von zwei möglichen Optionen aus:
+
+- Wird sie ohne Parameter aufgerufen, erstellt sie einen Vollzeit-Kalender: 24 Arbeitsstunden pro Tag, 7 Tage pro Woche 
 
 ~~~js
 const calendar = gantt.createCalendar();
 ~~~
 
-- Wenn Sie einen neuen Kalender auf Basis eines bestehenden, aber mit anderen Optionen erstellen möchten, können Sie den bestehenden Kalender als Parameter an die Methode [createCalendar](api/method/createcalendar.md) übergeben:
+- Wenn Sie bereits einen Kalender haben und ihn wiederverwenden möchten, um einen neuen Kalender mit anderen Optionen zu erstellen, können Sie Ihren Kalender als Parameter an die [createCalendar](api/method/createcalendar.md) Methode übergeben
 
 ~~~js
 const newCalendar = gantt.createCalendar(calendar);
 ~~~
 
-Anfangs ist das Kalenderobjekt von Gantt getrennt und hat keine Auswirkung, bis Sie es zu Gantt hinzufügen.
+Das Kalenderobjekt ist zunächst von Gantt getrennt und wirkt erst, wenn Sie es in Gantt hinzufügen.
 
-### Einen Arbeitszeitkalender zu Gantt hinzufügen {#addcalendar}
 
-Nachdem Sie einen Kalender erstellt haben, müssen Sie ihn mit der Methode [addCalendar](api/method/addcalendar.md) zu Gantt hinzufügen. Es gibt zwei Möglichkeiten:
+### Einen Arbeitskalender in Gantt hinzufügen
 
-- Eine bestehende Kalenderkonfiguration hinzufügen:
+Nachdem Sie einen Kalender erstellt haben, müssen Sie ihn mit der Hilfe der [addCalendar](api/method/addcalendar.md) Methode in Gantt hinzufügen. Wieder gibt es zwei Möglichkeiten:
+
+- Eine vorhandene Kalenderkonfiguration hinzufügen 
 
 ~~~js
 const calendarId = gantt.addCalendar(calendar);
 ~~~
 
-- Oder eine neue Kalenderkonfiguration festlegen, einschließlich der Kalender-ID und des **worktime**-Objekts mit Arbeitstagen und -stunden:
+- Eine neue Kalend-Konfiguration festlegen, die die Kalender-ID und das **worktime**-Objekt mit Arbeits- und Öffnungszeiten enthält:
 
 ~~~js
 const calendarId = gantt.addCalendar({
@@ -476,12 +579,13 @@ const calendarId = gantt.addCalendar({
 ~~~
 
 :::note
-Diese Option kann auch zum Erstellen eines Kalenders verwendet werden.
+Sie können diese Option auch zum Erstellen eines Kalenders verwenden.
 :::
 
-### Unterschiedliche Arbeitszeiten für verschiedene Zeiträume festlegen {#rules_for_periods}
 
-Ab Version 7.1 ist es möglich, unterschiedliche Arbeitszeitregeln für verschiedene Zeiträume innerhalb eines einzelnen Kalenders zu definieren. Sie können zum Beispiel einen separaten Zeitplan für die Wintermonate anwenden, wenn Sie einen Kalender zu Gantt hinzufügen. Verwenden Sie dazu die **customWeeks**-Eigenschaft der [addCalendar](api/method/addcalendar.md)-Methode:
+### Verschiedene Arbeitszeiten für verschiedene Zeiträume {#rules_for_periods}
+
+Ab Version 7.1 besteht die Möglichkeit, innerhalb eines Kalenders unterschiedliche Arbeitszeitregeln für verschiedene Zeiträume festzulegen. Beispielsweise können Sie beim Hinzufügen eines Kalenders zu Gantt einen separaten Zeitplan für die Wintermonate anwenden. Dafür verwenden Sie die **customWeeks**-Eigenschaft der [addCalendar](api/method/addcalendar.md) Methode:
 
 ~~~js
 const calendarId = gantt.addCalendar({
@@ -491,8 +595,8 @@ const calendarId = gantt.addCalendar({
         days: [1, 1, 1, 1, 1, 1, 1],
         customWeeks: {
             winter: {
-                from: new Date(2025, 11, 1), // 1. Dezember 2025
-                to: new Date(2026, 2, 1), // 1. März 2026, 00:00 Uhr
+                from: new Date(2025, 11, 1), // December 1st, 2025
+                to: new Date(2026, 2, 1), // March 1st, 00:00, 2026
                 hours: ["9:00-13:00", "14:00-16:00"],
                 days: [1, 1, 1, 1, 0, 0, 0]
             }
@@ -502,12 +606,12 @@ const calendarId = gantt.addCalendar({
 ~~~
 
 
-[Different worktimes for different time periods](https://docs.dhtmlx.com/gantt/samples/09_worktime/12_calendar_ranges.html)
+**Verwandtes Beispiel**: [Different worktimes for different time periods](https://docs.dhtmlx.com/gantt/samples/09_worktime/12_calendar_ranges.html)
 
 
-### Arbeitszeiten ändern {#change_worktime}
+### Verschiedene Arbeitszeiten festlegen
 
-Sie können die Arbeitszeiten für bestimmte Tage in einem Kalender mit der [setWorkTime()](api/method/setworktime.md)-Methode aktualisieren:
+Sie können die Arbeitszeit für einzelne Tage des entsprechenden Kalenders über die [setWorkTime()](api/method/setworktime.md) Methode ändern:
 
 ~~~js
 const calendar = gantt.getCalendar("custom");
@@ -515,31 +619,34 @@ calendar.setWorkTime({ day: 6, hours: ["8:00-12:00"] });
 calendar.setWorkTime({ date: new Date(2025, 0, 1), hours: ["8:00-12:00"] });
 ~~~
 
-### Kalender abrufen {#multipleworktimecalendars}
 
-Es gibt verschiedene Möglichkeiten, Arbeitszeitkalenderobjekte für die weitere Verwendung abzurufen.
+### Calendars abrufen
 
-#### Den globalen Gantt-Kalender abrufen {#getglobalcalendar}
+Sie können Objekte von Arbeitskalendern abrufen, um später damit zu arbeiten. Es gibt mehrere verfügbare Optionen, die unten beschrieben sind.
 
-Um das globale Gantt-Kalenderobjekt zu erhalten, verwenden Sie die Methode [getCalendar](api/method/getcalendar.md):
+
+#### Globalen Gantt-Kalender abrufen
+
+Um das Objekt des globalen Gantt-Kalenders mit der [getCalendar](api/method/getcalendar.md) Methode zu erhalten:
 
 ~~~js
 const calendar = gantt.getCalendar(id);
 ~~~
 
-Das *calendar*-Objekt ist eine Instanz des [calendar](api/other/calendar.md)-Interfaces.
+Das *calendar*-Objekt ist eine Instanz des [calendar](api/other/calendar.md) Interfaces.
 
-Der Standardkalender (globale Einstellungen) kann mit der vordefinierten **"global"**-ID abgerufen werden:
+Die Standardkalenderinstanz (globale Einstellungen) kann über die vordefinierte **"global"**-ID abgerufen werden:
 
 ~~~js
 const globalSettings = gantt.getCalendar("global");
 ~~~
 
-Dieser Kalender wird von den [Arbeitszeitmethoden](guides/working-time.md#globalsettings) verwendet, wenn kein anderer Kalender angegeben ist. Er wird Aufgaben standardmäßig zugewiesen.
+Dieser Kalender wird von den [work time methods](guides/working-time.md#global-settings) verwendet, wenn kein anderer Kalender angegeben ist. Er wird standardmäßig Aufgaben zugewiesen.
 
-#### Den aktuellen Kalender einer Aufgabe abrufen {#gettaskcalendar}
 
-Um den Arbeitszeitkalender zu erhalten, der einer bestimmten Aufgabe zugewiesen ist, verwenden Sie die Methode [getTaskCalendar](api/method/gettaskcalendar.md) und übergeben das Aufgabenobjekt:
+#### Den aktuellen Kalender einer Aufgabe abrufen
+
+Um das Objekt eines Arbeitskalenders zu erhalten, der einer bestimmten Aufgabe zugewiesen ist, verwenden Sie die [getTaskCalendar](api/method/gettaskcalendar.md) Methode. Sie müssen das Aufgabenobjekt an die Methode übergeben:
 
 ~~~js
 const task = gantt.getTask(taskId);
@@ -551,16 +658,16 @@ if (calendar.isWorkTime(date)) {
 ~~~
 
 
-[Task level calendars](https://docs.dhtmlx.com/gantt/samples/09_worktime/06_task_calendars.html)
+**Verwandtes Beispiel**: [Task level calendars](https://docs.dhtmlx.com/gantt/samples/09_worktime/06_task_calendars.html)
 
 
-Wenn die Arbeitszeit im Gantt-Config deaktiviert ist, gibt diese Methode einen 24/7-Arbeitszeitkalender zurück.
+Wenn die Arbeitszeit in der Gantt-Konfiguration deaktiviert ist, wird die Methode einen 24/7-Arbeitskalender zurückgeben.
 
-### Globale Methoden zum Zugriff auf Kalender verwenden {#globalmethodsforcalendars}
 
-Die [Arbeitszeitmethoden](guides/working-time.md#globalsettings) des Gantt-Objekts ermöglichen die Berechnung der Zeitdauer einer Aufgabe, ohne dass Sie manuell auf deren Kalender zugreifen müssen.
+### Globale Methoden zum Zugriff auf Kalender verwenden
 
-Diese Methoden akzeptieren ein Objektargument, in dem das zugehörige "task"-Objekt als eine der Eigenschaften enthalten ist.
+Die [work time methods](guides/working-time.md#global-settings) des Gantt-Objekts können verwendet werden, um die Zeitdauer einer bestimmten Aufgabe zu berechnen, ohne ihren Kalender manuell zu verwenden. In diesem Fall nehmen die Methoden ein Objekt-Argument, bei dem das zugehörige "task"-Objekt als eine der Eigenschaften übergeben wird.
+
 
 - [**gantt.isWorkTime**](api/method/isworktime.md)
 
@@ -570,7 +677,7 @@ if (gantt.isWorkTime({ date: date, task: task })) {
 }
 ~~~
 
-Dies entspricht:
+Was gleichbedeutend ist mit:
 
 ~~~js
 const calendar = gantt.getTaskCalendar(task);
@@ -606,19 +713,22 @@ const duration = gantt.calculateDuration(task);
 const closestTime = gantt.getClosestWorkTime({ date: date, task: task });
 ~~~
 
-### Alle Gantt-Kalender abrufen {#getallcalendars}
 
-Um alle zu Gantt hinzugefügten Kalender (einschließlich des globalen und der einzelnen Aufgaben zugewiesenen) abzurufen, verwenden Sie die Methode [getCalendars](api/method/getcalendars.md):
+### Alle Gantt-Kalender abrufen
+
+Um alle in Gantt hinzugefügten Kalender abzurufen (sowohl der globale als auch die, die einzelnen Aufgaben zugewiesen sind), verwenden Sie die Methode [getCalendars](api/method/getcalendars.md):
 
 ~~~js
 const calendars = gantt.getCalendars();
 ~~~
 
-Diese Methode gibt ein Array von [Calendar interface](api/other/calendar.md)-Objekten zurück.
+Die Methode gibt ein Array von [Calendar interface](api/other/calendar.md) Objekten zurück.
 
-### Kalender löschen {#deletecalendar}
 
-Wenn ein Kalender nicht mehr benötigt wird, kann er mit der Methode [deleteCalendar](api/method/deletecalendar.md) durch Angabe seiner ID entfernt werden:
+### Kalender löschen
+
+Falls Sie einen Kalender nicht mehr benötigen, können Sie ihn einfach über die Methode [deleteCalendar](api/method/deletecalendar.md) entfernen.
+Sie müssen der Methode die Kalender-ID übergeben:
 
 ~~~js
 // Kalender hinzufügen
@@ -634,9 +744,10 @@ gantt.addCalendar({
 gantt.deleteCalendar("custom");
 ~~~
 
-## Kalender einem Vorgang zuweisen
 
-Um einem Vorgang einen Arbeitskalender zuzuweisen, fügen Sie zunächst den Kalender mit der id und dem **worktime**-Objekt hinzu, das Arbeitstage und Arbeitszeiten angibt:
+## Kalender einem Task zuweisen {#assigningcalendartotask}
+
+Um einem Task einen Arbeitskalender zuzuweisen, müssen Sie die Kalender-ID und das **worktime**-Objekt mit Arbeits- und Öffnungszeiten festlegen:
 
 ~~~js
 gantt.addCalendar({
@@ -648,7 +759,7 @@ gantt.addCalendar({
 });
 ~~~
 
-Setzen Sie anschließend die id dieses Kalenders als Wert des **"calendar_id"**-Attributs im Vorgangsobjekt:
+und anschließend die Kalender-ID als Wert des Attributs **"calendar_id"** im Task-Objekt festlegen:
 
 ~~~js
 {
@@ -657,33 +768,33 @@ Setzen Sie anschließend die id dieses Kalenders als Wert des **"calendar_id"**-
 }
 ~~~
 
-Sie können den Namen der Vorgangseigenschaft, die für die Verknüpfung mit einem Kalender verwendet wird, über die Konfigurationsoption [calendar_property](api/config/calendar_property.md) ändern:
+Sie können den Namen der dem Task zuweisenden Kalenderbindung-Eigenschaft über die [calendar_property](api/config/calendar_property.md) Konfigurationsoption ändern:
 
 ~~~js
 gantt.config.calendar_property = "property_name";
 ~~~
 
 
-[Task level calendars](https://docs.dhtmlx.com/gantt/samples/09_worktime/06_task_calendars.html)
+**Verwandtes Beispiel**: [Task level calendars](https://docs.dhtmlx.com/gantt/samples/09_worktime/06_task_calendars.html)
 
 
-## Kalender einer Ressource zuweisen
+## Kalender einer Ressource zuweisen {#assigningcalendartoresource}
 
 :::info
 Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
 
-Es ist ebenfalls möglich, einem Vorgang, der bestimmte Ressourcen wie Personen oder Geräte benötigt, einen spezifischen Arbeitskalender zuzuweisen.
+Es ist auch möglich, bestimmten Aufgaben, die spezielle Ressourcen (Personen, Geräte usw.) benötigen, einen Arbeitskalender zuzuweisen. 
 
-Sie können beispielsweise individuelle Kalender für Vorgänge basierend auf dem zugewiesenen Benutzer festlegen. Der Ablauf umfasst:
+Beispielsweise können Sie einzelnen Aufgaben je nach dem Benutzer, dem eine Aufgabe zugewiesen wird, separate Kalender zuweisen. Die Reihenfolge Ihrer Schritte wird wie folgt aussehen:
 
-- Definieren der Vorgangseigenschaft, die die Ressourcen-ID enthält, mithilfe des Konfigurationsattributs [resource_property](api/config/resource_property.md). Im folgenden Beispiel wird die Eigenschaft **user** die Benutzer-IDs speichern:
+- Definieren Sie die Eigenschaft eines Aufgabenobjekts, die eine Ressourcen-ID speichert, über das [resource_property]-Konfigurationsattribut. Im folgenden Beispiel speichert die Eigenschaft mit dem Namen **user** die IDs der Benutzer:
 
 ~~~js
 gantt.config.resource_property = "user";
 ~~~
 
-- Hinzufügen von Kalendern für jeden Benutzer mittels der Konfigurationsoption [resource_calendars](api/config/resource_calendars.md) und Gruppierung in einem Objekt:
+- Verwenden Sie die Konfigurationsoption [resource_calendars], um den gewünschten Kalender für jeden Benutzer hinzuzufügen und Kalender zu einem einzigen Objekt zusammenzufassen.
 
 ~~~js
 gantt.config.resource_calendars = {
@@ -705,9 +816,9 @@ gantt.config.resource_calendars = {
 };
 ~~~
 
-Dieses Objekt ordnet Ressourcen-IDs als Schlüssel den Kalender-IDs zu, die von der Methode [addCalendar](api/method/addcalendar.md) zurückgegeben werden.
+Das Objekt enthält eine Menge von *Key:Value*-Paaren, wobei der Schlüssel die ID der Ressource ist und der Wert die IDs der durch die [addCalendar]-Methode zurückgegebenen Kalender entspricht.
 
-- Angabe des **user**-Attributs in den Vorgangskonfigurationsobjekten. Der Wert sollte dem Schlüssel des entsprechenden Kalenders in der **resource_calendars**-Konfiguration entsprechen:
+- Geben Sie das **user**-Attribut in Task-Konfigurationsobjekten an. Als Wert dieses Attributs verwenden Sie den Schlüssel des notwendigen Kalenders aus dem Objekt, das in der Konfigurationsoption **resource_calendars** definiert ist:
 
 ~~~js
 { id: 1, user: 1, text: "Project #2", start_date: "01-04-2025", duration: 5 },
@@ -723,27 +834,28 @@ Dieses Objekt ordnet Ressourcen-IDs als Schlüssel den Kalender-IDs zu, die von 
 
 
 :::note
-Wenn ein Vorgang sowohl einen benutzerdefinierten als auch einen Ressourcenkalender hat, hat der benutzerdefinierte Kalender Vorrang und überschreibt die Einstellungen des Ressourcenkalenders.
+Beachten Sie, dass, wenn eine Aufgabe sowohl einen benutzerdefinierten Kalender als auch einen Ressourcen-Kalender hat, der benutzerdefinierte Kalender Vorrang hat und die Einstellungen des Ressourcen-Kalenders überschreibt.
 :::
+
 
 ### Mehrere Kalender zusammenführen {#mergingcalendars}
 
-Seit Version 7.0 ist es möglich, mehrere Kalender zu einem zusammenzuführen. 
+Seit v7.0 ist es möglich, mehrere Kalender zu einem Kalender zusammenzuführen. 
 
 
-Wenn beispielsweise zwei Ressourcen mit unterschiedlichen Arbeitskalendern demselben Vorgang zugewiesen sind - einer arbeitet von 9:00 bis 15:00 Uhr, der andere von 12:00 bis 17:00 Uhr - ergibt das Zusammenführen dieser Kalender einen kombinierten Kalender mit Arbeitszeiten von 12:00 bis 15:00 Uhr.
+Beispielsweise möchten Sie zwei oder mehr Ressourcen mit unterschiedlichen Arbeitskalendern derselben Aufgabe zuweisen. Die Arbeitszeiten der ersten reichen von 9:00 bis 15:00, während die Arbeitszeit eines anderen von 12:00 bis 17:00 geht. Durch deren Zusammenführung erhalten Sie einen Kalender mit Arbeitszeiten von 12:00 bis 15:00.
 
-Das Aktivieren der Konfiguration [dynamic_resource_calendars](api/config/dynamic_resource_calendars.md) auf *true* aktiviert diese Funktion automatisch:
+Wenn Sie die Konfiguration [dynamic_resource_calendars](api/config/dynamic_resource_calendars.md) auf true setzen, wird diese Funktion automatisch aktiviert: 
 
 ~~~js
 gantt.config.dynamic_resource_calendars = true;
 ~~~
 
 
-[Merge work Calendars of different resources](https://docs.dhtmlx.com/gantt/samples/09_worktime/10_merge_calendars.html)
+**Verwandtes Beispiel**: [Merge work Calendars of different resources](https://docs.dhtmlx.com/gantt/samples/09_worktime/10_merge_calendars.html)
 
 
-Sie können Kalender auch manuell mit der Methode [mergeCalendars](api/method/mergecalendars.md) zusammenführen:
+Sie können Kalender auch manuell zusammenführen mit der Hilfe der [mergeCalendars](api/method/mergecalendars.md) Methode:
 
 ~~~js
 const johnCalendarId = gantt.addCalendar({
@@ -766,43 +878,45 @@ const joinedCalendar = gantt.mergeCalendars(
 );
 ~~~
 
-Weitere Informationen dazu, wie Arbeitszeiten zusammengeführt werden, finden Sie im Artikel [mergeCalendars()](api/method/mergecalendars.md).
+Lernen Sie die Logik, wie das Zusammenführen von Arbeitszeiten im [mergeCalendars()](api/method/mergecalendars.md) Artikel durchgeführt wird.
 
-## Kalender einem Projekt zuweisen
+
+## Kalender dem Projekt zuweisen
 
 :::info
 Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
 
-Sie können einen Arbeitskalender nicht nur einzelnen Vorgängen oder Ressourcen, sondern auch Projekten zuweisen, sodass Vorgänge den Kalender ihres übergeordneten Projekts erben.
+Es gibt die Möglichkeit, einen Arbeitskalender nicht nur für eine bestimmte Aufgabe oder Ressource festzulegen, sondern für ein ganzes Projekt, sodass Aufgaben denselben Kalender verwenden können, dem ihr übergeordnetes Projekt zugewiesen ist.
 
-Die Vererbungslogik funktioniert wie folgt:
+Die Logik der Vererbung eines Kalenders durch eine Aufgabe ist folgende:
 
-- Wenn einem Teilprojekt mit Vorgängen ein Kalender zugewiesen ist, erben alle seine Vorgänge diesen Kalender.
-- Wenn ein Vorgang einen eigenen Kalender zugewiesen hat, verwendet er diesen anstelle des Kalenders des übergeordneten Projekts.
+- Wenn einem Unterprojekt mit Aufgaben ein Kalender zugewiesen wird, verwenden alle seine Aufgaben diesen Kalender. 
+- Wenn einer Aufgabe ein persönlicher Kalender zugewiesen ist, verwendet sie ihren Kalender und nicht den Kalender ihres übergeordneten Projekts.
 
-Um diese Funktion zu aktivieren, setzen Sie die Konfigurationsoption [inherit_calendar](api/config/inherit_calendar.md) auf *true*. Standardmäßig ist sie deaktiviert.
+Um diese Funktionalität zu aktivieren, setzen Sie die Konfigurationsoption [inherit_calendar] auf true. Standardmäßig ist diese Option deaktiviert.
 
 ~~~js
 gantt.config.inherit_calendar = true;
 ~~~
 
-- Wenn *true*, verwenden Vorgänge ohne zugewiesenen Kalender den Kalender ihres übergeordneten Vorgangs (der wiederum von seinem Elternteil erben kann).
-- Wenn *false*, verwenden solche Vorgänge den globalen Kalender.
+- Wenn *true*, verwenden Aufgaben, denen kein Kalender zugewiesen ist, den Kalender, der ihrem zusammenfassenden Elternteil zugewiesen ist (welcher wiederum den Kalender seines Elternteils erben kann).
+- Wenn *false*, verwenden Aufgaben ohne Kalender den globalen Kalender.
 
-Im folgenden Beispiel erben Vorgänge standardmäßig Kalender von ihren Elternprojekten. Vorgänge mit eigenen Kalendern verwenden stattdessen diese. Zum Beispiel nutzen "Task #2.2" und "Task #3" den Kalender "Full week", im Gegensatz zu ihren Elternprojekten:
+Im folgenden Beispiel erben Aufgaben standardmäßig Kalender von ihren übergeordneten Projekten. Falls eine Aufgabe jedoch einen anderen Kalender zugewiesen hat, wird dieser Kalender stattdessen verwendet. Somit verwenden "Task #2.2" und "Task #3" die "Full week"-Kalender im Gegensatz zu ihren übergeordneten Projekten:
 
-![Arbeitskalender für Projekt](/img/working_calendar_project.png)
+![Working calendar for project](/img/working_calendar_project.png)
 
 
-[Project level calendars](https://docs.dhtmlx.com/gantt/samples/09_worktime/08_project_calendars.html)
+**Verwandtes Beispiel**: [Project level calendars](https://docs.dhtmlx.com/gantt/samples/09_worktime/08_project_calendars.html)
 
 
 ## Kalender dynamisch ändern
 
-Seit Version 7.0 erkennt Gantt automatisch Änderungen am Kalender eines Vorgangs und aktualisiert die Zeitplanung des Vorgangs entsprechend.
+Seit v7.0 erkennt Gantt Änderungen am Kalender einer Aufgabe und berechnet die Zeiten der Aufgaben automatisch neu.
 
-Bei Bedarf können Sie den Zeitplan des Vorgangs auch manuell anpassen, wenn sein Kalender geändert wird. Beispielsweise kann eine Kalenderänderung über das Lightbox-Formular behandelt werden:
+Sie können den Aufgaben-Zeitplan jedoch auch manuell aktualisieren, wenn sich dessen Kalender ändert.
+Beispielsweise kann der Kalender aus dem Lightbox-Dialog geändert werden:
 
 ~~~js
 const updateTaskTiming = (task) => {
@@ -821,7 +935,7 @@ gantt.attachEvent("onLightboxSave", (id, task, is_new) => {
 });
 ~~~
 
-Alternativ können Sie bei Bedarf eine Neuberechnung für alle Vorgänge auslösen:
+Oder Sie können die Neuberechnung aller Aufgaben bei Bedarf definieren:
 
 ~~~js
 gantt.batchUpdate(() => {
@@ -838,7 +952,13 @@ gantt.batchUpdate(() => {
 });
 ~~~
 
-**Related example:** [Arbeitszeiteinstellungen umschalten und den Vorgang auf das Arbeitsdatum verschieben](https://snippet.dhtmlx.com/6cvo9dy9)
+**Verwandtes Beispiel**: [Toggle working time settings and move the task to the working date](https://snippet.dhtmlx.com/6cvo9dy9)
 
-**Related example:** [Arbeitszeiteinstellungen umschalten und das Enddatum des Vorgangs neu berechnen](https://snippet.dhtmlx.com/wb8vc82p)
+**Verwandtes Beispiel**: [Toggle working time settings and recalculate the task's end dates](https://snippet.dhtmlx.com/wb8vc82p)
 
+
+## Arbeiten-zeitbasierte Anzeige von Aufgabenbalken in Tag-/Wochenskalen
+
+Seit v9.1 erlaubt Gantt das Festlegen der `projection`-Einstellung in der Konfiguration eines Aufgaben-Objekts. Mit dieser Eigenschaft können Sie die Position und Größe der Aufgabenbalken in den Tag- und Wochen-Skalen basierend auf der **Arbeitszeit** festlegen, statt des Intervalls 00:00-24:00.
+
+Weitere Details zu den Möglichkeiten der **scale projection** finden Sie im entsprechenden Leitfaden [in der zugehörigen Anleitung](guides/configuring-time-scale.md#workhourawaretaskbarsrenderingindayweekscales).

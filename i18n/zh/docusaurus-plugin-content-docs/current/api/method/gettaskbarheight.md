@@ -1,23 +1,23 @@
 ---
 sidebar_label: getTaskBarHeight
 title: getTaskBarHeight method
-description: "提供任务DOM元素的高度（以像素为单位）"
+description: "返回任务的 DOM 元素的高度（以像素为单位）"
 ---
 
 # getTaskBarHeight
 
 ### Description
 
-@short: 提供任务DOM元素的高度（以像素为单位）
+@short: 返回任务的 DOM 元素的高度（以像素为单位）
 
 @signature: getTaskBarHeight: (taskId: number | string) =\> number
 
 ### Parameters
 
-- `taskId` - (required) *number | string* -    任务的ID
+- `taskId` - (required) *number | string* - 任务的 ID
 
 ### Returns
-- ` param` - (number) - 任务条的高度
+- ` param` - (number) - 任务高度
 
 ### Example
 
@@ -30,7 +30,7 @@ gantt.getTaskBarHeight(1); // -> 45
 
 ### Details
 
-返回的值可能对应于任务对象上设置的 **bar_height**:
+返回值也可匹配分配给任务对象的 **bar_height** 属性的值：
 
 ~~~js
 const tasks = {
@@ -48,17 +48,16 @@ gantt.getTaskBarHeight(1); // -> 45
 gantt.getTaskBarHeight(2); // -> 25
 ~~~
 
-:::note 
-当 **bar_height** 属性设置为 "full" 时，此方法会计算任务条的实际像素高度。 
+:::note
+如果将 **bar_height** 属性指定为 "full"，该方法将以像素为单位计算任务条的高度。
 :::
 
 ### Related API
 - [bar_height](api/config/bar_height.md)
 
 ### Related Guides
-- [调整网格中的行高](guides/resizing-rows.md)
-- [任务对象/Id](guides/task-object-operations.md)
+- [Grid 中的行高调整](guides/resizing-rows.md)
+- [Task 对象/ID](guides/task-object-operations.md#task-height)
 
 ### Change log
-- 在v7.1版本中添加
-
+- 新增于 v7.1

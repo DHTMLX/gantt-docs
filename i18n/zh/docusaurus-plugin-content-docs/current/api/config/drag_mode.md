@@ -1,14 +1,14 @@
 ---
 sidebar_label: drag_mode
-title: drag_mode config
-description: "包含不同类型的拖放模式"
+title: drag_mode 配置
+description: "存储可用拖拽模式的类型"
 ---
 
 # drag_mode
 
 ### Description
 
-@short: 包含不同类型的拖放模式
+@short: 存储可用拖拽模式的类型
 
 @signature: drag_mode: \{ resize?: string; progress?: string; move?: string; ignore?: string; \}
 
@@ -33,20 +33,19 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 });
 ~~~
 
-**Default value:** \{
-  "resize":"resize",
-  "progress":"progress",
-  "move":"move",
-  "ignore":"ignore"
+**Default value:**\{
+	"resize":"resize",
+	"progress":"progress",
+	"move":"move",
+	"ignore":"ignore"
 \}
 
 ### Details
 
-重要的是不要更改现有的drag_mode名称，因为这样会破坏相关功能。不过，如果需要支持自定义行为，可以添加新的属性。
-如果需要禁用特定的drag_mode，建议使用[drag_move](api/config/drag_move.md)、[drag_resize](api/config/drag_resize.md)或[drag_progress](api/config/drag_progress.md)设置。
+你不应更改现有拖拽模式的名称。否则，该功能将无法工作。但如果你想实现自定义行为，可以添加新的属性。
+如果你想禁用某个特定的拖拽模式，最好使用 [drag_move](api/config/drag_move.md)、[drag_resize](api/config/drag_resize.md)、[drag_progress](api/config/drag_progress.md) 配置。
 
-- **resize** - (*string*) - 该模式允许用户拖动任务条以调整其持续时间。
-- **progress** - (*string*) - 该模式允许用户拖动任务条上的进度控制点。
-- **move** - (*string*) - 该模式允许拖动任务条以重新定位它。
-- **ignore** - (*string*) - 一种特殊模式，禁用拖放操作。
-
+- **resize** - (*string*) - 当用户拖动任务条以改变其持续时间时的模式。
+- **progress** - (*string*) - 当用户拖动任务条的进度旋钮时的模式。
+- **move** - (*string*) - 当用户拖动任务条以替换它时的模式。
+- **ignore** - (*string*) - 限制拖拽操作的服务模式。

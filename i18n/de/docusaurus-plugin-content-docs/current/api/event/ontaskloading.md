@@ -1,37 +1,37 @@
 ---
 sidebar_label: onTaskLoading
-title: onTaskLoading event
-description: "Wird ausgelöst, wenn eine Aufgabe aus der Datenquelle geladen wird."
+title: onTaskLoading-Ereignis
+description: "Wird ausgelöst, wenn eine Aufgabe aus der Datenquelle geladen wird"
 ---
 
 # onTaskLoading
 
 ### Description
 
-@short: Wird ausgelöst, wenn eine Aufgabe aus der Datenquelle geladen wird.
+@short: Wird ausgelöst, wenn eine Aufgabe aus der Datenquelle geladen wird
 
 @signature: onTaskLoading: (task: Task) =\> boolean;
 
 ### Parameters
 
-- `task` - (required) *Task* - das zu ladende Aufgabenobjekt
+- `task` - (required) *Task* - Das Objekt einer Aufgabe
 
 ### Returns
-- ` result` - (boolean) - bestimmt, ob die Standardaktion des Events ausgeführt wird (<b>true</b>) oder gestoppt wird (<b>false</b>)
+- ` result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onTaskLoading", function(task){
-    // benutzerdefinierte Logik kann hier hinzugefügt werden
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
     return true;
 });
 ~~~
 
 ### Details
 
-- Dieses Event tritt für jede Aufgabe auf, die aus der Datenquelle stammt.
-- Es kann blockiert werden. Die Rückgabe von *false* verhindert, dass die Aufgabe in das Gantt-Diagramm geladen wird.
+- Das Event wird für jede Aufgabe in der Datenquelle ausgelöst.
+- Das Event ist blockierbar. Geben Sie false zurück und die Aufgabe wird nicht in das Gantt-Diagramm geladen.
 
 ### Related API
 - [onLoadStart](api/event/onloadstart.md)
@@ -42,4 +42,3 @@ gantt.attachEvent("onTaskLoading", function(task){
 - [onDataRender](api/event/ondatarender.md)
 - [onGanttRender](api/event/onganttrender.md)
 - [onLoadEnd](api/event/onloadend.md)
-

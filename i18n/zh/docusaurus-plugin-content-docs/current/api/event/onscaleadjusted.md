@@ -1,14 +1,14 @@
 ---
 sidebar_label: onScaleAdjusted
 title: onScaleAdjusted event
-description: "当比例尺重新渲染以确保所有任务完全可见时触发"
+description: "当比例尺重新渲染以完整显示所有任务时触发"
 ---
 
 # onScaleAdjusted
 
 ### Description
 
-@short: 当比例尺重新渲染以确保所有任务完全可见时触发
+@short: 当比例尺重新渲染以完整显示所有任务时触发
 
 @signature: onScaleAdjusted: () =\> void;
 
@@ -26,12 +26,11 @@ gantt.attachEvent("onScaleAdjusted", function(){
 ~~~
 
 ### Related samples
-- [Auto resize scale](https://docs.dhtmlx.com/gantt/samples/03_scales/08_scale_autoconfig.html)
+- [自动调整比例尺](https://docs.dhtmlx.com/gantt/samples/03_scales/08_scale_autoconfig.html)
 
 ### Details
 
-请注意，只有在启用 [fit_tasks](api/config/fit_tasks.md) 属性（设置为 *true*）时，此事件才会触发。
+请注意，只有当 [fit_tasks](api/config/fit_tasks.md) 属性被设置为 *true* 时，事件才会触发。
 
 ### Related API
 - [fit_tasks](api/config/fit_tasks.md)
-

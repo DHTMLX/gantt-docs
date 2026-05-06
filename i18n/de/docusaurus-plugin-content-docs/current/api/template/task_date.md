@@ -1,7 +1,7 @@
 ---
 sidebar_label: task_date
 title: task_date template
-description: "definiert das Datumsformat, das für das Label im Abschnitt 'Time period' der Lightbox verwendet wird"
+description: "bestimmt das Datumsformat des Labels im Abschnitt 'Zeitabschnitt' der Lightbox"
 ---
 
 # task_date
@@ -14,10 +14,10 @@ description: "definiert das Datumsformat, das für das Label im Abschnitt 'Time 
 
 ### Parameters
 
-- `date` - (required) *Date* - der Datumswert, der formatiert wird
+- `date` - (erforderlich) *Date* - das Datum, das formatiert werden muss
 
 ### Returns
-- ` text` - (string) - html-Inhalt, der im Gantt angezeigt wird
+- ` text` - (string) - HTML-Text, der im Gantt gerendert wird
 
 ### Example
 
@@ -31,5 +31,4 @@ gantt.templates.task_date= function(date){
 - [task_date](api/config/task_date.md)
 
 ### Related Guides
-- ["Vorlagen des Lightbox"](guides/lightbox-templates.md)
-
+- [Templates of the Lightbox](guides/lightbox-templates.md)

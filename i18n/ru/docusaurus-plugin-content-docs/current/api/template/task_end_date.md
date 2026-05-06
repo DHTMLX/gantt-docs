@@ -1,23 +1,23 @@
 ---
 sidebar_label: task_end_date
 title: task_end_date template
-description: "управляет тем, как отображаются даты окончания задач в lightbox"
+description: "задает формат дат окончания задач во всплывающем окне (lightbox)"
 ---
 
 # task_end_date
 
 ### Description
 
-@short: Управляет тем, как отображаются даты окончания задач в lightbox
+@short: Определяет формат дат окончания задач во всплывающем окне (lightbox)
 
-@signature: task_end_date: (date: Date) =\> string;
+@signature: task_end_date: (date: Date) => string;
 
 ### Parameters
 
 - `date` - (required) *Date* - дата, которую нужно отформатировать
 
 ### Returns
-- ` text` - (string) - HTML текст, который будет отображаться в gantt
+- ` text` - (string) - HTML-текст, который будет отображаться в gantt
 
 ### Example
 
@@ -29,25 +29,26 @@ gantt.templates.task_end_date = function(date){
 
 ### Details
 
-## Настройка формата включающих даты окончания
+## Setting format for inclusive end dates
 
-Вы можете переопределить этот шаблон, чтобы изменить отображение дат окончания задач в gantt, например, чтобы включить дату окончания в продолжительность задачи.
+Шаблон можно переопределить, чтобы изменить стиль дат окончания задач в диаграмме Ганта (то есть включить дату окончания в продолжительность задач).
 
-Например, рассмотрим задачу, начинающуюся 2 апреля 2020 года и длящуюся один день.
+Например, возьмём задачу, которая начинается 2 апреля 2020 года и длится один день.
 
-По умолчанию её дата окончания будет отображаться как 3 апреля 2020 года (`03-04-2020 00:00:00`):
+По умолчанию дата окончания этой задачи будет отображаться как 3 апреля 2020 года (`03-04-2020 00:00:00`):
 
-- [Live demo: Default format](https://snippet.dhtmlx.com/5/24f73d6ec)
+- [Демо: Формат по умолчанию](https://snippet.dhtmlx.com/5/24f73d6ec)
 
 ![task_end_date_template_default](/img/task_end_date_template_default.png)
 
-Можно изменить отображение даты окончания на 2 апреля 2020 года:
+Вы можете изменить формат даты окончания на 2 апреля 2020 года:
 
-- [Live demo: Inclusive end date format](https://snippet.dhtmlx.com/t1k1rwo7)
+- [Демо: Формат инклюзивной даты окончания](https://snippet.dhtmlx.com/t1k1rwo7)
 
 ![task_end_date_template](/img/task_end_date_template.png)
 
-Для этого переопределите конфигурацию **columns** следующим образом:
+
+Чтобы сделать это, необходимо переопределить конфигурацию **columns**, как в примере:
 
 ~~~js
 
@@ -74,7 +75,8 @@ gantt.init("gantt_here");
 
 ~~~
 
-Для дополнительной информации о форматировании дат окончания смотрите статью [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates).
+
+Для более подробной информации о форматировании дат окончания смотрите статью [Отображение даты окончания задачи и инклюзивные даты окончания](guides/loading.md#taskenddatedisplayampinclusiveenddates)
 
 ### Related API
 - [task_date](api/config/task_date.md)
@@ -84,4 +86,3 @@ gantt.init("gantt_here");
 ### Related Guides
 - [Шаблоны Lightbox](guides/lightbox-templates.md)
 - [Загрузка данных](guides/loading.md#taskenddatedisplayampinclusiveenddates)
-

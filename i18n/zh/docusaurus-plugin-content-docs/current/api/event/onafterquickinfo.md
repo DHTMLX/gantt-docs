@@ -1,40 +1,39 @@
 ---
 sidebar_label: onAfterQuickInfo
-title: onAfterQuickInfo event
-description: "在弹出编辑表单关闭后触发"
+title: onAfterQuickInfo 事件
+description: "在弹出式编辑表单关闭后触发"
 ---
 
 # onAfterQuickInfo
 
 ### Description
 
-@short: 在弹出编辑表单关闭后触发
+@short: 在弹出式编辑表单关闭后触发
 
 @signature: onAfterQuickInfo: (taskId: string | number) =\> void;
 
 ### Parameters
 
-- `taskId` - (required) *string | number* - 任务的ID
+- `taskId` - (必填) *string | number* - 任务 ID
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAfterQuickInfo",function(taskId){
-    // 你的代码写在这里
+    // 在这里插入您的自定义逻辑
 });
 ~~~
 
 ### Related samples
-- [QuickInfo extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
+- [QuickInfo 扩展](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
 
 ### Details
 
 :::note
- 此事件属于 **Quick Info** 扩展，因此请确保已启用 [quick_info](guides/extensions-list.md) 插件。 
+该事件在 **Quick Info** 扩展中定义，因此您需要激活 [quick_info](guides/extensions-list.md#quick-info) 插件。
 :::
 
-
-版本 4.1 中新增
+在 4.1 版本中新增
 
 ### Related API
 - [showQuickInfo](api/method/showquickinfo.md)
@@ -44,5 +43,4 @@ gantt.attachEvent("onAfterQuickInfo",function(taskId){
 - [onQuickInfo](api/event/onquickinfo.md)
 
 ### Related Guides
-- [扩展功能完整列表](guides/extensions-list.md)
-
+- [扩展总览](guides/extensions-list.md#quick-info)

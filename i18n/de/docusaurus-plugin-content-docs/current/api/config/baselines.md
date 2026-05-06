@@ -8,7 +8,7 @@ description: "legt fest, wie baselines im Gantt-Chart funktionieren"
 
 ### Description
 
-@short: Legt fest, wie baselines im Gantt-Chart funktionieren
+@short: Konfiguriert die Funktionalität von Baselines im Gantt-Diagramm
 
 @signature: baselines: BaselineConfig | boolean
 
@@ -26,28 +26,27 @@ gantt.init("gantt_here");
 ~~~
 
 ### Related samples
-- [Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
+- [Baselines anzeigen](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
 
 ### Details
 
-Diese Einstellung steuert, wie baselines im Gantt-Chart verwaltet und angezeigt werden. Sie kann entweder ein Objekt für detaillierte Anpassungen oder ein einfacher Boolean sein, um die Funktion ein- oder auszuschalten. Das Objekt enthält folgende Optionen:
+Diese Konfiguration definiert, wie Baselines im Gantt-Diagramm behandelt und angezeigt werden. Sie kann als Objekt gesetzt werden, um die Anzeige anzupassen, oder als Boolean, um die Funktion zu aktivieren oder zu deaktivieren. Die Objektkonfiguration enthält die folgenden Eigenschaften:
 
--  **datastore** - (*string*) - der Name des Datastores, in dem die baseline-Einträge gespeichert werden. Weitere Informationen dazu finden Sie in der Methode `getDatastore`.
--  **render_mode** - (*boolean | string*) - definiert, wie baselines dargestellt werden:
-  - **_false_** - baselines werden nicht angezeigt.
-  - **_"taskRow"_** - baselines erscheinen in derselben Zeile wie die Task-Bar.
-  - **_"separateRow"_** - baselines erhalten eine eigene Subrow, wodurch die Task-Zeile höher wird.
-  - **_"individualRow"_** - jede baseline wird in einer eigenen Subrow unterhalb der Task dargestellt.
-- **dataprocessor_baselines** - (*boolean*) - bestimmt, ob Änderungen an baselines den DataProcessor für jeden Eintrag auslösen.
-- **row_height** - (*number*) - legt die Höhe der baseline-Subrow fest, verwendet nur bei `render_mode` `"separateRow"` oder `"individualRow"`.
-- **bar_height** -  (*number*) - steuert die Höhe der baseline-Bar.
+-  **datastore** - (*string*) - der Name des Datastore, der zur Speicherung von Baseline-Einträgen verwendet wird. Für verwandte Funktionen siehe die Methode `getDatastore`.
+-  **render_mode** - (*boolean | string*) - bestimmt, wie Baselines angezeigt werden:
+  - **_false_** - Baselines werden nicht angezeigt.
+  - **_"taskRow"_** - Baselines werden in derselben Zeile wie die Task-Leiste angezeigt.
+  - **_"separateRow"_** - Baselines werden in einer separaten Unterzeile angezeigt, was die Zeilenhöhe der Task erhöht.
+  - **_"individualRow"_** - jede Baseline wird in einer eigenen Unterzeile unterhalb der Aufgabe dargestellt.
+- **dataprocessor_baselines** - (*boolean*) - gibt an, ob Baseline-Updates den DataProcessor als einzelne Einträge auslösen.
+- **row_height** - (*number*) - definiert die Höhe der Unterzeile für Baselines, gilt nur, wenn `render_mode` auf `"separateRow"` oder `"individualRow"` gesetzt ist.
+- **bar_height** -  (*number*) - legt die Höhe der Baseline-Leiste fest.
 
 ### Related API
 - [getDatastore](api/method/getdatastore.md)
 
 ### Related Guides
-- ["Zusätzliche Elemente in der Zeitleiste"](guides/inbuilt-baselines.md)
+- [Zusätzliche Elemente in Timeline](guides/inbuilt-baselines.md)
 
 ### Change log
 - hinzugefügt in v9.0
-

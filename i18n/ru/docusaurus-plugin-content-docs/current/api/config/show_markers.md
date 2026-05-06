@@ -1,14 +1,14 @@
 ---
 sidebar_label: show_markers
 title: show_markers config
-description: "управляет видимостью маркеров на странице"
+description: "показывает/скрывает маркеры на странице"
 ---
 
 # show_markers
 
 ### Description
 
-@short: Управляет видимостью маркеров на странице
+@short: Показывает/скрывает маркеры на странице
 
 @signature: show_markers: boolean
 
@@ -19,10 +19,10 @@ var marker1 = gantt.addMarker({ ...});
 var marker2 = gantt.addMarker({ ...}); 
 var marker3 = gantt.addMarker({ ...}); 
 
-gantt.config.show_markers = false; // скрывает все 3 маркера
+gantt.config.show_markers = false;// hides all 3 markers
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Related samples
 - [Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
@@ -30,7 +30,7 @@ gantt.config.show_markers = false; // скрывает все 3 маркера
 ### Details
 
 :::note
- Эта опция является частью расширения **marker**, поэтому убедитесь, что включен плагин [marker](guides/extensions-list.md#verticalmarker). Подробнее можно узнать в статье [Добавление вертикальных маркеров](guides/markers.md). 
+Эта опция определяется в расширении **marker**, поэтому необходимо включить плагин [marker](guides/extensions-list.md#vertical-marker). Подробности см. в статье [Adding Vertical Markers](guides/markers.md).
 :::
 
 ### Related API
@@ -41,5 +41,4 @@ gantt.config.show_markers = false; // скрывает все 3 маркера
 - [deleteMarker](api/method/deletemarker.md)
 
 ### Related Guides
-- [Добавление вертикальных маркеров](guides/markers.md)
-
+- [Adding Vertical Markers](guides/markers.md)

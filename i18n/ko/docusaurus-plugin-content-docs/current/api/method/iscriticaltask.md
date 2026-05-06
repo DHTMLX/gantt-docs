@@ -1,25 +1,27 @@
 ---
 sidebar_label: isCriticalTask
-title: isCriticalTask method
-description: "주어진 작업이 크리티컬한지 확인합니다"
+title: isCriticalTask 메서드
+description: "지정된 작업이 중요한지 여부를 확인합니다"
 ---
 
 # isCriticalTask
+
 :::info
-이 기능은 PRO 에디션에서만 사용할 수 있습니다. 
+이 기능은 PRO 에디션에서만 사용할 수 있습니다.
 :::
+
 ### Description
 
-@short: 주어진 작업이 크리티컬한지 확인합니다
+@short: 지정된 작업이 중요한지 여부를 확인합니다
 
 @signature: isCriticalTask: (task: Task) =\> boolean
 
 ### Parameters
 
-- `task` - (required) *Task* - 확인할 작업 객체
+- `task` - (required) *Task* - 해당 작업의 객체
 
 ### Returns
-- ` value` - (boolean) - 작업이 크리티컬한 경우 'true'를 반환하며, 그렇지 않으면 'false'를 반환합니다.
+- ` value` - (boolean) - 'true' 이면 해당 작업이 중요한 것이고, 그렇지 않으면 'false'입니다
 
 ### Example
 
@@ -42,7 +44,7 @@ gantt.parse(tasks);
 
 gantt.isCriticalTask(gantt.getTask(2));// ->'false' /*!*/
 gantt.isCriticalTask(gantt.getTask(3));// ->'true' /*!*/
-~~~
+~~~ 
 
 ### Related samples
 - [Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
@@ -50,11 +52,8 @@ gantt.isCriticalTask(gantt.getTask(3));// ->'true' /*!*/
 ### Details
 
 :::note
-이 메서드는 **critical_path** 확장 기능의 일부이므로 [critical_path](guides/extensions-list.md#criticalpath) 플러그인을 활성화해야 합니다. 자세한 내용은 [Critical Path](guides/critical-path.md) 문서를 참조하세요. 
+이 메서드는 **critical_path** 확장으로 정의되어 있으므로 [critical_path](guides/extensions-list.md#critical-path) 플러그인을 활성화해야 합니다. 자세한 내용은 [Critical Path](guides/critical-path.md) 문서를 참조하십시오.
 :::
-
-
-![iscritical_path](/img/iscritical_path.png)
 
 ### Related API
 - [highlight_critical_path](api/config/highlight_critical_path.md)
@@ -63,4 +62,3 @@ gantt.isCriticalTask(gantt.getTask(3));// ->'true' /*!*/
 
 ### Related Guides
 - [Critical Path](guides/critical-path.md)
-

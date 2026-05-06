@@ -21,43 +21,40 @@ gantt.init("gantt_here");
 
 ### Details
 
-Das **keys** Objekt enthält die folgenden Eigenschaften:
-
+Das **keys**-Objekt hat die folgenden Eigenschaften:
 <table class="list" cellspacing="0" cellpadding="5" border="0">
-  <thead>
-  <tr>
-  <th>
-  Property
-  </th>
-  <th>
-  Beschreibung
-  </th>
-  <th>
-  Standardwert
-  </th>
-  <th>
-  Anwendbare Views
-  </th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-  <td>edit_save</td>
-  <td>gibt den numerischen Code einer Tastaturtaste an, die verwendet wird, um den Bearbeitungsvorgang zu bestätigen (als Alternative zum Klicken des 'Save'-Buttons im Lightbox)</td>
-  <td>13 (die 'Enter'-Taste)</td>
-  <td>alle Views</td>
-  </tr>
-  <tr>
-  <td>edit_cancel</td>
-  <td>gibt den numerischen Code einer Tastaturtaste an, die verwendet wird, um den Bearbeitungsvorgang abzubrechen (als Alternative zum Klicken des 'Cancel'-Buttons im Lightbox)</td>
-  <td>27 (die 'Escape'-Taste)</td>
-  <td>alle Views</td>
-  </tr>
-  </tbody>
+	<thead>
+	<tr>
+		<th>
+			Eigenschaft
+		</th>
+		<th>
+			Beschreibung
+		</th>
+		<th>
+			Standardwert
+		</th>
+		<th>
+			Anwendbare Ansichten
+		</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>edit_save</td>
+		<td>legt den numerischen Code einer Tastaturtaste fest, die verwendet werden kann, um die Bearbeitung zu bestätigen (Alternative zum Klicken des 'Speichern'-Buttons in der Lightbox)</td>
+		<td>13 (die 'Enter'-Taste)</td>
+		<td>alle Ansichten</td>
+	</tr>
+	<tr>
+		<td>edit_cancel</td>
+		<td>legt den numerischen Code einer Tastaturtaste fest, die verwendet werden kann, um die Bearbeitung abzubrechen (Alternative zum Klicken des 'Abbrechen'-Buttons in der Lightbox)</td>
+		<td>27 (die 'Escape'-Taste)</td>
+		<td>alle Ansichten</td>
+	</tr>
+	</tbody>
 </table>
 
 :::note
-
-Beachten Sie, dass alle **keys**-Eigenschaften den Datentyp 'number' verwenden.
- 
+Alle **keys'** Eigenschaften haben den Datentyp 'number'.
 :::

@@ -1,107 +1,104 @@
+--- 
+title: "Ereignisbehandlung"
+sidebar_label: "Ereignisbehandlung"
 ---
-title: "Event-Behandlung"
-sidebar_label: "Event-Behandlung"
----
 
-# Event-Behandlung
+# Ereignisbehandlung
 
-Events sind entscheidend, um die Seite interaktiv und reaktionsfähig auf Benutzeraktionen zu gestalten.
+Ereignisse ermöglichen die Interaktion mit Benutzern und erhöhen die Interaktivität der Seite.
 
-Immer wenn ein Benutzer mit dem Gantt-Diagramm interagiert, löst dhtmlxGantt ein Event aus. Diese Events können verwendet werden, um zu erkennen, was passiert ist, und den entsprechenden Code auszuführen.
+Wenn der Benutzer eine Aktion im Gantt-Diagramm ausführt, ruft dhtmlxGantt ein Ereignis auf. Sie können dieses Ereignis verwenden, um die Aktion zu erkennen und den gewünschten Code dafür auszuführen.
 
-## Events anhängen
+## Ereignisse anhängen
 
-Um einen Event-Listener hinzuzufügen, verwenden Sie die Methode [attachEvent](api/method/attachevent.md).
+Um ein Ereignis anzuhängen, verwenden Sie die [`attachEvent()`](api/method/attachevent.md) Methode.
 
 ~~~js
-gantt.attachEvent("onTaskClick", function(id, e) {
-    alert("You've just clicked an item with id="+id);
+gantt.attachEvent("onTaskClick", (id, e) => {
+    alert(`You've just clicked an item with id=${id}`);
 });
 ~~~
 
-[D'n'D Events](https://docs.dhtmlx.com/gantt/samples/08_api/01_dnd_events.html)
+**Zugehöriges Beispiel**: [D'n'D Events](https://docs.dhtmlx.com/gantt/samples/08_api/01_dnd_events.html)
 
 
 **Hinweis:**
 
-- Eventnamen sind nicht groß-/kleinschreibungsempfindlich.
-- Mehrere Handler können an dasselbe Event angehängt werden.
+- Die Namen der Ereignisse sind Groß-/Kleinschreibung unabhängig.
+- Sie können mehreren Handlern denselben Ereignis zuordnen.
 
-## Events entfernen
+## Ereignisse trennen
 
-Um einen Event-Handler zu entfernen, verwenden Sie die Methode [detachEvent](api/method/detachevent.md):
+Um einen Ereignis-Handler zu trennen, verwenden Sie die [`detachEvent()`](api/method/detachevent.md) Methode:
 
-[A general way to attach/detach the event handler](A general way to attach/detach the event handler)
-~~~js
-// zum Anhängen eines Events
-var eventId = gantt.attachEvent("onTaskClick", function(id, e) {
-    alert("You've just clicked an item with id="+id);
+~~~jsx {6} title="A general way to attach/detach the event handler"
+// to attach event
+const eventId = gantt.attachEvent("onTaskClick", (id, e) => {
+    alert(`You've just clicked an item with id=${id}`);
 });
-// zum Entfernen eines Events
-gantt.detachEvent(eventId);/*!*/
+// to detach event
+gantt.detachEvent(eventId);
 ~~~
 
-Wenn Sie alle Handler auf einmal entfernen möchten, können Sie diesen Ansatz verwenden:
+Um alle gespeicherten Handler auf einmal zu trennen, können Sie die folgende Logik verwenden:
 
-~~~js
-// Handler-IDs beim Anhängen der Events speichern
-var events = [];
-events.push(gantt.attachEvent("onTaskClick", function(id, e) {
-    alert("You've just clicked an item with id="+id);
-});
-events.push(gantt.attachEvent("onTaskDblClick", function(id, e) {
-    alert("You've just double clicked an item with id="+id);
-});
- 
-// alle gespeicherten Events entfernen
-while (events.length)
-   gantt.detachEvent(events.pop()); /*!*/
+~~~js {13}
+// save handler ids when attaching events
+const eventIds = [];
+
+eventIds.push(gantt.attachEvent("onTaskClick", (id, e) => {
+    alert(`You've just clicked an item with id=${id}`);
+}));
+eventIds.push(gantt.attachEvent("onTaskDblClick", (id, e) => {
+    alert(`You've just double clicked an item with id=${id}`);
+}));
+
+// detach all saved events
+while (eventIds.length) {
+    gantt.detachEvent(eventIds.pop());
+}
 ~~~
 
-## Überprüfen, ob ein Handler existiert
+## Prüfen, ob ein Handler existiert
 
-Um zu überprüfen, ob für ein bestimmtes Event Handler angehängt sind, verwenden Sie die Methode [checkEvent](api/method/checkevent.md):
+Um zu prüfen, ob für ein bestimmtes Ereignis irgendwelche Handler registriert sind, verwenden Sie die [`checkEvent()`](api/method/checkevent.md) Methode:
 
-~~~js
-gantt.attachEvent("onTaskClick", function(id, e) {
-    alert("You've just clicked a task with id="+id);
+~~~js {5}
+gantt.attachEvent("onTaskClick", (id, e) => {
+    alert(`You've just clicked a task with id=${id}`);
 });
- 
-gantt.checkEvent("onTaskClick"); // gibt 'true' zurück /*!*/
+
+gantt.checkEvent("onTaskClick"); // returns 'true'
 ~~~
 
-## Abbrechbare Events
 
-Events, die mit 'onbefore' beginnen, können abgebrochen werden.
+## Abbruchbare Ereignisse
 
-Um ein solches Event abzubrechen, muss der Event-Handler **false** zurückgeben.
+Alle Ereignisse, deren Namen mit dem vorstehenden Subwort 'onbefore' beginnen, können abgebrochen werden.
 
-**Cancelling the event handler**
-~~~js
-gantt.attachEvent("onBeforeTaskChanged", function(id, mode, old_task){
-    var task = gantt.getTask(id);
-    if(mode == gantt.config.drag_mode.progress){
-        if(task.progress < old_task.progress){
-            dhtmlx.message(task.text + " progress can't be undone!");
-            return false; /*!*/
+Um ein Ereignis abzubrechen, geben Sie im entsprechenden Ereignis-Handler **false** zurück.
+
+~~~jsx {6} title="Cancelling the event handler"
+gantt.attachEvent("onBeforeTaskChanged", (id, mode, oldTask) => {
+    const task = gantt.getTask(id);
+    if (mode === gantt.config.drag_mode.progress) {
+        if (task.progress < oldTask.progress) {
+            dhtmlx.message(`${task.text} progress can't be undone!`);
+            return false;
         }
     }
     return true;
 });
 ~~~
 
+**Zugehöriges Beispiel**: [D'n'D Events](https://docs.dhtmlx.com/gantt/samples/08_api/01_dnd_events.html)
 
-[D'n'D Events](https://docs.dhtmlx.com/gantt/samples/08_api/01_dnd_events.html)
+## Zugriff auf das Gantt-Objekt innerhalb des Handlers
 
+Innerhalb des Ereignis-Handlers können Sie sich auf das Gantt-Objekt über das Schlüsselwort `this` beziehen.
 
-## Zugriff auf das gantt-Objekt im Handler
-
-Innerhalb des Event-Handlers kann auf das gantt-Objekt mit dem Schlüsselwort **this** zugegriffen werden. <br/>
-
-**Referring within the event handler**
-~~~js
-gantt.attachEvent("onTaskClick", function(id, e){
-    parentId = this.getTask(id).parent;
+~~~jsx title="Bezug innerhalb des Event-Handlers"
+gantt.attachEvent("onTaskClick", function(id, e) {
+    const parentId = this.getTask(id).parent;
 });
 ~~~
-

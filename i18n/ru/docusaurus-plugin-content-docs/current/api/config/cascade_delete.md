@@ -1,14 +1,14 @@
 ---
 sidebar_label: cascade_delete
 title: cascade_delete config
-description: "позволяет автоматически удалять вложенные задачи и связи при удалении родительской задачи"
+description: "включает каскадное удаление вложенных задач и связей"
 ---
 
 # cascade_delete
 
 ### Description
 
-@short: Позволяет автоматически удалять вложенные задачи и связи при удалении родительской задачи
+@short: Включает каскадное удаление вложенных задач и связей
 
 @signature: cascade_delete: boolean
 
@@ -19,11 +19,11 @@ gantt.config.cascade_delete = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Details
 
-введено в версии 4.2
+Добавлено в версии 4.2
 
 ### Related Guides
-- [Базовые операции с задачами](guides/crud-task.md#cascadedeletingofnestedtasks)
+- [Основные операции с задачами](guides/crud-task.md)

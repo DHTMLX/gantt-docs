@@ -1,14 +1,14 @@
 ---
 sidebar_label: getWorkHours
-title: getWorkHours method
-description: "提供指定日期的工作时间"
+title: getWorkHours 方法
+description: "返回指定日期的工作时间"
 ---
 
 # getWorkHours
 
 ### Description
 
-@short: 提供指定日期的工作时间
+@short: 返回指定日期的工作时间
 
 @signature: getWorkHours: (date: Date) =\> any[]
 
@@ -17,7 +17,7 @@ description: "提供指定日期的工作时间"
 - `date` - (required) *Date* - 要检查的日期
 
 ### Returns
-- ` hours` - (array) - 该日期的工作时间段
+- ` hours` - (array) - 该日期的工作时段
 
 ### Example
 
@@ -33,5 +33,4 @@ gantt.getWorkHours(new Date(2013,03,30))// -> [8, 17] /*!*/
 - [setWorkTime](api/method/setworktime.md)
 
 ### Related Guides
-- [工作时间计算](guides/working-time.md)
-
+- [Work Time Calculation](guides/working-time.md)

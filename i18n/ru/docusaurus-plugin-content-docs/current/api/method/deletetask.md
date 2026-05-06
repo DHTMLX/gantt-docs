@@ -14,7 +14,7 @@ description: "удаляет указанную задачу"
 
 ### Parameters
 
-- `id` - (required) *string | number* -    идентификатор задачи, которую необходимо удалить
+- `id` - (обязателен) *string | number* - идентификатор задачи
 
 ### Example
 
@@ -31,12 +31,11 @@ gantt.deleteTask(10); /*!*/
 
 ### Details
 
-Этот метод вызывает события [onBeforeTaskDelete](api/event/onbeforetaskdelete.md) и [onAfterTaskDelete](api/event/onaftertaskdelete.md).
+Метод вызывает события [onBeforeTaskDelete](api/event/onbeforetaskdelete.md) и [onAfterTaskDelete](api/event/onaftertaskdelete.md).
 
 ### Related API
 - [addTask](api/method/addtask.md)
 - [deleteLink](api/method/deletelink.md)
 
 ### Related Guides
-- [Базовые операции с задачами](guides/crud-task.md)
-
+- [Основные операции с задачами](guides/crud-task.md)

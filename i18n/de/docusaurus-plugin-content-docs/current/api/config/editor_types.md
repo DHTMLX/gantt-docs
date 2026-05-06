@@ -1,14 +1,14 @@
 ---
 sidebar_label: editor_types
 title: editor_types config
-description: "ein Objekt, das Definitionen für Inline-Editoren enthält"
+description: "ein Objekt, das Definitionen von Inline-Editoren enthält"
 ---
 
 # editor_types
 
 ### Description
 
-@short: Ein Objekt, das Definitionen für Inline-Editoren enthält
+@short: Ein Objekt, das Definitionen von Inline-Editoren enthält
 
 @signature: editor_types: \{ text?: InlineEditor; number?: InlineEditor; duration?: InlineEditor; date?: InlineEditor; select?: InlineEditor; predecessor?: InlineEditor; [customEditorName: string]: InlineEditor | undefined; \}
 
@@ -20,20 +20,20 @@ gantt.config.editor_types.custom_editor = {// benutzerdefinierte Editor-Logik}
 
 ### Details
 
-Diese Konfiguration wird verwendet, um benutzerdefinierte Editoren zu erstellen (wie im obigen Beispiel gezeigt).
+Die Konfiguration kann verwendet werden, um benutzerdefinierte Editoren zu erstellen (siehe obiges Beispiel).
 
-Es stehen mehrere eingebaute Inline-Editoren zur Verfügung:
+Es gibt mehrere vordefinierte Inline-Editoren:
 
-- **text** - (*InlineEditor*) - wird zum Bearbeiten von Textfeldern verwendet, z.B. Aufgabennamen
-- **number** - (*InlineEditor*) - wird zum Bearbeiten numerischer Felder verwendet, wie z.B. Aufgabendauer oder Reihenfolge
-- **duration** - (*InlineEditor*) - zum Bearbeiten von Dauerfeldern, also der Aufgabendauer.
-Dies funktioniert nur, wenn die ***map_to:"duration"*** Konfiguration angewendet wird und der [Editor-Typ](guides/inline-editing.md#typesofeditors) auf **"duration"** gesetzt ist
-- **date** - (*InlineEditor*) - zum Bearbeiten von Datumsfeldern, wie z.B. Start- und Enddatum der Aufgabe
-- **select** - (*InlineEditor*) - zum Auswählen einer Option aus einer Dropdown-Liste
-- **predecessor** - (*InlineEditor*) - zum Zuweisen einer Vorgängeraufgabe zur aktuellen Aufgabe. Dieser Editor verwendet [WBS-Codes](guides/specifying-columns.md#wbscode), um die Vorgängeraufgabe zu verknüpfen
-- **[customEditorName: string]** - (*InlineEditor | undefined*) - zum Definieren benutzerdefinierter Inline-Editoren
+- **text** - (*InlineEditor*) - zum Bearbeiten von Textspalten, z. B. Aufgabenname
+- **number** - (*InlineEditor*) - zum Bearbeiten von Zahlen-Spalten, z.B. Dauer der Aufgabe, Reihenfolge, usw.
+- **duration** - (*InlineEditor*) - zum Bearbeiten von Dauer-Spalten, d.h. der Aufgaben-Dauer. Funktioniert nur, wenn die ***map_to:"duration"*** Konfiguration verwendet wird und [der Editor-Typ](guides/inline-editing.md#types-of-editors) auf den **"duration"** Typ gesetzt ist
+- **date** - (*InlineEditor*) - zum Bearbeiten von Datums-Spalten, d.h. Start- und Enddatum der Aufgabe
+- **select** - (*InlineEditor*) - zur Auswahl einer Option aus einer Liste
+- **predecessor** - (*InlineEditor*) - zum Festlegen des Task-Vorgängers für die aktuell bearbeiteten Aufgabe. Dieser Editor erhält die [WBS-Codes der Aufgaben](guides/specifying-columns.md#wbscode), um die Verbindung zur Vorgängeraufgabe herzustellen
+- **[customEditorName: string]** - (*InlineEditor | undefined*) - benutzerdefinierte Inline-Editoren
 
-Hier definierte Editoren können Spalten im gantt zugewiesen werden:
+
+In diesem Objekt definierte Editoren können an Gantt-Spalten angehängt werden:
 
 ~~~js
 const textEditor = {type: "text", map_to: "text"};
@@ -48,4 +48,4 @@ gantt.config.columns = [
 ~~~
 
 ### Related Guides
-- ["Inline-Bearbeitung im Grid"](guides/inline-editing.md#typesofeditors)
+- [Inline-Bearbeitung im Grid](guides/inline-editing.md#types-of-editors)

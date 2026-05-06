@@ -1,15 +1,15 @@
 ---
-title: "Konfiguration der Baumspalte"
-sidebar_label: "Konfiguration der Baumspalte"
+title: "Konfiguration der Baum-Spalte"
+sidebar_label: "Konfiguration der Baum-Spalte"
 ---
 
-# Konfiguration der Baumspalte
+# Konfiguration der Baum-Spalte
 
-Weitere Informationen zu verfügbaren baumbezogenen Methoden finden Sie im Artikel [Task Parent/Child](guides/task-tree-operations.md).
+Um sich über die verfügbaren baumbezogenen Methoden zu informieren, lesen Sie bitte den [Task Parent/Child](guides/task-tree-operations.md) Artikel.
 
-## Auf- und Zuklappen eines Aufgabenastes
+## Aufgabenzweig erweitern/verkleinern
 
-- Um einen Aufgabenast aufzuklappen, verwenden Sie die Methode [open](api/method/open.md):
+- Zum Öffnen eines Aufgabenzweigs verwenden Sie die [open](api/method/open.md) Methode:
 
 ~~~js
 var data = {
@@ -21,7 +21,7 @@ var data = {
 gantt.open("p_1"); /*!*/
 ~~~
 
-- Um einen Aufgabenast zuzuklappen, verwenden Sie die Methode [close](api/method/close.md):
+- Zum Schließen eines Aufgabenzweigs verwenden Sie die [close](api/method/close.md) Methode:
 
 ~~~js
 var data = {
@@ -33,11 +33,11 @@ var data = {
 gantt.close("p_1"); /*!*/
 ~~~ 
 
-## Mehrere Äste auf- oder zuklappen
+## Mehrere Zweige erweitern/verkleinern
 
-Wenn Sie mehrere Aufgabenäste gleichzeitig öffnen oder schließen möchten, können Sie am schnellsten den booleschen Wert (true für geöffnet, false für geschlossen) der *.$open*-Eigenschaft der jeweiligen Aufgaben zuweisen und anschließend das Gantt-Diagramm neu rendern.
+Wenn Sie mehrere Aufgabenzweige öffnen/geschlossen benötigen, ist der schnellste Weg, den entsprechenden Boolean-Wert (true - öffnen, false - schließen) programmatisch der benötigten Tasks-Eigenschaft *.$open* zuzuweisen und anschließend den Gantt neu zu zeichnen.
 
-- Alle Aufgaben aufklappen:
+- Alle Aufgaben erweitern:
 
 ~~~js
 gantt.eachTask(function(task){
@@ -46,7 +46,7 @@ gantt.eachTask(function(task){
 gantt.render();
 ~~~
 
-- Alle Aufgaben zuklappen:
+- Alle Aufgaben verkleinern:
 
 ~~~js
 gantt.eachTask(function(task){
@@ -56,12 +56,12 @@ gantt.render();
 ~~~
 
 :::note
-Um einen Button hinzuzufügen, der alle Aufgaben gleichzeitig auf- oder zuklappt, siehe den Abschnitt [How to expand/collapse all tasks with a button](guides/how-to.md#howtoexpandcollapsealltaskswithabutton).
+Hinweis: Wenn Sie alle Aufgaben auf einmal mit einem Button zusammenklappen/aufklappen möchten, gehen Sie zum Abschnitt [How to expand/collapse all tasks with a button](guides/how-to.md#how-to-expandcollapse-all-tasks-with-a-button).
 :::
 
-## Kinder einer Aufgabe abrufen
+## Die Kinder eines Tasks abrufen
 
-Um die Kinder eines Aufgabenastes abzurufen, verwenden Sie die Methode [getChildren](api/method/getchildren.md):
+Um die Kinder eines Zweigauftrags abzurufen, verwenden Sie die [getChildren](api/method/getchildren.md) Methode:
 
 ~~~js
 var data = {
@@ -75,10 +75,10 @@ gantt.getChildren("p_1");//->["t_1"] /*!*/
 
 *Weitere baumbezogene Methoden finden Sie im Artikel [Task Parent/Child](guides/task-tree-operations.md).*
 
-## Baum-Icons ändern
+## Die Symbole des Baums ändern
 
-### Elternelemente
-Um das Icon für Elternelemente anzupassen, verwenden Sie das Template [grid_folder](api/template/grid_folder.md):
+### Elterneinträge
+Um das Symbol für die Elterneinträge festzulegen, verwenden Sie das Template [grid_folder](api/template/grid_folder.md):
 
 ~~~js
 gantt.templates.grid_folder = function(item) {
@@ -87,8 +87,9 @@ gantt.templates.grid_folder = function(item) {
 };
 ~~~
 
+
 ### Kindelemente
-Um das Icon für Kindelemente anzupassen, verwenden Sie das Template [grid_file](api/template/grid_file.md):
+Um das Symbol für die Kindelemente festzulegen, verwenden Sie das Template [grid_file](api/template/grid_file.md):
 
 ~~~js
 gantt.templates.grid_file = function(item) {
@@ -96,8 +97,9 @@ gantt.templates.grid_file = function(item) {
 };
 ~~~
 
-### Auf-/Zu-Symbol
-Um das Icon für das Auf-/Zu-Symbol zu individualisieren, verwenden Sie das Template [grid_open](api/template/grid_open.md):
+
+### Öffnen/Schließen-Symbol
+Um das Symbol für das Öffnen/Schließen-Symbol festzulegen, verwenden Sie das Template [grid_open](api/template/grid_open.md):
 
 ~~~js
 gantt.templates.grid_open = function(item) {
@@ -106,9 +108,10 @@ gantt.templates.grid_open = function(item) {
 };
 ~~~
 
-## Einzug der Kinder in einem Ast festlegen
 
-Um den Einzug der Kindaufgaben innerhalb eines Astes anzupassen, verwenden Sie das Template [grid_indent](api/template/grid_indent.md), indem Sie die **width**-CSS-Eigenschaft ändern:
+## Die Einrückung von Kindern in einem Zweig festlegen
+
+Um die Einrückung der Kindaufgaben in einem Zweig festzulegen, verwenden Sie das Template [grid_indent](api/template/grid_indent.md) (ändern Sie die CSS-Eigenschaft **width**):
 
 ~~~js
 gantt.templates.grid_indent="function(task){"
@@ -116,9 +119,10 @@ gantt.templates.grid_indent="function(task){"
 };
 ~~~
 
+
 ## Checkboxen zu Baumknoten hinzufügen
 
-Um Checkboxen (oder beliebigen anderen HTML-Inhalt) in Baumknoten einzufügen, verwenden Sie das Template [grid_blank](api/template/grid_blank.md):
+Um Checkboxen (oder beliebigen anderen HTML-Inhalt) zu Baumknoten hinzuzufügen, verwenden Sie das Template [grid_blank](api/template/grid_blank.md):
 
 ~~~js
 gantt.templates.grid_blank="function(task){"
@@ -126,15 +130,17 @@ gantt.templates.grid_blank="function(task){"
 };
 ~~~
 
-## Template für Baumknoten festlegen
 
-Um das Template für Baumknoten zu definieren, verwenden Sie das **template**-Attribut in der Eigenschaft [columns](api/config/columns.md). 
+## Die Vorlage (Template) für Baumknoten festlegen
 
- Der Rückgabewert der **template**-Funktion wird als inneres HTML hinzugefügt, sodass jede HTML-Struktur verwendet werden kann.
+Um die Vorlage für Baumknoten festzulegen, verwenden Sie das **template** Attribut in der [columns](api/config/columns.md) Eigenschaft. 
+
+ Der Rückgabewert der Funktion des **template**-Attributs wird als inneres HTML hinzugefügt. Deshalb können Sie beliebige HTML-Strukturen im Attribut verwenden.
 
 :::note
-Beachten Sie: Wenn Sie nicht [dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html) für die [Server-seitige Integration](guides/server-side.md) verwenden, ist es wichtig, die in das Gantt-Diagramm geladenen Daten zu bereinigen, um mögliche XSS-Sicherheitslücken zu vermeiden (dhtmlxConnector übernimmt dies automatisch).
+Hinweis: Falls Sie [dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html) nicht verwenden, um mit der Serverseite zu integrieren, müssen Sie die Daten, die Sie in das Gantt-Diagramm laden, bereinigen, um mögliche XSS-Angriffe zu verhindern ([dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html) macht dies automatisch).
 :::
+
 ~~~js
 gantt.config.columns="["
     {name:"text",       label:"Task name",  tree:true, width:230, template:myFunc },
@@ -151,5 +157,4 @@ function myFunc(task){
 ~~~
 
 
-[Template for tree nodes](https://docs.dhtmlx.com/gantt/samples/04_customization/05_tree_template.html)
-
+[Vorlage für Baumknoten](https://docs.dhtmlx.com/gantt/samples/04_customization/05_tree_template.html)

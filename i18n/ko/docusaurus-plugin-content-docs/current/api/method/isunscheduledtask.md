@@ -1,23 +1,23 @@
 ---
 sidebar_label: isUnscheduledTask
 title: isUnscheduledTask method
-description: "작업이 unscheduled인지 확인합니다."
+description: "태스크가 미스스케줄된 상태인지 확인합니다"
 ---
 
 # isUnscheduledTask
 
 ### Description
 
-@short: 작업이 unscheduled인지 확인합니다.
+@short: 태스크가 미스스케줄 상태인지 확인합니다
 
-@signature: isUnscheduledTask: (task: Task) =\> boolean
+@signature: isUnscheduledTask: (task: Task) => boolean
 
 ### Parameters
 
-- `task` - (required) *Task* - 확인할 작업 객체입니다.
+- `task` - (required) *Task* - 태스크의 객체
 
 ### Returns
-- ` value` - (boolean) - 작업이 unscheduled인 경우 'true'를 반환하며, 그렇지 않으면 'false'를 반환합니다.
+- `value` - (boolean) - 지정된 태스크가 미스스케줄 상태일 때 'true', 그렇지 않으면 'false'
 
 ### Example
 
@@ -26,5 +26,5 @@ var isUnscheduled = gantt.isUnscheduledTask(task);
 ~~~
 
 ### Related Guides
-- [예정되지 않은 작업](guides/unscheduled-tasks.md)
+- [미스스케줄된 작업](guides/unscheduled-tasks.md)
 - [자동 스케줄링](guides/auto-scheduling.md)

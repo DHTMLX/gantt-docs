@@ -1,14 +1,14 @@
 ---
 sidebar_label: onExpand
-title: onExpand event
-description: "wird ausgelöst, wenn der Gantt in den Vollbildmodus wechselt"
+title: onExpand-Ereignis
+description: "Wird ausgelöst, wenn Gantt in den Vollbildmodus erweitert wird"
 ---
 
 # onExpand
 
 ### Description
 
-@short: Wird ausgelöst, wenn der Gantt in den Vollbildmodus wechselt
+@short: Wird ausgelöst, wenn Gantt in den Vollbildmodus erweitert wird
 
 @signature: onExpand: () =\> void;
 
@@ -16,17 +16,17 @@ description: "wird ausgelöst, wenn der Gantt in den Vollbildmodus wechselt"
 
 ~~~jsx
 gantt.attachEvent("onExpand", function (){
-    // hier Ihre benutzerdefinierte Logik einfügen
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Related samples
-- [Full Screen](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
+- [Vollbild](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
 
 ### Details
 
 :::note
- Dieses Event stammt von der **fullscreen**-Erweiterung, daher stellen Sie sicher, dass das [fullscreen](guides/extensions-list.md#fullscreen) Plugin über die Methode [gantt.plugins](api/method/plugins.md) aktiviert ist. Für weitere Informationen lesen Sie den Artikel ["Vollbildmodus"](guides/fullscreen-mode.md). 
+Dieses Event ist in der **fullscreen**-Erweiterung definiert, daher müssen Sie das [fullscreen](guides/extensions-list.md#fullscreen) Plugin mit der [gantt.plugins](api/method/plugins.md) Methode aktivieren. Lesen Sie die Details im Artikel [Vollbildmodus](guides/fullscreen-mode.md). 
 :::
 
 ### Related API
@@ -37,5 +37,4 @@ gantt.attachEvent("onExpand", function (){
 - [expand](api/method/expand.md)
 
 ### Related Guides
-- ["Vollbildmodus"](guides/fullscreen-mode.md)
-
+- [Vollbildmodus](guides/fullscreen-mode.md)

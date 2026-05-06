@@ -1,27 +1,29 @@
 ---
 sidebar_label: groupBy
-title: groupBy method
-description: "특정 작업 속성을 기준으로 작업을 그룹화합니다."
+title: groupBy 메서드
+description: "지정된 작업의 속성으로 작업을 그룹화합니다"
 ---
 
 # groupBy
+
 :::info
 이 기능은 PRO 에디션에서만 사용할 수 있습니다. 
 :::
+
 ### Description
 
-@short: 특정 작업 속성을 기준으로 작업을 그룹화합니다.
+@short: 지정된 작업의 속성으로 작업을 그룹화합니다
 
-@signature: groupBy: (config: GroupConfig | boolean) =\> void
+@signature: groupBy: (config: GroupConfig | boolean) => void
 
 ### Parameters
 
-- `config` - (required) *GroupConfig | boolean* -        그룹화 설정 객체 또는 그룹화를 제거하려면 false
+- `config` - (required) *GroupConfig | boolean* -      그룹화 구성 객체, 또는 태스크를 그룹 해제하려면 false
 
 ### Example
 
 ~~~jsx
-// 단일 레벨 그룹화
+// 한 단계 그룹화
 gantt.groupBy({
     relation_property: "priority",
     groups: [
@@ -34,14 +36,14 @@ gantt.groupBy({
     save_tree_structure: true
 });
 
-// 다중 레벨 그룹화
+//다단계 그룹화
 gantt.groupBy({
     relation_property: "priority",
     groups: [
         {key:0, label: "High"},
         {key:4, label: "Normal"},
         {key:5, label: "Low"},
-        // 중첩 그룹
+        // 다단계 그룹
         {key:1, label: "Give High Attention", "priority":0},
         {key:2, label: "Resolve Immediately", "priority":0},
         {key:3, label: "Keep For Next Release", "priority":5}
@@ -50,7 +52,7 @@ gantt.groupBy({
     group_text: "label"
 });
 
-// 미리 정의된 컬렉션 사용
+// 컬렉션 사용
 gantt.serverList("priority", [
     {key:1, label: "High"},
     {key:2, label: "Normal"},
@@ -63,29 +65,29 @@ gantt.groupBy({
     group_text: "label"
 });
 
-// 그룹화 제거
+// 그룹 해제
 gantt.groupBy(false);
 ~~~
 
 ### Related samples
-- [Tasks grouping](https://docs.dhtmlx.com/gantt/samples/02_extensions/08_tasks_grouping.html)
+- [작업 그룹화](https://docs.dhtmlx.com/gantt/samples/02_extensions/08_tasks_grouping.html)
 
 ### Details
 
 :::note
- 이 메서드는 **grouping** 확장의 일부이므로, [grouping](guides/extensions-list.md#grouping) 플러그인이 활성화되어 있어야 합니다. 자세한 내용은 [작업 그룹화](guides/grouping.md) 문서를 참조하세요. 
+이 메서드는 **grouping** 확장에 정의되어 있으므로 [grouping](guides/extensions-list.md#grouping) 플러그인을 활성화해야 합니다. 자세한 내용은 [Grouping Tasks](guides/grouping.md) 문서를 참조하세요.
 :::
 
 
 그룹화 설정 객체에는 다음과 같은 속성이 포함됩니다:
 
-- **relation_property** - (*string*) - 항목을 그룹화하는 데 사용되는 작업 속성입니다.
-- **groups** - (*СollectionItem[]*) - 그룹(요약) 항목의 배열입니다. 각 항목은 **group_id**와 **group_text**(기본값은 *key*와 *label*)에 지정된 속성을 포함해야 합니다.
-- **group_id?** - (*string*) - 선택 사항, 그룹 식별자입니다. 기본값은 'key'입니다.
-- **group_text?** - (*string*) - 선택 사항, 그룹 레이블입니다. 기본값은 'label'입니다.
-- **delimiter?** - (*string*) - 선택 사항, 여러 리소스를 가진 작업에 대해 자동으로 그룹을 생성할 때 사용됩니다. 기본값은 ","입니다.
-- **default_group_label?** - (*string*) - 선택 사항, 기본 그룹의 레이블입니다. 기본값은 'None'입니다.
-- **save_tree_structure?** - (*boolean*) - 선택 사항, Gantt가 그룹 내에서 원래 트리 구조를 유지할지 여부를 결정합니다. 생략하거나 *false*로 설정하면 작업이 평면 리스트로 표시됩니다.
+- **relation_property** - (*string*) - 항목을 그룹화하는 데 사용될 작업 객체의 속성.
+- **groups** - (*СollectionItem[]*) - 그룹(요약) 항목의 배열. 각 아이템은 기본값으로 설정된 **group_id** 와 **group_text** 매개변수에 해당하는 속성을 가져야 합니다. 기본값은 *key* 와 *label* 입니다.
+- **group_id?** - (*string*) - 선택적, 그룹의 id. 기본값은 'key' 입니다.
+- **group_text?** - (*string*) - 선택적, 그룹의 레이블. 기본값은 'label' 입니다.
+- **delimiter?** - (*string*) - 선택적, 다중 리소스가 있는 작업에 대한 자동 그룹 생성을 위한 구분자. 기본값은 ",".
+- **default_group_label?** - (*string*) - 선택적, 기본 그룹의 이름. 선택적. 기본값은 'None' 입니다.
+- **save_tree_structure?** - (*boolean*) - 선택적, 그룹 내에 트리 구조를 저장할지 여부를 정의합니다. 명시되지 않았거나 *false*로 설정되면 Gantt 작업은 평면 목록으로 표시됩니다.
 
 
 참고 사항:
@@ -104,7 +106,9 @@ gantt.templates.task_class=function(start, end, task){
 };
 ~~~
 
-- 기본 그룹은 다른 그룹에 할당되지 않은 작업을 포함합니다. 이는 **relation_property**가 <i>string|number</i> 값으로 지정된 작업을 제외합니다.<br> :::note
+- 기본 그룹은 다른 그룹에 할당되지 않은 작업을 포함합니다. 이는 **relation_property**가 <i>string|number</i> 값으로 지정된 작업을 제외합니다.
+
+:::note
 sample [Save tree structure when grouping tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_tasks_grouping_save_tree_structure.html) 
 :::
 

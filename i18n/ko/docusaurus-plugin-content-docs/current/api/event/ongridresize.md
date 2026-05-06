@@ -1,23 +1,25 @@
 ---
 sidebar_label: onGridResize
-title: onGridResize event
-description: "사용자가 그리드의 경계를 드래그하여 크기를 조절할 때 발생합니다"
+title: onGridResize 이벤트
+description: "사용자가 그리드의 경계를 드래그하여 그리드의 크기를 조정할 때 발생합니다."
 ---
 
 # onGridResize
+
 :::info
-이 기능은 PRO 에디션에서만 사용할 수 있습니다. 
+이 기능은 PRO 에디션에서만 사용할 수 있습니다.
 :::
+
 ### Description
 
-@short: 사용자가 그리드의 경계를 드래그하여 크기를 조절할 때 발생합니다
+@short: 사용자가 그리드의 경계를 드래그하여 그리드의 크기를 조정할 때 발생합니다
 
 @signature: onGridResize: (old_width: number, new_width: number) =\> void;
 
 ### Parameters
 
-- `old_width` - (required) *number* - 크기 조절 전 그리드의 너비
-- `new_width` - (required) *number* - 크기 조절 후 그리드의 너비
+- `old_width` - (required) *number* - 초기 그리드의 너비
+- `new_width` - (required) *number* - 새로운 그리드의 너비
 
 ### Example
 
@@ -41,5 +43,4 @@ gantt.attachEvent("onGridResize", function(old_width, new_width){
 - [onColumnResize](api/event/oncolumnresize.md)
 
 ### Related Guides
-- [컬럼 지정하기](guides/specifying-columns.md#resizing)
-
+- [Specifying Columns](guides/specifying-columns.md#resizing)

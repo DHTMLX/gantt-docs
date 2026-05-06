@@ -1,44 +1,44 @@
 ---
-title: "弹出消息与模态框"
-sidebar_label: "弹出消息与模态框"
+title: "弹出消息与模态对话框"
+sidebar_label: "弹出消息与模态对话框"
 ---
 
-# 弹出消息与模态框
+# 弹出消息与模态对话框
 
-在Gantt图中，消息用于告知用户错误、确认或否定操作、选择选项等。这些消息基于[a fork of the dhtmlxMessage repository](https://github.com/DHTMLX/message)实现，因此dhtmlxGantt的消息也支持dhtmlxMessage的所有功能。
+消息在甘特图中用于在出现错误、确认或拒绝某个操作、选择一个选项等情况下通知用户。甘特图消息以 [the fork of the dhtmlxMessage repository](https://github.com/DHTMLX/message) 的分支为基础。因此，dhtmlxMessage 的所有功能对于 dhtmlxGantt 的消息同样适用。
 
-主要有两类消息类型:[简单弹出消息框](guides/message-boxes.md#jibendanchuxiaoxi)和带有按钮、会阻止应用交互的[模态消息框](guides/message-boxes.md#motaixiaoxikuang)。
+共有两种主要类型的消息：一个 [简单弹出消息框](guides/message-boxes.md#basic-popup-message) 和一个带按钮的 [模态消息框](guides/message-boxes.md#modal-message-boxes)，后者会阻塞应用程序的工作。
 
-模态消息框分为三种类型:
+模态消息框可以归属于三种可能的类型之一：
 
-- [警告消息框](#alert)
+- [警报消息框](#alert)
 - [确认消息框](#confirm)
-- [模态框](#modal)
+- [Modalbox](#modal)
 
 
 ## 基本弹出消息
 
-要显示一个基本的模态消息框，可以使用 [gantt.message](api/method/message.md) 方法。必需的参数是消息文本:
+要创建一个基本模态消息框，请使用 [gantt.message](api/method/message.md) 方法。该方法的必选参数是消息文本：
 
 ~~~js
 gantt.message("The task is updated");
 ~~~
 
-消息框有三种样式:
+共有三种类型的消息框：
 
-- 默认消息框（**type:"info"**）
+- 默认消息框 (**type:"info"**)
 
 ![default_message](/img/default_message.png)
-  
-- 错误消息框（**type:"error"**）
+
+- 错误消息框 (**type:"error"**)
 
 ![error_message](/img/error_message.png)
 
-- 警告消息框（**type:"warning"**）
+- 警告消息框 (**type:"warning"**)
 
 ![warning_message](/img/warning_message.png)
 
-要创建所需类型的消息框，请通过 *type* 属性设置相应的值:
+要创建所需的消息框，需要用相应的值来定义 *type* 属性：
 
 ~~~js
 // 创建一个错误消息框
@@ -49,32 +49,33 @@ gantt.message({type:"error", text:"Invalid data format"});
 [Gantt message types](https://docs.dhtmlx.com/gantt/samples/04_customization/20_message_types.html)
 
 
-如需自定义消息框样式，可通过type参数指定CSS类，具体说明见[这里](guides/message-boxes.md#yangshidingzhi)。
+要对消息框应用不同的样式，需要通过 type 参数指定一个 CSS 类，如这里所述 [here](guides/message-boxes.md#styling)。
 
-### 消息框位置
+### 消息框定位
 
-默认情况下，弹出消息框显示在窗口的右上角。与[模态消息框](guides/message-boxes.md#motaixiaoxikuang)不同，它们不会阻止与父应用的交互。可以通过设置 **gantt.message.position** 属性改变其位置:
+默认情况下，弹出消息框出现在窗口的右上角。与会遮盖父应用并阻塞其工作的 [模态消息框](guides/message-boxes.md#modal-message-boxes) 不同。你可以通过使用 **gantt.message.position** 属性来改变消息框的位置：
 
 ~~~js
 gantt.message.position = 'bottom';
 ~~~
 
+**相关示例**  [Message position](https://snippet.dhtmlx.com/tte3rx78)
 
-**Related example:** [Message position](https://snippet.dhtmlx.com/tte3rx78)
+消息位置有四个可能的取值：
 
+- **top** - 显示在窗口右上角，默认设置
 
-可用的位置值有:
+- **bottom** - 显示在窗口右下角
 
-- **top** - 在右上角显示消息框（默认）
-- **bottom** - 在右下角显示消息框
-- **left** - 在甘特图下方左侧显示消息框
-- **right** - 在甘特图下方右侧显示消息框
+- **left** -  显示在窗口左侧，甘特下方
 
-### 消息框显示时长
+- **right** - 显示在窗口右侧，甘特下方
 
-你可以通过 *expire* 参数自定义消息框的可见时间（以毫秒为单位），即消息框消失前的等待时间。默认值为4000毫秒。
+### 过期间隔
 
-如需更改时长或关闭自动消失功能，将expire参数设置为其他值或-1。设置为-1时，消息框只会在点击后消失。
+可以通过 *expire* 参数来定制消息框的过期间隔。它表示消息框在多长时间后消失的时间段（以毫秒为单位）。默认情况下，过期间隔为 4000 毫秒。
+
+你可以修改该值，或通过将 expire 参数设置为 "-1" 来完全取消过期。在这种情况下，消息框仅在鼠标单击时消失。
 
 ~~~js
 gantt.message({
@@ -84,11 +85,11 @@ gantt.message({
 });
 ~~~
 
-### 通过API隐藏消息框
+### 使用 API 隐藏消息框
 
-如需在消息框自动消失前手动隐藏它，可以使用 **gantt.message.hide(boxId)** 方法。它接受一个参数:
+若要手动隐藏指定的消息框，不等待其自动消失，可以使用 **gantt.message.hide(boxId)** 方法。它接收一个参数：
 
-- **boxId** - 创建消息框时分配的id
+- **boxId** - 在消息框构造函数中指定的框的 id
 
 ~~~js
 gantt.message({
@@ -99,42 +100,43 @@ gantt.message({
 gantt.message.hide("myBox");
 ~~~
 
+
 ## 模态消息框
 
-模态消息框会阻止与父应用的交互，直到用户采取操作（通常是点击按钮）。它们会在按钮点击后关闭，并在有回调函数时执行回调。
+模态消息框会阻塞父应用的工作，直到执行必要的操作（通常是按钮点击）。单击按钮时会关闭它们，若有回调函数则会执行。
 
-模态消息框有三种类型:
+存在三种类型的模态消息框：
 
-- [警告消息框](#alert):带有一个按钮的警告提示；
-- [确认消息框](#confirm):带有"确定"和"取消"按钮的确认框；
-- [模态框](#modal):可以拥有任意数量按钮的模态框。
+- [警报消息框](#alert) - 带一个按钮的警报框；
+- [确认消息框](#confirm) - 带有两个按钮（确认或取消）的确认框；
+- [Modalbox](#modal) - 带有无限数量按钮的模态消息框。
 
-常用属性包括:
+这些框的常见属性包括：
 
-- **id** - 消息框标识符；
+- **id** - 消息框的 ID；
 - **title** - 标题文本；
-- **type** - 消息框类型（如warning或error）；
-- **text** - 消息内容；
-- **ok** - "确定"按钮文本；
-- **cancel** - "取消"按钮文本（仅限确认框）；
-- **callback** - 按钮点击时调用的函数，根据点击的按钮返回*true*或*false*；
-- **position** - 目前仅支持"top"，其他值会使消息框居中显示；
-- **width** - 模态框宽度，可使用CSS [length](https://developer.mozilla.org/en-US/docs/Web/CSS/length)或[percentage](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage)（如"100px"或"50%"）；
-- **height** - 模态框高度，设置方式同宽度。
+- **type** - 消息框的类型（例如警告或错误）；
+- **text** - 消息框主体的文本；
+- **ok** - “OK” 按钮的文本；
+- **cancel** - “Cancel” 按钮的文本（用于 confirm 框）；
+- **callback** - 按钮点击时调用的函数。参数为按下的按钮所对应的 true/false 值（具体取决于所点击的按钮）；
+- **position** - 目前仅支持一个值 - "top"，其他值将导致居中对齐；
+- **width** - 模态框的宽度（用 CSS 的 \<length\> 或 \<percentage\> 值设置，例如 "100px", "50%"）；
+- **height** - 模态框的高度（用 CSS 的 \<length\> 或 \<percentage\> 值设置，例如 "100px", "50%"）。
 
-## 警告消息框 (#alert)
+## 警报消息框 {#alert}
 
 ![alert](/img/alert.png)
 
-警告消息框包含一个"确定"按钮。可以通过*ok*参数设置按钮文本:
+警报消息框包含一个 "OK" 按钮。要设置 "OK" 按钮的文本，请使用 *ok* 参数并将文本作为值传入：
 
-- 简写形式（仅传递消息文本，其他参数使用默认值）:
+- 简短形式
 
 ~~~js
 gantt.alert("Text");
 ~~~
 
-- 完整形式（可指定多个选项，未指定的参数使用默认值）:
+- 完整形式
 
 ~~~js
 gantt.alert({
@@ -146,19 +148,19 @@ gantt.alert({
 ~~~
 
 
-## 确认消息框 (#confirm)
+## 确认消息框 {#confirm}
 
 ![confirm](/img/confirm.png)
 
-确认消息框有两个按钮:"确定"和"取消"。它们的文本可通过相应属性设置。
+确认消息框有两个按钮：一个 "OK" 按钮和一个 "Cancel" 按钮。按钮的文本在相应的属性中定义。
 
-- 简写形式:
+- 简短形式
 
 ~~~js
 gantt.confirm("ConfirmText");
 ~~~
 
-- 完整形式:
+- 完整形式
 
 ~~~js
 gantt.confirm({
@@ -172,15 +174,15 @@ gantt.confirm({
 ~~~
 
 
-## 模态框 (#modal)
+## 模态框 {#modal}
 
 ![modalbox](/img/modalbox.png)
 
-模态框具有以下特点:
+模态框具备一些特性：
 
-- *text* 支持任意 *HTML* 内容；
-- *buttons* 数组可定义多个按钮，数组项为按钮文本；
-- *callback* 函数接收被点击按钮的*索引*。
+- 其 *text* 可以包含任意 *HTML* 内容；
+- 它可以在 *buttons* 数组中指定多枚按钮，按钮文本即为按钮文本值；
+- *callback* 函数将以所选按钮的 *index* 作为参数。
 
 ~~~js
 gantt.modalbox({
@@ -194,35 +196,33 @@ gantt.modalbox({
 ~~~
 
 
-### 配置模态框按钮 (#configuringmodalboxbuttons)
+### 配置 modalbox 按钮
 
-配置模态框按钮有两种主要方式:
+定义 modalbox 按钮配置有两种主要方式：
 
-- 简写形式:
+- 简短形式： 
 
 ~~~js
 gantt.modalbox({
-    // 其他设置
+    // other settings
     buttons:["Save", "Delete", "Cancel"],
     callback: function(result){
            switch(result){
             case "0":
-                //保存
+                //Save
                 break;
             case "1":
-                //删除
+                //Delete
                 break;
             case "2":
-                //取消
+                //Cancel
                 break;
         }    
     }
 });
 ~~~
 
-在这种形式下，回调函数接收被点击按钮的字符串索引（"0"、"1"、"2"等）。每个按钮会根据其小写标签自动生成CSS类，例如 *gantt_**save**_button*、*gantt_**delete**_button*、*gantt_**cancel**_button*。
-
-你可以使用这些类自定义按钮样式:
+回调函数的结果将等于按钮数组中被按下的按钮的索引的字符串形式（"0","1","2",...）。每个按钮将从其标签转换为小写后获得一个 CSS 类，例如 gantt_save_button、gantt_delete_button、gantt_cancel_button。这些类可用于为按钮设置样式：
 
 ~~~js
 .gantt_delete_button div{
@@ -230,17 +230,17 @@ gantt.modalbox({
 }
 ~~~
 
-如果多个弹窗使用相同按钮名但需要不同样式，可以通过 **type** 配置实现:
+如果同一个按钮名称被多个弹出框使用且需要不同样式，可以使用 **type** 配置：
 
 ~~~js
 gantt.modalbox({
-    // 其他设置
+    // other settings
     type:"special_popup",
     buttons:["Save", "Delete", "Cancel"]
 });
 ~~~
 
-**type** 会被加上"gantt_"前缀，并作为类名添加到弹窗元素上:
+该 **type** 将在前面加上 "gantt_" 前缀并作为类名添加到弹出框元素上：
 
 ~~~js
 .gantt_special_popup .gantt_delete_button div{
@@ -248,13 +248,13 @@ gantt.modalbox({
 }
 ~~~
 
-- 完整形式:
+- 完整表单：
 
-你可以通过更详细的配置，显式定义按钮的CSS类和回调值:
+可以使用更长的配置形式显式定义按钮的 CSS 类和回调值：
 
 ~~~js
 gantt.modalbox({
-    // 其他设置
+    // other settings
     buttons: [
         { label:"Save",   css:"link_save_btn",   value:"save" },
         { label:"Cancel", css:"link_cancel_btn", value:"cancel" },
@@ -263,22 +263,22 @@ gantt.modalbox({
     callback: function(result){
         switch(result){
             case "save":
-                //保存
+                //Save
                 break;
             case "cancel":
-                //取消
+                //Cancel
                 break;
             case "delete":
-                //删除
+                //Delete
                 break;
         }
     }
 });
 ~~~
 
-**label** 是必需的，**css** 和 **value** 可选。如果省略，CSS类和回调值会像简写形式一样自动生成。
+其中 **label** 参数是必填项，而 **css** 和 **value** 选项可以省略。缺失的参数将按照按钮配置的短形式来计算：CSS 将从按钮标签的小写形式继承，按钮索引将用作值。
 
-**css** 类会加上"gantt_"前缀，并添加到按钮元素上:
+**css** 将以 "gantt_" 前缀并添加到按钮元素上作为类名：
 
 ~~~js
 .gantt_link_delete_btn div{
@@ -286,10 +286,9 @@ gantt.modalbox({
 }
 ~~~
 
-
 ## 隐藏模态消息框
 
-要手动关闭模态消息框，可使用 **gantt.modalbox.hide()** 方法，并传入模态框容器元素:
+要手动隐藏模态消息框，可以使用 **gantt.modalbox.hide()** 方法。作为参数，它接收模态框的 div 容器：
 
 ~~~js
 var box = gantt.modalbox({    
@@ -304,7 +303,7 @@ var box = gantt.modalbox({
 gantt.modalbox.hide(box);
 ~~~
 
-对于 **alert** 和 **confirm** 类型的模态框，同样适用 **gantt.modalbox.hide()** 方法:
+对于 **alert** 和 **confirm** 模态框，你也需要使用 **gantt.modalbox.hide()** 方法：
 
 ~~~js
 var box = gantt.confirm({
@@ -319,20 +318,21 @@ var box = gantt.confirm({
 gantt.modalbox.hide(box);
 ~~~
 
-## Gantt 如何处理模态框按钮
 
-默认情况下，按钮名称仅为纯文本。当按钮名称被设置为HTML元素（如加粗字体或添加material icon）时，点击按钮所触发的回调函数会返回 *null*。
+## Gantt 如何与 Modalbox 按钮协作
 
-这是因为Gantt会监听被点击元素父节点上的特定属性。如果缺少这些预期属性，Gantt会返回 *null*。此外，Gantt会将你为按钮指定的所有元素包裹在`<div>`标签中。
+默认情况下，按钮的名称以文本形式显示。如果按钮的名称被设为一个 HTML 元素（例如使字体变粗，或添加材料图标），点击按钮时回调函数的结果将为 *null*。
 
-因此，如果你点击文本时返回的是字符串元素，其父节点是空的`<div>`，结果就会是 `null`。而点击文本外的按钮时，其父节点具有必要属性，回调会返回预期结果:
+这是因为 Gantt 会监控所单击元素父元素的某些属性。如果缺少预期的属性，Gantt 将返回 *null*。此外，Gantt 会把所有你为按钮指定的元素都包裹在 `<div>` 标签中。
 
-- 确认框返回 *true/false*
-- 对于模态框:
-  - [简写形式](#configuringmodalboxbuttons)返回数组中的元素索引
-  - [完整形式](#configuringmodalboxbuttons)返回 `value` 参数的值
-  
-这意味着，如果你想将HTML元素作为按钮名称，应将其包裹在两个带有`data-result`属性的`<div>`元素内。例如:
+因此如果在文本被点击时返回一个字符串元素，其父元素将是一个空的 `<div>`，你将得到 `null`。但当在文本外部点击按钮时，其父元素是具有所有必要属性的元素，因此你将得到一些更可预期的结果：
+
+- 对确认框，返回 *true* / *false*
+- 对模态框：
+  - 数组中按钮的索引号（对于 [configuring-modalbox-buttons](#configuring-modalbox-buttons) 的短表单）
+  - `value` 参数的值（对于 [full form](#configuring-modalbox-buttons)）
+
+这意味着如果你想把 HTML 元素设为按钮名称，你需要把所有内容包装在两个具有 `data-result` 属性的 div 元素中。示例：
 
 ~~~js
 gantt.confirm({
@@ -358,7 +358,7 @@ gantt.modalbox({
 });
 ~~~
 
-如果你希望按钮使用其他元素，请确保所有父元素也带有`data-result`属性。如下例中，按钮名称使用了`<u>`标签，并且它和它的两个父`<div>`都带有`data-result`属性:
+如果你需要为按钮使用其他元素，所有的父元素也应具有 `data-result` 属性。在下面的示例中，`<u>` 标签被用作按钮的名称，因此它们也具备与其他两个 `<div>` 父元素相同的 `data-result` 属性：
 
 ~~~js
 gantt.confirm({
@@ -394,16 +394,17 @@ gantt.modalbox({
 });
 ~~~
 
-## 样式定制
 
-你可以通过自定义样式来调整任意消息框的外观。通常，可以通过 *type* 参数指定一个 CSS 类，即创建一个 CSS 类并将其名称赋值给该参数。
+## 样式
 
-设置 'type' 参数时，请注意以下几点:
+对于任何类型的消息框，你都可以定义自定义样式以实现所需外观。通常，通过 *type* 参数来指定合适的 CSS 类：你定义一个 CSS 类并将该参数设置为它的名称。
 
-- 若要为 alert 和 confirm 框应用 CSS 类，请使用 'window-related' 方法初始化消息框。
-- 若要为普通消息框应用 CSS 类，请使用 'common' 方法初始化消息框。
-- CSS 类名应以 'gantt-' 作为前缀。
-- 为确保样式正确应用，建议使用类似 **.gantt-some div** 的选择器来定位 gantt 消息框内部的元素。
+在设置 'type' 参数时，需要记住以下规则：
+
+- 要为警报和确认框设置 CSS 类，必须使用“与窗口相关的”初始化方式来初始化这类框；
+- 要为消息框设置 CSS 类，必须使用“通用的”初始化方式来初始化；
+- CSS 类名应带有 'gantt-' 前缀；
+- 为了正确应用样式，需将类名写成 **.gantt-some div**，以指明它是为甘特消息中的元素而设。
 
 ~~~js
 <style type="text/css">
@@ -418,25 +419,21 @@ gantt.modalbox({
 gantt.message({ type:"myCss", text:"some text" });
 ~~~
 
-
-**Related example:** [Styling message boxes](https://snippet.dhtmlx.com/p950vym3)
-
-
+**相关示例** [Styling message boxes](https://snippet.dhtmlx.com/p950vym3)
 ## 模态窗口与键盘交互
 
-模态框的键盘支持由 **gantt.message.keyboard** 属性控制，该属性默认启用（*true*）。
+模态框的键盘功能由 **gantt.message.keyboard** 属性控制。初始时，它被设置为 *true*。
 
-默认情况下，模态框会阻止页面上的键盘事件，除了以下按键:
+默认情况下，模态框会阻塞页面的键盘事件。可用的按键只有：
 
-- "space" 和 "enter" 会将模态框结果设为 *true*
-- "escape" 会将模态框结果设为 *false*
+- "space" 与 "enter" - 将 *true* 设为模态框的结果；
+- "escape" - 将 *false* 设为模态框的结果。
 
-如果将 **gantt.message.keyboard** 设置为 *false*，则不再阻止键盘事件，这些按键也不会触发模态结果:
+通过将 **keyboard** 属性设为 *false*，你将启用键盘事件（并禁用上述按键）：
 
 ~~~js
 gantt.message.keyboard = false; 
 gantt.modalbox({...});
 ~~~
 
-这样可以完全使用键盘，例如在模态框内输入内容。
-
+这允许使用完整的键盘，例如在模态框内的输入框中输入值。

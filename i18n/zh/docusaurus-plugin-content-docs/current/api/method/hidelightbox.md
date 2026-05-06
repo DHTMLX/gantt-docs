@@ -1,14 +1,14 @@
 ---
 sidebar_label: hideLightbox
-title: hideLightbox method
-description: "如果 lightbox 打开，则关闭它"
+title: hideLightbox 方法
+description: "在灯箱当前处于活动状态时将其关闭"
 ---
 
 # hideLightbox
 
 ### Description
 
-@short: 如果 lightbox 打开，则关闭它
+@short: 若灯箱当前处于活动状态，则关闭灯箱
 
 @signature: hideLightbox: () =\> void
 
@@ -22,4 +22,3 @@ gantt.hideLightbox();
 
 ### Related API
 - [showLightbox](api/method/showlightbox.md)
-

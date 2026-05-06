@@ -1,16 +1,16 @@
 ---
 sidebar_label: resetSkin
-title: resetSkin method
-description: "пересчитывает настройки скина на основе связанного CSS файла скина"
+title: resetSkin метод
+description: "Пересчитывает настройки скина на основе связанного подключённого CSS-файла скина"
 ---
 
 # resetSkin
 
 ### Description
 
-@short: Пересчитывает настройки скина на основе связанного CSS файла скина
+@short: Пересчитывает настройки скина на основе связанного подключённого CSS-файла скина
 
-@signature: resetSkin: () =\> void
+@signature: resetSkin: () => void
 
 ### Example
 
@@ -33,12 +33,10 @@ changeSkin('meadow');
 ~~~
 
 ### Related samples
-- [Change skin dynamically](https://docs.dhtmlx.com/gantt/samples/06_skins/06_dynamic_skin.html)
+- [Изменение скина динамически](https://docs.dhtmlx.com/gantt/samples/06_skins/06_dynamic_skin.html)
 
 ### Details
 
 :::note
-note
-Этот метод предназначен для использования при динамической смене скина
- 
+Используется только если вы динамически меняете скин
 :::

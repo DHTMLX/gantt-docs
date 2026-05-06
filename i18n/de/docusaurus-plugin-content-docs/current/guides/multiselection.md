@@ -1,17 +1,18 @@
----
-title: "Multi-Task-Auswahl"
-sidebar_label: "Multi-Task-Auswahl"
----
+--- 
+title: "Mehrfachauswahl" 
+sidebar_label: "Mehrfachauswahl" 
+--- 
 
-# Multi-Task-Auswahl 
+# Mehrfachauswahl
 
-Ab Version 3.2 enthält die Bibliothek die **multiselect**-Erweiterung, mit der Sie mehrere Aufgaben gleichzeitig auswählen können.
+Ab Version 3.2 bietet die Bibliothek die Erweiterung **multiselect**, die es Ihnen ermöglicht, mehrere Aufgaben gleichzeitig auszuwählen.
 
 <div style="text-align:center;">![multiselection](/img/multiselection.png)</div>
 
-## Aktivierung der Multi-Task-Auswahl
 
-Um die Multi-Task-Auswahl für Aufgaben zu aktivieren, nutzen Sie die Methode [gantt.plugins](api/method/plugins.md):
+## Aktivierung der Mehrfachauswahl
+
+Um die Mehrfachauswahl für Aufgaben zu aktivieren, aktivieren Sie sie über die [gantt.plugins](api/method/plugins.md) Methode:
 
 ~~~js
 <!DOCTYPE html>
@@ -24,26 +25,26 @@ Um die Multi-Task-Auswahl für Aufgaben zu aktivieren, nutzen Sie die Methode [g
     gantt.plugins({ /*!*/
         multiselect: true /*!*/
     }); /*!*/
-    //Ihr Code kommt hier hin
+    //your code will be here
 </body>
 </html>
 ~~~
 
 [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
+Sobald die Erweiterung aktiviert ist, wird die Mehrfachauswahl automatisch aktiviert.
 
-Sobald aktiviert, ist die Multi-Task-Auswahl automatisch aktiv.
 
-
-Um die Erweiterung zu deaktivieren, verwenden Sie die Option [multiselect](api/config/multiselect.md):
-**Disabling multi-task selection**
+Um die Erweiterung zu deaktivieren, verwenden Sie die [multiselect](api/config/multiselect.md) Option:
+**Deaktivierung der Mehrfachauswahl**
 ~~~js
 gantt.config.multiselect = false; 
 ~~~
 
-## Einmaliges Update für mehrere Aufgaben
 
-Um mehrere Aufgaben oder Verknüpfungen gleichzeitig zu bearbeiten, nutzen Sie die Methode [batchUpdate](api/method/batchupdate.md):
+## Einmalige Aktualisierung mehrerer Aufgaben
+
+Um mehrere Aufgaben/Verknüpfungen gleichzeitig zu aktualisieren, verwenden Sie die [batchUpdate](api/method/batchupdate.md) Methode:
 
 ~~~js
 gantt.batchUpdate(function () {
@@ -56,7 +57,7 @@ gantt.batchUpdate(function () {
     }
 });
 ~~~
-Mit dieser Methode können Sie mehrere Aufgaben oder Verknüpfungen mit nur einer einzigen Neudarstellung aktualisieren, anstatt durch mehrere Updates mehrere Neudarstellungen auszulösen.
+Die Methode ermöglicht das gleichzeitige Aktualisieren mehrerer Aufgaben/Verknüpfungen auf einmal mit nur einem Neuzeichnen statt mehrerer Updates mit mehreren Neuzeichnungen.
 
 
 [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
@@ -64,7 +65,7 @@ Mit dieser Methode können Sie mehrere Aufgaben oder Verknüpfungen mit nur eine
 
 ## Iterator
 
-Um alle ausgewählten Aufgaben im Gantt-Diagramm zu durchlaufen, verwenden Sie die Methode [eachSelectedTask](api/method/eachselectedtask.md):
+Um alle ausgewählten Aufgaben im Gantt-Diagramm zu iterieren, verwenden Sie die [eachSelectedTask](api/method/eachselectedtask.md) Methode:
 
 ~~~js
 gantt.batchUpdate(function () {
@@ -79,17 +80,17 @@ gantt.batchUpdate(function () {
 [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-## Gleichzeitiges Einrücken/Ausrücken
+## Simultane Ein-/Ausrückung
 
-Mit der Multi-Task-Auswahl können Sie Operationen auf mehrere Aufgaben gleichzeitig anwenden. Zum Beispiel können Sie Aufgaben einrücken oder ausrücken, sie also zu Unteraufgaben machen oder Unteraufgaben wieder zu Hauptaufgaben hochstufen.
+Die Mehrfachauswahl ermöglicht es Ihnen, gleichzeitig verschiedene Operationen auf mehrere Aufgaben anzuwenden. Beispielsweise können Sie eine Einrückung/Ausrückung hinzufügen und damit Aufgaben in Unteraufgaben verwandeln bzw. umgekehrt.
 
 
 [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-## Prüfen, ob eine Aufgabe ausgewählt ist
+## Überprüfen, ob eine Aufgabe ausgewählt ist
 
-Um herauszufinden, ob eine Aufgabe aktuell ausgewählt ist, verwenden Sie die Methode [isSelectedTask](api/method/isselectedtask.md):
+Um zu prüfen, ob eine Aufgabe derzeit ausgewählt ist, verwenden Sie die [isSelectedTask](api/method/isselectedtask.md) Methode:
 
 ~~~js
 gantt.templates.task_class = 
@@ -100,44 +101,49 @@ gantt.templates.task_row_class = function (start, end, task) {
 };
 ~~~
 
+
 [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-Um den Auswahlsstatus einer Aufgabe umzuschalten, verwenden Sie die Methode [toggleTaskSelection](api/method/toggletaskselection.md):
+Um zwischen ausgewählten und nicht ausgewählten Zuständen umzuschalten, verwenden Sie die [toggleTaskSelection](api/method/toggletaskselection.md) Methode:
 
 ~~~js
-gantt.toggleTaskSelection("t_1"); //"t_1" ist die ID der Aufgabe
+gantt.toggleTaskSelection("t_1"); //"t_1" is the task's id
 gantt.render();
 ~~~
 
-## Alle ausgewählten Aufgaben abrufen
 
-Um alle aktuell ausgewählten Aufgaben abzurufen, verwenden Sie die Methode [getSelectedTasks](api/method/getselectedtasks.md):
+## Alle ausgewählten Aufgaben erhalten
+
+Um alle aktuell ausgewählten Aufgaben abzurufen, verwenden Sie die [getSelectedTasks](api/method/getselectedtasks.md) Methode:
 
 ~~~js
 gantt.getSelectedTasks();
 ~~~
 
-Um die zuletzt ausgewählte Aufgabe zu erhalten, verwenden Sie die Methode [getLastSelectedTask](api/method/getlastselectedtask.md):
+
+Um die zuletzt ausgewählte Aufgabe abzurufen, verwenden Sie die [getLastSelectedTask](api/method/getlastselectedtask.md) Methode:
 
 ~~~js
 gantt.getLastSelectedTask();
 ~~~
 
-## Multi-Task-Auswahl auf eine Ebene beschränken
 
-Wenn Sie die Auswahl auf Aufgaben derselben Ebene beschränken möchten, nutzen Sie die Option [multiselect_one_level](api/config/multiselect_one_level.md):
+## Einschränkung der Mehrfachauswahl auf eine Ebene
+
+Um das Auswählen von Aufgaben aus unterschiedlichen Ebenen zu verweigern, verwenden Sie die Option [multiselect_one_level](api/config/multiselect_one_level.md):
 
 ~~~js
 gantt.config.multiselect_one_level = true; 
 gantt.init('gantt_here');
 ~~~
 
-## Multi-Task-Auswahl und Drag-n-Drop {#multitaskselectionanddragndrop}
 
-Mit aktivierter **multiselect.js**-Erweiterung können Sie durch Halten von Strg oder Shift mehrere Aufgaben auswählen und diese dann gemeinsam horizontal verschieben.
+## Mehrfachauswahl und Drag-and-Drop {#multitaskselectionanddragndrop}
 
-Um diese Funktion zu deaktivieren, setzen Sie die Option [drag_multiple](api/config/drag_multiple.md) auf *false*:
+Wenn die **multiselect.js** Erweiterung aktiviert ist, können Sie mehrere Aufgaben auswählen, indem Sie entweder die Ctrl- oder die Umschalttaste gedrückt halten und die ausgewählten Aufgaben horizontal gleichzeitig ziehen.
+
+Um diese Funktionalität zu deaktivieren, setzen Sie die [drag_multiple](api/config/drag_multiple.md) Methode auf *false*:
 
 ~~~js
 gantt.config.drag_multiple = true; 
@@ -149,10 +155,10 @@ gantt.config.drag_multiple = true;
 
 ## Editor mit einem Klick öffnen
 
-Im Einzel-Auswahlmodus öffnet ein Klick auf eine Aufgabe sofort den Inline-Editor.
+Im Einzel-Auswahlmodus öffnet Gantt den Inline-Editor, nachdem Sie auf eine Aufgabe geklickt haben. 
 
-Im **Multi-Auswahlmodus** wird durch einen Klick auf eine nicht ausgewählte Aufgabe diese zunächst ausgewählt, der Inline-Editor öffnet sich jedoch erst beim zweiten Klick. 
-Um den Editor auch im Multi-Auswahlmodus bereits beim ersten Klick zu öffnen, aktivieren Sie die Konfiguration [inline_editors_multiselect_open](api/config/inline_editors_multiselect_open.md).
+Im **Mehrfachauswahl**-Modus wird nach dem ersten Klick auf eine unmarkierte Aufgabe diese ausgewählt und der Inline-Editor wird erst nach dem zweiten Klick geöffnet. 
+Wenn Sie möchten, dass Gantt den Inline-Editor nach dem ersten Klick öffnet, aktivieren Sie die [inline_editors_multiselect_open](api/config/inline_editors_multiselect_open.md) Konfiguration.
 
 ~~~js
 gantt.plugins({
@@ -164,16 +170,16 @@ gantt.plugins({
 gantt.config.inline_editors_multiselect_open = true;
 ~~~
 
-## API-Events
 
-Wenn die Multi-Task-Auswahl aktiv ist, lösen das Auswählen einer oder mehrerer Aufgaben sowohl die allgemeinen [onTaskSelected](api/event/ontaskselected.md) / [onTaskUnselected](api/event/ontaskunselected.md) Events als auch speziell für die Multiselect-Erweiterung vorgesehene Events aus.
+## API-Ereignisse {#apievents}
 
-Die Multi-Task-Auswahl löst folgende Event-Reihenfolge aus:
+Wenn die Mehrfachauswahl aktiviert ist, löst das Auswählen einer Aufgabe oder eines Bereichs von Aufgaben sowohl die allgemeinen [onTaskSelected] / [onTaskUnselected] Ereignisse aus, als auch Ereignisse, die speziell für die Multiselect-Erweiterung gelten.
 
-- [onBeforeMultiSelect](api/event/onbeforemultiselect.md) - wird ausgelöst, bevor eine Aufgabe oder ein Aufgabenbereich ausgewählt wird; dieses Event kann blockiert werden
-- [onBeforeTaskMultiSelect](api/event/onbeforetaskmultiselect.md) - wird ausgelöst, bevor sich der Auswahlstatus einer Aufgabe ändert (ausgewählt oder abgewählt); dieses Event kann blockiert werden
-- [onTaskMultiSelect](api/event/ontaskmultiselect.md) - wird ausgelöst, nachdem sich der Auswahlstatus einer Aufgabe geändert hat
-- [onTaskUnselected](api/event/ontaskunselected.md) - wird für jede Aufgabe aufgerufen, die im Bereich abgewählt wurde
-- [onTaskSelected](api/event/ontaskselected.md) - wird für jede Aufgabe aufgerufen, die im Bereich ausgewählt wurde
-- [onMultiSelect](api/event/onmultiselect.md) - wird ausgelöst, nachdem die Auswahl einer Aufgabe oder eines Aufgabenbereichs abgeschlossen ist
+Mehrfachauswahl folgt dem folgenden Ereignisfluss:
 
+- [onBeforeMultiSelect] - löst vor dem Auswählen einer Aufgabe oder eines Bereichs von Aufgaben aus, blockierbar
+- [onBeforeTaskMultiSelect] - löst aus, bevor sich der Auswahlszustand der Aufgabe ändert (die Aufgabe wird ausgewählt oder abgewählt), blockierbar
+- [onTaskMultiSelect] - löst aus, nachdem der Auswahlszustand der Aufgabe geändert wurde (die Aufgabe wurde ausgewählt/abgewählt)
+- [onTaskUnselected] - wird für jede Aufgabe des Multiselection-Bereichs aufgerufen
+- [onTaskSelected] - wird für jede Aufgabe des Multiselection-Bereichs aufgerufen
+- [onMultiSelect] - löst nach Abschluss der Auswahl einer Aufgabe oder eines Bereichs von Aufgaben aus

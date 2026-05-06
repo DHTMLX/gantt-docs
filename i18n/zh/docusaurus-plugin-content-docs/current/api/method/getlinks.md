@@ -1,19 +1,19 @@
 ---
 sidebar_label: getLinks
 title: getLinks method
-description: "获取甘特图中显示的所有链接"
+description: "returns all links presented in the Gantt chart"
 ---
 
 # getLinks
 
 ### Description
 
-@short: 获取甘特图中显示的所有链接
+@short: 返回在甘特图中显示的所有链接
 
-@signature: getLinks: () =\> Array\<Link\>
+@signature: getLinks: () =\> Array \<Link\>
 
 ### Returns
-- `links` - (Array &lt;Link&gt;) - 包含链接对象的数组
+- `links` - (Array \<Link\>) - 链接对象的数组
 
 ### Example
 
@@ -23,5 +23,4 @@ const links = gantt.getLinks();
 
 ### Details
 
-如需了解如何获取与特定任务相关的所有链接，请参阅 [获取 Link 对象/ID](guides/link-object-operations.md) 和 [getLink](api/method/getlink.md) 文章。
-
+有关如何获取与特定任务相关的所有链接的信息，请参阅 [Getting the Link Object/Id](guides/link-object-operations.md#getting-the-links-related-to-a-certain-task) 和 [getLink](api/method/getlink.md) 文章。

@@ -1,20 +1,20 @@
 ---
 sidebar_label: silent
-title: silent method
-description: "防止代码内部触发任何内部事件或服务器端调用"
+title: silent 方法
+description: "使其中的所有代码不触发内部事件或服务器端调用"
 ---
 
 # silent
 
 ### Description
 
-@short: 防止代码内部触发任何内部事件或服务器端调用
+@short: 使其中的所有代码不触发内部事件或服务器端调用
 
 @signature: silent: (callback: GanttCallback) =\> void
 
 ### Parameters
 
-- `callback` - (required) *function* - 回调函数
+- `callback` - （必需）*function* - 回调函数
 
 ### Example
 
@@ -30,4 +30,4 @@ gantt.render();
 ~~~
 
 ### Related Guides
-- [服务器端集成](guides/server-side.md#cuowuchuli)
+- [服务端集成](guides/server-side.md#error-handling)

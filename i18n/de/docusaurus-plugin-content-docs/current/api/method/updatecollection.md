@@ -1,31 +1,32 @@
 ---
 sidebar_label: updateCollection
 title: updateCollection method
-description: "aktualisiert die angegebene Collection mit neuen Optionen"
+description: "aktualisiert die angegebene Sammlung mit neuen Optionen"
 ---
 
 # updateCollection
 
 ### Description
 
-@short: Aktualisiert die angegebene Collection mit neuen Optionen
+@short: Aktualisiert die angegebene Sammlung mit neuen Optionen
 
 @signature: updateCollection: (collection: string | number, options: any[]) =\> boolean
 
 ### Parameters
-- `collection` - (required) *string | number* - der Name der zu aktualisierenden Collection
-- `options` - (required) *array* - die neuen Werte der Collection
+
+- `collection` - (erforderlich) *string | number* - der Name der Sammlung, die aktualisiert wird
+- `options` - (erforderlich) *array* - die neuen Werte der Sammlung
 
 ### Returns
-- ` collection` - (boolean) - true, wenn die Aktualisierung erfolgreich war; false, wenn die Collection nicht gefunden wurde
+- `collection` - (boolean) - true, wenn das Update erfolgreich war; false, wenn die Sammlung nicht gefunden wurde
 
 ### Example
 
 ~~~jsx
 gantt.config.lightbox.sections = [
     {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-    {name:"priority", height:22, map_to:"priority", type:"select", /*!*/     
-        options:gantt.serverList("priorities", values_array)},     /*!*/                                                                
+    {name:"priority", height:22, map_to:"priority", type:"select", /*!*/
+        options:gantt.serverList("priorities", values_array)},     /*!*/
     {name:"time", height:72, type:"duration", map_to:"auto"}
 ];
 
@@ -34,26 +35,26 @@ gantt.updateCollection("priorities", new_values_array); /*!*/
 
 ### Details
 
-- Diese Methode löst das [onOptionsLoad](api/event/onoptionsload.md) Event aus und aktualisiert das Lightbox-Interface. 
-- Collections können initial mit der [serverList](api/method/serverlist.md) Methode erstellt werden.
+- Die Methode ruft das Event [onOptionsLoad](api/event/onoptionsload.md) auf und setzt das Lightbox-Fenster zurück. 
+- Die Sammlung kann mit der Methode [serverList](api/method/serverlist.md) erstellt werden.
 
-## Beispiele
+### Examples
 
 #### Select control
 
-Betrachten Sie eine Lightbox, die wie folgt konfiguriert ist:
+Nehmen wir an, Sie haben die Lightbox wie folgt:
 
 ~~~js
 gantt.config.lightbox.sections = [
     {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
     {name:"priority", map_to:"priority", type:"select", 
-        options:gantt.serverList("priorities")},  /*!*/                                                                  
+        options:gantt.serverList("priorities")},  /*!*/
     {name:"time", height:72, type:"duration", map_to:"auto"}
 ];
 ~~~
 
-Mit dieser Konfiguration ist es möglich, die Optionen im Select-Control über die Collection namens 'priorities' zu aktualisieren. <br>
-Um die 'priorities' Collection zu aktualisieren, rufen Sie einfach auf:
+Mit einer solchen Deklaration wäre es möglich, die Optionen im Auswahlfeld durch die Liste mit dem Namen 'priorities' zu aktualisieren. 
+Um die Liste 'priorities' zu aktualisieren, können Sie Folgendes verwenden:
 ~~~js
 gantt.updateCollection("priorities", new_priorities_array);
 ~~~
@@ -61,4 +62,3 @@ gantt.updateCollection("priorities", new_priorities_array);
 ### Related API
 - [serverList](api/method/serverlist.md)
 - [onOptionsLoad](api/event/onoptionsload.md)
-

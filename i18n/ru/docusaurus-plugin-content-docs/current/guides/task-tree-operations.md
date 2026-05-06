@@ -3,27 +3,27 @@ title: "Task Parent/Child"
 sidebar_label: "Task Parent/Child"
 ---
 
-# Task Parent/Child
+# Родитель/Дочерняя задача
 
-В этой статье рассматриваются методы, работающие с иерархической структурой задач в диаграмме Gantt.
+В этой статье описаны методы, связанные с древовидной природой задач диаграммы Gantt.
 
-*Для базовых операций, таких как получение объекта задачи или её ID, ознакомьтесь со статьёй [Task Object/Id](guides/task-object-operations.md).*
+*Чтобы узнать базовые операции получения объекта задачи/идентификатора, смотрите статью [Task Object/Id](guides/task-object-operations.md).*
 
 ## Родитель задачи
 
-Чтобы найти родителя задачи, используйте метод [getParent](api/method/getparent.md) или обратитесь к свойству "**parent**" объекта задачи:
+Чтобы получить родителя задачи, используйте метод [getParent](api/method/getparent.md) или свойство "**parent**" объекта задачи:
 
 ~~~js
 gantt.getParent("t1");//->"pr_2"
-//или
+//or
 var taskObj = gantt.getTask("t1");//-> {id:"t1", text:"Task #5", parent:"pr_2", ...}
 var taskParent = taskObj.parent;  //-> "pr_2"
 ~~~
-Имейте в виду, если у задачи нет родителя, метод вернёт [root id](api/config/root_id.md).
+Примечание: если у указанной задачи родителя не существует, метод возвращает [root id](api/config/root_id.md).
 
 ## Дочерние задачи
 
-Чтобы получить дочерние задачи для ветвевой задачи, используйте метод [getChildren](api/method/getchildren.md):
+Чтобы получить дочерние элементы ветвевой задачи, используйте метод [getChildren](api/method/getchildren.md):
 
 ~~~js
 var data = {
@@ -35,19 +35,20 @@ var data = {
 gantt.getChildren("p_1");//->["t_1"]
 ~~~
 
-Если необходимо получить все дочерние задачи (не только непосредственные), воспользуйтесь методом [eachTask()](api/method/eachtask.md) с ID родительской задачи в качестве второго аргумента:
+Чтобы получить всех потомков задачи (не только дочерние задачи первого уровня), примените метод [eachTask()](api/method/eachtask.md) и передайте идентификатор родительской задачи во второй параметр:
 
 ~~~js
 const children = [];
-// перебор всех дочерних задач
+
+// перебор всех дочерних элементов задачи
 gantt.eachTask(function(child){
     children.push(child)
 }, 11);
 ~~~
 
-## Проверка наличия дочерних задач
+## Проверка наличия у задачи дочернего элемента
 
-Чтобы узнать, есть ли у задачи дочерние задачи, используйте метод [hasChild](api/method/haschild.md):
+Чтобы проверить, есть ли у какой-либо задачи дочерняя задача, используйте метод [hasChild](api/method/haschild.md):
 
 ~~~js
 var data = {
@@ -67,9 +68,10 @@ gantt.hasChild("p_1"); //-> true  /*!*/
 gantt.hasChild("t_1"); //-> false /*!*/
 ~~~
 
+
 ## Следующая задача в дереве
 
-Чтобы получить объект задачи, которая идёт после заданной, используйте метод [getNext](api/method/getnext.md):
+Чтобы получить объект задачи, следующей за указанной, используйте метод [getNext](api/method/getnext.md):
 
 ~~~js
 var data = {
@@ -90,11 +92,11 @@ gantt.getNext("t_1"); -> "t_2"   /*!*/
 gantt.getNext("t_2"); -> null    /*!*/
 ~~~
 
-Обратите внимание, что Gantt рассматривает задачи одинаково, независимо от их уровня в дереве.
+Примечание: диаграмма Gantt рассматривает задачи независимо от уровня дерева
 
 ## Предыдущая задача в дереве
 
-Чтобы получить объект задачи, которая идёт перед заданной, используйте метод [getPrev](api/method/getprev.md):
+Чтобы получить объект предыдущей задачи по отношению к указанной, используйте метод [getPrev](api/method/getprev.md):
 
 ~~~js
 var data = {
@@ -115,11 +117,11 @@ gantt.getPrev("t_1"); -> "p_1"   /*!*/
 gantt.getPrev("t_2"); -> "t_1"   /*!*/
 ~~~
 
-Опять же, задачи рассматриваются без учёта их уровня в дереве.
+Примечание: диаграмма Gantt рассматривает задачи независимо от уровня дерева
 
-## Соседние задачи (сиблинги)
+## Соседние задачи
 
-Чтобы получить сиблингов (соседние задачи) определённой задачи, используйте метод [getSiblings](api/method/getsiblings.md):
+Чтобы получить соседей указанной задачи, используйте метод [getSiblings](api/method/getsiblings.md):
 
 ~~~js
 var data = {
@@ -135,13 +137,13 @@ var data = {
 gantt.init("gantt_here");
 gantt.parse(data);
  
-gantt.getSiblings("t_1"); ->  ["t_1", "t_2"] /*!*/
+gantt.getSiblings("t_1"); ->  ["t_1", "t_2] /*!*/
 ~~~
 
 
-## Следующий сиблинг задачи
+## Следующий сосед задачи
 
-Чтобы найти следующего сиблинга задачи, используйте метод [getNextSibling](api/method/getnextsibling.md):
+Чтобы получить следующего соседа указанной задачи, используйте метод [getNextSibling](api/method/getnextsibling.md):
 
 ~~~js
 var data = {
@@ -158,13 +160,12 @@ gantt.init("gantt_here");
 gantt.parse(data);
  
 gantt.getNextSibling("t_1"); ->  "t_2" /*!*/
-gantt.getNextSibling("t_2"); ->  null (если нет следующего сиблинга) /*!*/
+gantt.getNextSibling("t_2"); ->  null (if no next sibling) /*!*/
 ~~~
 
+## Предыдущий сосед задачи
 
-## Предыдущий сиблинг задачи
-
-Чтобы получить предыдущего сиблинга задачи, используйте метод [getPrevSibling](api/method/getprevsibling.md):
+Чтобы получить предыдущего соседа указанной задачи, используйте метод [getPrevSibling](api/method/getprevsibling.md):
 
 ~~~js
 var data = {
@@ -181,6 +182,5 @@ gantt.init("gantt_here");
 gantt.parse(data);
  
 gantt.getPrevSibling("t_2"); ->  "t_1" /*!*/
-gantt.getPrevSibling("t_1"); ->  null (если нет предыдущего сиблинга) /*!*/
+gantt.getPrevSibling("t_1"); ->  null (if no previous sibling) /*!*/
 ~~~
-

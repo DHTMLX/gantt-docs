@@ -1,20 +1,20 @@
 ---
 sidebar_label: close
 title: close method
-description: "주어진 id로 식별되는 브랜치를 닫습니다."
+description: "지정된 ID를 가진 브랜치를 닫습니다"
 ---
 
 # close
 
 ### Description
 
-@short: 주어진 id로 식별되는 브랜치를 닫습니다.
+@short: 지정된 ID의 브랜치를 닫습니다
 
 @signature: close: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -    브랜치의 id
+- `id` - (필수) *string | number* -    브랜치 ID
 
 ### Example
 
@@ -37,7 +37,7 @@ gantt.close("p_1");/*!*/
 
 ### Details
 
-이 메서드는 [onTaskClosed](api/event/ontaskclosed.md) 이벤트를 트리거한다는 점을 유의하세요.
+참고: 이 메서드는 onTaskClosed 이벤트를 발생시킵니다. [onTaskClosed](api/event/ontaskclosed.md)
 
 ### Related API
 - [open](api/method/open.md)

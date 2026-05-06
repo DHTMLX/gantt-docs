@@ -1,23 +1,23 @@
 ---
 sidebar_label: getDatastore
 title: getDatastore method
-description: "gibt das Konfigurationsobjekt für einen Datastore zurück"
+description: "liefert das Konfigurationsobjekt eines Datastores"
 ---
 
 # getDatastore
 
 ### Description
 
-@short: Gibt das Konfigurationsobjekt für einen Datastore zurück
+@short: Gibt das Konfigurationsobjekt eines Datastores zurück
 
-@signature: getDatastore: (name: string) =\> DatastoreMethods & TreeDatastoreMethods
+@signature: getDatastore: (name: string) => DatastoreMethods & TreeDatastoreMethods
 
 ### Parameters
 
 - `name` - (required) *string* - der Name des Datastores
 
 ### Returns
-- ` datastore` - (datastore & treedatastore) - das Konfigurationsobjekt für den angegebenen Datastore
+- ` datastore` - (datastore & treedatastore) - das Konfigurationsobjekt eines Datastores
 
 ### Example
 
@@ -26,9 +26,8 @@ var tasksStore = gantt.getDatastore("task");
 ~~~
 
 ### Related samples
-- [Gantt chart with resource panel](https://docs.dhtmlx.com/gantt/samples/10_layout/02_resource_panel.html)
+- [Gantt-Diagramm mit Ressourcen-Panel](https://docs.dhtmlx.com/gantt/samples/10_layout/02_resource_panel.html)
 
 ### Related API
 - [datastore](api/other/datastore.md)
 - [treeDatastore](api/other/treedatastore.md)
-

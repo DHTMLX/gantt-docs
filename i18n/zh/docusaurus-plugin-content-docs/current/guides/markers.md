@@ -5,12 +5,12 @@ sidebar_label: "添加垂直标记"
 
 # 添加垂直标记
 
-该库包含了 **marker** 扩展，可以让你在时间轴上高亮显示特定的日期或日期区间。
+该库提供 **marker** 扩展，允许你标记（高亮）某些日期或日期范围。
 
 <div style="text-align:center;">![today_marker](/img/today_marker.png)</div>
 
 :::note
-要开始使用此扩展，请通过调用 [gantt.plugins](api/method/plugins.md) 方法启用 **marker** 插件。
+To start using the extension, enable the **marker** plugin using the [gantt.plugins](api/method/plugins.md) method.
 :::
 
 ~~~js
@@ -24,7 +24,7 @@ sidebar_label: "添加垂直标记"
     gantt.plugins({ /*!*/
         marker: true /*!*/
     }); /*!*/
-    //你的代码将在这里编写
+    //your code will be here
 </body>
 </html>
 ~~~
@@ -34,7 +34,7 @@ sidebar_label: "添加垂直标记"
 
 ## 添加标记
 
-要在时间轴上添加一个标记，比如显示今天日期的标记，可以使用 [addMarker](api/method/addmarker.md) 方法:
+要向时间线区域添加标记，例如今天的标记，请调用 [addMarker](api/method/addmarker.md) 方法：
 
 ~~~js
 var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
@@ -50,10 +50,11 @@ var markerId = gantt.addMarker({
 
 
 :::note
-请注意，'text' 属性可以接受任意 HTML 内容。
+Note, as the value of the 'text' property, the method can take any HTML
 :::
 
-要获取已添加标记的对象，可以使用 [getMarker](api/method/getmarker.md) 方法:
+
+要获取已添加标记的对象，请使用 [getMarker](api/method/getmarker.md) 方法：
 
 ~~~js
 var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
@@ -63,15 +64,15 @@ var markerId = gantt.addMarker({  /*!*/
     text: "Now", 
     title: dateToStr(new Date()) 
 });
-gantt.getMarker(markerId); // 返回 {css:"today", text:"Now", id:...}
+gantt.getMarker(markerId); //->{css:"today", text:"Now", id:...}
 ~~~
 
 [Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
 
 
-## 移除标记
+## 删除标记
 
-要删除之前添加的标记，请使用 [deleteMarker](api/method/deletemarker.md) 方法:
+要删除已添加的标记，请使用 [deleteMarker](api/method/deletemarker.md) 方法：
 
 ~~~js
 var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
@@ -87,19 +88,19 @@ gantt.deleteMarker(markerId); /*!*/
 
 ## 隐藏标记
 
-如果需要隐藏所有已添加的标记，可以将 [show_markers](api/config/show_markers.md) 选项设置为 'false':
+要隐藏所有已添加的标记，将 [show_markers](api/config/show_markers.md) 配置选项设置为 'false'：
 
 ~~~js
 var marker1 = gantt.addMarker({ ...}); 
 var marker2 = gantt.addMarker({ ...}); 
 var marker3 = gantt.addMarker({ ...}); 
 
-gantt.config.show_markers = false; // 隐藏所有 3 个标记
+gantt.config.show_markers = false;// hides all 3 markers
 ~~~
 
 ## 更新标记
 
-如需修改某个标记，请使用 [updateMarker](api/method/updatemarker.md) 方法:
+要更新标记，请使用 [updateMarker](api/method/updatemarker.md) 方法：
 
 ~~~js
 var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
@@ -114,7 +115,7 @@ gantt.getMarker(markerId).css = "today_new";
 gantt.updateMarker(markerId); /*!*/
 ~~~
 
-如需一次性刷新所有标记，可以使用 [renderMarkers](api/method/rendermarkers.md) 方法:
+要更新所有已添加的标记，请使用 [renderMarkers](api/method/rendermarkers.md) 方法：
 
 ~~~js
 var marker1 = gantt.addMarker({ ...}); 
@@ -126,7 +127,7 @@ gantt.renderMarkers(); /*!*/
 
 ## 标记样式
 
-你可以通过 [gantt.templates.marker_class](api/template/marker_class.md) 模板为标记自定义样式:
+要为标记设定样式，请使用 [gantt.templates.marker_class](api/template/marker_class.md) 模板：
 
 ~~~js
 var showAdvancedMarkers;
@@ -137,9 +138,9 @@ gantt.templates.marker_class = function(marker){
 }
 ~~~
 
-## 今日标记
+## 今天的标记
 
-如果你希望在甘特图上显示当天的标记，需要添加标记并提供一个函数，使其随时间自动更新位置。可以参考以下代码实现:
+让我们设想你希望在你的 Gantt 图中显示今天的标记。在这种情况下，你需要两者：在页面上添加一个标记，并提供一个函数以便时间变化时移动该标记。你可以通过以下代码实现：
 
 ~~~js
 var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
@@ -147,15 +148,14 @@ var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
 var id = gantt.addMarker({ 
     start_date: new Date(), 
     css: "today", 
-    title: dateToStr(new Date())
+    title:dateToStr(new Date())
 });
 setInterval(function(){
     var today = gantt.getMarker(id);
     today.start_date = new Date();
-    today.title = dateToStr(today.start_date);
+    today.title = date_to_str(today.start_date);
     gantt.updateMarker(id);
 }, 1000*60);
 ~~~
 
 [Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
-

@@ -1,14 +1,22 @@
 ---
 sidebar_label: auto_scheduling_descendant_links
 title: auto_scheduling_descendant_links config
-description: "Steuert, ob Links von übergeordneten Aufgaben (Projekten) zu ihren untergeordneten Aufgaben erstellt werden können"
+description: "Erlaubt oder forbids das Erstellen von Verknüpfungen von übergeordneten Aufgaben (Projekten) zu deren Unteraufgaben"
 ---
 
 # auto_scheduling_descendant_links
 
+:::info
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
+:::
+
+:::warning
+Die Eigenschaft wurde in v9.1 veraltet; verwenden Sie stattdessen die `descendant_links`-Eigenschaft von [gantt.config.auto_scheduling](api/config/auto_scheduling.md#descendant_links).
+:::
+
 ### Description
 
-@short: Steuert, ob Links von übergeordneten Aufgaben (Projekten) zu ihren untergeordneten Aufgaben erstellt werden können
+@short: Erlaubt oder verweigert das Erstellen von Verknüpfungen von übergeordneten Aufgaben (Projekten) zu deren Unteraufgaben
 
 @signature: auto_scheduling_descendant_links: boolean
 
@@ -20,7 +28,7 @@ gantt.config.auto_scheduling_descendant_links = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Related samples
 - [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
@@ -28,15 +36,10 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
- Diese Funktion ist nur in der PRO-Version verfügbar. 
+Diese Konfiguration ist in der **auto_scheduling**-Erweiterung definiert, daher müssen Sie das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin aktivieren. Lesen Sie die Details im Artikel [Auto Scheduling](guides/auto-scheduling.md).
 :::
 
-:::note
- Diese Einstellung ist Teil der **auto_scheduling**-Erweiterung, daher stellen Sie sicher, dass das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin aktiviert ist. Weitere Details finden Sie im Artikel ["Auto Scheduling"](guides/auto-scheduling.md). 
-:::
-
-
-Standardmäßig ist das Erstellen von Links von übergeordneten Aufgaben (Projekten) zu deren untergeordneten Aufgaben nicht erlaubt.
+Standardmäßig können Verknüpfungen von übergeordneten Aufgaben (Projekten) zu deren Unteraufgaben nicht erstellt werden.
 
 ### Related API
 - [auto_scheduling](api/config/auto_scheduling.md)
@@ -55,8 +58,8 @@ Standardmäßig ist das Erstellen von Links von übergeordneten Aufgaben (Projek
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- ["Auto Scheduling"](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
 ### Change log
-- hinzugefügt in Version 4.0
-
+- Die Eigenschaft wurde in v9.1 veraltet
+- Hinzugefügt in Version 4.0

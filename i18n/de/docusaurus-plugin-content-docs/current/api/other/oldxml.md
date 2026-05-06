@@ -1,27 +1,26 @@
 ---
 sidebar_label: oldxml
-title: oldxml config
-description: "verwaltet die Serialisierung und das Parsen des XML-Formats in dhtmlxGantt 1.0"
+title: oldxml-Konfiguration
+description: "definiert Serialisierung und Parsing im XML-Format von dhtmlxGantt 1.0"
 ---
 
 # oldxml
 
 ### Description
 
-@short: Verwaltet die Serialisierung und das Parsen des XML-Formats in dhtmlxGantt 1.0
+@short: Definiert Serialisierung und Parsing im XML-Format von dhtmlxGantt 1.0
 
 @signature: oldxml: any
 
 ### Example
 
 ~~~jsx
-var obj = gantt.oldxml; // -> { parse(text,loader){...}, serialize(){... 
-:::
+const obj = gantt.oldxml; // -> { parse(text,loader){...}, serialize(){... }}
 ~~~
 
 ### Details
 
-Das XML-Objekt enthält zwei zentrale Methoden:
+Das XML-Objekt enthält 2 Mitglieder:
 
-- **parse()** - steuert, wie dhtmlxGantt Daten aus dem XML-Format einliest.
-- **serialize()** - steuert, wie dhtmlxGantt Daten zurück in das XML-Format umwandelt.
+- **parse()**-Methode – definiert, wie dhtmlxGantt Daten im XML-Format parst.
+- **serialize()**-Methode – definiert, wie dhtmlxGantt Daten im XML-Format serialisiert.

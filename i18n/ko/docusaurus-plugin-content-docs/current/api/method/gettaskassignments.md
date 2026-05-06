@@ -1,30 +1,32 @@
 ---
 sidebar_label: getTaskAssignments
-title: getTaskAssignments method
-description: "특정 작업에 대한 파싱된 리소스 할당 정보를 데이터스토어에서 가져옵니다."
+title: getTaskAssignments 메서드
+description: "데이터 저장소에서 특정 작업의 파싱된 자원 할당을 반환합니다"
 ---
 
 # getTaskAssignments
+
 :::info
 이 기능은 PRO 에디션에서만 사용할 수 있습니다. 
 :::
+
 ### Description
 
-@short: 특정 작업에 대한 파싱된 리소스 할당 정보를 데이터스토어에서 가져옵니다.
+@short: 데이터 저장소에서 특정 작업의 파싱된 자원 할당을 반환합니다
 
 @signature: getTaskAssignments: (taskId: string | number) =\> ResourceAssignment[]
 
 ### Parameters
 
-- `taskId` - (required) *string | number* -    작업의 ID
+- `taskId` - (required) *string | number* -    태스크 ID
 
 ### Returns
-- ` param` - (ResourceAssignment[]) - 작업에 할당된 리소스 정보를 나타내는 객체 배열
+- ` param` - (ResourceAssignment[]) - 태스크의 자원 할당 객체 배열
 
 ### Example
 
 ~~~jsx
-gantt.getTaskAssignments(5); // -> 세부 정보 확인
+gantt.getTaskAssignments(5); // 자세히 보기
 ~~~
 
 ### Related samples
@@ -33,10 +35,10 @@ gantt.getTaskAssignments(5); // -> 세부 정보 확인
 ### Details
 
 :::note
-**getTaskAssignments** 메서드는 [process_resource_assignments](api/config/process_resource_assignments.md)가 비활성화된 경우 작동하지 않습니다. 
+**getTaskAssignments** 메서드는 [process_resource_assignments](api/config/process_resource_assignments.md)가 비활성화되면 사용할 수 없습니다. 
 :::
 
-이 메서드는 다음과 같은 구조를 가진 객체 배열을 반환합니다:
+메서드는 아래와 같은 객체 배열을 반환합니다:
 
 ~~~js
 [
@@ -63,22 +65,22 @@ gantt.getTaskAssignments(5); // -> 세부 정보 확인
 ]
 ~~~
 
-각 객체는 다음 속성을 포함합니다:
+각 객체에는 다음 속성이 포함됩니다:
 
-- **id** - (*string | number*) - 할당의 고유 ID
-- **task_id** - (*string | number*) - 리소스가 할당된 작업의 ID
-- **resource_id** - (*string | number*) - 작업에 할당된 리소스의 ID
-- **value** - (*number | string*) - 작업에 할당된 리소스의 양
-- **delay** - (*number*) - 할당 시작일과 작업 시작일 간의 오프셋
-- **start_date** - (*Date*) - 할당이 시작되는 예정 시각
-- **end_date** - (*Date*) - 할당이 종료되는 예정 시각
-- **duration** - (*number*) - 할당 기간
-- **mode** - (*string*) - 리소스 할당 시간 계산 방식: "default"|"fixedDates"|"fixedDuration"
-- **[customProperty: string]** - (*any*) - 추가적인 사용자 정의 속성
+- **id** - (*string | number*) - 할당의 ID
+- **task_id** - (*string | number*) - 자원이 할당된 작업의 ID
+- **resource_id** - (*string | number*) - 작업에 할당된 자원의 ID
+- **value** - (*number* | *string*) - 작업에 할당된 자원의 수량
+- **delay** - (*number*) - 할당 시작일과 태스크 시작일의 차이
+- **start_date** - (*Date*) - 할당이 시작되어야 하는 날짜
+- **end_date** - (*Date*) - 할당이 종료되어야 하는 날짜
+- **duration** - (*number*) - 할당의 지속 시간
+- **mode** - (*string*) - 자원 할당 시간의 계산 모드: "default"|"fixedDates"|"fixedDuration"
+- **[customProperty: string]** - (*any*) - 임의의 커스텀 속성
 
 
 :::note
-*delay*, *duration*, *start_date*, *end_date*, *id*, *mode* 속성은 [process_resource_assignments](api/config/process_resource_assignments.md)가 활성화된 경우에만 자동으로 채워집니다. 
+ *delay*, *duration*, *start_date*, *end_date*, *id*, *mode*은 [process_resource_assignments](api/config/process_resource_assignments.md)가 활성화된 경우에만 자동으로 채워집니다. 
 :::
 
 ### Related API
@@ -89,5 +91,4 @@ gantt.getTaskAssignments(5); // -> 세부 정보 확인
 - [리소스 관리](guides/resource-management.md#assigningresources)
 
 ### Change log
-- v7.1에 추가됨
-
+- v7.1에 추가

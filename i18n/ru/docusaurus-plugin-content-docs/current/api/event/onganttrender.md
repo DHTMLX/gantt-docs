@@ -1,22 +1,22 @@
 ---
 sidebar_label: onGanttRender
-title: onGanttRender event
-description: "срабатывает после того, как диаграмма Ганта полностью отрисовалась на странице"
+title: onGanttRender событие
+description: "срабатывает после того, как диаграмма Ганта отрисована на странице"
 ---
 
 # onGanttRender
 
 ### Description
 
-@short: Срабатывает после того, как диаграмма Ганта полностью отрисовалась на странице
+@short: Срабатывает после того, как диаграмма Ганта отрисована на странице
 
-@signature: onGanttRender: () =\> void;
+@signature: onGanttRender: () => void;
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onGanttRender", function(){
-    alert("Диаграмма Ганта полностью отрисована на странице.")
+    alert("Gantt chart is completely rendered on the page...")
 });
 ~~~
 
@@ -29,4 +29,3 @@ gantt.attachEvent("onGanttRender", function(){
 - [onBeforeDataRender](api/event/onbeforedatarender.md)
 - [onDataRender](api/event/ondatarender.md)
 - [onLoadEnd](api/event/onloadend.md)
-

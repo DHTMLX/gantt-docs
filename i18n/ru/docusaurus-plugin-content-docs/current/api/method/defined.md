@@ -1,23 +1,23 @@
 ---
 sidebar_label: defined
 title: defined method
-description: "возвращает false, если переданный аргумент undefined, и true в противном случае"
+description: "возвращает false, если переданный аргумент не определен, иначе true"
 ---
 
 # defined
 
 ### Description
 
-@short: Возвращает false, если переданный аргумент undefined, и true в противном случае
+@short: возвращает false, если переданный аргумент неопределен, иначе true
 
 @signature: defined: (param: any) =\> boolean
 
 ### Parameters
 
-- `param` - (required) *any* - свойство объекта, которое нужно проверить
+- `param` - (required) *any* - свойство объекта, которое следует проверить
 
 ### Returns
-- ` state` - (boolean) - false, если аргумент undefined, true, если он имеет значение
+- ` state` - (boolean) - false, если переданный аргумент неопределен, иначе true
 
 ### Example
 
@@ -29,4 +29,4 @@ if(gantt.defined(task.custom_property)){
 ~~~
 
 ### Change log
-- added in version 4.0
+- добавлено в версии 4.0

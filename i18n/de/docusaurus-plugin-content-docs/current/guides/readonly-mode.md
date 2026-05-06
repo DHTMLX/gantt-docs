@@ -1,19 +1,19 @@
+--- 
+title: "Nur-Lese-Modus" 
+sidebar_label: "Nur-Lese-Modus" 
 ---
-title: "Schreibgeschützter Modus"
-sidebar_label: "Schreibgeschützter Modus"
----
 
-# Schreibgeschützter Modus
+# Nur-Lesemodus
 
-In diesem Artikel betrachten wir den schreibgeschützten Modus in zwei Szenarien:
+In diesem Abschnitt betrachten wir den Nur-Lesemodus im Kontext von zwei Situationen:
 
-1. [Schreibgeschützter Modus für das gesamte Gantt-Diagramm](guides/readonly-mode.md#readonlymodefortheentiregantt)
-2. [Schreibgeschützter Modus für bestimmte Aufgaben](guides/readonly-mode.md#readonlymodeforspecifictaskslinks)
+1. [Nur-Lesemodus für das gesamte Gantt-Diagramm](guides/readonly-mode.md#readonlymodefortheentiregantt)
+2. [Nur-Lesemodus für spezifische Aufgaben](guides/readonly-mode.md#readonlymodeforspecifictaskslinks)
 
 
-## Schreibgeschützter Modus für das gesamte Gantt-Diagramm {#readonlymodefortheentiregantt}
+## Nur-Lesemodus für das gesamte Gantt {#readonlymodefortheentiregantt}
 
-Um das gesamte Gantt-Diagramm schreibgeschützt zu machen, setzen Sie einfach die Option [readonly](api/config/readonly.md) auf *true*.
+Um das gesamte Gantt-Diagramm in den Nur-Lesemodus zu versetzen, setzen Sie die Option [readonly](api/config/readonly.md) auf *true*.
 
 ~~~js
 gantt.config.readonly = true;
@@ -21,9 +21,9 @@ gantt.config.readonly = true;
 gantt.init("gantt_here");
 ~~~
 
-Beachten Sie, dass der schreibgeschützte Modus nur die integrierten Aktionen deaktiviert, die Benutzer über die Benutzeroberfläche ausführen können. Das bedeutet, wenn das gesamte Gantt-Diagramm gesperrt ist, können Benutzer weder das Lightbox-Formular noch den Inline-Editor öffnen, Aufgaben verschieben oder deren Größe ändern.
+Beachten Sie, dass der Nur-Lesemodus sich nur auf die eingebauten Aktionen auswirkt, die Benutzer über die UI durchführen können. Das bedeutet, dass, wenn das gesamte Gantt-Diagramm schreibgeschützt ist, die Benutzer weder die Lightbox noch den Inline-Editor öffnen können, Tasks weder vertikal noch horizontal ziehen und ablegen können, noch deren Größe ändern.
 
-Die [readonly](api/config/readonly.md)-Eigenschaft blockiert jedoch keine Aktionen, die durch API-Aufrufe durchgeführt werden. Wenn Sie also die Gantt-API verwenden, sollten Sie in Ihren Callback-Funktionen manuell prüfen, ob der schreibgeschützte Modus aktiviert ist. Hier ein Beispiel, wie Sie das Hinzufügen von Aufgaben über einen benutzerdefinierten Button verhindern können:
+Die Eigenschaft [readonly](api/config/readonly.md) blockiert jedoch nicht Aktionen, die über API-Methoden implementiert sind. Wenn Sie also die Gantt-API verwenden, müssen Sie in der Callback-Funktion manuell prüfen, ob der Nur-Lesemodus aktiviert ist. Zum Beispiel können Sie hier die Fähigkeit blockieren, Tasks durch Klicken auf einen benutzerdefinierten Button hinzuzufügen:
 
 ~~~js
 gantt.config.readonly = true;
@@ -48,7 +48,7 @@ function customAdd(parentId) { /*!*/
 ~~~
 
 
-Um bestimmte Aufgaben oder Verknüpfungen weiterhin bearbeitbar zu lassen, auch wenn das Gantt-Diagramm schreibgeschützt ist, fügen Sie deren Datenobjekt die Eigenschaft 'editable' hinzu und setzen Sie sie auf *true*:
+Um bestimmte Aufgaben/Verknüpfungen bearbeitbar im Nur-Lesemodus-Gantt zu machen, fügen Sie der Datenobjekt die Eigenschaft 'editable' hinzu und setzen Sie sie auf *true*:
 
 ![task_editable_property](/img/task_editable_property.png)
 
@@ -56,17 +56,16 @@ Um bestimmte Aufgaben oder Verknüpfungen weiterhin bearbeitbar zu lassen, auch 
 gantt.config.readonly = true;
 var task = gantt.getTask(id).editable = true;
 ~~~
-
-Standardmäßig ist dieses Verhalten an die Eigenschaft 'editable' einer Aufgabe oder Verknüpfung gebunden. Wenn Sie eine andere Eigenschaft verwenden möchten, können Sie dies mit der Option [editable_property](api/config/editable_property.md) ändern:
+Standardmäßig ist das beschriebene Verhalten an die Eigenschaft 'editable' einer Aufgabe/Verknüpfung gebunden. Sie können die Ziel-Eigenschaft mit der Konfigurationsoption [editable_property](api/config/editable_property.md) ändern:
 
 ~~~js
 gantt.config.editable_property = "property_name";
 ~~~
 
 
-## Schreibgeschützter Modus für bestimmte Aufgaben/Verknüpfungen {#readonlymodeforspecifictaskslinks}
+## Nur-Lesemodus für spezifische Aufgaben/Verknüpfungen {#readonlymodeforspecifictaskslinks}
 
-Um bestimmte Aufgaben oder Verknüpfungen schreibgeschützt zu machen, fügen Sie deren Datenobjekt die Eigenschaft 'readonly' hinzu und setzen Sie sie auf true:
+Um bestimmte Aufgaben oder Verknüpfungen schreibgeschützt zu machen, fügen Sie der Datenobjekte die Eigenschaft 'readonly' hinzu und setzen Sie sie auf true:
 
 ~~~js
 gantt.getTask(id).readonly = true;
@@ -76,12 +75,12 @@ gantt.getLink(id).readonly = true;
 ![task_readonly_property](/img/task_readonly_property.png)
 
 :::note
-Standardmäßig prüft das Gantt-Diagramm, ob eine Aufgabe oder Verknüpfung diese Eigenschaft auf einen "truthy"-Wert gesetzt hat und macht sie dann schreibgeschützt. Andernfalls bleibt sie bearbeitbar.
+Standardmäßig prüft der Gantt, ob eine Aufgabe/Verknüpfung diese Eigenschaft mit einem nicht-negativen Wert besitzt; falls ja, wird sie schreibgeschützt. Andernfalls bleibt sie bearbeitbar.
 :::
 
-Wenn eine Aufgabe oder Verknüpfung schreibgeschützt ist, reagiert sie weder auf Klicks noch auf Doppelklicks und kann nicht verschoben oder bearbeitet werden.
+Wenn die Aufgabe/Verknüpfung schreibgeschützt ist, reagiert sie nicht auf Klicks, Doppelklicks, ist weder verschiebbar noch irgendwie bearbeitbar.
 
-Wenn Sie das Lightbox-Formular für schreibgeschützte Aufgaben anzeigen möchten, können Sie es manuell mit [gantt.showLightbox(id)](api/method/showlightbox.md) aufrufen:
+Falls Sie das Lightbox-Fenster für schreibgeschützte Aufgaben anzeigen möchten, können Sie sie manuell mit [gantt.showLightbox(id)](api/method/showlightbox.md) aufrufen:
 
 ~~~js
 gantt.attachEvent("onTaskDblClick", function(id,e){
@@ -90,16 +89,16 @@ gantt.attachEvent("onTaskDblClick", function(id,e){
 });
 ~~~
 
-Standardmäßig ist das schreibgeschützte Verhalten mit der Eigenschaft 'readonly' einer Aufgabe oder Verknüpfung verbunden. Sie können diese Eigenschaft jedoch mit der Option [readonly_property](api/config/readonly_property.md) ändern:
+Standardmäßig ist das Nur-Lesemodus-Verhalten an die Eigenschaft 'readonly' einer Aufgabe/Verknüpfung gebunden. Sie können jedoch die Ziel-Eigenschaft mit der Konfigurationsoption [readonly_property](api/config/readonly_property.md) ändern:
 
 ~~~js
 gantt.config.readonly_property = "property_name";
 ~~~
 
 
-## Details zur "editable_property" Konfigurationsoption
+## Details zur Konfigurationsoption "editable_property"
 
-Die 'editable_property' verweist auf eine Eigenschaft direkt im Aufgaben-Datenobjekt, nicht auf einen Lightbox-Abschnitt oder eine Spalte im linken Gitter:
+'editable_property' bezieht sich auf die Eigenschaft des Task-Datenobjekts, nicht auf den Lightbox-Bereich oder die Spalte des linken Grids:
 
 ~~~js
 {
@@ -115,7 +114,7 @@ Die 'editable_property' verweist auf eine Eigenschaft direkt im Aufgaben-Datenob
 }
 ~~~
 
-Wenn Sie diese Eigenschaft über das Lightbox-Formular bearbeitbar machen möchten, setzen Sie 'editable_property' auf die Eigenschaft, auf die das Steuerelement abgebildet ist:
+Wenn Sie es vom Lightbox aus setzen lassen möchten, müssen Sie 'editable_property' auf dieselbe Eigenschaft setzen, auf die das Steuerelement abgebildet ist:
 
 ~~~js
 gantt.config.lightbox.sections = [ 
@@ -132,12 +131,12 @@ gantt.config.editable_property = "some_property";
 ~~~
 
 
-## Setzen von schreibgeschützt/bearbeitbar auf Basis mehrerer Eigenschaften
+## Festlegen des Read-Only-Verhaltens von Ereignissen basierend auf mehreren Eigenschaften
 
-Um die Bearbeitbarkeit von Ereignissen auf Grundlage mehrerer Bedingungen zu steuern, können Sie:
+Wenn Sie Ereignisse bedingt bearbeitbar machen möchten, basierend auf einer Reihe von Eigenschaften, können Sie:
 
-- Die Bearbeitbarkeit manuell steuern, indem Sie die [onBeforeLightbox](api/event/onbeforelightbox.md)- und [onBeforeTaskDrag](api/event/onbeforetaskdrag.md)-Ereignisse blockieren
-- Die 'editable_property' dynamisch aktualisieren, wann immer Aufgaben geladen, erstellt oder aktualisiert werden (mithilfe von [onTaskLoading](api/event/ontaskloading.md), [onTaskCreated](api/event/ontaskcreated.md), [onAfterTaskUpdate](api/event/onaftertaskupdate.md)):
+- deren Bearbeitbarkeit manuell verwalten, z. B. indem Sie die [onBeforeLightbox](api/event/onbeforelightbox.md) und [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) Ereignisse blockieren 
+- dynamisch die 'editable_property' jedes Mal aktualisieren, wenn die Aufgabe geladen, hinzugefügt oder aktualisiert wird ([onTaskLoading](api/event/ontaskloading.md), [onTaskCreated](api/event/ontaskcreated.md), [onAfterTaskUpdate](api/event/onaftertaskupdate.md)):
 
 ~~~js
 gantt.attachEvent("onTaskLoading", function(task){
@@ -145,4 +144,3 @@ gantt.attachEvent("onTaskLoading", function(task){
     return true;
 });
 ~~~
-

@@ -1,38 +1,38 @@
----
-title: "Создание пользовательского элемента"
-sidebar_label: "Создание пользовательского элемента"
+--- 
+title: "Создание пользовательского элемента управления" 
+sidebar_label: "Создание пользовательского элемента управления" 
 ---
 
-# Создание пользовательского элемента
+# Создание пользовательского элемента управления
 
-Чтобы добавить собственный контрол в лайтбокс, необходимо определить новый объект следующим образом:
+Чтобы создать пользовательский элемент управления для лайтбокса, определите новый объект следующим образом:
 
 ~~~js
 gantt.form_blocks["my_editor"]={
-    render:function(sns){ //sns - объект конфигурации секции
+    render:function(sns){ //sns - the section's configuration object
         return "html code of the editor here";
     },
     set_value:function(node,value,task,section){
-        //node - html-элемент, связанный с определённым выше html
-        //value - значение, определённое свойством map_to
-        //task - объект задачи
-        //section- объект конфигурации секции
-        ... код установки значения элементу ...
+        //node - an html object related to the html defined above
+        //value - a value defined by the map_to property
+        //task - the task object
+        //section- the section's configuration object
+        ... code to set value to the element ...
     },
     get_value:function(node,task,section){
-        //node - html-элемент, связанный с определённым выше html
-        //task - объект задачи
-        //section - объект конфигурации секции
+        //node - an html object related to the html defined above
+        //task - the task object
+        //section - the section's configuration object
         return "current value from editor";
     },
     focus:function(node){
-        //node - html-элемент, связанный с определённым выше html
-        ...код для установки фокуса на элемент...
+        //node - an html object related to the html defined above
+        ...code to set focus to the element...
     }
 }
 ~~~
 
-Обратите внимание, что **не следует** использовать самозакрывающиеся теги внутри HTML-кода, возвращаемого функцией "render", так как это может вызвать ошибки парсинга в некоторых браузерах:
+Убедитесь, что вы **не** используете короткий синтаксис закрывающих тегов внутри HTML-кода, возвращаемого функцией "render", так как это может вызвать проблемы парсинга в браузере:
 
 ~~~js
 //это НЕПРАВИЛЬНО
@@ -40,35 +40,34 @@ render:function(){
     return "<div id='box'/>";
 }
 
-//вместо этого используйте открывающий и закрывающий теги:
+//вместо этого используйте синтаксис открывающих и закрывающих тегов:
 render:function(){
-    return "<div id='box'></div>"; // рекомендуется
+    return "<div id='box'></div>";// рекомендуется
 }
 ~~~
 
+[Пользовательский контроль в лайтбоксе](https://docs.dhtmlx.com/gantt/samples/05_lightbox/04_custom_editor.html)
 
-[Custom control in the lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/04_custom_editor.html)
+Контроль лайтбокса имеет следующие типы:
 
-
-Контрол лайтбокса состоит из следующих методов:
-
-- <span class="submethod">**render (sns): string**</span> - возвращает строку с HTML-элементами для секции
+- <span class="submethod">**render (sns): string**</span> - функция, возвращающая строку с HTML-элементами секции
     - **_sns_** - (*LightboxSection*) - объект конфигурации секции
-- <span class="submethod">**set_value (node, value, task, section): any**</span> - получает значение из объекта **Task** и применяет его к секции
-    - **_node_** - (*HTMLElement*) - HTML-элемент, связанный с HTML секции
+- <span class="submethod">**set_value (node, value, task, section): any**</span> - функция, которая получает значение из объекта **Task** и устанавливает его в секцию
+    - **_node_** - (*HTMLElement*) - HTML-объект, связанный с вышеопределённым HTML
     - **_value_** - (*any*) - значение, определённое свойством **map_to**
     - **_task_** - (*Task*) - объект задачи
     - **_section_** - (*LightboxSection*) - объект конфигурации секции
-- <span class="submethod">**get_value (node, task, section): any**</span> - извлекает значение из секции и сохраняет его обратно в объект **Task**
-    - **_node_** - (*HTMLElement*) - HTML-элемент, связанный с HTML секции
+- <span class="submethod">**get_value (node, task, section): any**</span> - функция, которая получает значение из секции и сохраняет его в объект **Task**
+    - **_node_** - (*HTMLElement*) - HTML-объект, связанный с вышеопределённым HTML
     - **_task_** - (*Task*) - объект задачи
     - **_section_** - (*LightboxSection*) - объект конфигурации секции
-- <span class="submethod">**focus (node): void**</span> - устанавливает фокус на секцию
-    - **_node_** - (*HTMLElement*) - HTML-элемент, связанный с HTML секции
+- <span class="submethod">**focus (node): void**</span> - функция для установки фокуса на секцию
+    - **_node_** - (*HTMLElement*) - HTML-объект, связанный с вышеопределённым HTML
+
 
 ## Пользовательский редактор с двумя полями ввода
 
-Пример создания пользовательского редактора с двумя полями ввода:
+Рассмотрим, как создать следующий пользовательский редактор:
 
 ![custom_lightbox_editor](/img/custom_lightbox_editor.png)
   
@@ -78,7 +77,7 @@ gantt.form_blocks["my_editor"] = {
     render: function (sns) {
         return "<div class='dhx_cal_ltext' style='height:60px;'>"+
             "Text&nbsp;<input class='editor_description' type='text'>"+
-            "
+            
 
 Holders&nbsp;<input class='editor_holders' type='text'>"+
             "</div>";
@@ -104,14 +103,15 @@ gantt.config.lightbox.sections = [
 ~~~
 
 
-[Custom control in the lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/04_custom_editor.html)
+[Пользовательский контроль в лайтбоксе](https://docs.dhtmlx.com/gantt/samples/05_lightbox/04_custom_editor.html)
 
 
-## Пользовательский редактор на сторонней библиотеке {#customthirdpartyeditor}
+## Пользовательский редактор от сторонних разработчиков {#customthirdpartyeditor}
 
-Можно создать пользовательский multiselect-контрол для выбора нескольких значений.
+Вы можете создать пользовательский мультитеговый контрол для выбора нескольких значений. 
 
-Например, контрол на основе [jQuery Chosen plugin](https://harvesthq.github.io/chosen/) может использоваться для назначения нескольким ресурсам задачи. В отличие от стандартного Gantt [resource control](guides/resources.md), этот контрол только назначает ресурсы без указания их количества. Это простой вариант, если необходим минималистичный контрол.
+Например, можно сделать управление на основе плагина jQuery Chosen, чтобы присваивать несколько ресурсов задаче.
+В отличие от стандартного контроля ресурсов в диаграмме Ганта, он позволяет просто назначать ресурсы задаче без указания их количества. Однако он может быть полезен, если нужен довольно простой контрол.
 
 ![Custom resources control](/img/custom_resources_control.png)
 
@@ -119,9 +119,9 @@ gantt.config.lightbox.sections = [
 [3rd party multiselect control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/14_jquery_multiselect.html)
 
 
-Чтобы интегрировать контрол на базе jQuery Chosen в Gantt:
+Чтобы использовать управление на основе jQuery Chosen в диаграмме Ганта:
 
-- подключите необходимые исходные файлы на страницу
+- включите его исходные файлы на страницу
 
 ~~~html
 <script
@@ -134,7 +134,7 @@ gantt.config.lightbox.sections = [
     href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.css?v="5.2.4"">
 ~~~
 
-- реализуйте логику контрола
+- описать логику управления
 
 ~~~js
 gantt.form_blocks["multiselect"] = {
@@ -153,7 +153,7 @@ gantt.form_blocks["multiselect"] = {
 }
   html += "</select></div>";
   return html;
-},
+}, 
 
 set_value: function (node, value, ev, sns) {
     node.style.overflow = "visible";
@@ -189,9 +189,9 @@ focus: function (node) {
     $(node.firstChild).focus();
  }
 };
-~~~
+~~~ 
 
-- добавьте контрол как секцию лайтбокса с *type:"multiselect"*
+- используйте управление как секцию лайтбокса с типом *type:"multiselect"*
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -200,28 +200,27 @@ gantt.config.lightbox.sections = [
         map_to:"owner_id", unassigned_value:5 },
     {name: "time", type: "duration", map_to: "auto"}
 ];
-~~~
+~~~ 
 
-Свойство *unassigned_value* скрывает ресурсы, которые не должны быть доступны для выбора. Укажите здесь id ресурса, который нужно исключить. В примере выше ресурс с id="5" не будет отображаться в контроле.
+Свойство *unassigned_value* в объекте управления используется для скрытия ресурсов, которые не должны быть доступны для выбора в контроле. Необходимо задать значение соответствующего ресурса как идентификатор этого свойства.
+В приведённом выше примере ресурс с id="5" не отображается в качестве варианта в контроле.
 
-## Пользовательский сторонний datepicker
+## Пользовательский третий сторонний Datepicker
 
-Также можно добавить в лайтбокс пользовательский контрол выбора даты для задания длительности задачи через указание даты начала и окончания.
+Можно добавить пользовательский Datepicker в лайтбокс для задания продолжительности задачи, указав даты начала и конца задачи.
 
 
 ### jQuery Datepicker в лайтбоксе
 
-Например, контрол Datepicker можно реализовать с помощью jQuery UI Datepicker.
+Например, можно создать контрол Datepicker на основе jQuery UI Datepicker.
 
 ![Custom Datepicker control](/img/custom_datepicker.png)
 
+**Связанный пример** [3rd party Datepicker control](https://snippet.dhtmlx.com/ux7u9fqp)
 
-**Related example:** [3rd party Datepicker control](https://snippet.dhtmlx.com/ux7u9fqp)
+Чтобы использовать контрол Datepicker jQuery в диаграмме Ганта:
 
-
-Для использования jQuery Datepicker в Gantt:
-
-- подключите файлы библиотеки jQuery на страницу:
+- включите исходные файлы библиотеки jQuery на страницу:
 
 ~~~html
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -230,7 +229,7 @@ gantt.config.lightbox.sections = [
     href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 ~~~
 
-- реализуйте логику контрола:
+- описать логику управления:
 
 ~~~js
 (function () {
@@ -242,17 +241,17 @@ gantt.config.lightbox.sections = [
     }
           
     gantt.form_blocks["datepicker"] = {
-        render: function (sns) { //sns - объект конфигурации секции
+        render: function (sns) { //sns - the section's configuration object
             return "<div class='gantt-lb-datepicker'>"+
                 "<input type='text' name='start'>"+
                 "<input type='text' name='end'>"+
                 "</div>";;
         },
         set_value: function (node, value, task, section) {
-            //node - html-элемент, связанный с определённым выше html
-            //value - значение, определённое свойством map_to
-            //task - объект задачи
-            //section- объект конфигурации секции
+            //node - an html object related to the html defined above
+            //value - a value defined by the map_to property
+            //task - the task object
+            //section- the section's configuration object
           
             startDatepicker(node).datepicker({
                 dateFormat: "yy-mm-dd",
@@ -304,32 +303,30 @@ gantt.config.lightbox.sections = [
         }
     }
 })();
-~~~
+~~~ 
 
-- затем используйте контрол как секцию лайтбокса с *type:"datepicker"*:
+- используйте контроль как секцию лайтбокса с типом:"datepicker":
 
 ~~~js
 gantt.config.lightbox.sections = [
   { name: "description", height: 70, map_to: "text", type: "textarea", focus: true },
   { name: "time", height: 72, map_to: "auto", type: "datepicker" }
 ];
-~~~
+~~~ 
 
-### Bootstrap Datepicker в lightbox
+### Bootstrap Datepicker в лайтбоксе
 
-Добавление Bootstrap Datepicker внутрь lightbox осуществляется аналогично интеграции jQuery Datepicker.
+Bootstrap Datepicker можно добавить в лайтбокс аналогично jQuery Datepicker.
 
 ![Bootstrap Datepicker control](/img/bootstrap_datepicker.png)
 
+**Связанный пример** [Bootstrap Datepicker control](https://snippet.dhtmlx.com/azx7vhli)
 
-**Related example:** [Bootstrap Datepicker control](https://snippet.dhtmlx.com/azx7vhli)
+Чтобы использовать Bootstrap Datepicker в диаграмме Ганта:
 
+- включите исходные файлы библиотеки Bootstrap на страницу;
 
-Чтобы встроить элемент управления Bootstrap Datepicker в диаграмму Gantt:
-
-- подключите исходные файлы библиотеки Bootstrap на страницу;
-
-- определите логику работы контрола:
+- описать логику управления:
 
 ~~~js
 (function () {
@@ -403,39 +400,38 @@ gantt.config.lightbox.sections = [
         }
     }
 })();
-~~~
+~~~ 
 
-- затем используйте этот контрол как секцию lightbox, указав type:"datepicker":
+- используйте контроль как секцию лайтбокса с типом:"datepicker": 
 
 ~~~js
 gantt.config.lightbox.sections = [
   { name: "description", height: 70, map_to: "text", type: "textarea", focus: true },
   { name: "time", height: 45, map_to: "auto", type: "datepicker" }
 ];
-~~~
+~~~ 
 
-## Пользовательский сторонний контрол Duration
+## Пользовательский третий сторонний Duration контроль
 
-Также возможно добавить пользовательский контрол Duration в lightbox, который позволяет устанавливать дату начала задачи вместе с длительностью в днях.
+Возможно, вам также понадобится добавить пользовательский контроль Duration в лайтбокс для указания даты начала задачи и количества дней.
 
 ![Custom Duration control](/img/custom_duration_control.png)
 
+**Связанный пример** [3rd party Duration control](https://snippet.dhtmlx.com/snb64bz6)
 
-**Related example:** [3rd party Duration control](https://snippet.dhtmlx.com/snb64bz6)
 
+Рассмотрим, как добавить пользовательский контроль Duration на основе jQuery:
 
-Вот как добавить пользовательский контрол Duration на основе jQuery:
-
-- сначала подключите исходные файлы библиотеки jQuery на страницу:
+- включите исходные файлы библиотеки jQuery на страницу:
 
 ~~~html
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <link  rel="stylesheet" type="text/css" 
     href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-~~~
+~~~ 
 
-- затем определите логику работы контрола:
+- описать логику управления:
 
 ~~~js
 (function () {
@@ -456,7 +452,7 @@ gantt.config.lightbox.sections = [
     });
 
     gantt.form_blocks["datepicker_duration"] = {
-        render: function (sns) { //sns - объект конфигурации секции
+        render: function (sns) { //sns - the section's configuration object
             return "<div class='gantt-lb-datepicker'>"+
                 "<label>Start:<input type='text' name='start'></label>"+
                 "<label>Duration: <input type='text' name='duration'></label>"+
@@ -464,10 +460,10 @@ gantt.config.lightbox.sections = [
                 "</div>";
         },
         set_value: function (node, value, task, section) {
-            //node - html-элемент, соответствующий определённому выше html
-            //value - значение, определённое свойством map_to
-            //task - объект задачи
-            //section - объект конфигурации секции
+            //node - an html object related to the html defined above
+            //value - a value defined by the map_to property
+            //task - the task object
+            //section- the section's configuration object
 
             startDatepicker(node).datepicker({
                 dateFormat: "yy-mm-dd",
@@ -523,9 +519,9 @@ gantt.config.lightbox.sections = [
         }
     }
 })();
-~~~
+~~~ 
 
-- наконец, используйте этот контрол как секцию lightbox с type:"datepicker_duration":
+- используйте контроль как секцию лайтбокса с типом:"datepicker_duration":
 
 ~~~js
 gantt.config.lightbox.sections = [

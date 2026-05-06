@@ -1,14 +1,14 @@
 ---
 sidebar_label: drag_resize
 title: drag_resize config
-description: "允许通过拖放操作调整任务大小"
+description: "通过拖放调整任务大小的功能"
 ---
 
 # drag_resize
 
 ### Description
 
-@short: 允许通过拖放操作调整任务大小
+@short: 通过拖放实现对任务大小的调整
 
 @signature: drag_resize: boolean
 
@@ -19,19 +19,19 @@ gantt.config.drag_resize = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**默认值：** true
 
 ### Details
 
 ![property_drag_resize](/img/property_drag_resize.png)
 
-关于如何移除所有任务的调整大小手柄，请参见[CSS文档中的相关章节](guides/css-overview.md#resizer)。
+请查看 [CSS 文档的相关部分](guides/css-overview.md#resizer) 文章，以了解如何为所有任务禁用调整大小把手。
 
-如需更详细地控制任务的调整大小，请参考[时间线内拖动任务](guides/dnd.md)一文，其中涵盖了:
+请查看时间线中的 Dragging Tasks 文章以了解对调整大小操作的更精细控制，具体包括：
 
-- [禁用特定任务的调整大小](guides/dnd.md)
-- [确定任务哪一侧正在被调整大小](guides/dnd.md)
-- [禁用任务开始或结束日期的调整大小](guides/dnd.md)
+- [对特定任务禁用调整大小](guides/dnd.md#disabling-resize-of-specific-tasks)
+- [正在调整大小的任务的哪一边](guides/dnd.md#which-side-of-a-task-is-being-resized)
+- [禁用任务的开始日期或结束日期的调整大小](guides/dnd.md#disabling-resize-of-the-start-or-the-end-date-of-a-task)
 
 ### Related Guides
 - [drag_lightbox](api/config/drag_lightbox.md)
@@ -39,4 +39,3 @@ gantt.init("gantt_here");
 - [drag_mode](api/config/drag_mode.md)
 - [drag_move](api/config/drag_move.md)
 - [drag_progress](api/config/drag_progress.md)
-

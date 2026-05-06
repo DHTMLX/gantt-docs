@@ -6,29 +6,26 @@ sidebar_label: "关键路径"
 # 关键路径
 
 :::info
-此功能仅在 PRO 版本中可用
+此功能仅在 PRO 版中可用
 :::
 
-关键路径表示一组无法推迟的任务，否则将会延误整个项目的完成时间。
+关键路径是一系列不能被推迟的任务。否则，整个项目将被推迟。
 
+关键路径也决定了项目可以花费的最短时间。
 
-它还定义了完成项目所需的最短工期。
+如果一个任务没有缓冲时间（slack），并且任何延迟都会直接影响项目完成日期，则该任务被视为关键任务。关于关键路径计算逻辑的详细解释，请参阅 [Critical path logic](#critical-path-logic) 部分。
 
-
-当任务的浮动时间（Slack）为零时，该任务被视为关键任务，也就是说，该任务的任何延迟都会直接影响项目的完成日期。关于关键路径的计算方式，详见[关键路径逻辑](#criticalpathlogic)部分。
-
-
-浮动时间指的是一个任务可以延迟的时间，而不会影响后续任务或整个项目的截止日期。
+缓冲时间是一个任务在不影响其他任务或项目完成日期的情况下可以延迟的时间。
 
 <div style="text-align:center;">![critical_path](/img/critical_path.png)</div>
 
 :::note
-要开始使用此扩展，请通过 [gantt.plugins](api/method/plugins.md) 方法激活它。
+要开始使用此扩展，请通过 [gantt.plugins](api/method/plugins.md) 方法启用它。
 :::
 
-要在甘特图中显示关键路径，请将 [highlight_critical_path](api/config/highlight_critical_path.md) 属性设置为 'true':
+要在甘特图中显示关键路径，请将 [highlight_critical_path](api/config/highlight_critical_path.md) 属性设置为 'true'：
 
-**在甘特图中启用关键路径显示**
+(使甘特图显示关键路径)
 ~~~js
 <!DOCTYPE html>
 <html>
@@ -50,30 +47,32 @@ sidebar_label: "关键路径"
 [Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
 
-启用此属性后，dhtmlxGantt 会自动监控任务状态并相应地更新关键路径。 
-关键任务和关键连接会分别获得 *'critical_task'* 和 *'critical_link'* 的额外 CSS 类。
+请注意，当该属性启用时，dhtmlxGantt 将自动检查任务状态并更新关键路径。 
+关键任务和链接将分别具有额外的 *'critical_task'* 和 *'critical_link'* CSS 类。 
 
-每当任务被更新时，dhtmlxGantt 会完全重绘数据以重新计算关键路径。 
-此过程有时可能会影响性能。为了解决这个问题，组件提供了公共方法，可以检测特定任务或连接，从而以更高效的方式显示关键路径。
+每当某个任务被修改，dhtmlxGantt 将完全重新绘制数据以重新计算关键路径。 
+有时这会带来性能问题。针对这种情况，组件提供了公共方法，允许您检查
+某个特定任务或链接，并实现一个对性能更友好的显示关键路径的策略。
+
 
 ## 关键路径逻辑
 
-Gantt 在以下情况下将任务标记为关键任务:
+Gantt 在以下情况下将任务视为关键任务：
 
-1. 该任务在整个图表中具有最晚的结束日期。
+1. 该任务在整个图表中具有最新的结束日期。
 
-![](/img/critical_tasks.png)
+![critical_tasks](/img/critical_tasks.png)
 
-2. 该任务与一个无延迟的关键任务相连。
+2. 该任务连接到一个关键任务，且它们之间的滞后为 0。
 
-延迟（Lag）取决于 **gantt.config.duration_unit** 的设置。当 **duration_unit** 设置为 *'day'* 且任务持续时间为数小时时，Gantt 会按如下方式取整:
+滞后取决于 **gantt.config.duration_unit** 参数的值。当 **duration_unit** 被设置为 *'day'* 且任务之间的时长为数小时时，Gantt 按以下规则对时长进行四舍五入：
 
-- 如果持续时间大于等于12小时，则向下取整
-- 如果小于12小时，则向上取整
+- 如果时长大于或等于 12 小时，则向下取整
+- 如果时长少于 12 小时，则向上取整
 
-如果连接对象中包含 lag 参数，它会影响任务之间的持续时间。例如，*lag* 为 1 表示当任务之间的持续时间为 1 时，该任务变为关键任务。
+如果链接对象包含 lag 参数，则它允许改变任务之间的时长。例如，当 *lag* 设置为 1 时，任务在任务之间时长为 1 时变为关键路径。
 
-以下是不同 **link.lag** 值的示例:
+下面是不同 **link.lag** 值的一些示例：
 
 - link.lag 为 0
 
@@ -90,7 +89,7 @@ const tasks = {
 }
 ~~~
 
-![](/img/lag0.png)
+![lag0](/img/lag0.png)
 
 - link.lag 为 1
 
@@ -107,7 +106,7 @@ const tasks = {
 }
 ~~~
 
-![](/img/lag1.png)
+![lag1](/img/lag1.png)
 
 - link.lag 为 -1
 
@@ -124,16 +123,16 @@ const tasks = {
 }
 ~~~
 
-![](/img/lag_1.png)
+![lag_1](/img/lag_1.png)
 
-3. 设置了 **gantt.config.project_end** 参数，并且任务日期超出了该日期。
+3. 指定了 **gantt.config.project_end** 参数且任务日期大于 **gantt.config.project_end** 日期。
 
-目前，内置的关键路径逻辑无法更改。
-不过，你可以[自定义关键路径行为](#customizingthecriticalpathbehaviour)。
+不幸的是，无法更改定义关键路径的内置逻辑。
+但你可以 [customize the critical path behaviour](#customizing-the-critical-path-behaviour)。
 
-## 检查任务是否为关键任务
+## 检查某个任务是否为关键任务 
 
-要判断任务是否为关键任务，请使用 [isCriticalTask](api/method/iscriticaltask.md) 方法:
+要检查某个任务是否为关键任务，请使用 [isCriticalTask](api/method/iscriticaltask.md) 方法：
 
 ~~~js
 gantt.config.highlight_critical_path = true; /*!*/
@@ -147,9 +146,9 @@ gantt.isCriticalTask(gantt.getTask("task3"));// ->'true' /*!*/
 [Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
 
-## 检查连接是否为关键连接
+## 检查某个链接是否为关键链接 
 
-要检查某连接是否连接了两个关键任务，请使用 [isCriticalLink](api/method/iscriticallink.md) 方法:
+要检查某个链接是否为关键链接（连接了两个关键任务），请使用 [isCriticalLink](api/method/iscriticallink.md) 方法：
 
 ~~~js
 gantt.isCriticalLink(gantt.getLink("link1"));
@@ -159,13 +158,13 @@ gantt.isCriticalLink(gantt.getLink("link1"));
 [Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
 
-## 获取自由浮动和总浮动
+## 获取自由余量和总余量 {#gettingfreeandtotalslack}
 
-**自由浮动** 指的是任务或里程碑可以延长或推迟而不影响下一个相关任务的时间。
+**自由余量** - 可用于增加任务时长或在时间轴上移动任务而不影响其下一个相连任务的时间的时间段。
 
-自由浮动适用于 'task' 和 'milestone' 类型。
+自由余量可以用于 'task' 和 'milestone' 类型的任务。
 
-要获取任务的自由浮动，请使用 [getFreeSlack](api/method/getfreeslack.md) 方法，并传入任务对象:
+要获取任务的自由余量，请使用 [getFreeSlack](api/method/getfreeslack.md) 方法。它接收一个任务对象作为参数：
 
 ~~~js
 var task = gantt.getTask(7);
@@ -176,11 +175,11 @@ gantt.getFreeSlack(task);
 [Show Slack time](https://docs.dhtmlx.com/gantt/samples/08_api/17_show_task_slack.html)
 
 
-**总浮动** 指的是任务可以延迟而不影响整个项目完成日期的时间。
+**总余量** - 可用于增加任务时长或在时间轴上移动任务而不影响整个项目结束时间的时间段。
 
-总浮动可用于所有任务类型，包括项目类型。
+总余量可以计算所有类型的任务，包括项目。
 
-要获取任务的总浮动，请使用 [getTotalSlack](api/method/gettotalslack.md) 方法，并传入任务对象:
+要获取任务的总余量，请使用 [getTotalSlack](api/method/gettotalslack.md) 方法。它也接受一个任务对象作为参数：
 
 ~~~js
 var task = gantt.getTask(7);
@@ -193,11 +192,12 @@ gantt.getTotalSlack(task);
 
 ![Slack](/img/show_slack.png)
 
+
 ## 自定义关键路径行为
 
-默认情况下，gantt 会对关键路径应用标准行为，包括默认高亮样式以及每次数据更改时重新计算路径。
+默认情况下，甘特图将关键路径应用默认行为，例如用于高亮的默认样式，以及在每次数据更新时重新计算关键路径。
 
-你可以通过以下方法控制关键路径的可见性:
+若要操作关键路径的可见性，请使用以下方法：
 
 ~~~js
 var isEnabled = false
@@ -210,9 +210,9 @@ function updateCriticalPath(){
 }
 ~~~
 
-当需要管理大量任务时，这种方式有助于避免频繁重算关键路径对性能的影响。
+当任务数量较多且重新计算关键路径可能影响性能时，这会很有用。
 
-如需手动重新计算关键路径并更新样式，可使用如下方法:
+要手动重新计算关键路径并应用相关样式，请使用以下方法：
 
 ~~~js
 gantt.templates.task_class = function(start, end, task){
@@ -251,22 +251,22 @@ gantt.parse(data);
 ~~~
 
 
-你也可以手动高亮任务和连接:
+还可以手动高亮任务和链接：
 
-- 在 [task_class](api/template/task_class.md) 模板中返回 "gantt_critical_task" 可将任务高亮为关键任务。
-- 在 [link_class](api/template/link_class.md) 模板中返回 "gantt_critical_link" 可将连接高亮为关键连接。
+- 如果在 [task_class](api/template/task_class.md) 模板中返回 "gantt_critical_task"，该任务将被高亮显示为关键任务。
+- 如果在 [link_class](api/template/link_class.md) 模板中返回 "gantt_critical_link"，该链接将被高亮显示为关键链接。
 
-**相关示例:** [Custom critical path per project](https://snippet.dhtmlx.com/jd4dyc5p)
+**相关示例：** [Custom critical path per project](https://snippet.dhtmlx.com/jd4dyc5p)
 
-## 设置任务之间的滞后和提前时间
+## 在任务之间设置滞后和提前时间
 
-关键路径任务之间的滞后和提前时间可以进行配置。详细内容请参见[此处](guides/auto-scheduling.md#shezhirenwuzhijiandezhihouhetiqianshijian)。
+可以在关键路径上的任务之间设置滞后和提前时间。详细信息请参见 [这里](guides/auto-scheduling.md#settinglagandleadtimesbetweentasks)。
 
-## 已完成任务的调度
+## 调度已完成的任务
 
-默认情况下，关键路径算法会将已完成的任务（progress 值为 1）与未完成任务同等处理。
+默认情况下，关键路径算法对已完成的任务（进度值为 1 的任务）与未完成的任务的处理没有差异。
 
-你可以启用 [auto_scheduling_use_progress](api/config/auto_scheduling_use_progress.md) 配置来改变此行为:
+可选地，您可以启用 [auto_scheduling_use_progress](api/config/auto_scheduling_use_progress.md) 配置来更改此行为：
 
 ~~~js
 gantt.config.auto_scheduling_use_progress = true;
@@ -274,7 +274,6 @@ gantt.config.auto_scheduling_use_progress = true;
 gantt.init("gantt_here");
 ~~~
 
-启用后，已完成的任务将不再包含在关键路径和自动调度中。
+启用该配置后，已完成的任务将被排除在关键路径和自动调度之外。
 
-更多信息请参见 [API 页面](api/config/auto_scheduling_use_progress.md)。
-
+您可以在 [API 页面](api/config/auto_scheduling_use_progress.md) 上找到更多详细信息。

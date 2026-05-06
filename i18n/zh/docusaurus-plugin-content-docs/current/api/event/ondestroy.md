@@ -1,16 +1,16 @@
 ---
 sidebar_label: onDestroy
-title: onDestroy event
-description: "当通过 destructor 方法清除甘特图后触发一次"
+title: onDestroy 事件
+description: "在 gantt 已被 [destructor](api/method/destructor.md) 清空后调用"
 ---
 
 # onDestroy
 
 ### Description
 
-@short: 当通过 [destructor](api/method/destructor.md) 方法清除甘特图后触发一次
+@short: 在 gantt 已被 [destructor](api/method/destructor.md) 方法清空后调用
 
-@signature: onDestroy: () =\> void;
+@signature: onDestroy: () => void;
 
 ### Example
 
@@ -20,8 +20,7 @@ gantt.attachEvent("onDestroy", function(){
 });
 
 gantt.destructor();
-~~~
+~~~  
 
 ### Related API
 - [destructor](api/method/destructor.md)
-

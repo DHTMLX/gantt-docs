@@ -1,25 +1,25 @@
 ---
-title: "quickInfo Erweiterung"
-sidebar_label: "quickInfo Erweiterung"
+title: "quickInfo-Erweiterung"
+sidebar_label: "quickInfo-Erweiterung"
 ---
 
-# quickInfo Erweiterung
+# quickInfo-Erweiterung
 
-Weitere Informationen zur quickInfo-Erweiterung finden Sie im Artikel [Quick Info (Touch Support)](guides/quick-info.md).
+Lesen Sie Details zur quickInfo-Erweiterung im Artikel [Quick Info (Touch Support)](guides/quick-info.md).
 
 
-Das *quickInfo*-Objekt stellt folgende API bereit:
+Das *quickInfo*-Objekt besitzt die folgende API:
 
 ## Methoden
 
-- <span class="submethod">**show (id): void**</span> - öffnet das Quick Info Popup für ein bestimmtes Element
+- <span class="submethod">**show (id): void**</span> - zeigt das Quick Info-Popup für ein angegebenes Element
     - **_id_** - (*number | string*) - die Aufgaben-ID
  
 ~~~js
 gantt.ext.quickInfo.show("1");
 ~~~
 
-- <span class="submethod">**show (x, y): void**</span> - öffnet das Quick Info Popup an den angegebenen Koordinaten
+- <span class="submethod">**show (x, y): void**</span> - zeigt das Quick Info-Popup an bestimmten Koordinaten
     - **_x_** - (*number | string*) - horizontale Koordinate
     - **_y_** - (*number | string*) - vertikale Koordinate
 
@@ -27,22 +27,23 @@ gantt.ext.quickInfo.show("1");
 gantt.ext.quickInfo.show(10,30);
 ~~~
 
-- <span class="submethod">**hide (force): HTMLElement**</span> - schließt das Quick Info Popup. Wenn **gantt.config.quick_info_detached** auf *false* gesetzt ist, verschwindet das Popup nach einer kurzen Animation. Wird *true* als Argument übergeben, wird die Animation übersprungen und das Popup sofort entfernt.
-    - **_force?_** - (*boolean*) - bestimmt, ob das Popup sofort ohne Animation ausgeblendet wird
+- <span class="submethod">**hide (force): HTMLElement**</span> - versteckt das Quick Info-Popup. Wenn **gantt.config.quick_info_detached** auf *false* gesetzt ist, verschwindet das Quick Info nicht sofort, sondern nach einer kurzen Animation. Die Angabe eines Werts von *true* als Argument wird die Animation abbrechen und das Popup sofort entfernen.
+    - **_force?_** - (*boolean*) - definiert, ob das Quick Info-Popup sofort ohne Animation versteckt wird
+
 
 ~~~js
 gantt.config.quick_info_detached = false;
 gantt.init("gantt_here");
  
-// Popup mit kurzer Animation ausblenden
+// verstecke das Popup nach einer kurzen Animation
 gantt.ext.quickInfo.hide();
  
-// Popup sofort ausblenden
+// verstecke das Popup sofort
 gantt.ext.quickInfo.hide(true);
 ~~~
 
-- <span class="submethod">**setContainer (container): void**</span> - legt den Container fest, in dem das Quick Info angezeigt wird. Wenn kein Container angegeben wird, wird QuickInfo in den ersten verfügbaren Knoten eingefügt: **gantt.$task, gantt.$grid, gantt.$root**
-    - **_container_** - (*HTMLElement | string*) - Containerelement oder dessen ID
+- <span class="submethod">**setContainer (container): void**</span> - setzt einen Container, in dem das Quick Info angezeigt wird. Falls kein benutzerdefinierter Container angegeben ist, wird QuickInfo in dem ersten der gefundenen Knoten platziert: **gantt.$task, gantt.$grid, gantt.$root**
+    - **_container_** - (*HTMLElement | string*) - Containelement oder dessen ID
 
 ~~~js
 gantt.ext.quickInfo.setContainer(document.body);
@@ -50,30 +51,30 @@ gantt.ext.quickInfo.show(1300,100);
 
 ~~~
 
-- <span class="submethod">**getNode (): HTMLElement | null**</span> - ruft das HTMLElement des Quick Info Popups ab. Gibt *null* zurück, wenn Quick Info nicht initialisiert wurde
+- <span class="submethod">**getNode (): HTMLElement | null**</span> - gibt das HTMLElement des Quick Info-Popups zurück. Gibt *null* zurück, wenn das Quick Info nicht initialisiert ist
 
 ~~~js
 const node = gantt.ext.quickInfo.getNode();
 ~~~
 
-Das DOM-Element des angezeigten Quick Info sieht folgendermaßen aus:
+Das zurückgegebene DOM-Element des angezeigten Quick Info sieht wie folgt aus:
 
 ![quick_node](/img/quick_node.png)
 
-- <span class="submethod">**setContent (config): void**</span> - füllt das Quick Info mit Inhalt
-    - **_config?_** - (*object*) - optionales Konfigurationsobjekt für das Quick Info, das folgende Eigenschaften enthalten kann:
-        - **_taskId?_** - (*string | number*) - optional, die ID der Aufgabe, die mit den Aktionsschaltflächen des Quick Info verknüpft ist
-        - **_header?_** - (*object*) - optional, der Header des Popup-Bearbeitungsformulars, der enthalten kann:
-            - **_title?_** - (*string*) - optional, der Titel des Popup-Bearbeitungsformulars
-            - **_date?_** - (*string*) - optional, das Datum des Popup-Bearbeitungsformulars
-        - **_content?_** - (*string*) - optional, der Inhalt des Popup-Bearbeitungsformulars
-        - **_buttons?_** - (*string[]*) - optional, Schaltflächen, die im Popup-Bearbeitungsformular angezeigt werden sollen
-  
+- <span class="submethod">**setContent (config): void**</span> - setzt den Inhalt in das Quick Info
+    - **_config?_** - (*object*) - optional, das Konfigurationsobjekt einer Quick Info, das die folgenden Attribute enthalten kann:
+        - **_taskId?_** - (*string | number*) - optional, die ID der Aufgabe, mit der die Aktions-Schaltflächen der Quick Info verbunden werden
+        - **_header?_** - (*object*) - optional, der Header des Pop-up-Edit-Formulars, der Folgendes umfassen kann:
+            - **_title?_** - (*string*) - optional, der Titel des Pop-up-Edit-Formulars
+            - **_date?_** - (*string*) - optional, das Datum des Pop-up-Edit-Formulars
+        - **_content?_** - (*string*) - optional, der Inhalt des Pop-up-Edit-Formulars
+        - **_buttons?_** - (*string[]*) - optional, Buttons, die im Pop-up-Edit-Formular platziert werden sollen
+   
 
 
-Wenn sowohl Header als auch Buttons weggelassen werden, werden die entsprechenden Bereiche des Quick Info Popups ausgeblendet.
+Wenn weder Header noch Buttons angegeben sind, werden die entsprechenden Bereiche des Quick Info-Popups versteckt.
 
-Ein Beispiel für ein Konfigurationsobjekt für die **setContent**-Methode:
+Hier ist, wie das Konfigurationsobjekt der **setContent**-Methode aussehen kann:
 
 ~~~js
 const quickInfo = gantt.ext.quickInfo;
@@ -90,9 +91,9 @@ quickInfo.setContent({
 });
 ~~~
 
-Alternativ
+oder
 
-Ein benutzerdefiniertes Popup kann ohne Header und Buttons erstellt werden:
+Sie können ein benutzerdefiniertes Pop-up ohne Header und Buttons erstellen:
 
 ~~~js
 const quickInfo = gantt.ext.quickInfo;

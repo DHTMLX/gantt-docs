@@ -1,7 +1,7 @@
 ---
 sidebar_label: lightbox_header
 title: lightbox_header template
-description: "spezifiziert den Header der lightbox"
+description: "legt den Header des Lightbox-Fensters fest"
 ---
 
 # lightbox_header
@@ -14,9 +14,9 @@ description: "spezifiziert den Header der lightbox"
 
 ### Parameters
 
-- `start_date` - (required) *Date* - das Datum, an dem eine Aufgabe geplant ist zu beginnen  
-- `end_date` - (required) *Date* - das Datum, an dem eine Aufgabe geplant ist abgeschlossen zu sein
-- `task` - (required) *Task* - das Objekt der Aufgabe
+- `start_date` - (erforderlich) *Date* - das Datum, an dem eine Aufgabe geplant zu beginnen
+- `end_date` - (erforderlich) *Date* - das Datum, an dem eine Aufgabe abgeschlossen werden soll
+- `task` - (erforderlich) *Task* - das Task-Objekt
 
 ### Returns
 - ` text` - (string) - ein HTML-Text zur Darstellung im Gantt
@@ -31,4 +31,4 @@ gantt.templates.lightbox_header = function(start_date,end_date,task){
 ~~~
 
 ### Related Guides
-- ["Vorlagen des Lightbox"](guides/lightbox-templates.md)
+- [Lightbox-Vorlagen](guides/lightbox-templates.md)

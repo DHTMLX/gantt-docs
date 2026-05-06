@@ -32,6 +32,8 @@ In this model:
 - callback handlers update state
 - updated state flows back into the wrapper
 
+Type recommendation for this model: use `SerializedTask[]` and `SerializedLink[]` for reactive state arrays.
+
 ### Best For
 
 - pages with surrounding Vue UI that must reflect chart state
@@ -54,25 +56,25 @@ In this model:
 <script setup lang="ts">
 import { ref } from "vue";
 import VueGantt, {
-  type Link,
-  type Task,
+  type SerializedLink,
+  type SerializedTask,
   type VueGanttDataConfig
 } from "@dhtmlx/trial-vue-gantt";
 
-const tasks = ref<Task[]>([]);
-const links = ref<Link[]>([]);
+const tasks = ref<SerializedTask[]>([]);
+const links = ref<SerializedLink[]>([]);
 
 const data: VueGanttDataConfig = {
   save: (entity, action, item, id) => {
     if (entity === "task") {
-      if (action === "create") tasks.value = [...tasks.value, item as Task];
-      if (action === "update") tasks.value = tasks.value.map(t => String(t.id) === String(id) ? item as Task : t);
+      if (action === "create") tasks.value = [...tasks.value, item as SerializedTask];
+      if (action === "update") tasks.value = tasks.value.map(t => String(t.id) === String(id) ? item as SerializedTask : t);
       if (action === "delete") tasks.value = tasks.value.filter(t => String(t.id) !== String(id));
     }
 
     if (entity === "link") {
-      if (action === "create") links.value = [...links.value, item as Link];
-      if (action === "update") links.value = links.value.map(l => String(l.id) === String(id) ? item as Link : l);
+      if (action === "create") links.value = [...links.value, item as SerializedLink];
+      if (action === "update") links.value = links.value.map(l => String(l.id) === String(id) ? item as SerializedLink : l);
       if (action === "delete") links.value = links.value.filter(l => String(l.id) !== String(id));
     }
   }

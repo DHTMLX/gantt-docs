@@ -1,20 +1,20 @@
 ---
 sidebar_label: buttons_left
 title: buttons_left config
-description: "保存位于 lightbox 左下角的一组按钮"
+description: "在灯箱左下角存放一组按钮"
 ---
 
 # buttons_left
 
 ### Description
 
-@short: 保存位于 lightbox 左下角的一组按钮
+@short: 存储在灯箱左下角的按钮集合
 
 @signature: buttons_left: string[]
 
 ### Example
 
-~~~jsx
+~~~html
 <style>
     .complete_button{
         margin-top: 2px;
@@ -24,12 +24,12 @@ description: "保存位于 lightbox 左下角的一组按钮"
 </style>
 <script>
     gantt.locale.labels["complete_button"] = "Complete";
-    gantt.attachEvent("onGanttReady", function(){                               /*!*/ 
-          gantt.config.buttons_left = ["gantt_save_btn","gantt_cancel_btn",        /*!*/      
-            "complete_button"];                                                /*!*/ 
-    });                                                                           /*!*/ 
+    gantt.attachEvent("onGanttReady", function(){                               /*!*/
+          gantt.config.buttons_left = ["gantt_save_btn","gantt_cancel_btn",        /*!*/
+            "complete_button"];                                                /*!*/
+    });                                                                           /*!*/
     gantt.init("gantt_here");
-    
+
     gantt.attachEvent("onLightboxButton", function(button_id, node, e){
         if(button_id == "complete_button"){
             var id = gantt.getState().lightbox;
@@ -41,24 +41,21 @@ description: "保存位于 lightbox 左下角的一组按钮"
 </script>
 ~~~
 
-**Default value:** ["gantt_save_btn", "gantt_cancel_btn"]
+**默认值：** ["gantt_save_btn", "gantt_cancel_btn"]
 
 ### Related samples
-- [Custom button in the lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/06_custom_button.html)
+- [在灯箱中自定义按钮](https://docs.dhtmlx.com/gantt/samples/05_lightbox/06_custom_button.html)
 
 ### Details
 
 :::note
-
-请注意，使用 [Material skin](guides/skins.md#materialpifu) 会覆盖按钮配置。 
-为避免此情况，请在 [onGanttReady](api/event/onganttready.md) 事件处理器内定义按钮配置。
- 
+请注意，如果你使用 [Material skin](guides/skins.md#materialskin)，它将重新定义按钮的配置。 
+为防止这种情况，你需要在 [onGanttReady](api/event/onganttready.md) 事件处理程序中指定按钮的配置。
 :::
 
-<br>
 ![property_buttons_left](/img/property_buttons_left.png)
 
-左侧按钮的标签可以在初始化 Gantt 之前通过以下语法自定义:
+您可以在 Gantt 初始化之前，使用以下语法重新定义左侧按钮的标签：
 
 ~~~js
 gantt.locale.labels.icon_save = "New Label";
@@ -93,5 +90,4 @@ gantt.i18n.setLocale({
 - [i18n](api/other/i18n.md)
 
 ### Related Guides
-- [在 Lightbox 中更改按钮](guides/custom-button.md)
-
+- [在灯箱中更改按钮](guides/custom-button.md)

@@ -1,24 +1,24 @@
 ---
 sidebar_label: calculateDuration
-title: calculateDuration method
-description: "ermittelt die Dauer einer Aufgabe"
+title: calculateDuration Methode
+description: "berechnet die Dauer einer Aufgabe"
 ---
 
 # calculateDuration
 
 ### Description
 
-@short: Ermittelt die Dauer einer Aufgabe
+@short: Berechnet die Dauer einer Aufgabe
 
-@signature: calculateDuration: Calendar['calculateDuration']
+@signature: calculateDuration: (config: object, end_date: Date) =\> number
 
 ### Parameters
 
-- `config` - (required) *object* - | Date        kann entweder das [Konfigurationsobjekt](#configurationobjectproperties) sein, das einen Zeitraum beschreibt, oder nur das Startdatum der Aufgabe
-- `end_date` - (optional) *Date* - optional, das Enddatum der Aufgabe. Dies wird benötigt, wenn der erste Parameter nur das start_date ist.einfach das Startdatum der Aufgabe
+- `config` - (erforderlich) *object | Date* -        entweder das <a href="#configuration-object-properties">Konfigurationsobjekt eines Zeitraums</a> oder das Startdatum der Aufgabe
+- `end_date` - (optional) *Date* -  das Enddatum der Aufgabe. Der Parameter ist erforderlich, wenn der erste Parameter als start_date angegeben wird.
 
 ### Returns
-- ` duration` - (number) - die Dauer der Aufgabe in den durch die Option [duration_unit](api/config/duration_unit.md) festgelegten Einheiten
+- ` duration` - (number) - die Dauer einer Aufgabe in den durch die Option [duration_unit](api/config/duration_unit.md) angegebenen Einheiten
 
 ### Example
 
@@ -26,8 +26,8 @@ description: "ermittelt die Dauer einer Aufgabe"
 gantt.config.work_time = true;
 gantt.init("gantt_here");
 
-// ermittelt die Arbeitszeitdauer zwischen zwei Daten 
-// (nützlich für Aufgaben mit mehreren Arbeitskalendern)
+// berechnet die Arbeitszeitdauer zwischen angegebenen Daten 
+// (für eine bestimmte Aufgabe, wenn mehrere Arbeitskalender verwendet werden)
 gantt.calculateDuration({
     start_date: new Date(2013,02,15), 
     end_date: new Date(2013,02,25)
@@ -44,27 +44,23 @@ gantt.calculateDuration(new Date(2013,02,15), new Date(2013,02,25)); //->6
 ### Details
 
 :::note
-
-Wenn die Option [work_time](api/config/work_time.md) aktiviert ist, berechnet diese Methode die Dauer der Aufgabe basierend auf der Arbeitszeit. 
- 
+Wenn die [work_time](api/config/work_time.md) Option aktiviert ist, berechnet die Methode die Dauer der Aufgabe in der Arbeitszeit. 
 :::
 
+- Die Methode wird den globalen Arbeitszeitkalender verwenden, wenn keine Aufgabe angegeben wird. 
+- Außerdem kann die Methode direkt für ein [Kalender-Objekt](api/other/calendar.md) aufgerufen werden.
 
-- Wenn keine Aufgabe angegeben wird, verwendet die Methode standardmäßig den [globalen Arbeitszeitkalender](guides/working-time.md#multipleworktimecalendars). <br>
-- Diese Methode kann auch direkt auf einem [Kalenderobjekt](api/other/calendar.md) verwendet werden.
+## Eigenschaften des Konfigurationsobjekts
 
-## Eigenschaften des Konfigurationsobjekts {#configurationobjectproperties}
+Das Konfigurationsobjekt kann die folgenden Eigenschaften enthalten:
 
-Das Konfigurationsobjekt kann folgende Eigenschaften enthalten:
+- **start_date** - (*Date*) das Datum, an dem eine Aufgabe voraussichtlich beginnt
+- **end_date** - (*Date*) das Datum, an dem eine Aufgabe voraussichtlich abgeschlossen wird
+* **task** - (*object*) optional, das Objekt der Aufgabe, dessen Dauer berechnet werden soll
 
-- **start_date** - (*Date*) wann die Aufgabe geplant ist zu starten
-- **end_date** - (*Date*) wann die Aufgabe geplant ist zu enden
-* **task** - (*object*)    optional, das Aufgabenobjekt, für das die Dauer berechnet werden soll
-
-### Related API
+### Verwandte API
 - [calculateEndDate](api/method/calculateenddate.md)
 - [calculateTaskLevel](api/method/calculatetasklevel.md)
 
-### Related Guides
-- - ["Arbeitszeitberechnung"](guides/working-time.md)
-
+### Verwandte Guides
+- [Arbeitszeitberechnung](guides/working-time.md)

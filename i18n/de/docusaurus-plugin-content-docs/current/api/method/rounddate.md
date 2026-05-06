@@ -1,23 +1,23 @@
 ---
 sidebar_label: roundDate
-title: roundDate method
-description: "rundet das angegebene Datum auf das nächstgelegene Datum basierend auf der Zeitskala"
+title: roundDate Methode
+description: "Rundet das angegebene Datum auf das nächstgelegene Datum im Zeitmaßstab"
 ---
 
 # roundDate
 
 ### Description
 
-@short: Rundet das angegebene Datum auf das nächstgelegene Datum basierend auf der Zeitskala
+@short: Rundet das angegebene Datum auf das nächstgelegene Datum im Zeitmaßstab
 
-@signature: roundDate: (date: Date | RoundDateConfig) =\> Date
+@signature: roundDate: (date: Date | RoundDateConfig) => Date
 
 ### Parameters
 
-- `date` - (required) *Date | RoundDateConfig* -     Das Date-Objekt, das gerundet werden soll, oder ein Objekt mit Konfigurationsoptionen
+- `date` - (required) *Date | RoundDateConfig* - das Date-Objekt, das gerundet werden soll oder ein Objekt mit Einstellungen
 
 ### Returns
-- ` date` - (Date) - Das gerundete Date-Objekt
+- `date` - (Date) - das gerundete Date-Objekt
 
 ### Example
 
@@ -25,20 +25,21 @@ description: "rundet das angegebene Datum auf das nächstgelegene Datum basieren
 var today = gantt.roundDate(new Date());
 ~~~
 
+
 ### Details
 
-Um ein bestimmtes Datum auf das nächstgelegene Datum zu runden, übergeben Sie einfach das Date-Objekt an diese Methode:
+Wenn das angegebene Datum auf das nächstgelegene Datum gerundet werden soll, übergeben Sie das Date-Objekt als Parameter an die Methode:
 
 ~~~js
 var today = gantt.roundDate(new Date());
 console.log(today);
 ~~~
 
-Wenn Sie das Datum nach einer bestimmten Zeiteinheit runden möchten, verwenden Sie ein Objekt mit Einstellungen als Parameter für die **roundDate()**-Methode. Dieses Objekt kann die folgenden Eigenschaften enthalten:
+Wenn das angegebene Datum unter Berücksichtigung der Zeiteinheit auf das nächstgelegene Datum gerundet werden soll, übergeben Sie der **roundDate()**-Methode ein Objekt mit Einstellungen. Das Objekt kann folgende Attribute enthalten:
 
-- **date** - (*Date*) - Das zu rundende Date-Objekt;
-- **unit?** - (*string*) - Die Zeiteinheit, nach der gerundet wird ("minute", "hour", "day", "week", "month", "year");
-- **step?** - (*number*) - Der Intervall-Schritt der Zeitskala (X-Achse), Standard ist 1.
+- **date** - (*Date*) - das Date-Objekt, das gerundet werden soll;
+- **unit?** - (*string*) - die Zeiteinheit ("minute", "hour", "day", "week", "month", "year");
+- **step?** - (*number*) - der Schritt der Zeitachse (X-Achse), standardmäßig 1.
 
 ~~~js
 var today = gantt.roundDate({
@@ -49,6 +50,6 @@ var today = gantt.roundDate({
 console.log(today);
 ~~~
 
+
 ### Related API
 - [roundTaskDates](api/method/roundtaskdates.md)
-

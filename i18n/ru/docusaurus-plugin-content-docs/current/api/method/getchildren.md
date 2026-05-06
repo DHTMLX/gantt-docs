@@ -1,23 +1,23 @@
 ---
 sidebar_label: getChildren
-title: getChildren method
-description: "получает непосредственные дочерние задачи для указанной родительской ветки"
+title: getChildren метод
+description: "возвращает задачи 1-го уровня дочерние для указанной родительской ветви"
 ---
 
 # getChildren
 
 ### Description
 
-@short: Получает непосредственные дочерние задачи для указанной родительской ветки
+@short: Возвращает задачи 1-го уровня дочерние для указанной родительской ветви
 
 @signature: getChildren: (id: string | number) =\> any[]
 
 ### Parameters
 
-- `id` - (required) *string | number* -       идентификатор родительской ветки
+- `id` - (обязательный) *string | number* - идентификатор родительской ветви
 
 ### Returns
-- ` ids` - (array) - массив, содержащий идентификаторы дочерних задач
+- ` ids` - (массив) - массив идентификаторов дочерних задач
 
 ### Example
 
@@ -39,11 +39,11 @@ gantt.getChildren("p_1");//->["t_1", "t_2"] /*!*/
 ~~~
 
 ### Related samples
-- [Basic filtering](https://docs.dhtmlx.com/gantt/samples/07_grid/03_filtering.html)
+- [Базовая фильтрация](https://docs.dhtmlx.com/gantt/samples/07_grid/03_filtering.html)
 
 ### Details
 
-Другой способ пройтись по дочерним задачам конкретной задачи - использовать [eachTask](api/method/eachtask.md).
+Еще один метод перебора дочерних задач некоторой задачи — [eachTask](api/method/eachtask.md).
 
 ### Related API
 - [hasChild](api/method/haschild.md)
@@ -55,5 +55,4 @@ gantt.getChildren("p_1");//->["t_1", "t_2"] /*!*/
 - [eachTask](api/method/eachtask.md)
 
 ### Related Guides
-- [Настройка древовидной колонки](guides/tree-column.md)
-
+- [Настройка столбца дерева](guides/tree-column.md)

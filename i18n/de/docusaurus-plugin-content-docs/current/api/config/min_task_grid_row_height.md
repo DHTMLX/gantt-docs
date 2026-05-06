@@ -1,14 +1,14 @@
 ---
 sidebar_label: min_task_grid_row_height
 title: min_task_grid_row_height config
-description: "definiert die minimale Höhe, die eine Task-Zeile beim Ändern der Größe haben kann"
+description: "Legt die minimale Zeilenhöhe fest, die während einer Größenänderung einer Aufgabe festgelegt werden kann"
 ---
 
 # min_task_grid_row_height
 
 ### Description
 
-@short: Definiert die minimale Höhe, die eine Task-Zeile beim Ändern der Größe haben kann
+@short: Legt die minimale Zeilenhöhe fest, die während einer Größenänderung einer Aufgabe festgelegt werden kann
 
 @signature: min_task_grid_row_height: number
 
@@ -18,12 +18,11 @@ description: "definiert die minimale Höhe, die eine Task-Zeile beim Ändern der
 gantt.config.min_task_grid_row_height = 45;
 ~~~
 
-**Default value:** 30
+**Standardwert:** 30
 
 ### Details
 
-Diese Einstellung ist nur wirksam, wenn [gantt.config.resize_rows](api/config/resize_rows.md) aktiviert (*true*) ist.
+Die Eigenschaft funktioniert, wenn [gantt.config.resize_rows](api/config/resize_rows.md) auf *true* gesetzt ist.
 
 ### Change log
 - hinzugefügt in v7.1
-

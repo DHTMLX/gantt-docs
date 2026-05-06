@@ -1,14 +1,14 @@
 ---
 sidebar_label: smart_scales
 title: smart_scales config
-description: "指定仅在屏幕上绘制时间刻度的可见部分"
+description: "指定仅在屏幕上呈现时间刻度的可见部分"
 ---
 
 # smart_scales
 
 ### Description
 
-@short: 指定仅在屏幕上绘制时间刻度的可见部分
+@short: 指定在屏幕上仅呈现时间刻度的可见部分
 
 @signature: smart_scales: boolean
 
@@ -18,13 +18,13 @@ description: "指定仅在屏幕上绘制时间刻度的可见部分"
 gantt.config.smart_scales = true;
 ~~~
 
-**Default value:** true
+**默认值：** true
 
 ### Details
 
-在版本 4.1 中新增
+在 4.1 版本中新增
 
-启用此设置可以大幅提升图表的渲染性能，特别是在处理非常长的时间刻度时。
+使用此配置可以显著加速图表渲染，尤其是在时间刻度非常长的情况下。
 
 ### Related Guides
-- [性能优化:提升方法](guides/performance.md)
+- [性能：提升方法](guides/performance.md#common-techniques)

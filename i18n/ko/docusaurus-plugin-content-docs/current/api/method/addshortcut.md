@@ -1,22 +1,21 @@
 ---
 sidebar_label: addShortcut
-title: addShortcut method
-description: "새로운 키보드 단축키를 추가합니다."
+title: addShortcut 메서드
+description: "새 키보드 단축키를 추가합니다"
 ---
 
 # addShortcut
 
 ### Description
 
-@short: 새로운 키보드 단축키를 추가합니다.
+@short: 새 키보드 단축키를 추가합니다
 
 @signature: addShortcut: (shortcut: string, handler: GanttCallback, scope?: string) =\> void
 
 ### Parameters
 
-- `shortcut` - (required) *string* - 단축키에 사용되는 키 또는 키 조합 ([shortcut syntax](guides/keyboard-navigation.md#shortcutsyntax))
-- `handler` - (required) *function* - 단축키가 실행될 때 호출되는 함수
-- `scope` - (required) *string* - 선택 사항이며, 핸들러가 연결될 컨텍스트 요소를 지정합니다 ([list of scopes](guides/keyboard-navigation.md#scopes)); 기본값은 "gantt"입니다.
+- `shortcut` - (필수) *string* - 단축키의 키 이름 또는 키 조합의 이름 [shortcut 구문](guides/keyboard-navigation.md#shortcutsyntax)
+- `handler` - (필수) *function* - 단축키 호출의 핸들러
 
 ### Example
 
@@ -35,12 +34,12 @@ gantt.addShortcut("shift+w", function(e){
 ### Details
 
 :::note
- 이 메서드는 **keyboard_navigation** 확장의 일부이므로, [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) 플러그인이 활성화되어 있어야 합니다. 자세한 내용은 [키보드 내비게이션](guides/keyboard-navigation.md) 문서를 참조하세요. 
+이 메서드는 **keyboard_navigation** 확장에 정의되어 있으므로 [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) 플러그인을 활성화해야 합니다. 자세한 내용은 [Keyboard Navigation](guides/keyboard-navigation.md) 문서를 참조하십시오. 
 :::
 
-버전 4.1에 추가됨
+버전 4.1에서 추가됨
 
-세 번째 파라미터가 생략되면 핸들러는 기본적으로 gantt scope에 연결됩니다.
+세 번째 매개변수가 설정되지 않은 경우 핸들러가 gantt 스코프에 연결됩니다.
 
 ### Related API
 - [getShortcutHandler](api/method/getshortcuthandler.md)

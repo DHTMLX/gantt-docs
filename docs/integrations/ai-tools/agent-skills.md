@@ -20,6 +20,8 @@ Covers integration of `@dhtmlx/trial-react-gantt` and `@dhx/react-gantt` into Re
 
 The skill files are readable Markdown - you can review exactly what rules your assistant will follow in the [GitHub repository](https://github.com/DHTMLX/skills/tree/main/dhtmlx-react-gantt).
 
+For a worked example of these patterns applied end-to-end, see the [React Gantt Lovable Starter](https://github.com/DHTMLX/react-gantt-lovable-starter) - a multi-project planner generated in Lovable, with the full build recipe in its [`lovable/`](https://github.com/DHTMLX/react-gantt-lovable-starter/tree/main/lovable) folder.
+
 ## Installing
 
 ```bash

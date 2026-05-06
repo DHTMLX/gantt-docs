@@ -5,7 +5,7 @@ sidebar_label: "模板控件"
 
 # 模板控件
 
-这是一个用于容纳部分 HTML 内容的容器。
+一个包含一些 HTML 内容的容器。
 
 ![template_control](/img/template_control.png)
 
@@ -26,14 +26,14 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 });
 ~~~
 
-[Template control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/05_template.html)
+[模板控件](https://docs.dhtmlx.com/gantt/samples/05_lightbox/05_template.html)
 
 
 ## 初始化
 
-要在 lightbox 中包含 **template** 控件，需要完成以下步骤:
+要将 **template** 控件添加到 lightbox，请按以下步骤操作：
 
-1) 在 lightbox 配置中添加一个 section:
+1) 向 lightbox 配置中添加一个段：
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -43,13 +43,13 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-2) 为该 section 定义一个标签:
+2) 为该段设置标签：
 
 ~~~js
 gantt.locale.labels.section_template = "Details";
 ~~~
 
-3) 通过事件（如 [onBeforeLightbox](api/event/onbeforelightbox.md) 事件）为控件填充内容:
+3) 通过某个事件设置控件的内容，例如 [onBeforeLightbox](api/event/onbeforelightbox.md) 事件：
 
 ~~~js
 gantt.attachEvent("onBeforeLightbox", function(id) {
@@ -63,11 +63,10 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 
 ## 属性
 
-以下是 **template** 控件常用的一些属性（完整列表请参见 [这里](api/config/lightbox.md)）:
+以下属性在 **template** 控件中通常较为重要且常被设置（完整列表请参见 [这里](api/config/lightbox.md)）：
 
-- **name** - (*string*) 指定 section 的名称
-- **height** - (*number*) 设置 section 的高度
-- **map_to** - (*string*) 该 section 映射的数据属性
-- **type** - (*string*) 定义[section 控件](guides/default-edit-form.md#lightboxcontrols)的类型
-- **focus** - (*boolean*) 当设置为 *true* 时，lightbox 打开时该 section 会获得焦点
-
+- **name** - (*string*) 段名称
+- **height** - (*number*) 段高度
+- **map_to** - (*string*) 将映射到该段的数据属性的名称
+- **type** - (*string*) [section control] 的类型（参见 guides/default-edit-form.md#lightboxcontrols）
+- **focus** - (*boolean*) 如果设置为 *true*，打开 lightbox 时该段将获得焦点

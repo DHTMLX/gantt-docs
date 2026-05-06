@@ -1,20 +1,20 @@
 ---
 sidebar_label: exportToJSON
-title: exportToJSON method
-description: "создаёт JSON-объект, содержащий структуру и данные диаграммы Ганта"
+title: exportToJSON метод
+description: "экспортирует структуру и данные диаграммы Ганта в JSON-объект"
 ---
 
 # exportToJSON
 
 ### Description
 
-@short: Создаёт JSON-объект, содержащий структуру и данные диаграммы Ганта
+@short: Экспортирует структуру и данные диаграммы Ганта в JSON-объект
 
 @signature: exportToJSON: (config?: any) =\> void
 
 ### Parameters
 
-- `config` - (optional) *object* - необязательно, объект с конфигурацией Gantt
+- `config` - object	 - необязательный, объект с настройками Gantt
 
 ### Example
 
@@ -27,12 +27,11 @@ gantt.exportToJSON({
 ### Details
 
 :::note
- Этот метод является частью расширения **export**, поэтому убедитесь, что плагин [export_api](guides/extensions-list.md#exportservice) включён.
- 
-:::
+Этот метод определён в расширении **export**, поэтому вам нужно активировать плагин [export_api](guides/extensions-list.md#export-service).
+ :::
 
 :::note
- Для версий Gantt ниже 8.0 необходимо добавить **https://export.dhtmlx.com/gantt/api.js** на вашу страницу для использования онлайн-сервиса экспорта, например:
+Примечание: Если вы используете Gantt версию старше 8.0, вам нужно подключить на страницу `https://export.dhtmlx.com/gantt/api.js` для включения онлайн-сервиса экспорта, например:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -41,10 +40,10 @@ gantt.exportToJSON({
  
 :::
 
-Объект **config** поддерживает следующие опции:
+Объект **config** может содержать следующие параметры:
 
-- name - имя файла для экспортируемого JSON-файла
-- data - (массив) список задач для экспорта; если не указан, будет экспортирована вся диаграмма Ганта
+- name - имя экспортируемого JSON-файла
+- data - (массив) список задач для экспорта. Весь Gantt будет экспортирован, если не указан
 
 ### Related API
 - [exportToMSProject](api/method/exporttomsproject.md)
@@ -56,4 +55,3 @@ gantt.exportToJSON({
 - [importFromExcel](api/method/importfromexcel.md)
 - [importFromPrimaveraP6](api/method/importfromprimaverap6.md)
 - [importFromMSProject](api/method/importfrommsproject.md)
-

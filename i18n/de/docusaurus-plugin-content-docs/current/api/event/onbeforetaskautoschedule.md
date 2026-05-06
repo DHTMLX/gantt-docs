@@ -1,7 +1,7 @@
 ---
 sidebar_label: onBeforeTaskAutoSchedule
-title: onBeforeTaskAutoSchedule event
-description: "Wird für jede Aufgabe ausgelöst, die neu geplant wird"
+title: onBeforeTaskAutoSchedule-Ereignis
+description: "löst für jede Aufgabe aus, die neu geplant wird"
 ---
 
 # onBeforeTaskAutoSchedule
@@ -16,19 +16,19 @@ description: "Wird für jede Aufgabe ausgelöst, die neu geplant wird"
 
 ### Parameters
 
-- `task` - (required) *Task* - Das Task-Objekt
-- `start` - (required) *Date* - Das neue Startdatum
-- `link` - (required) *Link* - Das Link-Objekt, das die Einschränkung verursacht
-- `predecessor` - (required) *Task* - Das Vorgänger-Task-Objekt
+- `task` - (required) *Task* - das Task-Objekt
+- `start` - (required) *Date* - ein neues Startdatum
+- `link` - (required) *Link* - das Link-Objekt, das die Einschränkung erzeugt
+- `predecessor` - (required) *Task* - das Vorgänger-Task-Objekt
 
 ### Returns
-- ` result` - (boolean) - Gibt an, ob die Standardaktion des Events ausgeführt wird (<b>true</b>) oder gestoppt wird (<b>false</b>)
+- ` result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeTaskAutoSchedule",function(task, start, link, predecessor){
-    // benutzerdefinierte Logik hier einfügen
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
     return true;
 });
 ~~~
@@ -39,11 +39,10 @@ gantt.attachEvent("onBeforeTaskAutoSchedule",function(task, start, link, predece
 ### Details
 
 :::note
- Dieses Event ist Teil der **auto_scheduling**-Erweiterung. Stellen Sie daher sicher, dass das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin aktiviert ist. Weitere Details finden Sie im Artikel ["Auto Scheduling"](guides/auto-scheduling.md). 
+Dieses Ereignis ist in der **auto_scheduling** Erweiterung definiert, daher müssen Sie das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin aktivieren. Lesen Sie die Details im Artikel [Auto Scheduling](guides/auto-scheduling.md). 
 :::
 
-
-Dieses Event kann blockiert werden. Wird *false* zurückgegeben, wird die weitere Verarbeitung gestoppt.
+Das Ereignis kann geblockt werden. Wenn Sie *false* zurückgeben, wird die weitere Verarbeitung abgebrochen.
 
 ### Related API
 - [auto_scheduling](api/config/auto_scheduling.md)
@@ -62,5 +61,4 @@ Dieses Event kann blockiert werden. Wird *false* zurückgegeben, wird die weiter
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- ["Auto Scheduling"](guides/auto-scheduling.md)
-
+- [Auto Scheduling](guides/auto-scheduling.md)

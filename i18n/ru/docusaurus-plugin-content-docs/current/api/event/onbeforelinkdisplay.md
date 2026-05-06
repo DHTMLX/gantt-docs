@@ -1,24 +1,24 @@
 ---
 sidebar_label: onBeforeLinkDisplay
-title: onBeforeLinkDisplay event
-description: "срабатывает после загрузки связей в Gantt chart, но непосредственно перед их отображением на экране"
+title: onBeforeLinkDisplay событие
+description: "срабатывает после загрузки связей в диаграмму Ганта, но до их отображения"
 ---
 
 # onBeforeLinkDisplay
 
 ### Description
 
-@short: Срабатывает после загрузки связей в Gantt chart, но непосредственно перед их отображением на экране
+@short: Срабатывает после загрузки связей в диаграмму Ганта, но до их отображения
 
 @signature: onBeforeLinkDisplay: (id: string | number, link: Link) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - уникальный идентификатор связи
+- `id` - (required) *string | number* - идентификатор связи
 - `link` - (required) *Link* - объект связи
 
 ### Returns
-- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или оно будет отменено (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию у события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
@@ -33,8 +33,7 @@ gantt.attachEvent("onBeforeLinkDisplay", function(id, link){
 
 ### Details
 
-Это событие можно блокировать. Возврат false предотвращает отображение связи.
+Событие можно заблокировать. Возврат false предотвратит отображение связи
 
 ### Related API
 - [onBeforeTaskDisplay](api/event/onbeforetaskdisplay.md)
-

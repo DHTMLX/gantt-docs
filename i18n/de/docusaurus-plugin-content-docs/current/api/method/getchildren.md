@@ -1,23 +1,23 @@
 ---
 sidebar_label: getChildren
-title: getChildren method
-description: "ruft die direkten untergeordneten Aufgaben eines gegebenen übergeordneten Branches ab"
+title: getChildren Methode
+description: "Gibt die Unteraufgaben der 1. Ebene des angegebenen übergeordneten Zweigs zurück"
 ---
 
 # getChildren
 
 ### Description
 
-@short: Ruft die direkten untergeordneten Aufgaben eines gegebenen übergeordneten Branches ab
+@short: Gibt die Unteraufgaben der 1. Ebene des angegebenen übergeordneten Zweigs zurück
 
 @signature: getChildren: (id: string | number) =\> any[]
 
 ### Parameters
 
-- `id` - (required) *string | number* -  die ID des übergeordneten Branches
+- `id` - (required) *string | number* -        die ID des übergeordneten Zweigs
 
 ### Returns
-- ` ids` - (array) - ein Array, das die IDs der untergeordneten Aufgaben enthält
+- ` ids` - (array) - ein Array der IDs der Unteraufgaben
 
 ### Example
 
@@ -43,7 +43,7 @@ gantt.getChildren("p_1");//->["t_1", "t_2"] /*!*/
 
 ### Details
 
-Eine weitere Möglichkeit, durch untergeordnete Aufgaben einer bestimmten Aufgabe zu iterieren, ist die Verwendung von [eachTask](api/method/eachtask.md).
+Eine weitere Methode, um über die Unteraufgaben einer Aufgabe zu iterieren, ist [eachTask](api/method/eachtask.md).
 
 ### Related API
 - [hasChild](api/method/haschild.md)
@@ -55,5 +55,4 @@ Eine weitere Möglichkeit, durch untergeordnete Aufgaben einer bestimmten Aufgab
 - [eachTask](api/method/eachtask.md)
 
 ### Related Guides
-- ["Konfiguration der Baumspalte"](guides/tree-column.md)
-
+- [Configuring the Tree Column](guides/tree-column.md)

@@ -15,11 +15,11 @@ description: "添加一个新任务"
 ### Parameters
 
 - `task` - (required) *NewTask* - 任务对象
-- `parent` - (required) *string | number* -            可选，父任务的id
-- `index` - (optional) *number* - 可选，任务插入的位置（0或更高）
+- `parent` - (optional) *string | number* - 父级的 id
+- `task` - (optional) *number* - 将被添加到的任务位置（从 0 开始）
 
 ### Returns
-- ` id` - (string, number) - 任务的id
+- ` id` - (string, number) - 任务的 id
 
 ### Example
 
@@ -34,17 +34,18 @@ const taskId = gantt.addTask({
 
 ### Details
 
-当你提供 *index* 参数且其值为0或更大时，任务将被插入到该分支的指定位置。 
-如果不提供该参数，任务将默认添加到分支的末尾。
+如果你将 *index* 参数设置为从 0 开始及以上的值，任务将被添加到分支中指定的位置。
+否则，任务将添加到任务分支的末尾。
 
-此方法会触发 [onBeforeTaskAdd](api/event/onbeforetaskadd.md) 和 [onAfterTaskAdd](api/event/onaftertaskadd.md) 事件。
+该方法会触发 [onBeforeTaskAdd](api/event/onbeforetaskadd.md) 和 [onAfterTaskAdd](api/event/onaftertaskadd.md) 事件。
 
-请注意，如果你想避免保存任务--例如用户在 lightbox 中取消操作时--可以考虑使用 [createTask](api/method/createtask.md) 方法，该方法会触发 [onTaskCreated](api/event/ontaskcreated.md) 事件。
+注意，如果你不想在某些情况下保存任务，例如用户在灯箱中点击“取消”按钮，请使用 [createTask](api/method/createtask.md) 方法以及该方法所触发的 [onTaskCreated](api/event/ontaskcreated.md) 事件。
 
-## 阻止在某些层级添加任务
-阻止用户在某些任务下添加子任务的简单方法是通过 CSS 隐藏"Add"按钮。
+### Preventing from adding tasks to certain levels
 
-1. 首先，使用 [grid_row_class](api/template/grid_row_class.md) 模板为每个任务行分配一个 CSS 类:
+阻止向某些级别添加任务的一个相当简单的方法，是通过 CSS 隐藏“Add”按钮。
+
+首先，使用 [grid_row_class](api/template/grid_row_class.md) 模板为每个任务行分配一个 CSS 类：
 ~~~js
 gantt.templates.grid_row_class = (start, end, task) => {
     if (task.$level > 1) {
@@ -53,7 +54,8 @@ gantt.templates.grid_row_class = (start, end, task) => {
     return "";
 };
 ~~~
-2. 接着，隐藏这些行的"Add"按钮:
+
+然后，为这些行隐藏 “Add” 按钮：
 
 ~~~css
 .nested_task .gantt_add{
@@ -62,8 +64,7 @@ gantt.templates.grid_row_class = (start, end, task) => {
 ~~~
 
 :::note
-Sample: [Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
- 
+示例 [预定义的项目结构](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
 :::
 
 ### Related API
@@ -74,4 +75,3 @@ Sample: [Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_
 
 ### Related Guides
 - [任务的基本操作](guides/crud-task.md)
-

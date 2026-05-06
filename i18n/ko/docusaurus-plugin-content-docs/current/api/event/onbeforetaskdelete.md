@@ -1,38 +1,37 @@
----
+--- 
 sidebar_label: onBeforeTaskDelete
 title: onBeforeTaskDelete event
-description: "사용자가 작업을 삭제하기 직전에 트리거됩니다."
+description: "사용자가 작업을 삭제하기 전에 발생합니다"
 ---
 
 # onBeforeTaskDelete
 
 ### Description
 
-@short: 사용자가 작업을 삭제하기 직전에 트리거됩니다.
+@short: 사용자가 작업을 삭제하기 전에 발생합니다
 
-@signature: onBeforeTaskDelete: (id: string | number, task: Task) =\> boolean;
+@signature: onBeforeTaskDelete: (id: string | number, task: Task) => boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - 작업 ID
+- `id` - (required) *string | number* - 태스크 ID
 - `task` - (required) *Task* - 작업 객체
 
 ### Returns
-- ` result` - (boolean) - 기본 이벤트 동작이 진행될지(<b>true</b>) 중단될지(<b>false</b>) 결정합니다.
+- ` result` - (boolean) - 이벤트의 기본 동작이 트리거될지 여부를 정의합니다 (<b>true</b>) 또는 취소될지 (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeTaskDelete", function(id,task){
-    // 여기서 커스텀 로직을 추가할 수 있습니다.
+    // 여기에 코드 작성
     return true;
 });
 ~~~
 
 ### Details
 
-이 이벤트는 차단할 수 있습니다. false를 반환하면 작업 삭제가 방지됩니다.
+이벤트는 차단 가능합니다. 작업 삭제를 취소하려면 false를 반환하세요.
 
 ### Related API
 - [deleteTask](api/method/deletetask.md)
-

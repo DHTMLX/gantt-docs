@@ -1,16 +1,18 @@
 ---
 sidebar_label: project_start
-title: project_start config
-description: "устанавливает дату начала проекта"
+title: конфигурация project_start
+description: "задает начальную дату проекта"
 ---
 
 # project_start
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в версии PRO.
 :::
+
 ### Description
 
-@short: Устанавливает дату начала проекта
+@short: Указывает начальную дату проекта
 
 @signature: project_start: Date | undefined
 
@@ -21,11 +23,11 @@ gantt.config.project_start = new Date(2019, 2, 1);
 ~~~
 
 ### Related samples
-- [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
+- [Автоматическое планирование от начала проекта и ограничений](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 ### Details
 
-Этот параметр задаёт дату начала по умолчанию для новых задач при включённом авторассчитывании расписания.
+Значение этой конфигурации может использоваться как дата начала по умолчанию для новых задач, когда включено автоматическое планирование.
 
 ### Related Guides
 - [Автоматическое планирование](guides/auto-scheduling.md)

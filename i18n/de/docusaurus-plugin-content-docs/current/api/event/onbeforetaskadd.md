@@ -1,38 +1,37 @@
 ---
 sidebar_label: onBeforeTaskAdd
-title: onBeforeTaskAdd event
-description: "Wird ausgelöst, kurz bevor eine neue Aufgabe zum Gantt-Diagramm hinzugefügt wird"
+title: onBeforeTaskAdd Event
+description: "wird ausgelöst, bevor eine neue Aufgabe dem Gantt-Diagramm hinzugefügt wird"
 ---
 
 # onBeforeTaskAdd
 
 ### Description
 
-@short: Wird ausgelöst, kurz bevor eine neue Aufgabe zum Gantt-Diagramm hinzugefügt wird
+@short: Wird ausgelöst, bevor eine neue Aufgabe dem Gantt-Diagramm hinzugefügt wird
 
 @signature: onBeforeTaskAdd: (id: string | number, task: Task) =\> boolean;
 
 ### Parameters
 
 - `id` - (required) *string | number* - die Aufgaben-ID
-- `task` - (required) *Task* - das Aufgabenobjekt
+- `task` - (required) *Task* - das Task-Objekt
 
 ### Returns
-- ` result` - (boolean) - bestimmt, ob die Standardaktion des Events ausgeführt werden soll (<b>true</b>) oder abgebrochen wird (<b>false</b>)
+- `result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeTaskAdd", function(id,task){
-    //beliebige eigene Logik hier
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
     return true;
 });
 ~~~
 
 ### Details
 
-Dieses Event kann blockiert werden. Die Rückgabe von *false* verhindert, dass die Aufgabe hinzugefügt wird.
+Das Event ist blockierbar. Geben Sie `false` zurück, um das Hinzufügen der Aufgabe abzubrechen.
 
 ### Related API
 - [addTask](api/method/addtask.md)
-

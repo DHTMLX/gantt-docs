@@ -1,7 +1,7 @@
 ---
 sidebar_label: time_step
-title: time_step config
-description: "작업의 시간 값에 대한 최소 단위(분)를 설정합니다."
+title: time_step 설정
+description: "작업의 시간 값에 대한 최소 간격(분 단위)을 설정합니다"
 ---
 
 # time_step
@@ -28,20 +28,16 @@ gantt.init("gantt_here");
 - 라이트박스의 시간 선택기도 동일한 time_step을 따릅니다.
 
 :::note
- 작업을 드래그할 때 **time_step** 속성으로 정의된 단계에 작업이 스냅되도록 하려면 [round_dnd_dates](api/config/round_dnd_dates.md) 설정을 *false*로 설정해야 합니다.
-~~~js
+참고: time_step 속성으로 설정된 간격으로 태스크를 드래그하려면 [round_dnd_dates](api/config/round_dnd_dates.md) 구성을 *false*로 설정해야 합니다.
+~~~
 gantt.config.round_dnd_dates = false;
 ~~~
  
 :::
 
 :::note
-
 **Related example:** [Gantt. 최소 단위로 작업 Drag'n'drop](https://snippet.dhtmlx.com/bd7ir3w7)
-
- 
 :::
 
 ### Related API
 - [round_dnd_dates](api/config/round_dnd_dates.md)
-

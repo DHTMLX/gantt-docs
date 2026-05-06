@@ -1,14 +1,14 @@
----
+--- 
 sidebar_label: autoscroll
 title: autoscroll config
-description: "Gantt 차트에서 작업(task)이나 링크(link)를 브라우저의 보이는 영역 밖으로 드래그할 때 자동으로 스크롤되도록 허용합니다."
+description: "현재 브라우저 화면 밖으로 작업이나 링크를 드래그할 때 자동 스크롤을 활성화합니다"
 ---
 
 # autoscroll
 
 ### Description
 
-@short: Gantt 차트에서 작업(task)이나 링크(link)를 브라우저의 보이는 영역 밖으로 드래그할 때 자동으로 스크롤되도록 허용합니다.
+@short: 현재 브라우저 화면 밖으로 작업이나 링크를 드래그할 때 자동 스크롤을 활성화합니다
 
 @signature: autoscroll: boolean
 
@@ -19,29 +19,29 @@ gantt.config.autoscroll = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**기본값:** true
+
 
 ### Related samples
-- [Working with 30000 tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/13_smart_rendering.html)
+- [30,000개의 작업 다루기](https://docs.dhtmlx.com/gantt/samples/02_extensions/13_smart_rendering.html)
 
 ### Details
 
-버전 7.1.11 이전까지는 **autoscroll** 기능을 활성화할 때 [예약된 뷰와 해당 스크롤바의 특정 ID](guides/layout-config.md#requiredviewsandsettings)를 사용해야 했습니다.
+참고: **버전 7.1.11까지**는 스크롤바에 사용할 예약된 뷰와 해당 아이디를 사용해야 합니다([스크롤바에 대한 예약 뷰와 그 아이디](guides/layout-config.md#required-views-and-settings)를 사용하면서 **autoscroll** 옵션을 함께 사용할 때 필요합니다).
 
 ~~~js
-// 가로 스크롤바:
+// horizontal scrollbar:
 {view: "scrollbar", id: "scrollHor"}
-// 세로 스크롤바:
+// vertical scrollbar:
 {view: "scrollbar", id: "scrollVer"}
 ~~~
 
-다른 ID를 사용하면 스크롤바는 표시되지만 autoscroll 기능이 정상적으로 작동하지 않습니다.
+다른 이름을 사용하면 스크롤바는 작동하겠지만, "autoscroll" 기능은 작동하지 않습니다. 
 
-버전 7.1.11부터는 스크롤바의 이름이 어떠해도 autoscroll에 영향을 주지 않습니다.
+버전 7.1.11부터는 스크롤바에 아무 이름이나 사용할 수 있습니다.
 
 ### Related API
 - [autoscroll_speed](api/config/autoscroll_speed.md)
 
 ### Change log
-- version 4.2에 추가됨
-
+- 버전 4.2에서 추가됨

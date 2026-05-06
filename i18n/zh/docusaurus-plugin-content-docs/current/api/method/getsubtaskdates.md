@@ -1,23 +1,23 @@
 ---
 sidebar_label: getSubtaskDates
-title: getSubtaskDates method
-description: "计算嵌套在项目或其他任务中的子任务的合并开始/结束日期"
+title: getSubtaskDates 方法
+description: "计算嵌套在项目或其他任务中的任务的起始日期和结束日期的组合值"
 ---
 
 # getSubtaskDates
 
 ### Description
 
-@short: 计算嵌套在项目或其他任务中的子任务的合并开始/结束日期
+@short: 计算嵌套在项目或其他任务中的任务的起始日期和结束日期的组合值
 
 @signature: getSubtaskDates: (task_id?: string | number) =\> any
 
 ### Parameters
 
-- `task_id` - (optional) *string | number* -        任务的ID，如果未指定，则使用 [root_id](api/config/root_id.md) 中的默认值
+- `task_id` -	(optional) *string | number* - 任务的 ID；如未指定，将使用 [root_id](api/config/root_id.md)
 
 ### Returns
-- ` dates` - (object) - 一个包含 <b>start_date</b> 和 <b>end_date</b> 属性的对象
+- ` dates` - (object) - 一个对象，包含 <b>start_date</b> 和 <b>end_date</b> 属性
 
 ### Example
 
@@ -32,13 +32,13 @@ console.log(`${dateToStr(dates.start_date)} - ${dateToStr(dates.end_date)}`);
 dates = gantt.getSubtaskDates(1);
     
 console.log(`${dateToStr(dates.start_date)} - ${dateToStr(dates.end_date)}`);
-~~~
+~~~ 
 
 ### Details
 
-此方法返回一个对象，显示最早子任务的开始日期和最晚子任务的结束日期。
+该方法返回一个对象，包含最早子任务的起始日期和最近子任务的结束日期。
 
-返回的对象格式如下:
+返回对象的格式如下：
 
 ~~~js
 {
@@ -47,9 +47,8 @@ console.log(`${dateToStr(dates.start_date)} - ${dateToStr(dates.end_date)}`);
 }
 ~~~
 
-当甘特图中包含已计划的任务时，这两个属性都会包含日期值。如果甘特图为空或只包含未计划的任务，则这两个属性均为 `null`。
+如果甘特图有任何已安排的任务，则这两个属性将具有日期值。如果甘特图为空或仅包含未安排的任务，则这两个属性的值为 `null`。
 
 ### Related API
 - [getSubtaskDuration](api/method/getsubtaskduration.md)
 - [getTaskBy](api/method/gettaskby.md)
-

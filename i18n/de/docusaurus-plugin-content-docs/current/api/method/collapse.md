@@ -1,14 +1,14 @@
 ---
 sidebar_label: collapse
 title: collapse method
-description: "Schaltet die Gantt-Ansicht vom Vollbildmodus zurück in den regulären Modus"
+description: "Faltet den Gantt vom Vollbildmodus in den Normalmodus zusammen."
 ---
 
 # collapse
 
 ### Description
 
-@short: Schaltet die Gantt-Ansicht vom Vollbildmodus zurück in den regulären Modus
+@short: Faltet den Gantt vom Vollbildmodus in den Normalmodus zusammen
 
 @signature: collapse: () =\> void
 
@@ -24,8 +24,8 @@ gantt.collapse();
 ### Details
 
 :::note
- Diese Methode stammt aus der **fullscreen**-Extension, daher stellen Sie sicher, dass das [fullscreen](guides/extensions-list.md#fullscreen) Plugin über die Methode [gantt.plugins](api/method/plugins.md) aktiviert ist. Weitere Details finden Sie im Artikel ["Vollbildmodus"](guides/fullscreen-mode.md). 
-:::
+Diese Methode ist in der **fullscreen**-Erweiterung definiert, daher müssen Sie das [fullscreen](guides/extensions-list.md#fullscreen) Plugin über die [gantt.plugins](api/method/plugins.md) Methode aktivieren. Lesen Sie die Details im Artikel [Full Screen Mode](guides/fullscreen-mode.md).
+ :::
 
 ### Related API
 - [expand](api/method/expand.md)
@@ -35,5 +35,4 @@ gantt.collapse();
 - [onCollapse](api/event/oncollapse.md)
 
 ### Related Guides
-- ["Vollbildmodus"](guides/fullscreen-mode.md)
-
+- [Full Screen Mode](guides/fullscreen-mode.md)

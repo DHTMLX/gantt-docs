@@ -1,96 +1,101 @@
 ---
 sidebar_label: unsetWorkTime
 title: unsetWorkTime method
-description: "удаляет настройку рабочего времени в Gantt Chart"
+description: "снимает рабочее время в Gantt Chart"
 ---
 
 # unsetWorkTime
 
 ### Description
 
-@short: Удаляет настройку рабочего времени в Gantt Chart
+@short: Снимает рабочее время в Gantt Chart
 
-@signature: unsetWorkTime: (config: object) =\> void
+@signature: unsetWorkTime: (config: object) => void
 
 ### Parameters
 
-- `config` - (required) *object* - объект конфигурации, определяющий временной интервал
+- `config` - (обязательный) *object* - конфигурационный объект временного диапазона
 
 ### Example
 
 ~~~jsx
 gantt.config.work_time = true;
  
-// обновляет рабочие часы в рабочие дни с ["8:00-17:00"] на ["9:00-18:00"]
-gantt.setWorkTime({ hours:["9:00-18:00"] });
-// удаляет конфигурацию рабочих часов
-gantt.unsetWorkTime({ hours:["9:00-18:00"] });
+// changes the working time of working days from ["8:00-17:00"] to ["9:00-18:00"]
+gantt.setWorkTime({ hours: ["9:00-18:00"] });
+// unsets the working time
+gantt.unsetWorkTime({ hours: ["9:00-18:00"] });
 ~~~
 
 ### Related samples
-- [Calculate working hours](https://docs.dhtmlx.com/gantt/samples/09_worktime/01_working_hours_per_day.html)
+- [Расчет рабочих часов](https://docs.dhtmlx.com/gantt/samples/09_worktime/01_working_hours_per_day.html)
 
 ### Details
 
-добавлено в версии 4.1
+added in version 4.1
 
-- Этот метод применяет [глобальный календарь рабочего времени](guides/working-time.md#multipleworktimecalendars), если не указан конкретный таск. <br>
-- Также его можно вызвать напрямую на [объекте календаря](api/other/calendar.md).
+- Метод будет использовать [глобальный календарь рабочего времени](guides/working-time.md#multipleworktimecalendars) если задача не указана. 
+- Кроме того, метод можно вызывать напрямую из [объекта календаря](api/other/calendar.md).
 
 
-## Свойства объекта конфигурации {#configurationobjectproperties}
+## Свойства конфигурационного объекта
 
-Объект конфигурации может включать следующие свойства:
+
+Конфигурационный объект может содержать следующие свойства:
+
 
 <table class="list" cellspacing="0" cellpadding="5" border="0">
-  <thead>
-  <tr>
-  <th>
-  Свойство 
-  </th>
-  <th>
-  Описание
-  </th>
+    <thead>
+    <tr>
+        <th>
+            Свойство 
+        </th>
+        <th>
+            Описание
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td rowspan="2"><b id="day">day</b></td>
+  <td> число дня недели [0 (<i>Воскресенье</i>) - 6 (<i>Суббота</i>)]. Примечание: можно задать только 1 день за раз</td>
   </tr>
-  </thead>
-  <tbody>
   <tr>
-  <td rowspan="2"><b id="day">day</b></td>
-  <td> номер дня недели [0 (<i>Воскресенье</i>) - 6 (<i>Суббота</i>)]. Обратите внимание, что можно задать только один день за раз</td>
-  </tr>
-  <tr>
-  <td colspan="2" >
+        <td colspan="2" style="text-align:left !important; ">
 ~~~js
-// отмечает все понедельники как нерабочие дни
-gantt.unsetWorkTime({ day:1, hours:false }); 
+// unsets working hours for Mondays 
+gantt.unsetWorkTime({ day: 1, hours: false }); 
 ~~~
-  </td>
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="2"><b id="date">date</b></td>
+  <td> конкретная дата, для которой нужно установить/снять рабочие часы</td>
   </tr>
   <tr>
-  <td rowspan="2"><b id="date">date</b></td>
-  <td> конкретная дата, которую нужно обозначить как рабочий день или выходной</td>
-  </tr>
-  <tr>
-  <td colspan="2" >
+        <td colspan="2" style="text-align:left !important; ">
 ~~~js
-// отмечает конкретную дату как выходной
-gantt.unsetWorkTime({date:new Date(2013,0,1), hours:false})
+// unsets working hours for a specific date 
+gantt.unsetWorkTime({ 
+    date: new Date(2025, 11, 1), 
+    hours: false 
+});
 ~~~
-  </td>
+        </td>
+    </tr>
+  <tr>
+        <td rowspan="2"><b id="hours">hours</b></td>
+  <td> массив рабочих часов в формате пар 'from'-'to'. <br/><i>'false'</i> значение снимает рабочие часы, <i>'true' (default value)</i> применяет часы по умолчанию (["8:00-17:00"])</td>
   </tr>
   <tr>
-  <td rowspan="2"><b id="hours">hours</b></td>
-  <td> массив рабочих часов, выраженных в интервалах 'от'-'до'. <br><i>'false'</i> означает выходной день, <i>'true' (по умолчанию)</i> применяет часы по умолчанию (["8:00-17:00"])</td>
-  </tr>
-  <tr>
-  <td colspan="2" >
+        <td colspan="2" style="text-align:left !important; ">
 ~~~js
-// удаляет рабочие часы по пятницам с 8:00 до 12:00
-gantt.unsetWorkTime({day : 5, hours : ["8:00-12:00"]});
+// unsets the working time for Fridays from 8:00 till 12:00
+gantt.unsetWorkTime({ day : 5, hours : ["8:00-12:00"] });
 ~~~
-  </td>
-  </tr>
-  </tbody>
+        </td>
+    </tr>
+    </tbody>
 </table>
 
 ### Related API
@@ -99,5 +104,4 @@ gantt.unsetWorkTime({day : 5, hours : ["8:00-12:00"]});
 - [isWorkTime](api/method/isworktime.md)
 
 ### Related Guides
-- [Расчёт рабочего времени](guides/working-time.md#unsettingtheworkingtime)
-
+- [Расчет времени работы](guides/working-time.md#unsetting-the-working-time)

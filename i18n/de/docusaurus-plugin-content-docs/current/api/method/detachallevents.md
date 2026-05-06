@@ -1,14 +1,14 @@
 ---
 sidebar_label: detachAllEvents
-title: detachAllEvents method
-description: "entfernt alle Events aus dhtmlxGantt (einschließlich sowohl benutzerdefinierter als auch eingebauter Events)"
+title: detachAllEvents Methode
+description: "entfernt alle Ereignisse aus dhtmlxGantt (sowohl benutzerdefinierte als auch interne)"
 ---
 
 # detachAllEvents
 
 ### Description
 
-@short: Entfernt alle Events aus dhtmlxGantt (einschließlich sowohl benutzerdefinierter als auch eingebauter Events)
+@short: Entfernt alle Ereignisse aus dhtmlxGantt (sowohl benutzerdefinierte als auch interne)
 
 ### Example
 
@@ -25,18 +25,17 @@ gantt.detachAllEvents();
 
 ### Details
 
-Beachten Sie, dass die Methode **detachAllEvents** die Funktionalität von dhtmlxGantt beeinträchtigen kann, da sie alle Event-Handler auf einmal entfernt - sowohl jene, die durch benutzerdefinierten Code hinzugefügt wurden, als auch jene, die intern von dhtmlxGantt verwendet werden, um verschiedene Features zu verbinden.
+Hinweis: Die Verwendung der **detachAllEvents**-Methode kann die Funktionalität von dhtmlxGantt beeinträchtigen, da sie ALLE Event-Handler auf einmal entfernt: diejenigen, die durch benutzerdefinierte Logik definiert sind, und diejenigen, die von dhtmlxGantt selbst definiert sind (um verschiedene Teile und Funktionen zu verbinden). 
 
-Eine bessere Vorgehensweise ist es, die von der [attachEvent](api/method/attachevent.md) Methode zurückgegebenen IDs zu speichern und dann [detachEvent](api/method/detachevent.md) zu verwenden, um genau diese spezifischen Events bei Bedarf zu entfernen, wie im obigen Beispiel gezeigt.
+Eine sicherere Vorgehensweise besteht darin, das Ergebnis der [attachEvent](api/method/attachevent.md)-Methode zu speichern und die [detachEvent](api/method/detachevent.md)-Methode zu verwenden, um gespeicherte Ereignisse bei Bedarf zu entfernen, wie im obigen Beispiel gezeigt.
 
-<br>
 :::note
- Die Methode **detachAllEvents** ist veraltet. Stattdessen können Sie Folgendes verwenden: 
+Die Methode **detachAllEvents** ist veraltet. Anstelle davon können Sie Folgendes verwenden: 
 :::
 
-~~~
+~~~js
 // Handler-IDs beim Anhängen von Events speichern
-var events = [];
+const events = [];
 events.push(gantt.attachEvent("onTaskClick", function(id, e) {
     alert("Sie haben gerade ein Element mit der ID="+id+" angeklickt");
 });
@@ -54,5 +53,4 @@ while (events.length)
 - [attachEvent](api/method/attachevent.md)
 
 ### Related Guides
-- ["Event-Behandlung"](guides/handling-events.md)
-
+- [Ereignisbehandlung](guides/handling-events.md)

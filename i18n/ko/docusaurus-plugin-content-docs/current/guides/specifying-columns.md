@@ -1,16 +1,16 @@
 ---
-title: "컬럼 지정하기"
-sidebar_label: "컬럼 지정하기"
+title: "컬럼 지정"
+sidebar_label: "컬럼 지정"
 ---
 
-# 컬럼 지정하기
+# 컬럼 지정
 
-그리드 컬럼은 [columns](api/config/columns.md) 파라미터를 사용하여 설정합니다.
+Grid의 열은 [columns](api/config/columns.md) 매개변수로 구성됩니다. 
 
 ![gantt_left](/img/gantt_left.png)
 
 ~~~js
-// 기본 컬럼 정의
+// default columns definition
 gantt.config.columns = [
     { name: "text",       label: "Task name",  width: "*", tree: true },
     { name: "start_date", label: "Start time", align: "center" },
@@ -19,25 +19,25 @@ gantt.config.columns = [
 ];
 ~~~
 
-그리드 컬럼을 설정하는 방법을 다루는 동영상 가이드도 제공됩니다.
+그리드의 열을 지정하는 방법을 설명하는 비디오 가이드를 확인해 볼 수 있습니다.
 
 <iframe width="676" height="400" src="https://www.youtube.com/embed/-BoznxJmJIo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## 개요 {#overview}
 
-기본적으로 그리드는 4개의 컬럼을 보여줍니다:
+## 개요
 
-1. Task name
-2. Start date
-3. Duration 
-4. '+' 컬럼. 이 특수 컬럼(<code>name="add"</code>)은 사용자가 하위 작업을 추가할 수 있도록 '+' 기호를 표시합니다.
+기본적으로 그리드에는 4개의 열이 있습니다:
+
+1. 작업 이름
+2. 시작 날짜
+3. 기간 
+4. '+' 열. <code>name="add"</code>가 지정된 특별한 열로, '+' 기호를 표시하여 사용자가 작업에 대한 자식을 추가할 수 있도록 합니다.
 
 :::note
-참고: 기본 컬럼을 그리드에 표시하려면 [columns](api/config/columns.md) 파라미터를 반드시 지정할 필요는 없습니다.
+참고: 기본 열을 그리드에 표시하려면 [columns](api/config/columns.md) 매개변수를 지정할 필요가 없습니다.
 :::
 
-[columns](api/config/columns.md) 파라미터는 각 객체가 하나의 컬럼을 정의하는 배열입니다.  
-예를 들어, 'Task', 'Start Date', 'End Date', 'Holder', 'Progress'라는 5개의 컬럼을 정의하려면 다음과 같이 설정합니다:
+[columns](api/config/columns.md) 매개변수는 각 객체가 하나의 열을 나타내는 배열입니다. 예를 들어 그리드에 5개의 열을 정의하려면: 'Task', 'Start Date', 'End Date', 'Holder', 'Progress'를 정의하고 [columns](api/config/columns.md) 매개변수를 아래와 같이 지정합니다:
 
 ~~~js
 gantt.config.columns = [
@@ -51,17 +51,20 @@ gantt.config.columns = [
 gantt.init("gantt_here");
 ~~~
 
-여기서 'text', 'holder', 'start_date', 'end_date', 'progress'는 [데이터 속성명](guides/specifying-columns.md#datamappingandtemplates)과 일치합니다.
+여기서 'text', 'holder', 'start_date', 'end_date', 'progress'는 [데이터 속성의 이름](guides/specifying-columns.md#datamappingandtemplates)입니다.
 
-## 작업의 종료일 표시 {#displayingenddateoftasks}
 
-작업 데이터 객체에 시작일과 종료일이 "%Y-%m-%d" 또는 "%d-%m-%Y" (시, 분 없이) 형식으로 포함된 경우, 기본 포맷으로 표시되는 종료일이 예상과 다를 수 있습니다. 종료일 포맷에 대한 자세한 내용은 [작업 종료일 표시 및 종료일 포함](guides/loading.md#taskenddatedisplayampinclusiveenddates) 문서를 참고하세요.
+## 작업의 종료 날짜 표시
 
-## 특정 작업에서 "Add" 버튼 숨기기 {#hidingtheaddbuttonforcertaintasks}
+작업 데이터 객체에 시작 날짜와 종료 날짜가 "%Y-%m-%d" 또는 "%d-%m-%Y" 형식으로 포함되어 있는 경우(예: 시·분 부분이 없는 경우), 기본 형식으로 표시된 결과 날짜가 예상과 다를 수 있습니다. 종료 날짜 형식에 대한 자세한 내용은 [작업 종료 날짜 표시 및 포함 종료 날짜](guides/loading.md#taskenddatedisplayampinclusiveenddates) 문서를 참조하세요.
 
-특정 작업에 하위 작업 추가를 막으려면 CSS를 이용해 'Add' 버튼을 숨길 수 있습니다.
 
-1. 먼저, [grid_row_class](api/template/grid_row_class.md) 템플릿을 사용하여 각 작업 행에 CSS 클래스를 지정합니다:
+## 특정 작업에 대한 "Add" 버튼 숨기기
+
+특정 작업에 하위 작업을 추가하는 것을 방지하려면 CSS를 통해 'Add' 버튼을 숨기는 가장 쉬운 방법이 있습니다.
+
+먼저 [grid_row_class](api/template/grid_row_class.md) 템플릿을 사용하여 각 작업 행에 CSS 클래스를 지정합니다:
+
 ~~~js
 gantt.templates.grid_row_class = ( start, end, task ) => {
     if ( task.$level > 1 ) {
@@ -71,7 +74,7 @@ gantt.templates.grid_row_class = ( start, end, task ) => {
     return "";
 };
 ~~~
-2. 그런 다음, 해당 행의 'Add' 버튼을 CSS로 숨깁니다:
+그런 행에 대해 'Add' 버튼을 숨깁니다:
 
 ~~~css
 .nested_task .gantt_add {
@@ -79,13 +82,12 @@ gantt.templates.grid_row_class = ( start, end, task ) => {
 }
 ~~~
 
+**관련 샘플**: [Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
 
-[Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
 
+## 너비
 
-## 컬럼 너비 설정 {#width}
-
-컬럼의 너비는 해당 컬럼의 설정 객체에서 [width](api/config/columns.md) 속성으로 지정합니다:
+열의 너비를 설정하려면 관련 열 객체의 속성 [width](api/config/columns.md)을 사용합니다:
 
 ~~~js
 gantt.config.columns = [
@@ -98,38 +100,32 @@ gantt.init("gantt_here");
 ~~~
 
 :::note
-width에 '*'를 지정하면 해당 컬럼이 남은 모든 공간을 차지합니다.
+'*' 값을 사용하면 열이 남은 모든 공간을 차지합니다.
 :::
 
-그리드 컬럼의 너비는 컬럼의 [width](api/config/columns.md)와 전체 [grid_width](api/config/grid_width.md) 두 설정에 따라 달라집니다. 전체 컬럼 너비 합이 그리드 너비와 일치하지 않을 경우, Gantt가 이 값들 중 하나를 조정합니다.
+참고로 그리드 열의 너비는 두 속성에 의존합니다: 열의 [width](api/config/columns.md)와 [grid_width](api/config/grid_width.md). 열 너비의 합이 그리드의 너비와 같지 않으면 Gantt가 두 매개변수 중 하나를 조정합니다.
 
-- [gantt.init()](api/method/init.md)로 gantt를 초기화할 때는 컬럼의 [width](api/config/columns.md)가 우선 적용됩니다. 
-
- 
-
-**Related example:** [초기화 시 컬럼 너비 우선](https://snippet.dhtmlx.com/itnvg6z9)
-
-- [gantt.render()](api/method/render.md)로 gantt를 렌더링할 때는 [grid_width](api/config/grid_width.md)가 우선 적용됩니다. 
+- [gantt.init()](api/method/init.md)로 초기화할 때는 열의 [width](api/config/columns.md)가 우선순위입니다. 
 
  
+**관련 샘플**: [Column width priority over grid width at initialization](https://snippet.dhtmlx.com/itnvg6z9)
 
-**Related example:** [렌더링 시 그리드 너비 우선](https://snippet.dhtmlx.com/4nb67z61)
+- [gantt.render()](api/method/render.md)로 렌더링할 때는 [grid_width](api/config/grid_width.md)가 우선순위입니다. 
 
-- [gantt.init()](api/method/init.md)로 초기화할 때 컬럼 너비가 없거나 **'*'**로 설정된 경우 [grid_width](api/config/grid_width.md)가 우선 적용됩니다. 
+ 
+**관련 샘플**: [Grid width priority over column width during rendering](https://snippet.dhtmlx.com/4nb67z61)
 
+- [gantt.init()](api/method/init.md)으로 초기화하고 열 너비가 지정되지 않았거나 `'*'`로 설정된 경우에는 [grid_width](api/config/grid_width.md)가 우선합니다. 
 
-**Related example:** [초기화 시 컬럼 너비가 없거나 '*'일 때 그리드 너비 우선](https://snippet.dhtmlx.com/qej8w5ix)
+**관련 샘플**: [Grid width priority when column width is undefined or set to `'*'` at initialization](https://snippet.dhtmlx.com/qej8w5ix)
 
+### 최소/최대 열 너비
 
-### 컬럼 최소/최대 너비
-
-컬럼 리사이징 시 너비 제한을 위해 **min_width** 및 **max_width** 속성을 사용할 수 있습니다:
+**min_width/max_width** 속성은 리사이즈 작업에서 열 너비를 제한하는 데 사용할 수 있습니다:
 
 ~~~js
 gantt.config.columns = [
-    { name: "text",       label: "Task name",  width: "*", tree: true, min_width: 150,
-        max_width: 300
-    },
+    { name: "text",       label: "Task name",  width: "*", tree: true, min_width: 150, max_width: 300 },
     { name: "start_date", label: "Start time", width: 150 },
     { name: "duration",   label: "Duration",   width: 120 }
 ];
@@ -138,12 +134,12 @@ gantt.init("gantt_here");
 ~~~
 
 :::note
-컬럼의 **min_width** 속성은 gantt의 [min_grid_column_width](api/config/min_grid_column_width.md) 설정보다 우선합니다.
+열의 **min_width** 속성은 Gantt의 [min_grid_column_width](api/config/min_grid_column_width.md) 속성보다 우선합니다.
 :::
 
-### 리사이징 시 최소 그리드 너비
+### 리사이징 중 최소 그리드 너비
 
-그리드의 최소 리사이즈 너비는 [gantt.config.min_grid_column_width](api/config/min_grid_column_width.md)로 설정할 수 있습니다. 이 옵션은 그리드 리사이즈 시 각 컬럼이 가질 수 있는 최소 너비를 정의합니다:
+그리드를 리사이즈할 수 있는 최소 너비는 [gantt.config.min_grid_column_width](api/config/min_grid_column_width.md) 옵션으로 정의됩니다. 이 옵션은 그리드를 리사이즈하는 동안 각 열을 리사이즈할 수 있는 최소 너비를 정의합니다:
 
 ~~~js
 gantt.config.columns = [
@@ -152,30 +148,29 @@ gantt.config.columns = [
     { name: "duration",   label: "Duration",   width: 50 }
 ];
 
-gantt.config.min_grid_column_width = 30; // 그리드는 최소 90px까지 리사이즈 가능
+gantt.config.min_grid_column_width = 30; // the grid can be resized to 90 px
 
 gantt.init("gantt_here");
 ~~~
 
+**관계된 샘플**: [Minimal grid width](https://snippet.dhtmlx.com/zdza8tws)
 
-**Related example:** [최소 그리드 너비](https://snippet.dhtmlx.com/zdza8tws)
-
-
-또한, 리사이즈 시 최소 그리드 너비는 'add' 컬럼의 최소 너비(기본값 44)에 따라 달라집니다. 44px보다 작게 리사이즈하려면 'add' 컬럼에 [min_width](api/config/columns.md)를 다음과 같이 설정하세요:
+참고로 리사이징 중 그리드의 최소 너비는 기본값 44인 'add' 열의 최소 너비에도 의존합니다. 그리드를 44px보다 작게 리사이즈하려면 'Add' 열 객체에 [min_width](api/config/columns.md) 옵션을 지정하세요:
 
 ~~~js
 { name: "add", label: "", min_width: 1 }
 ~~~
 
-## 데이터 매핑과 템플릿 {#datamappingandtemplates}
 
-기본적으로 dhtmlxGantt는 컬럼 이름과 일치하는 데이터 속성을 사용하여 그리드를 채웁니다. 예를 들어, 컬럼에 **name:"holder"**가 있으면 dhtmlxGantt는 JSON 데이터에서 'holder' 속성을 찾아 해당 컬럼에 표시합니다.
+## 데이터 매핑 및 템플릿 {#datamappingandtemplates}
 
-#### 컬럼 데이터에 템플릿 사용
+기본적으로, dhtmlxGantt는 열 이름에 해당하는 데이터 속성으로 그리드를 채웁니다.
+예를 들어 열에 **name:"holder"**를 설정하면, dhtmlxGantt는 들어오는 JSON 데이터에서 해당 속성을 찾고, 그러한 속성이 존재하면 그 열에 로드합니다.
 
-여러 데이터 속성의 조합을 컬럼에 표시하고 싶다면, 컬럼 이름을 임의로 지정하고 [columns](api/config/columns.md) 파라미터의 **template** 속성에 데이터 템플릿을 설정할 수 있습니다.
+#### 열 데이터용 템플릿 사용
 
-예를 들어, 컬럼 이름을 **name:"staff"**로 하고, *holder*와 *progress* 속성을 조합하여 반환하는 템플릿 함수를 만들 수 있습니다:
+하나의 열에 여러 데이터 속성을 혼합해 표시하려면 열의 이름은 임의로 사용할 수 있지만 [columns](api/config/columns.md) 매개변수의 **template** 속성을 통해 데이터 템플릿을 설정합니다.
+예를 들어 열에 **name:"staff"**를 지정하고 열에 로드될 *holder*와 *progress* 데이터 속성을 반환하는 템플릿 함수를 정의할 수 있습니다. 
 
 ~~~js
 gantt.config.columns = [
@@ -189,9 +184,10 @@ gantt.config.columns = [
 gantt.init("gantt_here");
 ~~~
 
-## 텍스트 정렬  {#textalignment}
 
-컬럼 내 텍스트를 수평 정렬하려면 해당 컬럼의 설정에서 [align](api/config/columns.md) 속성을 사용하세요:
+## 텍스트 정렬 
+
+열의 텍스트를 수평으로 정렬하려면 관련 열 객체의 [align](api/config/columns.md) 속성을 사용하세요:
 
 ~~~js
 gantt.config.columns = [
@@ -203,13 +199,14 @@ gantt.config.columns = [
 gantt.init("gantt_here");
 ~~~
 
-## WBS 코드  {#wbscode}
 
-작업의 개요 번호(WBS 코드)를 표시하는 컬럼을 추가할 수 있습니다. 이를 위해 해당 컬럼의 템플릿에 [getWBSCode](api/method/getwbscode.md) 메서드를 사용하세요.
+## WBS 코드 {#wbscode}
+
+작업의 개요 번호(WBS 코드)를 표시하는 열을 추가할 수 있습니다. 이를 위해 열 템플릿에서 [getWBSCode](api/method/getwbscode.md) 메서드를 사용해야 합니다.
 
 ~~~js
 gantt.config.columns = [
-    { name: "wbs",        label: "WBS",        width: 40, template: gantt.getWBSCode }, /*!*/
+    { name: "wbs",        label: "WBS",        width: 40,  template: gantt.getWBSCode }, 
     { name: "text",       label: "Task name",  width: 170, tree: true },
     { name: "start_date", label: "Start time", width: 90,  align: "center" },
     { name: "duration",   label: "Duration",   width: 60,  align: "center" },
@@ -218,12 +215,12 @@ gantt.config.columns = [
 ~~~
 
 
-[Show Task WBS Codes (Outline Numbers)](https://docs.dhtmlx.com/gantt/samples/07_grid/09_wbs_column.html)
+**관련 샘플**: [Show Task WBS Codes (Outline Numbers)](https://docs.dhtmlx.com/gantt/samples/07_grid/09_wbs_column.html)
 
 
-### 작업의 WBS 코드 가져오기
+### 작업의 WBS 코드 얻기
 
-[getWBSCode](api/method/getwbscode.md) 메서드는 특정 작업의 WBS 코드를 반환합니다. 예를 들어, 다음과 같이 작업을 gantt에 로드하고:
+[getWBSCode](api/method/getwbscode.md) 메서드는 필요한 작업의 WBS 코드를 반환합니다. 예를 들어 아래와 같은 작업들을 gantt에 불러옵니다:
 
 ~~~js
 gantt.parse({
@@ -236,15 +233,15 @@ gantt.parse({
 });
 ~~~
 
-id="3인" 작업의 WBS 코드를 얻으려면 해당 작업 객체를 [getWBSCode](api/method/getwbscode.md)에 전달하면 됩니다. 반환값은 WBS 코드 문자열입니다:
+그리고 id="3"인 작업의 WBS 코드를 얻고자 합니다. 이를 위해 작업 객체를 [getWBSCode](api/method/getwbscode.md) 메서드의 매개변수로 전달합니다. 그러면 해당 작업의 WBS 코드 문자열이 반환됩니다:
 
 ~~~js
-const wbsCode = gantt.getWBSCode(gantt.getTask(3)); // -> "1.2" 반환
+const wbsCode = gantt.getWBSCode(gantt.getTask(3)); // -> returns "1.2"
 ~~~
 
-### WBS 코드로 작업 가져오기
+### WBS 코드로 작업 얻기
 
-WBS 코드를 [getTaskByWBSCode](api/method/gettaskbywbscode.md) 메서드에 제공하여 작업 객체를 가져올 수 있습니다:
+WBS 코드로 [getWBSCode](api/method/gettaskbywbscode.md) 메서드에 작업 객체를 전달하여 얻을 수도 있습니다:
 
 ~~~js
 const task = gantt.getTaskByWBSCode("1.2");
@@ -252,14 +249,9 @@ const task = gantt.getTaskByWBSCode("1.2");
 ~~~
 
 
+## 작업의 시간 제약 {#timeconstraintsfortasks}
 
-## 작업의 시간 제약 조건 {#timeconstraintsfortasks}
-
-:::info
-이 기능은 PRO 에디션에서만 사용할 수 있습니다
-:::
-
-특정 [시간 제약 조건](guides/auto-scheduling.md#timeconstraintsfortasks) 유형과, 선택한 유형에 따라 필요한 경우 제약 날짜를 설정할 수 있는 그리드 컬럼을 추가할 수 있습니다. 이 컬럼들의 이름은 각각 "constraint_type"과 "constraint_date"입니다.
+작업에 대해 시간 제약의 유형을 설정하고 필요한 경우 제약 날짜를 지정할 수 있도록, 별도의 그리드 열을 추가할 수 있습니다. 이 열들은 각각 "constraint_type"과 "constraint_date" 이름을 가집니다. 
 
 ~~~js
 gantt.config.columns = [
@@ -273,7 +265,7 @@ gantt.config.columns = [
 ];
 ~~~
 
-이 컬럼들은 인라인 에디터 객체와 연결되어 있어, 작업의 제약 조건 유형을 선택하고 그 날짜를 그리드 내에서 직접 수정할 수 있습니다.
+열은 작업에 필요한 제약 유형을 선택하고 그 날짜를 그리드에서 바로 편집할 수 있게 하는 인라인 편집기의 객체에 연결됩니다.
 
 ~~~js
 const constraintTypeEditor = {
@@ -298,33 +290,31 @@ const constraintDateEditor = {
 ~~~
 
 
-[Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
+**관련 샘플**: [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
-
-
-## 크기 조정 {#resizing}
+## 열 크기 조정 {#resizing}
 
 :::info
 이 기능은 PRO 에디션에서만 사용할 수 있습니다
 :::
 
-사용자가 컬럼의 오른쪽 경계를 드래그하여 크기를 조정할 수 있도록 하려면, 해당 컬럼 설정에서 [resize](api/config/columns.md) 속성을 활성화하세요:
+사용자가 열의 오른쪽 경계를 드래그하여 열의 크기를 조정할 수 있도록 하려면 관련 열 객체의 [resize](api/config/columns.md) 속성을 사용하십시오:
 
 ~~~js
 gantt.config.columns = [
-    { name: "text",       resize: true, tree: true, width: "*" }, // 'resize' 활성화
-    { name: "start_date", resize: true, min_width: 100 }, // 'min_width'로 제한
-    { name: "duration",   align: "center" },              // 크기 조정 비활성화
+    { name: "text",       resize: true, tree: true, width: "*" }, // 'resize' active
+    { name: "start_date", resize: true, min_width: 100 }, // limited by 'min_width'
+    { name: "duration",   align: "center" },              // no resize
     { name: "add",        width: "44" }
 ];
 ~~~
 
 
-[Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
+**관련 샘플**: [Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
 
 
-그리드 전체의 크기를 경계를 드래그하여 조정할 수 있도록 하려면, [gantt.config.layout](api/config/layout.md) 옵션을 사용하고 그리드 및 리사이저 객체를 적절히 설정하세요:
+그리드의 경계를 드래그하여 전체 그리드를 리사이즈하려면 [gantt.config.layout](api/config/layout.md) 옵션을 사용하고 필요한 구성 내에 그리드 및 리사이저 객체를 지정합니다.
 
 ~~~js
 gantt.config.layout = {
@@ -349,7 +339,7 @@ gantt.config.layout = {
 gantt.init("gantt_here");
 ~~~
 
-컬럼 크기를 조정할 때 그리드의 너비를 고정하려면, [keep_grid_width](api/config/keep_grid_width.md) 옵션을 *true*로 설정하세요:
+리사이징 중 그리드의 크기를 유지하려면 [keep_grid_width](api/config/keep_grid_width.md) 옵션을 *true*로 설정하십시오:
 
 ~~~js
 gantt.config.columns = [
@@ -364,45 +354,34 @@ gantt.init("gantt_here");
 ~~~
 
 
-[Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
+**관련 샘플**: [Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
 
 
 ### 이벤트
 
-dhtmlxGantt는 크기 조정과 관련된 6개의 이벤트를 제공합니다:
+dhtmlxGantt는 크기 조정 동작을 처리하기 위한 6개의 이벤트를 제공합니다: 
 
-- [onColumnResizeStart](api/event/oncolumnresizestart.md) - 사용자가 컬럼 경계 드래그를 시작하기 전에 발생
-- [onColumnResize](api/event/oncolumnresize.md) - 사용자가 컬럼 경계를 드래그하는 동안 발생
-- [onColumnResizeEnd](api/event/oncolumnresizeend.md) - 사용자가 컬럼 경계 드래그를 끝낸 후 발생
-
-
-
-
-- [onGridResizeStart](api/event/ongridresizestart.md) - 사용자가 그리드 경계 드래그를 시작하기 전에 발생
-- [onGridResize](api/event/ongridresize.md) - 사용자가 그리드 경계를 드래그하는 동안 발생
-- [onGridResizeEnd](api/event/ongridresizeend.md) - 사용자가 그리드 경계 드래그를 완료한 후 발생
+- [onColumnResizeStart](api/event/oncolumnresizestart.md) - 사용자가 열의 경계를 드래그하여 열을 크기 조정하기 시작하기 전에 발동됩니다
+- [onColumnResize](api/event/oncolumnresize.md) - 사용자가 열의 경계를 드래그하여 열을 크기 조정하는 동안 발동됩니다
+- [onColumnResizeEnd](api/event/oncolumnresizeend.md) - 사용자가 열의 경계를 드래그하여 열을 크기 조정하는 것을 마친 후 발동됩니다
+- [onGridResizeStart](api/event/ongridresizestart.md) - 사용자가 그리드 경계를 드래그하여 그리드를 크기 조정하기 시작하기 전에 발동됩니다
+- [onGridResize](api/event/ongridresize.md) - 사용자가 그리드 경계를 드래그하여 그리드를 크기 조정하는 동안 발동됩니다
+- [onGridResizeEnd](api/event/ongridresizeend.md) - 사용자가 그리드를 크기 조정하는 경계를 드래그하는 것을 마친 후 발동됩니다
 
 
+## 가시성 {#visibility}
 
-## 컬럼 가시성 {#visibility}
+열의 가시성을 제어하려면 관련 열 객체의 [hide](api/config/columns.md) 속성을 사용하십시오.
 
-컬럼의 가시성을 제어하려면 컬럼 설정의 [hide](api/config/columns.md) 속성을 사용하세요.
+가시성은 'hide' 속성 값을 변경하고 Gantt 차트를 새로 고침하여 동적으로 토글할 수 있습니다:
 
- 
-가시성은 'hide' 속성을 동적으로 변경하고 Gantt 차트를 새로 고침하여 조정할 수 있습니다:
-
-:::info
-이 기능은 PRO 에디션에서만 사용할 수 있습니다
-:::
-
-[기본/상세 보기 전환](기본/상세 보기 전환)
-~~~
+~~~jsx title="Switching between basic and detailed view"
 gantt.config.columns = [
     { name: "text",          label: "Task name", width: "*", tree: true, resize: true },
     { name: "start_date",    label: "Start time" },
-    { name: "duration",      label: "Duration",      width: 60, hide: true }, /*!*/
-    { name: "planned_start", label: "Planned start", width: 80, hide: true }, /*!*/
-    { name: "planned_end",   label: "Planned end",   width: 80, hide: true }, /*!*/
+    { name: "duration",      label: "Duration",      width: 60, hide: true }, 
+    { name: "planned_start", label: "Planned start", width: 80, hide: true }, 
+    { name: "planned_end",   label: "Planned end",   width: 80, hide: true },
     { name: "add",           label: "",              width: 36 }
 ];
 
@@ -427,20 +406,19 @@ gantt.init("gantt_here");
 ~~~
 
 
-[Hiding grid columns](https://docs.dhtmlx.com/gantt/samples/02_extensions/07_managing_grid_columns.html)
+**관련 샘플**: [Hiding grid columns](https://docs.dhtmlx.com/gantt/samples/02_extensions/07_managing_grid_columns.html)
 
 
-그리드에서 컬럼 가시성을 관리하는 방법을 보여주는 비디오 가이드도 제공됩니다.
+그리드에서 열의 가시성을 관리하는 방법을 보여주는 비디오 가이드를 확인해 보세요.
 
 <iframe width="676" height="400" src="https://www.youtube.com/embed/rqYrqqoaI_U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-
 ## 렌더링 후 셀 수정 {#modifyingcellsafterrendering}
 
-때때로 그리드 셀이 렌더링된 후 셀의 모양이나 동작을 조정해야 할 수 있습니다.
+일부 경우에는 렌더링 후 그리드 셀의 모양이나 동작을 변경해야 할 수 있습니다. 
 
-버전 7.1부터 라이브러리에는 [columns](api/config/columns.md) 설정에 **onrender** 속성이 포함되어 있어, 예를 들어 셀 렌더링 후 다음과 같이 수정할 수 있습니다:
+버전 7.1부터 라이브러리는 렌더링 후 셀을 수정하는 데 도움이 되는 [columns](api/config/columns.md) 매개변수의 **onrender** 속성을 제공합니다. 예를 들면:
 
 ~~~js
 gantt.config.columns = [
@@ -454,9 +432,7 @@ gantt.config.columns = [
 ~~~
 
 
-
-
-**onrender** 콜백의 또 다른 활용 예는 외부 컴포넌트를 그리드 셀에 삽입하는 것입니다. 예를 들어 DHTMLX Gantt를 React와 함께 사용하면서 그리드 셀에 React 컴포넌트를 삽입하려면 아래와 같이 할 수 있습니다:
+또 다른 방법으로는 **onrender** 콜백을 사용하여 그리드 셀에 외부 컴포넌트를 주입하는 것입니다. 예를 들어 React와 함께 DHTMLX Gantt를 사용하고 그리드 셀에 React 컴포넌트를 주입해야 하는 경우 아래 코드 예시는 이를 구현하는 방법을 보여줍니다:
 
 ~~~js
 gantt.config.columns = [
@@ -475,39 +451,38 @@ gantt.config.columns = [
 ];
 ~~~
 
-React 컴포넌트 렌더링을 활성화하려면 [gantt.config.external_render](api/config/external_render.md) 설정을 지정해야 합니다:
+작동하고 React 컴포넌트를 표시하려면 [gantt.config.external_render](api/config/external_render.md) 구성이 정의되어 있어야 합니다:
 
 ~~~js
 import ReactDOM from 'react-dom';
 import React from 'react';
 
 gantt.config.external_render = { 
-    // 해당 요소가 React 요소인지 확인
+    // checks the element is a React element
     isElement: (element) => {
         return React.isValidElement(element);
     },
-    // React 요소를 DOM에 렌더링
+    // renders the React element into the DOM
     renderElement: (element, container) => {
         ReactDOM.render(element, container);
     }
 };
 ~~~
 
-처리 과정은 다음과 같습니다:
+다음과 같은 로직이 작동합니다:
 
-- **onrender** 콜백에서 반환된 객체는 프레임워크/라이브러리의 렌더링 가능한 객체인지 확인하기 위해 **isElement** 함수로 전달됩니다.
-- **isElement**가 *true*를 반환하면, 해당 객체는 **renderElement**로 전달되어 셀의 DOM 엘리먼트 내부에 컴포넌트가 초기화됩니다.
+- 우선, **onrender** 콜백의 반환 객체가 프레임워크/라이브러리에서 렌더링될 수 있는지 확인하기 위해 **isElement** 함수에 전달됩니다.
+- 만약 **isElement**가 true를 반환하면 해당 객체가 **renderElement**로 전달되며, 이는 셀의 DOM 요소 안에 컴포넌트 객체를 초기화하는 역할을 합니다.
 
 
+## 수평 스크롤바
 
-## 수평 스크롤바 {#horizontalscrollbar}
+그리드를 스크롤 가능하게 만들려면 레이아웃 구성 옵션의 **scrollable** 속성을 사용할 수 있습니다. 
+[레이아웃 뷰를 스크롤바에 바인딩하는 방법 읽기](guides/layout-config.md#scrollbar).
 
-그리드를 스크롤 가능하게 하려면 [layout](guides/layout-config.md) 설정에서 **scrollable** 속성을 활성화하면 됩니다. 
-[레이아웃 뷰를 스크롤바에 바인딩하는 방법 자세히 알아보기](guides/layout-config.md#scrollbar).
+그리드에 수평 스크롤바가 있으면 그리드의 너비를 조정하는 동안 열의 너비를 자동으로 조정할 수 있습니다. 이 기능을 활성화하는 방법에 대해서는 [도움말 읽기](api/config/grid_elastic_columns.md) 문서를 참조하세요. 
 
-그리드에 수평 스크롤바를 추가하면 Gantt가 그리드 크기 조정 시 컬럼 너비를 자동으로 조정할 수 있습니다. [이 기능 활성화에 대한 자세한 내용](api/config/grid_elastic_columns.md).
-
-**scrollable** 속성 외에도, 레이아웃에 *수평 스크롤바 요소*를 추가하고 그리드에 연결해야 합니다:
+scrollable 속성 외에도 레이아웃에 *horizontal scrollbar element*를 추가하고 이를 그리드에 연결해야 합니다:
 
 ~~~js
 gantt.config.layout = {
@@ -518,7 +493,7 @@ gantt.config.layout = {
             minWidth: 200,
             maxWidth: 600,
 
-            // scrollX 속성을 통해 그리드에 수평 스크롤바 추가
+            // adding horizontal scrollbar to the grid via the scrollX attribute
             rows: [
                 { view: "grid", scrollX: "gridScroll", scrollable: true, /*!*/
                     scrollY: "scrollVer" /*!*/
@@ -538,11 +513,9 @@ gantt.config.layout = {
 };
 ~~~
 
-그리드와 타임라인에 별도의 스크롤바를 사용하는 경우, 두 스크롤바의 가시성을 동기화하면 둘 다 동시에 나타나거나 숨겨집니다.
+그리드와 타임라인에 대해 별도의 스크롤바를 표시할 수 있기 때문에 두 스크롤바의 가시성을 동기화시켜두 스크롤바가 동시에 보이거나 숨겨지도록 할 수 있습니다. 
 
-![scrollable_grid](/img/scrollable_grid.png)
-
-이를 위해 두 스크롤바를 같은 *visibility group*에 할당할 수 있습니다:
+다음과 같이 동일한 그룹에 두 스크롤바를 배정하면 됩니다:
 
 ~~~js
 gantt.config.layout = {
@@ -556,16 +529,16 @@ gantt.config.layout = {
                 { view: "grid", scrollX: "gridScroll", scrollable: true,
                     scrollY: "scrollVer"
                 },
-                // 그리드용 수평 스크롤바
-                { view: "scrollbar", id: "gridScroll", group: "horizontal" } /*!*/
+                // horizontal scrollbar for the grid
+                { view: "scrollbar", id: "gridScroll", group: "horizontal" } 
             ]
         },
         { resizer: true, width: 1 },
         {
             rows: [
                 { view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
-                // 타임라인용 수평 스크롤바
-                { view: "scrollbar", id: "scrollHor", group: "horizontal" } /*!*/
+                // horizontal scrollbar for the timeline
+                { view: "scrollbar", id: "scrollHor", group: "horizontal" } 
             ]
         },
         { view: "scrollbar", id: "scrollVer" }
@@ -573,14 +546,11 @@ gantt.config.layout = {
 };
 ~~~
 
-그룹 내 스크롤바 중 하나라도 보이면, 해당 그룹의 모든 스크롤바가 표시됩니다.
+이때 동일 그룹에 배정된 스크롤바 중 하나라도 보이면 그룹의 모든 스크롤바가 보입니다.
+
+**관련 샘플**: [Horizontal scroll inside Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/10_scrollable_grid.html)
 
 
-[Horizontal scroll inside Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/10_scrollable_grid.html)
+## 스타일링
 
-
-
-## 스타일링 {#styling}
-
-그리드 셀 스타일링에 대한 자세한 내용은 [Gantt 스타일 작업하기](guides/styling-guide.md#stylinggrid)를 참고하세요.
-
+그리드 셀의 스타일링에 대한 정보는 [Work with Gantt Styles](guides/styling-guide.md#styling-grid)를 참조하십시오.

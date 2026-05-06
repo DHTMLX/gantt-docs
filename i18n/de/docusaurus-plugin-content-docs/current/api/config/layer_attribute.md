@@ -1,16 +1,18 @@
 ---
 sidebar_label: layer_attribute
 title: layer_attribute config
-description: "definiert den Attributnamen für das DOM-Element der Task-Ebene"
+description: "legt den Namen des Attributs des DOM-Elements der Aufgaben-Ebene fest"
 ---
 
 # layer_attribute
+
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
+
 ### Description
 
-@short: Definiert den Attributnamen für das DOM-Element der Task-Ebene
+@short: Legt den Namen des Attributs des DOM-Elements der Aufgaben-Ebene fest
 
 @signature: layer_attribute: string
 
@@ -20,7 +22,7 @@ description: "definiert den Attributnamen für das DOM-Element der Task-Ebene"
 gantt.config.layer_attribute = "tasklayer";
 ~~~
 
-**Default value:** "data-layer"
+**Standardwert:** "data-layer"
 
 ### Related samples
 - [Displaying deadlines](https://docs.dhtmlx.com/gantt/samples/04_customization/14_deadline.html)
@@ -29,4 +31,3 @@ gantt.config.layer_attribute = "tasklayer";
 
 ### Related API
 - [addTaskLayer](api/method/addtasklayer.md)
-

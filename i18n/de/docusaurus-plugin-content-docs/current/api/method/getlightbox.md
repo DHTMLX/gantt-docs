@@ -1,19 +1,19 @@
 ---
 sidebar_label: getLightbox
-title: getLightbox method
-description: "Ruft das HTML-Element der Lightbox ab"
+title: getLightbox-Methode
+description: "holt das HTML-Objektelement der Lightbox"
 ---
 
 # getLightbox
 
 ### Description
 
-@short: Ruft das HTML-Element der Lightbox ab
+@short: Holt das HTML-Objektelement der Lightbox
 
 @signature: getLightbox: () =\> HTMLElement
 
 ### Returns
-- `box` - (HTMLElement) - Das HTML-Element, das die Lightbox darstellt
+- `box` - (HTMLElement) - das HTML-Objektelement der Lightbox
 
 ### Example
 

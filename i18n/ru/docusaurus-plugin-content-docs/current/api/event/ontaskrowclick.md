@@ -1,26 +1,26 @@
 ---
 sidebar_label: onTaskRowClick
-title: onTaskRowClick event
-description: "срабатывает, когда пользователь кликает на строку в таблице"
+title: Событие onTaskRowClick
+description: "Срабатывает, когда пользователь кликает по строке в таблице"
 ---
 
 # onTaskRowClick
 
 ### Description
 
-@short: Срабатывает, когда пользователь кликает на строку в таблице
+@short: Срабатывает, когда пользователь кликает по строке в таблице
 
 @signature: onTaskRowClick: (id: string | number, row: HTMLElement) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - id задачи
-- `row` - (required) *HTMLElement* - HTML-элемент, представляющий кликнутую строку
+- `id` - (обязательный) *string | number* - идентификатор задачи
+- `row` - (обязательный) *HTMLElement* - HTML-элемент нажатой строки
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onTaskRowClick", function(id,row){
-    //любая пользовательская логика здесь
+    // любая ваша логика здесь
 });
 ~~~

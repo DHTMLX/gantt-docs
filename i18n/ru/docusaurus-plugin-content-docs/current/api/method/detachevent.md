@@ -1,19 +1,19 @@
 ---
 sidebar_label: detachEvent
 title: detachEvent method
-description: "удаляет ранее присоединённый обработчик события (добавленный с помощью метода attachEvent())"
+description: "отсоединяет обработчик от события (которое ранее было привязано методом attachEvent())"
 ---
 
 # detachEvent
 
 ### Description
 
-@short: Удаляет ранее присоединённый обработчик события (добавленный с помощью метода attachEvent())
+@short: Отключает обработчик от события, которое ранее было привязано методом attachEvent()
 
-@signature: detachEvent: (id: string) =\> void
+@signature: detachEvent: (id: string) => void
 
 ### Parameters
-- `id` - (required) *string* - идентификатор обработчика события
+- `id` - (обязательный) *string* -  идентификатор события
 
 ### Example
 
@@ -30,4 +30,3 @@ gantt.detachEvent(myEvent);
 
 ### Related Guides
 - [Обработка событий](guides/handling-events.md)
-

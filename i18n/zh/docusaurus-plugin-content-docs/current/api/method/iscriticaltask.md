@@ -1,25 +1,27 @@
 ---
 sidebar_label: isCriticalTask
-title: isCriticalTask method
-description: "检查给定任务是否为关键任务"
+title: isCriticalTask 方法
+description: "检查指定任务是否为关键任务"
 ---
 
 # isCriticalTask
+
 :::info
- 此功能仅包含在 PRO 版本中。 
+此功能仅在 PRO 版中可用。 
 :::
+
 ### Description
 
-@short: 检查给定任务是否为关键任务
+@short: 检查指定任务是否为关键任务
 
-@signature: isCriticalTask: (task: Task) =\> boolean
+@signature: isCriticalTask: (task: Task) => boolean
 
 ### Parameters
 
-- `task` - (required) *Task* - 要检查的任务对象
+- `task` - (required) *Task* - 任务对象
 
 ### Returns
-- ` value` - (boolean) - 如果任务是关键任务则返回 'true'，否则返回 'false'
+- ` value` - (boolean) - 'true' 表示指定的任务是关键任务, 'false' 表示否则
 
 ### Example
 
@@ -50,11 +52,8 @@ gantt.isCriticalTask(gantt.getTask(3));// ->'true' /*!*/
 ### Details
 
 :::note
- 此方法是 **critical_path** 扩展的一部分，因此请确保启用 [critical_path](guides/extensions-list.md) 插件。更多信息，请参阅 [关键路径](guides/critical-path.md) 文章。 
+此方法在 **critical_path** 扩展中定义，因此您需要激活 [critical_path](guides/extensions-list.md#critical-path) 插件。请在 [Critical Path](guides/critical-path.md) 文章中阅读详细信息。
 :::
-
-
-![iscritical_path](/img/iscritical_path.png)
 
 ### Related API
 - [highlight_critical_path](api/config/highlight_critical_path.md)
@@ -62,5 +61,4 @@ gantt.isCriticalTask(gantt.getTask(3));// ->'true' /*!*/
 - [getSlack](api/method/getslack.md)
 
 ### Related Guides
-- [关键路径](guides/critical-path.md)
-
+- [Critical Path](guides/critical-path.md)

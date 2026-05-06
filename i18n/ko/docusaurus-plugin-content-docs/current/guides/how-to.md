@@ -1,13 +1,13 @@
 ---
-title: "How-tos"
-sidebar_label: "How-tos"
+title: "실습 방법"
+sidebar_label: "실습 방법"
 ---
 
-# How-tos
+# 실습 방법
 
-## 그리드/차트 토글하는 방법 {#howtotogglegridchart}
+## 그리드/차트 전환 방법
 
-기본 레이아웃 구성을 사용할 때, 그리드 또는 차트 토글은 [show_grid](api/config/show_grid.md) 또는 [show_chart](api/config/show_chart.md) 파라미터를 변경한 후 [render()](api/method/render.md) 메서드를 호출하여 화면을 갱신하면 됩니다.
+기본 레이아웃 구성(default layout configuration)을 사용하는 경우, [show_grid](api/config/show_grid.md) 또는 [show_chart](api/config/show_chart.md) 매개변수를 변경하고 [render()](api/method/render.md) 메서드를 사용하여 변경 사항을 다시 렌더링할 수 있습니다.
 
 ~~~js
 function toggleGrid(){
@@ -16,9 +16,7 @@ function toggleGrid(){
 }
 ~~~
 
-
-**Related example:** [Gantt. Toggle grid (default layout)](https://snippet.dhtmlx.com/gnloz505)
-
+**관련 샘플** [Gantt. Toggle grid (default layout)](https://snippet.dhtmlx.com/gnloz505)
 
 ~~~js
 function toggleChart(){
@@ -27,53 +25,47 @@ function toggleChart(){
 }
 ~~~
 
-
-**Related example:** [Gantt. Toggle timeline (default layout)](https://snippet.dhtmlx.com/kqe1hqp2)
-
+**관련 샘플** [Gantt. Toggle timeline (default layout)](https://snippet.dhtmlx.com/kqe1hqp2)
  
-커스텀 레이아웃 구성을 사용하는 경우, 그리드 또는 타임라인이 있는 레이아웃과 없는 레이아웃을 각각 만들어야 합니다. 이들 간의 전환은 [gantt.config.layout](api/config/layout.md) 파라미터를 변경하고 [init()](api/method/init.md) 메서드로 다시 초기화하여 적용합니다:
+사용자 정의 레이아웃 구성(custom layout configuration)을 사용하는 경우, 그리드/타임라인이 있는 구성과 없는 구성을 각각 만들어야 합니다. 이들 사이를 전환하려면 [gantt.config.layout](api/config/layout.md) 매개변수를 수정하고 변경 사항을 확인하기 위해 [init()](api/method/init.md) 메서드를 적용해야 합니다:
 
 ~~~js
 let showGrid = true;
+
 function toggleGrid() {
     showGrid = !showGrid;
     if (showGrid) {
-        gantt.config.layout = gridAndChart; // 그리드와 타임라인이 있는 레이아웃
+        gantt.config.layout = gridAndChart; // 그리드와 타임라인이 포함된 레이아웃
     }
     else {
         gantt.config.layout = onlyChart; // 타임라인만 있는 레이아웃
-
     }
     gantt.init("gantt_here");
 }
 ~~~
 
-
-**Related example:** [Gantt. Toggle grid (custom layout)](https://snippet.dhtmlx.com/omk98l0x)
-
+**관련 샘플** [Gantt. Toggle grid (custom layout)](https://snippet.dhtmlx.com/omk98l0x)
 
 ~~~js
 let showChart = true;
+
 function toggleChart() {
     showChart = !showChart;
     if (showChart) {
-        gantt.config.layout = gridAndChart; // 그리드와 타임라인이 있는 레이아웃
+        gantt.config.layout = gridAndChart; // 그리드와 타임라인이 포함된 레이아웃
     }
     else {
         gantt.config.layout = onlyGrid; // 그리드만 있는 레이아웃
-
     }
     gantt.init("gantt_here");
 }
 ~~~
 
+**관련 샘플** [Gantt. Toggle timeline (custom layout)](https://snippet.dhtmlx.com/aukjyqc8)
 
-**Related example:** [Gantt. Toggle timeline (custom layout)](https://snippet.dhtmlx.com/aukjyqc8)
+## 리소스 뷰를 토글하는 방법
 
-
-## 리소스 뷰 토글하는 방법 {#howtotoggletheresourceview}
-
-그리드나 타임라인 뷰 토글과 유사하게, 리소스 뷰가 포함된 레이아웃과 포함되지 않은 레이아웃을 각각 준비해야 합니다. 이들 간 전환은 [gantt.config.layout](api/config/layout.md) 파라미터를 변경하고 [init()](api/method/init.md) 메서드를 호출하여 반영합니다:
+앞선 사용 사례와 마찬가지로, 리소스 뷰가 있는 구성과 없는 구성을 여러 개 만들어야 합니다. 이를 전환하려면 [gantt.config.layout](api/config/layout.md) 매개변수를 수정하고 변경 사항을 확인하기 위해 [init()](api/method/init.md) 메서드를 적용해야 합니다:
 
 ~~~js
 let resourceChart = true;
@@ -90,9 +82,7 @@ function layoutChange() {
 };
 ~~~
 
-
-**Related example:** [Gantt. Toggle resource load diagram](https://snippet.dhtmlx.com/vbaczl07)
-
+**관련 샘플** [Gantt. Toggle resource load diagram](https://snippet.dhtmlx.com/vbaczl07)
 
 ~~~js
 let histogramView = true;
@@ -109,23 +99,19 @@ function layoutChange() {
 };
 ~~~
 
+**관련 샘플** [Gantt. Toggle resource histogram](https://snippet.dhtmlx.com/isn2ger4)
 
-**Related example:** [Gantt. Toggle resource histogram](https://snippet.dhtmlx.com/isn2ger4)
+또는 레이아웃 뷰(layout views)를 사용하고 Gantt를 다시 초기화하여 변경 사항을 확인하도록 레이아웃을 생성할 수도 있습니다:
 
+**관련 샘플** [Gantt. Generate layout](https://snippet.dhtmlx.com/3dnzfhit)
 
-또 다른 방법으로, 레이아웃 뷰를 동적으로 생성하고 Gantt를 다시 초기화하여 화면을 갱신할 수도 있습니다:
+## 타임라인에서 무한 스크롤을 구현하는 방법
 
+무한 스크롤을 구현하는 방법은 여러 가지가 있습니다. 그러나 대부분의 경우 표시되는 날짜 범위를 수정해야 합니다([gantt.config.start_date](api/config/start_date.md)와 [gantt.config.end_date](api/config/end_date.md) 매개변수).
 
-**Related example:** [Gantt. Generate layout](https://snippet.dhtmlx.com/3dnzfhit)
+### 스크롤바를 사용할 때
 
-
-## 타임라인에서 무한 스크롤 구현 방법 {#howtohaveaninfinitescrollinthetimeline}
-
-무한 스크롤은 여러 방식으로 구현할 수 있지만, 일반적으로 [gantt.config.start_date](api/config/start_date.md) 및 [gantt.config.end_date](api/config/end_date.md) 파라미터를 조정하여 표시되는 날짜 범위를 확장합니다.
-
-### 스크롤바 사용 시
-
-[스크롤 위치](api/event/onganttscroll.md)를 추적하여 사용자가 가장자리 근처로 스크롤할 때 날짜 범위를 확장할 수 있습니다. 성능 저하를 방지하기 위해, Gantt 차트의 리렌더링은 타임아웃을 두고 실행하는 것이 좋습니다:
+현재 스크롤 위치를 얻고 날짜 범위를 늘려야 합니다. 다만, Gantt의 재페인팅(repainting)을 너무 자주 수행하면 성능에 영향을 미치므로 타임아웃 후에 이를 수행해야 합니다:
 
 ~~~js
 gantt.init("gantt_here");
@@ -160,13 +146,11 @@ gantt.attachEvent("onGanttScroll", function (left, top) {
 });
 ~~~
 
+**관련 샘플** [Gantt. Infinite scroll while using scrollbar](https://snippet.dhtmlx.com/4u52p5g3)
 
-**Related example:** [Gantt. Infinite scroll while using scrollbar](https://snippet.dhtmlx.com/4u52p5g3)
+### 타임라인을 끌 때
 
-
-### 타임라인 드래그 시
-
-타임라인을 드래그하는 동안 현재 스크롤 위치를 감지하여, 시작 또는 끝 근처로 이동하면 날짜 범위를 확장할 수 있습니다:
+현재 스크롤 위치를 확인하고 타임라인 시작이나 끝에 가까워지면 표시되는 날짜 범위를 늘려야 합니다:
 
 ~~~js
 gantt.attachEvent("onMouseMove", function (id, e) {
@@ -187,13 +171,11 @@ gantt.attachEvent("onMouseMove", function (id, e) {
 });
 ~~~
 
+**관련 샘플** [Gantt. Infinite scroll while dragging the timeline](https://snippet.dhtmlx.com/zqob7lz5)
 
-**Related example:** [Gantt. Infinite scroll while dragging the timeline](https://snippet.dhtmlx.com/zqob7lz5)
+### 작업을 끌 때
 
-
-### 태스크 드래그 시
-
-날짜 범위를 명시적으로 설정하지 않은 경우, 태스크가 타임라인 가장자리 근처로 드래그될 때마다 [render()](api/method/render.md) 호출을 통해 표시 범위를 유지할 수 있습니다:
+날짜 범위가 설정되어 있지 않으면 작업이 타임라인의 시작이나 끝 근처로 드래그될 때마다 [render()] 메서드를 호출할 수 있습니다:
 
 ~~~js
 gantt.init("gantt_here");
@@ -207,11 +189,9 @@ gantt.attachEvent("onTaskDrag", function (id, mode, task, original) {
 });
 ~~~
 
+**관련 샘플** [Gantt. Infinite scroll while dragging a task (default range settings)](https://snippet.dhtmlx.com/44qcunjc)
 
-**Related example:** [Gantt. Infinite scroll while dragging a task (default range settings)](https://snippet.dhtmlx.com/44qcunjc)
-
-
-[날짜 범위](api/config/start_date.md)를 명시적으로 지정한 경우, 태스크가 가장자리 근처로 이동할 때 범위를 업데이트해야 합니다:
+만약 [date range](api/config/start_date.md)이 설정되어 있다면 이를 수정해야 합니다:
 
 ~~~js
 gantt.init("gantt_here");
@@ -237,13 +217,11 @@ gantt.attachEvent("onTaskDrag", function (id, mode, task, original) {
 });
 ~~~
 
+**관련 샘플** [Gantt. Infinite scroll while dragging a task (explicit range settings)](https://snippet.dhtmlx.com/3lrm0wyp)
 
-**Related example:** [Gantt. Infinite scroll while dragging a task (explicit range settings)](https://snippet.dhtmlx.com/3lrm0wyp)
+## 작업을 동적으로 로드하는 방법
 
-
-## 태스크를 동적으로 불러오는 방법 {#howtoloadtasksdynamically}
-
-[onGanttScroll](api/event/onganttscroll.md) 이벤트를 통해 스크롤이 마지막으로 표시되는 태스크에 도달했는지 감지하여, [parse()](api/method/parse.md) 메서드로 추가 태스크를 동적으로 불러올 수 있습니다:
+스크롤하여 마지막으로 보이는 작업에 도달했는지 onGanttScroll 이벤트에서 감지하고 [parse()](api/method/parse.md) 메서드를 사용해 새 작업을 로드할 수 있습니다:
 
 ~~~js
 gantt.attachEvent("onGanttScroll", function (left, top) {
@@ -257,13 +235,11 @@ gantt.attachEvent("onGanttScroll", function (left, top) {
 });
 ~~~
 
+**관련 샘플** [Gantt. Load data dynamically](https://snippet.dhtmlx.com/39l7o0rm)
 
-**Related example:** [Gantt. Load data dynamically](https://snippet.dhtmlx.com/39l7o0rm)
+## 버튼으로 모든 작업 확장/축소하는 방법
 
-
-## 버튼으로 모든 태스크 확장/축소하기 {#howtoexpandcollapsealltaskswithabutton}
-
-[open()](api/method/open.md) 및 [close()](api/method/close.md) 메서드는 개별 태스크를 확장 또는 축소하는 데 사용됩니다. 모든 태스크에 적용하려면 [eachTask()](api/method/eachtask.md) 함수와 함께 사용하면 효과적입니다. 이 연산을 [batchUpdate()](api/method/batchupdate.md)로 감싸면 차트가 한 번만 리페인팅됩니다:
+[open()](api/method/open.md) 및 [close()](api/method/close.md) 메서드를 사용해 특정 작업을 열고 닫을 수 있습니다. 차트의 모든 작업에서 이를 수행하려면 [eachTask()](api/method/eachtask.md) 함수 안에서 해당 메서드를 사용해야합니다. 변경 사항을 한 번에만 다시 그리려면 [batchUpdate()](api/method/batchupdate.md) 메서드로 래핑하면 됩니다:
 
 ~~~js
 function collapseAll() {
@@ -283,17 +259,13 @@ function expandAll() {
 }
 ~~~
 
+**관련 샘플** [Gantt. Add collapse/expand buttons into Gantt header](https://snippet.dhtmlx.com/z7o5qt9s)
 
-**Related example:** [Gantt. Add collapse/expand buttons into Gantt header](https://snippet.dhtmlx.com/z7o5qt9s)
+**관련 샘플** [Gantt. Collapse/expand all tasks](https://snippet.dhtmlx.com/72zahagy)
 
+## 그리드 셀/헤더에 여러 줄 표시 방법
 
-
-**Related example:** [Gantt. Collapse/expand all tasks](https://snippet.dhtmlx.com/72zahagy)
-
-
-## 그리드 셀/헤더에 여러 줄 표시하는 방법 {#howtodisplayseverallinesinthegridcellheader}
-
-그리드 헤더나 셀에 여러 줄의 텍스트를 표시하려면 CSS 스타일을 적용하면 됩니다.
+스타일 규칙을 조금 추가하면 이를 달성할 수 있습니다.
 
 그리드 헤더의 경우:
 
@@ -304,9 +276,7 @@ function expandAll() {
 }
 ~~~
 
-
-**Related example:** [Gantt. Multiline text in the grid header](https://snippet.dhtmlx.com/lx70v5hw)
-
+**관련 샘플** [Gantt. Multiline text in the grid header](https://snippet.dhtmlx.com/lx70v5hw)
 
 그리드 셀의 경우:
 
@@ -318,22 +288,18 @@ function expandAll() {
 }
 ~~~
 
+**관련 샘플** [Gantt. Multiline text in Grid cells and Timeline](https://snippet.dhtmlx.com/55uy7ibo)
 
-**Related example:** [Gantt. Multiline text in Grid cells and Timeline](https://snippet.dhtmlx.com/55uy7ibo)
+**관련 샘플** [Gantt. Multiline text in cells of a Grid column](https://snippet.dhtmlx.com/bwil9sxs)
 
+## 그리드에 사용자 정의 열 추가 방법
 
-
-**Related example:** [Gantt. Multiline text in cells of a Grid column](https://snippet.dhtmlx.com/bwil9sxs)
-
-
-## 그리드에 커스텀 컬럼 추가 방법 {#howtoaddacustomcolumninthegrid}
-
-커스텀 컬럼을 추가하려면 [gantt.config.columns](api/config/columns.md) 파라미터를 수정합니다. **name** 속성을 지정하면 해당 태스크 속성값이 표시됩니다. 또는 [template()](guides/specifying-columns.md#datamappingandtemplates) 함수를 사용해 커스텀 데이터나 HTML 요소를 반환할 수 있습니다.
+사용자 정의 열을 추가하려면 [gantt.config.columns](api/config/columns.md) 매개변수를 수정해야 합니다. **name** 매개변수를 지정하면 Gantt는 동일한 이름의 작업 속성 값을 반환합니다. 또한 [template()](guides/specifying-columns.md#datamappingandtemplates) 함수를 사용해 임의의 날짜나 HTML 요소를 반환할 수 있습니다.
 
 ~~~js
 gantt.config.columns = [
     /*
-    other columns
+    다른 열들
     */
     {
         name: "progress", label: "Progress", width: 50, resize: true, align: "center", 
@@ -342,27 +308,23 @@ gantt.config.columns = [
         }
     },
     /*
-    other columns
+    다른 열들
     */
 ];
 ~~~
 
+**관련 샘플** [Gantt. Custom column with template for task progress](https://snippet.dhtmlx.com/t5ba0gzu)
 
-**Related example:** [Gantt. Custom column with template for task progress](https://snippet.dhtmlx.com/t5ba0gzu)
+**관련 샘플** [Gantt. Custom column with template for action buttons](https://snippet.dhtmlx.com/gfsdp121)
 
+## 커스텀 add(+) 버튼 추가 방법
 
-
-**Related example:** [Gantt. Custom column with template for action buttons](https://snippet.dhtmlx.com/gfsdp121)
-
-
-## 커스텀 추가(+) 버튼 만들기 {#howtoaddacustomaddbutton}
-
-커스텀 추가 버튼은 [gantt.config.columns](api/config/columns.md) 파라미터를 통해 커스텀 컬럼을 정의하여 만들 수 있습니다. 컬럼 name은 *add*가 아니어야 하며, [template](guides/specifying-columns.md#datamappingandtemplates) 함수 내에서 버튼 등 HTML을 반환하고 클릭 이벤트로 태스크 추가를 처리할 수 있습니다.
+[l gantt.config.columns] 매개변수를 통해 커스텀 열을 만들어야 합니다. 해당 열에 원하는 이름을 아무렇게나 설정할 수 있지만, *add* 이름은 예외적으로 사용할 수 없습니다. 그렇지 않으면 Gantt가 기본적인 *add* 열을 추가합니다. 그리드 열에서 HTML 요소를 반환하기 위해 [template] 함수를 사용할 수 있습니다. 즉, 버튼을 반환하고 작업 추가를 위한 커스텀 함수에 클릭 이벤트를 연결할 수 있습니다.
 
 ~~~js
 gantt.config.columns = [
     /*
-    other columns
+    다른 열들
     */
     {
         name: "add_tasks", label: "+", width: 50, resize: true, align: "center", 
@@ -373,15 +335,13 @@ gantt.config.columns = [
 ];
 ~~~
 
+**관련 샘플**  [Gantt. Custom columns with templates for add (+) buttons](https://snippet.dhtmlx.com/o36jnko3)
 
-**Related example:** [Gantt. Custom columns with templates for add (+) buttons](https://snippet.dhtmlx.com/o36jnko3)
+## 커스텀 눈금 추가 방법
 
+[custom scale unit](guides/configuring-time-scale.md#customtimeunits)를 만들고 날짜를 계산하는 로직을 추가해야 합니다.
 
-## 커스텀 스케일 추가 방법 {#howtoaddacustomscale}
-
-커스텀 스케일을 추가하려면, 먼저 [커스텀 스케일 단위](guides/configuring-time-scale.md#customtimeunits)를 생성하고 날짜 계산 로직을 구현해야 합니다.
-
-아래는 근무 교대 시간(06:30, 18:30)을 나타내는 커스텀 스케일 예시입니다:
+작업 교대 시간(06:30, 18:30)을 사용하는 커스텀 눈금 예시:
 
 ~~~js
 gantt.date.custom_scale_start = function (date) {
@@ -407,11 +367,9 @@ gantt.config.scales = [
 ];
 ~~~
 
+**관련 샘플** [Gantt. Custom work shift hours on the scale](https://snippet.dhtmlx.com/0l49yvp2)
 
-**Related example:** [Gantt. Custom work shift hours on the scale](https://snippet.dhtmlx.com/0l49yvp2)
-
-
-다음은 일(day) 대신 숫자를 사용하는 커스텀 스케일 예시입니다:
+일수가 아닌 숫자로 된 커스텀 눈금 예시:
 
 ~~~js
 gantt.config.scales = [
@@ -423,11 +381,9 @@ gantt.config.scales = [
 ]
 ~~~
 
+**관련 샘플** [Gantt. Numbers of days on the scale](https://snippet.dhtmlx.com/06bp4wdl)
 
-**Related example:** [Gantt. Numbers of days on the scale](https://snippet.dhtmlx.com/06bp4wdl)
-
-
-다음 예시는 5일 근무 주에 대한 커스텀 스케일을 보여줍니다:
+5일 근무 주가 있는 커스텀 눈금 예시:
 
 ~~~js
 const weekScaleTemplate = function (date) {
@@ -459,11 +415,9 @@ gantt.ignore_time = function (date) {
 };
 ~~~
 
+**관련 샘플** [5-day work weeks on the scale](https://snippet.dhtmlx.com/eq70o558)
 
-**Related example:** [5-day work weeks on the scale](https://snippet.dhtmlx.com/eq70o558)
-
-
-아래는 연도의 첫날부터 주 번호가 시작되는 연간 주 단위 커스텀 스케일 예시입니다:
+연도 주 단위 눈금의 예시(해당 주의 번호는 연초부터 시작):
 
 ~~~js
 gantt.date.custom_week_start = function (date) {
@@ -496,15 +450,13 @@ gantt.config.scales = [
 ];
 ~~~
 
+**관련 샘플** [Gantt. Weeks of the year on the scale](https://snippet.dhtmlx.com/gbowxpmr)
 
-**Related example:** [Gantt. Weeks of the year on the scale](https://snippet.dhtmlx.com/gbowxpmr)
+## 작업 복사 및 붙여넣기 방법
 
+작업 객체의 깊은 복사본을 만들기 위해 [copy()](api/method/copy.md) 메서드를 사용할 수 있습니다. 그런 다음 복제된 작업의 ID를 바꾼 뒤 [addTask()](api/method/addtask.md) 또는 [createTask()](api/method/createtask.md) 메서드를 사용해 복제된 작업을 추가하면 됩니다.
 
-## 작업 복사 및 붙여넣기 방법 {#howtocopyandpastetasks}
-
-[copy()](api/method/copy.md) 메서드를 사용하면 작업 객체의 깊은 복사본을 만들 수 있습니다. 복사 후에는 복제된 작업에 새로운 ID를 할당하고 [addTask()](api/method/addtask.md) 또는 [createTask()](api/method/createtask.md) 메서드로 추가할 수 있습니다.
-
-아래는 작업을 복제하는 버튼을 추가하는 예시입니다:
+다음은 작업을 복제하기 위한 버튼을 추가하는 방법입니다:
 
 ~~~js
 function clone_task(id) {
@@ -516,7 +468,7 @@ function clone_task(id) {
 
 gantt.config.columns = [
     /*
-    other columns
+    다른 열들
     */
     {
         name: "clone", label: "clone", width: 44, template: function (task) {
@@ -526,11 +478,9 @@ gantt.config.columns = [
 ];
 ~~~
 
+**관련 샘플** [Gantt. Clone a task](https://snippet.dhtmlx.com/ii9u6wbe)
 
-**Related example:** [Gantt. Clone a task](https://snippet.dhtmlx.com/ii9u6wbe)
-
-
-다음 예시는 작업과 모든 하위 작업 및 링크를 함께 복제하는 방법을 보여줍니다:
+다음 예제는 모든 하위 작업과 링크를 포함해 작업을 복제하는 방법을 보여줍니다:
 
 ~~~js
 let child_links;
@@ -604,7 +554,7 @@ gantt.config.order_branch_free = true;
 
 gantt.config.columns = [
   /*
-  other columns
+  다른 열들
   */
   {
     name: "clone", label: "clone", width: 44, template: function (task) {
@@ -614,11 +564,9 @@ gantt.config.columns = [
 ];
 ~~~
 
+**관련 샘플** [Gantt. Clone a task with all its subtasks and links](https://snippet.dhtmlx.com/b33jfmws)
 
-**Related example:** [Gantt. Clone a task with all its subtasks and links](https://snippet.dhtmlx.com/b33jfmws)
-
-
-또 다른 예시로, 키보드 단축키를 통해 복사 기능을 구현할 수 있습니다. 작업을 선택한 후 *Ctrl + C*로 복사하고, *Ctrl + V*로 선택한 작업의 하위로 붙여넣을 수 있습니다:
+다음 예시는 키 네비게이션으로 복사를 구현하는 방법을 보여줍니다(작업을 선택하고, 단축키 Ctrl + C로 복사하고, Ctrl + V로 선택한 작업의 자식으로 붙여넣기):
 
 ~~~js
 gantt.plugins({
@@ -646,15 +594,13 @@ gantt.ext.keyboardNavigation.addShortcut("ctrl+v", function (e) {
 }, "taskRow");
 ~~~
 
+**관련 샘플** [Gantt. Copy and paste tasks via Ctrl+C, Ctrl+V](https://snippet.dhtmlx.com/kck3pnmh)
 
-**Related example:** [Gantt. Copy and paste tasks via Ctrl+C, Ctrl+V](https://snippet.dhtmlx.com/kck3pnmh)
+## 내보낸 PDF 파일에 리소스 차트나 커스텀 스타일 추가 방법
 
+데이터를 [raw] 모드로 내보내고 export 함수의 [header](guides/export.md#customstylefortheoutputfile) 또는 [footer](guides/export.md#customstylefortheoutputfile) 매개변수에 스타일을 포함해야 합니다.
 
-## 내보낸 PDF 파일에 리소스 차트 또는 커스텀 스타일 추가 방법 {#howtoaddresourcechartorcustomstylesintheexportedpdffile}
-
-내보낸 PDF에 커스텀 스타일이나 리소스 차트를 포함하려면, [raw](guides/export.md#exportingcustommarkupandstyles) 모드로 데이터를 내보내고, export 함수의 [header](guides/export.md#customstylefortheoutputfile) 또는 [footer](guides/export.md#customstylefortheoutputfile) 파라미터에 스타일을 추가하세요.
-
-예를 들어, 커스텀 스타일을 변수에 저장한 뒤, [header](guides/export.md#customstylefortheoutputfile) 파라미터에 해당 변수를 포함할 수 있습니다:
+예를 들어, 커스텀 스타일을 변수에 저장한 후 [header] 매개변수에 해당 변수를 추가할 수 있습니다:
 
 ~~~js
 const header = `
@@ -672,11 +618,9 @@ gantt.exportToPDF({
 });
 ~~~
 
+**관련 샘플** [Gantt. Export Gantt to PDF (styles from a variable)](https://snippet.dhtmlx.com/51ds6zwa)
 
-**Related example:** [Gantt. Export Gantt to PDF (styles from a variable)](https://snippet.dhtmlx.com/51ds6zwa)
-
-
-또는, 페이지 내 &lt;style&gt; 요소의 내용을 가져와 아래와 같이 추가할 수도 있습니다:
+또는 페이지에서 \<style\> 요소를 찾아 그 내용을 아래와 같이 header에 삽입할 수 있습니다:
 
 ~~~js
 gantt.exportToPDF({
@@ -695,36 +639,25 @@ gantt.exportToPDF({
 </style>
 ~~~
 
+**관련 샘플** [Gantt. Export Gantt to PDF (styles from &lt;style&gt; element)](https://snippet.dhtmlx.com/6qwzclr2)
 
-**Related example:** [Gantt. Export Gantt to PDF (styles from &lt;style&gt; element)](https://snippet.dhtmlx.com/6qwzclr2)
+**관련 샘플** [Gantt. Export Gantt with custom icons to PDF](https://snippet.dhtmlx.com/2lqhkfhh)
 
+작업에 대한 범례를 내보내는 예시:
 
+**관련 샘플** [Gantt. Export Gantt with legend to PDF](https://snippet.dhtmlx.com/gz4ddlnl)
 
-**Related example:** [Gantt. Export Gantt with custom icons to PDF](https://snippet.dhtmlx.com/2lqhkfhh)
+리소스 로드 다이어그램과 히스토그램을 내보내는 예시들:
 
+**관련 샘플** [Gantt. Export Gantt with resource load diagram to PDF](https://snippet.dhtmlx.com/lw5xcm31)
 
-아래는 범례(legend)가 포함된 간트 차트 내보내기 예시입니다:
+**관련 샘플** [Gantt. Export Gantt with resource histogram to PDF](https://snippet.dhtmlx.com/i9me4oxl)
 
+## 자식 작업에 따라 작업 진행률 계산 방법
 
-**Related example:** [Gantt. Export Gantt with legend to PDF](https://snippet.dhtmlx.com/gz4ddlnl)
+간단한 구현 방법은 자식 작업을 업데이트한 뒤 부모 작업의 진행률을 계산하는 것입니다. 부모 작업을 순회하려면 [eachParent()](api/method/eachparent.md) 메서드를 사용할 수 있습니다.
 
-
-리소스 로드 다이어그램 및 히스토그램 내보내기 예시:
-
-
-**Related example:** [Gantt. Export Gantt with resource load diagram to PDF](https://snippet.dhtmlx.com/lw5xcm31)
-
-
-
-**Related example:** [Gantt. Export Gantt with resource histogram to PDF](https://snippet.dhtmlx.com/i9me4oxl)
-
-
-
-## 하위 작업에 따라 작업 진행률 계산하기 {#howtocalculatetaskprogressdependingonchildtasks}
-
-가장 간단한 방법 중 하나는 하위 작업이 변경될 때마다 상위 작업의 진행률을 업데이트하는 것입니다. 상위 작업을 반복하려면 [eachParent()](api/method/eachparent.md) 메서드를 사용할 수 있습니다.
-
-아래 예제에서는 상위 작업의 진행률이 오직 하위 작업의 진행률만을 기준으로 계산됩니다:
+다음 예제에서는 부모 작업의 진행률이 자식 작업의 진행률에만 의존합니다:
 
 ~~~js
 gantt.config.auto_types = true;
@@ -775,35 +708,33 @@ function parentProgress(id) {
 }
 ~~~
 
+**관련 샘플** [Gantt. Calculate progress of a parent task dynamically](https://snippet.dhtmlx.com/xuicd1q7)
 
-**Related example:** [Gantt. Calculate progress of a parent task dynamically](https://snippet.dhtmlx.com/xuicd1q7)
-
-
-다음 예제에서는 상위 작업의 진행률이 하위 작업의 진행률과 기간을 모두 고려하여 계산됩니다:
+다음 예제에서는 부모 작업의 진행률이 자식 작업의 진행률과 지속 시간에 따라 달라집니다:
 
 ~~~js
 function calculateSummaryProgress(task) {
-    if (task.type != gantt.config.types.project)
-        return task.progress;
-    var totalToDo = 0;
-    var totalDone = 0;
-    gantt.eachTask(function (child) {
-        if (child.type != gantt.config.types.project) {
+    if (task.type !== gantt.config.types.project) return task.progress;
+
+    let totalToDo = 0;
+    let totalDone = 0;
+
+    gantt.eachTask(child => {
+        if (child.type !== gantt.config.types.project) {
             totalToDo += child.duration;
             totalDone += (child.progress || 0) * child.duration;
         }
     }, task.id);
-    if (!totalToDo) return 0;
-    else return totalDone / totalToDo;
+
+    return totalToDo ? totalDone / totalToDo : 0;
 }
 
 function refreshSummaryProgress(id, submit) {
-    if (!gantt.isTaskExists(id))
-        return;
+    if (!gantt.isTaskExists(id)) return;
 
-    var task = gantt.getTask(id);
-    var newProgress = calculateSummaryProgress(task);
-    
+    const task = gantt.getTask(id);
+    const newProgress = calculateSummaryProgress(task);
+
     if (newProgress !== task.progress) {
         task.progress = newProgress;
 
@@ -819,108 +750,94 @@ function refreshSummaryProgress(id, submit) {
     }
 }
 
-
-gantt.attachEvent("onParse", function () {
-    gantt.eachTask(function (task) {
+gantt.attachEvent("onParse", () => {
+    gantt.eachTask(task => {
         task.progress = calculateSummaryProgress(task);
     });
 });
 
-gantt.attachEvent("onAfterTaskUpdate", function (id) {
+gantt.attachEvent("onAfterTaskUpdate", id => {
     refreshSummaryProgress(gantt.getParent(id), true);
 });
 
-gantt.attachEvent("onTaskDrag", function (id) {
+gantt.attachEvent("onTaskDrag", id => {
     refreshSummaryProgress(gantt.getParent(id), false);
 });
-gantt.attachEvent("onAfterTaskAdd", function (id) {
+
+gantt.attachEvent("onAfterTaskAdd", id => {
     refreshSummaryProgress(gantt.getParent(id), true);
 });
 
+(() => {
+    let idParentBeforeDeleteTask = 0;
 
-(function () {
-    var idParentBeforeDeleteTask = 0;
-    gantt.attachEvent("onBeforeTaskDelete", function (id) {
+    gantt.attachEvent("onBeforeTaskDelete", id => {
         idParentBeforeDeleteTask = gantt.getParent(id);
     });
-    gantt.attachEvent("onAfterTaskDelete", function () {
+
+    gantt.attachEvent("onAfterTaskDelete", () => {
         refreshSummaryProgress(idParentBeforeDeleteTask, true);
     });
 })();
 
-...
-
 gantt.config.auto_types = true;
 
-gantt.templates.progress_text = function (start, end, task) {
-    return "<span style='text-align:left;'>" + Math.round(task.progress * 100) 
-          + "% </span>";
-};
+gantt.templates.progress_text = (start, end, task) =>
+    `<span style='text-align:left;'>${Math.round(task.progress * 100)}% </span>`;
 
-gantt.templates.task_class = function (start, end, task) {
-    if (task.type == gantt.config.types.project)
-        return "hide_project_progress_drag";
-};
+gantt.templates.task_class = (start, end, task) =>
+    task.type === gantt.config.types.project ? "hide_project_progress_drag" : "";
 ~~~
 
 
 [Calculate Progress of Summary Tasks](https://docs.dhtmlx.com/gantt/samples/08_api/16_dynamic_progress.html)
 
 
-## 타임라인에서 작업을 수직으로 재정렬하는 방법 {#howtoverticallyreordertasksinthetimeline}
+## 타임라인에서 작업을 수직으로 재배열하는 방법
 
-[addTaskLayer()](api/method/addtasklayer.md) 메서드를 사용하면 타임라인에 사용자 정의 HTML 요소를 추가할 수 있으며, 이를 수직 및 수평으로 드래그하여 이동할 수 있습니다.
+타임라인에 커스텀 HTML 요소를 표시하고 이를 수직 및 수평으로 드래그할 수 있게 하려면 [addTaskLayer()](api/method/addtasklayer.md) 메서드를 사용할 수 있습니다.
 
-아래 예제는 타임라인에서 작업을 수직으로 재정렬하는 방법을 보여줍니다. 이는 그리드에서 작업을 재정렬하는 것과 유사합니다:
+다음 예제에서는 그리드에서의 일반적인 작업 재배열처럼 작동합니다:
 
+**관련 샘플** [Gantt. Reorder tasks vertically in timeline](https://snippet.dhtmlx.com/fla78m0y)
 
-**Related example:** [Gantt. Reorder tasks vertically in timeline](https://snippet.dhtmlx.com/fla78m0y)
+다음 예제에서는 분할 작업을 재배열하고 같은 행에 작업을 배치할 수 있습니다:
 
+**관련 샘플** [Gantt. Reorder split tasks vertically in timeline](https://snippet.dhtmlx.com/usfulweq)
 
-다른 예제에서는 분할된 작업을 재정렬하고 여러 작업을 동일한 행에 배치하는 방법을 보여줍니다:
+## 그리드의 열을 고정하는 방법
 
-
-**Related example:** [Gantt. Reorder split tasks vertically in timeline](https://snippet.dhtmlx.com/usfulweq)
-
-
-## 그리드에서 열을 고정/고정 해제하는 방법 {#howtofreezefixcolumnsinthegrid}
-
-이 효과는 CSS를 사용하여 구현할 수 있습니다. 고정하려는 열에 'relative' 포지션을 지정해야 하며, 'left' 속성은 스크롤바의 현재 위치와 일치해야 합니다. 이 값을 최신 상태로 유지하려면 스크롤바에 이벤트 리스너를 추가하고 CSS 변수를 동적으로 조정할 수 있습니다:
+CSS를 사용하여 고정해야 하는 열에 대해 'relative' 위치를 설정하면 됩니다. 'left' 매개변수는 스크롤바 위치와 동일한 값을 가지도록 설정해야 하므로 스크롤바 이벤트 핸들러를 추가하고 CSS 변수를 업데이트해야 합니다:
 
 ~~~js
-gantt.attachEvent("onGanttReady", function () {
+gantt.attachEvent("onGanttReady", () => {
     const el = document.querySelector(".gantt_hor_scroll");
     if (el) {
-        el.addEventListener('scroll', function () {
+        el.addEventListener("scroll", () => {
             document.documentElement.style.setProperty(
-              '--gantt-frozen-column-scroll-left', el.scrollLeft + "px"
+                "--gantt-frozen-column-scroll-left",
+                `${el.scrollLeft}px`
             );
         });
     }
 });
 
 const textEditor = { type: "text", map_to: "text" };
-const start_dateEditor = { type: "date", map_to: "start_date" };
-const end_dateEditor = { type: "date", map_to: "end_date" };
+const startDateEditor = { type: "date", map_to: "start_date" };
+const endDateEditor = { type: "date", map_to: "end_date" };
 const durationEditor = { type: "number", map_to: "duration", min: 0, max: 100 };
-
 
 gantt.config.columns = [
     { name: "text", tree: true, width: 150, resize: true, editor: textEditor },
-    { name: "start_date", align: "center", width: 120, resize: true, 
-      editor: start_dateEditor },
-    { name: "end_date", label: "End Time", align: "center", width: 120, 
-      resize: true, editor: end_dateEditor },
-    { name: "duration", align: "center", width: 80, resize: true, 
-      editor: durationEditor },
-    { name: "progress", label: "Progress", width: 80, align: "center", 
-      resize: true },
-    {
-        name: "custom", label: "Custom", width: 180, align: "center", 
-        resize: true, template: function (task) {
-            return Math.round(Math.random() * 100)
-        }
-    },
+    { name: "start_date", align: "center", width: 120, resize: true,
+        editor: startDateEditor },
+    { name: "end_date", label: "End Time", align: "center", width: 120, resize: true,
+        editor: endDateEditor },
+    { name: "duration", align: "center", width: 80, resize: true,
+        editor: durationEditor },
+    { name: "progress", label: "Progress", width: 80, align: "center", resize: true },
+    { name: "custom", label: "Custom", width: 180, align: "center", resize: true,
+        template: task => Math.round(Math.random() * 100) },
     { name: "add", width: 44 }
 ];
 
@@ -929,34 +846,24 @@ gantt.config.layout = {
     cols: [
         {
             rows: [
-                {
-                    view: "grid", scrollable: true, 
-                    scrollX: "scrollHor1", scrollY: "scrollVer"
-                },
-                {
-                    view: "scrollbar", id: "scrollHor1",
-                    scroll: 'x', group: 'hor'
-                },
+                { view: "grid", scrollable: true, scrollX: "scrollHor1",
+                    scrollY: "scrollVer" },
+                { view: "scrollbar", id: "scrollHor1", croll: "x", group: "hor" }
             ]
         },
         { resizer: true, width: 1 },
         {
             rows: [
-                {
-                    view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"
-                },
-                {
-                    view: "scrollbar", id: "scrollHor",
-                    scroll: 'x', group: 'hor'
-                },
+                { view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+                { view: "scrollbar", id: "scrollHor", scroll: "x", group: "hor" }
             ]
         },
         { view: "scrollbar", id: "scrollVer" }
     ]
-}
+};
 ~~~
 
-이를 보완하려면 다음과 같은 CSS 스타일을 추가하세요:
+그리고 CSS 스타일 추가:
 
 ~~~css
 :root {
@@ -979,11 +886,9 @@ gantt.config.layout = {
 }
 ~~~
 
+**관련 샘플** [Gantt. Frozen column in Grid (via CSS)](https://snippet.dhtmlx.com/jbiplpjz)
 
-**Related example:** [Gantt. Frozen column in Grid (via CSS)](https://snippet.dhtmlx.com/jbiplpjz)
-
-
-또는 [여러 개의 그리드 뷰](guides/layout-config.md)를 설정할 수도 있지만, 이 방법은 인라인 에디터와는 잘 호환되지 않습니다:
+다른 방법으로는 [several grid views](guides/layout-config.md)를 추가하는 것이지만, 인라인 편집기와는 잘 맞지 않습니다:
 
 ~~~js
 gantt.config.columns = [
@@ -994,7 +899,6 @@ gantt.config.columns = [
     { name: "add", width: 44 }
 ];
 
-
 const fixedColumn = {
     columns: [
         { name: "text", tree: true, width: 200, resize: true },
@@ -1002,83 +906,77 @@ const fixedColumn = {
 };
 
 gantt.config.layout = {
-  css: "gantt_container",
-  cols: [
-    {
-      width: 400,
-      //min_width: 100,
-      rows: [
+    css: "gantt_container",
+    cols: [
         {
-          group: "gantt",
-          cols: [
-            {
-              rows: [
-                { view: 'grid', config: fixedColumn, bind: "task", 
-                  scrollY: 'gridScrollY' }
-              ]
-            },
-            {
-              rows: [
-                { view: 'grid', bind: "task", scrollX: 'gridScrollX', 
-                  scrollable: true, scrollY: 'gridScrollY' },
-                { view: 'scrollbar', id: 'gridScrollX' }
-              ]
-            },
-            { view: 'scrollbar', id: 'gridScrollY' }
-          ]
-        }
-      ]
-    },
-    { resizer: true, width: 1 },
-    {
-      rows: [
+            width: 400,
+            rows: [
+                {
+                    group: "gantt",
+                    cols: [
+                        {
+                            rows: [
+                                { view: "grid", config: fixedColumn, bind: "task",
+                                    scrollY: "gridScrollY" }
+                            ]
+                        },
+                        {
+                            rows: [
+                                { view: "grid", bind: "task", scrollX: "gridScrollX",
+                                    scrollable: true, scrollY: "gridScrollY" },
+                                { view: "scrollbar", id: "gridScrollX" }
+                            ]
+                        },
+                        { view: "scrollbar", id: "gridScrollY" }
+                    ]
+                }
+            ]
+        },
+        { resizer: true, width: 1 },
         {
-          group: "gantt",
-          cols: [
-            {
-              rows: [
-                { view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
-                { view: "scrollbar", id: "scrollHor" }
-              ]
-            },
-            { view: 'scrollbar', id: 'scrollVer' }
-          ]
+            rows: [
+                {
+                    group: "gantt",
+                    cols: [
+                        {
+                            rows: [
+                                { view: "timeline", scrollX: "scrollHor",
+                                    scrollY: "scrollVer" },
+                                { view: "scrollbar", id: "scrollHor" }
+                            ]
+                        },
+                        { view: "scrollbar", id: "scrollVer" }
+                    ]
+                }
+            ]
         }
-      ]
-    }
-  ]
-}
+    ]
+};
 ~~~
 
+**관련 샘플** [Gantt. Fixed column in Grid (several grid views)](https://snippet.dhtmlx.com/8dg2r8m9)
 
-**Related example:** [Gantt. Fixed column in Grid (several grid views)](https://snippet.dhtmlx.com/8dg2r8m9)
+## Gantt에 범례를 추가하는 방법
 
+Gantt에 범례를 표시하는 내장 메서드는 없으며, 가장 가까운 것은 [Overlay 확장 기능](guides/baselines.md#extra-overlay-for-the-chart)이지만 완전히 동일하지는 않으며 쉽게 커스터마이즈하기 어렵습니다.
 
-## 간트에 범례(legend) 추가하는 방법 {#howtoaddlegendtothegantt}
-
-Gantt에는 기본적으로 범례를 추가하는 기능이 내장되어 있지 않습니다. 가장 가까운 옵션은 [Overlay extension](guides/baselines.md#extraoverlayforthechart)이지만, 이 기능은 완전히 동일하지 않고 커스터마이징에 제한이 있습니다.
-
-그럼에도 불구하고 범례를 추가하는 것은 매우 간단합니다. HTML로 범례 요소를 생성한 후, 다음과 같이 gantt 컨테이너에 삽입할 수 있습니다:
+다만 범례는 비교적 간단하게 구현할 수 있습니다. HTML로 범례 요소를 코드로 작성한 뒤 이를 Gantt 노드에 주입하면 됩니다:
 
 ~~~js
 gantt.$root.appendChild(legend);
 ~~~
 
-아래의 실시간 예제에서는 gantt 위의 "Toggle legend" 버튼을 누르면 범례가 나타납니다:
+다음은 범례를 표시하는 라이브 예시로, 상단의 "Toggle legend" 버튼을 누르면 범례가 표시됩니다:
 
+**관련 샘플** [Gantt. Add information legend](https://snippet.dhtmlx.com/1ui0lim5)
 
-**Related example:** [Gantt. Add information legend](https://snippet.dhtmlx.com/1ui0lim5)
-
-))
-
-인터랙티브한 기능을 추가하려면 이벤트 리스너를 범례 요소에 직접 연결하거나, gantt의 루트 요소에서 이벤트 위임을 사용할 수 있습니다:
+인터랙티비티를 추가하려면 DOM 이벤트 리스너를 직접 범례 요소에 추가하거나, 루트 레벨에서 DOM 이벤트를 수신하는 방식(event delegation)을 사용할 수 있습니다:
 
 ~~~js
 gantt.event(gantt.$root, "click", function(e){
-    var closest = gantt.utils.dom.closest;
+    const closest = gantt.utils.dom.closest;
     if(closest(e.target, ".gantt-legend")) {
         gantt.message("Mouse click inside the legend element");
     }
 });
 ~~~
-

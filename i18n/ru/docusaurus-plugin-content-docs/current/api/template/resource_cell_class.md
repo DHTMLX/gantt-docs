@@ -1,29 +1,30 @@
 ---
 sidebar_label: resource_cell_class
-title: resource_cell_class template
-description: "определяет CSS классы для ячеек в представлении resource timeline"
+title: resource_cell_class шаблон
+description: "определяет имена CSS-классов ячеек в таймлайне ресурсов"
 ---
 
 # resource_cell_class
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в PRO-версии.
 :::
+
 ### Description
 
-@short: Определяет CSS классы для ячеек в представлении resource timeline
+@short: Определяет имена CSS-классов ячеек в таймлайне ресурсов
 
 @signature: resource_cell_class: (start_date: Date, end_date: Date, resource: any, tasks: Array\<Task\>, assignments: any[]) =\> string | void;
 
 ### Parameters
 
-- `start_date` - (required) *Date* - начальная дата ячейки шкалы  
-- `end_date` - (required) *Date* - конечная дата ячейки шкалы
+- `start_date` - (required) *Date* - начальная дата шкалы ячейки  
+- `end_date` - (required) *Date* - конечная дата шкалы ячейки
 - `resource` - (required) *object* - объект ресурса
-- `tasks` - (required) *Array* - &lt;Task&gt;        задачи, назначенные указанному ресурсу и пересекающиеся с периодом ячейки (start_date - end_date)
-- `assignments` - (required) *array* - назначения ресурсов, связанные с указанными датами начала и конца задачи
+- `tasks` - (required) *Array* - &lt;Task&gt; задачи, назначенные указанному ресурсу и пересекающие даты начала/окончания ячейки
+- `assignments` - (required) *array* - назначения ресурсов, которые назначаются на указанные даты начала/окончания задачи
 
 ### Returns
-- ` className` - (string | void) - строка, которая будет добавлена в атрибут className элемента ячейки
+- `className` - (string | void) - строка, которая будет добавлена к атрибуту className элемента ячейки
 
 ### Example
 
@@ -39,21 +40,21 @@ gantt.templates.resource_cell_class = function(start_date, end_date, resource, t
 ~~~
 
 ### Related samples
-- [Resource load diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
-- [Templates of the Resource diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/05_resource_usage_templates.html)
-- [Assign multiple owners to a task](https://docs.dhtmlx.com/gantt/samples/11_resources/06_assign_multiple_owners.html)
-- [Work and material resources](https://docs.dhtmlx.com/gantt/samples/11_resources/12_work_and_material_resources.html)
+- [Диаграмма загрузки ресурсов](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
+- [Шаблоны диаграммы ресурсов](https://docs.dhtmlx.com/gantt/samples/11_resources/05_resource_usage_templates.html)
+- [Назначение нескольких владельцев задаче](https://docs.dhtmlx.com/gantt/samples/11_resources/06_assign_multiple_owners.html)
+- [Ресурсы по труду и материалам](https://docs.dhtmlx.com/gantt/samples/11_resources/12_work_and_material_resources.html)
 
 ### Details
 
 :::note
-Параметр "assignments" доступен только при включенной конфигурации [process_resource_assignments](api/config/process_resource_assignments.md). 
+Параметр "assignments" доступен только когда включена конфигурация [process_resource_assignments](api/config/process_resource_assignments.md). 
 :::
 
-- Управляет CSS классами, применяемыми к ячейкам в resource timeline.
-- Resource timeline связывает задачи с ресурсами на основе свойства, определённого в [resource_property](api/config/resource_property.md).
-- Этот шаблон не вызывается для ячеек без задач, если не включена настройка [resource_render_empty_cells](api/config/resource_render_empty_cells.md).
-- Задачи типа [project](api/config/types.md) исключаются и не входят в параметр `tasks`.
+- Определяет имена CSS-классов ячеек в таймлайне ресурсов.
+- Таймлайн ресурсов связывает задачи с ресурсом по свойству [resource_property](api/config/resource_property.md) объекта задачи.
+- Шаблон не вызывается для ячеек, в которых нет задач, если не включено [resource_render_empty_cells](api/config/resource_render_empty_cells.md).
+- Задачи типа [тип проекта](api/config/types.md) не учитываются и не передаются в аргумент `tasks`.
 
 ### Related API
 - [resource_property](api/config/resource_property.md)
@@ -65,5 +66,4 @@ gantt.templates.resource_cell_class = function(start_date, end_date, resource, t
 - [Управление ресурсами](guides/resource-management.md)
 
 ### Change log
-- параметр **assignments** был добавлен в версии v7.1
-
+- параметр **assignments** добавлен в версии v7.1

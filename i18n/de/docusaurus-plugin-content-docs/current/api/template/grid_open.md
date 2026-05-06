@@ -1,7 +1,7 @@
 ---
 sidebar_label: grid_open
-title: grid_open template
-description: "Gibt das Icon an, das als Open/Close-Indikator in der Tree-Spalte verwendet wird"
+title: grid_open Vorlage
+description: "bestimmt das Symbol zum Öffnen/Schließen in der Baumspalte"
 ---
 
 # grid_open
@@ -10,14 +10,14 @@ description: "Gibt das Icon an, das als Open/Close-Indikator in der Tree-Spalte 
 
 @short: Gibt das Icon an, das als Open/Close-Indikator in der Tree-Spalte verwendet wird
 
-@signature: grid_open: (task: Task) =\> string;
+@signature: grid_open: (task: Task) => string;
 
 ### Parameters
 
-- `task` - (required) *Task* - Das Task-Objekt
+- `task` - (erforderlich) *Task* - das Task-Objekt
 
 ### Returns
-- ` text` - (string) - HTML-Text, der im Gantt angezeigt wird
+- ` text` - (string) - HTML-Text, der im Gantt gerendert wird
 
 ### Example
 
@@ -29,5 +29,5 @@ gantt.templates.grid_open = function(item) {
 ~~~
 
 ### Related Guides
-- ["Konfiguration der Baumspalte"](guides/tree-column.md)
-- ["Vorlagen des Grids"](guides/table-templates.md)
+- [Konfiguration der Baum-Spalte](guides/tree-column.md)
+- [Vorlagen des Grids](guides/table-templates.md)

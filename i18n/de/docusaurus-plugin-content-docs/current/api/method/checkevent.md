@@ -1,23 +1,23 @@
 ---
 sidebar_label: checkEvent
 title: checkEvent method
-description: "prüft, ob für ein bestimmtes Event Handler zugewiesen sind"
+description: "Prüft, ob einem Event ein oder mehrere Handler zugeordnet sind"
 ---
 
 # checkEvent
 
 ### Description
 
-@short: Prüft, ob für ein bestimmtes Event Handler zugewiesen sind
+@short: Prüft, ob einem Event ein oder mehrere Handler zugeordnet sind
 
 @signature: checkEvent: (name: string) =\> boolean
 
 ### Parameters
 
-- `name` - (required) *string* - der Name des Events
+- `name` - (required) *string* - Name des Events
 
 ### Returns
-- ` isExist` - (boolean) - gibt <i>true</i> zurück, wenn mindestens ein Handler für das Event gesetzt ist
+- ` isExist` - (boolean) - gibt <i>true</i> zurück, wenn dem Event ein oder mehrere Handler zugeordnet sind
 
 ### Example
 
@@ -26,12 +26,11 @@ gantt.attachEvent("onTaskClick", function(id, e) {
     alert("You've just clicked an item with id="+id);
 });
        
-gantt.checkEvent("onTaskClick"); //gibt 'true' zurück
+gantt.checkEvent("onTaskClick"); //returns 'true'
 ~~~
 
 ### Related API
 - [attachEvent](api/method/attachevent.md)
 
 ### Related Guides
-- ["Event-Behandlung"](guides/handling-events.md)
-
+- [Event Handling](guides/handling-events.md)

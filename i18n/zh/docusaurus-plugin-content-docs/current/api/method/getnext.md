@@ -1,23 +1,23 @@
 ---
 sidebar_label: getNext
-title: getNext method
-description: "提供下一个项目的 id，无论其嵌套层级如何，无论是否属于同一层级或不同层级"
+title: getNext 方法
+description: "返回下一个项的 id（无论嵌套层级是相同还是不同）"
 ---
 
 # getNext
 
 ### Description
 
-@short: 提供下一个项目的 id，无论其嵌套层级如何，无论是否属于同一层级或不同层级
+@short: 返回下一个项的 id（无论嵌套层级是相同还是不同）
 
 @signature: getNext: (id: string | number) =\> string | number
 
 ### Parameters
 
-- `id` - (required) *string | number* -    任务的 id
+- `id` - (required) *string | number* -    the task id
 
 ### Returns
-- ` id` - (string | number) - 下一个项目的 id
+- ` id` - (string | number) - 下一项的 id
 
 ### Example
 
@@ -49,5 +49,4 @@ gantt.getNext("t_2"); -> null  /*!*/
 - [getPrevSibling](api/method/getprevsibling.md)
 
 ### Related Guides
-- [任务的父子关系](guides/task-tree-operations.md)
-
+- [Task Parent/Child](guides/task-tree-operations.md)

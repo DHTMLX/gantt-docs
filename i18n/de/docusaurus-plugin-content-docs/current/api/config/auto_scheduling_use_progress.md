@@ -1,14 +1,23 @@
 ---
 sidebar_label: auto_scheduling_use_progress
-title: auto_scheduling_use_progress config
-description: "Legt fest, wie Scheduling-Algorithmen mit abgeschlossenen Tasks umgehen"
+title: auto_scheduling_use_progress Konfiguration
+description: "legt fest, wie die Planungsalgorithmen abgeschlossene Aufgaben verarbeiten"
 ---
 
 # auto_scheduling_use_progress
 
+:::info
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
+:::
+
+:::warning
+Die Eigenschaft wurde in Version 9.1 abgekündigt. Verwenden Sie stattdessen die `use_progress`-Eigenschaft von [gantt.config.auto_scheduling](api/config/auto_scheduling.md#use_progress).
+:::
+
+
 ### Description
 
-@short: Legt fest, wie Scheduling-Algorithmen mit abgeschlossenen Tasks umgehen
+@short: Legt fest, wie die Planungsalgorithmen abgeschlossene Aufgaben verarbeiten
 
 @signature: auto_scheduling_use_progress: boolean
 
@@ -20,28 +29,25 @@ gantt.config.auto_scheduling_use_progress = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**Standardwert:** false
+
 
 ### Details
 
 :::note
- Diese Funktion ist nur in der PRO Edition verfügbar. 
+Diese Konfiguration wird entweder in der **auto_scheduling**- oder der **critical_path**-Erweiterung definiert, daher müssen Sie entweder das [auto_scheduling](guides/extensions-list.md#autoscheduling) oder das [critical_path](guides/extensions-list.md#critical-path) Plugin aktivieren. Lesen Sie die Details in den Artikeln zu [Auto Scheduling](guides/auto-scheduling.md) und [Critical Path](guides/critical-path.md).
 :::
 
-:::note
- Diese Einstellung ist Teil der **auto_scheduling** oder **critical_path** Erweiterung. Um sie zu verwenden, müssen Sie das [auto_scheduling](guides/extensions-list.md#autoscheduling) oder [critical_path](guides/extensions-list.md#criticalpath) Plugin aktivieren. Weitere Informationen finden Sie in den Dokumenten ["Auto Scheduling"](guides/auto-scheduling.md) und ["Kritischer Pfad"](guides/critical-path.md). 
-:::
+Wenn die Eigenschaft aktiviert ist, berücksichtigen der kritische Pfad, Slack und Auto Scheduling-Algorithmen den Fortschritt der Aufgaben, ähnlich wie diese Methoden in MS Project funktionieren, nämlich:
 
-Wenn aktiviert, berücksichtigen die Algorithmen für kritischen Pfad, Slack und Auto-Scheduling den Fortschritt der Tasks, ähnlich wie MS Project, und zwar konkret:
+1) Abgeschlossene Aufgaben (Aufgaben mit 100% Fortschritt) haben immer null Slack;
 
-1) Tasks, die als abgeschlossen markiert sind (mit 100% Fortschritt), haben immer einen Slack von null;
+2) Abgeschlossene Aufgaben werden aus den Auto Scheduling-Berechnungen ausgeschlossen. Beziehungen, die Vorgänger mit abgeschlossenen Aufgaben verbinden, werden ignoriert;
 
-2) Abgeschlossene Tasks werden von den Auto-Scheduling-Berechnungen ausgeschlossen. Abhängigkeiten, die Vorgänger mit abgeschlossenen Tasks verbinden, werden ignoriert;
-
-3) Abgeschlossene Tasks können nicht Teil des kritischen Pfads sein.
+3) Abgeschlossene Aufgaben können nicht kritisch sein.
 
 :::note
-Sample: [Verwendung des Fortschritts für Auto-Scheduling, kritischen Pfad und Slack-Berechnungen](https://snippet.dhtmlx.com/ju3km1uy) 
+Beispiel: [Fortschritt für Auto Scheduling, Critical Path und Slack-Berechnungen verwenden](https://snippet.dhtmlx.com/ju3km1uy)
 :::
 
 ### Related API
@@ -60,9 +66,9 @@ Sample: [Verwendung des Fortschritts für Auto-Scheduling, kritischen Pfad und S
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- ["Auto Scheduling"](guides/auto-scheduling.md)
-- ["Kritischer Pfad"](guides/critical-path.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
+- [Critical Path](guides/critical-path.md)
 
 ### Change log
-- hinzugefügt in v8.0
-
+- Die Eigenschaft wurde in v9.1 abgekündigt
+- Hinzugefügt in v8.0

@@ -1,6 +1,6 @@
 ---
 sidebar_label: calculateDuration
-title: calculateDuration method
+title: calculateDuration метод
 description: "вычисляет продолжительность задачи"
 ---
 
@@ -10,15 +10,15 @@ description: "вычисляет продолжительность задачи
 
 @short: Вычисляет продолжительность задачи
 
-@signature: calculateDuration: (config: object | Date, end_date: Date) =\> number
+@signature: calculateDuration: (config: object, end_date: Date) => number
 
 ### Parameters
 
-- `config` - (required) *object | Date* -        может быть либо [объектом конфигурации](#configurationobjectproperties), описывающим временной интервал, либо просто датой начала задачи
-- `end_date` - (required) *Date* - необязательный параметр, дата окончания задачи. Необходим, если первый параметр - это только <i>start_date</i>.
+- `config` - (required) *object | Date* - либо <a href="#configuration-object-properties">объект конфигурации временного диапазона</a> или начальная дата задачи
+- `end_date` - (optional) *Date* -  конечная дата задачи. Параметр обязателен, если первый параметр указан как start_date.
 
 ### Returns
-- ` duration` - (number) - продолжительность задачи в единицах, заданных опцией [duration_unit](api/config/duration_unit.md)
+- ` duration` - (number) - продолжительность задачи в единицах, указанных опцией [duration_unit](api/config/duration_unit.md)
 
 ### Example
 
@@ -26,44 +26,41 @@ description: "вычисляет продолжительность задачи
 gantt.config.work_time = true;
 gantt.init("gantt_here");
 
-// получить продолжительность рабочего времени между двумя датами 
-// (полезно для задач с несколькими рабочими календарями)
+// calculate worktime duration between specified dates 
+// (for specific task, if multiple working calendars used)
 gantt.calculateDuration({
     start_date: new Date(2013,02,15), 
     end_date: new Date(2013,02,25)
     /*,task: task*/
 });
 
-// или 
+// or 
 gantt.calculateDuration(task);
 
-// или 
+// or 
 gantt.calculateDuration(new Date(2013,02,15), new Date(2013,02,25)); //->6
 ~~~
 
 ### Details
 
 :::note
-
-Когда активирована опция [work_time](api/config/work_time.md), этот метод вычисляет продолжительность задачи на основе рабочего времени. 
- 
+Если опция [work_time](api/config/work_time.md) включена, метод рассчитывает продолжительность задачи в рабочем времени. 
 :::
 
-- Если задача не передана, по умолчанию используется [глобальный календарь рабочего времени](guides/working-time.md#multipleworktimecalendars). <br>
-- Этот метод также можно использовать напрямую с [объектом календаря](api/other/calendar.md).
+- Метод будет использовать глобальный календарь рабочего времени ([глобальный календарь рабочего времени](guides/working-time.md#getting-calendars)) если задача не указана. 
+- Кроме того, метод можно вызвать напрямую для объекта [calendar](api/other/calendar.md).
 
-## Свойства объекта конфигурации {#configurationobjectproperties}
+## Свойства конфигурационного объекта
 
-Объект конфигурации может включать следующие свойства:
+Конфигурационный объект может содержать следующие свойства:
 
-- **start_date** - (*Date*) дата начала планируемой задачи
-- **end_date** - (*Date*) дата окончания планируемой задачи
-* **task** - (*object*)    необязательный, объект задачи, для которой нужно вычислить продолжительность
+- **start_date** - (*Date*) дата начала задачи
+- **end_date** - (*Date*) дата завершения задачи
+* **task** - (*object*)    необязательный, объект задачи, продолжительность которой должна быть рассчитана
 
-### Related API
+### Связанные API
 - [calculateEndDate](api/method/calculateenddate.md)
 - [calculateTaskLevel](api/method/calculatetasklevel.md)
 
-### Related Guides
-- - [Расчёт рабочего времени](guides/working-time.md)
-
+### Связанные руководства
+- [Расчет рабочего времени](guides/working-time.md)

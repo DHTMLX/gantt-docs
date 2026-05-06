@@ -1,27 +1,27 @@
 ---
-title: "Custom Lightbox"
-sidebar_label: "Custom Lightbox"
+title: "사용자 정의 라이트박스"
+sidebar_label: "사용자 정의 라이트박스"
 ---
 
-# Custom Lightbox
+# 사용자 정의 라이트박스
 
-## 커스텀 라이트박스 생성 방법
+## 사용자 정의 라이트박스를 만드는 방법
 
-gantt에서 완전히 커스텀한 라이트박스를 만들고 기본 라이트박스를 대체하는 것이 가능합니다. 주요 방식은 두 가지가 있습니다:
+Gantt용으로 완전히 맞춤형 라이트박스를 만들고 기본 라이트박스를 이것으로 대체할 수 있습니다. 이를 수행하는 방법은 두 가지가 있습니다:
 
-1) [showLightbox](api/method/showlightbox.md) 메서드를 오버라이드하는 방법:
+1) [showLightbox](api/method/showlightbox.md) 메서드를 재정의하여 사용하기:
 
 ~~~js
 gantt.showLightbox = function(id){
-    // 커스텀 폼 코드
+    // code of the custom form
 }
 ~~~
 
-- id - (string/number) - 태스크 id
+- id - (string/number) - 작업 ID
 
-라이트박스 구현을 도울 수 있도록 [hideLightbox](api/method/hidelightbox.md) 메서드도 사용할 수 있습니다.
+라이트박스 구현에 도움이 되는 [hideLightbox](api/method/hidelightbox.md) 메서드도 있습니다.
 
-커스텀 라이트박스를 담을 HTML 컨테이너 "my-form"을 정의해보겠습니다:
+다음과 같이 맞춤형 라이트박스를 배치할 HTML 컨테이너 "my-form"를 만들어 보겠습니다:
 
 ~~~html
 <div id="my-form">
@@ -37,8 +37,8 @@ gantt.showLightbox = function(id){
 </div>
 ~~~
 
-커스텀 라이트박스를 생성하려면 다음과 같은 구성을 사용할 수 있습니다:
 
+그런 다음 맞춤형 라이트박스를 만들기 위한 구성은 아래와 유사하게 사용할 수 있습니다:
 
 ~~~js
 var taskId = null;
@@ -98,11 +98,11 @@ function remove() {
 }
 ~~~
 
-2) [onBeforeLightbox](api/event/onbeforelightbox.md) 이벤트를 사용하는 방법. 이 방식은 다음 단계를 포함합니다:
+2) [onBeforeLightbox](api/event/onbeforelightbox.md) 이벤트를 사용하는 방법. 이 경우 작업 흐름은 다음과 같습니다:
 
-- 라이트박스가 열리기 직전을 감지
-- 기본 라이트박스 표시를 방지
-- 커스텀 폼을 띄우고 태스크 데이터를 채우기
+- 라이트박스가 표시되려는 시점을 감지
+- 기본 라이트박스를 차단
+- 사용자 정의 양식을 표시하고 작업 데이터를 채웁니다.
 
 ~~~js
 gantt.attachEvent("onBeforeLightbox", function(id) {
@@ -112,7 +112,7 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
             text:"Create task?",
             callback: function(res){
                 if(res){
-                    //..값 적용
+                    //..apply values
                     delete task.$new;
                     gantt.addTask(task);
                 }else{
@@ -126,20 +126,20 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 });
 ~~~
 
-## 커스텀 폼에서의 액션 처리
+## 사용자 정의 양식에서의 작업 처리
 
-폼이 저장될 때, 폼 값을 직접 가져와서 [addTask](api/method/addtask.md), [updateTask](api/method/updatetask.md), [deleteTask](api/method/deletetask.md)와 같은 공개 API를 이용해 해당 태스크를 업데이트해야 합니다.
+사용자가 양식을 저장하면, 양식 값을 수동으로 가져와 공개 API인 [addTask](api/method/addtask.md), [updateTask](api/method/updatetask.md) 및 [deleteTask](api/method/deletetask.md)를 사용해 해당 작업을 업데이트해야 합니다.
 
-라이트박스가 새 태스크로 인해 열렸고(예: 'plus' 버튼 클릭 등), 사용자가 'Cancel'을 눌러 태스크 생성을 취소한 경우, 해당 태스크 객체에는 '$new' 속성이 설정되어 있음을 유의하세요.
+새 작업으로 인해 라이트박스가 트리거될 때(작업 생성을 되돌리려면 'Cancel'을 클릭해야 하는 경우 삭제되어야 함), 작업 객체에는 '$new' 속성이 설정되어 있다는 점에 유의하십시오.
 
-라이트박스 닫기 처리는 아래 예시처럼 할 수 있습니다. 액션의 종류 - 'save', 'cancel', 'delete' -는 "action" 파라미터로 전달됩니다:
+다음 예시와 같이 라이트박스 닫기를 처리할 수 있습니다. 동작 유형은 'save', 'cancel' 또는 'delete'이며 "action" 매개변수로 전달됩니다:
 
 ~~~js
 switch(action){
    case "save":
-      task.text = '';// 폼에서 값 적용
+      task.text = '';// 양식에서 값을 적용
 
-      // 새 태스크 추가 또는 기존 태스크 업데이트
+      // 새 작업을 추가하거나 이미 존재하는 작업을 업데이트
       if(task.$new){
         delete task.$new;
         gantt.addTask(task,task.parent)
@@ -149,7 +149,7 @@ switch(action){
 
       break;
    case "cancel":
-      // 새 태스크 생성을 취소하는 경우에만 삭제, 그렇지 않으면 아무 작업도 하지 않음
+      // 새 작업 생성을 위한 취소 팝업인 경우 삭제하고, 그렇지 않으면 아무 것도 하지 않음
       if(task.$new)
          gantt.deleteTask(id);
       break;
@@ -158,4 +158,3 @@ switch(action){
       break;
 }
 ~~~
-

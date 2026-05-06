@@ -1,14 +1,14 @@
 ---
 sidebar_label: work_time
-title: work_time config
-description: "berechnet Aufgabendauern basierend auf Arbeitszeit statt Kalenderzeit"
+title: work_time Konfiguration
+description: "ermöglicht die Berechnung der Dauer von Aufgaben in Arbeitszeit statt Kalenderzeit"
 ---
 
 # work_time
 
 ### Description
 
-@short: Berechnet Aufgabendauern basierend auf Arbeitszeit statt Kalenderzeit
+@short: Ermöglicht die Berechnung der Dauer von Aufgaben in Arbeitszeit statt Kalenderzeit
 
 @signature: work_time: boolean
 
@@ -22,16 +22,15 @@ gantt.config.work_time = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Related samples
-- [Duration includes only working days](https://docs.dhtmlx.com/gantt/samples/09_worktime/02_working_days.html)
-- [Calculate working hours](https://docs.dhtmlx.com/gantt/samples/09_worktime/01_working_hours_per_day.html)
+- [Dauer umfasst nur Arbeitstage](https://docs.dhtmlx.com/gantt/samples/09_worktime/02_working_days.html)
+- [Arbeitsstunden berechnen](https://docs.dhtmlx.com/gantt/samples/09_worktime/01_working_hours_per_day.html)
 
 ### Related API
 - [correct_work_time](api/config/correct_work_time.md)
 - [skip_off_time](api/config/skip_off_time.md)
 
 ### Related Guides
-- ["Arbeitszeitberechnung"](guides/working-time.md)
-
+- [Arbeitszeitberechnung](guides/working-time.md)

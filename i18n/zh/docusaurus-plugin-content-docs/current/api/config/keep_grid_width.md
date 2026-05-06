@@ -1,16 +1,18 @@
 ---
 sidebar_label: keep_grid_width
-title: keep_grid_width config
-description: "在调整列宽时保持原始 grid 宽度不变"
+title: keep_grid_width 配置
+description: "“says” 用于在调整列宽时保持初始网格宽度"
 ---
 
 # keep_grid_width
+
 :::info
  此功能仅包含在 PRO 版本中。 
-:::
+::: 
+
 ### Description
 
-@short: 在调整列宽时保持原始 grid 宽度不变
+@short: 'says' 用于在调整列宽时保持初始网格宽度
 
 @signature: keep_grid_width: boolean
 
@@ -28,11 +30,10 @@ gantt.config.keep_grid_width = true; /*!*/
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**默认值：** false
 
 ### Related samples
-- [Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
-
+- [网格列调整事件](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
 
 ### Related Guides
 - [指定列](guides/specifying-columns.md)

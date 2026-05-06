@@ -1,17 +1,17 @@
 ---
 title: "dhtmlxGantt с PHP:Slim"
-sidebar_label: "PHP:Slim"
+sidebar_label: "PHP: Slim"
 ---
 
 # dhtmlxGantt с PHP:Slim
 
-В этом руководстве описаны все необходимые шаги для создания диаграммы Gantt на PHP с использованием Slim 4 Framework и RESTful API на стороне сервера.
+В этом руководстве вы найдете необходимую информацию о том, как создать Gantt-график на PHP с использованием Slim 4 Framework и RESTful API на сервере.
 
 :::note
-Это руководство использует Slim Framework v4.x. Если вы работаете с более старой версией, обратитесь к [руководству по Slim Framework v3.x](integrations/php/howtostart-php.md).
+Это руководство использует Slim Framework v4.x. Если вам нужен пример для более старой версии, ознакомьтесь с руководством [Slim Framework v3.x](integrations/php/howtostart-php.md).
 :::
 
-Также доступны руководства по интеграции с другими платформами и фреймворками:
+Есть руководства, предназначенные для интеграции на стороне сервера с использованием других платформ и фреймворков:
 
 - [dhtmlxGantt с ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md)
 - [dhtmlxGantt с ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
@@ -21,54 +21,54 @@ sidebar_label: "PHP:Slim"
 - [dhtmlxGantt с Salesforce LWC](integrations/salesforce/howtostart-salesforce.md)
 - [dhtmlxGantt с Ruby on Rails](integrations/other/howtostart-ruby.md)
 
-В этом руководстве для маршрутизации будет использоваться [Slim 4](https://www.slimframework.com/), а в качестве хранилища данных - MySQL. Операции CRUD будут реализованы с помощью PDO, что обеспечит гибкость и позволит использовать их с другими фреймворками.
+Мы будем использовать фреймворк [Slim 4](https://www.slimframework.com/) для маршрутизации и MySQL как хранилище данных. Логика CRUD будет опираться на PDO и будет достаточно общей, чтобы пригодиться и в других фреймворках.
 
 :::note
-Полный исходный код доступен [на GitHub](https://github.com/DHTMLX/gantt-howto-php).
+Полный исходный код доступен на GitHub: [https://github.com/DHTMLX/gantt-howto-php](https://github.com/DHTMLX/gantt-howto-php).
 :::
 
 ## Шаг 1. Инициализация проекта
 
 ### Создание проекта
 
-Мы начнем с использования [skeleton-приложения](https://github.com/slimphp/Slim-Skeleton), предоставленного для Slim 4.
+Мы будем использовать [ skeleton-приложение](https://github.com/slimphp/Slim-Skeleton) для фреймворка Slim 4.
 
-Для начала импортируйте проект и установите зависимости с помощью Composer:
+Во-первых, нам нужно импортировать проект и установить его. Это можно сделать с помощью Composer:
 
 ~~~php
 php composer.phar create-project slim/slim-skeleton gantt-rest-php
 ~~~
 
-Если Composer установлен глобально в вашей системе, используйте команду:
+Если у вас Composer установлен глобально, можно применить следующую команду:
 
 ~~~php
 composer create-project slim/slim-skeleton gantt-rest-php
 ~~~
 
-Далее убедитесь, что установка прошла успешно: перейдите в папку проекта и запустите веб-сервер:
+Затем следует проверить, что всё работает корректно. Для этого перейдите в папку приложения и запустите веб-сервер:
 
 ~~~php
 cd gantt-rest-php
 php -S 0.0.0.0:8080 -t public public/index.php
 ~~~
 
-Затем откройте [http://127.0.0.1:8080](http://127.0.0.1:8080) в браузере, чтобы увидеть стандартную страницу приветствия Slim.
+Далее вы сможете открыть [http://127.0.0.1:8080](http://127.0.0.1:8080) в браузере — вы увидите страницу по умолчанию Slim.
 
 ## Шаг 2. Добавление Gantt на страницу
 
-Следующий шаг - создать страницу, на которой будет отображаться диаграмма Gantt. Это делается в два простых этапа.
+Следующий шаг — создать страницу с нашим графиком Gantt. Он включает в себя две простые подзадачи, описанные ниже.
 
 ### Создание представления
-Начните с создания файла *basic.html* в папке `app/templates`. Этот файл будет содержать диаграмму Gantt и необходимую настройку для загрузки данных.
+Создайте файл *basic.html* в папке `app` **app/templates**. Мы разместим там график Gantt и настроим предусловия для загрузки данных.
 
-Вот полный код:
+Полный код выглядит так:
 
-**app/templates/basic.html**
-~~~html
+
+~~~html title="app/templates/basic.html"
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-type" content="text/html; charset="utf-8"">
+  <meta http-equiv="Content-type" content="text/html; charset='utf-8'">
 
   <script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
   <link href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css" rel="stylesheet">
@@ -91,14 +91,14 @@ php -S 0.0.0.0:8080 -t public public/index.php
 </html>
 ~~~
 
-Это создаёт на странице пустую диаграмму Gantt. Пользователи могут создавать и изменять задачи и связи, но все изменения не сохраняются после обновления страницы.
+Этот код добавит на страницу пустой Gantt-график. Пользователь сможет создавать и изменять задачи и связи, но после перезагрузки страницы изменения не сохранятся.
 
 ### Настройка маршрутов
 
-Чтобы новая страница была доступна в браузере, добавьте следующий маршрут в **app/routes.php**:
+После добавления новой страницы нужно сделать её доступной через браузер. Добавьте маршрут в файл **app/routes.php**:
 
-**app/routes.php**
-~~~php
+
+~~~php title="app/routes.php"
 $app->get('/', function (Request $request, Response $response) {
 $payload = file_get_contents(__DIR__.'/templates/basic.html');
 $response->getBody()->write($payload);
@@ -106,24 +106,23 @@ return $response;
 });
 ~~~
 
-Перезапустите приложение командой:
+Запустите приложение заново:
 
-**command line**
 ~~~js
 php -S 0.0.0.0:8080 -t public public/index.php
 ~~~
 
-Теперь при переходе по адресу [http://127.0.0.1:8080/](http://127.0.0.1:8080/) в браузере на странице отобразится диаграмма Gantt.
-
+Теперь вы можете открыть [http://127.0.0.1:8080/](http://127.0.0.1:8080/) в браузере, и вы увидите, что на странице отрисован Gantt.
+ 
 ![gantt_slim_in](/img/gantt_slim_in.png)
 
 ## Шаг 3. Настройка базы данных
 
-После отображения диаграммы Gantt следующим шагом будет создание базы данных и подключение её к приложению.
+Итак, у вас пустой Gantt. Пришло время создать базу данных и подключить её к нашему приложению.
 
 ### Создание базы данных
 
-Базу данных можно создать с помощью любого удобного клиента MySQL (например, phpMyAdmin) или напрямую из консоли. Ниже приведён SQL-скрипт для создания простой базы данных с двумя таблицами.
+Вы можете создать базу данных через ваш любимый mysql-клиент (например, phpMyAdmin) или через консоль. Ниже приведён SQL-запрос для создания простой базы данных с двумя таблицами.
 
 ~~~js
 CREATE DATABASE  IF NOT EXISTS `gantt`;
@@ -147,7 +146,9 @@ CREATE TABLE `gantt_tasks` (
 );
 ~~~
 
-После создания базы данных таблицу *gantt_tasks* можно заполнить тестовыми данными. Используйте следующие SQL-команды:
+Когда база данных готова, можно перейти к заполнению таблицы *gantt_tasks* тестовыми данными.
+Для этого можно использовать следующий образец SQL:
+
 
 ~~~js
 INSERT INTO `gantt_tasks` VALUES ('1', 'Project #1', '2020-03-31 00:00:00', 
@@ -167,48 +168,50 @@ INSERT INTO `gantt_tasks` VALUES ('7', 'Task #2.1', '2020-04-04 00:00:00',
 INSERT INTO `gantt_tasks` VALUES ('8', 'Task #2.2', '2020-04-05 00:00:00', 
   '2', '0.9', '3');
 ~~~
-Более подробный пример приведён [здесь](guides/loading.md#standarddatabasestructure).
+Подробнее см. в примере [здесь](guides/loading.md#databasestructure).
 
-После завершения настройки проекта следующим шагом будет загрузка данных.
+Итак, мы закончили подготовку проекта. Теперь можно переходить к загрузке данных.
 
 ## Шаг 4. Загрузка данных
 
-Теперь необходимо настроить загрузку данных из базы данных. На стороне клиента данные будут запрашиваться с помощью метода [gantt.load](api/method/load.md):
+Пришло время реализовать загрузку из базы данных. 
+С клиентской стороны данные будут запрашиваться с помощью метода [gantt.load](api/method/load.md):
 
-**app/templates/basic.html**
-~~~js
+
+~~~js title="app/templates/basic.html"
 gantt.config.date_format = "%Y-%m-%d %H:%i:%s";/*!*/
 
 gantt.init("gantt_here");
 gantt.load("/data");/*!*/
 ~~~
 
-Эта команда отправляет AJAX-запрос по указанному URL и ожидает, что ответ будет содержать данные Gantt в [формате JSON](guides/supported-data-formats.md#json).
+Эта команда отправит AJAX-запрос по указанному URL, ответ должен содержать данные Gantt в формате [JSON](guides/supported-data-formats.md). 
 
-Также обратите внимание на значение [date_format](api/config/date_format.md). Оно сообщает Gantt о формате даты, используемом в источнике данных, что позволяет корректно парсить даты на клиенте.
+Также обратите внимание на значение [date_format](api/config/date_format.md). 
+Таким образом мы сообщаем Gantt какой формат дат будет использовать источник данных, чтобы клиентская сторона могла их разобрать.
 
-Далее нужно добавить обработчик этого запроса на сервере. Откройте файл *app/routes.php* и добавьте новый [маршрут](https://www.slimframework.com/docs/v4/objects/routing.html):
+Следовательно, на бэкенде нужно добавить обработчик для такого запроса. Откройте файл *app/routes.php* и добавьте новый маршрут [route](https://www.slimframework.com/docs/v4/objects/routing.html):
 
-**app/routes.php**
-~~~php
+
+~~~js title="app/routes.php"
 $app->get('/data',  'getGanttData');
 ~~~
 
-После этого реализуйте функцию *getGanttData*. Чтобы *index.php* оставался чистым, весь код, связанный с Gantt, будет размещён в отдельном файле.
+Далее необходимо реализовать логику метода *getGanttData*. Чтобы не загромождать *index.php*, вынесем всю логику, связанную с gantt, в отдельный файл.
 
-Создайте новый файл *app/gantt.php* и добавьте следующий код:
+Создадим новый файл *app/gantt.php* и добавим необходимый код:
 
-**app/gantt.php**
-~~~php
+
+~~~js title="app/gantt.php"
 <?php
 
 function getConnection()
 {
     return new PDO("mysql:host=localhost;dbname=gantt", "root", "root", 
-    // где "host" - имя хоста,
-    // "dbname" - имя базы данных
-    // "root" - имя пользователя
-    // "root" - пароль
+    // where "host" - the host name,
+    // "dbname" - the database name
+    // "root" - the user name
+    // "root" - the password
     [
       PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
       PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
@@ -238,10 +241,10 @@ function getGanttData($request, $response, $args) {
 };
 ~~~
 
-Затем подключите *app/gantt.php* в *app/routes.php*:
+И подключите *app/gantt.php* в *app/routes.php*:
 
-**app/routes.php**
-~~~php
+
+~~~js title="app/routes.php"
 <?php
 declare(strict_types="1);"
  
@@ -252,7 +255,7 @@ use PsrHttpMessageServerRequestInterface as Request;
 use SlimApp;
 use SlimInterfacesRouteCollectorProxyInterface as Group;
  
-// Добавление dhtmlxGantt CRUD
+// Add dhtmlxGantt CRUD
 require __DIR__ . "/gantt.php";
  
 return function (App $app) {
@@ -271,24 +274,24 @@ return function (App $app) {
 };
 ~~~
 
-Краткое описание приведённого выше кода:
+Рассмотрим вышеописанный код детально:
 
-- [Маршрут](https://www.slimframework.com/docs/v4/objects/routing.html) для действия с данными определён в *app/routes.php*.
-- В обработчике маршрута все задачи и связи выбираются из базы данных и отправляются клиенту в формате [JSON](guides/supported-data-formats.md#json).
-- Для объектов задач добавляется свойство *open*, чтобы дерево задач было раскрыто по умолчанию.
+- мы определили [маршрут](https://www.slimframework.com/docs/v4/objects/routing.html) для нашего действия data в *app/routes.php*
+- в обработчике этого маршрута читаем все задачи и связи из базы данных и отправляем клиенту как [JSON](guides/supported-data-formats.md)
+- мы также добавили свойство open к объектам задач. Оно будет указывать, что дерево задач будет открыто по умолчанию
 
-На этом загрузка данных в Gantt реализована. Открыв [http://127.0.0.1:8080/](http://127.0.0.1:8080/), вы увидите диаграмму Gantt, заполненную ранее добавленными тестовыми данными.
+Итак, реализована загрузка данных в Gantt.
+Откройте [http://127.0.0.1:8080/ ](http://127.0.0.1:8080/) и вы увидите, что Gantt теперь заполнен тестовыми данными, которые мы добавили на предыдущем шаге.
 
 ![slim_load](/img/slim_load.png)
 
 ## Шаг 5. Сохранение изменений
 
-Следующий шаг - сохранение изменений, внесённых на клиенте, обратно на сервер. Обычно для этого используется библиотека [dataProcessor](guides/server-side.md#technique), встроенная в Gantt.
+Наш следующий шаг — реализовать сохранение изменений, сделанных на клиентской стороне, на сервер. Обычно это делается с использованием библиотеки dataProcessor, которая встроена в Gantt.
+Откройте *basic.html* и добавьте следующие строки кода:
 
-Откройте *basic.html* и добавьте следующие строки:
 
-**app/templates/basic.html**
-~~~js
+~~~js title="app/templates/basic.html"
 gantt.config.date_format = "%Y-%m-%d %H:%i:%s";
 
 gantt.init("gantt_here");
@@ -299,12 +302,13 @@ dp.init(gantt);/*!*/
 dp.setTransactionMode("REST");/*!*/
 ~~~
 
-dataProcessor отслеживает действия пользователя, такие как добавление, изменение или удаление данных, и отправляет соответствующие AJAX-запросы на сервер. Он работает в режиме REST, используя разные HTTP-методы для различных действий. [Полный список маршрутов](guides/server-side.md#requestresponsedetails) доступен в документации.
+DataProcessor будет реагировать на каждое действие на клиенте (например, добавление данных в диаграмму, изменение или удаление) отправляя AJAX-запрос на сервер.
+DataProcessor будет работать в режиме REST, что означает использование различных HTTP-методов для разных действий; ниже приведён полный список маршрутов (routes) [guides/server-side.md#requestresponsedetails].
 
-Далее необходимо добавить эти маршруты в приложение и реализовать их логику. Сначала обновите *app/routes.php*:
+Итак, нужно добавить эти маршруты в наше приложение и реализовать необходимую логику. Во-первых, перейдите в файл *app/routes.php*:
 
-**app/routes.php**
-~~~php
+
+~~~js title="app/routes.php"
 <?php
 
 declare(strict_types="1);"
@@ -316,7 +320,7 @@ use PsrHttpMessageServerRequestInterface as Request;
 use SlimApp;
 use SlimInterfacesRouteCollectorProxyInterface as Group;
  
-// Добавление dhtmlxGantt CRUD
+// Add dhtmlxGantt CRUD
 require __DIR__ . "/gantt.php";
  
 return function (App $app) {
@@ -338,10 +342,10 @@ return function (App $app) {
 };
 ~~~
 
-После добавления маршрутов можно реализовать соответствующие методы:
+Маршруты добавлены, теперь реализуем методы, на которые мы сослались:
 
-**app/gantt.php**
-~~~php
+
+~~~js title="app/gantt.php"
 function getConnection()
 {
     return new PDO("mysql:host=localhost;dbname=gantt", "root", "root", [
@@ -517,35 +521,39 @@ function deleteLink($request, $response, $args) {
 }
 ~~~
 
-Хотя код довольно объёмен, каждая функция проста: задачи и связи создаются, обновляются или удаляются. При добавлении возвращается идентификатор созданного элемента для клиента.
+Как видите, хотя кода довольно много, каждый метод прост и понятен: мы создаём/обновляем/удаляем задачи и связи. 
+Операция вставки должна вернуть клиенту идентификатор новой записи в базе данных.
 
-Обратите внимание, что связи между данными в базе здесь не обрабатываются: например, вложенные задачи или связанные связи не удаляются автоматически при удалении задачи. По умолчанию это поведение реализовано на клиенте - Gantt отправляет отдельные запросы на удаление для каждой дочерней задачи и связи.
+Обратите внимание, что здесь мы не обрабатываем связи в базе данных, например не удаляем вложенные задачи или связанные связи при удалении задач. 
+Это обрабатывается на клиентской стороне по умолчанию. Gantt будет посылать отдельный запрос для каждой дочерней задачи и каждой связи, которые нужно удалить.
 
-Если вы хотите реализовать это на сервере, необходимо включить настройку [cascade_delete](api/config/cascade_delete.md).
+Если вы хотите обрабатывать это на бэкенде, вам нужно включить конфигурацию cascade_delete.
 
-Теперь приложение готово к запуску. Перейдите по адресу [http://127.0.0.1:8080](http://127.0.0.1:8080), чтобы увидеть полностью работоспособную диаграмму Gantt.
+Теперь всё готово. Запустите наше приложение. Откройте [http://127.0.0.1:8080](http://127.0.0.1:8080/) и наслаждайтесь красивым Gantt-графиком, который мы только что создали.
 
 ![slim4_ready](/img/slim4_ready.png)
 
 ## Сохранение порядка задач {#storingtheorderoftasks}
 
-На стороне клиента Gantt поддерживает [изменение порядка задач](guides/reordering-tasks.md) с помощью drag-and-drop. Если вы используете эту функцию, порядок задач необходимо сохранять в базе данных. [Общий обзор доступен здесь](guides/server-side.md#storingtheorderoftasks).
+Клиентская часть Gantt позволяет [перемещать задачи в порядке](guides/reordering-tasks.md) с помощью drag и drop. Так что если вы используете эту функцию, вам придётся сохранять этот порядок в базе данных. 
+Вы можете [посмотреть общую схему здесь](guides/server-side.md#storingtheorderoftasks).
 
-Далее необходимо добавить эту возможность в приложение.
+Давайте добавим эту функцию в наше приложение.
 
-### Включение переупорядочивания задач на клиенте
+### Разрешение изменения порядка задач на клиенте
 
-Для начала пользователям необходимо предоставить возможность менять порядок задач напрямую в интерфейсе. Откройте файл *basic.html* и измените конфигурацию Gantt следующим образом:
+Во-первых, нужно позволить пользователям менять порядок задач в UI. Откройте файл *basic.html* и обновите конфигурацию gantt:
 
-**app/templates/basic.html**
-~~~js
+
+~~~js title="app/templates/basic.html"
 gantt.config.order_branch = true;/*!*/
 gantt.config.order_branch_free = true;/*!*/
 
 gantt.init("gantt_here");
 ~~~
 
-Далее эти изменения должны быть отражены на сервере. Порядок задач будет сохраняться в столбце с именем "sortorder". Пример определения таблицы *gantt_tasks* может выглядеть так:
+Теперь отразим эти изменения на бэкенде. Мы будем сохранять порядок в колонке с названием "sortorder". Объявление обновлённой таблицы *gantt_tasks* может выглядеть следующим образом:
+
 
 ~~~js
 CREATE TABLE `gantt_tasks` (
@@ -559,18 +567,18 @@ CREATE TABLE `gantt_tasks` (
 );
 ~~~
 
-Если таблица уже существует, можно добавить новый столбец следующим образом:
+Или можно добавить упомянутый столбец в существующую таблицу:
 
 ~~~js
 ALTER TABLE `gantt_tasks` ADD COLUMN `sortorder` int(11) NOT NULL;
 ~~~
 
-После обновления базы данных необходимо соответствующим образом скорректировать CRUD-операции в *app/gantt.php*.
+Далее нужно обновить CRUD в *app/gantt.php*.
 
-1. Эндпоинт <b>GET /data</b> должен возвращать задачи, отсортированные по столбцу `sortorder`:
+1 . <b>GET /data</b> должен возвращать задачи, отсортированные по столбцу sortorder: 
+  
 
-**app/gantt.php**
-~~~php
+~~~js title="app/gantt.php"
 function getGanttData($request, $response, $args) {
   $db = getConnection();
   $result = [
@@ -593,10 +601,10 @@ function getGanttData($request, $response, $args) {
 };
 ~~~
 
-2. При добавлении новых задач им должен назначаться начальный `sortorder`:
+2 . Новые задачи должны получать начальное значение `sortorder`: 
 
-**app/gantt.php**
-~~~php
+
+~~~js title="app/gantt.php"
 function addTask($request, $response, $args) {
   $task = getTask($request->getParsedBody());
   $db = getConnection();
@@ -625,11 +633,11 @@ function addTask($request, $response, $args) {
 }
 ~~~
 
-3. Наконец, при изменении порядка задач пользователем, порядок должен обновляться соответствующим образом [как описано здесь](guides/server-side.md#storingtheorderoftasks):
+3 . Наконец, когда пользователь меняет порядок задач, порядок задач должен обновляться:
 
-**app/gantt.php**
-~~~php
-// update a task
+
+~~~js title="app/gantt.php"
+// обновление задачи
 function updateTask($request, $response, $args) {
   $sid = $request->getAttribute("id");
   parse_str(file_get_contents("php://input"), $body);
@@ -696,23 +704,23 @@ function updateOrder($taskId, $target, $db){
 }
 ~~~
 
-Полный рабочий пример доступен на GitHub: [https://github.com/DHTMLX/gantt-howto-php](https://github.com/DHTMLX/gantt-howto-php).
+Вы можете проверить готовое демо на GitHub: https://github.com/DHTMLX/gantt-howto-php
 
 ## Использование dhtmlxConnector
 
-Другой вариант реализации серверной части на PHP - использовать [библиотеку dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html). Подробное руководство доступно [здесь](integrations/php/howtostart-connector.md).
+Альтернативно, бэкенд на PHP можно реализовать с использованием библиотеки [dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html). Подробное руководство можно найти [здесь](integrations/php/howtostart-connector.md). 
+
 
 ## Безопасность приложения
 
-Сам Gantt не обеспечивает защиту от распространённых угроз безопасности, таких как SQL-инъекции, XSS или CSRF. Обеспечение безопасности приложения лежит на разработчиках серверной части. Подробнее читайте [в этой статье](guides/app-security.md).
+Gantt не предоставляет каких-либо средств защиты от различных угроз, таких как SQL-инъекции или XSS и CSRF-атаки. Важна ответственность за безопасность приложения лежит на разработчиках, реализующих бэкенд. Подробности читайте в соответствующей статье руководства guid es/app-security.md.
 
 ## Устранение неполадок
 
-Если после выполнения этих шагов Gantt не отображает задачи и связи, обратитесь к руководству по устранению неполадок: [Устранение проблем интеграции с backend](guides/troubleshooting.md). В нём приведены методы для выявления и решения распространённых проблем.
+Если вы выполнили вышеуказанные шаги по интеграции Gantt с PHP, но Gantt не рендерит задачи и связи на странице, посмотрите статью Troubleshooting Backend Integration Issues в guides/troubleshooting.md. Она описывает способы выявления причин проблем.
 
 ## Что дальше
 
-На этом этапе Gantt полностью работоспособен. Исходный код полностью доступен на [GitHub](https://github.com/DHTMLX/gantt-howto-php), где его можно клонировать или скачать для собственного использования.
+Теперь у вас полнофункциональный Gantt. Вы можете просмотреть полный код на [GitHub](https://github.com/DHTMLX/gantt-howto-php), клонировать или скачать его и использовать в своих проектах.
 
-Для дальнейшего изучения ознакомьтесь с [руководствами по различным возможностям Gantt](guides.md) или с туториалами по [интеграции Gantt с другими backend-фреймворками](integrations/howtostart-guides.md).
-
+Вы также можете посмотреть [руководства по многочисленным функциям Gantt](guides.md) или ознакомительные материалы по [интеграции Gantt с другими backend-фреймворками](integrations/howtostart-guides.md).

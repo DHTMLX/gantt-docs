@@ -1,23 +1,23 @@
 ---
 sidebar_label: getLinkNode
 title: getLinkNode method
-description: "获取对应指定依赖链接的HTML元素"
+description: "返回指定依赖链接的 HTML 元素"
 ---
 
 # getLinkNode
 
 ### Description
 
-@short: 获取对应指定依赖链接的HTML元素
+@short: 返回指定依赖链接的 HTML 元素
 
 @signature: getLinkNode: (id: string | number) =\> HTMLElement
 
 ### Parameters
 
-- `id` - (required) *string | number* -    链接的id
+- `id` - (required) *string | number* -    该链接的 ID
 
 ### Returns
-- `node` - (HTMLElement) - 表示该链接的HTML元素
+- `node` - (HTMLElement) - 该链接的 HTML 元素
 
 ### Example
 

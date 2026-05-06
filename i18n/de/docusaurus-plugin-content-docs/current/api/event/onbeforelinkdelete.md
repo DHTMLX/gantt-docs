@@ -1,38 +1,37 @@
 ---
 sidebar_label: onBeforeLinkDelete
-title: onBeforeLinkDelete event
-description: "Wird ausgelöst, kurz bevor ein Link vom Benutzer gelöscht wird"
+title: onBeforeLinkDelete Ereignis
+description: "Wird ausgelöst, bevor der Benutzer einen Link löscht"
 ---
 
 # onBeforeLinkDelete
 
 ### Description
 
-@short: Wird ausgelöst, kurz bevor ein Link vom Benutzer gelöscht wird
+@short: Wird ausgelöst, bevor der Benutzer einen Link löscht
 
 @signature: onBeforeLinkDelete: (id: string | number, link: Link) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - Die Kennung des Links
-- `link` - (required) *Link* - Das Link-Objekt selbst
+- `id` - (required) *string | number* - die Link-ID
+- `link` - (required) *Link* - das Link-Objekt
 
 ### Returns
-- ` result` - (boolean) - Bestimmt, ob die Standardaktion des Events ausgeführt wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
+- ` result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeLinkDelete", function(id,link){
-    // Hier kann benutzerdefinierte Logik hinzugefügt werden
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
     return true;
 });
 ~~~
 
 ### Details
 
-Dieses Event kann blockiert werden. Wenn false zurückgegeben wird, wird das Löschen des Links verhindert.
+Das Event ist blockierbar. Geben Sie false zurück, um das Löschen des Links abzubrechen.
 
 ### Related API
 - [deleteLink](api/method/deletelink.md)
-

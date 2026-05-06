@@ -3,45 +3,43 @@ title: "Application Security"
 sidebar_label: "Application Security"
 ---
 
-# Application Security
+# Anwendungssicherheit
 
-DHTMLX Gantt ist eine clientseitige JavaScript-Bibliothek, die entwickelt wurde, um Gantt-Funktionen nahtlos in verschiedene Webanwendungen zu integrieren. 
-Wir schränken die Funktionalität von Gantt nicht auf eine Weise ein, die zwar die Sicherheit erhöhen, aber gleichzeitig die Möglichkeiten begrenzen würde. 
-Dadurch können Sie die meisten Gantt-Funktionen an die Anforderungen Ihres Projekts anpassen.
+DHTMLX Gantt ist eine client-seitige JavaScript-Bibliothek, die eine reibungslose Integration der Gantt-Funktionalität in verschiedene Web-Apps ermöglicht.
+Daher schränken wir die funktionalen Fähigkeiten unseres Gantt nicht ein, die die Sicherheit der Anwendung verbessern könnten, aber gleichzeitig die verfügbaren Möglichkeiten verringern würden.
+Daher können Sie die meisten Gantt-Funktionen entsprechend den Anforderungen Ihres Projekts anpassen.
 
-Es ist jedoch wichtig zu beachten, dass DHTMLX Gantt selbst keinen Schutz vor Bedrohungen wie SQL-Injection, XSS oder CSRF-Angriffen bietet. 
-Die Sicherheit Ihres Projekts hängt davon ab, wie Sie Ihre Anwendung konfigurieren und schützen. 
-Dieser Artikel bietet nützliche Einblicke und Empfehlungen zur HTML-Säuberung.
+Allerdings sollten Sie bedenken, dass DHTMLX Gantt von sich aus keine Mittel bereitstellt, um Ihre App vor Bedrohungen wie SQL-Injektionen oder XSS- und CSRF-Angriffen zu schützen. Es liegt also an Ihnen, die Sicherheit Ihres Projekts durch die Bereitstellung der erforderlichen Konfigurationseinstellungen sicherzustellen.
+In diesem Artikel finden Sie einige relevante Informationen und Empfehlungen zur HTML-Sanitierung.
 
 ## Grundlegende Sicherheitsmaßnahmen
 
-Cybersicherheit ist ein breites und komplexes Feld, das nicht vollständig mit einer einfachen Checkliste abgedeckt werden kann. 
-Es gibt jedoch praktische Schritte, die die wichtigsten Aspekte abdecken und dabei helfen, häufige Risiken zu minimieren.
+Obwohl Cybersicherheit eine komplexe Disziplin ist und nicht wirklich mit einem einzigen Instruktionsschritt abgedeckt werden kann, empfehlen wir, die praktischen Schritte zu befolgen, die die Grundlagen abdecken und dabei helfen, die häufigsten Bedrohungen zu mildern.
 
 **1. Verwenden Sie Content Security Policy (CSP) in Ihrer Anwendung**
 
-Das Hinzufügen eines CSP-Headers wie dem folgenden kann verhindern, dass XSS-Skripte in Ihrer App ausgeführt werden:
+Ein CSP-Header, so einfach wie der folgende, verhindert, dass XSS-Code in Ihrer Anwendung ausgeführt wird:
 
-~~~
+~~~ 
 Content-Security-Policy: script-src 'self'
-~~~
+~~~ 
 
-Ihre Anwendung benötigt möglicherweise eine detailliertere Richtlinie, aber das Blockieren der Ausführung von Inline-Skripten kann viele XSS- und CSRF-Angriffe verhindern.
+Ihre App erfordert möglicherweise eine komplexere Richtlinie, aber das Deaktivieren der Ausführung von Inline-Skripten würde eine große Anzahl von XSS- und CSRF-Angriffen verhindern.
 
-**2. Bereinigen Sie Benutzereingaben im Backend, bevor Sie sie in der Datenbank speichern**
+**2. Benutzereingaben im Backend vor dem Speichern in der Datenbank sanitieren**
 
-Speichern Sie beim Hinzufügen neuer Einträge keine Benutzereingaben direkt und ungeprüft:
+Bei der Einfügung eines neuen Datensatzes sollten Werte nicht unverändert gespeichert werden:
 
-~~~
+~~~ 
 db.query("INSERT INTO gantt_tasks(text, start_date, duration, progress, parent)"
     + " VALUES (?,?,?,?,?)",
     [task.text, task.start_date, task.duration, task.progress, task.parent])
 ~~~
 
-Es ist besser, das Eingabeformat zu überprüfen und schädliche Inhalte zu entfernen. 
-In Node.js können Sie zum Beispiel Bibliotheken wie [DOMPurify](https://www.npmjs.com/package/dompurify) verwenden:
+Sie sollten sicherstellen, dass sie dem erwarteten Format entsprechen und potenziell bösartigen Inhalt entfernen.
+Wenn Sie Node.js verwenden, kann dies mit einer der zahlreichen verfügbaren Bibliotheken erfolgen, z. B. [DOMPurify](https://www.npmjs.com/package/dompurify):
 
-~~~
+~~~ 
 const createDOMPurify = require('dompurify');
 const { JSDOM } = require('jsdom');
 
@@ -53,17 +51,16 @@ const DOMPurify = createDOMPurify(window);
 db.query("INSERT INTO gantt_tasks(text, start_date, duration, progress, parent)"
     + " VALUES (?,?,?,?,?)",
     [task.text, task.start_date, task.duration, task.progress, task.parent]
-        .map((input) => DOMPurify.sanitize(input))
+        .map((input) => DOMPurify.sanitize(input)))
 ~~~
 
-**3. Maskieren Sie HTML-Entities, bevor Sie Daten anzeigen**
+**3. HTML-Entities vor dem Rendern der Daten escapen**
 
-Um zu verhindern, dass HTML-Markup bei der Anzeige von Daten ausgeführt wird, sollten Sie HTML-Zeichen, die von Benutzern eingegeben wurden, maskieren, bevor Sie die Daten an Gantt übergeben. 
-So können Sie dies mit der [validator](https://www.npmjs.com/package/validator)-Bibliothek tun:
+Wenn Sie nicht möchten, dass displaybare Werte HTML-Markup enthalten, das während des Renderings ausgeführt wird, stellen Sie sicher, HTML-Zeichen zu escapen, die Benutzer eingegeben haben, bevor Sie die Daten in Gantt einspeisen. Hier ist ein Beispiel der Verwendung der [validator](https://www.npmjs.com/package/validator)-Bibliothek:
 
-~~~
+~~~ 
 const validator = require('validator');
-...
+... 
 
 // GET /data
 
@@ -77,7 +74,7 @@ Promise.all([
     tasks.forEach((task) => {
         Object.entries(task).forEach(([key, value]) => {
             if(typeof value === "string") {
-                task[key] = validator.escape(value); //#!
+                task[key] = validator.escape(value); //#! 
             }
         });
         task.open = true;
@@ -87,7 +84,7 @@ Promise.all([
     links.forEach((link) => {
         Object.entries(link).forEach(([key, value]) => {
             if(typeof value === "string") {
-                link[key] = validator.escape(value); //#!
+                link[key] = validator.escape(value); //#! 
             }
         });
     });
@@ -99,55 +96,49 @@ Promise.all([
    });
 ~~~
 
-**4. Wenn Sie mit einer SQL-Datenbank arbeiten, vermeiden Sie das Erstellen von SQL-Abfragen durch das Verketten von Zeichenfolgen. Verwenden Sie stattdessen parametrisierte Abfragen, ORM oder Query Builder**
+**4. Wenn Sie mit einer SQL-Datenbank arbeiten, vermeiden Sie das Erstellen von SQL-Abfragen durch Aneinanderreihen von Zeichenfolgen. Verwenden Sie parametrisierten Abfragen, ORM oder SQL-Builder stattdessen**
 
-Dies hilft, SQL-Injection-Angriffe zu verhindern. 
-Verwenden Sie niemals ungeprüfte oder nicht maskierte Benutzereingaben direkt in Ihren SQL-Abfragen. 
-Wenn Ihr Code dies derzeit tut, sollten Sie auf parametrisierte Abfragen oder die Escape-Funktionen Ihrer SQL-Bibliothek umstellen.
+Dieser Punkt betrifft Arten von SQL-Injektionen. Grundsätzlich sollten Sie nie unsichere oder ungeprüfte Benutzereingaben in Ihren SQL-Abfragen verwenden. Wenn Sie feststellen, dass Sie es tun, erwägen Sie, Ihren Code mit parametrisierten Abfragen umzuschreiben oder Escape-Funktionen zu verwenden, die vom von Ihnen verwendeten SQL-Anbieter unterstützt werden.
 
-**5. Zu guter Letzt: Konsultieren Sie einen Cybersicherheitsexperten und befolgen Sie die in Ihrem Unternehmen akzeptierten Sicherheitsrichtlinien**
+**5. Zu guter Letzt: Konsultieren Sie einen Cybersicherheitsexperten und befolgen Sie die Sicherheitsrichtlinien Ihres Unternehmens**
 
-Sicherheit ist ein fortlaufender Prozess. 
-Wenn Sie diese Schritte befolgen, die Richtlinien Ihrer Organisation einhalten und Ihre Arbeit von einem Sicherheitsexperten überprüfen lassen, können Sie die meisten gängigen Web-Bedrohungen minimieren.
+Die Sicherheitsarbeit ist nie vollständig, aber durch die Umsetzung dieser Schritte, das Befolgen der Richtlinien Ihres Unternehmens und eine Überprüfung durch einen Sicherheitsfachmann vermeiden Sie die Mehrzahl der Bedrohungen, denen Sie im Web begegnen könnten.
 
-Nachdem die Grundlagen behandelt sind, betrachten wir einige Gantt-spezifische Aspekte.
+Nun, da die Grundlagen abgedeckt sind, schauen wir uns die Gantt-spezifischen Aspekte an.
 
-## Verwundbare Bereiche von Gantt auf der Client-Seite
+## Verwundbare Gantt-Bereiche auf der Client-Seite
 
-Hier sind einige wichtige Punkte, wenn Sie komplexe Features wie Gantt auf der Client-Seite hinzufügen:
+Zuallererst möchten wir drei Punkte hervorheben, wenn komplexe Funktionen wie Gantt auf der Client-Seite integriert werden:
 
-- DHTMLX Gantt läuft auf dem Client, daher werden alle vom Server geladenen Daten unverändert verwendet.  
-Da die Daten serverseitig gespeichert werden, kommen die größten Risiken meist von dort. Der Schutz des Backends liegt jedoch außerhalb des Geltungsbereichs von DHTMLX Gantt. 
-- Angreifer könnten Benutzer dazu verleiten, bösartigen Code über DevTools auszuführen (Self-XSS-Angriffe), wodurch Sicherheitsmaßnahmen umgangen werden können.  
-Jeder in den Text einer Aufgabe eingefügte Code verhält sich genauso, als wäre er über die DevTools eingegeben worden. 
-- Wenn Angreifer Zugriff auf das Gantt-Instanzobjekt erlangen, können alle Schutzmaßnahmen umgangen werden.  
-Sie könnten die Gantt-Konfiguration ändern und die vollständige Kontrolle übernehmen.
+- DHTMLX Gantt ist eine client-seitige Bibliothek, daher gelangen alle vom Server geladenen Daten unverändert in Gantt. Da der Datensatz auf der Serverseite gespeichert wird, ergibt sich dort die Hauptrisikozone für Ihre App. Den Backend zu schützen, geht über DHTMLX Gantt hinaus.
+- Cyberkriminelle könnten Endnutzer dazu verleiten, bösartigen Code mithilfe von DevTools auszuführen (Self-XSS-Angriffe) und damit Sicherheitsmechanismen zu umgehen. Jeglicher Code, der in den Text der Aufgabe eingefügt wird, funktioniert genauso, als würden die DevTools verwendet.
+- Wenn ein Angreifer Zugriff auf das Gantt-Instanzobjekt erhält, werden alle Schutzmaßnahmen unwirksam. In diesem Fall können Angreifer die Gantt-Konfiguration nach Belieben ändern und vollständig steuern.
 
-Hier sind die verwundbaren Bereiche in DHTMLX Gantt, in denen Sicherheitsprobleme auftreten könnten:
+Nun kommen wir zur Liste anfälliger Bereiche von DHTMLX Gantt, in denen potenzielle Sicherheitsprobleme auftreten können:
 
-- von Benutzern eingegebene und gespeicherte Daten  
-- angezeigte Gantt-Daten (Text und visuelle Elemente)  
-- [benutzerdefinierte HTML-Elemente](guides/export.md#exportinghtmlelements), die mit Gantt-Daten interagieren  
-- Zugriff auf das Gantt-Objekt selbst
+- die von Endbenutzern eingegebenen und gespeicherten Daten
+- die angezeigten Gantt-Daten (Textinhalte, verschiedene visuelle Elemente)
+- [custom HTML elements](guides/export.md#exporting-html-elements), die irgendwie mit Gantt-Daten interagieren
+- der Zugriff auf das Gantt-Objekt
 
-Schauen wir uns diese Aspekte genauer an.
+Lassen Sie uns mit praktischen Überlegungen zu diesen potenziellen Problemen fortfahren.
 
-## Isolierung des Zugriffs auf Gantt 
+## Zugriff auf Gantt isolieren
 
-Einer der ersten Schritte zum Schutz von Gantt ist die Isolierung vor unbefugtem Zugriff durch kompromittierte Komponenten oder getäuschte Benutzer (Self-XSS).
+Wenn es um mögliche Schutzmaßnahmen für Gantt geht, besteht das Erste, was Sie tun müssen, darin, Gantt vor illegalem Zugriff zu isolieren
+durch andere gehackte Komponenten oder von fehlgeleiteten Benutzern (Self-XSS-Angriffe).
 
 :::note
-Wenn ein Angreifer Zugriff auf die Konfigurationsdateien der App (einschließlich der Gantt-Konfigurationsdatei) erhält,
-können alle ergriffenen Schutzmaßnahmen gegen XSS-Angriffe unwirksam sein, daher betrachten wir dieses Szenario hier nicht.
+Wenn ein Angreifer Zugriff auf die Konfigurationsdateien der App (einschließlich der Gantt-Konfigurationsdatei) erlangt,
+können alle Schutzmaßnahmen gegen XSS-Angriffe (falls vorhanden) unwirksam sein, daher betrachten wir dieses Szenario nicht.
 :::
 
-Sobald die App vollständig geladen ist, können Angreifer, die Zugriff auf das Gantt-Instanzobjekt erhalten, alles ändern und Funktionen überschreiben. 
-Daher ist es wichtig, Gantt innerhalb Ihres Projekts zu isolieren.
+Wenn die Anwendung vollständig geladen ist und das Gantt-Instanzobjekt von Angreifern aufgebaut wird, 
+können sie buchstäblich alles in Gantt verändern und alle Funktionen neu definieren. Daher sollten Sie wissen, wie Sie Gantt in Ihrem Projekt isolieren.
 
-Erstellen Sie dazu eine separate Gantt-Instanz innerhalb einer Funktion. So ist der Code innerhalb der Funktion von außen nicht zugänglich.
+Dazu müssen Sie eine separate Gantt-Instanz in einer Funktion erstellen. Ziel ist es, Code, der innerhalb der Funktion läuft, außerhalb der Funktion unzugänglich zu machen.
 
-Standardmäßig wird eine neue Gantt-Instanz im *gantt*-Objekt erstellt. 
-Deklarieren Sie innerhalb Ihrer Funktion eine neue Variable mit *const* oder *let*, um sie außerhalb des Gültigkeitsbereichs zu verbergen und speichern Sie die Gantt-Instanz dort.
+Darüber hinaus erzeugt Gantt standardmäßig eine neue Instanz im *gantt*-Objekt. Es ist wichtig, innerhalb der Funktion eine neue Variable zu deklarieren, entweder mit dem Schlüsselwort *const* oder *let*, um sie außerhalb der Funktion unzugänglich zu machen und die Gantt-Instanz sicher in dieser Variablen zu platzieren.
 
 ~~~js
 function addGantt(){
@@ -156,7 +147,7 @@ function addGantt(){
 addGantt()
 ~~~
 
-Sie können auch einen anderen Variablennamen verwenden, um Verwechslungen mit dem globalen gantt-Objekt zu vermeiden:
+Sie können auch einen anderen Namen für eine Gantt-Instanz verwenden, um Verwechslungen mit dem gantt-Objekt zu vermeiden:
 
 ~~~js
 function addGantt(){
@@ -165,52 +156,51 @@ function addGantt(){
 addGantt()
 ~~~
 
-Nachdem Sie Gantt gegen unerwünschten Zugriff geschützt haben, konzentrieren Sie sich darauf, wie Daten in das Gantt-Diagramm eingegeben und angezeigt werden.
+Nachdem Sie sichergestellt haben, dass Gantt vor ungewolltem Zugriff geschützt ist, sollten Sie darauf achten, Daten in der Gantt-Diagramm einzugeben und anzuzeigen.
 
-## Dateneingabe im Gantt 
+## Eingabe von Daten in der Gantt
 
-Dies ist ein kritischer Bereich, den Angreifer ausnutzen könnten, um die Gantt-Sicherheit Ihrer App zu kompromittieren.
+Dies ist eine sensible Stelle, die von Cyberkriminellen verwendet werden kann, um die Sicherheit der Gantt-Anwendung zu kompromittieren.
 
-Eingabepunkte sind häufige Ziele für XSS-Angriffe. 
-Im Gantt-Komponent können Daten geändert werden durch:
+Daten-Eingabe-Bereiche gelten als Hauptzielorte für XSS-Angriffe. In unserer Gantt-Komponente ist es möglich, Daten über:
 
-- Lightbox  
-- Inline-Editoren  
-- Modale Boxen mit benutzerdefinierten Elementen  
-- Drittanbieter-Bibliotheken  
-- Ressourcenzuweisungen in der Ressourcenlast-Timeline  
-- Zusätzliche Layer mit benutzerdefinierten Eingabeelementen  
-- Jede benutzerdefinierte Lösung, die die Gantt API nutzt und Dateneingaben ermöglicht (wie Toolbars oder benutzerdefinierte Formular zur Aufgabenbearbeitung)
+- Lightbox
+- Inline-Editoren
+- Modalbox mit benutzerdefinierten Elementen
+- Drittanbieter-Bibliotheken
+- Ressourcen-Zuweisungen im Ressourcen-Auslastungszeitplan
+- zusätzliche Ebenen (falls sie benutzerdefinierte Elemente enthalten, in denen Daten eingegeben werden können)
+- jegliche benutzerdefinierte Lösungen, die die Gantt-API verwenden und eine Dateneingabe erfordern (z. B. eine Symbolleiste oder ein benutzerdefiniertes Formular zum Bearbeiten von Aufgaben)
 
-Das Aufgabenobjekt verfügt über [viele Eigenschaften](guides/task-properties.md), die je nach aktivierten Funktionen verwendet werden. 
-Je mehr bearbeitbare Eigenschaften Sie zulassen, desto wichtiger ist eine sorgfältige Eingabebereinigung.
+Das Task-Objekt besitzt [viele verschiedene Parameter](guides/task-properties.md), die je nach aktivierten Funktionen verwendet werden.
+Je mehr Parameter bearbeitet werden können, desto mehr Parameter sollten beim Eingeben von Daten sanitisiert werden.
 
-### Beispielbetrachtung
+### Betrachtung eines Beispiels
 
-Hier ein Beispiel, das verschiedene Möglichkeiten zeigt, wie Sie den Schutz gegen XSS-Angriffe durch HTML-Säuberung beim Arbeiten mit DHTMLX Gantt erhöhen können.
+Wir haben ein Beispiel vorbereitet, um verschiedene Schritte zu demonstrieren, die Sie unternehmen können, um den Schutz gegen XSS-Angriffe durch HTML-Sanitierung bei der Verwendung von DHTMLX Gantt zu verbessern.
 
-**Related example:** [Beispiel zum Verhindern von XSS-Angriffen (Sicherheit, CSP)](https://snippet.dhtmlx.com/cdy9p0yl)
+Zugehöriges Sample: [Beispiel zur Verhinderung von XSS-Angriffen (Sicherheit, CSP)](https://snippet.dhtmlx.com/cdy9p0yl)
 
-In diesem Beispiel können Sie den Aufgabennamen ändern, das Datum und die Dauer anpassen, Ressourcenzuweisungen ändern und Notizen hinzufügen. 
-Startdatum und Dauer können nur in der Lightbox und den Inline-Editoren geändert werden. Beide Inline-Editoren geben explizit die Typen **date** und **number** an. 
-In der Lightbox kann die Dauer direkt gesetzt werden, das Datum muss aus einer Dropdown-Liste ausgewählt werden.
+In unserem Beispiel können Sie den Namen der Aufgabe bearbeiten, Datum und Dauer ändern, Ressourcenzuweisungen anpassen und Textnotizen hinzufügen.
+Sie können Startdatum und Dauer nur über Lightbox und Inline-Editoren ändern. In Inline-Editoren sind die Typen **date** und **number** explizit angegeben.
+In der Lightbox können Sie nur die Dauer festlegen, während das Datum aus der Auswahlliste gewählt werden muss.
 
-Keine der Oberflächen erlaubt das Einfügen von Text, der bösartigen Code enthält. 
-Falls jemand versucht, Elementtypen per DOM-Inspektor zu verändern, entstehen ungültige Werte für Datum oder Dauer. 
-Dies löst einen Fehler aus, der verhindert, dass Gantt weiterarbeitet, bis die Seite neu geladen wird. In der Zwischenzeit werden keine Daten an den Server gesendet, da das Diagramm nicht neu gezeichnet wird.
+In beiden Fällen ist es unmöglich, Text mit bösartigem Code in diese UI-Elemente einzufügen.
+Wenn Sie versuchen, den Typ der Elemente über den DOM-Element-Inspektor zu ändern, erhalten Sie ungültige Werte für Datum oder Dauer.
+Dies verursacht einen Fehler und Gantt kann weiterarbeiten, bis die Seite neu geladen wird. Gleichzeitig werden die Daten nicht an den Server gesendet, da sie nicht neu gezeichnet werden.
 
-Da Aufgabennamen jedoch den Typ **string** verwenden, können sie für XSS-Angriffe anfällig sein. 
-Deshalb ist eine Eingabebereinigung notwendig. Das Beispiel zeigt eine Art von XSS-Angriff und eine Methode zu dessen Verhinderung.
+Wir verwenden jedoch den **string**-Werttyp für Aufgabenbezeichnungen, was eine potenzielle Schwachstelle für XSS-Angriffe sein kann.
+Daher müssen Sie den Eingabewert sanitizieren. In unserem Beispiel sehen Sie nur eine Variante eines XSS-Angriffs und eine Möglichkeit, ihn zu verhindern.
 
 ![preventing_xss_attack](/img/preventing_xss_attack.png)
 
-In realen Projekten ist es wichtig, eine umfassende Datenbereinigung zu implementieren. 
-Hier ersetzen wir einfach die Zeichen "\<" und "\>" durch ihre HTML-Entity-Entsprechungen - **`&lt;`** und **`&gt;`** -  
-was verhindert, dass HTML-Elemente im Aufgabentext gerendert werden.
+In einem realen Projekt müssen Sie alle möglichen Optionen zur Datensanitierung hinzufügen.
+In unserem Fall ersetzen wir einfach die Symbole "\<" und "\>" durch die entsprechenden HTML-Entities - **`&lt;`** und **`&gt;`**.
+Damit schließen wir die Möglichkeit aus, HTML-Elemente innerhalb des Aufgabentextes anzuzeigen.
 
-Diese Ersetzung erfolgt in der Funktion **sanitizeText()**, wie unten gezeigt:
+Die oben beschriebene Ersetzung von Symbolen ist in der Funktion **sanitizeText()** wie folgt umgesetzt:
 
-~~~js
+~~~ js
 function sanitizeText(text){
     // zum Testen von XSS auskommentieren
     // return text
@@ -220,10 +210,11 @@ function sanitizeText(text){
 }
 ~~~
 
-Die Funktion wird in den Event-Handlern **onLightboxSave** für die Lightbox und **onBeforeSave** für Inline-Editoren aufgerufen.
+Diese Funktion wird in Event-Handlern aufgerufen: im **onLightboxSave** für die Lightbox und im **onBeforeSave** für Inline-Editoren.
 
-In diesem Beispiel können Sie Notizen zu einer Aufgabe entweder über einen benutzerdefinierten Inline-Editor oder einen benutzerdefinierten Lightbox-Abschnitt hinzufügen. 
-Die Bereinigung kann innerhalb der Funktionen dieser benutzerdefinierten Komponenten angewendet werden - bevor Werte gerendert und bevor Änderungen aus DOM-Elementen gelesen werden:
+In unserem Beispiel können Sie auch Textnotizen zu einer Aufgabe hinzufügen, entweder mit einem benutzerdefinierten Inline-Editor oder einem benutzerdefinierten Lightbox-Abschnitt.
+In beiden Fällen kann die Sanitierung innerhalb der Funktionen dieser benutzerdefinierten Objekte implementiert werden
+(vor dem Rendern der Werte und bevor Änderungen aus den DOM-Elementen entnommen werden):
 
 ~~~js
 // für einen Inline-Editor:
@@ -243,7 +234,7 @@ get_value: function(node, task){
 },
 ~~~
 
-Es ist jedoch einfacher, die Bereinigung von Notizen über die Event-Handler **onLightboxSave** und **onBeforeSave** zu steuern:
+Aber es ist einfacher, die Arbeit mit Textnotizen mithilfe der **onLightboxSave**- und **onBeforeSave**-Ereignis-Handler zu steuern:
 
 ~~~js
 protectedGantt.attachEvent("onLightboxSave", function(id, task, is_new){
@@ -261,9 +252,10 @@ protectedGantt.ext.inlineEditors.attachEvent("onBeforeSave", function(state){
 });
 ~~~
 
-Auch Ressourcenzuweisungen können in der Lightbox bearbeitet werden. Da Gantt die Werte nicht nur auf den Typ **number** beschränkt, sind auch Zeichenfolgen möglich, was XSS-Angriffe ermöglichen könnte.
+Sie können auch Ressourcenzuweisungen in der Lightbox vornehmen. Da Gantt eingegebene Werte nicht ausschließlich auf den Typ **number** beschränkt, ist auch die Verwendung von Zeichenkettenwerten möglich, was eine potenzielle Angriffsfläche bietet.
 
-Ressourcenwerte werden in einer Eigenschaft der Aufgabe gespeichert, daher durchläuft die Funktion **sanitizeResourceValues()** alle diese Werte und bereinigt jeden mit **sanitizeText()**:
+Ressourcenwerte werden in die Eigenschaft eines Tasks geschrieben, daher durchsucht die Funktion **sanitizeResourceValues()** all diese Werte
+und bereinigt den Wert der Ressourcen-Zuweisung mit der Funktion **sanitizeText()**:
 
 ~~~js
 function sanitizeResourceValues(task){
@@ -278,7 +270,7 @@ function sanitizeResourceValues(task){
 }
 ~~~
 
-Diese Funktion wird im Event-Handler **onLightboxSave** aufgerufen:
+Die Funktion **sanitizeResourceValues()** wird im Ereignis-Handler **onLightboxSave** aufgerufen:
 
 ~~~js
 protectedGantt.attachEvent("onLightboxSave", function(id, task, is_new) {
@@ -287,16 +279,16 @@ protectedGantt.attachEvent("onLightboxSave", function(id, task, is_new) {
 });
 ~~~
 
-*Alle anderen String-Parameter in Ihrer Gantt-Konfiguration sollten ebenfalls bereinigt werden.*
+*Wenn Sie andere String-Parameter in Ihrer Gantt-Konfiguration verwenden, sollten auch diese sanitisiert werden*.
 
-In diesem Beispiel werden, wenn Sie versuchen, unerwünschte Inhalte in Ressourcenzuweisungen in der Ressourcen-Timeline einzugeben, nur numerische Werte akzeptiert. Nicht-numerische Eingaben werden nicht gespeichert.
+In unserem Beispiel, falls Sie versuchen, unerwünschte Inhalte in Ressourcen-Zuweisungen im Ressourcen-Zeitplan einzufügen, werden nur numerische Werte akzeptiert. Bei der Verwendung anderer Wertetypen werden die Änderungen nicht gespeichert.
 
-### Dateneingabe über Drittanbieter-Tools
+### Eingabe von Daten über Tools von Drittanbietern
 
-DHTMLX Gantt bietet umfangreiche Anpassungsmöglichkeiten, einschließlich der Bearbeitung von Aufgaben über Drittanbieter-Formulare, Tools oder Bibliotheken. 
-Da in diesen Fällen die Gantt-API die Aufgabenoperationen verwaltet, ist eine allgemeingültige Empfehlung zur Datenbereinigung schwierig, da sie davon abhängt, wie die Anpassungen implementiert sind.
+Unser Gantt-Komponenten bietet viele Anpassungsmöglichkeiten, einschließlich der Möglichkeit, Aufgaben mithilfe von Formularen, Tools und Bibliotheken von Drittanbietern zu bearbeiten.
+In diesem Fall wird die Gantt-API zum Arbeiten mit Aufgaben verwendet. In solchen Szenarien lässt sich kein universeller Rat zur Sanitierung von Daten geben, da alles davon abhängt, wie die Anpassungen implementiert sind.
 
-Das folgende Beispiel enthält ein benutzerdefiniertes Formular zur Bearbeitung des Aufgabennamens, das zusätzlich die Funktion **sanitizeText()** anwendet, um den Text zu escapen:
+In unserem Beispiel gibt es ein benutzerdefiniertes Formular zum Bearbeiten des Aufgabennamens. Das Formular enthält außerdem die Funktion **sanitizeText()** zum Escapen eines Textes:
 
 ~~~js
 document.body.querySelector("[name='save']").onclick = function(){
@@ -306,21 +298,23 @@ document.body.querySelector("[name='save']").onclick = function(){
 }
 ~~~
 
-Diese Methoden decken die meisten Möglichkeiten der Dateneingabe ab. Die Bereinigung der Daten beim Eintritt in Gantt filtert sie effektiv heraus, sodass XSS-Angriffe innerhalb des Gantt-Diagramms wirkungslos bleiben und schädliche Daten nicht zum Server gelangen.
+Dies sind fast alle Kategorien der Dateneingaben. Wenn Daten beim Eingeben in Gantt sanitisiert werden, wirken sie wie ein Filter.
+Infolgedessen werden XSS-Angriffe in der Gantt-Diagramm-Ansicht wirkungslos und können definitiv nicht an den Server gelangen.
 
-## Anzeige von Daten im Gantt
+## Anzeigen von Daten in Gantt
 
-Ein weiterer wichtiger Aspekt ist die Art und Weise, wie Daten im Gantt-Diagramm angezeigt werden. 
-Auch wenn die Bereinigung angezeigter Daten nicht so effektiv ist wie die Bereinigung der Eingabe, trägt sie dennoch dazu bei, XSS-Angriffsketten zu stoppen oder zu unterbrechen. 
-Zum Beispiel, wenn der Server kompromittiert ist, Gantt selbst aber nicht, verhindert die Bereinigung auf der Client-Seite die Ausführung schädlicher Skripte.
+Der nächste anfällige Bereich, den wir erwähnen sollten, ist die Anzeige von Daten im Gantt-Diagramm.
+Obwohl die Anzeige nicht so effizient ist wie die Dateneingabe, hilft die Sanitierung der angezeigten Daten weiterhin, die XSS-Angriffskette zu stoppen oder zu unterbrechen.
+Zum Beispiel, wenn der Server mit Daten angegriffen wurde, aber kein Zugriff auf Gantt besteht, wird der XSS-Angriff in Gantt unterbrochen.
 
-Am sichersten ist es, jede Stelle in Gantt zu bereinigen, an der Daten angezeigt werden. 
-Dies umfasst die Verwendung von [Templates in der Konfiguration jeder Grid-Spalte](guides/specifying-columns.md#datamappingandtemplates) und die Anwendung [aller relevanten Templates](api/overview/templates-overview.md), um die Darstellung unsicherer Inhalte zu verhindern.
+Der sicherste Ansatz besteht darin, alle Gantt-Bereiche zu sanitieren, in denen Daten angezeigt werden.
+Dies setzt voraus, dass [Vorlagen in der Konfiguration jeder Grid-Spalte verwendet werden](guides/specifying-columns.md#datamappingandtemplates).
+Die Nutzung [aller möglichen Vorlagen](api/overview/templates-overview.md) wird benötigt, um zu verhindern, dass Inhalte mit möglichen XSS-Angriffen angezeigt werden.
 
-Eine einfachere Möglichkeit, Anzeige-Risiken zu kontrollieren, besteht darin, die beiden Hauptdatenquellen zu kontrollieren: Benutzereingaben und Serverdaten. 
-Durch die Bereinigung eingehender Daten verringern Sie das Risiko, dass schädliche Inhalte im Gantt-Diagramm erscheinen.
+Es gibt jedoch eine einfachere Lösung für potenzielle Probleme mit der Anzeige von Daten in der Gantt-Diagramm. Da Daten in das Gantt-Diagramm über eine Benutzereingabe oder vom Server hochgeladen werden können, können wir diese beiden Datenströme begrenzen.
+Dann besteht keine Chance, den Gantt-Inhalt zu beeinflussen und bösartigen Code in Daten einzubetten.
 
-Beispielsweise können Sie Aufgaben-Eigenschaften beim Laden vom Server mit dem **onTaskLoading**-Event bereinigen:
+Es ist möglich, die Eigenschaften von Aufgaben beim Laden aus dem Server zu schützen. Dies kann im Ereignis-Handler **onTaskLoading** erfolgen:
 
 ~~~js
 protectedGantt.attachEvent("onTaskLoading", function (task) {
@@ -333,8 +327,10 @@ protectedGantt.attachEvent("onTaskLoading", function (task) {
 });
 ~~~
 
-Es können auch andere Methoden zum Laden von Daten existieren, etwa wenn ein Aufgabenobjekt separat vom Server empfangen und verarbeitet wird, bevor es in Gantt hinzugefügt oder aktualisiert wird. 
-In solchen Fällen sollte die Bereinigung innerhalb der Verarbeitungsfunktion erfolgen, bevor die Aufgabe hinzugefügt wird:
+Es mag weitere Wege geben, Daten in das Gantt-Diagramm zu laden. Zum Beispiel kann ein Task-Objekt separat vom Server kommen und von einer Funktion verarbeitet werden. Danach wird eine neue Aufgabe dem Gantt-Diagramm hinzugefügt oder eine vorhandene aktualisiert.
+In diesem Fall müssen Sie die Aufgabe innerhalb dieser Funktion sanitizieren, bevor die Daten in Gantt geladen werden.
+
+Es könnte so aussehen:
 
 ~~~js
 let newTask = await loadFromServer(23);
@@ -342,38 +338,32 @@ sanitizeTaskProperties(newTask);
 gantt.addTask(newTask);
 ~~~
 
-Wenn jemand das Element-Inspektor-Tool des Browsers verwendet, um schädlichen Code direkt in die DOM-Elemente von Gantt einzufügen, lässt sich das nicht verhindern. 
-Allerdings gehen solche Änderungen beim nächsten Rendern von Gantt verloren und werden nicht auf dem Server gespeichert.
+Wenn ein Cyberkrimineller einen Benutzer dazu bringt, den Element-Inspektor in einem bestimmten Webbrowser zu verwenden und schädlichen Code in Gantt-DOM-Elemente einfügt, können Sie dem nicht entgehen. Aber gleichzeitig gehen alle angewendeten Änderungen beim nächsten Ne zeichnen von Gantt verloren und werden nicht auf dem Server gespeichert.
 
 ## Serverseitige Probleme
 
-Beachten Sie, dass die Validierung auf Client-Seite leicht umgangen oder deaktiviert werden kann und daher nicht als Sicherheitsmaßnahme ausreicht. 
-Ihr Zweck besteht darin, sofortiges Feedback bei fehlerhafter Eingabe zu geben, ohne auf eine Serverantwort zu warten. 
-Die endgültige Validierung und Sicherheitsüberprüfung muss auf dem Server erfolgen.
+Beachten Sie, dass die clientseitige Validierung leicht kompromittiert oder sogar vollständig umgangen werden kann, daher kann sie nicht als Sicherheitsmittel verwendet werden. Sie zielt darauf ab, dem Benutzer eine unmittelbare Rückmeldung bei fehlerhafter Eingabe zu geben, ohne auf eine Serverantwort warten zu müssen, während die endgültige Validierung serverseitig erfolgen sollte.
 
-Das Backend sollte eingehende Daten korrekt validieren, escapen und bereinigen, Benutzerzugriffsregeln durchsetzen usw.
+Der Backend-Teil muss eingehende Daten, Benutzerzugriffsregeln usw. ordnungsgemäß validieren/escapen/säubern.
 
-### SQL-Injections
+### SQL-Injektionen
 
-Da dhtmlxGantt vollständig clientseitig ist, liegt die Verhinderung von SQL-Injections in der Verantwortung des Backends.
+dhtmlxGantt ist eine 100%-ige Client-seitige Komponente, daher müssen SQL-Injektionen auf dem Backend vom Entwickler verhindert werden.
 
-Zwei Punkte sind zu beachten:
+Es gibt zwei Punkte zu beachten:
 
-- Die Lightbox enthält keine Standardvalidierung, daher können Benutzer beliebige Werte in editierbare Felder eingeben, sofern dies nicht behandelt wird.
-- Backend-APIs können direkt mit PUT/POST-Anfragen mit schädlichen Werten aufgerufen werden, wodurch die Client-Oberfläche umgangen wird.
+- das Lightbox-Fenster hat keine Standardvalidierung, die, falls nicht behandelt, dem Benutzer erlaubt, beliebige Werte in bearbeitbare Eingaben einzugeben
+- Ihre Backend-API kann durch manuelles Senden einer PUT/POST-Anforderung mit gefährlichen Werten von außen aufgerufen werden, wodurch die clientseitige UI umgangen wird
 
-Daher muss Ihr Backend Schutz vor SQL-Injections implementieren. 
-Wenn Sie [dhtmlxConnector](integrations/php/howtostart-connector.md) verwenden und Tabellen wie in der [Dokumentation](https://docs.dhtmlx.com/connector__php__basis.html#loadingfromdatabase) beschrieben konfigurieren, werden Werte automatisch escaped. 
-Ansonsten sollten Sie die für Ihre Plattform empfohlenen sicheren CRUD-Praktiken befolgen. Die in den [How-to-Start-Guides](integrations/howtostart-guides.md) gezeigten Implementierungen sind so konzipiert, dass sie gegen SQL-Injections sicher sind.
+Daher benötigen Sie irgendeine Art von SQL-Injektionen-Escaping auf Ihrem Backend. Wenn Sie [dhtmlxConnector](integrations/php/howtostart-connector.md) verwenden und eine Tabellenkonfiguration gemäß der zugehörigen Dokumentation angeben, werden alle Werte automatisch escaped. Andernfalls müssen Sie eine sichere CRUD-Implementierung gemäß den guten Praktiken der von Ihnen verwendeten Plattform verwenden. Implementierungen, die in den [How-to-Start-Guides](integrations/howtostart-guides.md) gezeigt werden, sollten sicher in Bezug auf SQL-Injektionen sein.
 
 ### CSRF-Angriffe
 
-Lesen Sie [diesen Artikel](guides/server-side.md#customrequestheadersandparameters) für Hinweise zum Hinzufügen von benutzerdefinierten Autorisierungstoken oder Headern zu Anfragen, die von Gantt an Ihr Backend gesendet werden.
+Bitte prüfen Sie [diesen Artikel](guides/server-side.md#custom-request-headers-and-parameters) zum Hinzufügen benutzerdefinierter Autorisierungstokens oder Header zu einer von Gantt an das Backend gesandten Anfrage.
 
 ## Content Security Policy
 
-Die Bibliothek enthält eine spezielle Konfigurationsoption, mit der Sie Ihre dhtmlxGantt-Anwendung an den Content Security Policy (CSP)-Standard anpassen können. 
-Dies verbessert die Sicherheit, indem verschiedene Code-Injection-Angriffe verhindert werden.
+Die Bibliothek bietet eine spezielle Konfiguration, die es Ihnen ermöglicht, den Code Ihrer mit dhtmlxGantt erstellten Anwendung so anzupassen, dass er der CSP (Content Security Policy)-Standard entspricht.
+Sie hilft, verschiedene Code-Injection-Angriffe zu verhindern und die Sicherheit der Anwendung zu erhöhen.
 
-[Erfahren Sie mehr über die Anwendung von CSP auf eine dhtmlxGantt-Anwendung](api/config/csp.md).
-
+[Weitere Informationen zur Anwendung des CSP-Standards auf eine dhtmlxGantt-Anwendung](api/config/csp.md).

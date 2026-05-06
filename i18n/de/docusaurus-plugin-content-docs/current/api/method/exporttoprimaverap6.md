@@ -1,7 +1,7 @@
----
+--- 
 sidebar_label: exportToPrimaveraP6
 title: exportToPrimaveraP6 method
-description: "exportiert Daten aus dem Gantt-Diagramm nach Primavera P6"
+description: "Exportiert Daten aus dem Gantt-Diagramm nach Primavera P6"
 ---
 
 # exportToPrimaveraP6
@@ -13,8 +13,8 @@ description: "exportiert Daten aus dem Gantt-Diagramm nach Primavera P6"
 @signature: exportToPrimaveraP6: (_export_?: any) =\> void
 
 ### Parameters
-- `export` - (optional) *object* - optionale Einstellungen für den Export (siehe Details)
 
+- `export`	- (*Objekt*) optional, ein Objekt mit Export-Einstellungen (siehe Details)
 
 ### Example
 
@@ -24,18 +24,18 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-### Related samples
-- [Export data : MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
+### Related Samples
+- [Datenexport: MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
 
 ### Details
 
 :::note
- Diese Methode ist Teil der **export**-Extension. Stellen Sie daher sicher, dass das Plugin [export_api](guides/extensions-list.md#exportservice) aktiviert ist. Weitere Details finden Sie im Artikel [Export und Import aus Primavera P6](guides/export-primavera.md#exporttoprimaverap6).
+Diese Methode ist in der **export**-Erweiterung definiert, daher müssen Sie das [export_api](guides/extensions-list.md#export-service) Plugin aktivieren. Lesen Sie die Details im Artikel [Export und Import von Primavera P6](guides/export-primavera.md#exporttoprimaverap6).
  
-:::
+::: 
 
 :::note
- Für Gantt-Versionen vor 8.0 muss **https://export.dhtmlx.com/gantt/api.js** auf Ihrer Seite eingebunden werden, um den Online-Export-Service nutzen zu können, z.B.:
+Wenn Sie eine Gantt-Version älter als 8.0 verwenden, müssen Sie `https://export.dhtmlx.com/gantt/api.js` in Ihre Seite einbinden, um den Online-Export-Service zu aktivieren, z. B.:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -45,35 +45,19 @@ gantt.exportToPrimaveraP6({
 :::
 
 
-Die Methode **exportToPrimaveraP6()** akzeptiert ein Objekt mit mehreren optionalen Eigenschaften:
+Die **exportToPrimaveraP6()**-Methode nimmt als Parameter ein Objekt mit mehreren Eigenschaften (alle Eigenschaften sind optional):
 
-- **name** - (*string*) der Dateiname für die exportierte Datei (Standard: 'gantt.xml').
-- **auto_scheduling** - (boolean) definiert den Planungsmodus der Tasks im exportierten Projekt. **true** markiert Tasks als automatisch geplant, **false** bedeutet manuelle Planung (Standard).
-- **skip_circular_links** - (boolean) bestimmt, ob zirkuläre Verknüpfungen entfernt werden sollen. **true** entfernt sie (Standard), **false** behält sie bei.
-- **project** - (object) ermöglicht die Angabe benutzerdefinierter Eigenschaften für das exportierte Projekt-Objekt.
-- **tasks** - (object) erlaubt die Definition benutzerdefinierter Eigenschaften für die exportierten Tasks.
-- **data** - (object) ermöglicht die Angabe einer eigenen Datenquelle für das ausgegebene Gantt-Diagramm. **start_date** und **end_date** sollten im Format mit Datum und Zeit vorliegen (*%d-%m-%Y %H:%i*).
-- **callback** - (function) falls Sie eine URL zum Herunterladen der generierten XML-Datei erhalten möchten, können Sie diese Eigenschaft verwenden. Sie erhält ein JSON-Objekt mit der *url*.
-- **resources** - (array) erlaubt den Export einer Liste von Ressourcen in die Primavera P6-Datei.
-- **server** - (string) spezifiziert den API-Endpunkt für die Export-Anfrage. Dies kann genutzt werden, wenn Sie einen lokalen Export-Service installiert haben. Standard ist **https://export.dhtmlx.com/gantt**.
+- **name** - (*string*) der Name der erhaltenen Datei ('gantt.xml' standardmäßig).
+- **auto_scheduling** - (*boolean*) gibt den Planungsmodus für Aufgaben im exportierten Projekt an. **true** kennzeichnet Aufgaben als automatisch geplant, **false** als manuell geplant (Standardzustand).
+- **skip_circular_links** - (*boolean*) gibt an, ob zirkuläre Verknüpfungen entfernt werden oder nicht (true – werden entfernt (Standardmodus), false – bleiben erhalten).
+- **project** - (*object*) Ermöglicht das Festlegen benutzerdefinierter Eigenschaften für das exportierte Projekt-Objekt.
+- **tasks** - (*object*) Ermöglicht das Festlegen benutzerdefinierter Eigenschaften für die exportierten Aufgaben.
+- **data** - (*object*) Ermöglicht das Festlegen einer benutzerdefinierten Datenquelle, die im exportierten Gantt-Diagramm dargestellt wird. Es wird erwartet, dass die Eigenschaften **start_date** und **end_date** im Format angegeben werden, das Datum und Uhrzeit umfasst (*%d-%m-%Y %H:%i*).
+- **callback** - (*function*) Falls Sie eine URL zum Download der generierten XML-Datei erhalten möchten, kann die Eigenschaft *callback* verwendet werden. Sie erhält ein JSON-Objekt mit der Eigenschaft *url*.
+- **resources** - (*array*) Ermöglicht den Export der Ressourcenliste in eine Primavera P6-Datei. Wenn Ressourcenkalender verwendet werden, muss während des Exports -1 für eine Aufgabe in der Eigenschaft **CalendarUID** angegeben werden (im **tasks**-Objekt). Dann verwendet die Aufgabe den Ressourcenkalender.
+- **server** - (*string*) der API-Endpunkt für die Anfrage. Kann mit der lokalen Installation des Export-Services verwendet werden. Der Standardwert ist `https://export.dhtmlx.com/gantt`.
 
-## Response
-
-Die Antwort liefert ein JSON-Objekt mit folgender Struktur:
-
-~~~js
-{
-   data: {},
-   config: {},
-   resources: [],
-   worktime: {}
-}
-~~~
-
-- **data** - ein gantt [Datenobjekt](guides/supported-data-formats.md#json). Jeder Task enthält Eigenschaften wie *id*, *open*, *parent*, *progress*, *start_date*, *text* und *resource*. Datumsangaben sind als Strings im Format "%Y-%m-%d %H:%i" formatiert.
-- **config** - ein gantt [Konfigurationsobjekt](api/overview/properties-overview.md) mit Einstellungen, die aus der Projektdatei extrahiert wurden.
-- **resources** - ein Array von Objekten, die Ressourcen aus der Projektdatei repräsentieren, jeweils mit den Eigenschaften *id*, *name* und *type*.
-- **worktime** - ein Objekt mit den Arbeitszeit-Einstellungen aus dem Projektkalender.
+Prüfen Sie die detaillierten Beschreibungen der Export-Einstellungen im [verwandten Abschnitt](guides/export-primavera.md#export-settings).
 
 ### Related API
 - [importFromPrimaveraP6](api/method/importfromprimaverap6.md)
@@ -87,5 +71,4 @@ Die Antwort liefert ein JSON-Objekt mit folgender Struktur:
 - [importFromMSProject](api/method/importfrommsproject.md)
 
 ### Related Guides
-- ["Export und Import aus Primavera P6"](guides/export-primavera.md#exporttoprimaverap6)
-
+- [Export and Import from Primavera P6](guides/export-primavera.md#exporttoprimaverap6)

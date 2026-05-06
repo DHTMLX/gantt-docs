@@ -1,14 +1,14 @@
 ---
 sidebar_label: autosize
-title: autosize config
-description: "Passt die Größe des Gantt-Diagramms automatisch an, um alle Aufgaben ohne Scrollen anzuzeigen"
+title: Autosize-Konfiguration
+description: "Erzwingt, dass das Gantt-Diagramm seine Größe automatisch ändert, um alle Aufgaben ohne Scrollen anzuzeigen"
 ---
 
 # autosize
 
 ### Description
 
-@short: Passt die Größe des Gantt-Diagramms automatisch an, um alle Aufgaben ohne Scrollen anzuzeigen
+@short: Erzwingt, dass das Gantt-Diagramm automatisch seine Größe ändert, um alle Aufgaben ohne Scrollen anzuzeigen
 
 @signature: autosize: boolean | string
 
@@ -20,73 +20,71 @@ gantt.config.autosize = "xy";
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Details
 
-Die Einstellung 'autosize' steuert, ob das Gantt-Diagramm seine Daten innerhalb der Container-Dimensionen mit internen Scrollbars anzeigt oder die Container-Größe so anpasst, dass alle Daten ohne internes Scrollen sichtbar sind:
+Die `autosize`-Konfiguration definiert, ob das Gantt die Daten innerhalb der Größe des Containers, in dem es initialisiert wird, einpasst und innere Scrollleisten anzeigt, oder die Größe des Containers verändert, um alle Daten ohne innere Scrolls anzuzeigen:
 
-- [Beispiel mit Gantt-Div-Größen, die via CSS gesetzt sind](https://snippet.dhtmlx.com/5/b4d4d1b80) - interne Scrollbars erscheinen bei Bedarf
-- [Beispiel, bei dem die Gantt-Div-Größen von einer Komponente berechnet werden](https://snippet.dhtmlx.com/5/c278b3859) - interne Scrollbars sind deaktiviert
+- [ein Beispiel mit Größen des Gantt-Div, definiert in CSS](https://snippet.dhtmlx.com/2m48u5oz) - innere Scrollleisten sind bei Bedarf aktiv
+- [ein Beispiel, bei dem die Größen des Gantt-Div von einer Komponente berechnet werden](https://snippet.dhtmlx.com/syzmiqwt) - innere Scrollleisten sind deaktiviert
 
-Wenn das Gantt-Diagramm in einen bestimmten Bereich der Seite passen soll, muss die Container-Größe manuell verwaltet werden:
+Falls Gantt in einem bestimmten Bereich der Seite platziert werden soll, muss die Größe des Gantt-Containers manuell verwaltet werden:
 
-- autosizing sollte deaktiviert sein
-- die Breite und Höhe des Divs sollten entweder durch das HTML-Layout bestimmt werden, wenn eine responsive Layout-Lösung verwendet wird, oder durch eigenen Code.
+- automatische Größenanpassung sollte deaktiviert sein
+- Breite/Höhe eines div sollten entweder durch HTML-Layout berechnet werden, wenn eine fertige Lösung für responsive Layouts verwendet wird, oder manuell durch Code
 
-## Scrollen zu versteckten Elementen
+## Scrolling to hidden elements
 
-Standardmäßig scrollt Gantt automatisch, wenn die Methoden [showTask](api/method/showtask.md) oder [showDate](api/method/showdate.md) verwendet werden.
-Wenn jedoch **autosize** aktiviert ist, vergrößert Gantt stattdessen die Container-Größe, um das Element auf der Seite sichtbar zu machen, anstatt zu scrollen.
+Im Standardmodus wird Gantt automatisch gescrollt, wenn Sie die Methode [`showTask()`](api/method/showtask.md) oder [`showDate()`](api/method/showdate.md) verwenden.
+Wenn jedoch `autosize` aktiviert ist, erhöht Gantt die Größe seines Containers, um sich auf der Seite anzuzeigen, statt das versteckte Element zu zeigen.
 
-Es gibt keine universelle Lösung dafür, da die Seite auch andere Elemente enthalten kann, die gescrollt werden müssen. Die Lösung hängt also vom jeweiligen Seiten- oder Anwendungs-Setup ab.
+Es gibt keine universelle Lösung für dieses Problem, da die Seite neben Gantt auch andere Elemente enthalten kann, und einige dieser Elemente ebenfalls gescrollt werden müssen. Daher sollte dieses Problem entsprechend der Seiten-/Anwendungs-Konfiguration gelöst werden.
 
-In einem *einfachen* Setup kann Gantt vor oder nach anderen Elementen positioniert sein, und das Scrollen der Seite funktioniert problemlos.
+In einer *einfachen* Konfiguration kann sich Gantt vor oder nach einigen Elementen in Ihrer Anwendung befinden. Und es kann ordnungsgemäß funktionieren, wenn Sie die Seite scrollen.
 
-In einem *komplexen* Setup kann der Gantt-Container innerhalb anderer Container verschachtelt sein, die selbst wiederum verschachtelt sind.
-In solchen Fällen muss man nur die relevanten Elemente manuell scrollen.
+In einer *komplexen* Konfiguration kann der Gantt-Container in andere Container eingefügt werden, die wiederum in weitere Container eingefügt werden können. In diesem Fall müssen Sie nur die Elemente manuell scrollen, die Sie benötigen.
 
-Eine Möglichkeit, die Seite zum gewünschten Element zu scrollen, ist die Verwendung der Methode **element.scrollIntoView**:
+Einer der Wege, die Seite zu dem benötigten Element scrollen zu lassen, ist die Verwendung der Methode `element.scrollIntoView()`:
 
 ~~~js
-var attr = gantt.config.task_attribute;
-var timelineElement = document.querySelector(".gantt_task_line["+attr+"='"+id+"']");
-if(timelineElement)
-    timelineElement.scrollIntoView({block:"center"});
+const taskAttribute = gantt.config.task_attribute;
+const timelineElement = document.querySelector(`.gantt_task_line[${taskAttribute}='${id}']`);
+
+timelineElement?.scrollIntoView({ block: "center" });
 ~~~
 
-Hierbei bezieht sich `id` auf die anzuzeigende Aufgaben-ID.
+wobei id die Task-ID ist, die Sie anzeigen möchten.
 
-Eine weitere Option ist, die Methode [showTask](api/method/showtask.md) oder [showDate](api/method/showdate.md) von Gantt zu überschreiben:
+Eine weitere Möglichkeit besteht darin, die Methode [`showTask()`](api/method/showtask.md) oder [`showDate()`](api/method/showdate.md) von Gantt zu modifizieren:
 
 ~~~js
-var showTask = gantt.showTask;
+const defaultShowTask = gantt.showTask;
 
-gantt.showTask = function(id){
-  showTask.apply(this, [id]);
-  var attr = gantt.config.task_attribute;
-  var timelineElement = document.querySelector(".gantt_task_line["+attr+"='"+id+"']");
-  if(timelineElement)
-    timelineElement.scrollIntoView({block:"center"});
+gantt.showTask = function(id) {
+    defaultShowTask.apply(this, [id]);
+    const taskAttribute = gantt.config.task_attribute;
+    const timelineElement = document.querySelector(`.gantt_task_line[${taskAttribute}='${id}']`);
+
+    timelineElement?.scrollIntoView({ block: "center" });
 };
 ~~~
 
-Alternativ kann man auch eine eigene Funktion erstellen, um die Aufgabe anzuzeigen:
+oder eine benutzerdefinierte Funktion zum Anzeigen der Aufgabe erstellen:
 
 ~~~js
-function showTask(id){
-  gantt.showTask(id);
-  var attr = gantt.config.task_attribute;
-  var timelineElement = document.querySelector(".gantt_task_line["+attr+"='"+id+"']");
-    if(timelineElement)
-      timelineElement.scrollIntoView({block:"center"});
-}
+const showTask = (id) => {
+    gantt.showTask(id);
+    const taskAttribute = gantt.config.task_attribute;
+    const timelineElement = document.querySelector(`.gantt_task_line[${taskAttribute}='${id}']`);
+
+    timelineElement?.scrollIntoView({ block: "center" });
+};
 ~~~
 
 :::note
-Sample: [Scrolling to the specified element](https://snippet.dhtmlx.com/or73u6a5) 
+Beispiel: [Scrolling to the specified element](https://snippet.dhtmlx.com/or73u6a5)
 :::
 
 ### Related API
 - [autosize_min_width](api/config/autosize_min_width.md)
-

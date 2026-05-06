@@ -1,22 +1,24 @@
 ---
 sidebar_label: removeTaskLayer
-title: removeTaskLayer method
-description: "entfernt eine spezifische Ebene, die mit einer Aufgabe verknüpft ist"
+title: removeTaskLayer Methode
+description: "entfernt die angegebene Layer, die mit einer Aufgabe zusammenhängt"
 ---
 
 # removeTaskLayer
+
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
+
 ### Description
 
-@short: Entfernt eine spezifische Ebene, die mit einer Aufgabe verknüpft ist
+@short: Entfernt die angegebene Layer, die mit einer Aufgabe zusammenhängt
 
 @signature: removeTaskLayer: (layerId: string | number) =\> void
 
 ### Parameters
 
-- `layerId` - (required) *string | number* -        ein DOM-Element, das die zu entfernende Ebene repräsentiert
+- `layerId` - (erforderlich) *string | number* -        ein DOM-Element, das im Layer angezeigt wird
 
 ### Example
 
@@ -35,15 +37,13 @@ var layer_id = gantt.addTaskLayer(function draw_deadline(task) {
     }
     return false;
 });
-//...
+ //...
 gantt.removeTaskLayer(layer_id);/*!*/
 gantt.render();
 ~~~
-
 
 ### Related API
 - [addTaskLayer](api/method/addtasklayer.md)
 
 ### Related Guides
-- ["Benutzerdefinierte Elemente im Timeline-Bereich"](guides/baselines.md)
-
+- [Custom Elements in Timeline Area](guides/baselines.md)

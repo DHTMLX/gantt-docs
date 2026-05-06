@@ -1,30 +1,29 @@
 ---
 sidebar_label: onAfterLinkAdd
 title: onAfterLinkAdd event
-description: "在甘特图中添加新链接后立即触发"
+description: "在将新链接添加到甘特图后触发"
 ---
 
 # onAfterLinkAdd
 
 ### Description
 
-@short: 在甘特图中添加新链接后立即触发
+@short: 在将新链接添加到甘特图后触发
 
 @signature: onAfterLinkAdd: (id: string | number, link: Link) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - 链接的ID
-- `link` - (required) *Link* - 链接对象本身
+- `id` - (required) *string | number* - 该链接的 ID
+- `link` - (required) *Link* - 该 Link 对象
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAfterLinkAdd", function(id,link){
-    //在这里放置任何自定义逻辑
+    // 在这里插入您的自定义逻辑
 });
 ~~~
 
 ### Related API
 - [addLink](api/method/addlink.md)
-

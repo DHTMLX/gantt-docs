@@ -1,38 +1,38 @@
 ---
 sidebar_label: onCircularLinkError
 title: onCircularLinkError event
-description: "wird ausgelöst, wenn eine zirkuläre Referenz gefunden wird und die automatische Planung nicht fortgesetzt werden kann"
+description: "Wird ausgelöst, wenn eine zirkuläre Referenz erkannt wurde und eine automatische Planung nicht möglich ist"
 ---
 
 # onCircularLinkError
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist in der PRO-Edition nur verfügbar.
 :::
 ### Description
 
-@short: Wird ausgelöst, wenn eine zirkuläre Referenz gefunden wird und die automatische Planung nicht fortgesetzt werden kann
+@short: Wird ausgelöst, wenn eine zirkuläre Referenz erkannt wurde und automatische Planung nicht möglich ist
 
 @signature: onCircularLinkError: (link: Link, group: any) =\> void;
 
 ### Parameters
 
-- `link` - (required) *Link* - das Link-Objekt
-- `group` - (required) *object* - eine Gruppe von Tasks und Links, die eine Schleife bilden
+- `link` - (erforderlich) *Link* - das Link-Objekt
+- `group` - (erforderlich) *object* - eine Gruppe von Aufgaben und Links, die in einer Schleife verbunden sind
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onCircularLinkError",function(link, group){
-    // hier Ihre eigene Logik einfügen
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Related samples
-- [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
+- [Auto Scheduling-Erweiterung](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
 
-Der **group** Parameter enthält ein Objekt, das eine Sammlung von Tasks und Links repräsentiert, die an einer Schleife beteiligt sind.
+Der **group** Parameter repräsentiert ein Objekt, das eine Gruppe von Aufgaben und in einer Schleife verbundene Links enthält.
 
 ~~~js
 { 
@@ -42,7 +42,7 @@ Der **group** Parameter enthält ein Objekt, das eine Sammlung von Tasks und Lin
 ~~~
 
 :::note
- Die Methode erfordert, dass das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin aktiviert ist. 
+Die Methode setzt das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin voraus, das aktiviert sein muss. 
 :::
 
 ### Related API
@@ -62,8 +62,7 @@ Der **group** Parameter enthält ein Objekt, das eine Sammlung von Tasks und Lin
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- ["Auto Scheduling"](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
 ### Change log
-- Der **group** Parameter wurde in Version 4.1 eingeführt.
-
+- Der **group** Parameter wurde in Version 4.1 hinzugefügt.

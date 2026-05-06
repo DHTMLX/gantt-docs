@@ -1,20 +1,20 @@
 ---
 sidebar_label: importFromPrimaveraP6
-title: importFromPrimaveraP6 method
-description: "konvertiert eine XML- oder XER-Datei von Primavera P6 in das JSON-Format"
+title: importFromPrimaveraP6 Methode
+description: "konvertiert eine XML- oder XER-Datei von Primavera P6 in JSON"
 ---
 
 # importFromPrimaveraP6
 
 ### Description
 
-@short: Konvertiert eine XML- oder XER-Datei von Primavera P6 in das JSON-Format
+@short: Konvertiert eine XML- oder XER-Datei von Primavera P6 in JSON
 
 @signature: importFromPrimaveraP6: (config: any) =\> void
 
 ### Parameters
 
-- `config` - (required) *object* - ein Objekt, das Konfigurationsoptionen für die importierte Datei enthält
+- `config` - (required) *object* - ein Objekt mit Konfigurationsparametern einer importierten Datei
 
 ### Example
 
@@ -34,54 +34,69 @@ gantt.importFromPrimaveraP6({
 });
 ~~~
 
-### Related samples
-- [Import Primavera P6 file](https://docs.dhtmlx.com/gantt/samples/08_api/18_load_from_primaverap6.html)
-
 ### Details
 
 :::note
- Die Methode erfordert Unterstützung für die HTML5 File API. 
+Die Methode erfordert HTML5 File API-Unterstützung. 
 :::
 
 :::note
- Diese Methode ist Teil der **export**-Erweiterung, daher muss das Plugin [export_api](guides/extensions-list.md#exportservice) aktiviert sein. Weitere Details finden Sie im Artikel ["Export und Import aus Primavera P6"](guides/export-primavera.md#importfromprimaverap6). 
+Diese Methode ist in der **export**-Erweiterung definiert, daher muss das [export_api](guides/extensions-list.md#export-service) Plugin aktiviert werden. Lesen Sie die Details im Artikel [Export/Import für Excel, Export nach iCal](guides/excel.md#importfromexcel).
 :::
 
 :::note
- Für Gantt-Versionen vor 8.0 muss **https://export.dhtmlx.com/gantt/api.js** auf Ihrer Seite eingebunden werden, um den Online-Export-Service zu aktivieren, zum Beispiel:
+Wenn Sie die Gantt-Version älter als 8.0 verwenden, müssen Sie auf Ihrer Seite das **https://export.dhtmlx.com/gantt/api.js** einbinden, um den Online-Export-Service zu aktivieren, z. B.:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
 <script src="https://export.dhtmlx.com/gantt/api.js"></script>
 ~~~
- 
+
 :::
 
-Diese Methode akzeptiert ein Objekt mit Konfigurationsoptionen für die importierte Datei:
+Die Methode nimmt als Parameter ein Objekt mit Konfigurationsparametern einer importierten Datei entgegen:
 
-- **data** - eine [File](https://developer.mozilla.org/en-US/docs/Web/API/File)-Instanz, die entweder eine XER- oder XML-Projektdatei enthält.
-- **callback** - eine Funktion, die nach dem Import aufgerufen wird.
-- **durationUnit** - legt die erwartete Dauer-Einheit fest ("minute", "hour", "day", "week", "month", "year").
-- **projectProperties** - ein Array von Projekteigenschaften, die in der Antwort enthalten sein sollen.
-- **taskProperties** - ein Array zusätzlicher Aufgaben-Eigenschaften, die importiert werden sollen.
+- **data** - eine Instanz von [File](https://developer.mozilla.org/en-US/docs/Web/API/File), die entweder XER- oder XML-Projektdatei enthält.
+- **callback** - eine Callback-Funktion.
+- **durationUnit** - setzt eine erwartete Dauer-Einheit ("minute", "hour", "day", "week", "month", "year").
+- **projectProperties** - gibt ein Array von Projekt-Eigenschaften an, die in die Antwort aufgenommen werden sollen.
+- **taskProperties** - gibt ein Array zusätzlicher Task-Eigenschaften an, die importiert werden sollen.
+
+Überprüfen Sie die detaillierten Beschreibungen der Import-Einstellungen im entsprechenden Abschnitt.
 
 ## Response
 
-Die Antwort ist ein JSON-Objekt mit folgender Struktur:
+Die Antwort enthält ein JSON mit der folgenden Struktur:
 
 ~~~js
 {
     data: {},
     config: {},
     resources: [],
-    worktime: {}
+    worktime: {},
+    calendars: []
 }
 ~~~
 
-- **data** - ein gantt [Datenobjekt](guides/supported-data-formats.md#json), bei dem jede Aufgabe Eigenschaften wie *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource* enthält. Die Datumsangaben sind als Strings im Format "%Y-%m-%d %H:%i" formatiert.
-- **config** - ein gantt [Konfigurationsobjekt](api/overview/properties-overview.md) mit Einstellungen, die aus der Projektdatei extrahiert wurden.
-- **resources** - ein Array von Objekten, die Ressourcen aus der Projektdatei repräsentieren, jeweils mit *id*, *name* und *type*.
-- **worktime** - ein Objekt mit den Arbeitszeit-Einstellungen aus dem Projektkalender.
+- **data** - (*object*) ein gantt [data object](guides/supported-data-formats.md). Jedes Task hat die folgenden Eigenschaften: *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*.  
+Dates werden im Format "%Y-%m-%d %H:%i" als Strings dargestellt. 
+- **config** - (*object*) ein gantt [Configuration](api/overview/properties-overview.md) Objekt mit Einstellungen, die aus der Projektdatei abgerufen wurden.
+- **resources** - (*array*) ein Array von Objekten (jeweils mit den folgenden Eigenschaften: 
+\{*id: string, name: string, type: string, calendar: string*\}) die Liste der Ressourcen aus der Projektdatei repräsentieren.
+- **worktime** - (*object*) ein Objekt, das die Arbeitszeiteinstellungen aus dem Projektkalender enthält. Es kann die folgenden Attribute enthalten:
+    - **id** - (*string | number*) optional, die Kalender-ID
+    - **hours** - (*array*) ein Array mit globalen Arbeitszeiten, legt die Start- und Endzeiten der Aufgabe fest
+    - **dates** - (*array*) ein Array von Daten, die Folgendes enthalten können:
+        - 7 Tage der Woche (von 0 - Sonntag bis 6 - Samstag), wobei 1/wahr für einen Arbeitstag steht und 0/false - ein Nicht-Arbeitstag
+        - andere Datensätze sind Daten 
+- **calendars** - (*array*) ein Array, das Kalender-Konfigurationsobjekte zur Erstellung eines neuen Kalenders enthält. 
+    - **calendarConfig** - (*object*) ein Kalender-Konfigurationsobjekt, das Folgendes enthalten kann:
+      - **id** - (*string | number*) optional, die Kalender-ID
+      - **name** - (*string*) der Kalendername
+      - **hours** - (*array*) ein Array mit globalen Arbeitszeiten, legt die Start- und Endzeiten der Aufgabe fest
+      - **dates** - (*array*) ein Array von Daten, die Folgendes enthalten können:
+            - 7 Tage der Woche (von 0 - Sonntag bis 6 - Samstag), wobei 1/wahr für einen Arbeitstag steht und 0/falsch - ein Nicht-Arbeitstag
+            - andere Datensätze sind Daten
 
 ### Related API
 - [exportToMSProject](api/method/exporttomsproject.md)
@@ -91,9 +106,8 @@ Die Antwort ist ein JSON-Objekt mit folgender Struktur:
 - [exportToPDF](api/method/exporttopdf.md)
 - [exportToPNG](api/method/exporttopng.md)
 - [exportToJSON](api/method/exporttojson.md)
-- [importFromExcel](api/method/importfromexcel.md)
 - [importFromMSProject](api/method/importfrommsproject.md)
+- [importFromExcel](api/method/importfromexcel.md)
 
 ### Related Guides
-- ["Export und Import aus Primavera P6"](guides/export-primavera.md#importfromprimaverap6)
-
+- [Export und Import aus Primavera P6](guides/export-primavera.md#import-from-primavera-p6)

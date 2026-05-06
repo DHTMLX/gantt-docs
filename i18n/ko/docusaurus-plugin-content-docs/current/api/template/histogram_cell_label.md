@@ -1,7 +1,7 @@
 ---
 sidebar_label: histogram_cell_label
-title: histogram_cell_label template
-description: "셀 내부에 표시되는 레이블을 정의합니다."
+title: histogram_cell_label 템플릿
+description: "셀 안의 레이블을 정의합니다"
 ---
 
 # histogram_cell_label
@@ -10,20 +10,20 @@ description: "셀 내부에 표시되는 레이블을 정의합니다."
 :::
 ### Description
 
-@short: 셀 내부에 표시되는 레이블을 정의합니다.
+@short: 셀 안의 레이블 정의
 
 @signature: histogram_cell_label: (start_date: Date, end_date: Date, resource: any, tasks: Array\<Task\>, assignments: any[]) =\> string | number | void;
 
 ### Parameters
 
-- `start_date` - (required) *Date* - 스케일 셀의 시작 날짜  
-- `end_date` - (required) *Date* - 스케일 셀의 종료 날짜
-- `resource` - (required) *object* - 셀과 연관된 리소스 객체
-- `tasks` - (required) *Array* - &lt;Task&gt;        셀의 시작 및 종료 날짜와 겹치는 지정된 리소스에 할당된 작업들
-- `assignments` - (required) *array* - 작업의 지정된 시작/종료 날짜와 연결된 리소스 할당 정보
+- `start_date` - (필수) *Date* - 스케일 셀의 시작 날짜  
+- `end_date` - (필수) *Date* - 스케일 셀의 종료 날짜
+- `resource` - (필수) *object* - 리소스 객체
+- `tasks` - (필수) *Array* - &lt;Task&gt; 지정된 리소스에 할당되고 셀의 시작일과 종료일과 겹치는 작업들
+- `assignments` - (필수) *array* - 지정된 시작일과 종료일 동안 작업에 할당된 리소스 할당들
 
 ### Returns
-- ` label` - (string | number | void) - histogram 셀 내부에 레이블로 사용될 HTML 문자열 또는 숫자
+- ` label` - (string | number | void) - 히스토그램 셀 안의 레이블에 대한 HTML 텍스트
 
 ### Example
 
@@ -40,9 +40,8 @@ gantt.templates.histogram_cell_label = function(start_date,end_date,resource,tas
 - [Assign resource values to specific days](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
 
 ### Details
-
 :::note
- "assignments" 매개변수는 [process_resource_assignments](api/config/process_resource_assignments.md) 설정이 활성화된 경우에만 제공됩니다. 
+"assignments" 인자는 [process_resource_assignments](api/config/process_resource_assignments.md) 설정이 활성화될 때에만 사용할 수 있습니다.
 :::
 
 ### Related API

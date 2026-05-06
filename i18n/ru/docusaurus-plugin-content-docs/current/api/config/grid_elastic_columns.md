@@ -1,14 +1,14 @@
 ---
 sidebar_label: grid_elastic_columns
-title: grid_elastic_columns config
-description: "регулирует ширину колонок внутри скроллируемой grid"
+title: конфигурация grid_elastic_columns
+description: "регулирует ширину столбцов внутри прокручиваемой сетки"
 ---
 
 # grid_elastic_columns
 
 ### Description
 
-@short: Регулирует ширину колонок внутри скроллируемой grid
+@short: Регулирует ширину столбцов внутри прокручиваемой сетки
 
 @signature: grid_elastic_columns: boolean | string
 
@@ -25,43 +25,55 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
- Это свойство работает только когда [grid имеет горизонтальный скроллбар](guides/specifying-columns.md#horizontalscrollbar). 
+Свойство работает только тогда, когда у сетки имеется горизонтальная полоса прокрутки ([grid has a horizontal scrollbar](guides/specifying-columns.md#horizontal-scrollbar)).
 :::
 
-По умолчанию dhtmlxGantt не изменяет размер колонок при изменении ширины всей grid.
+By default, dhtmlxGantt doesn't adjust the size of columns during resizing of the whole grid. 
 
-Если ширина grid увеличивается, колонки сохраняют свою исходную ширину, оставляя пустое пространство справа. Если ширина grid уменьшается, появляется горизонтальный скроллбар.
+По умолчанию dhtmlxGantt не подгоняет размер столбцов во время изменения размера всей сетки.
+
+По этой причине, когда ширина сетки увеличивается, ширина столбцов останется неизменной. В результате на правой стороне сетки появится пустое пространство. 
+В случае если ширина сетки уменьшается, горизонтальная прокрутка будет отображаться в сетке.
 
 ![elastic_false](/img/elastic_false.png)
 
-Чтобы колонки автоматически подстраивались под размер grid, установите **grid_elastic_columns** в *true*:
+To make columns dependent on the grid size, set **grid_elastic_columns** to *true*:
+
+Чтобы сделать столбцы зависимыми от размера сетки, установите значение grid_elastic_columns в *true*:
 
 ~~~js
 gantt.config.grid_elastic_columns = true;
 ~~~
 
 :::note
-Sample: [Elastic columns of Grid](https://snippet.dhtmlx.com/k0qqj5w5) 
+sample: [Elastic columns of Grid ](https://snippet.dhtmlx.com/k0qqj5w5)
 :::
 
-С этой настройкой изменение ширины grid будет также изменять размер колонок:
+Now, if the width of the grid is changed, the width of columns will be also resized, and vice versa:
 
-- При увеличении ширины grid колонки расширяются, чтобы заполнить дополнительное пространство.
-- Увеличение ширины одной колонки увеличит размер grid (может появиться горизонтальный скроллбар), но другие колонки останутся без изменений.
-- Уменьшение ширины колонки уменьшит размер grid (скроллбар может исчезнуть), а другие колонки могут увеличиться.
+Теперь, если изменится ширина сетки, ширина столбцов также будет изменяться, и наоборот:
+
+- if you widen the grid, the columns will expand to fit the size of the grid and occupy all the remaining space
+- если вы увеличите сетку, столбцы расширятся, чтобы занять размер сетки и занять всё оставшееся пространство
+- if you expand the column width, the size of the grid will increase (the horizontal scrollbar may appear but the size of other columns won't change)
+- если вы увеличите ширину столбца, размер сетки увеличится (может появиться горизонтальная полоса прокрутки, но размер других столбцов не изменится)
+- if you reduce the column width, the size of the grid will reduce (the horizontal scrollbar may disappear but the size of other columns may increase)
+- если вы уменьшите ширину столбца, размер сетки уменьшится (горизонтальная прокрутка может исчезнуть, но размер остальных столбцов может увеличиться)
 
 ![elastic_true](/img/elastic_true.png)
 
-Другой вариант - установить значение свойства в "min_width":
+Еще один вариант - установить значение свойства как "min_width":
 
 ~~~js
 gantt.config.grid_elastic_columns = "min_width";
 ~~~
 
-Что происходит в этом случае:
+В этом случае:
 
-- При расширении grid колонки растягиваются, чтобы заполнить доступное пространство.
-- При сужении grid колонки уменьшаются до своих [минимальных ширин](guides/specifying-columns.md#width). Когда все колонки достигнут минимальной ширины, появится горизонтальный скроллбар.
+- if you widen the grid, the columns will expand to fit the size of the grid and occupy all the remaining space
+- если вы увеличите сетку, столбцы расширятся, чтобы заполнить размер сетки и занять все оставшееся пространство
+- if you reduce the width of the grid, the columns will shrink until they reach their [minimal width](guides/specifying-columns.md#width). When all columns reach minimum, the horizontal scroll will appear in the grid.
+- если вы уменьшите ширину сетки, столбцы сузятся до достижения своей [минимальной ширины](guides/specifying-columns.md#width). Когда все столбцы достигнут минимума, горизонтальная прокрутка появится в сетке.
 
 ### Change log
-- добавлено в v7.0
+- добавлено в версии v7.0

@@ -50,7 +50,9 @@ If you already use the Professional package, replace `@dhtmlx/trial-react-gantt`
 
 ## Adding demo data
 
-We'll use static data for this example. Create a file named `src/demoData.ts`:
+We'll use static data for this example. Create a file named `src/demoData.ts`.
+
+When typing initial data, you can use `SerializedTask` for tasks and `SerializedLink` for links. These types accept string dates and don't include Gantt's internal `$`-prefixed properties, making them ideal for data you define outside of Gantt (state stores, API responses, seed files):
 
 ~~~ts
 import type { Task, Link } from '@dhtmlx/trial-react-gantt';

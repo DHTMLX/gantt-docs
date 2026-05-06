@@ -1,14 +1,14 @@
 ---
 sidebar_label: correct_work_time
-title: correct_work_time config
-description: "Ermöglicht das Anpassen der Start- und Enddaten einer Aufgabe, damit sie während des Draggens innerhalb der Arbeitszeiten liegen"
+title: correct_work_time Konfiguration
+description: "Ermöglicht das Anpassen des Start- und Enddatums der Aufgabe an die Arbeitszeit (während des Ziehens)"
 ---
 
 # correct_work_time
 
 ### Description
 
-@short: Ermöglicht das Anpassen der Start- und Enddaten einer Aufgabe, damit sie während des Draggens innerhalb der Arbeitszeiten liegen
+@short: Ermöglicht das Anpassen des Start- und Enddatums der Aufgabe an die Arbeitszeit (während des Ziehens)
 
 @signature: correct_work_time: boolean
 
@@ -17,20 +17,18 @@ description: "Ermöglicht das Anpassen der Start- und Enddaten einer Aufgabe, da
 ~~~jsx
 gantt.config.work_time = true;
 gantt.config.correct_work_time = true;
-
+ 
 gantt.init("gantt_here");
 ~~~
 
 **Default value:** false
 
 ### Related samples
-- [Correct task position on drag](https://docs.dhtmlx.com/gantt/samples/09_worktime/05_adjust_to_worktime.html)
+- [Korrekte Position der Aufgabe beim Ziehen](https://docs.dhtmlx.com/gantt/samples/09_worktime/05_adjust_to_worktime.html)
 
 ### Details
 
-Diese Einstellung wirkt nur, wenn die Eigenschaft aus [work_time](api/config/work_time.md) aktiviert ist.
-
-<br>
+Die Eigenschaft ist nur sinnvoll, wenn die [work_time](api/config/work_time.md) Eigenschaft aktiviert ist.
 
 ![correct_work_time](/img/correct_work_time.png)
 
@@ -38,5 +36,4 @@ Diese Einstellung wirkt nur, wenn die Eigenschaft aus [work_time](api/config/wor
 - [work_time](api/config/work_time.md)
 
 ### Related Guides
-- ["Arbeitszeitberechnung"](guides/working-time.md)
-
+- [Berechnung der Arbeitszeit](guides/working-time.md)

@@ -1,29 +1,29 @@
 ---
 sidebar_label: resource_cell_class
-title: resource_cell_class template
-description: "리소스 타임라인 뷰의 셀에 적용할 CSS 클래스 이름을 정의합니다."
+title: resource_cell_class 템플릿
+description: "자원 타임라인 셀의 셀에 적용되는 CSS 클래스 이름을 정의합니다"
 ---
 
 # resource_cell_class
 :::info
-이 기능은 PRO 에디션에서만 사용할 수 있습니다. 
+이 기능은 PRO 에디션에서만 사용 가능합니다.
 :::
 ### Description
 
-@short: 리소스 타임라인 뷰의 셀에 적용할 CSS 클래스 이름을 정의합니다.
+@short: 자원 타임라인 셀의 셀에 적용되는 CSS 클래스 이름을 정의합니다
 
-@signature: resource_cell_class: (start_date: Date, end_date: Date, resource: any, tasks: Array\<Task\>, assignments: any[]) =\> string | void;
+@signature: resource_cell_class: (start_date: Date, end_date: Date, resource: any, tasks: Array\<Task\>, assignments: any[]) => string | void;
 
 ### Parameters
 
-- `start_date` - (required) *Date* - 스케일 셀의 시작 날짜  
-- `end_date` - (required) *Date* - 스케일 셀의 종료 날짜
-- `resource` - (required) *object* - 리소스 객체
-- `tasks` - (required) *Array* - &lt;Task&gt;        해당 셀의 시작 및 종료 날짜와 겹치는 지정된 리소스에 할당된 작업 목록
-- `assignments` - (required) *array* - 작업의 지정된 시작 및 종료 날짜와 연결된 리소스 할당 목록
+- `start_date` - (필수) *Date* - 스케일 셀의 시작 날짜  
+- `end_date` - (필수) *Date* - 스케일 셀의 종료 날짜
+- `resource` - (필수) *object* - 자원 객체
+- `tasks` - (필수) *Array* - &lt;Task&gt;        지정된 자원에 할당되고 셀의 시작/종료 날짜와 겹치는 작업들
+- `assignments` - (필수) *배열* - 특정 작업의 시작/종료 날짜에 할당된 자원 할당들
 
 ### Returns
-- ` className` - (string | void) - 셀 엘리먼트의 className 속성에 추가할 문자열
+- ` className` - (string | void) - 셀 요소의 className 속성에 덧붙여지는 문자열
 
 ### Example
 
@@ -47,13 +47,13 @@ gantt.templates.resource_cell_class = function(start_date, end_date, resource, t
 ### Details
 
 :::note
- "assignments" 파라미터는 [process_resource_assignments](api/config/process_resource_assignments.md) 설정이 활성화된 경우에만 제공됩니다. 
+"assignments" 매개변수는 [process_resource_assignments](api/config/process_resource_assignments.md) 구성이 활성화된 경우에만 사용 가능합니다.
 :::
 
-- 리소스 타임라인의 셀에 적용할 CSS 클래스 이름을 제어합니다.
-- 리소스 타임라인은 [resource_property](api/config/resource_property.md)에 정의된 속성을 기준으로 작업과 리소스를 연결합니다.
-- 작업이 없는 셀에는 이 템플릿이 호출되지 않으며, [resource_render_empty_cells](api/config/resource_render_empty_cells.md)가 활성화된 경우에만 호출됩니다.
-- [프로젝트 타입](api/config/types.md)의 작업은 제외되며 `tasks` 파라미터에 포함되지 않습니다.
+- 자원 타임라인 뷰에서 셀의 CSS 클래스 이름을 정의합니다.
+- 자원 타임라인은 작업 객체의 [resource_property](api/config/resource_property.md) 속성에 의해 작업을 자원에 연결합니다.
+- 템플릿은 작업이 위치하지 않은 셀에는 호출되지 않지만 [resource_render_empty_cells](api/config/resource_render_empty_cells.md)가 활성화된 경우에는 호출됩니다.
+- [project type](api/config/types.md) 유형의 작업은 계산되지 않으며 `tasks` 매개변수로 전달되지 않습니다.
 
 ### Related API
 - [resource_property](api/config/resource_property.md)
@@ -62,8 +62,7 @@ gantt.templates.resource_cell_class = function(start_date, end_date, resource, t
 - [process_resource_assignments](api/config/process_resource_assignments.md)
 
 ### Related Guides
-- [리소스 관리](guides/resource-management.md)
+- [Resource Management](guides/resource-management.md)
 
 ### Change log
-- **assignments** 파라미터는 v7.1에서 도입되었습니다.
-
+- the **assignments** parameter is added in v7.1

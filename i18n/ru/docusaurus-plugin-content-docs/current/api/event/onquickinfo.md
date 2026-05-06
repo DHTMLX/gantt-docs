@@ -1,36 +1,36 @@
 ---
 sidebar_label: onQuickInfo
-title: onQuickInfo event
-description: "срабатывает при отображении всплывающей формы редактирования"
+title: Событие onQuickInfo
+description: "срабатывает, когда появляется всплывающая форма редактирования"
 ---
 
 # onQuickInfo
 
 ### Description
 
-@short: Срабатывает при отображении всплывающей формы редактирования
+@short: Срабатывает, когда появляется всплывающая форма редактирования
 
 @signature: onQuickInfo: (taskId: string | number) =\> void;
 
 ### Parameters
 
-- `taskId` - (required) *string | number* - id задачи
+- `taskId` - (обязательно) *string | number* - идентификатор задачи
 
 ### Example
 
 ~~~jsx
-gantt.attachEvent("onQuickInfo",function(taskId){  
-    // ваш код здесь  
+gantt.attachEvent("onQuickInfo",function(taskId){
+    // любая ваша логика здесь
 });
 ~~~
 
 ### Related samples
-- [QuickInfo extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
+- [Расширение QuickInfo](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
 
 ### Details
 
 :::note
- Это событие является частью расширения **Quick Info**, поэтому убедитесь, что включили плагин [quick_info](guides/extensions-list.md#quickinfo). 
+Это событие определяется в расширении **Quick Info**, поэтому вам нужно активировать плагин [quick_info](guides/extensions-list.md#quick-info).
 :::
 
 ### Related API
@@ -41,5 +41,4 @@ gantt.attachEvent("onQuickInfo",function(taskId){
 - [onAfterQuickInfo](api/event/onafterquickinfo.md)
 
 ### Related Guides
-- [Полный список расширений](guides/extensions-list.md#quickinfo)
-
+- [Полный список расширений](guides/extensions-list.md#quick-info)

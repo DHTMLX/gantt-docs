@@ -5,7 +5,145 @@ sidebar_label: "What's New"
 
 # What's New
 
+:::note
 현재 사용 중인 dhtmlxGantt 버전이 2.0보다 이전 버전이라면, 업데이트에 대한 자세한 내용은 [](migration.md)를 참고하세요.
+:::
+
+## 9.1.3
+
+<span class='release_date'>2026년 3월 16일. 버그 수정 릴리스</span>
+
+### 수정 사항(Fixes)
+
+- 주요 그리드와 타임라인이 초기 상태에서 표시되지 않았을 때 [zoom](guides/zooming.md) 기능이 작동하지 않던 문제를 수정
+- 축(scale) 셀이 확대/축소 수준을 변경한 후 [resource timeline](guides/resource-management.md#resourceviewpanel)에서 사라지던 문제를 수정
+- 내보내기 도중 [zoom level](guides/zooming.md)을 변경하고 타임라인을 오른쪽으로 스크롤한 뒤 타임라인 셀들이 사라지던 문제를 수정
+- 창 크기 조정 시 타임라인이 오른쪽으로 스크롤되었고 [Zoom extension](guides/zooming.md)이 활성화되어 있을 때 축 셀이 사라지던 문제를 수정
+- [open_split_tasks](api/config/open_split_tasks.md)가 활성화된 상태에서 [zoom level](guides/zooming.md)을 변경하면 작업이 사라지던 문제를 수정
+- 대용량 데이터 세트에서 부모 작업과 상호작용할 때까지 [rollup](guides/milestones.md#rolluptasksandmilestones) 작업이 올바르게 표시되지 않던 문제를 수정
+- [show_unscheduled](api/config/show_unscheduled.md)가 `false`로 설정되고 날짜 범위가 구성된 경우 미정렬 작업이 표시되지 않던 문제를 수정
+- [keyboard navigation](guides/keyboard-navigation.md)이 활성화되고 리소스 데이터스토어가 트리 구조 없이 초기화되었을 때 [resource grid](guides/resource-management.md#resourceviewpanel)가 사라지던 문제를 수정
+- 긴 콘텐츠에 대한 [Quick Info](guides/quick-info.md) 팝업의 오버플로우 스타일을 수정
+
+### 업데이트(Update)
+
+- 작업 데이터에서 [ISO date format](guides/date-format.md) 문자열 자동 감지 및 지원 추가
+  ISO 8601 날짜(예: `"2026-01-06"`, `"2026-01-06T10:30:45Z"`)가 이제 수동 템플릿 재정의 없이 자동으로 구문 분석 및 직렬화됩니다
+
+## 9.1.2
+
+<span class='release_date'>2026년 2월 27일. 버그 수정 릴리스</span>
+
+- [touch] 모드가 활성화되고 Shadow DOM 내부에서 Gantt가 렌더링된 상태에서 작업 순서 변경이나 링크 생성 후 Gantt가 사라지던 문제를 수정
+- [React Gantt](integrations/react.md)의 [initial_scroll] 옵션이 초기화 시 차트를 첫 번째 작업으로 스크롤하도록 수정
+- [gantt.batchUpdate()](api/method/batchupdate.md) 내부에서 변경이 이루어진 경우 드래그 앤 드롭 후 작업 할당이 올바르게 업데이트되지 않던 문제를 수정
+- 작업 백그라운드 행 렌더러에서 메모리 누수가 발생하던 문제를 수정
+- [React Gantt](integrations/react.md)에서 축/스케일 투영이 작동하지 않던 문제를 수정
+- 데이터스토어를 통해 추가된 Baseline이 렌더링되지 않던 문제를 수정
+- 잘못된 [layout configuration](guides/layout-config.md)을 제공한 후 Gantt가 작동을 멈추던 문제를 수정
+
+## 9.1.1
+
+<span class='release_date'>2025년 12월 15일. 버그 수정 릴리스</span>
+
+### Fixes
+
+- [React Gantt](integrations/react.md)에서 사용자가 `links` prop를 제공했지만 `tasks` prop가 없었던 경우 발생하던 오류를 수정
+- [React Gantt](integrations/react.md)에서 재로딩된 작업에 `$source` 및 `$target` 속성에 링크 ID가 포함되지 않던 문제를 수정
+- **Meta** 키를 누른 뒤 인라인 에디터가 열리던 문제를 수정
+- CSP 프로덕션 환경에서 `%w` 날짜 형식이 올바르게 작동하지 않던 문제를 수정
+- `render="split"`가 지정된 그룹 작업이 분할로 표시되지 않던 문제를 수정
+- 리소스 셀 편집 후 **Tab** 키를 눌렀을 때 리소스 그리드가 사라지던 문제를 수정
+
+### 업데이트(Update)
+
+- [virtual tasks]에 대한 행 높이와 작업 막대 높이를 구성하도록 허용
+
+## 9.1
+
+<span class='release_date'>2025년 11월 5일. 마이너 업데이트</span>
+
+### Breaking Changes(호환성 변경)
+
+이 업데이트는 Gantt 패키지의 구조 및 기능 동작에 몇 가지 변경을 가져옵니다. 안전하게 진행하려면 아래를 확인하세요.  
+[Migration notes](migration.md#90---91)를 확인하여 안전한 업데이트를 진행하십시오.
+
+### New Functionality(새로운 기능)
+
+- 실시간 업데이트를 위한 다중 사용자 백엔드(Multi-user backend) 모듈이 추가되었습니다
+- 실시간 데이터 동기화를 관리하기 위한 Remote updates API가 추가되었습니다
+- [Resources](guides/resources.md) 컨트롤의 기능을 확장하기 위한 새로운 [Resource Assignments 컨트롤]이 도입되었습니다
+- 실제 작업 시간에 기반한 Day/Week 축에서 작업을 표시할 수 있는 기능이 도입되었습니다
+- 부모 행의 상태에 따라 분할 하위 작업을 렌더링할 수 있는 기능이 도입되었습니다
+
+### Updates(업데이트)
+
+- Timeline 셀의 크기를 고정하는 기능이 추가되었습니다
+- 달력 구성에서 날짜를 지정하는 기능 지원이 추가되었습니다
+- [Auto Scheduling](guides/auto-scheduling.md) 설정을 간소화하기 위한 구성 객체가 추가되었습니다
+- Windows 디바이스에 대한 터치 스크린 지원이 개선되었습니다
+- 더 이상 사용되지 않는 obsolate subscales API가 제거되었습니다
+
+### Fixes(수정)
+
+- timeline이 보이지 않는 상태에서 visual:true와 사용자 정의 데이터가 있는 경우 Excel 내보내기가 실패하던 문제 수정
+- additional_settings.slice_archive 설정이 있는 export to PDF에서 Gantt가 불완전하게 표시되던 문제 수정
+- Excel 내보내기에서 Unschedule Tasks가 포함되지 않도록 수정
+- Excel 출력에서 Split Tasks를 내보낼 수 있도록 지원 추가
+- 리소스 히스토그램(Resource Histogram)의 크기 조정 후 렌더링이 잘못되던 문제 수정
+- 확대/축소를 변경할 때 작업이 겹치는 현상을 수정
+
+## 9.0.15
+
+<span class='release_date'>2025년 9월 19일. 버그 수정 릴리스</span>
+
+### Fixes
+
+- setWorkTime 메서드로 설정된 customWeeks를 사용할 때 요일 구성이 무시되던 문제 수정
+- Shadow DOM 내에서 Gantt를 사용하는 환경에서 호환성 개선
+- React Gantt에서 다중 컴포넌트 인스턴스가 원인인 템플릿 중복 문제 수정
+
+## 9.0.14
+
+<span class='release_date'>2025년 7월 31일. 버그 수정 릴리스</span>
+
+### Fixes
+
+- Modalbox를 닫은 후 스크립트 오류 수정
+- 그룹화 모드(grouped)에서 일부 데이터 다시 구문 분석 시 트리 구조가 재구성되며 빈 행이 생성되는 문제 수정
+- Firefox에서 setWorkTime 메서드가 customWeeks를 올바르게 적용하도록 수정
+- 비어 있는 데이터 세트로 setTasks를 호출했을 때 React Gantt가 깨지던 문제 수정
+
+## 9.0.13
+
+<span class='release_date'>2025년 6월 26일. 버그 수정 릴리스</span>
+
+### Fixes
+
+- 중복 링크를 생성하고 삭제한 후 Gantt가 비정상적으로 작동하지 않던 문제 수정
+- 터치 디바이스에서 링크 플레이스홀더가 올바르게 표시되도록 수정
+- 단일 마일스톤 자식이 있는 경우 프로젝트의 end_date가 업데이트되지 않던 문제 수정
+- 사용자 정의 데이터스토어를 사용할 때 리소스 아이템의 불필요한 재도색을 방지
+- silent 호출 시 내부 데이터스토어의 상태가 잘못된 상태로 남던 문제 수정
+- [DataProcessor](guides/server-side.md)에서 custom router 인수에 !nativeeditor_status 속성이 추가되는 것을 방지
+- [React Gantt](integrations/react.md)에서 tasks/links 변경 시 백엔드와의 동기화가 잘못될 수 있던 문제 수정
+
+## 9.0.12
+
+<span class='release_date'>2025년 6월 19일. 버그 수정 릴리스</span>
+
+### Fixes
+
+- 대비 색상 스킨(contrast-white)에서 색 대비 접근성 테스트를 통과하는지 확인
+- [dynamic loading](guides/dynamic-loading.md)이 gantt.clearAll() 호출 후 작동하지 않던 문제 수정
+- 긴 텍스트를 표시할 때 Gantt 컨테이너 외부에 도구 팁(Tooltip)이 렌더링되는 것을 방지
+- 키보드 네비게이션이 활성화된 상태에서 서버 업데이트가 확정되지 않던 문제 수정
+- [milestone baselines](guides/inbuilt-baselines.md)에 적용된 커스텀 클래스가 올바르게 동작하도록 수정
+
+### Updates(업데이트)
+
+- [React Gantt](integrations/react.md)가 이제 추가 설정 없이 Next.js 및 Remix SSR 프레임워크와 호환되도록 업데이트
+
 
 ## 9.0.11
 

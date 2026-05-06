@@ -1,7 +1,7 @@
 ---
 sidebar_label: editor_types
-title: editor_types config
-description: "一个包含内联编辑器定义的对象"
+title: editor_types 配置
+description: "包含内联编辑器定义的对象"
 ---
 
 # editor_types
@@ -24,16 +24,16 @@ gantt.config.editor_types.custom_editor = {// 自定义编辑器逻辑}
 
 系统内置了多种内联编辑器:
 
-- **text** - (*InlineEditor*) - 用于编辑文本字段，如任务名称
-- **number** - (*InlineEditor*) - 用于编辑数字字段，如任务持续时间或顺序
-- **duration** - (*InlineEditor*) - 用于编辑持续时间字段，即任务持续时间。
-仅当应用了 ***map_to:"duration"*** 配置且[editor type](guides/inline-editing.md)设置为 **"duration"** 时有效
-- **date** - (*InlineEditor*) - 用于编辑日期字段，如任务开始和结束日期
-- **select** - (*InlineEditor*) - 用于从下拉列表中选择选项
-- **predecessor** - (*InlineEditor*) - 用于为当前任务分配前置任务。此编辑器使用[WBS代码](guides/specifying-columns.md)来关联前置任务
-- **[customEditorName: string]** - (*InlineEditor | undefined*) - 用于定义自定义内联编辑器
+- **text** - (*InlineEditor*) - 用于编辑文本列，例如任务名称
+- **number** - (*InlineEditor*) - 用于编辑数字列，例如任务时长、顺序等
+- **duration** - (*InlineEditor*) - 用于编辑持续时间列，即任务持续时间。
+  仅当使用 ***map_to:"duration"*** 配置并且 [the editor type](guides/inline-editing.md#types-of-editors) 设置为 **"duration"** 类型 时才工作
+- **date** - (*InlineEditor*) - 用于编辑日期列，例如任务的开始日期和结束日期
+- **select** - (*InlineEditor*) - 用于从列表中选择一个选项
+- **predecessor** - (*InlineEditor*) - 用于为当前正在编辑的任务设置前置任务。该编辑器获取任务的 [WBS 码](guides/specifying-columns.md#wbscode) 以建立与前置任务的连接
+- **[customEditorName: string]** - (*InlineEditor | undefined*) - 自定义内联编辑器
 
-此处定义的编辑器可以分配给 gantt 的列:
+在此对象中定义的编辑器可以附加到 gantt 列上：
 
 ~~~js
 const textEditor = {type: "text", map_to: "text"};
@@ -48,4 +48,4 @@ gantt.config.columns = [
 ~~~
 
 ### Related Guides
-- [在网格中进行内联编辑](guides/inline-editing.md)
+- [Grid中的内联编辑](guides/inline-editing.md#types-of-editors)

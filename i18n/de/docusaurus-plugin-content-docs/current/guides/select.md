@@ -1,11 +1,11 @@
 ---
-title: "Select Control"
-sidebar_label: "Select Control"
+title: "Auswahlliste"
+sidebar_label: "Auswahlliste"
 ---
 
-# Select Control
+# Auswahlliste
 
-Ein Dropdown-Auswahlfeld.
+Eine Dropdown-Liste.
 
 ![select_control](/img/select_control.png)
 
@@ -24,14 +24,14 @@ gantt.locale.labels.section_priority = "Priority";
 ~~~
 
 
-[Select control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
+[Auswahlliste](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
 
 
-## Initialisierung
+## Initialization
 
-Um das **select**-Steuerelement im Lightbox-Formular einzubinden, gehen Sie wie folgt vor:
+Um die **select**-Steuerung zum Lightbox hinzuzufügen, befolgen Sie diese Schritte:
 
-1) Fügen Sie eine Sektion zur Lightbox-Konfiguration hinzu:
+1) Fügen Sie der Lightbox-Konfiguration einen Abschnitt hinzu:
 
 ~~~js
 var opts = [
@@ -47,7 +47,7 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-2) Definieren Sie ein Label für die Sektion:
+2) Legen Sie eine Beschriftung für den Abschnitt fest:
 
 ~~~js
 gantt.locale.labels.section_priority = "Priority";
@@ -55,28 +55,28 @@ gantt.locale.labels.section_priority = "Priority";
   
   
 
-[Select control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
+[Auswahlliste](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
 
 
 ## Eigenschaften
 
-Hier sind einige wichtige Eigenschaften, die üblicherweise für das **select**-Steuerelement gesetzt werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
+Die folgenden Eigenschaften sind größtenteils wichtig und werden typischerweise für die **select**-Steuerung festgelegt (siehe die vollständige Liste [hier](api/config/lightbox.md)):
 
-- **name** - (*string*) Der Name der Sektion 
-- **height** - (*number*) Die Höhe der Sektion
-- **map_to** - (*string*) Der Name der Daten-Eigenschaft, die der Sektion zugeordnet wird
-- **type** - (*string*) Der Typ des [section control](guides/default-edit-form.md#lightboxcontrols)
-- **focus** - (*boolean*) Wenn *true*, erhält die Sektion beim Öffnen des Lightbox-Dialogs den Fokus
-- **options** - (*array*) Ein Array von Objekten, das die Auswahlmöglichkeiten für das Steuerelement definiert (*wird für **select**, **checkbox** und **radio** genutzt*). Jedes Objekt steht für eine Option und enthält:
-    - **key** - (*string*) Die Options-ID, die mit der Eigenschaft der Task-Daten abgeglichen wird
-    - **label** - (*string*) Die Bezeichnung der Option
-- **default_value** - (*any*) Der Standardwert für das Steuerelement, der gesetzt wird, wenn der Eingabewert nicht definiert ist    
-- **onchange** - (*function*) Die ['onChange'-Event-Handler-Funktion](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event) für das Steuerelement 
+- **name** - (*string*) der Abschnittsname 
+- **height** - (*number*) die Abschnittshöhe
+- **map_to** - (*string*) der Name einer Dateneigenschaft, die dem Abschnitt zugeordnet wird
+- **type** - (*string*) der Typ der [Abschnittssteuerung](guides/default-edit-form.md#lightboxcontrols)
+- **focus** - (*boolean*) wenn auf *true* gesetzt, erhält der Abschnitt beim Öffnen der Lightbox den Fokus
+- **options** - (*array*) ein Array von Objekten. Definiert die Optionen der Steuerung für das **select**, **checkbox**- und **radio**-Steuerungen. Jedes Objekt im Array gibt eine einzelne Option an und besitzt
+    - **key** - (*string*) die Option-ID. Dieses Attribut wird mit der Task-Dateneigenschaft verglichen, um Optionen Aufgaben zuzuordnen
+    - **label** - (*string*) die Bezeichnung der Option
+- **default_value** - (*any*) der Standardwert der Steuerung des Abschnitts. Wird nur angewendet, wenn der Eingabewert undefiniert ist    
+- **onchange** - (*function*) gibt die ['onChange' Event-Handler-Funktion](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event) für die Steuerung des Abschnitts an 
 
 
-## Befüllen des Steuerelements mit Daten
+## Befüllen der Steuerung mit Daten
 
-Um Werte für das **select**-Steuerelement zu setzen, verwenden Sie den [options](api/config/lightbox.md)-Parameter:
+Im Allgemeinen gilt: Um Werte für die **select**-Steuerung festzulegen, verwenden Sie den [options](api/config/lightbox.md)-Parameter:
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -89,15 +89,15 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-Jedes Element im [options](api/config/lightbox.md)-Array muss diese zwei Eigenschaften besitzen:
+Elemente im [options](api/config/lightbox.md)-Parameter haben 2 Pflicht-Eigenschaften:
 
-- **key** - Die Options-ID
-- **label** - Die Bezeichnung der Option
+- **key** - die Option-ID
+- **label** - die Option-Bezeichnung
 
 
-## Befüllen des Steuerelements mit Daten vom Server
+## Befüllen der Steuerung mit Daten vom Server
 
-Um das Steuerelement mit Daten vom Server zu befüllen, weisen Sie dem [options](api/config/lightbox.md)-Parameter den Wert zu, der von der Methode [serverList](api/method/serverlist.md) zurückgegeben wird:
+Um die Steuerung vom Server aus zu befüllen, setzen Sie die [options](api/config/lightbox.md)-Option auf den Wert, der von der [serverList](api/method/serverlist.md) Methode zurückgegeben wird:
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -112,7 +112,7 @@ gantt.init("gantt_here");
 gantt.load("/data");
 ~~~
 
-Die Antwort vom **/data**-Endpunkt sieht wie folgt aus:
+Die Ausgabe der URL **/data** ist Folgendes:
 
 ~~~js
 {
@@ -142,7 +142,7 @@ Die Antwort vom **/data**-Endpunkt sieht wie folgt aus:
 
 ### Laden von Optionen über dhtmlxConnector
 
-Nachfolgend ein Beispiel für die Initialisierung von [dhtmlxConnector](integrations/php/howtostart-connector.md):
+Hier ist ein Beispiel für die Initialisierung von [dhtmlxConnector](integrations/php/howtostart-connector.md):
 
 ~~~php
 //data.php

@@ -1,16 +1,16 @@
 ---
 sidebar_label: onScaleAdjusted
-title: onScaleAdjusted event
-description: "срабатывает при повторном рендеринге масштаба для обеспечения полной видимости всех задач"
+title: Событие onScaleAdjusted
+description: "срабатывает при повторной отрисовке масштаба, чтобы полностью отобразить все задачи"
 ---
 
 # onScaleAdjusted
 
 ### Description
 
-@short: Срабатывает при повторном рендеринге масштаба для обеспечения полной видимости всех задач
+@short: Срабатывает при повторной отрисовке масштаба, чтобы полностью отобразить все задачи
 
-@signature: onScaleAdjusted: () =\> void;
+@signature: onScaleAdjusted: () => void;
 
 ### Example
 
@@ -25,13 +25,13 @@ gantt.attachEvent("onScaleAdjusted", function(){
 });
 ~~~
 
+
 ### Related samples
-- [Auto resize scale](https://docs.dhtmlx.com/gantt/samples/03_scales/08_scale_autoconfig.html)
+- [Автоматическая настройка масштаба](https://docs.dhtmlx.com/gantt/samples/03_scales/08_scale_autoconfig.html)
 
 ### Details
 
-Имейте в виду, что это событие срабатывает только если свойство [fit_tasks](api/config/fit_tasks.md) включено (установлено в *true*).
+Примечание: событие будет срабатывать только в том случае, если свойство [fit_tasks](api/config/fit_tasks.md) установлено в *true*.
 
 ### Related API
 - [fit_tasks](api/config/fit_tasks.md)
-

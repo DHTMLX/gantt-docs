@@ -1,14 +1,14 @@
 ---
 sidebar_label: scroll_size
-title: scroll_size config
-description: "gibt die Größe für die vertikalen (Breite) und horizontalen (Höhe) Scrollbars an"
+title: scroll_size Konfiguration
+description: "Legen Sie die Größen der vertikalen (Breite) und horizontalen (Höhe) Scrollleisten fest"
 ---
 
 # scroll_size
 
 ### Description
 
-@short: Gibt die Größe für die vertikalen (Breite) und horizontalen (Höhe) Scrollbars an
+@short: Legen Sie die Größen der vertikalen (Breite) und horizontalen (Höhe) Scrollleisten fest
 
 @signature: scroll_size: number
 
@@ -20,8 +20,8 @@ gantt.config.scroll_size = 20;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 15
+**Standardwert:** 15
 
 ### Details
 
-Wenn diese Einstellung nicht definiert ist, verwendet Gantt die standardmäßige Scrollbar-Breite des Browsers, da die Scrollbar-Stile je nach Browser variieren können.
+Wenn nichts angegeben wird, verwendet Gantt die Standardbreite der Scrollleiste des Browsers, da die Stile des Scrollleisten-Elements je nach Browser variieren.

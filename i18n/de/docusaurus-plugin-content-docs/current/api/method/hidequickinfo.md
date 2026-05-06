@@ -1,14 +1,14 @@
 ---
 sidebar_label: hideQuickInfo
-title: hideQuickInfo method
-description: "Blendet das Pop-up-Aufgabenformular aus, falls es derzeit geöffnet ist"
+title: hideQuickInfo Methode
+description: "Blendet das Pop-up-Aufgabenformular aus (falls es aktuell aktiv ist)"
 ---
 
 # hideQuickInfo
 
 ### Description
 
-@short: Blendet das Pop-up-Aufgabenformular aus, falls es derzeit geöffnet ist
+@short: Blendet das Pop-up-Aufgabenformular aus (falls es aktuell aktiv ist)
 
 @signature: hideQuickInfo: () =\> void
 
@@ -21,12 +21,12 @@ gantt.hideQuickInfo();
 ~~~
 
 ### Related samples
-- [QuickInfo extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
+- [QuickInfo-Erweiterung](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
 
 ### Details
 
 :::note
- Diese Methode ist Teil der **Quick Info**-Erweiterung. Stellen Sie daher sicher, dass das Plugin [quick_info](guides/extensions-list.md#quickinfo) aktiviert ist. 
+Diese Methode ist in der **Quick Info**-Erweiterung definiert, daher müssen Sie das [quick_info](guides/extensions-list.md#quick-info)-Plugin aktivieren.
 :::
 
 ### Related API
@@ -37,5 +37,4 @@ gantt.hideQuickInfo();
 - [onAfterQuickInfo](api/event/onafterquickinfo.md)
 
 ### Related Guides
-- ["Vollständige Liste der Erweiterungen"](guides/extensions-list.md#quickinfo)
-
+- [Vollständige Liste der Erweiterungen](guides/extensions-list.md#quick-info)

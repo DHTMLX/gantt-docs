@@ -1,53 +1,49 @@
 ---
 sidebar_label: onRowDragStart
 title: onRowDragStart event
-description: "срабатывает непосредственно перед тем, как строка в grid будет перетащена для вертикального изменения порядка"
+description: "срабатывает перед тем, как пользователь начнет перетаскивать строку в сетке для вертикального изменения порядка"
 ---
 
 # onRowDragStart
 
 ### Description
 
-@short: Срабатывает непосредственно перед тем, как строка в grid будет перетащена для вертикального изменения порядка
+@short: Срабатывает до того, как пользователь начнет перетаскивать строку в сетке для вертикального изменения порядка
 
 @signature: onRowDragStart: (id: string | number, target: HTMLElement, e: Event) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - ID задачи, которую перетаскивают внутри grid
-- `target` - (required) *HTMLElement* - HTML-элемент, представляющий перетаскиваемую задачу
-- `e` - (required) *Event* - нативный объект события, связанный с действием drag
+- `id` - (required) *string | number* - идентификатор задачи, которую пользователь перетаскивает в сетке
+- `target` - (required) *HTMLElement* - HTML-элемент задачи, которую пользователь перетаскивает
+- `e` - (required) *Event* - нативный объект события
 
 ### Returns
-- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию для события (<b>true</b>) или оно будет остановлено (<b>false</b>)
+- ```result``` - (boolean) - определяет, будет ли выполнено действие по умолчанию у события (true) или отменено (false)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onRowDragStart", function(id, target, e) {
-    // здесь можно добавить кастомную логику
+    // здесь можно добавить любую пользовательскую логику
     return true;
 });
 ~~~
 
 ### Related samples
-- [Branch ordering](https://docs.dhtmlx.com/gantt/samples/07_grid/02_branch_ordering.html)
+- [Упорядочивание ветвей](https://docs.dhtmlx.com/gantt/samples/07_grid/02_branch_ordering.html)
 
 ### Details
 
 :::note
-
-Это событие срабатывает, когда задача перетаскивается мышью в левой области grid, и применимо только если активирована опция [order_branch](api/config/order_branch.md). Если переупорядочивание веток отключено, событие не происходит.
- 
+Событие срабатывает, когда задача перемещается указателем мыши в левой части сетки, при включенной настройке [order_branch](api/config/order_branch.md). Если переупорядочение ветвей отключено, событие не будет вызвано.
 :::
 
-
-Это событие можно заблокировать, вернув *false*, что предотвратит начало перетаскивания.
+Событие можно отменить. Верните *false* для отмены перетаскивания.
 
 ### Related API
 - [onRowDragEnd](api/event/onrowdragend.md)
 - [order_branch](api/config/order_branch.md)
 
 ### Related Guides
-- [Изменение порядка задач](guides/reordering-tasks.md)
-
+- [Переупорядочение задач](guides/reordering-tasks.md)

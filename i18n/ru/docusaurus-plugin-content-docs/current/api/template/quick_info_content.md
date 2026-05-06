@@ -1,25 +1,25 @@
 ---
 sidebar_label: quick_info_content
 title: quick_info_content template
-description: "определяет, что отображается в всплывающей форме редактирования"
+description: "определяет содержимое всплывающей формы редактирования"
 ---
 
 # quick_info_content
 
 ### Description
 
-@short: Определяет, что отображается в всплывающей форме редактирования
+@short: Определяет содержимое всплывающей формы редактирования
 
-@signature: quick_info_content: (start: Date, end: Date, task: Task) =\> string;
+@signature: quick_info_content: (start: Date, end: Date, task: Task) => string;
 
 ### Parameters
 
-- `start` - (required) *Date* - дата начала задачи
-- `end` - (required) *Date* - ожидаемая дата завершения задачи
+- `start` - (required) *Date* - дата начала запланированной задачи
+- `end` - (required) *Date* - дата окончания запланированной задачи
 - `task` - (required) *Task* - объект задачи
 
 ### Returns
-- ` text` - (string) - html-контент, который будет отображаться в gantt
+- `text` - (string) - HTML-текст, который будет отрисован на диаграмме Ганта
 
 ### Example
 
@@ -30,13 +30,13 @@ gantt.templates.quick_info_content = function(start, end, task){
 ~~~
 
 ### Related samples
-- [QuickInfo extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
+- [Расширение Quick Info](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
 
 ### Details
 
 :::note
- Этот шаблон является частью расширения **Quick Info**, поэтому убедитесь, что плагин [quick_info](guides/extensions-list.md#quickinfo) включён. 
+Этот шаблон определён в расширении **Quick Info**, поэтому необходимо активировать плагин [quick_info](guides/extensions-list.md#quick-info).
 :::
 
 ### Related Guides
-- [Шаблоны расширения 'Quick Info' (Поддержка Touch)](guides/touch-templates.md)
+- [Шаблоны расширения 'Quick Info' (Поддержка касания)](guides/touch-templates.md)

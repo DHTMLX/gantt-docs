@@ -1,7 +1,7 @@
 ---
 sidebar_label: onColumnResizeStart
-title: onColumnResizeStart event
-description: "在用户开始拖动列边界调整列宽之前触发"
+title: onColumnResizeStart 事件
+description: "在用户开始拖动列边框以调整列宽之前触发"
 ---
 
 # onColumnResizeStart
@@ -10,7 +10,7 @@ description: "在用户开始拖动列边界调整列宽之前触发"
 :::
 ### Description
 
-@short: 在用户开始拖动列边界调整列宽之前触发
+@short: 在用户开始拖动列边框以调整列宽之前触发
 
 @signature: onColumnResizeStart: (index: number, column: GridColumn) =\> boolean;
 
@@ -20,7 +20,7 @@ description: "在用户开始拖动列边界调整列宽之前触发"
 - `column` - (required) *GridColumn* - 列对象
 
 ### Returns
-- ` result` - (boolean) - 决定事件的默认操作是否继续执行（<b>true</b>）或被取消（<b>false</b>）
+- ` result` - (boolean) - 定义事件的默认操作是否将被触发（<b>true</b>）还是取消（<b>false</b>）
 
 ### Example
 
@@ -37,7 +37,7 @@ gantt.attachEvent("onColumnResizeStart", function(index, column){
 
 ### Details
 
-此事件可以被阻止。返回 *false* 将阻止列宽调整操作。
+该事件是可阻塞的。返回 *false* 将不允许列调整。
 
 ### Related API
 - [onColumnResize](api/event/oncolumnresize.md)
@@ -45,5 +45,4 @@ gantt.attachEvent("onColumnResizeStart", function(index, column){
 - [onGridResizeStart](api/event/ongridresizestart.md)
 
 ### Related Guides
-- [指定列](guides/specifying-columns.md#resizing)
-
+- [Specifying Columns](guides/specifying-columns.md#resizing)

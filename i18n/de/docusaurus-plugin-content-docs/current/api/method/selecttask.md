@@ -1,6 +1,6 @@
 ---
 sidebar_label: selectTask
-title: selectTask method
+title: selectTask Methode
 description: "Wählt die angegebene Aufgabe aus"
 ---
 
@@ -8,13 +8,13 @@ description: "Wählt die angegebene Aufgabe aus"
 
 ### Description
 
-@short: Wählt die angegebene Aufgabe aus
+@short: Selects the specified task
 
 @signature: selectTask: (id: string | number) =\> string | number
 
 ### Parameters
 
-- `id` - (required) *string | number* -        die ID der Aufgabe
+- `id` - (required) *string | number* - die Aufgaben-ID
 
 ### Returns
 - ` id` - (string | number) - die ID der ausgewählten Aufgabe
@@ -38,9 +38,8 @@ gantt.selectTask("t_1"); /*!*/
 
 ### Details
 
-Diese Methode löst das Event [onTaskSelected](api/event/ontaskselected.md) aus.
+Die Methode löst das [onTaskSelected](api/event/ontaskselected.md) Event aus.
 
 ### Related API
 - [unselectTask](api/method/unselecttask.md)
 - [getSelectedId](api/method/getselectedid.md)
-

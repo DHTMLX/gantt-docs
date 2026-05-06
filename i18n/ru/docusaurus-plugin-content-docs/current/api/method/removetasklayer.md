@@ -1,22 +1,24 @@
 ---
 sidebar_label: removeTaskLayer
 title: removeTaskLayer method
-description: "удаляет конкретный слой, связанный с задачей"
+description: "удаляет указанный слой, связанный с задачей"
 ---
 
 # removeTaskLayer
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в версии PRO.
 :::
+
 ### Description
 
-@short: Удаляет конкретный слой, связанный с задачей
+@short: Удаляет указанный слой, связанный с задачей
 
 @signature: removeTaskLayer: (layerId: string | number) =\> void
 
 ### Parameters
 
-- `layerId` - (required) *string | number* -        DOM элемент, представляющий слой, который необходимо удалить
+- `layerId` - (required) *string | number* -        DOM-элемент, который будет отображаться в слое
 
 ### Example
 
@@ -35,15 +37,13 @@ var layer_id = gantt.addTaskLayer(function draw_deadline(task) {
     }
     return false;
 });
-//...
+ //...
 gantt.removeTaskLayer(layer_id);/*!*/
 gantt.render();
 ~~~
-
 
 ### Related API
 - [addTaskLayer](api/method/addtasklayer.md)
 
 ### Related Guides
-- [Пользовательские элементы в области временной шкалы](guides/baselines.md)
-
+- [Custom Elements in Timeline Area](guides/baselines.md)

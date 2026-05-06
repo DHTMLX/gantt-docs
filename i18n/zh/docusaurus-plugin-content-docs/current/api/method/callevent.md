@@ -1,24 +1,24 @@
 ---
 sidebar_label: callEvent
-title: callEvent method
-description: "触发一个内部事件"
+title: callEvent 方法
+description: "调用一个内部事件"
 ---
 
 # callEvent
 
 ### Description
 
-@short: 触发一个内部事件
+@short: 调用内部事件
 
 @signature: callEvent: (name: string, params?: any[]) =\> boolean
 
 ### Parameters
 
-- `name` - (required) *string* - 事件名称，不区分大小写
-- `params` - (optional) *array* - 可选，包含与事件相关数据的数组
+- `name` - (required) *string* - 事件的名称，忽略大小写
+- `params` - (optional) *array* - 包含事件相关数据的数组
 
 ### Returns
-- ` result` - (boolean) - <i>false</i> 如果任何事件处理程序返回 <i>false</i>，否则返回 <i>true</i>
+- ` result` - (boolean) - <i>false</i>，如果某些事件处理程序返回 <i>false</i>，否则返回 <i>true</i>
 
 ### Example
 
@@ -32,4 +32,4 @@ var res = gantt.callEvent("CustomEvent", [param1, param2]);
 
 ### Details
 
-通常，事件会自动触发，因此无需手动调用此方法。
+通常情况下，事件会被自动调用，您不需要使用此方法。

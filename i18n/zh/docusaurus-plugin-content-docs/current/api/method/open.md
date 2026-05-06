@@ -1,20 +1,20 @@
 ---
 sidebar_label: open
-title: open method
-description: "打开由给定 id 标识的 branch"
+title: open 方法
+description: "打开具有指定 ID 的分支"
 ---
 
 # open
 
 ### Description
 
-@short: 打开由给定 id 标识的 branch
+@short: 打开具有指定 ID 的分支
 
 @signature: open: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -    branch 的 id
+- `id` - (required) *string | number* -   分支的 ID
 
 ### Example
 
@@ -36,11 +36,10 @@ gantt.open("p_1"); /*!*/
 
 ### Details
 
-此方法会触发 [onTaskOpened](api/event/ontaskopened.md) 事件。
+该方法会触发 [onTaskOpened](api/event/ontaskopened.md) 事件。
 
 ### Related API
 - [close](api/method/close.md)
 
 ### Related Guides
-- [配置树形列](guides/tree-column.md)
-
+- [Configuring the Tree Column](guides/tree-column.md)

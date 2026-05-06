@@ -1,31 +1,32 @@
 ---
 sidebar_label: onLightboxButton
-title: onLightboxButton event
-description: "срабатывает, когда пользователь нажимает на кастомную кнопку внутри lightbox"
+title: onLightboxButton событие
+description: "Срабатывает при клике пользователя по настраиваемой кнопке в lightbox"
 ---
 
 # onLightboxButton
 
 ### Description
 
-@short: Срабатывает, когда пользователь нажимает на кастомную кнопку внутри lightbox
+@short: Срабатывает, когда пользователь нажимает на настраиваемую кнопку в lightbox
 
-@signature: onLightboxButton: (css: string, node: HTMLElement, e: Event) =\> void;
+@signature: onLightboxButton: (css: string, node: HTMLElement, e: Event) => void;
 
 ### Parameters
 
-- `css` - (required) *string* - имя CSS класса, присвоенного кнопке
-- `node` - (required) *HTMLElement* - HTML элемент, представляющий нажатую кнопку
-- `e` - (required) *Event* - нативный объект события 'click'
+- `css` - (required) *string* - имя CSS класса, применяемого к кнопке
+- `node` - (required) *HTMLElement* - HTML-элемент нажатой кнопки
+- `e` - (required) *Event* - объект нативного события 'click'
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onLightboxButton", function (css, node, e){
-    //место для вашей кастомной логики
+    // любая ваша логика здесь
 });
 ~~~
 
 ### Details
 
-Это событие срабатывает только для кастомных кнопок, расположенных внизу lightbox, и не применяется к стандартным кнопкам.
+Событие срабатывает только для настраиваемых кнопок в нижней части lightbox и не срабатывает
+для кнопок по умолчанию.

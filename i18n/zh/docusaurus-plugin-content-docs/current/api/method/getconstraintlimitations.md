@@ -1,16 +1,18 @@
 ---
 sidebar_label: getConstraintLimitations
 title: getConstraintLimitations method
-description: "返回应用于任务的约束所允许的最早和最晚日期"
+description: "返回应用于任务的约束所允许的最早日期和最晚日期"
 ---
 
 # getConstraintLimitations
-:::info
+
+:::info 
  该功能仅在PRO版本中可用。 
-:::
+::: 
+
 ### Description
 
-@short: 返回应用于任务的约束所允许的最早和最晚日期
+@short: 返回应用于任务的约束所允许的最早日期和最晚日期
 
 @signature: getConstraintLimitations: (task: Task) =\> any
 
@@ -19,7 +21,7 @@ description: "返回应用于任务的约束所允许的最早和最晚日期"
 - `task` - (required) *Task* - 一个任务对象
 
 ### Returns
-- ` constraintLimitations` - (object) - 包含约束日期的对象
+- ` constraintLimitations` - (object) - 一个包含约束日期的对象
 
 ### Example
 
@@ -55,7 +57,7 @@ gantt.addTaskLayer(function draw_deadline(task) {
   }
   return false;
 });
-
+ 
 function renderDiv(task, date, className) {
   const el = document.createElement('div');
   el.className = className;
@@ -71,7 +73,7 @@ function renderDiv(task, date, className) {
 
 ### Details
 
-返回的对象包含以下属性:
+返回值具有以下结构： 
 
 ~~~js
 {
@@ -85,4 +87,3 @@ function renderDiv(task, date, className) {
 ### Related API
 - [constraint_types](api/config/constraint_types.md)
 - [getConstraintType](api/method/getconstrainttype.md)
-

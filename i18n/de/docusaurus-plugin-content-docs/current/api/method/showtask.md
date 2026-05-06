@@ -1,6 +1,6 @@
 ---
 sidebar_label: showTask
-title: showTask method
+title: showTask-Methode
 description: "Macht die angegebene Aufgabe auf dem Bildschirm sichtbar"
 ---
 
@@ -14,7 +14,7 @@ description: "Macht die angegebene Aufgabe auf dem Bildschirm sichtbar"
 
 ### Parameters
 
-- `id` - (required) *string | number* -    die ID der Aufgabe
+- `id` - (erforderlich) *string | number* - die Aufgabe-ID
 
 ### Example
 
@@ -31,11 +31,12 @@ gantt.showTask(10);
 
 ### Details
 
-Standardmäßig scrollt Gantt beim Aufruf der Methode [showTask](api/method/showdate.md) automatisch, um die Aufgabe in den sichtbaren Bereich zu bringen. Ist jedoch der **autosize**-Modus aktiv, erweitert Gantt stattdessen die Größe seines Containers, um die Aufgabe auf der Seite sichtbar zu machen, anstatt zu ihr zu scrollen. Weitere Details zum Umgang mit diesem Verhalten finden Sie im Leitfaden [Scrolling to hidden elements](api/config/autosize.md).
+Im Standardmodus scrollt Gantt automatisch, wenn Sie die [showTask](api/method/showdate.md) Methode verwenden.
+Ist der **autosize**-Modus jedoch aktiviert, vergrößert Gantt die Größe seines Containers, um sich auf der Seite sichtbar zu machen, statt das angegebene Datum anzuzeigen.
+Lesen Sie den Artikel [Scrolling to hidden elements](api/config/autosize.md), um zu erfahren, wie Sie dieses Problem lösen können.
 
 ### Related API
 - [showDate](api/method/showdate.md)
 - [scrollTo](api/method/scrollto.md)
 - [getScrollState](api/method/getscrollstate.md)
 - [onGanttScroll](api/event/onganttscroll.md)
-

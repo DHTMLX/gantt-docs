@@ -1,16 +1,16 @@
 ---
 sidebar_label: expand
-title: expand method
-description: "간트 차트를 전체 화면 모드로 전환하여 화면 전체 공간을 차지하도록 합니다."
+title: expand 메서드
+description: "간트 차트를 전체 화면 모드로 확장"
 ---
 
 # expand
 
 ### Description
 
-@short: 간트 차트를 전체 화면 모드로 전환하여 화면 전체 공간을 차지하도록 합니다.
+@short: 간트 차트를 전체 화면 모드로 확장
 
-@signature: expand: () =\> void
+@signature: expand: () => void
 
 ### Example
 
@@ -24,7 +24,7 @@ gantt.expand();
 ### Details
 
 :::note
- 이 메서드는 **fullscreen** 확장의 일부로, [gantt.plugins](api/method/plugins.md) 메서드를 통해 [fullscreen](guides/extensions-list.md#fullscreen) 플러그인을 활성화해야 합니다. 자세한 내용은 [전체 화면 모드](guides/fullscreen-mode.md) 문서를 참고하세요. 
+이 메서드는 **fullscreen** 확장 기능에 정의되어 있으므로 [fullscreen](guides/extensions-list.md#fullscreen) 플러그인을 [gantt.plugins](api/method/plugins.md) 메서드를 사용해 활성화해야 합니다. 자세한 내용은 [Full Screen Mode](guides/fullscreen-mode.md) 문서를 참고하세요.
 :::
 
 ### Related API

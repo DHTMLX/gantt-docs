@@ -1,14 +1,14 @@
 ---
 sidebar_label: ext
-title: ext config
-description: "一个包含多种扩展功能的对象"
+title: ext 配置
+description: "一个用于存储各种扩展的对象"
 ---
 
 # ext
 
 ### Description
 
-@short: 一个包含多种扩展功能的对象
+@short: 一个用于存储各种扩展的对象
 
 @signature: ext: Ext
 
@@ -20,7 +20,7 @@ gantt.ext.inlineEditors.init();
 
 ### Details
 
-**ext** 对象汇集了以下扩展功能:
+The **ext** 对象包含以下扩展：
 
 - [gantt.ext.clickDrag](guides/click-drag-ext.md)
 - [gantt.ext.emptyStateElement](guides/empty-state-element-ext.md)

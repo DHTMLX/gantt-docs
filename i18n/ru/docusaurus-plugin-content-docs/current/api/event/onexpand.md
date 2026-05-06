@@ -1,14 +1,14 @@
 ---
 sidebar_label: onExpand
-title: onExpand event
-description: "срабатывает при переключении gantt в полноэкранный режим"
+title: onExpand событие
+description: "срабатывает, когда gantt разворачивается на полный экран"
 ---
 
 # onExpand
 
 ### Description
 
-@short: Срабатывает при переключении gantt в полноэкранный режим
+@short: Срабатывает, когда gantt разворачивается на полный экран
 
 @signature: onExpand: () =\> void;
 
@@ -16,17 +16,17 @@ description: "срабатывает при переключении gantt в п
 
 ~~~jsx
 gantt.attachEvent("onExpand", function (){
-    // разместите здесь вашу пользовательскую логику
+    // любая ваша логика здесь
 });
 ~~~
 
 ### Related samples
-- [Full Screen](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
+- [Полный экран](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
 
 ### Details
 
 :::note
- Это событие исходит из расширения **fullscreen**, поэтому убедитесь, что плагин [fullscreen](guides/extensions-list.md#fullscreen) включен через метод [gantt.plugins](api/method/plugins.md). Для получения дополнительной информации ознакомьтесь со статьей [Полноэкранный режим](guides/fullscreen-mode.md). 
+Это событие определяется в расширении **fullscreen**, поэтому вам нужно активировать плагин [fullscreen](guides/extensions-list.md#fullscreen) с помощью метода [gantt.plugins](api/method/plugins.md). Подробнее читайте в статье [Full Screen Mode](guides/fullscreen-mode.md).
 :::
 
 ### Related API
@@ -37,5 +37,4 @@ gantt.attachEvent("onExpand", function (){
 - [expand](api/method/expand.md)
 
 ### Related Guides
-- [Полноэкранный режим](guides/fullscreen-mode.md)
-
+- [Full Screen Mode](guides/fullscreen-mode.md)

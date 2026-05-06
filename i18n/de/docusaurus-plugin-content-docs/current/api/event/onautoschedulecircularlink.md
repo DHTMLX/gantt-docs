@@ -1,70 +1,62 @@
 ---
 sidebar_label: onAutoScheduleCircularLink
 title: onAutoScheduleCircularLink event
-description: "Wird ausgelöst, wenn während der automatischen Planung Abhängigkeitszyklen erkannt werden"
+description: "Wird ausgelöst, wenn während der automatischen Terminplanung Abhängigkeits-Schleifen gefunden wurden"
 ---
 
 # onAutoScheduleCircularLink
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist ausschließlich in der PRO-Edition verfügbar.
 :::
 ### Description
 
-@short: Wird ausgelöst, wenn während der automatischen Planung Abhängigkeitszyklen erkannt werden
+@short: Wird ausgelöst, wenn während der automatischen Terminplanung Abhängigkeits-Schleifen gefunden wurden
 
-@signature: onAutoScheduleCircularLink: (groups: any[]) =\> void;
+@signature: onAutoScheduleCircularLink: (groups: any[]) => void;
 
 ### Parameters
 
-- `groups` - (required) *array* - ein Array, das die im Gantt identifizierten Abhängigkeitszyklen enthält
+- `groups` - (erforderlich) *Array* - ein Array von Abhängigkeits-Schleifen, die im Gantt gefunden wurden
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAutoScheduleCircularLink",function(groups){
-    // hier kann benutzerdefinierte Logik eingefügt werden
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Related samples
-- [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
+- [Auto Scheduling-Erweiterung](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
 
 :::note
- Diese Methode erfordert, dass das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin aktiviert ist. 
+Die Methode erfordert das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin, das aktiviert werden muss. 
 :::
 
-Aufgaben bleiben unverändert, wenn dieses Ereignis auftritt.
+Tasks werden nicht geändert, wenn dieses Ereignis ausgelöst wird. 
 
-Der *groups* Parameter enthält ein Array von Abhängigkeitszyklen, die im Gantt gefunden wurden. 
-Jeder Eintrag im Array repräsentiert eine Gruppe von Aufgaben und Links, die einen Zyklus bilden.
+Der *groups*-Parameter repräsentiert ein Array von Abhängigkeits-Schleifen, die im Gantt gefunden wurden. 
+Jedes Element des Arrays ist eine Gruppe von Aufgaben und Links, die eine Schleife bilden.
 
 ~~~js
 [ 
     { 
-        tasks: [//IDs der Aufgaben, die in einem Zyklus beteiligt sind], 
-        links: [//IDs der Links, die in einem Zyklus beteiligt sind]
-    },
-    {
-        
-        tasks: [...], 
-        links: [...]
+        tasks: ["10", "12"], 
+        links: ["1", "2"]
     }
 ]
 ~~~
 
-Siehe das folgende Beispiel:
+Schauen Sie sich das folgende Beispiel an:
 
-![on_autoschedule_circular_link](/img/on_autoschedule_circular_link.png)
-
-
-- Aufgabe #3 hat die ID = 10
-- Aufgabe #4.1 hat die ID = 12
+- Die Aufgabe #3 hat die ID = 10
+- Die Aufgabe #4.1 hat die ID = 12
 - Der Link vom Ende der Aufgabe #3 zum Anfang der Aufgabe #4 hat die ID = 1
 - Der Link vom Ende der Aufgabe #4.1 zum Anfang der Aufgabe #3 hat die ID = 2
 
-Der *groups* Parameter wird folgendes Gruppenobjekt enthalten:
+Der *groups*-Parameter wird das folgende Gruppenobjekt enthalten:
 
 ~~~js
 [ 
@@ -92,8 +84,7 @@ Der *groups* Parameter wird folgendes Gruppenobjekt enthalten:
 - [onCircularLinkError](api/event/oncircularlinkerror.md)
 
 ### Related Guides
-- ["Auto Scheduling"](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
 ### Change log
 - hinzugefügt in Version 4.1
-

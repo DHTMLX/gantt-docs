@@ -1,30 +1,29 @@
 ---
 sidebar_label: onAfterLinkDelete
-title: onAfterLinkDelete event
-description: "Wird unmittelbar ausgelöst, nachdem ein Link vom Benutzer gelöscht wurde"
+title: onAfterLinkDelete-Ereignis
+description: "wird ausgelöst, nachdem der Benutzer einen Link gelöscht hat"
 ---
 
 # onAfterLinkDelete
 
 ### Description
 
-@short: Wird unmittelbar ausgelöst, nachdem ein Link vom Benutzer gelöscht wurde
+@short: Wird ausgelöst, nachdem der Benutzer einen Link gelöscht hat
 
 @signature: onAfterLinkDelete: (id: string | number, link: Link) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die ID des Links
-- `link` - (required) *Link* - das Link-Objekt selbst
+- `id` - (required) *string | number* - die Link-ID
+- `link` - (required) *Link* - das Link-Objekt
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAfterLinkDelete", function(id,link){
-    //benutzerdefinierte Logik kann hier eingefügt werden
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Related API
 - [deleteLink](api/method/deletelink.md)
-

@@ -49,12 +49,21 @@ Pick the integration path based on how much lifecycle and sync logic you want to
 - Use the **official wrapper** (`@dhtmlx/trial-vue-gantt` or `@dhx/vue-gantt`) for Vue props/events, wrapper-managed synchronization, and typed helper APIs.
 - Use **low-level JS integration** only when you want direct control over instance lifecycle and manual API orchestration.
 
-For the low-level path, use [dhtmlxGantt with Vue.js (Low-Level Integration)](integrations/vue/howtostart-vue.md).
+For the low-level path, use [dhtmlxGantt with Vue.js (Low-Level Integration)](integrations/vue/js-gantt-vue.md).
 
 ## Data And State Management Entry Point
 
 Start with the state section if you already know you need store/backend synchronization:
 
-- [Data & State Management](integrations/vue/state/index.md)
+- [Data & State Management](integrations/vue/state.md)
 - [Data Binding and State Management Basics](integrations/vue/state/state-management-basics.md)
 - [Using Vue Gantt with Pinia](integrations/vue/state/pinia.md)
+
+## Examples and evaluation resources
+
+Browse the public Vue Gantt examples for runnable demos of the wrapper:
+
+- [Live demo](https://dhtmlx.github.io/vue-gantt-examples/)
+- [GitHub repository](https://github.com/DHTMLX/vue-gantt-examples)
+
+If you're evaluating Vue Gantt, the evaluation page provides access to technical support during the evaluation period. See [Installation](integrations/vue/installation.md).

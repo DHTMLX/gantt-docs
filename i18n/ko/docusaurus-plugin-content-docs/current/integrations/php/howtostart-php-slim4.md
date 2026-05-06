@@ -1,74 +1,73 @@
 ---
-title: "dhtmlxGantt와 PHP:Slim 연동하기"
-sidebar_label: "dhtmlxGantt와 PHP:Slim 연동하기"
+title: "PHP:Slim과 dhtmlxGantt"
+sidebar_label: "PHP: Slim"
 ---
 
-# dhtmlxGantt와 PHP:Slim 연동하기
+# PHP:Slim과 dhtmlxGantt
 
-이 튜토리얼은 Slim 4 프레임워크와 서버 측 RESTful API를 활용하여 PHP 기반 Gantt 차트를 만드는 모든 과정을 안내합니다.
+이 튜토리얼에서는 Slim 4 프레임워크와 서버의 RESTful API를 사용하여 PHP 기반의 Gantt 차트를 만드는 방법에 대해 필요한 정보를 제공합니다.
 
 :::note
-이 튜토리얼은 Slim Framework v4.x를 사용합니다. 이전 버전을 사용 중이라면 [Slim Framework v3.x](integrations/php/howtostart-php.md) 가이드를 참고하세요.
+이 튜토리얼은 Slim Framework v4.x를 사용합니다. 더 오래된 버전에 대한 튜토리얼이 필요하다면 [Slim Framework v3.x](integrations/php/howtostart-php.md) 가이드를 확인하세요.
 :::
 
-다른 플랫폼 및 프레임워크와의 통합에 대한 튜토리얼도 제공됩니다:
+다른 플랫폼과 프레임워크를 사용한 서버 측 통합에 대한 튜토리얼도 있습니다:
 
-- [dhtmlxGantt와 ASP.NET Core 사용하기](integrations/dotnet/howtostart-dotnet-core.md)
+- [dhtmlxGantt와 ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md)
 - [dhtmlxGantt와 ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
-- [dhtmlxGantt와 Node.js 연동하기](integrations/node/howtostart-nodejs.md)
+- [dhtmlxGantt와 Node.js](integrations/node/howtostart-nodejs.md)
 - [dhtmlxGantt와 Python](integrations/other/howtostart-python.md)
-- [dhtmlxGantt와 PHP: Laravel 연동](integrations/php/howtostart-php-laravel.md)
-- [dhtmlxGantt와 Salesforce LWC 연동하기](integrations/salesforce/howtostart-salesforce.md)
-- [dhtmlxGantt와 Ruby on Rails 연동하기](integrations/other/howtostart-ruby.md)
+- [dhtmlxGantt와 PHP: Laravel](integrations/php/howtostart-php-laravel.md)
+- [dhtmlxGantt와 Salesforce LWC](integrations/salesforce/howtostart-salesforce.md)
+- [dhtmlxGantt와 Ruby on Rails](integrations/other/howtostart-ruby.md)
 
-이 가이드에서는 [Slim 4](https://www.slimframework.com/) 프레임워크를 라우팅에 사용하며, MySQL을 데이터 저장소로 활용합니다. CRUD 연산은 PDO를 통해 구현되며, 다른 프레임워크와 연동하기에도 유연하게 설계되어 있습니다.
+다음에서는 Slim 4 프레임워크를 라우팅에 사용하고 데이터 저장소로 MySQL을 사용할 예정입니다. CRUD 로직은 PDO에 의존하며, 다른 프레임워크에서도 사용할 수 있을 만큼 일반적으로 작성되어 있습니다.
 
 :::note
-전체 소스 코드는 [GitHub](https://github.com/DHTMLX/gantt-howto-php)에서 확인할 수 있습니다.
+전체 소스 코드는 [GitHub에서 확인 가능](https://github.com/DHTMLX/gantt-howto-php).
 :::
 
 ## 1단계. 프로젝트 초기화
 
 ### 프로젝트 생성
 
-우리는 Slim 4에서 제공하는 [스켈레톤 애플리케이션](https://github.com/slimphp/Slim-Skeleton)을 사용하여 시작합니다.
+Slim 4 프레임워크에 대해 [스켈레톤 애플리케이션](https://github.com/slimphp/Slim-Skeleton)을 사용할 예정입니다.
 
-프로젝트를 가져오고 Composer를 이용해 의존성을 설치하세요:
+먼저, 프로젝트를 가져오고 설치합니다. Composer를 사용하면 쉽게 할 수 있습니다:
 
 ~~~php
 php composer.phar create-project slim/slim-skeleton gantt-rest-php
 ~~~
 
-만약 Composer가 시스템에 전역 설치되어 있다면 다음과 같이 실행할 수 있습니다:
+전역적으로 Composer가 설치되어 있다면 다음 명령을 사용할 수 있습니다:
 
 ~~~php
 composer create-project slim/slim-skeleton gantt-rest-php
 ~~~
 
-이후, 프로젝트 폴더로 이동하여 웹 서버를 실행해 설정이 올바른지 확인하세요:
+그런 다음 모든 것이 정상적으로 작동하는지 확인해야 합니다. 이 목적을 위해 애플리케이션 폴더로 이동한 뒤 웹 서버를 실행합니다:
 
 ~~~php
 cd gantt-rest-php
 php -S 0.0.0.0:8080 -t public public/index.php
 ~~~
 
-이제 브라우저에서 [http://127.0.0.1:8080](http://127.0.0.1:8080) 주소를 열어 Slim의 기본 환영 페이지가 보이는지 확인합니다.
+그 후 브라우저에서 [http://127.0.0.1:8080](http://127.0.0.1:8080)을 열면 기본 Slim 페이지가 표시됩니다.
 
-## 2단계. Gantt 차트 페이지에 추가하기
+## 2단계. 페이지에 Gantt 추가
 
-다음 단계는 Gantt 차트를 표시할 페이지를 만드는 것입니다. 두 단계로 간단하게 진행됩니다.
+다음 단계는 우리 Gantt 차트를 포함하는 페이지를 만드는 것입니다. 아래에 설명된 두 가지 간단한 하위 단계가 포함되어 있습니다.
 
 ### 뷰 생성하기
-먼저, `app/templates` 폴더 내에 *basic.html* 파일을 생성합니다. 이 파일은 Gantt 차트와 데이터 로딩을 위한 기본 설정을 포함합니다.
+`app` 폴더의 **app/templates** 안에 *basic.html* 파일을 만듭니다. 이 파일에 Gantt 차트를 배치하고 데이터 로딩을 구현하기 위한 전제 조건을 설정합니다.
 
-전체 코드는 다음과 같습니다:
+전체 코드는 아래와 같습니다:
 
-**app/templates/basic.html**
-~~~html
+~~~html title="app/templates/basic.html"
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-type" content="text/html; charset="utf-8"">
+  <meta http-equiv="Content-type" content="text/html; charset='utf-8'">
 
   <script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
   <link href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css" rel="stylesheet">
@@ -91,14 +90,13 @@ php -S 0.0.0.0:8080 -t public public/index.php
 </html>
 ~~~
 
-이렇게 하면 빈 Gantt 차트가 페이지에 표시됩니다. 사용자는 작업 및 링크를 생성/수정할 수 있지만, 페이지를 새로고침하면 변경 사항이 저장되지 않습니다.
+이 코드는 페이지에 빈 Gantt 차트를 추가합니다. 사용자는 작업과 연결을 생성하고 수정할 수 있지만 페이지를 새로 고침하면 변경 내용은 저장되지 않습니다.
 
 ### 라우트 설정
 
-새 페이지를 브라우저에서 접근할 수 있도록 **app/routes.php**에 다음 라우트를 추가하세요:
+새로운 페이지를 추가한 뒤에는 브라우저에서 접근 가능하도록 만들어야 합니다. **app/routes.php**에 라우트를 추가합니다:
 
-**app/routes.php**
-~~~php
+~~~php title="app/routes.php"
 $app->get('/', function (Request $request, Response $response) {
 $payload = file_get_contents(__DIR__.'/templates/basic.html');
 $response->getBody()->write($payload);
@@ -106,24 +104,23 @@ return $response;
 });
 ~~~
 
-애플리케이션을 다시 시작합니다:
+다시 애플리케이션을 실행해 보십시오:
 
-**command line**
 ~~~js
 php -S 0.0.0.0:8080 -t public public/index.php
 ~~~
 
-이제 [http://127.0.0.1:8080/](http://127.0.0.1:8080/) 주소를 브라우저에서 열면 Gantt 차트가 페이지에 표시됩니다.
+이제 브라우저에서 [http://127.0.0.1:8080/](http://127.0.0.1:8080/)를 열면 페이지에 Gantt가 렌더링된 것을 확인할 수 있습니다.
 
 ![gantt_slim_in](/img/gantt_slim_in.png)
 
-## 3단계. 데이터베이스 설정
+## 3단계. 데이터베이스 구성
 
-Gantt 차트가 표시되었으니, 다음 단계는 데이터베이스를 생성하고 애플리케이션과 연결하는 것입니다.
+이제 빈 Gantt 차트가 준비되었습니다. 데이터베이스를 만들고 이를 우리 애플리케이션에 연결할 차례입니다.
 
 ### 데이터베이스 생성
 
-데이터베이스는 선호하는 MySQL 클라이언트(예: phpMyAdmin)를 사용하거나 콘솔에서 직접 생성할 수 있습니다. 아래는 두 개의 테이블이 포함된 간단한 데이터베이스를 생성하는 SQL 스크립트입니다.
+선호하는 mysql 클라이언트(예: phpMyAdmin)나 콘솔을 사용하여 데이터베이스를 생성할 수 있습니다. 아래는 두 개의 테이블을 가진 간단한 데이터베이스를 만드는 SQL 예시입니다.
 
 ~~~js
 CREATE DATABASE  IF NOT EXISTS `gantt`;
@@ -147,7 +144,7 @@ CREATE TABLE `gantt_tasks` (
 );
 ~~~
 
-데이터베이스를 설정한 후, *gantt_tasks* 테이블에 테스트를 위한 샘플 데이터를 추가할 수 있습니다. 다음 SQL 명령을 사용하세요:
+데이터베이스가 준비되면 테스트 데이터를 `gantt_tasks` 테이블에 채워넣을 수 있습니다. 아래 SQL 샘플을 사용할 수 있습니다:
 
 ~~~js
 INSERT INTO `gantt_tasks` VALUES ('1', 'Project #1', '2020-03-31 00:00:00', 
@@ -167,39 +164,36 @@ INSERT INTO `gantt_tasks` VALUES ('7', 'Task #2.1', '2020-04-04 00:00:00',
 INSERT INTO `gantt_tasks` VALUES ('8', 'Task #2.2', '2020-04-05 00:00:00', 
   '2', '0.9', '3');
 ~~~
-더 자세한 예시는 [여기](guides/loading.md#standarddatabasestructure)를 참고하세요.
+자세한 예제는 [여기](guides/loading.md#databasestructure)를 참조하십시오.
 
-프로젝트 설정이 완료되면, 다음 단계로 데이터를 로드하는 작업을 진행합니다.
+이제 프로젝트를 준비했다면 데이터를 로드하는 단계로 넘어갑니다.
 
-## 4단계. 데이터 로딩
+## 4단계. 데이터 로드
 
-이제 데이터베이스에서 데이터를 로드하는 설정을 할 차례입니다. 클라이언트 측에서는 [gantt.load](api/method/load.md) 메서드를 사용하여 데이터를 요청합니다:
+이제 데이터베이스에서 데이터를 로드하는 것을 구현할 차례입니다. 클라이언트 측에서는 [gantt.load](api/method/load.md) 메서드를 사용하여 데이터를 요청합니다.
 
-**app/templates/basic.html**
-~~~js
+~~~js title="app/templates/basic.html"
 gantt.config.date_format = "%Y-%m-%d %H:%i:%s";/*!*/
 
 gantt.init("gantt_here");
 gantt.load("/data");/*!*/
 ~~~
 
-이 명령은 지정된 URL로 AJAX 요청을 보내며, 응답으로 [JSON 포맷](guides/supported-data-formats.md#json)의 Gantt 데이터를 기대합니다.
+이 명령은 지정된 URL로 AJAX 요청을 전송합니다. 응답은 [JSON 형식](guides/supported-data-formats.md)의 Gantt 데이터여야 합니다.
 
-또한, 지정한 [date_format](api/config/date_format.md) 값에 주목하세요. 이 설정은 데이터 소스에서 사용되는 날짜 포맷을 gantt에 알려주어, 클라이언트에서 올바르게 파싱할 수 있게 합니다.
+또한, [date_format](api/config/date_format.md) 값을 지정했다는 점에 주의하십시오. 이는 데이터 소스가 사용할 날짜 형식을 Gantt에 알려 주어 클라이언트 측에서 파싱할 수 있도록 하는 방법입니다.
 
-다음으로, 이 요청을 처리할 백엔드 핸들러를 추가해야 합니다. *app/routes.php* 파일을 열고 새로운 [route](https://www.slimframework.com/docs/v4/objects/routing.html)를 추가하세요:
+따라서 백엔드에 이러한 요청에 대한 필요한 핸들러를 추가해야 합니다. *app/routes.php* 파일을 열고 다음과 같은 새로운 [라우트](https://www.slimframework.com/docs/v4/objects/routing.html)를 추가합니다:
 
-**app/routes.php**
-~~~php
+~~~js title="app/routes.php"
 $app->get('/data',  'getGanttData');
 ~~~
 
-이후, *getGanttData* 함수를 구현해야 합니다. *index.php* 파일을 깔끔하게 유지하기 위해, gantt 관련 코드는 별도의 파일에 작성합니다.
+그다음 *getGanttData* 로직을 구현해야 합니다. index.php를 오염시키지 않기 위해 Gantt 관련 모든 내용은 별도의 파일에 선언합니다.
 
-새로운 파일 *app/gantt.php*를 생성하고 다음 코드를 추가하세요:
+새 파일 *app/gantt.php*를 만들어 필요한 코드를 추가합니다:
 
-**app/gantt.php**
-~~~php
+~~~js title="app/gantt.php"
 <?php
 
 function getConnection()
@@ -238,10 +232,9 @@ function getGanttData($request, $response, $args) {
 };
 ~~~
 
-그리고 *app/routes.php*에서 *app/gantt.php*를 포함시킵니다:
+그리고 *app/routes.php*에 *app/gantt.php*를 포함시킵니다:
 
-**app/routes.php**
-~~~php
+~~~js title="app/routes.php"
 <?php
 declare(strict_types="1);"
  
@@ -271,24 +264,24 @@ return function (App $app) {
 };
 ~~~
 
-위 코드의 주요 내용은 다음과 같습니다:
+위 코드를 자세히 보면 다음과 같습니다:
 
-- *app/routes.php*에서 데이터 액션을 위한 [route](https://www.slimframework.com/docs/v4/objects/routing.html)를 정의합니다.
-- 라우트의 핸들러에서 모든 작업과 링크를 데이터베이스에서 조회하여 [JSON](guides/supported-data-formats.md#json) 형식으로 클라이언트에 전송합니다.
-- 작업 객체에 *open* 속성을 추가하여 기본적으로 작업 트리가 확장된 상태로 표시되도록 합니다.
+- *app/routes.php*에서 데이터 액션에 대한 [라우트](https://www.slimframework.com/docs/v4/objects/routing.html)를 정의했습니다.
+- 해당 라우트의 핸들러에서 데이터베이스의 모든 작업과 연결을 읽어 클라이언트에 [JSON](guides/supported-data-formats.md) 형태로 보냅니다.
+- 각 작업 객체에 *open* 속성을 추가했습니다. 이는 기본적으로 트리 구조가 열려 있도록 지정합니다.
 
-이렇게 하면 Gantt로 데이터 로딩이 구현됩니다. [http://127.0.0.1:8080/](http://127.0.0.1:8080/)에 접속하면 앞서 추가한 샘플 데이터가 표시된 Gantt 차트를 확인할 수 있습니다.
+따라서 Gantt에 데이터를 로드하는 기능을 구현했습니다.
+이제 [http://127.0.0.1:8080/](http://127.0.0.1:8080/) 에 접속하면 이전 단계에서 추가한 테스트 데이터로 Gantt가 채워진 것을 볼 수 있습니다.
 
 ![slim_load](/img/slim_load.png)
 
-## 5단계. 변경사항 저장
+## 5단계. 변경 사항 저장
 
-다음 단계는 클라이언트에서 변경된 내용을 서버에 저장하는 것입니다. 일반적으로 이는 gantt에 내장된 [dataProcessor](guides/server-side.md#technique) 라이브러리를 통해 처리됩니다.
+다음 단계는 클라이언트 측에서 서버로 변경 사항을 저장하는 것을 구현하는 것입니다. 이 작업은 보통 Gantt에 내장된 [dataProcessor](guides/server-side.md#technique) 라이브러리를 사용해 수행합니다.
 
-*basic.html*을 열고 다음 코드를 추가하세요:
+*basic.html*을 열고 다음 코드를 추가합니다:
 
-**app/templates/basic.html**
-~~~js
+~~~js title="app/templates/basic.html"
 gantt.config.date_format = "%Y-%m-%d %H:%i:%s";
 
 gantt.init("gantt_here");
@@ -299,12 +292,11 @@ dp.init(gantt);/*!*/
 dp.setTransactionMode("REST");/*!*/
 ~~~
 
-dataProcessor는 데이터 추가, 수정, 삭제와 같은 클라이언트 측 동작을 감지하여 서버로 AJAX 요청을 전송합니다. REST 모드로 동작하며, 각 동작에 맞는 HTTP 메서드를 사용합니다. [전체 라우트 목록](guides/server-side.md#requestresponsedetails)은 문서에서 확인할 수 있습니다.
+DataProcessor는 클라이언트에서 차트에 데이터를 추가하거나 수정, 삭제하는 각 액션에 대해 서버로 AJAX 요청을 보냅니다. 데이터 프로세서는 REST 모드로 작동하므로 서로 다른 HTTP 메서드를 사용하여 다양한 액션을 처리합니다. 전체 라우트 목록은 [여기](guides/server-side.md#requestresponsedetails)에서 확인할 수 있습니다.
 
-다음으로, 이러한 라우트를 앱에 추가하고 로직을 구현해야 합니다. 먼저 *app/routes.php*를 업데이트하세요:
+이제 이러한 라우트를 애플리케이션에 추가하고 필요한 로직을 구현해야 합니다. 먼저 *app/routes.php*로 이동합니다:
 
-**app/routes.php**
-~~~php
+~~~js title="app/routes.php"
 <?php
 
 declare(strict_types="1);"
@@ -338,10 +330,9 @@ return function (App $app) {
 };
 ~~~
 
-라우트가 준비되면, 해당 메서드를 다음과 같이 구현할 수 있습니다:
+다음으로, 위에서 연결한 메서드들을 구현합니다:
 
-**app/gantt.php**
-~~~php
+~~~js title="app/gantt.php"
 function getConnection()
 {
     return new PDO("mysql:host=localhost;dbname=gantt", "root", "root", [
@@ -371,7 +362,7 @@ function getGanttData($request, $response, $args) {
   return $response->withHeader("Content-Type", "application/json");
 };
  
-// getting a task from the request data
+// 클라이언트 요청 데이터에서 작업을 가져오기
 function getTask($data)
 {
   return [
@@ -383,7 +374,7 @@ function getTask($data)
   ];
 }
  
-// getting a link from the request data
+// 요청 데이터에서 연결 정보를 가져오기
 function getLink($data) {
   return [
     ":source" => $data["source"],
@@ -392,7 +383,7 @@ function getLink($data) {
   ];
 }
  
-// create a new task
+// 새로운 작업 생성
 function addTask($request, $response, $args) {
   $task = getTask($request->getParsedBody());
   $db = getConnection();
@@ -410,7 +401,7 @@ function addTask($request, $response, $args) {
   return $response->withHeader("Content-Type", "application/json");
 }
  
-// update a task
+// 작업 업데이트
 function updateTask($request, $response, $args) {
   $sid = $request->getAttribute("id");
   parse_str(file_get_contents("php://input"), $body);
@@ -430,8 +421,7 @@ function updateTask($request, $response, $args) {
  
   if (isset($body["target"]) && $body["target"])
   updateOrder($sid, $body["target"], $db);
-
-
+ 
  
   $result = [
     "action"=>"updated"
@@ -442,7 +432,7 @@ function updateTask($request, $response, $args) {
   return $response->withHeader("Content-Type", "application/json");
 }
  
-// delete a task
+// 작업 삭제
 function deleteTask($request, $response, $args) {
   $sid = $request->getAttribute("id");
   $db = getConnection();
@@ -458,7 +448,7 @@ function deleteTask($request, $response, $args) {
   return $response->withHeader("Content-Type", "application/json");
 }
  
-// create a new link
+// 새로운 연결 추가
 function addLink($request, $response, $args) {
   $link = getLink($request->getParsedBody());
   $db = getConnection();
@@ -476,7 +466,7 @@ function addLink($request, $response, $args) {
   return $response->withHeader("Content-Type", "application/json");
 }
  
-// update a link
+// 연결 수정
 function updateLink($request, $response, $args) {
   $sid = $request->getAttribute("id");
   parse_str(file_get_contents("php://input"), $body);
@@ -500,7 +490,7 @@ function updateLink($request, $response, $args) {
   return $response->withHeader("Content-Type", "application/json");
 }
  
-// delete a link
+// 연결 삭제
 function deleteLink($request, $response, $args) {
   $sid = $request->getAttribute("id");
   $db = getConnection();
@@ -517,35 +507,34 @@ function deleteLink($request, $response, $args) {
 }
 ~~~
 
-코드는 다소 길어 보이지만, 각 메서드는 간단하게 작업과 링크의 생성, 수정, 삭제를 담당합니다. insert 동작은 새로 생성된 항목의 데이터베이스 ID를 클라이언트에 반환합니다.
+보시다시피 비교적 많은 코드가 있지만, 각 메서드는 단순합니다: 작업과 연결을 생성/업데이트/삭제합니다. 삽입 액션은 클라이언트에 새 항목의 데이터베이스 아이디를 반환해야 합니다.
 
-데이터베이스의 관계는 여기서 따로 관리하지 않습니다. 예를 들어, 하위 작업이나 관련 링크는 작업 삭제 시 자동으로 삭제되지 않습니다. 이러한 동작은 기본적으로 클라이언트 측에서 처리되며, Gantt는 각 하위 작업 및 링크 삭제를 위한 별도의 요청을 보냅니다.
+참고로 여기서는 데이터베이스 관계를 다루지 않는다는 점에 주의하십시오. 예를 들어 작업이 삭제될 때 중첩된 작업이나 관련된 연결을 함께 삭제하지 않습니다. 이는 기본적으로 클라이언트 측에서 처리됩니다. Gantt는 삭제될 각 자식 작업 및 연결에 대해 별도의 요청을 보냅니다.
 
-백엔드에서 처리하고 싶다면, [cascade_delete](api/config/cascade_delete.md) 설정을 활성화해야 합니다.
+백엔드에서 이 작업을 처리하려면 [cascade_delete](api/config/cascade_delete.md) 설정을 켜고 전환해야 합니다.
 
-이제 모든 설정이 완료되었으니, 애플리케이션을 실행할 수 있습니다. [http://127.0.0.1:8080](http://127.0.0.1:8080)에 접속하면 완전히 동작하는 Gantt 차트를 확인할 수 있습니다.
+이제 모든 것이 준비되었습니다. 애플리케이션을 실행해 보십시오. [http://127.0.0.1:8080](http://127.0.0.1:8080/)을 열어 우리가 방금 만든 멋진 Gantt 차트를 확인해 보세요.
 
 ![slim4_ready](/img/slim4_ready.png)
 
-## 작업 순서 저장하기 {#storingtheorderoftasks}
+## 작업 순서 저장 {#storingtheorderoftasks}
 
-클라이언트 측 gantt는 드래그 앤 드롭을 통한 [작업 순서 변경](guides/reordering-tasks.md)을 지원합니다. 이 기능을 사용할 경우, 변경된 작업 순서를 데이터베이스에 저장해야 합니다. [일반적인 개요는 여기](guides/server-side.md#storingtheorderoftasks)에서 확인할 수 있습니다.
+클라이언트 측의 Gantt는 드래그 앤 드롭을 사용한 [작업 재정렬](guides/reordering-tasks.md)을 지원합니다. 이 기능을 사용할 경우 데이터베이스에 이 순서를 저장해야 합니다. 일반적인 설명은 [여기](guides/server-side.md#storingtheorderoftasks)에서 확인할 수 있습니다.
 
-다음 단계는 이 기능을 앱에 통합하는 것입니다.
+이제 이 기능을 우리 애플리케이션에 추가해 보겠습니다.
 
-### 클라이언트에서 작업 순서 변경 활성화하기
+### 클라이언트에서 작업 재정렬 활성화
 
-먼저, 사용자가 UI에서 직접 작업의 순서를 변경할 수 있어야 합니다. *basic.html* 파일을 열고 gantt 설정을 다음과 같이 수정하세요:
+먼저 사용자가 UI에서 작업 순서를 변경할 수 있도록 해야 합니다. *basic.html* 파일을 열고 Gantt 구성 값을 업데이트합니다:
 
-**app/templates/basic.html**
-~~~js
+~~~js title="app/templates/basic.html"
 gantt.config.order_branch = true;/*!*/
 gantt.config.order_branch_free = true;/*!*/
 
 gantt.init("gantt_here");
 ~~~
 
-다음으로, 이러한 변경 사항이 백엔드에도 반영되어야 합니다. 작업의 순서는 "sortorder"라는 컬럼에 저장됩니다. 아래는 *gantt_tasks* 테이블 정의 예시입니다:
+이제 백엔드에 이러한 변경 사항을 반영합니다. 순서를 데이터베이스의 "sortorder" 열에 저장하도록 할 예정이며, 업데이트된 *gantt_tasks* 테이블 선언은 아래와 같이 보일 수 있습니다:
 
 ~~~js
 CREATE TABLE `gantt_tasks` (
@@ -559,18 +548,17 @@ CREATE TABLE `gantt_tasks` (
 );
 ~~~
 
-이미 테이블이 있다면, 아래와 같이 새로운 컬럼을 추가할 수 있습니다:
+또는 이미 가지고 있는 테이블에 위의 열을 추가할 수 있습니다:
 
 ~~~js
 ALTER TABLE `gantt_tasks` ADD COLUMN `sortorder` int(11) NOT NULL;
 ~~~
 
-데이터베이스를 업데이트한 후, *app/gantt.php*의 CRUD 작업도 이에 맞게 수정해야 합니다.
+그 후 *app/gantt.php*의 CRUD를 업데이트해야 합니다.
 
-1. <b>GET /data</b> 엔드포인트는 `sortorder` 컬럼을 기준으로 작업을 정렬하여 반환해야 합니다:
+1. GET /data는 `sortorder` 열로 정렬된 작업을 반환해야 합니다: 
 
-**app/gantt.php**
-~~~php
+~~~js title="app/gantt.php"
 function getGanttData($request, $response, $args) {
   $db = getConnection();
   $result = [
@@ -593,10 +581,9 @@ function getGanttData($request, $response, $args) {
 };
 ~~~
 
-2. 새로운 작업이 추가될 때는, 초기 `sortorder` 값을 할당해야 합니다:
+2. 새로 추가된 작업은 초기 값 `sortorder`를 받아야 합니다:
 
-**app/gantt.php**
-~~~php
+~~~js title="app/gantt.php"
 function addTask($request, $response, $args) {
   $task = getTask($request->getParsedBody());
   $db = getConnection();
@@ -608,7 +595,7 @@ function addTask($request, $response, $args) {
   if(!$maxOrder)
     $maxOrder = 0;
   
-  $task[":sortorder"] = $maxOrder + 1;
+  $task[\":sortorder\"] = $maxOrder + 1;
  
   $query = "INSERT INTO gantt_tasks(text, start_date, duration, progress, parent, sortorder) ".
     "VALUES (:text, :start_date, :duration, :progress, :parent, :sortorder)";
@@ -625,11 +612,10 @@ function addTask($request, $response, $args) {
 }
 ~~~
 
-3. 마지막으로, 사용자가 작업 순서를 변경할 때 작업의 순서도 업데이트되어야 합니다. 자세한 내용은 [여기](guides/server-side.md#storingtheorderoftasks)를 참고하세요:
+3. 사용자가 작업의 순서를 재정렬하면 작업 순서가 업데이트되어야 합니다:
 
-**app/gantt.php**
-~~~php
-// update a task
+~~~js title="app/gantt.php"
+// 작업 업데이트
 function updateTask($request, $response, $args) {
   $sid = $request->getAttribute("id");
   parse_str(file_get_contents("php://input"), $body);
@@ -696,24 +682,22 @@ function updateOrder($taskId, $target, $db){
 }
 ~~~
 
-완전한 예제 코드는 GitHub에서 확인할 수 있습니다: [https://github.com/DHTMLX/gantt-howto-php](https://github.com/DHTMLX/gantt-howto-php).
+준비된 데모는 GitHub의 [데모](https://github.com/DHTMLX/gantt-howto-php)에서 확인하실 수 있습니다.
 
 ## dhtmlxConnector 사용하기
 
-PHP 백엔드 구현의 또 다른 방법으로 [dhtmlxConnector 라이브러리](https://docs.dhtmlx.com/connector__php__index.html)를 사용할 수 있습니다. 자세한 튜토리얼은 [여기](integrations/php/howtostart-connector.md)에서 확인하세요.
+대안으로, PHP 백엔드는 [dhtmlxConnector 라이브러리](https://docs.dhtmlx.com/connector__php__index.html)를 사용해 구현할 수도 있습니다. 자세한 내용은 [여기](integrations/php/howtostart-connector.md)를 참조하세요.
 
 ## 애플리케이션 보안
 
-Gantt 자체는 SQL 인젝션, XSS, CSRF와 같은 일반적인 보안 위협에 대한 보호 기능을 제공하지 않습니다. 애플리케이션의 보안은 백엔드 개발자의 책임입니다. 자세한 내용은 [이 글](guides/app-security.md)을 참고하세요.
+Gantt는 SQL 인젝션이나 XSS, CSRF 공격 등과 같은 다양한 위협으로부터 애플리케이션을 보호하는 수단을 제공하지 않습니다. 안전 책임은 백엔드를 구현하는 개발자에게 있으며, 관련 내용은 해당 기사에서 확인하시기 바랍니다. [관련 글](guides/app-security.md)을 읽어보세요.
 
 ## 문제 해결
 
-이 단계를 모두 따라 했음에도 Gantt 차트에 작업이나 링크가 표시되지 않는다면, [백엔드 통합 문제 해결](guides/troubleshooting.md)의 문제 해결 가이드를 참고하세요. 일반적인 문제를 진단하고 해결하는 방법을 안내합니다.
+위의 PHP와의 Gantt 통합 단계를 완료했지만 페이지에서 Gantt가 작업과 연결을 렌더링하지 않는 경우, [Backend Integration Issues 트러블슈팅](guides/troubleshooting.md) 기사를 확인해 보세요. 문제의 원인을 식별하는 방법이 설명되어 있습니다.
 
 ## 다음 단계
 
-이제 gantt가 완전히 동작합니다. 전체 소스 코드는 [GitHub](https://github.com/DHTMLX/gantt-howto-php)에서 복제하거나 다운로드할 수 있습니다.
+이제 완전히 작동하는 Gantt가 준비되었습니다. 전체 코드는 [GitHub](https://github.com/DHTMLX/gantt-howto-php)에서 확인하거나 클론하거나 다운로드하여 프로젝트에 사용할 수 있습니다.
 
-추가 학습을 원한다면 [다양한 gantt 기능 가이드](guides.md)나 [다른 백엔드 프레임워크와 Gantt를 통합하는 튜토리얼](integrations/howtostart-guides.md)을 살펴보세요.
-
-
+또한 [간트의 다양한 기능에 대한 가이드](guides.md)나 [다른 백엔드 프레임워크와의 통합에 대한 튜토리얼](integrations/howtostart-guides.md)을 확인해 보세요.

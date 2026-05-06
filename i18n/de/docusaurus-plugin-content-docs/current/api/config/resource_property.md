@@ -1,16 +1,16 @@
 ---
 sidebar_label: resource_property
-title: resource_property config
-description: "definiert, welche Eigenschaft eines Task-Objekts die Resource-ID enthält, die mit resourceGrid/Timeline/Histogram/Calendar verknüpft ist"
----
+title: resource_property Konfiguration
+description: "definiert die Eigenschaft eines Aufgaben-Objekts, die die Ressource-ID speichert, die mit resourceGrid/Timeline/Histogram/Calendar verbunden ist"
+--- 
 
 # resource_property
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
 ### Description
 
-@short: Definiert, welche Eigenschaft eines Task-Objekts die Resource-ID enthält, die mit resourceGrid/Timeline/Histogram/Calendar verknüpft ist
+@short: Definiert die Eigenschaft eines Aufgaben-Objekts, die die Ressource-ID speichert, die mit resourceGrid/Timeline/Histogram/Calendar verbunden ist
 
 @signature: resource_property: string
 
@@ -53,9 +53,9 @@ var resourcesStore = gantt.createDatastore({
 
 gantt.init("gantt_here");
 gantt.parse({data: [
-  {id: 1, text: "Projekt #2", start_date: "01-04-2018", duration: 18, open: true},
-  {id: 2, text: "Aufgabe #1", start_date: "02-04-2018", duration:8, user_id:1, parent: 1},
-  {id: 3, text: "Aufgabe #2", start_date: "11-04-2018", duration:8, user_id:2, parent: 1}
+  {id: 1, text: "Project #2", start_date: "01-04-2018", duration: 18, open: true},
+  {id: 2, text: "Task #1", start_date: "02-04-2018", duration:8, user_id:1, parent: 1},
+  {id: 3, text: "Task #2", start_date: "11-04-2018", duration:8, user_id:2, parent: 1}
  ],
  links: [
   {id: 1, source: 1, target: 2, type: "1"},
@@ -71,20 +71,20 @@ resourcesStore.parse([
 ]);
 ~~~
 
-**Default value:** "owner_id"
+
+**Standardwert:** "owner_id"
 
 ### Related samples
-- [Resource load diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
-- [Templates of the Resource diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/05_resource_usage_templates.html)
+- [Ressourcen-Auslastungsdiagramm](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
+- [Vorlagen des Ressourcen-Diagramms](https://docs.dhtmlx.com/gantt/samples/11_resources/05_resource_usage_templates.html)
 
 ### Details
 
-Legt die Eigenschaft im Task-Objekt fest, die die Resource-ID enthält, welche mit resourceGrid/Timeline/Histogram/Calendar verknüpft ist. Diese Einstellung kann zur Laufzeit aktualisiert werden.
+Gibt die Eigenschaft des Aufgabenobjekts an, die die Ressource-ID speichert, die mit resourceGrid/Timeline/Histogram/Calendar verbunden ist. Kann zur Laufzeit geändert werden.
 
 ### Related API
 - [resource_store](api/config/resource_store.md)
 
 ### Related Guides
-- ["Ressourcenmanagement"](guides/resource-management.md)
-- ["Arbeitszeitberechnung"](guides/working-time.md#assigningcalendartoresource)
-
+- [Ressourcenverwaltung](guides/resource-management.md)
+- [Arbeitszeitberechnung](guides/working-time.md#assigningcalendartoresource)

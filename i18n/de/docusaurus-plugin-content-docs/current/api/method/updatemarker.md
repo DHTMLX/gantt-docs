@@ -1,7 +1,7 @@
 ---
 sidebar_label: updateMarker
 title: updateMarker method
-description: "aktualisiert den angegebenen Marker"
+description: "Aktualisiert den angegebenen Marker"
 ---
 
 # updateMarker
@@ -14,7 +14,7 @@ description: "aktualisiert den angegebenen Marker"
 
 ### Parameters
 
-- `markerId` - (required) *string | number* -    die ID des Markers
+- `markerId` - (erforderlich) *string | number* - die ID des Markers
 
 ### Example
 
@@ -34,7 +34,7 @@ gantt.updateMarker(todayMarker); /*!*/
 ### Details
 
 :::note
- Diese Methode gehört zur **marker**-Erweiterung, daher stellen Sie sicher, dass das [marker](guides/extensions-list.md#verticalmarker) Plugin aktiviert ist. Weitere Informationen finden Sie im Artikel ["Hinzufügen von vertikalen Markierungen"](guides/markers.md). 
+Diese Methode ist in der **Marker**-Erweiterung definiert, daher müssen Sie das Marker-Plugin aktivieren. Lesen Sie die Details im Artikel [Adding Vertical Markers](guides/markers.md). 
 :::
 
 ### Related API
@@ -45,5 +45,4 @@ gantt.updateMarker(todayMarker); /*!*/
 - [show_markers](api/config/show_markers.md)
 
 ### Related Guides
-- ["Hinzufügen von vertikalen Markierungen"](guides/markers.md)
-
+- [Adding Vertical Markers](guides/markers.md)

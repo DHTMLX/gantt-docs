@@ -5,16 +5,15 @@ sidebar_label: "Tooltips für Gantt-Elemente"
 
 # Tooltips für Gantt-Elemente
 
-Tooltips bieten eine Möglichkeit, zusätzliche Informationen anzuzeigen, ohne den Bildschirm mit zu viel Text zu überladen. Standardmäßig erscheinen Tooltips auf Gantt-Aufgaben.
+Tooltips ermöglichen es Ihnen, zusätzliche Informationen für Benutzer bereitzustellen, ohne den Bildschirm mit Text zu überfluten. Standardmäßig werden Tooltips den Gantt-Aufgaben hinzugefügt.
 
 ![task_tooltip](/img/task_tooltip.png)
 
-Es ist möglich, [Tooltips für jedes Gantt-Element hinzuzufügen](#tooltipsfordifferentelements), indem Sie die entsprechende API verwenden.
+Sie können Tooltips zu jedem Gantt-Element über die entsprechende API hinzufügen ([Tooltips zu jedem Gantt-Element](#tooltipsfordifferentelements)).
 
+## Activation
 
-## Aktivierung
-
-Um Tooltips für Aufgaben zu aktivieren, schalten Sie einfach das **tooltip**-Plugin mit der [gantt.plugins](api/method/plugins.md)-Methode ein:
+Um Tooltips für Aufgaben zu aktivieren, aktivieren Sie das **tooltip**-Plugin mit der [gantt.plugins](api/method/plugins.md) Methode:
 
 ~~~js
 <script>
@@ -26,109 +25,118 @@ Um Tooltips für Aufgaben zu aktivieren, schalten Sie einfach das **tooltip**-Pl
 </script>
 ~~~
 
-
 [Tooltip](https://docs.dhtmlx.com/gantt/samples/02_extensions/02_tooltip.html)
-
 
 Sobald die Erweiterung aktiviert ist, werden Tooltips automatisch mit den Standardeinstellungen angezeigt.
 
-
-## Eigener Text
+## Benutzerdefinierter Text
 
 Standardmäßig zeigen Tooltips drei Eigenschaften einer Aufgabe an:
 
-1. Das Startdatum der Aufgabe.
-2. Das Enddatum der Aufgabe.
-3. Den Namen der Aufgabe.
+1. Das Startdatum einer Aufgabe.
+2. Das Enddatum einer Aufgabe.
+3. Der Name der Aufgabe.
 
-Wenn Sie den Tooltip-Text anpassen möchten, verwenden Sie die [tooltip_text](api/template/tooltip_text.md)-Vorlage wie folgt:
+Um benutzerdefinierten Text für Tooltips festzulegen, verwenden Sie die [tooltip_text](api/template/tooltip_text.md) Vorlage:
 
 ~~~js
 gantt.templates.tooltip_text = (start, end, task) => 
     `<b>Task:</b> ${task.text}
 
-<b>Duration:</b> ${task.duration}`;
+<b>Duration:</b> ${task.duration>`;
 ~~~
-
 
 ## Tooltip-API {#tooltipapi}
 
 ### Tooltip-Objekt
 
-Das Tooltip-Objekt ist über **gantt.ext.tooltips.tooltip** zugänglich. Es bietet Methoden, um die Position, den Inhalt und die Sichtbarkeit des Tooltips zu steuern:
+Sie können auf das Tooltip-Objekt als **gantt.ext.tooltips.tooltip** zugreifen. Dieses Objekt ermöglicht das Steuern von Position, Inhalt und Sichtbarkeit des Tooltips über eine Reihe von Methoden:
 
 - **getNode()** - gibt das HTML-Element des Tooltips zurück  
-- **setViewport()** - begrenzt die Tooltip-Position innerhalb der Grenzen eines angegebenen HTML-Elements
-    - **node** - (*HTMLElement*) das Element, innerhalb dessen der Tooltip angezeigt werden soll
-- **show()** - zeigt den Tooltip an den angegebenen Koordinaten an (relativ zu document.body). Es akzeptiert verschiedene Parameter, je nachdem, wie der Tooltip positioniert werden soll:
-    - Um den Tooltip an bestimmten Koordinaten anzuzeigen, übergeben Sie: 
+- **setViewport()** - fixiert die Position des Tooltips an die Grenzen des angegebenen HTML-Elements
+    - **node** - (*HTMLElement*) das HTML-Element, unter dem sich der Mauszeiger befindet
+- **show()** - zeigt den Tooltip an bestimmten Koordinaten (relativ zu document.body). Die Methode kann je nach gewünschter Position unterschiedliche Parameter entgegennehmen:
+    - Um Tooltip an bestimmten Koordinaten (relativ zu document.body) anzuzeigen, übergeben Sie: 
         - **left** - (*number*) die X-Koordinate
         - **top** - (*number*) die Y-Koordinate 
-    - Um den Tooltip an den Maus-Event-Koordinaten anzuzeigen (unter Berücksichtigung von *tooltip_offset_x/y* und Viewport), übergeben Sie:
-        - **event** - (*Event*) das Maus-Event-Objekt  
-- **hide()** - blendet den Tooltip aus
-- **setContent()** - setzt den HTML-Inhalt innerhalb des Tooltips. Erwartet:
-    - **html** - (*string*) der HTML-Inhalt
+    - Um Tooltip an Koordinaten des Mausereignisses anzuzeigen (Tooltip-Offset x/y und Viewport werden berücksichtigt), übergeben Sie:
+        - **event** - (*Event*) das Mausereignisobjekt  
+- **hide()** - versteckt das Tooltip-Element
+- **setContent()**- fügt dem Tooltip HTML-Inhalt hinzu. Erwartet als Parameter:
+    - **html** - (*string*) ein String mit HTML-Inhalt für das Tooltip
 
 
 ### Methoden
 
-Mehrere Methoden helfen, das Verhalten von Tooltips beim Überfahren von DOM-Elementen zu steuern.
+Es gibt mehrere Methoden, die das Verhalten des Tooltips beim Hover über DOM-Elemente steuern lassen.
 
 #### gantt.ext.tooltips.attach() {#attach}
 
-Fügt einen Tooltip mit erweiterter Konfiguration hinzu. Akzeptiert ein Objekt mit folgenden Einstellungen:
+fügt Tooltip mit erweiterter Konfiguration hinzu. Die Methode nimmt ein Objekt mit Tooltip-Einstellungen als Parameter entgegen. Die über die Methode einstellbaren Einstellungen sind folgende:
 
-- **selector** - (*string*) CSS-Selektor für Elemente, für die Mausereignisse überwacht werden
-- **onmouseenter** - (*function*) wird aufgerufen, wenn die Maus das Element betritt, mit Parametern:
-     - **event** - (*Event*) natives Maus-Event
-    - **node** -  (*HTMLElement*) das Element
-- **onmousemove** - (*function*) wird aufgerufen, wenn die Maus sich innerhalb des Elements bewegt, mit Parametern:
-    - **event** - (*Event*) natives Maus-Event
-    - **node** -  (*HTMLElement*) das Element
-- **onmouseleave** - (*function*) wird aufgerufen, wenn die Maus das Element verlässt, mit Parametern:    
-    - **event** - (*Event*) natives Maus-Event
-    - **node** -  (*HTMLElement*) das Element
-- **global** - (*boolean*) gibt an, ob Mausereignisse auf der gesamten Seite (*true*) oder nur innerhalb des Gantt-Elements (*false*) überwacht werden. Standard ist *false*.
+- **selector** - (*string*) definiert den CSS-Selektor für die Elemente, auf die Mausereignisse hören sollen
+- **onmouseenter** - (*function*) ein Handler, der aufgerufen wird, wenn der Mauszeiger das Element betritt. Die Parameter sind:
+     - **event** - (*Event*) ein natives Mausereignis
+    - **node** -  (*HTMLElement*) der HTML-Knoten
+- **onmousemove** - (*function*) ein Handler, der aufgerufen wird, wenn sich der Mauszeiger innerhalb des Elements bewegt. Die Parameter sind:
+    - **event** - (*Event*) ein natives Mausereignis
+    - **node** -  (*HTMLElement*) der HTML-Knoten
+- **onmouseleave** - (*function*) ein Handler, der aufgerufen wird, wenn der Mauszeiger das Element verlässt. Die Parameter sind:    
+    - **event** - (*Event*) ein natives Mausereignis
+    - **node** -  (*HTMLElement*) der HTML-Knoten
+- **global** - (*boolean*) definiert, ob das Modul Mausereignisse auf der ganzen Seite (*true*) oder nur innerhalb eines Gantt-Elements (*false*) hört. Standardmäßig ist die Option auf *false* gesetzt.
 
 #### gantt.ext.tooltips.tooltipFor() {#tooltipfor}
 
-Fügt einen Tooltip für ein bestimmtes Gantt-Element hinzu. Dies ist eine einfachere Version von **attach()**. Es nimmt ein Objekt mit den Tooltip-Details entgegen:
+fügt einen Tooltip dem angegebenen Gantt-Element hinzu. Es handelt sich um eine vereinfachte Version der **attach()**-Methode. Die Methode nimmt als Parameter *ein Objekt mit Tooltip-Details* entgegen. Dieses Objekt hat folgende Eigenschaften:
 
-- **selector** - (*string*) CSS-Selektor des Gantt-Elements, dem ein Tooltip hinzugefügt werden soll
-- **html** - (*function*) eine Template-Funktion für den Tooltip, die folgende Parameter erhält:
-    - **event** - (*Event*) natives Maus-Event
-    - **node** -  (*HTMLElement*) das Element
-  und gibt einen String mit dem Tooltip-HTML zurück
-- **global** - (*boolean*) optional, gibt an, ob auf der gesamten Seite (*true*) oder nur innerhalb von Gantt (*false*) überwacht werden soll. Standard ist *false*. 
+- **selector** - (*string*) ein CSS-Selektor des Gantt-Elements, dem ein Tooltip hinzugefügt werden soll
+- **html** - (*function*) eine Vorlage für das Tooltip. Die Vorlagenfunktion nimmt zwei Parameter entgegen:
+    - **event** - (*Event*) ein natives Maus-Ereignis
+    - **node** -  (*HTMLElement*) der HTML-Knoten
+  und gibt eine Zeichenkette mit einer Vorlage zurück.
+- **global** - (*boolean*) optional, definiert, ob das Modul Mausereignisse auf der ganzen Seite (*true*) oder nur innerhalb eines Gantt-Elements (*false*) hört. Standardmäßig ist diese Option auf *false* gesetzt.
 
 #### gantt.ext.tooltips.detach() {#detach} 
 
-Entfernt einen Tooltip. Erwartet:
+entfernt Tooltip. Als Parameter nimmt die Methode Folgendes:
 
-- **selector** - (*string*) CSS-Selektor des Gantt-Elements
+- **selector** - (*string*) der CSS-Selektor eines Gantt-Elements
 
+#### gantt.ext.tooltips.delayShow() {#delayShow} 
 
-## Tooltips für verschiedene Elemente
+zeigt einen Tooltip nach der Verzögerung, die durch [tooltip_timeout](api/config/tooltip_timeout.md) festgelegt ist. Falls die Konfiguration nicht festgelegt ist, wird eine kleine Standardverzögerung verwendet.
 
-Standardmäßig werden Tooltips nur zu Gantt-Aufgaben hinzugefügt, sie können aber auch auf andere Gantt-Elemente angewendet werden, wie z. B. einen Ressourcenmarker:
+Diese Methode ist **debounced**, was bedeutet, dass wiederholte Aufrufe innerhalb des Verzögerungsfensters den Timer zurücksetzen und der Tooltip nur einmal angezeigt wird.
+
+Als Parameter nimmt die Methode:
+
+- **event** - (*Event*) ein natives Maus-Ereignis, das verwendet wird, um die Position des Tooltips zu bestimmen
+- **tooltipText** - (*string*) der Text des Tooltips, gerendert als innerHTML
+
+#### gantt.ext.tooltips.delayHide() {#delayHide} 
+
+versteckt den aktuell angezeigten Tooltip nach einer Verzögerung, die durch [tooltip_hide_timeout](api/config/tooltip_hide_timeout.md) festgelegt ist. Falls die Konfiguration nicht festgelegt ist, wird eine kleine Standardverzögerung verwendet.
+
+## Tooltips für verschiedene Elemente {#tooltipsfordifferentelements}
+
+Standardmäßig werden Tooltips nur zu den Gantt-Aufgaben hinzugefügt, aber Sie können Tooltips auch für jedes andere Gantt-Element festlegen. Zum Beispiel für einen Ressourcen-Marker:
 
 ![Resource marker tooltip](/img/resource_marker_tooltip.png)
 
+Es gibt zwei entsprechende Methoden in der [Tooltip-API](#tooltipapi) hierfür:
 
-Zwei Methoden aus der [Tooltip-API](#tooltipapi) sind hierfür nützlich:
+- die [**gantt.ext.tooltips.tooltipFor()**](#tooltipfor) Methode 
 
-- die Methode [**gantt.ext.tooltips.tooltipFor()**](#tooltipfor) 
-
-Zum Beispiel, um Tooltips für Zellen der Zeitskala hinzuzufügen:
+Beispiel, so können Sie Tooltips für Zellen der Timeline-Skalierung hinzufügen:
 
 ~~~js
 const domHelper = gantt.utils.dom;
-const pos = domHelper.getRelativeEventPosition(event, gantt.$task_scale);
+const pos = domHelper .getRelativeEventPosition(event, gantt.$task_scale);
 return gantt.templates.task_date(gantt.dateFromPos(pos.x));
 ~~~
 
-Denken Sie daran, [gantt.ext.tooltips.tooltipFor()](#tooltipfor) aufzurufen, nachdem Gantt initialisiert wurde. Zum Beispiel im [onGanttReady](api/event/onganttready.md)-Event-Handler:
+Hinweis: Die Methode [gantt.ext.tooltips.tooltipFor()](#tooltipfor) muss nach Abschluss der Gantt-Initialisierung aufgerufen werden. Beispielsweise können Sie die Methode innerhalb des [onGanttReady](api/event/onganttready.md) Ereignis-Handlers wie folgt angeben:
 
 ~~~js
 gantt.attachEvent("onGanttReady", () => {
@@ -145,11 +153,9 @@ gantt.attachEvent("onGanttReady", () => {
 });
 ~~~
 
-
 [Custom Tooltips](https://docs.dhtmlx.com/gantt/samples/02_extensions/22_tooltip_api.html)
 
-
-Oder so:
+Oder Sie können wie folgt vorgehen:
 
 ~~~js
 gantt.init("gantt_here");
@@ -165,32 +171,31 @@ gantt.ext.tooltips.tooltipFor({
 });
 ~~~
 
-**Related example:** [Gantt. Custom tooltips for cells](https://snippet.dhtmlx.com/6kb5gm39)
+**Zugehöriges Beispiel** [Gantt. Custom tooltips for cells](https://snippet.dhtmlx.com/6kb5gm39)
 
-So hinzugefügte Tooltips folgen dem Mauszeiger und berücksichtigen Einstellungen wie *[tooltip_offset_x](api/config/tooltip_offset_x.md)*, *[tooltip_offset_y](api/config/tooltip_offset_y.md)*, *[tooltip_timeout](api/config/tooltip_timeout.md)* und *[tooltip_hide_timeout](api/config/tooltip_hide_timeout.md)*.
+Ein Tooltip, der auf diese Weise hinzugefügt wird, folgt dem Mauszeiger und verwendet die Einstellungen *[tooltip_offset_x](api/config/tooltip_offset_x.md)*, *[tooltip_offset_y](api/config/tooltip_offset_y.md)*, *[tooltip_timeout](api/config/tooltip_timeout.md)*, [tooltip_hide_timeout](api/config/tooltip_hide_timeout.md).
 
-- die Methode [**gantt.ext.tooltips.attach()**](#attach) 
+- die [**gantt.ext.tooltips.attach()**](#attach) Methode
 
-Mit dieser Methode können Sie Tooltips mit detaillierterer Konfiguration hinzufügen, um das Verhalten beim Bewegen der Maus besser zu steuern.
-
+Diese Methode ermöglicht das Hinzufügen eines Tooltips mit erweiterter Konfiguration, um das Tooltip-Verhalten an die Bewegung des Mauszeigers anzupassen.
 
 ## Anpassung des Tooltip-Verhaltens
 
-Sie können das Standardverhalten des Tooltips ändern, indem Sie den eingebauten Handler entfernen und Ihren eigenen hinzufügen:
+Es besteht die Möglichkeit, das Standardverhalten des Tooltips zu ändern. Dies lässt sich erreichen, indem der integrierte Tooltip-Handler entfernt und durch einen benutzerdefinierten ersetzt wird:
 
-- Entfernen Sie den Standard-Tooltip-Handler von Aufgaben mit [**gantt.ext.tooltips.detach**](#detach):
+- Entfernen des integrierten Tooltip-Handlers von Aufgaben mit der [**gantt.ext.tooltips.detach**](#detach) Methode:
 
 ~~~js
-// Entfernt den eingebauten Tooltip-Handler von Aufgaben
+// remove the built-in tooltip handler from tasks
 gantt.ext.tooltips.detach(`[${gantt.config.task_attribute}]:not(.gantt_task_row)`);
 ~~~
 
-- Fügen Sie Ihr eigenes Tooltip-Verhalten mit [**gantt.ext.tooltips.attach()**](#attach) hinzu. Zum Beispiel, um Tooltips nur über der Tabelle anzuzeigen:
+- Fügen Sie das gewünschte Tooltip-Verhalten über die [**gantt.ext.tooltips.attach()**](#attach) Methode hinzu. Im folgenden Beispiel wird der Tooltip nur über der Tabelle angezeigt:
 
 ~~~js
 gantt.ext.tooltips.tooltipFor({
     selector: `.gantt_grid [${gantt.config.task_attribute}]`,
-    html: (event: MouseEvent) => {
+    html: (event) => {
         if (gantt.config.touch && !gantt.config.touch_tooltip) {
             return;
         }
@@ -207,12 +212,11 @@ gantt.ext.tooltips.tooltipFor({
 });
 ~~~
 
-
 ## Timeout
 
-Die Zeitspanne für das Anzeigen und Ausblenden von Tooltips kann über die entsprechenden Einstellungen angepasst werden.
+Sie können die Zeiten zum Anzeigen und Verbergen von Tooltips über die entsprechenden Einstellungen konfigurieren.
 
-Um festzulegen, wie lange (in Millisekunden) es dauert, bis ein Tooltip für eine Aufgabe erscheint, verwenden Sie [tooltip_timeout](api/config/tooltip_timeout.md):
+Um den Zeitraum in Millisekunden festzulegen, bevor ein Tooltip für eine Aufgabe erscheint, verwenden Sie [tooltip_timeout](api/config/tooltip_timeout.md):
 
 ~~~js
 gantt.config.tooltip_timeout = 50;
@@ -220,20 +224,19 @@ gantt.init("gantt_here");
 ~~~
 
 
-Um zu steuern, wie lange (in Millisekunden) ein Tooltip sichtbar bleibt, nachdem der Cursor weggegangen ist, verwenden Sie [tooltip_hide_timeout](api/config/tooltip_hide_timeout.md):
+Um festzulegen, wie lange ein Tooltip nach dem Bewegen des Cursors an eine andere Position angezeigt wird, verwenden Sie die Eigenschaft [tooltip_hide_timeout](api/config/tooltip_hide_timeout.md):
 
 ~~~js
 gantt.config.tooltip_hide_timeout = 5000;
 gantt.init("gantt_here");
 ~~~
 
-
 ## Position
 
-Sie können die Position des Tooltips anpassen, indem Sie die horizontalen und vertikalen Offsets über diese Konfigurationseigenschaften ändern:
+Die Position eines Tooltips kann angepasst werden, indem die Offsets seiner Standardposition über zwei Konfigurations-Eigenschaften geändert werden:
 
-- [tooltip_offset_x](api/config/tooltip_offset_x.md) - legt den horizontalen Offset fest
-- [tooltip_offset_y](api/config/tooltip_offset_y.md) - legt den vertikalen Offset fest
+- [tooltip_offset_x](api/config/tooltip_offset_x.md) - setzt den horizontalen Offset der Tooltip-Position
+- [tooltip_offset_y](api/config/tooltip_offset_y.md) - setzt den vertikalen Offset der Tooltip-Position
 
 ~~~js
 gantt.config.tooltip_offset_x = 30;
@@ -242,12 +245,11 @@ gantt.config.tooltip_offset_y = 40;
 gantt.init("gantt_here");
 ~~~
 
+## Anzeigenbereich
 
-## Anzeigebereich
+Vor Version 6.1 wurden Tooltips nur im Timeline-Bereich angezeigt. Nach der Version 6.1 ist die Tooltip-Anzeige nicht mehr begrenzt, und ein Tooltip folgt der Bewegung des Mauszeigers.
 
-Vor Version 6.1 wurden Tooltips nur im Bereich der Zeitleiste angezeigt. Seit v6.1 können Tooltips überall erscheinen und folgen dem Mauszeiger.
-
-Wenn Sie das frühere Verhalten wiederherstellen möchten, verwenden Sie diesen Code vor der Initialisierung von Gantt:
+Falls erforderlich, können Sie das vorherige Verhalten wiederherstellen, indem Sie vor der Initialisierung von Gantt den folgenden Code verwenden:
 
 ~~~js
 gantt.attachEvent("onGanttReady", () => {
@@ -258,4 +260,3 @@ gantt.attachEvent("onGanttReady", () => {
 gantt.init("gantt_here");
 gantt.parse(demo_tasks);
 ~~~
-

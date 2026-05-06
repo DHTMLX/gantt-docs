@@ -1,14 +1,14 @@
 ---
 sidebar_label: show_tasks_outside_timescale
-title: show_tasks_outside_timescale config
-description: "позволяет отображать задачи, которые выходят за пределы заданного диапазона дат на диаграмме Ганта"
+title: show_tasks_outside_timescale конфигурация
+description: "позволяет отображать задачи за пределами заданного диапазона дат на диаграмме Ганта"
 ---
 
 # show_tasks_outside_timescale
 
 ### Description
 
-@short: Позволяет отображать задачи, которые выходят за пределы заданного диапазона дат на диаграмме Ганта
+@short: Позволяет отображать задачи за пределами заданного диапазона дат на диаграмме Ганта
 
 @signature: show_tasks_outside_timescale: boolean
 
@@ -25,15 +25,14 @@ gantt.init("gantt_here");
 **Default value:** false
 
 ### Related samples
-- [Tasks outside timescale](https://docs.dhtmlx.com/gantt/samples/01_initialization/20_tasks_outside_timescale.html)
+- [Задачи за пределами временного диапазона](https://docs.dhtmlx.com/gantt/samples/01_initialization/20_tasks_outside_timescale.html)
 
 ### Related API
 - [start_date](api/config/start_date.md)
 - [end_date](api/config/end_date.md)
 
 ### Related Guides
-- [Настройка шкалы](guides/configuring-time-scale.md#tasksoutsidetimescale)
+- [Настройка масштаба времени](guides/configuring-time-scale.md)
 
 ### Change log
 - добавлено в версии v6.3
-

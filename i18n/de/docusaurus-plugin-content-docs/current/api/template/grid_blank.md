@@ -1,7 +1,7 @@
 ---
 sidebar_label: grid_blank
-title: grid_blank template
-description: "definiert den benutzerdefinierten Inhalt, der vor den Labels der untergeordneten Elemente in der Tree-Spalte angezeigt wird"
+title: grid_blank Vorlage
+description: "Bestimmt den benutzerdefinierten Inhalt, der vor den Bezeichnungen der untergeordneten Elemente in der Baum-Spalte eingefügt wird"
 ---
 
 # grid_blank
@@ -14,10 +14,10 @@ description: "definiert den benutzerdefinierten Inhalt, der vor den Labels der u
 
 ### Parameters
 
-- `task` - (required) *Task* - das Task-Objekt
+- `task` - (erforderlich) *Task* - das Task-Objekt
 
 ### Returns
-- ` text` - (string) - html-Text, der im Gantt gerendert wird
+- ` text` - (string) - HTML-Text, der im Gantt gerendert wird
 
 ### Example
 
@@ -28,5 +28,5 @@ gantt.templates.grid_blank = function(item) {
 ~~~
 
 ### Related Guides
-- ["Vorlagen des Grids"](guides/table-templates.md)
-- ["Konfiguration der Baumspalte"](guides/tree-column.md)
+- [Vorlagen des Grids](guides/table-templates.md)
+- [Konfigurieren der Baumspalte](guides/tree-column.md)

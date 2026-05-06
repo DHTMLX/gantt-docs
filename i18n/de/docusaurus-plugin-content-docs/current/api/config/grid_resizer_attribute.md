@@ -1,14 +1,18 @@
 ---
 sidebar_label: grid_resizer_attribute
-title: grid_resizer_attribute config
-description: "Gibt den Namen des Attributes für das DOM-Element des grid resizers an"
+title: grid_resizer_attribute Konfiguration
+description: "legt den Namen des Attributs des DOM-Elements des Grid-Resizers fest"
 ---
 
 # grid_resizer_attribute
 
+:::warning
+Die Eigenschaft ist veraltet.
+:::
+
 ### Description
 
-@short: Gibt den Namen des Attributes für das DOM-Element des grid resizers an
+@short: Legt den Namen des Attributs des DOM-Elements des Grid-Resizers fest
 
 ### Example
 
@@ -16,12 +20,12 @@ description: "Gibt den Namen des Attributes für das DOM-Element des grid resize
 gantt.config.grid_resizer_attribute = "gridresizer";
 ~~~
 
-**Default value:** "grid_resizer"
+**Standardwert:** "grid_resizer"
 
 ### Details
 
 :::note
- Diese Eigenschaft ist veraltet. Es wird empfohlen, stattdessen das [grid_resizer_column_attribute](api/config/grid_resizer_column_attribute.md) zu verwenden: 
+Verwenden Sie stattdessen [grid_resizer_column_attribute](api/config/grid_resizer_column_attribute.md)
 :::
 
 ~~~js
@@ -31,4 +35,3 @@ gantt.config.grid_resizer_column_attribute = "data-column-index";
 ### Related API
 - [grid_resizer_column_attribute](api/config/grid_resizer_column_attribute.md)
 - [grid_resize](api/config/grid_resize.md)
-

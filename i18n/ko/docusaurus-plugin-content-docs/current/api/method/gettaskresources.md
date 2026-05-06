@@ -1,30 +1,32 @@
 ---
 sidebar_label: getTaskResources
 title: getTaskResources method
-description: "특정 작업에 할당된 고유한 리소스 목록을 데이터스토어에서 가져옵니다."
+description: "데이터스토어에서 특정 작업에 할당된 고유 자원 배열을 반환합니다"
 ---
 
 # getTaskResources
+
 :::info
-이 기능은 PRO 에디션에서만 사용할 수 있습니다. 
+이 기능은 PRO 에디션에서만 사용할 수 있습니다.
 :::
+
 ### Description
 
-@short: 특정 작업에 할당된 고유한 리소스 목록을 데이터스토어에서 가져옵니다.
+@short: 데이터스토어에서 특정 작업에 할당된 고유 자원 배열을 반환합니다
 
 @signature: getTaskResources: (taskId: string | number) =\> ResourceItem[]
 
 ### Parameters
 
-- `taskId` - (required) *string | number* -    작업의 식별자
+- `taskId` - (필수) *string | number* - 작업 ID
 
 ### Returns
-- ` param` - (ResourceItem[]) - 리소스 객체를 담은 배열
+- ` param` - (ResourceItem[]) - 리소스 객체의 배열
 
 ### Example
 
 ~~~jsx
-gantt.getTaskResources(5); // -> 자세한 내용 보기
+gantt.getTaskResources(5); // 자세히 보기
 ~~~
 
 ### Related samples
@@ -33,17 +35,17 @@ gantt.getTaskResources(5); // -> 자세한 내용 보기
 ### Details
 
 :::note
- **getTaskResources** 메서드는 [process_resource_assignments](api/config/process_resource_assignments.md)가 비활성화된 경우 작동하지 않습니다. 
+ getTaskResources 메서드는 [process_resource_assignments](api/config/process_resource_assignments.md)가 비활성화된 경우 사용할 수 없습니다. 
 :::
 
-이 메서드는 다음 속성을 가진 **resourceItem** 객체 배열을 반환합니다:
+메서드는 다음 속성을 갖는 **resourceItem** 객체의 배열을 반환합니다:
 
-- **id** - (*string | number*) - 리소스 항목의 ID
-- **open?** - (*boolean*) - 트리에서 리소스 항목이 확장되어 있는지(*true*) 또는 축소되어 있는지(*false*) 표시
-- **parent?** - (*string | number*) - 리소스 항목의 상위 ID
+- **id** - (*string | number*) - 리소스 아이템의 ID
+- **open?** - (*boolean*) - 트리에서 리소스 아이템이 확장되어 있는지 여부를 나타냅니다 (*true*) 또는 축소되어 있는지 여부를 나타냅니다 (*false*)
+- **parent?** - (*string | number*) - 부모 리소스 아이템의 ID
 - **text?** - (*string*) - 리소스 이름
-- **unit?** - (*string*) - 할당에 사용되는 단위
-- **[customProperty: string]** - (*any*) - 추가적인 커스텀 속성
+- **unit?** - (*string*) - 할당의 단위
+- **[customProperty: string]** - (*any*) - 임의의 사용자 정의 속성
 
 
 ~~~js
@@ -61,5 +63,4 @@ gantt.getTaskResources(5); // -> 자세한 내용 보기
 - [리소스 관리](guides/resource-management.md#assigningresources)
 
 ### Change log
-- v8.0에 추가됨
-
+- added in v8.0

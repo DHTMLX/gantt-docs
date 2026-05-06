@@ -1,14 +1,14 @@
 ---
 sidebar_label: drag_lightbox
-title: drag_lightbox config
-description: "Ermöglicht das Ziehen der Lightbox über ihre Kopfzeile"
+title: drag_lightbox Konfiguration
+description: "Ermöglicht das Ziehen der Lightbox durch den Header"
 ---
 
 # drag_lightbox
 
 ### Description
 
-@short: Ermöglicht das Ziehen der Lightbox über ihre Kopfzeile
+@short: Ermöglicht das Ziehen der Lightbox durch den Header
 
 @signature: drag_lightbox: boolean
 
@@ -20,7 +20,7 @@ gantt.config.drag_lightbox = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Standardwert:** true
 
 ### Related Guides
 - [drag_links](api/config/drag_links.md)
@@ -28,4 +28,3 @@ gantt.init("gantt_here");
 - [drag_mode](api/config/drag_mode.md)
 - [drag_progress](api/config/drag_progress.md)
 - [drag_resize](api/config/drag_resize.md)
-

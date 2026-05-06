@@ -1,14 +1,14 @@
 ---
 sidebar_label: open_tree_initially
-title: open_tree_initially config
-description: "открывает все ветви по умолчанию"
+title: конфигурация open_tree_initially
+description: "Открывает все ветви изначально"
 ---
 
 # open_tree_initially
 
 ### Description
 
-@short: Открывает все ветви по умолчанию
+@short: Открывает все ветви изначально
 
 @signature: open_tree_initially: boolean
 
@@ -20,4 +20,4 @@ gantt.config.open_tree_initially = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**Значение по умолчанию:** false

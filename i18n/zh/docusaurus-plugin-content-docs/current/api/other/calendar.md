@@ -12,6 +12,7 @@ description: "工作日历对象的接口"
 
 @signature: calendar: Calendar
 
+
 ### Details
 
 有关工作日历的更多详细信息，请参阅 [工作时间计算](guides/working-time.md#multipleworktimecalendars) 文章。
@@ -22,29 +23,73 @@ description: "工作日历对象的接口"
 
 - **setWorkTime (config): boolean** - 定义甘特图的工作时间
     - **_config_** - (*object*) - 描述时间范围的[配置对象](api/method/setworktime.md):
-        - **_day?_** - (*string | number*) - 可选，周几编号 [0（星期日）- 6（星期六）]。注意一次只能设置一天
-        - **_date?_** - (*Date*) - 可选，指定某个日期作为工作日或非工作日
-        - **_hours?_** - (*string[] | number[] | boolean*) - 可选，表示工作时间的"开始-结束"对数组。设置为 'false' 表示休息日，'true'（默认）应用默认时间（["8:00-17:00"]）
-        - **_customWeeks?_** - (*object*) - 可选，定义不同时间段工作时间规则的对象。包含键值对，键为时间段名称，值为带属性的对象:
-            - **_[timespan: string]_** - (*object*) - 带有工作时间设置的时间段，键名作为时间段名称
-                - **_from_** - (*Date*) - 时间段开始日期
-                - **_to_** - (*Date*) - 时间段结束日期
-                - **_hours?_** - (*string[] | number[]*) - 可选，表示工作时间的"开始-结束"对数组。'false' 表示休息日，'true'（默认）应用默认时间（["8:00-17:00"]）
-                - **_days?_** - (*WorkDaysTuple | boolean*) - 可选，长度为7的数组，表示一周的每天（0 - 星期日，6 - 星期六），1/true 表示工作日，0/false 表示非工作日。
+        - **_day?_** - (*string | number*) - 可选，表示一周中的某一天，取值为 [0（周日）- 6（周六）]。注意，每次只能设置一个周几
+        - **_date?_** - (*Date*) - 可选，指定日期，设为工作日或休息日
+        - **_hours?_** - (*string[] | number[] | boolean*) - 可选，以 'from'-'to' 形式的工作时段数组。'false' 值表示休息日，'true'（默认值）应用默认时段（["8:00-17:00"]）
+        - **_customWeeks?_** - (*object*) - 可选，包含不同时间段工作时间规则的对象。该对象可包含一组 key:value 对，其中 key 为时间段的名称，value 为包含属性列表的对象。
+            - **_[timespan: string]_** - (*object*) - 具有工作时间设置的时间段对象。该对象的名称将用作时间段的名称
+                - **_from_** - (*Date*) - 时间段开始的日期
+                - **_to_** - (*Date*) - 时间段结束的日期
+                - **_hours?_** - (*string[] | number[]*) - 可选，以 'from'-'to' 形式的工作时段数组。'false' 值表示休息日，'true'（默认值）应用默认时段（["8:00-17:00"]）
+                - **_days?_** - (*WorkDaysTuple | boolean*) - 可选，表示一周的 7 天，从 0（周日）到 6（周六），其中 1/true 表示工作日，0/false 表示非工作日。
 
+  
 ~~~js
 calendar.setWorkTime({ hours:["9:00-18:00"] });
+calendar.setWorkTime({ hours:["9:00-18:00"] });
+calendar.setWorkTime({ day: 5, hours: ["9:00-18:00"] });
+calendar.setWorkTime({ day: 5, hours: false });
+calendar.setWorkTime({ date: new Date(2025, 5, 6), hours: ["9:00-18:00"] });
+calendar.setWorkTime({ date: new Date(2025, 5, 6), hours: false });
+calendar.setWorkTime({ hours: false });
+calendar.setWorkTime({
+  customWeeks: {
+    winter: {
+      from: new Date(2025, 11, 1),
+      to: new Date(2026, 2, 1),
+      hours: ["8:00-13:00", "14:00-16:00"],
+      days: [1, 1, 1, 1, 1, 0, 0]
+    },
+    summer: {
+      from: new Date(2026, 5, 1),
+      to: new Date(2026, 7, 1),
+      hours: ["10:00-13:00", "14:00-16:00"],
+      days: [1, 1, 0, 1, 1, 0, 0]
+    }
+  }
+});
+calendar.setWorkTime({
+  customWeeks: {
+    winter: {
+      from: new Date(2025, 11, 1),
+      to: new Date(2026, 2, 1),
+      hours: ["8:00-13:00", "14:00-16:00"],
+      days: [1, ["8:00-13:00"], 1, 1, ["14:00-16:00"], 0, 0]
+    },
+    summer: {
+      from: new Date(2026, 5, 1),
+      to: new Date(2026, 7, 1),
+      hours: ["10:00-13:00", "14:00-16:00"],
+      days: false
+    }
+  }
+});
 ~~~
 
-- **unsetWorkTime (config): void** - 从甘特图中移除工作时间设置
+- **unsetWorkTime (config): void** - 取消甘特圖中的工作時間設置
     - **_config_** - (*object*) - 描述时间范围的[配置对象](api/method/unsetworktime.md):
-        - **_day?_** - (*string | number*) - 可选，周几编号 [0（星期日）- 6（星期六）]。一次只能设置一天
-        - **_date?_** - (*Date*) - 可选，指定某个日期作为工作日或非工作日
-        - **_hours?_** - (*string[] | number[] | boolean*) - 可选，表示工作时间的"开始-结束"对数组。'false' 表示休息日，'true'（默认）应用默认时间（["8:00-17:00"]）
+        - **_day?_** - (*string | number*) - 可选，表示一周中的某一天，取值为 [0（周日）- 6（周六）]。注意，每次只能设置一个周几
+        - **_date?_** - (*Date*) - 可选，指定日期，设为工作日或休息日
+        - **_hours?_** - (*string[] | number[] | boolean*) - 可选，以 'from'-'to' 形式的工作时段数组。
+'false' 值表示取消工作时段，'true'（默认值）应用默认时段 (["8:00-17:00"])
+
 
 ~~~js
-calendar.unsetWorkTime({ hours:["9:00-18:00"] });
-~~~
+calendar.unsetWorkTime({ hours: ["9:00-18:00"] });
+calendar.unsetWorkTime({ day: "5", hours: ["9:00-18:00"] });
+calendar.unsetWorkTime({ day: 5, hours: false });
+calendar.unsetWorkTime({ date: new Date(2025, 5, 6), hours: true });
+~~~ 
 
 - **isWorkTime (config, time_unit): boolean** - 判断指定日期是否为工作时间
     - **_config_** - (*Date | object*) - 要检查的日期或描述时间范围的[配置对象](api/method/isworktime.md):
@@ -54,10 +99,14 @@ calendar.unsetWorkTime({ hours:["9:00-18:00"] });
     - **_time_unit?_** - (*string*) - 可选，时间单位:"minute", "hour", "day", "week", "month", "year"。如果第一个参数是对象，则不必提供<br><br>
 
 ~~~js
-var calendar = gantt.getTaskCalendar(task);
+const calendar = gantt.getTaskCalendar(task);
 if (calendar.isWorkTime({date: date})){
     alert("worktime of task" + task.text);
 }
+
+calendar.isWorkTime(new Date(2025, 5, 6));
+calendar.isWorkTime(new Date(2025, 5, 6), "hour");
+calendar.isWorkTime({ date: new Date(2025, 5, 6), unit: "hour" });
 ~~~
 
 - **getClosestWorkTime (config): Date** - 查找最近的工作时间
@@ -68,10 +117,11 @@ if (calendar.isWorkTime({date: date})){
         - **_task?_** - (*Task*) - 可选，使用其 calendar 的任务对象
 
 ~~~js
-calendar.getClosestWorkTime({
-    date:new Date(2013,0,1), 
-    dir:"future", 
-    unit:"hour"
+calendar.getClosestWorkTime(new Date(2025, 5, 6));
+calendar.getClosestWorkTime({ 
+    date: new Date(2025, 5, 6), 
+    unit: "hour",
+    dir: "past" 
 });
 ~~~
 
@@ -85,7 +135,12 @@ calendar.getClosestWorkTime({
     - **_unit?_** - (*string*) - 可选，持续时间的时间单位。如果第一个参数是对象，则不需要<br>
 
 ~~~js
-var end_date = calendar.calculateEndDate({start_date:date, duration:duration});
+calendar.calculateEndDate(new Date(2025, 5, 6), 2, "hour");
+calendar.calculateEndDate({ 
+    start_date: new Date(2025, 5, 6), 
+    duration: 2, 
+    unit: "hour" 
+});
 ~~~
 
 - **calculateDuration (config, end): number** - 计算任务的持续时间
@@ -96,10 +151,15 @@ var end_date = calendar.calculateEndDate({start_date:date, duration:duration});
     - **_end?_**    - (*Date*) - 任务结束日期。如果第一个参数是对象，则不需要<br>
 
 ~~~js
-calendar.calculateDuration(new Date(2013,02,15), new Date(2013,02,25));
+calendar.calculateDuration(new Date(2025, 5, 6), new Date(2025, 5, 17));
+calendar.calculateDuration({ 
+    start_date: new Date(2025, 5, 6), 
+    end_date: new Date(2025, 5, 17) 
+});
 ~~~
 
-## 属性
+
+### Properties
 
 - **id** - (*string | number*) - 任务日历的标识符
 
@@ -109,5 +169,4 @@ calendar.calculateDuration(new Date(2013,02,15), new Date(2013,02,25));
 - [createCalendar](api/method/createcalendar.md)
 
 ### Related Guides
-- [工作时间计算](guides/working-time.md)
-
+- [Work Time Calculation](guides/working-time.md#assigningcalendartotask)

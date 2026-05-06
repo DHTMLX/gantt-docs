@@ -1,14 +1,18 @@
 ---
 sidebar_label: scale_unit
-title: scale_unit config
-description: "definiert die Einheit der Zeitskala auf der X-Achse"
+title: scale_unit Konfiguration
+description: "legt die Einheit der Zeitachse (X-Achse) fest"
 ---
 
 # scale_unit
 
+:::warning
+Die Eigenschaft ist veraltet.
+:::
+
 ### Description
 
-@short: Definiert die Einheit der Zeitskala auf der X-Achse
+@short: Legt die Einheit der Zeitachse fest (X-Achse)
 
 ### Example
 
@@ -22,16 +26,16 @@ gantt.init("gantt_here");
 **Default value:** 'day'
 
 ### Related samples
-- [Month view](https://docs.dhtmlx.com/gantt/samples/03_scales/02_month_days.html)
+- [Monatsansicht](https://docs.dhtmlx.com/gantt/samples/03_scales/02_month_days.html)
 
 ### Details
 
-Es ist möglich, die Zeiteinheit anzupassen. Für weitere Details siehe [diesen Abschnitt](guides/configuring-time-scale.md#customtimeunits).
-<br>
+Es besteht die Möglichkeit, eine benutzerdefinierte Einheit festzulegen. Lesen Sie mehr zum Thema [hier](guides/configuring-time-scale.md#customtimeunits).
+
 
 :::note
- Diese Eigenschaft ist veraltet.
-Verwenden Sie stattdessen die **unit**-Eigenschaft innerhalb der [scales](api/config/scales.md): 
+ Die Eigenschaft ist veraltet.
+Verwenden Sie stattdessen die **unit**-Eigenschaft der [scales](api/config/scales.md).
 :::
 
 ~~~js
@@ -47,8 +51,7 @@ gantt.config.scales = [
 - [step](api/config/step.md)
 
 ### Related Guides
-- ["Einrichten der Skala"](guides/configuring-time-scale.md#settingtheunitofthescale)
+- [Einrichten der Zeitachse](guides/configuring-time-scale.md#timeunits)
 
 ### Change log
-- deprecated seit Version 6.2
-
+- seit v6.2 veraltet

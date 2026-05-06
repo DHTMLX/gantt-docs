@@ -1,14 +1,14 @@
----
+--- 
 sidebar_label: click_drag
-title: click_drag config
-description: "включает расширенное drag-n-drop"
+title: настройка click_drag
+description: "Включает продвинутый drag-n-drop"
 ---
 
 # click_drag
 
 ### Description
 
-@short: Включает расширенное drag-n-drop
+@short: Включает продвинутый drag-n-drop
 
 @signature: click_drag: undefined | ClickDrag
 
@@ -40,38 +40,33 @@ gantt.config.click_drag = {
 };
 ~~~
 
-**Default value:** \{ useKey: false, ignore: ".gantt_task_line, .gantt_task_link" \}
+**Значение по умолчанию:** \{ useKey: false, ignore: ".gantt_task_line, .gantt_task_link" \}
 
 ### Details
 
 :::note
- Эта конфигурация является частью расширения **click_drag**, поэтому убедитесь, что вы включили плагин [click_drag](guides/extensions-list.md#advanceddragndrop) через метод [gantt.plugins](api/method/plugins.md). Для подробностей смотрите статью [Создание/Выделение задач с помощью DnD](guides/advanced-dnd.md). 
+Эта конфигурация определяется в расширении **click_drag**, поэтому необходимо активировать плагин [click_drag](guides/extensions-list.md#advanced-drag-n-drop) с помощью метода [gantt.plugins](api/method/plugins.md). Подробности смотрите в статье [Создание/Выбор задач с DnD](guides/advanced-dnd.md).
 :::
 
-Расширение **click_drag** предоставляет следующие возможности:
+Объект **click_drag** включает следующие свойства:
 
-- создание задач с помощью drag-and-drop
-- установка времени для незапланированных задач через drag-and-drop
-- выделение задач с помощью drag-and-drop
-- создание частей разделённых задач через drag-and-drop (PRO версия)
-
-Объект **gantt.config.click_drag** имеет следующие свойства:
-
-- **className** -  (*string*) задаёт пользовательский CSS класс для выделенного элемента
-- **viewPort** - (*HTMLElement*) определяет элемент, к которому прикрепляются события и в котором происходит выделение
-- **useRequestAnimationFrame** - (*boolean*) указывает, используется ли requestAnimationFrame при рендеринге
-- **callback** - (*function*) вызывается при отпускании кнопки мыши. Получает 6 параметров:
-    - **startPoint** - (*object*) объект следующей структуры: <br>
-    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, <br>
-  где absolute - координаты относительно левого верхнего угла документа, а relative - координаты относительно элемента viewPort
-    - **endPoint** - (*object*) в том же формате, что и startPoint
-     - **startDate** - (*Date*) дата, соответствующая позиции начала drag
-    - **endDate** - (*Date*) дата, соответствующая позиции конца drag
-    - **tasksBetweenDates** - (*array*) задачи, найденные между startDate и endDate
-    - **tasksInRows** - (*array*) задачи, выделенные между начальной и конечной вертикальными координатами
-- **singleRow** - (*boolean*) если true, выделение ограничивается одной строкой по высоте задачи
-- **ignore** - (*string*) CSS селектор элементов, для которых drag-and-drop отключён
-- **useKey** - (*string|boolean*) если задано, drag-and-drop активируется только при зажатой указанной клавише-модификаторе. Поддерживаемые ключи: "ctrlKey", "shiftKey", "metaKey", "altKey"
+- **className** - (*string*) устанавливает пользовательский CSS класс для выбранного элемента
+- **viewPort** - (*HTMLElement*) элемент, к которому прикрепляется событие и который выделяется
+- **useRequestAnimationFrame** - (*boolean*) определяет, используется ли requestAnimationFrame во время отрисовки
+- **callback** - (*function*) - функция, которая будет вызвана при отпускании кнопки мыши. Принимает 6 параметров:
+    - **startPoint** - (*object*) — объект типа: 
+    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, 
+  где absolute - координаты левого верхнего угла документа, а relative - координаты левого верхнего элемента, используемого как viewPort 
+    - **endPoint** - (*object*) объект типа: 
+    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, 
+  где absolute - координаты левого верхнего угла документа, а relative - координаты левого верхнего элемента, используемого как viewPort
+     - **startDate** - (*Date*) дата, которая соответствует начальной точке
+    - **endDate** - (*Date*) дата, которая соответствует конечной точке
+    - **tasksBetweenDates** - (*array*) массив задач между точками начала и конца
+    - **tasksInRows** - (*array*) массив задач, выбранных между начальной и конечной координатами по вертикали
+- **singleRow** - (*boolean*) true, чтобы добавлять выделение только в одну строку, равную высоте задачи
+- **ignore** - (*string*) CSS-селектор. Перетаскивание не будет активировано для элементов, которые соответствуют селектору
+- **useKey** - (*string|boolean*) если свойство указано, перетаскивание будет активировано только при нажатии указанного модификатора. Поддерживаемые значения: "ctrlKey", "shiftKey", "metaKey", "altKey"
 
 ~~~js
 gantt.config.click_drag = {
@@ -81,13 +76,15 @@ gantt.config.click_drag = {
 };
 ~~~
 
-- **render** - (*function*) создаёт элемент, отображаемый во время перетаскивания. Принимает два аргумента:
-    - **startPoint** - (*object*) структура:<br>
-    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, <br>
-  координаты absolute и relative описаны выше
-    - **endPoint** - (*object*) в том же формате, что и startPoint
+- **render** - (*function*) функция, создающая элемент, отображаемый во время перетаскивания. Принимает два параметра:
+    - **startPoint** - (*object*) — объект типа:
+    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, 
+  где absolute - координаты левого верхнего угла документа, а relative - координаты левого верхнего элемента, используемого как viewPort 
+    - **endPoint** - (*object*) объект типа: 
+    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, 
+  где absolute - координаты левого верхнего угла документа, а relative - координаты левого верхнего элемента, используемого как viewPort
 
-Пример реализации функции **render**:
+Вот пример использования функции **render**:
 
 ~~~js
 var node;
@@ -111,5 +108,4 @@ gantt.config.click_drag = {
 ~~~
 
 ### Related Guides
-- [Создание/Выделение задач с помощью DnD](guides/advanced-dnd.md)
-
+- [Создание/Выбор задач с DnD](guides/advanced-dnd.md)

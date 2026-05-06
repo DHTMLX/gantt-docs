@@ -1,23 +1,23 @@
 ---
 sidebar_label: serialize
 title: serialize method
-description: "преобразует данные в формат JSON или XML"
+description: "Сериализует данные в формат JSON или XML"
 ---
 
 # serialize
 
 ### Description
 
-@short: Преобразует данные в формат JSON или XML
+@short: Сериализует данные в формат JSON или XML
 
-@signature: serialize: (type?: string) =\> any
+@signature: serialize: (type?: string) => any
 
 ### Parameters
 
-- `type` - (optional) *string* - устанавливает формат для сериализации. <br> Возможные значения: 'json' (<i>по умолчанию</i>), 'xml'.
+- `type` -	(optional) *string*   - 	формат, в который будут сериализованы данные. <br/> Возможные значения: 'json' (<i>default</i> ), 'xml'. 
 
 ### Returns
-- ` data` - (object) - возвращает объект данных gantt
+- `data` - (object) - объект данных диаграммы Ганта
 
 ### Example
 
@@ -31,4 +31,3 @@ gantt.serialize('xml');
 ### Related Guides
 - [Сериализация данных в XML и JSON](guides/serialization.md)
 - [Поддерживаемые форматы данных](guides/supported-data-formats.md)
-

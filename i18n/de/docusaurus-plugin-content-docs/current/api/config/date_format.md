@@ -1,14 +1,14 @@
 ---
 sidebar_label: date_format
 title: date_format config
-description: "gibt das Datumsformat an, das verwendet wird, um Daten aus einem Datensatz zu interpretieren und Daten zurück an den Server zu senden"
+description: "legt das Datumsformat fest, das verwendet wird, um Daten aus einem Datensatz zu parsen und Datumsangaben an den Server zurückzusenden"
 ---
 
 # date_format
 
 ### Description
 
-@short: Gibt das Datumsformat an, das verwendet wird, um Daten aus einem Datensatz zu interpretieren und Daten zurück an den Server zu senden
+@short: Legt das Datumsformat fest, das verwendet wird, um Daten aus einem Datensatz zu parsen und Datumsangaben an den Server zurückzusenden
 
 @signature: date_format: string
 
@@ -21,43 +21,46 @@ gantt.init("gantt_here");
 gantt.load("/data/tasks");
 ~~~
 
-**Default value:** "%d-%m-%Y %H:%i"
+**Standardwert:** "%d-%m-%Y %H:%i"
 
 ### Details
 
-Diese Konfigurationsoption wird genutzt, um die Template-Funktionen [parse_date](api/template/parse_date.md) und [format_date](api/template/format_date.md) zu erstellen. 
-Um ein benutzerdefiniertes Format zu verwenden, können Sie entweder diesen Config-Wert anpassen oder die **parse_date** und **format_date** Templates direkt überschreiben.
+Dieser Config-Wert wird verwendet, um die Template-Funktionen [`parse_date`](api/template/parse_date.md) und [`format_date`](api/template/format_date.md) zu erzeugen. Wenn Sie ein benutzerdefiniertes Format verwenden möchten, können Sie entweder diese Konfiguration ändern oder direkt die Templates parse_date und format_date neu definieren.
 
-## Laden von Daten im ISO-Format
+## Loading dates in ISO format
 
-Gantt unterstützt das ISO-Datumsformat. Um dies zu aktivieren, müssen Sie die Funktionen überschreiben, die für das Parsen und Serialisieren von Daten verantwortlich sind:
+Seit Version 9.1.3 erkennt Gantt automatisch ISO-8601-Datumsstrings und parst sie. Der date_format-Konfigurationswert ist für ISO-Strings nicht nötig – sie werden automatisch erkannt und direkt geparst.
 
-~~~js
-gantt.templates.parse_date = function(date) { 
-    return new Date(date);
-};
-gantt.templates.format_date = function(date) { 
-    return date.toISOString();
-};
-~~~
+Wenn ISO-Datumsstrings bei der Eingabe erkannt werden, werden sie beim Weiterreichen an den DataProcessor automatisch wieder als ISO-Strings serialisiert. Nur-Datum-Strings (z. B. "2026-01-06") werden als Datums-Strings serialisiert, wobei das ursprüngliche Format beibehalten wird.
 
-## Dynamisches Ändern des Datumsformats
+Der date_format-Konfigurationswert gilt weiterhin für Nicht-ISO-Datumsstrings.
 
-Um das Datumsformat dynamisch zu aktualisieren, ändern Sie das [parse_date](api/template/parse_date.md) Template wie folgt:
+:::tip Gantt v9.1.2 und älter
+In Versionen vor v9.1.3 wurden ISO-Datumsangaben nicht automatisch erkannt. Wenn Sie eine ältere Version verwenden, müssen Sie die Templates `parse_date` und `format_date` überschreiben, um ISO-Strings zu behandeln:
 
 ~~~js
-var cfg = gantt.config;
-var strToDate = gantt.date.str_to_date(cfg.date_format, cfg.server_utc);
-
-gantt.templates.parse_date = function(date){
-    return strToDate (date);
-};
+gantt.templates.parse_date = (date) => new Date(date);
+gantt.templates.format_date = (date) => date.toISOString();
 ~~~
 
-### Related API
+:::
+
+Für weitere Details siehe [Laden von Datumsangaben im ISO-Format](guides/loading.md#loading-dates-in-iso-format).
+
+## Dynamische Änderung des Datumsformats
+
+Wenn Sie das Datumsformat dynamisch ändern müssen, ist es notwendig, das [`parse_date`](api/template/parse_date.md) Template wie folgt zu ändern:
+
+~~~js
+const config = gantt.config;
+const parseDate = gantt.date.str_to_date(config.date_format, config.server_utc);
+
+gantt.templates.parse_date = (date) => parseDate(date);
+~~~
+
+### Verwandte API
 - [parse_date](api/template/parse_date.md)
 - [format_date](api/template/format_date.md)
 
-### Related Guides
-- ["Datumsformat-Spezifikation"](guides/date-format.md)
-
+### Verwandte Guides
+- [Datumsformat-Spezifikation](guides/date-format.md)

@@ -1,32 +1,29 @@
 ---
-title: "在 Lightbox 中更改按钮"
-sidebar_label: "在 Lightbox 中更改按钮"
+title: "Lightbox 中的按钮更改"
+sidebar_label: "Lightbox 中的按钮更改"
 ---
 
-# 在 Lightbox 中更改按钮
+# Lightbox 中的按钮更改
 
-您可以自定义 Lightbox 中的默认按钮。例如，可以为只需查看任务的用户隐藏"Edit"按钮，或添加一个新的"Print"按钮以允许打印任务描述。
+有一种在 lightbox 中更改默认按钮的可能性。例如，可以对只查看任务的用户组隐藏“Edit”按钮，或者添加一个新的按钮 "Print"，让用户能够打印任务描述。
 
 ![complete_button](/img/complete_button.png)
 
+[Lightbox 中的自定义按钮](https://docs.dhtmlx.com/gantt/samples/05_lightbox/06_custom_button.html)
 
-[Custom button in the lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/06_custom_button.html)
-
-
-默认情况下，Lightbox 包含 3 个按钮（"Save"、"Cancel"、"Delete"），它们通过 [buttons_left](api/config/buttons_left.md) 和 [buttons_right](api/config/buttons_right.md) 中的配置选项定义。
+默认情况下，lightbox 包含 3 个按钮（'Save', 'Cancel', 'Delete'），这些按钮由 [buttons_left](api/config/buttons_left.md) 与 [buttons_right](api/config/buttons_right.md) 配置选项指定。
 
 ~~~js
 gantt.config.buttons_left = ["gantt_save_btn", "gantt_cancel_btn"];
 gantt.config.buttons_right = ["gantt_delete_btn"];
 ~~~
 
-要修改默认按钮，请按照以下步骤操作:
+要更改默认按钮集，请按下列步骤操作：
 
-- 使用所需的按钮标识符更新 <b>buttons_left</b> 或 <b>buttons_right</b> 数组。
+- 指定 <b>buttons_left</b> 或 <b>buttons_right</b> 数组的新成员。
 
 :::note
-请注意，如果您正在使用 [Material skin](guides/skins.md#materialpifu)，它会覆盖按钮配置。
-为避免此情况，请在 [onGanttReady](api/event/onganttready.md) 事件处理器内设置按钮配置:
+请注意如果你使用 [Material skin](guides/skins.md#materialskin)，它将重新定义按钮配置。为防止这种情况，请在 [onGanttReady](api/event/onganttready.md) 事件处理程序中指定按钮的配置：
 :::
 
 ~~~js
@@ -36,15 +33,15 @@ gantt.attachEvent("onGanttReady", function(){
 });
 ~~~
 
-- 为新按钮定义标签:
+- 设置按钮的标签：
 
 ~~~js
 gantt.locale.labels["complete_button"] = "Complete";
 ~~~
 
-- 若要为按钮分配图标或应用其他样式，请添加如下 CSS 类:
+- 若要为按钮设置图标（或应用其他样式），请按如下方式指定 CSS 类：
 
-~~~css
+~~~js
 .complete_button{
     margin-top: 1px;
     background-image:url("common/v_complete.png");
@@ -52,7 +49,7 @@ gantt.locale.labels["complete_button"] = "Complete";
 }
 ~~~
 
-- 实现 [onLightboxButton](api/event/onlightboxbutton.md) 事件处理器，以处理按钮点击:
+- 指定将处理按钮点击事件的 [onLightboxButton](api/event/onlightboxbutton.md) 处理程序：
 
 ~~~js
 gantt.attachEvent("onLightboxButton", function(button_id, node, e){
@@ -65,13 +62,11 @@ gantt.attachEvent("onLightboxButton", function(button_id, node, e){
 });
 ~~~
 
+[Lightbox 中的自定义按钮](https://docs.dhtmlx.com/gantt/samples/05_lightbox/06_custom_button.html)
 
-[Custom button in the lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/06_custom_button.html)
+## 按钮标签修改
 
-
-## 更改按钮标签
-
-可以在初始化 Gantt 之前重新定义按钮标签，语法如下:
+您可以在 Gantt 初始化之前使用如下语法重新定义按钮的标签：
 
 ~~~js
 gantt.locale.labels.icon_save = "New Label";
@@ -81,7 +76,7 @@ gantt.locale.labels.icon_delete= "New Label";
 gantt.init("gantt_here");
 ~~~
 
-或者，也可以在 Gantt 初始化后更新标签，如下所示:
+您也可以在 Gantt 初始化之后使用另一种语法来修改标签，如下所示：
 
 ~~~js
 gantt.attachEvent("onGanttReady", function(){
@@ -91,7 +86,7 @@ gantt.attachEvent("onGanttReady", function(){
 });
 ~~~
 
-从 7.0 版本开始，也可以使用 [i18n](api/other/i18n.md) 对象更改标签:
+自 7.0 版起，标签也可以通过使用 [i18n](api/other/i18n.md) 对象来修改：
 
 ~~~js
 gantt.i18n.setLocale({
@@ -102,4 +97,3 @@ gantt.i18n.setLocale({
    }
 });
 ~~~
-

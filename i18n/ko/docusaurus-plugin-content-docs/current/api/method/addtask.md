@@ -1,22 +1,22 @@
 ---
 sidebar_label: addTask
-title: addTask method
-description: "새 작업 추가"
+title: addTask 메서드
+description: "새로운 작업을 추가합니다"
 ---
 
 # addTask
 
 ### Description
 
-@short: 새 작업 추가
+@short: 새로운 작업을 추가합니다
 
-@signature: addTask: (task: NewTask, parent?: string | number, index?: number) =\> string | number
+@signature: addTask: (task: NewTask, parent?: string | number, index?: number) => string | number
 
 ### Parameters
 
-- `task` - (required) *NewTask* - 작업 객체
-- `parent` - (optional) *string | number* -           선택 사항, 부모 작업의 ID
-- `index` - (optional) *number* - 선택 사항, 작업이 삽입될 위치 (0 이상)
+- `task` - (필수) *NewTask* - 작업 객체
+- `parent` - (선택적) *string | number* - 부모의 id
+- `task` - (선택적) *number* - 태스크가 추가될 위치(0 이상)
 
 ### Returns
 - ` id` - (string, number) - 작업의 ID
@@ -34,18 +34,18 @@ const taskId = gantt.addTask({
 
 ### Details
 
-*index* 파라미터에 0 이상 값을 제공하면, 해당 작업이 그 분기(branch) 내 특정 위치에 삽입됩니다. 
-만약 이 값을 생략하면, 작업은 분기 끝에 추가됩니다.
+만약 *index* 매개변수를 0 이상으로 설정하면, 지정된 위치에 태스크가 해당 분기에 추가됩니다. 
+그렇지 않으면 태스크는 작업 분기의 끝에 추가됩니다.
 
-이 메서드는 [onBeforeTaskAdd](api/event/onbeforetaskadd.md) 와 [onAfterTaskAdd](api/event/onaftertaskadd.md) 이벤트를 트리거합니다.
+메서드는 [onBeforeTaskAdd](api/event/onbeforetaskadd.md) 및 [onAfterTaskAdd](api/event/onaftertaskadd.md) 이벤트를 호출합니다.
 
-사용자가 라이트박스에서 작업 추가를 취소하는 등 작업 저장을 막고 싶을 때는, 대신 [createTask](api/method/createtask.md) 메서드를 사용하는 것을 권장합니다. 이 메서드는 [onTaskCreated](api/event/ontaskcreated.md) 이벤트를 발생시킵니다.
+참고로, 예를 들어 사용자가 라이트박스에서 "취소" 버튼을 클릭하여 태스크를 저장하지 않으려는 경우, [createTask](api/method/createtask.md) 메서드와 이 메서드가 호출하는 [onTaskCreated](api/event/ontaskcreated.md) 이벤트를 사용하십시오.
 
 
-## 특정 레벨에 작업 추가 방지하기
-특정 작업 아래에 하위 작업 추가를 막는 간단한 방법은 CSS를 이용해 'Add' 버튼을 숨기는 것입니다.
+### 특정 레벨에 태스크 추가를 차단하는 방법
+사용자가 특정 태스크에 하위 태스크를 추가하지 못하도록 하는 아주 쉬운 방법은 CSS를 이용해 'Add' 버튼을 숨기는 것입니다.
 
-1. 먼저 [grid_row_class](api/template/grid_row_class.md) 템플릿을 사용하여 각 작업 행에 CSS 클래스를 지정합니다:
+먼저, [grid_row_class](api/template/grid_row_class.md) 템플릿을 사용하여 각 태스크 행에 CSS 클래스를 할당합니다:
 ~~~js
 gantt.templates.grid_row_class = (start, end, task) => {
     if (task.$level > 1) {
@@ -54,7 +54,8 @@ gantt.templates.grid_row_class = (start, end, task) => {
     return "";
 };
 ~~~
-2. 그 다음, 해당 행의 'Add' 버튼을 숨깁니다:
+
+그런 행에서의 'Add' 버튼을 숨깁니다:
 
 ~~~css
 .nested_task .gantt_add{
@@ -62,13 +63,11 @@ gantt.templates.grid_row_class = (start, end, task) => {
 }
 ~~~
 
-
 :::note
-sample
-  [Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
+샘플 [Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
 :::
 
-### Related API
+### 관련 API
 - [createTask](api/method/createtask.md)
 - [addLink](api/method/addlink.md)
 - [onAfterTaskAdd](api/event/onaftertaskadd.md)

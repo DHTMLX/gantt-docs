@@ -1,25 +1,27 @@
 ---
 sidebar_label: getConnectedGroup
 title: getConnectedGroup method
-description: "返回与特定任务连接的所有任务和链接"
+description: "返回一个任务所连接的所有任务和链接"
 ---
 
 # getConnectedGroup
+
 :::info
- 该功能仅在PRO版本中可用。 
+此功能仅在 PRO 版中可用。 
 :::
+
+
 ### Description
 
-@short: 返回与特定任务连接的所有任务和链接
+@short: 返回一个任务所连接的所有任务和链接
 
 @signature: getConnectedGroup: (id?: string | number) =\> any
 
 ### Parameters
-
-- `id` - (optional) *string | number* - 可选，指定任务的ID
+- `name` - (optional) *string | number* - 任务的 id
 
 ### Returns
-- ` connections` - (object) - 包含与指定任务连接的任务和链接的对象
+- ` connections` - (对象) - 一个包含该任务所连接的任务和链接的对象
 
 ### Example
 
@@ -30,11 +32,11 @@ gantt.getConnectedGroup(18);
 
 ### Details
 
-当不传参数调用时，此方法返回所有形成连接的任务组和链接组。
+若不带参数，该方法将返回所有形成连接的任务和链接的分组。
 
 :::note
- 该方法需要页面中包含 [auto_scheduling](guides/extensions-list.md) 插件。 
+ 该方法需要在页面中包含 [auto_scheduling](guides/extensions-list.md#autoscheduling) 插件。 
 :::
 
 ### Related Guides
-- [自动调度](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)

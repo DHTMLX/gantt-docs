@@ -1,4 +1,4 @@
-﻿---
+---
 title: Vue Gantt Overview
 sidebar_label: Overview
 description: "Architecture-level overview of Vue Gantt: capabilities, data flow, events, lifecycle, and customization extension points."
@@ -43,12 +43,12 @@ import { ref } from "vue";
 import VueGantt, {
   defineGanttConfig,
   defineGanttTemplates,
-  type Link,
-  type Task
+  type SerializedLink,
+  type SerializedTask
 } from "@dhtmlx/trial-vue-gantt";
 import "@dhtmlx/trial-vue-gantt/dist/vue-gantt.css";
 
-const tasks = ref<Task[]>([
+const tasks = ref<SerializedTask[]>([
   {
     id: 1,
     text: "Project",
@@ -58,7 +58,7 @@ const tasks = ref<Task[]>([
     parent: 0
   }
 ]);
-const links = ref<Link[]>([]);
+const links = ref<SerializedLink[]>([]);
 
 const config = defineGanttConfig({
   scales: [
@@ -88,6 +88,8 @@ The wrapper syncs incoming props into the current instance. The main decision is
 - **Vue state/store as source of truth**: wrapper callbacks (`data.save` / `data.batchSave`) update your state, then updated props flow back into the wrapper.
 - **Gantt as source of truth**: Gantt and backend own the main data lifecycle; Vue props are used less often for live chart state.
 
+When Vue owns the data, prefer `SerializedTask[]` and `SerializedLink[]` for reactive state and payload typing.
+
 Sync behavior summary:
 
 - task/link updates are usually diff-based
@@ -98,7 +100,7 @@ Use [Data Binding and State Management Basics](integrations/vue/state/state-mana
 
 ## Handle Events And Startup Logic
 
-Use the `events` map for [Gantt events](api/overview/events-overview.md) and `@ready` for one-time setup after initialization.
+Use the `events` map for Gantt events and `@ready` for one-time setup after initialization.
 
 ~~~vue
 <script setup lang="ts">
@@ -127,7 +129,7 @@ const onReady = (instance: GanttStatic) => {
 
 Use `events` for interaction behavior. Use `@ready` for initialization logic that needs a live instance.
 
-## Ref Access And Imperative Boundaries
+## Cross The Imperative Boundary
 
 Use a component ref when you need methods that are not practical to model through props.
 

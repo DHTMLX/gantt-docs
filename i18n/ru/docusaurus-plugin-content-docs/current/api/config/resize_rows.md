@@ -1,14 +1,14 @@
 ---
 sidebar_label: resize_rows
-title: resize_rows config
-description: "позволяет изменять высоту строк путем их перетаскивания"
+title: конфигурация resize_rows
+description: "позволяет изменять высоту строк перетаскиванием мыши"
 ---
 
 # resize_rows
 
 ### Description
 
-@short: Позволяет изменять высоту строк путем их перетаскивания
+@short: Позволяет изменять высоту строк перетаскиванием мыши
 
 @signature: resize_rows: boolean
 
@@ -34,5 +34,4 @@ gantt.config.resize_rows = true;
 - [onAfterRowResize](api/event/onafterrowresize.md)
 
 ### Change log
-- добавлено в версии v7.1
-
+- добавлено в v7.1

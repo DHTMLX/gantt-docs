@@ -1,14 +1,14 @@
 ---
 sidebar_label: onParse
-title: onParse event
-description: "срабатывает после того, как данные были распарсены (готовы для API), но до того, как они отображаются в Gantt chart"
+title: Событие onParse
+description: "Срабатывает после разбора данных (данные стали доступны через API), но до их отрисовки на диаграмме Ганта"
 ---
 
 # onParse
 
 ### Description
 
-@short: Срабатывает после того, как данные были распарсены (готовы для API), но до того, как они отображаются в Gantt chart
+@short: Срабатывает после разбора данных (данные стали доступны через API), но до их отрисовки на диаграмме Ганта
 
 @signature: onParse: () =\> void;
 
@@ -16,7 +16,7 @@ description: "срабатывает после того, как данные б
 
 ~~~jsx
 gantt.init("gantt_here");
-gantt.attachEvent("onParse", function(){alert("Данные были распарсены")});
+gantt.attachEvent("onParse", function(){alert("Data was parsed")});
 
 gantt.parse(demo_tasks);
 ~~~
@@ -30,4 +30,3 @@ gantt.parse(demo_tasks);
 - [onDataRender](api/event/ondatarender.md)
 - [onGanttRender](api/event/onganttrender.md)
 - [onLoadEnd](api/event/onloadend.md)
-

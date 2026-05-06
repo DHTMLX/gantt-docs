@@ -1,19 +1,19 @@
 ---
 sidebar_label: getScale
-title: getScale method
-description: "возвращает текущую настройку временной шкалы"
+title: метод getScale
+description: "возвращает конфигурацию временной шкалы"
 ---
 
 # getScale
 
 ### Description
 
-@short: Возвращает текущую настройку временной шкалы
+@short: Возвращает конфигурацию временной шкалы
 
 @signature: getScale: () =\> any
 
 ### Returns
-- ` scale` - (object) - текущая конфигурация временной шкалы
+- `scale` - (object) - конфигурация временной шкалы
 
 ### Example
 
@@ -23,4 +23,3 @@ gantt.getScale();
 
 ### Related API
 - [getLayoutView](api/method/getlayoutview.md)
-

@@ -1,23 +1,23 @@
 ---
 sidebar_label: getMarker
-title: getMarker method
-description: "Ruft das Marker-Objekt ab"
+title: getMarker-Methode
+description: "Gibt das Marker-Objekt zurück"
 ---
 
 # getMarker
 
 ### Description
 
-@short: Ruft das Marker-Objekt ab
+@short: Gibt das Marker-Objekt zurück
 
 @signature: getMarker: (markerId: string | number) =\> any
 
 ### Parameters
 
-- `markerId` - (required) *string | number* -    die ID des Markers
+- `markerId` - (erforderlich) *string | number* -    die Marker-ID
 
 ### Returns
-- ` marker` - (object) - das Konfigurationsobjekt des Markers
+- ` marker` - (object) - das Marker-Konfigurationsobjekt
 
 ### Example
 
@@ -37,7 +37,7 @@ gantt.getMarker(todayMarker); //->{css:"today", text:"Now", id:...}
 ### Details
 
 :::note
-note Diese Methode ist Teil der **marker**-Erweiterung, daher stellen Sie sicher, dass das [marker](guides/extensions-list.md#verticalmarker) Plugin aktiviert ist. Weitere Details finden Sie im Artikel ["Hinzufügen von vertikalen Markierungen"](guides/markers.md). 
+Diese Methode ist in der **Marker-Erweiterung** definiert, daher müssen Sie das [marker](guides/extensions-list.md#vertical-marker) Plugin aktivieren. Lesen Sie die Details im Artikel [Adding Vertical Markers](guides/markers.md). 
 :::
 
 ### Related API
@@ -48,5 +48,4 @@ note Diese Methode ist Teil der **marker**-Erweiterung, daher stellen Sie sicher
 - [show_markers](api/config/show_markers.md)
 
 ### Related Guides
-- ["Hinzufügen von vertikalen Markierungen"](guides/markers.md)
-
+- [Adding Vertical Markers](guides/markers.md)

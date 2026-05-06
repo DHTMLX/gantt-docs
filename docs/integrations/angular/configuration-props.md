@@ -100,6 +100,11 @@ This page documents the public wrapper surface of `@dhtmlx/trial-angular-gantt` 
       <td>Grouping config passed to <code>gantt.groupBy(...)</code>; use <code>false</code> to disable.</td>
     </tr>
     <tr>
+      <td>filter</td>
+      <td>TaskFilter</td>
+      <td>A function used to filter Gantt tasks.</td>
+    </tr>
+    <tr>
       <td>resourceFilter</td>
       <td>ResourceFilter</td>
       <td>Predicate for filtering rows in the configured resource datastore.</td>
@@ -353,6 +358,7 @@ These inputs are typically used in advanced timelines and resource views.
   [resources]="resources"
   [resourceAssignments]="resourceAssignments"
   [groupTasks]="groupConfig"
+  [filter]="taskFilter"
   [resourceFilter]="resourceFilter"
   [calendars]="calendars"
   [markers]="markers"
@@ -362,9 +368,38 @@ These inputs are typically used in advanced timelines and resource views.
 
 Notes:
 
+- `filter` accepts a `(task: any) => boolean` function or `null`. When set, only tasks for which the function returns `true` are displayed. Set to `null` to show all tasks.
 - `resourceFilter` works against the resource datastore configured by `config.resource_store`.
 - `groupTasks` can be toggled with `false` or a grouping config object.
 - `calendars` and `markers` are synchronized by `id`, so keep IDs stable.
+
+### Task filtering
+
+Use the `filter` input to control which tasks are visible. The wrapper attaches an `onBeforeTaskDisplay` listener under the hood and triggers a re-render when the filter reference changes.
+
+~~~ts
+import type { TaskFilter } from '@dhtmlx/trial-angular-gantt';
+
+taskFilter: TaskFilter = null;
+
+showCompleted(): void {
+  this.taskFilter = (task) => !!task.completed;
+}
+
+resetFilter(): void {
+  this.taskFilter = null;
+}
+~~~
+
+~~~html
+<dhx-gantt
+  [tasks]="tasks"
+  [links]="links"
+  [filter]="taskFilter">
+</dhx-gantt>
+~~~
+
+Keep a stable reference when the filter logic has not changed - the wrapper compares by identity and re-renders only when the reference changes.
 
 ## Exported Types And Helpers
 
@@ -377,10 +412,21 @@ Useful public exports from the wrapper package:
 - `AngularGanttDataConfig`
 - `AngularGanttEvents`
 - `BatchChanges`, `DataCallbackChange`
+- `SerializedTask`, `SerializedLink`
+- `TaskFilter`
 - `ResourceFilter`
 - `GanttStatic`
 - `CustomLightboxConfig`
 - `Calendar`, `Marker`
+
+### `SerializedTask` vs `Task`
+
+The wrapper exports two task-related types:
+
+- **`SerializedTask`** - use for data you own: store state, API responses, initial literals, `batchSave` payloads. Dates can be `Date` objects or strings matching `date_format`.
+- **`Task`** (re-exported from `@dhx/gantt`) - for data gantt owns: inside event handlers, after gantt parses. Dates are `Date` objects. Has `$`-prefixed system properties.
+
+`SerializedLink` is the link-side counterpart of `SerializedTask`.
 
 ## Continue With
 

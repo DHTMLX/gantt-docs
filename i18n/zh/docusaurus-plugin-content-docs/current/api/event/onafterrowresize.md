@@ -1,23 +1,23 @@
 ---
 sidebar_label: onAfterRowResize
-title: onAfterRowResize event
-description: "在行高度调整完成后触发"
+title: onAfterRowResize 事件
+description: "在行高调整完成后触发"
 ---
 
 # onAfterRowResize
 
 ### Description
 
-@short: 在行高度调整完成后触发
+@short: 在行高调整完成后触发
 
 @signature: onAfterRowResize: (id: string | number, task: Task, oldHeight: number, newHeight: number) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string|number* - 任务的ID
+- `id` - (required) *string | number* - 任务 ID
 - `task` - (required) *Task* - 任务对象
-- `oldHeight` - (required) *number* - 调整前的行高度
-- `newHeight` - (required) *number* - 调整后的行高度
+- `oldHeight` - (required) *number* - 该行的原始高度
+- `newHeight` - (required) *number* - 该行的新高度
 
 ### Example
 
@@ -38,5 +38,4 @@ gantt.attachEvent("onAfterRowResize", function (id, task, oldHeight, newHeight) 
 - [onBeforeRowResizeEnd](api/event/onbeforerowresizeend.md)
 
 ### Change log
-- 在 v7.1 版本中添加
-
+- 在 v7.1 中新增

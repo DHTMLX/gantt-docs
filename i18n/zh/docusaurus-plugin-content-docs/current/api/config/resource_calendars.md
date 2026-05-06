@@ -1,16 +1,16 @@
 ---
 sidebar_label: resource_calendars
-title: resource_calendars config
-description: "提供了一种定义工作日历的方法，可以将其链接到特定资源，如用户"
+title: resource_calendars 配置
+description: "定义一组可以分配给特定资源（如用户）的工作日历"
 ---
 
 # resource_calendars
 :::info
- 此功能仅在 PRO 版本中可用。 
+此功能仅在 PRO 版本中可用。 
 :::
 ### Description
 
-@short: 提供了一种定义工作日历的方法，可以将其链接到特定资源，如用户
+@short: 定义一组可以分配给特定资源（如用户）的工作日历
 
 @signature: resource_calendars: \{ [resourceId: string | number]: string | number | \{ [resourceId: string | number]: string | number | undefined \} | undefined \}
 
@@ -35,7 +35,7 @@ gantt.config.resource_calendars = {
 
 ### Details
 
-- **[resourceId: string | number]** - (*string | number | \{[resourceId: string | number]: string | number | undefined \} | undefined*) - 定义资源日历的映射关系
+- **[resourceId: string | number]** - (*string | number | \{[resourceId: string | number]: string | number | undefined \} | undefined*) - 资源日历的映射
 
 
 在7.0版本之前，dhtmlxGantt使用了稍有不同的**resource_calendars**格式。
@@ -64,9 +64,4 @@ gantt.config.resource_calendars = {
 - [getResourceCalendar](api/method/getresourcecalendar.md)
 
 ### Related Guides
-- [工作时间计算](guides/working-time.md)
-
-### Change log
-- 在4.2版本中引入
-- 在7.0版本中更新配置格式
-
+- [Work Time Calculation](guides/working-time.md#assigningcalendartoresource)

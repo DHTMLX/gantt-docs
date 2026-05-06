@@ -1,43 +1,43 @@
 ---
 sidebar_label: exportToPDF
-title: exportToPDF method
-description: "将甘特图导出为 PDF 文件"
+title: exportToPDF 方法
+description: "将甘特图导出为 PDF 格式"
 ---
 
 # exportToPDF
 
 ### Description
 
-@short: 将甘特图导出为 PDF 文件
+@short: 将甘特图导出为 PDF 格式
 
 @signature: exportToPDF: (_export_?: any) =\> void
 
 ### Parameters
 
-- `export` - (optional) *object* - 可选，包含导出设置（详见下文）
+- `export`	- object - optional, 带有导出设置的对象（请见详情）
 
 ### Example
 
 ~~~jsx
 gantt.exportToPDF();
  
-//或者
+//或
 gantt.exportToPDF({
   name: "mygantt.pdf"
 });
 
 gantt.exportToPDF({
-    name:"mygantt.pdf",
-    header:"<h1>My company</h1>",
-    footer:"<h4>Bottom line</h4>",
-    locale:"en",
-    start:"01-04-2013",
-    end:"11-04-2013",
-    skin:'terrace',
-    data:{ },
-    server:"https://myapp.com/myexport/gantt",
-    raw:true,
-    callback: function(res){
+    name: "mygantt.pdf",
+    header: "<h1>My company</h1>",
+    footer: "<h4>Bottom line</h4>",
+    locale: "en",
+    start: "01-04-2026",
+    end: "11-04-2026",
+    skin: "terrace",
+    data: { },
+    server: "https://myapp.com/myexport/gantt",
+    raw: true,
+    callback: (res) => {
         alert(res.url);
     }
 });
@@ -46,11 +46,11 @@ gantt.exportToPDF({
 ### Details
 
 :::note
- 此方法属于 **export** 扩展，因此请确保激活了 [export_api](guides/extensions-list.md) 插件。更多信息请参见 [导出为 PDF 和 PNG](guides/export.md) 文章。 
+该方法在 **export** 扩展中定义，因此您需要激活 [export_api](guides/extensions-list.md#export-service) 插件。请在 [](guides/export.md) 文章中阅读详细信息。
 :::
 
 :::note
- 对于 8.0 之前的 Gantt 版本，您需要在页面中引入 **https://export.dhtmlx.com/gantt/api.js** 来启用在线导出服务，例如:
+注：如果您使用的 Gantt 版本低于 8.0，请在页面中包含 `https://export.dhtmlx.com/gantt/api.js` 以启用在线导出服务，例如：
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -61,118 +61,122 @@ gantt.exportToPDF({
 
 [exportToPDF](api/method/exporttopdf.md) 方法接受一个对象参数，包含多种可选属性:
 
-<table class="webixdoc_links">
-  <tbody>
+ <table class="webixdoc_links">
+	<tbody>
+  	<tr>
+			<td class="webixdoc_links0"><b>name</b></td>
+			<td>(<i>string</i>) 输出文件的名称</td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>name</b></td>
-  <td>(<i>string</i>) 导出 PDF 的文件名</td>
-  </tr>
+			<td class="webixdoc_links0"><b>skin</b></td>
+			<td>(<i>'terrace', 'skyblue', 'meadow', 'broadway'</i>) 输出的甘特图的皮肤</td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>skin</b></td>
-  <td>(<i>'terrace', 'skyblue', 'meadow', 'broadway'</i>) 应用于导出甘特图的主题</td>
-  </tr>
+			<td class="webixdoc_links0"><b>locale</b></td>
+			<td>(<i>string</i>) 设置输出甘特图所使用的语言</td>
+		</tr> 
   <tr>
-  <td class="webixdoc_links0"><b>locale</b></td>
-  <td>(<i>string</i>) 设置导出甘特图中使用的语言</td>
-  </tr> 
+			<td class="webixdoc_links0"><b>start</b></td>
+			<td>(<i>string</i>) 设置将出现在输出甘特图中的数据范围的起始日期。日期格式由 [](api/config/date_format.md) 配置定义</td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>start</b></td>
-  <td>(<i>string</i>) 定义导出图表中显示数据范围的起始日期。日期格式遵循 [date_format](api/config/date_format.md) 的设置</td>
-  </tr>
+			<td class="webixdoc_links0"><b>end</b></td>
+			<td>(<i>string</i>) 设置将出现在输出甘特图中的数据范围的结束日期。日期格式由 [](api/config/date_format.md) 配置定义</td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>end</b></td>
-  <td>(<i>string</i>) 定义导出图表中显示数据范围的结束日期。日期格式遵循 [date_format](api/config/date_format.md) 的设置</td>
-  </tr>
+			<td class="webixdoc_links0"><b>data</b></td>
+			<td>(<i>object</i>) 设置将在输出甘特图中展示的自定义数据源</td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>data</b></td>
-  <td>(<i>object</i>) 允许指定导出图表的自定义数据源</td>
-  </tr>
+			<td class="webixdoc_links0"><b>header</b></td>
+			<td>(<i>string</i>) 指定将添加到输出 PDF 图像中的页眉。请注意，可以在此处使用任意 HTML</td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>header</b></td>
-  <td>(<i>string</i>) 作为导出 PDF 页眉的 HTML 内容</td>
-  </tr>
+			<td class="webixdoc_links0"><b>footer</b></td>
+			<td>(<i>string</i>) 指定将添加到输出 PDF 图像中的页脚。请注意，可以在此处使用任意 HTML</td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>footer</b></td>
-  <td>(<i>string</i>) 作为导出 PDF 页脚的 HTML 内容</td>
-  </tr>
+			<td class="webixdoc_links0"><b>server</b></td>
+			<td>(<i>string</i>) 设置请求的 API 端点。可与本地安装的导出服务一起使用。默认值为 <strong>https://export.dhtmlx.com/gantt</strong></td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) 处理导出请求的 API 端点 URL。可用于本地导出服务。默认值为 <strong>https://export.dhtmlx.com/gantt</strong></td>
-  </tr>
-  <tr>
-  <td class="webixdoc_links0"><b>raw</b></td>
-  <td>(<i>boolean</i>) 如果为 true，则精确导出甘特图的 markup，包括自定义元素。默认为 <em>false</em>。[更多详情](guides/export.md#daochuzidingyibiaojiheyangshi)</td>
-  </tr>
-  <tr>
-  <td class="webixdoc_links0"><b>callback</b></td>
-  <td>(<i>function</i>) 接收包含下载生成 PDF 文件 URL 的 JSON 对象的回调函数</td>
-  </tr>
-  <tr>
-  <td class="webixdoc_links0"><b>additional_settings</b></td>
-  <td>(<i>object</i>) 额外设置，可包含:
-  <ul><li><b>format</b> - (<i>string</i>) 输出文件格式:<i>'A3', 'A4', 'A5', 'Legal', 'Letter', 'Tabloid'</i></li><li><b>landscape</b> - (<i>boolean</i>) 设置纵向或横向打印；仅在指定了 "format" 时生效</li><li><b>width</b> - (<i>string|number|"content"</i>) 页面宽度，导出多页时使用</li><li><b>height</b> - (<i>string|number|"content"</i>) 页面高度，导出多页时使用</li><li><b>merge_pages</b> - (<i>boolean</i>) 启用多页导出为单个文件；为 false 时，需要多次导出以覆盖所有数据</li><li><b>fixed_headers</b> - (<i>boolean</i>) 在每页显示 grid 和 timeline 的表头；默认为 false，且需启用 <b>merge_pages</b></li></ul></td>
-  </tr>
+			<td class="webixdoc_links0"><b>raw</b></td>
+			<td>(<i>boolean</i>) 定义将按原样导出所有 Gantt 标记及自定义元素。<em>false</em> 为默认值。 
+  	[阅读详情](guides/export.md#exportingcustommarkupandstyles)</td>
+		</tr>
+		<tr>
+			<td class="webixdoc_links0"><b>callback</b></td>
+			<td>(<i>function</i>) 如果您希望接收生成的 PDF 文件的下载 URL，可以使用 callback 属性。它接收一个带有 url 属性的 JSON 对象</td>
+		</tr>
+		<tr>
+			<td class="webixdoc_links0"><b>additional_settings</b></td>
+			<td>(<i>object</i>) 包含额外设置的对象。该对象可包含以下属性:<ul><li><b>format</b> - (<i>string</i>) 输出文件的格式：<i>"A0", "A1", "A2", "A3", "A4", "A5", "A6", "Legal", "Ledger", "Letter", "Tabloid"</i></li><li><b>landscape</b> - (<i>boolean</i>) 输出文件的纵向或横向方向。仅在指定了 "format" 属性时，此属性才起作用</li><li><b>width</b> - (<i>string|number|"content"</i>) 输出页面的宽度。导出多页时使用该属性</li><li><b>height</b> - (<i>string|number|"content"</i>) 输出页面的高度。导出多页时使用该属性</li><li><b>merge_pages</b> - (<i>boolean</i>) 启用一个文件中的 <a href="#multi-page-export">多页导出</a>；若设置为 <i>false</i>，您将需要多次导出以获取所有甘特数据</li><li><b>fixed_headers</b> - (<i>boolean</i>) 在每一页显示网格和时间轴标题；默认值为 <i>false</i>。只在启用 <b>merge_pages</b> 设置时生效</li><li><b>margins</b> - (<i>object</i>) 输出 PDF 文件的上、下、左、右边距对象。 [参阅详情](guides/export.md#margins-of-the-output-pdf-file)</li><li><b>header</b> - (<i>string</i>) 指定将添加到输出 PDF 文件每一页的页眉。 [参阅详情](guides/export.md#headerfooter-of-the-output-file)</li><li><b>footer</b> - (<i>string</i>) 指定将添加到输出 PDF 文件每一页的页脚。 [参阅详情](guides/export.md#headerfooter-of-the-output-file)</li></ul></td>
+		</tr>
   </tbody>
 </table>
 
-## 时间限制
+### Time restrictions
 
 :::note
- 导出服务有时间限制。 
+导出服务有时间限制。 
 :::
 
-如果导出时间超过 20 秒，导出过程将被取消，并显示以下错误:
+如果处理时间超过 20 秒，导出将被取消并出现以下错误：
 
 ~~~html
 Error: Timeout trigger 20 seconds
 ~~~
 
-如果多个用户同时导出甘特图，可能导致过程比平时更长。但每个用户的导出时间是单独计算的。
+如果多人同时导出 Gantt，处理时间可能比平时长。但这没关系，因为来自特定用户的导出请求所花费的时间会单独计数。
 
 :::note
- 对于大型图表导出，建议使用[独立导出模块](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)。该模块随 [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing)、[Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 或 [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 许可证免费提供，也可单独购买，详见 [这里](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210)。 
+如果需要导出大型图表，您可以使用 [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)。导出模块在您获得 Gantt 的 [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing)、[Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 或 [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 许可时免费提供，或者您也可以 [单独购买该模块](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210)。 
 :::
 
-## 多页导出
 
-请注意，导出模块无法:
+### Multi-page export
 
-- 控制分页位置，任务可能被拆分到不同页面
-- 在每页显示刻度而不重叠任务
-- 在每页显示页眉和页脚而不重叠任务行
+请注意，导出模块在技术上无法实现以下功能：
 
-这些需要自定义解决方案。以下提供一些示例。
+- 控制截断位置（因此任务可能在两页之间被截断）
+- 在每页显示刻度线而不覆盖任务
+- 在每页显示页眉和页脚而不覆盖任务行
 
-## 自动导出多页到单个文件
+因此，要实现上述功能，您需要应用自定义解决方案。下面给出了一些示例。
 
-若要将多页导出合并为单个文件，可使用在线导出服务（受[时间限制](#timerestrictions)约束）或无时间限制的独立[导出模块](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)。
-只需在 **additional_settings** 中设置 **merge_pages** 选项:
+#### 在一个文件中自动导出数据
+
+对于在一个文件中进行多页导出，您可以使用在线导出服务（具有 [time restrictions](#time-restrictions) 的限制）或独立的 [export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)（没有限制）。
+只需在 **additional_settings** 对象中使用 **merge_pages** 属性即可：
 
 ~~~js
 gantt.exportToPDF({
     additional_settings: {
-        merge_pages: true, /*!*/
+        merge_pages: true, 
         format: "A4"
     }
 });
 ~~~
 
-在线导出服务适合较小甘特图。对于大型图表，数据可能分批导出。此时，您可以[进行多次手动导出](#manual_export)或使用独立导出模块，它能处理所有数据并生成包含所有页面的单一文件。
+如果图表不太大，导出服务很合适。若图表很大，数据将部分导出。
+在这种情况下，您可以 [手动进行多次数据导出](#making-several-data-exports-manually)
+或使用导出模块。导出模块将自行导出全部数据，并提供一个包含所有页的文件。 
 
-:::note
-Sample: [多页导出到单个文件示例](https://snippet.dhtmlx.com/2qzecnke) 
-:::
+**相关示例**： [Multi-page export in one file ](https://snippet.dhtmlx.com/2qzecnke)
 
-请注意，多页导出比单页导出耗时更长。为加快速度，可调整缩放级别至周、月或年，减少甘特图宽度和导出时间。
 
-详情请见[相关文章](https://dhtmlx.com/blog/maintenance-release-pdf-export-module-gantt-0-6-4-scheduler-0-6-5-suite-8-3-10-kanban-1-5-12/#:~:text=Multipage%20Export%20in%20One%20PDF%20File)。
+这种方法的缺点是数据导出所花费的时间要比在单页导出所有数据长。为了在导出甘特数据时花费更少的时间，
+你可以改变缩放级别，将数据绘制成周、月或年的形式，这样甘特图的宽度会变小，从而减少导出次数。
 
-### 手动多次导出 {#manual_export}
+在 [相关博客文章](https://dhtmlx.com/blog/maintenance-release-pdf-export-module-gantt-0-6-4-scheduler-0-6-5-suite-8-3-10-kanban-1-5-12/#:~:text=Multipage%20Export%20in%20One%20PDF%20File) 中查看多页导出的一览
 
-由于甘特图通常宽度超过标准页面尺寸，导出时每次只捕获最左侧部分。
-要导出全部数据，需要多次导出，每次将图表向左移动。
+#### 手动进行多次数据导出
 
-要在导出文件中移动甘特图，可通过 **header** 参数为 **#gantt_here** 添加如下样式规则:
+由于甘特图的大小几乎总是超过标准文档尺寸，因此图表需要多于一页才能放下。
+在导出甘特图时，每次都会将最左边部分导出到 PDF 文档中。
+因此，要实现多页导出，需要多次导出，并每次向左移动甘特图。
+
+要在导出的文件中移动甘特图，需在 **header** 参数中添加以下样式规则：
 
 ~~~js
 const width = 1000;
@@ -180,75 +184,66 @@ const height = 1000;
 const total_width = gantt.$task_bg.scrollWidth + gantt.$grid.scrollWidth;
 
 for (let i = 0; i < total_width; i += width) {
-  gantt.exportToPDF({
-    header:`<style>#gantt_here{left:-${i}px;position: absolute;}</style>`,
-    //raw: true,
-    additional_settings:{
-      width: width,
-      height: height,
-    }
-  });
+    gantt.exportToPDF({
+        header:`<style>#gantt_here{left:-${i}px;position: absolute;}</style>`,
+        //raw: true,
+        additional_settings: {
+            width: width,
+            height: height,
+        }
+    });
 }
 ~~~
 
-:::note
-Sample: [指定大小导出示例 ](https://snippet.dhtmlx.com/zbhc506m) 
-:::
+**相关示例**： [Export to the file of defined sizes ](https://snippet.dhtmlx.com/zbhc506m)
 
-如果导出为特定格式如 'A3'，请注意文件格式单位为毫米，而 HTML 尺寸为像素。
-您需要将毫米转换为像素作为偏移值:
+如果您想将 Gantt 导出为特定格式（例如 'A3'），请注意，文件格式以毫米为单位定义，而 HTML 中的尺寸以像素表示。因此，您需要将毫米单位的位移值转换为像素值。
 
 ~~~js
 const widthMM = 297;
 const width = widthMM / (25.4 inch / 96 PDF PPI);
 ~~~
 
-:::note
-Sample: [指定格式导出示例](https://snippet.dhtmlx.com/qt54zfuw ) 
-:::
+**相关示例**： [Export to the file of defined format ](https://snippet.dhtmlx.com/qt54zfuw )
 
-<br>
-**注意:** 如果多页导出只生成一个 PDF 文件，可能是浏览器阻止了弹窗，因为多次导出会同时打开多个弹窗。
-请启用弹窗后重试导出。
+**Note**，如果你导出多页 Gantt 但只得到一个 PDF 文件，说明浏览器阻止了弹出窗口，因为该函数会同时打开它们。
+在这种情况下，请启用弹出窗口并重试导出。
 
 ![blocked_popup](/img/popup_blocked.png)
 
 
-## 在每页显示 timeline 和 grid 表头
+#### 在导出的文件中为每一页显示时间线和网格标题
 
-要在导出文件的每一页显示 timeline 和 grid 的表头，请在 **additional_settings** 中启用 **fixed_headers** 选项。
-此功能仅在启用 **merge_pages** 时有效:
+您可以通过在 **additional_settings** 对象中使用 **fixed_headers** 属性，在导出的文件的每一页显示时间线和网格标题。请注意，此功能也仅在启用了 <b>merge_pages</b> 属性时有效：
 
 ~~~js
 gantt.exportToPDF({
     additional_settings: {
-        merge_pages: true,  /*!*/
-        fixed_headers: true,  /*!*/
+        merge_pages: true, 
+        fixed_headers: true,  
         format: "A4"
     }
 });
 ~~~
 
-:::note
-Sample: [多页导出，每页带表头示例 ](https://snippet.dhtmlx.com/w905ht5t) 
-:::
+**相关示例**： [Multi-page export with timeline and grid headers on each page](https://snippet.dhtmlx.com/w905ht5t)
 
-:::note
-Sample: [资源面板视图多页导出，每页带表头示例 ](https://snippet.dhtmlx.com/xkmvduu5) 
-:::
+**相关示例**： [Multi-page export with timeline and grid headers on each page for the Resource panel view](https://snippet.dhtmlx.com/xkmvduu5)
 
-若不使用配置，例如导出多个文件后手动合并，可使用以下 CSS:
+
+如需在不使用该配置的情况下工作，例如您想进行多次导出并手动合并文件，可以使用以下样式：
 
 ~~~css
 .grid_cell .gantt_grid_scale,
 .timeline_cell .gantt_task_scale {
-  position: fixed;
-  top:0;
-  z-index:99999;
+    position: fixed;
+    top:0;
+    z-index:99999;
 }
 ~~~
 
 ### Related API
+
 - [exportToMSProject](api/method/exporttomsproject.md)
 - [exportToPrimaveraP6](api/method/exporttoprimaverap6.md)
 - [exportToExcel](api/method/exporttoexcel.md)
@@ -260,6 +255,6 @@ Sample: [资源面板视图多页导出，每页带表头示例 ](https://snippe
 - [importFromMSProject](api/method/importfrommsproject.md)
 
 ### Related Guides
-- [导出为 PDF 和 PNG](guides/export.md)
-- [操作指南](guides/how-to.md)
 
+- [Export to PDF and PNG](guides/export.md)
+- [How-tos: How to add resource chart or custom styles in the exported PDF file](guides/how-to.md#how-to-add-resource-chart-or-custom-styles-in-the-exported-pdf-file)

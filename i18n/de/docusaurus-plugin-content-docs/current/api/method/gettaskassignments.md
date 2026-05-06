@@ -1,42 +1,44 @@
 ---
 sidebar_label: getTaskAssignments
 title: getTaskAssignments method
-description: "Ruft die geparsten Ressourcen-Zuweisungen für eine bestimmte Aufgabe aus dem Datenspeicher ab"
+description: "gibt die geparsten Ressourcen-Zuordnungen einer bestimmten Aufgabe aus dem Datenspeicher zurück"
 ---
 
 # getTaskAssignments
+
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO Edition verfügbar. 
 :::
+
 ### Description
 
-@short: Ruft die geparsten Ressourcen-Zuweisungen für eine bestimmte Aufgabe aus dem Datenspeicher ab
+@short: Gibt die geparsten Ressourcen-Zuordnungen einer bestimmten Aufgabe aus dem Datenspeicher
 
-@signature: getTaskAssignments: (taskId: string | number) =\> ResourceAssignment[]
+@signature: getTaskAssignments: (taskId: string | number) => ResourceAssignment[]
 
 ### Parameters
 
-- `taskId` - (required) *string | number* -    die ID der Aufgabe
+- `taskId` - (required) *string | number* - die Aufgaben-ID
 
 ### Returns
-- ` param` - (ResourceAssignment[]) - ein Array von Objekten, die die Ressourcen-Zuweisungen für die Aufgabe darstellen
+- ` param` - (ResourceAssignment[]) - ein Array von Objekten mit den Ressourcenzuordnungen der Aufgabe
 
 ### Example
 
 ~~~jsx
-gantt.getTaskAssignments(5); // -> siehe Details
+gantt.getTaskAssignments(5); // -> see details
 ~~~
 
-### Related samples
+### Verwandte Beispiele
 - [Assign resource values to specific days](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
 
 ### Details
 
 :::note
- Die **getTaskAssignments** Methode funktioniert nicht, wenn [process_resource_assignments](api/config/process_resource_assignments.md) deaktiviert ist. 
+Die Methode **getTaskAssignments** ist nicht verfügbar, wenn [process_resource_assignments](api/config/process_resource_assignments.md) deaktiviert ist. 
 :::
 
-Die Methode gibt ein Array mit Objekten zurück, die wie folgt strukturiert sind:
+Die Methode gibt ein Array mit Objekten wie folgt zurück:
 
 ~~~js
 [
@@ -65,29 +67,28 @@ Die Methode gibt ein Array mit Objekten zurück, die wie folgt strukturiert sind
 
 Jedes Objekt enthält die folgenden Eigenschaften:
 
-- **id** - (*string | number*) - die eindeutige ID der Zuweisung
+- **id** - (*string | number*) - die ID der Zuordnung
 - **task_id** - (*string | number*) - die ID der Aufgabe, der die Ressource zugewiesen ist
 - **resource_id** - (*string | number*) - die ID der Ressource, die der Aufgabe zugewiesen ist
 - **value** - (*number | string*) - die Menge der der Aufgabe zugewiesenen Ressourcen
-- **delay** - (*number*) - der Versatz zwischen dem Startdatum der Zuweisung und dem Startdatum der Aufgabe
-- **start_date** - (*Date*) - wann die Zuweisung geplant ist zu beginnen
-- **end_date** - (*Date*) - wann die Zuweisung geplant ist zu enden
-- **duration** - (*number*) - wie lange die Zuweisung dauert
-- **mode** - (*string*) - die Methode, mit der die Zeit der Ressourcen-Zuweisung berechnet wird: "default"|"fixedDates"|"fixedDuration"
-- **[customProperty: string]** - (*any*) - beliebige zusätzliche benutzerdefinierte Eigenschaften
+- **delay** - (*number*) - der Unterschied zwischen dem Startdatum der Zuordnung und dem Startdatum der Aufgabe
+- **start_date** - (*Date*) - das Datum, an dem die Zuordnung beginnen soll
+- **end_date** - (*Date*) - das Datum, an dem die Zuordnung enden soll
+- **duration** - (*number*) - die Dauer der Zuordnung
+- **mode** - (*string*) - der Berechnungsmode der Zeit der Ressourcenzuordnung: "default"|"fixedDates"|"fixedDuration"
+- **[customProperty: string]** - (*any*) - jede benutzerdefinierte Eigenschaft
 
 
 :::note
- Die Eigenschaften *delay*, *duration*, *start_date*, *end_date*, *id* und *mode* werden nur automatisch gefüllt, wenn [process_resource_assignments](api/config/process_resource_assignments.md) aktiviert ist. 
+ *delay*, *duration*, *start_date*, *end_date*, *id*, *mode* werden automatisch nur dann befüllt, wenn [process_resource_assignments](api/config/process_resource_assignments.md) aktiviert ist. 
 :::
 
 ### Related API
 - [getResourceAssignments](api/method/getresourceassignments.md)
 - [process_resource_assignments](api/config/process_resource_assignments.md)
 
-### Related Guides
-- ["Ressourcenmanagement"](guides/resource-management.md#assigningresources)
+### Verwandte Guides
+- [Resource Management](guides/resource-management.md#assigningresources)
 
-### Change log
-- hinzugefügt in v7.1
-
+### Changelog
+- in Version 7.1 hinzugefügt

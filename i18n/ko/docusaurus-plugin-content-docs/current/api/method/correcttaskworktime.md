@@ -1,20 +1,20 @@
 ---
 sidebar_label: correctTaskWorkTime
-title: correctTaskWorkTime method
-description: "작업 시간을 기준으로 작업 기간을 재계산합니다"
+title: correctTaskWorkTime 메서드
+description: "작업 시간 내에서 작업 지속 시간을 재계산합니다"
 ---
 
 # correctTaskWorkTime
 
 ### Description
 
-@short: 작업 시간을 기준으로 작업 기간을 재계산합니다
+@short: 작업 시간 내에서 작업 지속 시간을 재계산합니다
 
 @signature: correctTaskWorkTime: (task: Task) =\> void
 
 ### Parameters
 
-- `task` - (required) *Task* - 작업 객체
+- `task` - (required) *Task* - 작업의 객체
 
 ### Example
 
@@ -26,7 +26,7 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 
 ### Details
 
-이 메서드는 다음 구성 옵션이 활성화된 경우에 작동합니다:
+메서드는 아래 구성 옵션이 필요합니다:
 
 ~~~js
 gantt.config.work_time = true;

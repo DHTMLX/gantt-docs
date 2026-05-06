@@ -1,23 +1,23 @@
 ---
 sidebar_label: getNextSibling
-title: getNextSibling method
-description: "提供同一级别下一个任务的id"
+title: getNextSibling 方法
+description: "返回同一级别的下一个任务的 id"
 ---
 
 # getNextSibling
 
 ### Description
 
-@short: 提供同一级别下一个任务的id
+@short: 返回同一级别的下一个任务的 id
 
 @signature: getNextSibling: (id: string | number) =\> string | number
 
 ### Parameters
 
-- `id` - (required) *string | number* -    任务的id
+- `id` - (required) *string | number* -    the task id
 
 ### Returns
-- ` id` - (string | number) - 下一个同级任务的id
+- ` id` - (string | number) - 下一个同级任务的 id
 
 ### Example
 
@@ -47,5 +47,4 @@ gantt.getNextSibling("t_2"); ->  null (如果没有下一个同级任务) /*!*/
 - [getChildren](api/method/getchildren.md)
 
 ### Related Guides
-- [任务的父子关系](guides/task-tree-operations.md)
-
+- [Task Parent/Child](guides/task-tree-operations.md)

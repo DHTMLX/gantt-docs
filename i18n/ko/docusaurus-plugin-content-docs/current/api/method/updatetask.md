@@ -1,8 +1,8 @@
 ---
 sidebar_label: updateTask
-title: updateTask method
+title: updateTask 메서드
 description: "지정된 태스크를 업데이트합니다"
----
+--- 
 
 # updateTask
 
@@ -10,76 +10,72 @@ description: "지정된 태스크를 업데이트합니다"
 
 @short: 지정된 태스크를 업데이트합니다
 
-@signature: updateTask: (id: string | number, newState?: Task) =\> void
+@signature: updateTask: (id: string | number, newState?: Task) => void
 
 ### Parameters
 
-- `id` - (required) *string | number* - 태스크 ID
-- `newState` - (optional) *Task* - 선택 사항, 태스크의 새로운 값들
+- `id` - (필수) *string | number* - 태스크 ID
+- `newState` - (선택) *Task* - 태스크의 새로운 값
 
 ### Example
 
 ~~~jsx
-var taskId = gantt.addTask({
-    id:10,
-    text:"Task #10",
-    start_date:"02-04-2013",
-    duration:8,
-    parent:1
+const taskId = gantt.addTask({
+    id: 10,
+    text: "Task #10",
+    start_date: "2027-04-02",
+    duration: 8,
+    parent: 1
 });
 
-gantt.getTask(taskId).text = "Task #13"; //태스크 데이터를 수정합니다
-gantt.updateTask(taskId); //변경 사항을 적용하고 태스크를 새로 고칩니다
+gantt.getTask(taskId).text = "Task #13"; // 태스크 데이터를 변경
+gantt.updateTask(taskId); // 업데이트된 태스크를 렌더링합니다
 ~~~
 
 ### Details
 
 :::note
- 이 메서드는 [onAfterTaskUpdate](api/event/onaftertaskupdate.md) 이벤트를 트리거합니다. 
+이 메서드는 [`onAfterTaskUpdate`](api/event/onaftertaskupdate.md) 이벤트를 발생시킵니다.
 :::
+
 :::note
- dataProcessor가 활성화된 경우, 이 메서드는 dataProcessor도 활성화합니다. 
+메서드는 dataProcessor가 활성화되어 있을 경우 [DataProcessor](api/method/dataprocessor.md)를 트리거합니다.
 :::
 
-이 메서드는 태스크 객체를 변경한 후 호출해야 합니다. Gantt의 내부 상태를 업데이트하고, 관련 UI 부분을 새로 고치며, 업데이트된 정보를 백엔드로 전송합니다.
+이 메서드는 태스크 객체를 수정한 후 Gantt의 상태를 업데이트하고, 관련 UI 요소를 다시 렌더링하며 변경 사항을 백엔드로 전송하기 위해 호출해야 합니다.
 
-호출 시 [onAfterTaskUpdate](api/event/onaftertaskupdate.md) 이벤트를 발생시키며, 이 이벤트는 추가 계산을 시작할 수 있습니다.
+이 메서드를 호출하면 [`onAfterTaskUpdate`](api/event/onaftertaskupdate.md) 이벤트가 발생하며, 이는 추가적인 재계산을 촉발할 수 있습니다.
 
-[DataProcessor](guides/server-side.md)를 사용하는 경우, 이 메서드를 호출하면 서버에 **update** 요청을 보냅니다.
+만약 [DataProcessor](api/method/dataprocessor.md)를 사용 중이라면 이 메서드를 호출하면 서버로 **업데이트** 요청이 발생합니다.
 
-저장할 필요 없는 시각적 업데이트의 경우, **[refreshTask](api/method/refreshtask.md) 메서드를 대신 사용하세요**. 이 방법은 추가 계산 없이 태스크의 외관만 새로 고칩니다.
+저장할 필요 없이 시각적 변경을 원한다면, 대신 [`refreshTask()`](api/method/refreshtask.md) 메서드를 사용하세요.
 
-~~~js
-gantt.templates.task_class = function(start, end, task){
-    if(task.$active) {
-        return "active_task";
-    }
-};
+~~~js {5}
+gantt.templates.task_class = (startDate, endDate, task) => task.$active ? "active_task" : "";
 
-gantt.attachEvent("onTaskClick", function(id,e){
-    gantt.getTask(id).$active = true;
-    gantt.refreshTask(id); /*!*/
+gantt.attachEvent("onTaskClick", (taskId, event) => {
+    gantt.getTask(taskId).$active = true;
+    gantt.refreshTask(taskId);
 });
 ~~~
 
-
-또는, **updateTask** 메서드의 두 번째 인자로 새로운 태스크 객체를 전달하여 태스크를 업데이트할 수도 있습니다:
+다음 기존 태스크를 새 값으로 대체하려면 `updateTask()` 메서드의 두 번째 매개변수로 새 태스크 객체를 설정하면 됩니다:
 
 ~~~js
-var task = {
-    id: 2, text: 'New task text', 
-    start_date: new Date(2025,03,02), 
-    end_date: new Date(2025,03,04), 
-    $source: [1], 
+const updatedTask = {
+    id: 2,
+    text: 'New task text',
+    start_date: new Date(2025, 3, 2),
+    end_date: new Date(2025, 3, 4),
+    $source: [1],
     $target: [2]
-}
-gantt.updateTask(2,task);
+};
+
+gantt.updateTask(2, updatedTask);
 ~~~
 
 :::note
-
-**Related example:** [Updating task](https://snippet.dhtmlx.com/fnfpoiik)
-
+예시: [Updating task](https://snippet.dhtmlx.com/fnfpoiik)
 :::
 
 ### Related API
@@ -88,5 +84,4 @@ gantt.updateTask(2,task);
 - [refreshTask](api/method/refreshtask.md)
 
 ### Related Guides
-- [Server-Side Integration](guides/server-side.md#updatingdataontheserver)
-
+- [Server-Side Integration](guides/server-side.md)

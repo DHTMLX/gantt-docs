@@ -8,7 +8,7 @@ description: "레이아웃 객체를 정의합니다."
 
 ### Description
 
-@short: 레이아웃 객체를 정의합니다.
+@short: 레이아웃 객체를 지정합니다
 
 @signature: layout: any
 
@@ -33,17 +33,17 @@ gantt.config.layout = {
 gantt.init("gantt_here");
 ~~~
 
+
 ### Details
 
 :::note
-Gantt 차트를 초기화하기 전에 layout 설정을 해야 합니다. 나중에 layout을 업데이트할 경우, [resetLayout](api/method/resetlayout.md)를 사용하여 반드시 레이아웃을 새로 고쳐야 합니다. 
+레이아웃 구성을 Gantt 초기화 전에 지정해야 합니다. 레이아웃에 변경을 가한 경우 [resetLayout](api/method/resetlayout.md)을 사용하여 새로고침해야 합니다.
 :::
 
 ### Related API
 - [resetLayout](api/method/resetlayout.md)
 
 ### Related Guides
-- [간트 레이아웃](guides/layout-config.md)
-- [How-tos](guides/how-to.md#howtotogglegridchart) (grid/chart 전환 방법 참고)
-- [How-tos](guides/how-to.md#howtotoggletheresourceview) (리소스 뷰 전환 방법 참고)
-
+- [Gantt Layout](guides/layout-config.md)
+- [How-tos](guides/how-to.md#how-to-toggle-gridchart) (격자/차트를 토글하는 방법 읽기)
+- [How-tos](guides/how-to.md#how-to-toggle-the-resource-view) (리소스 뷰를 토글하는 방법 읽기)

@@ -1,14 +1,14 @@
 ---
 sidebar_label: changeLightboxType
 title: changeLightboxType method
-description: "aktualisiert die Lightbox für die Aufgabe basierend auf ihrem Typ"
+description: "zeichnet das Lightbox-Fenster der Aufgabe entsprechend ihrem Typ neu"
 ---
 
 # changeLightboxType
 
 ### Description
 
-@short: Aktualisiert die Lightbox für die Aufgabe basierend auf ihrem Typ
+@short: Zeichnet das Lightbox-Fenster der Aufgabe entsprechend ihrem Typ neu
 
 @signature: changeLightboxType: (type: string) =\> void
 
@@ -24,10 +24,9 @@ gantt.changeLightboxType(gantt.config.types.project);
 
 ### Details
 
-Diese Methode aktualisiert die Lightbox und versucht, eingegebene Daten, falls möglich, zu speichern. Sie baut die Struktur basierend auf der [Konfiguration für den angegebenen Typ](guides/default-edit-form.md) neu auf.
+Die Methode zeichnet das Lightbox-Fenster neu und speichert, falls möglich, alle Eingaben. Zur Neukonstruktion der Struktur verwendet die Methode die [Konfiguration für den angegebenen Typ](guides/default-edit-form.md).
 
-Wenn der aktuelle Lightbox-Typ mit dem als Parameter übergebenen Typ übereinstimmt, wird keine Aktualisierung durchgeführt.
+Wenn der Typ des Lightbox-Fensters dem Typ im Parameter entspricht, zeichnet die Methode das Lightbox-Fenster nicht neu.
 
 ### Related API
 - [onLightboxChange](api/event/onlightboxchange.md)
-

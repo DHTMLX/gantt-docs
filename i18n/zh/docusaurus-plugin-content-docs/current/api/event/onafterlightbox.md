@@ -1,14 +1,14 @@
 ---
 sidebar_label: onAfterLightbox
-title: onAfterLightbox event
-description: "当用户关闭 lightbox（编辑表单）时触发"
+title: onAfterLightbox 事件
+description: "在用户关闭 lightbox（编辑表单）后触发"
 ---
 
 # onAfterLightbox
 
 ### Description
 
-@short: 当用户关闭 lightbox（编辑表单）时触发
+@short: 在用户关闭 lightbox（编辑表单）后触发
 
 @signature: onAfterLightbox: () =\> void;
 
@@ -16,6 +16,6 @@ description: "当用户关闭 lightbox（编辑表单）时触发"
 
 ~~~jsx
 gantt.attachEvent("onAfterLightbox", function (){
-    //在此处编写任何自定义逻辑
+    // 在这里插入您的自定义逻辑
 });
 ~~~

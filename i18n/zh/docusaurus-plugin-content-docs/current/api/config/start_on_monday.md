@@ -1,14 +1,14 @@
 ---
 sidebar_label: start_on_monday
-title: start_on_monday config
-description: "设置一周的起始天"
+title: start_on_monday 配置
+description: "设置一周的起始日"
 ---
 
 # start_on_monday
 
 ### Description
 
-@short: 设置一周的起始天
+@short: 设置一周的起始日
 
 @signature: start_on_monday: boolean
 
@@ -20,8 +20,8 @@ gantt.config.start_on_monday = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**默认值：** true
 
 ### Details
 
-当此选项启用（<i>true</i>）时，一周从星期一开始。如果禁用，则一周从星期日开始。
+如果将该参数设置为 true，则一周将从星期一开始（否则，从星期日开始）。

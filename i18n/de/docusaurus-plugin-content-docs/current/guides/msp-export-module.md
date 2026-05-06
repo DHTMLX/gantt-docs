@@ -1,41 +1,41 @@
 ---
-title: "Exportmodul für MS Project"
-sidebar_label: "Exportmodul für MS Project"
+title: "Export-Modul für MS Project"
+sidebar_label: "Export-Modul für MS Project"
 ---
 
-# Exportmodul für MS Project
+# Export-Modul für MS Project
 
-Dieses Exportmodul ermöglicht das Importieren und Exportieren von MS Project- und Primavera-Dateien. Es handelt sich um eine .NET Core-Anwendung, die entweder in der dotnet-Umgebung oder in einem Docker-Image ausgeführt werden kann.
+Dieses Exportmodul kann MS-Project- und Primavera-Dateien importieren/exportieren. Es handelt sich um eine .NET Core-Anwendung, die Sie in der dotnet-Umgebung oder im Docker-Image ausführen können.
 
-Der Import/Export von PDF-, PNG-, Excel- oder iCal-Dateien wird nicht unterstützt. Für diese Formate verwenden Sie bitte das [entsprechende Exportmodul](guides/pdf-export-module.md) oder unseren Online-Server.
+Es enthält nicht die Import-/Export-Funktionalität für PDF-, PNG-, Excel- und iCal-Dateien. Wenn Sie eine solche Funktionalität benötigen, sollten Sie das [entsprechendes Exportmodul](guides/pdf-export-module.md) oder unseren Online-Server verwenden.
 
 ## Installationsanleitung
 
-Bevor Sie die Anwendung ausführen, stellen Sie sicher, dass die [.NET Core 7-Umgebung](https://learn.microsoft.com/en-us/dotnet/core/install/) installiert ist. Nach der Einrichtung können Sie das MSP-Exportmodul im Kundenbereich unter dem Tab "Downloads" herunterladen. Hier ein Screenshot zur Orientierung:
+Sie müssen die [.NET Core 7-Umgebung](https://learn.microsoft.com/en-us/dotnet/core/install/) installieren, bevor Sie die Anwendung ausführen. Sobald Sie bereit sind, können Sie das MSP-Exportmodul im Client-Bereich auf der Registerkarte Downloads herunterladen. Siehe unten das Bild:
 
-![MS export module download](/img/msp_export_module_download.png)
+![MS-Exportmodul herunterladen](/img/msp_export_module_download.png)
 
 Es gibt zwei Möglichkeiten, den Quellcode auszuführen:
 
-1. Ausführen über Visual Studio (nur Windows)
+1. Ausführen über Visual Studio (Nur Windows)
 
-Diese Methode erfordert Visual Studio 2022, da frühere Versionen .NET Core 7 nicht unterstützen. Nach dem Öffnen der Anwendung klicken Sie mit der rechten Maustaste auf die Solution im rechten Bereich und wählen Sie "Restore NuGet packages". Danach können Sie entweder die `http`- oder `https`-Version ausführen.
+Für diesen Ansatz benötigen Sie Visual Studio 2022, da frühere Versionen .NET Core 7 nicht unterstützen. Wenn Sie die Anwendung öffnen, müssen Sie im rechten Bereich mit der rechten Maustaste auf die Lösung klicken und auf die Schaltfläche NuGet-Pakete wiederherstellen klicken. Danach können Sie die `http`- oder `https`-Versionen ausführen.
 
 2. Ausführen über die Befehlszeile
 
-Diese Methode funktioniert sowohl unter Windows als auch unter Linux. Navigieren Sie in das Stammverzeichnis der Anwendung und führen Sie folgenden Befehl aus, um die Pakete zu installieren:
+Dieser Ansatz funktioniert sowohl unter Windows als auch unter Linux auf die gleiche Weise. Sie müssen zum Stammordner der Anwendung navigieren und den folgenden Befehl ausführen, um die Pakete zu installieren:
 
 ~~~
 dotnet restore
 ~~~
 
-Wechseln Sie anschließend in den Ordner "GanttToMSProject" und starten Sie die Anwendung mit folgendem Befehl:
+Anschließend müssen Sie zum Ordner "GanttToMSProject" navigieren und den folgenden Befehl ausführen, um die Anwendung zu starten:
 
 ~~~
 dotnet run
 ~~~
 
-Um die Anwendung bereitzustellen, verwenden Sie diesen Befehl:
+Sie können den folgenden Befehl verwenden, um die Anwendung zu veröffentlichen:
 
 ~~~
 dotnet publish -c Release -o published
@@ -43,33 +43,33 @@ dotnet publish -c Release -o published
 
 ## Testen des Exportmoduls
 
-Es gibt zwei Möglichkeiten, das Exportmodul zu testen:
+Es gibt zwei Möglichkeiten, zu testen, wie das Exportmodul funktioniert.
 
 1. Über die Testseite:
 
-- Öffnen Sie [https://export.dhtmlx.com/test](https://export.dhtmlx.com/test)
-- Suchen Sie die Exportmodul-URL in der Befehlszeilenausgabe. Zum Beispiel:
+- Öffnen Sie die folgende URL: [https://export.dhtmlx.com/test](https://export.dhtmlx.com/test)
+- Finden Sie die URL des Exportmoduls in der Befehlszeilenausgabe. Zum Beispiel:
 
 ~~~
 Now listening on: http://localhost:5128
 ~~~
 
-- Klicken Sie auf das erste Dropdown mit der URL und wählen Sie **custom**.
-- Fügen Sie die Exportmodul-URL ein.
+- Wählen Sie im ersten Dropdown mit der URL **custom**.
+- Fügen Sie die URL des Exportmoduls ein.
 
-Nun können Sie Daten über die Buttons exportieren.
+Jetzt können Sie Daten mit den Schaltflächen exportieren.
 
 2. Über das Snippet:
 
-- Öffnen Sie [https://snippet.dhtmlx.com/kf16k0if](https://snippet.dhtmlx.com/kf16k0if)
+- Öffnen Sie die folgende URL: [https://snippet.dhtmlx.com/kf16k0if](https://snippet.dhtmlx.com/kf16k0if)
 
-- Finden Sie die Exportmodul-URL in der Befehlszeilenausgabe, zum Beispiel:
+- Finden Sie die URL des Exportmoduls in der Befehlszeilenausgabe. Zum Beispiel:
 
 ~~~
 Now listening on: http://localhost:5128
 ~~~
 
-- Fügen Sie diese URL als server-Parameter in die Exportfunktion ein, beispielsweise so:
+- Fügen Sie die URL dem Server-Parameter der Exportfunktion hinzu, zum Beispiel:
 
 ~~~
 gantt.exportToMSProject({
@@ -77,47 +77,49 @@ gantt.exportToMSProject({
 });
 ~~~
 
-Nun funktioniert das Exportieren von Daten über den Button.
+Jetzt können Sie Daten mit der Schaltfläche exportieren.
 
 ## Problemlösung
 
-### Export zu PDF/PNG/Excel funktioniert nicht
+### Export nach PDF/PNG/Excel funktioniert nicht
 
-Das MSP-Exportmodul unterstützt nur die Methoden `gantt.exportToMSProject` und `exportToPrimaveraP6`. Es funktioniert nicht mit Aufrufen wie:
+Das MSP-Exportmodul funktioniert nicht für Methoden außerhalb von gantt.exportToMSProject/exportToPrimaveraP6, d. h. es funktioniert nicht, wenn Sie
 
 ~~~
 gantt.exportToPDF({server:"gantt-to-msproject-url"});
 ~~~
 
-Wenn Sie außerdem `gantt.exportToMSProject()` ohne Parameter aufrufen, wird standardmäßig unser Online-Service unter `export.dhtmlx.com` verwendet.
+aufrufen.
+
+Beachten Sie außerdem, dass wenn Sie `gantt.exportToMSProject()` ohne Parameter aufrufen, es standardmäßig unseren Online-Service unter `export.dhtmlx.com` aufruft.
 
 ### Export von MPP-Dateien
 
-Das MSP-Exportmodul und der Server basieren auf der MPXJ-Bibliothek für den Import und Export von MSP- und Primavera-Dateien. Der Export von MPP-Dateien wird derzeit nicht unterstützt, aber sowohl XML- als auch MPP-Dateien können importiert werden. Weitere Informationen finden Sie [hier](https://www.mpxj.org/faq/).
+Das MSP-Exportmodul und der Export-Server verwenden die MPXJ-Bibliothek zum Importieren und Exportieren von MSP- und Primavera-Dateien. Leider gibt es keine Möglichkeit, MPP-Dateien zu exportieren, aber Sie können [sowohl XML- als auch MPP-Dateien importieren](https://www.mpxj.org/faq/).
 
 ### Import großer Dateien
 
-Um große Dateien zu importieren, müssen Größenbeschränkungen für Anfragen entfernt werden. Öffnen Sie die Datei `GanttToMSProject/Controllers/MspConversionController.cs` und kommentieren Sie das Attribut `DisableRequestSizeLimit` sowie die folgende Zeile ein.
+Wenn Sie große Dateien importieren möchten, müssen Sie die Beschränkungen der Anfragen-Größe entfernen. Dazu müssen Sie die Datei `GanttToMSProject/Controllers/MspConversionController.cs` öffnen. Dort müssen Sie `DisableRequestSizeLimit` und die darauf folgende Zeile auskommentieren.
 
-Nach dem Speichern und Neustarten des Servers sollte der Import großer Dateien funktionieren. Tests zeigen, dass der Import einer 244 MB großen Datei bis zu 4 GB RAM benötigen kann.
+Nach dem Speichern der Änderungen und dem Neustart des Servers sollten Sie in der Lage sein, große Dateien zu importieren. Es wurde getestet, dass das Importieren einer 244Mb-Datei bis zu 4Gb RAM erfordert.
 
 ### Verwendung eines Docker-Images
 
-Um das Docker-Image zu erstellen, führen Sie folgenden Befehl aus:
+Um ein Docker-Image zu erstellen, führen Sie folgenden Befehl aus:
 
 ~~~
 docker build -t msp_export_module 
 ~~~
 
-Zum Testen starten Sie das Docker-Image mit:
+Um das Docker-Image zu Testzwecken auszuführen, können Sie folgenden Befehl verwenden:
 
 ~~~
 docker run -p 65163:80 msp_export_module 
 ~~~
 
-Sie können den Container mit `Ctrl+C` stoppen.
+Sie können den Container mit der Tastenkombination Ctrl+C stoppen.
 
-Wenn Sie das Docker-Image im Hintergrund ausführen möchten, verwenden Sie:
+Wenn Sie das Docker-Image im "detached" Modus ausführen, läuft es im Hintergrund:
 
 ~~~
 docker run -p 65163:80 msp_export_module 

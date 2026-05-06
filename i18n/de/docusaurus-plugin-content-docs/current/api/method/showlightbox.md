@@ -1,20 +1,20 @@
 ---
 sidebar_label: showLightbox
-title: showLightbox method
-description: "öffnet die Lightbox für die angegebene Aufgabe"
+title: showLightbox Methode
+description: "öffnet das Lightbox-Fenster für die angegebene Aufgabe"
 ---
 
 # showLightbox
 
 ### Description
 
-@short: Öffnet die Lightbox für die angegebene Aufgabe
+@short: Öffnet das Lightbox-Fenster für die angegebene Aufgabe
 
 @signature: showLightbox: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -        die Aufgaben-ID
+- `id` - (erforderlich) *string | number* -        die Aufgaben-ID
 
 ### Example
 
@@ -26,8 +26,7 @@ gantt.hideLightbox();
 
 ### Details
 
-Diese Methode löst die Events [onBeforeLightbox](api/event/onbeforelightbox.md) und [onLightbox](api/event/onlightbox.md) aus.
+Die Methode ruft die Ereignisse [onBeforeLightbox](api/event/onbeforelightbox.md) und [onLightbox](api/event/onlightbox.md) auf.
 
 ### Related API
 - [hideLightbox](api/method/hidelightbox.md)
-

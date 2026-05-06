@@ -1,7 +1,7 @@
 ---
 sidebar_label: addTask
 title: addTask method
-description: "добавляет новую задачу"
+description: "adds a new task"
 ---
 
 # addTask
@@ -10,16 +10,16 @@ description: "добавляет новую задачу"
 
 @short: Добавляет новую задачу
 
-@signature: addTask: (task: NewTask, parent?: string | number, index?: number) =\> string | number
+@signature: addTask: (task: NewTask, parent?: string | number, index?: number) => string | number
 
 ### Parameters
 
 - `task` - (required) *NewTask* - объект задачи
-- `parent` - (optional) *string | number* -            опционально, id родительской задачи
-- `index` - (optional) *number* - опционально, позиция, на которую будет вставлена задача (0 или больше)
+- `parent` - (optional) *string | number* - идентификатор родителя
+- `task` - (optional) *number* - позиция, в которую будет добавлена задача (0 и далее)
 
 ### Returns
-- ` id` - (string, number) - id задачи
+- ` id` - (string, number) - идентификатор задачи
 
 ### Example
 
@@ -34,18 +34,19 @@ const taskId = gantt.addTask({
 
 ### Details
 
-Если вы укажете параметр *index* со значением 0 или больше, задача будет вставлена именно в эту позицию внутри ветки. 
-Если параметр опущен, задача будет добавлена в конец ветки.
+Если вы укажете параметр *index* со значением 0 и выше, задача будет добавлена в указанную позицию в ветке.  
+В противном случае задача будет добавлена в конец ветки задач.
 
-Этот метод вызывает события [onBeforeTaskAdd](api/event/onbeforetaskadd.md) и [onAfterTaskAdd](api/event/onaftertaskadd.md).
+Метод вызывает события [onBeforeTaskAdd](api/event/onbeforetaskadd.md) и [onAfterTaskAdd](api/event/onaftertaskadd.md).
 
-Учтите, если вы хотите избежать сохранения задачи - например, если пользователь отменяет действие в lightbox - рассмотрите возможность использования метода [createTask](api/method/createtask.md), который вызывает событие [onTaskCreated](api/event/ontaskcreated.md).
+Примечание: если вы не хотите сохранять задачу в случае, например, когда пользователь нажимает кнопку "Cancel" в lightbox,  
+используйте метод [createTask](api/method/createtask.md) и событие [onTaskCreated](api/event/ontaskcreated.md), которое генерирует этот метод.
+
+## Предотвращение добавления задач на определённых уровнях
+Очень простой способ помешать пользователям добавлять подзадачи к конкретным задачам — скрыть кнопку "Add" с помощью CSS.
 
 
-## Предотвращение добавления задач на определённые уровни
-Простой способ запретить пользователям добавлять подзадачи под определёнными задачами - скрыть кнопку 'Add' с помощью CSS.
-
-1. Для начала назначьте CSS класс каждой строке задачи, используя шаблон [grid_row_class](api/template/grid_row_class.md):
+Сначала назначьте CSS-класс для каждой строки задачи, используя шаблон [grid_row_class](api/template/grid_row_class.md):
 ~~~js
 gantt.templates.grid_row_class = (start, end, task) => {
     if (task.$level > 1) {
@@ -53,18 +54,18 @@ gantt.templates.grid_row_class = (start, end, task) => {
     }
     return "";
 };
-~~~
-2. >Затем скройте кнопку 'Add' для этих строк:
+~~~ 
+
+Затем скройте кнопку 'Add' для таких строк:
 
 ~~~css
 .nested_task .gantt_add{
     display: none !important;
 }
-~~~
-
+~~~ 
 
 :::note
-Sample: [Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
+пример [Предопределенная структура проекта](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
 :::
 
 ### Related API
@@ -74,5 +75,4 @@ Sample: [Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_
 - [onBeforeTaskAdd](api/event/onbeforetaskadd.md)
 
 ### Related Guides
-- [Базовые операции с задачами](guides/crud-task.md)
-
+- [Basic Operations with Tasks](guides/crud-task.md)

@@ -1,59 +1,57 @@
----
-title: "Zusätzliche Elemente in der Zeitleiste"
-sidebar_label: "Zusätzliche Elemente in der Zeitleiste"
----
+---  
+title: "Zusätzliche Elemente in der Zeitachse"  
+sidebar_label: "Zusätzliche Elemente in der Zeitachse"  
+---  
 
-# Zusätzliche Elemente in der Zeitleiste
+# Zusatzliche Elemente in der Zeitachse
 
-:::info
-Dieses Feature ist ausschließlich in der PRO-Edition verfügbar
-:::
+:::info  
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.  
+:::  
 
 
-Standardmäßig rendert dhtmlxGantt die Elemente der Zeitleiste als Ebenen in folgender Reihenfolge:
+Standardmäßig rendert dhtmlxGantt Elemente des Zeitachsen-Bereichs als Ebenen (Schichten) und führt dies in der folgenden Reihenfolge aus:
 
-1. Grid der Zeitleiste
-2. Verknüpfungen (Links)
-3. Aufgaben (Tasks)
+1. Gitter der Zeitachse
+2. Verknüpfungen
+3. Aufgaben
 4. Zusätzliche Elemente
 
-Gantt enthält eingebaute Elemente wie Basispläne (Baselines), Deadlines und Zeitbeschränkungen. Neben den standardmäßigen zusätzlichen Elementen können Sie auch [eigene Elemente als zusätzliche Ebenen erstellen](guides/baselines.md).
+Gantt enthält solche eingebauten Elemente wie Baselines, Fristen und zeitliche Beschränkungen. Anstelle der standardmäßigen zusätzlichen Elemente können Sie auch [benutzerdefinierte Elemente als zusätzliche Ebenen erstellen](guides/baselines.md).  
 
-## Basispläne (Baselines)
+## Baselines
 
-Basispläne spielen eine entscheidende Rolle in Projektmanagement-Tools wie Gantt-Diagrammen, da sie den Vergleich zwischen dem geplanten Zeitplan und dem tatsächlichen Fortschritt ermöglichen. Die Gantt-API bietet integrierte Unterstützung für Baselines, was die Arbeit mit dieser wichtigen Funktion erleichtert.
+In Projektmanagement-Tools wie Gantt-Diagrammen sind Baselines wichtig, um den geplanten Projektzeitplan mit dem tatsächlichen Fortschritt zu vergleichen. Die Gantt-API bietet integrierte Unterstützung für Baseline-Entitäten und vereinfacht die Arbeit mit diesem wichtigen Element erheblich.
 
-![Integrierte Baselines](/img/inbuilt_baselines.png)
+![Eingebaute Baselines](/img/inbuilt_baselines.png)
 
+[Baselines anzeigen](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
 
-[Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
+### Anpassen von Baselines
 
-
-### Baselines anpassen
-
-Falls die Standardoptionen für Baselines nicht zu den Anforderungen Ihres Projekts passen, können Sie sie mit der Option [baselines](api/config/baselines.md) deaktivieren.
+Falls die Standardfunktionalität für Baselines nicht Ihren Projektanforderungen entspricht, können Sie sie mit der Konfigurationsoption [baselines](api/config/baselines.md) deaktivieren.
 
 ~~~js
 gantt.config.baselines = false;
 ~~~
 
-Nach dem Deaktivieren können Sie das Erscheinungsbild der Baselines auf eine der folgenden Arten anpassen:
+Anschließend können Sie die Anzeige der Baselines auf eine der folgenden Arten anpassen:
 
-1. Verwendung des **gantt.config.baselines** Konfigurationsobjekts
+1. Über das **gantt.config.baselines**-Konfigurationsobjekt
 
-Mit diesem Objekt können Sie einstellen, wie Baselines gerendert werden, wenn es als Objekt gesetzt ist. Es umfasst folgende Eigenschaften:
+Die **baselines**-Konfigurationsoption ermöglicht die Anpassung der Rendering-Darstellung von Baselines im Gantt-Diagramm, wenn sie als Objekt festgelegt wird. Das Objekt enthält folgende Eigenschaften:
 
-- **datastore** (*string*) - der Name des Datenspeichers für Baseline-Einträge. Weitere Informationen finden Sie in der Methode `getDatastore`.
-- **render_mode** (*boolean | string*) - steuert die Darstellung der Baselines:
-    - `false` - Baselines werden ausgeblendet.
-    - `"taskRow"` - Baselines erscheinen in derselben Zeile wie die Aufgabenleiste.
-    - `"separateRow"` - Baselines werden in einer separaten Unterzeile angezeigt, wodurch die Aufgabenzeile höher wird.
-    - `"individualRow"` - Jede Baseline erhält eine eigene Unterzeile unterhalb der Aufgabe.
-- **dataprocessor_baselines** (*boolean*) - gibt an, ob Aktualisierungen der Baselines den DataProcessor einzeln auslösen.
-- **row_height** (*number*) - Höhe der Unterzeile für Baselines; nur relevant bei `render_mode` `"separateRow"` oder `"individualRow"`.
-- **bar_height** (*number*) - Höhe der Baseline-Leiste.
+- **datastore** (*string*) - der Name des Datenspeichers, der zum Speichern von Baseline-Einträgen verwendet wird. Für verwandte Funktionen siehe die `getDatastore`-Methode.
+- **render_mode** (*boolean | string*) - bestimmt, wie Baselines angezeigt werden:
+    - `false` - Baselines werden nicht angezeigt.
+    - `"taskRow"` - Baselines werden in derselben Zeile wie der Task-Leiste angezeigt.
+    - `"separateRow"` - Baselines werden in einer separaten Unterzeile angezeigt, wodurch die Höhe der Task-Reihe vergrößert wird.
+    - `"individualRow"` - jede Baseline wird in ihrer eigenen Unterzeile unterhalb der Aufgabe angezeigt.
+- **dataprocessor_baselines** (*boolean*) - gibt an, ob Baseline-Aktualisierungen den DataProcessor als einzelne Einträge auslösen.
+- **row_height** (*number*) - definiert die Höhe der Unterzeile für Baselines, gilt nur, wenn `render_mode` auf `"separateRow"` oder `"individualRow"` gesetzt ist.
+- **bar_height** (*number*) - legt die Höhe der Baseline-Leiste fest.
 
-Beispiel:
+Zum Beispiel:
 
 ~~~js
 gantt.config.baselines = {
@@ -66,7 +64,7 @@ gantt.config.baselines = {
 gantt.init("gantt_here");
 ~~~
 
-Wenn Sie die Anzeigeeinstellungen von **gantt.config.baselines** dynamisch ändern, wird empfohlen, die Methode [adjustTaskHeightForBaselines](api/method/adjusttaskheightforbaselines.md) zu verwenden, um eine korrekte Darstellung der Baselines sicherzustellen.
+Wenn Sie die Anzeigeeinstellungen der **gantt.config.baselines**-Konfiguration dynamisch ändern, sollten Sie die [adjustTaskHeightForBaselines](api/method/adjusttaskheightforbaselines.md) Methode verwenden, um eine ordnungsgemäße Darstellung der Baseline-Elemente zu gewährleisten.
 
 ~~~js
 const task = gantt.getTask(taskId);
@@ -74,11 +72,11 @@ gantt.adjustTaskHeightForBaselines(task); /*!*/
 gantt.render();
 ~~~
 
-2. [Erstellen eines eigenen Baseline-Elements](guides/baselines.md), das in die Zeitleiste eingefügt wird.
+2. [Erstellen eines benutzerdefinierten Baseline-Elements](guides/baselines.md) zum Hinzufügen in die Zeitachse.
 
-### Baselines mit Aufgaben laden
+### Baselines zusammen mit Aufgaben laden
 
-Baselines können zusammen mit Aufgaben wie folgt geladen werden:
+Baselines können direkt zusammen mit Aufgaben geladen werden. Das folgende Beispiel zeigt dies:
 
 ~~~js
 gantt.parse({
@@ -93,7 +91,7 @@ gantt.parse({
       open: true,
       end_date: "2025-04-06 00:00:00",
     },
-    // Weitere Aufgaben...
+    // Zusätzliche Aufgaben...
   ],
   links: [],
   baselines: [ /*!*/
@@ -104,22 +102,22 @@ gantt.parse({
       duration: 2, /*!*/
       end_date: "2025-04-05 00:00:00", /*!*/
     }, /*!*/
-    // Weitere Baselines... /*!*/
+    // Zusätzliche Baselines... /*!*/
   ], /*!*/
 });
 ~~~
 
-Nach dem Laden werden die Baselines automatisch in der Zeitleiste angezeigt, ohne dass weitere Einstellungen nötig sind.
+Sobald Baselines geladen sind, zeigt Gantt sie automatisch in der Zeitachse an, ohne weitere Konfiguration.
 
-### Baselines einer Aufgabe abrufen
+### Baselines eines Tasks abrufen
 
-Sie können die Baselines für eine bestimmte Aufgabe mit der Methode [getTaskBaselines](api/method/gettaskbaselines.md) abrufen.
+Sie können die Baselines eines bestimmten Tasks mit der [getTaskBaselines](api/method/gettaskbaselines.md) Methode abrufen. 
 
 ~~~js
 gantt.getTaskBaselines(5);
 ~~~
 
-Dies gibt ein Array von Baseline-Objekten zurück, die mit der Aufgabe aus dem Datastore verknüpft sind.
+Die Methode gibt ein Array von Baseline-Objekten des angegebenen Tasks aus dem Datastore zurück.
 
 ~~~js
 [
@@ -142,7 +140,7 @@ Dies gibt ein Array von Baseline-Objekten zurück, die mit der Aufgabe aus dem D
 
 ### Baselines im Lightbox
 
-Baselines können direkt über das Lightbox-Steuerelement verwaltet werden, sodass Sie sie innerhalb der Aufgabendetails hinzufügen, bearbeiten und löschen können.
+Sie können Baselines über die Lightbox-Steuerung verwalten. Baselines hinzufügen, bearbeiten und löschen ist direkt aus den Task-Details möglich.
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -154,43 +152,43 @@ gantt.config.lightbox.sections = [
 
 ![Baseline Lightbox](/img/baselines_lightbox.png)
 
-### Baseline-Anzeigemodi
+### Baselines-Darstellungsmodi
 
-Es gibt drei Möglichkeiten, Baselines anzuzeigen, die über die Option **gantt.config.baselines.render_mode** ausgewählt werden können:
+Gantt bietet drei Modi zur Anzeige von Baselines. Sie können den Darstellungsmodus wählen, der am besten zu Ihren Anforderungen passt, indem Sie die Konfigurationsoption **gantt.config.baselines.render_mode** auf den entsprechenden Wert setzen. Es stehen drei Modi zur Verfügung:
 
-- In derselben Zeile wie die Aufgabe ("taskRow")
+- In derselben Zeile wie der Task-Leiste ("taskRow")
 
-Baselines erscheinen direkt neben den Aufgabenbalken:
+Baselines werden direkt in derselben Zeile mit den Task-Bars angezeigt:
 
 ~~~js
 gantt.config.baselines.render_mode = "taskRow";
 ~~~
 
-![Task Row Modus](/img/baselines_task_row.png)
+![Task row mode](/img/baselines_task_row.png)
 
-- In einer separaten Unterzeile unter der Aufgabe ("separateRow")
+- In einer separaten Unterzeile unter dem Task ("separateRow")
 
-Alle Baselines werden in einer Unterzeile unter jeder Aufgabe angezeigt:
+Alle Baselines werden in einer einzigen Unterzeile unter jedem Task gerendert:
 
 ~~~js
 gantt.config.baselines.render_mode = "separateRow";
 ~~~
 
-![Subrow Modus](/img/baselines_subrow.png)
+![Subrow mode](/img/baselines_subrow.png)
 
-- In einer eigenen Unterzeile ("individualRow")
+- In einer einzelnen Unterzeile ("individualRow")
 
-Jede Baseline erhält zur besseren Übersicht eine eigene Unterzeile:
+Jede Baseline wird in ihrer eigenen Unterzeile zur maximalen Übersicht angezeigt:
 
 ~~~js
 gantt.config.baselines.render_mode = "individualRow";
 ~~~
 
-![Individual Row Modus](/img/baselines_individual_row.png)
+![Individual row mode](/img/baselines_individual_row.png)
 
 ### Baseline-Text festlegen
 
-Um individuellen Text innerhalb von Baseline-Elementen anzuzeigen, verwenden Sie das Template [baseline_text](api/template/baseline_text.md):
+Um einen Text festzulegen, der innerhalb des Baseline-Elements angezeigt werden soll, verwenden Sie die [baseline_text](api/template/baseline_text.md) Vorlage:
 
 ~~~js
 gantt.templates.baseline_text = function(task, baseline, index) {
@@ -198,19 +196,17 @@ gantt.templates.baseline_text = function(task, baseline, index) {
 };
 ~~~
 
-## Deadlines und Einschränkungen
+## Fristen und Beschränkungen
 
-Das Verfolgen von Deadlines und Aufgabenbeschränkungen ist entscheidend für eine erfolgreiche Projektdurchführung. DHTMLX Gantt enthält integrierte Visualisierungen für Deadlines und Einschränkungen, um das Management der Projektzeitleiste zu verbessern.
+Im Projektmanagement ist das Verfolgen von Fristen und das Verstehen von Beschränkungen von entscheidender Bedeutung für eine rechtzeitige Lieferung. DHTMLX Gantt bietet eine integrierte Visualisierung für Fristen und Beschränkungen, wodurch die Verwaltung von Projektzeitplänen effektiver wird.
 
 ![Deadlines](/img/deadlines.png)
 
+[Fristen anzeigen](https://docs.dhtmlx.com/gantt/samples/04_customization/14_deadline.html)
 
-[Displaying deadlines](https://docs.dhtmlx.com/gantt/samples/04_customization/14_deadline.html)
+### Visualisierung von Fristen
 
-
-### Visualisierung von Deadlines
-
-Gantt unterstützt das Feld **task.deadline**. Wenn dieses gesetzt ist, wird ein visueller Marker im Diagramm angezeigt, um Deadlines zu überwachen.
+Gantt unterstützt das Feld **task.deadline**. Wenn es angegeben ist, wird ein visueller Indikator im Diagramm angezeigt, wodurch die Verfolgung von Aufgabenfristen vereinfacht wird.
 
 ~~~js
 gantt.parse({
@@ -220,28 +216,28 @@ gantt.parse({
       text: "Task with Deadline",
       start_date: "2025-04-04",
       duration: 5,
-      deadline: new Date(2025, 3, 10), // 10. April 2025 /*!*/
+      deadline: new Date(2025, 3, 10), // April 10, 2025 /*!*/
     },
-    // Weitere Aufgaben...
+    // Zusätzliche Aufgaben...
   ],
 });
 ~~~
 
-### Deadlines anpassen
+### Anpassen von Fristen
 
-Falls das Standard-Deadline-Feature nicht Ihren Anforderungen entspricht, können Sie es mit der Option [deadlines](api/config/deadlines.md) deaktivieren.
+Falls die Standard-Fristen-Funktionalität nicht Ihren Projektanforderungen entspricht, können Sie sie über die [deadlines](api/config/deadlines.md) Konfigurationsoption deaktivieren.
 
 ~~~js
 gantt.config.deadlines = false;
 ~~~
 
-Nach dem Deaktivieren können Sie das Erscheinungsbild der Deadlines anpassen, indem Sie [ein eigenes Deadline-Element erstellen](guides/baselines.md) und zur Zeitleiste hinzufügen.
+Danach können Sie die Anzeige von Fristen anpassen, indem Sie [ein benutzerdefiniertes Deadline-Element erstellen](guides/baselines.md) und in die Timeline aufnehmen.
 
-Die Einstellung **gantt.config.deadlines** steuert die Anzeige von Deadline-Elementen. Ist sie aktiviert, prüft Gantt die Eigenschaft **task.deadline** und zeigt bei gültigem Datum den Deadline-Marker in der Zeitleiste an.
+Die **gantt.config.deadlines**-Konfiguration ermöglicht bzw. verhindert die Anzeige von Fristen-Elementen für Aufgaben. Falls aktiviert, prüft Gantt die Eigenschaft **task.deadline** und, falls sie ein gültiges Datum enthält, wird das Deadline-Element in der Zeitachse angezeigt.
 
-### Aufgabenbeschränkungen (#taskconstraints)
+### Task-Beschränkungen
 
-Ab Version 9.0 zeigt Gantt automatisch Beschränkungsdaten im Diagramm an, wenn [Auto Scheduling](guides/auto-scheduling.md) aktiviert ist und im Constraint-Modus arbeitet (mit [auto_scheduling_compatibility](api/config/auto_scheduling_compatibility.md) auf *false* gesetzt).
+Seit Version v9.0 zeigt Gantt automatisch Beschränkungsdaten in der Grafik an, wenn [Auto Scheduling](guides/auto-scheduling.md) aktiviert ist und im Constraint-Modus arbeitet ([auto_scheduling_compatibility](api/config/auto_scheduling_compatibility.md) ist auf *false* gesetzt).
 
 ~~~js
 gantt.parse({
@@ -255,12 +251,12 @@ gantt.parse({
       constraint_type: "snet", 
       parent: 0
     },
-    // Weitere Aufgaben
+    // Zusätzliche Aufgaben
   ]
 })
 ~~~
 
-Sie können die Anzeige von Einschränkungen über die Option `show_constraints` in der [auto_scheduling](api/config/auto_scheduling.md) Konfiguration steuern. Standardmäßig sind Einschränkungen sichtbar, Sie können sie aber durch Setzen von `show_constraints` auf `false` ausblenden:
+Die Anzeige von Beschränkungen kann über die `show_constraints`-Option in der [auto_scheduling](api/config/auto_scheduling.md)-Konfiguration gesteuert werden. Standardmäßig werden Beschränkungen angezeigt, aber Sie können sie deaktivieren, indem Sie `show_constraints` auf `false` setzen:
 
 ~~~js
 gantt.config.auto_scheduling = {
@@ -269,6 +265,4 @@ gantt.config.auto_scheduling = {
 };
 ~~~
 
-
 [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
-

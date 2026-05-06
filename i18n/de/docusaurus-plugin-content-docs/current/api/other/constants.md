@@ -25,4 +25,4 @@ document.addEventListener("keypress", function(e){
 
 ### Details
 
-enthält verschiedene constants, die helfen, die Nutzung von Magic Numbers im Code zu minimieren. Momentan umfasst es hauptsächlich das **KEY_CODES** Objekt
+Speichert verschiedene Konstanten, um den Einsatz magischer Zahlen im Code zu reduzieren. Derzeit wird nur das Objekt **KEY_CODES** gespeichert.

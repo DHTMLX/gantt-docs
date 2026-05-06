@@ -1,16 +1,16 @@
 ---
 sidebar_label: resource_attribute
-title: resource_attribute config
-description: "определяет имя атрибута, который Gantt использует для идентификации ресурса, соответствующего строке задачи в resource grid или timeline."
+title: resource_attribute конфигурация
+description: "изменяет имя атрибута, которое Gantt использует для определения ресурса, к которому относится строка задачи в сетке ресурсов/таймлайне"
 ---
 
 # resource_attribute
 :::info
- Эта функция доступна только в PRO-версии. 
+This functionality is available in the PRO edition only. 
 :::
 ### Description
 
-@short: Определяет имя атрибута, который Gantt использует для идентификации ресурса, соответствующего строке задачи в resource grid или timeline.
+@short: Изменяет имя атрибута, которое Gantt использует для определения ресурса, к которому относится строка задачи в сетке ресурсов/таймлайне
 
 @signature: resource_attribute: string
 
@@ -24,11 +24,12 @@ gantt.config.resource_attribute = "data-resource-id";
 
 ### Details
 
-:::note
- Каждый элемент ресурса включает атрибут *data-resource-id*, который связывает DOM-элемент с соответствующим ресурсом. 
-:::
+![resource_attribute](/img/resource_attribute.png)
 
-![resource_attribute](/img/resource_attribute.png)<br>
 :::note
-Sample: [Resourse_attribute](https://snippet.dhtmlx.com/5/66401acf0 ) 
+Каждый элемент ресурса имеет атрибут *data-resource-id*, который используется для определения того, к какому ресурсу прикреплен DOM-элемент. 
+::: 
+
+:::note
+sample: [Resourse_attribute ](https://snippet.dhtmlx.com/5/66401acf0)
 :::

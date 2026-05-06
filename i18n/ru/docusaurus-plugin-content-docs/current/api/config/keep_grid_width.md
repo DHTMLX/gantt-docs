@@ -1,16 +1,18 @@
----
+--- 
 sidebar_label: keep_grid_width
 title: keep_grid_width config
-description: "Сохраняет исходную ширину grid при изменении размеров колонок"
+description: "'говорит' чтобы сохранить начальную ширину сетки при изменении размера столбцов внутри"
 ---
 
 # keep_grid_width
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в PRO-версии.
 :::
+
 ### Description
 
-@short: Сохраняет исходную ширину grid при изменении размеров колонок
+@short: 'говорит' чтобы сохранить начальную ширину сетки при изменении размера столбцов внутри
 
 @signature: keep_grid_width: boolean
 
@@ -28,11 +30,10 @@ gantt.config.keep_grid_width = true; /*!*/
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**Значение по умолчанию:** false
 
 ### Related samples
-- [Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
-
+- [События изменения размера столбцов сетки](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
 
 ### Related Guides
-- [Указание колонок](guides/specifying-columns.md)
+- [Указание столбцов](guides/specifying-columns.md)

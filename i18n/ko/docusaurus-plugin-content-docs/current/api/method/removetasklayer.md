@@ -1,22 +1,24 @@
 ---
 sidebar_label: removeTaskLayer
 title: removeTaskLayer method
-description: "특정 작업과 연관된 레이어를 제거합니다"
+description: "지정된 작업과 관련된 레이어를 제거합니다"
 ---
 
 # removeTaskLayer
+
 :::info
-이 기능은 PRO 에디션에서만 사용할 수 있습니다. 
+이 기능은 PRO 에디션에서만 사용할 수 있습니다.
 :::
+
 ### Description
 
-@short: 특정 작업과 연관된 레이어를 제거합니다
+@short: 지정된 작업과 관련된 레이어를 제거합니다
 
 @signature: removeTaskLayer: (layerId: string | number) =\> void
 
 ### Parameters
 
-- `layerId` - (required) *string | number* -        제거할 레이어를 나타내는 DOM 요소
+- `layerId` - (required) *string | number* - 레이어에 표시될 DOM 요소
 
 ### Example
 
@@ -35,7 +37,7 @@ var layer_id = gantt.addTaskLayer(function draw_deadline(task) {
     }
     return false;
 });
-//...
+// 생략
 gantt.removeTaskLayer(layer_id);/*!*/
 gantt.render();
 ~~~

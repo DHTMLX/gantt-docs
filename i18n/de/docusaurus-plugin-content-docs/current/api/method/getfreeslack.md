@@ -1,25 +1,27 @@
 ---
 sidebar_label: getFreeSlack
-title: getFreeSlack method
-description: "gibt den freien Slack einer Aufgabe zurück"
+title: getFreeSlack Methode
+description: "liefert die freie Pufferzeit einer Aufgabe"
 ---
 
 # getFreeSlack
-:::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+
+:::info 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
+
 ### Description
 
-@short: Gibt den freien Slack einer Aufgabe zurück
+@short: Gibt die freie Pufferzeit einer Aufgabe zurück
 
-@signature: getFreeSlack: (task: Task) =\> number
+@signature: getFreeSlack: (task: Task) => number
 
 ### Parameters
 
-- `task` - (required) *Task* - das Objekt einer Aufgabe
+- `task` - (erforderlich) *Task* - das Objekt einer Aufgabe
 
 ### Returns
-- ` free_slack` - (number) - der freie Slack einer Aufgabe
+- `free_slack` - (number) - die freie Pufferzeit einer Aufgabe
 
 ### Example
 
@@ -34,14 +36,13 @@ gantt.getFreeSlack(task);
 ### Details
 
 :::note
- Diese Methode ist Teil der **critical_path**-Erweiterung. Stellen Sie daher sicher, dass Sie das [critical_path](guides/extensions-list.md#criticalpath) Plugin über die Methode [gantt.plugins](api/method/plugins.md) aktivieren. Weitere Informationen finden Sie im Artikel ["Kritischer Pfad"](guides/critical-path.md). 
+Diese Methode ist in der **critical_path**-Erweiterung definiert, daher müssen Sie das [critical_path](guides/extensions-list.md#critical-path)-Plugin mit der [gantt.plugins](api/method/plugins.md) Methode aktivieren. Lesen Sie die Details im Artikel zum Critical Path. 
 :::
 
-Freier Slack bezeichnet die Zeitspanne, die zur Dauer einer Aufgabe hinzugefügt oder auf der Timeline verschoben werden kann, ohne dass nachfolgende verbundene Aufgaben beeinflusst werden.
+Die freie Pufferzeit ist ein Zeitraum, der verwendet werden kann, um die Dauer einer Aufgabe zu erhöhen oder sie auf der Zeitachse zu verschieben, ohne die nächste verknüpfte Aufgabe zu beeinflussen.
 
 ### Related API
 - [getTotalSlack](api/method/gettotalslack.md)
 
 ### Related Guides
-- ["Kritischer Pfad"](guides/critical-path.md#gettingfreeandtotalslack)
-
+- [Kritischer Pfad](guides/critical-path.md#gettingfreeandtotalslack)

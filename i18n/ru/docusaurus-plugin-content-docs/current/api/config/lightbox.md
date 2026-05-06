@@ -1,7 +1,7 @@
 ---
 sidebar_label: lightbox
-title: lightbox config
-description: "определяет объект lightbox"
+title: конфигурация lightbox
+description: "задает объект lightbox"
 ---
 
 # lightbox
@@ -16,9 +16,9 @@ description: "определяет объект lightbox"
 
 ~~~jsx
 gantt.config.lightbox.sections = [
-    {name:"description", height:38, map_to:"text", type:"textarea",focus:true},
-    {name:"priority", height:22, map_to:"priority",type:"select",options:opts},                                                                        
-    {name:"time", height:72, type:"duration", map_to:"auto"}
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+    { name: "priority", height: 22, map_to: "priority", type: "select", options: opts },
+    { name: "time", height: 72, type: "duration", map_to: "auto" }
 ];
 
 gantt.init("gantt_here");
@@ -26,90 +26,101 @@ gantt.init("gantt_here");
 
 ### Details
 
-Объект lightbox включает одно основное свойство:
+Объект lightbox имеет 1 свойство:
 
-- **sections** - (*array*) - определяет секции внутри lightbox
+- **sections** - (*array*) - задаёт секции lightbox
 
 ~~~js
-// стандартное определение lightbox   
-gantt.config.lightbox.sections=[
-    {name:"description", height:70, map_to:"text", type:"textarea", focus:true},
-    {name:"time",        height:72, map_to:"auto", type:"duration"}
+// default lightbox definition
+gantt.config.lightbox.sections = [
+    { name: "description", height: 70, map_to: "text", type: "textarea", focus: true },
+    { name: "time", height: 72, map_to: "auto", type: "duration" }
 ];
 ~~~
 
-Каждый объект внутри массива **sections** может иметь разные свойства в зависимости от [типа секции](guides/default-edit-form.md#lightboxstructure):
+Объекты в массиве **sections** могут иметь следующие свойства, в зависимости от типа секции (см. [тип секции](guides/default-edit-form.md#lightbox-structure)):
 
-#### Общие для всех секций
+#### Common for all sections
 
-- **name** - (*string*) - идентификатор секции (используется dhtmlxGantt для получения label из коллекции *locale.labels*). Например, секция **time** будет использовать label из **gantt.locale.labels.section_time**.
-- **map_to** - (*string*) - имя свойства данных, к которому привязана секция.
-- **type** - (*string*) - [тип контрола](guides/default-edit-form.md#lightboxcontrols), используемый в секции.
-- **height?** - (*number*) - опционально, задаёт высоту секции. Это свойство не применяется к секциям типа [checkbox](guides/checkbox.md) и [radio](guides/radio.md).
-- **focus?** - (*boolean*) - опционально, если true, секция получает фокус при открытии lightbox.
-- **formatter?** - (*DurationFormatter | LinkFormatter*) - опционально, задаёт форматтер для секции.
+- **name** - (*string*) - имя секции. dhtmlxGantt возьмёт метку секции из коллекции *locale.labels* в соответствии с этим именем. Например, для секции **time** dhtmlxGantt возьмёт метку, хранящуюся как **gantt.locale.labels.section_time**. Если для секции указано свойство **label**, метка секции будет взята из него вместо локали. <br>Свойство **name** также можно использовать для получения объекта управления через метод [](api/method/getlightboxsection.md).
+- **map_to** - (*string*) - название свойства данных, которое будет сопоставлено секции.
+- **type** - (*string*) - [тип элемента управления секцией](guides/default-edit-form.md#lightboxcontrols) (редактор).
+- **label** - (*string*) - метка секции.
+- **height?** - (*number*) - необязательно, высота секции. Не используется с секциями [checkbox] и [radio].
+- **focus?** - (*boolean*) - необязательно, если установлено значение *true*, секция получит фокус при открытии lightbox
+- **formatter?** - (*DurationFormatter | LinkFormatter*) - необязательно, форматтер для секции
 
-#### Контролы времени и длительности
+#### Time and Duration controls
 
-- **readonly?** - (*boolean*) - опционально, если true, секция становится доступной только для чтения.
-- **year_range?** - (*number | number[]*) - опционально, определяет диапазон для селектора года. Может быть задано двумя способами: 
-    - *year_range: [2005, 2025]* - выбираются годы с 2005 по 2025.
-    - *year_range: 10* - выбирается диапазон от 10 лет до текущего года и 10 лет после.
-- **single_date?** - (*boolean*) - опционально, если true, отображается только селектор 'start Date'. Отредактированные задачи будут иметь только дату начала с нулевой длительностью. Это полезно в основном для [milestones](guides/task-types.md#milestones).
-- **time_format?** - (*string[]*) - опционально, определяет порядок селекторов даты и времени.
-- **autofix_end?** - (*boolean*) - опционально, контролирует автоматическую корректировку даты окончания, если дата начала установлена позже. Включено по умолчанию. Отключение позволяет ручную валидацию, но без неё задачи могут получить нулевую длительность, если дата начала позже даты окончания.
+- **readonly?** - (*boolean*) - необязательно, если установлено значение *true*, секция будет доступна только для чтения
+- **year_range?** - (*number | number[]*) - необязательно, задаёт диапазон для выбора года. Может быть задан двумя способами:
+    - *year_range: [2005, 2025]* - период с 2005 по 2025 год
+    - *year_range: 10*  - период [текущий год - 10 лет; текущий год + 10 лет]
+- **single_date?** - (*boolean*) - необязательно, если установить значение *true*, в секции будет представлен только выбор даты начала. Отредактированные задачи будут указаны только датой начала и иметь нулевую продолжительность. Имеет смысл только для [milestones].
+- **time_format?** - (*string[]*) - необязательно, задаёт порядок селекторов даты и времени
+- **autofix_end?** - (*boolean*) - необязательно, определяет, будет ли конечная дата автоматически исправляться, если выбранная дата начала больше даты конца, по умолчанию true. Отключённый режим позволяет валидировать даты, но если включить режим и не валидировать даты, можно получить задачи с нулевой продолжительностью, когда *start_date* больше *end_date*.
 
-#### Контрол Select
+#### Select control
 
-- **onchange? (*e*): any** - опционально, задаёт обработчик события 'onChange' для контрола секции.
+- **onchange? (*e*): any** - необязательно, задаёт функцию обработчика события изменения (onChange) для элемента управления секции
     - **_e_** - (*Event*) - нативный объект события.
 
-#### Контролы Select, Checkbox, Radio и Resources
+#### Select, Checkbox, Radio and Resources controls
 
-- **options?** - (*object[]*) - опционально, список опций для контрола. Каждый объект в массиве представляет опцию с такими свойствами:
-    - **_key_** - (*number | string*) - идентификатор опции, используется для сопоставления со свойством данных задачи.
-    - **_label_** - (*string*) - отображаемая метка опции.
-    - **_unit?_** - (*string | number*) - опционально, единица измерения для ресурсов (используется в контроле Resources).
-- **default_value?** - (*any*) - опционально, значение по умолчанию, если входное значение undefined. Для контроля Resources применяется, если значение ресурса undefined.
+- **options?** - (*object[]*) - необязательно, определяет варианты выбора элемента управления. Каждый объект в массиве задаёт один вариант и имеет следующие свойства:
+    - **_key_** - (*number | string*) - идентификатор варианта. Это свойство сравнивается со свойством данных задачи для привязки вариантов к задачам
+    - **_label_** - (*string*) - метка варианта
+    - **_unit?_** - (*string | number*) - необязательно, единица измерения ресурса (для элемента управления Resources)
+- **default_value?** - (*any*) - необязательно, значение по умолчанию для элемента управления секции. Применяется только если входное значение не определено. Для элемента управления Resources применяется, если значение ресурса не определено.
 
-#### Контрол Parent
+#### Resource Assignments control
 
-- **allow_root?** - (*boolean*) - опционально, если true, добавляется дополнительная опция для выбора корневого уровня в качестве родительской задачи. Работает вместе со свойством **root_label**.
-- **root_label?** - (*string*) - опционально, задаёт метку для опции корневого уровня. Используется вместе с **allow_root**.
-- **sort? (task1, task2): number** - опционально, задаёт функцию сортировки для опций select.
-    - **_task1_** - (*Task*) - первый объект задачи для сравнения.
-    - **_task2_** - (*Task*) - второй объект задачи для сравнения.
-- **filter? (id, task): boolean** - опционально, задаёт функцию фильтрации для опций select, получает id задачи и объект задачи.
-    - **_id_** - (*string | number*) - ID задачи.
-    - **_task_** - (*Task*) - объект задачи.
-- **template? (start_date, end_date, task): string|number** - опционально, задаёт шаблон для опций select.
-    - **_start_date_** - (*Date | number*) - дата начала задачи.
-    - **_end_date_** - (*Date | number*) - дата окончания задачи.
-    - **_task_** - (*Task*) - объект задачи.
+- **config** - (*object*) конфигурация грида ресурсов в lightbox для отображения нужных колонок
+- **templates** - (*object*) шаблоны для грида ресурсов в lightbox
+- **resource_default_assignment** - (*object*) конфигурационный объект назначения по умолчанию (который будет добавлен кнопкой "Add Assignment")
+    - **start_date** - (*Date | string | null*) дата начала назначения
+    - **end_date** - (*Date | string | null*) дата завершения назначения
+    - **value** - (*number | string*) количество ресурса, назначенного задаче
+    - **duration** - (*number | null*) продолжительность назначения
+    - **mode** - (*string*) режим расчета времени назначения ресурса: "default" | "fixedDates" | "fixedDuration"
 
-#### Контрол Typeselect
+#### Parent control
 
-- **filter** - (*function*) - задаёт функцию фильтрации для типов задач, получает имя типа в качестве параметра.
+- **allow_root?** - (*boolean*) - необязательно, если установить значение "true", в списке опций будет дополнительный пункт, который позволит установить корневой уровень как родителя для задач. Используется вместе со свойством **root_label**
+- **root_label?** - (*string*) - необязательно, задаёт метку для корневого уровня родителя. Используется вместе со свойством **allow_root**
+- **sort? (task1, task2): number** - необязательно, задаёт функцию сортировки для вариантов выбора
+    - **_task1_** - (*Task*) - объект первой задачи, по которому будет выполняться сортировка
+    - **_task2_** - (*Task*) - объект второй задачи, по которому будет выполняться сортировка
+- **filter? (id, task): boolean** - необязательно, задаёт функцию фильтрации для вариантов выбора. Принимает id задачи и объект задачи в качестве параметров
+    - **_id_** - (*string | number*) - ID объекта задачи
+    - **_task_** - (*Task*) - Объект задачи
+- **template? (start_date, end_date, task): string|number** - необязательно, задаёт шаблон для вариантов выбора
+    - **_start_date_** - (*Date | number*) - дата начала задачи
+    - **_end_date_** - (*Date | number*) - дата окончания задачи
+    - **_task_** - (*Task*) - задача
+
+#### Typeselect control
+
+- **filter** - (*function*) - задаёт функцию фильтрации по типам задач. Принимает имя типа в качестве параметра
 
 ### Related API
 - [wide_form](api/config/wide_form.md)
 
 ### Related Guides
-- - [Textarea Control](guides/textarea.md)
-- - [Управление длительностью](guides/duration.md)
-- - [Контрол 'Время'](guides/time.md)
-- - [Select Control](guides/select.md)
-- - [Типовой контрол](guides/typeselect.md)
-- - [Родительский контрол](guides/parent.md)
-- - [Контрол Template](guides/template.md)
-- - [Контрол Checkbox](guides/checkbox.md)
-- - [Переключатель (Radio Button)](guides/radio.md)
-- - [Настройка элементов Lightbox](guides/default-edit-form.md)
-- - [Работа с элементами Lightbox](guides/lightbox-manipulations.md)
-- - [Создание пользовательского элемента](guides/custom-editor.md)
-- - [Кастомный Lightbox](guides/custom-edit-form.md)
-- - [Изменение кнопок в Lightbox](guides/custom-button.md)
+- [Textarea Control]
+- [Duration Control]
+- [Time Control]
+- [Select Control]
+- [Typeselect Control]
+- [Parent Control]
+- [Template Control]
+- [Checkbox Control]
+- [Radio Button Control]
+- [Configuring Lightbox Elements]
+- [Working with Lightbox Elements]
+- [Creating Custom Element]
+- [Custom Lightbox]
+- [Changing Buttons in the Lightbox]
 
 ### Change log
-- Когда [gantt.config.csp](api/config/csp.md) установлен в *true* или если Gantt работает в среде Salesforce, lightbox рендерится внутри контейнера Gantt, начиная с версии 7.1.13
-
+- If either [gantt.config.csp](api/config/csp.md) is set to *true* or Gantt works in the Salesforce environment, the lightbox will be rendered inside the Gantt container (from v7.1.13)

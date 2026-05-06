@@ -1,38 +1,37 @@
 ---
 sidebar_label: onBeforeTaskSelected
 title: onBeforeTaskSelected event
-description: "срабатывает непосредственно перед выбором задачи"
+description: "срабатывает до того, как пользователь выберет задачу"
 ---
 
 # onBeforeTaskSelected
 
 ### Description
 
-@short: Срабатывает непосредственно перед выбором задачи
+@short: Срабатывает до того, как пользователь выберет задачу
 
 @signature: onBeforeTaskSelected: (id: string | number) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - ID задачи
+- `id` - (required) *string | number* - идентификатор задачи
 
 ### Returns
-- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или оно будет остановлено (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeTaskSelected", function(id){
-    // здесь можно добавить кастомную логику
+    // любая ваша логика здесь
     return true;
 });
 ~~~
 
 ### Details
 
-Это событие можно заблокировать. Возврат *false* предотвратит выполнение действия по умолчанию.
+Событие можно заблокировать. Вернуть *false*, чтобы отменить обработку по умолчанию.
 
 ### Related API
 - [onTaskSelected](api/event/ontaskselected.md)
 - [onTaskUnselected](api/event/ontaskunselected.md)
-

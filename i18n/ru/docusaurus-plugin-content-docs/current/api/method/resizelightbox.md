@@ -1,14 +1,14 @@
 ---
 sidebar_label: resizeLightbox
-title: resizeLightbox method
-description: "принудительно изменяет размер lightbox"
+title: Метод resizeLightbox
+description: "заставляет лайтбокс изменить размер"
 ---
 
 # resizeLightbox
 
 ### Description
 
-@short: Принудительно изменяет размер lightbox
+@short: Приводит к изменению размера лайтбокса
 
 @signature: resizeLightbox: () =\> void
 
@@ -23,8 +23,7 @@ gantt.resizeLightbox();
 
 ### Details
 
-Этот метод обновляет размер lightbox каждый раз, когда вы изменяете видимость любой секции.
+Метод можно использовать для обновления размера лайтбокса после скрытия/показа некоторых секций.
 
 ### Related API
 - [wide_form](api/config/wide_form.md)
-

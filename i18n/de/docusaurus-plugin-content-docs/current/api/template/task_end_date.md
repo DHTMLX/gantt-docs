@@ -1,23 +1,23 @@
 ---
 sidebar_label: task_end_date
 title: task_end_date template
-description: "steuert, wie die Enddaten der Tasks im Lightbox angezeigt werden"
+description: "legt das Format der Enddaten von Aufgaben im Lightbox-Fenster fest"
 ---
 
 # task_end_date
 
 ### Description
 
-@short: Steuert, wie die Enddaten der Tasks im Lightbox angezeigt werden
+@short: Legt das Format der Enddaten von Aufgaben im Lightbox-Fenster fest
 
 @signature: task_end_date: (date: Date) =\> string;
 
 ### Parameters
 
-- `date` - (required) *Date* - das Datum, das formatiert werden soll
+- `date` - (required) *Date* - das Datum, das formatiert werden muss
 
 ### Returns
-- ` text` - (string) - html-Text, der im Gantt angezeigt wird
+- ` text` - (string) - HTML-Text, der im Gantt gerendert wird
 
 ### Example
 
@@ -29,25 +29,26 @@ gantt.templates.task_end_date = function(date){
 
 ### Details
 
-## Anpassung des Formats für inklusive Enddaten
+## Festlegung des Formats für inklusive Enddaten
 
-Sie können diese Vorlage neu definieren, um zu ändern, wie die Enddaten der Tasks im Gantt dargestellt werden, z. B. um das Enddatum innerhalb der Task-Dauer einzubeziehen.
+Die Vorlage kann neu definiert werden, um das Erscheinungsbild der Enddaten von Aufgaben im Gantt (z. B. das Enddatum in die Dauer der Aufgaben einzubeziehen) zu ändern.
 
-Betrachten wir zum Beispiel einen Task, der am 2. April 2020 beginnt und einen Tag dauert.
+Beispielsweise betrachten wir eine Aufgabe, die am 2. April 2020 beginnt und einen Tag dauert.
 
-Standardmäßig wird das Enddatum als 3. April 2020 (`03-04-2020 00:00:00`) angezeigt:
+Standardmäßig wird das Enddatum dieser Aufgabe als 3. April 2020 angezeigt (`03-04-2020 00:00:00`):
 
 - [Live-Demo: Standardformat](https://snippet.dhtmlx.com/5/24f73d6ec)
 
 ![task_end_date_template_default](/img/task_end_date_template_default.png)
 
-Es ist möglich, die Anzeige des Enddatums auf den 2. April 2020 zu ändern:
+Sie können das Format des Enddatums auf den 2. April 2020 ändern:
 
-- [Live-Demo: Inklusives Enddatum-Format](https://snippet.dhtmlx.com/t1k1rwo7)
+- [Live-Demo: Inklusive Enddaten-Format](https://snippet.dhtmlx.com/t1k1rwo7)
 
 ![task_end_date_template](/img/task_end_date_template.png)
 
-Um dies zu erreichen, überschreiben Sie die **columns**-Konfiguration wie folgt:
+
+Um dies zu tun, müssen Sie die **columns**-Konfiguration überschreiben, wie folgt:
 
 ~~~js
 
@@ -74,7 +75,7 @@ gantt.init("gantt_here");
 
 ~~~
 
-Für weitere Informationen zur Formatierung von Enddaten lesen Sie den Artikel [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates).
+Für weitere Details zur Formatierung von Enddaten siehe den Artikel [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates).
 
 ### Related API
 - [task_date](api/config/task_date.md)
@@ -82,6 +83,5 @@ Für weitere Informationen zur Formatierung von Enddaten lesen Sie den Artikel [
 - [grid_date_format](api/template/grid_date_format.md)
 
 ### Related Guides
-- ["Vorlagen des Lightbox"](guides/lightbox-templates.md)
-- ["Datenladen"](guides/loading.md#taskenddatedisplayampinclusiveenddates)
-
+- [Templates of the Lightbox](guides/lightbox-templates.md)
+- [Datenladen](guides/loading.md#taskenddatedisplayampinclusiveenddates)

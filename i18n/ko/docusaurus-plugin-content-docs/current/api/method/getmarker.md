@@ -1,6 +1,6 @@
 ---
 sidebar_label: getMarker
-title: getMarker method
+title: getMarker 메서드
 description: "마커의 객체를 가져옵니다"
 ---
 
@@ -14,10 +14,10 @@ description: "마커의 객체를 가져옵니다"
 
 ### Parameters
 
-- `markerId` - (required) *string | number* -    마커의 ID
+- `markerId` - (required) *string | number* - 마커의 id
 
 ### Returns
-- ` marker` - (object) - 마커의 설정 객체
+- ` marker` - (object) - 마커의 구성 객체
 
 ### Example
 
@@ -48,5 +48,4 @@ note 이 메서드는 **marker** 확장 기능의 일부이므로, [marker](guid
 - [show_markers](api/config/show_markers.md)
 
 ### Related Guides
-- [수직 마커 추가하기](guides/markers.md)
-
+- [수직 마커 추가](guides/markers.md)

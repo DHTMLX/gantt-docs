@@ -46,4 +46,9 @@ If you're using a state management library, the guides in [Data & State Manageme
 
 ## Examples and evaluation resources
 
+Browse the public React Gantt examples for runnable demos of the wrapper:
+
+- [Live demo](https://dhtmlx.github.io/react-gantt-examples/)
+- [GitHub repository](https://github.com/DHTMLX/react-gantt-examples)
+
 If you're evaluating React Gantt, the evaluation page provides access to technical support during the evaluation period. See [Installation](integrations/react/installation.md).

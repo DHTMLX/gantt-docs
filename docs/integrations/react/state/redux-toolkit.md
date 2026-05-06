@@ -108,23 +108,23 @@ This slice also introduces **undo/redo functionality** through snapshot history 
 
 ~~~ts
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';  
-import type { SerializedTask, Task, Link, GanttConfig } from '@dhtmlx/trial-react-gantt';  
+import type { SerializedTask, SerializedLink, Task, Link, GanttConfig } from '@dhtmlx/trial-react-gantt';
 import { defaultZoomLevels, seedLinks, seedTasks, type ZoomLevel } from '../common/Seed';  
 import { type WritableDraft } from 'immer';
 
-interface Snapshot {  
-  tasks: SerializedTask[];  
-  links: Link[];  
-  config: GanttConfig;  
+interface Snapshot {
+  tasks: SerializedTask[];
+  links: SerializedLink[];
+  config: GanttConfig;
 }
 
-interface GanttState {  
-  tasks: SerializedTask[];  
-  links: Link[];  
-  config: GanttConfig;  
-  past: Snapshot[];  
-  future: Snapshot[];  
-  maxHistory: number;  
+interface GanttState {
+  tasks: SerializedTask[];
+  links: SerializedLink[];
+  config: GanttConfig;
+  past: Snapshot[];
+  future: Snapshot[];
+  maxHistory: number;
 }
 
 const initialState: GanttState = {  
@@ -198,19 +198,19 @@ const ganttSlice = createSlice({
 
       state.tasks = state.tasks.filter((task) => String(task.id) !== action.payload);  
     },  
-    updateLink(state, action: PayloadAction<Link>) {  
+    updateLink(state, action: PayloadAction<SerializedLink>) {
       pushHistory(state);
 
-      const updatedLink = action.payload;  
-      const index = state.links.findIndex((link) => link.id === updatedLink.id);  
-      if (index !== -1) {  
-        state.links[index] = { ...state.links[index], ...updatedLink };  
-      }  
-    },  
-    createLink(state, action: PayloadAction<Link>) {  
+      const updatedLink = action.payload;
+      const index = state.links.findIndex((link) => link.id === updatedLink.id);
+      if (index !== -1) {
+        state.links[index] = { ...state.links[index], ...updatedLink };
+      }
+    },
+    createLink(state, action: PayloadAction<SerializedLink>) {
       pushHistory(state);
 
-      state.links.push({ ...action.payload, id: `DB_ID:${action.payload.id}` });  
+      state.links.push({ ...action.payload, id: `DB_ID:${action.payload.id}` });
     },  
     deleteLink(state, action: PayloadAction<string>) {  
       pushHistory(state);
@@ -261,7 +261,7 @@ Every modifying action first calls `pushHistory(state)`, meaning the user can **
 Create sample data for our Gantt chart in `src/common/Seed.ts` which will contain the initial data:
 
 ~~~ts
-import type { SerializedTask, Link, GanttConfig } from '@dhtmlx/trial-react-gantt';
+import type { SerializedTask, SerializedLink, GanttConfig } from '@dhtmlx/trial-react-gantt';
 
 export type ZoomLevel = 'day' | 'month' | 'year';
 
@@ -306,7 +306,7 @@ export const seedTasks: SerializedTask[] = [
   // ...
 ];
 
-export const seedLinks: Link[] = [
+export const seedLinks: SerializedLink[] = [
   { id: 2, source: 2, target: 3, type: '0' },
   { id: 3, source: 3, target: 4, type: '0' },
   // ...
@@ -391,7 +391,7 @@ We create the main component and set up Redux integration:
 import React, { useRef, useEffect, useMemo, useCallback } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';  
-import ReactGantt, { GanttConfig, ReactGanttProps, Link, ReactGanttRef, SerializedTask } from '@dhtmlx/trial-react-gantt';  
+import ReactGantt, { GanttConfig, ReactGanttProps, SerializedLink, Link, ReactGanttRef, SerializedTask } from '@dhtmlx/trial-react-gantt';
 import '@dhtmlx/trial-react-gantt/dist/react-gantt.css';
 
 import {  

@@ -1,42 +1,46 @@
 ---
-title: "Zoom Extension"
-sidebar_label: "Zoom Extension"
+title: "줌 확장"
+sidebar_label: "줌 확장"
 ---
 
-# Zoom Extension
+# 줌 확장
 
-Zoom 확장 기능에 대한 자세한 내용은 [줌(Zooming)](guides/zooming.md) 문서에서 확인할 수 있습니다. 본 문서는 **zoom** 객체의 API 레퍼런스에 중점을 두고 있습니다.
 
-## Zoom Levels
 
-Zoom 확장 기능은 여러 배율 설정을 사용하여 손쉽게 배율을 전환할 수 있도록 합니다.
+더 자세한 내용은 [Zooming](guides/zooming.md) 문서를 참조하십시오. 본 문서는 **zoom** 객체의 API 레퍼런스를 제공합니다:
 
-**ZoomLevel**은 다음과 같은 속성을 가진 배율 설정을 나타내는 객체입니다:
 
-- <span class="subproperty">**name**</span> - (*string*) - 해당 레벨에 할당된 이름
-- <span class="subproperty">**scale_height?**</span> - (*number*) - 배율의 높이
-- <span class="subproperty">**height?**</span> - (*number*) - 배율의 높이
-- <span class="subproperty">**min_column_width?**</span> - (*number*) - 컬럼의 최소 너비; minColumnWidth 및 maxColumnWidth보다 우선 적용됨
-- <span class="subproperty">**scales**</span> - (*Scales*) - 이 레벨에서 확대/축소 시 전환할 수 있는 scale의 배열
+## 줌 레벨
 
-## Methods
+줌 확장은 스케일 설정의 집합을 사용하고 이들 간의 빠른 전환을 가능하게 합니다.
 
-- <span class="submethod">**init (zoomConfig): void**</span> - 주어진 설정을 사용하여 확장 기능을 초기화합니다.
-    - **_zoomConfig_** - (*object*) - *levels* 배열을 포함하여 확대/축소 레벨을 정의하는 설정 객체 및 여러 선택적 속성:
-        - **_levels_** - (*ZoomLevel[]*) - 필수, 확대/축소 레벨을 정의하는 배열
-        - **_handler?_** - (*Function*): void - 수동 확대/축소 제어를 위한 커스텀 마우스 휠 핸들러 지정
+**ZoomLevel**은 스케일 설정을 포함하는 객체입니다. 아래 속성을 가집니다:
+
+- <span class="subproperty">**name**</span> - (*string*) - 레벨의 이름
+- <span class="subproperty">**scale_height?**</span> - (*number*) - 스케일의 높이
+- <span class="subproperty">**height?**</span> - (*number*) - 스케일의 높이
+- <span class="subproperty">**min_column_width?**</span> - (*number*) - 칼럼의 최소 너비. minColumnWidth와 maxColumnWidth보다 우선순위가 높습니다
+- <span class="subproperty">**scales**</span> - (*Scales*) - 이 레벨에서 확대/축소 중 전환할 스케일의 배열
+
+
+## 메서드
+
+- <span class="submethod">**init (zoomConfig): void**</span> - 제공된 구성으로 확장을 초기화합니다.
+    - **_zoomConfig_** - (*object*) - 구성 설정을 담고 있으며 *levels* 배열의 줌 레벨과 추가 속성들을 포함하는 객체
+        - **_levels_** - (*ZoomLevel[]*) - 필수, 줌 레벨의 배열
+        - **_handler?_** - (*Function*): void - 마우스 휠의 커스텀 핸들러를 지정하여 수동으로 확대/축소를 제어할 수 있습니다
             - **_e_** - (*Event*) - 네이티브 이벤트 객체
-        - **_startDate?_** - (*Date*) - 타임 스케일 확대/축소의 시작 지점
-        - **_endDate?_** - (*Date*) - 타임 스케일 확대/축소의 종료 지점
-        - **_activeLevelIndex?_** - (*number*) - 기본 활성화된 확대/축소 레벨의 인덱스
-        - **_widthStep?_** - (*number*) - 확대/축소 시 scale 너비의 증감 단위
-        - **_minColumnWidth?_** - (*number*) - 이전 확대/축소 레벨로 전환을 허용하는 최소 컬럼 너비
-        - **_maxColumnWidth?_** - (*number*) - 다음 확대/축소 레벨로 전환을 허용하는 최대 컬럼 너비
-        - **_useKey?_** - (*string*) - 마우스 휠 스크롤을 통한 확대/축소를 활성화하는 키 지정: "ctrlKey" | "altKey" | "shiftKey"
-        - **_trigger?_** - (*string | null | undefined*) - 확대/축소 트리거 지정: "wheel" | null | undefined 
-        - **_element?_** - (*HTMLElement | Function*): HTMLElement - 확대/축소를 트리거하는 DOM 요소 또는 해당 요소를 반환하는 함수
+        - **_startDate?_** - (*Date*) - 시간 축 줌의 시작 값
+        - **_endDate?_** - (*Date*) - 시간 축 줌의 종료 값
+        - **_activeLevelIndex?_** - (*number*) - 기본 활성 레벨의 번호
+        - **_widthStep?_** - (*number*) - 다음/이전 줌 레벨로 전환할 때 스케일 너비를 증가시키는 단계
+        - **_minColumnWidth?_** - (*number*) - 이전 줌 레벨로 전환을 허용하는 칼럼의 최소 너비
+        - **_maxColumnWidth?_** - (*number*) - 다음 줌 레벨로 전환을 허용하는 칼럼의 최대 너비
+        - **_useKey?_** - (*string*) - 마우스 휠 스크롤로 확대/축소를 가능하게 하는 키: "ctrlKey" | "altKey" | "shiftKey"
+        - **_trigger?_** - (*string | null | undefined*) - 확대/축소의 트리거: "wheel" | null | undefined 
+        - **_element?_** - (*HTMLElement | Function*): HTMLElement - 확대/축소가 트리거되는 DOM 요소 또는 DOM 요소를 반환하는 함수
 
-아래는 **zoom** 확장 기능을 설정하는 두 가지 예시입니다:
+다음은 **zoom** 구성 설정의 두 가지 예시입니다:
 
 ~~~js
 var zoomConfig = {
@@ -99,7 +103,7 @@ var zoomConfig = {
 gantt.ext.zoom.init(zoomConfig);
 
 
-// 또는, levels를 scale 배열로 간단히 정의할 수도 있습니다
+// 또는 좀 더 단순한 방식으로 레벨을 스케일 배열로 표현할 수도 있습니다
 var hourToStr = gantt.date.date_to_str("%H:%i");
 var hourRangeFormat = function(step){
     return function(date){
@@ -134,14 +138,14 @@ var zoomConfig = {
 gantt.ext.zoom.init(zoomConfig);
 ~~~
 
-- <span class="submethod">**getCurrentLevel (): number**</span> - 현재 확대/축소 레벨의 인덱스를 반환합니다
+- <span class="submethod">**getCurrentLevel (): number**</span> - 현재 줌 레벨의 번호(인덱스)를 반환합니다
 
 ~~~js
 gantt.ext.zoom.getCurrentLevel();
 ~~~
 
-- <span class="submethod">**setLevel (level): void**</span> - 지정한 레벨로 확대/축소 레벨을 변경합니다.
-    - **_level_** - (*number | string*) - 레벨의 이름(예: "year") 또는 levels 배열 내의 인덱스
+- <span class="submethod">**setLevel (level): void**</span> - 지정된 줌 레벨로 전환합니다
+    - **_level_** - (*number | string*) - 레벨은 구성을 구성하는 이름(예: "year")의 문자열이거나 배열의 번호로 정의됩니다
 
 ~~~js
 gantt.ext.zoom.setLevel("year");
@@ -149,61 +153,61 @@ gantt.ext.zoom.setLevel("year");
 gantt.ext.zoom.setLevel(5);
 ~~~
 
-- <span class="submethod">**getLevels (): ZoomLevel[]**</span> - 정의된 모든 확대/축소 레벨을 반환합니다
+- <span class="submethod">**getLevels (): ZoomLevel[]**</span> - 모든 줌 레벨을 가져옵니다
 
 ~~~js
 gantt.ext.zoom.getLevels();
 ~~~
 
-이 메서드는 **init()** 메서드에 전달된 zoom 레벨 배열(*ZoomLevels[]*)을 반환합니다.
+초기에 **init()** 메서드에 전달된 줌 레벨의 배열(*ZoomLevels[]*)을 반환합니다.
 
-- <span class="submethod">**zoomIn (): void**</span> - 더 높은 확대/축소 레벨로 이동합니다
+- <span class="submethod">**zoomIn (): void**</span> - 현재 줌 레벨을 증가시킵니다
 
 ~~~js
 gantt.ext.zoom.zoomIn();
 ~~~
 
-또는 다음과 같이 사용할 수도 있습니다:
+동일한 목적의 다른 방법으로도 사용 가능합니다:
 
 ~~~js
 gantt.ext.zoom.setLevel(zoom.getCurrentLevel() - 1)
 ~~~
 
-- <span class="submethod">**zoomOut (): void**</span> - 더 낮은 확대/축소 레벨로 이동합니다
+- <span class="submethod">**zoomOut (): void**</span> - 현재 줌 레벨을 감소시킵니다
 
 ~~~js
 gantt.ext.zoom.zoomOut();
 ~~~
 
-또는 다음과 같이 사용할 수도 있습니다:
+동일한 목적의 다른 방법으로도 사용 가능합니다:
 
 ~~~js
 gantt.ext.zoom.setLevel(zoom.getCurrentLevel() + 1)
 ~~~
 
-- <span class="submethod">**attachEvent (name, handler): string**</span> - 이벤트 핸들러를 추가합니다
-    - **_name_** - (*string*) - 감지할 이벤트 이름
-    - **_handler_** - (*Function*) - 이벤트 발생 시 실행할 함수
+- <span class="submethod">**attachEvent (name, handler): string**</span> - 이벤트 핸들러를 연결합니다
+    - **_name_** - (*string*) - 이벤트 핸들러의 이름
+    - **_handler_** - (*Function*) - 이벤트가 발생했을 때 호출되는 함수
 
-- <span class="submethod">**detachEvent (id): void**</span> - 이전에 등록한 이벤트 핸들러를 제거합니다
-    - **_id_** - (*string*) - 제거할 이벤트 핸들러의 식별자
+- <span class="submethod">**detachEvent (id): void**</span> - 이벤트에서 핸들러를 분리합니다
+    - **_id_** - (*string*) - 연결된 이벤트 핸들러의 id
 
-- <span class="submethod">**callEvent (name, params): boolean**</span> - 내부 이벤트를 트리거합니다
-    - **_name_** - (*string*) - 이벤트 이름(대소문자 무관)
-    - **_params_** - (*Array&lt;any&gt;*) - 이벤트 관련 데이터의 선택적 배열
+- <span class="submethod">**callEvent (name, params): boolean**</span> - 내부 이벤트를 호출합니다
+    - **_name_** - (*string*) - 이벤트의 이름, 대소문자 구분 없이
+    - **_params_** - (*Array&lt;any&gt;*) - 선택적, 이벤트 관련 데이터의 배열
 
-- <span class="submethod">**checkEvent (name): boolean**</span> - 특정 이벤트에 등록된 핸들러가 있는지 확인합니다
-    - **_name_** - (*string*) - 이벤트 이름
+- <span class="submethod">**checkEvent (name): boolean**</span> - 이벤트에 핸들러가 지정되어 있는지 확인합니다
+    - **_name_** - (*string*) - 이벤트의 이름
 
-이벤트에 하나 이상의 핸들러가 등록되어 있으면 <i>true</i>를 반환합니다.
+참으면 <i>true</i>를 반환합니다. 해당 이벤트에 핸들러가 지정되어 있으면 참입니다.
 
-## Events
+## 이벤트
 
-- **<span class="eventname">onAfterZoom</span>** - 확대/축소 레벨이 변경될 때 발생합니다.
-이벤트는 다음과 같은 인자를 제공합니다: 
+- **<span class="eventname">onAfterZoom</span>** - 줌 레벨 변경 시점에 발생합니다.
+인수:
 <span class="eventarguments">
-    - **_level_** - (*number | string*) - 확대/축소 레벨의 인덱스 또는 이름
-    - **_config_** - (*ZoomLevel*) - 해당 확대/축소 레벨의 설정 객체
+    - **_level_** - (*number | string*) - 레벨의 번호
+    - **_config_** - (*ZoomLevel*) - 레벨의 구성
 </span>
 
 ~~~js

@@ -1,17 +1,17 @@
----
-title: "Constraint-Steuerung"
-sidebar_label: "Constraint-Steuerung"
+--- 
+title: "Zeitbeschränkungssteuerung"
+sidebar_label: "Zeitbeschränkungssteuerung"
 ---
 
-# Constraint-Steuerung
+# Zeitbeschränkungssteuerung
 
 :::info
-Dieses Feature ist nur in der PRO Edition enthalten.
+Diese Funktionalität ist nur in der PRO Edition verfügbar.
 :::
 
-Dies ist ein spezielles Steuerelement, das dazu dient, [Zeitbeschränkungen für Gantt-Aufgaben](guides/auto-scheduling.md#timeconstraintsfortasks) festzulegen.
+Ein komplexes Steuerelement, das verwendet wird, um [Zeitbeschränkungen für Gantt-Aufgaben](guides/auto-scheduling.md#timeconstraintsfortasks) festzulegen.
 
-![Constraint control](/img/constraint_control.png)
+![Zeitbeschränkungssteuerung](/img/constraint_control.png)
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -21,15 +21,14 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-
-[Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
+[Automatische Planung ab Projektstart und Beschränkungen](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
 ## Initialisierung
 
-Um das **constraint**-Steuerelement in das Lightbox-Formular einzubinden, gehen Sie wie folgt vor:
+Um das **constraint**-Steuerelement dem Lightbox hinzuzufügen, befolgen Sie die untenstehenden Schritte:
 
-1. Fügen Sie einen Abschnitt in die Lightbox-Konfiguration ein:
+1. Fügen Sie eine Sektion zur Lightbox-Konfiguration hinzu:
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -39,20 +38,19 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-2. Definieren Sie ein Label für den Abschnitt:
+2. Legen Sie eine Beschriftung für den Abschnitt fest:
 
 ~~~js
-gantt.locale.labels.section_constraint = "Constraint";
+gantt.locale.labels.section_constraint = "Beschränkung";
 ~~~
 
 
-[Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
+[Automatische Planung ab Projektstart und Beschränkungen](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
 ## Eigenschaften
 
-Hier sind die wichtigsten Eigenschaften, die häufig mit dem **constraint**-Steuerelement verwendet werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
+Die folgenden Eigenschaften sind größtenteils wichtig und werden üblicherweise für das **constraint**-Steuerelement festgelegt (siehe die vollständige Liste [hier](api/config/lightbox.md)):
 
-- **name** - (*string*) identifiziert den Namen des Abschnitts 
-- **type** - (*string*) gibt den Typ des [section control](guides/default-edit-form.md#lightboxcontrols) an
-
+- **name** - (*string*) der Abschnittsname 
+- **type** - (*string*) der Typ des [Abschnitts-Steuerelements](guides/default-edit-form.md#lightboxcontrols)

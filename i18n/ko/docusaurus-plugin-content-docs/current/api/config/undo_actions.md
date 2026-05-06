@@ -1,14 +1,14 @@
 ---
 sidebar_label: undo_actions
-title: undo_actions config
-description: "Undo 기능이 되돌릴 작업을 정의합니다."
+title: undo_actions 구성
+description: "Undo 작업이 되돌릴 액션을 설정합니다"
 ---
 
 # undo_actions
 
 ### Description
 
-@short: Undo 기능이 되돌릴 작업을 정의합니다.
+@short: Undo 작업이 되돌릴 액션을 설정합니다
 
 @signature: undo_actions: \{ update?: string; remove?: string; add?: string; move?: string; \}
 
@@ -46,5 +46,4 @@ gantt.config.undo_actions = {
 - [Undo/Redo 기능](guides/undo-redo.md)
 
 ### Change log
-- 버전 4.0에서 추가됨
-
+- 4.0 버전에 추가됨

@@ -1,16 +1,18 @@
 ---
 sidebar_label: resource_render_empty_cells
-title: resource_render_empty_cells config
-description: "ermöglicht der Resource Timeline, Elemente zu rendern und Templates für Zellen ohne zugewiesene Aufgaben zu verwenden"
+title: resource_render_empty_cells Konfiguration
+description: "weist die Ressourcen-Timeline an, Elemente zu rendern und Templates für nicht zugewiesene Zellen aufzurufen"
 ---
 
 # resource_render_empty_cells
+
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
+
 ### Description
 
-@short: Ermöglicht der Resource Timeline, Elemente zu rendern und Templates für Zellen ohne zugewiesene Aufgaben zu verwenden
+@short: Weise die Ressourcen-Timeline an, Elemente zu rendern und Templates für nicht zugewiesene Zellen aufzurufen
 
 @signature: resource_render_empty_cells: boolean
 
@@ -20,18 +22,17 @@ description: "ermöglicht der Resource Timeline, Elemente zu rendern und Templat
 gantt.config.resource_render_empty_cells = true;
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Details
 
-Normalerweise überspringt die Resource Timeline das Aufrufen der Templates [resource_cell_value](api/template/resource_cell_value.md) und [resource_cell_class](api/template/resource_cell_class.md) für Zellen, denen keine Aufgaben zugewiesen sind.
+Standardmäßig ruft die Ressourcen-Timeline die Templates [resource_cell_value](api/template/resource_cell_value.md) und [resource_cell_class](api/template/resource_cell_class.md) für Zellen, denen keine Aufgaben zugewiesen sind, nicht auf.
 
-Wenn diese Option aktiviert ist, werden Templates auf jede Zelle in der Resource Timeline angewendet, unabhängig von der Aufgabenverteilung.
+Wenn diese Option aktiviert ist, werden Templates für alle Zellen der Ressourcen-Timeline aufgerufen.
 
 ### Related API
 - [resource_cell_class](api/template/resource_cell_class.md)
 - [resource_cell_value](api/template/resource_cell_value.md)
 
-### Related Guides
-- ["Ressourcenmanagement"](guides/resource-management.md)
-
+### Verwandte Guides
+- [Ressourcenverwaltung](guides/resource-management.md)

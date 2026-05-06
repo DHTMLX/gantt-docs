@@ -1,7 +1,7 @@
 ---
 sidebar_label: skip_off_time
-title: skip_off_time config
-description: "隐藏时间刻度中的非工作时间"
+title: skip_off_time 配置
+description: "从时间刻度中隐藏非工作时间"
 ---
 
 # skip_off_time
@@ -10,7 +10,7 @@ description: "隐藏时间刻度中的非工作时间"
 :::
 ### Description
 
-@short: 隐藏时间刻度中的非工作时间
+@short: 在时间刻度中隐藏非工作时间
 
 @signature: skip_off_time: boolean
 
@@ -29,20 +29,18 @@ gantt.init("gantt_here");
 
 ### Details
 
-请注意，**skip_off_time** 设置不会改变刻度本身，而是隐藏那些完全不包含工作时间的单元格。
+请注意，**skip_off_time** 配置不会修改刻度，并隐藏完全没有工作时间的单元格。 
 
-示例 1
+Example 1
 
-假设一个以天为刻度的时间轴，从00:00到23:59，工作时间为08:00到16:59，最小刻度单位为小时。 
-当 **skip_off_time** 设置为 *true* 时，所有刻度中代表非工作时间的单元格都会被隐藏。 
-这意味着天刻度实际上会显示从08:00到16:59的时间段。 
-然而，如果只显示天刻度，它仍然保持不变，从00:00开始，到23:59结束，因为这一天包含工作时间。
+日刻度从 00:00 开始，结束于 23:59，工作时间从 08:00 开始，到 16:59 结束。你使用的是以小时为单位的最小刻度。 
+当将 **skip_off_time** 配置设为 *true* 时，具有非工作时间的单元格将对所有刻度隐藏。 
+因此，日刻度将从 08:00 开始，到 16:59 结束。然而，如果你只有日刻度，则不会改变。
+因为一天之内存在工作时间，所以它将从 00:00 开始，到 23:59 结束。
 
-示例 2
+Example 2
 
-考虑一个覆盖7天的周刻度，其中有2天休息（例如周六和周日），最小刻度单位为天。 
-当 **skip_off_time** 设置为 *true* 时，休息日会被隐藏，因此周刻度显示的是周一到周五。 
-但如果只显示周刻度，它仍会从周一运行到周日，不受 **skip_off_time** 设置影响，因为一周包括休息日。
+周刻度有7天，其中2天为休息日（如周六和周日）。你使用的是以天为单位的最小刻度。 当设置 **skip_off_time** 为 *true* 时，休息日将被隐藏，周刻度将从周一渲染到周五。 然而，如果你只有一个周刻度，周将从周一开始并结束于周日，与 **skip_off_time** 配置无关，因为一周中存在休息日。
 
 有两种方式可以显示隐藏非工作时间的图表:
 
@@ -50,7 +48,7 @@ gantt.init("gantt_here");
 - 使用仅显示工作小时或工作日的[自定义刻度](guides/configuring-time-scale.md#zidingyishijiandanwei)
 
 :::note
-Sample: [刻度显示5天工作周](https://snippet.dhtmlx.com/eq70o558) 
+样例: [刻度上的5天工作周](https://snippet.dhtmlx.com/eq70o558)
 :::
 
 ### Related API
@@ -59,4 +57,3 @@ Sample: [刻度显示5天工作周](https://snippet.dhtmlx.com/eq70o558)
 
 ### Related Guides
 - [工作时间计算](guides/working-time.md)
-

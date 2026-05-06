@@ -1,14 +1,14 @@
 ---
 sidebar_label: resize_rows
-title: resize_rows config
-description: "Ermöglicht das Anpassen der Höhe von Zeilen durch Ziehen"
+title: resize_rows-Konfiguration
+description: "ermöglicht das Anpassen der Zeilenhöhe per Drag-and-Drop"
 ---
 
 # resize_rows
 
 ### Description
 
-@short: Ermöglicht das Anpassen der Höhe von Zeilen durch Ziehen
+@short: Ermöglicht das Anpassen der Zeilenhöhe per Drag-and-Drop
 
 @signature: resize_rows: boolean
 
@@ -18,7 +18,7 @@ description: "Ermöglicht das Anpassen der Höhe von Zeilen durch Ziehen"
 gantt.config.resize_rows = true;
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Related samples
 - [Resizable rows in grid](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_row_resize.html)
@@ -35,4 +35,3 @@ gantt.config.resize_rows = true;
 
 ### Change log
 - hinzugefügt in v7.1
-

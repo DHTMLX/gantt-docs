@@ -1,10 +1,14 @@
 ---
 sidebar_label: date_scale
-title: date_scale config
+title: date_scale Konfiguration
 description: "Legt das Format der Zeitachse (X-Achse) fest"
 ---
 
 # date_scale
+
+:::warning
+Die Eigenschaft ist veraltet.
+:::
 
 ### Description
 
@@ -20,7 +24,8 @@ gantt.config.date_scale = "%F, %Y";
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** "%d %M"
+**Standardwert:** "%d %M"
+
 
 ### Related samples
 - [Multiple scales](https://docs.dhtmlx.com/gantt/samples/03_scales/01_multiple_scales.html)
@@ -28,7 +33,7 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
- Die **date_scale** Eigenschaft ist veraltet. Verwenden Sie stattdessen die **format** Eigenschaft in der [scales](api/config/scales.md): 
+Die **date_scale**-Eigenschaft ist veraltet. Verwenden Sie stattdessen die **format**-Eigenschaft der [scales](api/config/scales.md).
 :::
 
 ~~~js
@@ -39,14 +44,14 @@ gantt.config.scales = [
 ];
 ~~~
 
+
 ### Related API
 - [scale_unit](api/config/scale_unit.md)
 - [step](api/config/step.md)
 
 ### Related Guides
-- ["Einrichten der Skala"](guides/configuring-time-scale.md#settingthescalesformat)
-- ["Datumsformat-Spezifikation"](guides/date-format.md)
+- [Setting up Scale](guides/configuring-time-scale.md#dateformat)
+- [Date Format Specification](guides/date-format.md)
 
 ### Change log
-- veraltet seit Version 6.2
-
+- seit v6.2 veraltet

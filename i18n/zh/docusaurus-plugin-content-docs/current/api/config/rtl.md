@@ -1,14 +1,14 @@
 ---
 sidebar_label: rtl
-title: rtl config
-description: "切换 gantt 到从右到左模式"
+title: rtl 配置
+description: "将甘特图切换为从右到左模式"
 ---
 
-# rtl
+# 从右到左
 
 ### Description
 
-@short: 切换 gantt 到从右到左模式
+@short: 将甘特图切换为从右到左模式
 
 @signature: rtl: boolean
 
@@ -33,18 +33,18 @@ gantt.config.layout = {
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**默认值:** false
 
 ### Related samples
-- [Right to left gantt](https://docs.dhtmlx.com/gantt/samples/10_layout/04_rtl.html)
+- [从右到左的甘特图](https://docs.dhtmlx.com/gantt/samples/10_layout/04_rtl.html)
 
 ### Details
 
-将此选项设置为 **true** 会将时间轴的时间刻度方向和 grid 的行顺序切换为从右到左。
+将配置选项设为 **true** 将把时间线中的时间刻度方向以及网格中的行顺序改为从右到左。
 
-此设置不会自动更新 gantt 的布局配置，因此需要您自行调整布局以交换 grid 和时间轴的位置。
+它不会影响甘特图的 [布局](api/config/layout.md)，因此你需要重新定义布局，以便交换网格和时间线的位置。
 
-您可能还需要[调整 gantt 中标签的文本方向](https://developer.mozilla.org/en-US/docs/Web/CSS/direction)。
+你也可能希望为甘特图中的标签文本设置方向：[为甘特图中的标签文本设置方向](https://developer.mozilla.org/en-US/docs/Web/CSS/direction)。
 
 ### Related Guides
 - [RTL（从右到左）模式](guides/rtl-mode.md)

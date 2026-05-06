@@ -1,23 +1,23 @@
 ---
 sidebar_label: locate
 title: locate method
-description: "根据给定的 HTML 事件检索任务的 id"
+description: "从指定的 HTML 事件中获取任务的 ID"
 ---
 
 # locate
 
 ### Description
 
-@short: 根据给定的 HTML 事件检索任务的 id
+@short: 从指定的 HTML 事件中获取任务的 ID
 
 @signature: locate: (e: Event) =\> string | number
 
 ### Parameters
 
-- `e` - (required) *Event* - 原生事件对象
+- `e` - (必填) *Event* - 原生事件
 
 ### Returns
-- ` id` - (string | number) - 任务的标识符
+- ` id` - (string | number) - 任务 ID
 
 ### Example
 
@@ -34,4 +34,3 @@ gantt.$container.addEventListener("mouseover", function(event){
 
 ### Related API
 - [task_attribute](api/config/task_attribute.md)
-

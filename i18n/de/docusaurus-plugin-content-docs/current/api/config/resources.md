@@ -8,7 +8,7 @@ description: "definiert zusätzliche Einstellungen für den resource store"
 
 ### Description
 
-@short: Definiert zusätzliche Einstellungen für den resource store
+@short: Definiert eine zusätzliche Konfiguration für den Ressourcen-Speicher
 
 @signature: resources: boolean | \{ dataprocessor_assignments?: boolean; dataprocessor_resources?: boolean; editable_resource_diagram?: boolean; resource_store?: \{ type?: string; initItem?: ((item: any) =\> any); fetchTasks?: boolean; \}; lightbox_resources?(resourceArray: any): any; \}
 
@@ -49,21 +49,21 @@ gantt.config.resources = {
 
 ### Details
 
-Die **resources**-Einstellung ist ein Objekt, das mehrere Optionen umfasst:
+Die Eigenschaft **resources** stellt ein Objekt mit einer Reihe von Attributen dar:
 
-- **dataprocessor_assignments** - (*boolean*) - bestimmt, ob Änderungen an resource assignments als separate Einträge mit persistenten IDs an den DataProcessor gesendet werden
-- **dataprocessor_resources** - (*boolean*) - steuert, ob Änderungen an resource Objekten als separate Einträge mit persistenten IDs an den DataProcessor gesendet werden
-- **editable_resource_diagram** - (*boolean*) - steuert, ob resource assignments direkt im resource diagram bearbeitet werden können
-- **resource_store** - (*object*) - richtet den Standard-resource datastore ein, mit folgenden Eigenschaften:
-    - **_type?_** - (*string*) - optional, akzeptiert nur den festen Wert **"treeDataStore"**. Wird dieser Wert gesetzt, unterstützt der datastore hierarchische Daten mit **id** als Primärschlüssel und **parent** als Referenz auf die Eltern-id. Jeder andere Wert führt zu einem flachen List-datastore.
-    - **_initItem?_** - (*Function*): any - optional, erlaubt die Vorverarbeitung von Items, die in den datastore geladen werden, nützlich zum Setzen von Standardwerten. Die Funktion erhält:
-        - **_item_** - (*any*) - das zu verarbeitende resource Item
-    - **_fetchTasks?_** - (*boolean*) - optional, aktiviert die Anzeige aller einem resource zugewiesenen Tasks im resource view panel. Funktioniert sowohl für resource diagram als auch resource histogram Layouts.
-- **lightbox_resources? (resourceArray): any** - optional, eine Funktion, die alle resources erhält und ein Array von resources zurückgibt, die im resource control der lightbox angezeigt werden sollen. Standardmäßig werden nur resources ohne Unterressourcen einbezogen.
-    - **_resourceArray_** - (*any*) - ein Array von resource Objekten
+- **dataprocessor_assignments** - (*boolean*) - definiert, ob bearbeitete Ressourcen-Zuweisungen an den DataProcessor als separate Einträge mit persistierenden IDs gesendet werden können
+- **dataprocessor_resources** - (*boolean*) - definiert, ob bearbeitete Ressourcen-Objekte an den DataProcessor als separate Einträge mit persistierenden IDs gesendet werden können
+- **editable_resource_diagram** - (*boolean*) - definiert, ob Ressourcen-Zuweisungen im Ressourcen-Diagramm bearbeitbar sind
+- **resource_store** - (*object*) - erstellt den Standard-Ressourcen-Datastore. Das Objekt enthält die folgenden Eigenschaften:
+    - **_type?_** - (*string*) - optional, akzeptiert nur einen festen Wert **"treeDatastore"**. Wenn type:"treeDatastore" angegeben ist, unterstützt der Datastore hierarchische Daten, wobei die Eigenschaft **id** als Primärschlüssel dient und **parent** als Verknüpfung zur Eltern-ID. Anderer Wert erzeugt einen flachen Listen-Datastore.
+    - **_initItem?_** - (*Function*): any - optional, bereitet Elemente vor, die in den Datenspeicher geladen werden. Es ist ein guter Ort, um die Standardwerte der Datastore-Einträge festzulegen. Die Funktion nimmt folgenden Parameter entgegen:
+        - **_item_** - (*any*) - das Ressourcen-Item
+    - **_fetchTasks?_** - (*boolean*) - optional, aktiviert die Anzeige aller Aufgaben, die einer bestimmten Ressource zugewiesen sind, im Ressourcen-Ansichtspanel. Diese Funktionalität funktioniert sowohl für das Ressourcen-Diagramm als auch für das Ressourcen-Histogramm-Layout.
+- **lightbox_resources? (resourceArray): any** - optional, eine Funktion, die alle Ressourcen als Argument nimmt und ein Array von Ressourcen zurückgeben muss, die in der Ressourcensteuerung des Lightbox verfügbar sein sollen. Standardmäßig wird das Steuerungselement mit Ressourcen gefüllt, die keine Unterressourcen haben. 
+    - **_resourceArray_** - (*any*) - ein Array mit Ressourcen
 
 ### Related Guides
-- ["Ressourcenmanagement"](guides/resource-management.md)
+- [Resource Management](guides/resource-management.md)
 
 ### Change log
 - hinzugefügt in v8.0

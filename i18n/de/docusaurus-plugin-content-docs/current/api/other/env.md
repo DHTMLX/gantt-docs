@@ -1,7 +1,7 @@
 ---
 sidebar_label: env
-title: env config
-description: "eine Sammlung von Flags, die die aktuelle Umgebung anzeigen"
+title: env Konfiguration
+description: "eine Reihe von Flags, die die aktuelle Umgebung beschreiben"
 ---
 
 # env
@@ -22,16 +22,16 @@ if (gantt.env.isEdge) {
 
 ### Details
 
-Hier sind die Flags, auf die du stoßen könntest:
+Die möglichen Flags lauten:
 
-- isChrome    - true, wenn der Browser Chrome ist
-- isSafari    - true, wenn der Browser Safari ist
-- isEdge    - true, wenn der Browser Edge ist
-- isSalesforce - true, wenn Gantt innerhalb einer SalesForce-App läuft
-- isFF        - true, wenn der Browser Firefox ist
-- isIE        - true, wenn der Browser Internet Explorer ist
-- isOpera    - true, wenn der Browser Opera ist
-- isIPad    - true, wenn der Browser Safari auf einem iPad ist
+- isChrome    - auf true gesetzt, wenn der Browser Chrome ist
+- isSafari    - auf true gesetzt, wenn der Browser Safari ist
+- isEdge      - auf true gesetzt, wenn der Browser Edge ist
+- isSalesforce - auf true gesetzt, wenn Gantt innerhalb einer SalesForce-App läuft
+- isFF        - auf true gesetzt, wenn der Browser Firefox ist
+- isIE        - auf true gesetzt, wenn der Browser Internet Explorer ist
+- isOpera     - auf true gesetzt, wenn der Browser Opera ist
+- isIPad      - auf true gesetzt, wenn der Browser Safari auf IPad ist
 
 ### Change log
 - hinzugefügt in Version 4.0

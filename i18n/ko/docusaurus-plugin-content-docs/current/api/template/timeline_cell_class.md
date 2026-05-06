@@ -1,24 +1,24 @@
 ---
 sidebar_label: timeline_cell_class
 title: timeline_cell_class template
-description: "타임라인 영역 내 셀에 적용되는 CSS 클래스를 정의합니다."
+description: "타임라인 영역의 셀에 적용될 CSS 클래스를 지정합니다"
 ---
 
 # timeline_cell_class
 
 ### Description
 
-@short: 타임라인 영역 내 셀에 적용되는 CSS 클래스를 정의합니다.
+@short: 타임라인 영역의 셀에 적용될 CSS 클래스를 지정합니다
 
 @signature: timeline_cell_class: (item: any, date: Date) =\> string | void;
 
 ### Parameters
 
-- `item` - (required) *Task* - | object        행과 연결된 작업 또는 리소스 객체
-- `date` - (required) *Date* - 셀의 특정 날짜
+- `item` - (필수) *Task | 객체* - 행에 할당된 작업의 객체 또는 자원 객체 중 하나
+- `date` - (필수) *Date* - 셀의 날짜
 
 ### Returns
-- ` text` - (string | void) - 주어진 item에 대한 CSS 클래스 이름
+- ` text` - (string | void) - 해당 항목에 대한 CSS 클래스
 
 ### Example
 
@@ -35,11 +35,11 @@ gantt.templates.timeline_cell_class = function(task,date){
 ~~~
 
 ### Related samples
-- [Highlighting weekends](https://docs.dhtmlx.com/gantt/samples/04_customization/06_highlight_weekend.html)
+- [주말 하이라이트](https://docs.dhtmlx.com/gantt/samples/04_customization/06_highlight_weekend.html)
 
 ### Details
 
-[work time 계산](guides/working-time.md)을 할 때는 고정 값 대신 [isWorkTime](api/method/isworktime.md)를 사용하는 것이 좋습니다:
+Note that while using [work time calculations](guides/working-time.md), you can use [isWorkTime](api/method/isworktime.md) instead of hardcoded values:
 
 ~~~js
 gantt.config.work_time = true;
@@ -58,6 +58,5 @@ gantt.templates.timeline_cell_class = function(task,date){
 
 ### Related Guides
 - [타임라인 영역의 템플릿](guides/timeline-templates.md)
-- [타임 슬롯 하이라이트하기](guides/highlighting-time-slots.md)
+- [시간 슬롯 하이라이트](guides/highlighting-time-slots.md)
 - [작업 시간 계산](guides/working-time.md)
-

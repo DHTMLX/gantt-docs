@@ -1,14 +1,14 @@
 ---
 sidebar_label: link_arrow_size
-title: link_arrow_size config
-description: "setzt die Größe des Link-Pfeils"
+title: link_arrow_size Konfiguration
+description: "Legt die Größe des Link-Pfeils fest"
 ---
 
 # link_arrow_size
 
 ### Description
 
-@short: Setzt die Größe des Link-Pfeils
+@short: Legt die Größe des Link-Pfeils fest
 
 @signature: link_arrow_size: number
 
@@ -23,11 +23,11 @@ gantt.init("gantt_here");
 
 ### Details
 
-Diese Eigenschaft legt die Größe des HTML-Elements für den Link-Pfeil fest, ändert jedoch nicht die tatsächliche Größe des Pfeils.<br>
-Um das Aussehen des Pfeils zu verändern, sind Anpassungen im CSS erforderlich.
+Die Eigenschaft legt die Größe des HTML-Elements fest und ändert nicht die tatsächliche Größe des Link-Pfeils.
+Um sie zu ändern, müssen Sie CSS verwenden.
 
-Schauen Sie sich das Beispiel an, um die für verschiedene Skins angewendeten Styles zu sehen:
+Überprüfen Sie das Beispiel, um die Stile für verschiedene Skins zu finden:
 
 :::note
-Sample: [Skins](https://snippet.dhtmlx.com/hb0be53m) 
+sample: [Skins](https://snippet.dhtmlx.com/hb0be53m)
 :::

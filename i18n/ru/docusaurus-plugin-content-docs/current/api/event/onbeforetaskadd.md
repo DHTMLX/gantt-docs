@@ -1,38 +1,37 @@
 ---
 sidebar_label: onBeforeTaskAdd
-title: onBeforeTaskAdd event
-description: "срабатывает непосредственно перед добавлением новой задачи в Gantt chart"
+title: onBeforeTaskAdd событие
+description: "срабатывает до добавления новой задачи на диаграмме Ганта"
 ---
 
 # onBeforeTaskAdd
 
 ### Description
 
-@short: Срабатывает непосредственно перед добавлением новой задачи в Gantt chart
+@short: Срабатывает до добавления новой задачи на диаграмме Ганта
 
 @signature: onBeforeTaskAdd: (id: string | number, task: Task) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - ID задачи
+- `id` - (required) *string | number* - идентификатор задачи
 - `task` - (required) *Task* - объект задачи
 
 ### Returns
-- ` result` - (boolean) - определяет, должно ли выполняться стандартное действие события (<b>true</b>) или быть остановлено (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (true) или отменено (false)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeTaskAdd", function(id,task){
-    //любая кастомная логика здесь
+    //any custom logic here
     return true;
 });
 ~~~
 
 ### Details
 
-Это событие можно заблокировать. Возврат *false* предотвратит добавление задачи.
+Событие можно заблокировать. Возвращение false отменяет добавление задачи.
 
 ### Related API
 - [addTask](api/method/addtask.md)
-

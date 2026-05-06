@@ -1,20 +1,20 @@
 ---
 sidebar_label: marker_class
-title: marker_class template
-description: "определяет CSS класс, назначаемый маркерам"
+title: marker_class шаблон
+description: "определяет CSS класс, который будет применяться к маркерам"
 ---
 
 # marker_class
 
 ### Description
 
-@short: Определяет CSS класс, назначаемый маркерам
+@short: Определяет CSS класс, который будет применяться к маркерам
 
-@signature: marker_class: (marker: any) =\> void;
+@signature: marker_class: (marker: any) => void;
 
 ### Parameters
 
-- `marker` - (required) *object* - объект конфигурации для маркера
+- `marker` - (required) *object* - объект конфигурации маркера
 
 ### Example
 
@@ -29,4 +29,4 @@ gantt.templates.marker_class = function(marker){
 ~~~
 
 ### Related Guides
-- [Добавление вертикальных маркеров](guides/markers.md#stylingmarkers)
+- [Добавление вертикальных маркеров](guides/markers.md#styling-markers)

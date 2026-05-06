@@ -1,7 +1,7 @@
 ---
 sidebar_label: resource_property
 title: resource_property config
-description: "定义任务对象中哪个属性保存与 resourceGrid/Timeline/Histogram/Calendar 关联的资源 ID"
+description: "定义 task 对象中存储与 resourceGrid/Timeline/Histogram/Calendar 相关的资源 ID 的属性"
 ---
 
 # resource_property
@@ -10,7 +10,7 @@ description: "定义任务对象中哪个属性保存与 resourceGrid/Timeline/H
 :::
 ### Description
 
-@short: 定义任务对象中哪个属性保存与 resourceGrid/Timeline/Histogram/Calendar 关联的资源 ID
+@short: 定义 task 对象中存储与 resourceGrid/Timeline/Histogram/Calendar 相关的资源 ID 的属性
 
 @signature: resource_property: string
 
@@ -69,22 +69,21 @@ resourcesStore.parse([
     {id: 3, text: "Anna"},
     {id: 4, text: "Bill"}
 ]);
-~~~
+~~~ 
 
-**Default value:** "owner_id"
+**默认值:** "owner_id"
 
 ### Related samples
-- [Resource load diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
-- [Templates of the Resource diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/05_resource_usage_templates.html)
+- [资源负载图](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
+- [资源图模板](https://docs.dhtmlx.com/gantt/samples/11_resources/05_resource_usage_templates.html)
 
 ### Details
 
-指定任务对象中包含与 resourceGrid/Timeline/Histogram/Calendar 关联的资源 ID 的属性。此设置可以在运行时更新。
+指定用于存储与 resourceGrid/Timeline/Histogram/Calendar 相关的资源 ID 的任务对象属性。可以在运行时进行修改。
 
 ### Related API
 - [resource_store](api/config/resource_store.md)
 
 ### Related Guides
 - [资源管理](guides/resource-management.md)
-- [工作时间计算](guides/working-time.md)
-
+- [工作时间计算](guides/working-time.md#assigningcalendartoresource)

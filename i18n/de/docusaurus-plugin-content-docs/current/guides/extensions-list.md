@@ -1,17 +1,17 @@
----
-title: "Vollständige Liste der Erweiterungen"
-sidebar_label: "Vollständige Liste der Erweiterungen"
----
+--- 
+title: "Vollständige Liste der Erweiterungen" 
+sidebar_label: "Vollständige Liste der Erweiterungen" 
+--- 
 
 # Vollständige Liste der Erweiterungen
 
-dhtmlxGantt bietet eine Vielzahl von Erweiterungen, die die Grundfunktionalität erweitern.
+dhtmlxGantt enthält eine Reihe von Erweiterungen, die dem Standardverhalten zusätzliche Funktionen hinzufügen.
 
-Um eine Erweiterung zu aktivieren, schalten Sie einfach das Plugin mit der Methode [gantt.plugins](api/method/plugins.md) ein.
+Um eine Erweiterung zu verwenden, sollten Sie das Plugin mithilfe der Methode [gantt.plugins](api/method/plugins.md) aktivieren.
 
-## Erweitertes Drag-and-Drop {#advanceddragndrop}
+## Fortgeschrittenes Drag-and-Drop
 
-Mit dieser Erweiterung können Sie Aufgaben per Drag-and-Drop erstellen und auswählen.
+Bietet die Möglichkeit, Aufgaben per Drag-and-Drop zu erstellen und auszuwählen.
 
 ~~~js
 gantt.plugins({
@@ -19,24 +19,21 @@ gantt.plugins({
 });
 ~~~
 
-#### Verwandte Ressourcen
+#### Zugehörige Ressourcen
 
-Artikel: [Creating/Selecting Tasks with DnD](guides/advanced-dnd.md)
-
+Artikel: [Erstellen/Auswählen von Aufgaben mit DnD](guides/advanced-dnd.md)
 
 API: [click_drag](api/config/click_drag.md)
 
+Beispiel: [Neue Aufgaben durch Drag-and-Drop erstellen](https://docs.dhtmlx.com/gantt/samples/02_extensions/24_click_drag.html)
 
-[Create new tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/24_click_drag.html)
+## Automatische Planung {#autoscheduling}
 
-
-## Automatische Terminplanung {#autoscheduling}
-
-:::info
+:::note
 Diese Erweiterung ist nur in der PRO-Version verfügbar
 :::
 
-Diese Funktion plant Aufgaben automatisch basierend auf den Beziehungen zwischen ihnen.
+Ermöglicht das automatische Planen von Aufgaben abhängig von den Beziehungen zwischen ihnen.
 
 ~~~js
 gantt.plugins({
@@ -44,24 +41,22 @@ gantt.plugins({
 });
 ~~~
 
-#### Verwandte Ressourcen
+#### Zugehörige Ressourcen
 
-Artikel: [Auto Scheduling](guides/auto-scheduling.md)
-
+Artikel: [Automatische Planung](guides/auto-scheduling.md)
 
 API: [auto_scheduling](api/config/auto_scheduling.md)
 
+Beispiel: [Auto Scheduling-Erweiterung](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
-[Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
+## Kritischer Pfad
 
-
-## Kritischer Pfad {#criticalpath}
-
-:::info
+:::note
 Diese Erweiterung ist nur in der PRO-Version verfügbar
 :::
 
-Zeigt die Abfolge von Aufgaben an, die rechtzeitig abgeschlossen werden müssen, um Verzögerungen im gesamten Projekt zu vermeiden. Es wird außerdem die kürzest mögliche Projektdauer angezeigt.
+Stellt eine Abfolge von Aufgaben dar, die nicht verzögert werden darf, ohne die Frist des gesamten Projekts zu beeinflussen.
+Der kritische Pfad bestimmt auch die kürzeste Zeit, die das Projekt dauern kann.
 
 ~~~js
 gantt.plugins({
@@ -69,20 +64,17 @@ gantt.plugins({
 });
 ~~~
 
-#### Verwandte Ressourcen
+#### Zugehörige Ressourcen
 
-Artikel: [Critical Path](guides/critical-path.md)
-
+Artikel: [Kritischer Pfad](guides/critical-path.md)
 
 API: [highlight_critical_path](api/config/highlight_critical_path.md)
 
+Beispiel: [Kritischer Pfad](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
-[Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
+## Drag-Timeline
 
-
-## Zeitachse ziehen {#dragtimeline}
-
-Ermöglicht das Scrollen durch die Zeitachsenansicht per Ziehen mit der Maus.
+Ermöglicht das Scrollen von Timeline-Ansichten durch Ziehen mit der Maus.
 
 ~~~js
 gantt.plugins({
@@ -90,21 +82,19 @@ gantt.plugins({
 });
 ~~~
 
-#### Verwandte Ressourcen
+#### Zugehörige Ressourcen
 
 API: [drag_timeline](api/config/drag_timeline.md)
 
+Beispiel: [Drag-Timeline](https://docs.dhtmlx.com/gantt/samples/02_extensions/27_drag_timeline.html)
 
-[Drag timeline](https://docs.dhtmlx.com/gantt/samples/02_extensions/27_drag_timeline.html)
+## Zusätzliche Overlay-Ebene
 
-
-## Zusätzliche Überlagerung {#overlay}
-
-:::info
+:::note
 Diese Erweiterung ist nur in der PRO-Version verfügbar.
 :::
 
-Ermöglicht das Hinzufügen einer zusätzlichen Ebene über das Gantt-Diagramm, um benutzerdefinierte Inhalte zu platzieren.
+Bietet die Möglichkeit, eine zusätzliche Ebene über dem Gantt-Diagramm zu platzieren, um benutzerdefinierten Inhalt hineinzufügen.
 
 ~~~js
 gantt.plugins({
@@ -112,31 +102,29 @@ gantt.plugins({
 });
 ~~~
 
-#### Verwandte Ressourcen
+#### Zugehörige Ressourcen
 
-Artikel: [Custom Elements in Timeline Area](guides/baselines.md#extraoverlayforthechart)
+Artikel: [Benutzerdefinierte Elemente im Timeline-Bereich](guides/baselines.md#extra-overlay-for-the-chart)
 
+Beispiel: [Gantt-Diagramm mit Overlay und Zoom (S-Kurve)](https://docs.dhtmlx.com/gantt/samples/02_extensions/21_overlay.html)
 
-[Gantt chart with overlay and zoom (S-Curve)](https://docs.dhtmlx.com/gantt/samples/02_extensions/21_overlay.html)
+## Export-Service
 
-
-## Exportdienst {#exportservice}
-
-Aktiviert den Online-Exportdienst.
+Bietet die Möglichkeit, den Online-Export-Service zu aktivieren.
 
 ~~~js
 gantt.plugins({
-      export_api: true
+    export_api: true
 });
 ~~~
 
-#### Verwandte Ressourcen
+#### Zugehörige Ressourcen
 
-Artikel: [Exporting and Importing Data](guides/export-common.md)
+Artikel: [Daten exportieren und importieren](guides/export-common.md)
 
 ## Vollbildmodus {#fullscreen}
 
-Zeigt das Gantt-Diagramm im Vollbildmodus an.
+Zeigt Gantt im Vollbildmodus an.
 
 ~~~js
 gantt.plugins({
@@ -144,17 +132,15 @@ gantt.plugins({
 });
 ~~~
 
-#### Verwandte Ressourcen
+#### Zugehörige Ressourcen
 
-Artikel: [Full Screen Mode](guides/fullscreen-mode.md) 
+Artikel: [Vollbildmodus](guides/fullscreen-mode.md) 
 
+Beispiel: [Vollbild](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
 
-[Full Screen](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
+## Gruppierung
 
-
-## Gruppierung {#grouping}
-
-:::info
+:::note
 Diese Erweiterung ist nur in der PRO-Version verfügbar
 :::
 
@@ -166,20 +152,17 @@ gantt.plugins({
 });
 ~~~
 
-#### Verwandte Ressourcen
+#### Zugehörige Ressourcen
 
-Artikel: [Grouping Tasks](guides/grouping.md)
-
+Artikel: [Aufgaben gruppieren](guides/grouping.md)
 
 API: [groupBy](api/method/groupby.md)
 
-
-[Tasks grouping](https://docs.dhtmlx.com/gantt/samples/02_extensions/08_tasks_grouping.html)
-
+Beispiel: [Aufgaben gruppieren](https://docs.dhtmlx.com/gantt/samples/02_extensions/08_tasks_grouping.html)
 
 ## Tastaturnavigation {#keyboardnavigation}
 
-Bietet eine Navigation im Gantt-Diagramm über die Tastatur.
+Ermöglicht das Navigieren im Gantt-Diagramm mit der Tastatur.
 
 ~~~js
 gantt.plugins({
@@ -187,15 +170,13 @@ gantt.plugins({
 });
 ~~~
 
-#### Verwandte Ressourcen
+#### Zugehörige Ressourcen
 
-Artikel: [Accessibility](guides/accessibility.md#keyboardnavigation), [Keyboard Navigation](guides/keyboard-navigation.md)
-
+Artikel: [Barrierefreiheit](guides/accessibility.md), [Tastaturnavigation](guides/keyboard-navigation.md)
 
 API: [keyboard_navigation](api/config/keyboard_navigation.md),[keyboard_navigation_cells](api/config/keyboard_navigation_cells.md)
 
-
-## Mehrfachauswahl von Aufgaben {#multitaskselection}
+## Mehrfachauswahl {#multitaskselection}
 
 Ermöglicht das gleichzeitige Auswählen mehrerer Aufgaben im Gantt-Diagramm.
 
@@ -205,20 +186,17 @@ gantt.plugins({
 });
 ~~~
 
-#### Verwandte Ressourcen
+#### Zugehörige Ressourcen
 
-Artikel: [Multi-Task Selection](guides/multiselection.md)
-
+Artikel: [Mehrfachauswahl von Aufgaben](guides/multiselection.md)
 
 API: [multiselect](api/config/multiselect.md)
 
+Beispiel: [Mehrfachauswahl und Einrücken/Ausrücken von Aufgaben](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
-[Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
+## Schnellinfo
 
-
-## Quick info {#quickinfo}
-
-Zeigt ein Popup mit Aufgabendetails an.
+Bietet ein Popup-Fenster mit Details zur Aufgabe.
 
 ~~~js
 gantt.plugins({
@@ -226,20 +204,17 @@ gantt.plugins({
 });
 ~~~
 
-#### Verwandte Ressourcen
+#### Zugehörige Ressourcen
 
-Artikel: [Templates of the 'Quick Info' Extension (Touch Support)](guides/touch-templates.md), 
+Artikel: [Vorlagen der 'Quick Info'-Erweiterung (Touch-Unterstützung)](guides/touch-templates.md), 
 
+[Schnelle Infos (Touch-Unterstützung)](guides/quick-info.md)
 
-[Quick Info (Touch Support)](guides/quick-info.md)
+Beispiel: [QuickInfo-Erweiterung](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
 
+## Tooltip
 
-[QuickInfo extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
-
-
-## Tooltip {#tooltip}
-
-Fügt zusätzliche Informationen für Benutzer hinzu, ohne die Ansicht zu überladen.
+Bietet die Möglichkeit, zusätzliche Informationen für Benutzer bereitzustellen, ohne den Bildschirm mit Text zu überladen.
 
 ~~~js
 gantt.plugins({
@@ -247,17 +222,15 @@ gantt.plugins({
 });
 ~~~
 
-#### Verwandte Ressourcen
+#### Zugehörige Ressourcen
 
-Artikel: [Tooltips for Gantt Elements](guides/tooltips.md)
+Artikel: [Tooltips für Gantt-Elemente](guides/tooltips.md)
 
+Beispiel: [Tooltip](https://docs.dhtmlx.com/gantt/samples/02_extensions/02_tooltip.html)
 
-[Tooltip](https://docs.dhtmlx.com/gantt/samples/02_extensions/02_tooltip.html)
+## Undo
 
-
-## Rückgängig machen (Undo) {#undo}
-
-Bietet Rückgängig- und Wiederherstellen-Funktionen für vorgenommene Änderungen.
+Ermöglicht das Rückgängig-/Wiederherstellen der vorgenommenen Änderungen.
 
 ~~~js
 gantt.plugins({
@@ -265,20 +238,17 @@ gantt.plugins({
 });
 ~~~
 
-#### Verwandte Ressourcen
+#### Zugehörige Ressourcen
 
 Artikel: [Undo/Redo Functionality](guides/undo-redo.md)
 
-
 API: [undo](api/config/undo.md), [redo](api/config/redo.md)
 
+Beispiel: [Rückgängig/Wiederherstellen von Änderungen im Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
-[Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
+## Vertikale Marker
 
-
-## Vertikaler Marker {#verticalmarker}
-
-Hebt bestimmte Daten oder Zeiträume hervor.
+Hebt bestimmte Daten oder Datumsbereiche hervor.
 
 ~~~js
 gantt.plugins({
@@ -286,13 +256,10 @@ gantt.plugins({
 });
 ~~~
 
-#### Verwandte Ressourcen
+#### Zugehörige Ressourcen
 
-Artikel: [Adding Vertical Markers](guides/markers.md)
-
+Artikel: [Vertikale Marker hinzufügen](guides/markers.md)
 
 API: [addMarker](api/method/addmarker.md),[show_markers](api/config/show_markers.md)
 
-
-[Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
-
+Beispiel: [Heute- und Statuszeilen im Gantt (vertikale Marker)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)

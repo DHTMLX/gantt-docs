@@ -1,30 +1,29 @@
 ---
 sidebar_label: onAfterLinkUpdate
-title: onAfterLinkUpdate event
-description: "사용자가 링크를 수정한 직후에 트리거됩니다."
+title: onAfterLinkUpdate 이벤트
+description: "사용자가 링크를 업데이트한 후에 발생합니다"
 ---
 
 # onAfterLinkUpdate
 
 ### Description
 
-@short: 사용자가 링크를 수정한 직후에 트리거됩니다.
+@short: 사용자가 링크를 업데이트한 후에 발생합니다
 
-@signature: onAfterLinkUpdate: (id: string | number, link: Link) =\> void;
+@signature: onAfterLinkUpdate: (id: string | number, link: Link) => void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - 링크의 고유 식별자
-- `link` - (required) *Link* - 업데이트된 링크 객체
+- `id` - (필수) *string | number* - 링크 ID
+- `link` - (필수) *Link* - 링크 객체
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAfterLinkUpdate", function(id,link){
-    //여기에 커스텀 로직을 작성할 수 있습니다.
+    // 여기에 코드 작성
 });
 ~~~
 
 ### Related API
 - [updateLink](api/method/updatelink.md)
-

@@ -1,29 +1,29 @@
 ---
 sidebar_label: onBeforeUndo
 title: onBeforeUndo event
-description: "Löst aus kurz bevor die Methode undo() ausgeführt wird"
+description: "Wird ausgelöst, bevor die undo()-Methode aufgerufen wird"
 ---
 
 # onBeforeUndo
 
 ### Description
 
-@short: Löst aus kurz bevor die Methode undo() ausgeführt wird
+@short: Wird ausgelöst, bevor die undo()-Methode aufgerufen wird
 
 @signature: onBeforeUndo: (action: any[]) =\> boolean;
 
 ### Parameters
 
-- `action` - (required) *array* - ein Array, das Kommando-Objekte enthält
+- `action` - (required) *array* - ein Array von Befehlsobjekten
 
 ### Returns
-- ` result` - (boolean) - bestimmt, ob die Standardaktion des Events fortgesetzt wird (true) oder gestoppt wird (false)
+- ` result` - (boolean) - definiert, ob die Standardaktion des Ereignisses ausgelöst wird (true) oder abgebrochen wird (false)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeUndo", function(action){
-    // Ihr Code hier
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
     return true;
 });
 ~~~
@@ -34,18 +34,18 @@ gantt.attachEvent("onBeforeUndo", function(action){
 ### Details
 
 :::note
- Dieses Event ist Teil der **undo**-Erweiterung, daher stellen Sie sicher, dass das [undo](guides/extensions-list.md#undo) Plugin aktiviert ist. Weitere Details finden Sie im Artikel ["Undo/Redo-Funktionalität"](guides/undo-redo.md). 
+Dieses Ereignis ist in der **undo**-Erweiterung definiert, daher müssen Sie das [undo](guides/extensions-list.md#undo)-Plugin aktivieren. Lesen Sie die Details im Artikel [Undo/Redo Functionality](guides/undo-redo.md). 
 :::
 
 
-Dieses Event kann blockiert werden. Die Rückgabe von *false* stoppt jegliche weitere Verarbeitung.
+Das Ereignis kann blockiert werden. Die Rückgabe von *false* beendet die weitere Verarbeitung.
 
-Der **action** Parameter ist ein Array von Kommando-Objekten, die jeweils folgende Attribute enthalten:
+Der **action**-Parameter stellt ein Array von Befehlsobjekten dar, von denen jedes die folgende Gruppe von Eigenschaften enthält:
  
-- **type** - (*string*) der Kommando-Typ: "add", "remove" oder "update"
-- **entity** - (*string*) die Art des geänderten Objekts: "task" oder "link"
-- **value** - (*object*) das Task- oder Link-Objekt nach der Änderung 
-- **oldValue** - (*object*) das Task- oder Link-Objekt vor der Änderung
+- **type** - (*string*) der Typ eines Befehls: "add/remove/update"
+- **entity** - (*string*) der Typ des geänderten Objekts: "task" oder "link"
+- **value** - (*object*) das geänderte Task-/Link-Objekt 
+- **oldValue** - (*object*) das Task-/Link-Objekt vor den Änderungen
 
 ### Related API
 - [undo](api/method/undo.md)
@@ -53,8 +53,7 @@ Der **action** Parameter ist ein Array von Kommando-Objekten, die jeweils folgen
 - [onBeforeUndoStack](api/event/onbeforeundostack.md)
 
 ### Related Guides
-- ["Undo/Redo-Funktionalität"](guides/undo-redo.md)
+- [Undo/Redo Functionality](guides/undo-redo.md)
 
 ### Change log
-- hinzugefügt in Version 4.0
-
+- Hinzugefügt in Version 4.0

@@ -1,23 +1,23 @@
 ---
 sidebar_label: Promise
-title: Promise method
-description: "Konstruktor für Promise-Objekte"
+title: Promise-Methode
+description: "Promise Objektkonstruktor"
 ---
 
 # Promise
 
 ### Description
 
-@short: Konstruktor für Promise-Objekte
+@short: Promise Objektkonstruktor
 
 @signature: Promise: new (executor: (resolve: (value?: any) =\> void, reject: (reason?: any) =\> void) =\> void) =\> Promise\<unknown\>
 
 ### Parameters
 
-- `executor` - (required) *function* - eine Callback-Funktion zur Einrichtung des Promise
+- `executor` - (erforderlich) *Funktion* - ein Callback, der verwendet wird, um das Promise zu initialisieren
 
 ### Returns
-- ` promise` - (object) - das resultierende Promise-Objekt
+- ` promise` - (Objekt) - das Promise-Objekt
 
 ### Example
 
@@ -33,4 +33,4 @@ new gantt.Promise(function(resolve, reject) {
 
 ### Details
 
-Dies ist der Promise-Objekt-Konstruktor von [Bluebird](http://bluebirdjs.com/docs/why-bluebird.html), der in der Gantt-Bibliothek enthalten ist.
+[Bluebird](http://bluebirdjs.com/docs/why-bluebird.html) Promise Objektkonstruktor, der zusammen mit der Gantt-Bibliothek bereitgestellt wird.

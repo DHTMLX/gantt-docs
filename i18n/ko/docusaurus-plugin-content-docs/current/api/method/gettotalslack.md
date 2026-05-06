@@ -1,25 +1,28 @@
 ---
 sidebar_label: getTotalSlack
-title: getTotalSlack method
-description: "작업의 총 slack을 반환합니다."
+title: getTotalSlack 메서드
+description: "작업의 총 여유 시간을 반환합니다"
 ---
 
 # getTotalSlack
+
 :::info
-이 기능은 PRO 에디션에서만 사용할 수 있습니다. 
+이 기능은 PRO 에디션에서만 사용할 수 있습니다.
 :::
+
+
 ### Description
 
-@short: 작업의 총 slack을 반환합니다.
+@short: 작업의 총 여유 시간을 반환합니다
 
 @signature: getTotalSlack: (task?: Task | string | number) =\> any
 
 ### Parameters
 
-- `task` - (optional) *Task | string | number* -        선택 사항, 작업 객체 또는 작업 ID
+- `task`- (optional) *Task | string | number* - 선택적이며, 작업 객체 또는 해당 ID
 
 ### Returns
-- ` total_slack` - (number | object) - 작업의 총 slack 값을 반환하거나, <i>task</i> 매개변수가 제공되지 않은 경우 작업 ID와 해당 총 slack 값을 매핑한 객체를 반환합니다.
+- ` total_slack` - (number | object) - 작업의 총 여유 시간 또는, 만약 <i>task</i> 매개변수가 지정되지 않으면, 각 작업의 ID를 키로 하고 해당 작업의 총 여유 시간을 값으로 하는 객체
 
 ### Example
 
@@ -36,15 +39,13 @@ gantt.getTotalSlack(7);
 ### Details
 
 :::note
- 이 메서드는 **critical_path** 확장의 일부이므로 [gantt.plugins](api/method/plugins.md) 메서드를 통해 [critical_path](guides/extensions-list.md#criticalpath) 플러그인을 활성화해야 합니다. 자세한 내용은 [Critical Path](guides/critical-path.md) 문서를 참조하세요. 
+이 메서드는 **critical_path** 확장에서 정의되어 있으므로, [critical_path](guides/extensions-list.md#critical-path) 플러그인을 [gantt.plugins](api/method/plugins.md) 메서드를 사용해 활성화해야 합니다. 자세한 내용은 [Critical Path](guides/critical-path.md) 문서를 참조하십시오.
 :::
 
-
-총 slack은 작업 기간을 늘리거나 타임라인 상에서 이동시켜도 전체 프로젝트 완료가 지연되지 않는 시간을 나타냅니다.
+총 여유 시간은 작업의 지속 기간을 늘리거나 타임라인에서 해당 작업을 이동시키되 전체 프로젝트의 종료 시점에 영향을 주지 않는 데 사용할 수 있는 시간의 기간입니다.
 
 ### Related API
 - [getFreeSlack](api/method/getfreeslack.md)
 
 ### Related Guides
 - [Critical Path](guides/critical-path.md#gettingfreeandtotalslack)
-

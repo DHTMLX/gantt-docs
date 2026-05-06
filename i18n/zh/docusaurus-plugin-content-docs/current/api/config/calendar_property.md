@@ -1,14 +1,14 @@
 ---
 sidebar_label: calendar_property
 title: calendar_property config
-description: "设置用于将日历关联到任务或任务组的属性名称"
+description: "更改影响日历绑定到任务/任务组的属性名称"
 ---
 
 # calendar_property
 
 ### Description
 
-@short: 设置用于将日历关联到任务或任务组的属性名称
+@short: 改变影响日历绑定到一个任务或一组任务的属性名称
 
 @signature: calendar_property: string
 
@@ -43,5 +43,4 @@ gantt.config.calendar_property = "property_name";
 - [isWorkTime](api/method/isworktime.md)
 
 ### Related Guides
-- [工作时间计算](guides/working-time.md#unsettingtheworkingtime)
-
+- [工作时间计算](guides/working-time.md)

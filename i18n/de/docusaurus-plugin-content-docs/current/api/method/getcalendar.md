@@ -1,22 +1,23 @@
 ---
 sidebar_label: getCalendar
-title: getCalendar method
-description: "rufen Sie einen Arbeitszeitkalender anhand seiner ID ab"
+title: getCalendar Methode
+description: "holt den Arbeitszeitkalender anhand der ID"
 ---
 
 # getCalendar
 
 ### Description
 
-@short: Rufen Sie einen Arbeitszeitkalender anhand seiner ID ab
+@short: Holt den Arbeitszeitkalender anhand der ID
 
 @signature: getCalendar: (calendarId?: string | number) =\> Calendar
 
 ### Parameters
-- `calendarId` - (optionale) *string | number* - optionale ID des globalen Kalenders oder "global"
+
+-  `calendarId` - (string | number) - optional, die ID des globalen Kalenders oder "global"
 
 ### Returns
-- ` config` - (Calendar) - das Kalenderobjekt
+- ` config` - (Calendar) - Kalender-Objekt
 
 ### Example
 
@@ -26,9 +27,9 @@ var calendar = gantt.getCalendar(calendarId);
 
 ### Details
 
-Das im obigen Beispiel zurückgegebene Objekt ist ein [Kalenderobjekt](api/other/calendar.md).
+Das zurückgegebene Objekt für das obige Beispiel ist ein [Kalender-Objekt](api/other/calendar.md).
 
-Die Standardarbeitszeit ist wie folgt festgelegt:
+Die Standard-Arbeitszeit ist wie folgt:
 
 - Arbeitstage sind von Montag bis Freitag.
 - Arbeitszeiten sind von 08:00 bis 17:00.
@@ -38,8 +39,7 @@ Die Standardarbeitszeit ist wie folgt festgelegt:
 - [getTaskCalendar](api/method/gettaskcalendar.md)
 
 ### Related Guides
-- ["Arbeitszeitberechnung"](guides/working-time.md#multipleworktimecalendars)
+- [Berechnung der Arbeitszeit](guides/working-time.md)
 
 ### Change log
-- hinzugefügt in Version 4.2
-
+- Hinzugefügt in Version 4.2

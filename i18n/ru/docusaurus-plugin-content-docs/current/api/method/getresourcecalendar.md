@@ -1,25 +1,27 @@
 ---
 sidebar_label: getResourceCalendar
-title: getResourceCalendar method
-description: "получает календарь, назначенный конкретному ресурсу"
+title: getResourceCalendar метод
+description: "возвращает календарь, к которому привязан ресурс"
 ---
 
 # getResourceCalendar
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в версии PRO.
 :::
+
 ### Description
 
-@short: Получает календарь, назначенный конкретному ресурсу
+@short: Возвращает календарь, к которому привязан ресурс
 
-@signature: getResourceCalendar: (resource: any) =\> any
+@signature: getResourceCalendar: (resource: string | number | object) => any
 
 ### Parameters
 
-- `resource` - (required) *string | number | object* -        id ресурса или сам объект ресурса
+- `resource` - (required) *string | number | object* -        идентификатор или объект ресурса
 
 ### Returns
-- ` param` - (object) - объект календаря, связанный с ресурсом
+- ` param` - (object) - объект календаря
 
 ### Example
 
@@ -27,12 +29,13 @@ description: "получает календарь, назначенный кон
 var calendar = gantt.getResourceCalendar(mikeCalendarId);
 ~~~
 
+### Details
+
 ### Related API
 - [resource_calendars](api/config/resource_calendars.md)
 
 ### Related Guides
-- [Расчёт рабочего времени](guides/working-time.md#assigningcalendartoresource)
+- [Расчет рабочего времени](guides/working-time.md#assigningcalendartoresource)
 
 ### Change log
-- добавлено в v7.0
-
+- добавлено в версии 7.0

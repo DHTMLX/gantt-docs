@@ -1,7 +1,7 @@
 ---
 sidebar_label: scale_cell_class
-title: scale_cell_class template
-description: "Definiert die CSS-Klasse, die den Zellen im Zeitachsenbereich der Zeitskala zugewiesen wird"
+title: scale_cell_class Vorlage
+description: "Gibt die CSS-Klasse an, die auf Zellen der Zeitachse des Timeline-Bereichs angewendet wird"
 ---
 
 # scale_cell_class
@@ -14,14 +14,14 @@ description: "Definiert die CSS-Klasse, die den Zellen im Zeitachsenbereich der 
 
 ### Parameters
 
-- `date` - (required) *Date* - Das spezifische Datum, das von einer Zelle dargestellt wird
+- `date` - (erforderlich) *Datum* - das Datum einer Zelle
 
 ### Returns
-- ` text` - (string | void) - Eine CSS-Klasse, die auf das entsprechende Element angewendet wird
+- ` text` - (string | void) - eine CSS-Klasse für das betreffende Element
 
 ### Example
 
-~~~jsx
+~~~js
 <style>
 .weekend{ background: #f4f7f4 !important;}
 </style>
@@ -35,11 +35,11 @@ gantt.templates.scale_cell_class = function(date){
 ~~~
 
 ### Related samples
-- [Highlighting weekends](https://docs.dhtmlx.com/gantt/samples/04_customization/06_highlight_weekend.html)
+- [Wochenenden hervorheben](https://docs.dhtmlx.com/gantt/samples/04_customization/06_highlight_weekend.html)
 
 ### Details
 
-Beim Einsatz von [work time calculations](guides/working-time.md) ist es möglich, statt fester Werte auf [isWorkTime](api/method/isworktime.md) zurückzugreifen:
+Beachten Sie, dass Sie bei der Verwendung von [Arbeitszeitberechnungen](guides/working-time.md) stattdessen [isWorkTime](api/method/isworktime.md) verwenden können, anstelle fest codierter Werte:
 
 ~~~js
 gantt.config.work_time = true;
@@ -50,7 +50,7 @@ gantt.templates.scale_cell_class = function(date){
 };
 ~~~
 
-Wenn mehrere Skalen über die Eigenschaft [gantt.config.scales](api/config/scales.md) definiert sind, wirkt sich dieses Template nur auf die erste Skala aus. Um CSS-Klassen Zellen in anderen Skalen zuzuweisen, verwenden Sie das **css**-Attribut innerhalb der [gantt.config.scales](api/config/scales.md)-Konfiguration:
+Wenn Sie mehrere Skalen über die Eigenschaft [gantt.config.scales](api/config/scales.md) festgelegt haben, wird die Vorlage nur auf die erste Skala angewendet. Um die CSS-Klasse den Zellen jeder anderen Skala zuzuweisen, verwenden Sie das **css**-Attribut der Eigenschaft [gantt.config.scales](api/config/scales.md):
 
 ~~~js
 gantt.config.scales = [
@@ -71,9 +71,8 @@ gantt.config.scales = [
 - [timeline_cell_class](api/template/timeline_cell_class.md)
 
 ### Related Guides
-- ["Vorlagen für den Timeline-Bereich"](guides/timeline-templates.md)
-- ["Ausblenden von Zeiteinheiten in der Skala"](guides/custom-scale.md)
-- ["Hervorheben von Zeitfenstern"](guides/highlighting-time-slots.md)
-- ["Arbeitszeitberechnung"](guides/working-time.md)
-- ["Einrichten der Skala"](guides/configuring-time-scale.md#styling)
-
+- [Vorlagen des Timeline-Bereichs](guides/timeline-templates.md)
+- [Ausblenden von Zeiteinheiten in der Skala](guides/custom-scale.md)
+- [Hervorhebung von Zeitfenstern](guides/highlighting-time-slots.md)
+- [Berechnung der Arbeitszeit](guides/working-time.md)
+- [Skala einrichten](guides/configuring-time-scale.md#styling)

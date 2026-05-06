@@ -1,7 +1,7 @@
 ---
 sidebar_label: getTaskType
 title: getTaskType method
-description: "gibt den Typ einer Aufgabe zurück"
+description: "Gibt den Typ einer Aufgabe zurück"
 ---
 
 # getTaskType
@@ -14,7 +14,7 @@ description: "gibt den Typ einer Aufgabe zurück"
 
 ### Parameters
 
-- `task` - (required) *Task* - das Aufgabenobjekt
+- `task` - (erforderlich) *Task* - das Task-Objekt
 
 ### Returns
 - ` type` - (string) - der Typ der Aufgabe
@@ -27,10 +27,10 @@ var type = gantt.getTaskType(gantt.getTask(12));
 
 ### Details
 
-- Wenn die Eigenschaft **task.type** gesetzt und nicht leer ist, wird deren Wert zurückgegeben.
-- Ist **task.type** nicht definiert oder leer, gibt die Methode stattdessen **gantt.config.types.task** zurück.
+- Wenn **task.type** property definiert ist und nicht leer ist, wird der Wert dieser Eigenschaft zurückgegeben.
+- Andernfalls wird der Wert von **gantt.config.types.task** stattdessen zurückgegeben.
 
-Da die Eigenschaft **task.type** optional ist, ist es wichtig, in Ihrem Code Fälle zu berücksichtigen, in denen sie leer sein könnte, wenn Sie den Typ einer Aufgabe prüfen, zum Beispiel:
+Da die **task.type** Eigenschaft optional ist, müssen Sie berücksichtigen, dass sie beim Prüfen des Typs der Aufgabe im Code leer sein kann, z. B.
 
 ~~~js
 // SCHLECHT:
@@ -39,9 +39,9 @@ if (task.type === gantt.config.types.task){
 }
 ~~~
 
-- Aufgaben ohne die Eigenschaft **type** erfüllen diese Bedingung nicht, was falsch ist, da diese Aufgaben standardmäßig als vom Typ *task* angesehen werden.
+- Items, die nicht die **type**-Eigenschaft besitzen, erfüllen diese Bedingung nicht. Dies wäre falsch, denn solche Items haben standardmäßig den *task* Typ.
 
-Ein besserer Ansatz ist, auch auf leere Werte zu prüfen:
+Stattdessen können Sie entweder eine Bedingung für leere Werte hinzufügen:
 
 ~~~js
 // GUT:
@@ -50,7 +50,7 @@ if (!task.type || task.type === gantt.config.types.task){
 }
 ~~~
 
-Oder noch besser, verwenden Sie die Methode **getTaskType**:
+Oder verwenden Sie die **getTaskType**-Methode: 
 
 ~~~js
 // NOCH BESSER:
@@ -59,9 +59,9 @@ if (gantt.getTaskType(task) === gantt.config.types.task){
 }
 ~~~
 
-Dies stellt sicher, dass der Code sowohl für Aufgaben mit explizit gesetztem Typ als auch für solche mit dem intern von Gantt zugewiesenen Standardtyp korrekt funktioniert.
+Der Code funktioniert für alle Items, die explizit einen Typ haben, sowie für Items, denen durch die interne Logik von Gantt ein Standard-Typ zugewiesen wird.
 
-Sie können die folgende Methode auch als zuverlässige Möglichkeit verwenden, um Aufgabentypen zu ermitteln und Bedingungen zu schreiben, die alle Item-Typen abdecken, um Probleme mit falscher Typenerkennung zu vermeiden:
+Die folgende Methode kann als sichere Methode zum Ermitteln von Task-Typen verwendet werden, um dieselben Bedingungen für alle Typen von Items zu schreiben und potenzielle Fehler bei einer inkorrekten Typ-Erkennung zu vermeiden:
 
 ~~~js
 switch (gantt.getTaskType(task)){
@@ -75,4 +75,4 @@ switch (gantt.getTaskType(task)){
 ~~~
 
 ### Related Guides
-- ["Aufgabentypen"](guides/task-types.md)
+- [Aufgabentypen](guides/task-types.md)

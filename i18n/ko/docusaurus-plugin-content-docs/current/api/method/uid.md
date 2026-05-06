@@ -1,19 +1,19 @@
 ---
 sidebar_label: uid
-title: uid method
-description: "고유한 id를 반환합니다"
+title: uid 메서드
+description: "고유한 ID를 반환합니다"
 ---
 
 # uid
 
 ### Description
 
-@short: 고유한 id를 반환합니다
+@short: 고유한 ID를 반환합니다
 
-@signature: uid: () =\> number
+@signature: uid: () => number
 
 ### Returns
-- ` id` - (number) - 고유한 id
+- ` id` - (number) - 고유한 ID
 
 ### Example
 
@@ -23,8 +23,8 @@ var id = gantt.uid();
 
 ### Details
 
-생성된 id는 현재 페이지 세션 내에서 고유합니다. 
-페이지 내 로직에서 사용하기에 적합하지만 데이터베이스 식별자로는 사용하지 않는 것이 좋습니다.
+생성된 ID는 페이지 단위로는 고유하지만 전역적으로는 고유하지 않습니다.
+그래서 페이지 내 로직에서 이 메서드를 사용할 수 있습니다. 데이터베이스(DB) ID로 사용하기에는 충분하지 않습니다.
 
 ### Change log
-- 버전 4.0에 추가됨
+- 버전 4.0에 추가되었습니다.

@@ -1,14 +1,14 @@
 ---
 sidebar_label: touch_drag
-title: touch_drag config
-description: "롱 터치 제스처와 스크롤 제스처를 구분하기 위한 시간 간격을 밀리초 단위로 설정합니다."
+title: touch_drag 설정
+description: "긴 터치 제스처를 스크롤 제스처와 구분하는 데 사용되는 밀리초 단위의 시간 기간을 정의합니다."
 ---
 
 # touch_drag
 
 ### Description
 
-@short: 롱 터치 제스처와 스크롤 제스처를 구분하기 위한 시간 간격을 밀리초 단위로 설정합니다.
+@short: 긴 터치 제스처를 스크롤 제스처와 구분하는 데 사용되는 밀리초 단위의 시간 기간을 정의합니다.
 
 @signature: touch_drag: number | boolean
 
@@ -24,10 +24,9 @@ gantt.init("gantt_here");
 
 ### Details
 
-이 파라미터가 *false*로 설정되면, 사용자는 작업을 드래그할 수 없습니다.
+참고: 매개변수를 *false*로 설정하면 사용자가 작업을 드래그할 수 없게 됩니다.
 
 ### Related API
 - [touch](api/config/touch.md)
 - [touch_feedback](api/config/touch_feedback.md)
 - [touch_feedback_duration](api/config/touch_feedback_duration.md)
-

@@ -1,23 +1,23 @@
 ---
 sidebar_label: isTaskExists
 title: isTaskExists method
-description: "проверяет, существует ли задача с указанным ID"
+description: "проверяет, существует ли указанная задача"
 ---
 
 # isTaskExists
 
 ### Description
 
-@short: Проверяет, существует ли задача с указанным ID
+@short: Проверяет, существует ли указанная задача
 
 @signature: isTaskExists: (id: string | number) =\> boolean
 
 ### Parameters
 
-- `id` - (required) *string | number* -    ID задачи
+- `id` - (обязателен) *string | number* - идентификатор задачи
 
 ### Returns
-- ` task` - (boolean) - <i>true</i>, если задача найдена, иначе <i>false</i>
+- ` task` - (булевый) - <i>true</i>, если такая задача существует. В противном случае, <i>false</i>
 
 ### Example
 

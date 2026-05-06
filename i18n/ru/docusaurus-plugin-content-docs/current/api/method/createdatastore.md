@@ -1,23 +1,23 @@
 ---
 sidebar_label: createDatastore
 title: createDatastore method
-description: "создаёт datastore на основе заданной конфигурации"
+description: "создает datastore в соответствии с предоставленной конфигурацией"
 ---
 
 # createDatastore
 
 ### Description
 
-@short: Создаёт datastore на основе заданной конфигурации
+@short: Создает datastore в соответствии с предоставленной конфигурацией
 
 @signature: createDatastore: (config: DatastoreConfig) =\> DatastoreMethods & TreeDatastoreMethods
 
 ### Parameters
 
-- `config` - (required) *DatastoreConfig* - объект, содержащий конфигурацию datastore
+- `config` - (required) *DatastoreConfig* - объект конфигурации datastore
 
 ### Returns
-- ` datastore` - (datastore & treedatastore) - возвращает объект datastore или treedatastore в зависимости от указанного типа
+- ` datastore` - (datastore & treedatastore) - объект datastore или treedatastore в зависимости от типа
 
 ### Example
 
@@ -32,26 +32,25 @@ var resourcesStore = gantt.createDatastore({
 ~~~
 
 ### Related samples
-- [Gantt chart with resource panel](https://docs.dhtmlx.com/gantt/samples/10_layout/02_resource_panel.html)
-- [Resource load diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
-- [Resource histogram](https://docs.dhtmlx.com/gantt/samples/11_resources/09_resource_histogram.html)
+- [Диаграмма Ганта с панелью ресурсов](https://docs.dhtmlx.com/gantt/samples/10_layout/02_resource_panel.html)
+- [Диаграмма использования ресурсов](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
+- [Гистограмма ресурсов](https://docs.dhtmlx.com/gantt/samples/11_resources/09_resource_histogram.html)
 
 ### Details
 
-Свойства объекта конфигурации:
+Configuration object properties:
 
   
-- **name** - (*string*) - пользовательское строковое имя для datastore. Это имя позволяет получить доступ к datastore через [getDatastore](api/method/getdatastore.md).
-- **initItem? (item): any** - опционально, функция для предварительной обработки элементов при загрузке в datastore. Полезна для установки значений по умолчанию у элементов datastore. Функция принимает:
-    - **_item_** - (*any*) - обрабатываемый ресурсный элемент.
-- **type?** - (*string*) - опционально, принимает только значение **"treeDatastore"**. Указание type:"treeDatastore" создаёт datastore, который работает с иерархическими данными, используя **id** как первичный ключ и **parent** для связи с родительским id. Любое другое значение приводит к созданию плоского списка datastore.
-- **fetchTasks?** - (*boolean*) - опционально, при включении отображает все задачи, назначенные конкретному ресурсу, в панели просмотра ресурсов. Эта функция работает как для resource diagram, так и для resource histogram layouts.
+- **name** - (*string*) - произвольное строковое имя datastore. Хранилище данных можно получить по имени с помощью [getDatastore](api/method/getdatastore.md).
+- **initItem? (item): any** - необязательный, предобрабатывает элементы, загруженные в datastore. Это хорошее место для установки значений по умолчанию элементов datastore. Функция принимает следующий параметр:
+    - **_item_** - (*any*) - ресурсный элемент.
+- **type?** - (*string*) - необязательный, принимает только фиксированное значение **"treeDatastore"**. Если указан type:"treeDatastore", хранилище будет поддерживать иерархические данные, где свойство **id** является первичным ключом, а **parent** — ссылкой на родительский id. Любое другое значение приведет к созданию плоского списка datastore.
+- **fetchTasks?** - (*boolean*) - необязательный, включает отображение всех задач, назначенных конкретному ресурсу в панели просмотра ресурсов. Эта функциональность работает как для диаграммы ресурсов, так и для типа макета "resource histogram".
 
 ### Related API
 - [datastore](api/other/datastore.md)
 - [treeDatastore](api/other/treedatastore.md)
 
 ### Related Guides
-- [Макет Gantt](guides/layout-config.md)
+- [Макет Ганта](guides/layout-config.md)
 - [Управление ресурсами](guides/resource-management.md)
-

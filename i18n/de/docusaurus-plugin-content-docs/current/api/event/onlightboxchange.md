@@ -1,21 +1,21 @@
 ---
 sidebar_label: onLightboxChange
-title: onLightboxChange event
-description: "wird ausgelöst, wenn die Lightbox-Struktur aktualisiert wird"
+title: onLightboxChange-Ereignis
+description: "Wird ausgelöst, wenn sich die Struktur der Lightbox ändert"
 ---
 
 # onLightboxChange
 
 ### Description
 
-@short: Wird ausgelöst, wenn die Lightbox-Struktur aktualisiert wird
+@short: Wird ausgelöst, wenn sich die Struktur der Lightbox ändert
 
 @signature: onLightboxChange: (old_type: string, new_type: string) =\> void;
 
 ### Parameters
 
-- `old_type` - (required) *string* - der Name der ursprünglichen Lightbox-Struktur
-- `new_type` - (required) *string* - der Name der aktualisierten Lightbox-Struktur
+- `old_type` - (erforderlich) *string* - der Name der ursprünglichen Lightbox-Struktur
+- `new_type` - (erforderlich) *string* - der Name der neuen Lightbox-Struktur
 
 ### Example
 

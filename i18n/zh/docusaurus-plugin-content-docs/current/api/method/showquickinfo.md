@@ -1,20 +1,20 @@
 ---
 sidebar_label: showQuickInfo
-title: showQuickInfo method
-description: "为指定任务打开弹出任务表单"
+title: showQuickInfo 方法
+description: "显示指定任务的弹出任务表单"
 ---
 
 # showQuickInfo
 
 ### Description
 
-@short: 为指定任务打开弹出任务表单
+@short: 显示指定任务的弹出任务表单
 
 @signature: showQuickInfo: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -     任务的唯一标识符
+- `id` - (必填) *string | number* - 任务 ID
 
 ### Example
 
@@ -32,12 +32,12 @@ window.setTimeout(function(){
 ~~~
 
 ### Related samples
-- [QuickInfo extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
+- [QuickInfo 扩展](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
 
 ### Details
 
 :::note
- 此方法来自**Quick Info**扩展，因此请确保启用了[quick_info](guides/extensions-list.md)插件。 
+注意：此方法在 **Quick Info** 扩展中定义，因此需要启用 [quick_info](guides/extensions-list.md#quick-info) 插件。
 :::
 
 ### Related API
@@ -48,5 +48,4 @@ window.setTimeout(function(){
 - [onAfterQuickInfo](api/event/onafterquickinfo.md)
 
 ### Related Guides
-- [扩展功能完整列表](guides/extensions-list.md)
-
+- [扩展列表总览](guides/extensions-list.md#quick-info)

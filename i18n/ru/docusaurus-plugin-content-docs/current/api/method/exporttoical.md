@@ -1,20 +1,20 @@
 ---
 sidebar_label: exportToICal
-title: exportToICal method
-description: "экспортирует данные из Gantt chart в строку формата iCal"
+title: метод exportToICal
+description: "экспортирует данные из диаграммы Ганта в строку iCal"
 ---
 
 # exportToICal
 
 ### Description
 
-@short: Экспортирует данные из Gantt chart в строку формата iCal
+@short: Экспортирует данные диаграммы Ганта в строку iCal
 
 @signature: exportToICal: (_export_?: any) =\> void
 
 ### Parameters
 
-- `export` - (optional) *object* - необязательно, объект с настройками экспорта (подробнее ниже)
+- `export`	- object - optional, an object with export settings (see the details)
 
 ### Example
 
@@ -27,16 +27,18 @@ gantt.exportToICal({
 ### Details
 
 :::note
- Этот метод является частью расширения **export**, поэтому необходимо включить плагин [export_api](guides/extensions-list.md#exportservice). Подробнее об этом можно узнать в статье [Экспорт/Импорт в Excel, экспорт в iCal](guides/excel.md).
+This method is defined in the **export** extension, so you need to activate the [export_api](guides/extensions-list.md#export-service) plugin. Read the details in the [Export/Import for Excel, Export to iCal](guides/excel.md) article.
 
- 
+~~~js
+<script src="codebase/dhtmlxgantt.js"></script>
+<script src="https://export.dhtmlx.com/gantt/api.js"></script>
+~~~
 :::
 
+The **exportToICal()** method takes as a parameter an object with the following properties (optional):
 
-Метод **exportToICal()** принимает необязательный объект с следующими свойствами:
-
-- **server** - (*string*) указывает API endpoint для запроса экспорта. Используется при работе с локально установленным сервисом экспорта. По умолчанию endpoint равен **https://export.dhtmlx.com/gantt**;
-- **name** - (*string*) позволяет задать собственное имя файла и расширение, однако файл всё равно будет экспортирован в формате iCal. [Пример можно посмотреть здесь](https://snippet.dhtmlx.com/atbhz9vq).
+- **server** - (*string*) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is `https://export.dhtmlx.com/gantt`;
+- **name** - (*string*) allows specifying custom name and extension for the file but the file will still be exported in the iCal format. [Check the example](https://snippet.dhtmlx.com/atbhz9vq).
 
 ### Related API
 - [exportToMSProject](api/method/exporttomsproject.md)
@@ -50,5 +52,4 @@ gantt.exportToICal({
 - [importFromMSProject](api/method/importfrommsproject.md)
 
 ### Related Guides
-- [Экспорт/Импорт в Excel, экспорт в iCal](guides/excel.md#exporttoical)
-
+- [Экспорт/Импорт для Excel, Экспорт в iCal](guides/excel.md#export-to-ical)

@@ -6,7 +6,11 @@ description: "включает обратное планирование"
 
 # schedule_from_end
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в версии PRO.
+:::
+
+:::warning
+Свойство устарело в версии v9.1, используйте свойство `schedule_from_end` из [gantt.config.auto_scheduling](api/config/auto_scheduling.md#schedule_from_end) вместо этого.
 :::
 ### Description
 
@@ -18,7 +22,7 @@ description: "включает обратное планирование"
 
 ~~~jsx
 gantt.config.schedule_from_end = true;
-gantt.config.project_end = new Date(2019, 4, 1);
+gantt.config.project_end = new Date(2025, 10, 1);
 ~~~
 
 **Default value:** false
@@ -28,13 +32,16 @@ gantt.config.project_end = new Date(2019, 4, 1);
 
 ### Details
 
-Включение этой опции путём установки значения `true` переключает режим автопланирования на «как можно позже».
+Установка этого параметра в значение `true` переключит автоматическое планирование на режим `as late as possible`.
 
-Эта настройка вступает в силу только если также задан [project_end](api/config/project_end.md).
+Значение будет применяться только если также указан [project_end](api/config/project_end.md).
 
 ### Related API
 - [project_end](api/config/project_end.md)
+- [auto_scheduling](api/config/auto_scheduling.md)
 
 ### Related Guides
-- [Автоматическое планирование](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
+### Change log
+- свойство устарело в версии v9.1

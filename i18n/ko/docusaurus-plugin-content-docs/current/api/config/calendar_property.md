@@ -1,14 +1,14 @@
 ---
 sidebar_label: calendar_property
-title: calendar_property config
-description: "작업 또는 작업 그룹에 캘린더를 연결하는 데 사용되는 속성 이름을 설정합니다."
+title: calendar_property 구성
+description: "캘린더를 작업/작업 그룹에 바인딩하는 데 영향을 주는 속성의 이름을 변경합니다"
 ---
 
 # calendar_property
 
 ### Description
 
-@short: 작업 또는 작업 그룹에 캘린더를 연결하는 데 사용되는 속성 이름을 설정합니다.
+@short: 캘린더를 작업/작업 그룹에 바인딩하는 데 영향을 주는 속성의 이름을 변경합니다
 
 @signature: calendar_property: string
 
@@ -20,9 +20,9 @@ gantt.config.calendar_property = "property_name";
 
 ### Details
 
-버전 4.2에서 도입되었습니다.
+버전 4.2에서 추가됨
 
-기본적으로 이 옵션은 "calendar_id"로 설정되어 있습니다.
+옵션의 기본 값은 "calendar_id"입니다.
 
 ~~~js
 {
@@ -43,5 +43,4 @@ gantt.config.calendar_property = "property_name";
 - [isWorkTime](api/method/isworktime.md)
 
 ### Related Guides
-- [작업 시간 계산](guides/working-time.md#unsettingtheworkingtime)
-
+- [Work Time Calculation](guides/working-time.md)

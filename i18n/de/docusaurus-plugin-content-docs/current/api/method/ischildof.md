@@ -1,24 +1,24 @@
 ---
 sidebar_label: isChildOf
 title: isChildOf method
-description: "bestimmt, ob eine Aufgabe ein Kind einer anderen Aufgabe ist"
+description: "prüft, ob eine Aufgabe ein Kind einer anderen Aufgabe ist"
 ---
 
 # isChildOf
 
 ### Description
 
-@short: Bestimmt, ob eine Aufgabe ein Kind einer anderen Aufgabe ist
+@short: Prüft, ob eine Aufgabe ein Kind einer anderen Aufgabe ist
 
 @signature: isChildOf: (childId: string | number, parentId: string | number) =\> boolean
 
 ### Parameters
 
-- `childId` - (required) *string | number* -    die ID der Aufgabe, die als Kind überprüft werden soll
-- `parentId` - (required) *string | number* -    die ID der Aufgabe, die als Elternteil überprüft werden soll
+- `childId` - (required) *string | number* -    die ID einer Aufgabe, die Sie als Kind überprüfen möchten
+- `parentId` - (required) *string | number* -    die ID einer Aufgabe, die Sie als Elternaufgabe überprüfen möchten
 
 ### Returns
-- ` isChild` - (boolean) - <i>true</i>, wenn die Aufgabe tatsächlich ein Kind der angegebenen Elternaufgabe ist; andernfalls <i>false</i>
+- ` isChild` - (boolean) - <i>true</i>, wenn die Aufgabe ein Kind der angegebenen Elternaufgabe ist. Andernfalls <i>false</i>
 
 ### Example
 

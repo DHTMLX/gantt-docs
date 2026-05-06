@@ -1,14 +1,14 @@
 ---
 sidebar_label: wide_form
-title: wide_form config
-description: "размещает секцию и её метку бок о бок на одной строке"
+title: Настройка wide_form
+description: "устанавливает одновременно секцию и её метку на одной строке"
 ---
 
 # wide_form
 
 ### Description
 
-@short: Размещает секцию и её метку бок о бок на одной строке
+@short: Устанавливает одновременно секцию и её метку на одной строке
 
 @signature: wide_form: boolean
 
@@ -24,8 +24,9 @@ gantt.config.wide_form = true;
 
 ![normal_form](/img/normal_form.png)
 
+
 :::note
-Sample: [Lightbox в wide_form](https://snippet.dhtmlx.com/hf45hvr3) 
+пример: [Lightbox в широкой форме](https://snippet.dhtmlx.com/hf45hvr3)
 :::
 
 ### Related API
@@ -33,5 +34,4 @@ Sample: [Lightbox в wide_form](https://snippet.dhtmlx.com/hf45hvr3)
 - [resizeLightbox](api/method/resizelightbox.md)
 
 ### Related Guides
-- [Работа с элементами Lightbox](guides/lightbox-manipulations.md#settingsectionanditslabelonthesameline)
-
+- [Working with Lightbox Elements](guides/lightbox-manipulations.md#setting-the-default-value-for-a-lightboxs-control)

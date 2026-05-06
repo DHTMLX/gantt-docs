@@ -20,11 +20,10 @@ description: "срабатывает при открытии ветки"
 
 ~~~jsx
 gantt.attachEvent("onTaskOpened", function(id) {
-    // здесь можно разместить кастомную логику
+    // любая ваша логика здесь
 });
 ~~~
 
 ### Related API
 - [open](api/method/open.md)
 - [onTaskClosed](api/event/ontaskclosed.md)
-

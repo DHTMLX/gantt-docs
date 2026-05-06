@@ -1,25 +1,26 @@
 ---
 sidebar_label: getConnectedGroup
 title: getConnectedGroup method
-description: "возвращает все задачи и связи, связанные с конкретной задачей"
+description: "возвращает все задачи и связи, с которыми связана задача"
 ---
 
 # getConnectedGroup
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в PRO-версии.
 :::
+
 ### Description
 
-@short: Возвращает все задачи и связи, связанные с конкретной задачей
+@short: Возвращает все задачи и связи, с которыми связана задача
 
-@signature: getConnectedGroup: (id?: string | number) =\> any
+@signature: getConnectedGroup: (id?: string | number) => any
 
 ### Parameters
-
-- `id` - (optional) *string | number* - необязательный, идентификатор задачи
+- `name` - (optional) *string | number* - идентификатор задачи
 
 ### Returns
-- ` connections` - (object) - объект, содержащий задачи и связи, связанные с указанной задачей
+- ` connections` - (object) - объект, содержащий задачи и связи, с которыми связана задача
 
 ### Example
 
@@ -30,10 +31,10 @@ gantt.getConnectedGroup(18);
 
 ### Details
 
-При вызове без параметров этот метод возвращает все группы задач и связей, образующих соединения.
+Без параметров метод возвращает все группы задач и связей, которые образуют соединения.
 
 :::note
- Для работы метода необходимо подключить плагин [auto_scheduling](guides/extensions-list.md#autoscheduling) на странице. 
+ Метод требует, чтобы на странице был подключен плагин [auto_scheduling](guides/extensions-list.md#autoscheduling) для автоматического планирования.
 :::
 
 ### Related Guides

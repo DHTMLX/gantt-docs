@@ -1,21 +1,24 @@
 ---
 sidebar_label: xml_format
-title: xml_format template
-description: "Преобразует объект даты в строку по заданному шаблону. Используется для отправки данных обратно на сервер."
+title: xml_format шаблон
+description: "Объект даты преобразуется в строку в соответствии с этим шаблоном. Используется для отправки данных обратно на сервер"
 ---
 
 # xml_format
+:::warning
+Этот шаблон устарел.
+:::
 
 ### Description
 
-@short: Преобразует объект даты в строку по заданному шаблону. Используется для отправки данных обратно на сервер.
+@short: Объект даты преобразуется в строку в соответствии с этим шаблоном. Используется для отправки данных обратно на сервер
 
 ### Parameters
 
-- `date` - (required) *Date* - Дата, которую необходимо отформатировать.
+- `date` - (required) *Date* - дата, которая требует форматирования
 
 ### Returns
-- ` text` - (string) - HTML-текст, который будет отображён в диаграмме Ганта.
+- ` text` - (string) - html-текст, который будет отображаться в диаграмме Ганта
 
 ### Example
 
@@ -28,21 +31,21 @@ gantt.templates.xml_format = function(date){
 ### Details
 
 :::note
- Этот шаблон устарел. Пожалуйста, используйте [format_date](api/template/format_date.md) вместо него: 
+Примечание. Шаблон устарел. Используйте [format_date](api/template/format_date.md) вместо него:
 :::
 
 ~~~js
 var dateToStr = gantt.date.date_to_str("%Y-%m-%d %H:%i");
 gantt.templates.format_date = function(date){
-    return dateToStr(date);
+    return dateToStr (date);
 };
 ~~~
 
-Этот шаблон автоматически генерируется из конфигурации [xml_date](api/config/xml_date.md) и может быть переопределён после [инициализации Gantt](api/method/init.md).
+Этот шаблон автоматически генерируется из конфигурации [xml_date](api/config/xml_date.md) и может быть переопределён после [инициализации gantt](api/method/init.md).
 
-Можно создать пользовательскую функцию шаблона, если сервер требует формат даты, не поддерживаемый [помощником по дате Gantt](api/other/date.md).
+Можно использовать собственную функцию шаблона, если серверная сторона ожидает формат, который не поддерживается [gantt date helper](api/other/date.md).
 
-Например, если сервер ожидает **start_date** в виде UNIX timestamp, а параметры запроса должны быть:
+Например, предположим, что сервер ожидает **start_date** в виде UNIX timestamp, и параметры запроса должны выглядеть следующим образом:
 
 - **start_date**:1503608400
 - **duration**:4
@@ -50,7 +53,8 @@ gantt.templates.format_date = function(date){
 - **parent**:3
 - **end_date**:1503694800
 
-Конфигурация Gantt может быть настроена так:
+
+Следует настроить конфигурацию Gantt следующим образом:
 
 ~~~js
 gantt.attachEvent("onTemplatesReady", function(){
@@ -73,9 +77,8 @@ dp.setTransactionMode("REST");
 - [xml_date](api/template/xml_date.md)
 
 ### Related Guides
-- [Шаблоны для преобразования дат](guides/conversion-templates.md)
-- [Интеграция с серверной стороной](guides/server-side.md)
+- [Шаблоны преобразования дат](guides/conversion-templates.md)
+- [Интеграция на стороне сервера](guides/server-side.md)
 
 ### Change log
-- Устарел с версии v6.2, удалён начиная с v7.0
-
+- устарел с версии v6.2, удалён с версии v7.0

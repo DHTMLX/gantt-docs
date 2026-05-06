@@ -1,14 +1,14 @@
 ---
 sidebar_label: editor_types
-title: editor_types config
-description: "인라인 에디터 정의를 담고 있는 객체"
+title: editor_types 구성
+description: "인라인 에디터 정의를 포함하는 객체"
 ---
 
 # editor_types
 
 ### Description
 
-@short: 인라인 에디터 정의를 담고 있는 객체
+@short: 인라인 에디터 정의를 포함하는 객체
 
 @signature: editor_types: \{ text?: InlineEditor; number?: InlineEditor; duration?: InlineEditor; date?: InlineEditor; select?: InlineEditor; predecessor?: InlineEditor; [customEditorName: string]: InlineEditor | undefined; \}
 
@@ -20,20 +20,20 @@ gantt.config.editor_types.custom_editor = {// custom editor logic}
 
 ### Details
 
-이 설정은 사용자 정의 에디터를 생성하는 데 사용됩니다(위 예제 참조).
+이 구성을 사용하여 커스텀 에디터를 생성할 수 있습니다(위 예제를 참조하십시오).
 
-다음과 같은 여러 내장 인라인 에디터가 제공됩니다:
+다음은 미리 정의된 여러 개의 Inline Editor입니다:
 
-- **text** - (*InlineEditor*) - 작업 이름과 같은 텍스트 필드를 편집할 때 사용
-- **number** - (*InlineEditor*) - 작업 기간이나 순서와 같은 숫자 필드를 편집할 때 사용
-- **duration** - (*InlineEditor*) - 작업 기간 등 기간 필드를 편집할 때 사용.
-  이는 ***map_to:"duration"*** 설정이 적용되고 [editor type](guides/inline-editing.md#typesofeditors)이 **"duration"**으로 설정된 경우에만 작동합니다.
-- **date** - (*InlineEditor*) - 작업 시작일 및 종료일과 같은 날짜 필드를 편집할 때 사용
-- **select** - (*InlineEditor*) - 드롭다운 목록에서 옵션을 선택할 때 사용
-- **predecessor** - (*InlineEditor*) - 현재 작업에 선행 작업을 지정할 때 사용. 이 에디터는 선행 작업을 연결하기 위해 [WBS 코드](guides/specifying-columns.md#wbscode)를 사용합니다.
-- **[customEditorName: string]** - (*InlineEditor | undefined*) - 사용자 정의 인라인 에디터를 정의할 때 사용
+- **text** - (*InlineEditor*) - 텍스트 열 편집 용 에디터, 예: 작업 이름
+- **number** - (*InlineEditor*) - 숫자 열 편집 용 에디터, 예: 작업 지속 시간, 순서 등
+- **duration** - (*InlineEditor*) - 지속 시간 열 편집에 사용되는 에디터. 즉 map_to:"duration" 구성에서 사용되고 [에디터 타입](guides/inline-editing.md#types-of-editors)이 **"duration"** 타입으로 설정된 경우에만 작동
+- **date** - (*InlineEditor*) - 날짜 열 편집에 사용되는 에디터. 예: 작업의 시작일과 종료일
+- **select** - (*InlineEditor*) - 목록에서 옵션 하나를 선택하기 위한 에디터
+- **predecessor** - (*InlineEditor*) - 현재 편집 중인 작업의 선행 작업을 설정하기 위한 에디터. 이 에디터는 선행 작업과의 연결을 설정하기 위해 [작업의 WBS 코드](guides/specifying-columns.md#wbscode)를 가져옵니다
+- **[customEditorName: string]** - (*InlineEditor | undefined*) - 커스텀 Inline Editor
 
-여기서 정의된 에디터는 gantt 컬럼에 할당할 수 있습니다:
+
+편집기는 이 객체에 정의된 것은 간트 차트 열에 연결할 수 있습니다:
 
 ~~~js
 const textEditor = {type: "text", map_to: "text"};
@@ -48,4 +48,4 @@ gantt.config.columns = [
 ~~~
 
 ### Related Guides
-- [그리드에서 인라인 편집](guides/inline-editing.md#typesofeditors)
+- [그리드에서의 인라인 편집](guides/inline-editing.md#types-of-editors)

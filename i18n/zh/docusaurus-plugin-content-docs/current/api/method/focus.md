@@ -1,14 +1,14 @@
 ---
 sidebar_label: focus
 title: focus method
-description: "激活甘特图的focus"
+description: "在甘特图上设置焦点"
 ---
 
 # focus
 
 ### Description
 
-@short: 激活甘特图的focus
+@short: 将焦点设置在甘特图上
 
 @signature: focus: () =\> void
 
@@ -28,8 +28,7 @@ gantt.focus();
  此方法属于**keyboard_navigation**扩展，因此请确保先启用[keyboard_navigation](guides/extensions-list.md)插件。更多详情请参见[键盘导航](guides/keyboard-navigation.md)文档。 
 :::
 
-
-版本4.1新增
+在版本 4.1 中新增
 
 ### Related API
 - [keyboard_navigation](api/config/keyboard_navigation.md)
@@ -39,5 +38,4 @@ gantt.focus();
 - [removeShortcut](api/method/removeshortcut.md)
 
 ### Related Guides
-- [键盘导航](guides/keyboard-navigation.md)
-
+- [Keyboard Navigation](guides/keyboard-navigation.md)

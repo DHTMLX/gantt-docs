@@ -1,41 +1,44 @@
 ---
 sidebar_label: getResourceAssignments
 title: getResourceAssignments method
-description: "возвращает все задачи, связанные с указанным ресурсом"
+description: "возвращает все задачи, назначенные ресурсу"
 ---
 
 # getResourceAssignments
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в PRO-версии.  
 :::
+
 ### Description
 
-@short: Возвращает все задачи, связанные с указанным ресурсом
+@short: Возвращает все задачи, назначенные ресурсу
 
-@signature: getResourceAssignments: (resourceId: string | number, taskId?: string | number) =\> ResourceAssignment[]
+@signature: getResourceAssignments: (resourceId: string | number, taskId?: string | number) => ResourceAssignment[]
 
 ### Parameters
 
 - `resourceId` - (required) *string | number* - идентификатор ресурса
-- `taskId` - (required) *string | number* - идентификатор задачи
+- `taskId` - (required) *string | number* - идентификатор задачи, к которой назначен ресурс
+
 
 ### Returns
-- ` assignments` - (ResourceAssignment[]) - массив объектов, представляющих задачи, назначенные ресурсу
+- `assignments` - (ResourceAssignment[]) - массив объектов, в которых задачи назначены ресурсу
 
 ### Example
 
 ~~~jsx
-gantt.getResourceAssignments("6"); // -> отображаются детали
+gantt.getResourceAssignments("6"); // -> see details
 ~~~
 
 ### Related samples
-- [Resource histogram](https://docs.dhtmlx.com/gantt/samples/11_resources/09_resource_histogram.html)
-- [Assign workload in percents](https://docs.dhtmlx.com/gantt/samples/11_resources/10_resource_histogram_workload_percents.html)
-- [Work and material resources](https://docs.dhtmlx.com/gantt/samples/11_resources/12_work_and_material_resources.html)
+- [Гистограмма ресурсов](https://docs.dhtmlx.com/gantt/samples/11_resources/09_resource_histogram.html)
+- [Назначение рабочей нагрузки в процентах](https://docs.dhtmlx.com/gantt/samples/11_resources/10_resource_histogram_workload_percents.html)
+- [Рабочие и материальные ресурсы](https://docs.dhtmlx.com/gantt/samples/11_resources/12_work_and_material_resources.html)
 
 ### Details
 
-Этот метод возвращает массив объектов со следующей структурой:
+Метод возвращает массив объектов, как показано ниже:
 
 ~~~js
 [ 
@@ -56,29 +59,27 @@ gantt.getResourceAssignments("6"); // -> отображаются детали
 
 Каждый объект содержит следующие свойства:
 
-- **id** - (*string | number*) - уникальный идентификатор назначения
-- **task_id** - (*string | number*) - ID задачи, назначенной ресурсу
+- **id** - (*string | number*) - идентификатор назначения
+- **task_id** - (*string | number*) - ID задачи, к которой назначен ресурс
 - **resource_id** - (*string | number*) - ID ресурса, назначенного задаче
-- **value** - (*number | string*) - количество ресурса, выделенного на задачу
-- **delay** - (*number*) - смещение между датой начала назначения и датой начала задачи
-- **start_date** - (*Date*) - дата, когда назначение планируется начать
-- **end_date** - (*Date*) - дата, когда назначение планируется завершить
+- **value** - (*number | string*) - количество ресурсов, назначенных задаче
+- **delay** - (*number*) - разница между датой начала назначения и датой начала задачи
+- **start_date** - (*Date*) - дата начала назначения
+- **end_date** - (*Date*) - дата окончания назначения
 - **duration** - (*number*) - продолжительность назначения
-- **mode** - (*string*) - режим, используемый для расчёта времени назначения ресурса: "default"|"fixedDates"|"fixedDuration"
-- **[customProperty: string]** - (*any*) - любые дополнительные пользовательские свойства
-
+- **mode** - (*string*) - режим расчета времени назначения ресурса: "default"|"fixedDates"|"fixedDuration"
+- **[customProperty: string]** - (*any*) - любое произвольное свойство
 
 :::note
- Свойства *delay*, *duration*, *start_date*, *end_date*, *id* и *mode* заполняются автоматически только при включённом [process_resource_assignments](api/config/process_resource_assignments.md). 
-:::
+ *delay*, *duration*, *start_date*, *end_date*, *id*, *mode* будут заполняться автоматически только если включен [process_resource_assignments](api/config/process_resource_assignments.md).  
+ :::
 
 ### Related API
 - [getTaskAssignments](api/method/gettaskassignments.md)
 - [process_resource_assignments](api/config/process_resource_assignments.md)
 
 ### Related Guides
-- [Управление ресурсами](guides/resource-management.md)
+- [Resource Management](guides/resource-management.md)
 
 ### Change log
-- начиная с v7.1, возвращаемый объект включает свойства *delay*, *duration*, *start_date*, *end_date*, *id* и *mode*
-
+- возвращаемый объект будет содержать свойства *delay*, *duration*, *start_date*, *end_date*, *id*, *mode* начиная с версии v7.1

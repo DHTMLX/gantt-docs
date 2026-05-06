@@ -8,13 +8,13 @@ description: "öffnet den Branch, der durch die angegebene ID identifiziert wird
 
 ### Description
 
-@short: Öffnet den Branch, der durch die angegebene ID identifiziert wird
+@short: Öffnet den Zweig mit der angegebenen ID
 
 @signature: open: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -    die ID des Branches
+- `id` - (erforderlich) *string | number* - der Zweig-ID
 
 ### Example
 
@@ -36,11 +36,10 @@ gantt.open("p_1"); /*!*/
 
 ### Details
 
-Diese Methode löst das [onTaskOpened](api/event/ontaskopened.md) Event aus.
+Die Methode löst das Event [onTaskOpened](api/event/ontaskopened.md) aus.
 
 ### Related API
 - [close](api/method/close.md)
 
 ### Related Guides
-- ["Konfiguration der Baumspalte"](guides/tree-column.md)
-
+- [Configuring the Tree Column](guides/tree-column.md)

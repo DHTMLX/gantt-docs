@@ -1,16 +1,16 @@
 ---
 sidebar_label: resource_calendars
 title: resource_calendars config
-description: "bietet eine Möglichkeit, Arbeitskalender zu definieren, die mit bestimmten Ressourcen wie Benutzern verknüpft werden können"
+description: "definiert eine Reihe von Arbeitskalendern, die einer bestimmten Ressource, z. B. einem Benutzer, zugewiesen werden können"
 ---
 
 # resource_calendars
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist in der PRO-Edition verfügbar. 
 :::
 ### Description
 
-@short: Bietet eine Möglichkeit, Arbeitskalender zu definieren, die mit bestimmten Ressourcen wie Benutzern verknüpft werden können
+@short: Definiert eine Reihe von Arbeitskalendern, die einer bestimmten Ressource, z. B. einem Benutzer, zugewiesen werden können
 
 @signature: resource_calendars: \{ [resourceId: string | number]: string | number | \{ [resourceId: string | number]: string | number | undefined \} | undefined \}
 
@@ -26,7 +26,7 @@ gantt.config.resource_calendars = {
      })
 };
 
-// Verknüpfung des Kalenders mit einer bestimmten Aufgabe
+// assigning the calendar to a particular task
 {"id":3, user:"1", "text":"Task #2", "start_date":"11-04-2013", 
     "duration":"4", "parent":"1", "progress": 0.6, "open": true}
 ~~~
@@ -35,22 +35,22 @@ gantt.config.resource_calendars = {
 
 ### Details
 
-- **[resourceId: string | number]** - (*string | number | \{[resourceId: string | number]: string | number | undefined \} | undefined*) - definiert die Zuordnung für den resource_calendar
+- **[resourceId: string | number]** - (*string | number | \{[resourceId: string | number]: string | number | undefined \} | undefined*) - Zuordnung des Ressourcenkalenders
 
 
-Vor Version 7.0 verwendete dhtmlxGantt ein leicht anderes Format für **resource_calendars**.
+Before version 7.0, dhtmlxGantt used a slightly different format of **resource_calendars**.
 
-Der oben gezeigte, aktualisierte Ansatz zur Zuordnung eines Arbeitskalenders zu einem Benutzer ist einfacher und benutzerfreundlicher, aber das vorherige Konfigurationsformat für **resource_calendars** wird weiterhin unterstützt:
+Die neue Art, einen Arbeitskalender einem Benutzer zuzuweisen, die oben beschrieben ist, ist einfacher und bequemer zu verwenden, aber die alte Konfiguration der **resource_calendars**-Eigenschaft funktioniert ebenfalls:
 
 ~~~js
-// Definition eines Arbeitskalenders
+// adding a working calendar
 var johnCalendarId = gantt.addCalendar({
     worktime: {
         days: [0, 1, 1, 1, 1, 1, 0]
     }
 }),
 
-// Verknüpfung des Kalenders mit einem Benutzer
+// binding the calendar to a user
 gantt.config.resource_calendars = {
   "user":{
       1 : johnCalendarId
@@ -65,8 +65,3 @@ gantt.config.resource_calendars = {
 
 ### Related Guides
 - [Work Time Calculation](guides/working-time.md#assigningcalendartoresource)
-
-### Change log
-- eingeführt in Version 4.2
-- Konfigurationsformat aktualisiert in Version 7.0
-

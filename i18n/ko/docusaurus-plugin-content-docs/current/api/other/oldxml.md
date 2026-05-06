@@ -1,27 +1,26 @@
 ---
 sidebar_label: oldxml
-title: oldxml config
-description: "dhtmlxGantt 1.0에서 XML 포맷의 직렬화와 파싱을 처리합니다."
+title: oldxml 설정
+description: "dhtmlxGantt 1.0의 XML 형식으로의 직렬화 및 구문 분석을 지정합니다"
 ---
 
 # oldxml
 
 ### Description
 
-@short: DhtmlxGantt 1.0에서 XML 포맷의 직렬화와 파싱을 처리합니다.
+@short: dhtmlxGantt 1.0의 XML 형식으로의 직렬화 및 구문 분석을 지정합니다
 
 @signature: oldxml: any
 
 ### Example
 
 ~~~jsx
-var obj = gantt.oldxml; // -> { parse(text,loader){...}, serialize(){... 
-:::
+const obj = gantt.oldxml; // -> { parse(text,loader){...}, serialize(){... }}
 ~~~
 
 ### Details
 
-XML 객체는 두 가지 주요 메서드를 포함합니다:
+XML 객체에는 2개의 멤버가 포함되어 있습니다:
 
-- **parse()** - dhtmlxGantt가 XML 포맷에서 데이터를 읽는 방식을 관리합니다.
-- **serialize()** - dhtmlxGantt가 데이터를 다시 XML 포맷으로 변환하는 방식을 관리합니다.
+- **parse()** 메서드  - dhtmlxGantt가 XML 형식의 데이터를 구문 분석하는 방법을 정의합니다.
+- **serialize()** 메서드 - dhtmlxGantt가 XML 형식으로 데이터를 직렬화하는 방법을 정의합니다.

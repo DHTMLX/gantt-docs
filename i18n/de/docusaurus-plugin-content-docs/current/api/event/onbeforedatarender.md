@@ -1,14 +1,14 @@
 ---
 sidebar_label: onBeforeDataRender
 title: onBeforeDataRender event
-description: "Wird ausgelöst, kurz bevor die Daten auf der Seite angezeigt werden"
+description: "Wird ausgelöst, bevor Daten auf der Seite gerendert werden."
 ---
 
 # onBeforeDataRender
 
 ### Description
 
-@short: Wird ausgelöst, kurz bevor die Daten auf der Seite angezeigt werden
+@short: Wird ausgelöst, bevor Daten auf der Seite gerendert werden
 
 @signature: onBeforeDataRender: () =\> void;
 
@@ -16,7 +16,7 @@ description: "Wird ausgelöst, kurz bevor die Daten auf der Seite angezeigt werd
 
 ~~~jsx
 gantt.attachEvent("onBeforeDataRender", function(){
-    ////beliebige benutzerdefinierte Logik hier
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 
 gantt.init("gantt_here");
@@ -32,4 +32,3 @@ gantt.parse(demo_tasks);
 - [onDataRender](api/event/ondatarender.md)
 - [onGanttRender](api/event/onganttrender.md)
 - [onLoadEnd](api/event/onloadend.md)
-

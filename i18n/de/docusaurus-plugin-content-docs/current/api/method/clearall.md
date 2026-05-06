@@ -1,14 +1,14 @@
 ---
 sidebar_label: clearAll
-title: clearAll method
-description: "Entfernt alle Aufgaben und zusätzliche Elemente (wie Marker) aus dem Gantt-Diagramm"
+title: clearAll Methode
+description: "entfernt alle Aufgaben und zusätzliche Elemente (einschließlich Marker) aus dem Gantt-Diagramm"
 ---
 
 # clearAll
 
 ### Description
 
-@short: Entfernt alle Aufgaben und zusätzliche Elemente (wie Marker) aus dem Gantt-Diagramm
+@short: Entfernt alle Aufgaben und zusätzliche Elemente (einschließlich Marker) aus dem Gantt-Diagramm
 
 @signature: clearAll: () =\> void
 
@@ -24,11 +24,10 @@ gantt.load("url2");/*!*/
 
 ### Details
 
-Beachten Sie, dass diese Methode das Event [onClear](api/event/onclear.md) auslöst.
+Hinweis: Die Methode löst das Event [onClear](api/event/onclear.md) aus.
 
 ### Related API
 - [onClear](api/event/onclear.md)
 
 ### Related Guides
-- ["Grundlegende Operationen mit Aufgaben"](guides/crud-task.md)
-
+- [Grundlegende Operationen mit Aufgaben](guides/crud-task.md)

@@ -1,39 +1,38 @@
 ---
 sidebar_label: onBeforeLinkUpdate
 title: onBeforeLinkUpdate event
-description: "Wird ausgelöst, kurz bevor ein Link aktualisiert wird"
+description: "fires before a link is updated"
 ---
 
 # onBeforeLinkUpdate
 
 ### Description
 
-@short: Wird ausgelöst, kurz bevor ein Link aktualisiert wird
+@short: Löst vor der Aktualisierung eines Links aus
 
 @signature: onBeforeLinkUpdate: (id: string | number, new_link: Link) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die ID des Links
-- `new_link` - (required) *Link* - das aktualisierte Link-Objekt
+- `id` - (required) *string | number* - die Link-ID
+- `new_link` - (required) *Link* - das neue (aktualisierte) Objekt des Links
 
 ### Returns
-- ` result` - (boolean) - gibt an, ob die Standardaktion des Events ausgeführt werden soll (<b>true</b>) oder abgebrochen wird (<b>false</b>)
+- ` result` - (boolean) - definiert, ob die Standardaktion des Ereignisses ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeLinkUpdate", function(id,new_link){
-    // Hier kann benutzerdefinierte Logik hinzugefügt werden
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
     return true;
 });
 ~~~
 
 ### Details
 
-Dieses Event kann blockiert werden. Wenn false zurückgegeben wird, wird die Aktualisierung des Links verhindert.
+Das Ereignis kann blockiert werden. Geben Sie false zurück, um die Aktualisierung des Links abzubrechen.
 
 ### Related API
 - [updateLink](api/method/updatelink.md)
 - [onAfterLinkUpdate](api/event/onafterlinkupdate.md)
-

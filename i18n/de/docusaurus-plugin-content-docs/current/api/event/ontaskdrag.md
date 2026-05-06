@@ -1,30 +1,30 @@
 ---
 sidebar_label: onTaskDrag
-title: onTaskDrag event
-description: "Wird ausgelöst, wenn ein Task vom Benutzer gezogen wird"
+title: onTaskDrag-Ereignis
+description: "wird ausgelöst, wenn der Benutzer eine Aufgabe zieht"
 ---
 
 # onTaskDrag
 
 ### Description
 
-@short: Wird ausgelöst, wenn ein Task vom Benutzer gezogen wird
+@short: Wird ausgelöst, wenn der Benutzer eine Aufgabe zieht
 
 @signature: onTaskDrag: (id: string | number, mode: string, task: Task, original: Task, e: Event) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die Task-ID
+- `id` - (required) *string | number* - die Aufgaben-ID
 - `mode` - (required) *string* - der Drag-Modus ("resize", "progress", "move", "ignore")
 - `task` - (required) *Task* - das aktuelle (gezogene) Task-Objekt
-- `original` - (required) *Task* - das ursprüngliche (initiale) Task-Objekt
-- `e` - (required) *Event* - ein nativer Event-Objekt
+- `original` - (required) *Task* - das ursprüngliche (anfängliche) Task-Objekt
+- `e` - (required) *Event* - ein natives Event-Objekt
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
-    // beliebige benutzerdefinierte Logik hier
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
@@ -34,14 +34,18 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 
 ### Details
 
-Dieses Event tritt jedes Mal auf, wenn der Benutzer die Maus im Timeline-Bereich zieht, um einen Task zu verschieben, zu skalieren oder den Fortschritt des Tasks zu aktualisieren. Der Drag-Typ wird durch das zweite Argument - **mode** - angegeben. Alle möglichen Werte für den Drag-Modus finden Sie in der Datei [drag_mode](api/config/drag_mode.md).
+The event:
 
-Zusammengefasst läuft der Prozess wie folgt ab:
+- Wird jedes Mal ausgelöst, wenn der Benutzer eine Drag-Bewegung mit der Maus im Timeline-Bereich ausführt: Die Aufgabe wird verschoben, die Größe angepasst oder der Fortschritt der Aufgabe angepasst.
+- Der Typ einer Drag-Bewegung wird als zweites Argument übergeben - **mode**.
+- Alle verfügbaren Werte des Typs der Drag-Bewegung sind in der [drag_mode](api/config/drag_mode.md) Eigenschaft gespeichert.
 
-1. Der Benutzer startet eine Drag-Aktion.
-2. dhtmlxGantt berechnet die Task-Daten basierend auf der neuen Position neu.
-3. dhtmlxGantt löst das Event [onTaskDrag](api/event/ontaskdrag.md) aus.
-4. dhtmlxGantt aktualisiert die Darstellung des Tasks im Gantt-Chart.
+Kurz gesagt passiert Folgendes in der folgenden Reihenfolge:
+
+1. Der Benutzer führt eine Verschiebung aus.
+2. dhtmlxGantt berechnet das Datum der Aufgabe entsprechend der neuen Position neu.
+3. dhtmlxGantt löst das [onTaskDrag](api/event/ontaskdrag.md) Event aus.
+4. dhtmlxGantt rendert die Aufgabe im Gantt-Diagramm neu.
 
 ### Related API
 - [onBeforeTaskDrag](api/event/onbeforetaskdrag.md)
@@ -49,6 +53,5 @@ Zusammengefasst läuft der Prozess wie folgt ab:
 - [drag_mode](api/config/drag_mode.md)
 
 ### Related Guides
-- ["Verschieben von Aufgaben innerhalb der Zeitleiste"](guides/dnd.md#preventingdraggingtasksoutsidecertaindates)
-- ["How-tos"](guides/how-to.md#howtohaveaninfinitescrollinthetimeline)
-
+- [Dragging Tasks within the Timeline](guides/dnd.md#denying-dragging-tasks-out-of-specific-dates)
+- [How-tos](guides/how-to.md#how-to-have-an-infinite-scroll-in-the-timeline)

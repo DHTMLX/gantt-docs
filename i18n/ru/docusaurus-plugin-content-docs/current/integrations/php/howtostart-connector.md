@@ -1,107 +1,82 @@
 ---
 title: "dhtmlxGantt с dhtmlxConnector"
-sidebar_label: "dhtmlxConnector"
+sidebar_label: "dhtmlxGantt с dhtmlxConnector"
 ---
 
 # dhtmlxGantt с dhtmlxConnector
 
-В этом руководстве описано, как создать простой Gantt на веб-странице с возможностью сохранения и обновления задач в базе данных (на сервере).
+Этот учебник покажет, как создать базовую диаграмму Ганта на странице, которая сможет сохранять и обновлять задачи в базе данных (то есть на сервере).
 
+Настоящий учебник предназначен для создания Gantt с [dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html).  
+Если вы хотите использовать другую серверную технологию, смотрите список доступных вариантов интеграции ниже:
 
-Здесь основное внимание уделяется созданию Gantt с помощью [dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html).
-Если вы предпочитаете другую серверную технологию, ниже вы найдете руководства по различным вариантам интеграции:
-
-- [dhtmlxGantt с PHP: Laravel](integrations/php/howtostart-php-laravel.md)
-- [dhtmlxGantt с PHP:Slim3](integrations/php/howtostart-php.md)
-- [dhtmlxGantt с Python](integrations/other/howtostart-python.md)
-- [dhtmlxGantt с Node.js](integrations/node/howtostart-nodejs.md)
 - [dhtmlxGantt с ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
+- [dhtmlxGantt с Node.js](integrations/node/howtostart-nodejs.md)
+- [dhtmlxGantt с Python](integrations/other/howtostart-python.md)
+- [dhtmlxGantt с PHP:Slim3](integrations/php/howtostart-php.md)
+- [dhtmlxGantt с PHP: Laravel](integrations/php/howtostart-php-laravel.md)
 - [dhtmlxGantt с Salesforce LWC](integrations/salesforce/howtostart-salesforce.md)
 - [dhtmlxGantt с Ruby on Rails](integrations/other/howtostart-ruby.md)
 
 ![gantt_basic](/img/gantt_basic.png)
 
+**Связанный пример**: [Basic initialization](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
 
-[Basic initialization](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
+### Шаг 1. Загрузка пакета dhtmlxGantt
 
+Начнем руководство с загрузки пакета библиотеки на ваш компьютер.
 
-## Шаг 1. Загрузка пакета dhtmlxGantt
-
-<div>
-<p>
-
-Для начала скачайте пакет библиотеки на свой компьютер.
-
-<div>![finger](/img/finger.png) <span>Выполните следующие шаги:</span></div>
+**Сделайте следующее:**
 
 <ul>
-  <li>Скачайте пакет dhtmlxGantt <a href='https://github.com/DHTMLX/connector-php' title='dhtmlxConnector for PHP repository' target='_blank'>здесь</a>, если вы еще этого не сделали. </li>
-  <li>Распакуйте архив в корневую директорию вашего локального веб-сервера. Извлечённые файлы будут размещены в папке с именем пакета - dhtmlxGantt.</li>
+  <li>Скачайте пакет dhtmlxGantt <a href='https://github.com/DHTMLX/connector-php' title='dhtmlxConnector for PHP repository' target='_blank'>здесь</a>, если вы еще этого не сделали.</li>
+  <li>Распакуйте пакет в корневой каталог вашего локального веб-сервера. Распакованные файлы будут сохранены в папку с тем же именем, что и пакетный файл - dhtmlxGantt.</li>
 </ul>
-</p>
-</div>
 
-## Шаг 2. Подключение файлов dhtmlxGantt
+## Шаг 2. Подключение файлов кода dhtmlxGantt
 
-<div>
-<p>
-Далее подключите файлы dhtmlxGantt в ваш HTML-файл, чтобы использовать возможности библиотеки.
+Затем нужно подключить файлы кода dhtmlxGantt в ваш HTML-файл (чтобы можно было использовать функциональность библиотеки).  
+Файлы кода dhtmlxGantt:
 
-Необходимые файлы dhtmlxGantt:
+- `dhtmlxgantt.js`
+- `dhtmlxgantt.css`
 
-<ul>
-  <li>dhtmlxgantt.js</li>
-  <li>dhtmlxgantt.css</li>
-</ul> 
+**Делайте следующее:**
 
-<div>![finger](/img/finger.png) <span>Выполните следующие шаги:</span></div>
+1. Создайте HTML-файл в папке `dhtmlxGantt` (папка с файлами dhtmlxGantt). Назовите его, например, `myGantt.html`.
+2. Подключите файлы кода dhtmlxGantt к файлу **myGantt.html** (оба файла находятся в папке `codebase`). См. myGantt.html:
 
-<ul>
-
-- Создайте HTML-файл внутри папки 'dhtmlxGantt' (где находятся файлы dhtmlxGantt). Например, назовите его 'myGantt.html'.
-- Подключите файлы dhtmlxGantt в <b>myGantt.html</b> (оба файла находятся в папке 'codebase').
-
-**myGantt.html**
 ~~~html
 <!DOCTYPE html>
 <html>
 <head>
-   <title>How to Start with dhtmlxGantt</title>
-   <script src="codebase/dhtmlxgantt.js"></script> /*!*/  
-   <link href="codebase/dhtmlxgantt.css" rel="stylesheet"> /*!*/  
+  <title>How to Start with dhtmlxGantt</title>
+  <script src="codebase/dhtmlxgantt.js"></script> <!-- important -->
+  <link href="codebase/dhtmlxgantt.css" rel="stylesheet"> <!-- important -->
 </head>
 <body>
-       //ваш код будет здесь
+  <!-- your code will be here -->
 </body>
 </html>
 ~~~
 
-</ul> 
-
-</p>
-</div>
-
 ## Шаг 3. Инициализация dhtmlxGantt
 
 <div>
-<p>
 
-Далее создайте контейнер DIV и инициализируйте dhtmlxGantt внутри него.
+Затем необходимо создать DIV-контейнер и инициализировать dhtmlxGantt внутри него.
 
- Учтите, что dhtmlxGantt - это статический объект, и его можно создать только один раз на странице.
-Обращаться к экземпляру dhtmlxGantt можно через <b>dhtmlxGantt</b> или просто <b>gantt</b>.
+Обратите внимание, что dhtmlxGantt является статическим объектом и может быть создан на странице один раз.  
+Чтобы обратиться к экземпляру dhtmlxGantt, можно использовать **dhtmlxGantt** или просто **gantt**.
 
-<div>![finger](/img/finger.png) <span>Выполните следующие шаги:</span></div>
+<div>
+  <span>Делайте следующее:</span>
+</div>
 
-<ul>
+- Определите DIV-контейнер в файле **myGantt.html**.
+- Инициализируйте dhtmlxGantt с помощью команды <code>gantt.init("gantt_here")</code>.  В качестве параметра метод принимает HTML-контейнер, куда будет помещена диаграмма Ганта.
 
-- Добавьте контейнер DIV в файл <b>myGantt.html</b>.
-- Инициализируйте dhtmlxGantt командой <code>gantt.init("gantt_here")</code>. Этот метод принимает ID HTML-контейнера, в котором будет отображаться Gantt.
-  
-
-
-**myGantt.html**
-~~~html
+~~~html title="myGantt.html"
 <!DOCTYPE html>
 <html>
 <head>
@@ -110,22 +85,18 @@ sidebar_label: "dhtmlxConnector"
    <link href="codebase/dhtmlxgantt.css" rel="stylesheet">
 </head>
 <body>
-    <div id="gantt_here" style='width:1000px; height:400px;'></div>
+	<div id="gantt_here" style='width:1000px; height:400px;'></div>
     <script type="text/javascript">
-        gantt.init("gantt_here"); /*!*/  
-    </script>
+		gantt.init("gantt_here"); /*!*/  
+	</script>
 </body>
 </html>
-~~~    
+~~~
 
-</ul> 
-
-</p>
 </div>
+Примечание: если вы используете полноэкранный режим, укажите текущий стиль, чтобы гарантировать корректное поведение:
 
-Если вы используете полноэкранный режим, обязательно добавьте этот CSS, чтобы все отображалось корректно:
-
-~~~html
+~~~js
 <style type="text/css" media="screen">
     html, body{
         margin:0px;
@@ -136,46 +107,30 @@ sidebar_label: "dhtmlxConnector"
 </style>
 ~~~
 
-## Шаг 4. Загрузка данных в Gantt
+## Шаг 4. Загрузка данных в диаграмму Ганта
 
-<div>
-
-<p>
-Теперь заполним Gantt данными из простого источника. Для простоты используем встроенный объект в качестве источника данных. 
-
-Для загрузки данных используется метод 
-[parse](api/method/parse.md), который принимает источник данных в качестве параметра. 
-
-
+Затем необходимо заполнить диаграмму Ганта данными из образца источника данных. Мы воспользуемся самым простым способом и укажем источник данных в виде встроенного объекта.  
+Чтобы загрузить данные, мы будем использовать метод [parse](api/method/parse.md), который принимает имя источника данных в качестве параметра.  
 Свойства объекта:
 
-<ul>
-  <li><b>data</b> - содержит задачи Gantt</li>
-  <ul>
-  <li><b>id</b> - (<i>string, number</i>) уникальный идентификатор задачи.</li>
-  <li><b>start_date</b> - (<i>Date</i>) дата начала задачи. </li>
-  <li><b>text</b> - (<i>string</i>) описание задачи.</li>
-  <li><b>progress</b> - (<i>number</i>) значение от 0 до 1, указывающее процент выполнения задачи. </li>
-  <li><b>duration</b> - (<i>number</i>) длительность задачи в единицах текущей шкалы времени. </li>
-  <li><b>parent</b> - (<i>number</i>) ID родительской задачи, если есть. </li>
-  </ul>
-  <li><b>links</b> - определяет зависимости между задачами</li>
-  <ul>
-  <li><b>id</b> - (<i>string, number</i>) уникальный идентификатор связи.</li>
-  <li><b>source</b> - (<i>number</i>) ID исходной задачи. </li>
-  <li><b>target</b> - (<i>number</i>) ID целевой задачи. </li>
-  <li><b>type</b> - (<i>string</i>) тип зависимости: 0 - 'finish to start', 1 - 'start to start', 2 - 'finish to finish'. </li>
-  </ul>
-</ul> 
+- <b>data</b> - указывает задачи Gantt.
+  - <b>id</b> - (<i>string, number</i>) идентификатор события.
+  - <b>start_date</b> - (<i>Date</i>) дата начала.
+  - <b>text</b> - (<i>string</i>) описание задачи.
+  - <b>progress</b> - (<i>number</i>) число от 0 до 1, показывающее, какой процент задачи выполнен.
+  - <b>duration</b> - (<i>number</i>) длительность задачи в единицах текущего масштаба времени.
+  - <b>parent</b> - (<i>number</i>) идентификатор родительской задачи.
+  - <b>links</b> - указывает зависимые связи Gantt
+    - <b>id</b>-(<i>string, number</i>) идентификатор события.
+    - <b>source</b>-(<i>number</i>) идентификатор исходной задачи.
+    - <b>target</b>-(<i>number</i>) идентификатор целевой задачи.
+    - <b>type</b>-(<i>string</i>) тип зависимости: 0 - 'finish to start', 1 - 'start to start', 2 - 'finish to finish'.
 
-<div>![finger](/img/finger.png) <span>Выполните следующие шаги:</span></div>
+<div> <span>Делайте следующее:</span></div>
 
-<ul>
+Объявите переменную 'tasks' в файле <b>myGantt.html</b>:
 
-- Объявите переменную 'tasks' в файле <b>myGantt.html</b>: 
-
-**myGantt.html**
-~~~js
+~~~js title="myGantt.html"
 var tasks = {
     data:[
         {id:1, text:"Project #1",start_date:"01-04-2013", duration:11,
@@ -200,45 +155,29 @@ var tasks = {
     ]
 };
 ~~~
-- Добавьте команду <code>gantt.parse(tasks)</code> сразу после <code>gantt.init("gantt_here")</code>:
 
+Вызовите команду <code>gantt.parse(tasks)</code> после строки <code>gantt.init("gantt_here")</code>:
 
-**myGantt.html**
-~~~js
+~~~js title="myGantt.html"
 gantt.init("gantt_here"); 
 gantt.parse (tasks);/*!*/  
 ~~~
 
-</ul>
-
-</p>
-</div>
-
-[Basic initialization](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
-
+**Связанный пример**: [Basic initialization](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
 
 ## Шаг 5. Создание базы данных
 
 :::note
-Этот и следующие шаги применимы, если вы хотите загружать данные из базы данных, а не использовать встроенные данные.
+Прочитайте это и последующие шаги, если хотите загружать данные из базы данных вместо встроенного объекта.
 :::
-<div>
 
-<p>
-Теперь создайте базу данных с двумя таблицами для хранения задач и связей.
+Затем нужно создать базу данных с двумя таблицами для хранения задач и зависимостей. 
+<i><b>sortorder</b> — свойство, которое используется только при загрузке данных из базы данных. Это свойство задаёт индекс задачи среди соседей.</i>
+<span>Делайте следующее:</span>
+Создайте новую базу данных с именем - <i>gantt</i>.
+Выполните приведённый ниже код для создания 2 таблиц в ней: <i>gantt_tasks</i> и <i>gantt_links</i>.
 
-![/img/tutorial_db_tables.png](/img/tutorial_db_tables.png)
-
-<i><b>sortorder</b> - это свойство используется только при загрузке данных из базы данных. Оно определяет порядок задач среди "соседей".</i>
-
-<div>![finger](/img/finger.png) <span>Выполните следующие шаги:</span></div>
-
-<ul>
-
-- Создайте новую базу данных с именем <i>gantt</i>. 
-- Выполните следующий SQL-код для создания таблиц <i>gantt_tasks</i> и <i>gantt_links</i>:
-
-~~~js
+~~~sql
 CREATE TABLE `gantt_links` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `source` int(11) NOT NULL,
@@ -259,15 +198,9 @@ CREATE TABLE `gantt_tasks` (
 );
 ~~~
 
-</ul> 
+Чтобы иметь возможность сохранять задачи в базе данных, когда какая‑то колонка имеет пустое значение, добавьте следующий код в файл **myGantt.html**:
 
-</p>
-</div>
-
-Чтобы задачи сохранялись корректно даже при отсутствии некоторых полей, добавьте этот код в ваш **myGantt.html**:
-
-**myGantt.html**
-~~~js 
+~~~js title="myGantt.html"
 gantt.attachEvent("onBeforeTaskAdd", function(id,task){
     task.sortorder = 0;
     return true;
@@ -277,29 +210,17 @@ gantt.attachEvent("onBeforeTaskAdd", function(id,task){
 ## Шаг 6. Загрузка данных из базы данных
 
 :::note
-В следующих двух шагах для интеграции клиент-сервер будет использоваться PHP.
+В следующих двух шагах мы будем использовать платформу PHP для реализации интеграции сервер–клиент.
 
- Если вы используете другую платформу, смотрите статью [Загрузка данных](guides/loading.md) для примера реализации собственного серверного скрипта.
+ Если вы используете другую платформу, пожалуйста, прочитайте статью [](guides/loading.md), чтобы узнать, как самостоятельно реализовать серверный скрипт.
 :::
 
-<div>
+Далее необходимо обеспечить возможность отображения данных из базы данных в диаграмме. Сделаем это с помощью метода [load](api/method/load.md), который принимает URL к источнику данных в качестве параметра. В случае базы данных это PHP-файл, который реализует подключение к серверной стороне. Мы будем использовать платформу PHP и библиотеку <a href="https://docs.dhtmlx.com/connector__php__index.html">dhtmlxConnector</a>, так как это самый простой способ реализовать серверную логику для dhtmlxGantt.
+<span>Делайте следующее:</span>
+Создайте PHP-файл в папке 'dhtmlxGantt' и назовите его, например, <b>data.php</b>.
+Откройте файл <b>data.php</b> и добавьте в него следующий код со стороны сервера:
 
-<p>
-Теперь подключим загрузку данных из базы данных в диаграмму. Для этого используется метод [load](api/method/load.md), который принимает URL источника данных.
-Для доступа к базе этот URL указывает на PHP-файл, реализующий серверную логику.
-
-
-Мы будем использовать PHP и библиотеку [dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html), которая упрощает серверную интеграцию для dhtmlxGantt.
-
-<div>![finger](/img/finger.png) <span>Выполните следующие шаги:</span></div>
-
-<ul>
-
-- Создайте PHP-файл в папке 'dhtmlxGantt', например, <b>data.php</b>
-- Отредактируйте <b>data.php</b> и добавьте следующий серверный код:
-
-**data.php**
-~~~php
+~~~php title="data.php"
 <?php
 
 include ('codebase/connector/gantt_connector.php');
@@ -315,120 +236,100 @@ $gantt->render_table(
 );
 ?>
 ~~~
-- В файле <b>myGantt.html</b> установите свойство <code>gantt.config.date_format</code> в значение <i> "%Y-%m-%d %H:%i"</i>, чтобы формат даты соответствовал ожидаемому формату dhtmlxGantt.
 
-**myGantt.html**
-~~~js
+Переключитесь на файл <b>myGantt.html</b> и установите свойство <code>gantt.config.date_format</code> в <i> "%Y-%m-%d %H:%i"</i>, чтобы формат выходных данных соответствовал формату dhtmlxGantt.
+
+~~~js title="myGantt.html"
 gantt.config.date_format = "%Y-%m-%d %H:%i";/*!*/ 
 gantt.init("gantt_here");
 ~~~
 
-- Вызовите <code>gantt.load('data.php')</code> для загрузки данных из базы в Gantt.
+Вызовите команду <code>gantt.load('data.php')</code> для загрузки данных из базы данных в диаграмму Гantt.
 
-**myGantt.html**
-~~~js
+~~~js title="myGantt.html"
 gantt.config.date_format = "%Y-%m-%d %H:%i";
 gantt.init("gantt_here");
-gantt.load('data.php');//загружает данные в Gantt из базы данных /*!*/  
+gantt.load('data.php');//loads data to Gantt from the database  /*!*/  
 ~~~
 
-</ul> 
+### Сопоставление столбцов базы данных
 
-</p>
-</div>
-
-### Маппинг столбцов базы данных
-
-Имейте в виду, что порядок столбцов в **$connector->render_table** имеет значение. Первые три столбца в списке всегда будут соответствовать свойствам *start_date/duration/text* или *start_date/end_date/text* клиентского объекта задачи, независимо от используемых вами названий столбцов. Логика маппинга объяснена ниже.
-
-Второй столбец назначается свойству *task.duration*, если в конфигурации указано 'duration':
+Обратите внимание, что порядок столбцов в **$connector->render_table** важен. Первые три столбца в списке столбцов сопоставляются с свойствами *start_date/duration/text* или *start_date/end_date/text* объекта задачи на стороне клиента соответственно, независимо от того, какие имена столбцов вы указываете. Логика сопоставления столбцов описана ниже. 
+ 
+Второй столбец сопоставляется с *task.duration*, если вы указываете 'duration' в конфигурации:
 
 ~~~js
 $gantt->render_table("gantt_tasks","id","Start,duration,Name,progress,parent","");
 ~~~
 
-Также можно использовать псевдоним:
+или, используя псевдоним:
 
 ~~~js
 $gantt->render_table("gantt_tasks","id","Start,Length(duration),Name,progress,parent","");
-// JS: task.start_date, task.duration, task.text, task.progress, task.parent
+ // JS: task.start_date, task.duration, task.text, task.progress, task.parent
 ~~~
 
-Если используется другое имя столбца, второй столбец будет связан со свойством *end_date*:
+Если указан другой имя столбца, второй столбец будет сопоставлен со свойством *end_date*:
 
 ~~~js
 $gantt->render_table("gantt_tasks","id","Start,End,Name,progress,parent","");
-// JS: task.start_date, task.end_date, task.text, task.progress, task.parent
+ // JS: task.start_date, task.end_date, task.text, task.progress, task.parent
 ~~~
 
-#### Маппинг остальных столбцов
+#### Сопоставление других столбцов
 
-Все остальные столбцы маппируются напрямую по их именам без изменений:
+Все остальные столбцы будут сопоставляться по своим именам без изменений:
 
 ~~~js
 $gantt->render_table("gantt_tasks","id","start_date,duration,text,custom,parent","");
-// JS: task.start_date, task.duration, task.text, task.custom, task.parent
+ // JS: task.start_date, task.duration, task.text, task.custom, task.parent
 ~~~
 
-Псевдонимы также могут применяться к другим столбцам:
+Алиасы можно использовать и для других столбцов:
 
 ~~~js
 $gantt->render_table("gantt_tasks","id",
     "start_date,duration,text,custom_column(customProperty),parent","");
-// JS: task.start_date, task.duration, task.text, task.customProperty, task.parent
+ // JS: task.start_date, task.duration, task.text, task.customProperty, task.parent
 ~~~
-
 
 ## Шаг 7. Обновление данных в базе данных
 
-<div>
+Здесь нужно обеспечить возможность сохранения изменений, внесённых в диаграмму Гantt, обратно в базу данных. Для этого будем использовать вспомогательную библиотеку DataProcessor. Все, что нужно сделать, — инициализировать DataProcessor и привязать его к объекту dhtmlxGantt.
 
-<p>
+<span>Делайте следующее:</span>
 
-Далее важно включить возможность сохранения изменений, сделанных в диаграмме Gantt, обратно в базу данных. Для этого будет использоваться вспомогательная библиотека [dataProcessor](api/method/dataprocessor.md). Процесс включает инициализацию DataProcessor и его привязку к экземпляру dhtmlxGantt.
+Откройте файл <b>myGantt.html</b> и инициализируйте dhtmlxDataProcessor командой <code>dataProcessor("data.php")</code>.
+Прикрепите объект dhtmlxDataProcessor к объекту dhtmlxGantt командой <code>dp.init(gantt)</code>.
 
-<div>![finger](/img/finger.png) <span>Действуйте следующим образом:</span></div>
-
-<ul>
-
-- Откройте файл <b>myGantt.html</b> и создайте новый экземпляр dhtmlxDataProcessor с помощью команды <code>dataProcessor("data.php")</code>.
-- Свяжите объект dhtmlxDataProcessor с экземпляром dhtmlxGantt с помощью <code>dp.init(gantt)</code>.
-
-**myGantt.html**
-~~~js
+~~~js title="myGantt.html"
 gantt.init("gantt_here");
 gantt.load('data.php');
         
 var dp="new" gantt.dataProcessor("data.php"); /*!*/ 
 dp.init(gantt); /*!*/ 
 ~~~
-</ul>
-</p>
-</div>
 
-## Логирование ошибок
+## Ведение журнала ошибок
 
-Если все настроено, но проблемы сохраняются, включение логирования в Gantt поможет выявить их причины.
+Если вы выполнили указанные выше шаги, но что‑то все ещё не работает, включите ведение журнала в Gantt для выявления ошибки.
 
-Сначала убедитесь, что директория, содержащая HTML-файл, имеет права на запись. Затем добавьте эту строку в файл **data.php**:
+Прежде всего, убедитесь, что в каталоге, где расположен HTML‑файл, есть права на запись. Затем добавьте следующую строку в файл **data.php**:
 
-**data.php**
-~~~php
+~~~php title="data.php"
 $gantt = new JSONGanttConnector($res);
 
 $gantt->enable_log("log.txt"); /*!*/
 ~~~
 
-Теперь вы можете проверить файл **log.txt** для просмотра записанной информации.
+После этого логи можно просматривать в файле **log.txt**.
 
 ## Что дальше?
 
-Готово! Теперь у вас есть базовая диаграмма Gantt, способная загружать данные из базы и сохранять изменения обратно.
-Далее вы можете настраивать и расширять её под ваши задачи.
+На этом всё. Получилась базовая, но функциональная диаграмма Gantt, которая может загружать данные из базы и сохранять их обратно. Теперь можно настраивать и адаптировать её под ваши нужды.
 
-Для дальнейшего изучения рекомендуем ознакомиться со следующими статьями:
+Мы рекомендуем на следующем этапе ознакомиться с этими статьями:
 
-- [Конфигурация](guides/common-configuration.md)
-- [Обработка событий](guides/handling-events.md)
-- [Загрузка данных](guides/loading.md)
-
+- [Configuration](guides/common-configuration.md) → Конфигурация
+- [Event handling](guides/handling-events.md) → Обработка событий
+- [Data loading](guides/loading.md) → Загрузка данных

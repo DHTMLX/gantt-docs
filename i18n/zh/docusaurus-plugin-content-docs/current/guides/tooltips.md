@@ -1,19 +1,19 @@
 ---
-title: "Gantt 元素的工具提示"
-sidebar_label: "Gantt 元素的工具提示"
+title: "甘特图元素的工具提示"
+sidebar_label: "甘特图元素的工具提示"
 ---
 
-# Gantt 元素的工具提示
+# 甘特图元素的工具提示
 
-工具提示可以在不让屏幕充满过多文本的情况下，显示额外的信息。默认情况下，工具提示会显示在 Gantt 任务上。
+工具提示可帮助你为用户添加额外信息，而不会让屏幕因文本过多而溢出。默认情况下，工具提示会添加到甘特图任务上。
 
 ![task_tooltip](/img/task_tooltip.png)
 
-你可以通过相应的 API [为任意 Gantt 元素添加工具提示](#tooltipsfordifferentelements)。
+你可以通过相应的 API 为任何甘特图元素添加工具提示，详见 [为不同元素添加工具提示](#tooltipsfordifferentelements)。
 
-## 激活方式
+## 启用
 
-要为任务启用工具提示，只需通过 [gantt.plugins](api/method/plugins.md) 方法开启 **tooltip** 插件:
+要为任务激活工具提示，请使用 [gantt.plugins](api/method/plugins.md) 方法来启用 **tooltip** 插件：
 
 ~~~js
 <script>
@@ -25,21 +25,19 @@ sidebar_label: "Gantt 元素的工具提示"
 </script>
 ~~~
 
+[工具提示](https://docs.dhtmlx.com/gantt/samples/02_extensions/02_tooltip.html)
 
-[Tooltip](https://docs.dhtmlx.com/gantt/samples/02_extensions/02_tooltip.html)
+扩展启用后，工具提示将使用默认设置自动显示。
 
+## 自定义文本
 
-当该扩展被激活后，工具提示会以默认设置自动显示。
-
-## 自定义文本 
-
-默认情况下，工具提示会显示任务的三个属性:
+默认情况下，工具提示显示任务的 3 个属性：
 
 1. 任务的开始日期。
 2. 任务的结束日期。
-3. 任务的名称。
+3. 任务名称。
 
-如果你想自定义工具提示文本，可以像这样使用 [tooltip_text](api/template/tooltip_text.md) 模板:
+要为工具提示设置自定义文本，请使用 [tooltip_text](api/template/tooltip_text.md) 模板：
 
 ~~~js
 gantt.templates.tooltip_text = (start, end, task) => 
@@ -50,79 +48,95 @@ gantt.templates.tooltip_text = (start, end, task) =>
 
 ## 工具提示 API {#tooltipapi}
 
-### Tooltip 对象
+### 工具提示对象
 
-工具提示对象可以通过 **gantt.ext.tooltips.tooltip** 访问。它提供了用于控制工具提示位置、内容和可见性的方法:
+你可以通过 **gantt.ext.tooltips.tooltip** 访问工具提示对象。该对象允许通过一组方法来控制工具提示的位置、内容和可见性：
 
 - **getNode()** - 返回工具提示的 HTML 元素  
-- **setViewport()** - 限制工具提示在指定 HTML 元素范围内显示
-    - **node** - (*HTMLElement*) 用于限制工具提示的元素
-- **show()** - 在指定坐标（相对于 document.body）显示工具提示。可根据需要传递不同参数:
-    - 如果需要在具体坐标显示工具提示，传递: 
+- **setViewport()** - 将工具提示的位置锁定在指定 HTML 元素的边界内
+    - **node** - (*HTMLElement*) 目标 HTML 元素
+- **show()** - 在特定坐标处显示工具提示（相对于 document.body）。该方法可以根据你希望在哪个位置显示工具提示来传入不同的参数：
+    - 要在特定坐标处显示工具提示（相对于 document.body），传入：
         - **left** - (*number*) X 坐标
         - **top** - (*number*) Y 坐标 
-    - 如果需要在鼠标事件坐标显示（会考虑 *tooltip_offset_x/y* 和 viewport），传递:
+    - 要在鼠标事件坐标处显示工具提示（会考虑 *tooltip_offset_x/y* 和视口），传入：
         - **event** - (*Event*) 鼠标事件对象  
-- **hide()** - 隐藏工具提示
-- **setContent()** - 设置工具提示内部的 HTML 内容。参数为:
-    - **html** - (*string*) HTML 内容字符串
+- **hide()** - 隐藏工具提示元素
+- **setContent()** - 将 HTML 内容放入工具提示。参数为：
+    - **html** - (*string*) 用于工具提示的 HTML 内容字符串
+
 
 ### 方法
 
-有几种方法可以帮助你在悬停 DOM 元素时控制工具提示的行为。
+有若干方法可以在悬停 DOM 元素时控制工具提示的行为。
 
 #### gantt.ext.tooltips.attach() {#attach}
 
-添加带有扩展配置的工具提示。该方法接受一个包含以下设置的对象:
+添加带有扩展配置的工具提示。该方法接收一个包含工具提示设置的对象作为参数。可以通过该方法调整的设置如下：
 
-- **selector** - (*string*) 监听鼠标事件的元素的 CSS 选择器
-- **onmouseenter** - (*function*) 鼠标进入元素时调用，参数如下:
+- **selector** - (*string*) 定义用于监听鼠标事件的元素的 CSS 选择器
+- **onmouseenter** - (*function*) 当鼠标指针进入元素时调用的处理程序。参数为：
      - **event** - (*Event*) 原生鼠标事件
-    - **node** -  (*HTMLElement*) 目标元素
-- **onmousemove** - (*function*) 鼠标在元素内部移动时调用，参数如下:
+    - **node** -  (*HTMLElement*) HTML 节点
+- **onmousemove** - (*function*) 当鼠标指针在元素内移动时调用的处理程序。参数为：
     - **event** - (*Event*) 原生鼠标事件
-    - **node** -  (*HTMLElement*) 目标元素
-- **onmouseleave** - (*function*) 鼠标离开元素时调用，参数如下:    
+    - **node** -  (*HTMLElement*) HTML 节点
+- **onmouseleave** - (*function*) 当鼠标指针离开元素时调用的处理程序。参数为：
     - **event** - (*Event*) 原生鼠标事件
-    - **node** -  (*HTMLElement*) 目标元素
-- **global** - (*boolean*) 是否监听整个页面（*true*）还是只在 gantt 元素内部（*false*），默认为 *false*。
+    - **node** -  (*HTMLElement*) HTML 节点
+- **global** - (*boolean*) 定义模块是在整页监听鼠标事件 (*true*) 还是仅在甘特图元素内监听 (*false*)。默认值为 *false*。
 
 #### gantt.ext.tooltips.tooltipFor() {#tooltipfor}
 
-为特定 Gantt 元素添加工具提示。该方法比 **attach()** 更简单。它接受一个包含工具提示详细信息的对象:
+为指定的甘特图元素添加工具提示。它是对 **attach()** 方法的简化版本。该方法接收一个包含工具提示详细信息的对象作为参数。该对象具有以下属性：
 
-- **selector** - (*string*) 需要添加工具提示的 Gantt 元素的 CSS 选择器
-- **html** - (*function*) 工具提示的模板函数，参数如下:
+- **selector** - (*string*) 要添加工具提示的甘特图元素的 CSS 选择器
+- **html** - (*function*) 工具提示的模板。模板函数依次接收两个参数：
     - **event** - (*Event*) 原生鼠标事件
-    - **node** -  (*HTMLElement*) 目标元素
-  返回一个字符串作为工具提示的 HTML
-- **global** - (*boolean*) 可选，是否监听整个页面（*true*）还是只在 gantt 内部（*false*），默认为 *false*。
+    - **node** -  (*HTMLElement*) HTML 节点
+  并返回一个带模板的字符串。
+- **global** - (*boolean*) 可选，定义模块是在整页监听鼠标事件 (*true*) 还是仅在甘特图元素内监听 (*false*)。默认值为 *false*。
 
-#### gantt.ext.tooltips.detach() {#detach} 
+#### gantt.ext.tooltips.detach() {#detach}
 
-移除工具提示。参数如下:
+移除工具提示。作为参数，该方法接收：
 
-- **selector** - (*string*) Gantt 元素的 CSS 选择器
+- **selector** - (*string*) 甘特图元素的 CSS 选择器
 
-## 为不同元素添加工具提示
+#### gantt.ext.tooltips.delayShow() {#delayShow}
 
-默认情况下，工具提示只会添加到 Gantt 任务上，但你也可以将其应用到其他 Gantt 元素，例如资源标记:
+在由 [tooltip_timeout](api/config/tooltip_timeout.md) 设置的延迟后显示工具提示。如果未设置该配置，将使用一个较小的默认延迟。
 
-![Resource marker tooltip](/img/resource_marker_tooltip.png)
+该方法是**防抖**的，意味着在延迟窗口内重复调用会重置计时器，工具提示仅显示一次。
 
-这里可以用到 [tooltip API](#tooltipapi) 的两个方法:
+作为参数，该方法接收：
 
-- [**gantt.ext.tooltips.tooltipFor()**](#tooltipfor) 方法 
+- **event** - (*Event*) 用于定位工具提示的原生鼠标事件
+- **tooltipText** - (*string*) 以 innerHTML 渲染的工具提示文本
 
-例如，为时间轴刻度单元格添加工具提示:
+#### gantt.ext.tooltips.delayHide() {#delayHide}
+
+在由 [tooltip_hide_timeout](api/config/tooltip_hide_timeout.md) 设置的延迟后隐藏当前显示的工具提示。如果未设置该配置，将使用一个较小的默认延迟。
+
+## 不同元素的工具提示 {#tooltipsfordifferentelements}
+
+默认情况下，工具提示只添加到甘特图任务上，但你也可以为其他任何甘特图元素设置工具提示。例如，为资源标记：
+
+![资源标记工具提示](/img/resource_marker_tooltip.png)
+
+在本 API 中有两个相应的方法来实现此目的：
+
+- [**gantt.ext.tooltips.tooltipFor()**](#tooltipfor) 方法
+
+例如，下面的代码展示了如何为时间轴刻度的单元格添加工具提示：
 
 ~~~js
 const domHelper = gantt.utils.dom;
-const pos = domHelper.getRelativeEventPosition(event, gantt.$task_scale);
+const pos = domHelper .getRelativeEventPosition(event, gantt.$task_scale);
 return gantt.templates.task_date(gantt.dateFromPos(pos.x));
 ~~~
 
-请注意，要在 Gantt 初始化后调用 [gantt.ext.tooltips.tooltipFor()](#tooltipfor)。比如可以放在 [onGanttReady](api/event/onganttready.md) 事件处理函数中:
+请注意，**gantt.ext.tooltips.tooltipFor()**(#tooltipfor) 方法必须在 Gantt 完成初始化后再调用。例如，你可以在 [onGanttReady](api/event/onganttready.md) 事件处理器内指定该方法，如下所示：
 
 ~~~js
 gantt.attachEvent("onGanttReady", () => {
@@ -139,11 +153,9 @@ gantt.attachEvent("onGanttReady", () => {
 });
 ~~~
 
-
 [Custom Tooltips](https://docs.dhtmlx.com/gantt/samples/02_extensions/22_tooltip_api.html)
 
-
-或如下方式:
+或者，你也可以像下面这样使用：
 
 ~~~js
 gantt.init("gantt_here");
@@ -159,33 +171,31 @@ gantt.ext.tooltips.tooltipFor({
 });
 ~~~
 
+**相关示例** [Gantt. 自定义单元格工具提示](https://snippet.dhtmlx.com/6kb5gm39)
 
-**Related example:** [Gantt. Custom tooltips for cells](https://snippet.dhtmlx.com/6kb5gm39)
+以这种方式添加的工具提示将跟随鼠标指针并使用设置 *[tooltip_offset_x](api/config/tooltip_offset_x.md)*、*[tooltip_offset_y](api/config/tooltip_offset_y.md)*、*[tooltip_timeout](api/config/tooltip_timeout.md)*、[tooltip_hide_timeout](api/config/tooltip_hide_timeout.md) 的值。
 
+- [**gantt.ext.tooltips.attach()**](#attach) 方法
 
-通过这种方式添加的工具提示会跟随鼠标指针，并遵循 *[tooltip_offset_x](api/config/tooltip_offset_x.md)*, *[tooltip_offset_y](api/config/tooltip_offset_y.md)*, *[tooltip_timeout](api/config/tooltip_timeout.md)*, *[tooltip_hide_timeout](api/config/tooltip_hide_timeout.md)* 等相关设置。
-
-- [**gantt.ext.tooltips.attach()**](#attach) 方法 
-
-该方法允许你通过更详细的配置来添加工具提示，从而更好地控制鼠标移动时的行为。
+该方法允许添加带有扩展配置的工具提示，以便将工具提示行为调整为随着鼠标指针的移动而变化。
 
 ## 自定义工具提示行为
 
-你可以通过移除内置处理器并添加自定义处理器来更改默认的工具提示行为:
+有一种方式可以修改工具提示的默认行为。可以通过移除内置的工具提示处理程序并添加自定义的来实现：
 
-- 使用 [**gantt.ext.tooltips.detach**](#detach) 从任务中移除默认的工具提示处理器:
+- 使用 [**gantt.ext.tooltips.detach**](#detach) 方法从任务上移除内置的工具提示处理程序：
 
 ~~~js
-// 移除任务的内置工具提示处理器
+// 从任务上移除内置工具提示处理程序
 gantt.ext.tooltips.detach(`[${gantt.config.task_attribute}]:not(.gantt_task_row)`);
 ~~~
 
-- 使用 [**gantt.ext.tooltips.attach()**](#attach) 添加自定义工具提示行为。例如，仅在表格上方显示工具提示:
+- 通过 [**gantt.ext.tooltips.attach()**](#attach) 方法添加所需的工具提示行为。在下面的示例中，工具提示仅显示在表格上方：
 
 ~~~js
 gantt.ext.tooltips.tooltipFor({
     selector: `.gantt_grid [${gantt.config.task_attribute}]`,
-    html: (event: MouseEvent) => {
+    html: (event) => {
         if (gantt.config.touch && !gantt.config.touch_tooltip) {
             return;
         }
@@ -202,30 +212,32 @@ gantt.ext.tooltips.tooltipFor({
 });
 ~~~
 
-## 延时设置
 
-显示和隐藏工具提示的时间可以通过相关设置进行调整。
+## 超时
 
-要设置任务工具提示出现前的延时时间（毫秒），请使用 [tooltip_timeout](api/config/tooltip_timeout.md):
+可以通过相关设置配置工具提示显示和隐藏的时间。
+
+要指定在任务的工具提示出现前的毫秒时间，请使用 [tooltip_timeout](api/config/tooltip_timeout.md)：
 
 ~~~js
 gantt.config.tooltip_timeout = 50;
 gantt.init("gantt_here");
 ~~~
 
-要控制鼠标移开后工具提示保持可见的时间（毫秒），请使用 [tooltip_hide_timeout](api/config/tooltip_hide_timeout.md):
+要定义在用户将光标移动到另一个位置后工具提示显示的持续时间（毫秒），请使用 [tooltip_hide_timeout](api/config/tooltip_hide_timeout.md) 属性：
 
 ~~~js
 gantt.config.tooltip_hide_timeout = 5000;
 gantt.init("gantt_here");
 ~~~
 
-## 位置设置
 
-你可以通过以下配置属性调整工具提示的位置偏移:
+## 位置
 
-- [tooltip_offset_x](api/config/tooltip_offset_x.md) - 设置水平偏移
-- [tooltip_offset_y](api/config/tooltip_offset_y.md) - 设置垂直偏移
+可以通过改变默认位置的偏移量来配置工具提示的位置，使用以下两个配置属性：
+
+- [tooltip_offset_x](api/config/tooltip_offset_x.md) - 设置工具提示位置的水平偏移量
+- [tooltip_offset_y](api/config/tooltip_offset_y.md) - 设置工具提示位置的垂直偏移量
 
 ~~~js
 gantt.config.tooltip_offset_x = 30;
@@ -234,11 +246,12 @@ gantt.config.tooltip_offset_y = 40;
 gantt.init("gantt_here");
 ~~~
 
+
 ## 显示区域
 
-6.1 之前，工具提示只会在时间轴区域内显示。从 v6.1 起，工具提示可以出现在任意位置并跟随鼠标指针。
+在 6.1 版本之前，工具提示仅显示在时间线区域内。自 6.1 版本发布后，工具提示的显示不再受限，且工具提示会跟随鼠标指针移动。
 
-如果你想恢复之前的行为，可以在初始化 Gantt 前使用如下代码:
+如有需要，可以在 Gantt 初始化之前使用下面的代码恢复到先前的行为：
 
 ~~~js
 gantt.attachEvent("onGanttReady", () => {
@@ -249,4 +262,3 @@ gantt.attachEvent("onGanttReady", () => {
 gantt.init("gantt_here");
 gantt.parse(demo_tasks);
 ~~~
-

@@ -1,23 +1,23 @@
 ---
 sidebar_label: getPrev
-title: getPrev method
-description: "получает id предыдущего элемента, независимо от его уровня вложенности - будь то тот же уровень или другой."
+title: getPrev метод
+description: "возвращает идентификатор предыдущего элемента (независимо от уровня вложенности: один и тот же или другой)"
 ---
 
 # getPrev
 
 ### Description
 
-@short: Получает id предыдущего элемента, независимо от его уровня вложенности - будь то тот же уровень или другой.
+@short: Возвращает идентификатор предыдущего элемента (независимо от уровня вложенности: один и тот же или другой)
 
 @signature: getPrev: (id: string | number) =\> string | number
 
 ### Parameters
 
-- `id` - (required) *string | number* -    id задачи
+- `id` - (required) *string | number* - идентификатор задачи
 
 ### Returns
-- ` id` - (string, number) - id задачи, которая идет перед указанной
+- `id` - (string, number) - идентификатор предыдущей задачи
 
 ### Example
 
@@ -51,4 +51,3 @@ gantt.getPrev("t_2"); -> "t_1"  /*!*/
 
 ### Related Guides
 - [Task Parent/Child](guides/task-tree-operations.md)
-

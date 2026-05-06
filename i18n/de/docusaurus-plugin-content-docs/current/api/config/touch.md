@@ -1,14 +1,14 @@
 ---
 sidebar_label: touch
 title: touch config
-description: "steuert, ob die Touch-Unterstützung für das Gantt-Diagramm aktiviert oder deaktiviert ist"
+description: "Aktiviert/Deaktiviert die Touch-Unterstützung für das Gantt-Diagramm"
 ---
 
 # touch
 
 ### Description
 
-@short: Steuert, ob die Touch-Unterstützung für das Gantt-Diagramm aktiviert oder deaktiviert ist
+@short: Aktiviert/deaktiviert die Touch-Unterstützung für das Gantt-Diagramm
 
 @signature: touch: boolean | string
 
@@ -24,18 +24,15 @@ gantt.init("gantt_here");
 
 ### Details
 
-Wenn als String gesetzt, ist der einzige akzeptierte Wert **'force'**.
+Als String kann der Parameter nur den Wert - **'force'** annehmen.
 
-<br>
+Es gibt drei mögliche Werte, die der Parameter annehmen kann:
 
-Für diesen Parameter gibt es drei mögliche Optionen:
-
-- *true* - dhtmlxGantt versucht zu erkennen, ob das Gerät Touch unterstützt, indem es den User-Agent-String des Browsers überprüft. Wird ein Touch-Gerät erkannt, wird die Touch-Unterstützung aktiviert.
-- *'force'* - die Touch-Unterstützung wird unabhängig vom verwendeten Gerät aktiviert.
-- *false* - die Touch-Unterstützung wird vollständig deaktiviert.
+- *true* - dhtmlxGantt versucht, das Touch-Gerät durch Analyse des User-Agent-Strings des Browsers zu erkennen und bei erkannter Touch-Unterstützung die Touch-Unterstützung zu aktivieren.
+- *'force'* - aktiviert die persistente Touch-Unterstützung, egal welches Gerät verwendet wird.
+- *false* - deaktiviert die Touch-Unterstützung.
 
 ### Related API
 - [touch_drag](api/config/touch_drag.md)
 - [touch_feedback](api/config/touch_feedback.md)
 - [touch_feedback_duration](api/config/touch_feedback_duration.md)
-

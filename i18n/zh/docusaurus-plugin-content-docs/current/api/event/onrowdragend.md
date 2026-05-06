@@ -1,49 +1,47 @@
 ---
 sidebar_label: onRowDragEnd
-title: onRowDragEnd event
-description: "当用户在grid中垂直重新排序并放下某一行后触发"
+title: onRowDragEnd 事件
+description: "在网格中，用户放下一个垂直重新排序的行后触发"
 ---
 
 # onRowDragEnd
 
 ### Description
 
-@short: 当用户在grid中垂直重新排序并放下某一行后触发
+@short: 当用户在网格中释放一个垂直重新排序的行时触发
 
 @signature: onRowDragEnd: (id: string | number, target: string | number) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - 被垂直拖动的任务ID
-- `target` - (required) *string | number* - 拖动行所替代位置的目标任务ID
+- `id` - (必填) *string | number* - 用户在网格中垂直拖动的任务的 id
+- `target` - (必填) *string | number* - 拖动的行最终所处的目标任务的 id
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onRowDragEnd", function(id, target) {
-    // 可以在这里添加自定义逻辑
+    // 在这里插入您的自定义逻辑 
 });
 ~~~
 
 ### Related samples
-- [Branch ordering](https://docs.dhtmlx.com/gantt/samples/07_grid/02_branch_ordering.html)
+- [分支排序](https://docs.dhtmlx.com/gantt/samples/07_grid/02_branch_ordering.html)
 
 ### Details
 
 :::note
-
-当启用 [order_branch](api/config/order_branch.md) 设置时，该事件会在用户使用鼠标在左侧grid中移动任务时触发。如果分支重新排序功能关闭，则该事件不会被调用。
- 
+当在左侧网格中使用鼠标移动任务时触发该事件，前提是启用了 [order_branch] 设置。若禁用分支重新排序，则不会调用该事件。
 :::
 
-**target** 参数包含了被移动任务最近的任务ID，该任务要么紧挨着被移动任务之前，要么紧挨着之后。
+The **target** 参数将包含紧邻当前任务之前或之后最近的任务的 id。
 
-该值有两种可能的格式:
+它的值可能以以下两种格式之一出现：
 
-- *target=targetId* - 被移动任务应放置在目标任务 targetId 的**前面**
-- *target=next:targetId* - 被移动任务应放置在目标任务 targetId 的**后面**（当替换的是图表中的最后一个任务时发生）
+- *target=targetId* - 当前任务应位于 targetId 任务之前
+- *target=next:targetId* - 当前任务应位于 targetId 任务之后（如果你替换了图表中的最后一个任务，则会发生）
 
-下面是一个示例，展示如何提取 *next:targetId* 格式中的目标ID:
+在 *next:targetId* 格式中获取目标 id 的示例：
 
 ~~~js
 gantt.attachEvent("onRowDragEnd", function(id, target) {
@@ -64,4 +62,3 @@ gantt.attachEvent("onRowDragEnd", function(id, target) {
 
 ### Related Guides
 - [任务重新排序](guides/reordering-tasks.md)
-

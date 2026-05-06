@@ -5,15 +5,14 @@ sidebar_label: "Режим только для чтения"
 
 # Режим только для чтения
 
-В этом разделе рассмотрим режим только для чтения в двух сценариях:
+В этой части мы рассмотрим режим только для чтения в контексте двух ситуаций:
 
-1. [Режим только для чтения для всего Gantt](guides/readonly-mode.md#readonlymodefortheentiregantt)
-2. [Режим только для чтения для отдельных задач](guides/readonly-mode.md#readonlymodeforspecifictaskslinks)
+1. [Режим только для чтения для всего Gantt-чарта](guides/readonly-mode.md#readonlymodefortheentiregantt)
+2. [Режим только для чтения для конкретных задач/ссылок](guides/readonly-mode.md#readonlymodeforspecifictaskslinks)
 
+## Режим только для чтения для всего Gantt-чарта {#readonlymodefortheentiregantt}
 
-## Режим только для чтения для всего Gantt {#readonlymodefortheentiregantt}
-
-Чтобы сделать весь Gantt только для чтения, просто установите опцию [readonly](api/config/readonly.md) в *true*.
+Чтобы сделать весь Gantt-чарт доступным только для чтения, установите опцию [readonly](api/config/readonly.md) в значение *true*.
 
 ~~~js
 gantt.config.readonly = true;
@@ -21,9 +20,9 @@ gantt.config.readonly = true;
 gantt.init("gantt_here");
 ~~~
 
-Имейте в виду, что режим только для чтения отключает только встроенные действия, которые пользователь может выполнять через интерфейс. Это значит, что когда весь Gantt заблокирован, пользователи не смогут открывать lightbox или inline-редактор, перемещать задачи или изменять их размер.
+Следует понимать, что режим только для чтения затрагивает только встроенные действия, которые пользователи могут выполнять через UI. Это означает, что когда весь Gantt-чарт не редактируем, пользователи не смогут открыть lightbox или inline editor, не смогут перетаскивать задачи вертикально или горизонтально, или изменять размер задач.
 
-Однако свойство [readonly](api/config/readonly.md) не блокирует действия, выполняемые через API. Поэтому, если вы используете API Gantt, вам потребуется вручную проверять, включён ли режим только для чтения, внутри своих callback-функций. Например, вот как можно предотвратить добавление задач при клике на пользовательскую кнопку:
+Но свойство [readonly](api/config/readonly.md) не блокирует действия, реализованные через методы API. Таким образом, если вы используете API Gantt, нужно вручную проверять, включён ли режим только для чтения в обратном вызове. Например, вот как можно запретить добавление задач через кликанье на кастомную кнопку:
 
 ~~~js
 gantt.config.readonly = true;
@@ -47,8 +46,7 @@ function customAdd(parentId) { /*!*/
 }/*!*/
 ~~~
 
-
-Чтобы оставить отдельные задачи или связи редактируемыми даже при включённом режиме только для чтения для всего Gantt, добавьте свойство 'editable' в объект данных задачи или связи и установите его в *true*:
+Чтобы сделать конкретные задачи/ссылки редактируемыми в режиме чтения, добавьте свойство 'editable' в их данные и установите его значение в *true*:
 
 ![task_editable_property](/img/task_editable_property.png)
 
@@ -57,16 +55,16 @@ gantt.config.readonly = true;
 var task = gantt.getTask(id).editable = true;
 ~~~
 
-По умолчанию это поведение связано со свойством 'editable' задачи или связи. Если вы хотите использовать другое свойство, вы можете изменить его с помощью опции [editable_property](api/config/editable_property.md):
+По умолчанию указанное поведение привязано к свойству 'editable' задачи/ссылки. Вы можете изменить целевое свойство, используя конфигурационную опцию [editable_property](api/config/editable_property.md):
 
 ~~~js
 gantt.config.editable_property = "property_name";
 ~~~
 
 
-## Режим только для чтения для отдельных задач/связей {#readonlymodeforspecifictaskslinks}
+## Режим только для чтения для конкретных задач/ссылок {#readonlymodeforspecifictaskslinks}
 
-Чтобы сделать определённые задачи или связи только для чтения, добавьте свойство 'readonly' в их объекты данных и установите его в true:
+Чтобы сделать конкретные задачи или ссылки доступными только для чтения, добавьте свойство 'readonly' к данным объектов и установите его в true:
 
 ~~~js
 gantt.getTask(id).readonly = true;
@@ -76,12 +74,12 @@ gantt.getLink(id).readonly = true;
 ![task_readonly_property](/img/task_readonly_property.png)
 
 :::note
-По умолчанию Gantt проверяет, установлено ли у задачи или связи это свойство в истинное значение, и делает её только для чтения. В противном случае она остаётся доступной для редактирования.
+По умолчанию gantt проверяет наличие у задачи/ссылки данного свойства и, если значение неотрицательное, делает задачу/ссылку доступной только для чтения. В противном случае элемент остаётся редактируемым.
 :::
 
-Когда задача или связь находится в режиме только для чтения, она не будет реагировать на клики или двойные клики, а также её нельзя будет перетаскивать или редактировать.
+Когда задача/ссылка помечена как только для чтения, она не реагирует на клики, не реагирует на двойные клики, не перетаскивается и никак не редактируется.
 
-Если вы хотите показывать lightbox для задач только для чтения, вы можете вызвать его вручную с помощью [gantt.showLightbox(id)](api/method/showlightbox.md):
+Если вы хотите показать lightbox для задач в режиме чтения, можно вызвать его вручную с помощью [gantt.showLightbox(id)](api/method/showlightbox.md):
 
 ~~~js
 gantt.attachEvent("onTaskDblClick", function(id,e){
@@ -90,16 +88,16 @@ gantt.attachEvent("onTaskDblClick", function(id,e){
 });
 ~~~
 
-По умолчанию поведение только для чтения связано со свойством 'readonly' задачи или связи. Но вы можете изменить это свойство с помощью опции [readonly_property](api/config/readonly_property.md):
+По умолчанию поведение в режиме чтения привязано к свойству 'readonly' задачи/ссылки. Но вы можете изменить целевое свойство, используя конфигурационную опцию [readonly_property](api/config/readonly_property.md):
 
 ~~~js
 gantt.config.readonly_property = "property_name";
 ~~~
 
 
-## Подробнее о параметре "editable_property"
+## Детали конфигурационной опции "editable_property"
 
-Свойство 'editable_property' указывает на свойство самого объекта данных задачи, а не на секцию lightbox или колонку в левом гриде:
+Свойство 'editable_property' относится к свойству объекта данных задачи, а не к разделу lightbox или к колонке левой панели grid:
 
 ~~~js
 {
@@ -115,7 +113,7 @@ gantt.config.readonly_property = "property_name";
 }
 ~~~
 
-Если вы хотите сделать это свойство редактируемым из lightbox, установите 'editable_property' в то же значение, на которое настроен контрол:
+Если вы хотите сделать это свойство настраиваемым через lightbox, нужно задать 'editable_property' равным той же свойствке, с которой сопоставлен контрол:
 
 ~~~js
 gantt.config.lightbox.sections = [ 
@@ -132,12 +130,12 @@ gantt.config.editable_property = "some_property";
 ~~~
 
 
-## Установка read-only события на основе нескольких свойств
+## Установка редактируемости событий на основании нескольких свойств
 
-Чтобы сделать события редактируемыми на основании нескольких условий, вы можете:
+Если вы хотите сделать события условно редактируемыми на основе набора свойств, вы можете:
 
-- управлять возможностью редактирования вручную, блокируя события [onBeforeLightbox](api/event/onbeforelightbox.md) и [onBeforeTaskDrag](api/event/onbeforetaskdrag.md)
-- обновлять свойство 'editable_property' динамически при загрузке, создании или обновлении задач (используя [onTaskLoading](api/event/ontaskloading.md), [onTaskCreated](api/event/ontaskcreated.md), [onAfterTaskUpdate](api/event/onaftertaskupdate.md)):
+- управлять их редактируемостью вручную, например, блокируя события [onBeforeLightbox](api/event/onbeforelightbox.md) и [onBeforeTaskDrag](api/event/onbeforetaskdrag.md)
+- динамически обновлять 'editable_property' каждый раз, когда задача загружается, добавляется или обновляется ([onTaskLoading](api/event/ontaskloading.md), [onTaskCreated](api/event/ontaskcreated.md), [onAfterTaskUpdate](api/event/onaftertaskupdate.md)):
 
 ~~~js
 gantt.attachEvent("onTaskLoading", function(task){
@@ -145,4 +143,3 @@ gantt.attachEvent("onTaskLoading", function(task){
     return true;
 });
 ~~~
-

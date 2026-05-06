@@ -1,14 +1,14 @@
 ---
 sidebar_label: show_unscheduled
-title: show_unscheduled config
-description: "позволяет переключать видимость незапланированных задач"
+title: конфигурация show_unscheduled
+description: "включает отображение несрочных задач"
 ---
 
 # show_unscheduled
 
 ### Description
 
-@short: Позволяет переключать видимость незапланированных задач
+@short: Включает отображение несрочных задач
 
 @signature: show_unscheduled: boolean
 
@@ -20,18 +20,18 @@ gantt.config.show_unscheduled = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Related samples
-- [Show Unscheduled Tasks](https://docs.dhtmlx.com/gantt/samples/01_initialization/19_tasks_without_dates.html)
+- [Показать несрочные задачи](https://docs.dhtmlx.com/gantt/samples/01_initialization/19_tasks_without_dates.html)
 
 ### Details
 
-По умолчанию незапланированные задачи отображаются в виде пустых строк. Если вы хотите, чтобы эти задачи показывались непосредственно в области timeline, установите свойство **show_unscheduled** в значение *false*. Название может показаться немного запутанным на первый взгляд, но это будет исправлено в будущих обновлениях для более интуитивного понимания.
+Обратите внимание, что по умолчанию несрочные задачи отображаются как пустая строка. Чтобы отобразить их на временной шкале, необходимо установить значение свойства **show_unscheduled** в *false*.
+Это может быть запутанно для вас, но мы исправим несоответствие между названием свойства и его значениями в одной из будущих версий.
 
 ### Related API
 - [task_unscheduled_time](api/template/task_unscheduled_time.md)
 
 ### Related Guides
-- [Базовые операции с задачами](guides/unscheduled-tasks.md)
-
+- [Основные операции с задачами](guides/unscheduled-tasks.md)

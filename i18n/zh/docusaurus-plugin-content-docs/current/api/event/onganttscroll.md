@@ -1,7 +1,7 @@
 ---
 sidebar_label: onGanttScroll
-title: onGanttScroll event
-description: "当甘特图滚动到特定位置时触发"
+title: onGanttScroll 事件
+description: "当甘特图滚动到某个点时触发"
 ---
 
 # onGanttScroll
@@ -14,14 +14,14 @@ description: "当甘特图滚动到特定位置时触发"
 
 ### Parameters
 
-- `left` - (required) *number* - 水平滚动位置
-- `top` - (required) *number* - 垂直滚动位置
+- `left` - (required) *number* - 水平滚动的位置
+- `top` - (required) *number* - 垂直滚动的位置
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onGanttScroll", function (left, top){
-    // 在这里添加任何自定义逻辑
+    // 在这里插入您的自定义逻辑 
 });
 ~~~
 
@@ -32,6 +32,5 @@ gantt.attachEvent("onGanttScroll", function (left, top){
 - [showDate](api/method/showdate.md)
 
 ### Related Guides
-- [操作指南](guides/how-to.md) (查看如何设置无限滚动)
-- [操作指南](guides/how-to.md) (查看如何动态加载任务)
-
+- [How-tos](guides/how-to.md#how-to-have-an-infinite-scroll-in-the-timeline) (了解如何在时间线中实现无限滚动)
+- [How-tos](guides/how-to.md#how-to-load-tasks-dynamically) (了解如何动态加载任务)

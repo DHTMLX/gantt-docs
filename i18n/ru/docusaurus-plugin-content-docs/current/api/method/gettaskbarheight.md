@@ -14,10 +14,10 @@ description: "возвращает высоту (в пикселях) DOM-эле
 
 ### Parameters
 
-- `taskId` - (required) *number | string* -    ID задачи
+- `taskId` - (required) *number | string* - идентификатор задачи
 
 ### Returns
-- ` param` - (number) - высота task bar
+- ` param` - (number) - высота задачи
 
 ### Example
 
@@ -30,7 +30,7 @@ gantt.getTaskBarHeight(1); // -> 45
 
 ### Details
 
-Возвращаемое значение может соответствовать свойству **bar_height**, установленному для объекта задачи:
+Значение, возвращаемое функцией, также может соответствовать значению, указанному свойству **bar_height** объекта задачи:
 
 ~~~js
 const tasks = {
@@ -49,17 +49,15 @@ gantt.getTaskBarHeight(2); // -> 25
 ~~~
 
 :::note
- 
-Если свойство **bar_height** установлено в значение "full", этот метод вычисляет фактическую высоту task bar в пикселях. 
+Если свойство **bar_height** задано как "full", метод вычисляет высоту полосы задачи в пикселях.
 :::
 
 ### Related API
 - [bar_height](api/config/bar_height.md)
 
 ### Related Guides
-- [Изменение размера строк в гриде](guides/resizing-rows.md)
-- [Task Object/Id](guides/task-object-operations.md#taskheight)
+- [Изменение размера строк в Grid](guides/resizing-rows.md)
+- [Объект/ID задачи](guides/task-object-operations.md#task-height)
 
 ### Change log
-- добавлено в версии v7.1
-
+- добавлено в v7.1

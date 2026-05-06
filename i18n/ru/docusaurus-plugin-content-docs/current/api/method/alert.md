@@ -1,23 +1,23 @@
 ---
 sidebar_label: alert
-title: alert method
-description: "вызывает окно alert-сообщения"
+title: метод alert
+description: "вызывает диалоговое окно alert"
 ---
 
 # alert
 
 ### Description
 
-@short: Вызывает окно alert-сообщения
+@short: Вызывает диалоговое окно alert
 
 @signature: alert: (config: AlertBoxConfig | string | number) =\> HTMLElement
 
 ### Parameters
 
-- `config` - (required) *AlertBoxConfig | string | number* -            может быть объектом с настройками alert-бокса или просто текстом для отображения
+- `config` - (required) *AlertBoxConfig | string | number* - либо объект с конфигурацией окна alert или текст для показа
 
 ### Returns
-- ` div` - (HTMLElement) - div-элемент, содержащий alert-бокс
+- ` div` - (HTMLElement) - контейнер div для окна alert
 
 ### Example
 
@@ -28,28 +28,25 @@ var box = gantt.alert({
     text:"You can't do this"
 });
 
-// или
+// or
 var box = gantt.alert("This is an alert box");
 ~~~
 
 ### Details
 
-Объект конфигурации поддерживает следующие свойства:
+Объект конфигурации использует следующие свойства:
 
-- **id?** - (*number | string*) - необязательный, ID alert-бокса
-- **text** - (*number | string*) - основной текст внутри alert-бокса
-- **title?** - (*number | string*) - необязательный, заголовок
-- **ok?** - (*number | string*) - необязательный, надпись на кнопке "OK"
-- **position?** - (*string*) - необязательный, позиция alert-бокса; в настоящее время поддерживается только "top", любое другое значение по умолчанию будет "center-align"
-- **width?** - (*string*) - необязательный, ширина alert-бокса в формате CSS [&#60;length&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/length) или
-  [&#60;percentage&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage), например "100px", "50%"
-- **height?** - (*string*) - необязательный, высота alert-бокса в формате CSS [&#60;length&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/length) или
-  [&#60;percentage&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage), например "100px", "50%"
-- **callback? (result): void** - необязательная функция, вызываемая при нажатии на кнопку. Параметр *result* всегда равен *true* (так как есть только кнопка "OK")
-    - **_result_** - (*boolean*) - указывает результат нажатой кнопки, всегда **true**
+- **id?** - (*number | string*) - необязательный идентификатор окна alert
+- **text** - (*number | string*) - текст содержимого окна alert
+- **title?** - (*number | string*) - необязательный текст заголовка
+- **ok?** - (*number | string*) - необязательный текст кнопки "OK"
+- **position?** - (*string*) - необязательное положение окна alert; на данный момент поддерживается только одно значение - "top", любое другое значение приведет к выравниванию по центру
+- **width?** - (*string*) - необязательная ширина окна alert (устанавливается как значения CSS \<length\> или \<percentage\>, например "100px", "50%")
+- **height?** - (*string*) - необязательная высота окна alert (устанавливается как значения CSS \<length\> или \<percentage\>, например "100px", "50%")
+- **callback? (result): void** - необязательный, функция, вызываемая при клике по кнопке. Принимает *true* в качестве параметра (в зависимости от нажатой кнопки)
+    - **_result_** - (*boolean*) - результат нажатой кнопки, всегда возвращает **true** (поскольку кнопка одна — "OK")
 
-
-Для получения более подробной информации о настройках alert-бокса смотрите статью [Всплывающие сообщения и модальные окна](guides/message-boxes.md).
+Для получения дополнительной информации об опциях конфигурации окна alert см. статью [Всплывающие сообщения и модальные окна](guides/message-boxes.md).
 
 ### Related API
 - [confirm](api/method/confirm.md)
@@ -61,4 +58,3 @@ var box = gantt.alert("This is an alert box");
 
 ### Change log
 - добавлено в версии 4.0
-

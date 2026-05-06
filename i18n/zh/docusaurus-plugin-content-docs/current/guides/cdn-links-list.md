@@ -1,19 +1,19 @@
 ---
-title: "CDN 链接完整列表"
+title: "CDN 链接的完整列表"
 sidebar_label: "CDN 链接"
 ---
 
-# CDN 链接完整列表
+# CDN 链接的完整列表
 
-本文列出了在您的应用中引入 **dhtmlxGantt** 所需的 CDN 链接。
+本文列出了将 **dhtmlxGantt** 集成到应用中的 CDN 链接。
 
 Gantt 由两个核心文件组成：
 
-- **JavaScript：** `dhtmlxgantt.js`
-- **样式：** `dhtmlxgantt.css`
+- **JavaScript:** `dhtmlxgantt.js`
+- **Styles:** `dhtmlxgantt.css`
 
 
-## 最新版本的 Gantt（edge）
+## 最新 Gantt 版本（edge）
 
 使用：
 
@@ -26,7 +26,7 @@ Gantt 由两个核心文件组成：
 
 
 
-## 最新版本的 Gantt（edge），未压缩版本
+## 最新 Gantt 版本（edge），未压缩
 
 使用：
 
@@ -38,13 +38,13 @@ Gantt 由两个核心文件组成：
 - CSS: https://cdn.dhtmlx.com/gantt/edge/sources/dhtmlxgantt.css
 
 
-## 指定版本的 Gantt
+## 指定 Gantt 版本
 
 使用：
 
 `https://cdn.dhtmlx.com/gantt/[version_number]/...`
 
-其中 `[version_number]` 表示包的 `major.minor` 版本号，例如 **9.0**、**8.0**、**7.1** 等。我们的 CDN 会为每个 major/minor 版本始终提供最新的 patch 版本。
+其中 `[version_number]` 指定软件包的 major.minor 版本，例如 **9.0**、**8.0**、**7.1** 等。我们的 CDN 始终为每个 major/minor 版本提供最新的补丁版本。
 
 ### 核心文件
 
@@ -53,8 +53,7 @@ Gantt 由两个核心文件组成：
 
 ### 皮肤（仅适用于 v8.0 及更早版本）
 
-在 v8.0 及更早版本中，皮肤（skin）以独立的 CSS 文件形式提供。  
-从 v9.0 开始，所有皮肤都包含在 `dhtmlxgantt.css` 中，并通过 `gantt.skin`/`gantt.setSkin()` 进行选择。更多信息请参阅 [迁移指南](migration.md#single-css-file)。
+在 v8.0 及更早版本中，可以获得独立的皮肤文件。自 v9.0 起，所有皮肤都包含在 `dhtmlxgantt.css` 中，并通过 `gantt.skin`/`gantt.setSkin()` 进行选择，请查看 [Migration guide](migration.md#single-css-file) 以获取更多细节。
 
 - Terrace: https://cdn.dhtmlx.com/gantt/8.0/skins/dhtmlxgantt_terrace.css
 - Meadow: https://cdn.dhtmlx.com/gantt/8.0/skins/dhtmlxgantt_meadow.css
@@ -64,13 +63,13 @@ Gantt 由两个核心文件组成：
 - Contrast White: https://cdn.dhtmlx.com/gantt/8.0/skins/dhtmlxgantt_contrast_white.css
 - Material: https://cdn.dhtmlx.com/gantt/8.0/skins/dhtmlxgantt_material.css
 
-## 指定版本的 Gantt，未压缩版本
+## 指定 Gantt 版本，未压缩
 
 使用：
 
 `https://cdn.dhtmlx.com/gantt/[version_number]/sources/...`
 
-其中 `[version_number]` 表示包的 `major.minor` 版本号，例如 **9.0**、**8.0**、**7.1** 等。我们的 CDN 会为每个 major/minor 版本始终提供最新的 patch 版本。
+其中 `[version_number]` 指定软件包的 major.minor 版本，例如 **9.0**、**8.0**、**7.1** 等。我们的 CDN 始终为每个 major/minor 版本提供最新的补丁版本。
 
 ### 核心文件
 
@@ -80,10 +79,9 @@ Gantt 由两个核心文件组成：
 
 ### 皮肤（仅适用于 v8.0 及更早版本）
 
-在 v8.0 及更早版本中，皮肤（skin）以独立的 CSS 文件形式提供。  
-从 v9.0 开始，所有皮肤都包含在 `dhtmlxgantt.css` 中，并通过 `gantt.skin`/`gantt.setSkin()` 进行选择。更多信息请参阅 [迁移指南](migration.md#single-css-file)。
+在 v8.0 及更早版本中，可以获得独立的皮肤文件。自 v9.0 起，所有皮肤都包含在 `dhtmlxgantt.css` 中，并通过 `gantt.skin`/`gantt.setSkin()` 进行选择，请查看 [Migration guide](migration.md#single-css-file) 以获取更多细节。
 
-未压缩的皮肤文件：
+未压缩皮肤文件：
 
 - Terrace: https://cdn.dhtmlx.com/gantt/8.0/sources/skins/dhtmlxgantt_terrace.css
 - Meadow: https://cdn.dhtmlx.com/gantt/8.0/sources/skins/dhtmlxgantt_meadow.css

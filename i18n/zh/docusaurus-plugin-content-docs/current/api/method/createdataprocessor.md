@@ -1,23 +1,23 @@
 ---
 sidebar_label: createDataProcessor
-title: createDataProcessor method
-description: "创建一个新的 dataProcessor 实例并将其链接到甘特图"
+title: createDataProcessor 方法
+description: "创建一个新的 dataProcessor 实例并将其附加到 gantt"
 ---
 
 # createDataProcessor
 
 ### Description
 
-@short: 创建一个新的 dataProcessor 实例并将其链接到甘特图
+@short: 创建一个新的 dataProcessor 实例并将其附加到 gantt
 
 @signature: createDataProcessor: (config: DataProcessorConfig | RouterFunction | RouterConfig) =\> any
 
 ### Parameters
 
-- `config` - (required) *DataProcessorConfig | RouterFunction | RouterConfig* -         dataProcessor 的配置对象
+- `config` - (required) *DataProcessorConfig | RouterFunction | RouterConfig* -         dataProcessor 配置对象
 
 ### Returns
-- ` dataProcessor` - (object) - 创建的 dataProcessor 实例
+- ` dataProcessor` - (object) - dataProcessor 对象
 
 ### Example
 
@@ -30,16 +30,16 @@ var dp = gantt.createDataProcessor({
 ~~~
 
 ### Related samples
-- [Custom data api - using local storage](https://docs.dhtmlx.com/gantt/samples/08_api/22_data_processor.html)
+- [自定义数据 API - 使用本地存储](https://docs.dhtmlx.com/gantt/samples/08_api/22_data_processor.html)
 
 ### Details
 
 此方法接受以下类型之一的参数:
 
-- **DataProcessorConfig** - (*object*) - 定义预设数据发送模式之一的对象
-    - **_url_** - (*string*) - 服务器 URL
-    - **_mode?_** - (*string*) - 可选，指定数据发送方式:"JSON" | "REST-JSON" | "JSON" | "POST" | "GET"
-    - **_deleteAfterConfirmation?_** - (*boolean*) - 可选，确定任务是否仅在服务器确认删除后才从甘特图中移除。依赖链接和子任务会在父任务删除确认后被删除。
+- **DataProcessorConfig** - (*object*) - 对象，指定数据发送的预定义模式之一
+    - **_url_** - (*string*) - 指向服务器端的 URL
+    - **_mode?_** - (*string*) - 可选，向服务器发送数据的模式： "JSON" | "REST-JSON" | "JSON" | "POST" | "GET"
+    - **_deleteAfterConfirmation?_** - (*boolean*) - 可选，定义是否仅在服务器返回成功响应后才从 gantt 中删除任务。依赖关系链接和子任务将在确认删除父任务后被删除。
 
 
 ~~~js
@@ -51,11 +51,11 @@ var dp = gantt.createDataProcessor({
 ~~~
 
 
-- **RouterFunction (entity, action, data, id): Promise | object | void** - 用于处理甘特图变化的路由函数
-    - **_entity_** - (*string*) - 相关实体名称，如 "task"、"link"、"resource" 或 "assignment"
-    - **_action_** - (*string*) - 操作类型:"create"、"update" 或 "delete"
-    - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - 正在处理的对象
-    - **_id_** - (*string | number*) - 正在处理对象的 id
+- **RouterFunction (entity, action, data, id): Promise | object | void** - 处理 Gantt 变更的路由函数
+    - **_entity_** - (*string*) - 相关实体的名称。可能的取值为: "task"|"link"|"resource"|"assignment"
+    - **_action_** - (*string*) - 相关动作的名称。可能的取值为:  "create"|"update"|"delete"
+    - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - 处理后的对象
+    - **_id_** - (*string | number*) - 处理对象的 id
 
 
 ~~~js
@@ -87,22 +87,22 @@ var dp = gantt.createDataProcessor(function(entity, action, data, id) {
 ~~~
 
 
-- **RouterConfig** - (*object*) - 配置不同实体路由的对象
-    - **_task?_** - (*RouterForEntity*) - 任务的路由配置
-    - **_link?_** - (*RouterForEntity*) - 链接的路由配置
-    - **_resource?_** - (*RouterForEntity*) - 资源的路由配置
-    - **_assignment?_** - (*RouterForEntity*) - 分配的路由配置
+- **RouterConfig** - (*object*) - 针对不同实体的路由配置
+    - **_task?_** - (*RouterForEntity*) - 任务的路由对象
+    - **_link?_** - (*RouterForEntity*) - 链接的路由对象
+    - **_resource?_** - (*RouterForEntity*) - 资源的路由对象
+    - **_assignment?_** - (*RouterForEntity*) - 分配的路由对象
 
 
 **RouterForEntity** 对象包含以下方法:
 
 - **create (data): Promise** - 处理添加项的函数
-    - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - 要添加的项
+    - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - 处理后的项
 - **update (data, id): Promise** - 处理更新项的函数
-    - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - 要更新的项
-    - **_id_** - (*string | number*) - 项的 id
+    - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - 处理后的项
+    - **_id_** - (*string | number*) - 处理项的 id
 - **delete (id): Promise** - 处理删除项的函数
-    - **_id_** - (*string | number*) - 项的 id
+    - **_id_** - (*string | number*) - 处理项的 id
 
 
 ~~~js
@@ -125,7 +125,7 @@ var dp = gantt.createDataProcessor({
 ~~~js
 router = function(entity, action, data, id) {
     return new gantt.Promise(function(resolve, reject) {
-        // … 一些逻辑
+        // … some logic
         return resolve({tid: databaseId});
      });
 }
@@ -136,11 +136,11 @@ router = function(entity, action, data, id) {
 
 ## 保存资源和资源分配
 
-默认情况下，DataProcessor 不处理资源和资源分配的更新。 
-您可以通过[单独配置](guides/server-side.md)启用此功能。
+默认情况下，DataProcessor 不会接收资源和资源分配的更新。
+然而，您可以通过 [单独的配置](guides/server-side.md#resources_crud) 启用此功能。
 
-### Related Guides
-- [服务器端集成](guides/server-side.md)
+### 相关指南
+- [服务端集成](guides/server-side.md)
 
-### Change log
-- 在 v8.0 中添加了 **deleteAfterConfirmation** 选项
+### 变更日志
+- 在 v8.0 中新增了 deleteAfterConfirmation 参数

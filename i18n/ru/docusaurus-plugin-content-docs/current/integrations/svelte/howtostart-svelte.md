@@ -1,112 +1,109 @@
----
-title: "dhtmlxGantt с Svelte"
-sidebar_label: "Svelte"
+--- 
+title: "dhtmlxGantt с Svelte" 
+sidebar_label: "Svelte" 
 ---
 
 # dhtmlxGantt с Svelte
 
-Данное руководство предполагает, что вы обладаете базовыми знаниями о концепциях и паттернах Svelte. Если нет, вы можете ознакомиться с полезным [вводным руководством в документации Svelte](https://svelte.dev/).
+Вы должны быть знакомы с базовыми концепциями и паттернами Svelte, чтобы использовать эту документацию. Если нет, обратитесь к [документации Svelte](https://svelte.dev/) для пошагового руководства.
 
-DHTMLX Gantt отлично работает с Svelte. Ознакомиться с рабочим примером можно на GitHub: [DHTMLX Gantt with Svelte Demo](https://github.com/DHTMLX/svelte-gantt-demo).
+DHTMLX Gantt совместим с Svelte. Вы можете проверить соответствующий пример на GitHub: [DHTMLX Gantt with Svelte Demo](https://github.com/DHTMLX/svelte-gantt-demo).
 
 ## Создание проекта
 
-Перед началом работы рекомендуется установить [Vite](https://vite.dev/) (необязательно) и [Node.js](https://nodejs.org/en/).
+Прежде чем начать создание нового проекта, установите [Vite](https://vite.dev/) (опционально) и [Node.js](https://nodejs.org/en/).
 
-Для создания проекта Svelte мы воспользуемся Vite. Выполните команду:
+Чтобы создать проект на Svelte, мы будем использовать Svelte с Vite и выполним следующую команду:
 
-~~~
+~~~ 
 npm create vite@latest
-~~~
+~~~ 
 
-Подробнее об этом можно узнать в [соответствующей статье](https://svelte.dev/docs/introduction#start-a-new-project-alternatives-to-sveltekit).
+Подробнее см. в [соответствующей статье](https://svelte.dev/docs/svelte/overview).
 
 ### Установка зависимостей
 
-Далее перейдите в директорию вашего приложения. Назовём проект **gantt-svelte** и выберем опцию **svelte**. Затем выполните:
+Далее нужно перейти в директорию приложения. Назовем наш проект **gantt-svelte** и выберем опцию **svelte**, затем запустим:
 
-~~~
+~~~ 
 cd gantt-svelte
-~~~
+~~~ 
 
-Теперь установите зависимости и запустите приложение с помощью предпочитаемого пакетного менеджера:
+После этого следует установить зависимости и запустить приложение. Для этого нужно воспользоваться менеджером пакетов:
 
-- Для **yarn** выполните:
+- если вы используете **yarn**, выполните следующие команды:
 
-~~~
+~~~ 
 yarn install
 yarn dev
-~~~
+~~~ 
 
-- Для **npm** выполните:
+- если вы используете **npm**, выполните следующие команды:
 
-~~~
+~~~ 
 npm install
 npm run dev
-~~~
+~~~ 
 
-Ваш Svelte-проект теперь будет доступен по адресу [http://localhost:5173](http://localhost:5173).
+Теперь ваше Svelte-проект должен запуститься по адресу **http://localhost:5173**.
 
 ![Gantt Svelte app running](/img/gantt_svelte_app_run.png)
 
 ## Создание Gantt
 
-Для добавления DHTMLX Gantt сначала остановите приложение, нажав **Ctrl+C** в терминале. Затем приступайте к установке пакета Gantt.
+Теперь нам нужно получить код DHTMLX Gantt. Сначала нужно остановить приложение, нажав **Ctrl+C** в командной строке. Затем можно приступить к установке пакета Gantt.
 
 ## Шаг 1. Установка пакета
 
-PRO-версии библиотеки доступны через **npm/yarn** из нашего приватного репозитория. Пожалуйста, следуйте 
-[этой инструкции](guides/installation.md#npmevaluationandproversions) для получения доступа.
+ПРО версии библиотеки доступны для установки через **npm/yarn** из нашего частного репозитория, пожалуйста, следуйте 
+[этой инструкции](guides/installation.md#npmevaluationandproversions), чтобы получить доступ к нему.
 
-После получения Evaluation-версии установите её с помощью:
+После того как вы получите Evaluation-версию Gantt, вы можете установить её следующими командами:
 
-- Для npm:
+- для npm:
 
-~~~
+~~~ 
 npm install @dhx/trial-gantt
-~~~
+~~~ 
 
-- Для yarn:
+- для yarn:
 
-~~~
+~~~ 
 yarn add @dhx/trial-gantt
-~~~
+~~~ 
 
-Альтернативно, так как zip-пакет библиотеки структурирован как **npm**-модуль, вы можете 
+Кроме того, поскольку zip-пакет библиотеки структурирован как модуль **npm**, вы можете 
 [установить его из локальной папки](guides/installation.md#installfromlocalfolder).
 
 ## Шаг 2. Создание компонента
 
-Далее создайте Svelte-компонент для включения Gantt в ваше приложение. Добавьте новый файл ***Gantt.svelte*** в папку ***src/***.
+Теперь следует создать компонент Svelte, чтобы добавить Gantt в приложение. Давайте создадим новый файл в директории ***src/*** и назовем его ***Gantt.svelte***.
 
 ### Импорт исходных файлов
 
-Откройте ***Gantt.svelte*** и импортируйте исходные файлы Gantt. Обратите внимание:
+Откройте только что созданный ***Gantt.svelte*** и импортируйте исходники Gantt. Обратите внимание:
 
-- Если вы устанавливали пакет Gantt из локальной папки, ваши импорты будут выглядеть так:
+- если вы установили пакет Gantt из локальной папки, ваши пути импорта будут выглядеть так:
 
-**Gantt.svelte**
-~~~
+~~~js title="Gantt.svelte"
 import { Gantt} from "dhtmlx-gantt";
 import "dhtmlx-gantt/codebase/dhtmlxgantt.css";
 ~~~
 
-- Если установлена trial-версия, используйте такие импорты:
+- если вы выбрали установку тестовой версии, пути импорта должны быть такими же, как в:
 
-**Gantt.svelte**
-~~~
+~~~js title="Gantt.svelte"
 import { Gantt} from "@dhx/trial-gantt";
 import "@dhx/trial-gantt/codebase/dhtmlxgantt.css";
 ~~~
 
-В этом руководстве используется **trial**-версия.
+В этом руководстве мы будем использовать **trial**-версию Gantt.
 
-### Задание контейнера и добавление Gantt
+### Установка контейнера и добавление Gantt
 
-Чтобы отобразить Gantt на странице, определите контейнер для рендеринга компонента. Пример:
+Чтобы отобразить Gantt на странице, нужно задать контейнер для рендеринга компонента внутри. Ниже приведён код:
 
-**Gantt.svelte**
-~~~html
+~~~html title="Gantt.svelte"
 <script>
     import "@dhx/trial-gantt/codebase/dhtmlxgantt.css";
     import { onMount } from "svelte";
@@ -126,10 +123,9 @@ import "@dhx/trial-gantt/codebase/dhtmlxgantt.css";
 <div bind:this="{container}" style="width: 100%; height: 100%;"></div>
 ~~~
 
-Чтобы контейнер Gantt занимал всё тело страницы, удалите стандартные стили из ***app.css*** в папке ***src/*** и добавьте:
+Чтобы контейнер Gantt занимал всё пространство body, необходимо удалить стандартные стили из файла ***app.css***, расположенного в папке ***src/***, и добавить следующие:
 
-**src/app.css**
-~~~
+~~~css title="src/app.css"
 body, #app {
   margin: 0;
   padding: 0;
@@ -140,10 +136,9 @@ body, #app {
 
 ## Шаг 3. Добавление Gantt в приложение
 
-Теперь подключите компонент Gantt в приложении. Откройте ***src/App.svelte*** и замените содержимое на:
+Теперь пришло время добавить компонент в наше приложение. Откройте ***src/App.svelte*** и используйте компонент Gantt вместо контента по умолчанию, вставив следующий код:
 
-**src/App.svelte**
-~~~
+~~~js title="src/App.svelte"
 <script>
   import Gantt from "./Gantt.svelte";
 </script>
@@ -151,16 +146,15 @@ body, #app {
 <Gantt/>
 ~~~
 
-Теперь при запуске приложения должен отображаться пустой график Gantt:
+После этого при запуске приложения вы увидите пустой Gantt на странице:
 
 ![Gantt Svelte init](/img/gantt_init.png)
 
-## Шаг 4. Передача данных
+## Шаг 4. Предоставление данных
 
-Чтобы заполнить Gantt, передайте данные. Создайте файл ***data.js*** в ***src/*** и добавьте:
+Чтобы добавить данные в Gantt, нужно предоставить набор данных. Давайте создадим файл ***data.js*** в директории ***src/*** и добавим в него данные:
 
-**src/data.js**
-~~~js
+~~~js title="src/data.js"
 export function getData() {
   const tasks = {
     data: [
@@ -194,14 +188,13 @@ export function getData() {
     ],
     links: [{ id: 1, source: 1, target: 2, type: "0" }],
   };
-  return tasks;
+  return Tasks;
 }
-~~~
+~~~ 
 
-Передайте эти данные как пропсы в компонент Gantt в **App.svelte**:
+We should [pass props (our data)](https://svelte.dev/tutorial/svelte/declaring-props) to the Gantt component in the **App.svelte** file:
 
-**App.svelte**
-~~~html
+~~~html title="App.svelte"
 <script>
   import Gantt from "./Gantt.svelte";
   import { getData } from "./data.js";
@@ -210,10 +203,9 @@ export function getData() {
 <Gantt tasks="{getData()}" />
 ~~~
 
-Далее используйте пропсы внутри компонента Gantt с помощью **gantt.parse()**:
+And use the props in the **gantt.parse()** method in the Gantt component:
 
-**Gantt.svelte**
-~~~html
+~~~html title="Gantt.svelte"
 <script>
     import "@dhx/trial-gantt/codebase/dhtmlxgantt.css";
     import { onMount } from "svelte";
@@ -236,28 +228,28 @@ export function getData() {
 <div bind:this="{container}" style="width: 100%; height: 100%;"></div>
 ~~~
 
-После перезагрузки приложения должен появиться график Gantt с задачами:
+Теперь, если вы заново откроете страницу приложения, вы должны увидеть Gantt с задачами:
 
 ![Gantt tasks](/img/gantt_tasks.png)
 
 ## Шаг 5. Сохранение данных
 
-Для отслеживания изменений в Gantt вы можете использовать обработчик [dataProcessor](api/method/dataprocessor.md). Он облегчает взаимодействие с сервером и может быть определён как функция или объект роутера. dhtmlxGantt поддерживает Promise-ответы, что обеспечивает корректную обработку действий.
+Чтобы зафиксировать изменения, внесённые в Gantt, можно использовать обработчик [dataProcessor], который позволяет «сообщать» серверной части бэкенда. Обработчик может быть объявлен либо как функция, либо как объект-роутер. dhtmlxGantt принимает ответ Promise от обработчика, поэтому ваш Gantt будет корректно обрабатывать завершение действия.
 
-Создайте **DataProcessor** с помощью **createDataProcessor()** для отслеживания изменений следующим образом:
+Вы можете создать DataProcessor через API-метод **createDataProcessor()** и фиксировать изменения вот так:
 
-~~~
+~~~ 
 gantt.createDataProcessor(function(entity, action, data, id) {​
-    gantt.message(`${​entity} ${​action}`);
+    gantt.message(`${​​entity} ${​​action}`);
 });
 ~~~
 
-Если ваш сервер изменяет идентификаторы задач после создания новых записей, убедитесь, что Promise возвращает объект с **(id: databaseId)** или **(tid: databaseId)**, чтобы Gantt мог обновить соответствующую запись. Подробнее о серверной интеграции читайте [здесь](guides/server-side.md).
+Если ваш сервис после создания новой записи изменяет id задачи (что обычно и происходит), убедитесь, что ваш Promise возвращает объект с **(id: databaseId)** или **(tid: databaseId)** в качестве результата, чтобы Gantt мог применить новый идентификатор базы данных к записи. Получите [больше информации о серверной стороне](guides/server-side.md).
 
-На этом настройка Svelte Gantt завершена. Вы можете ознакомиться с полным демо на GitHub: [https://github.com/DHTMLX/svelte-gantt-demo](https://github.com/DHTMLX/svelte-gantt-demo).
+Так что Svelte Gantt готов, добро пожаловать к [полному демо на GitHub](https://github.com/DHTMLX/svelte-gantt-demo).
 
-## XSS, CSRF и SQL Injection атаки
+## XSS, CSRF и SQL-инъекции
 
-Обратите внимание, что Gantt не содержит встроенных средств защиты от угроз, таких как SQL-инъекции, XSS или CSRF-атаки. Обеспечение безопасности приложения от подобных рисков лежит на разработчиках серверной части.
+Обратите внимание, что Gantt не предоставляет средства для предотвращения разных угроз приложения, таких как SQL-инъекции или XSS и CSRF-атаки. Важно, чтобы ответственность за безопасность приложения лежала на разработчиках, реализующих бекенд.
 
-Для получения информации о потенциальных уязвимостях и рекомендациях по безопасности обратитесь к статье [Application Security](guides/app-security.md).
+Ознакомьтесь со статьей [Application Security](guides/app-security.md), чтобы узнать самые уязвимые точки компонента и меры, которые можно принять для повышения безопасности вашего приложения.

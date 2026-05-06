@@ -1,14 +1,14 @@
 ---
 sidebar_label: show_unscheduled
-title: show_unscheduled config
-description: "스케줄이 지정되지 않은 작업의 표시 여부를 토글할 수 있습니다."
+title: show_unscheduled 설정
+description: "날짜가 지정되지 않은 작업 표시를 활성화합니다"
 ---
 
 # show_unscheduled
 
 ### Description
 
-@short: 스케줄이 지정되지 않은 작업의 표시 여부를 토글할 수 있습니다.
+@short: 날짜가 지정되지 않은 작업 표시를 활성화합니다
 
 @signature: show_unscheduled: boolean
 
@@ -27,11 +27,11 @@ gantt.init("gantt_here");
 
 ### Details
 
-기본적으로 스케줄이 지정되지 않은 작업은 빈 행으로 표시됩니다. 이러한 작업을 타임라인 영역에 직접 표시하려면 **show_unscheduled** 속성을 *false*로 설정하세요. 이름이 다소 혼동스러울 수 있지만, 향후 업데이트에서 더 직관적으로 개선될 예정입니다.
+참고로 기본적으로 날짜가 지정되지 않은 작업은 빈 행으로 표시됩니다. 타임라인 영역에 표시하려면 **show_unscheduled** 속성의 값을 *false*로 설정해야 합니다.
+이는 다소 혼란스러울 수 있지만, 향후 버전 중 하나에서 속성 이름과 값 간의 불일치를 해결할 예정입니다.
 
 ### Related API
 - [task_unscheduled_time](api/template/task_unscheduled_time.md)
 
 ### Related Guides
-- [작업의 기본 작업](guides/unscheduled-tasks.md)
-
+- [Basic Operations with Tasks](guides/unscheduled-tasks.md)

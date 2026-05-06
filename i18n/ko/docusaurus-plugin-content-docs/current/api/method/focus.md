@@ -1,16 +1,16 @@
 ---
-sidebar_label: focus
-title: focus method
-description: "간트에 focus를 활성화합니다."
+sidebar_label: 포커스
+title: 포커스 메서드
+description: "Gantt 차트에 포커스를 설정합니다"
 ---
 
 # focus
 
 ### Description
 
-@short: 간트에 focus를 활성화합니다.
+@short: Gantt 차트에 포커스를 설정합니다
 
-@signature: focus: () =\> void
+@signature: focus: () => void
 
 ### Example
 
@@ -25,7 +25,7 @@ gantt.focus();
 ### Details
 
 :::note
-note 이 메서드는 **keyboard_navigation** 확장에 속하므로, 먼저 [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) 플러그인을 활성화해야 합니다. 자세한 내용은 [키보드 내비게이션](guides/keyboard-navigation.md) 문서를 참고하세요. 
+이 메서드는 **keyboard_navigation** 확장에 정의되어 있으므로 [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) 플러그인을 활성화해야 합니다. [Keyboard Navigation](guides/keyboard-navigation.md) 문서에서 자세한 내용을 확인하세요.
 :::
 
 

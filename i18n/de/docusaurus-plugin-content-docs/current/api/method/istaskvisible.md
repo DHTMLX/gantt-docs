@@ -1,23 +1,23 @@
 ---
 sidebar_label: isTaskVisible
-title: isTaskVisible method
-description: "bestimmt, ob die angegebene Aufgabe derzeit im Gantt-Diagramm angezeigt wird"
+title: isTaskVisible Methode
+description: "prüft, ob die angegebene Aufgabe derzeit im Gantt-Diagramm gerendert wird"
 ---
 
 # isTaskVisible
 
 ### Description
 
-@short: Bestimmt, ob die angegebene Aufgabe derzeit im Gantt-Diagramm angezeigt wird
+@short: Prüft, ob die angegebene Aufgabe derzeit im Gantt-Diagramm gerendert wird
 
 @signature: isTaskVisible: (id: string | number) =\> boolean
 
 ### Parameters
 
-- `id` - (required) *string | number* -         die eindeutige Kennung der Aufgabe
+- `id` - (required) *string | number* - die ID der Aufgabe
 
 ### Returns
-- ` isvisible` - (boolean) - <i>true</i>, wenn die Aufgabe aktuell im Gantt-Diagramm angezeigt wird; andernfalls <i>false</i>
+- ` isvisible` - (boolean) - <i>true</i>, wenn die Aufgabe derzeit im Gantt-Diagramm gerendert wird. Ansonsten, <i>false</i>
 
 ### Example
 

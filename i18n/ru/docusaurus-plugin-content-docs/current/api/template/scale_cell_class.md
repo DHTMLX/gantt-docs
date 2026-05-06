@@ -1,27 +1,27 @@
----
+--- 
 sidebar_label: scale_cell_class
-title: scale_cell_class template
-description: "определяет CSS класс, который будет назначен ячейкам в шкале времени области timeline"
+title: Шаблон scale_cell_class
+description: "указывается CSS-класс, который будет применяться к ячейкам временной шкалы панели таймлайна"
 ---
 
 # scale_cell_class
 
 ### Description
 
-@short: Определяет CSS класс, который будет назначен ячейкам в шкале времени области timeline
+@short: Указывает CSS-класс, который будет применяться к ячейкам временной шкалы панели таймлайна
 
-@signature: scale_cell_class: (date: Date) =\> string | void;
+@signature: scale_cell_class: (date: Date) => string | void;
 
 ### Parameters
 
-- `date` - (required) *Date* - конкретная дата, представленная ячейкой
+- `date` - (required) *Date* - дата ячейки
 
 ### Returns
-- ` text` - (string | void) - CSS класс, который будет применён к соответствующему элементу
+- ` text` - (string | void) - CSS-класс для соответствующего элемента
 
 ### Example
 
-~~~jsx
+~~~js
 <style>
 .weekend{ background: #f4f7f4 !important;}
 </style>
@@ -35,11 +35,11 @@ gantt.templates.scale_cell_class = function(date){
 ~~~
 
 ### Related samples
-- [Highlighting weekends](https://docs.dhtmlx.com/gantt/samples/04_customization/06_highlight_weekend.html)
+- [Выделение выходных](https://docs.dhtmlx.com/gantt/samples/04_customization/06_highlight_weekend.html)
 
 ### Details
 
-При использовании [расчёта рабочего времени](guides/working-time.md) можно опираться на [isWorkTime](api/method/isworktime.md) вместо использования фиксированных значений:
+Note that while using [work time calculations](guides/working-time.md), you can use [isWorkTime](api/method/isworktime.md) instead of hardcoded values:
 
 ~~~js
 gantt.config.work_time = true;
@@ -50,7 +50,7 @@ gantt.templates.scale_cell_class = function(date){
 };
 ~~~
 
-Если установлено несколько шкал через свойство [gantt.config.scales](api/config/scales.md), этот шаблон влияет только на первую шкалу. Чтобы назначить CSS классы ячейкам в других шкалах, используйте атрибут **css** внутри конфигурации [gantt.config.scales](api/config/scales.md):
+If you have specified several scales via the [gantt.config.scales](api/config/scales.md) property, the template will be applied only to the first scale. To specify the CSS class to the cells of any other scale, use the **css** attribute of the [gantt.config.scales](api/config/scales.md) property:
 
 ~~~js
 gantt.config.scales = [
@@ -71,9 +71,8 @@ gantt.config.scales = [
 - [timeline_cell_class](api/template/timeline_cell_class.md)
 
 ### Related Guides
-- [Шаблоны области временной шкалы](guides/timeline-templates.md)
+- [Шаблоны области таймлайна](guides/timeline-templates.md)
 - [Скрытие временных единиц на шкале](guides/custom-scale.md)
 - [Выделение временных слотов](guides/highlighting-time-slots.md)
-- [Расчёт рабочего времени](guides/working-time.md)
+- [Расчет рабочего времени](guides/working-time.md)
 - [Настройка шкалы](guides/configuring-time-scale.md#styling)
-

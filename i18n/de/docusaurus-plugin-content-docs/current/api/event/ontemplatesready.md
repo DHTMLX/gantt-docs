@@ -1,14 +1,14 @@
 ---
 sidebar_label: onTemplatesReady
-title: onTemplatesReady event
-description: "wird ausgelöst, wenn die dhtmlxGantt Templates initialisiert wurden"
+title: onTemplatesReady-Ereignis
+description: "Wird ausgelöst, wenn die dhtmlxGantt-Templates initialisiert werden"
 ---
 
 # onTemplatesReady
 
 ### Description
 
-@short: Wird ausgelöst, wenn die dhtmlxGantt Templates initialisiert wurden
+@short: Wird ausgelöst, sobald die dhtmlxGantt-Templates initialisiert werden
 
 @signature: onTemplatesReady: () =\> void;
 
@@ -16,12 +16,12 @@ description: "wird ausgelöst, wenn die dhtmlxGantt Templates initialisiert wurd
 
 ~~~jsx
 gantt.attachEvent("onTemplatesReady", function(){
-    //hier benutzerdefinierte Logik einfügen
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Details
 
-Dieses Event signalisiert, dass die dhtmlxGantt Templates vollständig initialisiert sind. Es bietet einen günstigen Zeitpunkt, um eine benutzerdefinierte Ansicht einzurichten.
+Das Ereignis signalisiert, dass die Templates von dhtmlxGantt bereit sind. Das Ereignis ist ein guter Zeitpunkt, um eine benutzerdefinierte Ansicht zu erstellen.
 
-Wenn der Code zur Erstellung der benutzerdefinierten Ansicht im onTemplatesReady Event-Handler platziert wird, stellt dies sicher, dass die Templates der Ansicht vorbereitet sind, bevor das Grid initialisiert wird. Dadurch wird gewährleistet, dass die benutzerdefinierte Ansicht korrekt auf der Seite angezeigt wird.
+Es ist gute Praxis, den Code zur Erstellung der benutzerdefinierten Ansicht im Handler des onTemplatesReady-Ereignisses zu schreiben. Dadurch wird garantiert, dass die Templates der benutzerdefinierten Ansicht vor der Grid-Initialisierung bereit sind, und eine benutzerdefinierte Ansicht wird korrekt auf der Seite gerendert.

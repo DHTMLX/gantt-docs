@@ -8,7 +8,7 @@ description: "предоставляет текущую версию dhtmlxGantt
 
 ### Description
 
-@short: Предоставляет текущую версию dhtmlxGantt
+@short: Возвращает версию dhtmlxGantt
 
 @signature: version: string
 

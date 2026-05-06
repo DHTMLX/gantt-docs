@@ -1,14 +1,14 @@
 ---
 sidebar_label: undo_actions
-title: undo_actions config
-description: "определяет действия, которые функция Undo будет отменять"
+title: undo_actions конфигурация
+description: "задает действия, которые операция Undo будет откатывать"
 ---
 
 # undo_actions
 
 ### Description
 
-@short: Определяет действия, которые функция Undo будет отменять
+@short: Устанавливает действия, которые операция Undo будет откатывать
 
 @signature: undo_actions: \{ update?: string; remove?: string; add?: string; move?: string; \}
 
@@ -17,7 +17,7 @@ description: "определяет действия, которые функци
 ~~~jsx
 gantt.config.undo_actions = {
     update: "update",
-    remove: "remove", // удалить элемент из datastore
+    remove: "remove", // remove an item from datastore
     add: "add",
     move: "move"
 };
@@ -29,13 +29,13 @@ gantt.config.undo_actions = {
 ### Details
 
 :::note
- Эта опция является частью расширения **undo**, поэтому убедитесь, что плагин [undo](guides/extensions-list.md#undo) включен. Более подробную информацию можно найти в статье [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md). 
+Эта настройка определяется в расширении **undo**, поэтому нужно включить плагин [undo](guides/extensions-list.md#undo). Подробности см. в статье [Функциональность Undo/Redo](guides/undo-redo.md). 
 :::
 
-- **update** - (*string*) - задает имя для действия "update"
-- **remove** - (*string*) - задает имя для действия "remove"
-- **add** - (*string*) - задает имя для действия "add"
-- **move** - (*string*) - задает имя для действия "move"
+- **update** - (*string*) - имя действия "update"
+- **remove** - (*string*) - имя действия "remove"
+- **add** - (*string*) - имя действия "add"
+- **move** - (*string*) - имя действия "move"
 
 ### Related API
 - [undo](api/config/undo.md)
@@ -43,8 +43,7 @@ gantt.config.undo_actions = {
 - [undo_steps](api/config/undo_steps.md)
 
 ### Related Guides
-- [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md)
+- [Функциональность Undo/Redo](guides/undo-redo.md)
 
 ### Change log
 - добавлено в версии 4.0
-

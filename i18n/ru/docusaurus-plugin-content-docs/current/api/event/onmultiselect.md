@@ -1,26 +1,26 @@
 ---
 sidebar_label: onMultiSelect
-title: onMultiSelect event
-description: "Срабатывает после завершения выбора одной или нескольких задач"
+title: onMultiSelect событие
+description: "срабатывает после завершения выбора задачи или диапазона задач"
 ---
 
 # onMultiSelect
 
 ### Description
 
-@short: Срабатывает после завершения выбора одной или нескольких задач
+@short: Срабатывает после завершения выбора задачи или диапазона задач
 
 @signature: onMultiSelect: (e: Event) =\> void;
 
 ### Parameters
 
-- `e` - (required) *Event* - объект нативного события
+- `e` - (required) *Event* - нативный объект события
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onMultiSelect", function(e){
-    // некоторая логика здесь
+    // любая ваша логика здесь
     return true;
 });
 ~~~
@@ -28,7 +28,7 @@ gantt.attachEvent("onMultiSelect", function(e){
 ### Details
 
 :::note
- Это событие является частью расширения **multiselect**, поэтому убедитесь, что плагин [multiselect](guides/extensions-list.md#multitaskselection) включен. Для получения дополнительной информации ознакомьтесь со статьей [Множественный выбор задач](guides/multiselection.md). 
+Это событие определяется в расширении **multiselect**, поэтому нужно активировать плагин [multiselect](guides/extensions-list.md#multitaskselection). Прочитайте детали в статье [Multi-Task Selection](guides/multiselection.md). 
 :::
 
 ### Related API
@@ -37,5 +37,4 @@ gantt.attachEvent("onMultiSelect", function(e){
 - [onTaskMultiSelect](api/event/ontaskmultiselect.md)
 
 ### Related Guides
-- [Множественный выбор задач](guides/multiselection.md#apievents)
-
+- [Multi-Task Selection](guides/multiselection.md#apievents)

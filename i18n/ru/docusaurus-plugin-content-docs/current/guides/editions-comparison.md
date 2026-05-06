@@ -1,41 +1,40 @@
 ---
-title: "Стандартная и PRO версии библиотеки"
-sidebar_label: "Стандартная и PRO версии библиотеки"
+title: "Стандартная версия и PRO версии библиотеки"
+sidebar_label: "Стандартная версия и PRO версии библиотеки"
 ---
 
-# Стандартная и PRO версии библиотеки
+# Стандартная версия и PRO версии библиотеки
 
-Если вы хотите узнать, в чем разница между стандартной и PRO версиями библиотеки dhtmlxGantt и какие дополнительные возможности предоставляет редакция PRO, это руководство поможет вам разобраться.
+Если вы сомневаетеесь в различиях между стандартной версией и PRO-версией библиотеки dhtmlxGantt и хотите узнать, какие преимущества вы получите с PRO-изданием, это руководство как раз то, что вам нужно.
 
-Редакция PRO включает все функции стандартной версии, а также ряд дополнительных полезных возможностей. В таблице ниже перечислены эти функции, чтобы вы могли легко сравнить обе версии.
-
+PRO-версия включает военную функциональность стандартной версии и дополнительно содержит полезные функции. Ниже приведена таблица с перечнем функций, которая позволяет сравнить две версии dhtmlxGantt.
 
 <table>
   <thead>
   <tr>
-  <th style="width: 60%;">Feature</th>
-  <th style="text-align:center;width: 20%;">Standard</th>
+  <th style="width: 60%;">Функция</th>
+  <th style="text-align:center;width: 20%;">Стандартная</th>
   <th style="text-align:center;width: 20%;">PRO</th>
   </tr>
   </thead>
   <tbody>
   <tr>
-  <td>[32 locales](guides/localization.md)</td>
+  <td>[32 локали](guides/localization.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[4 types of tasks linking: finish-to-start, start-to-start, finish-to-finish, start-to-finish](guides/loading.md#dataproperties)</td>
+  <td>[4 типов связей задач: finish-to-start, start-to-start, finish-to-finish, start-to-finish](guides/loading.md#dataproperties)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[7 different skins](guides/skins.md)</td>
+  <td>[7 разных скинов](guides/skins.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Ability to hide time units on the time scale](guides/custom-scale.md)</td>
+  <td>[Возможность скрывать единицы времени на шкале времени](guides/custom-scale.md)</td>
   <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
@@ -326,4 +325,3 @@ sidebar_label: "Стандартная и PRO версии библиотеки"
   </tr>
   </tbody>
 </table>
-

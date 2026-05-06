@@ -1,23 +1,23 @@
 ---
 sidebar_label: getNext
-title: getNext method
-description: "Liefert die ID des folgenden Elements, unabhängig von dessen Verschachtelungsebene, egal ob es sich um dasselbe oder ein anderes handelt"
+title: getNext-Methode
+description: "Gibt die ID des nächsten Elements zurück (unabhängig davon, auf welcher Verschachtelungsebene es sich befindet: dieselbe oder eine andere)"
 ---
 
 # getNext
 
 ### Description
 
-@short: Liefert die ID des folgenden Elements, unabhängig von dessen Verschachtelungsebene, egal ob es sich um dasselbe oder ein anderes handelt
+@short: Gibt die ID des nächsten Elements zurück (unabhängig davon, auf welcher Verschachtelungsebene es sich befindet: dieselbe oder eine andere)
 
 @signature: getNext: (id: string | number) =\> string | number
 
 ### Parameters
 
-- `id` - (required) *string | number* -    die Aufgaben-ID
+- `id` - (required) *string | number* -    die Task-ID
 
 ### Returns
-- ` id` - (string | number) - die ID des nächsten Elements
+- `id` - (string | number) - die ID des nächsten Elements
 
 ### Example
 
@@ -49,5 +49,4 @@ gantt.getNext("t_2"); -> null  /*!*/
 - [getPrevSibling](api/method/getprevsibling.md)
 
 ### Related Guides
-- ["Task Parent/Child"](guides/task-tree-operations.md)
-
+- [Task Parent/Child](guides/task-tree-operations.md)

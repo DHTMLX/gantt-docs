@@ -1,14 +1,14 @@
 ---
 sidebar_label: changeLightboxType
 title: changeLightboxType method
-description: "根据任务类型更新lightbox"
+description: "根据任务的类型重新绘制该任务的 lightbox"
 ---
 
 # changeLightboxType
 
 ### Description
 
-@short: 根据任务类型更新lightbox
+@short: 根据任务的类型重新绘制该任务的 lightbox
 
 @signature: changeLightboxType: (type: string) =\> void
 
@@ -24,10 +24,9 @@ gantt.changeLightboxType(gantt.config.types.project);
 
 ### Details
 
-此方法会刷新lightbox，并在可能的情况下尝试保存已输入的数据。它会根据[指定类型的配置](guides/default-edit-form.md)重建结构。
+该方法会重新绘制该任务的 lightbox，并在可能的情况下保存所有输入。为重新构建结构，该方法使用 [指定类型的配置](guides/default-edit-form.md)。
 
-如果当前lightbox类型与传入的参数类型相同，则不会进行更新。
+如果 lightbox 的类型与参数中的类型相同，则该方法不会重新绘制 lightbox。
 
 ### Related API
 - [onLightboxChange](api/event/onlightboxchange.md)
-

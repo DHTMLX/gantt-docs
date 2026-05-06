@@ -1,39 +1,38 @@
 ---
 sidebar_label: onTaskMultiSelect
-title: onTaskMultiSelect event
-description: "작업의 선택 상태가 변경될 때마다 트리거됩니다 (작업이 선택되거나 선택 해제될 때)"
+title: onTaskMultiSelect 이벤트
+description: "작업 선택 상태가 변경된 후에 발생합니다(해당 작업이 선택되었거나 해제되었습니다)"
 ---
 
 # onTaskMultiSelect
 
 ### Description
 
-@short: 작업의 선택 상태가 변경될 때마다 트리거됩니다 (작업이 선택되거나 선택 해제될 때)
+@short: 작업 선택 상태가 변경된 직후에 발생합니다(해당 작업이 선택되었거나 해제되었습니다)
 
 @signature: onTaskMultiSelect: (id: string | number, state: boolean, e: Event) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - 작업의 식별자
-- `state` - (required) *boolean* - 작업이 선택되었으면 true, 선택 해제되었으면 false
-- `e` - (required) *Event* - 네이티브 이벤트 객체
+- `id` - (필수) *string | number* - 작업의 ID
+- `state` - (필수) *boolean* - 작업이 선택되었으면 true, 해제되었으면 false
+- `e` - (필수) *Event* - 네이티브 이벤트 객체
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onTaskMultiSelect", function(id, state, e){
-    // 여기에 로직 작성
+    // 여기에 코드 작성
 });
 ~~~
 
 ### Details
 
 :::note
- 이 이벤트는 **multiselect** 확장 기능에 속하므로, [multiselect](guides/extensions-list.md#multitaskselection) 플러그인을 반드시 활성화해야 합니다. 자세한 내용은 [멀티 태스크 선택](guides/multiselection.md) 문서를 참조하세요. 
+이벤트는 **multiselect** 확장에 정의되어 있으므로 [multiselect](guides/extensions-list.md#multitaskselection) 플러그인을 활성화해야 합니다. [Multi-Task Selection](guides/multiselection.md) 문서에서 자세한 내용을 확인하십시오.
 :::
 
-
-이 이벤트는 선택된 범위 내의 각 작업에 대해 발생합니다.
+이벤트는 범위 내의 각 작업에 대해 호출됩니다.
 
 ### Related API
 - [onBeforeMultiSelect](api/event/onbeforemultiselect.md)
@@ -41,5 +40,4 @@ gantt.attachEvent("onTaskMultiSelect", function(id, state, e){
 - [onMultiSelect](api/event/onmultiselect.md)
 
 ### Related Guides
-- [멀티 태스크 선택](guides/multiselection.md#apievents)
-
+- [Multi-Task Selection](guides/multiselection.md#apievents)

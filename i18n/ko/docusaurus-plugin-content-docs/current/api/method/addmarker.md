@@ -10,29 +10,31 @@ description: "타임라인 영역에 마커를 추가합니다"
 
 @short: 타임라인 영역에 마커를 추가합니다
 
-@signature: addMarker: (marker: MarkerConfig) =\> number | string
+@signature: addMarker: (marker: MarkerConfig) => number | string
 
 ### Parameters
 
 - `marker` - (required) *MarkerConfig* - 마커의 구성 객체
 
 ### Returns
-- `markerId` - (number|string) - 선택 사항, 마커의 ID
+- `markerId` - (number|string) - 선택적, 마커의 ID
 
 ### Example
 
 ~~~jsx
-var todayMarker = gantt.addMarker({
+const dateToString = gantt.date.date_to_str(gantt.config.task_date);
+const markerId = gantt.addMarker({
     start_date: new Date(),
     css: "today",
-    title:date_to_str( new Date())
+    title: dateToString(new Date())
 });
-setInterval(function(){
-    var today = gantt.getMarker(todayMarker);
-    today.start_date = new Date();
-    today.title = date_to_str(today.start_date);
-    gantt.updateMarker(todayMarker);
-}, 1000*60);
+
+setInterval(() => {
+    const marker = gantt.getMarker(markerId);
+    marker.start_date = new Date();
+    marker.title = dateToString(marker.start_date);
+    gantt.updateMarker(markerId);
+}, 1000 * 60);
 ~~~
 
 ### Related samples
@@ -48,11 +50,11 @@ setInterval(function(){
 구성 객체는 다음 속성을 포함합니다:
 
 - **id?** - (*string | number*) - 마커의 ID
-- **start_date** - (*Date*) - 마커가 시작되는 시점을 지정하는 Date 객체
-- **end_date?** - (*Date*) - 마커가 끝나는 시점을 지정하는 Date 객체
-- **css?** - (*string*) - 마커 스타일에 적용할 CSS 클래스
-- **text?** - (*string | number*) - 마커의 제목 텍스트
-- **title?** - (*string | number*) - 마커에 대한 tooltip 텍스트
+- **start_date** - (*Date*) - 마커의 시작 날짜를 설정하는 Date 객체
+- **end_date?** - (*Date*) - 마커의 종료 날짜를 설정하는 Date 객체
+- **css?** - (*string*) - 마커에 적용되는 CSS 클래스
+- **text?** - (*string | number*) - 마커 제목
+- **title?** - (*string | number*) - 마커의 툴팁
 
 ### Related API
 - [getMarker](api/method/getmarker.md)

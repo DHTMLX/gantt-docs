@@ -1,37 +1,40 @@
 ---
-title: "Verwendung von Gantt auf dem Server"
+title: "Gantt auf dem Server verwenden"
 sidebar_label: "Node.js Gantt"
 ---
 
-# Verwendung von Gantt auf dem Server
+# Gantt auf dem Server verwenden
 
-Manchmal besteht die Notwendigkeit, die spezialisierte Logik von dhtmlxGantt unabhängig vom Gantt-Diagramm selbst zu nutzen, zum Beispiel:
+In einigen Fällen benötigen Sie möglicherweise eine spezialisierte Logik von dhtmlxGantt separat vom Gantt-Diagramm, zum Beispiel:
 
-- Empfang von Aufgabenaktualisierungen aus anderen Quellen (wie einer mobilen App) und automatisches Planen, um die Zeitplanung verwandter Aufgaben anzupassen
-- Verwaltung mehrerer Benutzer, die gleichzeitig Änderungen vornehmen, was eine Synchronisierung und Validierung des Zeitplans erfordert
-- Durchführung von Berechnungen und Analyse des Zeitplans mit serverseitigem Code
+- Wenn Sie ein Update einer Aufgabe aus einer anderen Quelle erhalten (z. B. von der mobilen App) und die Auto-Scheduling durchführen müssen, um die Zeitplanung der verwandten Aufgaben zu aktualisieren
+- Wenn mehrere Benutzer derselben App gleichzeitig Änderungen vornehmen können und Sie den Zeitplan synchronisieren und validieren müssen
+- Wenn Sie Berechnungen durchführen und den Zeitplan mit Ihrem Servercode analysieren müssen
 
-Um diese Anwendungsfälle zu unterstützen, steht eine separate Version von dhtmlxGantt zur Verfügung, die serverseitig in einer Node.js-Umgebung ausgeführt wird.
+Aus diesem Grund bieten wir eine separate Build von dhtmlxGantt an, die serverseitig in der Node.js-Umgebung laufen kann.
 
-DHTMLX Gantt für Node.js bietet die gleichen Funktionen wie die Commercial/Enterprise/Ultimate-Pakete, einschließlich Zugriff auf die **Gantt.getGanttInstance**-Methode zur Erstellung neuer Gantt-Instanzen.
+DHTMLX Gantt für Node.js hat die gleiche Funktionalität wie die Commercial/Enterprise/Ultimate-Pakete, was bedeutet, dass die Methode **Gantt.getGanttInstance** verfügbar ist und das Erstellen einer neuen Instanz eines Gantt ermöglicht.
 
 ## Nutzungsbedingungen
 
-Das Node.js-Servermodul für DHTMLX Gantt ist ein Add-on zur Client-seitigen Version. Es kann gegen eine zusätzliche Gebühr beim Kauf von Gantt unter jeder kommerziellen Lizenz ([Individual](https://dhtmlx.com/docs/products/dhtmlxGantt/individual/), [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/commercial/), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/enterprise/)) hinzugefügt werden. Die [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/ultimate/)-Lizenz enthält dieses Modul standardmäßig.
 
-Wenn Sie bereits die Hauptbibliothek von dhtmlxGantt besitzen, kann das Node.js-Modul [separat erworben](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=58429) werden, und Sie erhalten einen Link zur serverseitigen Version.
+Das Node.js-Servermodul von DHTMLX Gantt wird als Add-on-Paket zur clientseitigen Version von Gantt bereitgestellt. Daher können Sie die Node.js-Build gegen eine zusätzliche Gebühr hinzufügen, während Sie Gantt unter jeder kommerziellen Lizenz erwerben ([Individual](https://dhtmlx.com/docs/products/dhtmlxGantt/individual/), [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/commercial/), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/enterprise/)). Die [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/ultimate/) Lizenz umfasst es standardmäßig.
+
+Falls Sie bereits die Hauptbibliothek von dhtmlxGantt erworben haben, können Sie [das Node.js-Modul separat erwerben](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=58429) und wir senden Ihnen einen Link zur serverseitigen Version von Gantt.
 
 ## Versionierung
 
-Das Node.js-Paket für dhtmlxGantt folgt dem gleichen Versionsschema wie die Browserpakete (z. B. ist v7.0.0 die erste Version für Node.js).
+
+dhtmlxGantt verwendet für das Node.js-Paket dasselbe Versionsnummerierungsschema wie für die Browser-Pakete (zum Beispiel ist v7.0.0 die erste Version von Gantt für ein Node.js-Paket).
 
 :::note
-Es wird empfohlen, auf Client- und Serverseite die gleiche Version der Gantt-Bibliotheken zu verwenden.
+Wir advi s e Ihnen, dieselbe Version der Gantt-Bibliotheken auf der Client-Seite wie auf der Server-Seite zu verwenden.
 :::
 
-## Hinzufügen der Bibliothek zum Projekt
+## Die Bibliothek zum Projekt hinzufügen
 
-Das dhtmlxGantt für Node.js-Paket kann lokal installiert werden:
+
+Sie können dhtmlxGantt für Node.js als lokales Paket installieren:
 
 ~~~js
 "dependencies": {
@@ -40,7 +43,8 @@ Das dhtmlxGantt für Node.js-Paket kann lokal installiert werden:
 }
 ~~~
 
-Alternativ können Sie dhtmlxgantt.node.js direkt in Ihrem Code importieren, wie unten gezeigt:
+
+Oder Sie können dhtmlxgantt.node.js direkt aus Ihrem Code importieren, wie folgt:
 
 ~~~js
 import { Gantt } from "@dhtmlx/gantt-node";
@@ -101,18 +105,19 @@ const gantt = Gantt.getGanttInstance({
 console.table(gantt.serialize());
 ~~~
 
+
 ## Einschränkungen
 
-Die Node.js-Version von dhtmlxGantt stellt die gleiche Kern-API wie die Browserversion zur Verfügung.
 
-Einige clientseitige Methoden sind jedoch entweder nicht verfügbar oder funktionieren in der Serverbibliothek nicht, darunter:
+dhtmlxGantt bietet dieselbe Kern-API für Node.js wie die Browser-Version.
 
-- Serverseitiges Rendering wird nicht unterstützt. Methoden wie [gantt.render](api/method/render.md), [gantt.refreshData](api/method/refreshdata.md), [gantt.refreshTask](api/method/refreshtask.md) usw. erzeugen kein HTML, lösen aber weiterhin zugehörige API-Ereignisse wie [onBeforeGanttRender](api/event/onbeforeganttrender.md) und [onGanttRender](api/event/onganttrender.md) aus.
-- Die [Popup messages API](guides/message-boxes.md) ist nicht enthalten. Methoden wie gantt.message, gantt.alert und gantt.confirm sind nicht definiert.
-- Eingebaute Ajax-Hilfsmittel wurden nicht auf Node.js portiert, daher funktionieren die gantt ajax API, [gantt.load](api/method/load.md) und die Standardroutings des dataProcessor nicht. Verwenden Sie stattdessen [gantt.parse](api/method/parse.md) und implementieren Sie ein [benutzerdefiniertes Routing für den dataProcessor](guides/server-side.md#customrouting).
+Allerdings funktionieren einige Methoden, die in der clientseitigen Version von Gantt verfügbar sind, möglicherweise nicht oder sind in der Server-Bibliothek nicht definiert, nämlich:
+
+- Server-seitiges Rendering ist nicht implementiert. Das Aufrufen solcher Methoden wie [gantt.render](api/method/render.md), [gantt.refreshData](api/method/refreshdata.md), [gantt.refreshTask](api/method/refreshtask.md) usw. erzeugt kein HTML, löst jedoch verwandte API-Ereignisse aus, zum Beispiel [onBeforeGanttRender](api/event/onbeforeganttrender.md), [onGanttRender](api/event/onganttrender.md) usw.
+- [Popup messages API](guides/message-boxes.md) ist nicht in das Node-Paket aufgenommen. Die Methoden gantt.message, gantt.alert, gantt.confirm werden undefiniert sein.
+- [Built-in ajax helpers](api/other/ajax.md) wurden nicht nach Node.js portiert, sodass weder die gantt ajax API noch [gantt.load](api/method/load.md) noch Standarddatenprozessor-Routings funktionieren. Sie müssen [gantt.parse](api/method/parse.md) und [benutzerdefinierte Routing des dataProcessor](guides/server-side.md#customrouting) verwenden.
 
 :::note
-Die Evaluierungsversion von dhtmlxGantt für Node.js hat eine eingeschränkte Funktionalität und erlaubt das Laden von bis zu 75 Aufgaben oder Verknüpfungen.
-Wenn ein größeres Datenvolumen geladen wird, werden nur die ersten 75 Elemente verarbeitet.
+Die Evaluierungsversion von dhtmlxGantt für Node.js hat eingeschränkte Funktionalität, die das Laden von bis zu 75 Aufgaben oder Verknüpfungen erlaubt.
+Wenn Sie versuchen, einen größeren Datensatz zu laden, werden nur die ersten 75 Elemente geladen.
 :::
-

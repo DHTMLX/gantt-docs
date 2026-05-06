@@ -1,22 +1,23 @@
 ---
 sidebar_label: getSubtaskDates
 title: getSubtaskDates method
-description: "berechnet die kombinierten Start-/Enddaten von Aufgaben, die in einem Projekt oder einer anderen Aufgabe verschachtelt sind"
+description: "berechnet die kombinierten Start- und Enddaten von Aufgaben, die in einem Projekt oder einer anderen Aufgabe verschachtelt sind"
 ---
 
 # getSubtaskDates
 
 ### Description
 
-@short: Berechnet die kombinierten Start-/Enddaten von Aufgaben, die in einem Projekt oder einer anderen Aufgabe verschachtelt sind
+@short: Berechnet die kombinierten Start- und Enddaten von Aufgaben, die in einem Projekt oder einer anderen Aufgabe verschachtelt sind
 
 @signature: getSubtaskDates: (task_id?: string | number) =\> any
 
 ### Parameters
-- `task_id` - (optional) *string | number* - die ID der Aufgabe, root_id wird verwendet, wenn nicht angegeben
+
+- `task_id` - (optional) *string | number* - die ID der Aufgabe, [root_id](api/config/root_id.md) wird verwendet, wenn sie nicht angegeben wird
 
 ### Returns
-- ` dates` - (object) - ein Objekt, das die Eigenschaften <b>start_date</b> und <b>end_date</b> enthält
+- `dates` - (Objekt) - ein Objekt, das die <b>start_date</b> und <b>end_date</b> Eigenschaften enthält
 
 ### Example
 
@@ -27,7 +28,7 @@ const dateToStr = gantt.templates.task_date;
     
 console.log(`${dateToStr(dates.start_date)} - ${dateToStr(dates.end_date)}`);
 
-// Dauer des Teilprojekts
+// Dauer des Unterprojekts
 dates = gantt.getSubtaskDates(1);
     
 console.log(`${dateToStr(dates.start_date)} - ${dateToStr(dates.end_date)}`);
@@ -35,9 +36,9 @@ console.log(`${dateToStr(dates.start_date)} - ${dateToStr(dates.end_date)}`);
 
 ### Details
 
-Diese Methode liefert ein Objekt, das das Startdatum der frühesten Unteraufgabe und das Enddatum der spätesten Unteraufgabe anzeigt.
+Die Methode gibt ein Objekt zurück, das das Startdatum der frühesten Unteraufgabe und das Enddatum der spätesten Unteraufgabe enthält.
 
-Das zurückgegebene Objekt sieht folgendermaßen aus:
+Das Rückgabeobjekt hat folgendes Format:
 
 ~~~js
 {
@@ -46,9 +47,8 @@ Das zurückgegebene Objekt sieht folgendermaßen aus:
 }
 ~~~
 
-Wenn das Gantt-Diagramm geplante Aufgaben enthält, enthalten beide Eigenschaften Datumswerte. Ist das Diagramm leer oder enthält nur ungeplante Aufgaben, sind beide Eigenschaften `null`.
+Wenn ein Gantt-Diagramm geplante Aufgaben enthält, besitzen beide Eigenschaften Datumswerte. Falls das Gantt-Diagramm leer ist oder nur ungeplante Aufgaben enthält, haben beide Eigenschaften `null`-Werte.
 
 ### Related API
 - [getSubtaskDuration](api/method/getsubtaskduration.md)
 - [getTaskBy](api/method/gettaskby.md)
-

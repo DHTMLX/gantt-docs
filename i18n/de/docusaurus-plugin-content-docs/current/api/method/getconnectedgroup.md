@@ -1,22 +1,26 @@
 ---
 sidebar_label: getConnectedGroup
 title: getConnectedGroup method
-description: "gibt alle Aufgaben und Verbindungen zurück, die mit einer bestimmten Aufgabe verbunden sind"
+description: "gibt alle Aufgaben und Verknüpfungen zurück, mit denen eine Aufgabe verbunden ist"
 ---
 
 # getConnectedGroup
 
+:::info
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
+:::
+
 ### Description
 
-@short: Gibt alle Aufgaben und Verbindungen zurück, die mit einer bestimmten Aufgabe verbunden sind
+@short: Gibt alle Aufgaben und Verknüpfungen zurück, mit denen eine Aufgabe verbunden ist
 
 @signature: getConnectedGroup: (id?: string | number) =\> any
 
 ### Parameters
-- `id` - (optional) *string | number* - optionale ID einer Aufgabe
+- `name` - (optional) *string | number* - die ID einer Aufgabe
 
 ### Returns
-- ` connections` - (object) - ein Objekt, das Aufgaben und Verbindungen enthält, die mit der angegebenen Aufgabe verbunden sind
+- ` connections` - (object) - ein Objekt mit Aufgaben und Links, mit denen eine Aufgabe verbunden ist
 
 ### Example
 
@@ -27,15 +31,11 @@ gantt.getConnectedGroup(18);
 
 ### Details
 
-Wenn diese Methode ohne Parameter aufgerufen wird, gibt sie alle Gruppen von Aufgaben und Verbindungen zurück, die Verknüpfungen bilden.
+Ohne Parameter gibt die Methode alle Gruppen von Aufgaben und Links zurück, die Verbindungen zwischen Aufgaben herstellen.
 
 :::note
- Diese Funktionalität ist nur in der PRO-Version verfügbar. 
-:::
-
-:::note
- Die Methode erfordert das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin, das auf der Seite eingebunden sein muss. 
+ Die Methode erfordert das [auto_scheduling](guides/extensions-list.md#autoscheduling)-Plugin, das auf der Seite eingebunden sein muss. 
 :::
 
 ### Related Guides
-- ["Auto Scheduling"](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)

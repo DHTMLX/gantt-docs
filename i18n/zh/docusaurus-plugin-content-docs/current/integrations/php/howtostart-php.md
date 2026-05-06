@@ -5,67 +5,68 @@ sidebar_label: "PHP: Slim3"
 
 # dhtmlxGantt 与 PHP:Slim3 
 
-本教程将为您提供使用 PHP 5.6x-7.x 结合服务端 RESTful API 创建甘特图的所有基本细节。
+在本教程中，您将了解在服务器端使用 PHP 5.6x-7.x 和 RESTful API 创建甘特图所需的信息。
 
 :::note
-本教程使用的是较旧的 Slim Framework v3.x。如果您需要最新版的教程，请参考 [Slim Framework v4.x](integrations/php/howtostart-php-slim4.md) 指南。
+此教程使用较旧的 Slim Framework v3.x 版本。如果您在寻找教程的最新版本，请查看 [Slim Framework v4.x](integrations/php/howtostart-php-slim4.md) 指南。
 :::
 
-我们还为其他平台和框架集成服务端逻辑提供了相关教程:
+还有一些教程是为了在其他平台和框架的帮助下构建服务器端集成而编写的：
 
-- [dhtmlxGantt와 ASP.NET Core 사용하기](integrations/dotnet/howtostart-dotnet-core.md)
-- [dhtmlxGantt와 ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
-- [dhtmlxGantt와 Node.js 연동하기](integrations/node/howtostart-nodejs.md)
-- [dhtmlxGantt와 Python](integrations/other/howtostart-python.md)
-- [dhtmlxGantt와 PHP: Laravel 연동](integrations/php/howtostart-php-laravel.md)
-- [dhtmlxGantt와 PHP:Slim 연동하기](integrations/php/howtostart-php-slim4.md)
-- [dhtmlxGantt와 Salesforce LWC 연동하기](integrations/salesforce/howtostart-salesforce.md)
-- [dhtmlxGantt와 Ruby on Rails 연동하기](integrations/other/howtostart-ruby.md)
+- [dhtmlxGantt 与 ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md)
+- [dhtmlxGantt 与 ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
+- [dhtmlxGantt 与 Node.js](integrations/node/howtostart-nodejs.md)
+- [dhtmlxGantt 与 Python](integrations/other/howtostart-python.md)
+- [dhtmlxGantt 与 PHP:Slim](integrations/php/howtostart-php-slim4.md)
+- [dhtmlxGantt 与 PHP:Laravel](integrations/php/howtostart-php-laravel.md)
+- [dhtmlxGantt 与 Salesforce LWC](integrations/salesforce/howtostart-salesforce.md)
+- [dhtmlxGantt 与 Ruby on Rails](integrations/other/howtostart-ruby.md)
 
-在本示例中，[Slim 3](https://www.slimframework.com/) 框架将用于处理路由，MySQL 作为数据存储。CRUD 操作将通过 PDO 实现，并且实现方式便于迁移到其他框架。
+我们将使用 [Slim 3](https://www.slimframework.com/) 框架进行路由，并以 MySQL 作为数据存储。CRUD 逻辑将基于 PDO，并具有足够的通用性，可与任何其他框架一起使用。
 
 :::note
-完整源代码已[发布在 GitHub](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x)。
+完整的源代码可以 [在 GitHub 上获取](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x)。
 :::
 
-## 第 1 步. 初始化项目
+## 第 1 步。初始化一个项目
 
-### 创建项目
+### 创建一个项目
 
-我们将从一个为 Slim 3 框架设计的 [skeleton application](https://github.com/slimphp/Slim-Skeleton) 入手。
+我们将使用一个 [骨架应用程序](https://github.com/slimphp/Slim-Skeleton)，用于 Slim 3 框架。
 
-首先，导入项目并进行安装。Composer 可以简化这个过程:
+首先，我们需要导入该项目并安装它。您可以通过 Composer 轻松完成：
 
 ~~~php
 php composer.phar create-project slim/slim-skeleton gantt-rest-php
 ~~~
 
-如果你的系统已全局安装 Composer，可以直接运行:
+如果您已经全局安装了 Composer，可以执行以下命令：
 
 ~~~php
 composer create-project slim/slim-skeleton gantt-rest-php
 ~~~
 
-接下来，验证安装是否成功。进入应用目录并启动 Web 服务器:
+然后您应检查一切是否正常工作。为此，请进入应用文件夹并运行一个 Web 服务器：
 
 ~~~php
 cd gantt-rest-php
 php -S 0.0.0.0:8080 -t public public/index.php
 ~~~
 
-然后在浏览器中打开 [http://127.0.0.1:8080](http://127.0.0.1:8080)，你将看到 Slim 默认的欢迎页面。
+之后，您可以在浏览器中打开 [http://127.0.0.1:8080](http://127.0.0.1:8080/)，您将看到默认的 Slim 页面。
 
-## 步骤 2. 在页面中添加 Gantt
+## 第 2 步。将甘特图添加到页面
 
-接下来，我们需要创建一个页面来显示甘特图。找到默认页面 <b>templates/index.phtml</b>。这里将嵌入甘特图，并完成数据加载的设置。
+现在我们需要创建一个包含甘特图的页面。
+请在 <b>templates/index.phtml</b> 找到默认页面。我们希望把甘特图放在此处，并设置实现数据加载的前提条件。
 
-以下是完整代码:
+完整代码如下：
 
-**/templates/index.phtml**
-~~~html
+
+~~~html title="/templates/index.phtml"
 <!DOCTYPE html>
 <head>
-  <meta http-equiv="Content-type" content="text/html; charset="utf-8"">
+  <meta http-equiv="Content-type" content="text/html; charset='utf-8'">
 
   <script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
   <link href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css" rel="stylesheet">
@@ -87,20 +88,19 @@ php -S 0.0.0.0:8080 -t public public/index.php
 </body>
 ~~~
 
-这将在页面上添加一个空的甘特图。用户可以创建和编辑任务及链接，但刷新页面后所有更改都不会被保存。
+这段代码会在页面中添加一个空的甘特图。用户将能够创建和修改任务及链接，但重新加载页面后不会保存这些改动。
 
-你可以再次运行应用进行测试:
+我们可以通过再次启动应用来进行检查：
 
-**command line**
 ~~~js
 php -S 0.0.0.0:8080 -t public public/index.php
 ~~~
 
-在浏览器中打开 [http://127.0.0.1:8080/](http://127.0.0.1:8080/)，你应该能看到页面上渲染出的甘特图。
+现在在浏览器中打开 [http://127.0.0.1:8080/](http://127.0.0.1:8080/)，您将看到页面上绘制了一个甘特图。
 
-## 步骤 3. 配置数据库
+## 第 3 步。配置数据库
 
-接下来，创建一个包含两张表的简单数据库。
+下一步是创建一个数据库。我们将使用一个包含两个表的简单数据库。
 
 ~~~js
 CREATE TABLE `gantt_links` (
@@ -121,7 +121,8 @@ CREATE TABLE `gantt_tasks` (
 );
 ~~~
 
-数据库准备好后，向 *gantt_tasks* 表插入一些示例数据。请使用以下 SQL 语句:
+数据库就绪后，我们可以继续，用一些测试数据填充 *gantt_tasks* 表。
+您可以使用下面的 SQL 示例：
 
 ~~~js
 INSERT INTO `gantt_tasks` VALUES ('1', 'Project #1', '2017-04-01 00:00:00', 
@@ -141,30 +142,28 @@ INSERT INTO `gantt_tasks` VALUES ('7', 'Task #2.1', '2017-04-07 00:00:00',
 INSERT INTO `gantt_tasks` VALUES ('8', 'Task #2.2', '2017-04-06 00:00:00', 
   '4', '0.9', '3');
 ~~~
-更多细节可参考此 [示例](guides/loading.md#standarddatabasestructure)。
+查看这里的详细示例 [guides/loading.md#databasestructure](guides/loading.md#databasestructure)。
 
-项目设置完成后，我们将继续进行数据加载。
+至此，我们完成了项目的准备工作。现在可以继续进行数据加载。
 
-## 步骤 4. 加载数据
+## 第 4 步。加载数据
 
-现在我们将实现从数据库加载数据。在客户端，数据将通过 [gantt.load](api/method/load.md) 方法请求:
+现在是实现从数据库加载数据的时刻。 在客户端，我们将使用 [gantt.load](api/method/load.md) 方法发送请求：
 
-**/templates/index.phtml**
-~~~js
+
+~~~js title="/templates/index.phtml"
 gantt.config.date_format = "%Y-%m-%d %H:%i:%s";/*!*/
 
 gantt.init("gantt_here");
 gantt.load("/data");/*!*/
 ~~~
 
-这将向指定 URL 发送 AJAX 请求，期望响应内容为 [JSON 格式](guides/supported-data-formats.md#json) 的 Gantt 数据。
+该命令将向指定的 URL 发送一个 AJAX 请求，响应中应包含以 [JSON 格式](guides/supported-data-formats.md) 表示的甘特数据。 同时，请注意我们已经指定了 [date_format](api/config/date_format.md) 值。这是告诉甘特图数据源将使用哪种日期格式，以便客户端能够解析它们。
 
-同时，通过 [date_format](api/config/date_format.md) 配置指定了日期格式，告知 gantt 客户端数据源使用的日期格式，以便正确解析日期。
+因此，我们应在后端添加一个处理此类请求的处理程序。打开 *src/routes.php* 文件并添加一个新的 [route](https://www.slimframework.com/docs/v3/objects/router.html)：
 
-接下来，为此请求添加后端处理器。打开 *src/routes.php* 并定义一个新的 [路由](https://www.slimframework.com/docs/v3/objects/router.html):
 
-**src/routes.php**
-~~~php
+~~~js title="src/routes.php"
 <?php
 // Routes
 
@@ -176,12 +175,12 @@ $app->get('/', function ($request, $response, $args) {
 $app->get('/data',  'getGanttData');/*!*/
 ~~~
 
-然后，实现 *getGanttData* 方法。为了保持 *index.php* 的简洁，将所有甘特相关代码放在单独文件中。
+随后，我们需要实现 *getGanttData* 的逻辑。为了不污染 *index.php*，我们将所有与甘特图相关的代码放在一个独立的文件中。
 
-创建 *src/gantt.php* 并添加如下内容:
+让我们创建一个新文件 *src/gantt.php* 并添加所需的代码：
 
-**src/gantt.php**
-~~~php
+
+~~~js title="src/gantt.php"
 function getConnection()
 {
     return new PDO("mysql:host=localhost;dbname=gantt", "root", "root", [
@@ -210,10 +209,10 @@ function getGanttData($request, $response, $args) {
 };
 ~~~
 
-在 *public/index.php* 中引入 *src/gantt.php*:
+并将 *src/gantt.php* 包含到 *public/index.php* 中：
 
-**public/index.php**
-~~~php
+
+~~~js title="public/index.php"
 <?php
 if (PHP_SAPI == 'cli-server') {
     // To help the built-in PHP dev server check if the request was actually for
@@ -249,24 +248,25 @@ require __DIR__ . '/../src/gantt.php'; /*!*/
 $app->run();
 ~~~
 
-上述代码的作用如下:
+让我们对上述代码进行详细分析：
 
-- 在 *src/routes.php* 中为数据接口定义了 [路由](https://www.slimframework.com/docs/v3/objects/router.html)。
-- 路由处理器从数据库中获取所有任务和链接，并以 [JSON](guides/supported-data-formats.md#json) 格式返回。
-- 为每个任务添加了 *open* 属性，使任务树默认展开。
+- 我们在 *src/routes.php* 中为数据操作定义了一个 [route](https://www.slimframework.com/docs/v3/objects/router.html)
+- 在该路由的处理程序中，我们从数据库读取所有任务和链接，并以 [JSON] 的形式发送给客户端
+- 我们还为任务对象添加了 *open* 属性。它将指定任务树在默认情况下为展开状态
 
-数据加载实现后，打开 [http://127.0.0.1:8080/](http://127.0.0.1:8080/)，即可看到甘特图已填充前面步骤中的示例数据。
+因此，我们已经实现了将数据加载到甘特图中。
+打开 [http://127.0.0.1:8080/ ](http://127.0.0.1:8080/)，您将看到甘特图现在已用我们在上一步添加的测试数据进行填充。
 
 ![load_data](/img/load_data.png)
 
-## 步骤 5. 保存更改
+## 第 5 步。保存变更
 
-下一步是将客户端的更改保存回服务器。通常通过集成在 gantt 中的 [dataProcessor](guides/server-side.md#jishushuoming) 库实现。
+下一步是实现将客户端所做的变更保存到服务器。通常，这是通过嵌入到甘特图中的 [dataProcessor](guides/server-side.md#technique) 库来完成的。
 
-在 *index.phtml* 中添加如下代码:
+打开 *index.phtml*，并添加以下代码行：
 
-**templates/index.phtml**
-~~~js
+
+~~~js title="templates/index.phtml"
 gantt.config.date_format = "%Y-%m-%d %H:%i:%s";
 
 gantt.init("gantt_here");
@@ -277,14 +277,13 @@ dp.init(gantt);/*!*/
 dp.setTransactionMode("REST");/*!*/
 ~~~
 
-DataProcessor 会监听客户端的更改（添加、编辑、删除），并相应地发送 AJAX 请求到服务器。
+DataProcessor 将对客户端的每个操作（例如向图表添加数据、修改或删除数据）做出响应，并向服务器发送 AJAX 请求。
+DataProcessor 将在 REST 模式下工作，这意味着它将对不同的操作使用不同的 HTTP 方法，以下是 [路由的完整列表](guides/server-side.md#requestresponsedetails)。
 
-以 REST 模式运行时，不同操作会使用不同的 HTTP 方法。你可以在 [此处查看完整路由列表](guides/server-side.md#requestresponsedetails)。
+因此，现在需要将这些路由添加到应用中并实现所需的逻辑。首先，前往 *src/routes.php*：
 
-现在，在 *src/routes.php* 中添加这些路由:
 
-**src/routes.php**
-~~~php
+~~~js title="src/routes.php"
 <?php
 // Routes
 
@@ -304,10 +303,10 @@ $app->put("/data/link/{id}", 'updateLink');
 $app->delete("/data/link/{id}", 'deleteLink');
 ~~~
 
-路由添加后，在 *src/gantt.php* 中实现相应方法:
+路由已添加，现在我们将实现与之对应的方法：
 
-**src/gantt.php**
-~~~php
+
+~~~js title="src/gantt.php"
 function getConnection()
 {
   return new PDO("mysql:host=localhost;dbname=gantt", "root", "", [
@@ -335,7 +334,7 @@ function getGanttData($request, $response, $args) {
   return $response->withJson($result);
 };
 
-// Extract task data from request
+// 从请求数据获取任务
 function getTask($data)
 {
   return [
@@ -347,7 +346,7 @@ function getTask($data)
   ];
 }
 
-// Extract link data from request
+// 从请求数据获取链接
 function getLink($data){
   return [
     ":source" => $data["source"],
@@ -356,7 +355,7 @@ function getLink($data){
   ];
 }
 
-// Add a new task
+// 创建新任务
 function addTask($request, $response, $args) {
   $task = getTask($request->getParsedBody());
   $db = getConnection();
@@ -370,7 +369,7 @@ function addTask($request, $response, $args) {
   ]);
 }
 
-// Update an existing task
+// 更新任务
 function updateTask($request, $response, $args) {
   $sid = $request->getAttribute("id");
   $task = getTask($request->getParsedBody());
@@ -387,7 +386,7 @@ function updateTask($request, $response, $args) {
   ]);
 }
 
-// Delete a task
+// 删除任务
 function deleteTask($request, $response, $args) {
   $sid = $request->getAttribute("id");
   $db = getConnection();
@@ -399,7 +398,7 @@ function deleteTask($request, $response, $args) {
   ]);
 }
 
-// Add a new link
+// 创建新链接
 function addLink($request, $response, $args) {
   $link = getLink($request->getParsedBody());
   $db = getConnection();
@@ -413,7 +412,7 @@ function addLink($request, $response, $args) {
   ]);
 }
 
-// Update an existing link
+// 更新链接
 function updateLink($request, $response, $args) {
   $sid = $request->getAttribute("id");
   $link = getLink($request->getParsedBody());
@@ -428,7 +427,7 @@ function updateLink($request, $response, $args) {
   ]);
 }
 
-// Delete a link
+// 删除链接
 function deleteLink($request, $response, $args) {
   $sid = $request->getAttribute("id");
   $db = getConnection();
@@ -441,37 +440,37 @@ function deleteLink($request, $response, $args) {
 }
 ~~~
 
-虽然代码较长，但每个函数都非常直接:分别处理任务和链接的创建、更新、删除。当插入新数据时，新的数据库 ID 会返回给客户端。
+正如你所看到的，尽管代码量相对较多，但每个方法都很简单：创建/更新/删除任务和链接。
+插入操作应将新项目的数据库 ID 返回给客户端。
 
-请注意，这里并未处理数据库中的关联关系--比如删除任务时不会自动删除其子任务或相关链接。客户端会为每个依赖项单独发送删除请求。
+请注意，这里并不处理数据库关系，例如在删除任务时不会删除嵌套任务或相关链接。这由客户端默认处理。Gantt 将为每个需要删除的子任务和链接发送单独的请求。
 
-如果你希望在后端进行管理，可以启用 [cascade_delete](api/config/cascade_delete.md) 配置。
+如果你想在后端处理它，你需要开启 [cascade_delete](api/config/cascade_delete.md) 配置。
 
-现在一切准备就绪。启动应用并访问 [http://127.0.0.1:8080](http://127.0.0.1:8080)，即可看到完整功能的甘特图。
+现在一切就绪。让我们运行应用程序。打开 http://127.0.0.1:8080 并欣赏我们刚刚创建的美观甘特图。
 
 ![ready_gantt](/img/ready_gantt.png)
 
-## 保存任务顺序 {#storingtheorderoftasks}
+## 存储任务顺序 {#storingtheorderoftasks}
 
-甘特图支持 [拖放排序](guides/reordering-tasks.md) 功能。如果你使用该功能，建议将任务顺序存储到数据库中。
+客户端的甘特图允许使用拖放来重新排序任务。所以如果你使用此功能，你需要将该顺序存储在数据库中。
+你可以 [在这里查看通用描述](guides/server-side.md#storingtheorderoftasks)。
 
-你可以在 [这里](guides/server-side.md#renwushunxudecunchu) 查看相关概述。
+现在让我们把该功能添加到我们的应用中。
 
-接下来，我们将为应用添加此功能。
+### 在客户端启用任务重新排序
 
-### 在客户端启用任务排序
+首先，我们需要允许用户在 UI 中更改任务顺序。打开 *Index* 视图并更新甘特图的配置：
 
-首先，用户应能够直接在界面中重新排列任务。打开 *Index* 视图，并按如下方式修改 gantt 配置:
 
-**/templates/index.phtml**
-~~~js
+~~~js title="/templates/index.phtml"
 gantt.config.order_branch = true;/*!*/
 gantt.config.order_branch_free = true;/*!*/
 
 gantt.init("gantt_here");
 ~~~
 
-接下来，需要在后端反映这些更改。任务顺序将存储在名为 "sortorder" 的列中。以下是更新后的 *gantt_tasks* 表定义:
+现在，将这些更改在后端体现。我们将把顺序存储在名为 "sortorder" 的列中。更新后的 *gantt_tasks* 表声明如下所示：
 
 ~~~js
 CREATE TABLE `gantt_tasks` (
@@ -485,18 +484,17 @@ CREATE TABLE `gantt_tasks` (
 );
 ~~~
 
-如果你已经有了该表，可以通过以下命令简单地添加新列:
+或者，您也可以将上述列添加到您已经拥有的表中：
 
 ~~~js
 ALTER TABLE `gantt_tasks` ADD COLUMN `sortorder` int(11) NOT NULL;
 ~~~
 
-之后，更新 *src/gantt.php* 中的 CRUD 操作。
+随后，我们需要在 *src/gantt.php* 中更新 CRUD。
 
-1. <b>GET /data</b> 接口应按 `sortorder` 列排序返回任务:
+1. <b>GET /data</b> 必须返回按 `sortorder` 列排序的任务：
 
-**src/gantt.php**
-~~~php
+~~~js title="src/gantt.php"
 function getGanttData($request, $response, $args) {
  $db = getConnection();
  $result = [
@@ -515,13 +513,11 @@ function getGanttData($request, $response, $args) {
 
  return $response->withJson($result);
 }
-
 ~~~
 
-2. 添加新任务时，需为其分配初始的 `sortorder` 值:
+2. 新添加的任务必须接收初始值 `sortorder`：
 
-**src/gantt.php**
-~~~php
+~~~js title="src/gantt.php"
 // create a new task
 function addTask($request, $response, $args) {
  $task = getTask($request->getParsedBody());
@@ -548,10 +544,9 @@ function addTask($request, $response, $args) {
 }
 ~~~
 
-3. 最后，当任务被重新排序时，相应地更新其顺序:
+3. 最后，当用户重新排序任务时，任务顺序必须被 [更新](guides/server-side.md#storingtheorderoftasks)：
 
-**src/gantt.php**
-~~~php
+~~~js title="src/gantt.php"
 // update a task
 function updateTask($request, $response, $args) {
   $sid = $request->getAttribute("id");
@@ -605,26 +600,26 @@ function updateOrder($taskId, $target, $db){
     ":taskId"=>$taskId
   ]);
 }
-
 ~~~
 
-一个可用的演示已在 GitHub 上提供，供参考:[https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x)。
+你可以在 GitHub 上查看一个可用的示例演示 [a ready demo](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x)。
 
 ## 使用 dhtmlxConnector
 
-另外，PHP 后端也可以基于 [dhtmlxConnector 库](https://docs.dhtmlx.com/connector__php__index.html) 构建。详细教程可参考 [这里](integrations/php/howtostart-connector.md)。
+另外，PHP 后端也可以使用 [dhtmlxConnector 库](https://docs.dhtmlx.com/connector__php__index.html) 来实现。
+你可以在此处找到详细的教程 [这里](integrations/php/howtostart-connector.md)。
 
-## 应用安全
 
-Gantt 本身不包含防御 SQL 注入、XSS 或 CSRF 等威胁的机制。开发者需要在后端实现安全措施。更多信息可参考[相关文档](guides/app-security.md)。
+## 应用安全性
 
-## 故障排查
+Gantt 本身不提供防范诸如 SQL 注入、XSS 和 CSRF 攻击等威胁的机制。确保应用安全的责任在于实现后端的开发者。请在相应文章中了解详细信息。
 
-如果在完成集成步骤后 Gantt 图未显示任务或链接，可以参考 [백엔드 통합 문제 해결](guides/troubleshooting.md) 中的故障排查指南，帮助识别和解决问题。
+## 故障排除
 
-## 后续步骤
+如果你已完成上述步骤以在 PHP 中实现 Gantt 集成，但在页面上未能渲染任务和链接，请参考 [Troubleshooting Backend Integration Issues](guides/troubleshooting.md) 文章。它描述了识别问题根源的方法。
 
-完成基础的 gantt 配置后，完整代码可在 [GitHub](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x) 上获取，支持克隆或下载以用于你的项目。
+## 接下来
 
-更多资源包括[涵盖各种 gantt 功能的指南](guides.md)以及[与其他后端框架集成的教程](integrations/howtostart-guides.md)。
+现在你已经拥有一个功能齐全的甘特图。你可以在 [GitHub](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x) 上查看完整代码，克隆或下载并用于你的项目。
 
+你也可以查看 [关于甘特图众多特性的指南 guides on the numerous features of gantt] 或关于 [将甘特图与其他后端框架集成的教程] 的文章。

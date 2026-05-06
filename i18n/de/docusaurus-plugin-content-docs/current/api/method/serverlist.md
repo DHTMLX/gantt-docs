@@ -1,6 +1,6 @@
 ---
 sidebar_label: serverList
-title: serverList method
+title: serverList Methode
 description: "gibt eine Liste von Optionen zurück"
 ---
 
@@ -14,11 +14,11 @@ description: "gibt eine Liste von Optionen zurück"
 
 ### Parameters
 
-- `list_name` - (required) *string | number* - der Name der Liste
-- `options` - (optional) *array* - ein Array, das die Optionen enthält
+- `list_name` - (erforderlich) *string | number* - der Name einer Liste
+-  `options` -	(optional) *array*	- ein Array von Optionen
 
 ### Returns
-- ` list` - (array) - ein Array von Optionen
+- ` list` - (array) - eine Liste von Optionen
 
 ### Example
 
@@ -36,13 +36,10 @@ var list = gantt.serverList("options", [
 
 ### Details
 
-- Wenn die Methode nur mit dem ersten Parameter aufgerufen wird, gibt sie die Liste mit dem entsprechenden Namen zurück, falls diese existiert.
-- Wenn die Methode mit zwei Parametern aufgerufen wird, erstellt dhtmlxGantt eine Liste mit dem angegebenen Namen und den Optionen.
-Existiert bereits eine Liste mit dem gleichen Namen, werden deren Daten aktualisiert.
-- [Lightbox select controls](guides/select.md) können automatisch mit *gantt.serverList* befüllt werden.
-Wenn die Methode mit zwei Parametern aufgerufen wird, erstellt oder aktualisiert dhtmlxGantt die Liste entsprechend.
-
-Dieser Ansatz erleichtert das Aktualisieren von Sammlungen wie Select-Optionen, indem sie als benannte Listen verwaltet werden.
+- Wenn die Methode nur mit dem ersten Parameter aufgerufen wird, gibt die Methode eine Liste mit diesem Namen zurück (falls vorhanden).
+- Wird die Methode mit 2 Parametern aufgerufen, erstellt dhtmlxGantt eine Liste mit dem angegebenen Namen und Optionen. Falls eine Liste mit diesem Namen bereits existiert, aktualisiert dhtmlxGantt die darin enthaltenen Daten.
+- [Lightbox-Select-Steuerelemente](guides/select.md) können automatisch mit *gantt.serverList* befüllt werden.
+Deshalb ist es sinnvoll, Sammlungen zu aktualisieren, z. B. Auswahloptionen, indem man sie als benannte Liste von Optionen erstellt.
 
 ~~~js
 // diese Konfiguration ermöglicht das Laden von Optionen 
@@ -56,4 +53,3 @@ gantt.config.lightbox.sections=[
 
 ### Related API
 - [updateCollection](api/method/updatecollection.md)
-

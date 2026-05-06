@@ -1,6 +1,6 @@
 ---
 sidebar_label: batchUpdate
-title: batchUpdate method
+title: batchUpdate 方法
 description: "一次性更新多个任务/链接"
 ---
 
@@ -14,8 +14,8 @@ description: "一次性更新多个任务/链接"
 
 ### Parameters
 
-- `callback` - (required) *function* - 回调函数
-- `noRedraw` - (optional) *boolean* - 可选，决定回调函数执行后Gantt是否重新绘制图表；<i>true</i>表示不重绘，<i>false</i>（默认）表示触发重绘
+- `callback` - (required) *函数* - 回调函数
+- `noRedraw` - (optional) *boolean* - 指定在回调函数执行后 Gantt 是否应重新绘制图表；true - 不重新绘制，false（默认） - 重新绘制
 
 ### Example
 
@@ -32,14 +32,13 @@ gantt.batchUpdate(function () {
 ~~~
 
 ### Related samples
-- [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
+- [多选与缩进/取消缩进任务](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 ### Details
 
-此方法允许一次性更新多个任务或链接，仅触发一次重绘，避免每次更新都引发单独的重绘操作。
+您可以使用此方法一次性更新多個任務/連結，只需一次重新渲染，而不是多次更新並伴隨多次重新渲染。
 
 ### Related API
 - [eachSelectedTask](api/method/eachselectedtask.md)
 - [getLastSelectedTask](api/method/getlastselectedtask.md)
 - [getSelectedTasks](api/method/getselectedtasks.md)
-

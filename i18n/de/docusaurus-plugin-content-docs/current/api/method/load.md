@@ -8,17 +8,18 @@ description: "Lädt Daten aus einer externen Quelle in das Gantt-Diagramm."
 
 ### Description
 
-@short: Lädt Daten aus einer externen Quelle in das Gantt-Diagramm.
+@short: Lädt Daten in das Gantt-Diagramm aus einer externen Datenquelle
 
-@signature: load: (url: string, type?: string, callback?: GanttCallback) =\> any
+@signature: load: (url: string, type?: string, callback?: GanttCallback) => any
 
 ### Parameters
-- `url` - (required) *string* - Die URL auf der Serverseite (dies kann eine statische Datei oder ein serverseitiges Skript sein, das Daten zurückgibt).
-- `type` - (optional) *string* - ('json', 'xml', 'oldxml') Das Format der Daten. Standard ist 'json'.
-- `callback` - (optional) *function* - 	Eine Funktion, die aufgerufen wird, sobald das Laden abgeschlossen ist.
+
+- `url` - (erforderlich) *string* - die serverseitige URL (kann eine statische Datei oder ein serverseitiges Script sein, das Daten ausgibt)
+- `type` -	(optionaL) *string*	<i>('json', 'xml', 'oldxml')</i> - der Datentyp. Der Standardwert - <i>'json'</i>
+- `callback`	-	(optionaL) *function* 	- die Callback-Funktion
 
 ### Returns
-- ` resultPromise` - (object) - Ein Promise, das aufgelöst wird, wenn die AJAX-Anfrage abgeschlossen ist.
+- ` resultPromise` - (object) - das Promise-Objekt, das sich auflöst, wenn die AJAX-Anfrage abgeschlossen ist
 
 ### Example
 
@@ -46,12 +47,10 @@ gantt.load("data.xml","xml", function(){ //Callback-Funktion angeben
 
 ### Details
 
-Diese Methode löst die Events [onLoadStart](api/event/onloadstart.md) und [onLoadEnd](api/event/onloadend.md) aus.
+Die Methode löst die Ereignisse [onLoadStart](api/event/onloadstart.md) und [onLoadEnd](api/event/onloadend.md) aus.
 
 :::note
-note
-Beachten Sie, dass diese Methode in der Gantt-Version für Node.js nicht unterstützt wird.
- 
+Beachten Sie, dass die Methode in der Gantt-Version für Node.js nicht funktioniert.
 :::
 
 ### Related API
@@ -61,8 +60,8 @@ Beachten Sie, dass diese Methode in der Gantt-Version für Node.js nicht unterst
 - [onAjaxError](api/event/onajaxerror.md)
 
 ### Related Guides
-- ["Unterstützte Datenformate"](guides/supported-data-formats.md)
-- ["Datenladen"](guides/loading.md)
-- ["Serverseitige Integration"](guides/server-side.md)
-- ["Dynamisches Laden (bei Bedarf)"](guides/dynamic-loading.md)
+- [Unterstützte Datenformate](guides/supported-data-formats.md)
+- [Datenladen](guides/loading.md)
+- [Serverseitige Integration](guides/server-side.md)
+- [Dynamisches Laden (bei Bedarf)](guides/dynamic-loading.md)
 

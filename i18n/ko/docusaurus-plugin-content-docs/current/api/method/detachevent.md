@@ -1,16 +1,19 @@
 ---
 sidebar_label: detachEvent
-title: detachEvent method
-description: "이전에 attachEvent() 메서드를 통해 추가된 이벤트 핸들러를 제거합니다."
+title: detachEvent 메서드
+description: "이벤트에서 핸들러를 분리합니다(이전에 attachEvent() 메서드로 연결된 경우)"
 ---
 
 # detachEvent
 
 ### Description
 
-@short: 이전에 attachEvent() 메서드를 통해 추가된 이벤트 핸들러를 제거합니다.
+@short: 이벤트에 바인딩된 핸들러를 분리합니다(이전에 attachEvent() 메서드로 연결된 경우
 
 @signature: detachEvent: (id: string) =\> void
+
+### Parameters
+- `id` - (required) *string* -  이벤트의 식별자
 
 ### Example
 

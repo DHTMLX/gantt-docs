@@ -1,22 +1,21 @@
 ---
 sidebar_label: addShortcut
 title: addShortcut method
-description: "добавляет новую клавиатурную комбинацию (shortcut)"
+description: "Добавляет новое сочетание клавиш"
 ---
 
 # addShortcut
 
 ### Description
 
-@short: Добавляет новую клавиатурную комбинацию (shortcut)
+@short: Добавляет новое сочетание клавиш
 
 @signature: addShortcut: (shortcut: string, handler: GanttCallback, scope?: string) =\> void
 
 ### Parameters
 
-- `shortcut` - (required) *string* - клавиша или комбинация клавиш, используемая для shortcut ([синтаксис shortcut](guides/keyboard-navigation.md#shortcutsyntax))
-- `handler` - (required) *function* - функция, которая выполняется при срабатывании shortcut
-- `scope` - (optional) *string* - необязательный параметр, указывает контекстный элемент, к которому привязывается handler ([список scope](guides/keyboard-navigation.md#scopes)); по умолчанию "gantt"
+- `shortcut` - (required) *string* - имя клавиши или имя сочетания клавиш для shortcut [shortcut syntax](guides/keyboard-navigation.md#shortcutsyntax)
+- `handler` - (required) *function* - обработчик вызова сочетания клавиш
 
 ### Example
 
@@ -29,19 +28,18 @@ gantt.addShortcut("shift+w", function(e){
 ~~~
 
 ### Related samples
-- [Keyboard Navigation](https://docs.dhtmlx.com/gantt/samples/02_extensions/16_keyboard_navigation.html)
-- [Keyboard Navigation - navigate cells](https://docs.dhtmlx.com/gantt/samples/02_extensions/17_keyboard_navigation_cell.html)
+- [Навигация по клавиатуре](https://docs.dhtmlx.com/gantt/samples/02_extensions/16_keyboard_navigation.html)
+- [Навигация по клавиатуре - переход по ячейкам](https://docs.dhtmlx.com/gantt/samples/02_extensions/17_keyboard_navigation_cell.html)
 
 ### Details
 
 :::note
- Этот метод является частью расширения **keyboard_navigation**, поэтому плагин [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) должен быть включен. Для подробностей см. статью [Навигация с клавиатуры](guides/keyboard-navigation.md). 
+Этот метод определяется в расширении **keyboard_navigation**, поэтому необходимо активировать плагин [keyboard_navigation](guides/extensions-list.md#keyboardnavigation). Подробности смотрите в статье [Keyboard Navigation](guides/keyboard-navigation.md). 
 :::
 
+Добавлено в версии 4.1
 
-добавлено в версии 4.1
-
-Если третий параметр опущен, handler по умолчанию привязывается к scope gantt.
+Если третий параметр не задан, обработчик будет привязан к контексту gantt.
 
 ### Related API
 - [getShortcutHandler](api/method/getshortcuthandler.md)
@@ -51,5 +49,4 @@ gantt.addShortcut("shift+w", function(e){
 - [focus](api/method/focus.md)
 
 ### Related Guides
-- [Навигация с клавиатуры](guides/keyboard-navigation.md)
-
+- [Навигация по клавиатуре](guides/keyboard-navigation.md)

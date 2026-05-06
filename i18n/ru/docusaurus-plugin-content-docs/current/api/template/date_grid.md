@@ -1,25 +1,25 @@
 ---
 sidebar_label: date_grid
-title: date_grid template
-description: "определяет содержимое, отображаемое в колонках, показывающих даты (возвращающих значения `Date`) внутри grid"
+title: date_grid шаблон
+description: "задает содержимое колонок, которые отображают даты (возвращаются значения `Date`) в grid"
 ---
 
 # date_grid
 
 ### Description
 
-@short: Определяет содержимое, отображаемое в колонках, показывающих даты (возвращающих значения `Date`) внутри grid
+@short: Задает содержимое колонок, которые отображают даты (возвращаются значения `Date`) в grid
 
-@signature: date_grid: (date: Date, task: Task, column: string) =\> string;
+@signature: date_grid: (date: Date, task: Task, column: string) => string;
 
 ### Parameters
 
-- `date` - (required) *Date* - значение даты, которое нужно отформатировать
-- `task` - (required) *Task* - объект задачи, связанный с датой
-- `column` - (required) *string* - название колонки, вызывающей шаблон
+- `date` - (required) *Date* - дата, которую нужно отформатировать
+- `task` - (required) *Task* - объект задачи
+- `column` - (required) *string* - имя столбца, который вызвал шаблон
 
 ### Returns
-- ` text` - (string) - html-текст, который будет отображён в gantt
+- `text` - (string) - HTML-текст, который будет отрисован в диаграмме Ганта
 
 ### Example
 
@@ -34,12 +34,11 @@ gantt.templates.date_grid = function(date, task, column){
 ~~~
 
 ### Related samples
-- [Gantt. Настройка формата колонок с датами в grid](https://snippet.dhtmlx.com/87j43fc3)       
+- [Gantt. Setting the format of columns with dates in grid](https://snippet.dhtmlx.com/87j43fc3)
 
 ### Related API
 - [date_grid](api/config/date_grid.md)
 - [grid_date_format](api/template/grid_date_format.md)
 
 ### Related Guides
-- [Шаблоны грида](guides/table-templates.md)
-
+- [Templates of the Grid](guides/table-templates.md)

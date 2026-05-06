@@ -1,20 +1,20 @@
 ---
 sidebar_label: eachSelectedTask
-title: eachSelectedTask method
-description: "간트 차트에서 선택된 모든 작업을 순회합니다."
+title: eachSelectedTask 메서드
+description: "간트 차트에서 선택된 모든 작업을 순회합니다"
 ---
 
 # eachSelectedTask
 
 ### Description
 
-@short: 간트 차트에서 선택된 모든 작업을 순회합니다.
+@short: 간트 차트에서 선택된 모든 작업을 순회합니다
 
 @signature: eachSelectedTask: (code: GanttCallback) =\> void
 
 ### Parameters
 
-- `code` - (required) *function* - 선택된 각 작업에 대해 실행될 함수입니다. 이 함수는 작업 ID를 인자로 받습니다.
+- `code` - (required) *function* - 작업을 순회하는 함수. 매개변수로 작업 ID를 받습니다
 
 ### Example
 
@@ -28,12 +28,12 @@ gantt.batchUpdate(function () {
 ~~~
 
 ### Related samples
-- [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
+- [다중 선택 및 들여쓰기/내어쓰기 작업](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 ### Details
 
 :::note
- 이 메서드는 **multiselect** 확장의 일부이므로, 반드시 [multiselect](guides/extensions-list.md#multitaskselection) 플러그인을 활성화해야 합니다. 자세한 내용은 [멀티 태스크 선택](guides/multiselection.md) 문서를 참조하세요. 
+이 메서드는 **multiselect** 확장에 정의되어 있으므로 [multiselect](guides/extensions-list.md#multitaskselection) 플러그인을 활성화해야 합니다. 자세한 내용은 [다중 작업 선택](guides/multiselection.md) 문서를 참조하십시오.
 :::
 
 ### Related API
@@ -47,5 +47,4 @@ gantt.batchUpdate(function () {
 - [batchUpdate](api/method/batchupdate.md)
 
 ### Related Guides
-- [멀티 태스크 선택](guides/multiselection.md)
-
+- [다중 작업 선택](guides/multiselection.md)

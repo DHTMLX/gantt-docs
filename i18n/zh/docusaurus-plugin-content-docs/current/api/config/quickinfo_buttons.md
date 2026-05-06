@@ -1,14 +1,14 @@
 ---
 sidebar_label: quickinfo_buttons
-title: quickinfo_buttons config
-description: "保存一组按钮，这些按钮显示在弹出任务详情表单中"
+title: quickinfo_buttons 配置
+description: "在弹出任务详情表单中存放一组按钮"
 ---
 
 # quickinfo_buttons
 
 ### Description
 
-@short: 保存一组按钮，这些按钮显示在弹出任务详情表单中
+@short: 在弹出任务详情表单中存放一组按钮
 
 @signature: quickinfo_buttons: any[]
 
@@ -16,7 +16,7 @@ description: "保存一组按钮，这些按钮显示在弹出任务详情表单
 
 ~~~jsx
 gantt.config.quickinfo_buttons=["icon_delete","icon_edit","advanced_details_button"];
-gantt.locale.labels["advanced_details_button"] = "高级信息";
+gantt.locale.labels["advanced_details_button"] = "Advanced Info";
 gantt.init("gantt_here");
 
 gantt.$click.buttons.advanced_details_button=function(id){
@@ -25,7 +25,7 @@ gantt.$click.buttons.advanced_details_button=function(id){
 };
 ~~~
 
-**Default value:** ["icon_delete","icon_edit"]
+**默认值：** ["icon_delete","icon_edit"]
 
 ### Related samples
 - [QuickInfo extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
@@ -45,5 +45,4 @@ gantt.$click.buttons.advanced_details_button=function(id){
 - [onAfterQuickInfo](api/event/onafterquickinfo.md)
 
 ### Related Guides
-- [扩展功能完整列表](guides/extensions-list.md)
-
+- [Full List of Extensions](guides/extensions-list.md#quick-info)

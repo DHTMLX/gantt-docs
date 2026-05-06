@@ -1,7 +1,7 @@
 ---
 sidebar_label: grid_width
-title: grid_width config
-description: "legt die Breite des Grids fest"
+title: grid_width Konfiguration
+description: "Legt die Breite des Grids fest"
 ---
 
 # grid_width
@@ -20,19 +20,21 @@ gantt.config.grid_width = 400;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 360
+**Standardwert:** 360
 
 ### Details
 
-Die Breite der Grid-Spalten hängt von zwei Faktoren ab: der [width](api/config/columns.md) jeder Spalte und der Gesamtbreite des Grids. Wenn die Summe der Spaltenbreiten nicht mit der grid_width übereinstimmt, passt Gantt einen dieser Werte an.
+Die Breite der Grid-Spalten hängt von zwei Attributen ab: der [width](api/config/columns.md) der Spalte und der Breite des Grids. Wenn die Summe der Breiten der Spalten nicht der Breite des Grids entspricht, ändert Gantt einen der Parameter.
 
-- Wenn das Gantt mit [gantt.init()](api/method/init.md) initialisiert wird, hat die Spalten-[width](api/config/columns.md) Vorrang.
-- Wenn das Gantt mit [gantt.render()](api/method/render.md) gerendert wird, hat die **grid_width** Priorität. <br> 
+- Beim Initialisieren des Gantt via [gantt.init()](api/method/init.md) hat die [width](api/config/columns.md) der Spalte Priorität.
+- Beim Rendern des Gantt via [gantt.render()](api/method/render.md) hat der **grid_width** Priorität.  
+
 :::note
-Sample: [Anpassung der Spaltenbreite](https://snippet.dhtmlx.com/5/36b6baa89) 
-:::
-- Wenn das Gantt mit [gantt.init()](api/method/init.md) initialisiert wird und die Spaltenbreite entweder nicht angegeben oder auf **'*'** gesetzt ist, wird die **grid_width** priorisiert. <br>
-:::note
-Sample: [Anpassung der Spaltenbreite](https://snippet.dhtmlx.com/5/a35378204) 
+sample: [Adjustment of column width ](https://snippet.dhtmlx.com/5/36b6baa89)
 :::
 
+- Wenn das Gantt via [gantt.init()](api/method/init.md) initialisiert wird und entweder die Breite der Spalte nicht angegeben ist oder auf **'*'** gesetzt ist, hat der **grid_width** Priorität. 
+
+:::note
+sample: [Adjusting column width ](https://snippet.dhtmlx.com/5/a35378204)
+:::

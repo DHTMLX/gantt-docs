@@ -1,19 +1,19 @@
 ---
 sidebar_label: getLightboxValues
 title: getLightboxValues method
-description: "получает значения из секций lightbox"
+description: "Возвращает значения секций lightbox"
 ---
 
 # getLightboxValues
 
 ### Description
 
-@short: Получает значения из секций lightbox
+@short: Возвращает значения секций lightbox
 
 @signature: getLightboxValues: () =\> any
 
 ### Returns
-- ` obj` - (object) - объект, содержащий значения
+- ` obj` - (object) - объект значений
 
 ### Example
 
@@ -23,7 +23,7 @@ gantt.getLightboxValues();
 
 ### Details
 
-Этот метод возвращает значения в виде объекта с парами *'section_name:value'*
+The method returns the values as a hash of *'section_name:value'* pairs 
 
 ~~~js
 const values = gantt.getLightboxValues();
@@ -40,4 +40,3 @@ values = {
 
 ### Related Guides
 - [getLightboxSection](api/method/getlightboxsection.md)
-

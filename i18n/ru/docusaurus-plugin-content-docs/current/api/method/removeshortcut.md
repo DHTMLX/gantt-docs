@@ -1,48 +1,47 @@
 ---
 sidebar_label: removeShortcut
 title: removeShortcut method
-description: "удаляет клавиатурный shortcut"
+description: "удаляет горячее сочетание клавиш"
 ---
 
 # removeShortcut
 
 ### Description
 
-@short: Удаляет клавиатурный shortcut
+@short: Удаляет горячее сочетание клавиш
 
 @signature: removeShortcut: (shortcut: string, scope: string) =\> void
 
 ### Parameters
 
-- `shortcut` - (required) *string* - название клавиши или комбинации клавиш для shortcut ([синтаксис shortcut](guides/keyboard-navigation.md#shortcutsyntax))
-- `scope` - (required) *string* - элемент, к которому привязан shortcut ([список scope](guides/keyboard-navigation.md#scopes))
+- `shortcut` - (required) *string* - имя клавиши или имя сочетания клавиш для горячей клавиши [(shortcut syntax)](guides/keyboard-navigation.md#shortcutsyntax)
+- `scope` - (required) *string* - элемент, к которому привязано сочетание клавиш [(список областей)](guides/keyboard-navigation.md#scopes) 
 
 ### Example
 
 ~~~jsx
-// добавление shortcut
+// adding a shortcut
 gantt.addShortcut("shift+w", function(e){ 
     var task = gantt.locate(e); 
     if(task) 
         gantt.showQuickInfo(task)
 }, "taskRow");
 
-// удаление shortcut
+// removing a shortcut
 gantt.removeShortcut("shift+w", "taskRow");
 ~~~
 
 ### Related samples
-- [Keyboard Navigation](https://docs.dhtmlx.com/gantt/samples/02_extensions/16_keyboard_navigation.html)
-- [Keyboard Navigation - navigate cells](https://docs.dhtmlx.com/gantt/samples/02_extensions/17_keyboard_navigation_cell.html)
+- [Навигация по клавиатуре](https://docs.dhtmlx.com/gantt/samples/02_extensions/16_keyboard_navigation.html)
+- [Навигация по клавиатуре - переход по ячейкам](https://docs.dhtmlx.com/gantt/samples/02_extensions/17_keyboard_navigation_cell.html)
 
 ### Details
 
 :::note
- Этот метод является частью расширения **keyboard_navigation**, поэтому убедитесь, что плагин [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) включен. Подробнее можно узнать в статье [Навигация с клавиатуры](guides/keyboard-navigation.md). 
+Этот метод определяется в расширении **keyboard_navigation**, поэтому необходимо активировать плагин [keyboard_navigation](guides/extensions-list.md#keyboardnavigation). Подробности см. в статье [Навигация по клавиатуре](guides/keyboard-navigation.md).
 :::
 
-
-добавлено в версии 4.1
+added in version 4.1
 
 ### Related API
 - [addShortcut](api/method/addshortcut.md)
@@ -52,5 +51,4 @@ gantt.removeShortcut("shift+w", "taskRow");
 - [focus](api/method/focus.md)
 
 ### Related Guides
-- [Навигация с клавиатуры](guides/keyboard-navigation.md)
-
+- [Навигация по клавиатуре](guides/keyboard-navigation.md)

@@ -1,51 +1,50 @@
 ---
 sidebar_label: onBeforeUndo
 title: onBeforeUndo event
-description: "Срабатывает непосредственно перед выполнением метода undo()"
+description: "срабатывает перед вызовом метода undo()"
 ---
 
 # onBeforeUndo
 
 ### Description
 
-@short: Срабатывает непосредственно перед выполнением метода undo()
+@short: Срабатывает до вызова метода undo()
 
 @signature: onBeforeUndo: (action: any[]) =\> boolean;
 
 ### Parameters
 
-- `action` - (required) *array* - массив, содержащий объекты команд
+- `action` - (required) *array* - массив объектов команд
 
 ### Returns
-- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (true) или остановлено (false)
+- ` result` - (boolean) - определяет, будет ли вызвано действие по умолчанию события (true) или отменено (false)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeUndo", function(action){
-    // ваш код здесь
+    // любая ваша логика здесь
     return true;
 });
 ~~~
 
 ### Related samples
-- [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
+- [Изменения Undo/Redo в Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
 ### Details
 
 :::note
- Это событие является частью расширения **undo**, поэтому убедитесь, что плагин [undo](guides/extensions-list.md#undo) включен. Подробнее можно узнать в статье [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md). 
+Это событие определяется в расширении **undo**, поэтому необходимо активировать плагин [undo](guides/extensions-list.md#undo). Подробности см. в статье [Undo/Redo Functionality](guides/undo-redo.md). 
 :::
 
+Событие можно блокировать. Возврат значения *false* отменит дальнейшую обработку.
 
-Это событие можно заблокировать. Возврат *false* остановит дальнейшую обработку.
-
-Параметр **action** представляет собой массив объектов команд, каждый из которых содержит следующие атрибуты:
+Параметр **action** представляет собой массив объектов команды, каждый из которых включает следующий набор атрибутов:
  
-- **type** - (*string*) тип команды: "add", "remove" или "update"
+- **type** - (*string*) тип команды: "add/remove/update"
 - **entity** - (*string*) тип изменённого объекта: "task" или "link"
-- **value** - (*object*) объект задачи или связи после изменения 
-- **oldValue** - (*object*) объект задачи или связи до изменения
+- **value** - (*object*) изменённый объект task/link
+- **oldValue** - (*object*) исходный объект task/link до изменений
 
 ### Related API
 - [undo](api/method/undo.md)
@@ -53,8 +52,7 @@ gantt.attachEvent("onBeforeUndo", function(action){
 - [onBeforeUndoStack](api/event/onbeforeundostack.md)
 
 ### Related Guides
-- [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md)
+- [Undo/Redo Functionality](guides/undo-redo.md)
 
 ### Change log
 - добавлено в версии 4.0
-

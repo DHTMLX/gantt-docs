@@ -1,14 +1,14 @@
 ---
 sidebar_label: min_column_width
 title: min_column_width config
-description: "definiert die minimale Breite einer Spalte im Timeline-Bereich"
+description: "legt die minimale Breite einer Spalte im Timeline-Bereich fest"
 ---
 
 # min_column_width
 
 ### Description
 
-@short: Definiert die minimale Breite einer Spalte im Timeline-Bereich
+@short: Legt die minimale Breite einer Spalte im Timeline-Bereich fest
 
 @signature: min_column_width: number
 
@@ -16,8 +16,8 @@ description: "definiert die minimale Breite einer Spalte im Timeline-Bereich"
 
 ~~~jsx
 gantt.config.min_column_width = 100;
-
+ 
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 70
+**Standardwert:** 70

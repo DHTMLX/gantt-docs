@@ -1,25 +1,27 @@
 ---
 sidebar_label: isCriticalLink
 title: isCriticalLink method
-description: "определяет, является ли заданная связь критической"
+description: "проверяет, является ли указанная ссылка критической"
 ---
 
 # isCriticalLink
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в версии PRO.
 :::
+
 ### Description
 
-@short: Определяет, является ли заданная связь критической
+@short: Проверяет, является ли указанная ссылка критической
 
 @signature: isCriticalLink: (link: Link) =\> boolean
 
 ### Parameters
 
-- `link` - (required) *Link* - объект связи для проверки
+- `link` - (обязательный) *Link* - сам объект ссылки
 
 ### Returns
-- ` value` - (boolean) - возвращает 'true', если связь критическая, иначе 'false'
+- ` value` - (boolean) - 'true', если указанная ссылка критическая, 'false' — в противном случае
 
 ### Example
 
@@ -40,8 +42,10 @@ gantt.config.highlight_critical_path = true; /*!*/
 gantt.init("gantt_here");
 gantt.parse(tasks);
 
-gantt.isCriticalLink(gantt.getLink(2)); // -> 'false' /*!*/
+gantt.isCriticalLink(gantt.getLink(2));// ->'false' /*!*/
 ~~~
+
+
 
 ### Related samples
 - [Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
@@ -49,16 +53,12 @@ gantt.isCriticalLink(gantt.getLink(2)); // -> 'false' /*!*/
 ### Details
 
 :::note
-Этот метод является частью расширения **critical_path**, поэтому убедитесь, что плагин [critical_path](guides/extensions-list.md#criticalpath) включен. Более подробная информация доступна в статье [Критический путь](guides/critical-path.md). 
+Этот метод определяется в расширении **critical_path**, поэтому необходимо активировать плагин [critical_path](guides/extensions-list.md#critical-path). Подробности смотрите в статье [Critical Path](guides/critical-path.md).
 :::
-
-
-![iscritical_path](/img/iscritical_path.png)
 
 ### Related API
 - [highlight_critical_path](api/config/highlight_critical_path.md)
 - [isCriticalTask](api/method/iscriticaltask.md)
 
 ### Related Guides
-- [Критический путь](guides/critical-path.md)
-
+- [Critical Path](guides/critical-path.md)

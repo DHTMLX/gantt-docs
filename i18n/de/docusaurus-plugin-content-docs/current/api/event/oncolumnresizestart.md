@@ -1,26 +1,26 @@
 ---
 sidebar_label: onColumnResizeStart
-title: onColumnResizeStart event
-description: "wird ausgelöst, kurz bevor der Benutzer beginnt, eine Spaltenbegrenzung zu ziehen, um die Größe zu ändern"
+title: onColumnResizeStart Event
+description: "Wird ausgelöst, bevor der Benutzer beginnt, den Rand der Spalte zu ziehen, um die Spalte anzupassen"
 ---
 
 # onColumnResizeStart
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
 ### Description
 
-@short: Wird ausgelöst, kurz bevor der Benutzer beginnt, eine Spaltenbegrenzung zu ziehen, um die Größe zu ändern
+@short: Löst aus, bevor der Benutzer beginnt, den Rand der Spalte zu ziehen, um die Spaltenbreite anzupassen
 
 @signature: onColumnResizeStart: (index: number, column: GridColumn) =\> boolean;
 
 ### Parameters
 
-- `index` - (required) *number* - der Index der Spalte
-- `column` - (required) *GridColumn* - das Spaltenobjekt
+- `index` - (erforderlich) *number* - der Spaltenindex
+- `column` - (erforderlich) *GridColumn* - das Spalten-Objekt
 
 ### Returns
-- ` result` - (boolean) - bestimmt, ob die Standardaktion des Events ausgeführt wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
+- ` result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
@@ -33,11 +33,11 @@ gantt.attachEvent("onColumnResizeStart", function(index, column){
 ~~~
 
 ### Related samples
-- [Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
+- [Grid-Spalten-Größenänderungs-Ereignisse](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
 
 ### Details
 
-Dieses Event kann blockiert werden. Wenn *false* zurückgegeben wird, wird das Ändern der Spaltengröße verhindert.
+Das Event ist blockierbar. Die Rückgabe von *false* verhindert die Spaltengrößenänderung.
 
 ### Related API
 - [onColumnResize](api/event/oncolumnresize.md)
@@ -45,5 +45,4 @@ Dieses Event kann blockiert werden. Wenn *false* zurückgegeben wird, wird das �
 - [onGridResizeStart](api/event/ongridresizestart.md)
 
 ### Related Guides
-- ["Spalten festlegen"](guides/specifying-columns.md#resizing)
-
+- [Spalten festlegen](guides/specifying-columns.md#resizing)

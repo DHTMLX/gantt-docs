@@ -1,25 +1,25 @@
 ---
 sidebar_label: onBeforeSplitTaskDisplay
 title: onBeforeSplitTaskDisplay event
-description: "Wird ausgelöst, kurz bevor ein Segment einer geteilten Aufgabe im Gantt-Chart angezeigt wird"
+description: "löst aus, bevor ein Teil der gesplitteten Aufgabe im Gantt-Diagramm angezeigt wird"
 ---
 
 # onBeforeSplitTaskDisplay
 
 ### Description
 
-@short: Wird ausgelöst, kurz bevor ein Segment einer geteilten Aufgabe im Gantt-Chart angezeigt wird
+@short: Löst aus, bevor ein Teil der gesplitteten Aufgabe im Gantt-Diagramm angezeigt wird
 
 @signature: onBeforeSplitTaskDisplay: (id: number | string, task: Task, parent: any) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *number | string* - die Kennung der Teilaufgabe
-- `task` - (required) *Task* - das Teilaufgaben-Objekt
-- `parent` - (required) *object* - das übergeordnete Aufgaben-Objekt
+- `id` - (erforderlich) *number | string* - die ID der Unteraufgabe
+- `task` - (erforderlich) *Task* - das Objekt der Unteraufgabe
+- `parent` - (erforderlich) *object* - das Objekt der übergeordneten Aufgabe
 
 ### Returns
-- ` result` - (boolean) - gibt an, ob die Teilaufgabe der geteilten Aufgabe auf der Seite angezeigt werden soll (<b>true</b>) oder ausgeblendet wird (<b>false</b>)
+- ` result` - (boolean) - definiert, ob die Unteraufgabe der Split-Aufgabe auf der Seite angezeigt wird (<b>true</b>) oder nicht (<b>false</b>)
 
 ### Example
 
@@ -34,17 +34,16 @@ gantt.attachEvent("onBeforeSplitTaskDisplay", function (id, task, parent) {
 
 ### Details
 
-![split tasks](/img/split_tasks.png)
+![Geteilte Aufgaben](/img/split_tasks.png)
 
-Beim Rendern einer geteilten Aufgabe wird zuerst das Event [onBeforeTaskDisplay](api/event/onbeforetaskdisplay.md) für die übergeordnete Aufgabe (die mit *render:"split"*) ausgelöst. Direkt danach feuert "onBeforeSplitTaskDisplay" für jede ihrer Teilaufgaben. Wenn "onBeforeSplitTaskDisplay" *false* zurückgibt, wird diese bestimmte Teilaufgabe nicht angezeigt.
+Wenn die Split-Aufgabe gerendert wird, wird zuerst das Ereignis [onBeforeTaskDisplay](api/event/onbeforetaskdisplay.md) für das übergeordnete Element ausgelöst (eine Aufgabe mit *render:"split"*). Danach wird für jede Unteraufgabe 'onBeforeSplitTaskDisplay' ausgelöst. Die Rückgabe von *false* aus 'onBeforeSplitTaskDisplay' verhindert, dass eine Unteraufgabe angezeigt wird.
 
 :::note
-Sample [Filter split tasks ](https://snippet.dhtmlx.com/3q1yd7iz) 
+Beispiel: [Split-Aufgaben filtern](https://snippet.dhtmlx.com/3q1yd7iz)
 :::
 
 ### Related Guides
 - [Split Tasks](guides/split-tasks.md)
 
 ### Change log
-- hinzugefügt in v8.0
-
+- Hinzugefügt in v8.0

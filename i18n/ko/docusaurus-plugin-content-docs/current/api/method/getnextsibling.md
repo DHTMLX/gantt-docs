@@ -1,23 +1,23 @@
 ---
 sidebar_label: getNextSibling
-title: getNextSibling method
-description: "동일 레벨에서 다음 작업의 id를 제공합니다"
+title: getNextSibling 메서드
+description: "동일 레벨의 다음 작업의 ID를 반환합니다"
 ---
 
 # getNextSibling
 
 ### Description
 
-@short: 동일 레벨에서 다음 작업의 id를 제공합니다
+@short: 동일 레벨의 다음 작업의 ID를 반환합니다
 
 @signature: getNextSibling: (id: string | number) =\> string | number
 
 ### Parameters
 
-- `id` - (required) *string | number* -    작업의 id
+- `id` - (required) *string | number* -    태스크 ID
 
 ### Returns
-- ` id` - (string | number) - 다음 형제 작업의 id
+- `id` - (string | number) - 다음 형제의 ID
 
 ### Example
 
@@ -36,7 +36,7 @@ gantt.init("gantt_here");
 gantt.parse(tasks);
  
 gantt.getNextSibling("t_1"); ->  "t_2"  /*!*/
-gantt.getNextSibling("t_2"); ->  null (다음 형제가 없을 경우) /*!*/
+gantt.getNextSibling("t_2"); ->  null (if no next sibling) /*!*/
 ~~~
 
 ### Related API
@@ -47,5 +47,4 @@ gantt.getNextSibling("t_2"); ->  null (다음 형제가 없을 경우) /*!*/
 - [getChildren](api/method/getchildren.md)
 
 ### Related Guides
-- [Task Parent/Child](guides/task-tree-operations.md)
-
+- [작업 부모/자식](guides/task-tree-operations.md)

@@ -1,14 +1,18 @@
 ---
 sidebar_label: lightbox_additional_height
 title: lightbox_additional_height config
-description: "라이트박스에 추가 높이를 더합니다"
+description: "라이트박스의 높이를 증가시킵니다"
 ---
 
 # lightbox_additional_height
 
+:::warning
+해당 속성은 더 이상 사용되지 않습니다.
+:::
+
 ### Description
 
-@short: 라이트박스에 추가 높이를 더합니다
+@short: 라이트박스의 높이를 증가시킵니다
 
 @signature: lightbox_additional_height: number
 
@@ -18,11 +22,11 @@ description: "라이트박스에 추가 높이를 더합니다"
 gantt.config.lightbox_additional_height = 90;
 ~~~
 
-**Default value:** 75
+**기본 값:** 75
 
 ### Details
 
-**lightbox_additional_height**는 라이트박스의 헤더와 푸터 영역의 총 높이를 나타냅니다.
+The **lightbox_additional_height** sums 2 values: the height of the lightbox's header and the height of the lighbox's footer.
 
 ### Change log
-- v9.0부터 deprecated 되었습니다.
+- v9.0부터 더 이상 사용되지 않음

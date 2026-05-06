@@ -1,16 +1,18 @@
 ---
 sidebar_label: dynamic_resource_calendars
-title: dynamic_resource_calendars config
-description: "允许自动将多个资源日历合并为一个日历"
+title: dynamic_resource_calendars 配置
+description: "启用将多个资源日历自动合并为一个的功能"
 ---
 
 # dynamic_resource_calendars
+
 :::info
- 此功能仅包含在PRO版本中。 
+此功能仅在 PRO 版本中可用。
 :::
+
 ### Description
 
-@short: 允许自动将多个资源日历合并为一个日历
+@short: 启用将多个资源日历自动合并为一个
 
 @signature: dynamic_resource_calendars: boolean
 
@@ -21,8 +23,7 @@ gantt.config.dynamic_resource_calendars = true;
 ~~~
 
 ### Related samples
-- [Merge work Calendars of different resources](https://docs.dhtmlx.com/gantt/samples/09_worktime/10_merge_calendars.html)
-
+- [将不同资源的工作日历合并](https://docs.dhtmlx.com/gantt/samples/09_worktime/10_merge_calendars.html)
 
 ### Related API
 - [resource_calendars](api/config/resource_calendars.md)
@@ -32,5 +33,4 @@ gantt.config.dynamic_resource_calendars = true;
 - [工作时间计算](guides/working-time.md#mergingcalendars)
 
 ### Change log
-- 在v7.0版本中添加
-
+- 在 v7.0 中新增

@@ -1,14 +1,14 @@
 ---
 sidebar_label: drag_move
-title: drag_move config
-description: "позволяет перемещать задачи с помощью drag-and-drop"
+title: конфигурация drag_move
+description: "позволяет перемещать задачи методом перетаскивания"
 ---
 
 # drag_move
 
 ### Description
 
-@short: Позволяет перемещать задачи с помощью drag-and-drop
+@short: Позволяет перемещать задачи методом перетаскивания
 
 @signature: drag_move: boolean
 
@@ -19,7 +19,7 @@ gantt.config.drag_move = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Related API
 - [drag_lightbox](api/config/drag_lightbox.md)
@@ -27,4 +27,3 @@ gantt.init("gantt_here");
 - [drag_mode](api/config/drag_mode.md)
 - [drag_progress](api/config/drag_progress.md)
 - [drag_resize](api/config/drag_resize.md)
-

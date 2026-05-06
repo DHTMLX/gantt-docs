@@ -1,26 +1,26 @@
 ---
 sidebar_label: onQuickInfo
-title: onQuickInfo event
-description: "当弹出编辑表单显示时触发"
+title: onQuickInfo 事件
+description: "在弹出编辑表单出现时触发"
 ---
 
 # onQuickInfo
 
 ### Description
 
-@short: 当弹出编辑表单显示时触发
+@short: 当弹出编辑表单出现时触发
 
 @signature: onQuickInfo: (taskId: string | number) =\> void;
 
 ### Parameters
 
-- `taskId` - (required) *string | number* - 任务ID
+- `taskId` - (必填) *string | number* - 任务 ID
 
 ### Example
 
 ~~~jsx
-gantt.attachEvent("onQuickInfo",function(taskId){  
-    // 在这里编写您的代码  
+gantt.attachEvent("onQuickInfo",function(taskId){
+    // 在这里插入您的自定义逻辑 
 });
 ~~~
 
@@ -30,7 +30,7 @@ gantt.attachEvent("onQuickInfo",function(taskId){
 ### Details
 
 :::note
- 该事件是 **Quick Info** 扩展的一部分，请确保已启用 [quick_info](guides/extensions-list.md) 插件。 
+本事件在 **Quick Info** 扩展中定义，因此你需要激活 [quick_info](guides/extensions-list.md#quick-info) 插件。
 :::
 
 ### Related API
@@ -41,5 +41,4 @@ gantt.attachEvent("onQuickInfo",function(taskId){
 - [onAfterQuickInfo](api/event/onafterquickinfo.md)
 
 ### Related Guides
-- [扩展功能完整列表](guides/extensions-list.md)
-
+- [Full List of Extensions](guides/extensions-list.md#quick-info)

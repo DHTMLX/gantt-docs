@@ -1,16 +1,22 @@
 ---
 sidebar_label: auto_scheduling_project_constraint
-title: auto_scheduling_project_constraint config
-description: "управляет тем, наследуют ли задачи тип ограничения от своего родительского проекта"
+title: конфигурация auto_scheduling_project_constraint
+description: "определяет, должны ли задачи наследовать тип ограничения от их родительского проекта"
 ---
 
 # auto_scheduling_project_constraint
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в PRO-издании.
 :::
+
+:::warning
+Свойство устарело в версии v9.1, используйте свойство `project_constraint` из [gantt.config.auto_scheduling](api/config/auto_scheduling.md#project_constraint) вместо этого.
+:::
+
 ### Description
 
-@short: Управляет тем, наследуют ли задачи тип ограничения от своего родительского проекта
+@short: Определяет, должны ли задачи наследовать тип ограничения от их родительского проекта
 
 @signature: auto_scheduling_project_constraint: boolean
 
@@ -20,22 +26,22 @@ description: "управляет тем, наследуют ли задачи т
 gantt.config.auto_scheduling_project_constraint = true;
 ~~~
 
-**Default value:** false
+**Значение по умолчанию:** false
 
-### Related samples
+### Связанные примеры
 - [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
-### Details
+### Подробности
 
 :::note
-Эта настройка является частью расширения **auto_scheduling**, поэтому убедитесь, что плагин [auto_scheduling](guides/extensions-list.md#autoscheduling) включен. Дополнительную информацию можно найти в статье [Автоматическое планирование](guides/auto-scheduling.md). 
+Этот конфиг определяется в расширении **auto_scheduling**, поэтому необходимо активировать плагин [auto_scheduling](guides/extensions-list.md#autoscheduling). Подробности смотрите в статье [Auto Scheduling](guides/auto-scheduling.md).
 :::
 
-По умолчанию тип ограничения, назначенный родительскому проекту, не влияет на тип ограничения его дочерних задач.
+По умолчанию тип ограничения у родительского проекта не влияет на тип ограничения вложенных задач.
 
-Если эта опция установлена в *true*, дочерние задачи (если у них не указан собственный тип ограничения) будут наследовать тип ограничения своего родительского проекта, например, **finish no later than**.
+Если установить конфигурацию в значение *true*, дочерние задачи (за исключением задач со своим собственным типом ограничения) будут иметь такой же тип ограничения, как и у родительского проекта (например, **finish no later than**).
 
-### Related API
+### Связанные API
 - [auto_scheduling](api/config/auto_scheduling.md)
 - [auto_scheduling_descendant_links](api/config/auto_scheduling_descendant_links.md)
 - [auto_scheduling_move_projects](api/config/auto_scheduling_move_projects.md)
@@ -50,9 +56,9 @@ gantt.config.auto_scheduling_project_constraint = true;
 - [onCircularLinkError](api/event/oncircularlinkerror.md)
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
-### Related Guides
-- [Автоматическое планирование](guides/auto-scheduling.md)
+### Связанные руководства
+- [Auto Scheduling](guides/auto-scheduling.md)
 
-### Change log
+### Журнал изменений
+- свойство устарело в версии v9.1
 - добавлено в версии v8.0
-

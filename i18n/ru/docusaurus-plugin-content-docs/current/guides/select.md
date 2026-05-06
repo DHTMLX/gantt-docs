@@ -3,7 +3,7 @@ title: "Select Control"
 sidebar_label: "Select Control"
 ---
 
-# Select Control
+# Контроль выбора
 
 Выпадающий список.
 
@@ -24,12 +24,12 @@ gantt.locale.labels.section_priority = "Priority";
 ~~~
 
 
-[Select control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
+[Контроль выбора](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
 
 
 ## Инициализация
 
-Чтобы добавить контрол **select** в lightbox, выполните следующие шаги:
+Чтобы добавить контроль **select** в lightbox, выполните следующие шаги:
 
 1) Добавьте секцию в конфигурацию lightbox:
 
@@ -47,7 +47,7 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-2) Задайте метку для секции:
+2) Установите подпись для секции:
 
 ~~~js
 gantt.locale.labels.section_priority = "Priority";
@@ -55,28 +55,28 @@ gantt.locale.labels.section_priority = "Priority";
   
   
 
-[Select control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
+[Контроль выбора](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
 
 
 ## Свойства
 
-Ниже перечислены основные свойства, которые обычно задаются для контрола **select** (полный список смотрите [здесь](api/config/lightbox.md)):
+Следующие свойства наиболее важны и обычно устанавливаются для контроля **select** (полный список [здесь](api/config/lightbox.md)):
 
 - **name** - (*string*) имя секции
 - **height** - (*number*) высота секции
-- **map_to** - (*string*) имя свойства данных, связанного с секцией
+- **map_to** - (*string*) имя свойства данных, которое будет сопоставлено секции
 - **type** - (*string*) тип [контрола секции](guides/default-edit-form.md#lightboxcontrols)
-- **focus** - (*boolean*) если *true*, секция получает фокус при открытии lightbox
-- **options** - (*array*) массив объектов, определяющих опции select-контрола (*используется для контролов **select**, **checkbox** и **radio***). Каждый объект описывает одну опцию и содержит:
-    - **key** - (*string*) идентификатор опции, сопоставляется со свойством задачи для выбора опции
-    - **label** - (*string*) подпись опции
-- **default_value** - (*any*) значение по умолчанию для контрола, применяется если входящее значение не определено
-- **onchange** - (*function*) функция-обработчик события ['onChange'](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event) для контрола
+- **focus** - (*boolean*) если установлено в *true*, секция получит фокус при открытии lightbox
+- **options** - (*array*) массив объектов. Определяет опции select-контрола (*используется для контролов **select**, **checkbox** и **radio***). Каждый объект в массиве задаёт одну опцию и имеет следующие свойства:
+    - **key** - (*string*) идентификатор опции. Этот атрибут сравнивается со свойством данных задачи для назначения опций задачам
+    - **label** - (*string*) метка опции
+- **default_value** - (*any*) значение по умолчанию элемента управления секции. Применяется только если введённое значение неопределено
+- **onchange** - (*function*) задаёт обработчик события onChange для элемента управления секции 
 
 
-## Заполнение контрола данными
+## Заполнение элемента управления данными
 
-Чтобы указать значения для контрола **select**, используйте параметр [options](api/config/lightbox.md):
+Обычно, чтобы задать значения для элемента управления **select**, используйте параметр [options](api/config/lightbox.md):
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -89,15 +89,15 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-Каждый элемент массива [options](api/config/lightbox.md) должен содержать два свойства:
+Элементы в параметре [options](api/config/lightbox.md) имеют 2 обязательных свойства:
 
 - **key** - идентификатор опции
-- **label** - подпись опции
+- **label** - метка опции
 
 
-## Заполнение контрола данными с сервера
+## Заполнение элемента управления данными с сервера
 
-Чтобы заполнить контрол данными с сервера, присвойте параметру [options](api/config/lightbox.md) значение, возвращаемое методом [serverList](api/method/serverlist.md):
+Чтобы заполнить элемент управления данными с сервера, задайте параметр [options] значением, возвращаемым методом [serverList](api/method/serverlist.md):
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -112,7 +112,7 @@ gantt.init("gantt_here");
 gantt.load("/data");
 ~~~
 
-Ответ от эндпоинта **/data** выглядит следующим образом:
+Вывод URL **/data** имеет следующий вид:
 
 ~~~js
 {
@@ -162,4 +162,3 @@ gantt.load("/data");
                     sortorder,parent");
 ?>
 ~~~
-

@@ -1,25 +1,25 @@
 ---
 sidebar_label: onBeforeRowDragEnd
 title: onBeforeRowDragEnd event
-description: "Wird ausgelöst, wenn ein Benutzer eine Zeile innerhalb des Grids fallen lässt."
+description: "feuert, wenn der Benutzer eine Zeile im Grid ablegt"
 ---
 
 # onBeforeRowDragEnd
 
 ### Description
 
-@short: Wird ausgelöst, wenn ein Benutzer eine Zeile innerhalb des Grids fallen lässt.
+@short: Wird ausgelöst, wenn der Benutzer eine Zeile in der Grid ablegt
 
 @signature: onBeforeRowDragEnd: (sid: string | number, parent: string | number, tindex: number) =\> boolean;
 
 ### Parameters
 
-- `sid` - (required) *string | number* - die ID der verschobenen Aufgabe
-- `parent` - (required) *string | number* - die Eltern-ID. Weitere Details siehe unten
-- `tindex` - (required) *number* - der Index der Position, von der die Aufgabe verschoben wird <br> (der Index innerhalb des gesamten Baums). Wenn angegeben, entspricht der <b>tindex</b> dem Index im 'parent'-Zweig. Siehe Details unten
+- `sid` - (required) *string | number* - die ID der Aufgabe, die verschoben werden soll
+- `parent` - (required) *string | number* - die Parent-ID. Siehe unten die Details
+- `tindex` - (required) *number* - der Index der Position, von der aus die Aufgabe verschoben wird <br/> (der Index im gesamten Baum). Falls angegeben, bezieht sich der <b>tindex</b> auf den Index im 'parent'-Zweig. Siehe unten die Details
 
 ### Returns
-- ` result` - (boolean) - bestimmt, ob die Standardaktion des Events ausgeführt wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
+- ` result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
@@ -38,22 +38,20 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 ### Details
 
 :::note
-
-Dieses Event tritt auf, wenn eine Aufgabe per Maus im linken Grid verschoben wird, vorausgesetzt, die Einstellung [order_branch](api/config/order_branch.md) ist aktiviert. Wenn die Zweig-Neuanordnung deaktiviert ist, wird dieses Event nicht ausgelöst.
- 
+Das Ereignis wird ausgelöst, wenn eine Aufgabe mit der Maus im linken Grid verschoben wird, während die Einstellung [order_branch](api/config/order_branch.md) aktiviert ist. Wenn die Reihung der Zweige deaktiviert ist, wird das Ereignis nie ausgelöst.
 :::
 
-- Zum Zeitpunkt des Events wurde die Aufgabe bereits an die neue Position verschoben, aber die Änderung kann noch rückgängig gemacht werden
-- Das Event kann blockiert werden. Wird *false* zurückgegeben, wird die Operation abgebrochen und die Aufgabe an ihre ursprüngliche Position zurückversetzt
-- Die ursprüngliche Position (Parent und Index) wird als Argumente an den Handler übergeben
-- Die Zielposition kann über das Task-Objekt über [task.parent](guides/task-tree-operations.md#parentofatask) und [gantt.getGlobalTaskIndex(taskId)](api/method/getglobaltaskindex.md) abgerufen werden
-- Die Parameter **parent** und **tindex** variieren je nach [order_branch](api/config/order_branch.md) Modus:
-    - Im Standardmodus ("true"):
-        - bezieht sich der **parent** Parameter auf den *ursprünglichen* Parent der Aufgabe (vor der Verschiebung)
-        - bezieht sich der **tindex** Parameter auf den *ursprünglichen* lokalen Index
+- Wenn das Ereignis ausgelöst wird, ist die Aufgabe bereits an eine neue Position verschoben, aber die Änderungen können noch rückgängig gemacht werden
+- Das Ereignis ist blockierbar. Geben Sie *false* zurück, um die Operation abzubrechen und die Aufgabe an ihren ursprünglichen Ort zu verschieben
+- Die ursprüngliche Position (Parent und Index) ist aus den Handler-Argumenten verfügbar
+- Die Zielposition kann aus einem Task-Objekt als [task.parent](guides/task-tree-operations.md#parent-of-a-task) und [gantt.getGlobalTaskIndex(taskId)](api/method/getglobaltaskindex.md) abgerufen werden
+- Die Parameter **parent** und **tindex** hängen vom gesetzten [order_branch](api/config/order_branch.md) Modus ab: 
+    - Im regulären Modus ("true"):
+        - der **parent** Parameter bezieht sich auf das *originale* Parent des Tasks (das Parent eines Tasks, bevor er an eine neue Position verschoben wurde)
+        - der **tindex** Parameter bezieht sich auf den *originall*en lokalen Index
     - Im "marker"-Modus:
-        - bezieht sich der **parent** Parameter auf den neuen Parent der Aufgabe
-        - bezieht sich der **tindex** Parameter auf den neuen lokalen Index
+        - der **parent** Parameter bezieht sich auf das neue Parent des Tasks
+        - der **tindex** Parameter bezieht sich auf den neuen lokalen Index
 
 ### Related API
 - [onRowDragEnd](api/event/onrowdragend.md)
@@ -61,5 +59,4 @@ Dieses Event tritt auf, wenn eine Aufgabe per Maus im linken Grid verschoben wir
 - [order_branch](api/config/order_branch.md)
 
 ### Related Guides
-- ["Aufgaben neu anordnen"](guides/reordering-tasks.md)
-
+- [Neuordnung von Aufgaben](guides/reordering-tasks.md)

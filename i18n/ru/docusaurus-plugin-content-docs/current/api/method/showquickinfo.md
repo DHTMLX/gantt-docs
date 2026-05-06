@@ -1,20 +1,20 @@
 ---
 sidebar_label: showQuickInfo
-title: showQuickInfo method
-description: "открывает всплывающую форму задачи для указанной задачи"
+title: метод showQuickInfo
+description: "отображает всплывающую форму задачи для указанной задачи"
 ---
 
 # showQuickInfo
 
 ### Description
 
-@short: Открывает всплывающую форму задачи для указанной задачи
+@short: отображает всплывающую форму задачи для указанной задачи
 
 @signature: showQuickInfo: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -     уникальный идентификатор задачи
+- `id` - (обязательный) *string | number* - идентификатор задачи
 
 ### Example
 
@@ -37,7 +37,7 @@ window.setTimeout(function(){
 ### Details
 
 :::note
- Этот метод принадлежит расширению **Quick Info**, поэтому убедитесь, что включен плагин [quick_info](guides/extensions-list.md#quickinfo). 
+note Этот метод определён в расширении **Quick Info**, поэтому вам нужно активировать плагин [quick_info](guides/extensions-list.md#quick-info).
 :::
 
 ### Related API
@@ -48,5 +48,4 @@ window.setTimeout(function(){
 - [onAfterQuickInfo](api/event/onafterquickinfo.md)
 
 ### Related Guides
-- [Полный список расширений](guides/extensions-list.md#quickinfo)
-
+- [Full List of Extensions](guides/extensions-list.md#quick-info)

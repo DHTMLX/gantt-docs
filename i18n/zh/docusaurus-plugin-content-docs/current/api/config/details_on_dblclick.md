@@ -1,14 +1,14 @@
 ---
 sidebar_label: details_on_dblclick
-title: details_on_dblclick config
-description: "通过双击任务启用打开lightbox功能"
+title: details_on_dblclick 配置
+description: "'says' 在双击任务后打开 lightbox"
 ---
 
 # details_on_dblclick
 
 ### Description
 
-@short: 通过双击任务启用打开lightbox功能
+@short: 'says' 在双击任务后打开 lightbox
 
 @signature: details_on_dblclick: boolean
 

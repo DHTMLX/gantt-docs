@@ -8,7 +8,7 @@ description: "设置甘特图中日期、标题和tooltip的格式化templates"
 
 ### Description
 
-@short: 设置甘特图中日期、标题和tooltip的格式化templates
+@short: 定义甘特图中日期、标题、工具提示的格式化模板
 
 @signature: templates: GanttTemplates
 
@@ -23,5 +23,4 @@ gantt.templates.date_grid = function(date){
 
 ### Details
 
-有关**templates**对象的详细信息，请参阅主API页面中专门的章节<br> 
-["Gantt API: Templates"](api/api-overview.md#templates)。
+**templates** 对象的属性在根 API 页面的单独章节中描述，参见页面 “Gantt API: Templates”。

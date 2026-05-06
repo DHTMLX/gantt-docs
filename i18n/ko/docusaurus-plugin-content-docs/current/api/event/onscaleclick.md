@@ -1,27 +1,27 @@
 ---
 sidebar_label: onScaleClick
-title: onScaleClick event
-description: "사용자가 타임 스케일 내 셀을 클릭할 때 트리거됩니다."
+title: onScaleClick 이벤트
+description: "타임 스케일의 셀을 사용자가 클릭할 때 발생합니다"
 ---
 
 # onScaleClick
 
 ### Description
 
-@short: 사용자가 타임 스케일 내 셀을 클릭할 때 트리거됩니다.
+@short: 타임 스케일의 셀을 사용자가 클릭할 때 발생합니다
 
 @signature: onScaleClick: (e: Event, date: Date) =\> void;
 
 ### Parameters
 
-- `e` - (required) *Event* - 네이티브 이벤트 객체
-- `date` - (required) *Date* - 클릭된 셀에 해당하는 날짜
+- `e` - (required) *Event* - a native event object
+- `date` - (required) *Date* - 클릭된 셀의 날짜
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onScaleClick", function (e, date) {
-    //여기에 사용자 정의 코드를 작성하세요
+    // 여기에 코드 작성
 });
 ~~~
 

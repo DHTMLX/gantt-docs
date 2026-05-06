@@ -1,16 +1,16 @@
 ---
 sidebar_label: resource_store
-title: resource_store config
-description: "указывает имя dataStore, связанного с представлениями resourceGrid/resourceTimeline/resourceHistogram"
+title: resource_store конфигурация
+description: "указывается имя dataStore, подключённого к представлениям resourceGrid/resourceTimeline/resourceHistogram"
 ---
 
 # resource_store
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в PRO-версии.
 :::
 ### Description
 
-@short: Указывает имя dataStore, связанного с представлениями resourceGrid/resourceTimeline/resourceHistogram
+@short: Указывает имя dataStore, подключённого к resourceGrid/resourceTimeline/resourceHistogram представлениям
 
 @signature: resource_store: string
 
@@ -53,9 +53,9 @@ var resourcesStore = gantt.createDatastore({
 
 gantt.init("gantt_here");
 gantt.parse({data: [
-  {id: 1, text: "Проект #2", start_date: "01-04-2018", duration:18, open: true},
-  {id: 2, text: "Задача #1", start_date: "02-04-2018", user_id:1, duration:8, parent: 1},
-  {id: 3, text: "Задача #2", start_date: "11-04-2018", user_id:2, duration:8, parent: 1}
+  {id: 1, text: "Project #2", start_date: "01-04-2018", duration:18, open: true},
+  {id: 2, text: "Task #1", start_date: "02-04-2018", user_id:1, duration:8, parent: 1},
+  {id: 3, text: "Task #2", start_date: "11-04-2018", user_id:2, duration:8, parent: 1}
  ],
  links: [
    {id: 1, source: 1, target: 2, type: "1"},
@@ -64,14 +64,14 @@ gantt.parse({data: [
 });
 
 resourcesStore.parse([
-    {id: 1, text: "Джон"},
-    {id: 2, text: "Майк"},
-    {id: 3, text: "Анна"},
-    {id: 4, text: "Билл"}
+    {id: 1, text: "John"},
+    {id: 2, text: "Mike"},
+    {id: 3, text: "Anna"},
+    {id: 4, text: "Bill"}
 ]);
-~~~
+~~~ 
 
-**Default value:** "resource"
+**Значение по умолчанию:** "resource"
 
 ### Related samples
 - [Resource load diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
@@ -79,11 +79,10 @@ resourcesStore.parse([
 
 ### Details
 
-Определяет datastore, который подключается к представлениям "resourceGrid" и "resourceTimeline". В качестве альтернативы можно задать свойство "bind" для представления.
+Указывает datastore, который будет привязан к представлениям "resourceGrid" и "resourceTimeline". В качестве альтернативы можно указать свойство "bind" представления.
 
 ### Related API
 - [resource_property](api/config/resource_property.md)
 
 ### Related Guides
-- [Управление ресурсами](guides/resource-management.md)
-
+- [Resource Management](guides/resource-management.md)

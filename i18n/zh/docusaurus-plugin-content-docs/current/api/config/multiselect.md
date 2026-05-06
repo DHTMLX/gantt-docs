@@ -8,14 +8,14 @@ description: "控制甘特图中是否允许同时选择多个任务"
 
 ### Description
 
-@short: 控制甘特图中是否允许同时选择多个任务
+@short: 启用/禁用甘特图中的多任务选择
 
 @signature: multiselect: boolean
 
 ### Example
 
 ~~~jsx
-gantt.config.multiselect = false; // 关闭多任务选择  
+gantt.config.multiselect = false; //禁用多任务选择
 gantt.init('gantt_here');
 ~~~
 
@@ -24,7 +24,7 @@ gantt.init('gantt_here');
 ### Details
 
 :::note
- 此设置属于 **multiselect** 扩展的一部分，因此请确保启用 [multiselect](guides/extensions-list.md#duorenwuxuanze) 插件。更多详情请参阅 [多任务选择](guides/multiselection.md) 文章。 
+本选项在 **multiselect** 扩展中定义，因此需要激活 [multiselect](guides/extensions-list.md#multitaskselection) 插件。请在 [Multi-Task Selection](guides/multiselection.md) 文章中查看详细信息。
 :::
 
 ### Related API
@@ -37,4 +37,3 @@ gantt.init('gantt_here');
 
 ### Related Guides
 - [多任务选择](guides/multiselection.md)
-

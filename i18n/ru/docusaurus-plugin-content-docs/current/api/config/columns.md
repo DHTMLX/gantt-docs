@@ -1,25 +1,25 @@
 ---
 sidebar_label: columns
 title: columns config
-description: "настраивает columns в таблице"
+description: "настраивает columns в в таблеце"
 ---
 
 # columns
 
 ### Description
 
-@short: Настраивает columns в таблице
+@short: Настраивает столбцы таблицы
 
 @signature: columns: GridColumn[]
 
 ### Example
 
 ~~~jsx
-// определение columns по умолчанию
+// default columns definition
 gantt.config.columns = [
-    { name: "text",       label: "Название задачи",  width: "*", tree: true },
-    { name: "start_date", label: "Время начала", align: "center" },
-    { name: "duration",   label: "Длительность",   align: "center" },
+    { name: "text",       label: "Task name",  width: "*", tree: true },
+    { name: "start_date", label: "Start time", align: "center" },
+    { name: "duration",   label: "Duration",   align: "center" },
     { name: "add",        label: "",           width: 44 }
 ];
 
@@ -31,59 +31,60 @@ gantt.init("gantt_here");
 
 ### Details
 
-Каждый элемент массива определяет один столбец. Объект может содержать следующие свойства:
+Each object in the array specifies a single column. An object can take the following attributes:
 
-- **align?** - (*string*) - задаёт горизонтальное выравнивание заголовка столбца. Возможные значения: *'left'*, *'center'*, или *'right'*;
-- **hide?** - (*boolean*) - переключает видимость столбца (PRO);
-- **label?** - (*string | number | any*) - задаёт заголовок столбца;
-- **max_width?** - (*number*) - ограничивает максимальную ширину столбца при изменении размера;
-- **min_width?** - (*number*) - задаёт минимальную ширину столбца при изменении размера;
-- **name?** - (*string | number*) - идентифицирует столбец. Использование 'add' создаёт столбец с кнопкой '+';
-- **resize?** - (*boolean*) - разрешает изменение размера столбца перетаскиванием границы (PRO);
-- **sort? (task1, task2): number** - (*boolean | string | Function*) - настраивает поведение сортировки при клике по заголовку столбца. Значение *false* отключает сортировку. Можно указать имя свойства задачи в виде строки для сортировки или передать пользовательскую функцию сортировки.
-    - **_task1_** - (*Task*) - первый объект задачи для сортировки.
-    - **_task2_** - (*Task*) - второй объект задачи для сортировки.
-- **template? (task): any** - задаёт шаблон для данных столбца.
-    - **_task_** - (*Task*) - объект задачи.
-- **tree?** - (*boolean*) - помечает столбец для отображения древовидной структуры;
-- **width?** - (*number | string*) - задаёт ширину столбца;
-- **onrender? (task, node): any** - необязательный коллбэк для кастомизации рендеринга ячейки. Получает объект задачи и DOM-элемент ячейки, может возвращать компонент фреймворка. Подробнее [здесь](guides/specifying-columns.md#modifyingcellsafterrendering);
-    - **_task_** - (*Task*) - объект задачи.
-    - **_node_** - (*HTMLElement*) - HTML-элемент ячейки грида.
-- **editor?** - (*object*) - конфигурация inline-редактора.
-    - **_type_** - (*string*) - тип редактора.
-    - **_map_to_** - (*string*) - свойство задачи, которое редактирует редактор.
-    - **_min?_** - (*Date | number*) - минимальное значение для редакторов даты и длительности.
-    - **_max?_** - (*Date | number*) - максимальное значение для редакторов даты и длительности.
-    - **_options?_** - (*Array &lt;any&gt;*) - массив опций для select-редакторов.
-    - **_formatter?_** - (*DurationFormatter | LinkFormatter*) - форматтер для редакторов даты и предшественников.
+- **align?** - (*string*) - sets the horizontal title alignment. Possible values: *'left'*, *'center'*, or *'right'*;
+- **hide?** - (*boolean*) - hides/shows a column (PRO);
+- **label?** - (*string | number | any*) - specifies the title of the column;
+- **max_width?** - (*number*) - sets the maximum column width in case of resize operations;
+- **min_width?** - (*number*) - sets the minimum column width in case of resize operations;
+- **name?** - (*string | number*) - defines the column's id. The name 'add' allows you to add a column with the '+' sign;
+- **resize?** - (*boolean*) - enables the possibility to resize a column by dragging the column's border (PRO);
+- **sort? (task1, task2): number** - (*boolean | string | Function*) - the configuration of sorting after clicking on the column header. When the property is set to *false*, sorting is disabled. You can also set a different task property in the *string* to sort the column or use a custom sorting function.
+    - **_task1_** - (*Task*) - an object of the first task that will be sorted.
+    - **_task2_** - (*Task*) - an object of the second task that will be sorted.
+- **template? (task): any** - sets a data template.
+    - **_task_** - (*Task*) - the Task object.
+- **tree?** - (*boolean*) - indicates that the related column should display a tree;
+- **width?** - (*number | string*) - defines the width of the column;
+- **onrender? (task, node): any** - optional, a callback function for rendering a cell into the DOM. The function takes a task object and the DOM element of the grid cell as parameters and may return a component of the framework. See details here;
+    - **_task_** - (*Task*) - the Task object.
+    - **_node_** - (*HTMLElement*) - the HTML element of the Grid cell.
+- **editor?** - (*object*) - attached inline editor.
+    - **_type_** - (*string*) - the type of the inline editor.
+    - **_map_to_** - (*string*) - specifies which property of the task should be updated by the inline editor.
+    - **_min?_** - (*Date | number*) - minimal value for the date and duration types.
+    - **_max?_** - (*Date | number*) - maximal value for the date and duration types.
+    - **_options?_** - (*Array &lt;any&gt;*) - an array with the options for the select types.
+    - **_formatter?_** - (*DurationFormatter | LinkFormatter*) - formatter for the date and predecessor types.
 
-<br>
 
-Общая ширина columns в grid зависит как от свойства **width** каждого столбца, так и от [grid_width](api/config/grid_width.md). Если эти значения не совпадают, Gantt подстроит одно из них.
+The width of Grid columns depends on two attributes: the **width** of the column and [grid_width](api/config/grid_width.md). If the sum of the width of columns is not equal to the width of the grid, Gantt changes one of the parameters.
 
-- При инициализации gantt через [gantt.init()](api/method/init.md) приоритет имеет ширина столбца **width**. <br>
+- When initializing the gantt via [gantt.init()](api/method/init.md), the **width** of the column is a priority.
+
 :::note
-Sample: [Приоритет ширины столбца над шириной grid при инициализации](https://snippet.dhtmlx.com/itnvg6z9) 
+ [Column width priority over grid width at initialization](https://snippet.dhtmlx.com/itnvg6z9)
 :::
-- При рендеринге gantt через [gantt.render()](api/method/render.md) приоритет имеет [grid_width](api/config/grid_width.md). <br>
+- When rendering the gantt via [gantt.render()](api/method/render.md), the [grid_width](api/config/grid_width.md) is a priority.
+
 :::note
-Sample: [Приоритет ширины grid над шириной столбца при рендеринге](https://snippet.dhtmlx.com/4nb67z61) 
+sample: [Grid width priority over column width during rendering ](https://snippet.dhtmlx.com/4nb67z61)
 :::
-- При инициализации через [gantt.init()](api/method/init.md), если ширина столбца отсутствует или установлена в **'*'**, приоритет имеет [grid_width](api/config/grid_width.md). <br>
+- When initializing the gantt via [gantt.init()](api/method/init.md) and either the width of the column is not specified or is set to **'*'**, the [grid_width](api/config/grid_width.md) is a priority. 
+
 :::note
-Sample: [Приоритет ширины grid при отсутствии или значении '*' у ширины столбца при инициализации](https://snippet.dhtmlx.com/qej8w5ix) 
+sample: [Grid width priority when column width is undefined or set to '*' at initialization](https://snippet.dhtmlx.com/qej8w5ix)
 :::
 
-<br>
 
-Свойство **template** - это функция, которая принимает элемент данных и возвращает содержимое для отображения. Это позволяет гибко настраивать содержимое столбца.
+The **template** attribute is a function that takes a data item object as a parameter and returns the final data template. The function definition allows you to present almost any content.
 
 ~~~js
 gantt.config.columns = [
-    { name: "text",        label: "Название задачи",  tree: true, width: "*" },
-    { name: "start_date",  label: "Время начала", align: "center" },
-    { name: "staff",       label: "Ответственный(е)", template: (obj) => {
+    { name: "text",        label: "Task name",  tree: true, width: "*" },
+    { name: "start_date",  label: "Start time", align: "center" },
+    { name: "staff",       label: "Holder(s)", template: (obj) => {
         return `${obj.holder} (${obj.progress})`;
     } }
 ];
@@ -92,10 +93,9 @@ gantt.init("gantt_here");
 ~~~
 
 ### Related Guides
-- [Указание колонок](guides/specifying-columns.md)
-- [Решения](guides/how-to.md#howtoaddacustomcolumninthegrid) (подробности о добавлении кастомного столбца в grid)
-- [Решения](guides/how-to.md#howtoaddacustomaddbutton) (инструкция по добавлению кастомной кнопки add(+))
+- [Specifying Columns](guides/specifying-columns.md)
+- [How-tos](guides/how-to.md#how-to-add-a-custom-column-in-the-grid) (read how to add a custom column in the grid)
+- [How-tos](guides/how-to.md#how-to-add-a-custom-add-button) (read how to add a custom add(+) button)
 
 ### Change log
-- свойство **onrender** было добавлено в версии v7.1
-
+- the **onrender** attribute has been added in v7.1

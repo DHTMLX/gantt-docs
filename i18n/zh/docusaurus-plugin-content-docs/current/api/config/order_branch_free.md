@@ -1,14 +1,14 @@
 ---
 sidebar_label: order_branch_free
-title: order_branch_free config
-description: "启用'branch'模式，允许任务在整个甘特图中任意位置重新排序"
+title: order_branch_free 配置
+description: "启用允许在整个甘特图中重新排序任务的 'branch' 模式"
 ---
 
 # order_branch_free
 
 ### Description
 
-@short: 启用"branch"模式，允许任务在整个甘特图中任意位置重新排序
+@short: 启用允许在整个甘特图中重新排序任务的 'branch' 模式
 
 @signature: order_branch_free: boolean
 
@@ -23,14 +23,13 @@ gantt.config.order_branch_free = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**默认值：** false
 
 ### Related samples
-- [Drag and drop rows in Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/08_drag_between_levels.html)
+- [在 Grid 中拖放行](https://docs.dhtmlx.com/gantt/samples/07_grid/08_drag_between_levels.html)
 
 ### Related API
 - [order_branch](api/config/order_branch.md)
 
 ### Related Guides
 - [任务重新排序](guides/reordering-tasks.md)
-

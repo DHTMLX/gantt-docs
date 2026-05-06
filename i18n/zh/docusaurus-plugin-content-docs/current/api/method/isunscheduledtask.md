@@ -1,23 +1,23 @@
 ---
 sidebar_label: isUnscheduledTask
-title: isUnscheduledTask method
-description: "验证任务是否为未计划任务"
+title: isUnscheduledTask 方法
+description: "检查任务是否未排程"
 ---
 
 # isUnscheduledTask
 
 ### Description
 
-@short: 验证任务是否为未计划任务
+@short: 检查任务是否未排程
 
 @signature: isUnscheduledTask: (task: Task) =\> boolean
 
 ### Parameters
 
-- `task` - (required) *Task* - 要检查的任务对象
+- `task` - (required) *Task* - 任务对象
 
 ### Returns
-- ` value` - (boolean) - 如果任务是未计划任务则返回 'true'，否则返回 'false'
+- ` value` - (boolean) - 如果指定的任务未排程，则为 'true'，否则为 'false'
 
 ### Example
 
@@ -26,5 +26,5 @@ var isUnscheduled = gantt.isUnscheduledTask(task);
 ~~~
 
 ### Related Guides
-- [未计划任务](guides/unscheduled-tasks.md)
-- [自动调度](guides/auto-scheduling.md)
+- [未排程的任务](guides/unscheduled-tasks.md)
+- [自动排程](guides/auto-scheduling.md)

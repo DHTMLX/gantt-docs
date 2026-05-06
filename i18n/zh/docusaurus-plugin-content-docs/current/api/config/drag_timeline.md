@@ -1,14 +1,14 @@
 ---
 sidebar_label: drag_timeline
-title: drag_timeline config
-description: "设置 drag_timeline 扩展的行为方式"
+title: drag_timeline 配置
+description: "配置 drag_timeline 扩展的行为"
 ---
 
 # drag_timeline
 
 ### Description
 
-@short: 设置 drag_timeline 扩展的行为方式
+@short: 配置 drag_timeline 扩展的行为
 
 @signature: drag_timeline: null | \{ ignore?: string; useKey?: string | boolean; render?: boolean; \}
 
@@ -22,28 +22,28 @@ gantt.config.drag_timeline = {
 };
 ~~~
 
-**Default value:** \{ useKey: false, ignore: ".gantt_task_line, .gantt_task_link" \}
+**默认值:** \{ useKey: false, ignore: ".gantt_task_line, .gantt_task_link" \}
 
 ### Related samples
-- [Drag timeline](https://docs.dhtmlx.com/gantt/samples/02_extensions/27_drag_timeline.html)
+- [拖拽时间线 Drag timeline](https://docs.dhtmlx.com/gantt/samples/02_extensions/27_drag_timeline.html)
 
 ### Details
 
 :::note
- 此选项属于 **drag_timeline** 扩展，请确保启用 [drag_timeline](guides/extensions-list.md#tuodongshijianzhou) 插件。 
+该选项在 **drag_timeline** 扩展中定义，因此你需要激活 [drag_timeline](guides/extensions-list.md#drag-timeline) 插件。 
 :::
 
-该配置可以设置为对象或 **null**，其中设置为 **null** 表示关闭该扩展。
+配置值可以是对象，也可以是 **null** 值，**null** 值会禁用该扩展。
 
 ~~~js
-gantt.config.drag_timeline = null; // 关闭该扩展
+gantt.config.drag_timeline = null; // 禁用扩展
 ~~~
 
-**drag_timeline** 对象支持以下属性:
+ag_timeline** 对象支持对象支持以下属性
 
 
-- **ignore** - (*string*) - 用于指定不会触发时间轴滚动的元素的 CSS 选择器
+- **ignore** - (*string*) - CSS 选择器。对匹配该选择器的元素，滚动时间轴时不会被激活
 
-- **useKey** - (*string | boolean*) - 如果设置，只有在按住指定的修饰键时才激活时间轴滚动。支持的键包括:"ctrlKey", "shiftKey", "metaKey", "altKey"
+- **useKey** - (*string | boolean*) - 如果指定了该属性，只有在按下指定的修饰键时才会激活滚动时间轴。支持的值为： "ctrlKey", "shiftKey", "metaKey", "altKey"
 
-- **render** - (*boolean*) - 启用时，滚动开始和结束时时间轴会重新渲染
+- **render** - (*boolean*) - 如果该属性启用，开始滚动和结束滚动时，时间轴将重新渲染

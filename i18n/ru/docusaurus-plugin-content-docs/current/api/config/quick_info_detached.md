@@ -1,14 +1,14 @@
 ---
 sidebar_label: quick_info_detached
 title: quick_info_detached config
-description: "управляет тем, будет ли форма задачи появляться, выезжая слева или справа от экрана, либо непосредственно рядом с выбранной задачей"
+description: "определяет, появится ли форма задачи слева/справа на экране или рядом с выбранной задачей"
 ---
 
 # quick_info_detached
 
 ### Description
 
-@short: Управляет тем, будет ли форма задачи появляться, выезжая слева или справа от экрана, либо непосредственно рядом с выбранной задачей
+@short: Определяет, будет ли форма задачи появляться слева или справа на экране или рядом с выбранной задачей
 
 @signature: quick_info_detached: boolean
 
@@ -20,7 +20,7 @@ gantt.config.quick_info_detached = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true (<i>форма события будет отображаться рядом с выбранным событием</i>)
+**Значение по умолчанию:** true (форма задачи будет появляться рядом с выбранной задачей)
 
 ### Related samples
 - [QuickInfo extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
@@ -28,7 +28,7 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
- Эта опция является частью расширения **Quick Info**, поэтому убедитесь, что плагин [quick_info](guides/extensions-list.md#quickinfo) включен. 
+Эта опция определяется в расширении **Quick Info**, поэтому необходимо активировать плагин [quick_info](guides/extensions-list.md#quick-info).
 :::
 
 ### Related API
@@ -39,5 +39,4 @@ gantt.init("gantt_here");
 - [onAfterQuickInfo](api/event/onafterquickinfo.md)
 
 ### Related Guides
-- [Полный список расширений](guides/extensions-list.md#quickinfo)
-
+- [Full List of Extensions](guides/extensions-list.md#quick-info)

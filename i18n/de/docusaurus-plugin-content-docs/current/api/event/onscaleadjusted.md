@@ -1,16 +1,16 @@
 ---
 sidebar_label: onScaleAdjusted
-title: onScaleAdjusted event
-description: "Wird ausgelöst, wenn die Skala neu gerendert wird, um sicherzustellen, dass alle Tasks vollständig sichtbar sind"
+title: onScaleAdjusted-Ereignis
+description: "Wird ausgelöst, wenn die Skala neu gerendert wird, um alle Aufgaben vollständig anzuzeigen"
 ---
 
 # onScaleAdjusted
 
 ### Description
 
-@short: Wird ausgelöst, wenn die Skala neu gerendert wird, um sicherzustellen, dass alle Tasks vollständig sichtbar sind
+@short: Wird neu gerendert, um alle Aufgaben vollständig anzuzeigen
 
-@signature: onScaleAdjusted: () =\> void;
+@signature: onScaleAdjusted: () => void;
 
 ### Example
 
@@ -30,8 +30,7 @@ gantt.attachEvent("onScaleAdjusted", function(){
 
 ### Details
 
-Beachten Sie, dass dieses Event nur ausgelöst wird, wenn die [fit_tasks](api/config/fit_tasks.md) Eigenschaft aktiviert ist (auf *true* gesetzt).
+Hinweis: Das Ereignis wird nur ausgelöst, wenn die Eigenschaft [fit_tasks](api/config/fit_tasks.md) auf *true* gesetzt ist.
 
 ### Related API
 - [fit_tasks](api/config/fit_tasks.md)
-

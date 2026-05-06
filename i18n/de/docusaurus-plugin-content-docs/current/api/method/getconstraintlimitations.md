@@ -1,25 +1,27 @@
 ---
 sidebar_label: getConstraintLimitations
-title: getConstraintLimitations method
-description: "gibt die frühesten und spätesten zulässigen Daten zurück, die durch die auf eine Aufgabe angewendete Einschränkung festgelegt sind"
+title: getConstraintLimitations Methode
+description: "gibt das früheste und das späteste Datum zurück, das durch die auf eine Aufgabe angewendete Constraint-Einschränkung zulässig ist"
 ---
 
 # getConstraintLimitations
+
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
+
 ### Description
 
-@short: Gibt die frühesten und spätesten zulässigen Daten zurück, die durch die auf eine Aufgabe angewendete Einschränkung festgelegt sind
+@short: Gibt das früheste und das späteste Datum zurück, das durch die auf eine Aufgabe angewendete Einschränkung zulässig ist
 
 @signature: getConstraintLimitations: (task: Task) =\> any
 
 ### Parameters
 
-- `task` - (required) *Task* - ein Aufgabenobjekt
+- `task` - (erforderlich) *Task* - ein Task-Objekt
 
 ### Returns
-- ` constraintLimitations` - (object) - ein Objekt, das die Einschränkungsdaten enthält
+- ` constraintLimitations` - (object) - ein Objekt, das Constraint-Daten enthält
 
 ### Example
 
@@ -55,7 +57,7 @@ gantt.addTaskLayer(function draw_deadline(task) {
   }
   return false;
 });
-
+ 
 function renderDiv(task, date, className) {
   const el = document.createElement('div');
   el.className = className;
@@ -71,7 +73,7 @@ function renderDiv(task, date, className) {
 
 ### Details
 
-Das zurückgegebene Objekt enthält die folgenden Eigenschaften: 
+Der Rückgabewert hat die folgende Struktur: 
 
 ~~~js
 {
@@ -85,4 +87,3 @@ Das zurückgegebene Objekt enthält die folgenden Eigenschaften:
 ### Related API
 - [constraint_types](api/config/constraint_types.md)
 - [getConstraintType](api/method/getconstrainttype.md)
-

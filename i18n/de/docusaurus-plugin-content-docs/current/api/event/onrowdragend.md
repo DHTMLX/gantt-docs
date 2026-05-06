@@ -1,27 +1,27 @@
 ---
 sidebar_label: onRowDragEnd
 title: onRowDragEnd event
-description: "Wird ausgelöst, nachdem ein Benutzer eine Zeile, die vertikal im Grid neu angeordnet wurde, fallen lässt."
+description: "wird ausgelöst, nachdem der Benutzer eine vertikal neu geordnete Zeile im Grid abgelegt hat"
 ---
 
 # onRowDragEnd
 
 ### Description
 
-@short: Wird ausgelöst, nachdem ein Benutzer eine Zeile, die vertikal im Grid neu angeordnet wurde, fallen lässt.
+@short: Wird ausgelöst, nachdem der Benutzer eine vertikal neu geordnete Zeile im Grid abgelegt hat
 
 @signature: onRowDragEnd: (id: string | number, target: string | number) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die ID der Aufgabe, die vertikal im Grid verschoben wurde
-- `target` - (required) *string | number* - die ID der Aufgabe, deren Position die verschobene Zeile eingenommen hat
+- `id` - (erforderlich) *string | number* - die ID der Aufgabe, die der Benutzer im Grid vertikal gezogen hat
+- `target` - (erforderlich) *string | number* - die ID der Aufgabe, die durch die Platzierung der gezogenen Zeile eingenommen wurde
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onRowDragEnd", function(id, target) {
-    // benutzerdefinierte Logik kann hier hinzugefügt werden
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
@@ -31,19 +31,17 @@ gantt.attachEvent("onRowDragEnd", function(id, target) {
 ### Details
 
 :::note
-
-Dieses Event wird ausgelöst, wenn eine Aufgabe mit der Maus innerhalb des linken Grids verschoben wird, vorausgesetzt, die Einstellung [order_branch](api/config/order_branch.md) ist aktiviert. Wenn die Verzweigungs-Neuanordnung deaktiviert ist, wird dieses Event nicht aufgerufen.
- 
+Die Veranstaltung wird ausgelöst, wenn eine Aufgabe mit der Maus im linken Grid verschoben wird, während die Einstellung [order_branch](api/config/order_branch.md) aktiviert ist. Wenn das Neuanordnen von Verzweigungen deaktiviert ist, wird das Ereignis niemals ausgelöst.
 :::
 
-Der **target**-Parameter enthält die ID der nächstgelegenen Aufgabe, die entweder unmittelbar vor oder unmittelbar nach der verschobenen Aufgabe steht.
+Der **target**-Parameter enthält die ID der nächsten Aufgabe, die direkt vor bzw. direkt nach der aktuellen Aufgabe liegt.
 
-Es gibt zwei mögliche Formate für diesen Wert:
+Der Wert kann in einem von zwei Formaten vorliegen:
 
-- *target=targetId* - die verschobene Aufgabe soll direkt **vor** der Aufgabe mit targetId platziert werden
-- *target=next:targetId* - die verschobene Aufgabe soll direkt **nach** der Aufgabe mit targetId platziert werden (dies passiert, wenn die letzte Aufgabe im Diagramm ersetzt wird)
+- *target=targetId* - die aktuelle Aufgabe sollte direkt vor der Aufgabe mit der ID targetId liegen
+- *target=next:targetId* - die aktuelle Aufgabe sollte direkt nach der Aufgabe mit der ID targetId platziert werden (tritt auf, wenn Sie die letzte Aufgabe im Diagramm ersetzen)
 
-Hier ein Beispiel, wie die target-ID extrahiert wird, wenn sie im Format *next:targetId* vorliegt:
+Ein Beispiel zum Abrufen der ID eines Targets im Format *next:targetId*:
 
 ~~~js
 gantt.attachEvent("onRowDragEnd", function(id, target) {
@@ -63,5 +61,4 @@ gantt.attachEvent("onRowDragEnd", function(id, target) {
 - [order_branch](api/config/order_branch.md)
 
 ### Related Guides
-- ["Aufgaben neu anordnen"](guides/reordering-tasks.md)
-
+- [Reordering Tasks](guides/reordering-tasks.md)

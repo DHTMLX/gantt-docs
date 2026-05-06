@@ -1,7 +1,7 @@
 ---
 sidebar_label: resource_property
 title: resource_property config
-description: "작업 객체의 어떤 속성이 resourceGrid/Timeline/Histogram/Calendar와 연결된 리소스 ID를 포함하는지 정의합니다."
+description: "작업 객체의 속성으로, resourceGrid/Timeline/Histogram/Calendar와 연결된 리소스 ID를 저장합니다"
 ---
 
 # resource_property
@@ -10,7 +10,7 @@ description: "작업 객체의 어떤 속성이 resourceGrid/Timeline/Histogram/
 :::
 ### Description
 
-@short: 작업 객체의 어떤 속성이 resourceGrid/Timeline/Histogram/Calendar와 연결된 리소스 ID를 포함하는지 정의합니다.
+@short: resourceGrid/Timeline/Histogram/Calendar와 연결된 리소스 ID를 저장하는 작업 객체의 속성을 정의합니다
 
 @signature: resource_property: string
 
@@ -74,12 +74,12 @@ resourcesStore.parse([
 **Default value:** "owner_id"
 
 ### Related samples
-- [Resource load diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
-- [Templates of the Resource diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/05_resource_usage_templates.html)
+- [리소스 로드 다이어그램](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
+- [리소스 다이어그램 템플릿](https://docs.dhtmlx.com/gantt/samples/11_resources/05_resource_usage_templates.html)
 
 ### Details
 
-작업 객체에서 resourceGrid/Timeline/Histogram/Calendar와 연관된 리소스 ID를 포함하는 속성을 지정합니다. 이 설정은 런타임 중에 변경할 수 있습니다.
+리소스Grid/Timeline/Histogram/Calendar와 연결된 리소스 ID를 저장하는 작업 객체의 속성을 지정합니다. 런타임에 변경할 수 있습니다.
 
 ### Related API
 - [resource_store](api/config/resource_store.md)
@@ -87,4 +87,3 @@ resourcesStore.parse([
 ### Related Guides
 - [리소스 관리](guides/resource-management.md)
 - [작업 시간 계산](guides/working-time.md#assigningcalendartoresource)
-

@@ -1,24 +1,24 @@
 ---
 sidebar_label: calculateEndDate
-title: calculateEndDate method
-description: "ermittelt das Enddatum einer Aufgabe"
+title: calculateEndDate Methode
+description: "Berechnet das Enddatum einer Aufgabe"
 ---
 
 # calculateEndDate
 
 ### Description
 
-@short: Ermittelt das Enddatum einer Aufgabe
+@short: Berechnet das Enddatum einer Aufgabe
 
-@signature: calculateEndDate: Calendar['calculateEndDate']
+@signature: calculateEndDate: (config: object, duration: number) =\> Date
 
 ### Parameters
 
-- `config` - (required) *object | Date* -         kann entweder das <a href="#configurationobjectproperties">Konfigurationsobjekt</a> sein, das den Zeitraum beschreibt, oder einfach das Startdatum der Aufgabe
-- `duration` - (optional) *	number* - optional, die Länge der Aufgabe. Dies wird benötigt, wenn der erste Parameter nur ein start_date ist
+- `config` - (erforderlich) *object | Date* - entweder das <a href="#configuration-object-properties">Konfigurationsobjekt</a> eines Zeitraums oder das Startdatum der Aufgabe
+- `duration` - (optional) *number* - die Dauer der Aufgabe. Der Parameter ist erforderlich, wenn der erste Parameter als start_date angegeben wird
 
 ### Returns
-- ` end_date` - (Date) - das Datum, an dem die Aufgabe voraussichtlich abgeschlossen sein wird
+- ` end_date` - (Date) - das Datum, an dem eine Aufgabe voraussichtlich abgeschlossen wird
 
 ### Example
 
@@ -27,12 +27,12 @@ gantt.config.work_time = true;
 gantt.init("gantt_here");
  
 // ermittelt das Enddatum basierend auf den globalen Arbeitszeiteinstellungen
-gantt.calculateEndDate({start_date: new Date(2013,02,15), duration: 48});
+gantt.calculateEndDate({start_date: new Date(2026,02,15), duration: 48});
 // oder
-gantt.calculateEndDate(new Date(2013,02,15), 48);
+gantt.calculateEndDate(new Date(2026,02,15), 48);
 
 // ermittelt das Enddatum für einen spezifischen Aufgaben-Kalender
-gantt.calculateEndDate({start_date: new Date(2013,02,15), duration: 48, task:task});
+gantt.calculateEndDate({start_date: new Date(2026,02,15), duration: 48, task:task});
 // oder, eine Abkürzung:
 // verwendet den Kalender, der der Aufgabe zugewiesen ist, sowie das eigene start_date und die Dauer der Aufgabe
 gantt.calculateEndDate(task);
@@ -41,15 +41,14 @@ gantt.calculateEndDate(task);
 ### Details
 
 :::note
-
-Wenn die Option [work_time](api/config/work_time.md) aktiviert ist, behandelt die Methode die Dauer als Arbeitszeit. 
- 
+Wenn die Option [work_time](api/config/work_time.md) aktiviert ist, berücksichtigt die Methode die Dauer als Arbeitszeit. 
 :::
 
-- Wenn keine Aufgabe angegeben wird, verwendet die Methode standardmäßig den [globalen Arbeitszeitkalender](guides/working-time.md#multipleworktimecalendars). <br>
-- Die Methode kann auch direkt auf ein [Kalenderobjekt](api/other/calendar.md) angewendet werden.
+- Die Methode wird den [globalen Arbeitszeitkalender](guides/working-time.md#multipleworktimecalendars) verwenden, falls kein task angegeben ist. 
+- Außerdem kann die Methode direkt für ein [Kalenderobjekt](api/other/calendar.md) aufgerufen werden.
 
-Sie können auch das Startdatum mit **calculateEndDate** wie folgt ermitteln:
+
+Sie können auch das Startdatum berechnen, indem Sie die Methode **calculateEndDate** verwenden:
 
 ~~~js
 // ermittelt das Startdatum:
@@ -63,12 +62,11 @@ task.start_date = gantt.calculateEndDate({
 
 Das Konfigurationsobjekt kann folgende Eigenschaften enthalten:
 
-- **start_date** - (*Date*) wann die Aufgabe geplant ist zu starten
-- **duration** - (*number*)    Länge der Aufgabe
-* **unit** - (*string*)    optionale Zeiteinheit für die Dauer: "minute", "hour", "day", "week", "month", "year"
-* **task** - (*object*)    optionale Aufgabenobjekt, dessen Dauer berechnet werden soll
+- **start_date** - (*Date*) das Datum, an dem eine Aufgabe voraussichtlich beginnt
+- **duration** - (*number*) die Dauer einer Aufgabe
+* **unit** - (*string*) optional, die Zeiteinheit der Dauer: "minute", "hour", "day", "week", "month", "year"
+* **task** - (*object*) optional, das Objekt der Aufgabe, dessen Dauer berechnet werden soll
 
 ### Related API
 - [calculateDuration](api/method/calculateduration.md)
 - [calculateTaskLevel](api/method/calculatetasklevel.md)
-

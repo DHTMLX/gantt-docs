@@ -1,4 +1,4 @@
----
+--- 
 title: "配置任务"
 sidebar_label: "配置任务"
 ---
@@ -7,24 +7,23 @@ sidebar_label: "配置任务"
 
 ![gantt_tasks](/img/gantt_tasks.png)
 
-
-- [작업 유형](guides/task-types.md)
-- [Task Properties](guides/task-properties.md)
+- [任务类型](guides/task-types.md)
+- [任务属性](guides/task-properties.md)
 - [Task Object/Id](guides/task-object-operations.md)
-- [Task Parent/Child](guides/task-tree-operations.md)
-- [작업의 기본 작업](guides/crud-task.md)
-- [예정되지 않은 작업](guides/unscheduled-tasks.md)
-- [작업 분할](guides/split-tasks.md)
-- [멀티 태스크 선택](guides/multiselection.md)
-- [작업 시간 계산](guides/working-time.md)
-- [Critical Path](guides/critical-path.md)
-- [타임라인의 추가 요소](guides/inbuilt-baselines.md)
-- [타임라인 영역의 커스텀 요소](guides/baselines.md)
-- [Milestones](guides/milestones.md)
-- [Gantt 요소의 툴팁](guides/tooltips.md)
-- [작업 내용 표시](guides/text-block-for-task.md)
-- [읽기 전용 모드](guides/readonly-mode.md)
-- [Validation](guides/validation.md)
-- [타임라인 내에서 작업 드래그하기](guides/dnd.md)
-- [DnD로 작업 생성/선택하기](guides/advanced-dnd.md)
-- [수동으로 예약된 요약 작업](guides/custom-projects-dates.md)
+- [任务父子关系](guides/task-tree-operations.md)
+- [任务的基本操作](guides/crud-task.md)
+- [未计划的任务](guides/unscheduled-tasks.md)
+- [拆分任务](guides/split-tasks.md)
+- [多任务选择](guides/multiselection.md)
+- [工作时间计算](guides/working-time.md)
+- [关键路径](guides/critical-path.md)
+- [时间线中的额外元素](guides/inbuilt-baselines.md)
+- [时间线区域中的自定义元素](guides/baselines.md)
+- [里程碑](guides/milestones.md)
+- [甘特图元素的工具提示](guides/tooltips.md)
+- [显示任务内容](guides/text-block-for-task.md)
+- [只读模式](guides/readonly-mode.md)
+- [验证](guides/validation.md)
+- [在时间线中拖动任务](guides/dnd.md)
+- [通过拖放创建/选择任务](guides/advanced-dnd.md)
+- [手动排程的汇总任务](guides/custom-projects-dates.md)

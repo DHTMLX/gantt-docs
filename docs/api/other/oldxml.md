@@ -15,8 +15,7 @@ description: "specifies serialization and parsing in the XML format of dhtmlxGan
 ### Example
 
 ~~~jsx
-var obj = gantt.oldxml; // -> { parse(text,loader){...}, serialize(){... 
-:::
+const obj = gantt.oldxml; // -> { parse(text,loader){...}, serialize(){... }}
 ~~~
 
 ### Details

@@ -1,14 +1,14 @@
 ---
 sidebar_label: ignore_time
-title: ignore_time config
-description: "在时间刻度中隐藏某个时间单位"
+title: ignore_time 配置
+description: "在时间刻度中隐藏一个时间单位"
 ---
 
 # ignore_time
 
 ### Description
 
-@short: 在时间刻度中隐藏某个时间单位
+@short: 在时间刻度中隐藏一个时间单位
 
 @signature: ignore_time: GanttCallback
 
@@ -24,7 +24,7 @@ gantt.ignore_time = function(date){
 
 ### Details
 
-**ignore_time** 方法通过接收单元格的日期作为参数来工作。如果你想隐藏某个特定的时间单位，只需对该日期返回 *true* 即可。
+**ignore_time** 方法是一个接收单元格日期作为参数的函数。要隐藏一个时间单位，请对它返回 *true*。
 
 ### Related Guides
-- [在时间刻度中隐藏时间单位](guides/custom-scale.md)
+- [在刻度中隐藏时间单位](guides/custom-scale.md)

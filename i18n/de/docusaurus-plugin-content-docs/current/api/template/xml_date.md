@@ -1,21 +1,23 @@
 ---
 sidebar_label: xml_date
-title: xml_date template
-description: "Diese Vorlage konvertiert einen String aus einer XML-Datei in ein Datumsobjekt basierend auf einem angegebenen Format."
+title: xml_date Vorlage
+description: "Ein String aus einer XML-Datei wird gemäß dieser Vorlage in ein Datumsobjekt konvertiert"
 ---
 
 # xml_date
-
+:::warning
+Die Vorlage ist veraltet.
+:::
 ### Description
 
 @short: Diese Vorlage konvertiert einen String aus einer XML-Datei in ein Datumsobjekt basierend auf einem angegebenen Format.
 
 ### Parameters
 
-- `date` - (required) *Date* - Das Datum, das formatiert werden soll.
+- `date` - (required) *Date* - das Datum, das formatiert werden muss
 
 ### Returns
-- ` text` - (string) - HTML-Text, der im Gantt-Chart angezeigt wird.
+- ` text` - (string) - HTML-Text, der im Gantt gerendert wird
 
 ### Example
 
@@ -36,7 +38,7 @@ const cfg = gantt.config;
 const strToDate = gantt.date.str_to_date(cfg.date_format, cfg.server_utc);
  
 gantt.templates.parse_date = function(date){
-    return strToDate(date);
+    return strToDate (date);
 };
 ~~~
 
@@ -46,6 +48,7 @@ Sie können eine eigene Template-Funktion erstellen, wenn das Server-Datumsforma
 
 Zum Beispiel bei Verwendung von UNIX-Zeit für **start_date**: 
 
+snippet /data :
 ~~~js
 {
     "data":[
@@ -88,7 +91,7 @@ gantt.load("/data");
 - [date](api/other/date.md)
 
 ### Related Guides
-- ["Vorlagen für die Datumskonvertierung"](guides/conversion-templates.md)
+- [Vorlagen zur Datumskonvertierung](guides/conversion-templates.md)
 
 ### Change log
 - Veraltet seit Version 6.2, entfernt in Version 7.0

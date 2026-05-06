@@ -3,14 +3,14 @@ title: "Указание колонок"
 sidebar_label: "Указание колонок"
 ---
 
-# Указание колонок
+## Определение колонок
 
-Колонки грида настраиваются с помощью параметра [columns](api/config/columns.md).
+Колонки грида настраиваются параметром [columns](api/config/columns.md).
 
 ![gantt_left](/img/gantt_left.png)
 
 ~~~js
-// определение колонок по умолчанию
+// default columns definition
 gantt.config.columns = [
     { name: "text",       label: "Task name",  width: "*", tree: true },
     { name: "start_date", label: "Start time", align: "center" },
@@ -19,25 +19,26 @@ gantt.config.columns = [
 ];
 ~~~
 
-Также доступна видеоинструкция по настройке колонок грида.
+Вы можете посмотреть видеогид, который описывает, как указать колонки грида.
 
 <iframe width="676" height="400" src="https://www.youtube.com/embed/-BoznxJmJIo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## Обзор {#overview}
 
-По умолчанию в гриде отображаются 4 колонки:
+## Обзор
 
-1. Task name
-2. Start date
-3. Duration 
-4. Специальная колонка '+'. Эта колонка с <code>name="add"</code> отображает знак '+', который позволяет пользователям добавлять подзадачи.
+По умолчанию в гриде содержатся 4 колонки:
+
+1. Название задачи
+2. Дата начала
+3. Длительность 
+4. '+' колонка. Особая колонка с name="add", которая отображает знак '+' и позволяет пользователю добавлять подпорядкованные задачи к задаче.
 
 :::note
-Обратите внимание, что вам не обязательно указывать параметр [columns](api/config/columns.md), чтобы отобразить стандартные колонки в гриде.
+Обратите внимание: задавать параметр [columns](api/config/columns.md) не требуется, чтобы отобразить колонки по умолчанию в гриде.
 :::
 
-Параметр [columns](api/config/columns.md) представляет собой массив, где каждый объект определяет одну колонку.
-Например, чтобы задать 5 колонок с названиями 'Task', 'Start Date', 'End Date', 'Holder' и 'Progress', укажите параметр [columns](api/config/columns.md) следующим образом:
+Параметр [columns](api/config/columns.md) представляет собой массив, каждый объект которого задаёт одну колонку. 
+Так, например, чтобы определить 5 колонок в гриде: 'Task', 'Start Date', 'End Date', 'Holder', 'Progress', задайте параметр [columns](api/config/columns.md) как в примере ниже:
 
 ~~~js
 gantt.config.columns = [
@@ -51,17 +52,23 @@ gantt.config.columns = [
 gantt.init("gantt_here");
 ~~~
 
-Здесь 'text', 'holder', 'start_date', 'end_date' и 'progress' соответствуют [названиям свойств данных](guides/specifying-columns.md#datamappingandtemplates).
+где 'text', 'holder', 'start_date', 'end_date', 'progress' являются [именами свойств данных](guides/specifying-columns.md#datamappingandtemplates).
 
-## Отображение даты окончания задачи {#displayingenddateoftasks}
 
-Если объекты данных задачи содержат даты начала и окончания в формате "%Y-%m-%d" или "%d-%m-%Y" (без часов и минут), отображаемые даты окончания в стандартном формате могут отличаться от ожидаемых. Подробнее о форматировании дат окончания смотрите в статье [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates).
+## Отображение даты окончания задач
 
-## Скрытие кнопки "Add" для отдельных задач {#hidingtheaddbuttonforcertaintasks}
+Когда объекты данных задач содержат даты начала и окончания в формате "%Y-%m-%d" или "%d-%m-%Y" (то есть без части часов), даты в формате по умолчанию могут иметь значения, которые не ожидаются. Чтобы узнать больше о форматировании дат окончания, смотрите статью [Отображение даты окончания задачи и включительные даты окончания](guides/loading.md#taskenddatedisplayampinclusiveenddates).
 
-Простой способ запретить пользователям добавлять подзадачи к определённым задачам - скрыть кнопку 'Add' с помощью CSS.
 
-1. Сначала присвойте CSS-класс каждой строке задачи с помощью шаблона [grid_row_class](api/template/grid_row_class.md):
+## Скрытие кнопки "Add" для некоторых задач
+
+Очень простой способ предотвратить добавление подпорядкованных задач к определённым задачам — скрыть кнопку 'Add' с помощью CSS.
+
+
+
+
+Сначала назначьте CSS‑класс для каждой строки задачи, используя шаблон [grid_row_class](api/template/grid_row_class.md):
+
 ~~~js
 gantt.templates.grid_row_class = ( start, end, task ) => {
     if ( task.$level > 1 ) {
@@ -71,7 +78,7 @@ gantt.templates.grid_row_class = ( start, end, task ) => {
     return "";
 };
 ~~~
-2. Затем скройте кнопку 'Add' в этих строках с помощью CSS:
+Затем скройте кнопку 'Add' для таких строк:
 
 ~~~css
 .nested_task .gantt_add {
@@ -79,13 +86,12 @@ gantt.templates.grid_row_class = ( start, end, task ) => {
 }
 ~~~
 
+**Связанный пример**: [Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
 
-[Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
 
+## Ширина
 
-## Ширина {#width}
-
-Чтобы управлять шириной колонки, используйте атрибут [width](api/config/columns.md) в её объекте конфигурации:
+Чтобы задать ширину колонки, используйте атрибут [width](api/config/columns.md) в соответствующем объекте колонки:
 
 ~~~js
 gantt.config.columns = [
@@ -98,38 +104,32 @@ gantt.init("gantt_here");
 ~~~
 
 :::note
-Использование '*' для ширины позволяет колонке занять всё оставшееся пространство.
+Используйте значение '*' для того, чтобы колонка занимала всё оставшееся пространство.
 :::
 
-Имейте в виду, что ширина колонок грида зависит от двух настроек: параметра [width](api/config/columns.md) самой колонки и общей [grid_width](api/config/grid_width.md). Если суммарная ширина колонок не совпадает с шириной грида, Gantt скорректирует одно из этих значений.
+**Примечание**, что ширина колонок грида зависит от двух атрибутов: [width] самой колонки и [grid_width]. Если сумма ширин колонок не равна ширине грида, Gantt изменит один из параметров.
 
-- При инициализации gantt с помощью [gantt.init()](api/method/init.md) приоритет имеет [width](api/config/columns.md) колонки. 
-
- 
-
-**Related example:** [Приоритет ширины колонки над шириной грида при инициализации](https://snippet.dhtmlx.com/itnvg6z9)
-
-- При рендеринге gantt с помощью [gantt.render()](api/method/render.md) приоритет получает [grid_width](api/config/grid_width.md). 
+- При инициализации Gantt через [gantt.init()](api/method/init.md) приоритет имеет [width] колонки. 
 
  
+**Связанный пример**: [Column width priority over grid width at initialization](https://snippet.dhtmlx.com/itnvg6z9)
 
-**Related example:** [Приоритет ширины грида над шириной колонки при рендеринге](https://snippet.dhtmlx.com/4nb67z61)
+- При отрисовке Gantt через [gantt.render()](api/method/render.md) приоритет имеет [grid_width](api/config/grid_width.md). 
 
-- При инициализации gantt через [gantt.init()](api/method/init.md), если ширина колонки не указана или равна **'*'**, приоритет получает [grid_width](api/config/grid_width.md). 
+ 
+**Связанный пример**: [Grid width priority over column width during rendering](https://snippet.dhtmlx.com/4nb67z61)
 
+- При инициализации Gantt через [gantt.init()](api/method/init.md) и если ширина колонки не указана или стоит на `'*'`, приоритет имеет [grid_width](api/config/grid_width.md). 
 
-**Related example:** [Приоритет ширины грида, если ширина колонки не задана или равна '*' при инициализации](https://snippet.dhtmlx.com/qej8w5ix)
-
+**Связанный пример**: [Grid width priority when column width is undefined or set to `'*'` at initialization](https://snippet.dhtmlx.com/qej8w5ix)
 
 ### Минимальная/максимальная ширина колонки
 
-Вы можете использовать свойства **min_width** и **max_width** для ограничения ширины колонки при изменении размера:
+Свойства **min_width** и **max_width** можно использовать для ограничения ширины колонки при операциях изменения размера:
 
 ~~~js
 gantt.config.columns = [
-    { name: "text",       label: "Task name",  width: "*", tree: true, min_width: 150,
-        max_width: 300
-    },
+    { name: "text",       label: "Task name",  width: "*", tree: true, min_width: 150, max_width: 300 },
     { name: "start_date", label: "Start time", width: 150 },
     { name: "duration",   label: "Duration",   width: 120 }
 ];
@@ -138,12 +138,12 @@ gantt.init("gantt_here");
 ~~~
 
 :::note
-Свойство **min_width** колонки перекрывает настройку gantt [min_grid_column_width](api/config/min_grid_column_width.md).
+Свойство **min_width** колонки имеет приоритет над свойством [min_grid_column_width](api/config/min_grid_column_width.md) у Gantt.
 :::
 
 ### Минимальная ширина грида при изменении размера
 
-Минимальная ширина, до которой можно уменьшить грид, задаётся с помощью [gantt.config.min_grid_column_width](api/config/min_grid_column_width.md). Эта опция определяет минимальную ширину каждой колонки при изменении размера грида:
+Минимальная ширина, до которой может быть изменён размер грида, определяется опцией [gantt.config.min_grid_column_width](api/config/min_grid_column_width.md). Эта опция задаёт минимальную ширину, до которой можно изменить размер каждой колонки при изменении размера грида:
 
 ~~~js
 gantt.config.columns = [
@@ -152,30 +152,29 @@ gantt.config.columns = [
     { name: "duration",   label: "Duration",   width: 50 }
 ];
 
-gantt.config.min_grid_column_width = 30; // грид можно уменьшить до 90 px суммарно
+gantt.config.min_grid_column_width = 30; // грид можно изменить до 90 px
 
 gantt.init("gantt_here");
 ~~~
 
+**Связанный пример**: [Minimal grid width](https://snippet.dhtmlx.com/zdza8tws)
 
-**Related example:** [Минимальная ширина грида](https://snippet.dhtmlx.com/zdza8tws)
-
-
-Также обратите внимание, что минимальная ширина грида при изменении размера зависит от минимальной ширины колонки 'add' (по умолчанию 44). Чтобы уменьшить грид меньше 44 px, задайте [min_width](api/config/columns.md) для колонки 'add' следующим образом:
+Обратите внимание, что минимальная ширина грида при изменении размера также зависит от минимальной ширины колонки 'add' (по умолчанию 44). Чтобы можно было изменить размер грида на значение менее 44 px, укажите опцию [min_width](api/config/columns.md) в объекте колонки 'add':
 
 ~~~js
 { name: "add", label: "", min_width: 1 }
 ~~~
 
-## Связь данных и шаблоны {#datamappingandtemplates}
 
-По умолчанию dhtmlxGantt заполняет грид, используя свойства данных, совпадающие с именами колонок. Например, если колонка имеет **name:"holder"**, dhtmlxGantt ищет свойство 'holder' в JSON-данных и отображает его в этой колонке.
+## Data mapping and templates {#datamappingandtemplates}
+
+По умолчанию dhtmlxGantt заполняет грид свойствами данных, соответствующими именам колонок.
+Например, если вы зададите **name:"holder"** для колонки, dhtmlxGantt будет искать такое свойство данных во входном JSON‑данных и, если оно существует, загрузит его в колонку.
 
 #### Использование шаблонов для данных колонки
 
-Если вы хотите отобразить в колонке комбинацию нескольких свойств данных, можно выбрать любое имя для колонки и задать шаблон данных с помощью атрибута **template** в параметре [columns](api/config/columns.md).
-
-Например, вы можете назвать колонку **name:"staff"** и создать функцию-шаблон, возвращающую объединённые значения *holder* и *progress*:
+Если вы хотите отобразить сочетание нескольких свойств данных в колонке, вы можете использовать любое имя для колонки, но задать шаблон данных через атрибут **template** параметра [columns](api/config/columns.md).
+Например, можно задать **name:"staff"** для колонки и определить функцию шаблона, которая вернёт свойства данных *holder* и *progress*, чтобы загрузить их в колонку.
 
 ~~~js
 gantt.config.columns = [
@@ -189,9 +188,10 @@ gantt.config.columns = [
 gantt.init("gantt_here");
 ~~~
 
-## Горизонтальное выравнивание текста {#textalignment}
 
-Чтобы выровнять текст по горизонтали в колонке, используйте атрибут [align](api/config/columns.md) в её конфигурации:
+## Выравнивание текста
+
+Чтобы задать горизонтальное выравнивание текста в колонке, используйте атрибут [align](api/config/columns.md) в соответствующем объекте колонки:
 
 ~~~js
 gantt.config.columns = [
@@ -203,13 +203,14 @@ gantt.config.columns = [
 gantt.init("gantt_here");
 ~~~
 
-## Код WBS {#wbscode}
 
-Вы можете добавить колонку для отображения структурных номеров (WBS-кодов) задач. Для этого используйте метод [getWBSCode](api/method/getwbscode.md) в шаблоне колонки.
+## WBS код {#wbscode}
+
+Вы можете добавить колонку, которая будет отображать нумерацию outline задач (их WBS‑код). Для этого в шаблоне колонки используйте метод [getWBSCode](api/method/getwbscode.md).
 
 ~~~js
 gantt.config.columns = [
-    { name: "wbs",        label: "WBS",        width: 40, template: gantt.getWBSCode }, /*!*/
+    { name: "wbs",        label: "WBS",        width: 40,  template: gantt.getWBSCode }, 
     { name: "text",       label: "Task name",  width: 170, tree: true },
     { name: "start_date", label: "Start time", width: 90,  align: "center" },
     { name: "duration",   label: "Duration",   width: 60,  align: "center" },
@@ -218,12 +219,12 @@ gantt.config.columns = [
 ~~~
 
 
-[Show Task WBS Codes (Outline Numbers)](https://docs.dhtmlx.com/gantt/samples/07_grid/09_wbs_column.html)
+**Связанный пример**: [Show Task WBS Codes (Outline Numbers)](https://docs.dhtmlx.com/gantt/samples/07_grid/09_wbs_column.html)
 
 
-### Получение WBS-кода задачи
+### Получение WBS‑кода задачи
 
-Метод [getWBSCode](api/method/getwbscode.md) возвращает WBS-код для конкретной задачи. Например, если вы загрузите в gantt следующие задачи:
+Метод [getWBSCode](api/method/getwbscode.md) возвращает WBS‑код необходимой задачи. Например, загрузим в gantt следующие задачи:
 
 ~~~js
 gantt.parse({
@@ -236,15 +237,16 @@ gantt.parse({
 });
 ~~~
 
-и хотите получить WBS-код для задачи с id="3," передайте объект задачи в [getWBSCode](api/method/getwbscode.md). Метод вернёт строку с WBS-кодом:
+и хотим получить WBS‑код задачи с id="3." Для этого передаём объект задачи в качестве параметра методу [getWBSCode](api/method/getwbscode.md). Он вернёт строку с WBS‑кодом задачи:
 
 ~~~js
-const wbsCode = gantt.getWBSCode(gantt.getTask(3)); // -> вернёт "1.2"
+const wbsCode = gantt.getWBSCode(gantt.getTask(3)); // -> returns "1.2"
 ~~~
 
-### Получение задачи по WBS-коду
 
-Можно получить объект задачи, передав её WBS-код в метод [getTaskByWBSCode](api/method/gettaskbywbscode.md):
+### Получение задачи по WBS‑коду
+
+Также можно получить объект задачи, передав его WBS‑код в метод [getWBSCode](api/method/gettaskbywbscode.md):
 
 ~~~js
 const task = gantt.getTaskByWBSCode("1.2");
@@ -252,13 +254,10 @@ const task = gantt.getTaskByWBSCode("1.2");
 ~~~
 
 
-## Ограничения по времени для задач {#timeconstraintsfortasks}
+## Временные ограничения для задач {#timeconstraintsfortasks}
 
-:::info
-Эта функциональность доступна только в PRO-версии
-:::
-
-Вы можете добавить специальные колонки грида, которые позволяют указывать тип [ограничения по времени](guides/auto-scheduling.md#timeconstraintsfortasks) для задачи, а также дату ограничения, если выбранный тип этого требует. Эти колонки называются "constraint_type" и "constraint_date" соответственно.
+Можно добавить отдельные колонки грида, которые позволят устанавливать тип [time constraint](guides/auto-scheduling.md#timeconstraintsfortasks) для задачи и дату ограничения, если она требуется выбранным типом.
+Эти колонки имеют имена "constraint_type" и "constraint_date" соответственно. 
 
 ~~~js
 gantt.config.columns = [
@@ -272,7 +271,7 @@ gantt.config.columns = [
 ];
 ~~~
 
-Эти колонки связаны с объектами встроенного редактора, которые позволяют выбрать необходимый тип ограничения для задачи и изменить дату прямо в гриде.
+Колонки связаны с объектами inline редакторов, которые позволяют выбрать необходимый тип ограничения для задачи и редактировать её дату прямо в гриде.
 
 ~~~js
 const constraintTypeEditor = {
@@ -297,31 +296,31 @@ const constraintDateEditor = {
 ~~~
 
 
-[Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
+**Связанный пример**: [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
-## Изменение размера {#resizing}
+## Изменение размера колонок {#resizing}
 
 :::info
-Эта функциональность доступна только в PRO-версии
+Эта функциональность доступна только в версии PRO
 :::
 
-Чтобы разрешить пользователям изменять ширину колонки путем перетаскивания её правой границы, включите атрибут [resize](api/config/columns.md) в настройках соответствующей колонки:
+Чтобы дать пользователям возможность изменять размер колонки перетаскиванием правой границы колонки, используйте атрибут [resize](api/config/columns.md) в соответствующем объекте колонки:
 
 ~~~js
 gantt.config.columns = [
-    { name: "text",       resize: true, tree: true, width: "*" }, // 'resize' включён
-    { name: "start_date", resize: true, min_width: 100 }, // ограничено 'min_width'
-    { name: "duration",   align: "center" },              // изменение размера отключено
+    { name: "text",       resize: true, tree: true, width: "*" }, // 'resize' active
+    { name: "start_date", resize: true, min_width: 100 }, // limited by 'min_width'
+    { name: "duration",   align: "center" },              // no resize
     { name: "add",        width: "44" }
 ];
 ~~~
 
 
-[Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
+**Связанный пример**: [Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
 
 
-Чтобы сделать весь грид изменяемым по ширине путем перетаскивания его границы, используйте опцию [gantt.config.layout](api/config/layout.md) и определите объекты грида и разделителя с соответствующими настройками:
+Чтобы заставить весь грид быть изменяемым по перетаскиванию границы, используйте опцию [gantt.config.layout](api/config/layout.md) и внутри укажите объекты grid и resizer с необходимой конфигурацией.
 
 ~~~js
 gantt.config.layout = {
@@ -346,7 +345,8 @@ gantt.config.layout = {
 gantt.init("gantt_here");
 ~~~
 
-Чтобы зафиксировать ширину грида при изменении ширины колонок, установите опцию [keep_grid_width](api/config/keep_grid_width.md) в *true*:
+
+Чтобы сохранить размер грида при изменении размера колонок, установите опцию [keep_grid_width](api/config/keep_grid_width.md) в *true*:
 
 ~~~js
 gantt.config.columns = [
@@ -361,42 +361,34 @@ gantt.init("gantt_here");
 ~~~
 
 
-[Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
+**Связанный пример**: [Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
 
 
 ### События
 
-dhtmlxGantt предоставляет 6 событий, связанных с изменением размера:
+dhtmlxGantt предоставляет 6 событий для обработки поведения изменения размера:
 
-- [onColumnResizeStart](api/event/oncolumnresizestart.md) - возникает перед началом перетаскивания границы колонки для изменения её размера
-- [onColumnResize](api/event/oncolumnresize.md) - возникает во время перетаскивания границы колонки для изменения её размера
-- [onColumnResizeEnd](api/event/oncolumnresizeend.md) - возникает после завершения перетаскивания границы колонки
-
-
-- [onGridResizeStart](api/event/ongridresizestart.md) - возникает перед началом перетаскивания границы грида для изменения его размера
-- [onGridResize](api/event/ongridresize.md) - возникает во время перетаскивания границы грида для изменения его размера
-- [onGridResizeEnd](api/event/ongridresizeend.md) - возникает после завершения перетаскивания границы грида
+- [onColumnResizeStart](api/event/oncolumnresizestart.md) - срабатывает до того, как пользователь начнёт перетаскивать границу колонки для изменения её размера
+- [onColumnResize](api/event/oncolumnresize.md) - срабатывает, когда пользователь перетаскивает границу колонки для изменения её размера
+- [onColumnResizeEnd](api/event/oncolumnresizeend.md) - срабатывает после того, как пользователь закончил перетаскивать границу колонки для изменения её размера
+- [onGridResizeStart](api/event/ongridresizestart.md) - срабатывает до того, как пользователь начнёт перетаскивать границу грида для изменения его размера
+- [onGridResize](api/event/ongridresize.md) - срабатывает, когда пользователь перетаскивает границу грида для изменения его размера
+- [onGridResizeEnd](api/event/ongridresizeend.md) - срабатывает после того, как пользователь закончил перетаскивать границу грида для изменения его размера
 
 
 ## Видимость {#visibility}
 
-Для управления видимостью колонки используйте атрибут [hide](api/config/columns.md) в конфигурации колонки.
+Чтобы управлять видимостью колонки, используйте атрибут [hide](api/config/columns.md) в соответствующем объекте колонки.
 
- 
-Видимость можно изменять динамически, обновляя свойство 'hide' и обновляя отображение Gantt:
+Видимость может динамично переключаться, путём изменения значения свойства 'hide' и обновления диаграммы Gantt:
 
-:::info
-Эта функциональность доступна только в PRO-версии
-:::
-
-**Переключение между базовым и детализированным видом**
-~~~
+~~~jsx title="Переключение между базовым и детальным видом"
 gantt.config.columns = [
     { name: "text",          label: "Task name", width: "*", tree: true, resize: true },
     { name: "start_date",    label: "Start time" },
-    { name: "duration",      label: "Duration",      width: 60, hide: true }, /*!*/
-    { name: "planned_start", label: "Planned start", width: 80, hide: true }, /*!*/
-    { name: "planned_end",   label: "Planned end",   width: 80, hide: true }, /*!*/
+    { name: "duration",      label: "Duration",      width: 60, hide: true }, 
+    { name: "planned_start", label: "Planned start", width: 80, hide: true }, 
+    { name: "planned_end",   label: "Planned end",   width: 80, hide: true },
     { name: "add",           label: "",              width: 36 }
 ];
 
@@ -421,19 +413,19 @@ gantt.init("gantt_here");
 ~~~
 
 
-[Hiding grid columns](https://docs.dhtmlx.com/gantt/samples/02_extensions/07_managing_grid_columns.html)
+**Связанный пример**: [Hiding grid columns](https://docs.dhtmlx.com/gantt/samples/02_extensions/07_managing_grid_columns.html)
 
 
-Также доступно видео, демонстрирующее управление видимостью колонок в гриде.
+Вы можете посмотреть видеогид, который демонстрирует, как управлять видимостью колонок в гриде.
 
 <iframe width="676" height="400" src="https://www.youtube.com/embed/rqYrqqoaI_U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-## Модификация ячеек после рендера {#modifyingcellsafterrendering}
+## Изменение содержимого ячеек после рендеринга {#modifyingcellsafterrendering}
 
-Иногда требуется скорректировать внешний вид или поведение ячейки грида после её отрисовки.
+В некоторых случаях может понадобиться изменить внешний вид или поведение ячейки грида после её рендеринга. 
 
-Начиная с версии 7.1, в библиотеке появился атрибут **onrender** в конфигурации [columns](api/config/columns.md), который позволяет модифицировать ячейку после рендера, например:
+Н since v7.1 библиотека предоставляет атрибут **onrender** параметра [columns](api/config/columns.md), который поможет вам изменить ячейку после рендеринга, например:
 
 ~~~js
 gantt.config.columns = [
@@ -447,7 +439,7 @@ gantt.config.columns = [
 ~~~
 
 
-Другой вариант использования **onrender** - внедрение внешних компонентов в ячейки грида. Например, если вы используете DHTMLX Gantt с React и хотите вставить React-компонент в ячейку грида, следующий код демонстрирует, как это можно реализовать:
+Способ использования колбэка **onrender** — внедрение внешних компонентов в ячейки грида. Например, вы используете DHTMLX Gantt с React и хотите внедрить компонент React в ячейки грида Gantt. Ниже приведён пример кода, который демонстрирует, как это реализовать:
 
 ~~~js
 gantt.config.columns = [
@@ -466,38 +458,39 @@ gantt.config.columns = [
 ];
 ~~~
 
-Чтобы включить рендеринг React-компонента, необходимо указать конфигурацию [gantt.config.external_render](api/config/external_render.md):
+Чтобы это работало и отображался компонент React, необходимо определить конфигурацию [gantt.config.external_render](api/config/external_render.md):
 
 ~~~js
 import ReactDOM from 'react-dom';
 import React from 'react';
 
 gantt.config.external_render = { 
-    // проверяет, является ли элемент React-элементом
+    // checks the element is a React element
     isElement: (element) => {
         return React.isValidElement(element);
     },
-    // рендерит React-элемент в DOM
+    // renders the React element into the DOM
     renderElement: (element, container) => {
         ReactDOM.render(element, container);
     }
 };
 ~~~
 
-Процесс работы следующий:
 
-- Объект, возвращаемый из колбэка **onrender**, передаётся в функцию **isElement** для проверки, можно ли его отрендерить с помощью выбранного фреймворка или библиотеки.
-- Если **isElement** возвращает *true*, объект передаётся в **renderElement**, который инициализирует компонент внутри DOM-элемента ячейки.
+Логика следующая:
+
+- Во‑первых, возвращаемый объект 콜бэка **onrender** будет передан в функцию **isElement** для проверки, является ли он объектом, который может быть отрисован используемым вами фреймворком/библиотекой.
+- Если **isElement** возвращает true, объект будет передан в **renderElement**, который должен инициализировать объект компонента внутри DOM‑элемента ячейки.
 
 
-## Горизонтальный скроллбар {#horizontalscrollbar}
+## Горизонтальная полоса прокрутки
 
-Грид можно сделать прокручиваемым, включив свойство **scrollable** в конфигурации [layout](guides/layout-config.md). 
-[Подробнее о привязке представлений layout к скроллбару](guides/layout-config.md#scrollbar).
+Вы можете сделать Grid прокручиваемым с помощью свойства **scrollable** конфигурационной опции layout. 
+[Узнать о привязке представлений макета к полосе прокрутки](guides/layout-config.md#scrollbar).
 
-Добавление горизонтального скроллбара в грид позволяет Gantt автоматически подстраивать ширину колонок при изменении размера грида. [Подробнее о включении этой функции](api/config/grid_elastic_columns.md). 
+Наличие горизонтальной полосы прокрутки в гриде позволяет Gantt автоматически подстраивать ширину колонок при изменении ширины грида. [Подробнее о включении этой функциональности](api/config/grid_elastic_columns.md).
 
-Кроме установки атрибута **scrollable**, необходимо добавить *элемент горизонтального скроллбара* в layout и связать его с гридом, как показано ниже:
+Помимо атрибута **scrollable**, нужно добавить в макет *горизонтальную полосу прокрутки* и связать её с гридом следующим образом:
 
 ~~~js
 gantt.config.layout = {
@@ -508,7 +501,7 @@ gantt.config.layout = {
             minWidth: 200,
             maxWidth: 600,
 
-            // добавление горизонтального скроллбара к гриду через атрибут scrollX
+            // добавление горизонтальной полосы прокрутки к гриду через атрибут scrollX
             rows: [
                 { view: "grid", scrollX: "gridScroll", scrollable: true, /*!*/
                     scrollY: "scrollVer" /*!*/
@@ -528,11 +521,13 @@ gantt.config.layout = {
 };
 ~~~
 
-При использовании отдельных скроллбаров для грида и временной шкалы, синхронизация их видимости гарантирует, что оба будут показаны или скрыты одновременно.
+
+Так как вы будете отображать отдельные полосы прокрутки для грида и временной шкалы, возможно, стоит синхронизировать их видимость, чтобы обе полосы прокрутки были видимы или скрыты одновременно. 
+
 
 ![scrollable_grid](/img/scrollable_grid.png)
 
-Это можно реализовать, присвоив обоим скроллбарам одну и ту же *группу видимости*:
+Это можно сделать, назначив обе полосы прокрутки одной и той же *visibility group*:
 
 ~~~js
 gantt.config.layout = {
@@ -546,16 +541,16 @@ gantt.config.layout = {
                 { view: "grid", scrollX: "gridScroll", scrollable: true,
                     scrollY: "scrollVer"
                 },
-                // горизонтальный скроллбар для грида
-                { view: "scrollbar", id: "gridScroll", group: "horizontal" } /*!*/
+                // горизонтальная полоса прокрутки для грида
+                { view: "scrollbar", id: "gridScroll", group: "horizontal" } 
             ]
         },
         { resizer: true, width: 1 },
         {
             rows: [
                 { view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
-                // горизонтальный скроллбар для временной шкалы
-                { view: "scrollbar", id: "scrollHor", group: "horizontal" } /*!*/
+                // горизонтальная полоса прокрутки для временной шкалы
+                { view: "scrollbar", id: "scrollHor", group: "horizontal" } 
             ]
         },
         { view: "scrollbar", id: "scrollVer" }
@@ -563,13 +558,11 @@ gantt.config.layout = {
 };
 ~~~
 
-Если любой из скроллбаров в группе видим, то будут показаны все скроллбары этой группы.
+Если хотя бы одна из полос прокрутки, отнесённых к одной и той же группе, видима, то будут видимы все полосы прокрутки этой группы.
+
+**Связанный пример**: [Horizontal scroll inside Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/10_scrollable_grid.html)
 
 
-[Horizontal scroll inside Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/10_scrollable_grid.html)
+## Стилизация
 
-
-## Стилизация {#styling}
-
-Подробнее о стилизации ячеек грида смотрите в разделе [Работа со стилями Gantt](guides/styling-guide.md#stylinggrid).
-
+Для информации о стилизации ячеек грида смотрите [Work with Gantt Styles](guides/styling-guide.md#styling-grid).

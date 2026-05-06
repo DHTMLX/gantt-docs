@@ -1,19 +1,19 @@
----
-title: "Textarea 控件"
-sidebar_label: "Textarea 控件"
+--- 
+title: "文本区域控件"
+sidebar_label: "文本区域控件"
 ---
 
-# Textarea 控件
+# 文本区域控件
 
-这是一个多行文本字段。
+一个多行文本字段。
 
 ![textarea_control](/img/textarea_control.png)
 
 ## 初始化
 
-默认情况下，弹出框（lightbox）中包含一个 **textarea** 控件。若需添加额外的 textarea 控件，请按照以下步骤操作:
+默认情况下，lightbox 中会添加一个 **textarea** 控件。若要再添加一个，请按下列步骤：
 
-1) 在 lightbox 配置中添加一个 section:
+1) 将一个 section 添加到 lightbox 配置中：
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -23,7 +23,7 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-2) 为新添加的 section 定义一个标签:
+2) 为该 section 设置标签：
 
 ~~~js
 gantt.locale.labels.section_details = "Details";
@@ -31,12 +31,11 @@ gantt.locale.labels.section_details = "Details";
 
 ## 属性
 
-以下是 **textarea** 控件常用的主要属性（完整列表请参见 [这里](api/config/lightbox.md)）:
+以下属性对 **textarea** 控件来说最重要且常用（完整列表请参阅 here: [api/config/lightbox.md](api/config/lightbox.md)）：
 
-- **name** - (*string*) section 的标识符
-- **height** - (*number*) section 的高度
-- **map_to** - (*string*) 绑定到 section 的数据属性
-- **type** - (*string*) [section 控件](guides/default-edit-form.md#lightboxcontrols)的类型
-- **focus** - (*boolean*) 若设置为 *true*，在弹出框打开时该 section 会获得焦点
-- **default_value** - (*any*) 控件的初始值，仅在输入值为 undefined 时应用。注意，若 *map_to:"text"*，此属性无效
-
+- **name** - (*string*) 区段名称 
+- **height** - (*number*) 区段高度
+- **map_to** - (*string*) 将映射到该区段的数据属性的名称
+- **type** - (*string*) [section control](guides/default-edit-form.md#lightboxcontrols) 的类型
+- **focus** - (*boolean*) 如果设置为 *true*，在打开 lightbox 时该区段将获得焦点
+- **default_value** - (*any*) 该区段控件的默认值。仅当输入值未定义时应用。与 *map_to:"text"* 不兼容。

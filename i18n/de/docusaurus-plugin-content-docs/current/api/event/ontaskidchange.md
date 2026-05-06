@@ -1,30 +1,29 @@
 ---
 sidebar_label: onTaskIdChange
 title: onTaskIdChange event
-description: "wird ausgelöst, wenn die ID einer Aufgabe aktualisiert wird"
+description: "wird ausgelöst, wenn die ID einer Aufgabe geändert wird"
 ---
 
 # onTaskIdChange
 
 ### Description
 
-@short: Wird ausgelöst, wenn die ID einer Aufgabe aktualisiert wird
+@short: Wird ausgelöst, wenn die ID einer Aufgabe geändert wird
 
 @signature: onTaskIdChange: (id: string | number, new_id: string | number) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die aktuelle ID der Aufgabe
-- `new_id` - (required) *string | number* - die aktualisierte ID der Aufgabe
+- `id` - (erforderlich) *string | number* - die ID der aktuellen Aufgabe
+- `new_id` - (erforderlich) *string | number* - die neue Aufgabe-ID
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onTaskIdChange", function(id,new_id){
-    //beliebige benutzerdefinierte Logik hier
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Related API
 - [changeTaskId](api/method/changetaskid.md)
-

@@ -8,7 +8,7 @@ description: "ermöglicht das Sortieren innerhalb der Tabelle"
 
 ### Description
 
-@short: Ermöglicht das Sortieren innerhalb der Tabelle
+@short: Ermöglicht das Sortieren in der Tabelle
 
 @signature: sort: boolean
 
@@ -21,15 +21,14 @@ gantt.init("gantt_here");
 gantt.parse("tasks.json");
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Related samples
-- [Built-in sorting](https://docs.dhtmlx.com/gantt/samples/07_grid/01_builtin_sorting.html)
+- [Eingebaute Sortierung](https://docs.dhtmlx.com/gantt/samples/07_grid/01_builtin_sorting.html)
 
 ### Related API
 - [sort](api/method/sort.md)
 - [onAfterSort](api/event/onaftersort.md)
 
 ### Related Guides
-- ["Sortieren von Spalten"](guides/sorting.md)
-
+- [Spalten sortieren](guides/sorting.md)

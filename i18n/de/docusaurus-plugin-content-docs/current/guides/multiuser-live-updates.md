@@ -1,28 +1,28 @@
----
-title: "Multi-User Live Updates"
-sidebar_label: "Multi-User Live Updates"
----
+---  
+title: "Mehrbenutzer-Live-Updates"  
+sidebar_label: "Mehrbenutzer-Live-Updates"  
+---  
 
-# Multi-User Live Updates
+# Mehrbenutzer-Live-Updates
 
-This article describes how to implement server-side support for the real-time updates module of DHTMLX Gantt.
+Dieser Artikel beschreibt, wie man serverseitige Unterstützung für das Real-Time-Updates-Modul von DHTMLX Gantt implementiert.
 
-## Principle
+## Prinzip
 
-DHTMLX Gantt provides the `RemoteEvents` helper to synchronize changes among multiple users in real time.
+DHTMLX Gantt bietet den `RemoteEvents`-Hilfsmitteln, um Änderungen zwischen mehreren Benutzern in Echtzeit zu synchronisieren.
 
-### Key Workflow
+### Kern-Workflow
 
-- The `RemoteEvents` client opens a WebSocket connection when Gantt is initialized.
-- The User changes (the "create", "edit", or "delete" events) are sent to the server via `DataProcessor` using the REST API.
-- The server broadcasts updates to all connected clients via WebSocket after processing them.
-- The `RemoteEvents` client receives the updates and applies them to Gantt, ensuring synchronization across users.
+- Der `RemoteEvents`-Client öffnet eine WebSocket-Verbindung, wenn Gantt initialisiert wird.  
+- Die Benutzeränderungen (das „create“, „edit“ oder „delete“-Ereignis) werden über `DataProcessor` mittels REST-API an den Server gesendet.  
+- Der Server broadcastet Updates an alle verbundenen Clients über WebSocket, nachdem er sie verarbeitet hat.  
+- Der `RemoteEvents`-Client empfängt die Updates und wendet sie in Gantt an, um die Synchronisierung zwischen den Benutzern sicherzustellen.
 
-The design allows this backend module to support multiple DHTMLX widgets (e.g., Kanban, Gantt, Scheduler) within the same application. The shared format streamlines data synchronization without needing separate backends for each widget.
+Dieses Design ermöglicht es dem Backend-Modul, mehrere DHTMLX-Widgets (z. B. Kanban, Gantt, Scheduler) innerhalb derselben Anwendung zu unterstützen. Das gemeinsame Format vereinfacht die Daten-Synchronisation, ohne separate Backends für jedes Widget zu benötigen.
 
-## Front-End Integration
+## Front-End-Integration
 
-Initialize `RemoteEvents` and set up `DataProcessor` in the same section of code where Gantt data is loaded.
+Initialisieren Sie `RemoteEvents` und richten Sie `DataProcessor` im gleichen Codeteil ein, in dem Gantt-Daten geladen werden.
 
 ~~~js
 const AUTH_TOKEN = "token";
@@ -42,64 +42,61 @@ const remoteEvents = new RemoteEvents("/api/v1", AUTH_TOKEN);
 remoteEvents.on(remoteUpdates);
 ~~~
 
+### Wichtige Details
 
-### Key Details
+- Der `RemoteEvents`-Konstruktor erfordert ein Autorisierungstoken, das im **"Remote-Token"**-Header zur Server-Validierung gesendet wird.  
+- Das erste Argument gibt den `WebSocket`-Endpunkt an (z. B. **/api/v1**).  
+- Der `remoteUpdates`-Helper verarbeitet eingehende `WebSocket`-Nachrichten und synchronisiert die Gantt-Daten.
 
-- The `RemoteEvents` constructor requires an authorization token, which is sent in the **"Remote-Token"** header for server validation.
-- The first argument specifies the `WebSocket` endpoint (e.g., **/api/v1**).
-- The `remoteUpdates` helper handles incoming `WebSocket` messages and synchronizes Gantt data.
+## Backend-Implementierung
 
+Dieser Abschnitt beschreibt, wie man ein Backend erstellt, das Live-Updates unterstützt.
 
-## Backend Implementation
+### Vereinfachtes Beispiel
 
-This section describes how to build a backend supporting live updates.
+- [Beispiel auf GitHub ansehen](https://github.com/DHTMLX/gantt-multiuser-backend-demo)
 
-### Simplified Example
+Zum Testen der Implementierung:
 
-- [Check the example on GitHub](https://github.com/DHTMLX/gantt-multiuser-backend-demo)
+- Extrahieren Sie das Backend-Projekt und starten Sie es mit den Befehlen `npm install` und `npm run start`.  
+- Öffnen Sie das Frontend-Beispiel in zwei separaten Browser-Tabs.  
+- Bearbeiten Sie eine Aufgabe in einem Tab; die Änderungen sollten im zweiten Tab sichtbar werden.
 
-To test the implementation:
+### Server-Seitiger Arbeitsablauf
 
-- Extract and run the backend project using `npm install` and `npm run start` commands.
-- Open the frontend example in two separate browser tabs.
-- Modify a task in one tab; the changes should appear in the second tab.
+#### 1. Handshake-Anfrage
 
+Beim Erstellen sendet `RemoteEvents` eine **GET**-Anfrage an den Server, um die Verbindung zu initialisieren.
 
-### Server-Side Workflow
-
-#### 1. Handshake Request
-
-When instantiated, `RemoteEvents` sends a **GET** request to the server to initialize the connection.
-
-Example:
-~~~
-GET /api/v1
-Remote-Token: AUTH_TOKEN
+Beispiel:  
+~~~  
+GET /api/v1  
+Remote-Token: AUTH_TOKEN  
 ~~~
 
-Response:
+Antwort:
 
 ~~~js
 {"api":{},"data":{},"websocket":true}
 ~~~
 
-#### 2. WebSocket Connection
+#### 2. WebSocket-Verbindung
 
-After receiving a response, `RemoteEvents` establishes the websocket connection with the provided endpoint.
+Nach dem Empfang einer Antwort wird die WebSocket-Verbindung mit dem angegebenen Endpunkt hergestellt.
 
-Example:
+Beispiel:
 
-~~~
+~~~  
 ws://${URL}?token=${token}&ws=1
 ~~~
 
-The server verifies the token and responds with a message:
+Der Server überprüft das Token und antwortet mit einer Nachricht:
 
 ~~~js
 {"action":"start","body":"connectionId"}
 ~~~
 
-Example implementation:
+Beispiel-Implementierung:
 
 ~~~js
 app.get('/api/v1', (req, res) => {
@@ -121,41 +118,41 @@ wss.on('connection', (ws, req) => {
 });
 ~~~
 
-#### 3. Subscription
+#### 3. Abonnement
 
-After the connection is established, the `RemoteEvents` subscribes to updates for specific entities, `tasks` and `links` in case of Gantt:
+Nachdem die Verbindung hergestellt ist, abonniert `RemoteEvents` Updates für bestimmte Entitäten, `tasks` und `links` im Fall von Gantt:
 
-- for tasks
+- für Tasks
 
 ~~~js
 {"action":"subscribe","name":"tasks"}
 ~~~
 
-- for links
+- für Links
 
 ~~~js
 {"action":"subscribe","name":"links"}
 ~~~
 
-To unsubscribe:
+Zum Abbestellen:
 
-- for tasks
+- für Tasks
 
 ~~~js
 {"action":"unsubscribe","name":"tasks"}
 ~~~
 
-- for links
+- für Links
 
 ~~~js
 {"action":"unsubscribe","name":"links"}
 ~~~
 
 :::note
- This format supports scenarios where an application uses multiple DHTMLX widgets simultaneously. Each widget subscribes only to the updates relevant to its data.
+ Dieses Format unterstützt Szenarien, in denen eine Anwendung mehrere DHTMLX-Widgets gleichzeitig verwendet. Jedes Widget abonniert nur die Updates, die für seine Daten relevant sind.
 :::
 
-Example:
+Beispiel:
 
 ~~~js
 ws.on('message', function(message) {
@@ -176,21 +173,20 @@ ws.on('message', function(message) {
 });
 ~~~
 
-#### 4. Broadcasting Updates
+#### 4. Verbreitung von Updates
 
-The server sends updates via WebSocket for changes like creating, updating, or deleting tasks and links in the format described below.
+Der Server sendet Updates über WebSocket für Änderungen wie das Erstellen, Aktualisieren oder Löschen von Tasks und Links im unten beschriebenen Format.
 
-Upon receiving these messages, Gantt automatically synchronizes its data using the `remoteUpdates` helper.
+Beim Empfang dieser Nachrichten synchronisiert Gantt automatisch seine Daten mithilfe des `remoteUpdates`-Helpers.
 
-
-**Task Created**
+**Task erstellt**
 
 ~~~js
 {"action":"event","body":{"name":"tasks",
    "value":{"type":"add-task","task":TASK_OBJECT}}}
 ~~~
 
-Example:
+Beispiel:
 
 ~~~js
 app.post("/data/task", (req, res) => {
@@ -207,14 +203,14 @@ app.post("/data/task", (req, res) => {
 });
 ~~~
 
-**Task Updated**
+**Task aktualisiert**
 
 ~~~js
 {"action":"event","body":{"name":"tasks",
    "value":{"type":"update-task","task":TASK_OBJECT}}}
 ~~~
 
-Example:
+Beispiel:
 
 ~~~js
 app.put("/data/task/:id", (req, res) => {
@@ -233,14 +229,14 @@ app.put("/data/task/:id", (req, res) => {
 });
 ~~~
 
-**Task Deleted**
+**Task gelöscht**
 
 ~~~js
 {"action":"event","body":{"name":"tasks",
    "value":{"type":"delete-task","task":{"id":ID}}}}
 ~~~
 
-Example:
+Beispiel:
 
 ~~~js
 app.delete("/data/task/:id", (req, res) => {
@@ -257,14 +253,14 @@ app.delete("/data/task/:id", (req, res) => {
 });
 ~~~
 
-**Link Created**
+**Link erstellt**
 
 ~~~js
 {"action":"event","body":{"name":"links",
    "value":{"type":"add-link","link":LINK_OBJECT}}}
 ~~~
 
-Example:
+Beispiel:
 
 ~~~js
 app.post("/data/link", (req, res) => {
@@ -281,14 +277,14 @@ app.post("/data/link", (req, res) => {
 });
 ~~~
 
-**Link Updated**
+**Link aktualisiert**
 
 ~~~js
 {"action":"event","body":{"name":"links",
    "value":{"type":"update-link","link":LINK_OBJECT}}}
 ~~~
 
-Example:
+Beispiel:
 
 ~~~js
 app.put("/data/link/:id", (req, res) => {
@@ -307,14 +303,14 @@ app.put("/data/link/:id", (req, res) => {
 });
 ~~~
 
-**Link Deleted**
+**Link gelöscht**
 
 ~~~js
 {"action":"event","body":{"name":"links",
    "value":{"type":"delete-link","link":{"id":ID}}}}
 ~~~
 
-Example:
+Beispiel:
 
 ~~~js
 app.delete("/data/link/:id", (req, res) => {
@@ -331,12 +327,12 @@ app.delete("/data/link/:id", (req, res) => {
 });
 ~~~
 
-## Advanced Customization
+## Erweiterte Anpassung
 
-### Custom Handlers
+### Benutzerdefinierte Handler
 
-In the described format, the `RemoteEvents` helper is responsible for initial handshake of establishing a websocket connection with the server and receiving messages.
-The second part of this module is the `remoteUpdates` helper that is responsible for parsing messages received via a websocket and applying appropriate changes to Gantt.
+Im beschriebenen Format ist der `RemoteEvents`-Helfer verantwortlich für den initialen Handshake zum Aufbau einer WebSocket-Verbindung mit dem Server und dem Empfangen von Nachrichten.  
+Der zweite Teil dieses Moduls ist der `remoteUpdates`-Helper, der dafür zuständig ist, Nachrichten, die über einen WebSocket empfangen werden, zu parsen und entsprechende Änderungen in Gantt anzuwenden.
 
 ~~~js
 const { RemoteEvents, remoteUpdates } = gantt.ext.liveUpdates;
@@ -344,9 +340,9 @@ const remoteEvents = new RemoteEvents("/api/v1", AUTH_TOKEN);
 remoteEvents.on(remoteUpdates);
 ~~~
 
-Normally, you can use these helpers without any extra configuration. But it is possible to extend the existing protocol by adding a custom helper or to implement a custom handler for remote updates.
+Normalerweise können Sie diese Hilfsmittel ohne zusätzliche Konfiguration verwenden. Es ist jedoch möglich, das bestehende Protokoll zu erweitern, indem Sie einen benutzerdefinierten Helper hinzufügen oder einen benutzerdefinierten Handler für Remote-Updates implementieren.
 
-The `RemoteEvents.on` method expects the object argument which can specify handlers for one or multiple entities:
+Die Methode `RemoteEvents.on` erwartet das Objektargument, das Handler für eine oder mehrere Entitäten spezifizieren kann:
 
 ~~~js
 const remoteEvents = new RemoteEvents("/api/v1", AUTH_TOKEN);
@@ -355,13 +351,13 @@ remoteEvents.on({
         const { type, task } = message;
         switch (type) {
             case "add-task":
-                // handle the add event
+                // Behandlung des Add-Ereignisses
                 break;
             case "update-task":
-                // handle the update event
+                // Behandlung des Update-Ereignisses
                 break;
             case "delete-task":
-                // handle the delete event
+                // Behandlung des Delete-Ereignisses
                 break;
         }
     }
@@ -369,7 +365,7 @@ remoteEvents.on({
 ~~~
 
 
-If you need to add a custom action, you can do it by adding an additional handler for `remoteEvents`:
+Wenn Sie eine benutzerdefinierte Aktion hinzufügen müssen, können Sie dies tun, indem Sie einen zusätzlichen Handler für `remoteEvents` hinzufügen:
 
 ~~~js
 const { RemoteEvents, remoteUpdates } = gantt.ext.liveUpdates;
@@ -380,77 +376,75 @@ remoteEvents.on({
         const { type, task } = message;
         switch (type) {
             case "custom-action":
-                // handle custom action
+                // benutzerdefinierte Aktion behandeln
                 break;
         }
     }
 });
 ~~~
 
-The handler will be invoked by the following message:
+Der Handler wird durch folgende Nachricht aufgerufen:
 
 ~~~js
 {"action":"event","body":{"name":"tasks",
    "value":{"type":"custom-action","task":value}}}
 ~~~
 
-If you want to use `RemoteEvents` to receive updates for custom entities, you can achieve it by adding a handler:
+Wenn Sie `RemoteEvents` verwenden möchten, um Updates für benutzerdefinierte Entitäten zu empfangen, können Sie dies erreichen, indem Sie einen Handler hinzufügen:
 
 ~~~js
 const { RemoteEvents, remoteUpdates } = gantt.ext.liveUpdates;
 const remoteEvents = new RemoteEvents("/api/v1", AUTH_TOKEN);
 remoteEvents.on(remoteUpdates);
 
-// subscribing to custom entities
+// Subscribing to custom entities
 remoteEvents.on({ 
     resources: function(message) {
         const { type, value } = message;
         switch (type) {
             case "custom-action":
-                // handle custom action
+                // benutzerdefinierte Aktion behandeln
                 break;
         }
     }
 });
-
 ~~~
 
-When initialized that way, the `remoteEvents` object will send the websocket a subscription message formatted in the following way:
+Wenn er auf diese Weise initialisiert wird, sendet das `remoteEvents`-Objekt dem WebSocket eine Abonnement-Nachricht im folgenden Format:
 
 ~~~js
 {"action":"subscribe","name":"resources"}
 ~~~
 
-And the handler will be called whenever a message directed to the specified entity is received:
+Und der Handler wird aufgerufen, wenn eine Nachricht, die an die angegebene Entität gerichtet ist, empfangen wird:
 
 ~~~js
 {"action":"event","body":{"name":"resources",
    "value":{"type":"custom-action","value":value}}}
 ~~~
 
-This guide provides the foundation for implementing and customizing live updates in DHTMLX Gantt. For a complete example, 
-[refer to the GitHub repository](https://github.com/DHTMLX/gantt-multiuser-backend-demo).
+Diese Anleitung bietet die Grundlage für die Implementierung und Anpassung von Live-Updates in DHTMLX Gantt. Für ein vollständiges Beispiel verweisen Sie auf das GitHub-Repository.
 
 ## Remote Updates API
 
-The `RemoteUpdates` module can be used to connect Gantt to any source of external changes allowing easy integration of remote changes.
+Das `RemoteUpdates`-Modul kann verwendet werden, um Gantt mit jeder Quelle externer Änderungen zu verbinden und eine einfache Integration von Remote-Änderungen zu ermöglichen.
 
 ~~~js
 const { remoteUpdates } = gantt.ext.liveUpdates;
 
-// inserts task into gantt without invoking update hooks
+// fügt Task in Gantt ein, ohne Update-Hooks zu triggern
 remoteUpdates.tasks({ type: "add-task", task: TASK_OBJECT });
 
-// updates task in gantt without invoking update hooks
+// aktualisiert Task in Gantt, ohne Update-Hooks zu triggern
 remoteUpdates.tasks({ type: "update-task", task: TASK_OBJECT });
 
-// deletes task from gantt without invoking update hooks
+// löscht Task aus Gantt, ohne Update-Hooks zu triggern
 remoteUpdates.tasks({ type: "delete-task", task: {id: TASK_ID}});
 
-// link operations
+// Link-Operationen
 remoteUpdates.links({ type: "add-link", link: LINK_OBJECT });
 remoteUpdates.links({ type: "update-link", link: LINK_OBJECT });
 remoteUpdates.links({ type: "delete-link", link: {id: LINK_ID}});
 ~~~
 
-Check the example of how Gantt can be connected to the Firestore updates in the [GitHub repository](https://github.com/DHTMLX/firebase-gantt-demo/).
+Sehen Sie sich das Beispiel an, wie Gantt mit Firestore-Updates verbunden werden kann, im [GitHub-Repository](https://github.com/DHTMLX/firebase-gantt-demo/).

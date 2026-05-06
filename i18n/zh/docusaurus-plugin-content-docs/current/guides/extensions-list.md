@@ -1,17 +1,17 @@
 ---
-title: "扩展功能完整列表"
-sidebar_label: "扩展功能完整列表"
+title: "全部扩展列表"
+sidebar_label: "全部扩展列表"
 ---
 
-# 扩展功能完整列表
+# 全部扩展列表
 
-dhtmlxGantt 提供了多种扩展功能，用于增强基础功能。
+dhtmlxGantt 包含一组扩展，用于在标准行为的基础上添加额外功能。
 
-要启用某个扩展，只需通过 [gantt.plugins](api/method/plugins.md) 方法激活相应插件。
+要使用扩展，应通过 [gantt.plugins](api/method/plugins.md) 方法来激活插件。
 
-## 高级拖放
+## 高级拖拽
 
-此扩展允许通过拖放来创建和选择任务。
+提供通过拖拽创建和选择任务的功能。
 
 ~~~js
 gantt.plugins({
@@ -21,22 +21,19 @@ gantt.plugins({
 
 #### 相关资源
 
-文章: [DnD로 작업 생성/선택하기](guides/advanced-dnd.md)
+文章：[通过 Drag and Drop 创建/选择任务](guides/advanced-dnd.md)
 
+API： [click_drag](api/config/click_drag.md)
 
-API: [click_drag](api/config/click_drag.md)
+示例：[通过拖放创建新任务](https://docs.dhtmlx.com/gantt/samples/02_extensions/24_click_drag.html)
 
-
-[Create new tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/24_click_drag.html)
-
-
-## 自动排程
+## 自动排程 {#autoscheduling}
 
 :::note
 此扩展仅在 PRO 版本中可用
 :::
 
-该功能会根据任务之间的依赖关系自动进行任务排程。
+允许你根据任务之间的关系自动对任务进行排程。
 
 ~~~js
 gantt.plugins({
@@ -46,22 +43,20 @@ gantt.plugins({
 
 #### 相关资源
 
-文章: [자동 스케줄링](guides/auto-scheduling.md)
+文章：[Auto Scheduling](guides/auto-scheduling.md)
 
+API： [auto_scheduling](api/config/auto_scheduling.md)
 
-API: [auto_scheduling](api/config/auto_scheduling.md)
+示例：[Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
-
-[Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
-
-
-## 关键路径
+## 关键路径 {#critical-path}
 
 :::note
 此扩展仅在 PRO 版本中可用
 :::
 
-显示必须按时完成以避免项目整体延期的任务序列，同时展示项目的最短工期。
+展示一组不能被延迟而不影响整个项目截止日期的任务序列。
+关键路径也决定了项目可能达到的最短完成时间。
 
 ~~~js
 gantt.plugins({
@@ -71,18 +66,15 @@ gantt.plugins({
 
 #### 相关资源
 
-文章: [Critical Path](guides/critical-path.md)
+文章：[关键路径](guides/critical-path.md)
 
+API： [highlight_critical_path](api/config/highlight_critical_path.md)
 
-API: [highlight_critical_path](api/config/highlight_critical_path.md)
+示例：[关键路径](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
+## 拖动时间线
 
-[Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
-
-
-## 拖动时间轴
-
-允许通过鼠标拖动来滚动时间轴视图。
+允许通过鼠标拖拽来滚动时间线视图。
 
 ~~~js
 gantt.plugins({
@@ -92,11 +84,9 @@ gantt.plugins({
 
 #### 相关资源
 
-API: [drag_timeline](api/config/drag_timeline.md)
+API： [drag_timeline](api/config/drag_timeline.md)
 
-
-[Drag timeline](https://docs.dhtmlx.com/gantt/samples/02_extensions/27_drag_timeline.html)
-
+示例：[拖动时间线](https://docs.dhtmlx.com/gantt/samples/02_extensions/27_drag_timeline.html)
 
 ## 额外覆盖层
 
@@ -104,7 +94,7 @@ API: [drag_timeline](api/config/drag_timeline.md)
 此扩展仅在 PRO 版本中可用。
 :::
 
-允许在甘特图上添加额外的图层以放置自定义内容。
+提供在甘特图上添加一层额外覆盖层以放置自定义内容的功能。
 
 ~~~js
 gantt.plugins({
@@ -114,29 +104,27 @@ gantt.plugins({
 
 #### 相关资源
 
-文章: [타임라인 영역의 커스텀 요소](guides/baselines.md)
+文章：[Timeline 区域的自定义元素](guides/baselines.md#extra-overlay-for-the-chart)
 
-
-[Gantt chart with overlay and zoom (S-Curve)](https://docs.dhtmlx.com/gantt/samples/02_extensions/21_overlay.html)
-
+示例：[带覆盖层和缩放的甘特图（S-曲线）](https://docs.dhtmlx.com/gantt/samples/02_extensions/21_overlay.html)
 
 ## 导出服务
 
-启用在线导出服务。
+提供启用在线导出服务的能力。
 
 ~~~js
 gantt.plugins({
-      export_api: true
+    export_api: true
 });
 ~~~
 
 #### 相关资源
 
-文章: [데이터 내보내기 및 가져오기](guides/export-common.md)
+文章：[导出与导入数据](guides/export-common.md)
 
-## 全屏显示
+## 全屏 {#fullscreen}
 
-以全屏模式显示甘特图。
+将甘特图显示为全屏模式。
 
 ~~~js
 gantt.plugins({
@@ -146,19 +134,17 @@ gantt.plugins({
 
 #### 相关资源
 
-文章: [전체 화면 모드](guides/fullscreen-mode.md) 
+文章：[全屏模式](guides/fullscreen-mode.md)
 
+示例：[全屏](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
 
-[Full Screen](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
-
-
-## 任务分组
+## 分组
 
 :::note
 此扩展仅在 PRO 版本中可用
 :::
 
-支持按任意任务属性对任务进行分组。
+允许你按任意任务属性对任务进行分组。
 
 ~~~js
 gantt.plugins({
@@ -168,18 +154,15 @@ gantt.plugins({
 
 #### 相关资源
 
-文章: [작업 그룹화](guides/grouping.md)
+文章：[分组任务](guides/grouping.md)
 
+API： [groupBy](api/method/groupby.md)
 
-API: [groupBy](api/method/groupby.md)
+示例：[任务分组](https://docs.dhtmlx.com/gantt/samples/02_extensions/08_tasks_grouping.html)
 
+## 键盘导航 {#keyboardnavigation}
 
-[Tasks grouping](https://docs.dhtmlx.com/gantt/samples/02_extensions/08_tasks_grouping.html)
-
-
-## 键盘导航
-
-支持在甘特图中通过键盘进行导航。
+允许借助键盘对甘特图进行导航。
 
 ~~~js
 gantt.plugins({
@@ -189,15 +172,13 @@ gantt.plugins({
 
 #### 相关资源
 
-文章: [접근성](guides/accessibility.md), [키보드 내비게이션](guides/keyboard-navigation.md)
+文章：[无障碍访问](guides/accessibility.md)，[键盘导航](guides/keyboard-navigation.md)
 
+API： [keyboard_navigation](api/config/keyboard_navigation.md)，[keyboard_navigation_cells](api/config/keyboard_navigation_cells.md)
 
-API: [keyboard_navigation](api/config/keyboard_navigation.md),[keyboard_navigation_cells](api/config/keyboard_navigation_cells.md)
+## 多任务选择 {#multitaskselection}
 
-
-## 多任务选择
-
-支持在甘特图中同时选择多个任务。
+允许一次在甘特图中选择多个任务。
 
 ~~~js
 gantt.plugins({
@@ -207,18 +188,15 @@ gantt.plugins({
 
 #### 相关资源
 
-文章: [멀티 태스크 선택](guides/multiselection.md)
+文章：[多任务选择](guides/multiselection.md)
 
+API： [multiselect](api/config/multiselect.md)
 
-API: [multiselect](api/config/multiselect.md)
-
-
-[Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
-
+示例：[多选与缩进/取消缩进任务](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 ## 快速信息
 
-弹出显示任务详情。
+提供带有任务详情的弹出信息。
 
 ~~~js
 gantt.plugins({
@@ -228,18 +206,15 @@ gantt.plugins({
 
 #### 相关资源
 
-文章: ['Quick Info' 확장(터치 지원)의 템플릿](guides/touch-templates.md), 
+文章：[“快速信息”扩展的模板（触控支持）](guides/touch-templates.md)，
 
+[快速信息（触控支持）](guides/quick-info.md)
 
-[퀵 인포 (터치 지원)](guides/quick-info.md)
-
-
-[QuickInfo extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
-
+示例：[快速信息扩展](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
 
 ## 工具提示
 
-为用户提供补充信息，而不会干扰界面显示。
+为用户添加额外信息的同时避免文本溢出屏幕。
 
 ~~~js
 gantt.plugins({
@@ -249,15 +224,13 @@ gantt.plugins({
 
 #### 相关资源
 
-文章: [Gantt 요소의 툴팁](guides/tooltips.md)
+文章：[甘特元素的工具提示](guides/tooltips.md)
 
-
-[Tooltip](https://docs.dhtmlx.com/gantt/samples/02_extensions/02_tooltip.html)
-
+示例：[工具提示](https://docs.dhtmlx.com/gantt/samples/02_extensions/02_tooltip.html)
 
 ## 撤销
 
-为所做更改提供撤销和重做功能。
+允许你撤销/重做所做的更改。
 
 ~~~js
 gantt.plugins({
@@ -267,18 +240,15 @@ gantt.plugins({
 
 #### 相关资源
 
-文章: [Undo/Redo 기능](guides/undo-redo.md)
+文章：[撤销/重做功能](guides/undo-redo.md)
 
+API： [undo](api/config/undo.md)， [redo](api/config/redo.md)
 
-API: [undo](api/config/undo.md), [redo](api/config/redo.md)
-
-
-[Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
-
+示例：[在甘特图中撤销/重做更改](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
 ## 垂直标记
 
-高亮显示特定日期或日期范围。
+高亮显示某些日期或日期区间。
 
 ~~~js
 gantt.plugins({
@@ -288,11 +258,8 @@ gantt.plugins({
 
 #### 相关资源
 
-文章: [수직 마커 추가하기](guides/markers.md)
+文章：[添加垂直标记](guides/markers.md)
 
+API： [addMarker](api/method/addmarker.md)，[show_markers](api/config/show_markers.md)
 
-API: [addMarker](api/method/addmarker.md),[show_markers](api/config/show_markers.md)
-
-
-[Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
-
+示例：[今日线与状态线在甘特图中（垂直标记）](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)

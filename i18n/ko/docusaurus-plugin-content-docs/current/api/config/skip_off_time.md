@@ -1,7 +1,7 @@
 ---
 sidebar_label: skip_off_time
 title: skip_off_time config
-description: "타임스케일에서 비근무 시간을 숨깁니다"
+description: "근무 시간이 아닌 시간을 타임스케일에서 숨깁니다"
 ---
 
 # skip_off_time
@@ -23,30 +23,30 @@ gantt.config.work_time = true;
 gantt.config.skip_off_time = true; /*!*/
 
 gantt.init("gantt_here");
-~~~
+~~~ 
 
 **Default value:** false
 
 ### Details
 
-**skip_off_time** 설정은 스케일 자체를 변경하지 않고, 근무 시간이 전혀 포함되지 않은 셀을 숨긴다는 점을 기억하세요.
+참고로, **skip_off_time** 설정은 축을 수정하지 않으며 근무 시간이 전혀 없는 셀을 숨깁니다. 
 
-예제 1
+Example 1
 
-00:00부터 23:59까지 하루 단위 스케일이 있고, 근무 시간이 08:00부터 16:59까지이며, 가장 작은 스케일 단위가 1시간이라고 가정합니다. 
-**skip_off_time**이 *true*로 설정되면, 비근무 시간을 나타내는 모든 셀들이 모든 스케일에서 숨겨집니다.  
-즉, 하루 스케일은 사실상 08:00부터 16:59까지 표시됩니다. 하지만 하루 스케일만 표시된다면, 근무 시간이 포함되어 있으므로 00:00부터 23:59까지 변경 없이 표시됩니다.
+하루 스케일은 00:00에 시작해 23:59에 끝나고, 근무 시간은 08:00에 시작해 16:59에 끝납니다. 시간 단위의 최소 스케일을 가지고 있습니다. 
+When the **skip_off_time** config is set to *true*, the cells that have non-working time, will be hidden for all the scales. 
+따라서 하루 스케일은 08:00에 시작해 16:59에 끝납니다. 다만, 하루 스케일만 있다면 변경되지 않습니다.
+하루 스케일이 단독일 경우엔 00:00에 시작해 23:59로 끝납니다. 이는 하루 안에 근무 시간이 포함되어 있기 때문입니다.
 
-예제 2
+Example 2
 
-7일을 포함하는 주 단위 스케일이 있고, 2일은 휴일(예: 토요일과 일요일)이며, 가장 작은 스케일 단위가 하루라고 가정합니다. 
-**skip_off_time**이 *true*로 설정되면 휴일이 숨겨져서 주 스케일은 월요일부터 금요일까지 표시됩니다.  
-하지만 주 스케일만 보이는 경우에는, 주에는 휴일이 포함되므로 **skip_off_time** 설정과 상관없이 월요일부터 일요일까지 표시됩니다.
+주 단위 스케일은 총 7일이며 그 중 2일은 휴무일(예: 토요일과 일요일)입니다. 일 단위의 최소 스케일을 사용 중입니다. When the **skip_off_time** config is set to *true*, the days off
+are hidden and the week scale is rendered from Monday to Friday. 그러나 주 단위 스케일만 있을 경우, 주는 월요일에 시작해 일요일에 끝나며, **skip_off_time** 설정과 무관합니다, 주 안에 휴일이 있기 때문입니다.
 
-비근무 시간을 숨기는 차트를 표시하는 방법은 두 가지가 있습니다:
+비근무 시간이 숨겨진 차트를 렌더링하는 두 가지 방법:
 
-- 더 작은 단위의 스케일을 추가 (예: 하루 스케일 옆에 시간 스케일 추가, 또는 주 스케일 옆에 하루 스케일 추가)
-- 근무 시간 또는 근무 일만 표시하는 [커스텀 스케일](guides/configuring-time-scale.md#customtimeunits) 사용
+- 더 작은 단위의 스케일을 추가하는 방법(일 스케일에 대해 시간 단위 스케일, 주 스케일에 대해 일 단위 스케일 등)
+- [custom scale](guides/configuring-time-scale.md#customtimeunits)를 추가하여 근무 시간/일만 렌더링
 
 :::note
 
@@ -59,5 +59,4 @@ gantt.init("gantt_here");
 - [work_time](api/config/work_time.md)
 
 ### Related Guides
-- [작업 시간 계산](guides/working-time.md)
-
+- [Work Time Calculation](guides/working-time.md)

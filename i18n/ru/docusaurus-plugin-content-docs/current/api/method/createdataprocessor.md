@@ -1,23 +1,23 @@
 ---
 sidebar_label: createDataProcessor
-title: createDataProcessor method
-description: "Создаёт новый экземпляр dataProcessor и связывает его с gantt chart"
+title: метод createDataProcessor
+description: "создает новый экземпляр dataProcessor и присоединяет его к gantt"
 ---
 
 # createDataProcessor
 
 ### Description
 
-@short: Создаёт новый экземпляр dataProcessor и связывает его с gantt chart
+@short: Создает новый экземпляр dataProcessor и присоединяет его к gantt
 
-@signature: createDataProcessor: (config: DataProcessorConfig | RouterFunction | RouterConfig) =\> any
+@signature: createDataProcessor: (config: DataProcessorConfig | RouterFunction | RouterConfig) => any
 
 ### Parameters
 
-- `config` - (required) *DataProcessorConfig | RouterFunction | RouterConfig* -         объект конфигурации для dataProcessor
+- `config` - (required) *DataProcessorConfig | RouterFunction | RouterConfig* - объект конфигурации dataProcessor
 
 ### Returns
-- ` dataProcessor` - (object) - созданный экземпляр dataProcessor
+- `dataProcessor` - (object) - объект dataProcessor
 
 ### Example
 
@@ -30,16 +30,16 @@ var dp = gantt.createDataProcessor({
 ~~~
 
 ### Related samples
-- [Custom data api - using local storage](https://docs.dhtmlx.com/gantt/samples/08_api/22_data_processor.html)
+- [Пользовательский API данных - использование локального хранилища](https://docs.dhtmlx.com/gantt/samples/08_api/22_data_processor.html)
 
 ### Details
 
-Этот метод принимает один из следующих типов параметров:
+The method can take one of the following types of parameters:
 
-- **DataProcessorConfig** - (*object*) - объект, задающий один из предустановленных режимов отправки данных
+- **DataProcessorConfig** - (*object*) - объект, задающий один из предопределённых режимов отправки данных
     - **_url_** - (*string*) - URL сервера
-    - **_mode?_** - (*string*) - необязательный параметр, определяет способ отправки данных: "JSON" | "REST-JSON" | "JSON" | "POST" | "GET"
-    - **_deleteAfterConfirmation?_** - (*boolean*) - необязательный параметр, определяет, будет ли задача удалена из gantt только после подтверждения удаления сервером. Зависимости и подзадачи удаляются после подтверждения удаления родительской задачи.
+    - **_mode?_** - (*string*) - необязательный режим отправки данных на сервер: "JSON" | "REST-JSON" | "JSON" | "POST" | "GET"
+    - **_deleteAfterConfirmation?_** - (*boolean*) - необязательный, определяет, должен ли элемент быть удалён из gantt только после успешного ответа от сервера. Связи зависимостей и подпроекты будут удалены после подтверждения удаления родительской задачи.
 
 
 ~~~js
@@ -51,18 +51,18 @@ var dp = gantt.createDataProcessor({
 ~~~
 
 
-- **RouterFunction (entity, action, data, id): Promise | object | void** - функция роутинга для обработки изменений в Gantt chart
-    - **_entity_** - (*string*) - имя сущности, например "task", "link", "resource" или "assignment"
-    - **_action_** - (*string*) - тип действия: "create", "update" или "delete"
-    - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - обрабатываемый объект
-    - **_id_** - (*string | number*) - id обрабатываемого объекта
+- **RouterFunction (entity, action, data, id): Promise | object | void** - функция-роутер для обработки изменений в Gantt
+    - **_entity_** - (*string*) - имя соответствующей сущности. Возможные значения: "task"|"link"|"resource"|"assignment"
+    - **_action_** - (*string*) - имя соответствующего действия. Возможные значения:  "create"|"update"|"delete"
+    - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - обработанный объект
+    - **_id_** - (*string | number*) - идентификатор обработанного объекта
 
 
 ~~~js
 // entity - "task"|"link"|"resource"|"assignment"
-// action - "create"|"update"|"delete"
-// data - объект с данными задачи или связи
-// id – id обрабатываемого объекта (задачи или связи)
+ // action - "create"|"update"|"delete"
+ // data - an object with task or link data
+ // id – the id of a processed object (task or link)
 var dp = gantt.createDataProcessor(function(entity, action, data, id) { 
     switch(action) {
         case "create":
@@ -87,22 +87,22 @@ var dp = gantt.createDataProcessor(function(entity, action, data, id) {
 ~~~
 
 
-- **RouterConfig** - (*object*) - объект конфигурации роутеров для разных сущностей
-    - **_task?_** - (*RouterForEntity*) - роутер для задач
-    - **_link?_** - (*RouterForEntity*) - роутер для связей
-    - **_resource?_** - (*RouterForEntity*) - роутер для ресурсов
-    - **_assignment?_** - (*RouterForEntity*) - роутер для назначений
+- **RouterConfig** - (*object*) - конфигурация роутера для различных сущностей
+    - **_task?_** - (*RouterForEntity*) - объект роутера для задач
+    - **_link?_** - (*RouterForEntity*) - объект роутера для связей
+    - **_resource?_** - (*RouterForEntity*) - объект роутера для ресурсов
+    - **_assignment?_** - (*RouterForEntity*) - объект роутера для назначений
 
 
-Объект **RouterForEntity** включает следующие методы:
+Объект **RouterForEntity** имеет следующие свойства:
 
-- **create (data): Promise** - функция для обработки добавления элементов
-    - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - добавляемый элемент
-- **update (data, id): Promise** - функция для обработки обновления элементов
-    - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - обновляемый элемент
-    - **_id_** - (*string | number*) - id элемента
-- **delete (id): Promise** - функция для обработки удаления элементов
-    - **_id_** - (*string | number*) - id элемента
+- **create (data): Promise** - функция обработки добавления элементов
+    - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - обрабатываемый элемент
+- **update (data, id): Promise** - функция обработки обновления элементов
+    - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - обрабатываемый элемент
+    - **_id_** - (*string | number*) - идентификатор обрабатываемого элемента
+- **delete (id): Promise** - функция обработки удаления элементов
+    - **_id_** - (*string | number*) - идентификатор обрабатываемого элемента
 
 
 ~~~js
@@ -120,27 +120,29 @@ var dp = gantt.createDataProcessor({
 });
 ~~~
 
-Все функции роутеров должны возвращать либо Promise, либо объект с ответом данных. Это позволяет dataProcessor обновлять id в базе данных и вызывать событие **onAfterUpdate**.
+
+Все функции роутера должны возвращать либо Promise, либо объект ответа данных. Это необходимо для того, чтобы dataProcessor мог применить идентификатор из базы данных и привязать событие **onAfterUpdate** обработчика данных.
 
 ~~~js
 router = function(entity, action, data, id) {
     return new gantt.Promise(function(resolve, reject) {
-        // … некоторая логика
+        // … some logic
         return resolve({tid: databaseId});
      });
 }
 ~~~
 
-Такой подход позволяет использовать DataProcessor для сохранения данных в localStorage или другое хранилище, не привязанное к конкретному URL, либо когда разные серверы обрабатывают создание и удаление объектов.
+
+Таким образом, вы можете использовать DataProcessor для сохранения данных в localStorage, или в любое другое хранилище, не привязанное к конкретному URL, или в случае, если существуют две разных сервера (URL), ответственные за создание и удаление объектов.
 
 
-## Сохранение ресурсов и назначений ресурсов
+## Saving Resources and Resource Assignments
 
-По умолчанию DataProcessor не обрабатывает обновления ресурсов и назначений ресурсов. 
-Вы можете включить эту возможность с помощью [отдельной конфигурации](guides/server-side.md#resources_crud).
+По умолчанию DataProcessor не получает обновления ресурсов и назначений ресурсов. 
+Однако вы можете включить эту возможность через [отдельную конфигурацию](guides/server-side.md#resources_crud).
 
 ### Related Guides
-- [Интеграция с серверной стороной](guides/server-side.md)
+- [Интеграция на стороне сервера](guides/server-side.md)
 
 ### Change log
-- опция **deleteAfterConfirmation** была добавлена в v8.0
+- параметр **deleteAfterConfirmation** добавлен в версии v8.0

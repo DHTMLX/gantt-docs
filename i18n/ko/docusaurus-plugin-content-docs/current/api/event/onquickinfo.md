@@ -1,26 +1,26 @@
 ---
 sidebar_label: onQuickInfo
-title: onQuickInfo event
-description: "팝업 편집 폼이 표시될 때 트리거됩니다."
+title: onQuickInfo 이벤트
+description: "팝업 편집 양식이 나타날 때 발생합니다"
 ---
 
 # onQuickInfo
 
 ### Description
 
-@short: 팝업 편집 폼이 표시될 때 트리거됩니다.
+@short: 팝업 편집 양식이 나타날 때 발생합니다
 
 @signature: onQuickInfo: (taskId: string | number) =\> void;
 
 ### Parameters
 
-- `taskId` - (required) *string | number* - 작업 ID
+- `taskId` - (필수) *string | number* - 작업 ID
 
 ### Example
 
 ~~~jsx
-gantt.attachEvent("onQuickInfo",function(taskId){  
-    // 여기에 코드 작성  
+gantt.attachEvent("onQuickInfo",function(taskId){
+    // 여기에 코드 작성
 });
 ~~~
 
@@ -30,7 +30,7 @@ gantt.attachEvent("onQuickInfo",function(taskId){
 ### Details
 
 :::note
- 이 이벤트는 **Quick Info** 확장의 일부이므로, [quick_info](guides/extensions-list.md#quickinfo) 플러그인을 반드시 활성화하세요. 
+이벤트는 **Quick Info** 확장에 정의되어 있으므로 [quick_info](guides/extensions-list.md#quick-info) 플러그인을 활성화해야 합니다.
 :::
 
 ### Related API
@@ -41,5 +41,4 @@ gantt.attachEvent("onQuickInfo",function(taskId){
 - [onAfterQuickInfo](api/event/onafterquickinfo.md)
 
 ### Related Guides
-- [확장 기능 전체 목록](guides/extensions-list.md#quickinfo)
-
+- [Full List of Extensions](guides/extensions-list.md#quick-info)

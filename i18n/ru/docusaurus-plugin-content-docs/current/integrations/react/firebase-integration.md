@@ -1,80 +1,106 @@
 ---
-title: "dhtmlxReactGantt and Firebase Integration"
-sidebar_label: "Быстрый старт с Firebase"
+title: Интеграция React Gantt и Firebase
+sidebar_label: Быстрый старт Firebase
+description: "Создайте диаграмму Gantt на React с синхронизацией в реальном времени через Firebase Firestore"
 ---
 
-# dhtmlxReactGantt and Firebase Integration
+# Интеграция React Gantt и Firebase
 
-This tutorial describes how to build a [React Gantt](integrations/react.md) chart that synchronizes task and link data across multiple clients 
-in real time using Firebase Firestore. This functionality is especially useful for:
+Этот учебник описывает, как создать диаграмму [React Gantt](integrations/react.md), которая синхронизирует данные задач и связей между несколькими клиентами в реальном времени с помощью Firebase Firestore. Эта функциональность особенно полезна для:
 
-- project management tools
-- team collaboration apps
-- scheduling platforms where multi-user synchronization is critical
+- инструментов управления проектами
+- приложений для командной работы
+- платформ планирования, где критически важна синхронизация нескольких пользователей
 
-You'll learn how to:
+Вы узнаете, как:
 
-- set up Firebase for real-time updates
-- initialize and render the Gantt chart
-- handle CRUD operations (create, read, update, delete) with live synchronization
-- efficiently process real-time changes in the Gantt state
+- настроить Firebase для обновлений в реальном времени
+- инициализировать и отрисовать Gantt
+- обрабатывать CRUD-операции (создание, чтение, обновление, удаление) с живой синхронизацией
+- эффективно обрабатывать изменения в реальном времени в состоянии Gantt
 
-You can check the corresponding example on GitHub: [DHTMLX React Gantt with Firebase Firestore Demo](https://github.com/DHTMLX/firebase-react-gantt-demo).
+Вы можете проверить соответствующий пример на GitHub: [DHTMLX React Gantt with Firebase Firestore Demo](https://github.com/DHTMLX/firebase-react-gantt-demo).
 
-## Step 1: Project setup
+## Шаг 1: Настройка проекта
 
-Start by creating a React + Vite project. Install the required dependencies as follows:
+Начните с создания проекта на React + Vite. 
 
-~~~js
-npm install @dhx/trial-react-gantt firebase
+Чтобы создать проект на React и перейти в каталог проекта, выполните следующие команды:
+
+~~~bash
+npm create vite@latest react-gantt-firebase -- --template react-ts
+cd react-gantt-firebase
 ~~~
 
-## Step 2: Configure Firebase
+Установите необходимые зависимости следующим образом:
 
-First, create a Firebase project by implementing the following steps:
+~~~js
+npm install firebase
+~~~
 
-- go to the Firebase Console
-- click **Create a project**
-- enter the project name (e.g., `react-gantt-firebase`) and follow the setup prompts
+### Установка React Gantt
 
-Then set up Firestore by completing the steps below:
+Установите React Gantt, как описано в [руководстве по установке React Gantt](integrations/react/installation.md).
 
-- navigate to **Firestore Database** in your Firebase project dashboard 
-- click **Create database**
-- select your preferred location
-- start in the **test mode** for ease during development (remember to configure the security rules before production)
-- click **Create**
+В этом примере мы используем пакет для оценки:
 
-After that, register your web app in the following way:
+~~~bash
+npm install @dhtmlx/trial-react-gantt
+~~~
 
-- select **Project Overview** in the Firebase Console sidebar
-- click the web app icon `</>` to register a new web app
-- provide the app nickname (e.g., `react-gantt-firebase`)
-- enable Firebase Hosting
-- click **Register app**
-- copy the generated Firebase configuration (you'll use it in your project)
+или
 
-Finally, configure Firebase in your project as described below:
+~~~bash
+yarn add @dhtmlx/trial-react-gantt
+~~~
 
-- paste your Firebase configuration into the `.env` file in the following way:
+Если вы уже используете Professional-пакет, замените `@dhtmlx/trial-react-gantt` на `@dhx/react-gantt` в командах и импортов.
+
+## Шаг 2: Настройка Firebase
+
+Сначала создайте проект Firebase, выполнив следующие шаги:
+
+- перейдите в Firebase Console
+- нажмите **Create a project**
+- введите имя проекта (например, `react-gantt-firebase`) и следуйте подсказкам по настройке
+
+Затем настройте Firestore, выполнив шаги ниже:
+
+- перейдите в **Firestore Database** в панели управления вашим проектом Firebase
+- нажмите **Create database**
+- выберите желаемое расположение
+- начните в режиме **test mode** для упрощения разработки (не забудьте настроить правила безопасности перед продакшеном)
+- нажмите **Create**
+
+После этого зарегистрируйте ваше веб-приложение следующим образом:
+
+- выберите **Project Overview** в боковой панели Firebase Console
+- нажмите значок веб-приложения `</>` для регистрации нового веб-приложения
+- укажите псевдоним приложения (например, `react-gantt-firebase`)
+- включите Firebase Hosting
+- нажмите **Register app**
+- скопируйте сгенерированную конфигурацию Firebase (она понадобится в вашем проекте)
+
+Наконец, настройте Firebase в вашем проекте, как описано ниже:
+
+- вставьте конфигурацию Firebase в файл `.env` следующим образом:
 
 ~~~js
 VITE_FIREBASE_CONFIGURATION = {
-	"apiKey": "YOUR_API_KEY",
-	"authDomain":"react-gantt-firebase.firebaseapp.com",
-	"projectId": "react-gantt-firebase",
-	"storageBucket": "react-gantt-firebase.firebasestorage.app",
-	"messagingSenderId": "693536970600",
-	"appId": "1:693536970600:web:1b3fa4e4b032acaab368dd"
+    "apiKey": "YOUR_API_KEY",
+    "authDomain":"react-gantt-firebase.firebaseapp.com",
+    "projectId": "react-gantt-firebase",
+    "storageBucket": "react-gantt-firebase.firebasestorage.app",
+    "messagingSenderId": "693536970600",
+    "appId": "1:693536970600:web:1b3fa4e4b032acaab368dd"
 }
 ~~~
 
 :::note
- Replace the `YOUR_API_KEY` placeholder with your actual Firebase project credentials.
+ Замените плейсхолдер `YOUR_API_KEY` на реальные учетные данные вашего проекта Firebase.
 :::
 
-- create a new file **firebase.ts** and initialize Firebase and Firestore. Also, export references to collections, as shown below:
-
+- создайте новый файл **firebase.ts** и инициализируйте Firebase и Firestore. Также экспортируйте ссылки на коллекции, как показано ниже:
 
 ~~~js title=firebase.ts
 import { initializeApp } from "firebase/app";
@@ -92,95 +118,88 @@ const linksQuery = query(linksCollection);
 export { db, tasksQuery, linksQuery, tasksCollection, linksCollection };
 ~~~
 
-## Step 3: Create the Gantt component
+## Шаг 3: Создайте компонент Gantt
 
-To begin with, set up the core Gantt component with [**React state** for tasks and links](integrations/react.md#bindingdata) with the following configuration: 
+Для начала настройте основной компонент Gantt с [**React state** для задач и связей](integrations/react/overview.md#bindingdata) со следующей конфигурацией:
 
 ~~~js
 const [tasks, setTasks] = useState<Task[]>([]);
 const [links, setLinks] = useState<Link[]>([]);
 
 const templates: GanttTemplates = {
-	parse_date: (date) => new Date(date),
-	format_date: (dateString) => dateString.toISOString(),
+    parse_date: (date) => new Date(date),
+    format_date: (dateString) => dateString.toISOString(),
 };
 
 const config: GanttConfig = {
-	auto_scheduling: true,
+    auto_scheduling: true,
 };
 ~~~
 
-In the snippet above:
+В приведённом выше фрагменте:
 
 - **Templates**
 
-Templates allow us to control how dates are parsed and formatted inside the Gantt component. 
-Since Firestore stores dates as strings, we need to convert them back to `Date` objects ([parse_date](api/template/parse_date.md)) and correctly format them for storage ([format_date](api/template/format_date.md)).
+Шаблоны позволяют контролировать, как даты парсятся и форматируются внутри компонента Gantt. Поскольку Firestore хранит даты в виде строк, нам нужно преобразовать их обратно в объекты `Date` ([parse_date](api/template/parse_date.md)) и корректно форматировать их для хранения ([format_date](api/template/format_date.md)).
 
 - **Config**
 
-The `auto_scheduling` option enables automatic recalculation of dependent tasks when a parent task is moved or changed.
-This is useful for project management scenarios.
+Опция `auto_scheduling` включает автоматическую перерасчёт зависимых задач, когда родительская задача перемещается или изменяется. Это полезно в сценариях управления проектами.
 
-Now, create **state handlers** to manage the Gantt's internal state as in:
+Теперь создайте **обработчики состояния** для управления внутренним состоянием Gantt, как показано ниже:
 
 ~~~js
 const createStateHandlers = <T extends { id: string | number }>(
-	setState: React.Dispatch<React.SetStateAction<T[]>>
+    setState: React.Dispatch<React.SetStateAction<T[]>>
 ): EntityHandler<T> => ({
-	added: (item) => setState((prev) => (prev.find((i) => i.id === 
-item.id) ? prev : [...prev, item])),
-	modified: (item) => setState((prev) => prev.map((i) => (i.id === 
-item.id ? { ...i, ...item } : i))),
-	removed: (item) => setState((prev) => prev.filter((i) => i.id !== 
-item.id)),
+    added: (item) => setState((prev) => (prev.find((i) => i.id === item.id) ? prev : [...prev, item])),
+    modified: (item) => setState((prev) => prev.map((i) => (i.id === item.id ? { ...i, ...item } : i))),
+    removed: (item) => setState((prev) => prev.filter((i) => i.id !== item.id)),
 });
 
 const taskHandlers = createStateHandlers<Task>(setTasks);
 const linkHandlers = createStateHandlers<Link>(setLinks);
 ~~~
 
-This provides a unified way to update local state when Firebase data changes.
+Это обеспечивает единый способ обновления локального состояния при изменениях данных Firebase.
 
-Since, we are working with two types of entities - tasks and links, we can create a unified configuration
-object to handle both instead of duplicating the code. 
-This object maps each entity type to its Firestore collection, API path, and state handlers. Check the code snippet below:
+Поскольку мы работаем с двумя типами сущностей — задачами и связями, можно создать единый конфигурационный объект, который будет обрабатывать оба типа вместо дублирования кода. Этот объект сопоставляет каждому типу сущности его коллекцию Firestore, путь API и обработчики состояния. Смотрите следующий фрагмент кода:
 
 ~~~js
 const entityConfig = {
-	task: {
-		collection: tasksCollection,
-		path: "tasks",
-		handlers: taskHandlers,
-	},
-	link: {
-		collection: linksCollection,
-		path: "links",
-		handlers: linkHandlers,
-	},
+    task: {
+        collection: tasksCollection,
+        path: "tasks",
+        handlers: taskHandlers,
+    },
+    link: {
+        collection: linksCollection,
+        path: "links",
+        handlers: linkHandlers,
+    },
 };
 ~~~
 
-### Project Structure Overview
+### Обзор структуры проекта
 
-You can check the overview of the resulting project structure in the following scheme:
+Вы можете посмотреть итоговую структуру проекта в следующей схеме:
 
 ~~~
 src/
-├── App.tsx                 # Entry point
-├── App.css                 # Styles
+├── App.tsx                 # Точка входа
+├── App.css                 # Стили
 ├── components/
 │   └── Gantt/
-│       ├── Gantt.tsx       # Main logic
-│       └── types.ts        # Type declarations
+│       ├── Gantt.tsx       # Основная логика
+│       └── types.ts        # Определения типов
 ├── config/
-│   └── firebase.ts         # Firebase setup
-└── main.tsx                # React root
+│   └── firebase.ts         # Настройка Firebase
+└── main.tsx                # Корень React
 ~~~
 
-## Step 4: Load initial data
+## Шаг 4: Загрузка начальных данных
 
-When the component mounts, you should load all tasks and links like this:
+Когда компонент монтируется, следует загрузить все задачи и связи следующим образом:
 
 ~~~js
 useEffect(() => {
@@ -206,51 +225,51 @@ useEffect(() => {
         if (unsubscribeLinks) unsubscribeLinks();
     };
 }, []);
-~~~
+~~~ 
 
-To convert Firebase documents to Gantt-compatible objects, use `processEntity` as provided below:
+Чтобы преобразовать документы Firebase в объекты, совместимые с Gantt, используйте `processEntity`, как приведено ниже:
 
 ~~~js
 const processEntity = (docSnapshot: QueryDocumentSnapshot): Task | Link => {
-	return { ...docSnapshot.data(), id: docSnapshot.id };
+    return { ...docSnapshot.data(), id: docSnapshot.id };
 };
 ~~~
 
-## Step 5: Set up real-time synchronization
+## Шаг 5: Настройка синхронизации в реальном времени
 
-Use Firebase's `onSnapshot` to subscribe to changes in both collections and unsubscribe when the component is unmounted:
+Используйте `onSnapshot` Firebase для подписки на изменения в обеих коллекциях и отписывайтесь, когда компонент будет размонтирован:
   
 ~~~js  
 function watchRealtime() {
     let tasksLoaded = false;
-	let linksLoaded = false;
+    let linksLoaded = false;
 
-	const unsubscribeTasks = onSnapshot(tasksQuery, (querySnapshot) => {
+    const unsubscribeTasks = onSnapshot(tasksQuery, (querySnapshot) => {
         if (!tasksLoaded) {
-	       tasksLoaded = true;
-	       return;
+            tasksLoaded = true;
+            return;
         }
 
-	   handleRealtimeUpdates(querySnapshot, "task");
-	});
+        handleRealtimeUpdates(querySnapshot, "task");
+    });
 
-	const unsubscribeLinks = onSnapshot(linksQuery, (querySnapshot) => {
+    const unsubscribeLinks = onSnapshot(linksQuery, (querySnapshot) => {
         if (!linksLoaded) {
             linksLoaded = true;
             return;
         }
         handleRealtimeUpdates(querySnapshot, "link");
-	});
+    });
 
-	return { unsubscribeTasks, unsubscribeLinks };
+    return { unsubscribeTasks, unsubscribeLinks };
 }
 ~~~
 
-The first `onSnapshot` call returns the initial data, not the changes, that's why in `watchRealtime` we ignore the first call (since we've already loaded the initial data).
+ Первый вызов `onSnapshot` возвращает начальные данные, изменения — нет, поэтому в `watchRealtime` мы игнорируем первый вызов (поскольку начальные данные уже загружены).
 
-### Processing real-time updates
+### Обработка изменений в реальном времени
 
-You can process the real-time updates using the function specified in the following code sample:
+Вы можете обрабатывать изменения в реальном времени с помощью функции, приведённой в следующем примере кода:
 
 ~~~js
 function handleRealtimeUpdates(querySnapshot: QuerySnapshot, type: GanttEntityType) {
@@ -269,19 +288,18 @@ function handleRealtimeUpdates(querySnapshot: QuerySnapshot, type: GanttEntityTy
 }
 ~~~
 
-This method ensures that only the server-confirmed changes are processed, avoiding local duplication.
+Этот метод гарантирует обработку только подтверждённых сервером изменений, исключая локальное дублирование.
 
-`docChanges()` returns the list of changes (added, modified, removed) that have been made in the Firestore collection since the last snapshot. Firestore provides the type of change (`added`, `modified`, `removed`), and we route it to the 
-corresponding handler to update the React state.
+`docChanges()` возвращает список изменений (added, modified, removed), внесённых в коллекцию Firestore с момента последнего снимка. Firestore предоставляет тип изменения (`added`, `modified`, `removed`), и мы маршрутизируем его к соответствующему обработчику для обновления состояния React.
 
-## Step 6: Implement CRUD operations with Firebase
+## Шаг 6: Реализация операций CRUD с Firebase
 
-To handle the create, update, and delete requests from the Gantt component, use the logic of the `data.save` method which is given below:
+Чтобы обрабатывать запросы на создание, обновление и удаление из компонента Gantt, используйте логику метода `data.save`, приведённой ниже:
 
 ~~~js
 const data = {
     save: async (
-    	entity: GanttEntityType, 
+        entity: GanttEntityType, 
         action: GanttActionType, 
         raw: any, id: string | number
     ) => {
@@ -318,15 +336,15 @@ const data = {
 };
 ~~~
 
-Firebase will automatically propagate these changes to all connected clients via the snapshot listeners.
+Firebase будет автоматически распространять эти изменения на всех подключённых клиентов с помощью слушателей снимков.
 
-Then, render the Gantt Chart with the following code:
+Затем отобразите диаграмму Gantt следующем коде:
 
 ~~~js
 return (
     <div style={{ height: "100%", display: "flex", flexDirection: "column" }}>
         <ReactGantt 
-        	tasks={tasks} 
+            tasks={tasks} 
             links={links} 
             templates={templates} 
             config={config} 
@@ -336,82 +354,81 @@ return (
 );
 ~~~
 
-The `data` prop connects Gantt's built-in editing to the Firebase save logic provided above.
+Свойство `data` соединяет встроенное редактирование Gantt с логикой сохранения Firebase, приведённой выше.
 
-## Step 7: Deploying the project to Firebase
+## Шаг 7: Развертывание проекта в Firebase
 
-Once your project is fully working and real-time synchronization is functioning correctly, you can deploy it to make it publicly accessible on the web. There are two ways to deploy the project you can choose from: via the Firebase CLI and via the Firebase console.
+Как только проект будет полностью работоспособен и синхронизация в реальном времени функционирует корректно, вы можете развернуть его, чтобы он стал общедоступным в интернете. Есть два способа развернуть проект: через Firebase CLI и через консоль Firebase.
 
-### Deployment via the Firebase CLI (Recommended)
+### Развертывание через Firebase CLI (Рекомендуется)
 
-This is the most efficient method, especially if you plan to update your project regularly. Follow the steps below:
+Это самый эффективный метод, особенно если вы планируете регулярно обновлять проект. Выполните следующие шаги:
 
-1\. First, if you haven't installed the Firebase CLI yet, install it using the following command:
+1\. Сначала, если CLI Firebase ещё не установлен, установите его с помощью команды:
 
-~~~
+~~~ 
 npm install -g firebase-tools
 ~~~ 
 
-2\. Then, log in to Firebase by using the command given below:
+2\. Затем выполните вход в Firebase с помощью следующей команды:
 
-~~~
+~~~ 
 firebase login
-~~~
+~~~ 
 
-3\. After that, initialize Firebase in your project with the following command:
+3\. После этого инициализируйте Firebase в вашем проекте следующей командой:
 
-~~~
+~~~ 
 firebase init
-~~~
+~~~ 
 
-During the initialization complete the steps provided below:
+Во время инициализации выполните следующие шаги:
 
-- select *Hosting* (you can also select Firestore, if you haven't configured it yet)
-- specify the build folder (for example, `dist` or `build`, depending on your `vite.config.ts` or `package.json` setup)
-- when asked about configuring as a Single Page App (SPA), choose *Yes* to ensure all routes are handled via `index.html`
+- выберите Hosting (также можно выбрать Firestore, если вы ещё не настроили его)
+- укажите папку сборки (например, `dist` или `build`, в зависимости от вашего `vite.config.ts` или `package.json`)
+- при вопросе об конфигурации как SPA (Single Page App) выберите Yes, чтобы все маршруты обслуживались через `index.html`
 
-4\. Now, build the project using this code line:
+4\. Теперь соберите проект следующей командой:
 
-~~~
+~~~ 
 npm run build
-~~~
+~~~ 
 
-It will generate the production-ready files in the `dist` (or `build`) folder.
+Он сгенерирует готовые к продакшн-использованию файлы в папке `dist` (или `build`).
 
-5\. Finally, you can deploy to Firebase by running the following code line:
+5\. Наконец, разверните в Firebase, выполнив следующую команду:
 
-~~~
+~~~ 
 firebase deploy
-~~~
+~~~ 
 
-After deployment has finished, Firebase will provide you with a link to your hosted project.
+После завершения развертывания Firebase предоставит вам ссылку на размещённый проект.
 
-### Quick deployment via Firebase Console
+### Быстрое развёртывание через Firebase Console
 
-If you prefer to quickly publish the app without using the CLI, you can do it directly through the Firebase Console.
-These are the steps you need to complete:
+Если вы предпочитаете быстро опубликовать приложение без использования CLI, сделайте это напрямую через Firebase Console.
+Выполните следующие шаги:
 
-1\. Build the project by running the code line below:
+1\. Соберите проект, выполнив команду ниже:
 
-~~~
+~~~ 
 npm run build
-~~~
+~~~ 
 
-2\. Go to Firebase Hosting → Your Project → Hosting
+2\. Перейдите в Firebase Hosting → Ваш проект → Hosting
 
-3\. Click "Get Started" or "Upload"
+3\. Нажмите "Get Started" или "Upload"
 
-4\. Upload the contents of the `dist` (or `build`) folder
+4\. Загрузите содержимое папки `dist` (или `build`)
 
-5\. Confirm the upload and Firebase will provide you with a public URL for your site
+5\. Подтвердите загрузку — Firebase предоставит вам публикуемый URL для вашего сайта
 
-## Conclusion
+## Заключение
 
-In this tutorial we've built a real-time Gantt chart with Firebase synchronization. You've learned how to:
+В этом руководстве мы создали реальную диаграмму Gantt с синхронизацией через Firebase. Вы узнали, как:
 
-- connect React Gantt to Firebase Firestore
-- set up real-time subscriptions to Firestore
-- handle the create, update, and delete events with instant multi-client synchronization
+- подключить React Gantt к Firebase Firestore
+- настроить подписку в реальном времени на Firestore
+- обрабатывать события создания, обновления и удаления с мгновенной синхронизацией между несколькими клиентами
 
-This approach is perfect for collaborative project management tools, where all users need to see live updates without refreshing the page.
-
+Такой подход идеально подходит для совместных инструментов управления проектами, где всем пользователям нужно видеть живые обновления без обновления страницы.

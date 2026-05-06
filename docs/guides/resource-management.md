@@ -269,7 +269,7 @@ It is also possible to initialize the data store manually with the help of the [
 const resourcesStore = gantt.createDatastore({
     name: gantt.config.resource_store,
     // Use treeDatastore if you have hierarchical resources (e.g. workers/departments),
-    // skip the "type" if you have a flat structure
+    // skip the "type" if you have a flat structure when you don't use the assignments or render everything manually
     type: "treeDatastore",
     initItem: item => {
         item.parent = item.parent || gantt.config.root_id;

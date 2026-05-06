@@ -14,9 +14,8 @@ description: "添加一个新的键盘快捷键"
 
 ### Parameters
 
-- `shortcut` - (required) *string* - 用于快捷键的按键或按键组合 ([快捷键语法](guides/keyboard-navigation.md))
-- `handler` - (required) *function* - 当快捷键触发时执行的函数
-- `scope` - (optional) *string* - 可选，指定处理函数绑定的上下文元素 ([作用域列表](guides/keyboard-navigation.md))；默认为 "gantt"
+- `shortcut` - (required) *string* - 快捷键的按键名称，或快捷键组合的名称 [快捷键语法](guides/keyboard-navigation.md#shortcutsyntax)
+- `handler` - (required) *function* - 快捷键调用的处理函数
 
 ### Example
 
@@ -29,18 +28,18 @@ gantt.addShortcut("shift+w", function(e){
 ~~~
 
 ### Related samples
-- [Keyboard Navigation](https://docs.dhtmlx.com/gantt/samples/02_extensions/16_keyboard_navigation.html)
-- [Keyboard Navigation - navigate cells](https://docs.dhtmlx.com/gantt/samples/02_extensions/17_keyboard_navigation_cell.html)
+- [键盘导航](https://docs.dhtmlx.com/gantt/samples/02_extensions/16_keyboard_navigation.html)
+- [键盘导航 - 导航单元格](https://docs.dhtmlx.com/gantt/samples/02_extensions/17_keyboard_navigation_cell.html)
 
 ### Details
 
 :::note
-此方法属于 **keyboard_navigation** 扩展，因此必须启用 [keyboard_navigation](guides/extensions-list.md) 插件。更多详情请参见 [键盘导航](guides/keyboard-navigation.md) 文章。 
+此方法定义在 **keyboard_navigation** 扩展中，因此您需要启用 [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) 插件。请在 [Keyboard Navigation](guides/keyboard-navigation.md) 文章中查看详细信息。
 :::
 
-自版本 4.1 起添加
+added in version 4.1
 
-如果省略第三个参数，处理函数默认绑定到 gantt 作用域。
+在版本 4.1 中新增
 
 ### Related API
 - [getShortcutHandler](api/method/getshortcuthandler.md)
@@ -51,4 +50,3 @@ gantt.addShortcut("shift+w", function(e){
 
 ### Related Guides
 - [键盘导航](guides/keyboard-navigation.md)
-

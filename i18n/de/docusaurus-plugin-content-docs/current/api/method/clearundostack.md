@@ -1,14 +1,14 @@
 ---
 sidebar_label: clearUndoStack
 title: clearUndoStack method
-description: "leert den Stapel der gespeicherten Undo-Befehle"
+description: "löscht den Stapel der gespeicherten Undo-Befehle"
 ---
 
 # clearUndoStack
 
 ### Description
 
-@short: Leert den Stapel der gespeicherten Undo-Befehle
+@short: Löscht den Stapel der gespeicherten Undo-Befehle
 
 @signature: clearUndoStack: () =\> void
 
@@ -24,7 +24,7 @@ gantt.clearUndoStack();
 ### Details
 
 :::note
- Diese Methode ist Teil der **undo**-Erweiterung. Stellen Sie daher sicher, dass das [undo](guides/extensions-list.md#undo) Plugin aktiviert ist. Weitere Details finden Sie im Artikel ["Undo/Redo-Funktionalität"](guides/undo-redo.md). 
+Diese Methode ist in der **undo** Erweiterung definiert, daher müssen Sie das [undo](guides/extensions-list.md#undo) Plugin aktivieren. Lesen Sie die Details im Artikel [Undo/Redo Functionality](guides/undo-redo.md).
 :::
 
 ### Related API
@@ -33,8 +33,7 @@ gantt.clearUndoStack();
 - [getUndoStack](api/method/getundostack.md)
 
 ### Related Guides
-- ["Undo/Redo-Funktionalität"](guides/undo-redo.md)
+- [Undo/Redo Functionality](guides/undo-redo.md)
 
 ### Change log
 - hinzugefügt in Version 5.2
-

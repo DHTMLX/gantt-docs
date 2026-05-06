@@ -45,6 +45,8 @@ import { Component } from '@angular/core';
 import {
   DhxGanttComponent,
   type AngularGanttDataConfig,
+  type SerializedTask,
+  type SerializedLink,
 } from '@dhtmlx/trial-angular-gantt';
 
 @Component({
@@ -53,8 +55,8 @@ import {
   template: `<dhx-gantt [tasks]="tasks" [links]="links" [data]="dataConfig"></dhx-gantt>`,
 })
 export class GanttPageComponent {
-  tasks = [] as any[];
-  links = [] as any[];
+  tasks: SerializedTask[] = [];
+  links: SerializedLink[] = [];
 
   dataConfig: AngularGanttDataConfig = {
     save: (entity, action, item, id) => {

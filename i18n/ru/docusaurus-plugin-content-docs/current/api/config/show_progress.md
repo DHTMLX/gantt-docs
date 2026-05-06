@@ -1,14 +1,14 @@
 ---
 sidebar_label: show_progress
-title: show_progress config
-description: "позволяет отображать прогресс внутри task bars"
+title: конфигурация show_progress
+description: "включает отображение прогресса внутри полос задач"
 ---
 
 # show_progress
 
 ### Description
 
-@short: Позволяет отображать прогресс внутри task bars
+@short: Позволяет отображать прогресс внутри полос задач
 
 @signature: show_progress: boolean
 
@@ -20,7 +20,7 @@ gantt.config.show_progress = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Related Guides
-- [Загрузка данных](guides/loading.md#loadingspinner)
+- [Загрузка данных](guides/loading.md)

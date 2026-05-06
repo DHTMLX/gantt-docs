@@ -1,14 +1,14 @@
 ---
 sidebar_label: resetLightbox
-title: resetLightbox method
-description: "移除当前 lightbox 的 HTML 对象元素"
+title: resetLightbox 方法
+description: "移除当前 lightbox 的 HTML object 元素"
 ---
 
 # resetLightbox
 
 ### Description
 
-@short: 移除当前 lightbox 的 HTML 对象元素
+@short: 移除当前 lightbox 的 HTML object 元素
 
 @signature: resetLightbox: () =\> void
 
@@ -37,4 +37,4 @@ gantt.attachEvent("onBeforeLightbox", function(task_id) {
 
 ### Details
 
-此方法用于动态更新 lightbox 的配置。它会移除现有的 lightbox HTML 元素，从而允许根据当前配置创建一个全新的 lightbox。
+方法可用于动态更改 lightbox 的配置：通过调用此方法来删除当前的 lightbox 对象，并根据 lightbox 配置重新生成一个新的对象。

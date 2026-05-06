@@ -8,7 +8,7 @@ description: "사용 가능한 skin 객체들을 제공합니다"
 
 ### Description
 
-@short: 사용 가능한 skin 객체들을 제공합니다
+@short: 사용 가능한 스킨의 객체를 반환합니다
 
 @signature: skins: any
 
@@ -22,5 +22,4 @@ gantt.skins; //->{skyblue: Object, meadow: Object, terrace: Object, broadway: Ob
 - [skin](api/other/skin.md)
 
 ### Related Guides
-- [스킨(Skins)](guides/skins.md)
-
+- [Skins](guides/skins.md)

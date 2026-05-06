@@ -233,12 +233,18 @@ table {
 table th:first-child {
   width: 25%;
 }
+.msp-properties {
+    overflow-x: auto;
+}
 .msp-properties table th {
     display: none;
-} 
-.msp-task-properties table th:first-child {
+}
+.msp-ext-properties {
+    overflow-x: auto;
+}
+.msp-ext-properties table th:first-child {
     width: 10%;
-} 
+}
 /* end styles for tables */
 
 /* styles for infoblock */

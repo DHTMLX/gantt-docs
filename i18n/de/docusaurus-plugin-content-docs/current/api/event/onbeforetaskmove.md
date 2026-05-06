@@ -1,25 +1,25 @@
 ---
 sidebar_label: onBeforeTaskMove
-title: onBeforeTaskMove event
-description: "wird ausgelöst kurz bevor sich die vertikale Position einer Aufgabe ändert"
+title: onBeforeTaskMove-Ereignis
+description: "wird ausgelöst, bevor eine Aufgabe in eine neue vertikale Position verschoben wird"
 ---
 
 # onBeforeTaskMove
 
 ### Description
 
-@short: Wird ausgelöst kurz bevor sich die vertikale Position einer Aufgabe ändert
+@short: Wird ausgelöst, bevor eine Aufgabe in eine neue vertikale Position verschoben wird
 
 @signature: onBeforeTaskMove: (id: string | number, parent: string | number, tindex: number) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die ID der verschobenen Aufgabe
-- `parent` - (required) *string | number* - die ID des neuen übergeordneten Elements
-- `tindex` - (required) *number* - der neue Positionsindex innerhalb des übergeordneten Zweigs
+- `id` - (required) *string | number* - die ID der zu verschiebenden Aufgabe
+- `parent` - (required) *string | number* - die Eltern-ID
+- `tindex` - (required) *number* - der Index der Position im Elternzweig, zu dem die Aufgabe verschoben wird
 
 ### Returns
-- ` result` - (boolean) - gibt an, ob die Standardaktion des Events fortgesetzt werden soll (<b>true</b>) oder abgebrochen wird (<b>false</b>)
+- ` result` - (boolean) - definiert, ob die Standardaktion des Ereignisses ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
@@ -35,14 +35,13 @@ gantt.attachEvent("onBeforeTaskMove", function(id, parent, tindex){
 
 ### Details
 
-Dieses Event kann blockiert werden. Wenn *false* zurückgegeben wird, wird das Verschieben der Aufgabe verhindert.
+Das Ereignis ist blockierbar. Geben Sie *false* zurück, um das Verschieben der Aufgabe zu verhindern.
 
-Beachte, dass dieses Event in zwei Szenarien ausgelöst wird:
+Beachten Sie, dass das Ereignis in zwei Fällen ausgelöst wird:
 
-1. Wenn die Methode [moveTask](api/method/movetask.md) aufgerufen wird
-2. Wenn die Option [order_branch](api/config/order_branch.md) mit der Standardeinstellung (*gantt.config.order_branch = true;*) aktiv ist und ein Nutzer Aufgaben per Drag & Drop verschiebt
+1. Beim Aufruf der Methode [moveTask](api/method/movetask.md) 
+2. Wenn die Option [order_branch](api/config/order_branch.md) im Standardmodus aktiviert ist (*gantt.config.order_branch = true;*) und ein Benutzer Aufgaben verschiebt
 
 ### Related API
 - [moveTask](api/method/movetask.md)
 - [onAfterTaskMove](api/event/onaftertaskmove.md)
-

@@ -1,19 +1,19 @@
 ---
 sidebar_label: getLastSelectedTask
-title: getLastSelectedTask method
-description: "提供最近一次选中任务的ID"
+title: getLastSelectedTask 方法
+description: "返回最后选中的任务的 ID"
 ---
 
 # getLastSelectedTask
 
 ### Description
 
-@short: 提供最近一次选中任务的ID
+@short: 返回最后选中的任务的 ID
 
 @signature: getLastSelectedTask: () =\> string | number
 
 ### Returns
-- ` id` - (string | number) - 最近一次选中任务的ID
+- ` id` - (string | number) - 最后选中的任务的 ID
 
 ### Example
 
@@ -24,7 +24,7 @@ gantt.getLastSelectedTask();
 ### Details
 
 :::note
- 此方法属于 **multiselect** 扩展，因此请确保启用了 [multiselect](guides/extensions-list.md) 插件。更多信息请参见 [多任务选择](guides/multiselection.md) 文章。 
+本方法在 **multiselect** 扩展中定义，因此需要激活 [multiselect](guides/extensions-list.md#multitaskselection) 插件。有关更多细节，请阅读 [Multi-Task Selection](guides/multiselection.md) 文章。
 :::
 
 ### Related API
@@ -36,5 +36,4 @@ gantt.getLastSelectedTask();
 - [toggleTaskSelection](api/method/toggletaskselection.md)
 
 ### Related Guides
-- [多任务选择](guides/multiselection.md)
-
+- [Multi-Task Selection](guides/multiselection.md)

@@ -1,34 +1,34 @@
 ---
 sidebar_label: onBeforeRowDragEnd
 title: onBeforeRowDragEnd event
-description: "사용자가 그리드 내에서 행을 드롭할 때 발생합니다."
+description: "그리드에서 사용자가 행을 드롭할 때 발생합니다"
 ---
 
 # onBeforeRowDragEnd
 
 ### Description
 
-@short: 사용자가 그리드 내에서 행을 드롭할 때 발생합니다.
+@short: 사용자가 그리드에 행을 드롭할 때 발생합니다
 
-@signature: onBeforeRowDragEnd: (sid: string | number, parent: string | number, tindex: number) =\> boolean;
+@signature: onBeforeRowDragEnd: (sid: string | number, parent: string | number, tindex: number) => boolean;
 
 ### Parameters
 
-- `sid` - (required) *string | number* - 이동 중인 작업의 ID  
-- `parent` - (required) *string | number* - 부모 ID입니다. 자세한 내용은 아래를 참조하세요  
-- `tindex` - (required) *number* - 작업이 이동된 위치의 인덱스 <br> (전체 트리 내 인덱스). 지정된 경우 <b>tindex</b>는 'parent' 브랜치 내 인덱스에 해당합니다. 자세한 내용은 아래 참조
+- `sid` - (required) *string | number* - 이동할 작업의 ID
+- `parent` - (required) *string | number* - 상위 ID. 아래의 세부 정보를 확인
+- `tindex` - (required) *number* - 작업이 이동될 위치의 인덱스 <br/> (전체 트리에서의 인덱스). 지정되면, <b>tindex</b>는 'parent' 가지의 인덱스를 가리킵니다. 아래의 세부 정보를 확인하십시오
 
 ### Returns
-- ` result` - (boolean) - 기본 이벤트 동작이 진행될지(<b>true</b>) 취소될지(<b>false</b>) 결정합니다.
+- ` result` - (boolean) - 기본 이벤트 동작이 트리거될지 여부를 정의합니다 (<b>true</b>) 또는 취소될지 여부를 정의합니다 (<b>false</b>)
 
 ### Example
 
 ~~~jsx
-gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){  
-    const task = gantt.getTask(id);  
-    if(task.parent != parent)  
-        return false;  
-    return true;  
+gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
+    const task = gantt.getTask(id);
+    if(task.parent != parent)
+        return false;
+    return true;
 });
 ~~~
 
@@ -38,22 +38,20 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 ### Details
 
 :::note
-  
-이 이벤트는 [order_branch](api/config/order_branch.md) 설정이 활성화된 상태에서 왼쪽 그리드에서 마우스를 사용해 작업을 이동할 때 발생합니다. 브랜치 재정렬이 비활성화된 경우 이 이벤트는 발생하지 않습니다. 
- 
-::: 
+이벤트는 좌측의 그리드에서 마우스 포인터로 태스크를 이동시킬 때, [order_branch](api/config/order_branch.md) 설정이 활성화되어 있을 때 발생합니다. 가지 재정렬이 비활성화되어 있으면 이 이벤트는 호출되지 않습니다.
+:::
 
-- 이 이벤트가 발생할 때 작업은 이미 새 위치로 이동된 상태이나 변경 사항은 아직 취소할 수 있습니다.  
-- 이벤트를 차단할 수 있습니다. *false*를 반환하면 작업 이동이 취소되고 원래 위치로 돌아갑니다.  
-- 원래 위치(부모 및 인덱스)는 핸들러에 인자로 전달됩니다.  
-- 대상 위치는 작업 객체의 [task.parent](guides/task-tree-operations.md#parentofatask) 및 [gantt.getGlobalTaskIndex(taskId)](api/method/getglobaltaskindex.md)에서 확인할 수 있습니다.  
-- **parent** 및 **tindex** 매개변수는 [order_branch](api/config/order_branch.md) 모드에 따라 다릅니다:  
-    - 표준 모드("true")에서는:  
-        - **parent**는 작업이 이동되기 전의 *원래* 부모를 가리킵니다.  
-        - **tindex**는 *원래* 로컬 인덱스를 가리킵니다.  
-    - "marker" 모드에서는:  
-        - **parent**는 작업의 새 부모를 가리킵니다.  
-        - **tindex**는 새 로컬 인덱스를 가리킵니다.
+- 이벤트가 발행되면 태스크는 이미 새로운 위치로 이동되었지만, 변경사항은 여전히 되돌릴 수 있습니다
+- 이벤트는 차단 가능합니다. *false*를 반환하고 태스크를 원래 위치로 이동합니다
+- 원래 위치(부모 및 인덱스)는 핸들러 인수로부터 사용할 수 있습니다
+- 대상 위치는 태스크 객체에서 [task.parent](guides/task-tree-operations.md#parent-of-a-task) 및 [gantt.getGlobalTaskIndex(taskId)](api/method/getglobaltaskindex.md)로부터 얻을 수 있습니다
+- **parent** 와 **tindex** 매개변수는 설정된 [order_branch](api/config/order_branch.md) 모드에 따라 달라집니다: 
+    - 일반 모드("true")에서는
+        - **parent** 매개변수는 원래 태스크의 부모를 가리킵니다 (이전 위치의 부모)
+        - **tindex** 매개변수는 원래 로컬 인덱스를 가리킵니다
+    - "marker" 모드에서는
+        - **parent** 매개변수는 새 태스크의 부모를 가리키고
+        - **tindex** 매개변수는 새 로컬 인덱스를 가리킵니다
 
 ### Related API
 - [onRowDragEnd](api/event/onrowdragend.md)

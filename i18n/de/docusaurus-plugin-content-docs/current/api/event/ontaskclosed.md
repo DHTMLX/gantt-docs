@@ -1,20 +1,20 @@
 ---
 sidebar_label: onTaskClosed
-title: onTaskClosed event
-description: "wird ausgelöst, wenn ein Branch geschlossen wird"
+title: onTaskClosed-Ereignis
+description: "Wird ausgelöst, wenn ein Zweig geschlossen wurde"
 ---
 
 # onTaskClosed
 
 ### Description
 
-@short: Wird ausgelöst, wenn ein Branch geschlossen wird
+@short: Wird ausgelöst, wenn ein Zweig geschlossen wurde
 
 @signature: onTaskClosed: (id: string | number) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string,number* - die ID des Branches
+- `id` - (required) *string | number* - die Zweig-ID
 
 ### Example
 
@@ -27,4 +27,3 @@ gantt.attachEvent("onTaskClosed", function(id) {
 ### Related API
 - [close](api/method/close.md)
 - [onTaskOpened](api/event/ontaskopened.md)
-

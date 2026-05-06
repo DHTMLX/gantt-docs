@@ -3,17 +3,17 @@ title: "Полноэкранный режим"
 sidebar_label: "Полноэкранный режим"
 ---
 
-# Полноэкранный режим
+# Режим полного экрана
 
-Начиная с версии 3.3, библиотека предоставляет расширение **fullscreen**.
+Начиная с версии 3.3, библиотека включает расширение **fullscreen**.
 
-Это расширение позволяет переключать компонент в полноэкранный режим с использованием FullScreen API, если он поддерживается ([список поддерживаемых браузеров](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API)).
+Это расширение предоставляет API, которое переводит компонент в полноэкранный режим, используя FullScreen API, когда это возможно ([список поддерживаемых браузеров](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API)).
 
 <div style="text-align:center;">![full_screen](/img/full_screen.png)</div>
 
-В старых браузерах Gantt просто растягивается на 100% размера окна.
+Для устаревших браузеров это просто позволяет расширить Gantt до 100% размера окна.
 
-Чтобы включить поддержку полноэкранного режима, активируйте плагин **fullscreen** через метод [gantt.plugins](api/method/plugins.md):
+Чтобы активировать полноэкранную поддержку, включите плагин **fullscreen** через метод [gantt.plugins](api/method/plugins.md):
 
 ~~~js
 gantt.plugins({
@@ -21,7 +21,7 @@ gantt.plugins({
 });
 ~~~
 
-Компонент не содержит встроенного элемента управления для переключения полноэкранного режима, поэтому вам нужно добавить его самостоятельно или воспользоваться приведённым примером:
+Сам компонент не имеет элемента управления пользовательским интерфейсом, который переключает этот режим; вам нужно разместить его на странице или скопировать тот из примера:
 
 ~~~js
 <input id="fullscreen_button" type="button" value="Toggle Fullscreen"/>
@@ -30,42 +30,42 @@ gantt.plugins({
 var button = document.getElementById("fullscreen_button");
      button.addEventListener("click", function(){
           if (!gantt.getState().fullscreen) {
-            // развернуть gantt на весь экран
+            // развёртывание Gantt до полноэкранного режима
                gantt.expand();
           }
           else {
-            // вернуть gantt к обычному размеру
+            // сворачивание Gantt в обычный режим
                gantt.collapse();
           }
      }, false);
 </script>
 ~~~
 
-При нажатии на кнопку Gantt будет переключаться между исходным размером и полноэкранным режимом.
+Щелчок по готовой иконке изменит размер Gantt с исходного на 'полноэкранный режим' и наоборот.
 
 
-[Full Screen](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
+[Полноэкран](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
 
 
 ## Обзор API
 
-Существует два основных метода для управления режимом отображения Gantt:
+Существует два метода, которые используются для управления режимом отображения Gantt:
 
-- [expand](api/method/expand.md) - переводит Gantt в полноэкранный режим
+- [expand](api/method/expand.md) - разворачивает Gantt в полноэкранный режим
 
 ~~~js
 gantt.expand();
 ~~~
 
-- [collapse](api/method/collapse.md) - возвращает Gantt из полноэкранного режима к обычному виду
+- [collapse](api/method/collapse.md) - сворачивает Gantt из полноэкранного режима обратно в обычный режим
 
 ~~~js
 gantt.collapse();
 ~~~
 
-## Поддерживаемые события
+## Список событий
 
-Для обработки изменений полноэкранного режима доступны следующие события:
+Ниже перечислены поддерживаемые события:
 
 - [onBeforeExpand](api/event/onbeforeexpand.md)
 - [onBeforeCollapse](api/event/onbeforecollapse.md)
@@ -73,72 +73,73 @@ gantt.collapse();
 - [onCollapse](api/event/oncollapse.md)
 
 ~~~js
-// перед разворачиванием gantt на весь экран
+// перед тем как Gantt будет развёрнут в полноэкранный режим
 gantt.attachEvent("onBeforeExpand",function(){
-    // ваша логика    
+    // здесь может быть любая своя логика    
     return true;
 });
 
-// перед выходом из полноэкранного режима
+// перед тем как Gantt выйдет из полноэкранного режима
 gantt.attachEvent("onBeforeCollapse",function(){
-    // ваша логика    
+    // здесь может быть любая своя логика    
     return true;
 });
 
-// после разворачивания gantt на весь экран
+// когда Gantt развёрнут в полноэкранный режим
 gantt.attachEvent("onExpand", function (){
-    // ваша логика
+    // здесь может быть любая своя логика
 });
 
-// после выхода gantt из полноэкранного режима
+// когда Gantt вышел из полноэкранного режима
 gantt.attachEvent("onCollapse", function (){
-    // ваша логика
+    // здесь может быть любая своя логика
 });
 ~~~
 
+
 ## Fullscreen API
 
-Объект [fullscreen](guides/fullscreen-ext.md) предоставляет четыре метода для управления полноэкранным поведением Gantt, а также других элементов:
+Существует четыре метода объекта [fullscreen](guides/fullscreen-ext.md), которые используются для управления режимом отображения Gantt вместе с дополнительными элементами:
 
-- **expand()** - переводит Gantt в полноэкранный режим
+- **expand()** - разворачивает Gantt в полноэкранный режим
 
 ~~~js
 gantt.ext.fullscreen.expand();
 ~~~
 
-- **collapse()** - выходит из полноэкранного режима и возвращает Gantt к обычному размеру
+- **collapse()** - сворачивает Gantt из полноэкранного режима обратно в обычный режим
 
 ~~~js
 gantt.ext.fullscreen.collapse();
 ~~~
 
-- **toggle()** - переключает между полноэкранным и обычным режимами
+- **toggle()** - вызывает метод **collapse()**, если Gantt развёрнут в полноэкранном режиме, и метод **expand()** в противном случае
 
 ~~~js
 gantt.ext.fullscreen.toggle();
 ~~~
 
-- **getFullscreenElement()** - возвращает DOM-элемент, который будет развёрнут на весь экран при вызове **expand()**
+- **getFullscreenElement()** - возвращает DOM-элемент, который будет развёрнут в полноэкранный режим методом **expand()**.
 
 ~~~js
 gantt.ext.fullscreen.getFullscreenElement();
 ~~~
 
-По умолчанию **getFullscreenElement()** возвращает HTML-контейнер Gantt. Вы можете переопределить этот метод, чтобы добавить дополнительные элементы в полноэкранный режим, как описано [здесь](guides/fullscreen-mode.md#ganttwithheadertoolbarinfullscreen).
+По умолчанию метод **getFullscreenElement()** возвращает HTML-контейнер диаграммы Gantt. Вы можете переопределить этот метод [для расширения Gantt дополнительными элементами в полноэкранном режиме](guides/fullscreen-mode.md#gantt-with-the-headertoolbar-in-the-fullscreen).
 
 ## Gantt с заголовком/панелью инструментов в полноэкранном режиме
 
-API Gantt позволяет расширить полноэкранный режим на другие элементы с помощью метода **getFullscreenElement()** объекта *fullscreen*:
+API Gantt предоставляет возможность расширить Gantt до полноэкранного режима через метод **getFullscreenElement()** объекта *fullscreen*:
 
 ~~~js
 gantt.ext.fullscreen.getFullscreenElement();
 ~~~
 
 :::note
-По умолчанию этот метод возвращает HTML-контейнер Gantt, поэтому только сам Gantt будет развернут на весь экран.
+По умолчанию этот метод возвращает HTML-контейнер диаграммы Gantt. Это означает, что в полноэкранный режим будет развёрнута только диаграмма Gantt.
 :::
 
-Если вы хотите отображать Gantt вместе с дополнительными элементами, например, заголовком или панелью инструментов, создайте на странице собственный контейнер, например:
+В случае если вы хотите отображать Gantt с дополнительными элементами (такими как заголовок или панель инструментов) в полноэкранном режиме, вам нужно добавить на страницу свой контейнер, как в примере:
 
 ~~~html
 <div id="myCover">
@@ -150,7 +151,8 @@ gantt.ext.fullscreen.getFullscreenElement();
 </div>
 ~~~
 
-Затем переопределите метод **getFullscreenElement()**, чтобы он возвращал ваш контейнер, который должен быть развёрнут на весь экран:
+
+После этого нужно переопределить метод **getFullscreenElement()** так, чтобы он возвращал корневой узел, который будет развёрнут в полноэкранный режим:
 
 ~~~js
 gantt.ext.fullscreen.getFullscreenElement = function() {
@@ -160,36 +162,35 @@ gantt.init("gantt_here");
 ~~~
 
 
-[Full Screen with additional elements](https://docs.dhtmlx.com/gantt/samples/02_extensions/26_full_screen_with_additional_elements.html)
+[Полноэкран с дополнительными элементами](https://docs.dhtmlx.com/gantt/samples/02_extensions/26_full_screen_with_additional_elements.html)
 
 
-## Почему полноэкранный режим может не работать?
+## Почему режим полного экрана не работает?
 
-Расширение fullscreen работает только в том случае, если Gantt разрешено переходить в полноэкранный режим.
+Расширение полноэкранного режима может работать только в том случае, если вы не запрещаете Gantt разворачиваться в полноэкранный режим.
 
-Если Gantt находится внутри iframe, в котором:
+В случаях, когда Gantt размещён во фрейме, где:
 
-- отсутствует атрибут **allowfullscreen** или разрешение **allow="fullscreen"**
-- или атрибут **allow** не содержит "fullscreen"
+- отсутствуют свойство **allowfullscreen** или значение **allow="fullscreen"**
+- или не указано значение **fullscreen** для свойства **allow**
 
-то Gantt не сможет перейти в полноэкранный режим (проверьте это в нашем snippet tool ([Example 1](https://snippet.dhtmlx.com/k72wjyzl), [Example 2](https://snippet.dhtmlx.com/7jdrk6q5))).
+Gantt не сможет развернуться в полноэкранный режим (попробуйте это в нашем инструменте сниппетов ([Пример 1](https://snippet.dhtmlx.com/k72wjyzl), [Пример 2](https://snippet.dhtmlx.com/7jdrk6q5))).
 
-### Полноэкранный режим в Salesforce
+### Режим полноэкранного экрана в Salesforce
 
-Расширение Fullscreen не работает в приложениях Salesforce, использующих [Locker Service](https://developer.salesforce.com/docs/atlas.en-us.238.0.lightning.meta/lightning/security_code.htm), поскольку Locker блокирует перевод элементов в полноэкранный режим.
+Расширение Fullscreen не работает в Salesforce-приложениях, которые используют Locker Service, поскольку Locker блокирует возможность перевода элемента в полноэкранный режим.
 
-В частности, расширение не будет работать с **Lightning Aura** или **Lightning Web Components**, но может работать с фреймворком **Visualforce**.
+Более точно, расширение Fullscreen не будет работать с фреймворками **Lightning Aura** и **Lightning Web Components**, но может работать с фреймворком **Visualforce**.
 
-Вы можете проверить, доступен ли полноэкранный режим в вашем приложении, добавив этот фрагмент в вашу конфигурацию:
+Вы можете проверить доступность полноэкранного режима в вашем приложении, добавив следующий фрагмент кода в конфигурационный код:
 
 ~~~js
 console.log("document.body.requestFullscreen", document.body.requestFullscreen)
 ~~~
 
-Если в выводе будет `undefined`, полноэкранный режим отключён и Gantt не сможет перейти в полноэкранный режим.
+Если в выводе вы видите значение `undefined`, это означает, что функция отключена и расширить Gantt нельзя.
 
 
 :::note
-Если поддержка полноэкранного режима включена в среде, которая его не поддерживает, могут возникать ошибки, но Gantt продолжит работать в обычном режиме.
+Если вы активируете [полноэкранную поддержку](guides/extensions-list.md#fullscreen) в окружении, которое не поддерживает эту функциональность, могут возникнуть ошибки, но Gantt продолжит работу.
 :::
-

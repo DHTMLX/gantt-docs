@@ -1,14 +1,14 @@
 ---
 sidebar_label: horizontal_scroll_key
-title: horizontal_scroll_key config
-description: "Steuert, ob horizontales Scrollen erfolgt, wenn die Shift-, Alt- oder Meta-Taste in Kombination mit dem Mausrad verwendet wird"
+title: horizontal_scroll_key Konfiguration
+description: "Aktiviert/deaktiviert horizontales Scrollen durch Shift|Alt|Meta-Taste + Mausradbewegung"
 ---
 
 # horizontal_scroll_key
 
 ### Description
 
-@short: Steuert, ob horizontales Scrollen erfolgt, wenn die Shift-, Alt- oder Meta-Taste in Kombination mit dem Mausrad verwendet wird
+@short: Aktiviert/deaktiviert horizontales Scrollen durch Shift|Alt|Meta-Taste + Mausradbewegung
 
 @signature: horizontal_scroll_key: string | boolean
 
@@ -18,10 +18,10 @@ description: "Steuert, ob horizontales Scrollen erfolgt, wenn die Shift-, Alt- o
 gantt.config.horizontal_scroll_key = "altKey";
 ~~~
 
-**Default value:** "shiftKey"
+**Standardwert:** "shiftKey"
 
 ### Related Guides
-- ["Tastaturnavigation"](guides/keyboard-navigation.md#builtinshortcutforhorizontaltimelinescrolling)
+- [Keyboard Navigation](guides/keyboard-navigation.md#builtinshortcutforhorizontaltimelinescrolling)
 
 ### Change log
 - hinzugefügt in v6.3

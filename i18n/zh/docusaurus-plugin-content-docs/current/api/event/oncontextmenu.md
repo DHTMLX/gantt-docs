@@ -1,46 +1,46 @@
 ---
 sidebar_label: onContextMenu
 title: onContextMenu event
-description: "当用户在甘特图内右键点击时触发（详见说明）"
+description: "在甘特图中用户单击鼠标右键时触发（请参见详情）"
 ---
 
 # onContextMenu
 
 ### Description
 
-@short: 当用户在甘特图内右键点击时触发（详见说明）
+@short: 在甘特图内点击鼠标右键时触发（请参见详情）
 
 @signature: onContextMenu: (taskId: string | number, linkId: string | number, e: Event) =\> void;
 
 ### Parameters
 
-- `taskId` - (required) *string | number* - 任务ID
-- `linkId` - (required) *string | number* - 链接ID
+- `taskId` - (required) *string | number* - 任务 ID
+- `linkId` - (required) *string | number* - 链接 ID
 - `e` - (required) *Event* - 原生事件对象
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onContextMenu", function (taskId, linkId, event) {
-      var element = event.target;
+    const element = event.target;
     console.log("你点击了 ", element)
     return true;
 });
 ~~~
 
 ### Related samples
-- [Context menu to control tasks](https://docs.dhtmlx.com/gantt/samples/04_customization/10_context_menu.html)
+- [用于控制任务的上下文菜单](https://docs.dhtmlx.com/gantt/samples/04_customization/10_context_menu.html)
 
 ### Details
 
-通常情况下，在甘特图内右键点击会打开浏览器默认的右键菜单，除非满足其他条件。 
-下面的示例中，右键点击任务时会显示一个[DHTMLX context menu](https://docs.dhtmlx.com/menu__index.html)，从而阻止浏览器默认菜单的弹出。
+在甘特图中的右击会打开默认的浏览器上下文菜单，前提是没有其他条件。 
+在以下示例中，对任务的点击将显示 [DHTMLX context menu](https://docs.dhtmlx.com/menu__index.html) 并隐藏默认的浏览器上下文菜单。
 
 ~~~js
 //需要 DHTMLX menu 组件
 gantt.attachEvent("onContextMenu", function (taskId, linkId, event) {
-    const x = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-    const y = event.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+    const x = event.clientX+document.body.scrollLeft+document.documentElement.scrollLeft;
+    const y = event.clientY+document.body.scrollTop+document.documentElement.scrollTop;
 
     if (taskId) {
         menu.showContextMenu(x, y);
@@ -51,7 +51,7 @@ gantt.attachEvent("onContextMenu", function (taskId, linkId, event) {
 });
 ~~~
 
-请确保在页面中引入了[DHTMLX Menu 文件或 DHTMLX Suite](https://docs.dhtmlx.com/menu__how_to_start.html)，因为示例依赖于它们。 
-<br>
+不要忘记在页面中包含 [DHTMLX Menu 或 DHTMLX Suite 的文件](https://docs.dhtmlx.com/menu__how_to_start.html)。否则，示例将无法工作。
 
-如果想用纯JavaScript实现自定义右键菜单，可以参考[此示例](https://snippet.dhtmlx.com/xuvxhjbc)。
+
+如果需要在纯 JavaScript 中添加自定义上下文菜单，请查看 [另一个示例](https://snippet.dhtmlx.com/xuvxhjbc) 。

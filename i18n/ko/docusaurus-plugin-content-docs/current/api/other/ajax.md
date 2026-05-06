@@ -4,18 +4,18 @@ title: ajax config
 description: "gantt ajax 모듈"
 ---
 
-# ajax
+# AJAX
 
 ### Description
 
-@short: Gantt ajax 모듈
+@short: Gantt Ajax 모듈
 
 @signature: ajax: any
 
 ### Example
 
 ~~~jsx
-// 응답이 다음과 같이 생겼다고 가정
+// 아래와 같은 응답이 있다고 가정
 {status: "ok", data: "value", data2: "value2"}
 
 
@@ -25,7 +25,7 @@ var xhr = gantt.ajax;
 xhr.get("server.php").then(function(response) {
     var res = JSON.parse(response.responseText); 
     if (res && res.status == "ok") {
-        // 응답이 정상임
+        // 응답이 정상입니다
     }
 });
 
@@ -38,54 +38,52 @@ xhr.post({
 }).then(function(response){
     var res = JSON.parse(response.responseText); 
     if (res && res.status == "ok") {
-        // 응답이 정상임
+        // 응답이 정상입니다
     }
 });
 ~~~
 
-### Details
+### API Reference
 
-## API 참조
+모든 메서드는 매개변수로 아래 두 가지 형태 중 하나를 받을 수 있습니다:
 
-모든 메서드는 두 가지 방식 중 하나로 매개변수를 받습니다:
-
-1) RequestConfig - 요청 구성을 위한 옵션 객체로, 다음과 같은 구조입니다:
+1) RequestConfig - 요청 구성 옵션이 포함된 객체로, 아래와 같은 형태를 가집니다:
 
 ~~~js
 {
   url: string,
   method: "PUT|GET|POST|DELETE",
   data: string | object,
-  async: true|false,
+  async: true|false
   callback: function,
   headers: object
 }
 ~~~
 
-각 항목의 의미는:
+다음과 같이 정의됩니다:
 
-- url - 서버 URL
-- method - 선택 사항, 사용할 HTTP 메서드, 기본값은 "GET"
-- data - 선택 사항, POST 또는 PUT 요청 시 전송할 데이터; 문자열 또는 객체 가능
-- async - 선택 사항, 비동기 요청 여부, 기본값은 true
-- callback - 선택 사항, 응답 수신 후 호출할 함수
-- headers - 선택 사항, 요청에 포함할 헤더를 키-값 쌍으로 가진 객체
+- url - 서버 쪽의 URL
+- method - 선택적, 전송에 사용되는 메서드이며 기본값은 "GET"
+- data - 선택적, POST 요청으로 서버에 전송되는 데이터. POST 및 PUT 메서드는 문자열과 데이터가 포함된 객체를 모두 허용합니다
+- async - 선택적, 서버로 데이터를 전송하는 모드이며 기본값은 true
+- callback - 선택적, 응답이 로드된 후 호출될 함수
+- headers - 선택적, 요청과 함께 전송될 "키":"값" 쌍으로 정의된 헤더의 집합
 
 또는:
 
-2) 세 개의 매개변수 (단, **query()** 메서드는 *RequestConfig* 객체만 받음):
+2) 세 매개변수(오직 *RequestConfig* 객체만 받을 수 있는 **query()** 메서드를 제외하고):
 
-- url - 서버 URL
-- data - 선택 사항, POST 요청 시 전송할 데이터
-- callback - 선택 사항, 응답 수신 후 호출할 함수
+- url - 서버 쪽의 URL
+- data - 선택적, POST 요청으로 서버에 전송되는 데이터
+- callback - 선택적, 응답이 로드된 후 호출될 함수
 
-아래는 ajax 모듈 API에서 사용 가능한 메서드 목록입니다:
+다음은 ajax 모듈 API의 목록입니다:
 
-## 콜백 옵션
+#### Callback 옵션
 
-모든 메서드는 콜백과 [프로미스](#promises)를 모두 지원하여 응답을 처리할 수 있습니다.
+모든 메서드는 응답 처리를 위해 콜백 또는 [promises](#promises) 둘 다 허용합니다.
 
-ajax 프로미스는 완료된 XmlHttpRequest 객체로 해결됩니다:
+ajax 프라미스는 완료된 XmlHttpRequest를 반환합니다:
 
 ~~~js
 gantt.ajax.post({ 
@@ -98,7 +96,7 @@ gantt.ajax.post({
 });
 ~~~
 
-레거시 호환을 위해 콜백에서는 결과를 약간 다른 형식으로 받습니다:
+역사적 이유로, callback 옵션은 값을 약간 다른 포맷으로 받습니다:
 
 ~~~js
 gantt.ajax.post({ 
@@ -115,9 +113,9 @@ gantt.ajax.post({
 ~~~
 
 
-## query
+#### query
 
-요청을 보내는 일반 메서드입니다. 파라미터에서 어떤 HTTP 메서드든 지정할 수 있습니다.
+요청을 보내는 공통 메서드입니다. 매개변수에 원하는 요청을 지정하면 모든 유형의 요청을 보낼 수 있습니다:
 
 ~~~js
 gantt.ajax.query({ 
@@ -132,9 +130,9 @@ gantt.ajax.query({
 
 ~~~
 
-## get
+#### get
 
-GET 요청을 보냅니다.
+GET 요청을 보냅니다
 
 ~~~js
 gantt.ajax.get("some.php", function(){
@@ -148,9 +146,9 @@ gantt.ajax.get({
 });
 ~~~
 
-## put
+#### put
 
-PUT 요청을 보냅니다.
+PUT 요청을 보냅니다
 
 ~~~js
 gantt.ajax.put("server.php", "keep_alive=1&version=std", function(){
@@ -160,14 +158,14 @@ gantt.ajax.put("server.php", "keep_alive=1&version=std", function(){
 gantt.ajax.put({
    url: "https://…",
    callback: function() {…},
-   headers: { "Content-Type": "application/json" },
+   headers: { "Content-Type": "application/json" }
    data: {}
 });
 ~~~
 
-## del
+#### del
 
-DELETE 요청을 보냅니다.
+DELETE 요청을 보냅니다 
 
 ~~~js
 gantt.ajax.del("server.php", function(){
@@ -181,9 +179,9 @@ gantt.ajax.del({
 });
 ~~~
 
-## post
+#### post
 
-POST 요청을 보냅니다.
+POST 요청을 보냅니다
 
 ~~~js
 gantt.ajax.post("server.php", "keep_alive=1&version=std", function(){
@@ -193,16 +191,17 @@ gantt.ajax.post("server.php", "keep_alive=1&version=std", function(){
 gantt.ajax.post({
       url: "https://…",
       callback: function() {…},
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" }
       data: {}
 });
 ~~~
 
-## POST/PUT 메서드로 데이터 전송하기
+### Sending data with POST/PUT methods 
 
-문자열 대신 객체를 **post** 및 **put** 메서드의 data로 전달할 수 있습니다. 객체가 전달되면 ajax 모듈이 자동으로 직렬화를 처리합니다. 단순 객체는 폼 데이터(&param=value) 형태로 직렬화되고, 중첩 구조는 JSON.stringify()를 사용해 직렬화됩니다.
+데이터를 문자열 대신 객체로 전송할 수 있습니다. 객체가 전달되면 ajax 모듈이 자동으로 직렬화합니다. 
+간단한 객체는 form data (&param=value)로 직렬화되며, 중첩 구조는 JSON.stringify()를 사용하여 직렬화됩니다.
 
-예를 들어, 아래 객체는:
+다음 객체의 예:
 
 ~~~js
 {
@@ -212,34 +211,35 @@ gantt.ajax.post({
 }
 ~~~
 
-`id=1&text=My%20Task&users=%5B1%2C2%2C3%5D` 와 같은 문자열로 변환됩니다.
+다음 문자열로 변환됩니다: `id=1&text=My%20Task&users=%5B1%2C2%2C3%5D`.
 
-### 프로미스 {#promises}
+### Promises
 
-dhtmlxGantt는 IE8 이상을 포함한 프로미스를 지원합니다. 내부적으로 [Bluebird](https://github.com/petkaantonov/bluebird) 프로미스 라이브러리를 사용합니다. 프로미스를 생성하려면 다음 생성자를 사용하세요:
+dhtmlxGantt는 프라미스 사용을 지원합니다(IE8+ 포함). 프라미스 작업을 위해 Gantt는 Bluebird 프라미스 라이브러리를 사용합니다. 
+프라미스를 생성하려면 다음 생성자를 사용해야 합니다:
 
 ~~~js
 var promise = new gantt.Promise(function(resolve, reject) {...});
 ~~~
 
-Promise 객체는 Gantt 내부에 정의되어 있으며 전역 객체가 아닙니다.
+프라미스는 애플리케이션 전체에서 전역으로 선언되지 않고 Gantt 내부에서 선언됩니다.
 
-AJAX 모듈은 프로미스를 반환하므로 콜백 대신 프로미스 문법을 사용할 수 있습니다. 예를 들어, 다음과 같이:
+AJAX 모듈은 프라미스를 반환하며, 이를 통해 콜백 대신 프라미스 인터페이스를 사용할 수 있습니다. 따라서 다음과 같이 사용하던 대신
 
 ~~~js
 gantt.ajax.post(url, params, callback);
 ~~~
 
-다음과 같이 쓸 수 있습니다:
+POST 요청을 보낼 때 다음과 같은 기록(record)을 사용할 수 있습니다:
 
 ~~~js
 gantt.ajax.post(url, params).then(function(){…});
 ~~~
 
-콜백과 프로미스를 함께 사용하는 것도 가능합니다.
+콜백과 프라미스는 동시에 사용할 수 있습니다.
 
-아래 예시는 여러 요청을 동시에 보내고 완료 후 데이터를 다시 불러오는 방법을 보여줍니다:
-
+아래 예제는 서버에 여러 개의 요청을 한 번에 보내고 이후 데이터를 새로고침하는 방법을 보여줍니다: 
+ 
 ~~~js 
 gantt.Promise.all([
       gantt.ajax.post({url: "api/task", data: task1}),
@@ -252,4 +252,4 @@ gantt.Promise.all([
 ~~~
 
 ### Change log
-- 버전 4.0에 추가됨
+- 버전 4.0에서 추가됨

@@ -1,20 +1,20 @@
 ---
 sidebar_label: showLightbox
-title: showLightbox method
-description: "지정된 작업에 대해 라이트박스를 엽니다"
+title: showLightbox 메서드
+description: "지정된 작업의 라이트박스를 엽니다"
 ---
 
 # showLightbox
 
 ### Description
 
-@short: 지정된 작업에 대해 라이트박스를 엽니다
+@short: 지정된 작업의 라이트박스를 엽니다
 
 @signature: showLightbox: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -        작업 ID
+- `id` - (필수) *string | number* -        작업 ID
 
 ### Example
 
@@ -30,4 +30,3 @@ gantt.hideLightbox();
 
 ### Related API
 - [hideLightbox](api/method/hidelightbox.md)
-

@@ -1,26 +1,26 @@
 ---
 sidebar_label: onTaskRowClick
-title: onTaskRowClick event
-description: "Wird ausgelöst, wenn ein Benutzer auf eine Zeile in der Tabelle klickt"
+title: onTaskRowClick-Ereignis
+description: "wird ausgelöst, wenn der Benutzer auf eine Zeile in der Tabelle klickt"
 ---
 
 # onTaskRowClick
 
 ### Description
 
-@short: Wird ausgelöst, wenn ein Benutzer auf eine Zeile in der Tabelle klickt
+@short: Wird ausgelöst, wenn der Benutzer auf eine Zeile in der Tabelle klickt
 
 @signature: onTaskRowClick: (id: string | number, row: HTMLElement) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die ID der Aufgabe
-- `row` - (required) *HTMLElement* - das HTML-Element, das die angeklickte Zeile repräsentiert
+- `id` - (erforderlich) *string | number* - die Aufgaben-ID
+- `row` - (erforderlich) *HTMLElement* - ein HTML-Element der angeklickten Zeile
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onTaskRowClick", function(id,row){
-    //beliebige benutzerdefinierte Logik hier
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~

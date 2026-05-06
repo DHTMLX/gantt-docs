@@ -1,20 +1,20 @@
 ---
 sidebar_label: importFromMSProject
-title: importFromMSProject method
-description: "将 MS Project 的 XML 或 MPP 格式文件转换为 JSON"
+title: importFromMSProject 方法
+description: "将一个 XML 或 MPP MS Project 文件转换为 JSON"
 ---
 
 # importFromMSProject
 
 ### Description
 
-@short: 将 MS Project 的 XML 或 MPP 格式文件转换为 JSON
+@short: 将一个 XML 或 MPP MS Project 文件转换为 JSON
 
 @signature: importFromMSProject: (config: any) =\> void
 
 ### Parameters
 
-- `config` - (required) *object* - 包含导入文件配置设置的对象
+- `config` -（必填）*object* - 包含导入文件配置属性的对象
 
 ### Example
 
@@ -34,9 +34,6 @@ gantt.importFromMSProject({
 });
 ~~~
 
-### Related samples
-- [Import MS Project file](https://docs.dhtmlx.com/gantt/samples/08_api/18_load_from_mpp.html)
-
 ### Details
 
 :::note
@@ -45,8 +42,6 @@ gantt.importFromMSProject({
 
 :::note
  此方法属于 **export** 扩展的一部分，请确保启用 [export_api](guides/extensions-list.md) 插件。更多详情请参见 [从 MS Project 导出与导入](guides/export-msproject.md) 文章。
-
- 
 :::
 
 :::note
@@ -56,7 +51,7 @@ gantt.importFromMSProject({
 <script src="codebase/dhtmlxgantt.js"></script>
 <script src="https://export.dhtmlx.com/gantt/api.js"></script>
 ~~~
- 
+
 :::
 
 该方法接受一个包含导入文件配置选项的对象:
@@ -76,14 +71,28 @@ gantt.importFromMSProject({
    data: {},
    config: {},
    resources: [],
-   worktime: {}
+   worktime: {},
+   calendars: []
 }
 ~~~
 
-- **data** - gantt 的 [数据对象](guides/supported-data-formats.md#json)。每个任务包含属性如 *id*、*open*、*parent*、*progress*、*start_date*、*text*、*resource*。日期格式为字符串，格式为 "%Y-%m-%d %H:%i"。
-- **config** - gantt 的 [配置](api/overview/properties-overview.md) 对象，包含从项目文件中提取的设置。
-- **resources** - 一个数组，包含项目文件中的资源对象，每个对象具有属性 \{*id:string, name:string, type:string* \}。
-- **worktime** - 一个对象，保存项目日历中的工作时间设置。
+- **data** - (*object*) 一个 gantt [data object](guides/supported-data-formats.md)。每个任务具有以下属性：*id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*。日期将以 "%Y-%m-%d %H:%i" 格式转换为字符串。
+- **config** - (*object*) 一个 gantt [configuration](api/overview/properties-overview.md) 对象，包含从项目文件中检索到的设置。
+- **resources** - (*array*) 一个对象数组（每个对象具有以下属性： \{*id: string, name: string, type: string, calendar: string*\}），表示项目文件中的资源列表。
+- **worktime** - (*object*) 一个包含项目日历工作时间设置的对象。它可以包含以下属性：
+    - **id** - (*string | number*) 可选，日历 ID
+    - **hours** - (*array*) 一个包含全局工作时间的数组，用于设置任务的开始和结束时间
+    - **dates** - (*array*) 一个包含日期的数组，可以包含：
+        - 一周的七天（从 0 - 星期日，到 6 - 星期六），其中 1/true 表示工作日，0/false 表示非工作日
+        - 其他记录为日期 
+- **calendars** - (*array*) 一个包含用于创建新日历的日历配置对象的数组。
+    - **calendarConfig** - (*object*) 一个日历配置对象，可以包含以下属性：
+      - **id** - (*string | number*) 可选，日历 ID
+      - **name** - (*string*) 日历名称
+      - **hours** - (*array*) 一个包含全局工作时间的数组，用于设置任务的开始和结束时间
+      - **dates** - (*array*) 日期数组，可以包含：
+            - 一周的七天（从 0 - 星期日，到 6 - 星期六），其中 1/true 表示工作日，0/false 表示非工作日
+            - 其他记录为日期
 
 ### Related API
 - [exportToMSProject](api/method/exporttomsproject.md)
@@ -93,9 +102,8 @@ gantt.importFromMSProject({
 - [exportToPDF](api/method/exporttopdf.md)
 - [exportToPNG](api/method/exporttopng.md)
 - [exportToJSON](api/method/exporttojson.md)
-- [importFromExcel](api/method/importfromexcel.md)
+- [importFromMSProject](api/method/importfrommsproject.md)
 - [importFromPrimaveraP6](api/method/importfromprimaverap6.md)
 
 ### Related Guides
-- [从 MS Project 导出与导入](guides/export-msproject.md)
-
+- [Export and Import from MS Project](guides/export-msproject.md#import-from-ms-project)

@@ -1,42 +1,44 @@
 ---
-title: "Zoom 扩展"
-sidebar_label: "Zoom 扩展"
+title: "Zoom Extension"
+sidebar_label: "Zoom Extension"
 ---
 
-# Zoom 扩展
+# Zoom Extension
 
-有关 Zoom 扩展的更多详细信息，请参阅 [줌(Zooming)](guides/zooming.md) 文章。本文档主要介绍 **zoom** 对象的 API 参考:
+你可以在 [Zooming](guides/zooming.md) 文章中阅读关于 Zoom 扩展的详细信息。本篇文章提供了 **zoom** 对象的 API 参考：
+
 
 ## 缩放级别
 
-Zoom 扩展通过一组缩放级别设置进行操作，支持在这些级别间快速切换。
+Zoom 扩展使用一组比例设置，并允许在它们之间快速切换。
 
-**ZoomLevel** 是一个表示缩放设置的对象，包含以下属性:
+**ZoomLevel** 是一个包含缩放设置的对象。它具有以下属性：
 
-- <span class="subproperty">**name**</span> - (*string*) - 分配给该级别的名称
-- <span class="subproperty">**scale_height?**</span> - (*number*) - 缩放级别的高度
-- <span class="subproperty">**height?**</span> - (*number*) - 缩放级别的高度
-- <span class="subproperty">**min_column_width?**</span> - (*number*) - 列的最小宽度；此属性优先于 minColumnWidth 和 maxColumnWidth
-- <span class="subproperty">**scales**</span> - (*Scales*) - 在此缩放级别下可切换的缩放刻度数组
+- <span class="subproperty">**name**</span> - (*string*) - 该级别的名称
+- <span class="subproperty">**scale_height?**</span> - (*number*) - 该刻度的高度
+- <span class="subproperty">**height?**</span> - (*number*) - 该标尺的高度
+- <span class="subproperty">**min_column_width?**</span> - (*number*) - 列的最小宽度。它的优先级高于 minColumnWidth 和 maxColumnWidth
+- <span class="subproperty">**scales**</span> - (*Scales*) - 在此级别放大/缩小时可切换的比例数组
+
 
 ## 方法
 
-- <span class="submethod">**init (zoomConfig): void**</span> - 使用给定的配置初始化扩展。
-    - **_zoomConfig_** - (*object*) - 配置对象，其中包含定义缩放级别的 *levels* 数组及多个可选属性:
-        - **_levels_** - (*ZoomLevel[]*) - 必填，定义缩放级别的数组
-        - **_handler?_** - (*Function*): void - 允许自定义鼠标滚轮处理函数以手动控制缩放
+- <span class="submethod">**init (zoomConfig): void**</span> - 使用提供的配置初始化扩展。
+    - **_zoomConfig_** - (*object*) - 一个包含配置设置的对象，其中包含 *levels* zooming levels 的数组以及若干附加属性：
+        - **_levels_** - (*ZoomLevel[]*) - 必需，缩放级别的数组
+        - **_handler?_** - (*Function*): void - 允许指定一个自定义的鼠标滚轮处理程序以手动进行缩放
             - **_e_** - (*Event*) - 原生事件对象
-        - **_startDate?_** - (*Date*) - 时间刻度缩放的起始日期
-        - **_endDate?_** - (*Date*) - 时间刻度缩放的结束日期
-        - **_activeLevelIndex?_** - (*number*) - 默认活动缩放级别的索引
-        - **_widthStep?_** - (*number*) - 切换缩放级别时缩放宽度的增减步长
-        - **_minColumnWidth?_** - (*number*) - 允许切换到上一级缩放的最小列宽
-        - **_maxColumnWidth?_** - (*number*) - 允许切换到下一级缩放的最大列宽
-        - **_useKey?_** - (*string*) - 指定通过鼠标滚轮缩放时需要按下的按键:"ctrlKey" | "altKey" | "shiftKey"
-        - **_trigger?_** - (*string | null | undefined*) - 定义缩放触发方式:"wheel" | null | undefined 
-        - **_element?_** - (*HTMLElement | Function*): HTMLElement - 触发缩放的 DOM 元素，或返回该元素的函数
+        - **_startDate?_** - (*Date*) - 时间刻度缩放的起始值
+        - **_endDate?_** - (*Date*) - 时间刻度缩放的结束值
+        - **_activeLevelIndex?_** - (*number*) - 默认活动级别的编号
+        - **_widthStep?_** - (*number*) - 切换到下一个/上一个缩放级别时，刻度宽度的增加/减少步长
+        - **_minColumnWidth?_** - (*number*) - 允许切换到前一个缩放级别的列的最小宽度
+        - **_maxColumnWidth?_** - (*number*) - 允许切换到下一个缩放级别的列的最大宽度
+        - **_useKey?_** - (*string*) - 通过滚动鼠标滚轮实现缩放的按键： "ctrlKey" | "altKey" | "shiftKey"
+        - **_trigger?_** - (*string | null | undefined*) - 缩放的触发方式： "wheel" | null | undefined 
+        - **_element?_** - (*HTMLElement | Function*): HTMLElement - 触发缩放的 DOM 元素，或返回 DOM 元素的函数
 
-以下是两个配置 **zoom** 扩展的示例:
+以下是设置 **zoom** 配置的两个示例：
 
 ~~~js
 var zoomConfig = {
@@ -99,7 +101,7 @@ var zoomConfig = {
 gantt.ext.zoom.init(zoomConfig);
 
 
-// 或者，也可以仅将 levels 定义为刻度数组
+// 或者，以更简单的方式，levels 可以表示为刻度数组
 var hourToStr = gantt.date.date_to_str("%H:%i");
 var hourRangeFormat = function(step){
     return function(date){
@@ -134,14 +136,14 @@ var zoomConfig = {
 gantt.ext.zoom.init(zoomConfig);
 ~~~
 
-- <span class="submethod">**getCurrentLevel (): number**</span> - 获取当前缩放级别的索引
+- <span class="submethod">**getCurrentLevel (): number**</span> - 返回当前缩放级别的编号（索引）
 
 ~~~js
 gantt.ext.zoom.getCurrentLevel();
 ~~~
 
 - <span class="submethod">**setLevel (level): void**</span> - 切换到指定的缩放级别。
-    - **_level_** - (*number | string*) - 可以是级别名称（如 "year"），也可以是 levels 数组中的索引
+    - **_level_** - (*number | string*) - 级别要么通过配置中的名称（如 "year"），要么通过它在缩放级别数组中的编号来定义
 
 ~~~js
 gantt.ext.zoom.setLevel("year");
@@ -149,61 +151,61 @@ gantt.ext.zoom.setLevel("year");
 gantt.ext.zoom.setLevel(5);
 ~~~
 
-- <span class="submethod">**getLevels (): ZoomLevel[]**</span> - 获取所有已定义的缩放级别
+- <span class="submethod">**getLevels (): ZoomLevel[]**</span> - 允许获取所有缩放级别
 
 ~~~js
 gantt.ext.zoom.getLevels();
 ~~~
 
-该方法返回传递给 **init()** 方法的缩放级别数组（*ZoomLevels[]*）。
+返回传递给 **init()** 方法、用于初始化扩展的缩放级别数组。
 
-- <span class="submethod">**zoomIn (): void**</span> - 切换到更高一级的缩放级别
+- <span class="submethod">**zoomIn (): void**</span> - 增加当前缩放级别
 
 ~~~js
 gantt.ext.zoom.zoomIn();
 ~~~
 
-或者，也可以这样实现:
+若要达到同样的目的，你也可以使用：
 
 ~~~js
 gantt.ext.zoom.setLevel(zoom.getCurrentLevel() - 1)
 ~~~
 
-- <span class="submethod">**zoomOut (): void**</span> - 切换到更低一级的缩放级别
+- <span class="submethod">**zoomOut (): void**</span> - 减少当前缩放级别
 
 ~~~js
 gantt.ext.zoom.zoomOut();
 ~~~
 
-或者，也可以这样实现:
+若要达到同样的目的，你也可以使用：
 
 ~~~js
 gantt.ext.zoom.setLevel(zoom.getCurrentLevel() + 1)
 ~~~
 
-- <span class="submethod">**attachEvent (name, handler): string**</span> - 添加事件处理函数
-    - **_name_** - (*string*) - 要监听的事件名称
-    - **_handler_** - (*Function*) - 事件触发时执行的函数
+- <span class="submethod">**attachEvent (name, handler): string**</span> - 绑定事件处理程序
+    - **_name_** - (*string*) - 事件处理程序的名称
+    - **_handler_** - (*Function*) - 当事件触发时将调用的函数
 
-- <span class="submethod">**detachEvent (id): void**</span> - 移除之前添加的事件处理函数
-    - **_id_** - (*string*) - 要移除的事件处理函数的标识符
+- <span class="submethod">**detachEvent (id): void**</span> - 从事件中移除处理程序
+    - **_id_** - (*string*) - 已绑定事件处理程序的标识符
 
-- <span class="submethod">**callEvent (name, params): boolean**</span> - 触发内部事件
-    - **_name_** - (*string*) - 事件名称，不区分大小写
-    - **_params_** - (*Array&lt;any&gt;*) - 可选，事件相关的数据数组
+- <span class="submethod">**callEvent (name, params): boolean**</span> - 调用内部事件
+    - **_name_** - (*string*) - 事件的名称，忽略大小写
+    - **_params_** - (*Array&lt;any&gt;*) - 可选，事件相关数据的数组
 
-- <span class="submethod">**checkEvent (name): boolean**</span> - 检查是否有为指定事件注册的处理函数
-    - **_name_** - (*string*) - 事件名称
+- <span class="submethod">**checkEvent (name): boolean**</span> - 检查某个事件是否已为其指定了处理程序
+    - **_name_** - (*string*) - 事件的名称
 
-如果有至少一个事件处理函数，返回 <i>true</i>。
+如果为该事件指定了某个处理程序，则返回 <i>true</i>。
 
 ## 事件
 
-- **<span class="eventname">onAfterZoom</span>** - 当缩放级别发生变化时触发。
-该事件提供如下参数:
+- **<span class="eventname">onAfterZoom</span>** - 在切换缩放级别时触发。
+参数为：
 <span class="eventarguments">
-    - **_level_** - (*number | string*) - 缩放级别的索引或名称
-    - **_config_** - (*ZoomLevel*) - 缩放级别的配置对象
+    - **_level_** - (*number | string*) - 级别的编号
+    - **_config_** - (*ZoomLevel*) - 该级别的配置
 </span>
 
 ~~~js

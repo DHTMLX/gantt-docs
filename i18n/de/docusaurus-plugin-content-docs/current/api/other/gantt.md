@@ -7,7 +7,7 @@ description: "a factory object that can be used to create new instances of dhtml
 # getGanttInstance
 
 :::info
-This functionality is available in the Gantt PRO version under the Commercial (since October 6, 2021), Enterprise and Ultimate licenses 
+Diese Funktionalität ist in der Gantt PRO-Version unter kommerziellen Lizenzen (seit dem 6. Oktober 2021), Enterprise- und Ultimate-Lizenzen verfügbar.
 :::
 
 ### Description
@@ -17,27 +17,27 @@ This functionality is available in the Gantt PRO version under the Commercial (s
 ### Example
 
 ~~~jsx
-// can be used as a global object
+// kann als globales Objekt verwendet werden
 const myGantt = Gantt.getGanttInstance();
 
-// or imported from `dhtmlxgantt.js` as a module
+// oder importiert aus `dhtmlxgantt.js` als Modul
 import { Gantt } from 'dhtmlx-gantt';
 ...
 const myGantt = Gantt.getGanttInstance();
 ~~~
 
-## Methods
+## Methoden
 
-- **getGanttInstance(ganttConfig)** - creates a new instance of dhtmlxGantt. Takes the following parameter:
-    - **ganttConfig** - (*object*) optional, a [configuration object](guides/multiple-gantts.md#ganttinstanceconfiguration) for a new gantt
+- **getGanttInstance(ganttConfig)** - erstellt eine neue Instanz von dhtmlxGantt. Folgender Parameter wird verwendet:
+    - **ganttConfig** - (*object*) optional, ein [Konfigurationsobjekt](guides/multiple-gantts.md#gantt-instance-configuration) für eine neue Gantt-Instanz
 
-Example:
+Beispiel:
 
 ~~~js
 const myGantt = Gantt.getGanttInstance();
 ~~~
 
-When no longer needed, an instance of gantt can be destroyed using the `destructor()` method of the instance, for example:
+Wenn eine Instanz nicht mehr benötigt wird, kann sie mit der `destructor()`-Methode der Instanz zerstört werden, zum Beispiel:
 
 ~~~js
 const myGantt = Gantt.getGanttInstance();

@@ -1,24 +1,24 @@
 ---
 sidebar_label: getColumnIndex
 title: getColumnIndex method
-description: "возвращает позицию колонки по её имени"
+description: "возвращает индекс столбца по его имени"
 ---
 
 # getColumnIndex
 
 ### Description
 
-@short: Возвращает позицию колонки по её имени
+@short: Возвращает индекс столбца по его имени
 
 @signature: getColumnIndex: (name: string | number, excludeHidden?: boolean) =\> number
 
 ### Parameters
 
-- `name` - (required) *string | number* -            имя колонки
-- `excludeHidden` - (required) *boolean* - игнорировать скрытые колонки при подсчёте индексов
+- `name` - (required) *string | number* - имя столбца
+- `excludeHidden` - (optional) *boolean* - пропускает индексы скрытых столбцов
 
 ### Returns
-- ` index` - (number) - позиция колонки
+- ` index` - (number) - индекс столбца
 
 ### Example
 
@@ -28,7 +28,7 @@ var index = gantt.getColumnIndex("start_date"); // => 1
 
 ### Details
 
-Когда параметр `excludeHidden` установлен в *true*, метод пропускает колонки, которые [скрыты](guides/specifying-columns.md#visibility) с помощью настройки *hide:true* в конфигурации:
+Если параметр `excludeHidden` установлен в значение *true*, метод не будет учитывать столбцы, которые [скрыты](guides/specifying-columns.md#visibility) через опцию *hide:true* в конфигурации:
 
 ~~~js
 gantt.config.columns = [

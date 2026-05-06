@@ -1,23 +1,23 @@
 ---
 sidebar_label: hasChild
-title: hasChild method
-description: "Liefert die Anzahl der untergeordneten Tasks"
+title: hasChild Methode
+description: "gibt die Anzahl der untergeordneten Aufgaben zurück"
 ---
 
 # hasChild
 
 ### Description
 
-@short: Liefert die Anzahl der untergeordneten Tasks
+@short: Gibt die Anzahl der untergeordneten Aufgaben zurück
 
-@signature: hasChild: (id: string | number) =\> number | undefined
+@signature: hasChild: (id: string | number) => number | undefined
 
 ### Parameters
 
-- `id` - (required) *string | number* -    die Task-ID
+- `id` - (erforderlich) *string | number* -    die Task-ID
 
 ### Returns
-- ` childs` - (number | undefined) - Die Anzahl der untergeordneten Tasks, falls vorhanden, oder "undefined", wenn keine gefunden wurden
+- ` childs` - (number | undefined) - die Anzahl der Unteraufgaben (falls vorhanden) oder "undefined" andernfalls
 
 ### Example
 
@@ -46,4 +46,3 @@ gantt.hasChild("t_1"); //-> undefined /*!*/
 - [getSiblings](api/method/getsiblings.md)
 - [getNextSibling](api/method/getnextsibling.md)
 - [getPrevSibling](api/method/getprevsibling.md)
-

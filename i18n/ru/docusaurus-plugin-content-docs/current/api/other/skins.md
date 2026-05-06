@@ -8,7 +8,7 @@ description: "предоставляет доступные объекты skin"
 
 ### Description
 
-@short: Предоставляет доступные объекты skin
+@short: Возвращает объекты доступных скинов
 
 @signature: skins: any
 
@@ -23,4 +23,3 @@ gantt.skins; //->{skyblue: Object, meadow: Object, terrace: Object, broadway: Ob
 
 ### Related Guides
 - [Скины](guides/skins.md)
-

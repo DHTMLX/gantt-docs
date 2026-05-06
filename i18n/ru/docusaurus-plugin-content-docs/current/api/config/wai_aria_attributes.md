@@ -1,14 +1,14 @@
 ---
 sidebar_label: wai_aria_attributes
-title: wai_aria_attributes config
-description: "включает поддержку WAI-ARIA, чтобы компонент мог корректно распознаваться экранными читалками"
+title: wai_aria_attributes конфигурация
+description: "Включает поддержку WAI-ARIA, чтобы компонент распознавался скринридерами"
 ---
 
 # wai_aria_attributes
 
 ### Description
 
-@short: Включает поддержку WAI-ARIA, чтобы компонент мог корректно распознаваться экранными читалками
+@short: Включает поддержку WAI-ARIA, чтобы компонент распознавался скринридерами
 
 @signature: wai_aria_attributes: boolean
 
@@ -20,11 +20,11 @@ gantt.config.wai_aria_attributes = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Details
 
-введено в версии 4.1
+добавлено в версии 4.1
 
 ### Related Guides
-- [Доступность](guides/accessibility.md#waiariaattributes)
+- [Доступность](guides/accessibility.md#wai-aria-attributes)

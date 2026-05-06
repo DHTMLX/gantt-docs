@@ -5,7 +5,143 @@ sidebar_label: "更新日志"
 
 # 更新日志
 
-如果您当前使用的 dhtmlxGantt 版本低于 2.0，请查阅 [](migration.md) 获取升级详情。
+:::note
+从较早的版本进行更新？请查看 [迁移指南](migration.md) 以了解所需变更和更新步骤。
+:::
+
+## 9.1.3
+
+<span class='release_date'>2026 年 3 月 16 日。错误修复版本</span>
+
+### 修复内容
+
+- 修复在主网格和时间线初始未显示在 [布局](guides/layout-config.md) 中时，[缩放](guides/zooming.md) 功能无法工作的问题
+- 修复在更改缩放级别后，资源时间线中的刻度单元格在切换时消失的问题
+- 修复在导出过程中向右滚动时间线并改变 [缩放级别](guides/zooming.md) 时时间线单元格消失的问题
+- 修复在窗口大小调整时，当时间线向右滚动且启用 [Zoom extension](guides/zooming.md) 时，刻度单元格消失的问题
+- 修复在启用 [open_split_tasks](api/config/open_split_tasks.md) 时改变 [缩放级别](guides/zooming.md) 会导致任务消失的问题
+- 修复在处理大量数据集时，直到与父任务进行交互前，[rollup](guides/milestones.md#rolluptasksandmilestones) 任务未正确显示的问题
+- 修复当 [show_unscheduled](api/config/show_unscheduled.md) 设置为 `false` 且配置了日期范围时，未排程任务在表格中未显示的问题
+- 修复在启用 [keyboard navigation](guides/keyboard-navigation.md) 且资源数据存储未包含树结构时，资源网格消失的问题
+- 修复较长内容的 [Quick Info](guides/quick-info.md) 弹出框的溢出样式
+
+### 更新
+
+- 为任务数据添加对 [ISO date format](guides/date-format.md) 字符串的自动检测与支持。ISO 8601 日期（例如 `"2026-01-06"`、`"2026-01-06T10:30:45Z"`）现已自动解析并序列化，无需手动模板覆盖
+
+## 9.1.2
+
+<span class='release_date'>2026 年 2 月 27 日。错误修复版本</span>
+
+- 修复在开启 `touch` 模式且将 Gantt 渲染在 Shadow DOM 内时，重新排序任务或创建链接后 Gantt 可能消失的问题
+- 修复在 [React Gantt](integrations/react.md) 中初始化时将图表滚动到第一项任务的 `initial_scroll` 选项
+- 修复在 [gantt.batchUpdate()](api/method/batchupdate.md) 内进行更改后，拖放操作不会正确更新任务分配的问题
+- 修复任务背景行渲染器中的内存泄漏
+- 修复在 [React Gantt](integrations/react.md) 中比例投影不起作用的问题
+- 修复通过数据存储新增的基线未正确渲染的问题
+- 修复提供无效的 [layout configuration](guides/layout-config.md) 导致 Gantt 停止工作的问题
+
+## 9.1.1
+
+<span class='release_date'>2025 年 12 月 15 日。错误修复版本</span>
+
+### 修复内容
+
+- 修复在 [React Gantt](integrations/react.md) 中当用户提供 `links` 属性但未提供 `tasks` 属性时发生的错误
+- 修复在 [React Gantt](integrations/react.md) 中重新加载的任务在其 `$source` 和 `$target` 属性中缺少链接 ID 的问题
+- 修复按下 **Meta** 键后 Gantt 会打开内联编辑器的问题
+- 修复 CSP 生产环境中 `%w` 日期格式不工作的问题
+- 修复当指定 `render="split"` 时，分组任务未以 [split tasks](guides/split-tasks.md) 显示的问题
+- 修复编辑资源单元格后按下 **Tab** 键时资源网格消失的问题
+
+### 更新 
+
+- 允许为 [virtual tasks](api/method/groupby.md) 配置行高和任务条高度
+
+## 9.1
+
+<span class='release_date'>2025 年 11 月 5 日。小幅更新</span>
+
+### 重大变更
+
+此更新对 Gantt 包的结构和功能行为带来了一些变化。为确保安全，请查看
+[Migration notes](migration.md#90---91) 以了解详情。
+
+### 新功能
+
+- 新增 [Multi-user backend](guides/multiuser-live-updates.md) 模块，用于实时更新
+- 新增用于实时数据同步管理的 [Remote updates API](guides/multiuser-live-updates.md#remote-updates-api)
+- 引入新的 [Resource Assignments 控件](guides/resource-assignments.md)，以扩展 [Resources](guides/resources.md) 控件的功能
+- 基于实际工作时间而非固定的 24 小时，能够在 Day/Week 规模显示任务
+- 能够根据父行的状态来呈现拆分子任务（split-subtasks）
+
+### 更新 
+
+- 新增固定 [Timeline cells](guides/configuring-time-scale.md#fixed-column-width) 尺寸的功能
+- 增加在日历配置中指定日期的支持
+- 新增一个用于 [Auto Scheduling](guides/auto-scheduling.md) 的 [configuration object](api/config/auto_scheduling.md) 以简化设置
+- 提升对 Windows 设备的触控屏支持
+- 已移除过时的 **subscales** API
+
+### 修复
+
+- 修复在时间线隐藏时，带有 `visual:true` 和自定义数据的导出到 Excel 失败的问题
+- 修复带有 `additional_settings.slice_archive` 设置的 [exporttopdf.md] 导出导致的甘特图显示不完整的问题
+- 防止将未排程任务包含在 Excel 导出中
+- 增加在 Excel 输出中导出 [split tasks](guides/split-tasks.md) 的支持
+- 修复调整大小后，[Resource Histogram](guides/resource-management.md#resourceviewpanel) 显示不正确的问题
+- 修复在更改缩放级别时任务重叠的问题
+
+## 9.0.15
+
+<span class='release_date'>2025 年 9 月 19 日。错误修复版本</span>
+
+### 修复内容
+
+- 修复通过 [setWorkTime](api/method/setworktime.md) 方法设置 `customWeeks` 时 Gantt 忽略工作日配置的问题
+- 提升对 Gantt 元素内 Shadow DOM 的支持
+- 修复在 [React Gantt](integrations/react.md) 中多实例组件导致模板重复的问题
+
+## 9.0.14
+
+<span class='release_date'>2025 年 7 月 31 日。错误修复版本</span>
+
+### 修复内容
+
+- 修复在关闭一个 [Modalbox](guides/message-boxes.md) 后抛出的脚本错误
+- 防止在分组模式下重新解析数据后树中产生空行
+- 确保 [setWorkTime](api/method/setworktime.md) 方法在 Firefox 中正确应用 **customWeeks**
+- 修复在对 React Gantt 组件调用 [setTasks](integrations/react.md) 但数据集为空时导致组件崩溃的问题
+
+## 9.0.13
+
+<span class='release_date'>2025 年 6 月 26 日。错误修复版本</span>
+
+### 修复内容
+
+- 修复创建并删除重复链接后 Gantt 变得不可用的问题
+- 确保触摸设备上正确显示链接占位符
+- 修复当项目只有一个里程碑子项时 `end_date` 未更新的问题
+- 使用自定义数据存储时，防止资源项的不必要重绘
+- 修复静默调用 [gantt.addLink](api/method/addlink.md) 导致内部数据存储状态异常的问题
+- 防止 [Data Processor](guides/server-side.md) 向 [custom router](guides/server-side.md#customrouting) 参数添加 !nativeeditor_status 属性
+- 修复在 [React Gantt](integrations/react.md) 组件中对 `tasks` 和 `links` 属性变化处理不正确的问题
+
+## 9.0.12
+
+<span class='release_date'>2025 年 6 月 19 日。错误修复版本</span>
+
+### 修复内容
+
+- 确保 [contrast-white](guides/skins.md#contrastwhiteskin) 皮肤通过颜色对比度无障碍测试
+- 修复在调用 [gantt.clearAll()](api/method/clearall.md) 后 [dynamic loading](guides/dynamic-loading.md) 停止工作的问题
+- 防止在显示较长文本时 Tooltip 渲染出 Gantt 容器之外
+- 修复在启用 [keyboard navigation](guides/keyboard-navigation.md) 时，服务器更新未最终完成的问题
+- 修复应用于 [milestone baselines](guides/inbuilt-baselines.md) 的自定义类名工作不正确的问题
+
+### 更新
+
+- [React Gantt](integrations/react.md) 现已与 **Next.js** 和 **Remix** SSR 框架兼容，无需额外配置
 
 ## 9.0.11
 

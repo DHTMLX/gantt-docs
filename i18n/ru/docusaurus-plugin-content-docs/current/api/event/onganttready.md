@@ -1,14 +1,14 @@
 ---
 sidebar_label: onGanttReady
-title: onGanttReady event
-description: "срабатывает, когда dhtmlxGantt завершил инициализацию, хотя сам Gantt chart ещё не отображён на странице"
+title: onGanttReady событие
+description: "срабатывает после завершения инициализации dhtmlxGantt, однако диаграмма Ганта ещё не отрисована на странице"
 ---
 
 # onGanttReady
 
 ### Description
 
-@short: Срабатывает, когда dhtmlxGantt завершил инициализацию, хотя сам Gantt chart ещё не отображён на странице
+@short: Срабатывает после завершения инициализации dhtmlxGantt, однако диаграмма Ганта ещё не отрисована на странице
 
 @signature: onGanttReady: () =\> void;
 
@@ -16,10 +16,9 @@ description: "срабатывает, когда dhtmlxGantt завершил и
 
 ~~~jsx
 gantt.attachEvent("onGanttReady", function(){
-    //здесь можно разместить кастомную логику
+    // любая ваша логика здесь
 });
 ~~~
 
 ### Related API
 - [onBeforeGanttReady](api/event/onbeforeganttready.md)
-

@@ -1,20 +1,20 @@
 ---
 sidebar_label: onAfterBranchLoading
 title: onAfterBranchLoading event
-description: "当启用动态加载时，此事件在任务分支加载完成后立即触发。"
+description: "如果启用动态加载，在任务分支加载到页面后触发"
 ---
 
 # onAfterBranchLoading
 
 ### Description
 
-@short: 当启用动态加载时，此事件在任务分支加载完成后立即触发。
+@short: 如果启用动态加载，在任务分支加载到页面后触发
 
 @signature: onAfterBranchLoading: (settings: any) =\> void;
 
 ### Parameters
 
-- `settings` - (required) *object* - 一个包含任务ID和请求URL的对象。
+- `settings` - (必填) *object* - 一个包含任务ID和请求URL的对象
 
 ### Example
 
@@ -26,7 +26,7 @@ gantt.attachEvent("onAfterBranchLoading", function(settings){
 
 ### Details
 
-`settings` 对象包含两个属性:任务的ID和用于请求的URL:
+`settings` 对象包含两个属性 - 任务的 ID 和请求 URL：
 
 ~~~js
 {
@@ -35,7 +35,7 @@ gantt.attachEvent("onAfterBranchLoading", function(settings){
 }
 ~~~
 
-此事件仅在启用[动态加载](guides/loading.md)时触发。
+此事件仅在 [动态加载](guides/loading.md) 启用时触发。
 
 ### Related API
 - [onBeforeBranchLoading](api/event/onbeforebranchloading.md)
@@ -43,5 +43,4 @@ gantt.attachEvent("onAfterBranchLoading", function(settings){
 - [branch_loading_property](api/config/branch_loading_property.md)
 
 ### Related Guides
-- [数据加载](guides/loading.md)
-
+- [Data Loading](guides/loading.md)

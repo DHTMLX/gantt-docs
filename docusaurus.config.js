@@ -226,6 +226,7 @@ const config = {
 				onAfterDataTransformation
 			}
 		],
+		path.resolve(__dirname, './plugins/dhx-llms-plugin'),
 		[
 			require.resolve('docusaurus-gtm-plugin'),
 			{

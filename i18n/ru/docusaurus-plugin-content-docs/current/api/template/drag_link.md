@@ -1,26 +1,26 @@
 ---
 sidebar_label: drag_link
-title: drag_link template
-description: "определяет текст tooltip, отображаемый при создании новой зависимости (dependency link)"
+title: drag_link шаблон
+description: "задает текст подсказок, отображаемых при создании новой связи зависимости"
 ---
 
 # drag_link
 
 ### Description
 
-@short: Определяет текст tooltip, отображаемый при создании новой зависимости (dependency link)
+@short: Задает текст подсказок, отображаемых при создании новой зависимости связи
 
-@signature: drag_link: (from: string | number, from_start: boolean, to: string | number, to_start: boolean) =\> string;
+@signature: drag_link: (from: string | number, from_start: boolean, to: string | number, to_start: boolean) => string;
 
 ### Parameters
 
-- `from` - (required) *string | number* - ID исходной задачи
-- `from_start` - (required) *boolean* - <i>true</i>, если ссылка перетягивается с начала исходной задачи, <i>false</i> - если с конца
-- `to` - (required) *string | number* - ID целевой задачи ('null' или 'undefined', если целевая задача ещё не указана)
-- `to_start` - (required) *boolean* - <i>true</i>, если ссылка перетягивается к началу целевой задачи, <i>false</i> - если к концу
+- `from` - (обязательно) *string | number* - идентификатор исходной задачи
+- `from_start` - (обязательно) *boolean* - <i>true</i>, если перетаскивание ссылки начинается с начала исходной задачи, <i>false</i> - если с конца задачи
+- `to` - (обязательно) *string | number* - идентификатор целевой задачи ( 'null' или 'undefined', если целевая задача ещё не указана)
+- `to_start` - (обязательно) *boolean* - <i>true</i>, если ссылка перетаскивается к началу целевой задачи, <i>false</i> - если к концу задачи
 
 ### Returns
-- ` text` - (string) - HTML текст, который будет отображён в gantt
+- ` text` - (string) - HTML текст, который будет отображаться на диаграмме Ганта
 
 ### Example
 
@@ -38,4 +38,4 @@ gantt.templates.drag_link = function(from, from_start, to, to_start) {
 ~~~
 
 ### Related Guides
-- [Шаблоны связей зависимостей](guides/dependency-templates.md)
+- [Шаблоны зависимостей связей](guides/dependency-templates.md)

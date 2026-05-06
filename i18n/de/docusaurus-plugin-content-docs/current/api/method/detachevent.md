@@ -1,20 +1,19 @@
 ---
 sidebar_label: detachEvent
-title: detachEvent method
-description: "Entfernt einen zuvor angehängten Event-Handler (hinzugefügt über die Methode attachEvent())"
+title: detachEvent Methode
+description: "trennt einen Handler von einem Event (welches zuvor durch die attachEvent() Methode angehängt wurde)"
 ---
 
 # detachEvent
 
 ### Description
 
-@short: Entfernt einen zuvor angehängten Event-Handler (hinzugefügt über die Methode attachEvent())
+@short: Trennt einen Handler von einem Event (welches zuvor durch die attachEvent() Methode angehängt wurde
 
 @signature: detachEvent: (id: string) =\> void
 
 ### Parameters
-
-- `id` - (required) *string* - Die Kennung des Event-Handlers
+- `id` - (erforderlich) *string* -  die ID des Events
 
 ### Example
 
@@ -30,5 +29,4 @@ gantt.detachEvent(myEvent);
 - [attachEvent](api/method/attachevent.md)
 
 ### Related Guides
-- ["Event-Behandlung"](guides/handling-events.md)
-
+- [Event Handling](guides/handling-events.md)

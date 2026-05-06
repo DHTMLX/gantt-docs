@@ -1,14 +1,14 @@
 ---
 sidebar_label: autosize
-title: autosize config
-description: "Gantt 차트 크기를 자동으로 조절하여 스크롤 없이 모든 작업을 표시합니다."
+title: autosize 설정
+description: "Gantt 차트가 스크롤 없이 모든 작업을 표시하도록 자동으로 크기를 변경하도록 강제합니다"
 ---
 
 # autosize
 
 ### Description
 
-@short: Gantt 차트 크기를 자동으로 조절하여 스크롤 없이 모든 작업을 표시합니다.
+@short: Gantt 차트가 스크롤 없이 모든 작업을 표시하도록 자동으로 크기를 변경하도록 강제합니다
 
 @signature: autosize: boolean | string
 
@@ -24,71 +24,69 @@ gantt.init("gantt_here");
 
 ### Details
 
-'autosize' 설정은 Gantt 차트가 내부 스크롤바를 사용하여 컨테이너 크기에 데이터를 맞출지, 아니면 내부 스크롤 없이 모든 데이터를 표시하도록 컨테이너 크기를 조절할지를 결정합니다.
+The `autosize` config defines whether the Gantt will fit data inside the size of the container where it's initialized and show inner scrollbars,
+or modify the size of the container in order to show all data without inner scrolls:
 
-- [CSS로 Gantt div 크기를 설정한 예제](https://snippet.dhtmlx.com/5/b4d4d1b80) - 필요할 때 내부 스크롤바가 나타납니다.
-- [컴포넌트가 Gantt div 크기를 계산하는 예제](https://snippet.dhtmlx.com/5/c278b3859) - 내부 스크롤바가 비활성화됩니다.
+- [a sample with sizes of Gantt div defined in CSS](https://snippet.dhtmlx.com/2m48u5oz) - inner scrollbars are active if necessary
+- [a sample with sizes of Gantt div calculated by a component](https://snippet.dhtmlx.com/syzmiqwt) - inner scrollbars are disabled
 
-Gantt가 페이지 내 특정 영역에 맞춰져야 할 경우, 컨테이너 크기는 수동으로 관리해야 합니다.
+In case Gantt should fit a certain area on a page, the size of the Gantt container must be managed manually:
 
-- autosize는 꺼야 합니다.
-- div의 너비와 높이는 반응형 레이아웃 솔루션을 사용하는 경우 HTML 레이아웃이나, 또는 커스텀 코드로 결정되어야 합니다.
+- autosizing should be disabled
+- width/height of a div should be calculated either by HTML layout if some ready solution for responsive layouts is used, or manually by code
 
-## 숨겨진 요소로 스크롤하기
+## Scrolling to hidden elements
 
-기본적으로 Gantt는 [showTask](api/method/showtask.md) 또는 [showDate](api/method/showdate.md) 메서드 사용 시 자동으로 스크롤합니다.
-하지만 **autosize**가 활성화된 경우, Gantt는 스크롤 대신 컨테이너 크기를 확장하여 해당 요소가 페이지에 보이도록 합니다.
+In the default mode, Gantt is scrolled automatically when you use the [`showTask()`](api/method/showtask.md) or [`showDate()`](api/method/showdate.md) method.
+But, when `autosize` is enabled, Gantt increases the size of its container to show itself on the page instead of showing the hidden element.
 
-이 문제에 대한 범용적인 해결책은 없습니다. 페이지에 스크롤이 필요한 다른 요소들이 있을 수 있기 때문입니다. 따라서 해결 방법은 특정 페이지나 애플리케이션 설정에 따라 달라집니다.
+There is no any universal way to escape the problem because the page can also include other elements except for Gantt, and some of the elements also need to be scrolled. Therefore, this problem should be solved depending on the page/application configuration.
 
-*간단한* 설정에서는 Gantt가 다른 요소들 앞이나 뒤에 위치하고, 페이지 스크롤이 정상 작동합니다.
+In a *simple* configuration, Gantt may be located before or after some elements in your application. And it can work correctly if you scroll the page.
 
-*복잡한* 설정에서는 Gantt 컨테이너가 여러 중첩된 컨테이너 안에 있을 수 있습니다.
-이 경우 관련 요소만 수동으로 스크롤해야 합니다.
+In a *complex* configuration, the Gantt container can be placed into other containers which can also be placed in some other containers.
+In this case, you need to manually scroll only the elements you need.
 
-페이지를 필요한 요소로 스크롤하는 한 가지 방법은 **element.scrollIntoView** 메서드를 사용하는 것입니다:
+One of the ways to make the page scroll to the necessary element is to use the `element.scrollIntoView()` method:
 
 ~~~js
-var attr = gantt.config.task_attribute;
-var timelineElement = document.querySelector(".gantt_task_line["+attr+"='"+id+"']");
-if(timelineElement)
-    timelineElement.scrollIntoView({block:"center"});
+const taskAttribute = gantt.config.task_attribute;
+const timelineElement = document.querySelector(`.gantt_task_line[${taskAttribute}='${id}']`);
+
+timelineElement?.scrollIntoView({ block: "center" });
 ~~~
 
-여기서 `id`는 표시할 작업 ID를 의미합니다.
+where id is the task ID you need to show.
 
-또 다른 방법은 Gantt의 [showTask](api/method/showtask.md) 또는 [showDate](api/method/showdate.md) 메서드를 오버라이드하는 것입니다:
+Another way is to modify the [`showTask()`](api/method/showtask.md) or [`showDate()`](api/method/showdate.md) method of Gantt:
 
 ~~~js
-var showTask = gantt.showTask;
+const defaultShowTask = gantt.showTask;
 
-gantt.showTask = function(id){
-  showTask.apply(this, [id]);
-  var attr = gantt.config.task_attribute;
-  var timelineElement = document.querySelector(".gantt_task_line["+attr+"='"+id+"']");
-  if(timelineElement)
-    timelineElement.scrollIntoView({block:"center"});
+gantt.showTask = function(id) {
+    defaultShowTask.apply(this, [id]);
+    const taskAttribute = gantt.config.task_attribute;
+    const timelineElement = document.querySelector(`.gantt_task_line[${taskAttribute}='${id}']`);
+
+    timelineElement?.scrollIntoView({ block: "center" });
 };
 ~~~
 
-또는 작업을 표시하는 커스텀 함수를 만들어 사용할 수도 있습니다:
+or create a custom function to show the task:
 
 ~~~js
-function showTask(id){
-  gantt.showTask(id);
-  var attr = gantt.config.task_attribute;
-  var timelineElement = document.querySelector(".gantt_task_line["+attr+"='"+id+"']");
-    if(timelineElement)
-      timelineElement.scrollIntoView({block:"center"});
-}
+const showTask = (id) => {
+    gantt.showTask(id);
+    const taskAttribute = gantt.config.task_attribute;
+    const timelineElement = document.querySelector(`.gantt_task_line[${taskAttribute}='${id}']`);
+
+    timelineElement?.scrollIntoView({ block: "center" });
+};
 ~~~
 
 :::note
-
-**Related example:** [지정한 요소로 스크롤하기](https://snippet.dhtmlx.com/or73u6a5)
-
+샘플: [지정된 요소로 스크롤](https://snippet.dhtmlx.com/or73u6a5)
 :::
 
 ### Related API
 - [autosize_min_width](api/config/autosize_min_width.md)
-

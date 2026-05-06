@@ -1,23 +1,23 @@
 ---
 sidebar_label: getWorkHours
 title: getWorkHours method
-description: "предоставляет рабочие часы для указанной даты"
+description: "возвращает рабочие часы указанной даты"
 ---
 
 # getWorkHours
 
 ### Description
 
-@short: Предоставляет рабочие часы для указанной даты
+@short: Возвращает рабочие часы указанной даты
 
 @signature: getWorkHours: (date: Date) =\> any[]
 
 ### Parameters
 
-- `date` - (required) *Date* - дата для проверки
+- `date` - (required) *Date* - дата, которую нужно проверить
 
 ### Returns
-- ` hours` - (array) - рабочие часы для этой даты
+- ` hours` - (array) - рабочий период даты
 
 ### Example
 
@@ -33,5 +33,4 @@ gantt.getWorkHours(new Date(2013,03,30))// -> [8, 17] /*!*/
 - [setWorkTime](api/method/setworktime.md)
 
 ### Related Guides
-- [Расчёт рабочего времени](guides/working-time.md)
-
+- [Расчет рабочего времени](guides/working-time.md)

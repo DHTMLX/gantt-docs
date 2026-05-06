@@ -1,20 +1,20 @@
 ---
 sidebar_label: changeLightboxType
-title: changeLightboxType method
-description: "обновляет лайтбокс задачи в зависимости от её типа"
+title: changeLightboxType метод
+description: "Перерисовывает lightbox задачи в зависимости от её типа"
 ---
 
 # changeLightboxType
 
 ### Description
 
-@short: Обновляет лайтбокс задачи в зависимости от её типа
+@short: Перерисовывает lightbox для задачи в зависимости от её типа
 
 @signature: changeLightboxType: (type: string) =\> void
 
 ### Parameters
 
-- `type` - (required) *string* - тип задачи
+- `type` - (обязательный) *string* - тип задачи
 
 ### Example
 
@@ -24,10 +24,9 @@ gantt.changeLightboxType(gantt.config.types.project);
 
 ### Details
 
-Этот метод обновляет лайтбокс и при возможности пытается сохранить введённые данные. Он перестраивает структуру, используя [конфигурацию для указанного типа](guides/default-edit-form.md).
+Метод перерисовывает lightbox и, при возможности, сохраняет все введённые данные. Для перестройки структуры метод использует [конфигурацию для указанного типа](guides/default-edit-form.md).
 
-Если текущий тип лайтбокса совпадает с типом, переданным в параметре, обновление не выполняется.
+Если тип lightbox совпадает с типом, указанным в параметре, метод не перерисовывает lightbox.
 
 ### Related API
 - [onLightboxChange](api/event/onlightboxchange.md)
-

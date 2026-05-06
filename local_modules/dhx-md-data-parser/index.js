@@ -10,7 +10,9 @@ const MD_BOLD_TEXT_REGEXP = /\*\*(.+?)\*\*/g;
 
 // [text](<route><.md>#<route>) or [text](<route>/<route><.md>)
 // e.g. '[autoWidth](grid/configuration.md#autowidthforcolumns)'
-const MD_LINK_REGEXP = /(\[.+?\])\(([^\s]+?)(\.md)([^\s]*?)\)/g;
+// The negative lookahead skips absolute URLs - e.g. [text](https://github.com/foo/bar.md) -
+// so links to external Markdown files (GitHub blobs, etc.) are left untouched.
+const MD_LINK_REGEXP = /(\[.+?\])\((?![a-zA-Z]+:\/\/|\/\/)([^\s]+?)(\.md)([^\s]*?)\)/g;
 
 // @<text>:
 // e.g. '@short:' or '@short: sends a DELETE request to the server'

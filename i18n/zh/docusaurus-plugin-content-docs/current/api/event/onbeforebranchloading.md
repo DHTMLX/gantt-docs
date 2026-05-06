@@ -1,23 +1,23 @@
 ---
 sidebar_label: onBeforeBranchLoading
 title: onBeforeBranchLoading event
-description: "当启用动态加载时，该事件在用户展开任务分支后且加载过程开始前触发。"
+description: "如果启用动态加载，在用户展开任务分支但加载开始之前触发"
 ---
 
 # onBeforeBranchLoading
 
 ### Description
 
-@short: 当启用动态加载时，该事件在用户展开任务分支后且加载过程开始前触发。
+@short: 如果启用动态加载，在用户展开任务分支后但加载开始之前触发
 
-@signature: onBeforeBranchLoading: (settings: any) =\> boolean;
+@signature: onBeforeBranchLoading: (settings: any) => boolean;
 
 ### Parameters
 
-- `settings` - (required) *object* - 包含任务ID和请求URL
+- `settings` - (required) *object* - 一个包含任务ID和请求URL的对象
 
 ### Returns
-- ` result` - (boolean) - 返回 `false` 会停止动态加载并阻止请求发送到服务器
+- ` result` - (boolean) - 返回 `false` 将取消动态加载，数据请求将不会发送到服务器
 
 ### Example
 
@@ -31,7 +31,7 @@ gantt.attachEvent("onBeforeBranchLoading", function(settings){
 
 ### Details
 
-该事件适用于向动态加载请求中添加额外参数。`settings` 对象包含两个属性:任务ID和请求URL:
+此事件可用于向动态加载请求添加额外参数。`settings` 对象包含两个属性——任务的 id 和请求 url:
 
 ~~~js
 {
@@ -40,11 +40,11 @@ gantt.attachEvent("onBeforeBranchLoading", function(settings){
 }
 ~~~
 
-你可以在代码中直接修改请求URL。
+可以在代码中修改请求 url。
 
-该事件仅在启用[动态加载](guides/loading.md)时触发。
+此事件仅在启用 [动态加载](guides/loading.md) 时触发。
 
-此事件可以被阻止；返回 *false* 会取消动态加载请求。
+此事件是可拦截的，返回 *false* 将取消动态加载请求。
 
 ### Related API
 - [onAfterBranchLoading](api/event/onafterbranchloading.md)
@@ -53,4 +53,3 @@ gantt.attachEvent("onBeforeBranchLoading", function(settings){
 
 ### Related Guides
 - [数据加载](guides/loading.md)
-

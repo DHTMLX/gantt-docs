@@ -1,23 +1,23 @@
 ---
 sidebar_label: getCalendar
-title: getCalendar method
-description: "通过其ID获取工作时间日历"
+title: getCalendar 方法
+description: "通过 ID 获取工作时间日历"
 ---
 
 # getCalendar
 
 ### Description
 
-@short: 通过其ID获取工作时间日历
+@short: 按 ID 获取工作时间日历
 
 @signature: getCalendar: (calendarId?: string | number) =\> Calendar
 
 ### Parameters
 
-- `calendarId` - (optional) *string | number* -        可选，全局日历的ID或 "global"
+-  `calendarId` -	(string | number) -	可选，是全局日历的 ID，或 "global"
 
 ### Returns
-- ` config` - (Calendar) - 返回日历对象
+- `config` - (Calendar) - 日历对象
 
 ### Example
 
@@ -27,12 +27,12 @@ var calendar = gantt.getCalendar(calendarId);
 
 ### Details
 
-上面示例中返回的对象是一个[日历对象](api/other/calendar.md)。
+上述示例返回的对象是一个 [日历对象](api/other/calendar.md)。
 
-默认的工作时间设置如下:
+默认工作时间如下：
 
-- 工作日为周一至周五。
-- 工作时间为08:00至17:00。
+- 工作日为星期一至星期五。
+- 工作时段为 08:00 至 17:00。
 
 ### Related API
 - [getCalendars](api/method/getcalendars.md)
@@ -42,5 +42,4 @@ var calendar = gantt.getCalendar(calendarId);
 - [工作时间计算](guides/working-time.md)
 
 ### Change log
-- 版本4.2中添加
-
+- 在版本 4.2 中新增

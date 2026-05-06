@@ -5,33 +5,33 @@ sidebar_label: "PDF 导出模块"
 
 # PDF 导出模块
 
-该导出模块支持将数据导出为 PDF、PNG、Excel 和 iCal 格式。可以在任何平台上部署，既可以作为 Node.js 应用运行，也可以通过 Docker 镜像部署。
+本导出模块可以将数据导出为 PDF、PNG、Excel 和 iCal 文件。它可以在任意平台上作为 Node.js 应用程序或作为 Docker 镜像进行安装。
 
-请注意，该模块不支持 MS Project 和 Primavera 文件的导入/导出。如需处理这些文件，请使用[专用导出模块](guides/msp-export-module.md)或我们的在线服务。
+它不包含 MS Project 和 Primavera 文件的导入/导出功能。如果你需要这样的功能，你应该使用 [对应的导出模块](guides/msp-export-module.md) 或我们的在线服务器。
 
 ## 安装指南
 
-首先，请根据[官方网站](https://nodejs.org/en/)上的说明下载并安装 Node.js。
+首先，你需要下载并安装 Node.js。你可以在其官方网站上找到安装说明。
 
-您可以在客户端专区的 Downloads 标签下找到导出模块。例如:
+你可以在客户端区域的 Downloads 选项卡中下载导出模块。请查看下图：
 
 ![PDF export module download](/img/pdf_export_module_download.png)
 
-下载后，将文件解压到您选择的位置。然后打开命令行，进入导出模块所在文件夹，例如:
+下载该文件后，将其解压到任意位置，然后打开命令行并导航到包含导出模块的文件夹。例如：
 
 ~~~
 cd C:export_module
 ~~~
 
-接下来，安装所需的应用模块:
+然后你需要为应用安装模块：
 
 ~~~
 npm install
 ~~~
 
-如果您需要[在无图形界面的机器上安装组件](#usingserverwithoutgraphicalinterface)，请参阅下方相关章节。
+你可以 [在没有图形界面的计算机上安装组件](#using-server-without-graphical-interface)。
 
-若要在带有图形界面的服务器上运行导出模块，请使用以下命令启动:
+要在具有图形界面的服务器上运行，可以使用以下命令来启动 export module：
 
 ~~~
 npm start
@@ -41,23 +41,23 @@ npm start
 
 或者，您也可以访问主页 [http://localhost:3200](http://localhost:3200) 并点击 Test 链接。
 
-## 无图形界面服务器的使用
+## 无图形界面的服务器使用
 
-若要在无图形界面的服务器上运行导出模块，需要额外安装一些组件。在基于 Debian 的发行版上，使用以下命令:
+如果你计划在无头服务器上使用导出模块，需要安装额外的组件。以下是在基于 Deb 的发行版上的命令：
 
 ~~~
 apt-get install -y xvfb libgtk2.0-0 libgtk-3-0 libgbm-dev 
 libnotify-dev libnss3 libxss1 libasound2 libxtst6 xauth
 ~~~
 
-在基于 RPM 的发行版上，运行:
+以下是在基于 RPM 的发行版上的命令：
 
 ~~~
 yum install -y xorg-x11-server-Xvfb gtk2-devel gtk3-devel 
 libnotify-devel GConf2 nss libXScrnSaver alsa-lib
 ~~~
 
-安装完成后，可使用以下命令之一启动模块:
+然后你需要使用另一个命令来运行它：
 
 ~~~
 npm run start:docker
@@ -69,59 +69,58 @@ npm run start:docker
 xvfb-run node index.js
 ~~~
 
-## 问题解决
+## 解决问题
 
-### Node.js 版本过旧
+### 旧版 Node.js
 
-该导出模块需要 Node.js 12.03 及以上版本。如果您的版本较旧，请安装更早的 Electron 版本:
-
-~~~
-npm install electron@6.1
-~~~
-
-### 导出 PDF 无法结束
-
-在 Windows 系统中，如果设置了自定义 DPI 或字体，Electron 存在已知问题。为解决此问题，请安装旧版 Electron:
+该导出模块兼容 Node 版本 12.03 及更新版本。如果你有较旧的版本，你需要安装较旧的 Electron 版本：
 
 ~~~
 npm install electron@6.1
 ~~~
 
-### Mac M1 上 PDF/PNG 导出不工作
+### 导出到 PDF 永远不结束
 
-当前使用的 Electron 版本不支持 Darwin-ARM64 构建。作为临时解决方案，请尝试安装 Electron 11:
+如果你在 Windows 上使用自定义 DPI 设置或字体，Electron 组件存在一个 bug。要使其工作，需要安装较早的版本：
+
+~~~
+npm install electron@6.1
+~~~
+
+### Mac M1 上的 PDF/PNG 不工作
+
+当前使用的 Electron 版本没有为 Darwin-ARM64 架构提供构建。作为变通办法，你可以尝试安装 Electron 11。
 
 ~~~
 npm install electron@11
 ~~~
 
-基本导出功能应可正常使用，但并未对所有功能进行全面测试。
+基本导出功能应能工作，但我们尚未检查该版本下所有功能是否正常：
 
-### PDF 导出失败
+### 导出到 PDF 不工作
 
-可能有多种原因。请仔细检查错误信息。
+可能原因有很多。你需要检查错误信息。
 
-如果出现如下错误:
+如果你收到以下错误之一：
 
 * Failed to get crash dump id
 
 * Electron crashed!
 
-通常表示导出模块正在无图形界面的服务器上运行。此时，您需要
-[安装 PDF 和 PNG 导出的必要组件](#usingserverwithoutgraphicalinterface)或使用 Docker 镜像。
+很可能，这意味着导出模块正在无头服务器上工作。你将需要 [安装使用 PDF 和 PNG 导出所需的组件](#using-server-without-graphical-interface)。或者你可以构建一个 Docker 镜像。
 
 ### 使用 Docker 镜像
 
-使用以下命令创建 Docker 镜像:
+使用以下命令构建 Docker 镜像：
 
 ~~~
 docker build -t dhtmlx/scheduler-gantt-export ./
 ~~~
 
-使用以下命令启动 Docker 容器:
+使用下面的命令运行 Docker 镜像：
 
 ~~~
 docker run -d -p 3200:80 dhtmlx/scheduler-gantt-export
 ~~~
 
-此处，3200 是 Docker 服务可访问的端口。
+3200 是 Docker 服务将要监听的端口。

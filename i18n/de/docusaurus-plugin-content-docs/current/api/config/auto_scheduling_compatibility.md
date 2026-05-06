@@ -1,10 +1,18 @@
 ---
 sidebar_label: auto_scheduling_compatibility
-title: auto_scheduling_compatibility config
-description: "deaktiviert die Verwendung von Zeitbeschränkungen für Aufgaben"
+title: Auto_scheduling_compatibility Konfiguration
+description: "Deaktiviert die Verwendung von Zeitbeschränkungen für Aufgaben"
 ---
 
 # auto_scheduling_compatibility
+
+:::info
+Diese Funktionalität ist nur in der PRO-Edition verfügbar. 
+:::
+
+:::warning
+Die Eigenschaft wurde in v9.1 als veraltet markiert; verwenden Sie stattdessen die `apply_constraints`-Eigenschaft von [gantt.config.auto_scheduling](api/config/auto_scheduling.md#apply_constraints).
+:::
 
 ### Description
 
@@ -18,23 +26,19 @@ description: "deaktiviert die Verwendung von Zeitbeschränkungen für Aufgaben"
 gantt.config.auto_scheduling_compatibility = true;
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Details
 
 :::note
- Diese Funktion ist nur in der PRO Edition verfügbar. 
+Diese Konfiguration ist in der **auto_scheduling**-Erweiterung definiert, daher müssen Sie das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin aktivieren. Lesen Sie die Details im Artikel [Auto Scheduling](guides/auto-scheduling.md). 
 :::
 
-:::note
- Diese Einstellung ist Teil der **auto_scheduling** Erweiterung, daher stellen Sie sicher, dass das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin aktiviert ist. Weitere Informationen finden Sie im Artikel ["Auto Scheduling"](guides/auto-scheduling.md). 
-:::
-
-Die [Funktionalität der Zeitbeschränkungen](guides/auto-scheduling.md#timeconstraintsfortasks) wurde in Version 6.1 eingeführt, um die Auto-Scheduling-Fähigkeiten des Gantt zu verbessern. 
-Die Option **auto_scheduling_compatibility** wurde hinzugefügt, um die [Kompatibilität mit früheren Versionen](guides/auto-scheduling.md#versioncompatibility) zu gewährleisten.
+Die [Zeitbeschränkungs-Funktionalität](guides/auto-scheduling.md#timeconstraintsfortasks) wurde in v6.1 eingeführt, um die Auto Scheduling-Logik von Gantt zu verbessern. 
+Die **auto_scheduling_compatibility**-Konfiguration wurde hinzugefügt, um die Abwärtskompatibilität mit früheren Versionen zu gewährleisten.
 
 ### Related Guides
-- ["Auto Scheduling"](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
 ### Change log
-- in Version 6.1 hinzugefügt, um die Kompatibilität mit vorherigen Versionen zu unterstützen
+- in v6.1 hinzugefügt zur Sicherstellung der Abwärtskompatibilität mit früheren Versionen

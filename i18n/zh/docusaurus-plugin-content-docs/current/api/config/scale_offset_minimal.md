@@ -1,14 +1,14 @@
 ---
 sidebar_label: scale_offset_minimal
-title: scale_offset_minimal config
-description: "控制是否使用最小刻度单位（当使用多个刻度时）作为前导和尾随空白空间的大小"
+title: scale_offset_minimal 配置
+description: "将最小刻度单位（在使用多条刻度时）设为前导/尾部空白区间的间隔"
 ---
 
 # scale_offset_minimal
 
 ### Description
 
-@short: 控制是否使用最小刻度单位（当使用多个刻度时）作为前导和尾随空白空间的大小
+@short: 将最小刻度单位（在使用多条刻度时）设为前导/尾部空白区间的间隔
 
 @signature: scale_offset_minimal: boolean
 
@@ -22,7 +22,6 @@ gantt.config.scale_offset_minimal = false;
 
 ### Details
 
-当刻度间隔未通过 [start_date](api/config/start_date.md) 和 [end_date](api/config/end_date.md) 选项显式设置时，dhtmlxGantt 会根据最早和最晚的任务日期来确定刻度间隔。同时，它会在刻度的开始和结束处添加一个空白间隔。默认情况下，这个空白间隔与所使用的多个刻度中的最小单位相匹配。
+如果刻度区间未被明确指定（通过 [start_date](api/config/start_date.md)、 [end_date](api/config/end_date.md) 选项），dhtmlxGantt 将基于最早任务和最晚任务的日期来计算它。 此外，它在刻度的开头和结尾处添加一个空区间。默认情况下，这个“空区间”等于所使用刻度的最小单位（若使用多条刻度）。 
 
-如果关闭此选项，dhtmlxGantt 将根据 [scales](api/config/scales.md) 选项中定义的 **unit** 属性添加空白间隔。
-
+如果你禁用该选项，dhtmlxGantt 将添加一个空区间，其值等于 [scales](api/config/scales.md) 选项的 **unit** 属性的值。

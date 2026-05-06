@@ -1,6 +1,6 @@
 ---
 sidebar_label: onTaskClosed
-title: onTaskClosed event
+title: Событие onTaskClosed
 description: "срабатывает при закрытии ветки"
 ---
 
@@ -10,21 +10,20 @@ description: "срабатывает при закрытии ветки"
 
 @short: Срабатывает при закрытии ветки
 
-@signature: onTaskClosed: (id: string | number) =\> void;
+@signature: onTaskClosed: (id: string | number) => void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - id ветки
+- `id` - (обязательный) *string | number* - идентификатор ветки
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onTaskClosed", function(id) {
-    alert(`Вы закрыли ветку с id=${id}`);
+    alert(`You've closed a branch with id=${id}`);
 });
 ~~~
 
 ### Related API
 - [close](api/method/close.md)
 - [onTaskOpened](api/event/ontaskopened.md)
-

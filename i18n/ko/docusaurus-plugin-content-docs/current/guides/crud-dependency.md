@@ -1,15 +1,16 @@
 ---
-title: "링크 추가/수정/삭제"
-sidebar_label: "링크 추가/수정/삭제"
+title: "링크 추가/업데이트/삭제" 
+sidebar_label: "링크 추가/업데이트/삭제" 
 ---
 
-# 링크 추가/수정/삭제
+# 간트 차트의 링크 추가/수정/삭제
 
-이 섹션에서는 의존성 링크 작업의 기본 사항(링크 생성, 삭제, 속성 실시간 수정)에 대해 다룹니다.
+이 챕터에서는 의존성 링크를 사용한 기본 작업을 배우게 됩니다: 링크를 생성하거나 삭제하는 방법, 링크의 속성을 동적으로 업데이트하는 방법. 
 
-## 새 링크 추가하기 {#addinganewlink}
 
-Gantt 차트에 새 링크를 추가하려면 [addLink](api/method/addlink.md) 메서드를 사용하세요:
+## 새로운 링크 추가
+
+간트 차트에 새 링크를 추가하려면 [addLink](api/method/addlink.md) 메서드를 사용하세요:
 
 ~~~js
 var linkId = gantt.addLink({
@@ -20,9 +21,9 @@ var linkId = gantt.addLink({
 });
 ~~~
 
-## 링크 속성 수정하기 {#updatingalinksproperty}
+## 링크의 속성 업데이트
 
-링크의 속성을 동적으로 변경하려면 [refreshLink](api/method/refreshlink.md) 메서드를 사용할 수 있습니다:
+링크 객체의 속성을 동적으로 업데이트하려면 [refreshLink](api/method/refreshlink.md) 메서드를 사용하세요:
 
 ~~~js
 var links= gantt.config.links;
@@ -34,7 +35,7 @@ if (link.type == links.finish_to_start){/*!*/
 }/*!*/ 
 ~~~
 
-Gantt 차트의 모든 링크를 한 번에 새로고침하려면 [refreshData](api/method/refreshdata.md) 메서드를 사용하세요:
+참고로, 간트 차트의 모든 링크를 한꺼번에 업데이트하려면 [refreshData](api/method/refreshdata.md) 메서드를 사용하세요:
 
 ~~~js
 var links= gantt.config.links;
@@ -48,38 +49,38 @@ if (link1.type == links.finish_to_finish){/*!*/
 ~~~
 
 :::note
-모든 유형의 링크 의존성은 [links](api/config/links.md) 객체에서 정의되어 있습니다.
+참고: 모든 유형의 링크 의존성은 [links](api/config/links.md) 객체에 저장됩니다.
 :::
 
-## 링크 삭제하기 {#deletingalink}
+## 링크 삭제
 
-링크를 제거하려면 [deleteLink](api/method/deletelink.md) 메서드를 사용하세요:
+링크를 삭제하려면 [deleteLink](api/method/deletelink.md) 메서드를 사용하세요:
 
 ~~~js
 gantt.deleteLink(linkId);
 ~~~
 
-## Gantt 차트에서 모든 링크 제거하기 {#removingalllinksfromtheganttchart}
+## 간트 차트에서 모든 링크 제거
 
-Gantt 차트에서 모든 태스크와 링크를 제거하려면 [clearAll](api/method/clearall.md) 메서드를 호출하세요:
+간트 차트에서 모든 태스크와 링크를 제거하려면 [clearAll](api/method/clearall.md) 메서드를 호출하세요:
 
 ~~~js
 gantt.clearAll();
 ~~~
 
-## UI에서 링크 값 편집하기 {#editinglinkvaluesfromui}
+## UI에서 링크 값 편집
 
-지연(lag) 또는 기타 링크 속성을 편집할 수 있는 기본 제공 UI는 없습니다. 인터페이스가 필요하다면 직접 구현해야 합니다.
+링크의 lag 또는 다른 속성을 편집할 수 있는 내장 UI는 제공되지 않습니다. 따라서 UI가 필요하면 수동으로 구현해야 합니다.
 
-일반적인 구현 절차는 다음과 같습니다:
+일반적인 접근 방식은 아래 단계를 따르는 것을 전제로 합니다:
 
-- [onLinkDblClick](api/event/onlinkdblclick.md) 이벤트를 감지합니다;
-- 기본 동작을 방지합니다;
+- [onLinkDblClick](api/event/onlinkdblclick.md) 이벤트를 캡처합니다; 
+- 기본 핸들러를 취소합니다; 
 - 이벤트 핸들러에서 팝업을 표시합니다.
 
-팝업은 [내장 팝업](guides/message-boxes.md)을 사용하거나 직접 구현할 수 있습니다.
+마지막 단계에서는 [built-in popups ](guides/message-boxes.md) 중 하나를 사용할 수도 있고, 커스텀 솔루션을 구현할 수도 있습니다.
 
-아래는 지연(lag) 편집 팝업을 구현하는 예시입니다:
+다음은 edit-lag 팝업 구현의 예시 코드입니다:
 
 ~~~js
 (function(){
@@ -153,7 +154,4 @@ gantt.clearAll();
 })();
 ~~~
 
-
-**Related example:** [Edit-lag Popup](https://snippet.dhtmlx.com/2208ic0t)
-
-
+**관련 샘플** [Edit-lag Popup](https://snippet.dhtmlx.com/2208ic0t)

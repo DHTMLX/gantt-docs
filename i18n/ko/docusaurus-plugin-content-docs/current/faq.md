@@ -1,120 +1,119 @@
 ---
-title: "FAQ"
-sidebar_label: "FAQ"
+title: "자주 묻는 질문"
+sidebar_label: "자주 묻는 질문"
 ---
 
-# FAQ
+# 자주 묻는 질문
 
-## 샘플을 여는 방법
+## 샘플 열기 방법
 
-컴포넌트의 배포본에는 샘플을 로컬에서 실행할 수 있는 데모 백엔드 앱이 포함되어 있습니다. 
-이 앱은 [Node.js](https://nodejs.org/en/)가 필요하며, 데모를 위해 백엔드에 데이터를 저장해야 하는 경우 메모리 내 저장소를 사용합니다(즉, 별도의 데이터베이스 설정이 필요하지 않습니다).
+컴포넌트의 배포판에는 로컬에서 샘플을 실행하는 데 사용할 수 있는 데모 백엔드 앱이 포함되어 있습니다. 이 앱은 [Node.js](https://nodejs.org/en/)가 필요하며 데모용으로 인메모리 스토리지를 사용합니다. 백엔드에서 데이터를 저장하도록 되어 있으므로 데이터베이스 설정이 필요하지 않습니다.
 
-### 예제를 실행하기 위해 할 수 있는 방법
+### 예제를 실행하기 위해 할 수 있는 일
 
 1) 데모 Node.js 기반 백엔드 앱 사용: 
 
-- 패키지를 폴더에 압축 해제하세요.
-- 터미널(또는 cmd, PowerShell)을 여세요.
-- `npm install` 실행
-- `npm run start` 실행
-- 브라우저에서 `http://localhost:9200` 접속
-- 온라인 샘플 페이지 **https://docs.dhtmlx.com/gantt/samples/** 와 동일한 인덱스 페이지가 보입니다.
+- 패키지를 특정 폴더에 추출합니다.
+- 터미널(또는 cmd, PowerShell)을 엽니다.
+- `npm install`을 실행합니다.
+- `npm run start`를 실행합니다.
+- 브라우저에서 `http://localhost:9200`를 엽니다.
+- 온라인 샘플과 동일한 인덱스 페이지가 표시되어야 합니다 **https://docs.dhtmlx.com/gantt/samples/**
 
 2) Apache 웹 서버 사용
 
-- Apache 웹 서버를 설치하세요. 설치 방법을 잘 모를 경우 [XAMPP](https://www.apachefriends.org/index.html) 사용을 권장합니다.
-- Gantt 샘플을 Apache 문서 루트 디렉터리(*xampp/htdocs*, XAMPP를 설치한 경우)에 넣으세요.
-- Apache 웹 서버를 실행하면 **http://localhost/yourfolder** URL을 통해 예제에 접근할 수 있습니다.
+- Apache 웹 서버를 설치합니다. 방법이 확실하지 않다면 [XAMPP](https://www.apachefriends.org/index.html)를 사용하는 것을 권장합니다.
+- Gantt 샘플을 Apache 문서 루트 디렉터리(*xampp/htdocs*, XAMPP를 설치한 경우)에 넣습니다.
+- Apache 웹 서버를 실행하면 예제에 접근할 때 **http://localhost/yourfolder** URL을 사용할 수 있습니다.
 
-3) IDE에 내장된 개발용 웹 서버 사용
+3) IDE에 내장된 개발 웹 서버 사용
 
-일부 IDE는 내장 개발용 웹 서버를 제공합니다. 예: 
-[https://www.jetbrains.com/help/webstorm/creating-local-server-configuration.html](https://www.jetbrains.com/help/webstorm/creating-local-server-configuration.html)
+일부 IDE는 내장 개발 웹 서버를 제공합니다. 예를 들면: 
+[https://www.jetbrains.com/help/webstorm/creating-local-server-configuration.html](https://www.jetbrains.com/help/webstorm/creating-local-server-configuration.html).
 
+사용 중인 IDE가 기본 제공되거나 플러그인을 통해 이와 비슷한 기능을 지원하는지 확인할 수 있습니다.
 
-사용 중인 IDE가 이와 유사한 기능을 기본 제공하거나 플러그인으로 지원하는지 확인해보세요.
+### 왜 필요할 수 있나요
 
-### 왜 필요할까요?
+패키지의 일부 예제는 AJAX(xhr)를 사용하여 JSON 파일에서 데이터를 로드합니다. 작동하려면 웹 서버에서 예제를 열어야 합니다.
 
-패키지 내 일부 샘플은 AJAX(xhr)를 사용하여 JSON 파일에서 데이터를 로드합니다. 이를 위해서는 예제를 웹 서버에서 열어야 합니다.
+예제를 더블 클릭으로 열면 브라우저가 파일로 열게 됩니다. 이 모드에서는 브라우저가 AJAX 호출을 차단하고 컴포넌트가 데이터 파일을 로드할 수 없게 됩니다. 화면의 오른쪽 상단에 *Invalid data* 팝업이 표시됩니다.
 
-예제를 더블 클릭하여 열면 브라우저가 파일로서 예제를 엽니다. 이 모드에서는 브라우저가 AJAX 호출을 차단하므로 컴포넌트가 데이터 파일을 불러올 수 없습니다. 
-화면 우측 상단에 *Invalid data* 팝업이 표시됩니다.
-
-이러한 동작이 실제로 발생하는지 확인하려면 브라우저의 주소 표시줄에서 URL을 확인하세요. URL이 *file:///* 형식이라면, 예를 들어: 
+설명된 동작이 귀하의 경우에 해당하는지 확인하려면 브라우저의 탐색 패널에서 URL을 확인할 수 있습니다. URL에 *file:///* 형식이 사용되면 예시는 다음과 같습니다. 
 
 
 **file:///D:/www/gantt-eval/samples/11_resources/09_resource_histogram.html** 
 
-이 경우에 해당합니다. 파일에서 데이터를 불러오는 샘플은 이 모드에서 동작하지 않습니다.
 
-웹 서버에서 예제를 열면 URL은 다음과 같이 표시됩니다(*http://*는 생략될 수 있습니다): 
+그 경우임을 확신할 수 있습니다. 파일에서 데이터를 로드하는 샘플은 이 모드에서 작동하지 않습니다.
+
+웹 서버에서 예제를 열면 URL은 다음과 같아 보일 것입니다(*http://*가 생략될 수 있음): 
 
 
 **http://localhost/gantt-eval/samples/11_resources/09_resource_histogram.html**
 
-## Gantt 차트가 올바르게 표시되지 않음
 
-Gantt 차트가 페이지에 올바르게 표시되지 않는 경우, 차트 컨테이너의 CSS 스타일을 확인하세요. 컨테이너에는 픽셀 또는 퍼센트 단위의 올바른 크기가 지정되어야 합니다.
+## Gantt 차트가 올바르게 렌더링되지 않습니다
 
+페이지에 Gantt 차트가 올바르게 렌더링되지 않았다면 차트 컨테이너의 CSS 스타일을 확인하십시오. 픽셀 단위 또는 퍼센트로 유효한 크기를 가져야 합니다.
 
-- 퍼센트 단위로 크기를 지정한 경우, 부모 컨테이너에도 높이가 지정되어 있는지 확인하세요.
-- Gantt 차트를 body에 직접 배치한 경우, 퍼센트 기반 높이를 올바르게 사용하려면 다음 css 스타일을 지정하세요:
+- 크기가 퍼센트로 정의된 경우 상위 컨테이너에도 높이가 설정되어 있는지 확인하십시오.
+- Gantt 차트가 바디에 직접 배치된 경우, 퍼센트 기반 높이를 올바르게 사용하기 위해 다음 CSS 스타일을 지정하십시오:
 
 ~~~js
 html, body{
     margin:0px;
     padding:0px;
-    height:100%; /*필수*/
+    height:100%; /*mandatory*/
     overflow:hidden;
 }
 ~~~
 
-## Internet Explorer에서 Gantt 차트가 올바르게 표시되지 않음
 
-Gantt 차트가 Internet Explorer에서만 올바르게 표시되지 않는 경우, 페이지에 전체 DOCTYPE 선언이 사용되고 있는지 확인하세요. 
-dhtmlxGantt는 IE6, IE7, IE8의 표준 모드에서 정상 작동하지만, IE의 쿼크 모드에서는 사용할 수 없습니다.
+## The Gantt 차트가 Internet Explorer에서 올바르게 렌더링되지 않습니다
 
-예를 들어, HTML5 DOCTYPE은 다음과 같습니다:
+Internet Explorer 브라우저에서만 페이지가 올바르게 렌더링되지 않는 경우 페이지가 전체 DOCTYPE 선언을 사용하는지 확인하십시오.
+dhtmlxGantt는 IE6, IE7 및 IE8의 표준 모드에서 올바르게 작동하지만 IE의 quirks 모드에서는 사용하도록 의도되지 않았습니다.
+
+예를 들면, HTML5 DOCTYPE는 다음과 같습니다:
 
 ~~~html
 <!DOCTYPE html>
 ~~~
 
-## 오른쪽 상단에 에러 알림이 표시됨
+
+## 오른쪽 상단 모서리에 오류 경고가 표시됩니다
 
 ![error_alert](/img/error_alert.png)
 
-먼저, 오류의 원인을 파악해야 합니다.
+먼저 오류의 원인을 파악해야 합니다. 
 
-이 메시지는 컴포넌트가 정상적으로 동작하지 못할 때 나타납니다. 
-대부분 데이터 또는 애플리케이션 로직에 실제 문제가 있음을 의미합니다. 단순히 메시지를 숨기는 것은 문제를 감추는 것일 뿐, 앱의 다른 부분에서 다시 나타날 수 있습니다.
+메시지는 컴포넌트가 정상적으로 작동하지 않을 때 표시됩니다. 일반적으로 데이터나 애플리케이션 로직의 실제 문제를 나타냅니다. 따라서 이를 숨긴다고 해서 문제를 은폐하게 되며, 앱의 다른 부분에서 다시 나타날 수 있습니다.
 
-단, 최종 사용자에게 앱을 배포하기 전에 이러한 메시지를 비활성화하고 싶을 수 있습니다. 이 경우 [show_errors](api/config/show_errors.md) 설정을 사용할 수 있습니다:
+다만 애플리케이션을 최종 사용자에게 배포하기 전에 이 메시지를 비활성화하려면 [show_errors](api/config/show_errors.md) 설정을 사용할 수 있습니다:
 
 ~~~js
 gantt.config.show_errors = false;
 ~~~
 
-## Gantt가 아무것도 표시하지 않음
 
-가장 일반적인 두 가지 시나리오가 있습니다:
+## Gantt가 아무 것도 표시하지 않습니다
 
-1. 백엔드 API를 직접 구현하거나 [튜토리얼](integrations/howtostart-guides.md)을 따라 구현했지만, 페이지를 열었을 때 Gantt에 작업이나 링크가 표시되지 않습니다.
+가장 명확한 두 가지 시나리오가 있습니다:
+
+1. 백엔드 API를 수동으로 구현하거나 우리의 [tutorials](integrations/howtostart-guides.md)에 따라 구현하려고 하지만 Gantt가 페이지를 열었을 때 작업이나 연결이 표시되지 않습니다.
 
 또는
 
-2. 변경사항을 백엔드에 저장하는 데 문제가 있습니다.
+2. 백엔드에 변경 내용을 저장하는 데 문제가 있습니다.
 
-문제의 원인을 파악하는 방법은 [백엔드 통합 문제 해결](guides/troubleshooting.md) 문서를 참고하세요.
+문제의 원인을 파악하는 방법에 대한 지침은 [Troubleshooting Backend Integration Issues](guides/troubleshooting.md) 문서를 읽어보십시오.
 
-## 작업의 마지막 날을 기간에 포함시키는 방법
+## 작업의 기간에 마지막 날 포함 방법
 
-날짜를 시간-분 없이 "일" 단위로 지정하고 시작일과 종료일이 같을 경우, 작업 기간이 1일이 아니라 0일로 계산되는 것을 볼 수 있습니다.
+일자가 시 시간-분 부분 없이 일 단위로 지정되고 시작일과 종료일이 동일하면 작업의 기간은 1일이 아니라 0일로 계산될 수 있습니다. 
 
-예를 들어, 시작일과 종료일이 각각 "01-12-2021"과 "05-12-2021"인 경우를 살펴보겠습니다. 
-작업이 12월 1일부터 5일까지 5일간 지속된다고 생각할 수 있지만, gantt는 기간을 4일로 계산합니다.
+다음 예시를 보겠습니다. 시작일과 종료일이 각각 "01-12-2021" 및 "05-12-2021"인 경우를 보면 작업은 12월 1일부터 5일까지 5일간 지속될 것이라고 생각되지만, Gantt는 기간을 4일로 계산합니다.
 
 ~~~js
 gantt.parse({ tasks: [
@@ -127,41 +126,38 @@ gantt.parse({ tasks: [
 ]}, links:[]);
 
 console.log(gantt.getTask(1).end_date);
-// 2021년 12월 5일 00:00:00
+// 5 December 2021 00:00:00
 
 console.log(gantt.getTask(1).duration);
 // 4
 ~~~
 
-기본적으로, 작업의 마지막 날은 기간에서 제외됩니다. 하지만 기본 동작을 변경하여 마지막 날을 기간에 포함시킬 수도 있습니다. 자세한 내용은 [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates) 문서를 참고하세요.
+기본적으로 작업의 마지막 날은 기간에서 제외되지만, 기본 동작을 변경하고 마지막 날을 기간에 포함시키는 옵션이 있습니다. 자세한 내용은 [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates) 문서를 확인하십시오.
 
 ## 순환 참조 오류
 
-잘못된 데이터를 Gantt에 전달하면 트리 구조가 순환 구조가 되어 순환 참조 오류가 발생할 수 있습니다.
+Gantt에 잘못된 데이터를 전달하면 트리 형태의 구조가 순환하게 되어 순환 참조 오류가 발생합니다.
 
 ![cyclic_error](/img/cyclic_error.png)
 
-예를 들어, 다음과 같은 경우에 오류가 발생할 수 있습니다:
+예를 들어 다음과 같은 경우에 이 오류가 발생할 수 있습니다:
 
-- 작업의 부모 ID가 작업의 ID와 동일한 경우:
+- 작업의 상위 ID가 작업의 ID와 동일한 경우:
 
 ![equal_ids](/img/equal_ids.png)
 
-작업 #2는 자기 자신을 부모로 가질 수 없습니다.
+작업 #2는 자신을 부모로 삼을 수 없습니다.
 
-- 작업의 자식 중 하나가 부모가 된 경우:
+- 작업의 자식 중 한 명이 그 작업의 부모가 되는 경우:
 
 ![parent_child_error](/img/parent_child_error.png)
 
-"Task #4"가 "Task #1"의 부모로 지정되어 있습니다. 
-하지만 동시에 "Task #4"는 "Task #1"의 자식이기도 합니다.
+"작업 #4"가 "작업 #1"의 부모로 지정되어 있습니다. 하지만 동시에 "작업 #4"는 "작업 #1"의 자식이기도 합니다.
 
-## 평가 기간이 만료됨
+## 평가 기간이 만료되었습니다
 
-Gantt 차트의 라이선스 PRO 버전을 설치했는데도 평가 기간 만료 메시지가 계속 나타난다면, 애플리케이션 어딘가에 Trial 버전이 남아있다는 의미입니다. 
-평가 기간 만료 팝업은 Trial 버전에서만 표시됩니다.
+정식으로 라이선스가 부여된 PRO 버전의 Gantt 차트를 설치했지만 평가 기간이 만료되었다는 메시지가 여전히 보인다면 애플리케이션 어딘가에 트라이얼 버전이 남아 있다는 뜻입니다. 트라이얼 버전만이 만료된 평가 기간에 대한 팝업 메시지를 표시하는 기능을 제공합니다.
 
-따라서 Gantt 차트의 Trial 버전 파일을 완전히 삭제한 후 PRO 버전을 설치해야 합니다. 자세한 내용은 [Adding PRO Edition into Project](guides/installation.md#addingproeditionintoproject) 섹션을 참고하세요.
+따라서 PRO 버전을 설치하기 전에 Gantt 차트의 트라이얼 패키지 파일을 완전히 제거해야 한다는 점을 기억하십시오. 자세한 내용은 [Adding PRO Edition into Project](guides/installation.md#adding-pro-edition-into-project) 섹션을 참조하십시오.
 
-**팁:** 연결된 파일을 확인하려면 웹 콘솔에서 *gantt.license* 를 입력하세요.
-
+**팁:** 연결된 파일이 어떤 것인지 확인하려면 웹 콘솔에 *gantt.license*를 입력하면 됩니다.

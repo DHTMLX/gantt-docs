@@ -1,20 +1,18 @@
 ---
 sidebar_label: hideCover
-title: hideCover method
-description: "화면의 나머지 부분과의 상호작용을 방해하는 라이트박스 모달 오버레이를 제거합니다."
+title: hideCover 메서드
+description: "남은 화면과의 상호 작용을 차단하는 라이트박스 모달 오버레이를 숨깁니다"
 ---
 
 # hideCover
 
 ### Description
 
-@short: 화면의 나머지 부분과의 상호작용을 방해하는 라이트박스 모달 오버레이를 제거합니다.
+@short: 남은 화면과의 상호 작용을 차단하는 라이트박스 모달 오버레이를 숨깁니다
 
-@signature: hideCover: (box?: HTMLElement) =\> void
+@signature: hideCover: (box?: HTMLElement) => void
 
 ### Parameters
-
-- `box` - (optional) *HTMLElement* - 숨길 요소
 
 ### Example
 
@@ -24,8 +22,7 @@ gantt.hideCover(gantt.getLightbox());
 
 ### Details
 
-입력 파라미터를 제공하면, 이 메서드는 해당 HTML 요소의 display 속성을 "none"으로 변경하여 요소를 숨깁니다.
+입력 매개변수를 지정하면, 지정된 HTML 요소를 숨깁니다(디스플레이 속성을 "none"으로 설정하여).
 
 ### Related API
 - [showCover](api/method/showcover.md)
-

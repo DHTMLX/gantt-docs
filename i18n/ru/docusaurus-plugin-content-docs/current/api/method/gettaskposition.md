@@ -1,30 +1,30 @@
 ---
 sidebar_label: getTaskPosition
 title: getTaskPosition method
-description: "определяет позицию и размер DOM-элемента задачи внутри области timeline."
+description: "вычисляет положение и размер DOM-элемента задачи во временной шкале"
 ---
 
 # getTaskPosition
 
 ### Description
 
-@short: Определяет позицию и размер DOM-элемента задачи внутри области timeline.
+@short: Вычисляет положение и размер DOM-элемента задачи во временной шкале
 
-@signature: getTaskPosition: (task: Task, from?: Date, to?: Date) =\> any
+@signature: getTaskPosition: (task: Task, from?: Date, to?: Date) => any
 
 ### Parameters
 
-- `task` - (required) *Task* - объект задачи
-- `from` - (optional) *Date* - опционально, дата начала для элемента
-- `to` - (optional) *Date* - опционально, дата окончания для элемента
+- `task` - (required) *Task* - сам объект задачи
+- `from` - (optional) *Date* - начальная дата элемента
+- `to` - (optional) *Date* - конечная дата элемента
 
 ### Returns
-- ` object` - (object) - объект, описывающий размер и позицию
+- `object` - (object) - объект, описывающий размер
 
 ### Example
 
 ~~~jsx
-// добавление отображения baseline
+// добавление отображения базовой линии
 gantt.addTaskLayer(function draw_planned(task) {
     if (task.planned_start && task.planned_end) {
         const sizes = gantt.getTaskPosition(task, task.planned_start, task.planned_end); /*!*/
@@ -46,17 +46,17 @@ gantt.addTaskLayer(function draw_planned(task) {
 
 ### Details
 
-Этот метод возвращает объект со следующими свойствами:
+The method returns an object with the following properties:
 
-- **left** - CSS-свойство left в пикселях
-- **top** - CSS-свойство top в пикселях
-- **height** - CSS-высота элемента бара в пикселях (задается либо конфигурацией [bar_height](api/config/bar_height.md), либо свойством *task.bar_height*)
-- **rowHeight** - CSS-высота строки задачи в пикселях (задается либо конфигурацией [row_height](api/config/row_height.md), либо свойством *task.row_height*) (добавлено в версии v7.1)
-- **width** - CSS-ширина в пикселях (основана на периоде между датами начала и окончания задачи или на опциональных датах 'from' и 'to', если они заданы)
+- **left** - положение CSS left в пикселях
+- **top** - положение CSS top в пикселях
+- **height** - высота CSS у элемента полосы в пикселях (определяется либо настройкой [bar_height](api/config/bar_height.md) или свойством *task.bar_height* объекта задачи)
+- **rowHeight** - высота CSS строки задачи в пикселях (определяется либо настройкой [row_height](api/config/row_height.md) или свойством *task.row_height* объекта задачи) (добавлено в v7.1)
+- **width** - ширина CSS в пикселях (определяется периодом между датами начала и конца задачи или значениями дат 'from', 'to', если они заданы)
 
-Если передать только один аргумент, метод использует **task.start_date** и **task.end_date** для вычисления **width** и **left**. Если указаны второй и третий аргументы, будут использованы именно эти даты.
+Если передано только одно значение аргумента, метод будет использовать **task.start_date**/**task.end_date** для вычисления значений **width** и **left**. Иначе будут использованы значения дат из вторых и третих аргументов.
 
-Учтите, что метод всегда учитывает как дату, так и время, независимо от настроек time scale. Например, эти два вызова:
+Обратите внимание, что метод всегда использует обе части даты и времени предоставленных дат, независимо от настроек масштаба времени. Это означает, что два вызова приведенной ниже функции:
 
 ~~~js
 gantt.getTaskPosition(task, new Date(2019, 3, 19, 1, 0), new Date(2019, 3, 19, 1, 0)); 
@@ -64,5 +64,4 @@ gantt.getTaskPosition(task, new Date(2019, 3, 19, 1, 0), new Date(2019, 3, 19, 1
 gantt.getTaskPosition(task, new Date(2019, 3, 19, 1, 0), new Date(2019, 3, 19, 5, 0)); 
 ~~~
 
-вернут блоки разного размера, вне зависимости от того, используется ли шкала *hour*, *day*, *month* или *year*.
-
+вернут боксы разного размера, не только в масштабе *hour*, но и в масштабах *day/month/year*.

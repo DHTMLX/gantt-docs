@@ -1,19 +1,19 @@
 ---
 sidebar_label: getScrollState
 title: getScrollState method
-description: "获取当前的滚动位置"
+description: "返回滚动位置"
 ---
 
 # getScrollState
 
 ### Description
 
-@short: 获取当前的滚动位置
+@short: 返回滚动位置
 
 @signature: getScrollState: () =\> \{ x: number, y: number \}
 
 ### Returns
-- `ScrollState` - (ScrollState) - 一个表示滚动位置的对象
+- `ScrollState` - (ScrollState) - 该滚动位置对象
 
 ### Example
 
@@ -25,18 +25,17 @@ const posY = sPos.y;
 
 ### Details
 
-此方法返回一个包含以下详细信息的对象:
+该方法返回一个包含以下属性的对象：
 
-- **y** - 垂直滚动偏移量，单位为像素
-- **x** - 水平滚动偏移量，单位为像素
-- **inner_width** - 可见时间线部分的宽度
-- **inner_height** - 可见时间线部分的高度
-- **width** - 时间线的总可滚动宽度
-- **height** - 时间线的总可滚动高度
+- **y** - 垂直方向滚动的像素数量
+- **x** - 水平方向滚动的像素数量
+- **inner_width** - 可见时间线区域的宽度
+- **inner_height** - 可见时间线区域的高度
+- **width** - 时间线区域的滚动宽度
+- **height** - 时间线区域的滚动高度
 
 ### Related API
 - [scrollTo](api/method/scrollto.md)
 - [onGanttScroll](api/event/onganttscroll.md)
 - [showDate](api/method/showdate.md)
 - [showTask](api/method/showtask.md)
-

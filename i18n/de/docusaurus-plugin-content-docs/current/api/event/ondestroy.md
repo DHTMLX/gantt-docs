@@ -1,14 +1,14 @@
 ---
 sidebar_label: onDestroy
-title: onDestroy event
-description: "wird ausgelöst, sobald das Gantt-Diagramm mit der Methode destructor gelöscht wurde"
+title: onDestroy Event
+description: "Wird aufgerufen, nachdem Gantt durch die destructor-Methode bereinigt wurde"
 ---
 
 # onDestroy
 
 ### Description
 
-@short: Wird ausgelöst, sobald das Gantt-Diagramm mit der Methode [destructor](api/method/destructor.md) gelöscht wurde
+@short: Aufgerufen, nachdem Gantt durch die destructor-Methode bereinigt wurde
 
 @signature: onDestroy: () =\> void;
 
@@ -24,4 +24,3 @@ gantt.destructor();
 
 ### Related API
 - [destructor](api/method/destructor.md)
-

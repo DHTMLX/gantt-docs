@@ -1,45 +1,45 @@
 ---
 sidebar_label: onBeforeAutoSchedule
-title: onBeforeAutoSchedule event
-description: "在自动排程开始之前触发"
+title: onBeforeAutoSchedule 事件
+description: "在自动排程之前触发"
 ---
 
 # onBeforeAutoSchedule
 :::info
- 该功能仅在PRO版本中可用。 
+此功能仅在 PRO 版中提供。 
 :::
 ### Description
 
-@short: 在自动排程开始之前触发
+@short: 在自动排程之前触发
 
-@signature: onBeforeAutoSchedule: (taskId: string | number) =\> boolean;
+@signature: onBeforeAutoSchedule: (taskId: string | number) => boolean;
 
 ### Parameters
 
-- `taskId` - (required) *string | number* - 根任务的ID
+- `taskId` - （必填）*string | number* - 根任务的 ID
 
 ### Returns
-- ` result` - (boolean) - 决定事件的默认操作是否继续执行（<b>true</b>）或被取消（<b>false</b>）
+- `result` - (boolean) - 表示事件的默认操作是否将被触发（<b>true</b>）还是取消（<b>false</b>）
 
 ### Example
 
 ~~~jsx
-gantt.attachEvent("onBeforeAutoSchedule",function(taskId){  
-    // 在这里添加你的自定义逻辑  
-    return true;  
+gantt.attachEvent("onBeforeAutoSchedule",function(taskId){
+    // 在这里插入您的自定义逻辑
+    return true;
 });
 ~~~
 
 ### Related samples
-- [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
+- [自动排程扩展](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
 
 :::note
- 此事件是**auto_scheduling**扩展的一部分，因此请确保已启用[auto_scheduling](guides/extensions-list.md)插件。更多信息请参见[自动调度](guides/auto-scheduling.md)文档。 
+此事件在 **auto_scheduling** 扩展中定义，因此您需要激活 [auto_scheduling](guides/extensions-list.md#autoscheduling) 插件。请在 [自动排程](guides/auto-scheduling.md) 文章中阅读详细信息。 
 :::
 
-此事件可以被阻止。返回*false*将停止后续处理。
+该事件是可阻塞的。返回 *false* 将取消后续处理。
 
 ### Related API
 - [auto_scheduling](api/config/auto_scheduling.md)
@@ -58,5 +58,4 @@ gantt.attachEvent("onBeforeAutoSchedule",function(taskId){
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- [自动调度](guides/auto-scheduling.md)
-
+- [自动排程](guides/auto-scheduling.md)

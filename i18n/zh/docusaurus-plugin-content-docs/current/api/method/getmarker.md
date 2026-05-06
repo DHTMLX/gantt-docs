@@ -1,6 +1,6 @@
 ---
 sidebar_label: getMarker
-title: getMarker method
+title: getMarker 方法
 description: "获取标记对象"
 ---
 
@@ -14,10 +14,10 @@ description: "获取标记对象"
 
 ### Parameters
 
-- `markerId` - (required) *string | number* -    标记的ID
+- `markerId` - (required) *string | number* - 标记的 ID
 
 ### Returns
-- ` marker` - (object) - 标记的配置对象
+- `marker` - (object) - 标记的配置对象
 
 ### Example
 
@@ -29,7 +29,7 @@ const todayMarker = gantt.addMarker({
     title:date_to_str( new Date())
 });
 gantt.getMarker(todayMarker); //->{css:"today", text:"Now", id:...}
-~~~
+~~~ 
 
 ### Related samples
 - [Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
@@ -37,8 +37,8 @@ gantt.getMarker(todayMarker); //->{css:"today", text:"Now", id:...}
 ### Details
 
 :::note
- 该方法属于 **marker** 扩展的一部分，因此请确保已启用 [marker](guides/extensions-list.md) 插件。更多详情请参阅 [添加垂直标记](guides/markers.md) 文章。 
-:::
+本方法在 **marker** 扩展中定义，因此需要启用 [marker](guides/extensions-list.md#vertical-marker) 插件。请在 [Adding Vertical Markers](guides/markers.md) 文章中阅读详细信息。
+ :::
 
 ### Related API
 - [addMarker](api/method/addmarker.md)
@@ -48,5 +48,4 @@ gantt.getMarker(todayMarker); //->{css:"today", text:"Now", id:...}
 - [show_markers](api/config/show_markers.md)
 
 ### Related Guides
-- [添加垂直标记](guides/markers.md)
-
+- [Adding Vertical Markers](guides/markers.md)

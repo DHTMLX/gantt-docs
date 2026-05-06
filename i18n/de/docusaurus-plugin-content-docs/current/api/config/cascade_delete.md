@@ -1,14 +1,14 @@
 ---
 sidebar_label: cascade_delete
-title: cascade_delete config
-description: "ermöglicht das automatische Löschen von verschachtelten Tasks und Links, wenn ein übergeordneter Task gelöscht wird"
+title: cascade_delete Konfiguration
+description: "Aktiviert die kaskadierende Löschung verschachtelter Aufgaben und Verknüpfungen"
 ---
 
 # cascade_delete
 
 ### Description
 
-@short: Ermöglicht das automatische Löschen von verschachtelten Tasks und Links, wenn ein übergeordneter Task gelöscht wird
+@short: Aktiviert die kaskadierende Löschung verschachtelter Aufgaben und Verknüpfungen
 
 @signature: cascade_delete: boolean
 
@@ -19,11 +19,11 @@ gantt.config.cascade_delete = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Standardwert:** true
 
 ### Details
 
-eingeführt in Version 4.2
+Hinzugefügt in Version 4.2
 
 ### Related Guides
-- ["Grundlegende Operationen mit Aufgaben"](guides/crud-task.md#cascadedeletingofnestedtasks)
+- [Grundlegende Operationen mit Aufgaben](guides/crud-task.md)

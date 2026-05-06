@@ -1,14 +1,14 @@
 ---
 sidebar_label: link_line_width
-title: link_line_width config
-description: "调整时间线部分依赖链接的粗细"
+title: link_line_width 配置
+description: "设置时间轴区域中依赖关系连线的宽度"
 ---
 
 # link_line_width
 
 ### Description
 
-@short: 调整时间线部分依赖链接的粗细
+@short: 设置时间轴区域中依赖关系连线的宽度
 
 @signature: link_line_width: number
 
@@ -19,4 +19,4 @@ gantt.config.link_line_width = 3;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 2
+**默认值：** 2

@@ -14,10 +14,10 @@ description: "gibt das Task-Objekt zurück"
 
 ### Parameters
 
-- `id` - (required) *string | number* -     die Task-ID
+- `id` - (erforderlich) *string | number* - die ID der Aufgabe
 
 ### Returns
-- ` obj` - (Task) - das Task-Objekt
+- `obj` - (Task) - das Task-Objekt
 
 ### Example
 
@@ -36,33 +36,30 @@ gantt.getTask(7);
 
 ### Details
 
-Wenn Sie **getTask()** aufrufen, gibt es das Task-Objekt zurück, das zwei nützliche Eigenschaften enthält, die Ihnen helfen, Links zu identifizieren, die mit diesem Task verbunden sind:
+Das von der **getTask()**-Methode zurückgegebene Task-Objekt enthält zwei wichtige Eigenschaften, die Sie verwenden können, um Verbindungen zur Aufgabe abzurufen:
 
-- **$source** - dies sind Links, die vom Task ausgehen.
-- **$target** - dies sind Links, die auf den Task zeigen.
+- **$source** - ausgehende Links der Aufgabe
+- **$target** - eingehende Links der Aufgabe
 
-Diese Eigenschaften werden automatisch generiert und enthalten die IDs der Links, die vom Task ausgehen bzw. zu ihm führen.
+Die Eigenschaften werden automatisch generiert und speichern die IDs der eingehenden und ausgehenden Links.
 
 ~~~js
 const taskObj = gantt.getTask("t1");
  
-const sourceLinks = taskObj.$source;        //-> ["l1","l4"] - IDs der ausgehenden Links  
-const targetLinks = taskObj.$target;       //-> ["l5","l8"] - IDs der eingehenden Links
+const sourceLinks = taskObj.$source;        //-> ["l1","l4"] - ids of coming-out links  
+const targetLinks = taskObj.$target;       //-> ["l5","l8"] - ids of coming-into links
 ~~~
 
+## Error
 
-## Fehler
-
-Die Methode **getTask** setzt voraus, dass ein Task mit der angegebenen "id" bereits im Gantt-Diagramm geladen ist. Falls kein Task mit dieser "id" existiert, wird eine Fehlermeldung ausgegeben: "Task not found id = ID". 
+Die **getTask**-Methode erwartet, dass eine Aufgabe mit einer erforderlichen 'id' in Gantt geladen ist. Daher wird, falls keine Aufgabe mit dieser 'id' gefunden wird, die Methode eine Fehlermeldung erzeugen: "Aufgabe nicht gefunden id = ID". 
 
 ~~~js
 const task = gantt.getTask("fake-id");
 ...
 ~~~
 
-![gettask_error](/img/gettask_error.png)
-
-Um diesen Fehler zu vermeiden, empfiehlt es sich, zuerst mit der Methode [isTaskExists](api/method/istaskexists.md) zu prüfen, ob der Task existiert:
+Wir empfehlen Ihnen, die Ursachen dieses Fehlers zu beheben, bevor Sie versuchen, das Task-Objekt abzurufen. Dazu müssen Sie prüfen, ob die Aufgabe existiert, über die [isTaskExists](api/method/istaskexists.md) Methode:
 
 ~~~js
 if(gantt.isTaskExists("fake-id")){
@@ -71,7 +68,7 @@ if(gantt.isTaskExists("fake-id")){
 }
 ~~~
 
-Alternativ können Sie [diese Fehlermeldungen vor dem Deployment Ihrer App deaktivieren](faq.md#anerroralertappearsintherighttopcorner) durch Setzen der Konfigurationsoption [show_errors](api/config/show_errors.md):
+Aber Sie können diese Meldungen auch deaktivieren, bevor Sie Ihre Anwendung an Endbenutzer freigeben, über die [show_errors](api/config/show_errors.md) Konfigurationsoption:
 
 ~~~js
 gantt.config.show_errors = false;
@@ -83,6 +80,5 @@ gantt.config.show_errors = false;
 - [isTaskExists](api/method/istaskexists.md)
 
 ### Related Guides
-- ["Task-Objekt/Id"](guides/task-object-operations.md)
-- ["Abrufen des Link-Objekts/der Link-ID"](guides/link-object-operations.md#gettingthelinksrelatedtoacertaintask)
-
+- [Task Object/Id](guides/task-object-operations.md)
+- [Getting the Link Object/Id](guides/link-object-operations.md#getting-the-links-related-to-a-certain-task)

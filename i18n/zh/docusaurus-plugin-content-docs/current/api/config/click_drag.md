@@ -1,14 +1,14 @@
 ---
 sidebar_label: click_drag
 title: click_drag config
-description: "启用高级拖放功能"
+description: "启用高级拖拽"
 ---
 
 # click_drag
 
 ### Description
 
-@short: 启用高级拖放功能
+@short: 启用高级拖拽
 
 @signature: click_drag: undefined | ClickDrag
 
@@ -45,33 +45,35 @@ gantt.config.click_drag = {
 ### Details
 
 :::note
- 此配置属于 **click_drag** 扩展的一部分，因此请确保通过 [gantt.plugins](api/method/plugins.md) 方法启用 [click_drag](guides/extensions-list.md#gaojituofang) 插件。更多详情请参见 [创建/选择任务与拖拽（DnD）](guides/advanced-dnd.md) 文章。 
+本配置在 **click_drag** 扩展中定义，因此需要使用 [click_drag](guides/extensions-list.md) 插件通过 [gantt.plugins](api/method/plugins.md) 方法进行激活。请参阅 [Creating/Selecting Tasks with DnD](guides/advanced-dnd.md) 文章中的详细信息。 
 :::
 
 **click_drag** 扩展提供以下功能:
 
-- 通过拖放创建任务
-- 通过拖放为未计划任务设定时间
-- 通过拖放选择任务
-- 通过拖放创建拆分任务的部分（PRO 版本）
+- 通过拖拽创建任务
+- 使用拖拽为未排程的任务设定时间
+- 通过拖拽选择任务
+- 通过拖拽创建拆分任务的部分（PRO 版本）
 
-**gantt.config.click_drag** 对象具有以下属性:
+The **gantt.config.click_drag** 对象包含以下属性：
 
-- **className** -  (*string*) 指定选中元素的自定义 CSS 类
-- **viewPort** - (*HTMLElement*) 定义事件绑定和选择发生的元素
-- **useRequestAnimationFrame** - (*boolean*) 决定渲染时是否使用 requestAnimationFrame
-- **callback** - (*function*) - 在鼠标按钮释放时调用。接收6个参数:
-    - **startPoint** - (*object*) - 结构如下:<br>
-    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`，<br>
-  其中 absolute 表示相对于文档左上角的坐标，relative 表示相对于 viewPort 元素的坐标
-    - **endPoint** - (*object*) 结构同 startPoint
-     - **startDate** - (*Date*) 拖动开始位置对应的日期
-    - **endDate** - (*Date*) 拖动结束位置对应的日期
-    - **tasksBetweenDates** - (*array*) 在开始和结束日期之间找到的任务
-    - **tasksInRows** - (*array*) 在开始和结束垂直坐标之间选中的任务
-- **singleRow** - (*boolean*) 如果为 true，选择限制在与任务高度匹配的单行
-- **ignore** - (*string*) 禁用拖放的元素的 CSS 选择器
-- **useKey** - (*string|boolean*) 如果设置，拖放仅在按下指定的修饰键时激活。支持的键包括 "ctrlKey"、"shiftKey"、"metaKey" 和 "altKey"
+- **className** -  (*string*) 为选定元素设置自定义 CSS 类
+- **viewPort** -  (*HTMLElement*) 要附加事件并进行选择的元素
+- **useRequestAnimationFrame** -  (*boolean*) 指定在渲染过程中是否使用 requestAnimationFrame
+- **callback** -  (*function*) - 当鼠标按钮松开时将调用的函数。接受 6 个参数：
+    - **startPoint** - (*object*) - 一种类型的对象： 
+    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`， 
+  其中 absolute 是文档左上角的坐标，relative 是用作 viewPort 的左上角元素的坐标 
+    - **endPoint** - (*object*) - 一种类型的对象： 
+    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`， 
+  其中 absolute 是文档左上角的坐标，relative 是用作 viewPort 的左上角元素的坐标 
+     - **startDate** - (*Date*) 与起点对应的日期
+    - **endDate** - (*Date*) 与终点对应的日期
+    - **tasksBetweenDates** - (*array*) 起始日期和结束日期之间的任务数组
+    - **tasksInRows** - (*array*) 垂直方向上位于起点和终点坐标之间所选任务的数组
+- **singleRow** - (*boolean*) true 时仅在一行中添加选择，且该行的高度等于一个任务的高度
+- **ignore** - (*string*) CSS 选择器。与该选择器匹配的元素不会激活拖拽
+- **useKey** - (*string|boolean*) 如果指定了该属性，只有在按下指定修饰键时才会激活拖拽。支持的值： "ctrlKey", "shiftKey", "metaKey", "altKey"
 
 ~~~js
 gantt.config.click_drag = {
@@ -81,11 +83,13 @@ gantt.config.click_drag = {
 };
 ~~~
 
-- **render** - (*function*) 生成拖动时显示的元素。接收两个参数:
-    - **startPoint** - (*object*) 结构为:<br>
-    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`，<br>
-  absolute 和 relative 均如上所述
-    - **endPoint** - (*object*) 结构同 startPoint
+- **render** - (*function*) 在拖拽过程中渲染一个元素的函数。它接收两个参数：
+    - **startPoint** - (*object*) - 类型为：
+    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`，
+  其中 absolute 是文档左上角的坐标，relative 是用作 viewPort 的左上角元素的坐标 
+    - **endPoint** - (*object*) - 类型为：
+    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`，
+  其中 absolute 是文档左上角的坐标，relative 是用作 viewPort 的左上角元素的坐标
 
 **render** 函数示例实现:
 
@@ -111,5 +115,4 @@ gantt.config.click_drag = {
 ~~~
 
 ### Related Guides
-- [创建/选择任务与拖拽（DnD）](guides/advanced-dnd.md)
-
+- [通过拖拽创建/选择任务](guides/advanced-dnd.md)

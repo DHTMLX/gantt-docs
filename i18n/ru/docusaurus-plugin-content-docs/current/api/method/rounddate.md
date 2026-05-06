@@ -1,20 +1,20 @@
 ---
 sidebar_label: roundDate
-title: roundDate method
-description: "округляет заданную дату до ближайшей даты на основе временного масштаба"
+title: roundDate метод
+description: "округляет указанную дату до ближайшей даты на шкале времени"
 ---
 
 # roundDate
 
 ### Description
 
-@short: Округляет заданную дату до ближайшей даты на основе временного масштаба
+@short: Округляет указанную дату до ближайшей даты на шкале времени
 
-@signature: roundDate: (date: Date | RoundDateConfig) =\> Date
+@signature: roundDate: (date: Date | RoundDateConfig) => Date
 
 ### Parameters
 
-- `date` - (required) *Date* - | RoundDateConfig     объект Date для округления или объект с параметрами конфигурации
+- `date` - (required) *Date | RoundDateConfig* -     объект Date, который нужно округлить, или объект с настройками
 
 ### Returns
 - ` date` - (Date) - округленный объект Date
@@ -27,18 +27,18 @@ var today = gantt.roundDate(new Date());
 
 ### Details
 
-Чтобы округлить конкретную дату до ближайшей, просто передайте объект Date в этот метод:
+Если указанная дата должна быть округлена к ближайшей дате, передайте объект Date в качестве параметра метода:
 
 ~~~js
 var today = gantt.roundDate(new Date());
 console.log(today);
 ~~~
 
-Если вы хотите округлить дату согласно определенной единице времени, используйте объект с настройками в качестве параметра для метода **roundDate()**. Этот объект может содержать следующие свойства:
+Если указанная дата должна быть округлена до ближайшей даты с учётом единицы времени, передайте объект настроек в метод **roundDate()**. Объект может принимать следующие атрибуты:
 
-- **date** - (*Date*) - объект Date для округления;
-- **unit?** - (*string*) - единица времени для округления ("minute", "hour", "day", "week", "month", "year");
-- **step?** - (*number*) - шаг интервала временного масштаба (ось X), по умолчанию 1.
+- **date** - (*Date*) - объект Date, который нужно округлить;
+- **unit?** - (*string*) - единица времени ("minute", "hour", "day", "week", "month", "year");
+- **step?** - (*number*) - шаг временной шкалы (ось X), по умолчанию 1.
 
 
 ~~~js
@@ -50,6 +50,6 @@ var today = gantt.roundDate({
 console.log(today);
 ~~~
 
+
 ### Related API
 - [roundTaskDates](api/method/roundtaskdates.md)
-

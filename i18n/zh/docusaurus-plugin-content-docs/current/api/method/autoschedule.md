@@ -1,22 +1,23 @@
 ---
 sidebar_label: autoSchedule
-title: autoSchedule method
-description: "自动更新项目进度计划"
+title: autoSchedule 方法
+description: "重新计算项目的进度安排"
 ---
 
 # autoSchedule
+
 :::info
- 此功能仅在 PRO 版本中可用。 
+此功能仅在 PRO 版中可用。 
 :::
+
 ### Description
 
-@short: 自动更新项目进度计划
+@short: 重新计算项目的进度安排
 
 @signature: autoSchedule: (taskId?: string | number) =\> void
 
 ### Parameters
-
-- `taskId` - (optional) *string | number* -        可选，任务 ID
+- `taskId` - (optional) *string | number* - 任务 ID
 
 ### Example
 
@@ -26,15 +27,15 @@ gantt.autoSchedule();
 
 ### Details
 
-如果想从指定任务开始更新进度计划，只需将该任务的 ID 作为参数传递给 **autoSchedule()** 方法:
+要为一组相互关联的任务重新计算进度，请将该组中某个任务的 ID 作为参数传递给 **autoSchedule()** 方法：
 
 ~~~js
 gantt.autoSchedule(taskId);
 ~~~
 
 :::note
- 请确保页面中已包含 [auto_scheduling](guides/extensions-list.md#zidongpaicheng) 插件，因为该方法依赖此插件。 
+此方法需要在页面上引入 [auto_scheduling](guides/extensions-list.md#autoscheduling) 插件。
 :::
 
 ### Related Guides
-- [自动调度](guides/auto-scheduling.md)
+- [自动排程](guides/auto-scheduling.md)

@@ -1,23 +1,23 @@
 ---
 sidebar_label: grid_blank
 title: grid_blank template
-description: "определяет пользовательский контент, который отображается перед метками дочерних элементов в колонке дерева"
+description: "указывает на пользовательский контент, который вставляется перед метками дочерних элементов в столбце дерева"
 ---
 
 # grid_blank
 
 ### Description
 
-@short: Определяет пользовательский контент, который отображается перед метками дочерних элементов в колонке дерева
+@short: Указывает пользовательский контент, который вставляется перед метками дочерних элементов в столбце дерева
 
-@signature: grid_blank: (task: Task) =\> string;
+@signature: grid_blank: (task: Task) => string;
 
 ### Parameters
 
-- `task` - (required) *Task* - объект задачи
+- `task` - (обязательный) *Task* - объект задачи
 
 ### Returns
-- ` text` - (string) - html текст, который будет отображён в gantt
+- ` text` - (string) - html-текст, который будет отрисован в gantt
 
 ### Example
 
@@ -28,5 +28,5 @@ gantt.templates.grid_blank = function(item) {
 ~~~
 
 ### Related Guides
-- [Шаблоны грида](guides/table-templates.md)
-- [Настройка древовидной колонки](guides/tree-column.md)
+- [Шаблоны Grid](guides/table-templates.md)
+- [Настройка столбца дерева](guides/tree-column.md)

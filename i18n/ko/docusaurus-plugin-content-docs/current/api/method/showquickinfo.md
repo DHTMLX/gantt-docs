@@ -1,20 +1,20 @@
 ---
 sidebar_label: showQuickInfo
-title: showQuickInfo method
-description: "주어진 작업에 대해 팝업 작업 폼을 엽니다"
+title: showQuickInfo 메서드
+description: "지정된 작업의 팝업 작업 양식을 표시합니다"
 ---
 
 # showQuickInfo
 
 ### Description
 
-@short: 주어진 작업에 대해 팝업 작업 폼을 엽니다
+@short: 지정된 작업의 팝업 작업 양식을 표시합니다
 
 @signature: showQuickInfo: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -     작업의 고유 식별자
+- `id` - (필수) *문자열 | 숫자* -     작업 ID
 
 ### Example
 
@@ -37,7 +37,7 @@ window.setTimeout(function(){
 ### Details
 
 :::note
- 이 메서드는 **Quick Info** 확장 기능에서 제공되므로, [quick_info](guides/extensions-list.md#quickinfo) 플러그인이 활성화되어 있는지 확인하세요. 
+참고 이 메서드는 **Quick Info** 확장에 정의되어 있으므로 [quick_info](guides/extensions-list.md#quick-info) 플러그인을 활성화해야 합니다.
 :::
 
 ### Related API
@@ -48,5 +48,4 @@ window.setTimeout(function(){
 - [onAfterQuickInfo](api/event/onafterquickinfo.md)
 
 ### Related Guides
-- [확장 기능 전체 목록](guides/extensions-list.md#quickinfo)
-
+- [Full List of Extensions](guides/extensions-list.md#quick-info)

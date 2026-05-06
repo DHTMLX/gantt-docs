@@ -1,16 +1,16 @@
 ---
-title: "Datenladen"
-sidebar_label: "Datenladen"
+title: "Daten laden"
+sidebar_label: "Daten laden"
 ---
 
-# Datenladen 
+# Daten laden
 
-dhtmlxGantt unterstützt zwei Datenformate zum Laden von Informationen:
+dhtmlxGantt kann Daten in zwei Formaten verarbeiten:
 
 - [XML](guides/supported-data-formats.md#xmldhtmlxgantt20);
-- [JSON](guides/supported-data-formats.md#json).
+- [JSON](guides/supported-data-formats.md).
 
-Um ein Gantt-Diagramm mit Daten zu füllen, können Sie entweder die Methoden [parse](api/method/parse.md) oder [load](api/method/load.md) verwenden.
+Um ein Gantt-Diagramm mit Daten zu belegen, verwenden Sie entweder die [parse](api/method/parse.md) oder die [load](api/method/load.md) Methode.
 
 ~~~js
 gantt.init("gantt_here");
@@ -18,381 +18,413 @@ gantt.load("tasks.json");
 ~~~
 
 
-[Basic initialization](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
+**Zugehöriges Beispiel**: [Grundlegende Initialisierung](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
 
 
 :::note
-Wenn Sie dem Gantt-Diagramm fehlerhafte Daten bereitstellen, kann dessen baumartige Struktur zyklisch werden, was zum [cyclic reference error](faq.md#cyclicreferenceerror) führt.
+Wenn Sie dem Gantt falsche Daten übergeben, wird seine baumartige Struktur zyklisch, was den [zyklischen Referenzfehler](faq.md#cyclic-reference-error) verursacht.
 :::
 
-## Laden aus einem Objekt {#loadingfromobject}
+## Laden aus Objekt
 
-Wenn Sie Daten direkt aus einem Objekt laden möchten, verwenden Sie die Methode [parse](api/method/parse.md):
+Um Daten aus einem Objekt zu laden, verwenden Sie die [parse](api/method/parse.md) Methode:
 
-**Loading from an inline data source**
-~~~js
-var data = {
-  tasks:[
-     {id:1, text:"Project #1", start_date:"01-04-2020", duration:18},
-     {id:2, text:"Task #1", start_date:"02-04-2020", duration:8, parent:1},
-     {id:3, text:"Task #2", start_date:"11-04-2020", duration:8, parent:1}
-   ]
+~~~jsx title="Laden aus einer Inline-Datenquelle"
+const data = {
+    tasks: [
+        { id: 1, text: "Projekt #1", start_date: "01-12-2025", duration: 18 },
+        { id: 2, text: "Aufgabe #1",    start_date: "02-12-2025", duration: 8, parent: 1 },
+        { id: 3, text: "Aufgabe #2",    start_date: "11-12-2025", duration: 8, parent: 1 }
+    ]
 };
+
 gantt.init("gantt_here");
-gantt.parse(data); /*!*/   
+gantt.parse(data); /*!*/ 
 ~~~
 
 
-[Basic initialization](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
+**Zugehöriges Beispiel**: [Grundlegende Initialisierung](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
 
 
 :::note
-Wenn Ihre Datenobjekte sowohl "start_date" als auch "end_date" enthalten, die Datumswerte jedoch nur das Datum (z. B. 01-12-2021, ohne Zeit) beinhalten, kann eine zusätzliche Konfiguration notwendig sein. Weitere Informationen finden Sie unter [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates).
+Wenn Ihre Datenobjekte sowohl "start_date" als auch "end_date" Werte enthalten und Datumswerte nur den Datumsanteil (z. B. 01-12-2025 und nicht 01-12-2025 00:00) umfassen, benötigen Sie möglicherweise eine zusätzliche Konfiguration. Bitte lesen Sie diesen Artikel [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates).
 :::
 
-## Laden vom Server {#loadingfromserver}
+## Laden vom Server
 
-### Client-Seite
+### Client-seitig
 
-Um Daten von einem Server zu laden, können Sie die Methode [load](api/method/load.md) verwenden:
+Um Daten von einem Server zu laden, verwenden Sie die [](api/method/load.md) Methode:
 
-**gantt.html**
-~~~js
+~~~jsx title="gantt.html"
 gantt.init("gantt_here");
 gantt.load("data.json"); /*!*/   
 ~~~
 
-Die *load*-Methode sendet eine AJAX-Anfrage an die angegebene URL und erwartet eine Antwort in [einem der unterstützten Formate](guides/supported-data-formats.md).
+Die *load*-Methode sendet eine AJAX-Anfrage an die angegebene URL und erwartet eine Antwort mit Daten in einem der unterstützten Formate ([Supported Data Formats](guides/supported-data-formats.md)).
 Zum Beispiel:
 
-**data.json**
-~~~js
+~~~jsx title="data.json"
 {
-  "tasks":[
-     {"id":1, "text":"Project #1", "start_date":"01-04-2020", "duration":18},
-     {"id":2, "text":"Task #1", "start_date":"02-04-2020","duration":8, "parent":1},
-     {"id":3, "text":"Task #2", "start_date":"11-04-2020","duration":8, "parent":1}
-  ],
-  "links":[
-     {"id":1, "source":1, "target":2, "type":"1"},
-     {"id":2, "source":2, "target":3, "type":"0"}
-  ]
+    "tasks": [
+        { "id": 1, "text": "Projekt #1", "start_date": "01-12-2025", "duration": 18 },
+        { "id": 2, "text": "Aufgabe #1", "start_date": "02-12-2025", "duration": 8,"parent": 1 },
+        { "id": 3, "text": "Aufgabe #2", "start_date": "11-12-2025", "duration": 8, "parent": 1 }
+    ],
+    "links": [
+        { "id": 1, "source": 1, "target": 2, "type": "1" },
+        { "id": 2, "source": 2, "target": 3, "type": "0" }
+    ]
 }
 ~~~
 
-Sie können das Format im zweiten Argument der Methode angeben: "json", "xml" oder "oldxml".
+Das Format wird im zweiten Argument der Methode angegeben: "json", "xml" oder "oldxml".
 
 ~~~js
 gantt.load("data.xml", "xml");
 ~~~
 
-### Server-Seite
+### Serverseitig
 
-Auf dem Server können Sie entweder eine statische Datei mit Daten oder ein Skript haben, das Daten aus einer Quelle abruft und als Antwort zurückgibt.
-Die serverseitige Konfiguration hängt vom verwendeten Framework ab.
+Auf dem Server können Sie entweder eine statische Datei mit Daten haben oder ein Skript, das Daten aus der Datenquelle sammelt und in die Antwort schreibt.
+Die serverseitige Implementierung hängt davon ab, welches Framework Sie verwenden möchten. 
 
 :::note
-Ausführliche Anleitungen und Codebeispiele für verschiedene Plattformen finden Sie unter [Server-Side Integration](guides/server-side.md#loadserverside).
+Siehe detaillierte Anleitungen und Code-Beispiele für verschiedene Plattformen in dem Artikel [](guides/server-side.md#loadserverside).
 :::
 
-Zum Beispiel richten Sie mit Node.js eine Server-Route ein, die die URL verarbeitet, an die Gantt seine AJAX-Datenanfrage sendet.
+Zum Beispiel sollten Sie im Falle von Node.js eine Server-Route für die URL hinzufügen, über die Gantt eine AJAX-Anfrage nach Daten senden wird.
 
 ~~~js
 gantt.load("/data"); 
 ~~~
 
-Diese Route gibt eine JSON-Antwort wie folgt zurück:
+Es wird eine entsprechende Antwort im JSON-Format erzeugt. 
 
 ~~~js
-app.get("/data", function(req, res){
-    db.query("SELECT * FROM gantt_tasks", function(err, rows){
+app.get("/data", (req, res) => {
+    db.query("SELECT * FROM gantt_tasks", (err, tasks) => {
         if (err) console.log(err);
-        db.query("SELECT * FROM gantt_links", function(err, links){
+
+        db.query("SELECT * FROM gantt_links", (err, links) => {
             if (err) console.log(err);
-            for (var i = 0; i < rows.length; i++){
-                rows[i].start_date = rows[i].start_date.format("YYYY-MM-DD");
-                rows[i].open = true;
-            }
- 
-            res.send({ tasks:rows, links : links });
+
+            tasks.forEach((task) => {
+                task.start_date = task.start_date.format("YYYY-MM-DD");
+                task.open = true;
+            });
+
+            res.send({ tasks, links });
         });
     });
 });
 ~~~
 
 :::note
-Alle unterstützten Datenformate finden Sie in [Supported Data Formats](guides/supported-data-formats.md).
-::: 
+Siehe alle unterstützten Datenformate im Artikel [Supported Data Formats](guides/supported-data-formats.md).
+:::
 
 
-## Laden von Aufgabendaten {#loadingtaskdates}
+## Laden von Aufgaben-Daten {#loadingtaskdates}
 
-### Festlegen des Aufgabenzeitplans
+### Festlegung des Aufgabenplans
 
-Es gibt drei Möglichkeiten, den Zeitplan einer Aufgabe in den Daten anzugeben:
+Es gibt drei Möglichkeiten, einen Zeitplan für eine Aufgabe im Dateneintrag zu definieren:
 
 - start_date + duration
 - start_date + end_date
 - duration + end_date
 
-Die nicht angegebene Eigenschaft wird aus den beiden anderen berechnet.
+Die nicht angegebene Eigenschaft wird basierend auf den in dem Datenobjekt definierten Eigenschaften berechnet.
 
 
-[Backward planning](https://docs.dhtmlx.com/gantt/samples/01_initialization/18_backward_planning.html)
+**Zugehöriges Beispiel**: [Backward planning](https://docs.dhtmlx.com/gantt/samples/01_initialization/18_backward_planning.html)
 
 
-Die **end_date** hat Vorrang vor der **duration**. Wenn alle drei Parameter vorhanden sind, ignoriert Gantt die **duration** und berechnet sie anhand von Start- und Enddatum. Zum Beispiel:
+Der **end_date** hat eine höhere Priorität als der **duration**-Parameter. Wenn im Aufgabenobjekt 3 Parameter angegeben sind, wird der **duration**-Parameter ignoriert und die Aufgabe mit einem anderen Dauerwert geladen. Zum Beispiel:
 
-~~~js
+~~~js {4,13}
 {
-    "id":"20", "text":"Project #2", 
-    "start_date":"01-04-2025", 
-    "duration":3, 
-    "end_date":"05-04-2025", 
-    "order":10,"progress":0.4, 
-    "type": "project", "open": true
+    "id": "20", "text": "Projekt #2",
+    "start_date": "01-12-2025",
+    "duration": 3, 
+    "end_date": "05-12-2025",
 }
 
-// Die obenstehende Aufgabe wird tatsächlich mit einer anhand von Start- und Enddatum berechneten Dauer geladen:
+// die oben gezeigte Aufgabe wird mit dem aus Start- und Enddatum berechneten Dauerwert geladen
 {
-    "id":"20", "text":"Project #2", 
-    "start_date":"01-04-2025", 
-    "duration":4, 
-    "end_date":"05-04-2025", 
-    "order":10,"progress":0.4, 
-    "type": "project", "open": true
+    "id": "20", "text": "Projekt #2",
+    "start_date": "01-12-2025",
+    "duration": 4, 
+    "end_date": "05-12-2025",
 }
 ~~~
 
-## Verwendung des ISO-Datumsformats {#loadingdatesinisoformat}
+## Laden von Daten im ISO-Format
 
-Gantt unterstützt das ISO-Datumsformat. Um es zu aktivieren, müssen Sie die Funktionen zum Parsen und Formatieren von Daten überschreiben:
+Seit v9.1.3 erkennt und parst Gantt automatisch ISO-8601-Datumsstrings. Keine zusätzliche Konfiguration erforderlich.
+
+Unterstützte Formate:
+
+- `2026-01-06` - Datum nur
+- `2026-01-06T10:30:00` - Datum und Uhrzeit
+- `2026-01-06T10:30:00.000` - Datum und Uhrzeit mit Millisekunden
+- `2026-01-06T10:30:00.000Z` - UTC
+- `2026-01-06T10:30:00+02:00` - mit Zeitzonen-Offset
 
 ~~~js
-gantt.templates.parse_date = function(date) { 
+gantt.parse({
+    tasks: [
+        { id: 2, text: "Task #1", start_date: "2026-01-06T10:30:00Z", duration: 3 }
+    ],
+    links: []
+});
+// ISO-Daten werden automatisch geparst - keine Template-Überschreibungen nötig
+~~~
+
+Wenn ISO-Daten in der Eingabe erkannt werden, werden sie automatisch wieder als ISO-Zeichenketten serialisiert, wenn sie an den [DataProcessor](guides/server-side.md) übergeben werden. Datums-Strings ohne Zeitangabe (z. B. `"2026-01-06"`) werden wieder als Strings mit Datum ohne Uhrzeit serialisiert, wobei das ursprüngliche Format erhalten bleibt. Enthält die Eingabe eine Mischung aus Datum-ohne-Uhrzeit und vollständigen Datum/Uhrzeit-Strings, werden alle Daten als vollständige Datum/Uhrzeit serialisiert.
+
+:::note
+Datum-Strings ohne Uhrzeit (z. B. `"2026-01-06"`) werden als lokales Mitternachtsdatum geparst, wenn `server_utc` auf `false` gesetzt ist (Standard).
+:::
+
+:::note
+Wenn Sie explizit `gantt.templates.parse_date` oder `gantt.templates.format_date` überschreiben, erhalten Ihre Funktionen Vorrang vor der ISO-Automatik-Erkennung und der automatischen Serialisierung.
+:::
+
+:::tip Gantt v9.1.2 und älter
+In Versionen vor v9.1.3 wurden ISO-Daten nicht automatisch erkannt. Wenn Sie eine ältere Version verwenden, müssen Sie die Vorlagen `parse_date` und `format_date` überschreiben, um ISO-Strings zu behandeln:
+
+~~~js
+gantt.templates.parse_date = (date) => {
     return new Date(date);
 };
-gantt.templates.format_date = function(date) { 
+
+gantt.templates.format_date = (date) => {
     return date.toISOString();
 };
 ~~~
 
-## Dynamisches Ändern des Datumsformats {#changingthedateformatdynamically}
+In v9.1.3+ werden diese Vorlagen weiterhin als Fallback für NICHT-ISO-Datumsstrings verwendet. Siehe [gantt.date.parseDate()](api/other/date.md#parsedatedate-format) für die vollständige Parsing-Pipeline.
+:::
 
-Wenn Sie das [Datumsformat](api/config/date_format.md) zur Laufzeit ändern möchten, sollten Sie das [parse_date](api/template/parse_date.md) Template wie folgt aktualisieren:
+## Dynamische Änderung des Datumsformats
+
+Wenn Sie das [date format](api/config/date_format.md) dynamisch ändern müssen, muss die [parse_date](api/template/parse_date.md) Vorlage wie folgt angepasst werden:
 
 ~~~js
-var cfg = gantt.config;
-var strToDate = gantt.date.str_to_date(cfg.date_format, cfg.server_utc);
+const cfg = gantt.config;
+const strToDate = gantt.date.str_to_date(cfg.date_format, cfg.server_utc);
 
-gantt.templates.parse_date = function(date){
-    return strToDate (date);
+gantt.templates.parse_date = (date) => {
+    return strToDate(date);
 };
 ~~~
 
-## Anzeige des Aufgaben-Enddatums & inklusive Enddaten {#taskenddatedisplayampinclusiveenddates}
+## Task-Enddatum-Anzeige & Inklusive Enddaten {#taskenddatedisplayampinclusiveenddates}
 
-Dieser Abschnitt erklärt, wie Sie das Enddatum einer Aufgabe korrekt speichern und anzeigen.
+Dieser Abschnitt gibt Ihnen eine Antwort auf die Frage: „Wie speichert und zeigt man das Enddatum der Aufgabe korrekt an?“.
 
-Zunächst zwei häufige Szenarien beim Arbeiten mit Aufgabendaten:
+Zunächst betrachten wir zwei mögliche Szenarien, die Sie beim Arbeiten mit Aufgaben-Daten begegnen können:
 
 #### Szenario 1
 
-- Die Aufgabendauer wird in ganzen Tagen gemessen (duration_unit="day")
-- Die Aufgabendaten enthalten Start- und Enddaten im Format "%Y-%m-%d" oder "%d-%m-%Y" (ohne Zeitangabe)
+- Wenn die Aufgabendauer in ganzen Tagen gemessen wird (duration_unit="day")
+- Wenn Aufgaben-Datenobjekte Start- und Enddaten im Format "%Y-%m-%d" oder "%d-%m-%Y" enthalten (d. h. ohne Stunden-Minuten-Teilstücke)
 
-Aufgrund der Art und Weise, wie dhtmlxGantt Aufgabendaten interpretiert und speichert, können die Ergebnisse von den Erwartungen abweichen.
+Aufgrund der Details, wie dhtmlxGantt Enddaten von Aufgaben interpretiert und speichert, können die Ergebnisdaten Werte haben, die nicht erwartet werden.
 
-Hier ein Beispiel:
+Schauen Sie sich das folgende Beispiel an:
 
 ~~~js
-gantt.parse({ tasks: [
-    { 
-        id: 1,
-        text: "Task 1",
-        start_date: "22-12-2021",
-        end_date: "22-12-2021"
-    }
-]}, links:[]);
+gantt.parse({
+    tasks: [
+        { 
+            id: 1,
+            text: "Aufgabe 1",
+            start_date: "22-12-2025",
+            end_date: "22-12-2025"
+        }
+    ],
+    links: []
+});
 
 console.log(gantt.getTask(1).end_date);
-// 22. Dezember 2021 00:00:00
+// 22 December 2025 00:00:00
 
 console.log(gantt.getTask(1).duration);
 // 0
 ~~~
 
-In diesem Fall zeigen Start- und Enddatum auf denselben Moment, sodass die Aufgabendauer null ist.
+In diesem Beispiel beziehen sich sowohl Start- als auch Enddatum auf denselben Zeitpunkt und die Aufgabenlaufzeit beträgt 0.
 
 #### Szenario 2
 
-- Das Enddatum wird im Grid angezeigt
-- Das Enddatum ist ohne Zeitangabe formatiert
+- Wenn das Enddatum einer Aufgabe in der Gantt-Tabelle angezeigt wird
+- Und das Format des Enddatums keine Stunden-Minuten-Teile enthält
 
 ~~~js
 gantt.config.columns = [
-    {name: "text", label: "Name", tree: true, width: 200, resize: true},
-    {name: "duration", label: "Duration", width:80, align: "center", resize: true},
-    {name: "start_date", label: "Start", width:80, align: "center", resize: true},
-    {name: "end_date", label: "Finish", width:80, align: "center", resize: true}
+    { name: "text", label: "Name", tree: true, width: 200, resize: true },
+    { name: "duration", label: "Dauer", width: 80, align: "center", resize: true },
+    { name: "start_date", label: "Start", width: 80, align: "center", resize: true },
+    { name: "end_date", label: "Finish", width: 80, align: "center", resize: true }
 ];
 
 gantt.init("gantt_here");
 
-gantt.parse({ tasks: [
-    { 
-        id: 1,
-        text: "Task 1",
-        start_date: "02-04-2020",
-        end_date: "02-04-2020"
-    }
-]}, links:[]);
+gantt.parse({
+    tasks: [
+        { 
+            id: 1,
+            text: "Aufgabe 1",
+            start_date: "22-12-2025",
+            end_date: "23-12-2025"
+        }
+    ],
+    links: []
+});
 ~~~
 
-Hier wird das Fertigstellungsdatum (end_date) als 3. April angezeigt, obwohl die Aufgabe tatsächlich am Ende des 2. April endet.
+In diesem Beispiel ist das Finish-Datum (end_date der Aufgabe) als 23. Dezember angegeben, während die Aufgabe selbst am Ende des 22. Dezember endet.
 
 ![end_date](/img/end_date.png)
 
-Im Folgenden wird erläutert, wie Gantt Enddaten speichert.
+Wir erklären im Folgenden, wie Gantt Enddaten speichert.
 
 ### Wie Gantt Enddaten speichert
 
-Auch wenn der Zeitanteil nicht angegeben ist (duration_unit = "day"), speichert dhtmlxGantt Daten immer als JavaScript Date-Objekte, die Zeitkomponenten enthalten.
+Auch wenn Sie die Stunden-Minuten-Teile für das Datum der Aufgabe nicht spezifizieren (duration_unit = "day"), speichert dhtmlxGantt sie immer als JS Date, das Stunden-Minuten-Sekunden-Millisekunden-Teil enthält, auf der Client-Seite.
 
-Das Format für Enddaten ist wie folgt:
+Das aktuelle Format der Enddaten ist wie folgt:
 
-- Sekunden und Millisekunden sind immer null, da Gantt keine Einheiten kleiner als eine Minute unterstützt
-- Das Enddatum repräsentiert den Beginn des Tages (oder der Stunde) unmittelbar nach dem letzten aktiven Tag (oder der Stunde). Zum Beispiel:
-  - Eine Aufgabe, die am 2. April beginnt und 1 Tag dauert, hat Start- und Enddatum: "02-04-2022 00:00:00 - 03-04-2022 00:00:00". Das Enddatum zeigt auf den Beginn des 3. April.
-  - Eine Aufgabe, die am 2. April um 13:00 Uhr beginnt und 1 Stunde dauert, hat Start- und Enddatum: "02-04-2022 13:00:00 - 02-04-2022 14:00:00". Das Enddatum zeigt auf den Beginn der nächsten Stunde.
+- Die Sekund- und Millisekunden-Teile des Datums sind immer 0, Gantt unterstützt keine Einheiten kleiner als 1 Minute
+- Das Enddatum der Aufgabe wird als Beginn des Tages ("day-hour-minute") angegeben, gefolgt vom letzten vollen Tag ("day-hour-minute"). Das heißt:
+  - *Die Aufgabe, die am 22. Dezember beginnt und 1 Tag dauert*, hat die folgenden Start- und Enddaten: *"22-12-2025 00:00:00 - 23-12-2025 00:00:00"*. Das Enddatum entspricht dem Beginn des Tages nach dem 22. Dezember
+  - *Die Aufgabe, die am 22. Dezember um 13:00 Uhr beginnt und 1 Stunde dauert*, hat die folgenden Start- und Enddaten: *"22-12-2025 13:00:00 - 22-12-2025 14:00:00"*. Das Enddatum entspricht dem Beginn der nächsten Stunde
 
-Wenn das Enddatum ohne Zeitangabe angezeigt wird, kann dies irreführend sein. Im Beispiel aus **Szenario 2** erscheinen die Daten als "02-04-2022 - 03-04-2022", was als 2-tägige Aufgabe interpretiert werden könnte, obwohl es tatsächlich nur 1 Tag ist.
+Wenn wir das Enddatum der Aufgabe ohne Angabe von Stunden-Minuten auf dem Bildschirm anzeigen, kann das Ergebnis irreführend sein. Im Beispiel aus Szenario 2 sehen Start- und Enddatum möglicherweise so aus: *"22-12-2025 - 23-12-2025"*. Das mag den Eindruck erwecken, dass die Aufgabe nicht 1 Tag, sondern 2 Tage dauert (vom 22. bis 23. Dezember).
 
-Dies ist das Standardverhalten. Obwohl es verwirrend sein kann, gibt es Konfigurationsoptionen, um dies anzupassen, die in den folgenden Abschnitten behandelt werden.
+Dies ist das Standardverhalten und es kann verwirrend sein, aber es gibt die Möglichkeit, es über eine Konfiguration zu korrigieren. Im folgenden Abschnitt zeigen wir Ihnen mehrere Wege, wie Sie damit umgehen können.
 
-### **Wie kann das Standardverhalten angepasst werden?**
+### Wie man das Standardverhalten ändert
 
-**1)** Das Wichtigste ist, die tatsächlichen Aufgabendaten, die im Gantt gespeichert sind, nicht zu verändern.
+1) Das erste, was Sie *nicht tun sollten*, ist, die tatsächlichen Datumswerte der Aufgaben, die im Gantt gespeichert sind, zu verändern.
 
-Man könnte in Erwägung ziehen, die Aufgabendaten beim Laden in das Gantt zu modifizieren, zum Beispiel das Enddatum auf 02-04-2022 23:59:59 zu setzen. Von diesem Ansatz raten wir jedoch ab, da dies zu Konflikten bei der Berechnung der Aufgabendauer und beim automatischen Planen führen kann.
+Sie möchten möglicherweise auch die Aufgaben-Daten ändern, die in das Gantt geladen werden, z. B. Enddaten als 22-12-2025 23:59:59 zu setzen. Aber *das sollten Sie besser nicht tun*, weil diese Entscheidung mit der Berechnung der Aufgaben-Dauer und der automatischen Planung in Konflikt geraten kann.
 
-**Stattdessen empfehlen wir folgende Methoden:**
+Stattdessen empfehlen wir, die folgenden Methoden zu verwenden:
 
-**2a)** Um das Format der Enddaten von Aufgaben im Gantt anzupassen (zum Beispiel, um das Enddatum in die Aufgabendauer einzubeziehen), können Sie das Template [task_end_date](api/template/task_end_date.md) neu definieren.
+2a) Um das Format der Enddaten von Aufgaben im Gantt zu ändern (d. h. das Enddatum in die Dauer der Aufgaben einzubeziehen), können Sie die [task_end_date](api/template/task_end_date.md) Vorlage neu definieren.
 
-Betrachten wir eine Aufgabe, die am 2. April 2020 beginnt und einen Tag dauert. Schauen wir, wie sich das Template auf das Enddatum auswirkt.
+Nehmen wir eine Aufgabe, die am 22. Dezember 2025 beginnt und einen Tag dauert, und betrachten, wie die Vorlage das Enddatum ändern kann.
 
-Standardmäßig erscheint das Enddatum der Aufgabe als 3. April 2020 (`03-04-2020 00:00:00`):
+Standardmäßig sollte das Enddatum dieser Aufgabe als Dezember 23, 2025 angezeigt werden (`23-12-2025 00:00:00`):
 
-- [Live-Demo: Standardformat](https://snippet.dhtmlx.com/5/24f73d6ec)
+- [Live-Demo: Default format](https://snippet.dhtmlx.com/kht2sx3z)
 
 ![task_end_date_template_default](/img/task_end_date_template_default.png)
 
-Wenn Sie jedoch das Template [task_end_date](api/template/task_end_date.md) verwenden, wird dieselbe Aufgabe als am 2. April 2020 endend angezeigt:
+Aber wenn Sie die [task_end_date](api/template/task_end_date.md) und [grid_date_format](api/template/grid_date_format.md) Vorlagen anwenden, wird dieselbe Aufgabe am 22. Dezember 2025 beendet:
 
-- [Live-Demo: Inklusives Enddatenformat](https://snippet.dhtmlx.com/t1k1rwo7)
+- [Live-Demo: Inclusive end date format](https://snippet.dhtmlx.com/t1k1rwo7)
 
 ![task_end_date_template](/img/task_end_date_template.png)
 
-So sieht der Code aus:
+Der Code sieht so aus:
 
 ~~~js
-// override the columns config
-gantt.config.columns = [
-  {name: "wbs", label: "#", width: 60, align: "center", template: gantt.getWBSCode},
-  {name: "text", label: "Name", tree: true, width: 200, resize: true},
-  {name: "start_date", label: "Start", width:80, align: "center", resize: true},
-  {name: "end_date", label: "Finish", width:80, align: "center", resize: true}, 
-  {name:"add"}
-];
-
-// redefine the template
-gantt.templates.task_end_date = function(date){
-   return gantt.templates.task_date(new Date(date.valueOf() - 1)); 
+// Vorlage neu definieren
+gantt.templates.task_end_date = (date) => {
+    return gantt.templates.task_date(new Date(date.valueOf() - 1));
 };
- 
-var gridDateToStr = gantt.date.date_to_str("%Y-%m-%d");
-gantt.templates.grid_date_format = function(date, column){
-   if(column === "end_date"){
-     return gridDateToStr(new Date(date.valueOf() - 1)); 
-   }else{
-     return gridDateToStr(date); 
-   }
-}
+
+const gridDateToStr = gantt.date.date_to_str("%Y-%m-%d");
+
+gantt.templates.grid_date_format = (date, column) =>  {
+    if (column === "end_date") {
+        return gridDateToStr(new Date(date.valueOf() - 1));
+    } else {
+        return gridDateToStr(date);
+    }
+};
+
 gantt.init("gantt_here");
 ~~~
 
-Mit dieser Methode wird das Enddatum der Aufgabe im Grid, im Lightbox-Header und an allen anderen Stellen, an denen das Enddatum angezeigt wird, verändert.
+Auf diese Weise lässt sich das im Grid, in der Kopfzeile des Lightbox-Dialogs und an allen anderen Stellen, an denen das Enddatum angezeigt wird, gezeigte Enddatum ändern.
 
-Wenn Sie das [inklusive Enddatenformat](api/template/task_end_date.md) verwenden und möchten, dass es reibungslos mit [Inline-Bearbeitung](guides/inline-editing.md) im Grid funktioniert, müssen Sie einen eigenen Editor für die Bearbeitung von inklusiven Enddaten erstellen, wie folgt:
+Wenn Sie die [format for inclusive end dates](api/template/task_end_date.md) von Aufgaben verwenden und möchten, dass dies mit der [Inline Editing](guides/inline-editing.md) in der Grid korrekt funktioniert, müssen Sie einen speziellen Editor zum Bearbeiten inklusiver Enddaten der Aufgaben erstellen, wie hier:
 
 ~~~js
-// inclusive editor for end dates
-// use the default editor, but override the set_value/get_value methods
-var dateEditor = gantt.config.editor_types.date;
-gantt.config.editor_types.end_date = gantt.mixin({
-    set_value: function(value, id, column, node){
-        var correctedValue = gantt.date.add(value, -1, "day");
-        return dateEditor.set_value.apply(this, [correctedValue, id, column, node]);
-    },
-    get_value: function(id, column, node) {
-        var selectedValue = dateEditor.get_value.apply(this, [id, column, node]);
-        return gantt.date.add(selectedValue, 1, "day");
-    },
-}, dateEditor);
+// Inklusiver Editor für Enddaten
+// Verwende den Standard-Editor, überschreibe jedoch die Methoden set_value/get_value
+const dateEditor = gantt.config.editor_types.date;
 
-var textEditor = {type: "text", map_to: "text"};
-var startDateEditor = {type: "date", map_to: "start_date"};
-var endDateEditor = {type: "end_date", map_to: "end_date"};
-var durationEditor = {type: "number", map_to: "duration", min:0, max: 100};
+gantt.config.editor_types.end_date = gantt.mixin(
+    {
+        set_value: (value, id, column, node) => {
+            const correctedValue = gantt.date.add(value, -1, "day");
+            return dateEditor.set_value.apply(this, [correctedValue, id, column, node]);
+        },
+        get_value: (id, column, node) => {
+            const selectedValue = dateEditor.get_value.apply(this, [id, column, node]);
+            return gantt.date.add(selectedValue, 1, "day");
+        },
+    },
+    dateEditor
+);
+
+const textEditor = { type: "text", map_to: "text" };
+const startDateEditor = { type: "date", map_to: "start_date" };
+const endDateEditor = { type: "end_date", map_to: "end_date" };
+const durationEditor = { type: "number", map_to: "duration", min: 0, max: 100 };
 
 gantt.config.columns = [
-    {name: "text", label: "Name", tree: true, width: 200, editor: textEditor, 
-        resize: true},
-    {name: "duration", label: "Duration", width:80, align: "center", 
-        editor: durationEditor, resize: true},
-    {name: "start_date", label: "Start", width:140, align: "center", 
-        editor: startDateEditor, resize: true},
-    {name: "end_date", label: "Finish", width:140, align: "center", 
-        editor: endDateEditor, resize: true}
+    { name: "text", label: "Name", tree: true, width: 200, editor: textEditor, resize: true },
+    { name: "duration", label: "Duration", width: 80, align: "center", editor: durationEditor, resize: true },
+    { name: "start_date", label: "Start", width: 140, align: "center", editor: startDateEditor, resize: true },
+    { name: "end_date", label: "Finish", width: 140, align: "center", editor: endDateEditor, resize: true }
 ];
 
-// change lightbox and grid templates to display dates of tasks in an inclusive format
-gantt.templates.task_end_date = function(date){
-    return gantt.templates.task_date(new Date(date.valueOf() - 1)); 
+// Lightbox- und Grid-Vorlagen anpassen, um Enddaten der Aufgaben im inklusiven Format anzuzeigen
+gantt.templates.task_end_date = (date) => {
+    return gantt.templates.task_date(new Date(date.valueOf() - 1));
 };
 
-var gridDateToStr = gantt.date.date_to_str("%Y-%m-%d");
-gantt.templates.grid_date_format = function(date, column){
-    if(column === "end_date"){
-        return gridDateToStr(new Date(date.valueOf() - 1)); 
-    }else{
-        return gridDateToStr(date); 
+const gridDateToStr = gantt.date.date_to_str("%Y-%m-%d");
+
+gantt.templates.grid_date_format = (date, column) => {
+    if (column === "end_date") {
+        return gridDateToStr(new Date(date.valueOf() - 1));
+    } else {
+        return gridDateToStr(date);
     }
-}
+};
 ~~~
 
-Sample: [Inklusiver Enddatum-Editor](https://snippet.dhtmlx.com/ds28tk3c)
+**Zugehöriges Beispiel**: [Inclusive end date editor](https://snippet.dhtmlx.com/ds28tk3c)
 
-**2b)** Wenn andere Teile Ihrer Anwendung Enddaten im "inklusiven" Format benötigen - das heißt, eine Aufgabe, die am 2. April 2020 beginnt und einen Tag dauert, wird gespeichert mit start_date: "02-04-2022", end_date: "02-04-2022" - müssen Sie die Enddaten mit zusätzlicher Logik behandeln:
+2b) Wenn andere Teile der Anwendung die Enddaten im „inklusive“ Format speichern müssen — d. h. eine Aufgabe, die am 22. Dezember 2025 beginnt und einen Tag dauert, muss mit start_date: "22-12-2025", end_date: "22-12-2025" gespeichert werden — müssen Sie zusätzlich eine Verarbeitung der Enddaten implementieren, nämlich:
 
-- Einen Tag zu den Enddaten hinzufügen, bevor die Daten ins Gantt geladen werden
-- Einen Tag von den Enddaten abziehen, bevor Änderungen vom Gantt zurück ins Datenspeicher geschrieben werden
+- einen Tag zu den Enddaten hinzufügen, bevor die Daten in das Gantt geladen werden
+- einen Tag von den Enddaten subtrahieren, bevor die Änderungen, die vom Gantt empfangen wurden, wieder in die Datenspeicherung zurückgeschrieben werden
 
 ## Daten-Eigenschaften {#dataproperties}
 
-Die Datenquelle für das Gantt-Diagramm ist ein Objekt mit zwei Hauptinformationsarten:
+Eine Datenquelle für das Gantt-Diagramm ist ein Objekt, das 2 Arten von Informationen speichert:
 
-- **tasks** - die Aufgabenobjekte
-- **links** - die Abhängigkeitsverbindungen
+- **tasks** - die Elemente der Aufgaben.
+- **links** - die Elemente der Abhängigkeitsverbindungen.
 
-### Eigenschaften des Aufgabenobjekts {#task_properties}
+
+### Eigenschaften eines Aufgabenobjekts {#task_properties}
 
 :::note
-Die vollständige Liste der Eigenschaften von Aufgabenobjekten finden Sie im Artikel [Task properties](guides/task-properties.md).
+Die vollständige Liste der Eigenschaften eines Aufgabenobjekts ist im Artikel [Task properties](guides/task-properties.md) angegeben.
 :::
 
-Das Standard-Datenformat für JSON- und XML-Daten ist **"%d-%m-%Y %H:%i"** (siehe [Date format specification](guides/date-format.md)).
+Das Standard-Datumsformat für JSON- und XML-Daten ist **"%d-%m-%Y %H:%i"** (siehe die [Datumsformat-Spezifikation](/guides/date-format/)).
 
 
 Um es zu ändern, verwenden Sie die Konfigurationsoption [date_format](api/config/date_format.md).
@@ -402,56 +434,58 @@ gantt.config.date_format="%Y-%m-%d";
 gantt.init("gantt_here");
 ~~~
 
-Nach dem Laden ins Gantt werden die Eigenschaften **start_date** und **end_date** als Date-Objekte geparst.
+Sobald in Gantt geladen, werden die Eigenschaften **start_date** und **end_date** in den Date-Typ geparst. 
 
-Falls Ihre Datumsformate nicht von der [date_format](api/config/date_format.md)-Konfiguration unterstützt werden, können Sie sie manuell mit dem Template [parse_date](api/template/parse_date.md) parsen.
+Datumsformate, die von der [date_format](api/config/date_format.md) Konfiguration nicht unterstützt werden, können manuell über die [parse_date](api/template/parse_date.md) Vorlage geparst werden.
 
-### Eigenschaften des Link-Objekts {#link_properties}
+### Eigenschaften eines Link-Objekts {#link_properties}
 
 :::note
-Die vollständige Liste der Eigenschaften von Link-Objekten finden Sie im Artikel [Link properties](guides/link-properties.md).
+Die vollständige Liste der Eigenschaften eines Link-Objekts ist im Artikel [Link properties](guides/link-properties.md) angegeben.
 :::
 
 ### Benutzerdefinierte Eigenschaften
 
-Sie sind nicht auf die Pflichtfelder beschränkt und können beliebige benutzerdefinierte Eigenschaften zu Ihren Datenobjekten hinzufügen. Zusätzliche Eigenschaften werden als Strings geparst und an die Client-Seite übergeben, wo Sie sie nach Bedarf verwenden können.
+Sie sind nicht auf die oben aufgeführten Pflicht-Eigenschaften beschränkt und können jedem Dateneintrag beliebige eigene hinzufügen. 
+Zusätzliche Dateneigenschaften werden als Strings geparst und auf der Client-Seite geladen, wo Sie sie nach Bedarf verwenden können.
 
-Beispiele für Daten mit benutzerdefinierten Eigenschaften finden Sie [hier](guides/supported-data-formats.md#custompropertiesindata).
+Siehe Beispiele von Daten mit benutzerdefinierten Eigenschaften [hier](/guides/supported-data-formats#custom-properties-in-data).
+
 
 ## Datenbankstruktur {#databasestructure}
 
-Für die Nutzung mit einer Datenbank empfiehlt es sich, zwei separate Tabellen zu verwenden: eine für Aufgaben und eine für Links.
+Wenn Sie eine Datenbank verwenden, empfehlen wir zwei separate Tabellen zur Speicherung der Daten: eine für Aufgaben und eine für Links. 
 
 ![tutorial_db_tables](/img/tutorial_db_tables.png)
 
-Eine typische Datenbankstruktur zum Laden von Aufgaben und Links ins Gantt-Diagramm sieht wie folgt aus:
+Die Struktur einer Standarddatenbank zum Laden von Aufgaben und Links in das Gantt-Diagramm ist:
 
 <ul>
-  <li><b>gantt_tasks</b> Tabelle - enthält die Gantt-Aufgaben</li>
+  <li><b>gantt_tasks</b> Tabelle - gibt die Gantt-Aufgaben an</li>
   <ul>
-  <li><b>id</b> - (<i>string,number</i>) Aufgaben-ID.</li>
-  <li><b>start_date</b> - (<i>Date</i>) geplanter Startzeitpunkt der Aufgabe.</li>
-  <li><b>text</b> - (<i>string</i>) Aufgabenbeschreibung.</li>
-  <li><b>progress</b> - (<i>number</i>) von 0 bis 1, Prozent der Aufgabenerledigung.</li>
-  <li><b>duration</b> - (<i>number</i>) Aufgabendauer in aktuellen Zeiteinheiten.</li>
-  <li><b>parent</b> - (<i>number</i>) ID der übergeordneten Aufgabe.</li>
-  <li><b>type</b> - (<i>string</i>) optional, der [Aufgabentyp](guides/task-types.md).</li>
-  <li><b>readonly</b> - (<i>boolean</i>) optional, markiert Aufgabe als [readonly](guides/readonly-mode.md#readonlymodeforspecifictaskslinks).</li>
-  <li><b>editable</b> - (<i>boolean</i>) optional, markiert Aufgabe als [editable](guides/readonly-mode.md#readonlymodeforspecifictaskslinks).</li>
+  <li><b>id</b> - (<i>string,number</i>) die Ereignis-ID.</li>
+  <li><b>start_date</b> - (<i>Date</i>) das Datum, an dem eine Aufgabe beginnen soll. </li>
+  <li><b>text</b> - (<i>string</i>) die Beschreibung der Aufgabe.</li>
+  <li><b>progress</b> - (<i>number</i>) eine Zahl von 0 bis 1, die angibt, welcher Prozentsatz der Aufgabe abgeschlossen ist. </li>
+  <li><b>duration</b> - (<i>number</i>) die Dauer der Aufgabe in den Einheiten des aktuellen Zeitplans. </li>
+  <li><b>parent</b> - (<i>number</i>) die ID der übergeordneten Aufgabe. </li>
+  <li><b>type</b> - (<i>string</i>) optional, der [Typ](guides/task-types.md) der Aufgabe. </li>
+  <li><b>readonly</b> - (<i>boolean</i>) optional, kann Aufgabe als [readonly](guides/readonly-mode.md#readonlymodeforspecifictaskslinks) markieren. </li>
+  <li><b>editable</b> - (<i>boolean</i>) optional, kann Aufgabe als [editable](guides/readonly-mode.md#readonlymodeforspecifictaskslinks) markieren. </li>
   </ul>
-  <li><b>gantt_links</b> Tabelle - enthält die Abhängigkeits-Links</li>
+  <li><b>gantt_links</b> Tabelle - gibt die Gantt-Abhängigkeitsverbindungen an</li>
   <ul>
-  <li><b>id</b> - (<i>string,number</i>) Link-ID.</li>
-  <li><b>source</b> - (<i>number</i>) ID der Quellaufgabe.</li>
-  <li><b>target</b> - (<i>number</i>) ID der Zielaufgabe.</li>
-  <li><b>type</b> - (<i>string</i>) Art der Abhängigkeit:<ul><li>0 - 'finish_to_start'</li><li>1 - 'start_to_start'</li> <li>2 - 'finish_to_finish'</li><li>3 - 'start_to_finish'</li></ul></li> 
-  <li><b>lag</b> - (<i>number</i>) optional, [Aufgabenverzögerung (Lag)](guides/auto-scheduling.md#settinglagandleadtimesbetweentasks).</li>
-  <li><b>readonly</b> - (<i>boolean</i>) optional, markiert Link als [readonly](guides/readonly-mode.md).</li>
-  <li><b>editable</b> - (<i>boolean</i>) optional, markiert Link als [editable](guides/readonly-mode.md).</li>
+  <li><b>id</b> - (<i>string,number</i>) die Ereignis-ID.</li>
+  <li><b>source</b> - (<i>number</i>) die ID der Quellaufgabe. </li>
+  <li><b>target</b> - (<i>number</i>) die ID der Zielaufgabe. </li>
+  <li><b>type</b> - (<i>string</i>) der Typ der Abhängigkeit:<ul><li>0 - 'finish_to_start'</li><li>1 - 'start_to_start'</li> <li>2 - 'finish_to_finish'</li><li>3 - 'start_to_finish'</li></ul> </li> 
+  <li><b>lag</b> - (<i>number</i>) optional, [Task-Lag](/guides/auto-scheduling#settinglagandleadtimesbetweentasks). </li>
+  <li><b>readonly</b> - (<i>boolean</i>) optional, kann Link als [readonly](guides/readonly-mode.md) markieren. </li>
+  <li><b>editable</b> - (<i>boolean</i>) optional, kann Link als [editable](guides/readonly-mode.md) markieren. </li>
   </ul>
 </ul> 
 
-Zum Erstellen der beiden Tabellen können Sie dieses SQL verwenden:
+Verwenden Sie die folgende SQL-Anweisung, um eine Datenbank mit den beiden genannten Tabellen zu erstellen:
 
 ~~~js
 CREATE TABLE `gantt_links` (
@@ -474,33 +508,31 @@ CREATE TABLE `gantt_tasks` (
 ~~~
 
 
-## Ablauf der Events {#eventsflow}
+## Events-Fluss {#eventsflow}
 
-Hier sehen Sie den Ablauf der Events im Zusammenhang mit den Lademethoden:
+Lade-bezogene Methoden haben den folgenden Ereignisfluss:
 
+#### [gantt.parse()](api/method/parse.md):
 
-### [gantt.parse()](api/method/parse.md):
+- [onBeforeParse](api/event/onbeforeparse.md)
+- [onTaskLoading](api/event/ontaskloading.md)
+- [onParse](api/event/onparse.md)
+- [render](api/method/render.md)
 
-- event [onBeforeParse](api/event/onbeforeparse.md) 
-- event [onTaskLoading](api/event/ontaskloading.md) 
-- event [onParse](api/event/onparse.md)  
-- [gantt.render()](api/method/render.md)
+#### [gantt.load()](api/method/load.md):
 
-### [gantt.load()](api/method/load.md)
+- [onLoadStart](api/event/onloadstart.md)
+- [parse](api/method/parse.md)
+- [onLoadEnd](api/event/onloadend.md)
 
-- event [onLoadStart](api/event/onloadstart.md) 
-- [gantt.parse()](api/method/parse.md)
-- event [onLoadEnd](api/event/onloadend.md) 
+#### [gantt.refreshData()](api/method/refreshdata.md):
 
-### [gantt.refreshData()](api/method/refreshdata.md):
+- [onBeforeDataRender](api/event/onbeforedatarender.md)
+- [onBeforeTaskDisplay](api/event/onbeforetaskdisplay.md)
+- [onDataRender](api/event/ondatarender.md)
 
-- event [onBeforeDataRender](api/event/onbeforedatarender.md) 
-- event [onBeforeTaskDisplay](api/event/onbeforetaskdisplay.md) 
-- event [onDataRender](api/event/ondatarender.md) 
+#### [gantt.render()](api/method/render.md):
 
-### [gantt.render()](api/method/render.md):
-
-- event [onBeforeGanttRender](api/event/onbeforeganttrender.md) 
-- [gantt.refreshData()](api/method/refreshdata.md)
-- event [onGanttRender](api/event/onganttrender.md)
-
+- [onBeforeGanttRender](api/event/onbeforeganttrender.md)
+- [refreshData](api/method/refreshdata.md)
+- [onGanttRender](api/event/onganttrender.md)

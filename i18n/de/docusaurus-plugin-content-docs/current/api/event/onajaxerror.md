@@ -1,23 +1,23 @@
 ---
 sidebar_label: onAjaxError
-title: onAjaxError event
-description: "ausgelöst, wenn der Server mit einem Fehler antwortet"
+title: onAjaxError Ereignis
+description: "Wird ausgelöst, wenn der Server einen Fehler zurückgibt"
 ---
 
 # onAjaxError
 
 ### Description
 
-@short: Ausgelöst, wenn der Server mit einem Fehler antwortet
+@short: Wird ausgelöst, wenn der Server einen Fehler zurückgibt
 
 @signature: onAjaxError: (request: any) =\> boolean;
 
 ### Parameters
 
-- `request` - (required) *object* - XML HTTP request Objekt
+- `request` - (erforderlich) *Objekt* - XMLHttpRequest-Objekt
 
 ### Returns
-- ` result` - (boolean) - gibt an, ob die Standardaktion des Events fortgesetzt werden soll (<b>true</b>) oder verhindert wird (<b>false</b>)
+- ` result` - (Boolean) - definiert, ob die Standardaktion des Ereignisses ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
@@ -30,11 +30,11 @@ gantt.attachEvent("onAjaxError", function(request){
 ~~~
 
 ### Related samples
-- https://snippet.dhtmlx.com/5/9596ea969    Error vom Server
+- [Fehler vom Server](https://snippet.dhtmlx.com/5/9596ea969)
 
 ### Details
 
-Dieses Event kann blockiert werden. Das Zurückgeben von false stoppt jegliche weitere Verarbeitung der AJAX-Anfrage.
+Das Ereignis ist blockierbar. Wenn false zurückgegeben wird, wird die weitere Verarbeitung der AJAX-Anfrage gestoppt.
 
 ### Related Guides
-- ["Serverseitige Integration"](guides/server-side.md)
+- [Server-Seitige Integration](guides/server-side.md)

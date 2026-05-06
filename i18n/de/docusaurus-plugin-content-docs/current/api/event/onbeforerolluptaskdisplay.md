@@ -1,37 +1,37 @@
 ---
 sidebar_label: onBeforeRollupTaskDisplay
-title: onBeforeRollupTaskDisplay event
-description: "Wird ausgelöst, kurz bevor die Rollup-Task im übergeordneten Projekt angezeigt wird"
+title: onBeforeRollupTaskDisplay Ereignis
+description: "wird ausgelöst, bevor die Rollup-Aufgabe im übergeordneten Projekt angezeigt wird"
 ---
 
 # onBeforeRollupTaskDisplay
 
 ### Description
 
-@short: Wird ausgelöst, kurz bevor die Rollup-Task im übergeordneten Projekt angezeigt wird
+@short: Wird ausgelöst, bevor die Rollup-Aufgabe im übergeordneten Projekt angezeigt wird
 
 @signature: onBeforeRollupTaskDisplay: (taskId: number | string, task: Task, parentId: number | string) =\> boolean;
 
 ### Parameters
 
-- `taskId` - (required) *number | string* - Die ID der Rollup-Task
-- `task` - (required) *Task* - Das Rollup-Task-Objekt selbst
-- `parentId` - (required) *number | string* - Die ID der übergeordneten (Projekt-)Task
+- `taskId` - (erforderlich) *number | string* - die Rollup-Aufgaben-ID
+- `task` - (erforderlich) *Task* - das Rollup-Aufgaben-Objekt
+- `parentId` - (erforderlich) *number | string* - die ID der übergeordneten (Projekt-)Aufgabe
 
 ### Returns
-- ` result` - (boolean) - Gibt an, ob die Rollup-Task im übergeordneten Projekt sichtbar ist (<b>true</b>) oder verborgen bleibt (<b>false</b>)
+- ` result` - (boolean) - definiert, ob die Rollup-Aufgabe im übergeordneten Projekt angezeigt wird (<b>true</b>) oder nicht (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeRollupTaskDisplay", function(taskId, task, parentId){
-    // beliebige benutzerdefinierte Logik hier
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
     return false;
 });
 ~~~
 
 ### Related Guides
-- ["Meilensteine"](guides/milestones.md#rolluptasksandmilestones)
+- [Milestones](guides/milestones.md#rolluptasksandmilestones)
 
 ### Change log
 - hinzugefügt in v8.0

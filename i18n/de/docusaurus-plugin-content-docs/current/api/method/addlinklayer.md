@@ -1,16 +1,17 @@
 ---
 sidebar_label: addLinkLayer
-title: addLinkLayer method
-description: "zeigt eine zusätzliche Ebene mit benutzerdefinierten Elementen für Links im Timeline-Bereich an"
+title: addLinkLayer Methode
+description: "zeigt eine zusätzliche Ebene mit benutzerdefinierten Elementen für einen Link im Timeline-Bereich"
 ---
 
 # addLinkLayer
+
 :::info
  Diese Funktion ist nur in der PRO-Edition verfügbar. 
 :::
 ### Description
 
-@short: Zeigt eine zusätzliche Ebene mit benutzerdefinierten Elementen für Links im Timeline-Bereich an
+@short: Zeigt eine zusätzliche Ebene mit benutzerdefinierten Elementen für einen Link im Timeline-Bereich
 
 @signature: addLinkLayer: (func: AdditionalLinkLayer['LinkLayerRender'] | AdditionalLinkLayer['LinkLayerConfig']) =\> string
 
@@ -19,7 +20,7 @@ description: "zeigt eine zusätzliche Ebene mit benutzerdefinierten Elementen f�
 - `func` - (required) *LinkLayerRender | LinkLayerConfig* -         eine Renderfunktion oder ein Konfigurationsobjekt
 
 ### Returns
-- ` layerId` - (string) - ein DOM-Element, das die Ebene repräsentiert, die angezeigt wird
+- ` layerId` - (string) - ein DOM-Element, das in der Ebene angezeigt wird
 
 ### Example
 
@@ -42,54 +43,54 @@ gantt.attachEvent("onGanttReady", function () {
 ~~~
 
 ### Details
+
 Das Argument kann einer der folgenden Typen sein:
 
-- **linkLayerRender (link, timeline, config, viewport): HTMLElement|boolean|void** - eine Funktion, die ein Link-Objekt erhält und ein DOM-Element zurückgibt, das in der Ebene angezeigt wird.
+- **linkLayerRender (link, timeline, config, viewport): HTMLElement|boolean|void**- eine Funktion, die das Link-Objekt als Parameter nimmt und ein DOM-Element zurückgeben muss, das in der Ebene angezeigt wird.
     - **_link_** - (*Link*) - das Link-Objekt
     - **_timeline?_** - (*any*) - optional, die Timeline-Ansicht
     - **_config?_** - (*GanttConfigOptions*) - optional, das Gantt-Konfigurationsobjekt
     - **_viewport?_** - (*LayerViewport*) - optional, das Viewport-Objekt
 
 
-- **linkLayerConfig** - (*object*) - Konfigurationsobjekt für die zusätzliche Link-Ebene mit folgenden Eigenschaften:
+- **linkLayerConfig** - (*object*) - das Konfigurationsobjekt für die zusätzliche Link-Ebene. Enthält die folgenden Eigenschaften:
     - **_id?_** - (*string | number*) - optional, die Layer-ID
-    - **_renderer_** - (*object*) - erforderlich, ein Objekt, das für das Rendern der Layer-Elemente zuständig ist
-        - **_render_** - (*LinkLayerRender*) - Funktion, die das zu rendernde HTML-Element zurückgibt
-        - **_update?_** - (*Function*): void - optional, eine Funktion zum Aktualisieren der gerenderten HTML-Elemente
+    - **_renderer_** - (*object*) - obligatorisch, eine Funktion zur Renderierung der Layer-Elemente
+        - **_render_** - (*LinkLayerRender*) - die Funktion, die das HTML-Element zurückgibt, das gerendert werden soll
+        - **_update?_** - (*Function*): void - optional, eine Funktion, mit der Sie die gerenderten HTML-Elemente aktualisieren können
             - **_link_** - (*Link*) - das Link-Objekt
-            - **_node_** - (*HTMLElement*) - Container des gerenderten Knotens
+            - **_node_** - (*HTMLElement*) - der Container des gerenderten Knotens
             - **_timeline?_** - (*any*) - optional, die Timeline-Ansicht
             - **_config?_** - (*GanttConfigOptions*) - optional, das Gantt-Konfigurationsobjekt
             - **_viewport?_** - (*LayerViewport*) - optional, das Viewport-Objekt
-        - **_onrender?_** - (*Function*): void - optional, wird nach Abschluss des Renderns aufgerufen, nützlich zum Rendern nativer Komponenten (z.B. mit `ReactDOM.render`)
+        - **_onrender?_** - (*Function*): void - optional, diese Funktion wird nach Abschluss des Renderings aufgerufen. Sie können sie verwenden, um native Komponenten zu rendern (zum Beispiel mit der `ReactDOM.render`-Methode)
             - **_link_** - (*Link*) - das Link-Objekt
-            - **_node_** - (*HTMLElement*) - Container des gerenderten Knotens
-            - **_view?_** - (*any*) - optional, die Layout-Zelle, in der die Ebene hinzugefügt wird (Standard: timeline)
-        - **_getRectangle?_** - (*Function*): \{ left: number, top: number, height: number, width: number \} | void - optional, gibt die Koordinaten des Viewport-Rechtecks zurück
+            - **_node_** - (*HTMLElement*) - der Container des gerenderten Knotens
+            - **_view?_** - (*any*) - optional, die Layout-Zelle, in der die Ebene hinzugefügt wird (Timeline, standardmäßig)
+        - **_getRectangle?_** - (*Function*): \{ left: number, top: number, height: number, width: number \} | void - optional, eine Funktion, die die Koordinaten des Viewport-Rechtecks zurückgibt
             - **_link_** - (*Link*) - das Link-Objekt
-            - **_view?_** - (*any*) - optional, die Layout-Zelle, in der die Ebene hinzugefügt wird (Standard: timeline)
+            - **_view?_** - (*any*) - optional, die Layout-Zelle, in der die Ebene hinzugefügt wird (Timeline, standardmäßig)
             - **_config?_** - (*GanttConfigOptions*) - optional, das Gantt-Konfigurationsobjekt
-            - **_gantt?_** - (*GanttStatic*) - optional, die Gantt-Instanz
-        - **_getVisibleRange_** - (*Function*): \{start: number, end: number\} | undefined | void - optional, gibt das sichtbare Bereichsobjekt zurück
-            - **_gantt?_** - (*GanttStatic*) - optional, die Gantt-Instanz
-            - **_view?_** - (*any*) - optional, die Layout-Zelle, in der die Ebene hinzugefügt wird (Standard: timeline)
+            - **_gantt?_** - (*GanttStatic*) - optional, das Gantt-Objekt
+        - **_getVisibleRange_** - (*Function*): \{start: number, end: number\} | undefined | void - eine Funktion, die das Objekt des sichtbaren Bereichs zurückgibt
+            - **_gantt?_** - (*GanttStatic*) - optional, das Gantt-Objekt
+            - **_view?_** - (*any*) - optional, die Layout-Zelle, in der die Ebene hinzugefügt wird (Timeline, standardmäßig)
             - **_config?_** - (*GanttConfigOptions*) - optional, das Gantt-Konfigurationsobjekt
-            - **_datastore?_** - (*any*) - optional, das Link-Datastore-Objekt
+            - **_datastore?_** - (*any*) - optional, der Link-Datenspeicher-Objekt
             - **_viewport?_** - (*LayerViewport*) - optional, das Viewport-Objekt
-    - **_container?_** - (*HTMLElement*) - optional, das Container-Element für die Ebene
-    - **_topmost?_** - (*boolean*) - optional, wenn true, erscheint das Layer-Element über dem Link
-    - **_filter?_** - (*Function*): boolean - optional, eine Funktion, die ein Link-Objekt erhält und false zurückgibt, um das Rendern für diesen Link zu überspringen
+    - **_container?_** - (*HTMLElement*) - optional, der Layer-Container
+    - **_topmost?_** - (*boolean*) - optional, falls true, wird das Element über dem Link angezeigt
+    - **_filter?_** - (*Function*): boolean - optional, eine Funktion, die ein Link-Objekt als Parameter nimmt. Wenn sie 'false' zurückgibt, wird die 'renderer'-Funktion für einen Link nicht aufgerufen
         - **_link_** - (*Link*) - das Link-Objekt
 
 
-- Beachten Sie, dass benutzerdefinierte Layer nach erneutem Aufruf von [init](api/method/init.md) gelöscht werden  
-- Außerdem setzt ein Aufruf von [gantt.resetLayout()](api/method/resetlayout.md) benutzerdefinierte Layer zurück. Um sie sichtbar zu halten, müssen Sie **gantt.addLinkLayer** nach dem Aufruf von [resetLayout](api/method/resetlayout.md) erneut anwenden.
+- Beachten Sie, dass benutzerdefinierte Layer nach dem nächsten Aufruf von gantt.init zurückgesetzt werden
+- Aufruf der [gantt.resetLayout()](api/method/resetlayout.md)-Methode setzt ebenfalls benutzerdefinierte Layer zurück. Damit benutzerdefinierte Layer auf einer Seite angezeigt werden, müssen Sie nach dem Aufruf von [gantt.resetLayout()](api/method/resetlayout.md) die Methode **gantt.addLinkLayer** erneut definieren.
 
 :::note
-Sample: [Gantt. Zusätzliche Ebene mit Link-Typen](https://snippet.dhtmlx.com/6mmt1nvw) 
-:::
+sample: [Gantt. Zusätzliche Ebene mit Linktypen](https://snippet.dhtmlx.com/6mmt1nvw)
+::: 
 
 ### Related API
 - [removeLinkLayer](api/method/removelinklayer.md)
 - [addTaskLayer](api/method/addtasklayer.md)
-

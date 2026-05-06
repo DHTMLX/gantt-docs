@@ -1,31 +1,31 @@
 ---
 sidebar_label: onRowDragStart
 title: onRowDragStart event
-description: "그리드에서 행이 수직 재정렬을 위해 드래그되기 직전에 발생하는 이벤트"
----
+description: "그리드의 행을 수직으로 재배열하기 위해 사용자가 행을 드래그하기 전에 발생합니다"
+--- 
 
 # onRowDragStart
 
 ### Description
 
-@short: 그리드에서 행이 수직 재정렬을 위해 드래그되기 직전에 발생하는 이벤트
+@short: 사용자가 그리드의 행을 수직으로 재정렬하기 위해 드래그하기 전에 발생합니다
 
 @signature: onRowDragStart: (id: string | number, target: HTMLElement, e: Event) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - 그리드 내에서 드래그되는 작업의 ID
-- `target` - (required) *HTMLElement* - 드래그되는 작업을 나타내는 HTML 요소
-- `e` - (required) *Event* - 드래그 동작과 관련된 네이티브 이벤트 객체
+- `id` - (required) *string | number* - 그리드에서 사용자가 드래그하는 작업의 ID
+- `target` - (required) *HTMLElement* - 사용자가 드래그하는 작업의 HTML 요소
+- `e` - (required) *Event* - 네이티브 이벤트 객체
 
 ### Returns
-- ` result` - (boolean) - 이벤트의 기본 동작이 진행될지(<b>true</b>) 중단될지(<b>false</b>) 결정
+- ` result` - (boolean) - 기본 동작이 트리거되는지 여부를 정의합니다 (<b>true</b>) 또는 취소됩니다 (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onRowDragStart", function(id, target, e) {
-    //여기에 사용자 정의 로직을 추가할 수 있습니다
+    // 여기에 코드 작성
     return true;
 });
 ~~~
@@ -36,9 +36,7 @@ gantt.attachEvent("onRowDragStart", function(id, target, e) {
 ### Details
 
 :::note
-
-이 이벤트는 마우스를 사용하여 왼쪽 그리드 영역 내에서 작업을 드래그할 때 발생하며, [order_branch](api/config/order_branch.md) 옵션이 활성화된 경우에만 적용됩니다. 브랜치 재정렬이 비활성화된 경우 이 이벤트는 발생하지 않습니다.
- 
+이벤트는 왼쪽 그리드에서 마우스 포인터로 태스크를 이동할 때, order_branch 설정이 활성화된 경우에 트리거됩니다. 가지 순서 재정렬이 비활성화되어 있으면 이 이벤트는 호출되지 않습니다.
 :::
 
 
@@ -49,5 +47,4 @@ gantt.attachEvent("onRowDragStart", function(id, target, e) {
 - [order_branch](api/config/order_branch.md)
 
 ### Related Guides
-- [작업 순서 변경하기](guides/reordering-tasks.md)
-
+- [Reordering Tasks](guides/reordering-tasks.md)

@@ -1,14 +1,14 @@
 ---
 sidebar_label: resetLayout
-title: resetLayout method
-description: "baut das Gantt-Layout basierend auf der aktuellen Layout-Konfiguration neu auf"
+title: resetLayout Methode
+description: "erstellt das Gantt-Layout basierend auf dem aktuellen Wert der Layout-Konfiguration neu"
 ---
 
 # resetLayout
 
 ### Description
 
-@short: Baut das Gantt-Layout basierend auf der aktuellen Layout-Konfiguration neu auf
+@short: Baut das Gantt-Layout anhand des aktuellen Werts der Layout-Konfiguration neu
 
 @signature: resetLayout: () =\> void
 
@@ -35,16 +35,16 @@ gantt.config.layout = {
 gantt.resetLayout();
 ~~~
 
+
 ### Details
 
 :::note
- Diese Methode entfernt alle benutzerdefinierten Layer, die mit den Methoden [addTaskLayer](api/method/addtasklayer.md) und [addLinkLayer](api/method/addlinklayer.md) im Timeline-Bereich hinzugefügt wurden. 
-Daher müssen diese benutzerdefinierten Layer nach dem Aufruf von **gantt.resetLayout** erneut eingerichtet werden, damit sie auf der Seite angezeigt werden. 
+Diese Methode entfernt benutzerdefinierte Layer, die dem Timeline-Bereich über die Methoden [addTaskLayer](api/method/addtasklayer.md) und [addLinkLayer](api/method/addlinklayer.md) hinzugefügt wurden. 
+Daher müssen Sie diese nach dem Aufruf der Methode **gantt.resetLayout** neu definieren, damit benutzerdefinierte Layer auf der Seite angezeigt werden.
 :::
 
 ### Related API
 - [layout](api/config/layout.md)
 
 ### Related Guides
-- ["Gantt-Layout"](guides/layout-config.md)
-
+- [Gantt Layout](guides/layout-config.md)

@@ -779,9 +779,9 @@ With this setting specified, each cell in the bottom scale ("day" in the above e
 - If there are too few columns to fill the container, the remaining space will stay empty on the right. 
 - If there are too many columns, a horizontal scrollbar will appear.
 
-{{note
+:::note
 Note that `column_width` is applied only to the bottom-most scale item in `gantt.config.scales`, while specifying it on higher levels will have no effect.
-}}
+:::
 
 Also note that when `column_width` is set, `gantt.config.min_column_width` is not applied to the bottom scale.
 

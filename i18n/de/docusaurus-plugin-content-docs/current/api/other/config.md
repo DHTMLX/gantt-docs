@@ -8,7 +8,7 @@ description: "definiert Konfigurationsoptionen für Daten, Skala, Steuerungen"
 
 ### Description
 
-@short: Definiert Konfigurationsoptionen für Daten, Skala, Steuerungen
+@short: Definiert Konfigurationsoptionen für Datumsangaben, Skala und Steuerelemente
 
 @signature: config: GanttConfigOptions
 
@@ -17,10 +17,10 @@ description: "definiert Konfigurationsoptionen für Daten, Skala, Steuerungen"
 ~~~jsx
 //setzt das Format der Zeitachse
 gantt.config.date_scale = "%F, %Y";
-
+ 
 gantt.init("gantt_here");
 ~~~
 
 ### Details
 
-Die Eigenschaften des config-Objekts werden ausführlich in einem eigenen Abschnitt auf der Haupt-API-Seite ["Gantt API: Properties"](api/overview/properties-overview.md) beschrieben.
+Die Eigenschaften des config-Objekts werden in einem separaten Kapitel der Haupt-API-Seite [Gantt API: Properties](api/overview/properties-overview.md) beschrieben.

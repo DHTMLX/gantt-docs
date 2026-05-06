@@ -3,17 +3,9 @@ title: "Свойства для импорта из Primavera"
 sidebar_label: "Свойства для импорта из Primavera"
 ---
 
-# Свойства для импорта из Primavera
+# Свойства импорта из Primavera
 
 ## Свойства проекта
-
-<style>
-.myblock(
-  display:inline-block;
-  width:235px;
-  vertical-align:top;
-)
-</style>
 
 <div class="myblock">
   <li>ActualsInSync</li>
@@ -94,6 +86,7 @@ sidebar_label: "Свойства для импорта из Primavera"
   <li>ExternalTask</li>
 </div>
 
+
 <div class="myblock">
   <li>Finish</li>
   <li>FinishVariance</li>
@@ -112,6 +105,7 @@ sidebar_label: "Свойства для импорта из Primavera"
   <li>OutlineNumber</li>
   <li>OverAllocated</li>
 </div>
+
 
 <div class="myblock">
   <li>PercentComplete</li>

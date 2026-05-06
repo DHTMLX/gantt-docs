@@ -1,7 +1,7 @@
 ---
 sidebar_label: multiselect_one_level
-title: multiselect_one_level config
-description: "控制多任务选择是否限制在单一级别，还是可以跨多个级别"
+title: multiselect_one_level 配置
+description: "指定多选是在单一级别内可用，还是在任意级别内可用"
 ---
 
 # multiselect_one_level
@@ -24,7 +24,7 @@ gantt.config.multiselect_one_level = true;
 gantt.init('gantt_here');
 ~~~
 
-**Default value:** false
+**默认值:** false
 
 ### Details
 
@@ -44,4 +44,3 @@ gantt.init('gantt_here');
 
 ### Related Guides
 - [多任务选择](guides/multiselection.md)
-

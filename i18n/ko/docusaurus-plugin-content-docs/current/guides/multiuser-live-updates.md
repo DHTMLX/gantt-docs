@@ -1,28 +1,28 @@
 ---
-title: "Multi-User Live Updates"
-sidebar_label: "Multi-User Live Updates"
+title: "다중 사용자 실시간 업데이트"
+sidebar_label: "다중 사용자 실시간 업데이트"
 ---
 
-# Multi-User Live Updates
+# 다중 사용자 실시간 업데이트
 
-This article describes how to implement server-side support for the real-time updates module of DHTMLX Gantt.
+이 문서는 DHTMLX Gantt의 실시간 업데이트 모듈에 대한 서버 측 지원을 구현하는 방법을 설명합니다.
 
-## Principle
+## 원리
 
-DHTMLX Gantt provides the `RemoteEvents` helper to synchronize changes among multiple users in real time.
+DHTMLX Gantt는 여러 사용자의 변경 사항을 실시간으로 동기화하기 위해 `RemoteEvents` 도우미를 제공합니다.
 
-### Key Workflow
+### 주요 워크플로우
 
 - The `RemoteEvents` client opens a WebSocket connection when Gantt is initialized.
 - The User changes (the "create", "edit", or "delete" events) are sent to the server via `DataProcessor` using the REST API.
 - The server broadcasts updates to all connected clients via WebSocket after processing them.
 - The `RemoteEvents` client receives the updates and applies them to Gantt, ensuring synchronization across users.
 
-The design allows this backend module to support multiple DHTMLX widgets (e.g., Kanban, Gantt, Scheduler) within the same application. The shared format streamlines data synchronization without needing separate backends for each widget.
+설계는 이 백엔드 모듈이 동일한 애플리케이션 내에서 여러 DHTMLX 위젯(예: Kanban, Gantt, Scheduler)을 지원하도록 허용합니다. 공유 포맷은 각 위젯에 대해 별도 백엔드가 필요 없도록 데이터 동기화를 간소화합니다.
 
-## Front-End Integration
+## 프런트엔드 통합
 
-Initialize `RemoteEvents` and set up `DataProcessor` in the same section of code where Gantt data is loaded.
+`RemoteEvents`를 초기화하고 Gantt 데이터가 로드되는 동일한 코드 구간에서 `DataProcessor`를 설정합니다.
 
 ~~~js
 const AUTH_TOKEN = "token";
@@ -42,64 +42,60 @@ const remoteEvents = new RemoteEvents("/api/v1", AUTH_TOKEN);
 remoteEvents.on(remoteUpdates);
 ~~~
 
+### 주요 세부사항
 
-### Key Details
+- `RemoteEvents` 생성자는 인증 토큰이 필요하며, 서버 검증을 위해 **"Remote-Token"** 헤더로 전송됩니다.
+- 첫 번째 인수는 `WebSocket` 엔드포인트를 지정합니다(예: **/api/v1**).
+- `remoteUpdates` 도우미는 수신된 `WebSocket` 메시지를 처리하고 Gantt 데이터를 동기화합니다.
 
-- The `RemoteEvents` constructor requires an authorization token, which is sent in the **"Remote-Token"** header for server validation.
-- The first argument specifies the `WebSocket` endpoint (e.g., **/api/v1**).
-- The `remoteUpdates` helper handles incoming `WebSocket` messages and synchronizes Gantt data.
+## 백엔드 구현
 
+이 섹션은 실시간 업데이트를 지원하는 백엔드를 구현하는 방법을 설명합니다.
 
-## Backend Implementation
+### 간단한 예제
 
-This section describes how to build a backend supporting live updates.
+- [GitHub의 예제 확인](https://github.com/DHTMLX/gantt-multiuser-backend-demo)
 
-### Simplified Example
+구현을 테스트하려면:
 
-- [Check the example on GitHub](https://github.com/DHTMLX/gantt-multiuser-backend-demo)
+- 백엔드 프로젝트를 추출하고 `npm install` 및 `npm run start` 명령으로 실행합니다.
+- 프런트엔드 예제를 두 개의 서로 다른 브라우저 탭에서 엽니다.
+- 한 탭에서 작업을 수정하면 변경 내용이 두 번째 탭에 나타납니다.
 
-To test the implementation:
+### 서버 측 워크플로우
 
-- Extract and run the backend project using `npm install` and `npm run start` commands.
-- Open the frontend example in two separate browser tabs.
-- Modify a task in one tab; the changes should appear in the second tab.
+#### 1. 핸드셰이크 요청
 
+초기화될 때, `RemoteEvents`는 연결을 설정하기 위해 서버에 **GET** 요청을 보냅니다.
 
-### Server-Side Workflow
-
-#### 1. Handshake Request
-
-When instantiated, `RemoteEvents` sends a **GET** request to the server to initialize the connection.
-
-Example:
+예:
 ~~~
 GET /api/v1
 Remote-Token: AUTH_TOKEN
 ~~~
 
-Response:
+응답:
 
 ~~~js
 {"api":{},"data":{},"websocket":true}
 ~~~
 
-#### 2. WebSocket Connection
+#### 2. WebSocket 연결
 
-After receiving a response, `RemoteEvents` establishes the websocket connection with the provided endpoint.
+응답을 받은 후, `RemoteEvents`는 제공된 엔드포인트로 WebSocket 연결을 설정합니다.
 
-Example:
-
+예:
 ~~~
 ws://${URL}?token=${token}&ws=1
 ~~~
 
-The server verifies the token and responds with a message:
+서버는 토큰을 검증하고 다음과 같은 메시지로 응답합니다:
 
 ~~~js
 {"action":"start","body":"connectionId"}
 ~~~
 
-Example implementation:
+예제 구현:
 
 ~~~js
 app.get('/api/v1', (req, res) => {
@@ -121,41 +117,41 @@ wss.on('connection', (ws, req) => {
 });
 ~~~
 
-#### 3. Subscription
+#### 3. 구독
 
-After the connection is established, the `RemoteEvents` subscribes to updates for specific entities, `tasks` and `links` in case of Gantt:
+연결이 확립된 후, `RemoteEvents`는 Gantt의 경우 특정 엔티티들인 `tasks`와 `links`의 업데이트를 구독합니다.
 
-- for tasks
+- 작업에 대해
 
 ~~~js
 {"action":"subscribe","name":"tasks"}
 ~~~
 
-- for links
+- 링크에 대해
 
 ~~~js
 {"action":"subscribe","name":"links"}
 ~~~
 
-To unsubscribe:
+구독 취소하려면:
 
-- for tasks
+- 작업에 대해
 
 ~~~js
 {"action":"unsubscribe","name":"tasks"}
 ~~~
 
-- for links
+- 링크에 대해
 
 ~~~js
 {"action":"unsubscribe","name":"links"}
 ~~~
 
 :::note
- This format supports scenarios where an application uses multiple DHTMLX widgets simultaneously. Each widget subscribes only to the updates relevant to its data.
+ 이 포맷은 애플리케이션이 여러 DHTMLX 위젯을 동시에 사용하는 시나리오를 지원합니다. 각 위젯은 데이터에 관련된 업데이트에만 구독합니다.
 :::
 
-Example:
+예:
 
 ~~~js
 ws.on('message', function(message) {
@@ -176,12 +172,11 @@ ws.on('message', function(message) {
 });
 ~~~
 
-#### 4. Broadcasting Updates
+#### 4. 업데이트 브로드캐스팅
 
-The server sends updates via WebSocket for changes like creating, updating, or deleting tasks and links in the format described below.
+서버는 아래 형식으로 작업을 만들거나 수정하거나 삭제하는 등의 변경에 대한 업데이트를 WebSocket으로 보냅니다.
 
-Upon receiving these messages, Gantt automatically synchronizes its data using the `remoteUpdates` helper.
-
+이 메시지를 수신하면 Gantt는 `remoteUpdates` 도우미를 사용해 데이터를 자동으로 동기화합니다.
 
 **Task Created**
 
@@ -190,14 +185,14 @@ Upon receiving these messages, Gantt automatically synchronizes its data using t
    "value":{"type":"add-task","task":TASK_OBJECT}}}
 ~~~
 
-Example:
+예:
 
 ~~~js
 app.post("/data/task", (req, res) => {
     const bodyPayload = sanitize(req.body);
     const result = crud.insertTask(bodyPayload);
 
-    // Broadcast changes to connected clients
+    // 연결된 클라이언트에 변경사항 브로드캐스트
     wsManager.broadcast("event", {
         name: "tasks",
         value: { type: "add-task", task: result.item },
@@ -214,7 +209,7 @@ app.post("/data/task", (req, res) => {
    "value":{"type":"update-task","task":TASK_OBJECT}}}
 ~~~
 
-Example:
+예:
 
 ~~~js
 app.put("/data/task/:id", (req, res) => {
@@ -223,7 +218,7 @@ app.put("/data/task/:id", (req, res) => {
 
     const result = crud.updateTask(id, event);
     
-    // Broadcast changes to connected clients
+    // 연결된 클라이언트에 변경사항 브로드캐스트
     wsManager.broadcast("event", {
         name: "tasks",
         value: { type: "update-task", task: result.item },
@@ -240,14 +235,14 @@ app.put("/data/task/:id", (req, res) => {
    "value":{"type":"delete-task","task":{"id":ID}}}}
 ~~~
 
-Example:
+예:
 
 ~~~js
 app.delete("/data/task/:id", (req, res) => {
     const id = req.params.id;
     const result = crud.deleteTask(id);
 
-    // Broadcast changes to connected clients
+    // 연결된 클라이언트에 변경사항 브로드캐스트
     wsManager.broadcast("event", {
         name: "tasks",
         value: { type: "delete-task", task: { id } },
@@ -264,14 +259,14 @@ app.delete("/data/task/:id", (req, res) => {
    "value":{"type":"add-link","link":LINK_OBJECT}}}
 ~~~
 
-Example:
+예:
 
 ~~~js
 app.post("/data/link", (req, res) => {
     const bodyPayload = sanitize(req.body);
     const result = crud.insertLink(bodyPayload);
 
-    // Broadcast changes to connected clients
+    // 연결된 클라이언트에 변경사항 브로드캐스트
     wsManager.broadcast("event", {
         name: "links",
         value: { type: "add-link", link: result.item },
@@ -288,7 +283,7 @@ app.post("/data/link", (req, res) => {
    "value":{"type":"update-link","link":LINK_OBJECT}}}
 ~~~
 
-Example:
+예:
 
 ~~~js
 app.put("/data/link/:id", (req, res) => {
@@ -297,7 +292,7 @@ app.put("/data/link/:id", (req, res) => {
 
     const result = crud.updateLink(id, event);
 
-    // Broadcast changes to connected clients
+    // 연결된 클라이언트에 변경사항 브로드캐스트
     wsManager.broadcast("event", {
         name: "links",
         value: { type: "update-link", link: result.item },
@@ -314,14 +309,14 @@ app.put("/data/link/:id", (req, res) => {
    "value":{"type":"delete-link","link":{"id":ID}}}}
 ~~~
 
-Example:
+예:
 
 ~~~js
 app.delete("/data/link/:id", (req, res) => {
     const id = req.params.id;
     const result = crud.deleteLink(id);
 
-    // Broadcast changes to connected clients
+    // 연결된 클라이언트에 변경사항 브로드캐스트
     wsManager.broadcast("event", {
         name: "links",
         value: { type: "delete-link", link: { id } },
@@ -331,12 +326,12 @@ app.delete("/data/link/:id", (req, res) => {
 });
 ~~~
 
-## Advanced Customization
+## 고급 커스터마이제이션
 
-### Custom Handlers
+### 커스텀 핸들러
 
-In the described format, the `RemoteEvents` helper is responsible for initial handshake of establishing a websocket connection with the server and receiving messages.
-The second part of this module is the `remoteUpdates` helper that is responsible for parsing messages received via a websocket and applying appropriate changes to Gantt.
+설명된 형식에서 `RemoteEvents` 도우미는 서버와의 WebSocket 연결의 초기 핸드셰이크 및 메시지 수신을 담당합니다.
+이 모듈의 두 번째 부분은 WebSocket으로 수신된 메시지를 파싱하고 Gantt에 적절한 변경을 적용하는 역할을 하는 `remoteUpdates` 도우미입니다.
 
 ~~~js
 const { RemoteEvents, remoteUpdates } = gantt.ext.liveUpdates;
@@ -344,9 +339,9 @@ const remoteEvents = new RemoteEvents("/api/v1", AUTH_TOKEN);
 remoteEvents.on(remoteUpdates);
 ~~~
 
-Normally, you can use these helpers without any extra configuration. But it is possible to extend the existing protocol by adding a custom helper or to implement a custom handler for remote updates.
+일반적으로 이러한 도우미는 추가 구성 없이 사용할 수 있습니다. 그러나 기존 프로토콜을 확장하기 위해 사용자 정의 도우미를 추가하거나 원격 업데이트를 위한 사용자 정의 핸들러를 구현하는 것도 가능합니다.
 
-The `RemoteEvents.on` method expects the object argument which can specify handlers for one or multiple entities:
+`RemoteEvents.on` 메서드는 하나 또는 여러 엔티티에 대해 핸들러를 지정할 수 있는 객체 인수를 기대합니다:
 
 ~~~js
 const remoteEvents = new RemoteEvents("/api/v1", AUTH_TOKEN);
@@ -355,21 +350,20 @@ remoteEvents.on({
         const { type, task } = message;
         switch (type) {
             case "add-task":
-                // handle the add event
+                // 추가 이벤트 처리
                 break;
             case "update-task":
-                // handle the update event
+                // 업데이트 이벤트 처리
                 break;
             case "delete-task":
-                // handle the delete event
+                // 삭제 이벤트 처리
                 break;
         }
     }
 });
 ~~~
 
-
-If you need to add a custom action, you can do it by adding an additional handler for `remoteEvents`:
+사용자 정의 작업을 추가해야 하는 경우, `remoteEvents`에 추가 핸들러를 정의해 이를 수행할 수 있습니다:
 
 ~~~js
 const { RemoteEvents, remoteUpdates } = gantt.ext.liveUpdates;
@@ -380,34 +374,34 @@ remoteEvents.on({
         const { type, task } = message;
         switch (type) {
             case "custom-action":
-                // handle custom action
+                // 커스텀 작업 처리
                 break;
         }
     }
 });
 ~~~
 
-The handler will be invoked by the following message:
+다음 메시지에 의해 핸들러가 호출됩니다:
 
 ~~~js
 {"action":"event","body":{"name":"tasks",
    "value":{"type":"custom-action","task":value}}}
 ~~~
 
-If you want to use `RemoteEvents` to receive updates for custom entities, you can achieve it by adding a handler:
+`RemoteEvents`를 사용해 커스텀 엔티티의 업데이트를 수신하고자 한다면 핸들러를 추가하여 이를 달성할 수 있습니다:
 
 ~~~js
 const { RemoteEvents, remoteUpdates } = gantt.ext.liveUpdates;
 const remoteEvents = new RemoteEvents("/api/v1", AUTH_TOKEN);
 remoteEvents.on(remoteUpdates);
 
-// subscribing to custom entities
+// 커스텀 엔티티 구독
 remoteEvents.on({ 
     resources: function(message) {
         const { type, value } = message;
         switch (type) {
             case "custom-action":
-                // handle custom action
+                // 커스텀 작업 처리
                 break;
         }
     }
@@ -415,42 +409,42 @@ remoteEvents.on({
 
 ~~~
 
-When initialized that way, the `remoteEvents` object will send the websocket a subscription message formatted in the following way:
+이와 같이 초기화하면, `remoteEvents` 객체는 다음과 같은 형식의 구독 메시지를 WebSocket에 보냅니다:
 
 ~~~js
 {"action":"subscribe","name":"resources"}
 ~~~
 
-And the handler will be called whenever a message directed to the specified entity is received:
+그리고 지정된 엔티티로 향하는 메시지가 수신될 때 핸들러가 호출됩니다:
 
 ~~~js
 {"action":"event","body":{"name":"resources",
    "value":{"type":"custom-action","value":value}}}
 ~~~
 
-This guide provides the foundation for implementing and customizing live updates in DHTMLX Gantt. For a complete example, 
-[refer to the GitHub repository](https://github.com/DHTMLX/gantt-multiuser-backend-demo).
+이 가이드는 DHTMLX Gantt에서 실시간 업데이트를 구현하고 커스터마이즈하는 데 필요한 기반을 제공합니다. 전체 예제는 
+[GitHub 저장소를 참조하십시오](https://github.com/DHTMLX/gantt-multiuser-backend-demo).
 
-## Remote Updates API
+## 원격 업데이트 API
 
-The `RemoteUpdates` module can be used to connect Gantt to any source of external changes allowing easy integration of remote changes.
+`RemoteUpdates` 모듈을 사용하면 Gantt를 외부 변경 소스에 연결하여 원격 변경의 통합을 쉽게 할 수 있습니다.
 
 ~~~js
 const { remoteUpdates } = gantt.ext.liveUpdates;
 
-// inserts task into gantt without invoking update hooks
+// 업데이트 훅을 호출하지 않고 Gantt에 작업 삽입
 remoteUpdates.tasks({ type: "add-task", task: TASK_OBJECT });
 
-// updates task in gantt without invoking update hooks
+// 업데이트 훅을 호출하지 않고 Gantt에서 작업 수정
 remoteUpdates.tasks({ type: "update-task", task: TASK_OBJECT });
 
-// deletes task from gantt without invoking update hooks
+// 업데이트 훅을 호출하지 않고 Gantt에서 작업 삭제
 remoteUpdates.tasks({ type: "delete-task", task: {id: TASK_ID}});
 
-// link operations
+// 링크 작업
 remoteUpdates.links({ type: "add-link", link: LINK_OBJECT });
 remoteUpdates.links({ type: "update-link", link: LINK_OBJECT });
 remoteUpdates.links({ type: "delete-link", link: {id: LINK_ID}});
 ~~~
 
-Check the example of how Gantt can be connected to the Firestore updates in the [GitHub repository](https://github.com/DHTMLX/firebase-gantt-demo/).
+Gantt를 Firestore 업데이트에 연결하는 방법의 예제는 [GitHub 저장소](https://github.com/DHTMLX/firebase-gantt-demo/)를 참고하십시오.

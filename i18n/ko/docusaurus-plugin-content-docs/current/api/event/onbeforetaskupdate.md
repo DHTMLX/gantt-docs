@@ -1,35 +1,34 @@
 ---
 sidebar_label: onBeforeTaskUpdate
-title: onBeforeTaskUpdate event
-description: "사용자가 작업을 업데이트하기 직전에 발생하는 이벤트"
+title: onBeforeTaskUpdate 이벤트
+description: "사용자가 작업을 업데이트하기 전에 이벤트가 발생합니다"
 ---
 
 # onBeforeTaskUpdate
 
 ### Description
 
-@short: 사용자가 작업을 업데이트하기 직전에 발생하는 이벤트
+@short: 사용자가 작업을 업데이트하기 전에 발생합니다
 
 @signature: onBeforeTaskUpdate: (id: string | number, new_task: Task) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - 작업 ID
-- `new_task` - (required) *Task* - 업데이트된 작업 객체
+- `id` - (필수) *string | number* - 작업 ID
+- `new_task` - (필수) *Task* - 새로 업데이트된 작업 객체
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeTaskUpdate", function(id,new_task){
-    //여기에 사용자 정의 로직을 추가할 수 있습니다
+    // 여기에 코드 작성
 });
 ~~~
 
 ### Details
 
-**onBeforeTaskUpdate** 이벤트는 작업 객체가 업데이트된 직후, 모든 변경 사항이 완전히 적용되기 전 시점에 발생합니다. 따라서 업데이트 이전의 작업 객체 상태를 항상 접근할 수 있는 것은 아닙니다.
-
-변경 사항이 적용되기 이전의 작업 객체를 얻으려면 작업 수정에 특화된 이벤트 핸들러를 사용하는 것을 권장합니다:
+**onBeforeTaskUpdate** 이벤트를 사용할 때, 작업이 완전히 업데이트되기 전에 작업 객체를 얻는 것은 항상 가능하지 않습니다. 이 이벤트는 작업 객체가 업데이트된 후에 발생하지만 모든 변경 사항이 적용되기 전에 발생합니다.
+변경 사항이 적용되기 전에 작업 객체를 얻으려면, 작업의 변경과 직접 관련된 이벤트 핸들러를 사용해야 합니다:
 
 - [onLightboxSave](api/event/onlightboxsave.md)
 - [onBeforeTaskDrag](api/event/onbeforetaskdrag.md)
@@ -37,17 +36,14 @@ gantt.attachEvent("onBeforeTaskUpdate", function(id,new_task){
 - [onBeforeTaskAutoSchedule](api/event/onbeforetaskautoschedule.md)
 - [onRowDragStart](api/event/onrowdragstart.md)
 
-API를 통해 변경이 이루어질 때는 수정 코드가 실행되기 전에 작업 객체에 접근할 수 있습니다. 다음 예제는 작업의 날짜 변경 등 작업을 업데이트하는 다양한 방법을 보여줍니다:
+API를 통해 변경이 이루어지는 경우, 작업을 수정하는 코드가 실행되기 전에 작업 객체를 얻을 수 있습니다. 다양한 방식으로 작업을 수정하는 예제를 확인해 보세요(예를 들어 작업 날짜를 변경하는 경우):
 
 :::note
-
-**Related example:** [Updating a task](https://snippet.dhtmlx.com/9xy8wr2a)
-
+sample: [Updating a task ](https://snippet.dhtmlx.com/9xy8wr2a)
 :::
 
-이벤트들을 비교해 보면, 작업 수정 직전에 발생하는 이벤트들은 이전 작업 객체를 제공하는 반면, **onBeforeTaskUpdate**는 업데이트된 작업 객체를 제공합니다.
+비교 후에는, 작업을 수정하기 바로 전에 발생하는 이벤트들이 이전의 작업 객체를 반환하는 것을 확인할 수 있으며, 반면에 **onBeforeTaskUpdate** 이벤트는 작업의 새 객체를 반환합니다.
 
 ### Related API
 - [updateTask](api/method/updatetask.md)
 - [onAfterTaskUpdate](api/event/onaftertaskupdate.md)
-

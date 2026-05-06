@@ -1,98 +1,101 @@
 ---
-title: "dhtmlxGantt 与 ASP.NET Core 集成指南"
+title: "dhtmlxGantt 与 ASP.NET Core"
 sidebar_label: "ASP.NET Core"
 ---
 
-# dhtmlxGantt 与 ASP.NET Core 集成指南
+# dhtmlxGantt 与 ASP.NET Core 
 
-本指南将带您逐步完成在服务端使用 [ASP.NET](https://dotnet.microsoft.com/apps/aspnet) Core 搭建甘特图的过程。
+本教程为您提供逐步指南，说明如何在服务器端使用 [ASP.NET](https://dotnet.microsoft.com/en-us/apps/aspnet) Core 来创建 Gantt。
 
-同时，我们还为其他服务端平台提供了教程:
+您也可以阅读其他服务器端技术的教程：
 
-- [dhtmlxGantt와 ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
-- [dhtmlxGantt와 Node.js 연동하기](integrations/node/howtostart-nodejs.md)
-- [dhtmlxGantt와 Python](integrations/other/howtostart-python.md)
-- [dhtmlxGantt와 PHP: Laravel 연동](integrations/php/howtostart-php-laravel.md)
-- [dhtmlxGantt와 PHP:Slim 연동하기](integrations/php/howtostart-php-slim4.md)
-- [dhtmlxGantt와 Salesforce LWC 연동하기](integrations/salesforce/howtostart-salesforce.md)
-- [dhtmlxGantt와 Ruby on Rails 연동하기](integrations/other/howtostart-ruby.md)
+- [dhtmlxGantt 与 ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
+- [dhtmlxGantt 与 Node.js](integrations/node/howtostart-nodejs.md)
+- [dhtmlxGantt 与 Python](integrations/other/howtostart-python.md)
+- [dhtmlxGantt 与 PHP: Laravel](integrations/php/howtostart-php-laravel.md)
+- [dhtmlxGantt 与 PHP:Slim](integrations/php/howtostart-php-slim4.md)
+- [dhtmlxGantt 与 Salesforce LWC](integrations/salesforce/howtostart-salesforce.md)
+- [dhtmlxGantt 与 Ruby on Rails](integrations/other/howtostart-ruby.md)
 
-数据库交互部分采用了 [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/)。项目开发工具为 Visual Studio 2022。
+
+为了与数据库进行通信的组织，本应用使用 [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/)。该应用在 Visual Studio 2022 的帮助下构建。
 
 :::note
-完整源代码可在 [GitHub](https://github.com/DHTMLX/gantt-howto-dotnet-core) 查看。
+完整的源代码可以在 [GitHub](https://github.com/DHTMLX/gantt-howto-dotnet-core) 上获取。
 :::
 
-## 第一步:创建项目
+## Step 1. Creating a project
 
-启动 Visual Studio 2022，选择 *Create a new project* 新建项目。
+打开 Visual Studio 2022 并创建一个新项目。选择：*Create a new project*。
 
-![dhtmlxGantt with ASP.NET Core 创建项目](/img/howtostart_dotnetcore_newapp.png)
+![dhtmlxGantt with ASP.NET Core creating a project](/img/howtostart_dotnetcore_newapp.png)
 
-选择 "ASP.NET Core Web App"，项目名称设置为 *DHX.Gantt*。
+接着选择 "ASP.NET Core Web App" 并将其命名为 *DHX.Gantt*。
 
-![dhtmlxGantt with ASP.NET Core 创建项目](/img/howtostart_dotnetcore_newproject.png)
+![dhtmlxGantt with ASP.NET Core creating a project](/img/howtostart_dotnetcore_newproject.png)
 
-![dhtmlxGantt with ASP.NET Core 配置项目](/img/howtostart_dotnetcore_configureproject.png)
 
-![dhtmlxGantt with ASP.NET Core 配置项目信息](/img/howtostart_dotnetcore_addinfo.png)
+![dhtmlxGantt with ASP.NET Core configure a project](/img/howtostart_dotnetcore_configureproject.png)
 
-项目创建完成后，即可添加甘特图所需的标记和脚本。
+![dhtmlxGantt with ASP.NET Core configure a project](/img/howtostart_dotnetcore_addinfo.png)
 
-## 第二步:添加甘特图标记和 JS
+因此，您已创建一个项目，可以继续添加用于 Gantt 的标记(markup) 和脚本。
 
-进入 **wwwroot** 目录，新建名为 **index.html** 的文件。
+## Step 2. Adding Gantt markup and JS
 
-![dhtmlxGantt with ASP.NET Core 创建项目第3步](/img/create_project_step3.png)
+进入 **wwwroot** 并创建一个 **index.html** 文件。
 
-![dhtmlxGantt with ASP.NET Core 创建项目第4步](/img/create_project_step4.png)
+![dhtmlxGantt with ASP.NET Core 2 creating a project](/img/create_project_step3.png)
 
-在该文件中，构建一个简单页面用于展示甘特图。
+![dhtmlxGantt with ASP.NET Core 2 creating a project](/img/create_project_step4.png)
 
-请注意，本例中甘特图文件是从 [CDN](guides/installation.md#cdn) 加载的。如果您拥有 Professional 版本，需要 [手动将甘特图文件添加到项目中](guides/installation.md#addingprofessionaleditionintoproject)。
+在新创建的文件中为 Gantt 图创建一个简单页面。
 
-**index.html**
-~~~js
+请注意，在本演示中 gantt 文件是来自 [CDN](guides/installation.md#cdn)。如果您有该组件的专业版，
+您需要 [手动将 gantt 文件添加到您的项目中](guides/installation.md#adding-pro-edition-into-project)。 
+
+
+~~~html title="index.html"
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width="device-width"" />
+    <meta name="viewport" content="width=device-width" />
     <title>Index</title>
-    <link href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css"
-          rel="stylesheet" type="text/css" />
+    <link href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css" rel="stylesheet" type="text/css" />
+    <link href="css/site.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function(event) {
-            // specifying the date format
-            gantt.config.date_format = "%Y-%m-%d %H:%i";
-            // initializing gantt
-            gantt.init("gantt_here");
+        document.addEventListener('DOMContentLoaded', function () {
+        // specifying the date format
+        gantt.config.date_format = '%Y-%m-%d %H:%i';
+        // initializing gantt
+        gantt.init('gantt_here');
 
-            // initiating data loading
-            gantt.load("/api/data");
-            // initializing dataProcessor
-            var dp = new gantt.dataProcessor("/api/");
-            // and attaching it to gantt
-            dp.init(gantt);
-            // setting the REST mode for dataProcessor
-            dp.setTransactionMode("REST");
+        // initiating data loading
+        gantt.load('/api/data');
+        // creating and configuring dataProcessor
+        const dp = gantt.createDataProcessor({
+          url: '/api/',
+          mode: 'REST',
         });
+      });
     </script>
 </head>
 <body>
-    <div id="gantt_here" style="width: 100%; height: 100vh;"></div>
+    <div id="gantt_here" style="width: 100vw; height: 100vh"></div>
 </body>
 </html>
 ~~~
 
-页面加载后，甘特图会被初始化，并通过 `gantt.load()` 立即开始加载数据。同时 [`dataProcessor`](guides/server-side.md#jishushuoming) 也被配置好，用户在图表上的修改会自动保存到服务器。由于后端尚未搭建，完整功能将在后续实现后体现。
+当页面加载时，除了 [初始化 gantt 图表](guides/initializing-gantt-chart.md) 外，还会立即执行 [data loading](guides/loading.md)，并设置
+[`dataProcessor`](guides/server-side.md#technique)，因此用户对 gantt 图表所作的所有更改都会被保存到后端。后端尚未实现，因此稍后再看会更有意义。
 
-接下来，打开 **Program.cs**，配置应用以便能够访问 **index.html** 页面。需要通过添加 `app.UseDefaultFiles()` 启用从 `wwwroot` 文件夹提供静态文件。
+接下来前往 **Program.cs**，让应用程序使用 **index.html** 页面。为此，需要将应用配置为从 `wwwroot` 文件夹提供静态文件。
+因此需要添加 `app.UseDefaultFiles()` 方法。
+你可以在这里找到 [更多细节](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/static-files?view=aspnetcore-9.0).
 
-更多信息请参考 [这里](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/static-files?view=aspnetcore-2.1&tabs=aspnetcore2x)。
 
-**Program.cs**
-~~~js
+~~~js title="Program.cs"
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -125,47 +128,68 @@ app.MapRazorPages();
 app.Run();
 ~~~
 
-`app.UseDefaultFiles()` 方法会查找 **wwwroot** 目录下的默认文件:
+`app.UseDefaultFiles()` 方法允许提供默认文件。它会在 **wwwroot** 文件夹中依次查找以下文件：
 
 - index.html
 - index.htm
 - default.html
 - default.htm
 
-您可以使用上述任意文件名，本教程采用 "index.html"。
+因此，您可以选择其中任意一个，在本教程中使用的是 “index.html”。
+`UseDefaultFiles()` 只是一个 URL 重写器，实际并不会直接提供该文件。为此您还需要添加 `UseStaticFiles()`。
+为了让 Gantt 充满整个 body 的区域，您需要向位于 `wwwroot/css` 文件夹中的 `site.css` 文件添加以下样式：
 
-请注意，`UseDefaultFiles()` 仅重写 URL，并不会实际提供文件。要真正提供静态文件，还需添加 `UseStaticFiles()`。
+~~~css title="DHX.Gantt/wwwroot/css/site.css"
+html {
+    font-size: 14px;
+}
 
-完成上述步骤后，运行应用将显示一个空的甘特图。右上角会出现 "Invalid data" 提示，因为 `gantt.load()` 被调用但后端尚未提供数据。待控制器实现后，甘特图会正确显示任务和链接。
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
 
-![dhtmlxGantt with ASP.NET Core 添加甘特图](/img/adding_gantt_dotnet_core.png)
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+~~~
 
-基础环境搭建完毕，接下来构建后端。首先定义模型类，然后创建 WebAPI 控制器。
+完成后，在运行应用程序时，页面上应该会出现一个空的 gantt。请注意右上角显示的 "Invalid data" 标签，是因为还没有后端提供数据而通过 `gantt.load()` 调用加载数据时所致。当控制器实现后，gantt 将能够显示任务和链接。
 
-## 第三步:创建模型与数据库
+![dhtmlxGantt with ASP.NET Core 2 adding Gantt](/img/adding_gantt_dotnet_core.png)
 
-首先定义数据模型。典型的甘特图数据模型包括 [links 和 tasks](guides/loading.md#standarddatabasestructure)。
-dhtmlxGantt 使用的属性名与 .NET 习惯不同，且部分属性仅用于客户端或后端逻辑，不应存入数据库。
 
-为处理此问题，将采用 [数据传输对象（DTO）](https://learn.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) 模式。将创建两类模型:
+现在基本部分已经完成，接下来实现后端。让我们先实现模型类，然后再进入 WebAPI 控制器。
 
-- 供 EF Core 和内部应用使用的领域模型类
-- 用于与 Web API 通信的 DTO 类
+## Step 3. Creating models and database
 
-还需要实现这两类模型之间的映射。
+让我们从数据模型开始。Gantt 的数据模型包括 [links 和 tasks](guides/loading.md#databasestructure)。
+从 .NET 的角度来看，dhtmlxGantt 使用的是对模型属性的非传统命名。
+有时客户端模型也会包含一些用于客户端侧或后端逻辑的属性，但这些属性不应存储在数据库中。
 
-### 模型
+为了解决这个问题，将使用 Data Transfer Object (DTO) 模式。将定义两类模型：
 
-在项目目录下新建 **Models** 文件夹。此文件夹用于存放模型类与 EF 上下文。
+- 将与 EF Core 一起使用并在应用内使用的领域模型类
+- 用于与 Web API 进行通信的 DTO 类
 
-#### Task 模型
+然后应实现两者之间的映射。
 
-创建任务类。在 Models 文件夹下新建 **Task.cs** 文件（右键文件夹选择 *Add->Class*）。
+### Models
 
-类定义如下:
+在项目文件夹中创建一个名为 **Models** 的新文件夹。这是实现模型类和 EF 上下文的地方。
 
-**DHX.Gantt/Models/Task.cs**
-~~~js
+#### Task Model
+
+首先，为 Tasks 创建一个类。 在 Models 文件夹中创建一个文件并命名为 **Task.cs**。可以通过为 Models 文件夹调用上下文菜单并选择 *Add->Class* 来完成。
+
+这就是模型应有的样子：
+
+
+~~~js title="DHX.Gantt/Models/Task.cs"
 namespace DHX.Gantt.Models
 {
     public class Task
@@ -181,14 +205,16 @@ namespace DHX.Gantt.Models
 }
 ~~~
 
-完整的 Task 对象属性列表参见 [这里](guides/loading.md#task_properties)。
+您可以查阅 [Task 对象的所有属性列表](guides/loading.md#task_properties)。
 
-#### Link 模型
 
-为 Link 新建文件:
 
-**DHX.Gantt/Models/Link.cs**
-~~~js
+#### Link Model
+
+再添加一个文件，为 Links 创建一个类：
+
+
+~~~js title="DHX.Gantt/Models/Link.cs"
 namespace DHX.Gantt.Models
 {
     public class Link
@@ -201,23 +227,23 @@ namespace DHX.Gantt.Models
 }
 ~~~
 
-模型准备就绪后，下一步配置数据库连接。
+模型已就绪，接下来可以开始配置数据库连接。
 
-### 配置数据库连接
+### Configuring DataBase Connection
 
-按照以下步骤配置数据库连接:
+要配置数据库连接，请按下列步骤进行：
 
-#### 安装 Entity Framework Core
+#### Install Entity Framework Core 
 
-[Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/) 用于数据库通信。安装方法如下:
+将 [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/) 用于管理应用与数据库之间的通信。让我们安装该框架：
 
-- 在项目树中，找到 DHTMLX.Gantt 下的 Dependencies
-- 右键选择 *Manage NuGet packages*
-- 切换到 *Browse* 标签，安装 **Microsoft.EntityFrameworkCore.SqlServer**、**Microsoft.EntityFrameworkCore** 和 **Microsoft.EntityFrameworkCore.Design**
+- 在项目树中找到 DHTMLX.Gantt 的 Dependencies
+- 调用上下文菜单并选择 *Manage NuGet packages* 
+- 打开 *Browse* 选项卡，安装 **Microsoft.EntityFrameworkCore.SqlServer**、**Microsoft.EntityFrameworkCore** 和 **Microsoft.EntityFrameworkCore.Design**
 
-![dhtmlxGantt with ASP.NET Core 安装 EF core](/img/howtostart_dotnetcore_entityvianuget.png)
+![dhtmlxGantt with ASP.NET Core EF core installation](/img/howtostart_dotnetcore_entityvianuget.png)
 
-也可使用 Package Manager Console:
+也可以使用 Package Manager 命令行：
 
 ~~~
 PM> Install-Package Microsoft.EntityFrameworkCore.SqlServer
@@ -225,17 +251,17 @@ PM> Install-Package Microsoft.EntityFrameworkCore
 PM> Install-Package Microsoft.EntityFrameworkCore.Design
 ~~~
 
-这些包将为数据库交互提供所需工具。
+Entity Framework Core 将用于管理应用与数据库之间的通信。
 
-#### 创建实体上下文
+#### Create Entity Context
 
-接下来，定义与数据库的会话以实现数据加载和保存。新建上下文类:
+接下来，您需要定义一个数据库上下文并启用数据的加载与保存。为此创建 Context：
 
-- 在 *Models* 文件夹下新建 **GanttContext.cs** 文件
-- 在其中定义 **GanttContext** 类
+- 在 *Models* 文件夹中添加 **GanttContext.cs** 文件 
+- 在新建的文件中定义 **GanttContext** 类
 
-**DHX.Gantt/Models/GanttContext.cs**
-~~~js
+
+~~~js title="DHX.Gantt/Models/GanttContext.cs"
 using Microsoft.EntityFrameworkCore;
 
 namespace DHX.Gantt.Models
@@ -253,13 +279,13 @@ namespace DHX.Gantt.Models
 }
 ~~~
 
-#### 向数据库添加初始记录
+#### Add First Records to Database
 
-现在可以为数据库添加一些初始记录。为此需创建数据库初始化器，实现插入任务和链接的功能。
-在 **Models** 文件夹下定义 **GanttSeeder** 类。该类包含一个 **Seed()** 方法，用于向数据库添加任务和链接。
+现在可以向数据库中添加记录。让我们创建一个数据库初始化程序，用于用任务填充数据库。
+在 **Models** 文件夹中定义一个类，命名为 **GanttSeeder**。该类将具有 **Seed()** 方法，用于向数据库添加任务和链接。
 
-**DHX.Gantt/Models/GanttSeeder.cs**
-~~~js
+
+~~~js title="DHX.Gantt/Models/GanttSeeder.cs"
 using Microsoft.EntityFrameworkCore;
 
 namespace DHX.Gantt.Models
@@ -328,14 +354,12 @@ namespace DHX.Gantt.Models
 }
 ~~~
 
-#### 注册数据库
+#### Register Database
 
-接下来，需要在 **Program.cs** 文件中注册数据库。在此之前，需要准备一个连接字符串。 
-该连接字符串将会被存储在[应用程序设置的 JSON 文件中](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration)。 
-创建 **appsettings.json** 文件（如果已经存在则直接打开），并添加数据库的连接字符串:
+现在您应该在 **Program.cs** 中注册数据库，但是首先需要数据库的连接字符串。它将存储在应用程序设置的 JSON 文件中：[in a JSON file in the application settings](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-9.0)。创建 **appsettings.json** 文件（如果还没有），并向数据库添加连接字符串：
 
-**appsettings.json**
-~~~js
+
+~~~js title="appsettings.json"
 {
   "ConnectionStrings": {
     "DefaultConnection": "Server="(localdb)mssqllocaldb;"
@@ -345,44 +369,40 @@ namespace DHX.Gantt.Models
 ~~~
 
 数据库上下文将通过 
-[依赖注入](https://learn.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view="aspnetcore-2.1)" 的方式进行注册。
+[dependency injection](https://learn.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-9.0&viewFallbackFrom=aspnetcore-2.1&tabs=visual-studio)." 
 
-在 **Program.cs** 文件中添加以下命名空间:
+将以下命名空间添加到 **Program.cs**：
 
-**Program.cs**
-~~~js
+
+~~~js title="Program.cs"
 using Microsoft.EntityFrameworkCore;
 using DHX.Gantt.Models;
 ~~~
 
-注册的代码如下所示:
+声明将如下所示：
 
-**Program.cs**
-~~~js
+~~~js title="Program.cs"
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<GanttContext>(
     options => options.UseSqlServer(connectionString));
 ~~~
 
-为了启用控制器，需要添加 **services.AddControllers()** 方法:
+为了启用控制器，需要调用 **services.AddControllers()** 方法：
 
-**Program.cs**
-~~~js
+~~~js title="Program.cs"
 builder.Services.AddControllers();
 ~~~
 
-并通过调用 **app.MapControllers()** 注册控制器路由:
+并且调用 **app.MapControllers()** 来注册控制器路由：
 
-**Program.cs**
-~~~js
+~~~js title="Program.cs"
 app.MapControllers();
 ~~~
 
 
-以下是 **Program.cs** 文件的完整内容:
+以下是 **Program.cs** 的完整代码：
 
-**Program.cs**
-~~~js
+~~~js title="Program.cs"
 using Microsoft.EntityFrameworkCore;
 using DHX.Gantt.Models;
 
@@ -426,12 +446,12 @@ app.MapControllers();
 app.Run();
 ~~~
 
-最后，当应用启动时应该初始化并填充数据库。虽然通常会使用迁移（migrations）来实现，但本例为简化起见未使用迁移。
+最后，您需要在应用启动时初始化并种子数据库。通常您会想使用迁移来完成此操作，但为了简单起见这里没有使用迁移。
 
-首先，在 **Models** 文件夹下创建一个类用于初始化。添加 **GanttInitializerExtension.cs** 文件:
+让我们从创建一个进行初始化的类开始。在 **Models** 文件夹中创建 **GanttInitializerExtension.cs** 文件：
 
-**Models/GanttInitializerExtension.cs**
-~~~js
+
+~~~js title="Models/GanttInitializerExtension.cs"
 namespace DHX.Gantt.Models
 {
   public static class GanttInitializerExtension
@@ -456,24 +476,23 @@ namespace DHX.Gantt.Models
 }
 ~~~
 
-然后像下面这样调用 **InitializeDatabase()** 方法:
+Next call **InitializeDatabase()**:
 
-**Program.cs**
-~~~js
+
+~~~js title="Program.cs"
 app.InitializeDatabase();
 ~~~
 
-如前所述，本教程未使用迁移，而是通过 *EnsureCreated* 和数据填充（seeding）来实现。
+如上所述，本教程中未使用迁移。相反，使用了简单的 *EnsureCreated* 和 *seed*。
 
-到此为止，本部分内容已经完成。接下来，将继续处理甘特图相关工作。
+当前部分完成，让我们回到 Gantt。
 
-### 定义 DTO 和映射
+### Define DTOs and Mapping
 
-现在需要为 Web API 创建将要使用的 DTO 类。 
-首先为任务（Task）创建 DTO 类。在 **Models** 文件夹下新建文件并定义 **WebApiTask.cs** 类:
+现在是定义将用于 Web API 的 DTO 类的时候了。让我们从 Task 的 DTO 类开始。在 **Models** 文件夹中创建一个文件并定义 **WebApiTask.cs** 类：
 
-**Models/WebApiTask.cs**
-~~~js
+
+~~~js title="Models/WebApiTask.cs"
 namespace DHX.Gantt.Models
 {
     public class WebApiTask
@@ -523,10 +542,10 @@ namespace DHX.Gantt.Models
 }
 ~~~
 
-接下来是 Link 的 DTO 类，在 **Models** 文件夹下的 **WebApiLink.cs** 文件中定义:
+这是用于 Link 的 DTO 类，在 **Models** 文件夹中新建文件 **WebApiLink.cs**：
 
-**Models/WebApiLink.cs**
-~~~js
+
+~~~js title="Models/WebApiLink.cs"
 namespace DHX.Gantt.Models
 {
     public class WebApiLink
@@ -561,42 +580,42 @@ namespace DHX.Gantt.Models
 }
 ~~~
 
-完成上述步骤后，文件夹结构应如下所示:
+完成此步骤后，您应该得到如下的文件夹结构：
 
 ![Gantt ASP.NET Core 2 All models](/img/howtostart_dotnetcore_structure.png)
 
-此时建议运行应用程序以验证一切是否设置正确。如果没有出现运行时错误，说明设置成功。
+现在可以运行应用程序以检查一切是否就位。如果没有运行时错误，则说明一切正常。
 
-## Step 4. 实现 Web API
+## Step 4. Implementing Web API
 
-现在是实现 REST API 的时候了。
+现在是实现实际 REST API 的时刻。
 
-### 添加控制器
+### Adding Controllers
 
-创建一个 **Controllers** 文件夹，并添加三个空的 API 控制器:分别用于 Tasks、Links 以及整个数据集:
+创建 **Controllers** 文件夹，并创建三个空的 API 控制器：一个用于 Tasks，另一个用于 Links，还有一个用于整个数据集：
 
 ![Gantt ASP.NET Core 2 adding controllers](/img/howtostart_dotnetcore_addcontrollers.png)
 
-#### 任务控制器（Task Controller）
 
-以下是用于管理任务（Tasks）的控制器，实现了甘特任务的基本 CRUD 操作。
+#### Task Controller
 
-功能说明:
+让我们为 Tasks 创建一个控制器。它将定义 Gantt 任务的基本 CRUD 操作。
 
-- 对于 GET 请求，从数据库获取任务并以数据传输对象的形式返回；
-- 对于 PUT/POST 请求，任务以 WebApiTask 实例的形式从客户端传来，这也是 dhtmlxGantt 使用的格式。保存到 DatabaseContext 之前，需要将其转换为 EntityFramework 使用的数据模型（Task 类）。
+工作原理：
+- 在 GET 请求中，任务从数据库加载，输出为任务的数据传输对象；
+- 在 PUT/POST 请求中，来自客户端的任务以 WebAPITask 类的形式传来。它们在 dhtmlxGantt 中以这种方式表示，因此应将其转换为我们的 EntityFramework（Task 类）数据模型的格式。之后就可以将更改保存到 DatabaseContext。
 
 
-**Controllers/TaskController.cs**
-~~~js
+~~~js title="Controllers/TaskController.cs"
 using Microsoft.AspNetCore.Mvc;
 using DHX.Gantt.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DHX.Gantt.Controllers
 {
     [Produces("application/json")]
     [Route("api/task")]
-    public class TaskController : Controller
+    public class TaskController : ControllerBase
     {
         private readonly GanttContext _context;
         public TaskController(GanttContext context)
@@ -606,30 +625,33 @@ namespace DHX.Gantt.Controllers
 
         // GET api/task
         [HttpGet]
-        public IEnumerable<WebApiTask> Get()
+        public async Task<IEnumerable<WebApiTask>> Get()
         {
-            return _context.Tasks
-                .ToList()
-                .Select(t => (WebApiTask)t);
+            return await _context.Tasks
+                .Select(t => (WebApiTask)t)
+                .ToListAsync();
         }
 
         // GET api/task/5
         [HttpGet("{id}")]
-        public Models.Task? Get(int id)
+        public async Task<ActionResult<Models.Task>> Get(int id)
         {
-            return _context
-                .Tasks
-                .Find(id);
+            var task = await _context.Tasks.FindAsync(id);
+
+            if (task == null)
+                return NotFound();
+
+            return Ok(task);
         }
 
         // POST api/task
         [HttpPost]
-        public ObjectResult Post(WebApiTask apiTask)
+        public async Task<IActionResult> Post(WebApiTask apiTask)
         {
             var newTask = (Models.Task)apiTask;
 
-            _context.Tasks.Add(newTask);
-            _context.SaveChanges();
+            await _context.Tasks.AddAsync(newTask);
+            await _context.SaveChangesAsync();
 
             return Ok(new
             {
@@ -640,14 +662,16 @@ namespace DHX.Gantt.Controllers
 
         // PUT api/task/5
         [HttpPut("{id}")]
-        public ObjectResult? Put(int id, WebApiTask apiTask)
+        public async Task<IActionResult?> Put(int id, WebApiTask apiTask)
         {
             var updatedTask = (Models.Task)apiTask;
-            var dbTask = _context.Tasks.Find(id);
+            var dbTask = await _context.Tasks.FindAsync(id);
+
             if (dbTask == null)
             {
-                return null;
+                return NotFound();
             }
+
             dbTask.Text = updatedTask.Text;
             dbTask.StartDate = updatedTask.StartDate;
             dbTask.Duration = updatedTask.Duration;
@@ -655,7 +679,7 @@ namespace DHX.Gantt.Controllers
             dbTask.Progress = updatedTask.Progress;
             dbTask.Type = updatedTask.Type;
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return Ok(new
             {
@@ -665,13 +689,13 @@ namespace DHX.Gantt.Controllers
 
         // DELETE api/task/5
         [HttpDelete("{id}")]
-        public ObjectResult DeleteTask(int id)
+        public async Task<IActionResult> DeleteTask(int id)
         {
-            var task = _context.Tasks.Find(id);
+            var task = await _context.Tasks.FindAsync(id);
             if (task != null)
             {
                 _context.Tasks.Remove(task);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
 
             return Ok(new
@@ -685,10 +709,10 @@ namespace DHX.Gantt.Controllers
 
 #### Link Controller
 
-接下来是 Links 的控制器:
+接下来您应为 Links 创建一个控制器：
 
-**Controllers/LinkController.cs**
-~~~js
+
+~~~js title="Controllers/LinkController.cs"
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using DHX.Gantt.Models;
@@ -697,7 +721,7 @@ namespace DHX.Gantt.Controllers
 {
     [Produces("application/json")]
     [Route("api/link")]
-    public class LinkController : Controller
+    public class LinkController : ControllerBase
     {
         private readonly GanttContext _context;
         public LinkController(GanttContext context)
@@ -707,30 +731,33 @@ namespace DHX.Gantt.Controllers
 
         // GET api/Link
         [HttpGet]
-        public IEnumerable<WebApiLink> Get()
+        public async Task<IEnumerable<WebApiLink>> Get()
         {
-            return _context.Links
-                .ToList()
-                .Select(t => (WebApiLink)t);
+            return await _context.Links
+                .Select(t => (WebApiLink)t)
+                .ToListAsync();
         }
 
         // GET api/Link/5
         [HttpGet("{id}")]
-        public Link? Get(int id)
+        public async Task<ActionResult<Link>> Get(int id)
         {
-            return _context
-                .Links
-                .Find(id);
+            var link = await _context.Links.FindAsync(id);
+
+            if (link == null)
+                return NotFound();
+
+            return Ok(link);
         }
 
         // POST api/Link
         [HttpPost]
-        public ObjectResult Post(WebApiLink apiLink)
+        public async Task<IActionResult> Post(WebApiLink apiLink)
         {
             var newLink = (Link)apiLink;
 
             _context.Links.Add(newLink);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return Ok(new
             {
@@ -741,14 +768,14 @@ namespace DHX.Gantt.Controllers
 
         // PUT api/Link/5
         [HttpPut("{id}")]
-        public ObjectResult Put(int id, WebApiLink apiLink)
+        public async Task<IActionResult> Put(int id, WebApiLink apiLink)
         {
             var updatedLink = (Link)apiLink;
             updatedLink.Id = id;
-             _context.Entry(updatedLink).State = EntityState.Modified;
+            _context.Entry(updatedLink).State = EntityState.Modified;
 
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return Ok(new
             {
@@ -758,13 +785,13 @@ namespace DHX.Gantt.Controllers
 
         // DELETE api/Link/5
         [HttpDelete("{id}")]
-        public ObjectResult DeleteLink(int id)
+        public async Task<IActionResult> DeleteLink(int id)
         {
-            var Link = _context.Links.Find(id);
-            if (Link != null)
+            var link = await _context.Links.FindAsync(id);
+            if (link != null)
             {
-                _context.Links.Remove(Link);
-                _context.SaveChanges();
+                _context.Links.Remove(link);
+                await _context.SaveChangesAsync();
             }
 
             return Ok(new
@@ -778,18 +805,19 @@ namespace DHX.Gantt.Controllers
 
 #### Data Controller
 
-最后，这里是数据操作的控制器:
+最后，您需要为数据操作创建一个控制器：
 
-**Controllers/DataController.cs**
-~~~js
+
+~~~js title="Controllers/DataController.cs"
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using DHX.Gantt.Models;
 
 namespace DHX.Gantt.Controllers
 {
     [Produces("application/json")]
     [Route("api/data")]
-    public class DataController : Controller
+    public class DataController : ControllerBase
     {
         private readonly GanttContext _context;
         public DataController(GanttContext context)
@@ -799,48 +827,55 @@ namespace DHX.Gantt.Controllers
 
         // GET api/data
         [HttpGet]
-        public object Get()
+        public async Task<IActionResult> Get()
         {
-            return new
-            {
-                data = _context.Tasks.ToList().Select(t => (WebApiTask)t),
-                links = _context.Links.ToList().Select(l => (WebApiLink)l)
+            var tasks = await _context.Tasks
+                .Select(t => (WebApiTask)t)
+                .ToListAsync();
 
-            };
+            var links = await _context.Links
+                .Select(l => (WebApiLink)l)
+                .ToListAsync();
+
+            return Ok(new
+            {
+                tasks,
+                links
+            });
         }
-        
     }
 }
 ~~~
 
-至此，所有内容都已就绪，应用程序可以运行，你将看到一个完整可用的甘特图。
+一切就绪。您可以运行应用程序，看看完整的 Gantt。
 
 ![Gantt ASP.NET Core Gantt is ready](/img/ready_gantt_dotnet_core.png)
 
-[完整源码也可在 GitHub 上获取](https://github.com/DHTMLX/gantt-howto-dotnet-core/)。
 
-## 错误处理
+[您也可以在 GitHub 上查看完整源码](https://github.com/DHTMLX/gantt-howto-dotnet-core/).
 
-为了有效管理错误，你需要创建一个特殊的 [middleware class](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/startup?view="aspnetcore-2.1)" 来捕获运行时异常并发送适当的响应。该中间件随后会被添加到应用的请求管道中。操作步骤如下:
+## Error handling
 
-1. 使用模板向你的项目添加一个中间件类。
+为了处理错误，您需要声明一个特殊的 [中间件类](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/startup?view=aspnetcore-9.0)"，
+该中间件会捕获运行时异常并写出响应。接下来将其加入应用程序请求管道。请按以下步骤进行：
 
+1. 从项目文件夹中的模板创建一个中间件类。 
+ 
 ![Gantt ASP.NET Core middleware class](/img/dotnet_core_middleware.png)
 
-2. 为 ASP.NET Core 安装 JSON 框架。可以通过 NuGet 包管理器完成:
+2. 安装 ASP.NET Core 的 JSON 框架。您可以通过 NuGet 包管理器来执行此操作：
 
 ![Gantt ASP.NET Core Install NewtonSoft Json](/img/install_newtonsoft.png)
 
-或者使用包管理器控制台:
+或使用 Package Manager 命令行：
 
 ~~~
 PM> Install-Package NewtonSoft.JSON
 ~~~
 
-3. 找到中间件中的 **Invoke** 方法。由于有些处理程序可能会抛出异常，请将 `_next` 调用放入 `try-catch` 块中，在发生错误时处理异常。
+3. 找到 **invoke** 方法，并注意 `_next` 调用。某些处理程序可能会抛出异常，因此让我们进行捕获。用 `try-catch` 块包裹 `_next` 调用，在捕获到错误时运行我们的处理程序。 
 
-**GanttErrorMiddleware.cs**
-~~~js
+~~~js title="GanttErrorMiddleware.cs"
 public async Task Invoke(HttpContext httpContext)
 {
     try
@@ -862,38 +897,36 @@ private static Task HandleExceptionAsync(HttpContext context, Exception exceptio
 }
 ~~~
 
-4. 在 **GanttErrorMiddleware.cs** 文件中添加如下命名空间:
+4. 将以下命名空间添加到 **GanttErrorMiddleware.cs**：
 
 ~~~js
 using Newtonsoft.Json;
 ~~~
 
-5. 中间件已准备就绪。接下来，打开 **Program.cs** 并注册该中间件，添加如下内容:
+5. 中间件已就绪。现在转到 **Program.cs** 并连接该中间件。添加以下命名空间：
 
-**Program.cs**
-~~~js
+~~~js title="Program.cs"
 using DHX.Gantt;
 ~~~
 
-然后通过以下调用将中间件加入管道:
+接着调用 **app.UseGanttErrorMiddleware()** 方法：
 
-**Program.cs**
-~~~js
+~~~js title="Program.cs"
 app.UseGanttErrorMiddleware();
 ~~~
 
-## 存储任务顺序 {#storingtheorderoftasks}
+## Storing the order of tasks {#storingtheorderoftasks}
 
-当用户在客户端通过拖拽重新排序任务时，新顺序应保存到数据库。详细内容请参阅 [本节](guides/server-side.md#renwushunxudecunchu)。
+用户可以在客户端的 gantt 中通过拖放重新排列任务。如果您使用此功能，应该将任务的顺序存储在数据库中。
+详情请参阅 [this section](guides/server-side.md#storingtheorderoftasks)。
 
-下面介绍如何在甘特图中启用任务顺序存储。
+继续了解如何为 gantt 启用存储任务顺序的功能。
 
-### 客户端排序
+### Reordering on the Client Side
 
-首先，在客户端启用任务排序，在 **index.html** 文件中添加如下代码:
+首先在客户端启用任务的重新排序。在 **index.html** 中添加这些行：
 
-**wwwroot/index.html**
-~~~js
+~~~js title="wwwroot/index.html"
 gantt.config.order_branch = true;
 gantt.config.order_branch_free = true;
 
@@ -903,12 +936,11 @@ gantt.config.date_format = "%Y-%m-%d %H:%i";
 gantt.init("gantt_here");
 ~~~
 
-### 在模型中添加任务顺序
+### Adding tasks order to the model
 
-然后，更新后端以反映当前任务顺序。在 **Task** 模型中添加新属性:
+接下来，您必须修改后端以反映当前的任务顺序。向 **Task** 模型添加一个新的字段： **SortOrder**。
 
-**Models/Task.cs**
-~~~js
+~~~js title="Models/Task.cs"
 namespace DHX.Gantt.Models
 {
     public class Task
@@ -925,43 +957,45 @@ namespace DHX.Gantt.Models
 }
 ~~~
 
-### 更新控制器
+### Updating Controllers
 
-控制器也需要做一些更新。
+您还需要更新控制器。
 
-1. 客户端应按 **SortOrder** 排序获取任务。在 DataController 中添加标记行:
+1. 客户端应按 **SortOrder** 值对任务进行排序并返回。向 DataController 中添加高亮显示的行：
 
-**Controllers/DataController.cs**
-~~~js
+~~~js title="Controllers/DataController.cs"
 [HttpGet]
-public object Get()
+public async Task<IActionResult> Get()
 {
-    return new
-        {
-            data = _context.Tasks
-                .OrderBy(t => t.SortOrder) /*!*/
-                .ToList()
-                .Select(t => (WebApiTask)t),
-               links = _context.Links
-                .ToList()
-                .Select(l => (WebApiLink)l)
-        };
+    var tasks = await _context.Tasks
+        .OrderBy(t => t.SortOrder) /*!*/
+        .Select(t => (WebApiTask)t)
+        .ToListAsync();
+
+    var links = await _context.Links
+        .Select(l => (WebApiLink)l)
+        .ToListAsync();
+
+    return Ok(new
+    {
+        data = tasks,
+        links = links
+    });
 }
 ~~~
 
-2. 创建新任务时，确保它们获得默认的 **SortOrder** 值:
+2. 新建的任务也应获得默认值 **SortOrder**：
 
-**controllers/TaskController.cs**
-~~~js
+~~~js title="controllers/TaskController.cs"
 // POST api/task
 [HttpPost]
-public IActionResult Post(WebApiTask apiTask)
+public async Task<IActionResult> Post(WebApiTask apiTask)
 {
     var newTask = (Models.Task)apiTask;
 
-    newTask.SortOrder = _context.Tasks.Max(t => t.SortOrder) + 1; /*!*/
-    _context.Tasks.Add(newTask);
-    _context.SaveChanges();
+    newTask.SortOrder = await _context.Tasks.MaxAsync(t => t.SortOrder) + 1; /*!*/
+    await _context.Tasks.AddAsync(newTask);
+    await _context.SaveChangesAsync();
 
     return Ok(new
     {
@@ -971,13 +1005,11 @@ public IActionResult Post(WebApiTask apiTask)
 }
 ~~~
 
-3. 当任务在客户端重新排序时，需要更新 **sortOrder**。当任务被重新排列时，gantt 会通过 PUT 请求发送包含新位置信息的 
-['target'](guides/server-side.md#renwushunxudecunchu) 属性，以及其他任务详情。
+3. 当在客户端修改任务顺序时，**sortOrder** 应更新。当用户重新排序任务时，gantt 将调用 PUT 操作并提供新任务在请求的 ['target'](guides/server-side.md#storingtheorderoftasks) 属性中的位置信息，以及其他任务属性。
 
-在 **WebApiTask.cs** 类中添加 `target` 属性:
-
-**Models/WebApiTask.cs**
-~~~js
+向 **WebApiTask.cs** 类中添加 `target` 字段：
+ 
+~~~js title="Models/WebApiTask.cs"
 public class WebApiTask
 {
     public int id { get; set; }
@@ -995,58 +1027,56 @@ public class WebApiTask
     }
 }
 ~~~
-
-现在，在 Task 控制器的 PUT (EditTask) 方法中实现重新排序逻辑:
-
-**Controllers/TaskController.cs**
-~~~js
+ 
+现在在 Task 控制器的 PUT（EditTask）操作中实现重新排序。修改 Task 控制器的 Put 操作：
+ 
+~~~js title="Controllers/TaskController.cs"
 // PUT api/task/5
 [HttpPut("{id}")]
-public IActionResult? Put(int id, WebApiTask apiTask)
+public async Task<IActionResult?> Put(int id, WebApiTask apiTask)
 {
     var updatedTask = (Models.Task)apiTask;
-    updatedTask.Id = id;
- 
-    var dbTask = _context.Tasks.Find(id);
+    var dbTask = await _context.Tasks.FindAsync(id);
+
     if (dbTask == null)
     {
-        return null;
+        return NotFound();
     }
+
     dbTask.Text = updatedTask.Text;
     dbTask.StartDate = updatedTask.StartDate;
     dbTask.Duration = updatedTask.Duration;
     dbTask.ParentId = updatedTask.ParentId;
     dbTask.Progress = updatedTask.Progress;
     dbTask.Type = updatedTask.Type;
- 
-    if (!string.IsNullOrEmpty(apiTask.target))            /*!*/            
-    {                                                    /*!*/
-         // reordering happened                            /*!*/
-         this._UpdateOrders(dbTask, apiTask.target);    /*!*/
-    }                                                    /*!*/
- 
-    _context.SaveChanges();
- 
+
+    if (!string.IsNullOrEmpty(apiTask.target))                /*!*/
+    {                                                         /*!*/
+        // reordering occurred                                /*!*/   
+        await this.UpdateOrdersAsync(dbTask, apiTask.target); /*!*/
+    }                                                         /*!*/
+
+    await _context.SaveChangesAsync();
+
     return Ok(new
     {
-         action = "updated"
+        action = "updated"
     });
 }
 ~~~
 
-添加用于调整任务顺序的辅助方法:
-
-**Controllers/TaskController.cs**
-~~~js
-private void _UpdateOrders(Models.Task updatedTask, string orderTarget)
+并添加用于更新任务顺序的方法：
+ 
+~~~js title="Controllers/TaskController.cs"
+private async Task<IActionResult> UpdateOrdersAsync(Models.Task updatedTask, string orderTarget)
 {
     int adjacentTaskId;
     var nextSibling = false;
 
     var targetId = orderTarget;
 
-    // adjacent task id may come as '{id}' or 'next:{id}' indicating 
-    // whether it's the next or previous sibling
+    // adjacent task id is sent either as '{id}' or as 'next:{id}' depending 
+    // on whether it's the next or the previous sibling
     if (targetId.StartsWith("next:"))
     {
         targetId = targetId.Replace("next:", "");
@@ -1055,40 +1085,48 @@ private void _UpdateOrders(Models.Task updatedTask, string orderTarget)
 
     if (!int.TryParse(targetId, out adjacentTaskId))
     {
-        return;
+        return NotFound();
     }
 
-    var adjacentTask = _context.Tasks.Find(adjacentTaskId);
-    var startOrder = adjacentTask!.SortOrder;
+    var adjacentTask = await _context.Tasks.FindAsync(adjacentTaskId);
+    if (adjacentTask == null)
+    {
+        return NotFound();
+    }
+    var startOrder = adjacentTask.SortOrder;
 
     if (nextSibling)
-         startOrder++;
+        startOrder++;
 
     updatedTask.SortOrder = startOrder;
 
-    var updateOrders = _context.Tasks
+    var updateOrders = await _context.Tasks
         .Where(t => t.Id != updatedTask.Id)
         .Where(t => t.SortOrder >= startOrder)
-        .OrderBy(t => t.SortOrder);
+        .OrderBy(t => t.SortOrder)
+        .ToListAsync();
 
     var taskList = updateOrders.ToList();
-
     taskList.ForEach(t => t.SortOrder++);
+
+    return Ok(new
+    {
+        action = "updated"
+    });
 }
 ~~~
 
-## 应用安全
+## Application security
 
-Gantt 本身不负责防范如 SQL 注入、XSS 或 CSRF 等安全威胁。后端开发者需自行保证应用的安全。详情请参考 [相关文档](guides/app-security.md)。
+Gantt 不提供任何防止应用程序遭受各种威胁（如 SQL 注入、XSS、CSRF 攻击）的机制。确保应用安全的责任在实现后端的开发人员身上。请阅读对应文章中的详细信息。
 
-### XSS 防护
+### XSS protection
 
-一种简单的方法是在将文本字段发送到客户端之前进行编码。
+一个简单的解决方案是在将数据发送到客户端时对文本属性进行编码。
 
-例如，下面的示例使用内置的 HtmlEncoder 对任务文本中的 HTML 进行转义。这样，数据库中保存的是原始数据，但客户端收到的是安全的 `task.text`。
+例如，下面的代码中使用了内置的 HtmlEncoder 来对任务文本中的 HTML 值进行转义。这样数据库中将保留未修改的原始数据，但客户端将接收到安全的 `task.text` 值。
 
-**Models/WebApiTask.cs**
-~~~js
+~~~js title="Models/WebApiTask.cs"
 using System.Text.Encodings.Web;
 
 public static explicit operator WebApiTask(Task task)
@@ -1106,14 +1144,15 @@ public static explicit operator WebApiTask(Task task)
 }
 ~~~
 
-另外，也可以使用如 [HtmlAgilityPack](https://www.nuget.org/packages/HtmlAgilityPack/) 这样的专业库，在保存或加载任务时彻底移除所有 HTML。
+另一种做法是使用专门的库，例如 [HtmlAgilityPack](https://www.nuget.org/packages/HtmlAgilityPack/) 来在保存/加载数据时完全剥离任何 HTML。
 
-## 故障排查
+## Trouble shooting
 
-如果你已按照所有步骤将 Gantt 集成到 ASP.NET Core，但页面上未显示任务和链接，请参阅 [백엔드 통합 문제 해결](guides/troubleshooting.md) 文章。文中涵盖了常见问题及其排查方法。
+如果您完成了上述将 Gantt 与 ASP.NET Core 集成的步骤，但 Gantt 未在页面上呈现任务和链接，请查看 [Troubleshooting Backend Integration Issues](guides/troubleshooting.md) 文章。它描述了识别问题根源的方法。
 
-## 后续步骤
 
-此时，你已经拥有了一个可用的甘特图实现。完整源码可在 [GitHub](https://github.com/DHTMLX/gantt-howto-dotnet-core) 上获取，可用于你的项目。
+## What's next
 
-你还可以查阅 [涵盖众多甘特功能的指南](guides.md) 或 [集成 Gantt 到其他后端框架的教程](integrations/howtostart-guides.md)。
+现在您拥有一个功能完善的 gantt。您可以在 [GitHub](https://github.com/DHTMLX/gantt-howto-dotnet-core) 上查看完整代码、克隆或下载，并将其用于您的项目。
+
+您也可以查看关于 gantt 众多功能的指南（guides on the numerous features of gantt）或关于将 Gantt 与其他后端框架集成的教程（tutorials on integrating Gantt with other backend frameworks）。

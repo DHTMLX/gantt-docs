@@ -1,38 +1,37 @@
 ---
 sidebar_label: onBeforeLinkDelete
-title: onBeforeLinkDelete event
-description: "срабатывает непосредственно перед удалением связи пользователем"
+title: Событие onBeforeLinkDelete
+description: "Срабатывает перед удалением пользователем ссылки"
 ---
 
 # onBeforeLinkDelete
 
 ### Description
 
-@short: Срабатывает непосредственно перед удалением связи пользователем
+@short: Срабатывает перед удалением пользователем ссылки
 
-@signature: onBeforeLinkDelete: (id: string | number, link: Link) =\> boolean;
+@signature: onBeforeLinkDelete: (id: string | number, link: Link) => boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - идентификатор связи
-- `link` - (required) *Link* - объект связи
+- `id` - (обязательный) *string | number* - идентификатор ссылки
+- `link` - (обязательный) *Link* - объект ссылки
 
 ### Returns
-- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию (<b>true</b>) или отменено (<b>false</b>)
+- `result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeLinkDelete", function(id,link){
-    // здесь можно добавить пользовательскую логику
+    // любая ваша логика здесь
     return true;
 });
 ~~~
 
 ### Details
 
-Это событие можно заблокировать. Возврат false остановит удаление связи.
+Событие можно заблокировать. Возвратите false, чтобы отменить удаление ссылки.
 
 ### Related API
 - [deleteLink](api/method/deletelink.md)
-

@@ -1,22 +1,24 @@
 ---
 sidebar_label: resetProjectDates
-title: resetProjectDates method
-description: "Berechnet die Dauer einer Projektaufgabe basierend auf den Terminen ihrer untergeordneten Aufgaben neu"
+title: resetProjectDates Methode
+description: "berechnet die Dauer einer Projektaufgabe neu basierend auf den Terminen ihrer Unteraufgaben"
 ---
 
 # resetProjectDates
+
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
+
 ### Description
 
-@short: Berechnet die Dauer einer Projektaufgabe basierend auf den Terminen ihrer untergeordneten Aufgaben neu
+@short: Berechnet erneut die Dauer einer Projektaufgabe basierend auf den Terminen ihrer Unteraufgaben
 
 @signature: resetProjectDates: (task: Task) =\> void
 
 ### Parameters
 
-- `task` - (required) *Task* - Das Aufgabenobjekt
+- `task` - (erforderlich) *Task* - das Task-Objekt
 
 ### Example
 
@@ -26,8 +28,7 @@ gantt.resetProjectDates(gantt.getTask(3));
 
 ### Details
 
-Diese Methode aktualisiert die Eigenschaften **start_date**, **end_date** und **duration** des angegebenen Aufgabenobjekts basierend auf den Terminen seiner untergeordneten Aufgaben.
+Die Methode modifiziert die **start_date**, **end_date** und **duration** Eigenschaften des übergebenen Objekts.
 
 ### Related API
 - [getSubtaskDates](api/method/getsubtaskdates.md)
-

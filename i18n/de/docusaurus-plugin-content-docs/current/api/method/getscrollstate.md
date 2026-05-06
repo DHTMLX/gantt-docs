@@ -1,19 +1,19 @@
 ---
 sidebar_label: getScrollState
 title: getScrollState method
-description: "Ruft die aktuelle Scroll-Position ab"
+description: "gibt die Scroll-Position zurück"
 ---
 
 # getScrollState
 
 ### Description
 
-@short: Ruft die aktuelle Scroll-Position ab
+@short: Liefert die Scroll-Position
 
 @signature: getScrollState: () =\> \{ x: number, y: number \}
 
 ### Returns
-- `ScrollState` - (ScrollState) - ein Objekt, das die Scroll-Position repräsentiert
+- `ScrollState` - (ScrollState) - das Scroll-Position-Objekt
 
 ### Example
 
@@ -25,18 +25,17 @@ const posY = sPos.y;
 
 ### Details
 
-Diese Methode liefert ein Objekt mit den folgenden Details:
+Die Methode gibt ein Objekt mit den folgenden Eigenschaften zurück:
 
-- **y** - der vertikale Scroll-Offset in Pixeln
-- **x** - der horizontale Scroll-Offset in Pixeln
-- **inner_width** - die Breite des sichtbaren Timeline-Abschnitts
-- **inner_height** - die Höhe des sichtbaren Timeline-Abschnitts
-- **width** - die gesamte scrollbare Breite der Timeline
-- **height** - die gesamte scrollbare Höhe der Timeline
+- **y** - die Anzahl der Pixel, um die die Position vertikal gescrollt wird
+- **x** - die Anzahl der Pixel, um die die Position horizontal gescrollt wird
+- **inner_width** - die Breite des sichtbaren Timeline-Bereichs
+- **inner_height** - die Höhe des sichtbaren Timeline-Bereichs
+- **width** - die Scroll-Breite des Timeline-Bereichs
+- **height** - die Scroll-Höhe des Timeline-Bereichs
 
 ### Related API
 - [scrollTo](api/method/scrollto.md)
 - [onGanttScroll](api/event/onganttscroll.md)
 - [showDate](api/method/showdate.md)
 - [showTask](api/method/showtask.md)
-

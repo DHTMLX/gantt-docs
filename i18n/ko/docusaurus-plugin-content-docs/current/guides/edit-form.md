@@ -1,14 +1,14 @@
 ---
-title: "편집 폼 구성하기"
-sidebar_label: "편집 폼 구성하기"
+title: "편집 양식 구성"
+sidebar_label: "편집 양식 구성"
 ---
 
-# 편집 폼 구성하기
+# 편집 양식 구성
 
-![lightbox](/img/lightbox.png)
+![라이트박스](/img/lightbox.png)
 
-- [Lightbox 요소 구성하기](guides/default-edit-form.md)
-- [Lightbox 요소 작업하기](guides/lightbox-manipulations.md)
-- [커스텀 엘리먼트 생성하기](guides/custom-editor.md)
-- [Custom Lightbox](guides/custom-edit-form.md)
-- [라이트박스의 버튼 변경하기](guides/custom-button.md)
+- [라이트박스 요소 구성](guides/default-edit-form.md)
+- [라이트박스 요소 다루기](guides/lightbox-manipulations.md)
+- [사용자 정의 요소 만들기](guides/custom-editor.md)
+- [사용자 정의 라이트박스](guides/custom-edit-form.md)
+- [라이트박스의 버튼 변경](guides/custom-button.md)

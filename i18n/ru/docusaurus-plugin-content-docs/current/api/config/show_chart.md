@@ -1,39 +1,39 @@
 ---
 sidebar_label: show_chart
-title: show_chart config
-description: "управляет видимостью секции timeline в диаграмме Ганта"
+title: конфигурация show_chart
+description: "показывает область диаграммы (таймлайна) диаграммы Ганта"
 ---
 
 # show_chart
 
 ### Description
 
-@short: Управляет видимостью секции timeline в диаграмме Ганта
+@short: Показывает область диаграммы (таймлайн) диаграммы Ганта
 
 @signature: show_chart: boolean
 
 ### Example
 
 ~~~jsx
-// скрыть секцию timeline в диаграмме Ганта
+//hides the timeline area of the Gantt chart
 gantt.config.show_chart = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true (секция timeline отображается)
+**Значение по умолчанию:** true (диаграмма видима)
 
 ### Details
 
-Установка *gantt.config.show_chart = false* быстро скрывает часть диаграммы Ганта с timeline, тогда как *gantt.config.show_grid = false* скрывает секцию grid. Если вы работаете с простым layout, лучше не использовать обе опции одновременно, так как это может привести к непредсказуемому поведению. Вместо этого рекомендуется настраивать layout через [gantt.config.layout](api/config/layout.md).
+*​gantt.config.show_chart = false* полезно, когда нужно быстро скрыть область таймлайна диаграммы Ганта, в то время как *gantt.config.show_grid = false* служит для скрытия области сетки. Если вы работаете в простом макете, лучше не использовать эти две опции вместе, так как это может привести к непредсказуемому результату. Вместо этого следует изменить конфигурацию макета через [gantt.config.layout](api/config/layout.md).
 
-Опция **show_chart** работает только если layout остаётся в своей [дефолтной конфигурации](guides/layout-config.md#defaultlayout) и не была изменена через [gantt.config.layout](api/config/layout.md). Если у вас кастомный layout, потребуется определить несколько пользовательских конфигураций и переключаться между ними для управления видимостью диаграммы.<br> 
+Конфигурация **show_chart** будет работать только если вы не изменяли [дефолтную конфигурацию макета](guides/layout-config.md#default-layout) через [gantt.config.layout](api/config/layout.md). В случае если вы настроили пользовательский макет, вам нужно создать несколько пользовательских конфигураций и переключаться между ними, чтобы скрывать/показывать диаграмму.
+
 :::note
-Sample: [Gantt. Toggle timeline (custom layout)](https://snippet.dhtmlx.com/aukjyqc8) 
+пример: [Gantt. Toggle timeline (custom layout) ](https://snippet.dhtmlx.com/aukjyqc8)
 :::
 
 ### Related API
 - [show_grid](api/config/show_grid.md)
 
 ### Related Guides
-- [Решения](guides/how-to.md#howtotogglegridchart)
-
+- [Как это сделать](guides/how-to.md#how-to-toggle-gridchart)

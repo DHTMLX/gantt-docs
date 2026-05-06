@@ -1,7 +1,7 @@
 ---
 sidebar_label: onMouseMove
-title: onMouseMove event
-description: "当鼠标在甘特图容器上移动时触发"
+title: onMouseMove 事件
+description: "当鼠标移动到甘特图容器上时触发"
 ---
 
 # onMouseMove
@@ -14,14 +14,14 @@ description: "当鼠标在甘特图容器上移动时触发"
 
 ### Parameters
 
-- `id` - (required) *string | number* - 当前鼠标悬停的任务的id
+- `id` - (required) *string | number* - 鼠标移动到的任务的 id
 - `e` - (required) *Event* - 原生事件对象
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onMouseMove", function (id, e){
-    // 在这里编写您的自定义逻辑
+    // 在这里插入您的自定义逻辑 
 });
 ~~~
 
@@ -29,9 +29,7 @@ gantt.attachEvent("onMouseMove", function (id, e){
 
 此事件是绑定到 **gantt.$root** 元素的原生 [mousemove](https://developer.mozilla.org/en-US/docs/Web/API/Element/mousemove_event) 事件监听器的别名。
 
-如果事件目标是任务元素的一部分，则第一个参数将是该任务的id。
-如果不是，则第一个参数为null。
-
+当事件目标是任务元素的一个节点时，相应的任务 id 将作为第一个参数传入。否则，第一个参数将为 null。
 
 ~~~js
 gantt.message({
@@ -50,13 +48,13 @@ gantt.attachEvent("onMouseMove", function (id, e){
     }
 });
 ~~~
+
 :::note
-Sample: [获取鼠标光标下的日期时间](https://snippet.dhtmlx.com/3rn86wwq) 
+sample: [在鼠标光标下获取日期时间](https://snippet.dhtmlx.com/3rn86wwq)
 :::
 
 ### Related API
 - [utils](api/other/utils.md)
 
 ### Related Guides
-- [操作指南](guides/how-to.md)
-
+- [How-tos](guides/how-to.md#how-to-have-an-infinite-scroll-in-the-timeline)

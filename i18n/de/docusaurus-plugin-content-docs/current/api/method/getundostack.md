@@ -1,19 +1,19 @@
 ---
 sidebar_label: getUndoStack
 title: getUndoStack method
-description: "liefert den Stack der gespeicherten Undo-Benutzeraktionen"
+description: "Gibt den Stapel der gespeicherten Undo-Benutzeraktionen zurück"
 ---
 
 # getUndoStack
 
 ### Description
 
-@short: Liefert den Stack der gespeicherten Undo-Benutzeraktionen
+@short: Gibt den Stapel der gespeicherten Undo-Benutzeraktionen zurück
 
 @signature: getUndoStack: () =\> UndoRedoAction[]
 
 ### Returns
-- ` stack` - (UndoRedoAction[]) - ein Array, das die Undo-Benutzeraktionen enthält
+- ` stack` - (UndoRedoAction[]) - ein Array der Undo-Benutzeraktionen
 
 ### Example
 
@@ -22,27 +22,27 @@ var stack = gantt.getUndoStack();
 ~~~
 
 ### Related samples
-- [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
+- [Rückgängig-/Wiederherstellungsänderungen in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
 ### Details
 
 :::note
- Diese Methode ist Teil der **undo**-Erweiterung, daher muss das [undo](guides/extensions-list.md#undo) Plugin aktiviert sein. Weitere Details finden Sie im Artikel ["Undo/Redo-Funktionalität"](guides/undo-redo.md). 
+Diese Methode ist in der **undo**-Erweiterung definiert, daher müssen Sie das [undo](guides/extensions-list.md#undo) Plugin aktivieren. Lesen Sie die Details im Artikel [Undo/Redo-Funktionalität](guides/undo-redo.md). 
 :::
 
 
-Der zurückgegebene Stack besteht aus Undo-Benutzeraktionen, wobei jede Aktion eine Reihe von Commands enthält. Ein Command ist ein Objekt mit folgenden Eigenschaften:
+Der zurückgegebene Stack ist ein Array der Undo-Benutzeraktionen. Jede Benutzeraktion enthält eine Reihe von Befehlen. Ein Befehl ist ein Objekt mit den folgenden Attributen:
  
-- **type** - (*string*) gibt den Command-Typ an: "add/remove/update"
-- **entity** - (*string*) gibt den Typ des Objekts an, das geändert wurde: "task" oder "link"
-- **value** - (*object*) das Task- oder Link-Objekt nach der Änderung
-- **oldValue** - (*object*) das Task- oder Link-Objekt vor der Änderung
+- **type** - (*string*) der Typ eines Befehls: "add/remove/update"
+- **entity** - (*string*) der Typ des geänderten Objekts: "task" oder "link"
+- **value** - (*object*) das geänderte Task-/Link-Objekt 
+- **oldValue** - (*object*) das Task-/Link-Objekt vor den Änderungen
 
-Hier ein Beispiel zur Veranschaulichung:
-
+Sehen Sie sich das untenstehende Beispiel an:
 ![get_undo_stack](/img/get_undo_stack.png)
 
-Die Methode **getUndoStack()** liefert einen Stack, der 2 Undo-Benutzeraktionen enthält. Die erste Aktion umfasst 3 Commands, die zweite Aktion enthält einen einzelnen Command.
+
+Die Methode **getUndoStack()** gibt einen Stack mit 2 Undo-Benutzeraktionen zurück. Die erste Aktion enthält 3 Befehle, die zweite enthält 1 Befehl.
 
 ### Related API
 - [getRedoStack](api/method/getredostack.md)
@@ -50,7 +50,7 @@ Die Methode **getUndoStack()** liefert einen Stack, der 2 Undo-Benutzeraktionen 
 - [clearUndoStack](api/method/clearundostack.md)
 
 ### Related Guides
-- ["Undo/Redo-Funktionalität"](guides/undo-redo.md#gettingthestackofstoredundoredocommands)
+- [Undo/Redo-Funktionalität](guides/undo-redo.md)
 
 ### Change log
 - hinzugefügt in Version 4.0

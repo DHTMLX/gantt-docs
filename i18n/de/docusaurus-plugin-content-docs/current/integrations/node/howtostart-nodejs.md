@@ -3,64 +3,67 @@ title: "dhtmlxGantt mit Node.js"
 sidebar_label: "Node.js"
 ---
 
-# dhtmlxGantt mit Node.js 
+# dhtmlxGantt mit Node.js
 
-Dieses Tutorial zeigt Schritt für Schritt, wie man dhtmlxGantt mit Node.js und einer REST-API auf der Serverseite einrichtet. 
-Wenn Sie mit einer anderen Technologie arbeiten, finden Sie unten weitere Integrationsoptionen:
+Die aktuelle Anleitung richtet sich an die Erstellung von Gantt mit Node.js und einer REST-API auf der Serverseite. 
+Wenn Sie eine andere Technologie verwenden, prüfen Sie unten die Liste der verfügbaren Integrationsvarianten:
 
-- [dhtmlxGantt with ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md)
-- [dhtmlxGantt with ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
-- [dhtmlxGantt with Python](integrations/other/howtostart-python.md)
-- [dhtmlxGantt with PHP: Laravel](integrations/php/howtostart-php-laravel.md)
-- [dhtmlxGantt with PHP:Slim](integrations/php/howtostart-php-slim4.md)
-- [dhtmlxGantt with Salesforce LWC](integrations/salesforce/howtostart-salesforce.md)
-- [dhtmlxGantt with Ruby on Rails](integrations/other/howtostart-ruby.md)
+- [dhtmlxGantt mit ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md)
+- [dhtmlxGantt mit ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
+- [dhtmlxGantt mit Python](integrations/other/howtostart-python.md)
+- [dhtmlxGantt mit PHP: Laravel](integrations/php/howtostart-php-laravel.md)
+- [dhtmlxGantt mit PHP:Slim](integrations/php/howtostart-php-slim4.md)
+- [dhtmlxGantt mit Salesforce LWC](integrations/salesforce/howtostart-salesforce.md)
+- [dhtmlxGantt mit Ruby on Rails](integrations/other/howtostart-ruby.md)
 
-Unsere Node.js-Implementierung nutzt eine REST-API für die Serverkommunikation. 
-Da Node.js viele fertige Tools bietet, müssen wir nicht alles von Grund auf neu erstellen. Außerdem verwenden wir MySQL zur Datenspeicherung.
+Unsere Implementierung von Gantt mit Node.js basiert auf einer REST-API, die für die Kommunikation mit dem Server verwendet wird. 
+Node.js bietet eine Reihe fertiger Lösungen, sodass wir nicht alles von Grund auf neu schreiben müssen. Wir verwenden außerdem MySQL als Datenspeicher.
 
 :::note
-Der vollständige Quellcode ist [auf GitHub](https://github.com/DHTMLX/gantt-howto-node) verfügbar.
+Der vollständige Quellcode ist [auf GitHub verfügbar](https://github.com/DHTMLX/gantt-howto-node).
 :::
 
-Sie können sich auch ein Video-Tutorial ansehen, das zeigt, wie man ein Gantt-Diagramm mit Node.js erstellt.
+
+Sie können sich die Video-Anleitung ansehen, die zeigt, wie man ein Gantt-Diagramm mit Node.js erstellt.
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/D8YzyzBfyP8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## Schritt 1. Erstellen eines Projekts
+## Schritt 1. Projekt erstellen
 
-Zuerst erstellen Sie einen Projektordner und fügen die notwendigen Abhängigkeiten hinzu. Wir verwenden diese Module:
+Zu Beginn erstellen wir einen Projektordner und fügen anschließend die benötigten Abhängigkeiten hinzu. Wir verwenden die folgenden Module:
 
-- [Express](http://expressjs.com/) - ein leichtgewichtiges Node.js-Framework
-- [body-parser](https://www.npmjs.com/package/body-parser) - ein Tool zum Parsen eingehender Request-Bodies
+- [Express](https://expressjs.com/) - ein kleines Framework für Node.js
+- [body-parser](https://www.npmjs.com/package/body-parser) - ein Node.js Parsing-Tool
 
-Erstellen Sie einen Projektordner mit dem Namen "dhx-gantt-app":
+
+Lassen Sie uns also einen Projektordner erstellen und ihn "dhx-gantt-app" benennen:
 
 ~~~js
 mkdir dhx-gantt-app
 cd dhx-gantt-app
 ~~~
 
-### Abhängigkeiten hinzufügen
 
-Erzeugen Sie als Nächstes die Datei *package.json* mit folgendem Befehl:
+### Die Abhängigkeiten hinzufügen
+
+Nun erstellen wir die *package.json*-Datei. Wir geben die Abhängigkeiten mit dem folgenden Befehl darin an:
 
 ~~~js
 npm init -y
 ~~~
 
-Nachdem die Datei erstellt wurde, öffnen Sie sie und fügen die oben genannten Abhängigkeiten hinzu. Die Datei sollte etwa so aussehen:
+Wenn die Datei fertig ist, öffnen Sie sie und fügen die oben aufgeführten Abhängigkeiten hinein. Das Ergebnis wird ungefähr so aussehen:
 
-**package.json**
-~~~js
+
+~~~js title="package.json"
 {
   "name": "dhx-gantt-app",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "server.js",
   "dependencies": {
-    "body-parser": "^1.19.1",
-    "express": "^4.17.2"
+    "body-parser": "^2.2.1",
+    "express": "^5.2.1"
   },
   "scripts": {
     "test": "echo "Error: no test specified" && exit 1",
@@ -72,18 +75,18 @@ Nachdem die Datei erstellt wurde, öffnen Sie sie und fügen die oben genannten 
 }
 ~~~
 
-Installieren Sie dann die Abhängigkeiten mit folgendem Befehl:
+Schließlich müssen die hinzugefügten Abhängigkeiten mit dem folgenden Befehl installiert werden:
 
 ~~~js
 npm install
 ~~~
 
-### Backend vorbereiten
+### Vorbereitung des Backends
 
-Wir richten ein grundlegendes [express](https://expressjs.com/)-Backend ein: eine einzelne JavaScript-Datei für den Server ("server.js"), 
-einen Ordner für statische Dateien ("public") und eine einzelne HTML-Seite.
+Wir folgen einem grundlegenden [Express]-Setup: Wir werden eine einzelne JS-Datei für unser Backend (nennen wir sie "server.js"),
+einen Ordner für statische Dateien (namens "public") und eine einzelne HTML-Seite haben. 
 
-Die Projektstruktur sieht folgendermaßen aus:
+Die gesamte Projektstruktur wird wie folgt aussehen:
 
 ~~~html
 dhx-gantt-app
@@ -94,10 +97,11 @@ dhx-gantt-app
     └── index.html 
 ~~~
 
-Erstellen Sie eine Datei namens <b>server.js</b> und fügen Sie folgenden Code ein:
 
-**server.js**
-~~~js
+Erstellen Sie eine neue Datei namens <b>server.js</b> und fügen Sie den folgenden Code hinein:
+
+
+~~~js title="server.js"
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -113,23 +117,24 @@ app.listen(port, () =>{
 });
 ~~~
 
-Dieser Code macht Folgendes:
+Was wir in diesem Code erreicht haben:
 
-- Stellt statische Dateien aus dem 'public'-Ordner bereit
-- Startet die App auf localhost Port 1337
+- definiert, dass statische Dateien aus dem Ordner 'public' bedient werden 
+- die Anwendung an den Port 1337 des lokalen Hosts gebunden
 
-Erstellen Sie als Nächstes den Ordner "public". Dieser enthält die Hauptseite der Anwendung, *index.html*.
+
+Im nächsten Schritt erstellen wir den "public" Ordner. In diesem Ordner wird die Hauptseite unserer Anwendung – *index.html* – liegen.
 
 :::note
-In diesem Ordner würden Sie normalerweise auch die js- und css-Dateien von dhtmlxGantt ablegen. In diesem Tutorial laden wir gantt jedoch von einem CDN, sodass sich hier nur die HTML-Seite befindet.
+Dieser Ordner ist auch der richtige Ort, um js/css-Dateien von dhtmlxGantt abzulegen. In diesem Tutorial laden wir Gantt jedoch von einem CDN, daher wird dort lediglich eine HTML-Seite vorhanden sein.
 :::
 
 ## Schritt 2. Gantt zur Seite hinzufügen
 
-Erstellen Sie den *public*-Ordner und fügen Sie darin eine *index.html*-Datei hinzu. Öffnen Sie *index.html* und fügen Sie folgenden Inhalt ein:
+Lassen Sie uns den *public*-Ordner erstellen und eine *index.html*-Datei hineinzufügen. Öffnen Sie anschließend die Datei *index.html* und füllen Sie sie mit dem folgenden Inhalt:
 
-**index.html**
-~~~html
+
+~~~html title="index.html"
 <!DOCTYPE html>
 <head>
   <meta http-equiv="Content-type" content="text/html; charset="utf-8"">
@@ -154,19 +159,19 @@ Erstellen Sie den *public*-Ordner und fügen Sie darin eine *index.html*-Datei h
 </body>
 ~~~
 
-Um das Ergebnis zu sehen, führen Sie im Projektordner Folgendes aus:
+Lassen Sie uns prüfen, was wir bisher haben. Wechseln Sie in das Projektverzeichnis und führen Sie den folgenden Befehl in der Kommandozeile aus:
 
 ~~~js
 node server.js
 ~~~
 
-Öffnen Sie dann http://127.0.0.1:1337 in Ihrem Browser. Sie sollten ein leeres Gantt-Diagramm wie dieses sehen:
+Öffnen Sie dann http://127.0.0.1:1337 in einem Browser. Sie sollten eine Seite mit einem leeren Gantt sehen, wie hier gezeigt:
 
 ![gantt_init](/img/gantt_init.png)
 
-## Schritt 3. Datenbank vorbereiten
+## Schritt 3. Vorbereitung einer Datenbank
 
-Als Nächstes richten Sie die Datenbank ein. Wir erstellen eine einfache Datenbank mit zwei Tabellen: eine für Aufgaben (tasks) und eine für Verknüpfungen (links):
+Der nächste Schritt besteht darin, eine Datenbank zu erstellen. Wir erstellen eine einfache Datenbank mit zwei Tabellen für Aufgaben (tasks) und Verknüpfungen (links):
 
 ~~~js
 CREATE TABLE `gantt_links` (
@@ -187,37 +192,38 @@ CREATE TABLE `gantt_tasks` (
 );
 ~~~
 
-Fügen Sie einige Beispieldaten hinzu:
-
+und füge einige Beispiel-Daten hinzu:
 ~~~js
-INSERT INTO `gantt_tasks` VALUES ('1', 'Project #1', '2017-04-01 00:00:00', 
+INSERT INTO `gantt_tasks` VALUES ('1', 'Projekt #1', '2026-04-01 00:00:00', 
   '5', '0.8', '0');
-INSERT INTO `gantt_tasks` VALUES ('2', 'Task #1', '2017-04-06 00:00:00', 
+INSERT INTO `gantt_tasks` VALUES ('2', 'Aufgabe #1', '2026-04-06 00:00:00', 
   '4', '0.5', '1');
-INSERT INTO `gantt_tasks` VALUES ('3', 'Task #2', '2017-04-05 00:00:00', 
+INSERT INTO `gantt_tasks` VALUES ('3', 'Aufgabe #2', '2026-04-05 00:00:00', 
   '6', '0.7', '1');
-INSERT INTO `gantt_tasks` VALUES ('4', 'Task #3', '2017-04-07 00:00:00', 
+INSERT INTO `gantt_tasks` VALUES ('4', 'Aufgabe #3', '2026-04-07 00:00:00', 
   '2', '0', '1');
-INSERT INTO `gantt_tasks` VALUES ('5', 'Task #1.1', '2017-04-05 00:00:00', 
+INSERT INTO `gantt_tasks` VALUES ('5', 'Aufgabe #1.1', '2026-04-05 00:00:00', 
   '5', '0.34', '2');
-INSERT INTO `gantt_tasks` VALUES ('6', 'Task #1.2', '2017-04-11 13:22:17', 
+INSERT INTO `gantt_tasks` VALUES ('6', 'Aufgabe #1.2', '2026-04-11 13:22:17', 
   '4', '0.5', '2');
-INSERT INTO `gantt_tasks` VALUES ('7', 'Task #2.1', '2017-04-07 00:00:00',
+INSERT INTO `gantt_tasks` VALUES ('7', 'Aufgabe #2.1', '2026-04-07 00:00:00',
   '5', '0.2', '3');
-INSERT INTO `gantt_tasks` VALUES ('8', 'Task #2.2', '2017-04-06 00:00:00', 
+INSERT INTO `gantt_tasks` VALUES ('8', 'Aufgabe #2.2', '2026-04-06 00:00:00', 
   '4', '0.9', '3');
 ~~~
 
-Weitere Details finden Sie im Beispiel [hier](guides/loading.md#standarddatabasestructure).
+Schauen Sie sich hier [hier](guides/loading.md#databasestructure) ein detailliertes Beispiel an.
 
-## Schritt 4. Daten laden
 
-Nun ist es Zeit, das Laden der Daten einzurichten.
+## Schritt 4. Laden der Daten
 
-Da wir MySQL nutzen, installieren Sie die benötigten Module für den Zugriff darauf. In diesem Tutorial werden Promises für CRUD-Operationen verwendet, daher nutzen wir [promise-mysql](https://www.npmjs.com/package/promise-mysql) für MySQL mit Promises und 
-[bluebird](https://www.npmjs.com/package/bluebird) als Promise-Bibliothek.
+Nun müssen wir das Laden der Daten implementieren. 
 
-Installieren Sie diese mit der Konsole und geben Sie kompatible Versionen an:
+Da wir MySQL verwenden, müssen die notwendigen Module installiert werden, mit denen wir darauf zugreifen können. In dieser Anleitung werden CRUD-Operationen basierend auf dem Promise-Ansatz implementiert.
+Wir verwenden also [promise-mysql](https://www.npmjs.com/package/promise-mysql) – ein Node.js-Paket zum Arbeiten mit MySQL unter Verwendung von Promises und
+die [bluebird](https://www.npmjs.com/package/bluebird) Promise-Bibliothek.
+
+Um sie zu installieren, können wir die Konsole verwenden. Wir müssen die folgenden Versionsangaben der Komponenten verwenden, da neuere Versionen untereinander inkompatibel sind oder ältere Funktionen fehlen:
 
 ~~~js
 npm install bluebird@3.7.2 --save
@@ -225,20 +231,21 @@ npm install promise-mysql@5.1.0 --save
 npm install date-format-lite@17.7.0 --save
 ~~~
 
-Sie können auch andere Module verwenden, da die Logik recht einfach ist.
+Sie können auch andere geeignete Module wählen. Der Code ist relativ einfach, und Sie können dieselbe Logik mit einem anderen Satz von Werkzeugen implementieren.
 
-Der Client erwartet Daten im [JSON-Format](guides/supported-data-formats.md#json). Wir erstellen daher eine Route, die Daten in diesem Format zurückgibt.
+Der Client erwartet Daten im [JSON-Format](guides/supported-data-formats.md). Daher erstellen wir eine Route, die diese Art von Daten zurückgibt.
 
-Da das Feld "start_date" ein Datumsobjekt ist, muss es im richtigen Format an den Client gesendet werden. Dafür nutzen wir [date-format-lite](https://github.com/litejs/date-format-lite). 
+Wie Sie wahrscheinlich bemerkt haben, gibt es in den Daten die Eigenschaft "start_date", die als Datum-Objekt gespeichert wird. Daher sollte sie dem Client im
+richtigen Format übergeben werden. Zu diesem Zweck verwenden wir ein weiteres Modul - [date-format-lite](https://github.com/litejs/date-format-lite). 
 
 ~~~js
 npm install date-format-lite --save
 ~~~
 
-Aktualisieren Sie nun *server.js* mit folgendem Inhalt:
+Öffnen Sie nun die *server.js*-Datei und aktualisieren Sie deren Code mit dem Folgenden:
 
-**server.js**
-~~~js
+
+~~~js title="server.js"
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -274,12 +281,11 @@ async function serverСonfig() {
 
             for (let i = 0; i < tasks.length; i++) {
               tasks[i].start_date = tasks[i].start_date.format("YYYY-MM-DD hh:mm:ss");
-              tasks[i].open = true;
             }
 
             res.send({
                 data: tasks,
-                collections: { links: links }
+                collections: { links }
             });
 
         }).catch(error => {
@@ -304,68 +310,73 @@ async function serverСonfig() {
 serverСonfig();
 ~~~
 
-Was macht dieser Code?
+Was wir in diesem Code erreicht haben:
 
-- Stellt die Verbindung zur MySQL-Datenbank her
-- Definiert eine <b>GET /data</b>-Route, die Aufgaben und Verknüpfungen abruft, das start_date korrekt formatiert und die Daten an den Client sendet
+- eine MySQL-Verbindung zu unserer Datenbank geöffnet 
+- festgelegt, dass bei der Anfrage <b>GET /data</b> Daten aus den Tabellen gantt_tasks und gantt_links gelesen und so formatiert werden, dass sie vom Client geparst werden können
 
-Die *open*-Eigenschaft wird hinzugefügt, damit die Aufgabenstruktur standardmäßig aufgeklappt ist.
 
-Rufen Sie nun clientseitig diese Route auf:
+Jetzt können wir diese Route vom Client aus aufrufen:
 
-**public/index.html**
-~~~js
+~~~js title="public/index.html"
 gantt.config.date_format = "%Y-%m-%d %H:%i:%s";/*!*/
+gantt.config.open_tree_initially = true;
   
 gantt.init("gantt_here");
 
 gantt.load("/data");/*!*/
 ~~~
 
-Die [date_format](api/config/date_format.md)-Konfiguration gibt an, wie gantt das Datumsformat vom Server interpretieren soll.
+Beachten Sie, dass die Konfiguration [date_format](api/config/date_format.md) das Format der Datumswerte (<b>start_date</b> der Aufgabe) festlegt, die vom Server kommen. Die Konfiguration [gantt.config.open_tree_initially](api/config/open_tree_initially.md) ist auf `true` gesetzt, um sicherzustellen, dass der Aufgabenbaum zunächst erweitert ist.
 
-Starten Sie die App erneut und öffnen Sie http://127.0.0.1:1337. Das Gantt-Diagramm sollte nun die Testdaten aus der Datenbank anzeigen.
+Lassen Sie uns die Anwendung jetzt starten, indem Sie http://127.0.0.1:1337 öffnen. Der Gantt wird mit den zuvor in der Datenbank hinzugefügten Testdaten geladen.
 
 ![load_data_nodejs](/img/load_data_nodejs.png)
 
+
 ## Schritt 5. Änderungen speichern
 
-Abschließend richten wir das Speichern von Änderungen ein. 
-Das bedeutet, dass Aktualisierungen, die im Client vorgenommen werden, an den Server gesendet werden.
-Öffnen Sie *public/index.html* und fügen Sie [gantt.dataProcessor](guides/server-side.md#technique) hinzu:
+Das Letzte, das wir implementieren sollten, ist das Speichern von Änderungen. 
+Dazu benötigen wir einen Code, der Aktualisierungen, die auf der Client-Seite vorgenommen werden, an den Server sendet.
+Gehen Sie zu *public/index.html* und fügen Sie [gantt.createDataProcessor](guides/server-side.md#technique) der Seite hinzu:
 
-**public/index.html**
-~~~js
+
+~~~js title="public/index.html"
 gantt.config.date_format = "%Y-%m-%d %H:%i:%s";
   
 gantt.init("gantt_here");
 
 gantt.load("/data");
   
-const dp = new gantt.dataProcessor("/data");/*!*/
-dp.init(gantt);/*!*/
-dp.setTransactionMode("REST");/*!*/
+const dp = gantt.createDataProcessor({ /*!*/
+  url: '/data', /*!*/
+  mode: 'REST', /*!*/
+}); /*!*/
 ~~~
 
-Werfen wir einen genaueren Blick darauf, wie das funktioniert.
+Gehen wir tiefer und sehen, welche Rolle es spielt. 
 
 ### Anfragen und Antworten
 
-Immer wenn ein Benutzer eine Aufgabe oder eine Verknüpfung hinzufügt, ändert oder löscht, reagiert DataProcessor, indem es eine AJAX-Anfrage an die entsprechende URL sendet. Diese Anfrage enthält alle notwendigen Parameter, um die Änderungen in der Datenbank zu speichern.
+Bei jeder Benutzeraktion: Hinzufügen, Ändern oder Entfernen einer neuen Aufgabe oder einer Verknüpfung reagiert DataProcessor, indem es eine AJAX-Anfrage an
+die entsprechende URL sendet. Die Anfrage enthält alle Parameter, die zum Speichern der Änderungen in der Datenbank erforderlich sind.
 
-Da DataProcessor im REST-Modus läuft, verwendet es je nach Operationstyp unterschiedliche HTTP-Verben. Eine Liste dieser HTTP-Verben sowie Details zu Anfragen und Antworten finden Sie im Artikel [Server-Side Integration](guides/server-side.md#technique).
+Da DataProcessor im REST-Modus initialisiert ist, verwendet es für jeden Typ von Operation unterschiedliche HTTP-Verben. 
+Die Liste der HTTP-Verben zusammen mit Details zu Anfragen und Antworten finden Sie im Artikel Server-Side Integration.
 
-Als Nächstes müssen wir die erforderlichen Routen und Handler in die Datei *server.js* einfügen. Diese übertragen die auf der Client-Seite vorgenommenen Änderungen in die Datenbank. Der resultierende Code sieht wie folgt aus:
+Nun müssen wir die erforderlichen Routen und Handler hinzufügen, die auf dem Client vorgenommene Änderungen in die Datenbank schreiben, in die Datei *server.js*. 
+Der resultierende Code wird ziemlich umfangreich sein:
 
-**server.js**
-~~~js
+
+~~~js title="server.js"
 // add a new task
 app.post("/data/task", (req, res) => {
     let task = getTask(req.body);
+    const { text, start_date, duration, progress, parent } = task;
 
     db.query("INSERT INTO gantt_tasks(text, start_date, duration, progress, parent)"
         + " VALUES (?,?,?,?,?)",
-        [task.text, task.start_date, task.duration, task.progress, task.parent])
+        [text, start_date, duration, progress, parent])
     .then(result => {
         sendResponse(res, "inserted", result.insertId);
     })
@@ -378,10 +389,11 @@ app.post("/data/task", (req, res) => {
 app.put("/data/task/:id", (req, res) => {
     let sid = req.params.id,
         task = getTask(req.body);
+    const { text, start_date, duration, progress, parent } = task;
 
     db.query("UPDATE gantt_tasks SET text = ?, start_date = ?, "
         + "duration = ?, progress = ?, parent = ? WHERE id = ?",
-        [task.text, task.start_date, task.duration, task.progress, task.parent, sid])
+        [text, start_date, duration, progress, parent, sid])
     .then(result => {
         sendResponse(res, "updated");
     })
@@ -406,9 +418,10 @@ app.delete("/data/task/:id", (req, res) => {
 // add a link
 app.post("/data/link", (req, res) => {
     let link = getLink(req.body);
+    const { source, target, type } = link;
 
     db.query("INSERT INTO gantt_links(source, target, type) VALUES (?,?,?)",
-        [link.source, link.target, link.type])
+        [source, target, type])
     .then(result => {
         sendResponse(res, "inserted", result.insertId);
     })
@@ -421,9 +434,10 @@ app.post("/data/link", (req, res) => {
 app.put("/data/link/:id", (req, res) => {
     let sid = req.params.id,
         link = getLink(req.body);
+    const { source, target, type, sid } = link;
 
     db.query("UPDATE gantt_links SET source = ?, target = ?, type = ? WHERE id = ?",
-        [link.source, link.target, link.type, sid])
+        [source, target, type, sid])
     .then(result => {
         sendResponse(res, "updated");
     })
@@ -464,42 +478,43 @@ function getLink(data) {
 }
 ~~~
 
-Hier wurden zwei Gruppen von Routen erstellt: eine für die Entität *tasks* und eine weitere für *links*. Die URL *"/data/task"* verarbeitet Anfragen, die sich auf Aufgaben beziehen, während *"/data/link"* für Anfragen zu Verknüpfungen verwendet wird.
+Wir haben zwei Satz von Routen erstellt: eines für die Entität *tasks* und ein weiteres für die Entität *links*. 
+Entsprechend wird die URL *"/data/task"* Anfragen im Zusammenhang mit Operationen an Aufgaben bedienen und die URL *"/data/link"* zum Verarbeiten von Anfragen verwendet, die Daten für Operationen mit Verknüpfungen enthalten.
 
-Die Anfragetypen sind wie folgt:
+Die Typen der Anfragen sind ziemlich einfach:
 
-- POST - fügt einen neuen Eintrag in die Datenbank ein
-- PUT - aktualisiert einen bestehenden Datensatz
-- DELETE - entfernt einen Eintrag
+- POST - Zum Einfügen eines neuen Elements in die Datenbank
+- PUT - Zum Aktualisieren eines bestehenden Datensatzes
+- DELETE - Zum Entfernen eines Elements
 
-Antworten sind JSON-Objekte, die den Typ der durchgeführten Operation oder "error" anzeigen, falls etwas schiefgeht.
+Die Antwort wird ein JSON-Objekt mit dem Typ der durchgeführten Operation oder "error" im Fehlerfall sein.
 
-Bei POST-Anfragen enthält die Antwort zusätzlich die Datenbank-ID des neuen Eintrags. Dies hilft der Client-Seite, das neue Element mit dem entsprechenden Datenbankeintrag zu verknüpfen.
+Die Antwort auf die POST-Anfrage wird außerdem die Datenbank-ID des neuen Datensatzes enthalten. Diese wird auf der Client-Seite angewendet, sodass ein neues Element dem Datenbankeintrag zugeordnet werden kann.
 
-Das war's. Wenn Sie http://127.0.0.1:1337 öffnen, wird ein voll funktionsfähiges Gantt-Diagramm angezeigt.
+Das war’s. Öffnen Sie http://127.0.0.1:1337 und Sie sehen ein vollständig funktionsfähiges Gantt-Diagramm.
 
 ![ready_gantt_nodejs](/img/ready_gantt_nodejs.png)
 
 
-## Speichern der Aufgabenreihenfolge {#storingtheorderoftasks}
+## Speichern der Reihenfolge der Aufgaben {#storingtheorderoftasks}
 
-Das Gantt-Diagramm auf der Client-Seite unterstützt das [Verschieben der Aufgabenreihenfolge](guides/reordering-tasks.md) per Drag & Drop. Wird diese Funktion genutzt, muss die Reihenfolge in der Datenbank gespeichert werden. Einen allgemeinen Überblick finden Sie [hier](guides/server-side.md#storingtheorderoftasks).
+Der clientseitige Gantt ermöglicht es, Aufgaben per Drag & Drop neu zu ordnen. Wenn Sie diese Funktion verwenden, müssen Sie diese Reihenfolge in der Datenbank speichern. 
+Sie können hier [die allgemeine Beschreibung](guides/server-side.md#storingtheorderoftasks) einsehen.
 
-Fügen wir diese Funktion zu unserer Anwendung hinzu.
+Fügen wir diese Funktionalität nun zu unserer Anwendung hinzu.
 
-### Aufgabenreihenfolge im Client aktivieren
+### Neuanordnung der Aufgaben auf dem Client aktivieren
 
-Zunächst sollten Benutzer die Möglichkeit haben, Aufgaben in der Benutzeroberfläche umzuschichten. Öffnen Sie die "Index"-Ansicht und aktualisieren Sie die Gantt-Konfiguration:
+Zunächst müssen wir es den Benutzern ermöglichen, die Reihenfolge der Aufgaben in der Benutzeroberfläche zu ändern. Öffnen Sie die "Index"-Ansicht und aktualisieren Sie die Konfiguration von gantt:
 
-**public/index.html**
-~~~js
+~~~js title="public/index.html"
 gantt.config.order_branch = true;/*!*/
 gantt.config.order_branch_free = true;/*!*/
 
 gantt.init("gantt_here");
 ~~~
 
-Nun müssen wir diese Änderungen auch im Backend abbilden. Wir speichern die Reihenfolge in einer Spalte namens "sortorder". Die aktualisierte Tabelle *gantt_tasks* könnte wie folgt aussehen:
+Nun spiegeln wir diese Änderungen im Backend wider. Wir speichern die Reihenfolge in der Spalte mit dem Namen "sortorder". Die aktualisierte Tabelle *gantt_tasks* könnte folgendermaßen aussehen:
 
 ~~~js
 CREATE TABLE `gantt_tasks` (
@@ -513,18 +528,17 @@ CREATE TABLE `gantt_tasks` (
 ) ENGINE="InnoDB" DEFAULT CHARSET="utf8" COLLATE="utf8_unicode_ci;"
 ~~~
 
-Alternativ können Sie die Spalte zu Ihrer bestehenden Tabelle hinzufügen:
+Oder fügen Sie der vorhandenen Tabelle die Spalte hinzu:
 
 ~~~js
 ALTER TABLE `gantt_tasks` ADD COLUMN `sortorder` int(11) NOT NULL;
 ~~~
 
-Aktualisieren Sie dann die Datei *server.js* wie folgt:
+Danach müssen wir die Datei *server.js* aktualisieren: 
 
-1. Die <b>GET /data</b>-Route sollte Aufgaben nach der Spalte `sortorder` sortiert zurückgeben:
+1 . <b>GET /data</b> muss die Aufgaben nach der Spalte `sortorder` sortieren zurückgeben: 
 
-**server.js**
-~~~js
+~~~js title="server.js"
 app.get("/data", (req, res) => {
     Promise.all([
         db.query("SELECT * FROM gantt_tasks ORDER BY sortorder ASC"), /*!*/
@@ -540,7 +554,7 @@ app.get("/data", (req, res) => {
 
         res.send({
             data: tasks,
-            collections: { links: links }
+            collections: { links }
         });
 
     }).catch(error => {
@@ -550,10 +564,9 @@ app.get("/data", (req, res) => {
 ~~~
 
 
-2. Beim Hinzufügen einer neuen Aufgabe wird ein Anfangswert für `sortorder` zugewiesen:
+2 . Neu hinzugefügte Aufgaben müssen den anfänglichen Wert `sortorder` erhalten: 
 
-**server.js**
-~~~js
+~~~js title="server.js"
 app.post("/data/task", (req, res) => { // adds new task to database
     let task = getTask(req.body);
 
@@ -575,10 +588,9 @@ app.post("/data/task", (req, res) => { // adds new task to database
 });
 ~~~
 
-3. Schließlich wird beim Umsortieren von Aufgaben deren Reihenfolge aktualisiert:
+3 . Schließlich müssen beim Neuanordnen der Aufgaben die Auftragsreihenfolgen aktualisiert werden:
 
-**server.js**
-~~~js
+~~~js title="server.js"
 // update task
 app.put("/data/task/:id", (req, res) => {
   let sid = req.params.id,
@@ -630,21 +642,22 @@ function updateOrder(taskId, target) {
 }
 ~~~
 
-Eine fertige Demo finden Sie auf GitHub: [https://github.com/DHTMLX/gantt-howto-node](https://github.com/DHTMLX/gantt-howto-node).
+Sie können eine fertige Demo hier auf GitHub überprüfen: https://github.com/DHTMLX/gantt-howto-node.
 
 
 ## Anwendungssicherheit
 
-Gantt selbst bietet keinen Schutz vor Bedrohungen wie SQL-Injections, XSS oder CSRF-Angriffen. Die Sicherstellung der Anwendungssicherheit liegt in der Verantwortung der Backend-Entwickler. Weitere Informationen finden Sie [in diesem Artikel](guides/app-security.md).
+Gantt bietet keine Mittel, um eine Anwendung vor verschiedenen Bedrohungen zu schützen, wie z. B. SQL-Injektionen oder XSS- und CSRF-Angriffe. Es ist wichtig, dass die Verantwortung für die Sicherheit einer Anwendung bei den Entwicklern liegt, die das Backend implementieren. Details dazu finden Sie im entsprechenden Artikel.
+
 
 ## Fehlerbehebung
 
-Wenn Sie alle Schritte zur Integration von Gantt mit Node.js befolgt haben, aber Aufgaben und Verknüpfungen nicht angezeigt werden, lesen Sie den Artikel [Troubleshooting Backend Integration Issues](guides/troubleshooting.md). Dieser bietet Hinweise zur Identifizierung und Lösung häufiger Probleme.
+Falls Sie die obigen Schritte zur Implementierung der Gantt-Integration mit Node.js abgeschlossen haben, Gantt aber keine Aufgaben und Verknüpfungen auf der Seite rendert, sehen Sie sich den Artikel Troubleshooting Backend Integration Issues an. Er beschreibt
+die Wege, die Wurzeln der Probleme zu identifizieren.
 
 
-## Wie geht es weiter?
+## Was kommt als Nächstes
 
-An diesem Punkt ist das Gantt-Diagramm voll funktionsfähig. Der vollständige Code ist auf [GitHub](https://github.com/DHTMLX/gantt-howto-node) verfügbar und kann für eigene Projekte geklont oder heruntergeladen werden.
+Nun haben Sie ein voll funktionsfähiges Gantt. Den vollständigen Code können Sie auf GitHub ansehen, klonen oder herunterladen.
 
-Sie können auch [Leitfäden zu verschiedenen Gantt-Funktionen](guides.md) oder Tutorials zur [Integration von Gantt mit anderen Backend-Frameworks](integrations/howtostart-guides.md) entdecken.
-
+Sie können auch [Guides zu den zahlreichen Funktionen von Gantt](guides.md) oder Tutorials zur Integration von Gantt mit anderen Backend-Frameworks prüfen.

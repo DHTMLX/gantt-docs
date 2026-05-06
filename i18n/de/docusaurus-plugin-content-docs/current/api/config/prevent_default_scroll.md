@@ -1,14 +1,18 @@
 ---
 sidebar_label: prevent_default_scroll
-title: prevent_default_scroll config
-description: "Steuert, ob der Gantt-Container das Mousewheel-Event blockieren oder es zum Window-Element weiterleiten soll"
+title: prevent_default_scroll Konfiguration
+description: "gibt an, ob der Gantt-Container das Mausrad-Ereignis blockieren soll oder ob es zum Fenster-Element weitergeleitet werden soll"
 ---
 
 # prevent_default_scroll
 
+:::warning
+Die Eigenschaft ist veraltet.
+::: 
+
 ### Description
 
-@short: Steuert, ob der Gantt-Container das Mousewheel-Event blockieren oder es zum Window-Element weiterleiten soll
+@short: Gibt an, ob der Gantt-Container das Mausrad-Ereignis blockieren soll oder ob es an das Fenster-Element weitergeleitet werden soll
 
 ### Example
 
@@ -17,17 +21,13 @@ gantt.config.prevent_default_scroll = false;
 gantt.init('gantt_here');
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Details
 
-:::note
- Diese Eigenschaft ist veraltet. 
-:::
+Die Option ist nützlich in Fällen, in denen das Gantt-Diagramm mitten in der Seite eingefügt wird und außerhalb des Diagramms Inhalte vorhanden sind.
 
-Diese Einstellung ist praktisch, wenn der Gantt irgendwo in der Mitte der Seite platziert ist und sich anderer Content darum herum befindet.
-
-Wenn deaktiviert, bleibt die Scrollbar innerhalb des Gantt sichtbar. Um andere Bereiche der Seite zu scrollen, muss der Nutzer außerhalb des Gantt-Bereichs klicken.
+Wenn die Option deaktiviert ist, bleibt das Scrollen, das im Gantt aufgetreten ist, dort bestehen. Um andere Teile der Seite zu scrollen, muss der Benutzer außerhalb des Gantt klicken.
 
 ### Change log
-- veraltet ab Version 5.0
+- veraltet seit v5.0

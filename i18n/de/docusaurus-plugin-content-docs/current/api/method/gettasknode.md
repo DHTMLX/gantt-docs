@@ -1,14 +1,14 @@
 ---
 sidebar_label: getTaskNode
-title: getTaskNode method
-description: "ruft das HTML-Element ab, das der Task-Leiste entspricht"
+title: getTaskNode Methode
+description: "gibt das HTML-Element der Aufgabenleiste zurück"
 ---
 
 # getTaskNode
 
 ### Description
 
-@short: Ruft das HTML-Element ab, das der Task-Leiste entspricht
+@short: Gibt das HTML-Element der Aufgabenleiste zurück
 
 @signature: getTaskNode: (id: string | number) =\> HTMLElement
 
@@ -17,7 +17,7 @@ description: "ruft das HTML-Element ab, das der Task-Leiste entspricht"
 - `id` - (required) *string | number* -    die Aufgaben-ID
 
 ### Returns
-- `node` - (HTMLElement) - das HTML-Element, das die Task-Leiste repräsentiert
+- `node` - (HTMLElement) - das HTML-Element der Aufgabenleiste
 
 ### Example
 
@@ -34,9 +34,9 @@ gantt.getTaskNode(10);//-><div task_id=​"2" class=​"gantt_task_line" ​…�
 
 ### Details
 
-Beachte, dass jedes Mal, wenn eine Aufgabe neu gezeichnet wird, das vorherige DOM-Element verworfen und durch ein neues ersetzt wird. Das bedeutet, dass direkte Änderungen am Element nach dem nächsten Update verloren gehen.
+Bitte beachten Sie, dass beim Neuzeichnen einer Aufgabe das alte DOM-Element verworfen und durch ein neues Element ersetzt wird. Das bedeutet, dass alle Änderungen, die Sie am Element vorgenommen haben, nach der nächsten Neuzeichnung zurückgesetzt werden.
 
-Für die Anpassung des Aussehens von Elementen ist es am besten, Templates zu verwenden, da sie eine zuverlässige Methode bieten, um das Erscheinungsbild der Gantt-Komponenten anzupassen.
+Wenn Sie das Erscheinungsbild eines Elements ändern müssen, empfehlen wir die Verwendung von Templates, da sie die bevorzugte Methode zur Anpassung des Aussehens von Gantt-Elementen sind.
 
 ### Related API
 - [getTaskRowNode](api/method/gettaskrownode.md)
@@ -44,4 +44,3 @@ Für die Anpassung des Aussehens von Elementen ist es am besten, Templates zu ve
 - [task_text](api/template/task_text.md)
 - [task_class](api/template/task_class.md)
 - [grid_row_class](api/template/grid_row_class.md)
-

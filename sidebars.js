@@ -38,9 +38,8 @@ module.exports = {
             items: [
                 "guides/installation",
                 "guides/cdn-links-list",
-                "guides/initializing-gantt-chart"
-                
-               
+                "guides/initializing-gantt-chart",
+                "guides/responsive-ui"
             ]
         },
 
@@ -81,6 +80,7 @@ module.exports = {
                                 "integrations/react/state/redux-toolkit",
                                 "integrations/react/state/zustand",
                                 "integrations/react/state/tanstack-query",
+                                "integrations/react/state/tanstack-supabase",
                                 "integrations/react/state/mobx",
                                 "integrations/react/state/xstate",
                                 "integrations/react/state/jotai",
@@ -122,7 +122,7 @@ module.exports = {
                 },
                {
                     type: "category",
-                    label: "Vue",
+                    label: "Vue (BETA)",
                     link: {
                         type: "doc",
                         id: "integrations/vue/index"
@@ -154,14 +154,14 @@ module.exports = {
                                 title: "Using dhtmlxGantt JS in Vue",
                             },
                             items: [
-                                "integrations/vue/howtostart-vue",
+                                "integrations/vue/js-gantt-vue",
                             ],
                         },
                     ]
                 }, 
                 {
                     type: "category",
-                    label: "Angular",
+                    label: "Angular (BETA)",
                     link: {
                         type: "doc",
                         id: "integrations/angular/index"
@@ -207,9 +207,10 @@ module.exports = {
                     items: [
                         "integrations/ai-tools/mcp-server",
                         "integrations/ai-tools/agent-skills",
+                        "integrations/ai-tools/ai-assistant",
                         "integrations/ai-tools/lovable-ai",
-                        "integrations/ai-tools/semantic-search",
-                        "integrations/ai-tools/ai-assistant"
+                        "integrations/ai-tools/lovable-starter-walkthrough",
+                        "integrations/ai-tools/semantic-search"
                     ]
                 },
                 "integrations/svelte/howtostart-svelte",

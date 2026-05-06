@@ -1,14 +1,14 @@
 ---
 sidebar_label: click_drag
 title: click_drag config
-description: "고급 드래그 앤 드롭 활성화"
+description: "고급 drag-n-drop 기능 활성화"
 ---
 
 # click_drag
 
 ### Description
 
-@short: 고급 드래그 앤 드롭 활성화
+@short: 고급 drag-n-drop 기능 활성화
 
 @signature: click_drag: undefined | ClickDrag
 
@@ -40,38 +40,40 @@ gantt.config.click_drag = {
 };
 ~~~
 
-**Default value:** \{ useKey: false, ignore: ".gantt_task_line, .gantt_task_link" \}
+**Default value:** **기본값:** \{ useKey: false, ignore: ".gantt_task_line, .gantt_task_link" \}
 
 ### Details
 
 :::note
- 이 설정은 **click_drag** 확장의 일부이므로, 반드시 [gantt.plugins](api/method/plugins.md) 메서드를 통해 [click_drag](guides/extensions-list.md#advanceddragndrop) 플러그인을 활성화해야 합니다. 자세한 내용은 [DnD로 작업 생성/선택하기](guides/advanced-dnd.md) 문서를 참고하세요. 
+이 설정은 **click_drag** 확장에 정의되어 있으므로 [click_drag](guides/extensions-list.md#advanced-drag-n-drop) 플러그인을 [gantt.plugins](api/method/plugins.md) 메서드를 사용해 활성화해야 합니다. 자세한 내용은 [DnD로 작업 생성/선택](guides/advanced-dnd.md) 문서를 참고하세요. 
 :::
 
-**click_drag** 확장은 다음 기능을 제공합니다:
+The **click_drag** extension allows:
 
-- 드래그 앤 드롭을 통한 작업 생성
-- 드래그 앤 드롭을 이용한 미할당 작업의 시간 설정
-- 드래그 앤 드롭을 통한 작업 선택
-- 드래그 앤 드롭으로 분할 작업의 일부 생성 (PRO 버전)
+- 드래그-앤-드롭으로 작업 생성
+- 드래그-앤-드롭으로 미배정 작업의 시간 설정
+- 드래그-앤-드롭으로 작업 선택
+- 드래그-앤-드롭으로 분할 작업의 일부 생성 (PRO 버전)
 
-**gantt.config.click_drag** 객체는 다음 속성을 가집니다:
+The **gantt.config.click_drag** object includes the following properties:
 
-- **className** -  (*string*) 선택된 요소에 적용할 사용자 정의 CSS 클래스 지정
-- **viewPort** - (*HTMLElement*) 이벤트가 연결되고 선택이 발생하는 요소 정의
-- **useRequestAnimationFrame** - (*boolean*) 렌더링 시 requestAnimationFrame 사용 여부 결정
-- **callback** - (*function*) 마우스 버튼을 놓을 때 호출됩니다. 6개의 파라미터를 받습니다:
-    - **startPoint** - (*object*) 다음과 같은 구조의 객체: <br>
-    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, <br>
-  여기서 absolute는 문서의 좌상단을 기준으로 한 좌표이며, relative는 viewPort 요소를 기준으로 한 좌표입니다.
-    - **endPoint** - (*object*) startPoint와 동일한 형식의 객체
-     - **startDate** - (*Date*) 드래그 시작 위치에 해당하는 날짜
-    - **endDate** - (*Date*) 드래그 종료 위치에 해당하는 날짜
-    - **tasksBetweenDates** - (*array*) 시작일과 종료일 사이에 있는 작업들
-    - **tasksInRows** - (*array*) 시작과 종료의 세로 좌표 사이에서 선택된 작업들
-- **singleRow** - (*boolean*) true면 선택이 작업 높이에 맞는 단일 행으로 제한됨
-- **ignore** - (*string*) 드래그 앤 드롭이 비활성화될 요소에 대한 CSS 선택자
-- **useKey** - (*string|boolean*) 설정 시 지정된 수정키가 눌렸을 때만 드래그 앤 드롭이 활성화됩니다. 지원 키는 "ctrlKey", "shiftKey", "metaKey", "altKey" 입니다.
+- **className** -  (*string*) 선택된 요소에 대해 커스텀 CSS 클래스를 설정합니다
+- **viewPort** - (*HTMLElement*) 이벤트를 연결하고 선택할 요소
+- **useRequestAnimationFrame** - (*boolean*) 렌더링 중에 requestAnimationFrame을 사용할지 여부를 정의합니다
+- **callback** - (*function*) - 마우스 버튼을 놓을 때 호출되는 함수. 6개의 매개변수를 받습니다:
+    - **startPoint** - (*object*) - 다음 타입의 객체: 
+    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, 
+      여기서 absolute 는 문서의 왼쪽 상단 모서리의 좌표이고, relative 는 뷰포트로 사용되는 왼쪽 상단 요소의 좌표입니다
+    - **endPoint** - (*object*) - 다음 타입의 객체: 
+    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, 
+      여기서 absolute 는 문서의 왼쪽 상단 모서리의 좌표이고, relative 는 뷰포트로 사용되는 왼쪽 상단 요소의 좌표입니다
+     - **startDate** - (*Date*) 시작 지점에 해당하는 날짜
+    - **endDate** - (*Date*) 종료 지점에 해당하는 날짜
+    - **tasksBetweenDates** - (*array*) 시작 날짜와 종료 날짜 사이의 작업 배열
+    - **tasksInRows** - (*array*) 시작 좌표와 종료 좌표 사이를 수직으로 선택된 작업 배열
+- **singleRow** - (*boolean*) 작업 높이에 해당하는 한 행에만 선택을 추가하려면 true
+- **ignore** - (*string*) CSS 선택자. 이 선택자와 일치하는 요소에 대해서는 Drag-n-drop이 활성화되지 않습니다
+- **useKey** - (*string|boolean*) 속성이 지정되면, 지정된 수정 키가 눌려 있을 때만 Drag-n-drop이 활성화됩니다. 지원 값: "ctrlKey", "shiftKey", "metaKey", "altKey"
 
 ~~~js
 gantt.config.click_drag = {
@@ -81,13 +83,15 @@ gantt.config.click_drag = {
 };
 ~~~
 
-- **render** - (*function*) 드래그 중 표시할 요소를 생성합니다. 두 개의 인자를 받습니다:
-    - **startPoint** - (*object*) 다음과 같은 구조:<br>
-    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, <br>
-  absolute와 relative는 위에서 설명한 좌표입니다.
-    - **endPoint** - (*object*) startPoint와 동일한 형식
+- **render** - (*function*) 드래그 중 렌더링될 요소를 생성하는 함수. 두 개의 매개변수를 받습니다: 
+    - **startPoint** - (*object*) - 타입이 다음과 같은 객체: 
+    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, 
+  여기서 absolute 는 문서의 왼쪽 상단 모서리의 좌표이고, relative 는 뷰포트로 사용되는 왼쪽 상단 요소의 좌표
+    - **endPoint** - (*object*) - 타입이 다음과 같은 객체: 
+    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, 
+  여기서 absolute 는 문서의 왼쪽 상단 모서리의 좌표이고, relative 는 뷰포트로 사용되는 왼쪽 상단 요소의 좌표
 
-**render** 함수의 예시 구현:
+다음은 **render** 함수 사용 예시입니다:
 
 ~~~js
 var node;
@@ -111,5 +115,4 @@ gantt.config.click_drag = {
 ~~~
 
 ### Related Guides
-- [DnD로 작업 생성/선택하기](guides/advanced-dnd.md)
-
+- [드래그-앤-드롭으로 작업 생성/선택](guides/advanced-dnd.md)

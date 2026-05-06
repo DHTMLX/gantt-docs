@@ -1,20 +1,20 @@
----
+--- 
 sidebar_label: onAfterUndo
-title: onAfterUndo event
-description: "undo() 메서드가 실행된 직후에 트리거됩니다."
+title: onAfterUndo 이벤트
+description: "undo() 메서드가 호출된 후에 발생합니다"
 ---
 
 # onAfterUndo
 
 ### Description
 
-@short: Undo() 메서드가 실행된 직후에 트리거됩니다.
+@short: undo() 메서드가 호출된 직후에 발생합니다
 
 @signature: onAfterUndo: (action: any[]) =\> void;
 
 ### Parameters
 
-- `action` - (required) *array* - 명령 객체들을 포함하는 배열입니다.
+- `action` - (required) *array* - 명령 객체 배열
 
 ### Example
 
@@ -30,25 +30,23 @@ gantt.attachEvent("onAfterUndo",function(action){
 ### Details
 
 :::note
-이 이벤트는 **undo** 확장의 일부이므로, [undo](guides/extensions-list.md#undo) 플러그인이 활성화되어 있는지 확인하세요. 자세한 내용은 [Undo/Redo 기능](guides/undo-redo.md) 문서를 참고하시기 바랍니다. 
+This event is defined in the **undo** extension, so you need to enable the [undo](guides/extensions-list.md#undo) plugin. Read the details in the [Undo/Redo Functionality](guides/undo-redo.md) article. 
 :::
 
-
-**action** 파라미터는 명령 객체들의 배열이며, 각 객체는 다음과 같은 속성을 가집니다:
+- **action** 매개변수는 명령 객체 배열을 나타냅니다. 각 객체에는 아래의 속성 집합이 포함됩니다:
  
-- **type** - (*string*) 명령 타입을 설명합니다: "add", "remove", 또는 "update"
-- **entity** - (*string*) 수정된 객체 유형을 나타냅니다: "task" 또는 "link"
-- **value** - (*object*) 변경 후의 task 또는 link 객체
-- **oldValue** - (*object*) 변경 전의 task 또는 link 객체
+- **type** - (*string*) 명령의 유형: "add/remove/update"
+- **entity** - (*string*) 변경된 객체의 유형: "task" 또는 "link"
+- **value** - (*object*) 변경된 task/link 객체 
+- **oldValue** - (*object*) 변경 전의 task/link 객체
 
 
-변경 사항이 없을 경우 **action** 파라미터는 === null 입니다. 이는 [gantt.undo()](api/method/undo.md)가 호출되었지만 [onBeforeUndo](api/event/onbeforeundo.md)에서 작업이 취소되었거나 undo 스택이 비어 있을 때 발생할 수 있습니다.
+변경이 적용되지 않으면, **action** 인수는 === null이 됩니다. 이는 [gantt.undo()](api/method/undo.md)가 호출되었으나 변경이 [onBeforeUndo](api/event/onbeforeundo.md)에서 취소되었거나 스택이 비어 있을 때 발생할 수 있습니다.
 
 ### Related API
 - [undo](api/method/undo.md)
 - [onBeforeUndo](api/event/onbeforeundo.md)
 
 ### Change log
-- 버전 4.0에 추가됨
-- 버전 5.2에서 **action** 파라미터가 도입됨
-
+- 버전 4.0에서 추가됨
+- **action** 인수는 버전 5.2에서 추가되었습니다

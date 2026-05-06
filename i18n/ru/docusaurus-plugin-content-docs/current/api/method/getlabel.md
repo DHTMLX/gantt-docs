@@ -1,24 +1,24 @@
 ---
 sidebar_label: getLabel
-title: getLabel method
-description: "получает label элемента select внутри lightbox"
+title: Метод getLabel
+description: "возвращает ярлык элемента управления select во всплывающем окне"
 ---
 
 # getLabel
 
 ### Description
 
-@short: Получает label элемента select внутри lightbox
+@short: Получает ярлык элемента управления select во всплывающем окне lightbox
 
-@signature: getLabel: (property: string, key: string | number) =\> string
+@signature: getLabel: (property: string, key: string | number) => string
 
 ### Parameters
 
-- `property` - (required) *string* - имя свойства данных, к которому относится элемент управления
-- `key` - (required) *string | number* -     идентификатор опции. Это значение сопоставляется с данными задачи для <br> связывания опции select с задачей
+- `property` - (required) *string* - название свойства данных, к которому привязан управляющий элемент
+- `key` - (required) *string | number* - идентификатор варианта. Этот параметр сравнивается со свойством данных задачи, чтобы присвоить вариант выпадающего списка к задаче
 
 ### Returns
-- ` label` - (string) - label, связанный с элементом select в lightbox
+- ` label` - (string) - ярлык элемента управления select во всплывающем окне lightbox
 
 ### Example
 
@@ -35,9 +35,5 @@ const holder2 = gantt.getLabel("unit_id", 2);// ->"John Williams"
 ### Details
 
 :::note
-
-Этот метод работает исключительно с элементами 'select' в lightbox для получения label для заданной опции.
- 
+Метод применяется только к элементам управления 'select' во всплывающем окне lightbox, чтобы получить ярлык конкретного варианта.
 :::
-
-<br>

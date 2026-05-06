@@ -1,14 +1,14 @@
 ---
 sidebar_label: renderMarkers
-title: renderMarkers method
-description: "Aktualisiert alle auf der Seite angezeigten Marker"
+title: renderMarkers Methode
+description: "Aktualisiert alle Marker auf der Seite"
 ---
 
 # renderMarkers
 
 ### Description
 
-@short: Aktualisiert alle auf der Seite angezeigten Marker
+@short: Aktualisiert alle Marker auf der Seite
 
 @signature: renderMarkers: () =\> void
 
@@ -23,12 +23,12 @@ gantt.renderMarkers(); /*!*/
 ~~~
 
 ### Related samples
-- [Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
+- [Heute- und Statuszeilen im Gantt (vertikale Marker)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
 
 ### Details
 
 :::note
- Diese Methode ist Teil der **marker**-Extension. Stellen Sie daher sicher, dass das [marker](guides/extensions-list.md#verticalmarker) Plugin aktiviert ist. Für weitere Informationen lesen Sie den Artikel ["Hinzufügen von vertikalen Markierungen"](guides/markers.md). 
+Diese Methode ist in der **marker** Erweiterung definiert, daher muss das [marker](guides/extensions-list.md#vertical-marker) Plugin aktiviert werden. Lesen Sie die Details im Artikel [Vertikale Marker hinzufügen](guides/markers.md).
 :::
 
 ### Related API
@@ -39,5 +39,4 @@ gantt.renderMarkers(); /*!*/
 - [show_markers](api/config/show_markers.md)
 
 ### Related Guides
-- ["Hinzufügen von vertikalen Markierungen"](guides/markers.md)
-
+- [Vertikale Marker hinzufügen](guides/markers.md)

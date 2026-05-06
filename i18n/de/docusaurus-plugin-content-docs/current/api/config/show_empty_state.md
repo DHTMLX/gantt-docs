@@ -1,14 +1,14 @@
 ---
 sidebar_label: show_empty_state
-title: show_empty_state config
-description: "steuert, ob ein Platzhalter im Grid angezeigt wird, wenn es leer ist"
+title: show_empty_state Konfiguration
+description: "definiert, ob das Platzhalter-Element innerhalb des Grid angezeigt wird, wenn es leer ist"
 ---
 
 # show_empty_state
 
 ### Description
 
-@short: Steuert, ob ein Platzhalter im Grid angezeigt wird, wenn es leer ist
+@short: Definiert, ob das Platzhalter-Element innerhalb des Grid angezeigt wird, wenn es leer ist
 
 @signature: show_empty_state: boolean
 
@@ -18,18 +18,19 @@ description: "steuert, ob ein Platzhalter im Grid angezeigt wird, wenn es leer i
 gantt.config.show_empty_state = true;
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Related samples
 - [Show empty state screen](https://docs.dhtmlx.com/gantt/samples/08_api/24_empty_state_screen.html)
 
+
 ### Details
 
-![empty screen tip](/img/empty_screen.png)
+![Hinweis zum leeren Bildschirm](/img/empty_screen.png)
 
 ### Related Guides
 - [Empty State Screen](guides/empty-state-screen.md)
 - [emptyStateElement Extension](guides/empty-state-element-ext.md)
 
 ### Change log
-- hinzugefügt in Version 8.0
+- Hinzugefügt in Version 8.0

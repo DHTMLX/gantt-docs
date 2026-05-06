@@ -1,25 +1,25 @@
 ---
 sidebar_label: createTask
 title: createTask method
-description: "添加一个新任务并打开lightbox以确认"
+description: "添加一个新任务并打开 lightbox 以确认"
 ---
 
 # createTask
 
 ### Description
 
-@short: 添加一个新任务并打开lightbox以确认
+@short: 添加一个新任务并打开 lightbox 以确认
 
 @signature: createTask: (task?: NewTask, parent?: string | number, index?: number) =\> string | number
 
 ### Parameters
 
-- `task` - (optional) *NewTask* - 可选，任务对象
-- `parent` - (optional) *string | number* -            可选，父任务的ID
-- `index` - (optional) *number* - 可选，任务将被添加到的位置（0或更大）
+- `task`    -	 (optional) *NewTask*	- 可选，任务对象
+- `parent`	-	(optional) *string | number*	- 可选，父级的 id
+- `index`	-	(optional) *number*	- 可选，任务将被添加到分支中的位置（0 或更大）
 
 ### Returns
-- ` id` - (string, number) - 任务的ID
+- ` id` - (string, number) - 任务的 id
 
 ### Example
 
@@ -55,4 +55,3 @@ var taskId = gantt.createTask({
 
 ### Related Guides
 - [任务的基本操作](guides/crud-task.md)
-

@@ -1,25 +1,27 @@
 ---
 sidebar_label: baseline_text
-title: baseline_text template
-description: "определяет текст, отображаемый внутри элемента baseline"
+title: baseline_text шаблон
+description: "задает текст, отображаемый внутри baseline элемента"
 ---
 
 # baseline_text
-
+:::info
+Эта функциональность доступна только в PRO-версии.
+:::
 ### Description
 
-@short: Определяет текст, отображаемый внутри элемента baseline
+@short: Указывает текст, отображаемый внутри элемента baseline
 
 @signature: baseline_text: (task: Task, baseline: Baseline, index: number) =\> string | number | void;
 
 ### Parameters
 
 - `task` - (required) *Task* - объект задачи, связанный с baseline
-- `baseline` - (required) *Baseline* - сам объект baseline
-- `index` - (required) *number* - позиция baseline в массиве baselines задачи
+- `baseline` - (required) *Baseline* - baseline-объект
+- `index` - (required) *number* - индекс baseline в массиве baselines задачи
 
 ### Returns
-- ` text` - (string | number | void) - HTML-содержимое, которое будет установлено как innerHTML элемента baseline. По умолчанию возвращает пустую строку.
+- ` text` - (string | number | void) - HTML-содержимое, которое будет внедрено как innerHTML элемента baseline. Шаблон по умолчанию возвращает пустую строку.
 
 ### Example
 
@@ -30,14 +32,13 @@ gantt.templates.baseline_text = function(task, baseline, index) {
 ~~~
 
 ### Related samples
-- [Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
+- [Отображение baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
 
 ### Related API
 - [baselines](api/config/baselines.md)
 
 ### Related Guides
-- [Дополнительные элементы на временной шкале](guides/inbuilt-baselines.md)
+- [Дополнительные элементы в Timeline](guides/inbuilt-baselines.md)
 
 ### Change log
-- добавлено в версии 9.0
-
+- добавлено в версии v9.0

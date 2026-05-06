@@ -1,24 +1,24 @@
 ---
 sidebar_label: grid_header_class
-title: grid_header_class template
-description: "определяет CSS класс, который будет назначен заголовкам колонок таблицы"
+title: grid_header_class шаблон
+description: "задает CSS класс, который будет применяться к заголовкам столбцов таблицы"
 ---
 
 # grid_header_class
 
 ### Description
 
-@short: Определяет CSS класс, который будет назначен заголовкам колонок таблицы
+@short: Задает CSS класс, который будет применяться к заголовкам столбцов таблицы
 
 @signature: grid_header_class: (columnName: string, column: any) =\> string | void;
 
 ### Parameters
 
-- `columnName` - (required) *string* - имя колонки (соответствует свойству "name" в объекте колонки)
-- `column` - (required) *object* - сам объект колонки (из конфигурации <i>gantt.config.columns</i>)
+- `columnName` - (required) *string* - имя столбца (как указано в свойстве "name" объекта столбца)
+- `column` - (required) *object* - объект столбца (как указано в конфигурации <i>gantt.config.columns</i>)
 
 ### Returns
-- ` text` - (string | void) - CSS класс, который будет применён к указанному заголовку
+- ` text` - (string | void) - CSS класс для соответствующего элемента
 
 ### Example
 
@@ -29,4 +29,4 @@ gantt.templates.grid_header_class = function(columnName, column){
 ~~~
 
 ### Related Guides
-- [Шаблоны грида](guides/table-templates.md)
+- [Шаблоны Grid](guides/table-templates.md)

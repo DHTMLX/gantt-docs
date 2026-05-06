@@ -1,14 +1,14 @@
 ---
 sidebar_label: show_quick_info
-title: show_quick_info config
-description: "Включает или отключает расширение 'quick_info' (всплывающее окно с деталями задачи)"
+title: конфигурация show_quick_info
+description: "активирует/отключает расширение 'quick_info' (форма деталей задачи во всплывающем окне)"
 ---
 
 # show_quick_info
 
 ### Description
 
-@short: Включает или отключает расширение 'quick_info' (всплывающее окно с деталями задачи)
+@short: Активирует/отключает расширение 'quick_info' (форма деталей задачи во всплывающем окне)
 
 @signature: show_quick_info: boolean
 
@@ -19,13 +19,13 @@ gantt.config.show_quick_info = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Details
 
 :::note
- Эта опция является частью расширения **Quick Info**, поэтому убедитесь, что плагин [quick_info](guides/extensions-list.md#quickinfo) включен в первую очередь. 
+Этот параметр определяется в расширении **Quick Info**, поэтому вам нужно активировать плагин [quick_info](guides/extensions-list.md#quick-info).
 :::
 
 ### Related Guides
-- [Шаблоны расширения 'Quick Info' (Поддержка Touch)](guides/touch-templates.md)
+- [Шаблоны расширения 'Quick Info' (Поддержка касания)](guides/touch-templates.md)

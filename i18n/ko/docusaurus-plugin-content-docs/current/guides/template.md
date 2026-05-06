@@ -1,11 +1,11 @@
 ---
-title: "템플릿 컨트롤"
-sidebar_label: "템플릿 컨트롤"
+title: "템플릿 제어"
+sidebar_label: "템플릿 제어"
 ---
 
-# 템플릿 컨트롤
+# 템플릿 제어
 
-이 컨트롤은 일부 HTML 콘텐츠를 내부에 포함하는 컨테이너입니다.
+일부 HTML 콘텐츠가 포함된 컨테이너입니다.
 
 ![template_control](/img/template_control.png)
 
@@ -26,15 +26,14 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 });
 ~~~
 
-[Template control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/05_template.html)
-
+[템플릿 제어](https://docs.dhtmlx.com/gantt/samples/05_lightbox/05_template.html)
 
 
 ## 초기화
 
-**template** 컨트롤을 라이트박스에 포함하려면 다음 단계를 따라야 합니다:
+다음 단계에 따라 **template** 컨트롤을 라이트박스에 추가합니다:
 
-1) 라이트박스 설정에 섹션을 추가합니다:
+1) 라이트박스 구성에 섹션을 추가합니다:
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -44,13 +43,13 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-2) 섹션에 대한 라벨을 정의합니다:
+2) 섹션의 레이블을 설정합니다:
 
 ~~~js
 gantt.locale.labels.section_template = "Details";
 ~~~
 
-3) [onBeforeLightbox](api/event/onbeforelightbox.md) 이벤트와 같은 이벤트를 사용하여 컨트롤의 콘텐츠를 채웁니다:
+3) onBeforeLightbox 이벤트와 같은 이벤트의 도움으로 컨트롤의 내용을 설정합니다:
 
 ~~~js
 gantt.attachEvent("onBeforeLightbox", function(id) {
@@ -64,11 +63,10 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 
 ## 속성
 
-**template** 컨트롤에서 자주 사용되는 주요 속성은 다음과 같습니다 (전체 목록은 [여기](api/config/lightbox.md)를 참고하세요):
+다음 속성은 대개 중요한 **template** 컨트롤에 대해 많이 설정되며, 전체 목록은 [여기](api/config/lightbox.md)에서 확인할 수 있습니다:
 
-- **name** - (*string*) 섹션의 이름을 지정합니다
-- **height** - (*number*) 섹션의 높이를 설정합니다
-- **map_to** - (*string*) 섹션이 매핑되는 데이터 속성입니다
-- **type** - (*string*) [섹션 컨트롤](guides/default-edit-form.md#lightboxcontrols)의 타입을 정의합니다
-- **focus** - (*boolean*) *true*로 설정 시, 라이트박스가 열릴 때 해당 섹션에 포커스가 이동합니다
-
+- **name** - (*string*) 섹션 이름
+- **height** - (*number*) 섹션 높이
+- **map_to** - (*string*) 섹션에 매핑될 데이터 속성의 이름
+- **type** - (*string*) [섹션 컨트롤](guides/default-edit-form.md#lightboxcontrols)의 유형
+- **focus** - (*boolean*) 값이 *true*로 설정되면, 라이트박스가 열릴 때 해당 섹션에 포커스가 설정됩니다

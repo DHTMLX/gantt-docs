@@ -1,14 +1,14 @@
 ---
 sidebar_label: bar_height
-title: bar_height config
-description: "타임라인 영역 내 작업 바의 높이를 정의합니다."
+title: bar_height 설정
+description: "타임라인 영역에서 작업 바의 높이를 설정합니다"
 ---
 
 # bar_height
 
 ### Description
 
-@short: 타임라인 영역 내 작업 바의 높이를 정의합니다.
+@short: 타임라인 영역의 작업 바 높이를 설정합니다
 
 @signature: bar_height: number | string
 
@@ -25,8 +25,7 @@ gantt.init("gantt_here");
 - [getTaskBarHeight](api/method/gettaskbarheight.md)
 
 ### Related Guides
-- [그리드에서 행 크기 조정하기](guides/resizing-rows.md)
+- [Resizing Rows in Grid](guides/resizing-rows.md)
 
 ### Change log
-- v7.1 버전에 추가됨
-
+- v7.1에서 추가되었습니다

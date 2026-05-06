@@ -13,67 +13,64 @@ description: "一组 dataprocessor 方法"
 
 ### Details
 
-您可以通过 [createDataProcessor](api/method/createdataprocessor.md) 方法创建一个新的 DataProcessor 实例。也可以通过较旧的方式，使用 [dataProcessor](api/method/dataprocessor.md) 构造函数来创建实例。<br>
-**dataprocessor** 对象包含以下[方法](#methods)和[事件](#events):
+可以使用 [createDataProcessor](api/method/createdataprocessor.md) 方法创建一个新的 DataProcessor 实例。或者，使用 [dataProcessor](api/method/dataprocessor.md) 构造函数也提供了一种创建 DataProcessor 实例的旧式方式。 
+**dataprocessor** 对象具备以下 [methods](#methods) 和 [events](#events)：
 
-### 方法 {#methods}
+Methods
+
+### Methods {#methods}
 
 <ul id="attachEvent">
-  <li>
-  <b>attachEvent (name, handler, settings): string</b> - 向 DataProcessor API 事件添加一个处理函数
-  <ul>
-  <li><b><i>name</i></b> - (<i>string</i>) - 事件名称，大小写不敏感</li>
-  <li><b><i>handler</i></b> - (<i>Function</i>) - 事件处理函数</li>
-  <li><b><i>settings?</i></b> - (<i>object</i>) - 可选，事件处理函数的设置对象</li>
-  </ul>
-  </li>
+	<li>
+		<b class="submethod">attachEvent (name, handler, settings): string</b> - 将处理程序附加到 DataProcessor 的一个 API 事件
+		<ul><li><b><i>name</i></b> - (<i>string</i>) - 事件名称，忽略大小写</li><li><b><i>handler</i></b> - (<i>Function</i>) - 处理函数</li><li><b><i>settings?</i></b> - (<i>object</i>) - 可选，包含事件处理程序设置的对象</li></ul>
+	</li>
 </ul>
-
 <ul>
-~~~js
-const dp = gantt.createDataProcessor({
-    url: "/api",
-    mode: "REST",
-});
+	~~~js
+	const dp = gantt.createDataProcessor({
+		url: "/api",
+		mode: "REST",
+	});
 
-dp.attachEvent("onAfterUpdate", (id, action, tid, response) => {
-    console.log("Updated task:", id);
-});
-~~~
+	dp.attachEvent("onAfterUpdate", (id, action, tid, response) => {
+		console.log("Updated task:", id);
+	});
+	~~~
 </ul>
 
 <ul id="detachEvent">
-  <li>
-  <b>detachEvent (id): void</b> - 根据事件处理函数的 ID 移除之前绑定的事件处理函数
-  <ul>
-  <li><b><i>id</i></b> - (<i>string</i>) - 事件处理函数的 ID</li>
-  </ul>
-  </li>
+	<li>
+		<b class="submethod">detachEvent (id): void</b> - 取消附加到事件的处理程序（该事件之前通过 <b>attachEvent()</b> 方法附加）
+		<ul>
+			<li><b><i>id</i></b> - (<i>string</i>) - 事件的唯一标识符</li>
+		</ul>
+	</li>
 </ul>
 
 <ul>
-~~~js
-const dp = gantt.createDataProcessor({
-    url: "/api",
-    mode: "REST",
-});
+	~~~js
+	const dp = gantt.createDataProcessor({
+		url: "/api",
+		mode: "REST",
+	});
 
-const handlerId = dp.attachEvent("onAfterUpdate", (id, action, tid, response) => {
-    console.log("Updated task:", id);
-});
+	const handlerId = dp.attachEvent("onAfterUpdate", (id, action, tid, response) => {
+		console.log("Updated task:", id);
+	});
 
-// 移除事件监听
-dp.detachEvent(handlerId);
-~~~
+	// detach a listener
+	dp.detachEvent(handlerId);
+	~~~
 </ul>
 
 <ul id="getState">
-  <li>
-  <b class="submethod">getState (id): string</b> - 获取指定项的状态（是否已更新）
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - 项的 ID</li>
-  </ul>
-  </li>
+	<li>
+		<b class="submethod">getState (id): string</b> - 返回项的状态（已更新或未更新）
+		<ul>
+			<li><b><i>id</i></b> - (<i>string | number</i>) - 项的 ID</li>
+		</ul>
+	</li>
 </ul>
 
 <ul>
@@ -83,39 +80,38 @@ const status = dp.getState(id);
 </ul>
 
 <ul id="ignore">
-  <li>
-  <b class="submethod">ignore (code): void</b> - 在不触发 DataProcessor 操作的情况下执行一段代码
-  <ul>
-  <li><b><i>code</i></b> - (<i>Function</i>) - 数据修改函数</li>
-  </ul>
-  </li>
+	<li>
+		<b class="submethod">ignore (code): void</b> - 在不触发 DataProcessor 的情况下执行一段代码
+		<ul>
+			<li><b><i>code</i></b> - (<i>Function</i>) - 数据修改代码</li>
+		</ul>
+	</li>
 </ul>
 
 <ul>
-~~~js
-dp.ignore(() => {
-    // 这里的更改不会被保存
-    gantt.addTask({
-        id: 10,
-        text: "Task #5",
-        start_date: "03-02-2025",
-        duration: 5
-    });
-});
-~~~
-
-<p>这对于在避免保存更改到服务器时添加或删除数据非常有用。</p>
-<i>dp.ignore() 方法的行为类似于 [gantt.silent()](api/method/silent.md)。</i>
+	~~~js
+	dp.ignore(() => {
+		// won't be saved
+		gantt.addTask({
+			id: 10,
+			text: "Task #5",
+			start_date: "03-02-2025",
+			duration: 5
+		});
+	});
+	~~~
+	<p>当你不想把这些改动保存到服务器端时，可以在这里放置数据添加和删除操作。</p>
+	<i>The dp.ignore() method works similarly to [gantt.silent()](api/method/silent.md).</i>
 </ul>
 
 <ul id="setTransactionMode">
-  <li>
-  <b class="submethod">setTransactionMode (mode, total): void</b> - 设置数据发送到服务器的方式
-  <ul>
-  <li><b><i>mode</i></b> - (<i>string</i>) - 发送方式，选项包括 "GET"、"POST"、"REST"、"JSON" 或 "REST-JSON"</li>
-  <li><b><i>total</i></b> - (<i>boolean</i>) - 是否一次发送所有数据，还是每条记录单独发送</li>
-  </ul>
-  </li>
+	<li>
+		<b class="submethod">setTransactionMode (mode, total): void</b> - 配置数据发送模式
+		<ul>
+			<li><b><i>mode</i></b> - (<i>string</i>) - 数据发送模式，"GET"|"POST"|"REST"|"JSON"|"REST-JSON"</li>
+			<li><b><i>total</i></b> - (<i>boolean</i>) - 定义，所有数据是否一次性发送，还是每条记录单独发送请求</li>
+		</ul>
+	</li>
 </ul>
 
 <ul>
@@ -123,36 +119,36 @@ dp.ignore(() => {
 dp.setTransactionMode("POST", true);
 ~~~
 
-<p>如果您想发送自定义 HTTP 头或额外数据，可以传入一个对象作为第一个参数，包含以下属性:</p>
+<p>如要向服务器发送自定义 HTTP 请求头或附加数据，请将第一个参数指定为具有以下属性的对象：</p>
 
 <ul>
-  <li><b><i>mode</i></b> - (<i>string</i>) - 数据发送模式，如 "GET"、"POST"、"REST"、"JSON" 或 "REST-JSON"</li>
-  <li><b><i>headers</i></b> - (<i>object</i>) - 请求中包含的头部键值对</li>
-  <li><b><i>payload</i></b> - (<i>object</i>) - 与头部一起发送的额外键值对</li>
+	<li><b><i>mode</i></b> - (<i>string</i>) - 数据发送模式，"GET", "POST", "REST", "JSON", "REST-JSON"</li>
+	<li><b><i>headers</i></b> - (<i>object</i>) - 一组头信息，呈现为 <code>"key":"value"</code> 对，应随请求一起发送</li>
+	<li><b><i>payload</i></b> - (<i>object</i>) - 额外数据，以 <code>"key":"value"</code> 对的形式设置，应该与 headers 一起发送到服务器</li>
 </ul>
 ~~~js
 dp.setTransactionMode({
-    mode: "POST",
-    headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Accept-Language": "fr-FR"
-    },
-    payload: {
-        "user_id": "12"
-    }
+	mode: "POST",
+	headers: {
+		"Content-Type": "application/x-www-form-urlencoded",
+		"Accept-Language": "fr-FR"
+	},
+	payload: {
+		"user_id": "12"
+	}
 }, true);
 ~~~
 </ul>
 
 <ul id="setUpdated">
-  <li>
-  <b class="submethod">setUpdated (rowId, [mode, state]): void</b> - 标记某项为已更新或未更新
-  <ul>
-  <li><b><i>rowId</i></b> - (<i>string | number</i>) - 项的 ID</li>
-  <li><b><i>mode?</i></b> - (<i>boolean</i>) - 可选，<code>true</code>（默认）标记为已更新，<code>false</code>标记为未更新</li>
-  <li><b><i>state?</i></b> - (<i>string</i>) - 可选，更新状态名称，默认是 <code>"updated"</code></li>
-  </ul>
-  </li>
+	<li>
+		<b class="submethod">setUpdated (rowId, [mode, state]): void</b> - 将项标记为已更新
+		<ul>
+			<li><b><i>rowId</i></b> - (<i>string | number</i>) - 要设置更新状态的项的 ID</li>
+			<li><b><i>mode?</i></b> - (<i>boolean</i>) - 可选，<code>true</code>（默认）表示“已更新”，<code>false</code>表示“未更新”</li>
+			<li><b><i>state?</i></b> - (<i>string</i>) - 可选，更新模式名称，默认为 <code>"updated"</code></li>
+		</ul>
+	</li>
 </ul>
 
 <ul>
@@ -161,93 +157,124 @@ dp.setUpdated(1);
 dp.setUpdated(2, true, "deleted");
 ~~~
 </ul>
+<ul id="getSyncState">
+	<li>
+		<b class="submethod">getSyncState (): boolean</b> - 返回 DataProcessor 的状态（当所有数据都已保存时为 <i>true</i>）
+	</li>
+</ul>
+
+<ul>
+~~~js
+const state = dp.getSyncState();
+~~~
+
+<p>如果某些记录尚未保存，或收到一个 "error" 响应，该方法将返回 <i>false</i>。</p>
+</ul>
+
+<ul id="sendData">
+	<li>
+		<b class="submethod">sendData ([id]): void</b> - 发送尚未保存到服务器端的所有数据
+  <ul>
+			<li><b><i>id</i></b> - (<i>string | number</i>) - 可选，项的 ID</li>
+		</ul>
+	</li>
+</ul>
+
+<ul>
+~~~js
+dp.sendData();
+~~~
+
+<p> 如果提供了 ID，则仅会将一个项发送到服务器端。</p>
+<p> 未带参数调用时，该方法将发送所有尚未保存的项。</p>
+</ul>
 
 
-### 事件 {#events} 
+### Events {#events} 
 
 <ul id="onAfterUpdate">
-  <li>
-  <b class="submethod">onAfterUpdate (id, action, tid, response): void</b> - 在服务器响应接收并处理后触发
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - 被更新项的 ID</li>
-  <li><b><i>action</i></b> - (<i>string</i>) - 响应状态（操作类型）</li>
-  <li><b><i>tid</i></b> - (<i>string</i>) - 新 ID（仅插入操作时有效）</li>
-  <li><b><i>response</i></b> - (<i>mixed</i>) - 解析后的响应，可能是 XML 节点或 JSON 对象</li>
-  </ul>
-  </li>
+	<li>
+		<b class="submethod">onAfterUpdate (id, action, tid, response): void</b> - 在收到并处理服务器端响应后触发
+		<ul>
+			<li><b><i>id</i></b> - (<i>string | number</i>) - 更新项的 ID</li>
+			<li><b><i>action</i></b> - (<i>string</i>) - 响应状态（操作类型）</li>
+			<li><b><i>tid</i></b> - (<i>string</i>) - 新的 ID（仅在插入操作时适用）</li>
+			<li><b><i>response</i></b> - (<i>mixed</i>) - 包含解析后响应的 XML 节点或 JSON 对象</li>
+		</ul>
+	</li>
 </ul>
 
 <ul>
 ~~~js
 dp.attachEvent("onAfterUpdate", (id, action, tid, response) => {
-    if (action === "error") {
-        alert(`服务器错误: ${response.message}`);
-    }
+	if (action === "error") {
+		alert(`Server error: ${response.message}`);
+	}
 });
 ~~~
 </ul>
 
 <ul>
-<p><b>可能的响应状态包括:</b></p>
+<p><b>Possible response statuses:</b></p>
 <ul>
-  <li><code>updated</code></li>
-  <li><code>inserted</code></li>
-  <li><code>deleted</code></li>
-  <li><code>invalid</code></li>
-  <li><code>error</code></li>
+	<li><code>updated</code></li>
+	<li><code>inserted</code></li>
+	<li><code>deleted</code></li>
+	<li><code>invalid</code></li>
+	<li><code>error</code></li>
 </ul>
 </ul>
 
 <ul id="onBeforeDataSending">
-  <li>
-  <b class="submethod">onBeforeDataSending (id, state, data): void</b> - 在数据发送到服务器之前触发
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - 项的 ID</li>
-  <li><b><i>state</i></b> - (<i>string</i>) - 当前状态（操作类型）</li>
-  <li><b><i>data</i></b> - (<i>object</i>) - 将要发送的序列化数据</li>
-  </ul>
-  </li>
+	<li>
+		<b class="submethod">onBeforeDataSending (id, state, data): void</b> - 在将数据发送到服务器之前触发
+		<ul>
+			<li><b><i>id</i></b> - (<i>string | number</i>) - 项的 ID</li>
+			<li><b><i>state</i></b> - (<i>string</i>) - 项的状态（操作类型）</li>
+			<li><b><i>data</i></b> - (<i>object</i>) - 将要发送到服务器的序列化数据</li>
+		</ul>
+	</li>
 </ul>
 
 <ul>
 ~~~js
 dp.attachEvent("onBeforeDataSending", (id, state, data) => {
-    // 发送数据前的自定义逻辑
-    return true;
+	// Custom logic before sending data
+	return true;
 });
 ~~~
 </ul>
 
 <ul>
-<p>此事件在每次数据更新请求时触发（在 <code>onBeforeUpdate</code> 之后）。</p>
-<p>如果处理函数返回 <code>false</code>，数据将不会被发送到服务器。</p>
+<p>该事件在每次数据更新请求时触发（在 <code>onBeforeUpdate</code> 之后）。</p>
+<p>从事件处理程序返回 <code>false</code> 将阻止数据发送到服务器。</p>
 
-<p><b>可能的响应状态:</b></p>
+<p><b>Possible response statuses:</b></p>
 <ul>
-  <li><code>updated</code></li>
-  <li><code>inserted</code></li>
-  <li><code>deleted</code></li>
-  <li><code>invalid</code></li>
-  <li><code>error</code></li>
+	<li><code>updated</code></li>
+	<li><code>inserted</code></li>
+	<li><code>deleted</code></li>
+	<li><code>invalid</code></li>
+	<li><code>error</code></li>
 </ul>
 </ul>
 
 <ul id="onBeforeUpdate">
-  <li>
-  <b class="submethod">onBeforeUpdate (id, state, data): void</b> - 在记录（或多条记录）更新前触发
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - 项的 ID</li>
-  <li><b><i>state</i></b> - (<i>string</i>) - 项的状态（操作类型）</li>
-  <li><b><i>data</i></b> - (<i>object</i>) - 将发送到服务器的数据</li>
-  </ul>
-  </li>
+	<li>
+		<b class="submethod">onBeforeUpdate (id, state, data): void</b> - 在更新记录（或多条记录）之前触发
+		<ul>
+			<li><b><i>id</i></b> - (<i>string | number</i>) - 项的 ID</li>
+			<li><b><i>state</i></b> - (<i>string</i>) - 项的状态（操作类型）</li>
+			<li><b><i>data</i></b> - (<i>object</i>) - 将要发送到服务器的数据</li>
+		</ul>
+	</li>
 </ul>
 
 <ul>
 ~~~js
 dp.attachEvent("onBeforeUpdate", (id, state, data) => {
-    // 更新前的自定义逻辑
-    return true;
+	// Custom logic before updating
+	return true;
 });
 ~~~
 </ul>
@@ -258,24 +285,24 @@ dp.attachEvent("onBeforeUpdate", (id, state, data) => {
 
 <p><b>可能的响应状态:</b></p>
 <ul>
-  <li><code>updated</code></li>
-  <li><code>inserted</code></li>
-  <li><code>deleted</code></li>
-  <li><code>invalid</code></li>
-  <li><code>error</code></li>
+	<li><code>updated</code></li>
+	<li><code>inserted</code></li>
+	<li><code>deleted</code></li>
+	<li><code>invalid</code></li>
+	<li><code>error</code></li>
 </ul>
 </ul>
 
 <ul id="onRowMark">
-  <li>
-  <b class="submethod">onRowMark (id, state, mode, invalid): void</b> - 在标记已更新项之前触发
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - 与错误相关的项的 ID</li>
-  <li><b><i>state</i></b> - (<i>string</i>) - 项的状态（操作类型）</li>
-  <li><b><i>mode</i></b> - (<i>boolean</i>) - <code>true</code> 表示添加标记，<code>false</code> 表示移除标记</li>
-  <li><b><i>invalid</i></b> - (<i>object</i>) - 错误详细信息（如果有）</li>
-  </ul>
-  </li>
+	<li>
+		<b class="submethod">onRowMark (id, state, mode, invalid): void</b> - 在为更新项添加标记之前触发
+		<ul>
+			<li><b><i>id</i></b> - (<i>string | number</i>) - 发生错误的项的 ID</li>
+			<li><b><i>state</i></b> - (<i>string</i>) - 项的状态（操作类型）</li>
+			<li><b><i>mode</i></b> - (<i>boolean</i>) - <code>true</code> 表示为添加更新标记，<code>false</code> 表示移除</li>
+			<li><b><i>invalid</i></b> - (<i>object</i>) - 错误的详细信息（如有）</li>
+		</ul>
+	</li>
 </ul>
 
 <ul>
@@ -288,7 +315,7 @@ dp.attachEvent("onRowMark", (id, state, mode, invalid) => {
 </ul>
 
 <ul>
-<p>此事件可以被阻止。返回 <code>false</code> 将阻止该项被标记。</p>
+<p>该事件是可被阻止的。返回 <code>false</code> 将阻止对该项进行标记。</p>
 </ul>
 
 ### Related API
@@ -296,5 +323,4 @@ dp.attachEvent("onRowMark", (id, state, mode, invalid) => {
 - [dataProcessor](api/method/dataprocessor.md)
 
 ### Related Guides
-- [服务器端集成](guides/server-side.md)
-
+- [Server-Side Integration](guides/server-side.md)

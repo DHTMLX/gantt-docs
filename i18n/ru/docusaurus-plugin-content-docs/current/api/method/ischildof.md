@@ -1,24 +1,24 @@
----
+--- 
 sidebar_label: isChildOf
 title: isChildOf method
-description: "определяет, является ли задача дочерней по отношению к другой задаче"
+description: "проверяет, является ли задача дочерней по отношению к другой задаче"
 ---
 
 # isChildOf
 
 ### Description
 
-@short: Определяет, является ли задача дочерней по отношению к другой задаче
+@short: Проверяет, является ли задача дочерней по отношению к другой задаче
 
-@signature: isChildOf: (childId: string | number, parentId: string | number) =\> boolean
+@signature: isChildOf: (childId: string | number, parentId: string | number) => boolean
 
 ### Parameters
 
-- `childId` - (required) *string | number* -    ID задачи, которую нужно проверить как дочернюю
-- `parentId` - (required) *string | number* -    ID задачи, которую нужно проверить как родительскую
+- `childId` - (required) *string | number* -    идентификатор задачи, которую вы хотите проверить как дочернюю
+- `parentId` - (required) *string | number* -    идентификатор задачи, которую вы хотите проверить как родительскую
 
 ### Returns
-- ` isChild` - (boolean) - <i>true</i> если задача действительно является дочерней для указанной родительской задачи; иначе, <i>false</i>
+- ` isChild` - (boolean) - <i>true</i>, если задача является дочерней у указанной родительской задачи. В противном случае, <i>false</i>
 
 ### Example
 

@@ -1,14 +1,14 @@
 ---
 sidebar_label: onBeforeTaskDrag
-title: onBeforeTaskDrag event
-description: "срабатывает сразу после того, как пользователь нажимает кнопку мыши и начинает перетаскивание, но до того, как dhtmlxGantt начнет процесс drag-and-drop."
+title: Событие onBeforeTaskDrag
+description: "срабатывает после того, как пользователь нажал кнопку мыши и начал перетаскивать, но до того, как dhtmlxGantt инициирует операцию drag-and-drop"
 ---
 
 # onBeforeTaskDrag
 
 ### Description
 
-@short: Срабатывает сразу после того, как пользователь нажимает кнопку мыши и начинает перетаскивание, но до того, как dhtmlxGantt начнет процесс drag-and-drop.
+@short: Срабатывает после того, как пользователь нажал кнопку мыши и начал перетаскивать, но до того, как dhtmlxGantt инициирует операцию drag-and-drop
 
 @signature: onBeforeTaskDrag: (id: string | number, mode: string, e: Event) =\> boolean;
 
@@ -16,16 +16,16 @@ description: "срабатывает сразу после того, как по
 
 - `id` - (required) *string | number* - идентификатор задачи
 - `mode` - (required) *string* - режим drag-and-drop ("resize", "progress", "move", "ignore")
-- `e` - (required) *Event* - объект нативного события
+- `e` - (required) *Event* - встроенный объект события
 
 ### Returns
-- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию (<b>true</b>) или оно будет отменено (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
-    //любая пользовательская логика здесь
+    // любая ваша логика здесь
     return true;
 });
 ~~~
@@ -35,9 +35,9 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 
 ### Details
 
-Это событие происходит при перетаскивании задачи внутри timeline.
+Событие срабатывает, когда пользователь перетаскивает задачу в области временной шкалы.
 
-Его можно заблокировать, вернув *false*, что приведет к сбросу задачи в исходное положение.
+Событие можно прервать. Верните *false*, и задача вернётся в исходную позицию.
 
 ### Related API
 - [drag_mode](api/config/drag_mode.md)
@@ -45,5 +45,4 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 - [onBeforeTaskChanged](api/event/onbeforetaskchanged.md)
 
 ### Related Guides
-- [Перетаскивание задач на временной шкале](guides/dnd.md)
-
+- [Dragging Tasks within the Timeline](guides/dnd.md)

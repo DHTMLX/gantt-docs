@@ -1,19 +1,19 @@
 ---
 sidebar_label: getTaskCount
-title: getTaskCount method
-description: "返回当前加载在甘特图中的任务总数"
+title: getTaskCount 方法
+description: "当前在甘特图中加载的任务数量"
 ---
 
 # getTaskCount
 
 ### Description
 
-@short: 返回当前加载在甘特图中的任务总数
+@short: 当前在甘特图中加载的任务数量
 
 @signature: getTaskCount: () =\> number
 
 ### Returns
-- ` count` - (number) - 计划中任务的总数
+- ` count` - (number) - 调度中的任务数量
 
 ### Example
 
@@ -23,4 +23,3 @@ gantt.getTaskCount();
 
 ### Related API
 - [getVisibleTaskCount](api/method/getvisibletaskcount.md)
-

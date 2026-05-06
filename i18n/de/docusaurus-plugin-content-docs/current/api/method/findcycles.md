@@ -1,19 +1,23 @@
 ---
 sidebar_label: findCycles
 title: findCycles method
-description: "gibt alle in der Chart gefundenen Abhängigkeitskreise zurück"
+description: "liefert alle Abhängigkeitsschleifen im Diagramm zurück"
 ---
 
 # findCycles
 
+:::info
+ Diese Funktion ist nur in der PRO-Edition verfügbar. 
+:::
+
 ### Description
 
-@short: Gibt alle in der Chart gefundenen Abhängigkeitskreise zurück
+@short: Gibt alle Abhängigkeitsschleifen im Diagramm zurück
 
 @signature: findCycles: () =\> any[]
 
 ### Returns
-- ` cycles` - (array) - ein Array, das die im Gantt-Diagramm erkannten Abhängigkeitskreise enthält
+- `cycles` - (array) - ein Array von Abhängigkeitsschleifen, die im Gantt-Diagramm gefunden wurden
 
 ### Example
 
@@ -22,19 +26,15 @@ var cycles = gantt.findCycles();
 ~~~
 
 ### Related samples
-- [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
+- [Auto Scheduling-Erweiterung](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
 
 :::note
- Dieses Feature ist nur in der PRO-Version enthalten. 
+Die Methode erfordert das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin, das aktiviert sein muss. 
 :::
 
-:::note
- Die Methode erfordert, dass das Plugin [auto_scheduling](guides/extensions-list.md#autoscheduling) aktiviert ist. 
-:::
-
-Jeder Eintrag im *cycles*-Array repräsentiert eine Menge von Tasks und Links, die einen Zyklus bilden.
+Jedes Element des *cycles*-Arrays ist eine Gruppe von Aufgaben (Tasks) und Verknüpfungen (Links), die eine Schleife bilden.
 
 ~~~js
 [ 
@@ -50,17 +50,14 @@ Jeder Eintrag im *cycles*-Array repräsentiert eine Menge von Tasks und Links, d
 ]
 ~~~
 
-Hier ein Beispiel zur Veranschaulichung:
+Schauen Sie sich das folgende Beispiel an:
 
-![on_autoschedule_circular_link](/img/on_autoschedule_circular_link.png)
+- Die Aufgabe #3 hat die ID = 10
+- Die Aufgabe #4.1 hat die ID = 12
+- Der Link vom Ende der Aufgabe #3 zum Anfang der Aufgabe #4 hat die ID = 1
+- Der Link vom Ende der Aufgabe #4.1 zum Anfang der Aufgabe #3 hat die ID = 2
 
-
-- Task #3 hat die ID = 10
-- Task #4.1 hat die ID = 12
-- Der Link vom Ende von Task #3 zum Anfang von Task #4 hat die ID = 1
-- Der Link vom Ende von Task #4.1 zum Anfang von Task #3 hat die ID = 2
-
-Die Methode *gantt.findCycles* liefert folgendes Ergebnis zurück:
+Die Methode *gantt.findCycles* gibt folgenden Wert zurück:
 
 ~~~js
 [ 
@@ -88,8 +85,7 @@ Die Methode *gantt.findCycles* liefert folgendes Ergebnis zurück:
 - [onCircularLinkError](api/event/oncircularlinkerror.md)
 
 ### Related Guides
-- ["Auto Scheduling"](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
 ### Change log
 - hinzugefügt in Version 4.1
-

@@ -9,14 +9,13 @@ sidebar_label: "Шаблоны тултипов"
   <tbody>
   <tr>
   <td class="webixdoc_links0">[tooltip_date_format](api/template/tooltip_date_format.md)</td>
-  <td>определяет, как отображаются даты начала и окончания в тултипе</td>
+  <td>задает формат начальных и конечных дат, отображаемых во тултипе</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[tooltip_text](api/template/tooltip_text.md)</td>
-  <td>управляет содержимым, отображаемым внутри тултипов</td>
+  <td>задает текст тултипов</td>
   </tr>
 </tbody>
 </table>
 
 ![templates_06](/img/templates_06.png)
-

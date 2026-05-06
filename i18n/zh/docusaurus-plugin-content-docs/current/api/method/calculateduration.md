@@ -1,24 +1,24 @@
 ---
 sidebar_label: calculateDuration
-title: calculateDuration method
-description: "计算任务的时长"
+title: calculateDuration 方法
+description: "计算任务的持续时间"
 ---
 
 # calculateDuration
 
 ### Description
 
-@short: 计算任务的时长
+@short: 计算任务的持续时间
 
-@signature: calculateDuration: (config: Date | object, end?: Date) =\> number
+@signature: calculateDuration: (config: object, end_date: Date) =\> number
 
 ### Parameters
 
-- `config` - (required) *object | Date* -        既可以是描述时间跨度的[配置对象](#configurationobjectproperties)，也可以只是任务的开始日期
-- `end_date` - (optional) *Date* - 可选，任务的结束日期。如果第一个参数只是<i>start_date</i>，则需要此参数。
+- `config` - (required) *object | Date* - 要么是时间段的 <a href="#configuration-object-properties">配置对象</a>，要么是任务的开始日期
+- `end_date` - (optional) *Date* -  任务的结束日期。当第一个参数指定为 start_date 时，该参数为必填。
 
 ### Returns
-- ` duration` - (number) - 任务的时长，单位由[duration_unit](api/config/duration_unit.md)选项设置
+- ` duration` - (number) - 任务的持续时间，单位由 [duration_unit](api/config/duration_unit.md) 选项指定
 
 ### Example
 
@@ -34,36 +34,33 @@ gantt.calculateDuration({
     /*,task: task*/
 });
 
-// 或者
+// or 
 gantt.calculateDuration(task);
 
-// 或者
+// or 
 gantt.calculateDuration(new Date(2013,02,15), new Date(2013,02,25)); //->6
-~~~
+~~~ 
 
 ### Details
 
 :::note
-
-当启用 [work_time](api/config/work_time.md) 选项时，该方法基于工作时间计算任务的持续时间。
- 
+如果启用 [work_time](api/config/work_time.md) 选项，该方法将以工作时间计算任务的持续时间。 
 :::
 
-- 如果未提供任务，则默认使用[全局工作时间日历](guides/working-time.md#multipleworktimecalendars)。<br>
-- 此方法也可以直接用于[calendar 对象](api/other/calendar.md)。
+- 当未指定任务时，该方法将使用全局工作时间日历（[global work time calendar](guides/working-time.md#getting-calendars)）。
+- 此外，该方法也可以直接用于一个 [日历对象](api/other/calendar.md)。
 
 ## 配置对象属性
 
-配置对象可能包含以下属性:
+配置对象可以包含以下属性：
 
-- **start_date** - (*Date*) 任务计划开始时间
-- **end_date** - (*Date*) 任务计划结束时间
-* **task** - (*object*)    可选，计算时长的任务对象
+- **start_date** - (*Date*) 任务计划开始的日期
+- **end_date** - (*Date*) 任务计划完成的日期
+* **task** - (*object*)    可选，需要计算持续时间的任务对象
 
 ### Related API
 - [calculateEndDate](api/method/calculateenddate.md)
 - [calculateTaskLevel](api/method/calculatetasklevel.md)
 
 ### Related Guides
-- - [工作时间计算](guides/working-time.md)
-
+- [工作时间计算](guides/working-time.md)

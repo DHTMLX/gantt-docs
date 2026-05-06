@@ -1,22 +1,22 @@
 ---
 sidebar_label: onRowResize
-title: onRowResize event
-description: "当用户拖动行边界以更改其高度时触发"
+title: onRowResize 事件
+description: "当用户拖动行边框以调整行高时触发"
 ---
 
 # onRowResize
 
 ### Description
 
-@short: 当用户拖动行边界以更改其高度时触发
+@short: 当用户拖动行边框以调整行高时触发
 
 @signature: onRowResize: (id: string | number, task: Task, currentHeight: number) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string|number* - 任务的ID
+- `id` - (required) *string | number* - 任务 ID
 - `task` - (required) *Task* - 任务对象
-- `currentHeight` - (required) *number* - 当前行的高度
+- `currentHeight` - (required) *number* - 该行当前高度
 
 ### Example
 
@@ -24,13 +24,13 @@ description: "当用户拖动行边界以更改其高度时触发"
 gantt.attachEvent("onRowResize", function (id, task, currentHeight) {
     gantt.message({
         expire: -1,
-        text: `<b>${task.text}</b> 现在高度为 <b>${currentHeight}px</b>`
+        text: `<b>${task.text}</b> is now <b>${currentHeight}px</b> height`
     });
 });
 ~~~
 
 ### Related samples
-- [Resizable rows in grid](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_row_resize.html)
+- [网格中的可调整大小的行](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_row_resize.html)
 
 ### Related API
 - [resize_rows](api/config/resize_rows.md)
@@ -39,5 +39,4 @@ gantt.attachEvent("onRowResize", function (id, task, currentHeight) {
 - [onAfterRowResize](api/event/onafterrowresize.md)
 
 ### Change log
-- 在v7.1版本中添加
-
+- 已在 v7.1 中新增

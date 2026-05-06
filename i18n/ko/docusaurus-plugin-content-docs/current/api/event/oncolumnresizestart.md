@@ -1,26 +1,26 @@
 ---
 sidebar_label: onColumnResizeStart
-title: onColumnResizeStart event
-description: "사용자가 컬럼 경계를 드래그하여 크기를 조절하기 바로 전에 발생하는 이벤트"
+title: onColumnResizeStart 이벤트
+description: "사용자가 열의 경계를 드래그하여 열의 크기를 조정하기 시작하기 전에 발생합니다"
 ---
 
 # onColumnResizeStart
 :::info
-이 기능은 PRO 에디션에서만 사용할 수 있습니다. 
+이 기능은 PRO 에디션에서만 사용할 수 있습니다.
 :::
 ### Description
 
-@short: 사용자가 컬럼 경계를 드래그하여 크기를 조절하기 바로 전에 발생하는 이벤트
+@short: 사용자가 열의 경계를 끌어 열의 크기를 조정하기 시작하기 전에 발생합니다
 
 @signature: onColumnResizeStart: (index: number, column: GridColumn) =\> boolean;
 
 ### Parameters
 
-- `index` - (required) *number* - 컬럼의 인덱스
+- `index` - (required) *number* - 컬럼 인덱스
 - `column` - (required) *GridColumn* - 컬럼 객체
 
 ### Returns
-- ` result` - (boolean) - 이벤트의 기본 동작이 진행될지(<b>true</b>) 취소될지(<b>false</b>) 결정
+- ` result` - (boolean) - 이벤트의 기본 동작이 트리거될지 여부를 정의합니다 (<b>true</b>) 또는 취소될지 (<b>false</b>)
 
 ### Example
 
@@ -33,11 +33,11 @@ gantt.attachEvent("onColumnResizeStart", function(index, column){
 ~~~
 
 ### Related samples
-- [Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
+- [- [그리드 열 리사이즈 이벤트](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)]
 
 ### Details
 
-이 이벤트는 차단할 수 있습니다. *false*를 반환하면 컬럼 크기 조절이 방지됩니다.
+이벤트는 차단 가능합니다. 반환값이 *false*인 경우 열 크기 조정이 허용되지 않습니다.
 
 ### Related API
 - [onColumnResize](api/event/oncolumnresize.md)
@@ -45,5 +45,4 @@ gantt.attachEvent("onColumnResizeStart", function(index, column){
 - [onGridResizeStart](api/event/ongridresizestart.md)
 
 ### Related Guides
-- [컬럼 지정하기](guides/specifying-columns.md#resizing)
-
+- [컬럼 지정](guides/specifying-columns.md#resizing)

@@ -1,23 +1,23 @@
 ---
 sidebar_label: time_picker
-title: time_picker template
-description: "определяет формат, используемый для выпадающего селектора времени в lightbox"
+title: time_picker шаблон
+description: "задает формат выпадающего списка времени во всплывающем окне"
 ---
 
 # time_picker
 
 ### Description
 
-@short: Определяет формат, используемый для выпадающего селектора времени в lightbox
+@short: Задает формат выпадающего списка времени во всплывающем окне
 
-@signature: time_picker: string
+@signature: time_picker: (date: Date) =\> string
 
 ### Parameters
 
-- `date` - (required) *Date* - дата, которую необходимо отформатировать
+- `date` - (required) *Date* - дата, которую нужно отформатировать
 
 ### Returns
-- ` text` - (string) - html контент, который будет отображаться в gantt
+- ` text` - (string) - HTML-текст, который будет отрисован в gantt
 
 ### Example
 
@@ -30,7 +30,7 @@ gantt.config.lightbox.sections = [
 gantt.templates.time_picker = function(date){
     return gantt.date.date_to_str(gantt.config.time_picker)(date);
 };
-~~~
+~~~ 
 
 ### Related Guides
 - [Шаблоны Lightbox](guides/lightbox-templates.md)

@@ -1,25 +1,25 @@
 ---
 sidebar_label: quick_info_class
-title: quick_info_class template
-description: "определяет CSS класс, который применяется к всплывающей форме редактирования"
+title: Шаблон quick_info_class
+description: "задает CSS класс, который будет применяться к всплывающей форме редактирования"
 ---
 
 # quick_info_class
 
 ### Description
 
-@short: Определяет CSS класс, который применяется к всплывающей форме редактирования
+@short: Задает CSS класс, который будет применяться к всплывающей форме редактирования
 
 @signature: quick_info_class: (start: Date, end: Date, task: Task) =\> string | void;
 
 ### Parameters
 
-- `start` - (required) *Date* - начальная дата запланированной задачи
-- `end` - (required) *Date* - конечная дата, к которой задача должна быть выполнена
-- `task` - (required) *Task* - сам объект задачи
+- `start` - (required) *Date* - дата начала запланированной задачи
+- `end` - (required) *Date* - дата завершения запланированной задачи
+- `task` - (required) *Task* - объект задачи
 
 ### Returns
-- ` text` - (string | void) - имя CSS класса, который будет использоваться для всплывающего окна Quick Info
+- ` text` - (string | void) - имя класса, которое будет применено к всплывающему окну Quick Info
 
 ### Example
 
@@ -32,8 +32,8 @@ gantt.templates.quick_info_class = function(start, end, task){
 ### Details
 
 :::note
-note Этот шаблон является частью расширения **Quick Info**, поэтому убедитесь, что плагин [quick_info](guides/extensions-list.md#quickinfo) включен. 
+Этот шаблон определяется в расширении **Quick Info**, поэтому вам нужно активировать плагин [quick_info](guides/extensions-list.md#quick-info).
 :::
 
 ### Related Guides
-- [Шаблоны расширения 'Quick Info' (Поддержка Touch)](guides/touch-templates.md)
+- [Templates of the 'Quick Info' Extension (Touch Support)](guides/touch-templates.md)

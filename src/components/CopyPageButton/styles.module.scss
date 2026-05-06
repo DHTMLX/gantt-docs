@@ -1,0 +1,121 @@
+.wrapper {
+  display: inline-flex;
+  position: relative;
+  margin: 0 0 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.mainButton,
+.chevronButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 2rem;
+  padding: 0 0.75rem;
+  background: var(--ifm-background-surface-color, var(--ifm-color-emphasis-100));
+  color: var(--ifm-color-emphasis-900);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background: var(--ifm-color-emphasis-200);
+    color: var(--ifm-color-emphasis-1000);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ifm-color-primary);
+    outline-offset: 2px;
+    z-index: 1;
+  }
+}
+
+.mainButton {
+  border-radius: 6px 0 0 6px;
+  border-right: none;
+}
+
+.chevronButton {
+  border-radius: 0 6px 6px 0;
+  padding: 0 0.5rem;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.mainButton:hover .icon {
+  color: var(--ifm-color-emphasis-900);
+}
+
+.label {
+  white-space: nowrap;
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  min-width: 16rem;
+  padding: 0.25rem;
+  background: var(--ifm-background-surface-color, var(--ifm-background-color));
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+  z-index: 20;
+
+  [data-theme='dark'] & {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.menuItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  width: 100%;
+  padding: 0.5rem 0.625rem;
+  background: transparent;
+  color: var(--ifm-color-emphasis-900);
+  border: none;
+  border-radius: 5px;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  transition: background-color 0.12s ease;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--ifm-color-emphasis-200);
+    outline: none;
+  }
+}
+
+.menuIcon {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.15rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.menuText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.menuTitle {
+  font-weight: 500;
+  color: var(--ifm-color-emphasis-1000);
+}
+
+.menuDesc {
+  font-size: 0.75rem;
+  color: var(--ifm-color-emphasis-600);
+}

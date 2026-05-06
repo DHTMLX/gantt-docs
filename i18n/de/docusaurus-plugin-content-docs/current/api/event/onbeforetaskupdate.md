@@ -1,51 +1,49 @@
 ---
 sidebar_label: onBeforeTaskUpdate
 title: onBeforeTaskUpdate event
-description: "Wird ausgelöst, kurz bevor eine Aufgabe vom Benutzer aktualisiert wird"
+description: "Wird ausgelöst, bevor der Benutzer eine Aufgabe aktualisiert"
 ---
 
 # onBeforeTaskUpdate
 
 ### Description
 
-@short: Wird ausgelöst, kurz bevor eine Aufgabe vom Benutzer aktualisiert wird
+@short: Wird ausgelöst, bevor der Benutzer eine Aufgabe aktualisiert
 
 @signature: onBeforeTaskUpdate: (id: string | number, new_task: Task) =\> void;
 
 ### Parameters
 
 - `id` - (required) *string | number* - die ID der Aufgabe
-- `new_task` - (required) *Task* - das aktualisierte Aufgabenobjekt
+- `new_task` - (required) *Task* - das neue (aktualisierte) Task-Objekt
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeTaskUpdate", function(id,new_task){
-    // Hier kann benutzerdefinierte Logik hinzugefügt werden
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Details
 
-Das **onBeforeTaskUpdate**-Event wird ausgelöst, nachdem das Aufgabenobjekt aktualisiert wurde, aber bevor alle Änderungen vollständig angewendet sind. Daher ist es nicht immer möglich, auf das Aufgabenobjekt in seinem Zustand vor der Aktualisierung zuzugreifen.
-
-Um das Aufgabenobjekt vor der Anwendung der Änderungen zu erhalten, sollten Sie Event-Handler verwenden, die speziell mit Aufgabenänderungen verknüpft sind:
+Beim Verwenden des **onBeforeTaskUpdate**-Events ist es nicht immer möglich, das Task-Objekt zu erhalten, bevor die Aufgabe vollständig aktualisiert wird. Das Event wird ausgelöst, nachdem das Task-Objekt aktualisiert wurde, aber bevor alle Änderungen angewendet wurden.
+Um das Task-Objekt vor den Änderungen zu erhalten, müssen Sie die Event-Handler verwenden, die direkt mit den Änderungen der Aufgabe zusammenhängen:
 
 - [onLightboxSave](api/event/onlightboxsave.md)
 - [onBeforeTaskDrag](api/event/onbeforetaskdrag.md)
-- ["Inline Editors Erweiterung"](guides/inline-editors-ext.md)
+- [Inline Editors Extension](guides/inline-editors-ext.md#events)
 - [onBeforeTaskAutoSchedule](api/event/onbeforetaskautoschedule.md)
 - [onRowDragStart](api/event/onrowdragstart.md)
 
-Wenn Änderungen über die API vorgenommen werden, können Sie auf das Aufgabenobjekt zugreifen, bevor der Modifikationscode ausgeführt wird. Das folgende Beispiel zeigt verschiedene Möglichkeiten, eine Aufgabe zu aktualisieren, z. B. durch Ändern der Termine:
+Wenn die Änderungen über die API vorgenommen werden, erhalten Sie möglicherweise das Task-Objekt, bevor der Code, der die Aufgabe ändert, ausgeführt wird. Sehen Sie sich das Beispiel an, in dem Sie eine Aufgabe auf verschiedene Weise ändern können (zum Beispiel Änderungen am Datum der Aufgabe):
 
 :::note
-Sample: [Updating a task](https://snippet.dhtmlx.com/9xy8wr2a) 
+Beispiel: [Aktualisierung einer Aufgabe](https://snippet.dhtmlx.com/9xy8wr2a)
 :::
 
-Im Vergleich dieser Events sieht man, dass diejenigen, die kurz vor einer Aufgabenänderung ausgelöst werden, das alte Aufgabenobjekt bereitstellen, während **onBeforeTaskUpdate** das aktualisierte Aufgabenobjekt liefert.
+Nach dem Vergleich werden Sie feststellen, dass die Events, die unmittelbar vor der Änderung der Aufgabe ausgelöst werden, das alte Task-Objekt zurückgeben, während das **onBeforeTaskUpdate**-Ereignis ein neues Task-Objekt der Aufgabe zurückgibt.
 
 ### Related API
 - [updateTask](api/method/updatetask.md)
 - [onAfterTaskUpdate](api/event/onaftertaskupdate.md)
-

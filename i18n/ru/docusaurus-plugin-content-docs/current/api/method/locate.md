@@ -1,20 +1,20 @@
 ---
 sidebar_label: locate
-title: locate method
-description: "получает id задачи на основе переданного HTML события"
+title: Метод locate
+description: "возвращает идентификатор задачи из указанного HTML-события"
 ---
 
 # locate
 
 ### Description
 
-@short: Получает id задачи на основе переданного HTML события
+@short: Возвращает идентификатор задачи из указанного HTML-события
 
-@signature: locate: (e: Event) =\> string | number
+@signature: locate: (e: Event) => string | number
 
 ### Parameters
 
-- `e` - (required) *Event* - нативный объект события
+- `e` - (required) *Event* - нативное событие
 
 ### Returns
 - ` id` - (string | number) - идентификатор задачи
@@ -34,4 +34,3 @@ gantt.$container.addEventListener("mouseover", function(event){
 
 ### Related API
 - [task_attribute](api/config/task_attribute.md)
-

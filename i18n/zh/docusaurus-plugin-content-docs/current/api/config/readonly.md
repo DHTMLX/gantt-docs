@@ -8,7 +8,7 @@ description: "为甘特图启用只读模式"
 
 ### Description
 
-@short: 为甘特图启用只读模式
+@short: 将甘特图置于只读模式
 
 @signature: readonly: boolean
 
@@ -20,4 +20,4 @@ gantt.config.readonly = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**默认值：** false

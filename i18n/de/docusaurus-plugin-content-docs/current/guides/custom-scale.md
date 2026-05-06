@@ -6,17 +6,20 @@ sidebar_label: "Ausblenden von Zeiteinheiten in der Skala"
 # Ausblenden von Zeiteinheiten in der Skala
 
 :::info
-Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar
 :::
 
-Die Bibliothek ermöglicht es, unnötige Zeiteinheiten in der Zeitskala des Diagramms auszublenden. Dies ist beispielsweise nützlich, wenn Sie nur Arbeitstage anzeigen und Wochenenden ausschließen möchten.
+Die Bibliothek bietet die Möglichkeit, unnötige Zeiteinheiten in der Zeitskala des Diagramms auszublenden. Sie können diese Möglichkeit zum Beispiel verwenden, um nur Arbeitstage anzuzeigen und Wochenenden auszublenden. 
 
-Um eine Zeiteinheit in der Skala auszublenden, verwenden Sie in der Regel die **ignore_time**-Methode. Diese Methode ist eine Funktion, die das Datum einer Zelle als Parameter erhält. Um eine bestimmte Einheit auszublenden, sollte die Funktion für dieses Datum *true* zurückgeben.
 
-Um beispielsweise Wochenenden aus der Skala auszublenden, können Sie die Methode wie folgt verwenden:
+Im Allgemeinen müssen Sie, um eine Zeiteinheit in der Zeitskala auszublenden, die Methode **ignore_time** verwenden.
+Die Methode ist eine Funktion, die das Datum der Zelle als Parameter nimmt. Um eine Einheit auszublenden – geben Sie dafür *true* zurück.
+
+
+Beispielsweise um Wochenenden von der Skala auszublenden, verwenden Sie die Methode wie folgt:
 
 ~~~js
-// 0 steht für Sonntag, 6 für Samstag
+// 0 refers to Sunday, 6 - to Saturday
 gantt.ignore_time = function(date){
    if(date.getDay() == 0 || date.getDay() == 6)
       return true;
@@ -26,15 +29,14 @@ gantt.ignore_time = function(date){
 ![skipped_weekends](/img/skipped_weekends.png)
 
 
-[Not render weekends on the scale](https://docs.dhtmlx.com/gantt/samples/03_scales/09_skip_weekends.html)
+[Wochenenden nicht auf der Skala darstellen](https://docs.dhtmlx.com/gantt/samples/03_scales/09_skip_weekends.html)
 
 
 :::note
-Beachten Sie, dass das Ausblenden von Zeiteinheiten aus der Skala diese nicht aus der Berechnung der Aufgabendauer entfernt. Wenn Sie ausgeblendete Einheiten auch von den Dauern ausschließen möchten, 
-lesen Sie bitte den Ansatz im Artikel [Work Time Calculation](guides/working-time.md)
+Beachten Sie, dass das Ausblenden von Zeiteinheiten aus der Skala diese Einheiten nicht von der Berechnung der Aufgaben-Dauer ausschließt. Um ausgeblendete Einheiten von der Berechnung der Dauer auszuschließen, verwenden Sie die in dem Artikel [Arbeitszeitberechnung](guides/working-time.md) beschriebene Technik.
 :::
 
-Bei der Arbeit mit [Arbeitszeit-Berechnungen](guides/working-time.md) können Sie [isWorkTime](api/method/isworktime.md) anstelle von fest codierten Werten verwenden:
+Beachten Sie, dass Sie beim Verwenden von [Arbeitszeitsberechnungen](guides/working-time.md) die Methode [isWorkTime](api/method/isworktime.md) statt harter Werte verwenden können:
 
 ~~~js
 gantt.ignore_time = function(date){
@@ -43,24 +45,29 @@ gantt.ignore_time = function(date){
 };
 ~~~
 
+[Arbeitsstunden berechnen](https://docs.dhtmlx.com/gantt/samples/09_worktime/01_working_hours_per_day.html)
 
-[Calculate working hours](https://docs.dhtmlx.com/gantt/samples/09_worktime/01_working_hours_per_day.html)
 
-
-Es ist wichtig zu beachten, dass die **ignore_time**-Methode die Skala selbst nicht verändert. Nachfolgend finden Sie Beispiele, die zeigen, wie Zellen ohne Arbeitszeit oder Arbeitstage ausgeblendet werden.
+Bitte beachten Sie, dass die Methode **ignore_time** die Skala nicht verändert. Betrachten wir unten die Beispiele, die das Ausblenden von Zellen beschreiben, die keine Arbeitsstunden/Arbeitstage haben.
 
 Beispiel 1
 
-Eine Tagesskala läuft von 00:00 bis 23:59, mit Arbeitszeiten von 08:00 bis 16:59. Wenn Sie eine minimale Skala in Stunden haben und **ignore_time** anwenden, werden Zellen, die keine Arbeitszeit darstellen, in allen Skalen ausgeblendet. Das bedeutet, die Tagesskala läuft effektiv von 08:00 bis 16:59. Haben Sie jedoch nur eine Tagesskala, bleibt sie unverändert und beginnt um 00:00 und endet um 23:59, da innerhalb dieses Tages Arbeitszeiten vorhanden sind.
+Eine Tag-Skala beginnt um 00:00 und endet um 23:59, die Arbeitszeiten beginnen um 08:00 und enden um 16:59. Sie haben eine minimale Skala in Stunden. 
+Wenn die **ignore_time**-Methode angewendet wird, werden Zellen, die keine Arbeitszeit haben, für alle Skalen ausgeblendet. 
+Somit beginnt die Tag-Skala um 08:00 und endet um 16:59. Wenn Sie jedoch nur eine Tag-Skala haben, wird sie nicht geändert.
+Sie beginnt um 00:00 und endet um 23:59, da innerhalb eines Tages Arbeitszeiten vorhanden sind.
 
 Beispiel 2
 
-Eine Wochenskala umfasst 7 Tage, davon 2 freie Tage (z. B. Samstag und Sonntag). Ist die minimale Skala in Tagen und **ignore_time** wird angewendet, werden die freien Tage ausgeblendet, sodass die Wochenskala Montag bis Freitag anzeigt. Wenn jedoch nur eine Wochenskala vorhanden ist, beginnt sie weiterhin am Montag und endet am Sonntag, da die Woche freie Tage enthält.
+Eine Wochen-Skala hat 7 Tage, von denen 2 Tage frei sind (z. B. Samstag und Sonntag). Sie haben eine minimale Skala in Tagen. Wenn die **ignore_time**-Methode angewendet wird, werden die freien Tage versteckt und die Wochen-Skala wird von Montag bis Freitag dargestellt. Wenn Sie jedoch nur eine Wochen-Skala haben, beginnt die Woche am Montag und endet am Sonntag, da es Tage in einer Woche gibt, die frei sind.
 
-Es gibt zwei Möglichkeiten, ein Diagramm mit ausgeblendeten Zeiteinheiten anzuzeigen:
+Es gibt zwei Möglichkeiten, ein Diagramm mit versteckten Zeiteinheiten darzustellen:
 
-- Fügen Sie eine Skala mit kleineren Einheiten hinzu (zum Beispiel eine Stundenskala neben einer Tagesskala oder eine Tagesskala neben einer Wochenskala)
-- Verwenden Sie eine [benutzerdefinierte Skala](guides/configuring-time-scale.md#customtimeunits), die nur die Arbeitszeiten oder Arbeitstage rendert
+- eine Skala mit geringeren Einheiten hinzufügen (eine Stunden-Skala für eine Tages-Skala, eine Tages-Skala für eine Wochen-Skala usw.)
+- eine [benutzerdefinierte Skala](guides/configuring-time-scale.md#customtimeunits) hinzufügen, die nur die Arbeitsstunden/Arbeitstage darstellt
 
-**Related example:** [5-Tage-Arbeitswochen in der Skala](https://snippet.dhtmlx.com/eq70o558)
+**Zugehöriges Beispiel** [5-Tage-Arbeitswochen auf der Skala](https://snippet.dhtmlx.com/eq70o558)
 
+### Verwandte 
+-  [Arbeitszeitberechnung](guides/working-time.md)
+-  [Skala einrichten](guides/configuring-time-scale.md)

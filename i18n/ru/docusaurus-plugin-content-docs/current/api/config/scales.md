@@ -8,7 +8,7 @@ description: "настраивает конфигурацию временной
 
 ### Description
 
-@short: Настраивает конфигурацию временной шкалы
+@short: Определяет параметры конфигурации временной шкалы
 
 @signature: scales: Scales
 
@@ -16,28 +16,32 @@ description: "настраивает конфигурацию временной
 
 ~~~jsx
 gantt.config.scales = [
-    {unit: "month", step: 1, format: "%F, %Y"},
-    {unit: "week", step: 1, format: function (date) {
-        return "Week #" + gantt.date.getWeek(date);
-    }},
-    {unit: "day", step: 1, format: "%D", css: function(date) {
-    if(!gantt.isWorkTime({ date: date, unit: "day"})){
-            return "weekend"
-        }
-    }}
+    { unit: "month", step: 1, format: "%F, %Y" },
+    {
+        unit: "week",
+        step: 1,
+        format: (date) => `Week #${gantt.date.getWeek(date)}`
+    },
+    {
+        unit: "day",
+        step: 1,
+        format: "%D",
+        css: (date) => !gantt.isWorkTime({ date, unit: "day" }) ? "weekend" : ""
+    }
 ];
 ~~~
 
 ### Details
 
-Каждый элемент массива представляет отдельную шкалу. Объект может включать следующие свойства:
+Each object in the array specifies a single scale. An object can take the following attributes:
 
-- **unit** - (*string*) - задаёт единицу шкалы. Возможные значения: "minute", "hour", "day" (по умолчанию), "week", "quarter", "month", "year". Также можно определить кастомные единицы. Подробнее см. [здесь](guides/configuring-time-scale.md#customtimeunits).
-- **step?** - (*number*) - определяет шаг временной шкалы (ось X), по умолчанию 1.
-- **format? (date): any** - (*string | Function*) - задаёт форматирование подписей шкалы. Если передана функция, она получает объект date.
-    - **_date_** - (*Date*) - дата для форматирования
-- **date? (date): any** - (*string | Function*) - альтернативный способ задать формат подписей шкалы, принимает строку или функцию с параметром date.
-    - **_date_** - (*Date*) - дата для форматирования
-- **css? (date): any** - функция, возвращающая имя CSS-класса для применения к единицам шкалы, на основе переданной даты.
-    - **_date_** - (*Date*) - дата для оценки
-- **sticky?** - (*boolean*) - сохраняет видимость подписи шкалы, когда ячейка шкалы шире видимой области (viewport)
+- **unit** - (*string*) - название единицы шкалы. Доступные значения: "minute", "hour", "day" (default), "week", "quarter", "month", "year".
+There is also a possibility to set a custom unit. Read more on the topic [здесь](guides/configuring-time-scale.md#customtimeunits).
+- **step?** - (*number*) - шаг временной шкалы (ось X), 1 by default.
+- **format? (date): any** - (*string | Function*) - формат меток шкалы. Если задан как функция, ожидается объект Date в качестве параметра.
+    - **_date_** - (*Date*) - дата, которая будет преобразована
+- **date? (date): any** - (*string | Function*) - формат меток шкалы. Если задан как функция, ожидается объект Date в качестве параметра.
+    - **_date_** - (*Date*) - дата, которая будет преобразована
+- **css? (date): any** - функция, возвращающая имя CSS-класса, который будет применяться к единицам шкалы. Принимает объект date в качестве параметра.
+    - **_date_** - (*Date*) - дата, которая будет проверяться
+- **sticky?** - (*boolean*) - делает видимой метку шкалы, если размер ячейки шкалы превышает ширину области просмотра

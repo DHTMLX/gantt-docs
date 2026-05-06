@@ -1,14 +1,14 @@
 ---
 sidebar_label: scale_offset_minimal
-title: scale_offset_minimal config
-description: "Steuert, ob die minimale Skalen-Einheit (bei Verwendung mehrerer Skalen) als Größe des führenden und abschließenden Leerraums verwendet wird"
+title: scale_offset_minimal Konfiguration
+description: "legt die minimale Skaleneinheit (falls mehrere Skalen verwendet werden) als Intervall des Anfangs- bzw. Endleerraums fest"
 ---
 
 # scale_offset_minimal
 
 ### Description
 
-@short: Steuert, ob die minimale Skalen-Einheit (bei Verwendung mehrerer Skalen) als Größe des führenden und abschließenden Leerraums verwendet wird
+@short: Legt die minimale Skaleneinheit fest (falls mehrere Skalen verwendet werden) als Intervall des Anfangs- bzw. Endleerraums
 
 @signature: scale_offset_minimal: boolean
 
@@ -18,11 +18,11 @@ description: "Steuert, ob die minimale Skalen-Einheit (bei Verwendung mehrerer S
 gantt.config.scale_offset_minimal = false;
 ~~~
 
-**Default value:** true
+**Standardwert:** true
 
 ### Details
 
-Wenn das Skalenintervall nicht explizit festgelegt ist (mittels der Optionen [start_date](api/config/start_date.md) und [end_date](api/config/end_date.md)), bestimmt dhtmlxGantt es basierend auf den frühesten und spätesten Terminen der Aufgaben. Es wird außerdem ein leerer Intervall am Anfang und Ende der Skala hinzugefügt. Standardmäßig entspricht dieser leere Intervall der kleinsten Einheit unter den verwendeten Skalen (falls mehrere Skalen angewendet werden).
+Falls das Skalenteil-Intervall nicht explizit festgelegt ist (durch die Optionen [start_date](api/config/start_date.md), [end_date](api/config/end_date.md)), berechnet dhtmlxGantt es anhand der Termine der frühesten und spätesten Aufgaben. 
+Außerdem wird am Anfang und am Ende der Skala ein leeres Intervall hinzugefügt. Standardmäßig entspricht dieses 'leere' Intervall der kleinsten Einheit der verwendeten Skalen (falls mehrere Skalen verwendet werden). 
 
-Wenn diese Option deaktiviert ist, fügt dhtmlxGantt einen leeren Intervall basierend auf der **unit**-Eigenschaft hinzu, die in der Option [scales](api/config/scales.md) definiert ist.
-
+Wenn Sie die Option deaktivieren, fügt dhtmlxGantt ein leeres Intervall hinzu, das dem Wert der **unit**-Eigenschaft der [scales](api/config/scales.md) Option entspricht.

@@ -14,8 +14,8 @@ description: "загружает данные из клиентского рес
 
 ### Parameters
 
-- `data` - (required) *string* - | DataToLoad     строка или объект, представляющий [данные](https://docs.dhtmlx.com/gantt/desktop__loading.html#dataproperties)
-- `type` - (optional) *string* - необязательный параметр, (<i>'json', 'xml'</i>) указывает тип данных. По умолчанию <i>'json'</i>
+- `data` - (required) *string | DataToLoad* - строка или объект, который представляет [data](guides/loading.md#dataproperties)
+- `type`	-	(optional) *string*	-	 необязательный, (<i>'json', 'xml'</i>) тип данных. Значение по умолчанию - <i>'json'</i>
 
 ### Example
 
@@ -40,15 +40,15 @@ gantt.parse({
 
 ### Details
 
-Gantt ожидает, что массив задач будет называться либо **data**, либо **tasks**, а массив связей - **links**.
+Gantt ожидает, что *массив с задачами* будет называться либо **data**, либо **tasks**, тогда как *массив со связями* будет называться **links**.
 
-Структура данных выглядит следующим образом:
+Это список ожидаемых свойств:
 
-- **data** - (*[] | NewTask[]*) - массив с данными задач
-- **links?** - (*Link[]*) - массив с данными связей
-- **resources?** - (*NewResourceItem[]*) - массив с данными ресурсов
-- **assignments?** - (*NewAssignmentItem[]*) - массив с данными назначений
-- **collections?** - (*Сollections*) - объект, содержащий массивы с пользовательскими данными
+- **data** - (*[] | NewTask[]*) - массив данных задач
+- **links?** - (*Link[]*) - массив данных связей
+- **resources?** - (*NewResourceItem[]*) - массив данных ресурсов
+- **assignments?** - (*NewAssignmentItem[]*) - массив данных назначений
+- **collections?** - (*Сollections*) - объект, который содержит массивы с пользовательскими данными
 
 ~~~js
 gantt.parse({
@@ -77,22 +77,24 @@ gantt.parse({
 })
 ~~~
 
-Массив **data** или **tasks** должен содержать объекты **NewTask**, которые отличаются от объектов **Task**. Они могут быть строками или пустыми объектами. Эти объекты могут иметь те же свойства, что и [объект **Task**](guides/task-properties.md), а также могут содержать пользовательские свойства. В отличие от объекта **Task**, свойства, начинающиеся с *$*, игнорируются, а даты могут быть строками.
 
-Разбор свойств:
+The **data** or **tasks** array expects the **NewTask** object that is different from the **Task** object. It can be a string, an empty object.
+It can have the same properties as the [**Task** object](guides/task-properties.md), and you can add any custom properties there. 
+The difference is that some properties of the **Task** object that start from the *$* sign are ignored and the dates can have the *string* type. 
+Here is the type description:
 
-- **NewTask** - (*string | {} | object*) - объект задачи, добавляемый в Gantt. Возможные свойства:
-    - **_id?_** - (*string | number*) - необязательный, ID задачи, генерируется автоматически при отсутствии.
-    - **_start_date?_** - (*string | Date*) - необязательный, дата начала задачи.
-    - **_duration?_** - (*number*) - необязательный, продолжительность задачи.
-    - **_end_date?_** - (*string | Date*) - необязательный, дата окончания задачи.
-    - **_text?_** - (*string*) - необязательный, название задачи.
-    - **_open?_** - (*boolean*) - необязательный, раскрыта ли задача при загрузке.
-    - **_parent?_** - (*string | number*) - необязательный, ID родительской задачи.
-    - **_constraint_date?_** - (*string | Date*) - необязательный, дата ограничения.
-    - **_[customProperty: string]_** - (*any*) - любые другие свойства, включая свойства из [объекта **Task**](guides/task-properties.md).
+- **NewTask** - (*string | {} | object*) - the task object that will be added to Gantt. It can have the following properties:
+    - **_id?_** - (*string | number*) - optional, the task ID, auto-generated if not set
+    - **_start_date?_** - (*string | Date*) - optional, the date when a task is scheduled to begin
+    - **_duration?_** - (*number*) - optional, the task duration
+    - **_end_date?_** - (*string | Date*) - optional, the date when a task is scheduled to be completed
+    - **_text?_** - (*string*) - optional, the task name
+    - **_open?_** - (*boolean*) - optional, specifies if the task will be opened on load (to show child tasks)
+    - **_parent?_** - (*string | number*) - optional, the ID of the parent task
+    - **_constraint_date?_** - (*string | Date*) - optional, the date of the task constraint
+    - **_[customProperty: string]_** - (*any*) - any other property you want to add, including the ones from the [**Task** object](guides/task-properties.md)
 
-Это не полный список свойств задачи; подробнее см. [в этой статье](guides/task-properties.md).
+This is not the full list of possible task properties. For that, please refer to [this article](guides/task-properties.md).
 
 ~~~js
 gantt.parse({
@@ -103,9 +105,11 @@ gantt.parse({
 })
 ~~~
 
+
 ---
 
-Массив **links** должен содержать объекты [**Link**](guides/link-properties.md).
+
+The **links** array expects the [**Link** objects](guides/link-properties.md).
 
 ~~~js
 gantt.parse({
@@ -118,16 +122,17 @@ gantt.parse({
 
 ---
 
-Массив **resources** ожидает объекты **NewResourceItem**, которые могут содержать:
 
-- **NewResourceItem** - (*object*) - элемент ресурса, добавляемый в Gantt, с такими свойствами:
-    - **_id?_** - (*string | number*) - необязательный, ID ресурса, генерируется автоматически при отсутствии.
-    - **_parent?_** - (*string | number*) - необязательный, ID родительского ресурса.
-    - **_text?_** - (*string*) - необязательный, название ресурса.
-    - **_open?_** - (*boolean*) - необязательный, раскрыт ли ресурс при загрузке.
-    - **_unit?_** - (*string | number*) - необязательный, единица измерения ресурса.
-    - **_default_value?_** - (*string | number*) - необязательный, значение по умолчанию для назначения, отображаемое в lightbox.
-    - **_[customProperty: string]_** - (*any*) - любые дополнительные свойства.
+The **resources** array expects the **NewResourceItem** object that may have the properties below:
+
+- **NewResourceItem** - (*object*) - the resource item object that will be added to Gantt. It can have the following properties:
+    - **_id?_** - (*string | number*) - optional, the resource ID, auto-generated if not set
+    - **_parent?_** - (*string | number*) - optional, the ID of the parent resource
+    - **_text?_** - (*string*) - optional, the resource name
+    - **_open?_** - (*boolean*) - optional, specifies if the resource will be opened on load (to show child items)
+    - **_unit?_** - (*string | number*) - optional, the unit of the resource assignment
+    - **_default_value?_** - (*string | number*) - optional, the value that is assigned by default when adding the assignment in the lightbox section
+    - **_[customProperty: string]_** - (*any*) - any other property you want to add
 
 ~~~js
 gantt.parse({
@@ -139,21 +144,24 @@ gantt.parse({
 })
 ~~~
 
+
 ---
 
-Массив **assignments** ожидает объекты **NewAssignmentItem** со свойствами:
 
-- **NewAssignmentItem** - (*object*) - элемент назначения, добавляемый в Gantt, который может включать:
-    - **_id?_** - (*string | number*) - необязательный, ID назначения, генерируется автоматически при отсутствии.
-    - **_task_id_** - (*string | number*) - ID задачи, к которой относится назначение.
-    - **_resource_id_** - (*string | number*) - ID назначенного ресурса.
-    - **_value_** - (*number | string*) - необязательный, значение назначения.
-    - **_mode?_** - (*string*) - необязательный, режим расчёта: "default"|"fixedDates"|"fixedDuration".
-    - **_delay?_** - (*number*) - необязательный, разница между началом назначения и началом задачи.
-    - **_start_date?_** - (*string | Date*) - необязательный, дата начала назначения.
-    - **_duration?_** - (*number*) - необязательный, продолжительность назначения.
-    - **_end_date?_** - (*string | Date*) - необязательный, дата окончания назначения.
-    - **_[customProperty: string]_** - (*any*) - любые другие пользовательские свойства.
+The **assignments** array expects the **NewAssignmentItem** object that may have the properties below:
+
+- **NewAssignmentItem** - (*object*) - the assignment item object that will be added to Gantt. It can have the following properties:
+    - **_id?_** - (*string | number*) - optional, the assignment ID, auto-generated if not set
+    - **_task_id_** - (*string | number*) - the ID of the task the resource is assigned to
+    - **_resource_id_** - (*string | number*) - the ID of the resource that is assigned to the task
+    - **_value_** - (*number | string*) - optional, the assignment value
+    - **_mode?_** - (*string*) - optional, the calculation mode of the time of the resource assignment: "default"|"fixedDates"|"fixedDuration"
+    - **_delay?_** - (*number*) - optional, the difference between the assignment start date and the task start date
+    - **_start_date?_** - (*string | Date*) - optional, the date the assignment should start
+    - **_duration?_** - (*number*) - optional, the assignment duration
+    - **_end_date?_** - (*string | Date*) - optional, the date the assignment should end
+    - **_[customProperty: string]_** - (*any*) - any other property you want to add
+
 
 ~~~js
 gantt.parse({
@@ -166,13 +174,14 @@ gantt.parse({
 
 ---
 
-Объект **collections** предназначен для загрузки пользовательских данных. Его свойства могут иметь любые имена, а значениями являются массивы с элементами коллекций:
+The **collections** object allows loading any custom data. The properties can have any name, и the value should be an array that contains the collection items:
 
-- **[collectionName: string]** - (*[] | СollectionItem[]*) - массив элементов коллекции.
+- **[collectionName: string]** - (*[] | СollectionItem[]*) - an array that contains the collection items.
 
-Каждый **СollectionItem** - объект с любыми свойствами:
+The **СollectionItem** is an object that can have any properties. It has the following types for its properties:
 
-- **[itemProperty: string]** - (*any*) - любое пользовательское свойство.
+- **[itemProperty: string]** - (*any*) - any custom property of the collection item.
+
 
 ~~~js
 gantt.parse({
@@ -199,7 +208,8 @@ gantt.parse({
 
 ---
 
-Если в данных отсутствуют задачи, всё равно нужно определить пустой массив задач:
+
+If you want to load data which doesn't contain tasks, you still need to define an array of tasks in the object with data but it can be empty:
 
 ~~~js
 gantt.parse({
@@ -211,8 +221,8 @@ gantt.parse({
 });
 ~~~
 
-<br>
-Начиная с версии 8.0, вы также можете загружать ресурсы и назначения ресурсов вместе с задачами и связями с помощью метода **parse()**:
+
+From v8.0, besides tasks and links, you can load resources и resource assignments into the gantt via the **parse()** method:
 
 ~~~js
 gantt.parse({
@@ -247,13 +257,12 @@ gantt.parse({
 });
 ~~~
 
-Больше деталей можно найти [здесь](guides/resource-management.md#loadingresourcesandresourceassignments).
+You can read more [here](guides/resource-management.md#loading-resources-and-resource-assignments).
 
 ### Related API
 - [load](api/method/load.md)
 
 ### Related Guides
-- [Загрузка данных](guides/loading.md)
-- [Поддерживаемые форматы данных](guides/supported-data-formats.md)
-- [Поддерживаемые форматы данных](guides/supported-data-formats.md#jsonwithcollections) (читайте, как загружать JSON с коллекциями)
-
+- [Data Loading](guides/loading.md)
+- [Supported Data Formats](guides/supported-data-formats.md)
+- [Supported Data Formats](guides/supported-data-formats.md#jsonwithcollections) (read how to load JSON with Collections)

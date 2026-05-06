@@ -1,38 +1,37 @@
----
+--- 
 sidebar_label: onBeforeTaskSelected
-title: onBeforeTaskSelected event
-description: "작업이 선택되기 직전에 발생합니다"
+title: onBeforeTaskSelected 이벤트
+description: "사용자가 태스크를 선택하기 전에 발생합니다"
 ---
 
 # onBeforeTaskSelected
 
 ### Description
 
-@short: 작업이 선택되기 직전에 발생합니다
+@short: 사용자가 태스크를 선택하기 전에 발생합니다
 
 @signature: onBeforeTaskSelected: (id: string | number) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - 작업의 ID
+- `id` - (필수) *string | number* - 태스크 ID
 
 ### Returns
-- ` result` - (boolean) - 이벤트의 기본 동작이 진행될지(<b>true</b>) 중단될지(<b>false</b>) 여부를 결정합니다
+- ` result` - (boolean) - 이벤트의 기본 동작이 트리거될지 여부를 정의합니다 (<b>true</b>) 또는 취소될지 (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeTaskSelected", function(id){
-    //여기에 커스텀 로직을 추가할 수 있습니다
+    // 여기에 코드 작성
     return true;
 });
 ~~~
 
 ### Details
 
-이 이벤트는 차단할 수 있습니다. *false*를 반환하면 기본 동작이 발생하지 않습니다.
+이벤트는 차단할 수 있습니다. 기본 처리를 취소하려면 *false*를 반환하십시오.
 
 ### Related API
 - [onTaskSelected](api/event/ontaskselected.md)
 - [onTaskUnselected](api/event/ontaskunselected.md)
-

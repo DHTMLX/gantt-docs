@@ -1,25 +1,25 @@
 ---
 sidebar_label: getFreeSlack
-title: getFreeSlack method
-description: "返回任务的自由时差"
+title: getFreeSlack 方法
+description: "返回任务的自由松弛时间"
 ---
 
 # getFreeSlack
 :::info
- 该功能仅在PRO版本中可用。 
+ 该功能仅在 PRO 版本中可用。 
 :::
 ### Description
 
-@short: 返回任务的自由时差
+@short: 返回任务的自由松弛时间
 
-@signature: getFreeSlack: (task: Task) =\> number
+@signature: getFreeSlack: (task: Task) => number
 
 ### Parameters
 
-- `task` - (required) *Task* - 任务对象
+- `task` - (必填) *Task* - 任务对象
 
 ### Returns
-- ` free_slack` - (number) - 任务的自由时差
+- ` free_slack` - (number) - 任务的自由松弛时间
 
 ### Example
 
@@ -29,19 +29,18 @@ gantt.getFreeSlack(task);
 ~~~
 
 ### Related samples
-- [Show Slack time](https://docs.dhtmlx.com/gantt/samples/08_api/17_show_task_slack.html)
+- [显示任务松弛时间](https://docs.dhtmlx.com/gantt/samples/08_api/17_show_task_slack.html)
 
 ### Details
 
 :::note
- 此方法属于**critical_path**扩展的一部分，因此请确保通过[gantt.plugins](api/method/plugins.md)方法启用[critical_path](guides/extensions-list.md)插件。更多信息请参见[关键路径](guides/critical-path.md)文档。 
+此方法在 **critical_path** 扩展中定义，因此您需要通过 [gantt.plugins](api/method/plugins.md) 方法激活 [critical_path](guides/extensions-list.md#critical-path) 插件。请阅读 [Critical Path](guides/critical-path.md) 文章中的详细信息。
 :::
 
-自由时差指任务持续时间可以增加的时间量，或任务在时间线上可以移动的时间量，而不会影响任何后续关联任务。
+自由松弛时间是在不影响其后继任务的情况下，可用于增加任务持续时间或在时间线中移动任务的一段时间。
 
 ### Related API
 - [getTotalSlack](api/method/gettotalslack.md)
 
 ### Related Guides
-- [关键路径](guides/critical-path.md)
-
+- [Critical Path](guides/critical-path.md#gettingfreeandtotalslack)

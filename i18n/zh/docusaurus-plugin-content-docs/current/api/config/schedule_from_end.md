@@ -1,12 +1,16 @@
 ---
 sidebar_label: schedule_from_end
-title: schedule_from_end config
+title: schedule_from_end 配置
 description: "启用向后排程"
 ---
 
 # schedule_from_end
 :::info
- 此功能仅在 PRO 版本中可用。 
+此功能仅在 PRO 版中可用。 
+:::
+
+:::warning
+该属性在 v9.1 已被弃用，请改用 [gantt.config.auto_scheduling](api/config/auto_scheduling.md#schedule_from_end) 的 `schedule_from_end` 属性。
 :::
 ### Description
 
@@ -18,23 +22,26 @@ description: "启用向后排程"
 
 ~~~jsx
 gantt.config.schedule_from_end = true;
-gantt.config.project_end = new Date(2019, 4, 1);
+gantt.config.project_end = new Date(2025, 10, 1);
 ~~~
 
-**Default value:** false
+**默认值：** false
 
 ### Related samples
-- [Auto-Schedule From Project End (backward)](https://docs.dhtmlx.com/gantt/samples/02_extensions/20_backwards_scheduling.html)
+- [- [从项目结束进行自动排程（向后）](https://docs.dhtmlx.com/gantt/samples/02_extensions/20_backwards_scheduling.html)]
 
 ### Details
 
-将此选项设置为 `true` 后，自动排程模式将切换为"尽可能晚"。
+将此配置设为 `true` 将把自动排程切换到尽可能晚的模式。
 
-此设置仅在同时指定了 [project_end](api/config/project_end.md) 时生效。
+此值仅在同时指定 [project_end](api/config/project_end.md) 时生效。
 
 ### Related API
 - [project_end](api/config/project_end.md)
+- [auto_scheduling](api/config/auto_scheduling.md)
 
 ### Related Guides
-- [自动调度](guides/auto-scheduling.md)
+- [- [自动排程]](guides/auto-scheduling.md)
 
+### Change log
+- 该属性在 v9.1 已被弃用

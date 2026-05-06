@@ -1,23 +1,23 @@
 ---
 sidebar_label: onAfterAutoSchedule
-title: onAfterAutoSchedule event
-description: "Срабатывает после завершения процесса автопланирования."
+title: onAfterAutoSchedule событие
+description: "Срабатывает после завершения авто-планирования"
 ---
 
 # onAfterAutoSchedule
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в PRO-версии.
 :::
 ### Description
 
-@short: Срабатывает после завершения процесса автопланирования.
+@short: Срабатывает после завершения авто-планирования
 
 @signature: onAfterAutoSchedule: (taskId: string | number, updatedTasks: any[]): void;
 
 ### Parameters
 
-- `taskId` - (required) *string | number* - ID корневой задачи
-- `updatedTasks` - (required) *array* - массив, содержащий ID задач, которые были перепланированы
+- `taskId` - (обязательный) *string | number* - идентификатор корневого задания
+- `updatedTasks` - (обязательный) *array* - массив идентификаторов перепланированных задач
 
 ### Example
 
@@ -28,12 +28,11 @@ gantt.attachEvent("onAfterAutoSchedule",function(taskId, updatedTasks){
 ~~~
 
 ### Related samples
-- [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
+- [Расширение автоматического планирования](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
-
 :::note
- Это событие является частью расширения **auto_scheduling**, поэтому убедитесь, что плагин [auto_scheduling](guides/extensions-list.md#autoscheduling) включен. Подробнее см. в руководстве [Автоматическое планирование](guides/auto-scheduling.md). 
+Этот обработчик определяется в расширении **auto_scheduling**, поэтому необходимо активировать плагин [auto_scheduling](guides/extensions-list.md#autoscheduling). Подробности читайте в статье [Auto Scheduling](guides/auto-scheduling.md).
 :::
 
 ### Related API
@@ -54,4 +53,3 @@ gantt.attachEvent("onAfterAutoSchedule",function(taskId, updatedTasks){
 
 ### Related Guides
 - [Автоматическое планирование](guides/auto-scheduling.md)
-

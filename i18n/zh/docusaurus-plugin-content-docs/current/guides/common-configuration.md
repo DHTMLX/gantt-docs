@@ -1,22 +1,22 @@
----
+--- 
 title: "配置"
 sidebar_label: "配置"
 ---
 
 # 配置
 
-为了实现所需的甘特图外观，dhtmlxGantt 提供了两个主要对象:
+要实现甘特图的期望外观，dhtmlxGantt 提供两种对象：
 
-- [gantt.config](api/overview/properties-overview.md) - 包含与日期、刻度、控件等相关的配置选项。
-- [gantt.templates](api/overview/templates-overview.md) - 包含用于格式化甘特图中显示的日期和标签的模板。
+- [gantt.config](api/overview/properties-overview.md) - 日期、刻度、控件等的配置选项。
+- [gantt.templates](api/overview/templates-overview.md) - 在甘特图中用于日期和标签显示的格式化模板。
 
-## 'gantt.config' 对象 {#ganttconfigobject}
+## 'gantt.config' object {#ganttconfigobject}
 
-所有的配置设置都在 **gantt.config** 对象中指定。
+所有配置选项都在 **gantt.config** 对象中声明。
 
-要应用某个选项，只需按照本说明文档中的方式进行赋值即可。
+要设置所需的选项，请按本文档中的描述进行编写。
 
-请注意，所有配置选项都需要在 dhtmlxGantt 初始化语句之前设置。
+请注意，配置选项应放在与 dhtmlxGantt 初始化相关的代码行之前。
 
 ~~~js
 gantt.scales = [
@@ -26,28 +26,25 @@ gantt.scales = [
 gantt.init("gantt_here");
 ~~~
 
-如需了解 **gantt.config** 可用属性的完整列表，请参阅 ["Gantt API:Properties"](api/overview/properties-overview.md)。
+请查看完整的 **gantt.config** 属性列表，请参阅 [Gantt API:Properties](api/overview/properties-overview.md) 章节。
 
+**相关示例**: [Month view](https://docs.dhtmlx.com/gantt/samples/03_scales/02_month_days.html)
 
-[Month view](https://docs.dhtmlx.com/gantt/samples/03_scales/02_month_days.html)
+## 'gantt.templates' object {#gantttemplatesobject}
 
+模板可用于改变日期和标签的显示。
 
-## 'gantt.templates' 对象
-
-模板允许自定义日期和标签的显示方式。
-
-通过如下所示的方式为模板赋值即可。请记得在初始化 dhtmlxGantt 之前声明模板。
+要定义一个模板，请按本文档中的描述进行编写。请记住，模板的定义应放在 dhtmlxGantt 初始化的代码行之前。
 
 ~~~js
-gantt.templates.task_text = function(start, end, task){
-    return "<b>Text:</b> " + task.text + ",<b> Holders:</b> " + task.users;
-};
+gantt.templates.task_text =
+    (start, end, task) => `<b>Text:</b> ${task.text},<b> Holders:</b> ${task.users}`;
+
 gantt.init("gantt_here");
 ~~~
 
 ![gantt_templates](/img/gantt_templates.png)
 
-您可以在 [Gantt API:Templates](api/overview/templates-overview.md) 部分找到所有可用模板的完整列表。
+请在 [Gantt API:Templates](api/overview/templates-overview.md) 小节中查看可用模板的完整列表。
 
-
-[Styling task bars with events](https://docs.dhtmlx.com/gantt/samples/04_customization/08_templates.html)
+**相关示例**: [通过事件样式化任务条](https://docs.dhtmlx.com/gantt/samples/04_customization/08_templates.html)

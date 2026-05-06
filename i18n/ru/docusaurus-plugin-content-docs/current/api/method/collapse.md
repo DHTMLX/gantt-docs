@@ -1,16 +1,16 @@
----
-sidebar_label: collapse
+--- 
+sidebar_label: свернуть
 title: collapse method
-description: "переключает отображение gantt из полноэкранного режима обратно в обычный режим"
+description: "сворачивает диаграмму Ганта из полноэкранного режима в обычный режим"
 ---
 
 # collapse
 
 ### Description
 
-@short: Переключает отображение gantt из полноэкранного режима обратно в обычный режим
+@short: Свертывает диаграмму Ганта из полноэкранного режима в обычный режим
 
-@signature: collapse: () =\> void
+### @signature: collapse: () =\> void
 
 ### Example
 
@@ -19,12 +19,12 @@ gantt.collapse();
 ~~~
 
 ### Related samples
-- [Full Screen](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
+- [Полный экран](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
 
 ### Details
 
 :::note
- Этот метод принадлежит расширению **fullscreen**, поэтому убедитесь, что плагин [fullscreen](guides/extensions-list.md#fullscreen) включён с помощью метода [gantt.plugins](api/method/plugins.md). Подробнее об этом можно узнать в статье [Полноэкранный режим](guides/fullscreen-mode.md). 
+Этот метод определяется в расширении **fullscreen**, поэтому вам нужно активировать плагин [fullscreen](guides/extensions-list.md#fullscreen) с помощью метода [gantt.plugins](api/method/plugins.md). Подробнее читайте в статье [Режим полного экрана](guides/fullscreen-mode.md).
 :::
 
 ### Related API
@@ -35,5 +35,4 @@ gantt.collapse();
 - [onCollapse](api/event/oncollapse.md)
 
 ### Related Guides
-- [Полноэкранный режим](guides/fullscreen-mode.md)
-
+- [Режим полного экрана](guides/fullscreen-mode.md)

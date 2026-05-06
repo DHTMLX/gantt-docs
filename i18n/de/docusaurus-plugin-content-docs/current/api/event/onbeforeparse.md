@@ -1,14 +1,14 @@
 ---
 sidebar_label: onBeforeParse
-title: onBeforeParse event
-description: "Wird ausgelöst, direkt bevor die Datenparsing beginnt"
+title: onBeforeParse Event
+description: "wird ausgelöst, bevor das Parsen der Daten beginnt"
 ---
 
 # onBeforeParse
 
 ### Description
 
-@short: Wird ausgelöst, direkt bevor die Datenparsing beginnt
+@short: Wird ausgelöst, bevor das Parsen der Daten beginnt
 
 @signature: onBeforeParse: () =\> void;
 
@@ -17,7 +17,7 @@ description: "Wird ausgelöst, direkt bevor die Datenparsing beginnt"
 ~~~jsx
 gantt.init("gantt_here");
 gantt.attachEvent("onBeforeParse", function(){ 
-    // Hier kann benutzerdefinierte Logik eingefügt werden
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 
 gantt.parse(demo_tasks);
@@ -32,4 +32,3 @@ gantt.parse(demo_tasks);
 - [onDataRender](api/event/ondatarender.md)
 - [onGanttRender](api/event/onganttrender.md)
 - [onLoadEnd](api/event/onloadend.md)
-

@@ -1,40 +1,40 @@
 ---
 sidebar_label: onBeforeLinkAdd
 title: onBeforeLinkAdd event
-description: "вызывается непосредственно перед добавлением новой связи в Gantt диаграмму"
+description: "Срабатывает перед добавлением новой связи в диаграмму Гanttта"
 ---
 
 # onBeforeLinkAdd
 
 ### Description
 
-@short: Вызывается непосредственно перед добавлением новой связи в Gantt диаграмму
+@short: Срабатывает перед добавлением новой связи в диаграмму Гanttта
 
 @signature: onBeforeLinkAdd: (id: string | number, link: Link) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - идентификатор связи
-- `link` - (required) *Link* - объект связи
+- `id` - (обязателен) *string | number* - идентификатор связи
+- `link` - (обязателен) *Link* - объект связи
 
 ### Returns
-- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или оно будет отменено (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeLinkAdd", function(id,link){
-    //здесь можно добавить кастомную логику
+    // любая ваша логика здесь
     return true;
 });
 ~~~
 
 ### Details
 
-Это событие можно заблокировать. Возврат *false* предотвратит добавление связи.
+Событие можно заблокировать. Верните *false*, чтобы отменить добавление связи.
 
 ~~~js
-//предотвращает наложение исходной задачи на целевую
+//исключает preferably перетягивание целевой задачи источником
 //при создании связей типа "finish_to_start"
 gantt.attachEvent("onBeforeLinkAdd", function(id, link){
     if (link.type == 0){
@@ -50,4 +50,3 @@ gantt.attachEvent("onBeforeLinkAdd", function(id, link){
 
 ### Related API
 - [addLink](api/method/addlink.md)
-

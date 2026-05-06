@@ -1,14 +1,14 @@
 ---
 sidebar_label: preserve_scroll
-title: preserve_scroll config
-description: "сохраняет текущие вертикальные и горизонтальные позиции скролла при перерисовке gantt chart"
+title: preserve_scroll конфигурация
+description: "Сохраняет текущее положение вертикальной и горизонтальной прокрутки при повторной отрисовке диаграммы Ганта"
 ---
 
 # preserve_scroll
 
 ### Description
 
-@short: Сохраняет текущие вертикальные и горизонтальные позиции скролла при перерисовке gantt chart
+@short: Сохраняет текущее положение вертикальной и горизонтальной прокрутки при повторной отрисовке диаграммы Ганта
 
 @signature: preserve_scroll: boolean
 
@@ -20,4 +20,4 @@ gantt.config.preserve_scroll = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true

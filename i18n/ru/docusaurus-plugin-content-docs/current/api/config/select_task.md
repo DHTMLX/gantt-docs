@@ -1,6 +1,6 @@
 ---
 sidebar_label: select_task
-title: select_task config
+title: Конфигурация select_task
 description: "позволяет выбирать задачи на диаграмме Ганта"
 ---
 
@@ -19,4 +19,4 @@ gantt.config.select_task  = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true

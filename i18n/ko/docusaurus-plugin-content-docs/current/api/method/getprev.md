@@ -1,23 +1,23 @@
 ---
 sidebar_label: getPrev
-title: getPrev method
-description: "이전 항목의 id를 가져옵니다. 이때 항목의 중첩 레벨에 상관없이 동일한 레벨이든 다른 레벨이든 관계없습니다."
+title: getPrev 메서드
+description: "이전 항목의 ID를 반환합니다(중첩 수준에 관계없이 동일하든 다르든)"
 ---
 
 # getPrev
 
 ### Description
 
-@short: 이전 항목의 id를 가져옵니다. 이때 항목의 중첩 레벨에 상관없이 동일한 레벨이든 다른 레벨이든 관계없습니다.
+@short: 이전 항목의 ID를 반환합니다(중첩 수준에 관계없이 동일하든 다르든)
 
 @signature: getPrev: (id: string | number) =\> string | number
 
 ### Parameters
 
-- `id` - (required) *string | number* -    작업(task) id
+- `id` - (필수) *string | number* -    이전 작업의 ID
 
 ### Returns
-- ` id` - (string, number) - 지정한 작업 이전에 위치한 작업의 id
+- ` id` - (string, number) - 이전 작업의 ID
 
 ### Example
 
@@ -51,4 +51,3 @@ gantt.getPrev("t_2"); -> "t_1"  /*!*/
 
 ### Related Guides
 - [Task Parent/Child](guides/task-tree-operations.md)
-

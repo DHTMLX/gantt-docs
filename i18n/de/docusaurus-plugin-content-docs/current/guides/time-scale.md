@@ -1,16 +1,16 @@
 ---
-title: "Skalierung konfigurieren"
-sidebar_label: "Skalierung konfigurieren"
+title: "Skalen konfigurieren"
+sidebar_label: "Skalen konfigurieren"
 ---
 
-# Skalierung konfigurieren
+# Skalen konfigurieren
 
 ![gantt_right](/img/gantt_right.png)
 
-- [Setting up Scale](guides/configuring-time-scale.md) 
-- [Zooming](guides/zooming.md)
-- [Highlighting  Time Slots](guides/highlighting-time-slots.md)
-- [Dynamic Change of Scale Settings](guides/dynamic-scale.md)
-- [Hiding Time Units in the Scale](guides/custom-scale.md)
-- [Adding Vertical Markers](guides/markers.md)
-- [RTL (Right-to-left) Mode](guides/rtl-mode.md)
+- [Skala einrichten](guides/configuring-time-scale.md)
+- [Zoomen](guides/zooming.md)
+- [Zeitslots hervorheben](guides/highlighting-time-slots.md)
+- [Dynamische Änderung der Skaleneinstellungen](guides/dynamic-scale.md)
+- [Ausblenden von Zeiteinheiten in der Skala](guides/custom-scale.md)
+- [Vertikale Marker hinzufügen](guides/markers.md)
+- [RTL-Modus (Rechts-nach-Links)](guides/rtl-mode.md)

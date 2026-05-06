@@ -1,14 +1,14 @@
 ---
 sidebar_label: undo_actions
 title: undo_actions config
-description: "definiert die Aktionen, die die Undo-Funktion rückgängig machen wird"
+description: "legt die Aktionen fest, die der Undo-Vorgang rückgängig macht"
 ---
 
 # undo_actions
 
 ### Description
 
-@short: Definiert die Aktionen, die die Undo-Funktion rückgängig machen wird
+@short: Legt die Aktionen fest, die der Undo-Vorgang rückgängig macht
 
 @signature: undo_actions: \{ update?: string; remove?: string; add?: string; move?: string; \}
 
@@ -29,13 +29,13 @@ gantt.config.undo_actions = {
 ### Details
 
 :::note
-note Diese Option ist Teil der **undo**-Erweiterung, daher stellen Sie sicher, dass das [undo](guides/extensions-list.md#undo) Plugin aktiviert ist. Weitere Details finden Sie im Artikel ["Undo/Redo-Funktionalität"](guides/undo-redo.md). 
+Diese Option ist in der **undo**-Erweiterung definiert, daher müssen Sie das [undo](guides/extensions-list.md#undo) Plugin aktivieren. Lesen Sie die Details im Artikel [Undo/Redo Functionality](guides/undo-redo.md). 
 :::
 
-- **update** - (*string*) - legt den Namen für die "update"-Aktion fest
-- **remove** - (*string*) - legt den Namen für die "remove"-Aktion fest
-- **add** - (*string*) - legt den Namen für die "add"-Aktion fest
-- **move** - (*string*) - legt den Namen für die "move"-Aktion fest
+- **update** - (*string*) - der Name der "update"-Aktion
+- **remove** - (*string*) - der Name der "remove"-Aktion
+- **add** - (*string*) - der Name der "add"-Aktion
+- **move** - (*string*) - der Name der "move"-Aktion
 
 ### Related API
 - [undo](api/config/undo.md)
@@ -43,8 +43,7 @@ note Diese Option ist Teil der **undo**-Erweiterung, daher stellen Sie sicher, d
 - [undo_steps](api/config/undo_steps.md)
 
 ### Related Guides
-- ["Undo/Redo-Funktionalität"](guides/undo-redo.md)
+- [Undo/Redo Functionality](guides/undo-redo.md)
 
 ### Change log
 - hinzugefügt in Version 4.0
-

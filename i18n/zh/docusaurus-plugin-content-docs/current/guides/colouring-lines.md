@@ -1,30 +1,31 @@
 ---
-title: "链接的颜色和样式自定义"
-sidebar_label: "链接的颜色和样式自定义"
+title: "链接着色与样式"
+sidebar_label: "链接着色与样式"
 ---
 
-# 链接的颜色和样式自定义 
+# 链接着色与样式
 
-您可以自定义任务之间连接线（链接）的外观，从而实现所需的甘特图效果。为依赖关系链接设置不同的颜色，有助于用户更容易地区分它们。
+你可以改变连接任务的链接的样式，以获得甘特图所需的外观与体验。
+以不同颜色着色依赖链接，可以让用户在视觉上对它们进行区分。
 
 ![coloring_links](/img/coloring_links.png)
 
-设置链接自定义样式有两种方式:
+要为链接设置自定义样式，你可以使用以下两种方法之一：
 
-1. [重定义默认的链接模板](guides/colouring-lines.md#chongdingyilianjiemoban)
-2. [在链接对象属性中设置样式值](guides/colouring-lines.md#zailianjieduixiangshuxingzhongzhidingyanse)
+1. [重新定义默认链接模板](guides/colouring-lines.md#redefiningthelinkstemplate)
+2. [在链接对象的属性中设置样式值](guides/colouring-lines.md#specifyingcolorinthepropertiesofthelinkobject)
 
-首先，让我们了解一下链接 DOM 结构，以便明白各部分的定位、尺寸、功能及默认样式。
+首先，让我们先了解链接结构的要素，从而掌握它们的定位、尺寸、功能以及默认样式的逻辑。
 
-## 链接 DOM 元素结构
+## 链接 DOM 元素结构 {#structureofthelinkdomelement}
 
-链接的 DOM 元素结构如下:
+链接的 DOM 元素具有以下结构：
 
-- **.gantt_task_link**  - 静态定位并且尺寸为零
+- **.gantt_task_link**  - 静态定位，尺寸为零
     - **.gantt_line_wrapper/gantt_link_arrow/gantt_link_corner** - 绝对定位
-        - **.gantt_link_line_down(/up/right/left)** - 在 wrapper 内部静态定位
+        - **.gantt_link_line_down(/up/right/left)** - 包装元素内的静态定位
   
-DOM 结构示例如下:
+DOM 看起来如下：
 
 ~~~html
 <div class="gantt_task_link" link_id="3">
@@ -46,9 +47,9 @@ DOM 结构示例如下:
 </div>
 ~~~
 
-各部分说明如下:
+其中：
 
-- **gantt_task_link** - 此元素尺寸为零并采用静态定位，作为所有链接部分的公共父元素，方便统一应用样式:
+- **gantt_task_link** - 具有零尺寸且静态定位的元素。它被用作链接所有部分的公共父级，例如应用样式：
 
 ~~~css
 .gantt_task_link{
@@ -56,55 +57,55 @@ DOM 结构示例如下:
 } 
 ~~~
 
-您也可以通过 [link_class](api/template/link_class.md) 模板为该元素应用类。
+你可以将来自 [link_class](api/template/link_class.md) 模板的类应用于此元素。
 
-#### 关键路径链接
+#### 关键链接
 
-关键路径链接通过在 **gantt_task_link** 元素上添加 **gantt_critical_link** 类来设置样式。
+关键链接的样式通过向 **gantt_task_link** 元素添加 **gantt_critical_link** 类来定义。
 
-- **gantt_line_wrapper** 控制链接的位置和尺寸。该元素为透明、绝对定位，并且略大于实际链接线，有助于提升鼠标选中准确度。
+- **gantt_line_wrapper** 负责链接的位置和尺寸。它是透明、绝对定位，并略大于链接线，这使得用鼠标选取链接时更加方便。
 
-该元素的宽度由 [link_wrapper_width](api/config/link_wrapper_width.md) 属性控制:
+该元素的宽度由 [link_wrapper_width](api/config/link_wrapper_width.md) 配置属性定义。
 
 ~~~js
 gantt.config.link_wrapper_width = 30;
 ~~~
 
-- **gantt_link_arrow** 表示链接上的箭头。它是绝对定位的，根据方向可以有以下附加类:
-    - **gantt_link_arrow_right**
-    - **gantt_link_arrow_left**
-    - **gantt_link_arrow_up**
-    - **gantt_link_arrow_down**
+- **gantt_link_arrow** - 链接箭头。它是绝对定位的。根据箭头指向的方向，元素可以带有相应的附加类：
+    - **gantt_link_arrow_right**,
+    - **gantt_link_arrow_left**,
+    - **gantt_link_arrow_up**, 或
+    - **gantt_link_arrow_down**。
 
-目前仅使用 **gantt_link_arrow_right** 和 **gantt_link_arrow_down**。
+现在仅使用 **gantt_link_arrow_right** 与 **gantt_link_arrow_down**。
 
-箭头的尺寸由 [link_arrow_size](api/config/link_arrow_size.md) 属性定义:
+**gantt_link_arrow** 元素的大小由 [link_arrow_size](api/config/link_arrow_size.md) 配置属性定义。
 
 ~~~js
 gantt.config.link_arrow_size = 8;
 ~~~
 
-- **gantt_link_line_(dir)** 是链接线可见的部分。将 **dir** 替换为 **left**、**right**、**up** 或 **down**。
+- **gantt_link_line_(dir)** - 链接的可见元素。请使用 left/right/up/down 来替代元素名称中的 **dir** 部分。
 
-您可以通过 [link_line_width](api/config/link_line_width.md) 属性调整该线条宽度:
+该元素的宽度可以通过 [link_line_width](api/config/link_line_width.md) 配置属性进行修改：
 
 ~~~js
 gantt.config.link_line_width = 3;
 ~~~
 
-- **gantt_link_corner** 是链接线的圆角部分。圆角半径由 [link_radius](api/config/link_radius.md) 设置:
+- **gantt_link_corner** - 链接线的圆角。圆角半径由 [link_radius](api/config/link_radius.md) 定义：
 
 ~~~js
 gantt.config.link_radius = 2;
 ~~~
 
-将 **gantt.config.link_radius = 1** 可移除圆角。
+设置 **gantt.config.link_radius = 1** 将移除圆角。
 
-## 重定义链接模板 {#redefiningthelinkstemplate}
+## 重新定义链接的模板 {#redefiningthelinkstemplate}
 
-自定义依赖关系链接时，需使用 [link_class](api/template/link_class.md) 模板。例如，按任务优先级为链接着色，可以这样实现:
+要为依赖链接设定样式，请使用 [link_class](api/template/link_class.md) 模板。例如，要根据任务的优先级为链接着色，请使用如下代码：
 
-**根据依赖类型为链接着色**
+按依赖类型着色链接
 ~~~js
 gantt.templates.link_class = function(link){
     var types = gantt.config.links;
@@ -130,24 +131,24 @@ gantt.templates.link_class = function(link){
 
 
 :::note
-如需为依赖关系链接的其他部分设置样式，请参考 [의존성 링크 템플릿](guides/dependency-templates.md) 文章中的模板。
+要为依赖链接的其他元素进行样式化，请使用 [Templates of Dependency Links](guides/dependency-templates.md) 文章中列出的模板。
 :::
 
-同样的方法也适用于任务。详细内容请参见[此处](guides/colouring-tasks.md#chongdingyirenwumoban)。
+类似的方法也可以应用于任务。想了解更多，请在此处阅读 [guides/colouring-tasks.md#redefiningthetaskstemplate](guides/colouring-tasks.md#redefiningthetaskstemplate)。
 
-## 在链接对象属性中指定颜色
+## 在链接对象的属性中指定颜色 {#specifyingcolorinthepropertiesofthelinkobject}
 
-您也可以通过在数据对象中添加属性，为依赖关系链接指定自定义颜色:
+要为一个依赖链接指定自定义颜色，可以向数据对象添加额外的属性：
 
-- **color** - 定义链接的颜色
+- **color** - 链接的颜色
 
 ![link_color_property](/img/link_color_property.png)
 
 :::note
-这是一个特殊属性。Gantt 会检测链接是否有该属性，并应用其值作为链接颜色。若未设置，则使用默认颜色。
+注意，这是一个特殊属性。默认情况下，Gantt 会检查链接是否具有该属性；如果有，则将相关值应用到链接。否则，将应用预定义的颜色。
 :::
 
-**在数据对象中设置链接颜色**
+在数据对象中设置链接颜色
 ~~~js
 var tasks = {
   data:[
@@ -169,15 +170,13 @@ gantt.parse(tasks);
 gantt.getLink(4).color = "green";
 ~~~
 
-
-**Related example:** [Link colors from the "color" property](https://snippet.dhtmlx.com/e5utei5g)
-
+[Related sample] [Link colors from the "color" property](https://snippet.dhtmlx.com/e5utei5g)
 
 :::note
-通过 **color** 属性自定义颜色时，会添加内联样式，从而覆盖其他样式。这意味着关键路径不会高亮显示，任何自定义的链接颜色样式也不会生效。
+通过 color 属性添加自定义颜色后，紧接着会添加行内样式，该样式在所有样式中拥有最高优先级。因此，关键路径将不会被高亮显示，任何你添加以更改链接颜色的自定义样式也不会被应用。
 :::
 
-如需让链接显示为关键路径，可以使用如下 CSS:
+为使链接看起来是关键路径，可以使用以下代码：
 
 ~~~css
 .gantt_critical_link {
@@ -185,11 +184,9 @@ gantt.getLink(4).color = "green";
 }
 ~~~
 
+[Related sample] [Coloring critical tasks and links](https://snippet.dhtmlx.com/xipdml7a)
 
-**Related example:** [关键任务和链接着色](https://snippet.dhtmlx.com/xipdml7a)
-
-
-如果链接对象设置了任何属性，则该链接会额外获得 **"gantt_link_inline_color"** 类。可利用该类覆盖其他样式:
+如果为链接对象的属性中任意一个属性赋值，则链接将获得额外的类 **"gantt_link_inline_color"**。你可以使用此类覆盖链接的其他样式：
 
 ~~~css
 .gantt_link_inline_color {
@@ -197,7 +194,7 @@ gantt.getLink(4).color = "green";
 }
 ~~~
 
-color 属性支持任何有效的 CSS 颜色格式，例如:
+这些属性可以具有任何有效的 CSS 颜色值，例如以下所有记法都是有效的：
 
 ~~~js
 link.color = "#FF0000";
@@ -205,5 +202,5 @@ link.color = "red";
 link.color = "rgb(255,0,0)";
 ~~~
 
-同样的方法也适用于任务。更多内容请参见[此处](guides/colouring-tasks.md#specifyingstyleinthepropertiesofataskobject)。
 
+类似的方法也可应用于任务。更多信息请在此处阅读 [guides/colouring-tasks.md#specifyingstyleinthepropertiesofataskobject](guides/colouring-tasks.md#specifyingstyleinthepropertiesofataskobject)。

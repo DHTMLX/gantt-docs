@@ -1,23 +1,23 @@
 ---
 sidebar_label: getGridColumn
-title: getGridColumn method
-description: "특정 열에 대한 구성 객체를 가져옵니다"
+title: getGridColumn 메서드
+description: "열의 구성 객체를 가져옵니다."
 ---
 
 # getGridColumn
 
 ### Description
 
-@short: 특정 열에 대한 구성 객체를 가져옵니다
+@short: 열의 구성 객체를 가져옵니다.
 
 @signature: getGridColumn: (name: string | number) =\> GridColumn
 
 ### Parameters
 
-- `name` - (required) *string | number* -    열의 식별자
+- `name` - (required) *string | number* -    열의 이름
 
 ### Returns
-- ` column` - (GridColumn) - 해당 열 객체
+- ` column` - (GridColumn) - 열의 객체
 
 ### Example
 
@@ -36,4 +36,3 @@ gantt.getGridColumn("text");//->{ name:"text", tree:true, width:150}
 
 ### Related Guides
 - [getGridColumns](api/method/getgridcolumns.md)
-

@@ -1,8 +1,8 @@
 ---
 sidebar_label: type_renderers
-title: type_renderers config
-description: "Definiert Funktionen neu, die für die Anzeige verschiedener Aufgabentypen verantwortlich sind"
----
+title: type_renderers Konfiguration
+description: "definiert Funktionen neu, die unterschiedliche Typen von Aufgaben anzeigen"
+--- 
 
 # type_renderers
 :::info
@@ -10,7 +10,7 @@ description: "Definiert Funktionen neu, die für die Anzeige verschiedener Aufga
 :::
 ### Description
 
-@short: Definiert Funktionen neu, die für die Anzeige verschiedener Aufgabentypen verantwortlich sind
+@short: Definiert Funktionen neu, die verschiedene Typen von Aufgaben anzeigen
 
 @signature: type_renderers: CustomTypeRenderers["type_renderers"]
 
@@ -37,39 +37,32 @@ gantt.config.type_renderers[gantt.config.types.project] = function(task,defaultR
 **Default value:** \{\}
 
 ### Related samples
-- [Classic Look](https://docs.dhtmlx.com/gantt/samples/04_customization/17_classic_gantt_look.html)
+- [Klassischer Look](https://docs.dhtmlx.com/gantt/samples/04_customization/17_classic_gantt_look.html)
 
 ### Details
 
-Dieses Feature ermöglicht es Ihnen, die Darstellung verschiedener Aufgabentypen anzupassen, indem Sie eigene Rendering-Funktionen definieren.
+Eine Funktion, die Aufgaben rendert, nimmt 2 Parameter:
 
-Eine Rendering-Funktion erhält zwei Argumente:
-
-- **typeRenderer (task, defaultRender): HTMLElement | boolean | void | undefined** - eine Funktion, die ein Task-Objekt entgegennimmt und ein DOM-Element zurückgibt, das die Standard-Aufgabenleiste ersetzt.
+- **type_renderers** - (*object*) - eine benutzerdefinierte Render-Funktion für den *task*-Typ
     - **_task_** - (*Task*) - das Task-Objekt
-    - **_defaultRender?_** - (*TaskLayerRender*) - optional, die Standard-Rendering-Funktion, die von dhtmlxGantt bereitgestellt wird
+    - **_defaultRender?_** - (*TaskLayerRender*) - optional, die Standard-Render-Funktion, die im dhtmlxGantt verwendet wird
 
-Die verfügbaren type_renderers umfassen:
+Hier sind die möglichen type_renderers Typen:
 
-- **type_renderers** - (*object*) - benutzerdefinierte Renderfunktionen für verschiedene Aufgabentypen
-    - **_task?_** - (*typeRenderer*) - optional, benutzerdefinierte Renderfunktion für Standardaufgaben
-    - **_project?_** - (*typeRenderer*) - optional, benutzerdefinierte Renderfunktion für Projektaufgaben
-    - **_milestone?_** - (*typeRenderer*) - optional, benutzerdefinierte Renderfunktion für Meilensteine
-    - **_[typeName: string]_** - (*typeRenderer | undefined*) - optional, benutzerdefinierte Renderfunktion für beliebige benutzerdefinierte Aufgabentypen
-
-
-Diese Option erlaubt es Ihnen, ein maßgeschneidertes Aussehen für spezifische Aufgabentypen zu erstellen. Zum Beispiel können Sie ein traditionelleres Erscheinungsbild für Projekt- oder Zusammenfassungsaufgaben gestalten.
+- **type_renderers** - (*object*) - eine benutzerdefinierte Render-Funktion für den *task*-Typ
+- **_task?_** - (*typeRenderer*) - optional, eine benutzerdefinierte Render-Funktion für den *task*-Typ
+- **_project?_** - (*typeRenderer*) - optional, eine benutzerdefinierte Render-Funktion für den *project*-Typ
+- **_milestone?_** - (*typeRenderer*) - optional, eine benutzerdefinierte Render-Funktion für den *milestone*-Typ
+- **_[typeName: string]_** - (*typeRenderer | undefined*) - optional, eine benutzerdefinierte Render-Funktion für den benutzerdefinierten Task-Typ
 
 
-![custom_look](/img/custom_look.png)
+You can use this option to define a custom display for certain types of tasks.
+Beispielsweise ermöglicht diese Einstellung eine konservativere Ansicht für den Typ Projekt oder Summary-Aufgaben.
 
 
 :::note
-sample
-[Classic Look](https://docs.dhtmlx.com/gantt/samples/04_customization/17_classic_gantt_look.html)
- 
+Beispiel [Klassischer Look](https://docs.dhtmlx.com/gantt/samples/04_customization/17_classic_gantt_look.html)
 :::
 
 ### Related API
 - [getTaskPosition](api/method/gettaskposition.md)
-

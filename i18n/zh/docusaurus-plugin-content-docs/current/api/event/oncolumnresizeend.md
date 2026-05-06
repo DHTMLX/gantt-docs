@@ -1,7 +1,7 @@
 ---
 sidebar_label: onColumnResizeEnd
 title: onColumnResizeEnd event
-description: "当用户拖动列边界调整宽度完成时触发"
+description: "在用户完成拖动列边框以调整列宽后触发"
 ---
 
 # onColumnResizeEnd
@@ -10,18 +10,18 @@ description: "当用户拖动列边界调整宽度完成时触发"
 :::
 ### Description
 
-@short: 当用户拖动列边界调整宽度完成时触发
+@short: 在用户完成拖动列边框以调整列宽后触发
 
 @signature: onColumnResizeEnd: (index: number, column: GridColumn, new_width: number) =\> boolean;
 
 ### Parameters
 
 - `index` - (required) *number* - 列的索引
-- `column` - (required) *GridColumn* - 列对象本身
-- `new_width` - (required) *number* - 列的新宽度
+- `column` - (required) *GridColumn* - 列对象
+- `new_width` - (required) *number* - 新列宽
 
 ### Returns
-- ` result` - (boolean) - 决定默认事件操作是否继续执行（<b>true</b>）或被阻止（<b>false</b>）
+- ` result` - (boolean) - 定义事件的默认动作是否会被触发（<b>true</b>）或取消（<b>false</b>）
 
 ### Example
 
@@ -37,11 +37,11 @@ gantt.attachEvent("onColumnResizeEnd", function(index, column, new_width){
 ~~~
 
 ### Related samples
-- [Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
+- [Grid 列调整大小事件](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
 
 ### Details
 
-此事件可以被阻止。返回 *false* 会阻止列宽度的调整。
+该事件是可阻塞的。返回 *false* 将取消列宽调整。
 
 ### Related API
 - [onColumnResize](api/event/oncolumnresize.md)
@@ -50,4 +50,3 @@ gantt.attachEvent("onColumnResizeEnd", function(index, column, new_width){
 
 ### Related Guides
 - [指定列](guides/specifying-columns.md#resizing)
-

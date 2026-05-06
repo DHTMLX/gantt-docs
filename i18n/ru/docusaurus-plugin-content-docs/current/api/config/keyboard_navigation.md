@@ -1,43 +1,42 @@
 ---
 sidebar_label: keyboard_navigation
-title: keyboard_navigation config
-description: "включает keyboard_navigation в gantt"
+title: keyboard_navigation конфигурация
+description: "включает навигацию клавиатурой в Gantt"
 ---
 
 # keyboard_navigation
 
-### Description
+### Описание
 
-@short: Включает keyboard_navigation в gantt
+@short: Включает навигацию клавиатурой в Gantt
 
 @signature: keyboard_navigation: boolean
 
-### Example
+### Пример
 
 ~~~jsx
 gantt.config.keyboard_navigation = true;
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
-### Related samples
-- [Keyboard Navigation](https://docs.dhtmlx.com/gantt/samples/02_extensions/16_keyboard_navigation.html)
+### Связанные примеры
+- [Навигация клавиатурой](https://docs.dhtmlx.com/gantt/samples/02_extensions/16_keyboard_navigation.html)
 
-### Details
+### Подробности
 
 :::note
- Эта настройка является частью расширения **keyboard_navigation**, поэтому убедитесь, что плагин [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) включен. Подробнее можно узнать в статье [Навигация с клавиатуры](guides/keyboard-navigation.md). 
+Эта настройка определяется в расширении **keyboard_navigation**, поэтому необходимо активировать плагин [keyboard_navigation](guides/extensions-list.md#keyboardnavigation). Подробности смотрите в статье [Keyboard Navigation](guides/keyboard-navigation.md).
 :::
 
-added in version 4.1
+Добавлено в версии 4.1
 
-### Related API
+### Связанные API
 - [keyboard_navigation_cells](api/config/keyboard_navigation_cells.md)
 - [focus](api/method/focus.md)
 - [addShortcut](api/method/addshortcut.md)
 - [getShortcutHandler](api/method/getshortcuthandler.md)
 - [removeShortcut](api/method/removeshortcut.md)
 
-### Related Guides
-- [Навигация с клавиатуры](guides/keyboard-navigation.md)
-
+### Связанные Руководства
+- [Навигация клавиатурой](guides/keyboard-navigation.md)

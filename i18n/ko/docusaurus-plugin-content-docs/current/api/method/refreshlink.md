@@ -1,20 +1,20 @@
 ---
 sidebar_label: refreshLink
-title: refreshLink method
-description: "지정된 링크를 업데이트합니다"
+title: refreshLink 메서드
+description: "지정된 링크를 새로고침합니다"
 ---
 
 # refreshLink
 
 ### Description
 
-@short: 지정된 링크를 업데이트합니다
+@short: 지정된 링크를 새로고침합니다
 
 @signature: refreshLink: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -    링크 ID
+- `id` - (required) *string | number* - 링크 ID
 
 ### Example
 
@@ -41,4 +41,3 @@ gantt.refreshLink(1);       /*!*/
 - [refreshData](api/method/refreshdata.md)
 - [updateTask](api/method/updatetask.md)
 - [updateLink](api/method/updatelink.md)
-

@@ -1,16 +1,19 @@
 ---
 sidebar_label: groupBy
-title: groupBy method
-description: "基于特定任务属性组织任务"
+title: groupBy 方法
+description: "按指定任务的属性对任务进行分组"
 ---
 
 # groupBy
+
 :::info
  此功能仅在 PRO 版本中可用。 
 :::
+
+
 ### Description
 
-@short: 基于特定任务属性组织任务
+@short: 依据指定任务的属性对任务进行分组
 
 @signature: groupBy: (config: GroupConfig | boolean) =\> void
 
@@ -67,8 +70,9 @@ gantt.groupBy({
 gantt.groupBy(false);
 ~~~
 
+
 ### Related samples
-- [Tasks grouping](https://docs.dhtmlx.com/gantt/samples/02_extensions/08_tasks_grouping.html)
+- [任务分组](https://docs.dhtmlx.com/gantt/samples/02_extensions/08_tasks_grouping.html)
 
 ### Details
 
@@ -88,10 +92,12 @@ gantt.groupBy(false);
 
 请注意:
 
-- 每个分组对象必须至少包含两个属性:一个 id 和一个文本标签，分别由 'group_id' 和 'group_text' 定义。默认情况下，这两个属性分别是 *key* 和 *label*。你可以使用除 "id" 以外的其他名称，只要它们存在于分组数组中即可。  
+- 每个分组对象必须至少包含两个属性:一个 id 和一个文本标签，分别由 'group_id' 和 'group_text' 定义。默认情况下，这两个属性分别是 *key* 和 *label*。你可以使用除 "id" 以外的其他名称，只要它们存在于分组数组中即可。 
+
 :::note
  不能使用 "id" 属性，因为 Gantt 会创建虚拟分组任务，并向它们插入 'group_id' 和 'group_text' 属性。这意味着默认情况下，分组任务将拥有 'key' 和 'value' 属性。由于每个任务已经有一个 'id' 属性，改变这些默认 id 可能会破坏树结构。 
 :::
+
 - 原始的 'project' 任务不会在分组模式下显示，但仍可通过 API 访问。
 - 分组项作为 'project' 类型任务添加，并设置了 'readonly' 标志。它们可以通过 '$virtual' 属性识别，并可像普通任务一样处理:
 
@@ -102,13 +108,14 @@ gantt.templates.task_class=function(start, end, task){
 };
 ~~~
 
-- 默认分组包含未分配到其他分组的任务。它排除具有以 <i>string|number</i> 形式指定的 **relation_property** 的任务。<br>
+- 默认分组包含未分配到其他分组的任务。它排除具有以 <i>string|number</i> 形式指定的 **relation_property** 的任务。
+
  :::note
 sample [Save tree structure when grouping tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_tasks_grouping_save_tree_structure.html) 
 :::
 
 ### Related Guides
-- [任务分组](guides/grouping.md)
+- [Grouping Tasks](guides/grouping.md)
 
 ### Change log
 - **save_tree_structure** 选项在 v8.0 中引入

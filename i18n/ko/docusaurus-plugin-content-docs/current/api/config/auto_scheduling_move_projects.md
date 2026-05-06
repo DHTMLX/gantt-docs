@@ -1,16 +1,22 @@
 ---
 sidebar_label: auto_scheduling_move_projects
-title: auto_scheduling_move_projects config
-description: "스케줄링 시 전체 프로젝트가 이동할지 여부를 정의합니다 (자세한 내용은 아래 참조)."
+title: auto_scheduling_move_projects 구성
+description: "전체 프로젝트가 이동될지 여부를 정의합니다(아래 세부 정보를 참조하십시오)"
 ---
 
 # auto_scheduling_move_projects
+
 :::info
 이 기능은 PRO 에디션에서만 사용할 수 있습니다. 
 :::
+
+:::warning
+The property has been deprecated in v9.1, use the `move_projects` property of [gantt.config.auto_scheduling](api/config/auto_scheduling.md#move_projects) instead.
+:::
+
 ### Description
 
-@short: 스케줄링 시 전체 프로젝트가 이동할지 여부를 정의합니다 (자세한 내용은 아래 참조).
+@short: 전체 프로젝트가 이동될지 여부를 정의합니다(아래 세부 정보를 참조하십시오)
 
 @signature: auto_scheduling_move_projects: boolean
 
@@ -24,28 +30,27 @@ gantt.init("gantt_here");
 
 **Default value:** true
 
+
 ### Related samples
 - [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
 
 :::note
- 이 설정은 **auto_scheduling** 확장의 일부이므로, [auto_scheduling](guides/extensions-list.md#autoscheduling) 플러그인이 활성화되어 있는지 확인하세요. 자세한 내용은 [자동 스케줄링](guides/auto-scheduling.md) 문서에서 확인할 수 있습니다. 
+이 설정은 **auto_scheduling** 확장에서 정의되므로 [auto_scheduling](guides/extensions-list.md#autoscheduling) 플러그인을 활성화해야 합니다. 자세한 내용은 [Auto Scheduling](guides/auto-scheduling.md) 문서를 참조하십시오. 
 :::
 
-
-버전 4.1에 추가됨
-
-기본값으로 (이 속성이 *true*로 설정된 경우) 전체 프로젝트가 자동 스케줄링 중에 이동합니다. 이는 모든 작업이 서로 및 프로젝트 시작 시점과 동일한 순서를 유지함을 의미합니다.
+By default (when the property is set to *true*), the whole project is moved during auto scheduling. It means that all tasks in the project remain on their places relative to each other and the beginning of the project.
 
 ![moving_project_true](/img/moving_project_true.png)
 
-*auto_scheduling_move_projects*가 *false*로 설정되면, 자동 스케줄링은 프로젝트 내 개별 작업들을 조정합니다. 결과적으로 일부 작업은 이동하고, 일부 작업은 그대로 유지됩니다.
+If the *auto_scheduling_move_projects* is set to *false*, auto scheduling will move separate tasks inside of the project. Thus, some tasks will be moved, others will remain on their places.
 
 ![moving_project_false](/img/moving_project_false.png)
 
-<br>
-**참고**, 제약 조건 스케줄링(*gantt.config.auto_scheduling_compatibility = false*)을 사용할 때는 *auto_scheduling_move_projects* 설정이 엄격 모드가 꺼져 있을 때만 적용됩니다:
+:::note
+if you use constraint scheduling (*gantt.config.auto_scheduling_compatibility = false*), the *auto_scheduling_move_projects* config will be active only when the strict mode is disabled:
+:::
 
 ~~~js
 gantt.config.auto_scheduling_compatibility = false;
@@ -69,5 +74,8 @@ gantt.config.auto_scheduling_strict = false;
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- [자동 스케줄링](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
+### Change log
+- 이 속성은 v9.1에서 더 이상 사용되지 않습니다
+- 버전 4.1에 추가되었습니다

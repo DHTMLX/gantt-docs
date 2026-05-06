@@ -1,26 +1,26 @@
 ---
 sidebar_label: onMultiSelect
-title: onMultiSelect event
-description: "Löst aus, sobald die Auswahl einer Aufgabe oder mehrerer Aufgaben abgeschlossen ist"
+title: onMultiSelect-Ereignis
+description: "wird ausgelöst, nachdem eine Aufgabe oder ein Bereich von Aufgaben ausgewählt wurde"
 ---
 
 # onMultiSelect
 
 ### Description
 
-@short: Löst aus, sobald die Auswahl einer Aufgabe oder mehrerer Aufgaben abgeschlossen ist
+@short: Wird ausgelöst, nachdem die Auswahl einer Aufgabe oder eines Aufgabenbereichs abgeschlossen wurde
 
 @signature: onMultiSelect: (e: Event) =\> void;
 
 ### Parameters
 
-- `e` - (required) *Event* - ein natives Event-Objekt
+- `e` - (erforderlich) *Event* - ein natives Event-Objekt
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onMultiSelect", function(e){
-    // some logic here
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
     return true;
 });
 ~~~
@@ -28,7 +28,7 @@ gantt.attachEvent("onMultiSelect", function(e){
 ### Details
 
 :::note
- Dieses Event ist Teil der **multiselect** Erweiterung, daher stellen Sie sicher, dass das [multiselect](guides/extensions-list.md#multitaskselection) Plugin aktiviert ist. Für weitere Details lesen Sie den Artikel ["Multi-Task-Auswahl"](guides/multiselection.md). 
+Dieses Ereignis ist in der **multiselect**-Erweiterung definiert, daher müssen Sie das [multiselect](guides/extensions-list.md#multitaskselection)-Plugin aktivieren. Lesen Sie die Details im Artikel [Multi-Task Selection](guides/multiselection.md).
 :::
 
 ### Related API
@@ -37,5 +37,4 @@ gantt.attachEvent("onMultiSelect", function(e){
 - [onTaskMultiSelect](api/event/ontaskmultiselect.md)
 
 ### Related Guides
-- ["Multi-Task-Auswahl"](guides/multiselection.md#apievents)
-
+- [Multi-Task Selection](guides/multiselection.md#apievents)

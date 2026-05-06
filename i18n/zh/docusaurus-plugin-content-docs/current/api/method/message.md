@@ -1,20 +1,20 @@
 ---
 sidebar_label: message
 title: message method
-description: "打开指定类型的 message 框"
+description: "调用指定类型的消息框"
 ---
 
 # message
 
 ### Description
 
-@short: 打开指定类型的 message 框
+@short: 调用指定类型的消息框
 
 @signature: message: MessagePopupObject
 
 ### Parameters
 
-- `config` - (required) *object | string | number* -            可以是 message 框的配置对象，也可以是要显示的文本内容
+- `config` - (required) *object | string | number* -            要么是包含消息框配置的对象，要么是要显示的文本
 
 ### Returns
 - ` id` - (string | number) - message 框的标识符
@@ -27,7 +27,7 @@ let box = gantt.message({
     text:"Are you sure you want to do it?"
 });
 
-// 或者
+// or
 box = gantt.message("This is the message");
 ~~~
 
@@ -35,31 +35,31 @@ box = gantt.message("This is the message");
 
 配置对象支持以下属性:
 
-- **id?** - (*number | string*) - 可选，分配给弹出 message 的 ID
-- **text** - (*number | string*) - 弹出 message 中显示的内容
-- **type?** - (*string*) - 可选，应用于弹出 message 的 CSS 类名
-- **expire?** - (*number*) - 可选，弹出 message 自动消失前的持续时间。值为 -1 表示保持可见直到手动关闭
+- **id?** - (*number | string*) - 可选，弹出消息的 ID
+- **text** - (*number | string*) - 弹出消息的内容
+- **type?** - (*string*) - 可选，弹出消息的 CSS 类名
+- **expire?** - (*number*) - 可选，弹出消息消失前的时间。-1 表示不会自行隐藏。
 
 
 **message** 属性也可以是一个函数，或用作弹出 message 的配置对象，包含以下属性:
 
-- **position** - (*string*) - 弹出 message 显示的位置。可选值包括:"top", "bottom", "left", "right"
+- **position** - (*string*) - 弹出消息的位置。可能的取值为： "top", "bottom", "left", "right"
 
 ~~~js
 gantt.message.position = "left";
 ~~~
-- **keyboard** - (*boolean*) - 决定 Gantt 是否阻止键盘事件。默认值为 *true*。
+- **keyboard** - (*boolean*) - 指定 Gantt 是否应阻止键盘事件。默认值为 true。
 
 ~~~js
 gantt.message.keyboard = false;
 ~~~
-- **hide (id): any** - 隐藏弹出 message 的方法，接受 **id** 作为参数:
-    - **_id_** - (*number | string*) - 要隐藏的弹出 message 的 ID
+- **hide (id): any** - 一个用于隐藏弹出消息的函数。以 **id** 作为参数：
+    - **_id_** - (*number | string*) - 弹出消息的 ID
 ~~~js
 gantt.message.hide("popupId");
 ~~~
 
-有关 message 框可用配置选项的更多信息，请参阅 [弹出消息与模态框](guides/message-boxes.md) 文章。
+有关消息框支持的配置选项的更多详细信息，请参阅文章 [弹出消息与模态框](guides/message-boxes.md)。
 
 ### Related API
 - [alert](api/method/alert.md)
@@ -70,5 +70,4 @@ gantt.message.hide("popupId");
 - [弹出消息与模态框](guides/message-boxes.md)
 
 ### Change log
-- 版本 4.0 新增
-
+- 在 4.0 版本中新增

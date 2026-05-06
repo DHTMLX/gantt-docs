@@ -1,21 +1,21 @@
 ---
 sidebar_label: removeShortcut
-title: removeShortcut method
-description: "移除键盘快捷键"
+title: removeShortcut 方法
+description: "移除一个快捷键"
 ---
 
 # removeShortcut
 
 ### Description
 
-@short: 移除键盘快捷键
+@short: 移除一个快捷键
 
 @signature: removeShortcut: (shortcut: string, scope: string) =\> void
 
 ### Parameters
 
-- `shortcut` - (required) *string* - 快捷键的键名或组合键名称（[快捷键语法](guides/keyboard-navigation.md)）
-- `scope` - (required) *string* - 快捷键绑定的元素范围（[范围列表](guides/keyboard-navigation.md)）
+- `shortcut` - (必填) *string* - 快捷键的按键名称，或快捷键组合的名称 [(shortcut syntax)](guides/keyboard-navigation.md#shortcutsyntax)
+- `scope` - (必填) *string* - 快捷键绑定到的元素 [(作用域列表)](guides/keyboard-navigation.md#scopes) 
 
 ### Example
 
@@ -32,17 +32,16 @@ gantt.removeShortcut("shift+w", "taskRow");
 ~~~
 
 ### Related samples
-- [Keyboard Navigation](https://docs.dhtmlx.com/gantt/samples/02_extensions/16_keyboard_navigation.html)
-- [Keyboard Navigation - navigate cells](https://docs.dhtmlx.com/gantt/samples/02_extensions/17_keyboard_navigation_cell.html)
+- [键盘导航](https://docs.dhtmlx.com/gantt/samples/02_extensions/16_keyboard_navigation.html)
+- [键盘导航 - 导航单元格](https://docs.dhtmlx.com/gantt/samples/02_extensions/17_keyboard_navigation_cell.html)
 
 ### Details
 
 :::note
- 此方法属于 **keyboard_navigation** 扩展模块，确保已启用 [keyboard_navigation](guides/extensions-list.md) 插件。更多细节请参阅 [键盘导航](guides/keyboard-navigation.md) 文章。 
+此方法在 **keyboard_navigation** 扩展中定义，因此需要启用 [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) 插件。请在 [键盘导航](guides/keyboard-navigation.md) 文章中读取详细信息。 
 :::
 
-
-版本 4.1 新增
+在版本 4.1 中新增
 
 ### Related API
 - [addShortcut](api/method/addshortcut.md)
@@ -53,4 +52,3 @@ gantt.removeShortcut("shift+w", "taskRow");
 
 ### Related Guides
 - [键盘导航](guides/keyboard-navigation.md)
-

@@ -1,7 +1,7 @@
 ---
 sidebar_label: quick_info_class
-title: quick_info_class template
-description: "definiert die CSS-Klasse, die auf das Pop-up-Bearbeitungsformular angewendet wird"
+title: quick_info_class Vorlage
+description: "legt die CSS-Klasse fest, die dem Pop-up-Bearbeitungsformular angewendet wird"
 ---
 
 # quick_info_class
@@ -14,12 +14,12 @@ description: "definiert die CSS-Klasse, die auf das Pop-up-Bearbeitungsformular 
 
 ### Parameters
 
-- `start` - (required) *Date* - das Startdatum der geplanten Aufgabe
-- `end` - (required) *Date* - das Enddatum, bis zu dem die Aufgabe abgeschlossen sein soll
-- `task` - (required) *Task* - das Aufgabenobjekt selbst
+- `start` - (erforderlich) *Date* - das Datum, an dem eine Aufgabe voraussichtlich beginnt
+- `end` - (erforderlich) *Date* - das Datum, an dem eine Aufgabe voraussichtlich abgeschlossen wird
+- `task` - (erforderlich) *Task* - das Task-Objekt
 
 ### Returns
-- ` text` - (string | void) - der CSS-Klassenname, der für das Quick Info Popup verwendet wird
+- ` text` - (string | void) - eine Klassenbezeichnung, die dem Quick Info-Popup zugewiesen wird
 
 ### Example
 
@@ -32,8 +32,8 @@ gantt.templates.quick_info_class = function(start, end, task){
 ### Details
 
 :::note
-note Diese Vorlage ist Teil der **Quick Info** Erweiterung, daher stellen Sie sicher, dass das [quick_info](guides/extensions-list.md#quickinfo) Plugin zuerst aktiviert ist. 
+Diese Vorlage ist in der **Quick Info**-Erweiterung definiert, daher müssen Sie das [quick_info](guides/extensions-list.md#quick-info)-Plugin aktivieren.
 :::
 
 ### Related Guides
-- ["Vorlagen der 'Quick Info'-Erweiterung (Touch-Unterstützung)"](guides/touch-templates.md)
+- [Vorlagen der 'Quick Info'-Erweiterung (Touch-Unterstützung)](guides/touch-templates.md)

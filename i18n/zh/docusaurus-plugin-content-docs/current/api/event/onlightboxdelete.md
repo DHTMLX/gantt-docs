@@ -1,23 +1,23 @@
 ---
 sidebar_label: onLightboxDelete
 title: onLightboxDelete event
-description: "当用户点击 lightbox 中的'删除'按钮时触发"
+description: "当用户在灯箱中点击“删除”按钮时触发"
 ---
 
 # onLightboxDelete
 
 ### Description
 
-@short: 当用户点击 lightbox 中的"删除"按钮时触发
+@short: 当用户在灯箱中点击“删除”按钮时触发
 
 @signature: onLightboxDelete: (id: string | number) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - 任务ID（当前在 lightbox 中打开的任务）
+- `id` - (required) *string | number* - 在灯箱中打开的任务的 ID
 
 ### Returns
-- ` result` - (boolean) - 决定默认事件动作是否继续执行（<b>true</b>）或被阻止（<b>false</b>）
+- ` result` - (boolean) - 定义事件的默认操作是否会被触发（<b>true</b>）或取消（<b>false</b>）
 
 ### Example
 
@@ -34,9 +34,8 @@ gantt.attachEvent("onLightboxDelete", function(id){
 
 ### Details
 
-此事件可以被阻止。返回 *false* 将停止"删除"操作并保持 lightbox 可见。
+该事件是可阻塞的。返回 *false* 以取消“删除”操作并保持灯箱打开。
 
 ### Related Guides
 - [onLightboxCancel](api/event/onlightboxcancel.md)
 - [onLightboxSave](api/event/onlightboxsave.md)
-

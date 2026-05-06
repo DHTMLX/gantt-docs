@@ -1,14 +1,14 @@
 ---
 sidebar_label: clearUndoStack
 title: clearUndoStack method
-description: "清除已存储的撤销命令栈"
+description: "清空存储的撤销命令栈"
 ---
 
 # clearUndoStack
 
 ### Description
 
-@short: 清除已存储的撤销命令栈
+@short: 清空存储的撤销命令栈
 
 @signature: clearUndoStack: () =\> void
 
@@ -19,12 +19,12 @@ gantt.clearUndoStack();
 ~~~
 
 ### Related samples
-- [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
+- [Gantt 中的撤销/重做变更](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
 ### Details
 
 :::note
- 此方法属于**undo** 扩展的一部分，请确保已启用 [undo](guides/extensions-list.md) 插件。更多详细信息请参见 [撤销/重做功能](guides/undo-redo.md) 文章。 
+此方法在 **undo** 扩展中定义，因此你需要启用 [undo](guides/extensions-list.md#undo) 插件。有关详细信息，请参阅 [撤销/重做功能](guides/undo-redo.md) 文章。
 :::
 
 ### Related API
@@ -36,5 +36,4 @@ gantt.clearUndoStack();
 - [撤销/重做功能](guides/undo-redo.md)
 
 ### Change log
-- 版本 5.2 中添加
-
+- 在版本 5.2 中新增

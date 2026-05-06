@@ -1,9 +1,9 @@
 ---
-title: "CSS-Klassen umbenannt in v.3.0"
-sidebar_label: "CSS-Klassen umbenannt in v.3.0"
+title: "CSS-Klassen in v.3.0 umbenannt"
+sidebar_label: "CSS-Klassen in v.3.0 umbenannt"
 ---
 
-# CSS-Klassen umbenannt in v.3.0
+# CSS-Klassen in v.3.0 umbenannt
 
 <table class="list" cellspacing="0" cellpadding="5" border="0">
   <thead>

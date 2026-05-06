@@ -5,9 +5,9 @@ sidebar_label: "Интеграция с JQuery"
 
 # Интеграция с JQuery
 
-При работе с библиотекой JQuery диаграмма Gantt может быть добавлена на страницу с помощью привычного синтаксиса.
+Если вы используете библиотеку JQuery, вы можете отобразить диаграмму Gantt на странице, используя обычный синтаксис.
 
-Вот как выглядит базовая инициализация диаграммы Gantt с использованием JQuery:
+Стандартную диаграмму Gantt с помощью JQuery можно инициализировать следующим образом:
 
 **Диаграмма Gantt, инициализированная с помощью JQuery**
 ~~~js
@@ -24,21 +24,18 @@ $("#gantt1").dhx_gantt().parse(tasksA);
 <div class="mygantt" id='gantt1' style='width:100%; height:30%;'></div>
 ~~~
 
+[интеграция с jQuery](https://docs.dhtmlx.com/gantt/samples/01_initialization/07_jquery.html)
 
-[jQuery integration](https://docs.dhtmlx.com/gantt/samples/01_initialization/07_jquery.html)
 
+где:
 
-Подробности:
-
-- **".mygantt"** - CSS-селектор, совместимый с jQuery, который определяет контейнер, в котором будет отображаться диаграмма Gantt
-- Метод **dhx_gantt()** создает экземпляр dhtmlxGantt. В качестве параметра принимает объект конфигурации:
+- **".mygantt"** - совместимый с jQuery CSS-селектор контейнера, в котором будет создана диаграмма Gantt
+- **dhx_gantt()** - метод инициализирует dhtmlxGantt. В качестве параметра метод принимает объект конфигурации:
   - **data** - (*object*) набор данных, который будет загружен в диаграмму Gantt
-  - **[scales](api/config/scales.md)** - (*array*) список настроек, определяющих временную шкалу
-
+  - **[scales](api/config/scales.md)** - (*array*) массив конфигурационных настроек временного масштаба
+  
 :::note
-Диаграмма Gantt, инициализированная через jQuery, использует те же параметры конфигурации и API, что и созданная напрямую на JavaScript.
+Диаграмма Gantt, инициализированная через вызов jQuery, использует ту же конфигурацию и API, что и стандартная диаграмма Gantt, инициализированная через JavaScript.
 :::
 
-
-[jQuery integration](https://docs.dhtmlx.com/gantt/samples/01_initialization/07_jquery.html)
-
+[интеграция с jQuery](https://docs.dhtmlx.com/gantt/samples/01_initialization/07_jquery.html)

@@ -62,15 +62,19 @@ If you later move the Gantt CSS import (or overrides for internal Gantt classes 
 
 ## 4. Add Demo Data
 
-Create `src/app/demo-data.ts`:
+Create `src/app/demo-data.ts`.
+
+The wrapper exports `SerializedTask` and `SerializedLink` - the recommended types for task/link data held outside gantt. Dates can be strings or `Date` objects.
 
 ~~~ts
-export const tasks = [
+import type { SerializedTask, SerializedLink } from '@dhtmlx/trial-angular-gantt';
+
+export const tasks: SerializedTask[] = [
   {
     id: 1,
     text: 'Office itinerancy',
     type: 'project',
-    start_date: '2026-02-02 00:00',
+    start_date: new Date(2026, 1, 2).toISOString(),
     duration: 10,
     progress: 0.4,
     open: true,
@@ -79,7 +83,7 @@ export const tasks = [
   {
     id: 2,
     text: 'Planning',
-    start_date: '2026-02-02 00:00',
+    start_date: new Date(2026, 1, 2).toISOString(),
     duration: 4,
     progress: 0.6,
     parent: 1,
@@ -87,14 +91,14 @@ export const tasks = [
   {
     id: 3,
     text: 'Implementation',
-    start_date: '2026-02-06 00:00',
+    start_date: new Date(2026, 1, 6).toISOString(),
     duration: 5,
     progress: 0.2,
     parent: 1,
   },
 ];
 
-export const links = [{ id: 1, source: 2, target: 3, type: '0' }];
+export const links: SerializedLink[] = [{ id: 1, source: 2, target: 3, type: '0' }];
 ~~~
 
 ## 5. Create A Gantt Component
@@ -130,7 +134,6 @@ export class GanttChartComponent {
   links = links;
 
   config = {
-    date_format: '%Y-%m-%d %H:%i',
     columns: [
       { name: 'text', tree: true, width: '*' },
       { name: 'start_date', label: 'Start', align: 'center' },

@@ -1,20 +1,20 @@
 ---
 sidebar_label: setSkin
-title: setSkin method
-description: "ändert das aktive Skin"
+title: setSkin-Methode
+description: "setzt den aktiven Skin fest"
 ---
 
 # setSkin
 
 ### Description
 
-@short: Ändert das aktive Skin
+@short: Legt das aktive Skin fest
 
 @signature: setSkin: (skin: string) =\> void
 
 ### Parameters
 
-- `skin` - (required) *string* - der Name des Skins. Verfügbare Optionen sind: "terrace", "dark", "material", "contrast-white", "contrast-black", "meadow", "skyblue", "broadway"
+- `skin` - (required) *string* - der Name des Skins. Die zulässigen Werte sind: "terrace", "dark", "material", "contrast-white", "contrast-black", "meadow", "skyblue", "broadway"
 
 ### Example
 
@@ -27,17 +27,16 @@ gantt.setSkin("dark");
 
 ### Details
 
-Das Aufrufen dieser Methode nach der Initialisierung des gantt bewirkt, dass die [render](api/method/render.md)-Methode ausgeführt wird.
+Wenn die Methode nach der Initialisierung von gantt aufgerufen wird, löst sie die render-Methode aus. 
 
-Wenn sie vor der Initialisierung verwendet wird, funktioniert sie genauso wie das direkte Setzen der `gantt.skin`-Eigenschaft:
+Wenn sie vor der Initialisierung aufgerufen wird, hat die Methode denselben Effekt wie die Zuweisung der Eigenschaft `gantt.skin`:
 
 ~~~js
 gantt.skin = "dark";
 ~~~
 
 ### Related Guides
-- ["Skins"](guides/skins.md)
+- [Skins](guides/skins.md)
 
 ### Change log
 - hinzugefügt in v9.0
-

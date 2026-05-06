@@ -1,7 +1,7 @@
 ---
 sidebar_label: type_renderers
-title: type_renderers config
-description: "重新定义负责显示不同类型任务的函数"
+title: type_renderers 配置
+description: "重新定义用于显示不同类型任务的函数"
 ---
 
 # type_renderers
@@ -10,34 +10,34 @@ description: "重新定义负责显示不同类型任务的函数"
 ::: 
 ### Description
 
-@short: 重新定义负责显示不同类型任务的函数
+@short: 重新定义用于显示不同类型任务的函数
 
 @signature: type_renderers: CustomTypeRenderers["type_renderers"]
 
 ### Example
 
 ~~~jsx
-gantt.config.type_renderers[gantt.config.types.project] = function(task,defaultRender){  
-    var main_el = document.createElement("div");  
-      var size = gantt.getTaskPosition(task);  
-      main_el.innerHTML = [  
-        "<div class='project-left'></div>",  
-        "<div class='project-right'></div>"  
-      ].join('');  
-      main_el.className = "custom-project";  
+gantt.config.type_renderers[gantt.config.types.project] = function(task,defaultRender){
+    var main_el = document.createElement("div");
+      var size = gantt.getTaskPosition(task);
+      main_el.innerHTML = [
+        "<div class='project-left'></div>",
+        "<div class='project-right'></div>"
+      ].join('');
+      main_el.className = "custom-project";
 
-      main_el.style.left = size.left + "px";  
-      main_el.style.top = size.top + 7 + "px";  
-      main_el.style.width = size.width + "px";  
+      main_el.style.left = size.left + "px";
+      main_el.style.top = size.top + 7 + "px";
+      main_el.style.width = size.width + "px";
 
-      return main_el;  
+      return main_el;
 };
 ~~~
 
-**Default value:** \{\}
+**默认值:** \{\}
 
 ### Related samples
-- [Classic Look](https://docs.dhtmlx.com/gantt/samples/04_customization/17_classic_gantt_look.html)
+- [经典外观](https://docs.dhtmlx.com/gantt/samples/04_customization/17_classic_gantt_look.html)
 
 ### Details
 
@@ -62,11 +62,8 @@ gantt.config.type_renderers[gantt.config.types.project] = function(task,defaultR
 ![custom_look](/img/custom_look.png)
 
 :::note
-sample 
-[Classic Look](https://docs.dhtmlx.com/gantt/samples/04_customization/17_classic_gantt_look.html) 
- 
+示例 [经典外观](https://docs.dhtmlx.com/gantt/samples/04_customization/17_classic_gantt_look.html)
 :::
 
 ### Related API
 - [getTaskPosition](api/method/gettaskposition.md)
-

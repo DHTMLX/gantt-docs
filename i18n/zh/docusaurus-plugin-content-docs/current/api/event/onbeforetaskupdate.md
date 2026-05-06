@@ -1,6 +1,6 @@
 ---
 sidebar_label: onBeforeTaskUpdate
-title: onBeforeTaskUpdate event
+title: onBeforeTaskUpdate 事件
 description: "在用户更新任务之前触发"
 ---
 
@@ -14,38 +14,36 @@ description: "在用户更新任务之前触发"
 
 ### Parameters
 
-- `id` - (required) *string | number* - 任务ID
-- `new_task` - (required) *Task* - 更新后的任务对象
+- `id` - (required) *string | number* - 任务的 ID
+- `new_task` - (required) *Task* - 任务的更新后对象
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeTaskUpdate", function(id,new_task){
-    // 可以在这里添加自定义逻辑
+    // 在这里插入您的自定义逻辑 
 });
 ~~~
 
 ### Details
 
-**onBeforeTaskUpdate** 事件在任务对象被更新后但所有更改尚未完全应用之前触发，因此不总是能访问到更新前的任务对象。
-
-如果需要获取更改应用前的任务对象，可以考虑使用专门针对任务修改的事件处理程序:
+在使用 **onBeforeTaskUpdate** 事件时，并不总是能够在任务完全更新之前获取任务对象。该事件在任务对象已更新但所有修改尚未应用之时触发。
+要在修改应用之前获取任务对象，需要使用与任务修改直接相关的事件处理程序：
 
 - [onLightboxSave](api/event/onlightboxsave.md)
 - [onBeforeTaskDrag](api/event/onbeforetaskdrag.md)
-- [内联编辑器扩展](guides/inline-editors-ext.md)
+- [Inline Editors Extension](guides/inline-editors-ext.md#events)
 - [onBeforeTaskAutoSchedule](api/event/onbeforetaskautoschedule.md)
 - [onRowDragStart](api/event/onrowdragstart.md)
 
-当通过 API 进行更改时，可以在修改代码执行前访问任务对象。下面的示例演示了多种更新任务的方法，例如更改任务日期:
+如果通过 API 进行修改，则在修改任务的代码执行之前，您可能会获得任务对象。请参阅下例，看看在以不同方式修改任务时（例如更改任务日期）会如何处理：
 
 :::note
-Sample: [Updating a task](https://snippet.dhtmlx.com/9xy8wr2a) 
+sample: [Updating a task ](https://snippet.dhtmlx.com/9xy8wr2a)
 :::
 
-通过比较这些事件，可以看到在任务修改之前触发的事件会提供旧的任务对象，而 **onBeforeTaskUpdate** 则提供更新后的任务对象。
+经过比较，您会发现，在修改任务之前触发的事件返回的是旧的任务对象，而 **onBeforeTaskUpdate** 事件返回的是任务的新对象。
 
 ### Related API
 - [updateTask](api/method/updatetask.md)
 - [onAfterTaskUpdate](api/event/onaftertaskupdate.md)
-

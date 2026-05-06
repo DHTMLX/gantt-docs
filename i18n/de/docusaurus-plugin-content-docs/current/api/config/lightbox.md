@@ -1,14 +1,14 @@
 ---
 sidebar_label: lightbox
-title: lightbox config
-description: "spezifiziert das lightbox-Objekt"
+title: Lightbox-Konfiguration
+description: "legt das Lightbox-Objekt fest"
 ---
 
 # lightbox
 
 ### Description
 
-@short: Spezifiziert das lightbox-Objekt
+@short: Legt das Lightbox-Objekt fest
 
 @signature: lightbox: LightboxSections
 
@@ -16,9 +16,9 @@ description: "spezifiziert das lightbox-Objekt"
 
 ~~~jsx
 gantt.config.lightbox.sections = [
-    {name:"description", height:38, map_to:"text", type:"textarea",focus:true},
-    {name:"priority", height:22, map_to:"priority",type:"select",options:opts},                                                                        
-    {name:"time", height:72, type:"duration", map_to:"auto"}
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+    { name: "priority", height: 22, map_to: "priority", type: "select", options: opts },
+    { name: "time", height: 72, type: "duration", map_to: "auto" }
 ];
 
 gantt.init("gantt_here");
@@ -26,9 +26,9 @@ gantt.init("gantt_here");
 
 ### Details
 
-Das lightbox-Objekt beinhaltet eine Haupteigenschaft:
+Das Lightbox-Objekt hat 1 Eigenschaft:
 
-- **sections** - (*array*) - definiert die Sektionen innerhalb der lightbox
+- **sections** - (*array*) - spezifiziert Lightbox-Sektionen
 
 ~~~js
 // Standard-Lightbox-Definition   
@@ -38,78 +38,89 @@ gantt.config.lightbox.sections=[
 ];
 ~~~
 
-Jedes Objekt im **sections** Array kann je nach [Sektionstyp](guides/default-edit-form.md#lightboxstructure) unterschiedliche Eigenschaften besitzen:
+Objekte im **sections**-Array können je nach [Typ eines Abschnitts](guides/default-edit-form.md#lightbox-structure) folgende Eigenschaften besitzen:
 
-#### Gemeinsam für alle Sektionen
+#### Common for all sections
 
-- **name** - (*string*) - der Bezeichner der Sektion (wird von dhtmlxGantt verwendet, um das Label aus der *locale.labels* Sammlung zu holen). Beispielsweise verwendet die **time** Sektion das Label unter **gantt.locale.labels.section_time**.
-- **map_to** - (*string*) - der Name der Daten-Eigenschaft, mit der die Sektion verknüpft ist.
-- **type** - (*string*) - der [Steuerungstyp](guides/default-edit-form.md#lightboxcontrols), der in der Sektion verwendet wird.
-- **height?** - (*number*) - optional, legt die Höhe der Sektion fest. Diese Eigenschaft gilt nicht für [checkbox](guides/checkbox.md) und [radio](guides/radio.md) Sektionen.
-- **focus?** - (*boolean*) - optional, wenn true, wird die Sektion fokussiert, wenn die lightbox geöffnet wird.
-- **formatter?** - (*DurationFormatter | LinkFormatter*) - optional, spezifiziert einen Formatter für die Sektion.
+- **name** - (*string*) - der Name des Abschnitts. dhtmlxGantt wird die Beschriftung des Abschnitts gemäß diesem Namen aus der *locale.labels*-Sammlung entnehmen. Zum Beispiel wird für den Abschnitt **time** das Label aus **gantt.locale.labels.section_time** entnommen. Wenn dem Abschnitt die **label**-Eigenschaft angegeben ist, wird das Label des Abschnitts stattdessen daraus genommen statt aus dem Locale. <br>Die **name**-Eigenschaft kann auch verwendet werden, um das Objekt der Steuerung über die Methode [](api/method/getlightboxsection.md) zu erhalten.
+- **map_to** - (*string*) - der Name einer Dateneigenschaft, die dem Abschnitt zugeordnet wird
+- **type** - (*string*) - der [Typ der Abschnitt-Steuerung](guides/default-edit-form.md#lightboxcontrols) (Editor).
+- **label** - (*string*) - die Bezeichnung des Abschnitts.
+- **height?** - (*number*) - optional, die Höhe des Abschnitts. Nicht verwendet bei den [Checkbox](guides/checkbox.md) und [Radio](guides/radio.md) Abschnitten.
+- **focus?** - (*boolean*) - optional, wenn auf *true* gesetzt, erhält der Abschnitt beim Öffnen des Lightbox-Fensters den Fokus
+- **formatter?** - (*DurationFormatter | LinkFormatter*) - optional, ein Formatter für den Abschnitt
 
-#### Zeit- und Dauer-Steuerelemente 
+#### Time and Duration controls
 
-- **readonly?** - (*boolean*) - optional, wenn auf true gesetzt, wird die Sektion schreibgeschützt.
-- **year_range?** - (*number | number[]*) - optional, definiert den Bereich für den Jahresauswahl-Selector. Es kann auf zwei Arten angegeben werden: 
-    - *year_range: [2005, 2025]* - wählt Jahre von 2005 bis 2025 aus.
-    - *year_range: 10* - wählt einen Bereich von 10 Jahren vor bis 10 Jahren nach dem aktuellen Jahr.
-- **single_date?** - (*boolean*) - optional, wenn true, wird nur der 'Startdatum'-Selector angezeigt. Bearbeitete Aufgaben haben dann nur ein Startdatum mit null Dauer. Dies ist hauptsächlich für [Meilensteine](guides/task-types.md#milestones) nützlich.
-- **time_format?** - (*string[]*) - optional, definiert die Reihenfolge der Datums- und Zeit-Selectoren.
-- **autofix_end?** - (*boolean*) - optional, steuert, ob das Enddatum automatisch angepasst wird, wenn das Startdatum nach dem Enddatum gesetzt wird. Standardmäßig ist dies aktiviert. Wird es deaktiviert, ist manuelle Validierung möglich, aber ohne Validierung können Aufgaben eine Dauer von null erhalten, falls das Startdatum später als das Enddatum liegt.
+- **readonly?** - (*boolean*) - optional, wenn der Wert **true** gesetzt wird, ist der Abschnitt schreibgeschützt
+- **year_range?** - (*number | number[]*) - optional, legt einen Bereich für die Jahresauswahl fest. Kann auf 2 Arten gesetzt werden:
+    - *year_range: [2005, 2025]* - Zeitraum von 2005 bis 2025
+    - *year_range: 10*  - Zeitraum [aktuelles Jahr - 10 Jahre; aktuelles Jahr + 10 Jahre]
+- **single_date?** - (*boolean*) - optional, wenn der Wert **true** gesetzt ist, wird im Abschnitt nur der Startdatum-Auswahl angezeigt. Bearbeitete Aufgaben werden nur durch das Startdatum festgelegt und haben eine Dauer von 0. Sinnvoll nur für [Milestones](guides/task-types.md#milestones).
+- **time_format?** - (*string[]*) - optional, bestimmt die Reihenfolge der Datum-Uhrzeit-Auswahlfelder
+- **autofix_end?** - (*boolean*) - optional, definiert, ob das Enddatum automatisch korrigiert wird, wenn das ausgewählte Startdatum größer als das Enddatum ist, standardmäßig *true*. Der deaktivierte Modus erlaubt die Validierung der Daten, aber wenn Sie den Modus aktivieren und die Daten nicht validieren, können Aufgaben mit 0-Dauer entstehen, wenn das *start_date* größer als das *end_date* ist.
 
-#### Select-Steuerelement
+#### Select control
 
-- **onchange? (*e*): any** - optional, setzt einen 'onChange' Event-Handler für das Steuerelement der Sektion.
-    - **_e_** - (*Event*) - das native Event-Objekt.
+- **onchange? (*e*): any** - optional, bestimmt die Funktion als Event-Handler für das Change-Ereignis der Steuerung des Abschnitts
+    - **_e_** - (*Event*) - ein natives Event-Objekt.
 
-#### Select-, Checkbox-, Radio- und Ressourcen-Steuerelemente
+#### Select, Checkbox, Radio and Resources controls
 
-- **options?** - (*object[]*) - optional, listet die Optionen für das Steuerelement auf. Jedes Objekt im Array repräsentiert eine Option mit folgenden Eigenschaften:
-    - **_key_** - (*number | string*) - der Bezeichner der Option, der verwendet wird, um die Daten-Eigenschaft der Aufgabe abzugleichen.
-    - **_label_** - (*string*) - die Anzeige-Beschriftung der Option.
-    - **_unit?_** - (*string | number*) - optional, Maßeinheit für Ressourcen (verwendet im Resources-Steuerelement).
-- **default_value?** - (*any*) - optional, der Standardwert, der verwendet wird, wenn der Eingabewert undefiniert ist. Für das Resources-Steuerelement gilt dies, wenn der Ressourcenwert undefiniert ist.
+- **options?** - (*object[]*) - optional, definiert die Auswahlmöglichkeiten der Steuerung. Jedes Objekt im Array definiert eine einzelne Option und besitzt folgende Eigenschaften:
+    - **_key_** - (*number | string*) - die Option-ID. Dieses Attribut wird mit der Dateneigenschaft der Aufgabe verglichen, um Auswahloptionen Aufgaben zuzuordnen
+    - **_label_** - (*string*) - die Bezeichnung der Option
+    - **_unit?_** - (*string | number*) - optional, die Einheit der Messung der Ressource (für die Ressourcen-Steuerung)
+- **default_value?** - (*any*) - optional, der Standardwert der Steuerung. Wird nur angewendet, wenn der Eingabewert undefiniert ist. Für die Ressourcensteuerung gilt dies, wenn der Wert der Ressource undefiniert ist.
 
-#### Parent-Steuerelement
+#### Resource Assignments control
 
-- **allow_root?** - (*boolean*) - optional, wenn true, wird eine zusätzliche Option hinzugefügt, um die oberste Ebene als übergeordnete Aufgabe auszuwählen. Dies funktioniert zusammen mit der Eigenschaft **root_label**.
-- **root_label?** - (*string*) - optional, definiert die Beschriftung für die Option der obersten Ebene. Wird zusammen mit **allow_root** verwendet.
-- **sort? (task1, task2): number** - optional, stellt eine Sortierfunktion für die Select-Optionen bereit.
-    - **_task1_** - (*Task*) - das erste Task-Objekt zum Vergleichen.
-    - **_task2_** - (*Task*) - das zweite Task-Objekt zum Vergleichen.
-- **filter? (id, task): boolean** - optional, liefert eine Filterfunktion für die Select-Optionen, die die Task-ID und das Task-Objekt erhält.
-    - **_id_** - (*string | number*) - die ID der Aufgabe.
-    - **_task_** - (*Task*) - das Task-Objekt.
-- **template? (start_date, end_date, task): string|number** - optional, definiert eine Vorlage für die Select-Optionen.
-    - **_start_date_** - (*Date | number*) - das Startdatum der Aufgabe.
-    - **_end_date_** - (*Date | number*) - das Enddatum der Aufgabe.
-    - **_task_** - (*Task*) - das Task-Objekt.
+- **config** - (*object*) die Grid-Konfiguration der Ressourcen im Lightbox, um erforderliche Spalten anzuzeigen
+- **templates** - (*object*) Vorlagen für das Ressourcen-Grid im Lightbox
+- **resource_default_assignment** - (*object*) das Konfigurationsobjekt der Standardzuweisung (die durch den Button "Add Assignment" hinzugefügt wird)
+    - **start_date** - (*Date | string | null*) das Datum, an dem die Zuordnung beginnen soll
+    - **end_date** - (*Date | string | null*) das Datum, an dem die Zuordnung abgeschlossen sein soll
+    - **value** - (*number | string*) die Menge der Ressource, die einer Aufgabe zugewiesen ist
+    - **duration** - (*number | null*) die Dauer der Zuweisung
+    - **mode** - (*string*) der Berechnungsmodus der Zeit der Ressourcenzuweisung: "default" | "fixedDates" | "fixedDuration"
 
-#### Typeselect-Steuerelement
+#### Parent control
 
-- **filter** - (*function*) - setzt eine Filterfunktion für die Aufgabentypen, die den Typnamen als Parameter erhält.
+- **allow_root?** - (*boolean*) - optional, wenn auf "true" gesetzt, enthält die Optionenliste eine zusätzliche Option, die es Benutzern ermöglicht, die Wurzelebene als Elternteil für Aufgaben festzulegen. Wird in Kombination mit der Eigenschaft **root_label** verwendet
+- **root_label?** - (*string*) - optional, legt eine Bezeichnung für den Elterneintrag auf Wurzelebene fest. Wird in Kombination mit der Eigenschaft **allow_root** verwendet
+- **sort? (task1, task2): number** - optional, legt eine Sortierfunktion für die Auswahloptionen fest
+    - **_task1_** - (*Task*) - ein Objekt der ersten Aufgabe, nach der sortiert wird
+    - **_task2_** - (*Task*) - ein Objekt der zweiten Aufgabe, nach der sortiert wird
+- **filter? (id, task): boolean** - optional, legt eine Filterfunktion für die Auswahloptionen fest. Nimmt die ID der Aufgabe und das Aufgaben-Objekt als Parameter
+    - **_id_** - (*string | number*) - die ID des Aufgabenobjekts
+    - **_task_** - (*Task*) - das Aufgaben-Objekt
+- **template? (start_date, end_date, task): string|number** - optional, legt eine Vorlage für die Auswahloptionen fest
+    - **_start_date_** - (*Date | number*) - das Startdatum des Aufgabenobjekts
+    - **_end_date_** - (*Date | number*) - das Enddatum des Aufgabenobjekts
+    - **_task_** - (*Task*) - das Aufgaben-Objekt
+
+#### Typeselect control
+
+- **filter** - (*function*) - legt eine Filterfunktion für die Typen von Aufgaben fest. Nimmt den Typ-Namen als Parameter
 
 ### Related API
 - [wide_form](api/config/wide_form.md)
 
 ### Related Guides
-- - ["Textarea-Steuerelement"](guides/textarea.md)
-- - ["Dauersteuerung"](guides/duration.md)
-- - ["Zeitsteuerung"](guides/time.md)
-- - ["Select Control"](guides/select.md)
-- - ["Typeselect-Steuerelement"](guides/typeselect.md)
-- - ["Parent Control"](guides/parent.md)
-- - ["Template Control"](guides/template.md)
-- - ["Checkbox-Steuerelement"](guides/checkbox.md)
-- - ["Radio Button-Steuerelement"](guides/radio.md)
-- - ["Konfiguration der Lightbox-Elemente"](guides/default-edit-form.md)
-- - ["Arbeiten mit Lightbox-Elementen"](guides/lightbox-manipulations.md)
-- - ["Erstellen eines benutzerdefinierten Elements"](guides/custom-editor.md)
-- - ["Custom Lightbox"](guides/custom-edit-form.md)
-- - ["Ändern der Schaltflächen im Lightbox"](guides/custom-button.md)
+- [Textbereich-Steuerung](guides/textarea.md)
+- [Dauer-Steuerung](guides/duration.md)
+- [Zeit-Steuerung](guides/time.md)
+- [Auswahl-Steuerung](guides/select.md)
+- [Typeselect Steuerung](guides/typeselect.md)
+- [Elternsteuerung](guides/parent.md)
+- [Vorlagensteuerung](guides/template.md)
+- [Checkbox-Steuerung](guides/checkbox.md)
+- [Options-Schaltfläche (Radio) Steuerung](guides/radio.md)
+- [Konfiguration von Lightbox-Elementen](guides/default-edit-form.md)
+- [Arbeiten mit Lightbox-Elementen](guides/lightbox-manipulations.md)
+- [Benutzerdefiniertes Element erstellen](guides/custom-editor.md)
+- [Benutzerdefinierte Lightbox](guides/custom-edit-form.md)
+- [Buttons in der Lightbox ändern](guides/custom-button.md)
 
 ### Change log
-- Wenn [gantt.config.csp](api/config/csp.md) auf *true* gesetzt ist oder wenn Gantt in der Salesforce-Umgebung läuft, wird die lightbox ab Version 7.1.13 innerhalb des Gantt-Containers gerendert.
-
+- Falls entweder [gantt.config.csp](api/config/csp.md) auf true gesetzt ist oder Gantt in der Salesforce-Umgebung läuft, wird die Lightbox innerhalb des Gantt-Containers gerendert (ab v7.1.13)

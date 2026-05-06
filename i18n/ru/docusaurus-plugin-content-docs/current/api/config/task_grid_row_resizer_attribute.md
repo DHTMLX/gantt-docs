@@ -1,37 +1,36 @@
 ---
 sidebar_label: task_grid_row_resizer_attribute
 title: task_grid_row_resizer_attribute config
-description: "определяет имя атрибута, используемого в DOM-элементе ресайзера для строки grid, указывающего индекс строки"
+description: "задает имя атрибута DOM-элемента резайзера строки сетки. Атрибут представляет индекс строки"
 ---
 
 # task_grid_row_resizer_attribute
 
-### Description
+### Описание
 
-@short: Определяет имя атрибута, используемого в DOM-элементе ресайзера для строки grid, указывающего индекс строки
+@short: Задает имя атрибута DOM-элемента резайзера строки сетки. Атрибут представляет индекс строки
 
 @signature: task_grid_row_resizer_attribute: string
 
-### Example
+### Пример
 
 ~~~jsx
 gantt.config.task_grid_row_resizer_attribute = "data-grid-row-index"
 ~~~
 
-**Default value:** "data-row-index"
+**Значение по умолчанию:** "data-row-index"
 
-### Related samples
+### Связанные примеры
 - [Resizable rows in grid](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_row_resize.html)
 
-### Details
+### Подробности
 
 :::note
- Эта настройка вступает в силу, когда включена опция [gantt.config.resize_rows](api/config/resize_rows.md). 
+Примечание. Конфигурация применяется, когда включен [gantt.config.resize_rows](api/config/resize_rows.md). 
 :::
 
-### Related API
+### Связанные API
 - [resize_rows](api/config/resize_rows.md)
 
-### Related Guides
-- [Изменение размера строк в гриде](guides/resizing-rows.md)
-
+### Связанные руководства
+- [Resizing Rows in Grid](guides/resizing-rows.md)

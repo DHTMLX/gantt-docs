@@ -1,14 +1,14 @@
 ---
 sidebar_label: min_task_grid_row_height
-title: min_task_grid_row_height config
-description: "定义任务行在调整大小时的最小高度"
+title: min_task_grid_row_height 配置
+description: "在调整大小时可以设置的最小任务行高"
 ---
 
 # min_task_grid_row_height
 
 ### Description
 
-@short: 定义任务行在调整大小时的最小高度
+@short: 设置在调整大小时可以为任务设置的最小行高
 
 @signature: min_task_grid_row_height: number
 
@@ -18,12 +18,11 @@ description: "定义任务行在调整大小时的最小高度"
 gantt.config.min_task_grid_row_height = 45;
 ~~~
 
-**Default value:** 30
+**默认值:** 30
 
 ### Details
 
-此设置仅在启用 [gantt.config.resize_rows](api/config/resize_rows.md) (*true*) 时生效。
+该属性仅在 [gantt.config.resize_rows](api/config/resize_rows.md) 设置为 *true* 时生效。
 
 ### Change log
-- added in v7.1
-
+- 在 v7.1 中新增

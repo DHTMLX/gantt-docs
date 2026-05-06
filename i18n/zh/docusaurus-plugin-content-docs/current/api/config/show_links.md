@@ -1,14 +1,14 @@
 ---
 sidebar_label: show_links
-title: show_links config
-description: "控制甘特图中链接的显示开关"
+title: show_links 配置
+description: "启用/禁用在甘特图中显示连线"
 ---
 
 # show_links
 
 ### Description
 
-@short: 控制甘特图中链接的显示开关
+@short: 启用/禁用在甘特图中显示连线
 
 @signature: show_links: boolean
 
@@ -17,8 +17,8 @@ description: "控制甘特图中链接的显示开关"
 ~~~jsx
 //隐藏甘特图中的所有链接
 gantt.config.show_links = false;
-
+ 
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**默认值：** true

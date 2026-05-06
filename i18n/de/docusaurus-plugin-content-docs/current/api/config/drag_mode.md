@@ -1,14 +1,14 @@
 ---
 sidebar_label: drag_mode
 title: drag_mode config
-description: "enthält die verschiedenen verfügbaren drag-and-drop Modi"
+description: "speichert die Typen der verfügbaren Drag-and-Drop-Modi"
 ---
 
 # drag_mode
 
 ### Description
 
-@short: Enthält die verschiedenen verfügbaren drag-and-drop Modi
+@short: Speichert die Typen der verfügbaren Drag-and-Drop-Modi
 
 @signature: drag_mode: \{ resize?: string; progress?: string; move?: string; ignore?: string; \}
 
@@ -33,20 +33,19 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 });
 ~~~
 
-**Default value:** \{
-  "resize":"resize",
-  "progress":"progress",
-  "move":"move",
-  "ignore":"ignore"
+**Standardwert:**\{
+	"resize":"resize",
+	"progress":"progress",
+	"move":"move",
+	"ignore":"ignore"
 \}
 
 ### Details
 
-Es ist wichtig, die bestehenden Namen der drag modes nicht zu ändern, da dies die zugehörige Funktionalität beeinträchtigen würde. Sie können jedoch neue Eigenschaften hinzufügen, wenn Sie benutzerdefiniertes Verhalten unterstützen möchten.
-Wenn Sie einen bestimmten drag mode deaktivieren möchten, ist es besser, die Einstellungen [drag_move](api/config/drag_move.md), [drag_resize](api/config/drag_resize.md) oder [drag_progress](api/config/drag_progress.md) zu verwenden.
+Sie sollten die bestehenden Namen der Drag-and-Drop-Modi nicht ändern. Andernfalls funktioniert diese Funktionalität möglicherweise nicht mehr. Sie können jedoch neue Eigenschaften hinzufügen, wenn Sie benutzerdefiniertes Verhalten implementieren möchten.
+Wenn Sie einen bestimmten Drag-Modus deaktivieren möchten, ist es besser, die [drag_move](api/config/drag_move.md), [drag_resize](api/config/drag_resize.md), [drag_progress](api/config/drag_progress.md) Konfigurationen zu verwenden.
 
-- **resize** - (*string*) - dieser Modus erlaubt es dem Benutzer, eine Task-Leiste zu ziehen, um deren Dauer anzupassen.
-- **progress** - (*string*) - dieser Modus ermöglicht es dem Benutzer, den Fortschrittsgriff an einer Task-Leiste zu ziehen.
-- **move** - (*string*) - dieser Modus erlaubt das Ziehen einer Task-Leiste, um sie neu zu positionieren.
-- **ignore** - (*string*) - ein spezieller Modus, der drag-and-drop Aktionen deaktiviert.
-
+- **resize** - (*string*) - der Modus, in dem der Benutzer den Balken einer Aufgabe zieht, um deren Dauer zu ändern.
+- **progress** - (*string*) - der Modus, in dem der Benutzer den Fortschrittsknopf eines Aufgabenbalkens zieht.
+- **move** - (*string*) - der Modus, in dem der Benutzer den Balken einer Aufgabe zieht, um ihn zu ersetzen.
+- **ignore** - (*string*) - der Service-Modus, der die Drag-and-Drop-Aktion einschränkt.

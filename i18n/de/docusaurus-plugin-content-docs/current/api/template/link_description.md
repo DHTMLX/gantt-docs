@@ -36,4 +36,4 @@ To <b>${to.text}</b> ${(to_start ? "Start" : "End")}<br/>`;
 ~~~
 
 ### Related Guides
-- ["Vorlagen für Abhängigkeitsverknüpfungen"](guides/dependency-templates.md)
+- [Vorlagen für Abhängigkeitsverknüpfungen](guides/dependency-templates.md)

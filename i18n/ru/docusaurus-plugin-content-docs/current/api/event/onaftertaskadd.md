@@ -1,20 +1,20 @@
 ---
 sidebar_label: onAfterTaskAdd
-title: onAfterTaskAdd event
-description: "срабатывает сразу после добавления задачи в Gantt chart"
+title: Событие onAfterTaskAdd
+description: "Срабатывает после того, как пользователь добавляет задачу на диаграмме Ганта"
 ---
 
 # onAfterTaskAdd
 
 ### Description
 
-@short: Срабатывает сразу после добавления задачи в Gantt chart
+@short: Срабатывает после того, как пользователь добавляет задачу на диаграмме Ганта
 
 @signature: onAfterTaskAdd: (id: string | number, task: Task) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - ID задачи
+- `id` - (required) *string | number* - идентификатор задачи
 - `task` - (required) *Task* - объект задачи
 
 ### Example
@@ -27,4 +27,3 @@ gantt.attachEvent("onAfterTaskAdd", function(id,task){
 
 ### Related API
 - [addTask](api/method/addtask.md)
-

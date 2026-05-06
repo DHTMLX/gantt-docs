@@ -1,23 +1,23 @@
 ---
 sidebar_label: columnIndexByDate
-title: columnIndexByDate method
-description: "주어진 날짜에 해당하는 컬럼의 인덱스를 제공합니다."
+title: columnIndexByDate 메서드
+description: "날짜로 열의 인덱스를 반환합니다"
 ---
 
 # columnIndexByDate
 
 ### Description
 
-@short: 주어진 날짜에 해당하는 컬럼의 인덱스를 제공합니다.
+@short: 날짜로 열의 인덱스를 반환합니다
 
 @signature: columnIndexByDate: (date: Date) =\> number
 
 ### Parameters
 
-- `date` - (required) *Date* - 날짜 객체
+- `date` - (필수) *Date* - 날짜 객체
 
 ### Returns
-- ` index` - (number) - 컬럼의 인덱스
+- ` index` - (number) - 열의 인덱스
 
 ### Example
 

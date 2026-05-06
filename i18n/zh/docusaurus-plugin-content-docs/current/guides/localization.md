@@ -1,92 +1,93 @@
 ---
-title: "本地化（Localization）"
-sidebar_label: "本地化（Localization）"
+title: "本地化"
+sidebar_label: "本地化"
 ---
 
-# 本地化（Localization）
+# 本地化
 
-本地化功能允许您将 Gantt 图界面显示为您偏好的语言，如英语、西班牙语、法语等。默认情况下，dhtmlxGantt 使用 [English locale](api/other/locale.md)。
+本地化允许你将甘特图的界面以你希望的语言呈现：英语、西班牙语、法语等。
+默认情况下，dhtmlxGantt 使用 [English locale](api/other/locale.md)。
 
 ![gantt_localized](/img/gantt_localized.png)
 
-## 启用语言环境
 
-若需将 Gantt 图切换为英语以外的其他语言，只需通过 [gantt.i18n](api/other/i18n.md) 对象的 **setLocale** 方法激活所需的语言环境。
+## 激活语言环境
+
+要用非英语语言实现甘特图界面，你需要通过 [gantt.i18n](api/other/i18n.md) 对象的 **setLocale** 方法来激活所需的语言环境。 
 
 ~~~js
 gantt.i18n.setLocale("fr");    
 ~~~
 
-您可以使用 dhtmlxgantt.js 文件中包含的任何[预定义语言环境](#predefinedlocales)，也可以创建自定义语言环境。
+你可以使用并更新随 dhtmlxgantt.js 文件捆绑的任意 [预定义语言环境](#predefinedlocales)，也可以定义自定义语言环境。
 
 :::note
-语言环境可以动态切换，但只有在 Gantt 图完全重绘（通过 **gantt.render()** 或 **gantt.init()**）后，更新才会生效。
+语言环境可以动态切换，但只有在对甘特图进行一次完整的重绘后才会生效，重绘可通过 **gantt.render()** 或 **gantt.init()** 调用完成。
 :::
 
 ~~~js
-    gantt.i18n.setLocale("fr");
-    gantt.init("gantt_here");
+gantt.i18n.setLocale("fr");
+gantt.init("gantt_here");
 ~~~
 
+**相关示例**: [Localization](https://docs.dhtmlx.com/gantt/samples/01_initialization/12_localization.html)
 
-[Localization](https://docs.dhtmlx.com/gantt/samples/01_initialization/12_localization.html)
 
-
-## 预定义语言环境
+## 预定义语言环境 {#predefinedlocales}
 
 <table>
 <tr><td>语言</td><td>语言代码</td><td>翻译状态</td></tr>
-<tr><td>阿拉伯语</td><td>ar</td><td>部分</td></tr>
+<tr><td>阿拉伯语</td><td>ar</td><td>部分完成</td></tr>
 <tr><td>白俄罗斯语</td><td>be</td><td>完整</td></tr>
 <tr><td>英语</td><td>en</td><td>完整</td></tr>
-<tr><td>加泰罗尼亚语</td><td>ca</td><td>部分</td></tr>
-<tr><td>中文</td><td>cn</td><td>部分</td></tr>
+<tr><td>加泰罗尼亚语</td><td>ca</td><td>部分完成</td></tr>
+<tr><td>中文</td><td>cn</td><td>部分完成</td></tr>
 <tr><td>克罗地亚语</td><td>hr</td><td>完整</td></tr>
-<tr><td>捷克语</td><td>cs</td><td>部分</td></tr>
-<tr><td>丹麦语</td><td>da</td><td>部分</td></tr>
-<tr><td>荷兰语</td><td>nl</td><td>部分</td></tr>
-<tr><td>芬兰语</td><td>fi</td><td>部分</td></tr>
+<tr><td>捷克语</td><td>cs</td><td>部分完成</td></tr>
+<tr><td>丹麦语</td><td>da</td><td>部分完成</td></tr>
+<tr><td>荷兰语</td><td>nl</td><td>部分完成</td></tr>
+<tr><td>芬兰语</td><td>fi</td><td>部分完成</td></tr>
 <tr><td>法语</td><td>fr</td><td>完整</td></tr>
 <tr><td>德语</td><td>de</td><td>完整</td></tr>
-<tr><td>希腊语</td><td>el</td><td>部分</td></tr>
-<tr><td>希伯来语</td><td>he</td><td>部分</td></tr>
-<tr><td>匈牙利语</td><td>hu</td><td>部分</td></tr>
-<tr><td>印度尼西亚语</td><td>id</td><td>部分</td></tr>
-<tr><td>意大利语</td><td>it</td><td>部分</td></tr>
-<tr><td>日语</td><td>jp</td><td>部分</td></tr>
-<tr><td>韩语</td><td>kr</td><td>部分</td></tr>
-<tr><td>挪威语</td><td>no</td><td>部分</td></tr>
-<tr><td>挪威书面语</td><td>nb</td><td>部分</td></tr>
+<tr><td>希腊语</td><td>el</td><td>部分完成</td></tr>
+<tr><td>希伯来语</td><td>he</td><td>部分完成</td></tr>
+<tr><td>匈牙利语</td><td>hu</td><td>部分完成</td></tr>
+<tr><td>印尼语</td><td>id</td><td>部分完成</td></tr>
+<tr><td>意大利语</td><td>it</td><td>部分完成</td></tr>
+<tr><td>日语</td><td>jp</td><td>部分完成</td></tr>
+<tr><td>韩语</td><td>kr</td><td>部分完成</td></tr>
+<tr><td>挪威语</td><td>no</td><td>部分完成</td></tr>
+<tr><td>挪威博克莫尔语</td><td>nb</td><td>部分完成</td></tr>
 <tr><td>波斯语</td><td>fa</td><td>完整</td></tr>
-<tr><td>波兰语</td><td>pl</td><td>部分</td></tr>
-<tr><td>葡萄牙语</td><td>pt</td><td>部分</td></tr>
-<tr><td>罗马尼亚语</td><td>ro</td><td>部分</td></tr>
+<tr><td>波兰语</td><td>pl</td><td>部分完成</td></tr>
+<tr><td>葡萄牙语</td><td>pt</td><td>部分完成</td></tr>
+<tr><td>罗马尼亚语</td><td>ro</td><td>部分完成</td></tr>
 <tr><td>俄语</td><td>ru</td><td>完整</td></tr>
-<tr><td>斯洛伐克语</td><td>sk</td><td>部分</td></tr>
-<tr><td>斯洛文尼亚语</td><td>si</td><td>部分</td></tr>
-<tr><td>西班牙语</td><td>es</td><td>部分</td></tr>
-<tr><td>瑞典语</td><td>sv</td><td>部分</td></tr>
-<tr><td>土耳其语</td><td>tr</td><td>部分</td></tr>
-<tr><td>乌克兰语</td><td>ua</td><td>部分</td></tr>
+<tr><td>斯洛伐克语</td><td>sk</td><td>部分完成</td></tr>
+<tr><td>斯洛文尼亚语</td><td>si</td><td>部分完成</td></tr>
+<tr><td>西班牙语</td><td>es</td><td>部分完成</td></tr>
+<tr><td>瑞典语</td><td>sv</td><td>部分完成</td></tr>
+<tr><td>土耳其语</td><td>tr</td><td>部分完成</td></tr>
+<tr><td>乌克兰语</td><td>ua</td><td>部分完成</td></tr>
 </table>
 
 ## 创建自定义语言环境 
 
 :::note
-[gantt.i18n](api/other/i18n.md) 对象从 v7.0 版本引入。早期版本使用 [gantt.locale](api/other/locale.md) 对象。详情请参阅 [迁移指南](migration.md#63---70)。
+在 v7.0 中引入了 [gantt.i18n](api/other/i18n.md) 对象。在早期版本中，使用的是 [gantt.locale](api/other/locale.md) 对象。更多信息，请参阅 [迁移文章](migration.md#63---70)。
 :::
 
-创建自定义语言环境最简单的方法是复制以下示例中的默认英语语言环境，然后将所有字符串翻译成所需语言。
+创建自定义语言环境最简单的方法是，从下面的示例中复制默认（英语）语言环境，并将其中的所有字符串翻译成所需语言。
 
-您可以通过以下两种方式将自定义语言环境应用到 Gantt 图:
+自定义语言环境可以通过两种方式应用到甘特图：
 
-- 通过 **setLocale** 方法传递自定义语言对象，覆盖当前语言环境:
+- 要么通过把语言环境对象作为参数传递给 **setLocale** 方法来覆盖当前语言环境：
 
 ~~~js
 gantt.i18n.setLocale(localeObject);    
 ~~~
 
-如果只提供了部分语言对象，gantt 会将您的标签与现有语言环境合并:
+注意，如果你提供的是部分语言环境对象，gantt 将把你的标签添加到当前语言环境中：
 
 ~~~js
 gantt.i18n.setLocale({
@@ -96,24 +97,24 @@ gantt.i18n.setLocale({
 });    
 ~~~
 
-- 或者，如果需要在多个语言环境之间切换，可以使用自定义语言代码定义新语言环境，稍后再切换:
+- 要么，如果你需要在多个语言环境之间切换，请使用带自定义语言代码的语言环境，并在后续切换到该语言环境：
 
 ~~~js
 gantt.i18n.addLocale("lang", localeObject);    
 gantt.i18n.setLocale("lang");
 ~~~
 
-**注意**: 
+**注**，
 
-- 您可以将自定义语言文件发送到 **support@dhtmlx.com**，以便将其纳入未来版本。
-- 当前激活的语言环境可通过 **gantt.locale** 对象访问。
-- **monthFull** 包含从一月开始的完整月份名称；
-- **monthShort** 包含从一月开始的月份缩写；
-- **dayFull** 包含从星期天开始的完整星期名称；
-- **dayShort** 包含从星期天开始的星期缩写。
+- 你可以将你的自定义语言环境文件发送至 **support@dhtmlx.com** - 这样我们会在下一个版本中包含它。
+- 当前活动的语言环境也可在 **gantt.locale** 对象中取得
+- **monthFull** - 从一月开始的月份全名；
+- **monthShort** - 从一月开始的月份简称；
+- **dayFull** - 从星期日开始的星期全称；
+- **dayShort** - 从星期日开始的星期简称。
 
-(English locale definition)
-~~~js
+
+~~~js title="English locale definition"
 gantt.i18n.setLocale({
     date: {
         month_full: ["January", "February", "March", "April", "May", "June", 
@@ -188,7 +189,6 @@ gantt.i18n.setLocale({
 });
 ~~~
 
-- 如果缺少 **confirm_closing** 或 **confirm_deleting** 标签，相应的确认对话框将不会显示（自动确认）。
-- **section_(name)** 标签与 lightbox 中名称相同的分区对应。
-- **new_task** 标签设置新任务的默认文本。
-
+- 如果未定义 **confirm_closing** 或 **confirm_deleting** 标签，相应的确认对话框将不会显示（自动确认）；
+- **section_(name)** 标签指的是与相关名称相关的 lightbox 部分。
+- **new_task** 标签定义了新事件的默认文本。

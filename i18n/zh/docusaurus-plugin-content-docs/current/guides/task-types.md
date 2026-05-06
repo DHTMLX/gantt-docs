@@ -6,280 +6,289 @@ sidebar_label: "任务类型"
 # 任务类型
 
 :::info
-本功能仅在 PRO 版本中提供。
+此功能仅在 PRO 版本中可用。
 :::
 
-在甘特图中有三种预定义的任务类型可供展示（[你也可以创建自定义类型](guides/task-types.md#chuangjianzidingyileixing)）:
+在甘特图中可以显示三种预定义的任务类型（你也可以添加自定义类型）[you can also add a custom type](guides/task-types.md#creating-a-custom-type)：
 
-1. [常规任务（默认）](guides/task-types.md#changguirenwu)。
-2. [项目任务](guides/task-types.md#xiangmurenwu)。
-3. [里程碑](guides/task-types.md#lichengbei)。
+1. [A regular task (default)](guides/task-types.md#regular-tasks) → [常规任务（默认）](guides/task-types.md#regular-tasks)
+2. [A project task](guides/task-types.md#project-tasks) → [一个项目任务](guides/task-types.md#project-tasks)
+3. [A milestone](guides/task-types.md#milestones) → [里程碑](guides/task-types.md#milestones)
+
 
 ![task_types](/img/task_types.png)
 
-要分配任务类型，请在数据项中使用 [type](guides/loading.md#dataproperties) 属性（*对应 [types](api/config/types.md) 对象中的值*）:
 
-**在数据集中指定任务类型**
-~~~js
-var data = {
-    task:[
-        {id:1, text:"Project #1",    type:"project",    open:true},   /*!*/
-        {id:2, text:"Task #1",          start_date:"12-04-2020", duration:3, parent:1},
-        {id:3, text:"Alpha release", type:"milestone",   parent:1, /*!*/
-            start_date:"14-04-2020"},                                                /*!*/
-        {id:4, text:"Task #2",          start_date:"17-04-2020", duration:3, parent:1}],
-    links:[]
+要设置任务的类型，请使用数据项的 [type](guides/loading.md#dataproperties) 属性（值存储在 [`types`](api/config/types.md) 对象中）:
+
+~~~jsx title="在数据集中指定任务的类型"
+const data = {
+    tasks: [
+        { id: 1, text: "Project #1", type: "project", open: true },
+        { id: 2, text: "Task #1", start_date: "12-04-2025", duration: 3, parent: 1 },
+        { id: 3, text: "Alpha release", start_date: "16-04-2025", type: "milestone", parent: 1 },
+        { id: 4, text: "Task #2", start_date: "17-04-2025", duration: 3, parent: 1 },
+    ],
+    links: [
+        { id: 1, source: "1", target: "2", type: "1" },
+        { id: 2, source: "2", target: "3", type: "0" },
+        { id: 3, source: "3", target: "4", type: "0" },
+    ],
 };
 ~~~
 
-[Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
+**相关示例**: [Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 
 ## 常规任务
 
-默认情况下，dhtmlxGantt 会创建常规任务（即 **type="task"** 的任务）。
+默认情况下，dhtmlxGantt 提供创建常规任务（**type="task"** 的任务）。
 
 ![type_task](/img/type_task.png)
 
-**指定常规任务**
-~~~js
-var data = {
-    tasks:[{id:2, text:"Task #1", start_date:"12-04-2020", duration:3}],  /*!*/
-    links:[]
+~~~jsx title="指定常规任务"
+const data = { 
+    tasks: [
+        { id: 2, text: "Task #1", start_date: "12-04-2025", duration: 3, parent: 1 }, 
+    ],
+    links: [],
 };
-// 或
-var data = {
-     tasks:[{id:2, text:"Task #1", start_date:"12-04-2020", duration:3, /*!*/
-            type:"task"}],  /*!*/
-    links:[]
+//或
+const data = {
+    tasks: [
+        { id: 2, text: "Task #1", start_date: "12-04-2025", duration: 3, parent: 1, type: "task" }, 
+    ],
+    links: [],
 };
 ~~~
 
-[Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
+**相关示例**: [Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 
-被标记为 **type="task"** 的任务具有以下特性:
+具有 **type="task"** 的任务可具备如下特征：
 
-- 可以有一个父任务和多个子任务。
-- 支持拖动和调整大小。
-- 不会根据子任务自动调整；拖动子任务不会影响父任务的工期或进度。
-- 可以在父项目中展示。详见[说明](guides/milestones.md#huizongrenwuhelichengbei)。
-- 可以在时间线上隐藏。详见[说明](guides/milestones.md#yincangrenwuhelichengbei)。
+- 可以有一个父任务和任意数量的子任务。
+- 可以被拖拽和调整大小。 
+- 不依赖子任务，即如果用户拖动普通任务的某个子任务，该任务的持续时间或进度不会相应改变。
+- 可以出现在父级项目中。详见 [详细信息](guides/milestones.md#rolluptasksandmilestones)。
+- 可以在时间线中隐藏。详见 [详细信息](guides/milestones.md#hiding-tasks-and-milestones)。
+
 
 ## 项目任务
 
-项目任务的时间跨度为其最早子任务的开始时间到最晚子任务的结束时间。
+项目任务是在其最早子任务开始时开始、在其最后一个子任务结束时结束的任务。
 
 :::note
-项目任务与常规任务的主要区别在于，项目任务的工期取决于其子任务，并会随之更新。
+项目任务与常规任务的区别在于，项目任务的持续时间取决于其子任务，并会相应地改变。
 :::
 
 ![type_project](/img/type_project.png)
 
-**指定项目任务**
-~~~js
-var data = {
-    tasks:[
-        {id:1, text:"Project #1",    type:"project",    open:true}, /*!*/
-        {id:2, text:"Task #1",       start_date:"12-04-2020", duration:3, parent:1},
-        {id:3, text:"Alpha release", type:"milestone",   parent:1,
-            start_date:"14-04-2020"}],
-    links:[]
+~~~jsx title="指定项目任务"
+const data = {
+    tasks: [
+        { id: 1, text: "Project #1", type: "project", open: true }, 
+        { id: 2, text: "Task #1", start_date: "12-04-2025", duration: 3, parent: 1 },
+        { id: 3, text: "Alpha release", start_date: "16-04-2025", type: "milestone", parent: 1 },
+        { id: 4, text: "Task #2", start_date: "17-04-2025", duration: 3, parent: 1 },
+    ],
+    links: [],
 };
 ~~~
 
+**相关示例**: [Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
-[Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
+具有 **type="project"** 的任务可具备如下特征：
 
-**type="project"** 的任务具有以下特点:
-
-- 可以有一个父任务和多个子任务。
-- 默认不可拖动和调整大小，除非通过 [drag_project](api/config/drag_project.md) 显式启用拖拽。
-- 依赖于其子任务；拖动子任务会更新项目任务的工期。
-- 忽略 **start_date**、**end_date** 和 **duration** 属性。
-- 如果没有子任务，则不可拖动。
-- 项目的 **progress** 默认需手动设置，不会自动反映子任务进度。如需自动计算进度，需要自定义代码。[参考示例](guides/how-to.md#ruhegenjuzirenwujisuanrenwujindu)。
+- 可以有 1 个父任务和任意数量的子任务。
+- 除非通过 [drag_project](api/config/drag_project.md) 配置显式启用拖放，否则不能被拖拽和调整大小。
+- 依赖子任务，即如果用户拖动一个项目任务的子任务，任务的持续时间会改变。
+- 忽略 **start_date**、**end_date**、**duration** 属性。
+- 如果没有子任务，则不能被拖拽。
+- 项目的 **progress** 默认显式指定，与子任务无关。若你希望自动计算，需要自行编写代码实现。 [查看示例](guides/how-to.md#how-to-calculate-task-progress-depending-on-child-tasks)。
 
 :::note
-如需启用项目任务的添加，请参见 [Milestones](guides/milestones.md)。启用里程碑创建后，用户也可添加项目任务。
+如需提供添加项目任务的可能性，请参阅文章 [Milestone](guides/milestones.md)。添加里程碑的可能性确保最终用户也可以添加项目任务。
 :::
 
-## 里程碑
+## Milestones {#milestones}
 
-[里程碑](guides/milestones.md) 是工期为零的任务，用于突出显示项目中的关键日期（[详细信息](guides/milestones.md)）。
-
+[Milestone](guides/milestones.md) 是一个零持续时间的任务，用来标记项目的重要日期（更多详情请参阅](guides/milestones.md)。
+  
 ![type_milestone](/img/type_milestone.png)
 
-**指定里程碑**
-~~~js
-var data = {
-    tasks:[
-        {id:1, text:"Project #1",    type:"project",    open:true},
-        {id:2, text:"Task #1",       start_date:"12-04-2020", duration:3, parent:1},
-        {id:3, text:"Alpha release", type:"milestone",   parent:1, /*!*/
-            start_date:"14-04-2020"}],/*!*/
-    links:[]
+~~~jsx title="指定里程碑"
+const data = {
+    tasks: [
+        { id: 3, text: "Alpha release", start_date: "16-04-2025", type: "milestone", parent: 1 }, 
+    ],
+    links: [],
 };
 ~~~
 
-[Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
+**相关示例**: [Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 
-**type="milestone"** 的任务具有以下特性:
+具有 **type="milestone"** 的任务可具备如下特征：
 
-- 可以有一个父任务和多个子任务。
-- 不可拖动或调整大小。
-- 工期始终为零。
-- 忽略 **end_date**、**duration** 和 **progress** 属性。
-- 可以在父项目中展示。详见[说明](guides/milestones.md#huizongrenwuhelichengbei)。
-- 可以在时间线上隐藏。详见[说明](guides/milestones.md#yincangrenwuhelichengbei)。
+- 可以有 1 个父任务和任意数量的子任务。
+- 不能被拖拽和调整大小。
+- 持续时间为零，并始终保持为零。
+- 忽略 **end_date**、**duration**、**progress** 属性。
+- 可以出现在父级项目中。详见 [details](guides/milestones.md#rolluptasksandmilestones)。
+- 可以在时间线中隐藏。详见 [details](guides/milestones.md#hiding-tasks-and-milestones)。
 
 :::note
-如需启用里程碑创建，请参见 [Milestones](guides/milestones.md)。
+为了提供添加里程碑的可能性，请阅读文章 [Milestone](guides/milestones.md)。
 :::
 
-## 针对不同任务类型的专属 lightbox
+## 每种任务类型的专用灯箱 {#specificlightboxpertasktype}
 
-每种任务类型有其独特属性，因此详情表单（lightbox）可针对不同类型单独配置。
-相关配置存储在 [lightbox](api/config/lightbox.md) 对象中。
+每种任务类型都有自己的一组特性。因此，可以为每种类型定义独立的详情表单（灯箱）的配置。
+所有配置都存储在 [lightbox](api/config/lightbox.md) 对象中。
 
-包括以下内容:
+它们是：
 
-- **gantt.config.lightbox.sections** - 针对常规任务。
-- **gantt.config.lightbox.project_sections** - 针对项目任务。
-- **gantt.config.lightbox.milestone_sections** - 针对里程碑。
+- **gantt.config.lightbox.sections** - 适用于常规任务。
+- **gantt.config.lightbox.project_sections** - 适用于项目任务。
+- **gantt.config.lightbox.milestone_sections** - 适用于里程碑。
 
-默认配置如下:
+默认配置如下：
 
-~~~js
+~~~jsx
 gantt.config.lightbox.sections = [
-    {name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
-    {name: "time", type: "duration", map_to: "auto"}
+    { name: "description", type: "textarea", map_to: "text", height: 70, focus: true },
+    { name: "time", type: "duration", map_to: "auto" }
 ];
-gantt.config.lightbox.project_sections= [
-    {name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
-    {name: "type", type: "typeselect", map_to: "type"},
-    {name: "time", type: "duration", readonly: true, map_to: "auto"}
+
+gantt.config.lightbox.project_sections = [
+    { name: "description", type: "textarea", map_to: "text", height: 70, focus: true },
+    { name: "type", type: "typeselect", map_to: "type" },
+    { name: "time", type: "duration", map_to: "auto", readonly: true }
 ];
-gantt.config.lightbox.milestone_sections= [
-    {name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
-    {name: "type", type: "typeselect", map_to: "type"},
-    {name: "time", type: "duration", single_date: true, map_to: "auto"}
+
+gantt.config.lightbox.milestone_sections = [
+    { name: "description", type: "textarea", map_to: "text", height: 70, focus: true },
+    { name: "type", type: "typeselect", map_to: "type" },
+    { name: "time", type: "duration", map_to: "auto", single_date: true }
 ];
 ~~~
 
-当在选择控件中更改任务类型时，lightbox 会动态切换至相应配置。
+当用户在相关下拉框中更改任务类型时，相应的配置将应用于灯箱弹出窗口，并会动态更新。
 
-你也可以[创建自定义任务类型](guides/task-types.md#chuangjianzidingyileixing)并为其定义 lightbox 结构。
+您可以 [add a custom type](guides/task-types.md#creating-a-custom-type) 并为其指定适当的灯箱结构。
 
-更多 lightbox 配置内容请参见 [편집 폼 구성하기](guides/edit-form.md) 章节。
+要了解灯箱配置的详细信息，您可以阅读 [Configuring Edit Form](guides/edit-form.md) 章节。
+
 
 ## 创建自定义类型
 
-所有任务类型均定义在 [types](api/config/types.md) 对象中。
+所有任务的类型都在 [types](api/config/types.md) 对象中定义。 
 
-要添加自定义任务类型，一般需遵循以下步骤:
+通常，要添加自定义任务类型，您需要：
 
-1. 在 [types](api/config/types.md) 对象中添加新条目。
-2. 定义该类型的专属设置。
+1. 在 [types](api/config/types.md) 对象中添加一个新的值。
+2. 为新类型定义单独的设置。
 
-例如，添加一个名为 **meeting** 的新类型，其行为类似常规任务，但拥有独特颜色和自定义 lightbox 输入:
+
+设想，您想新增一个任务类型 - **meeting**。
+**Meeting** 将是一个普通任务，但会以不同的颜色显示并在灯箱中有不同的输入。
 
 ![custom_task_type](/img/custom_task_type.png)
 
-如下定义新类型 **meeting** 及其 lightbox:
 
-1. 将新类型添加到 [types](api/config/types.md) 对象中:
+若要定义名称为 **meeting** 的新类型并为其指定独立的灯箱结构，请使用以下方式：
 
-~~~js
+在 [types](api/config/types.md) 对象中添加一个新类型：
+
+~~~jsx
 gantt.config.types.meeting = "type_id";
 ~~~
-<i>这里，"meeting"是为了代码可读性而设的名称。"type_id"是在数据库和 [types](api/config/types.md) 对象中存储的唯一标识符。</i>
 
-2. 在"typeselect"控件中为新类型设置标签:
+其中 "meeting" 是类型的程序化名称。它不影响任何内容。程序化类型名称的唯一用途是让处理类型的代码更具可读性。
+"type_id" 是将存储在数据库中的类型标识符。该标识符在 [types](api/config/types.md) 对象内必须是唯一的。
 
+在“typeselect”控件中为新类型设置标签：
 
-~~~js
-gantt.locale.labels.type_meeting = "Meeting";
+~~~jsx
+gantt.locale.labels.type_meeting = "会议";
 ~~~
 
-3. 为新类型定义 lightbox 结构:
+为新创建的类型指定灯箱的新结构：
 
 
-~~~js
+~~~jsx
 gantt.config.lightbox.meeting_sections = [
-    {name:"title", height:20, map_to:"text", type:"textarea", focus:true},
-    {name:"details", height:70, map_to: "details", type: "textarea"},
-    {name:"type", type:"typeselect", map_to:"type"},
-    {name:"time", height:72, type:"time", map_to:"auto"}
+    { name: "title", type: "textarea", map_to: "text", height: 20, focus: true },
+    { name: "details", type: "textarea", map_to: "details", height: 70 },
+    { name: "type", type: "typeselect", map_to: "type" },
+    { name: "time", type: "time", map_to: "auto", height: 72 }
 ];
-gantt.locale.labels.section_title = "Subject";
-gantt.locale.labels.section_details = "Details";
+
+gantt.locale.labels.section_title = "主题";
+gantt.locale.labels.section_details = "详情";
 ~~~
-4. 为新类型定义样式，并通过 [task_class](api/template/task_class.md) 模板应用:
 
+为新类型指定样式并通过 [task_class](api/template/task_class.md) 模板应用：
 
-~~~html
+~~~css
 .meeting_task{
     border:2px solid #BFC518;
     color:#6ba8e3;
     background: #F2F67E;
 }
+
 .meeting_task .gantt_task_progress{
     background:#D9DF29;
 }
 ~~~
 
-~~~js
-gantt.templates.task_class = function(start, end, task){
-    if(task.type == gantt.config.types.meeting){
-        return "meeting_task";
-    }
-    return "";
+~~~jsx
+gantt.templates.task_class = (start, end, task) => {
+    return task.type === gantt.config.types.meeting 
+        ? "meeting_task" 
+        : "";
 };
 ~~~
 
-5. 通过 [task_text](api/template/task_text.md) 模板自定义"meeting"任务的文本显示:
+使用 [task_text](api/template/task_text.md) 模板设置 "meeting" 任务的文本模板：
 
 
-~~~js
-gantt.templates.task_text = function(start, end, task){
-    if(task.type == gantt.config.types.meeting){
-        return "Meeting: <b>" + task.text + "</b>";
-    }
-    return task.text;
-};
+~~~jsx
+gantt.templates.task_text = (start, end, task) =>
+    task.type === gantt.config.types.meeting
+        ? `会议： <b>${task.text}</b>`
+        : task.text;
 ~~~
 
+**相关示例**: [Custom task type](https://docs.dhtmlx.com/gantt/samples/04_customization/12_custom_task_type.html)
 
-[Custom task type](https://docs.dhtmlx.com/gantt/samples/04_customization/12_custom_task_type.html)
 
+## 自定义任务类型的显示效果
 
-## 自定义任务类型的显示方式
-
-如需更改现有任务类型的外观，可使用 [type_renderers](api/config/type_renderers.md) 选项。此功能允许你重写控制任务类型在页面上渲染方式的函数。
+要自定义现有任务类型的外观，请使用 [type_renderers](api/config/type_renderers.md) 选项。该选项允许你重新定义在页面上显示不同任务类型时所调用的函数。
 
 ![custom_look](/img/custom_look.png)
 
-~~~js
-gantt.config.type_renderers["project"]=function(task, defaultRender){
-    var main_el = document.createElement("div");
-    main_el.setAttribute(gantt.config.task_attribute, task.id);
-    var size = gantt.getTaskPosition(task);
-    main_el.innerHTML = [
+~~~jsx
+gantt.config.type_renderers["project"] = (task, defaultRender) => {
+    const taskBar = document.createElement("div");
+    taskBar.setAttribute(gantt.config.task_attribute, task.id);
+    taskBar.className = "custom-project";
+
+    const taskSize = gantt.getTaskPosition(task);
+    taskBar.innerHTML = [
         "<div class='project-left'></div>",
         "<div class='project-right'></div>"
     ].join('');
-    main_el.className = "custom-project";
 
-    main_el.style.left = size.left + "px";
-    main_el.style.top = size.top + 7 + "px";
-    main_el.style.width = size.width + "px";
+    taskBar.style.left = `${taskSize.left}px`;
+    taskBar.style.top = `${taskSize.top + 7}px`;
+    taskBar.style.width = `${taskSize.width}px`;
 
-    return main_el;
+    return taskBar;
 };
 ~~~
 
-[Classic Look](https://docs.dhtmlx.com/gantt/samples/04_customization/17_classic_gantt_look.html)
-
+**相关示例**: [Classic Look](https://docs.dhtmlx.com/gantt/samples/04_customization/17_classic_gantt_look.html)

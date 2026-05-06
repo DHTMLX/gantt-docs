@@ -8,7 +8,7 @@ description: "bereinigt die Gantt-Instanz"
 
 ### Description
 
-@short: Bereinigt die Gantt-Instanz
+@short: Zerstört die Gantt-Instanz
 
 @signature: destructor: () =\> void
 
@@ -23,19 +23,17 @@ myGantt.destructor();
 
 ### Details
 
-Diese Methode bereinigt eine Gantt-Instanz und löst das Event [onDestroy](api/event/ondestroy.md) aus.
+Die Methode zerstört eine Gantt-Instanz und löst das [onDestroy](api/event/ondestroy.md) Event aus.
 
-Wenn der destructor aufgerufen wird, wird er:
+Das Aufrufen eines Destruktors bewirkt Folgendes:
 
-- alle in die Gantt-Instanz geladenen Daten löschen
-- den [dataProcessor](api/method/dataprocessor.md) entfernen, falls dieser mit dem Gantt verknüpft war
-- das Gantt vom DOM trennen
-- alle über die [event](api/method/event.md) Methode hinzugefügten DOM-Event-Handler entfernen
+- löscht die in einer Gantt-Instanz geladenen Daten
+- löscht den [dataProcessor] (falls er mit der Gantt-Instanz verbunden ist)
+- trennt die Gantt-Instanz vom DOM
+- trennt alle DOM-Ereignisse, die über die Methoden [event](api/method/event.md) und [attachEvent](api/method/attachevent.md) an das DOM angehängt wurden
 
 :::note
-
-Wenn Sie ein Paket verwenden, das keine mehreren Gantt-Instanzen unterstützt (wie die GPL- oder Individual-Editionen), wird das Aufrufen des destructors das Gantt unzugänglich machen, bis die Seite neu geladen wird.
- 
+Wenn Sie ein Paket verwenden, das das Erstellen mehrerer Instanzen eines Gantt nicht zulässt (GPL- oder Individualeditionen), macht der Aufruf des Destruktors die Gantt-Instanz bis zum Neuladen der Seite unzugänglich.
 :::
 
 ### Related API
@@ -46,4 +44,3 @@ Wenn Sie ein Paket verwenden, das keine mehreren Gantt-Instanzen unterstützt (w
 
 ### Change log
 - hinzugefügt in Version 5.1
-

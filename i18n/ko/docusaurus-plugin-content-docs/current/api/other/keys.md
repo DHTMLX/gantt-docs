@@ -8,7 +8,7 @@ description: "간트 차트의 단축키를 정의합니다"
 
 ### Description
 
-@short: 간트 차트의 단축키를 정의합니다
+@short: Gantt 차트의 핫키를 정의합니다
 
 @signature: keys: GanttHotkeys
 
@@ -57,7 +57,5 @@ gantt.init("gantt_here");
 </table>
 
 :::note
-
-참고로, 모든 **keys** 속성은 'number' 데이터 타입을 사용합니다.
- 
+모든 **keys'** 속성은 'number' 데이터 타입입니다.
 :::

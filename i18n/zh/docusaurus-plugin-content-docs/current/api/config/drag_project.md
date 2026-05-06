@@ -1,16 +1,18 @@
 ---
 sidebar_label: drag_project
-title: drag_project config
-description: "启用项目类型条目的拖放功能"
+title: drag_project 配置
+description: "启用项目类型项的拖放"
 ---
 
 # drag_project
+
 :::info
- 此功能仅在PRO版本中提供。 
+ 此功能仅在 PRO 版本中提供。 
 :::
+
 ### Description
 
-@short: 启用项目类型条目的拖放功能
+@short: 启用项目类型项的拖放
 
 @signature: drag_project: boolean
 
@@ -20,14 +22,14 @@ description: "启用项目类型条目的拖放功能"
 gantt.config.drag_project = true;
 ~~~
 
-**Default value:** false
+**默认值：** false
 
 ### Related samples
-- [Draggable projects](https://docs.dhtmlx.com/gantt/samples/08_api/19_draggable_projects.html)
+- [可拖拽的项目](https://docs.dhtmlx.com/gantt/samples/08_api/19_draggable_projects.html)
 
 ### Details
 
-此功能允许用户拖放整个项目及其子任务。
+允许用户将项目及其子任务一起拖放。
 
 ### Related Guides
-- [在时间轴中拖动任务](guides/dnd.md#tuodongxiangmushitongshituodongqizirenwu)
+- [在时间线中拖动任务](guides/dnd.md)

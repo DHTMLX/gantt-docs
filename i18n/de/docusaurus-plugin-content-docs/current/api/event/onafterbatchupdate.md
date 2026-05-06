@@ -1,14 +1,14 @@
 ---
 sidebar_label: onAfterBatchUpdate
-title: onAfterBatchUpdate event
-description: "wird direkt nach Abschluss der Methode batchUpdate ausgelöst"
+title: onAfterBatchUpdate-Ereignis
+description: "wird ausgelöst, nachdem die batchUpdate-Methode aufgerufen wurde"
 ---
 
 # onAfterBatchUpdate
 
 ### Description
 
-@short: Wird direkt nach Abschluss der Methode [batchUpdate](api/method/batchupdate.md) ausgelöst
+@short: Wird ausgelöst, nachdem die [batchUpdate](api/method/batchupdate.md) Methode aufgerufen wurde
 
 @signature: onAfterBatchUpdate: () =\> void;
 
@@ -16,7 +16,7 @@ description: "wird direkt nach Abschluss der Methode batchUpdate ausgelöst"
 
 ~~~jsx
 gantt.attachEvent("onAfterBatchUpdate", function(){
-    // Ihr Code hier
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 

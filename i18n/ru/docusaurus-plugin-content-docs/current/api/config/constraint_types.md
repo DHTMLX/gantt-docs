@@ -1,41 +1,37 @@
 ---
 sidebar_label: constraint_types
-title: constraint_types config
-description: "содержит все типы ограничений, которые вы можете использовать"
+title: constraint_types конфигурация
+description: "содержит все доступные типы ограничений"
 ---
 
 # constraint_types
+
 :::info
- Эта функция доступна только в PRO-версии. 
-:::
+This functionality is available in the PRO edition only. 
+::: 
+
 ### Description
 
-@short: Содержит все типы ограничений, которые вы можете использовать
+@short: Содержит все доступные типы ограничений
 
 @signature: constraint_types: \{ ASAP?: string; ALAP?: string; SNET?: string; SNLT?: string; FNET?: string; FNLT?: string; MSO?: string; MFO?: string; \}
 
-### Example
-
-~~~jsx
-
-~~~
-
 ### Related samples
-- [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
-- [Auto-Schedule From Project End (backward)](https://docs.dhtmlx.com/gantt/samples/02_extensions/20_backwards_scheduling.html)
+- [Автоматическое планирование от начала проекта и ограничений](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
+- [Автоматическое планирование от конца проекта (обратно)](https://docs.dhtmlx.com/gantt/samples/02_extensions/20_backwards_scheduling.html)
 
 ### Details
 
-Вот что включает этот объект:
+The object definition:
 
-- **ASAP** - (*string*) - As Soon As Possible (как можно скорее)
-- **ALAP** - (*string*) - As Late As Possible (как можно позже)
-- **SNET** - (*string*) - Start No Earlier Than (начать не раньше чем)
-- **SNLT** - (*string*) - Start No Later Than (начать не позднее чем)
-- **FNET** - (*string*) - Finish No Earlier Than (закончить не раньше чем)
-- **FNLT** - (*string*) - Finish No Later Than (закончить не позднее чем)
-- **MSO** - (*string*) - Must Start On (обязательно начать в)
-- **MFO** - (*string*) - Must Finish On (обязательно закончить в)
+- **ASAP** - (*string*) - Как можно скорее
+- **ALAP** - (*string*) - Как можно позже
+- **SNET** - (*string*) - Старт не ранее чем
+- **SNLT** - (*string*) - Старт не позже чем
+- **FNET** - (*string*) - Финиш не ранее чем
+- **FNLT** - (*string*) - Финиш не позже чем
+- **MSO** - (*string*) - Должен начинаться в
+- **MFO** - (*string*) - Должен заканчиваться в
 
 ~~~js
 gantt.config.constraint_types = {
@@ -58,7 +54,7 @@ gantt.config.constraint_types = {
 };
 ~~~
 
-Это включено для того, чтобы избежать жесткого кодирования значений ограничений прямо в вашем коде:
+It is added in order to avoid hardcoding constraint values in code:
 
 ~~~js
 gantt.addTaskLayer(function draw_deadline(task) {
@@ -66,7 +62,7 @@ gantt.addTaskLayer(function draw_deadline(task) {
     var types = gantt.config.constraint_types;
     if (constraintType != types.ASAP && 
         constraintType != types.ALAP && task.constraint_date) {
-        // отображаем что-то
+        // display something
     }
     return false;
 });
@@ -78,4 +74,3 @@ gantt.addTaskLayer(function draw_deadline(task) {
 
 ### Related Guides
 - [Автоматическое планирование](guides/auto-scheduling.md)
-

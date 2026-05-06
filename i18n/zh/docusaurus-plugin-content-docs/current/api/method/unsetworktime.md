@@ -8,13 +8,13 @@ description: "在甘特图中移除工作时间设置"
 
 ### Description
 
-@short: 在甘特图中移除工作时间设置
+@short: 在甘特图中取消工作时间的设定
 
 @signature: unsetWorkTime: (config: object) =\> void,
 
 ### Parameters
 
-- `config` - (required) *object* - 定义时间范围的配置对象
+- `config` - (必填) *object* - 一个时间段的配置对象
 
 ### Example
 
@@ -28,18 +28,18 @@ gantt.unsetWorkTime({ hours:["9:00-18:00"] });
 ~~~
 
 ### Related samples
-- [Calculate working hours](https://docs.dhtmlx.com/gantt/samples/09_worktime/01_working_hours_per_day.html)
+- [计算工作时间](https://docs.dhtmlx.com/gantt/samples/09_worktime/01_working_hours_per_day.html)
 
 ### Details
 
 版本 4.1 中新增
 
-- 如果未指定特定任务，该方法将应用[全局工作时间日历](guides/working-time.md#multipleworktimecalendars)。<br>
-- 此外，也可以直接在[calendar 对象](api/other/calendar.md)上调用此方法。
+- 如果未指定任务，该方法将使用 [全局工作时间日历](guides/working-time.md#multipleworktimecalendars)。
+- 此外，该方法亦可直接从一个 [日历对象](api/other/calendar.md) 调用。
 
 ## 配置对象属性
 
-配置对象可能包含以下属性:
+配置对象可以包含以下属性：
 
 <table class="list" cellspacing="0" cellpadding="5" border="0">
   <thead>
@@ -58,38 +58,38 @@ gantt.unsetWorkTime({ hours:["9:00-18:00"] });
   <td> 星期几的数字表示 [0 (<i>星期日</i>) - 6 (<i>星期六</i>)]. 注意一次只能设置一天</td>
   </tr>
   <tr>
-  <td colspan="2">
+        <td colspan="2" style="text-align:left !important; ">
 ~~~js
 // 将所有星期一标记为非工作日
 gantt.unsetWorkTime({ day:1, hours:false }); 
 ~~~
-  </td>
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="2"><b id="date">date</b></td>
+  <td> 一个用于设定/取消工作时间的具体日期</td>
   </tr>
   <tr>
-  <td rowspan="2"><b id="date">date</b></td>
-  <td> 指定某个具体日期作为工作日或休息日</td>
-  </tr>
-  <tr>
-  <td colspan="2">
+        <td colspan="2" style="text-align:left !important; ">
 ~~~js
 // 将特定日期标记为休息日
 gantt.unsetWorkTime({date:new Date(2013,0,1), hours:false})
 ~~~
-  </td>
+        </td>
+    </tr>
+  <tr>
+        <td rowspan="2"><b id="hours">hours</b></td>
+  <td> 一个以 'from'-'to' 对形式表示的工作时间数组。<br/><i>'false'</i> 值用于取消工作时间，<i>'true' (默认值)</i> 应用默认工作时间（["8:00-17:00"]）</td>
   </tr>
   <tr>
-  <td rowspan="2"><b id="hours">hours</b></td>
-  <td> 以"起始时间-结束时间"区间表示的工作时间数组。<br><i>'false'</i> 表示休息日，<i>'true'（默认）</i> 表示应用默认时间（["8:00-17:00"]）</td>
-  </tr>
-  <tr>
-  <td colspan="2">
+        <td colspan="2" style="text-align:left !important; ">
 ~~~js
 // 移除星期五上午8:00到12:00的工作时间
 gantt.unsetWorkTime({day : 5, hours : ["8:00-12:00"]});
 ~~~
-  </td>
-  </tr>
-  </tbody>
+        </td>
+    </tr>
+    </tbody>
 </table>
 
 ### Related API
@@ -98,5 +98,4 @@ gantt.unsetWorkTime({day : 5, hours : ["8:00-12:00"]});
 - [isWorkTime](api/method/isworktime.md)
 
 ### Related Guides
-- [工作时间计算](guides/working-time.md#unsettingtheworkingtime)
-
+- [工作时间计算](guides/working-time.md#unsetting-the-working-time)

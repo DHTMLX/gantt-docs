@@ -1,283 +1,282 @@
 ---
-title: "在时间轴中拖动任务"
-sidebar_label: "在时间轴中拖动任务"
+title: "拖动时间线中的任务"
+sidebar_label: "拖动时间线中的任务"
 ---
 
-# 在时间轴中拖动任务
+# 拖动时间线中的任务
 
-拖动功能可以轻松调整任务的开始或结束日期，以及任务的持续时间。
+拖动允许用户快速修改任务的开始日期（结束日期）、持续时间。默认情况下，拖放功能已启用，用户可以在时间线的其行中拖动任务。
 
+要自定义拖放行为，请使用以下事件：
 
-默认情况下，拖拽功能是启用的，允许用户在时间轴的行内移动任务。
+- [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) - 用于禁止特定任务的拖动
+- [onTaskDrag](api/event/ontaskdrag.md) - 用于限制拖动区域或在用户拖动任务时提供其他逻辑
+- [onAfterTaskDrag](api/event/onaftertaskdrag.md) - 在任务拖放至新位置后对其进行后处理
 
-如需定制拖拽行为，可以使用以下事件:
+让我们考虑在需要自定义默认拖动行为时的典型场景：
 
-- [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) - 用于阻止特定任务的拖动
-- [onTaskDrag](api/event/ontaskdrag.md) - 用于限制拖动区域或在任务拖动过程中应用自定义逻辑
-- [onAfterTaskDrag](api/event/onaftertaskdrag.md) - 用于处理任务被移动后的操作
+1. [拒绝特定任务的拖动](#denying-dragging-of-specific-tasks)。
+2. [拒绝将任务拖出特定日期范围](#denying-dragging-tasks-out-of-specific-dates)。
+3. [在拖动父任务时同时拖动子任务](#dragging-children-together-with-the-parent)。
+4. [拖动带有子任务的项目](#draggingprojectswithsubtasks)。
+5. [设置最小任务时长](#setting-minimal-task-duration)。
+6. [在任务拖动时自动滚动](#autoscrollduringtasksdragging)。
 
-以下是一些常见的自定义拖动行为的场景:
+## 拒绝特定任务的拖动
 
-1. [阻止特定任务被拖动](#denyingdraggingofspecifictasks)。
-2. [防止任务被拖动到特定日期范围之外](#denyingdraggingtasksoutofspecificdates)。
-3. [拖动父任务时同时拖动子任务](#draggingchildrentogetherwiththeparent)。
-4. [拖动项目时同时拖动其子任务](#draggingprojectswithsubtasks)。
-5. [设置任务的最小持续时间](#settingminimaltaskduration)。
-6. [拖动任务时启用自动滚动](#autoscrollduringtasksdragging)。
-
-## 阻止特定任务被拖动
-
-要禁用某些任务的拖动，可以使用 [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) 事件:
+要禁止特定任务的拖动，请使用 [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) 事件：
 
 ~~~js
-gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
-    if(gantt.getGlobalTaskIndex(id)%2==0){
-        return false;      // 如果全局任务索引为偶数，则阻止拖动
+gantt.attachEvent("onBeforeTaskDrag", (taskId, dragMode, event) => {
+    if (gantt.getGlobalTaskIndex(taskId) % 2 === 0) {
+        return false; // 当全局任务索引为偶数时拒绝拖动
     }
-    return true;           // 如果全局任务索引为奇数，则允许拖动
+    return true; // 当全局任务索引为奇数时允许拖动
 });
 ~~~
 
-## 防止任务被拖动到特定日期范围之外
+## 拒绝将任务拖出特定日期范围
 
-如需限制任务只能在指定日期范围内拖动，可以使用 [onTaskDrag](api/event/ontaskdrag.md) 事件。
+要禁止将任务拖出特定日期，请使用 [onTaskDrag](api/event/ontaskdrag.md) 事件。
 
-<p style="margin-top: 20px; font-weight: bold;"> onTaskDrag 事件说明: </p>
+<p style="margin-top: 20px; font-weight: bold;"> The onTaskDrag 事件： </p>
 
 <ul style="margin-top:5px;">
-  <li>每当用户在时间轴中拖动、调整大小或更新任务进度时都会触发。</li>
-  <li>拖动操作的类型作为第二个参数 <b>mode</b> 提供。</li> 
-  <li>所有可能的拖动模式在 [drag_mode](api/config/drag_mode.md) 属性中有列出。</li>
+  <li>在用户在时间线区域进行拖动移动（移动、调整任务大小或更改任务进度）时触发。</li>
+  <li>拖动的类型作为第2个参数传递 - <b>mode</b>。</li>
+  <li>拖动类型的所有可用值存储在 [drag_mode](api/config/drag_mode.md) 属性中。</li>
 </ul>
 
-<p style="margin-top: 20px; font-weight: bold;">简要流程如下:</p>
+<p style="margin-top: 20px; font-weight: bold;">简而言之，整个过程按以下顺序进行：</p>
 
 <ol style="margin-top:5px;">
-  <li>用户拖动任务。</li>
-  <li>dhtmlxGantt 根据新位置重新计算任务日期。</li>
-  <li>dhtmlxGantt 触发 [onTaskDrag](api/event/ontaskdrag.md) 事件。</li>
-  <li>dhtmlxGantt 在图表中重绘任务。<i>由于 [onTaskDrag](api/event/ontaskdrag.md) 事件在重新计算之后触发，可以放心地在事件处理器中为被拖动的任务设置自定义值，无需担心被覆盖。这样可以确保任务显示在您希望的位置。</i></li>
+    <li>用户进行移动。</li>
+    <li>dhtmlxGantt 根据新位置重新计算任务的日期。</li>
+    <li>dhtmlxGantt 触发 [onTaskDrag](api/event/ontaskdrag.md) 事件。</li>
+    <li>dhtmlxGantt 重新在甘特图中渲染任务。<br><i>由于 [onTaskDrag](api/event/ontaskdrag.md) 事件在重新计算之后触发，因此你可以在事件处理程序中为被拖动的任务指定任何自定义值，而不必担心这些值会被覆盖。结果，任务将以期望的位置呈现。</i></li>
 </ol>
 
-
-例如，要防止用户将任务拖动到 **"2020年3月31日 - 2020年4月11日"** 之外的范围:
+设想你想禁止用户将任务拖出固定的区间 **“2028年3月31日 - 2028年4月11日”**。
 
 ![custom_dnd](/img/custom_dnd.png)
 
-可以使用如下代码:
+那么，你可以像下面这样编写代码：
 
-[限制任务拖动区间 - [31.03.2020, 11.04.2020]](限制任务拖动区间 - [31.03.2020, 11.04.2020])
 ~~~js
-var leftLimit = new Date(2020, 2 ,31), rightLimit = new Date(2020, 3 ,12);
+const leftLimit = new Date(2028, 2, 31);
+const rightLimit = new Date(2028, 3, 12);
+const millisecondsInDay = 24 * 60 * 60 * 1000;
 
-gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
-    var modes = gantt.config.drag_mode;
-    if(mode == modes.move || mode == modes.resize){
-    
-        var diff = original.duration*(1000*60*60*24);
-       
-        if(+task.end_date > +rightLimit){
+gantt.attachEvent("onTaskDrag", (taskId, dragMode, task, originalTask) => {
+    const dragModes = gantt.config.drag_mode;
+
+    if (dragMode === dragModes.move || dragMode === dragModes.resize) {
+        const taskDuration = originalTask.duration * millisecondsInDay;
+
+        if (+task.end_date > +rightLimit) {
             task.end_date = new Date(rightLimit);
-            if(mode == modes.move)
-                task.start_date = new Date(task.end_date - diff);
+            if (dragMode === dragModes.move) {
+                task.start_date = new Date(task.end_date - taskDuration);
             }
-        if(+task.start_date < +leftLimit){
+        }
+
+        if (+task.start_date < +leftLimit) {
             task.start_date = new Date(leftLimit);
-            if(mode == modes.move)
-                task.end_date = new Date(+task.start_date + diff);
+            if (dragMode === dragModes.move) {
+                task.end_date = new Date(+task.start_date + taskDuration);
+            }
         }
     }
 });
 ~~~
 
+## 拖动子任务与父任务一起拖动
 
-[Drag parent task with its children](https://docs.dhtmlx.com/gantt/samples/08_api/05_limit_drag_dates.html)
-
-
-## 拖动父任务时同时拖动子任务
-
-如需在父任务被移动时同时拖动其所有子任务，可以使用 [onTaskDrag](api/event/ontaskdrag.md) 事件（该事件的详细说明见[上文](guides/dnd.md#fangzhirenwubeituodongdaotedingriqifanweizhiwai)）:
+要在用户拖动父任务时同时允许拖动子任务，请使用 [onTaskDrag](api/event/ontaskdrag.md) 事件（见上文对该事件的说明）：
 
 ~~~js
-gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
-    var modes = gantt.config.drag_mode;
-    if(mode == modes.move){
-        var diff = task.start_date - original.start_date;
-        gantt.eachTask(function(child){
-            child.start_date = new Date(+child.start_date + diff);
-            child.end_date = new Date(+child.end_date + diff);
+gantt.attachEvent("onTaskDrag", (taskId, dragMode, task, originalTask) => {
+    const dragModes = gantt.config.drag_mode;
+
+    if (dragMode === dragModes.move) {
+        const dateShift = task.start_date - originalTask.start_date;
+        gantt.eachTask((child) => {
+            child.start_date = new Date(+child.start_date + dateShift);
+            child.end_date = new Date(+child.end_date + dateShift);
             gantt.refreshTask(child.id, true);
-        },id );
+        }, taskId);
     }
 });
-// 将子任务位置对齐到当前刻度
-gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
-    var modes = gantt.config.drag_mode;
-    if(mode == modes.move ){
-        var state = gantt.getState();
-        gantt.eachTask(function(child){          
+
+// 将子任务的位置四舍五入到刻度
+gantt.attachEvent("onAfterTaskDrag", (taskId, dragMode, event) => {
+    const dragModes = gantt.config.drag_mode;
+
+    if (dragMode === dragModes.move) {
+        const ganttState = gantt.getState();
+        gantt.eachTask((child) => {
             child.start_date = gantt.roundDate({
-                date:child.start_date, 
-                unit:state.scale_unit, 
-                step:state.scale_step
-              });            
-              child.end_date = gantt.calculateEndDate(child.start_date, 
-                child.duration, gantt.config.duration_unit);
-              gantt.updateTask(child.id);
-        },id );
+                date: child.start_date,
+                unit: ganttState.scale_unit,
+                step: ganttState.scale_step
+            });
+            child.end_date = gantt.calculateEndDate(
+                child.start_date,
+                child.duration,
+                gantt.config.duration_unit
+            );
+            gantt.updateTask(child.id);
+        }, taskId);
     }
 });
 ~~~
 
-## 拖动项目时同时拖动其子任务
+**相关示例**: [拖动父任务及其子任务](https://docs.dhtmlx.com/gantt/samples/08_api/05_limit_drag_dates.html)
+
+## 拖动带有子任务的项目 {#draggingprojectswithsubtasks}
 
 :::info
-此功能仅在 Gantt PRO 版本中可用。
+此功能仅在 Gantt PRO 版中可用。
 :::
 
-默认情况下，被标记为 [project type](api/config/types.md) 的任务无法被拖动。
-可以通过设置 [drag_project](api/config/drag_project.md) 选项来启用项目拖动:
+类型为 [project type](api/config/types.md) 的任务默认不可拖动。你可以使用 [drag_project](api/config/drag_project.md) 配置来启用项目的拖放：
 
 ~~~js
 gantt.config.drag_project = true;
 ~~~
 
+**相关示例**: [Draggable projects](https://docs.dhtmlx.com/gantt/samples/08_api/19_draggable_projects.html)
 
-[Draggable projects](https://docs.dhtmlx.com/gantt/samples/08_api/19_draggable_projects.html)
+## 将依赖任务与独立任务一起拖动
 
+实现任务及其依赖任务一起移动有多种方式。你可以在单独的文章中了解它们 [Dragging Tasks Together with Their Dependent Tasks](guides/dragging-dependent-tasks.md)。
 
-## 与独立任务一起拖动依赖任务
+## 设置最小任务时长
 
-有多种方法可以将任务与其依赖任务一起移动。
-详细信息请参见专门的文章:[종속 작업과 함께 작업 드래그하기](guides/dragging-dependent-tasks.md)。
+最小任务时长可以通过 [min_duration](api/config/min_duration.md) 设置。
 
-## 设置任务的最小持续时间
+该选项定义在调整大小时可设置的任务最小尺寸，并可用于防止用户设置为零时长。
 
-可以通过 [min_duration](api/config/min_duration.md) 设置来指定任务的最小持续时间。
-
-该选项定义了任务在调整大小时允许的最小尺寸，防止任务持续时间为零。
-
-该值以毫秒为单位定义:
+该值以毫秒为单位：
 ~~~js
-// 1天
-gantt.config.min_duration = 24*60*60*1000;
+// 1 天
+gantt.config.min_duration = 24 * 60 * 60 * 1000;
 
-//或
+// 或者
 
-// 1小时
-gantt.config.min_duration = 60*60*1000;
+// 1 小时
+gantt.config.min_duration = 60 * 60 * 1000;
 ~~~
 
-## 拖动任务时自动滚动
+## 在任务拖动时自动滚动 {#autoscrollduringtasksdragging}
 
-在处理大型甘特图时，拖动任务到较远的位置或在相距较远的任务之间创建链接可能会比较困难。
+如果你的 Gantt 图数据集很大，通常需要将任务拖到较远的位置或在距离较远的任务之间建立链接。
 
-**自动滚动** 功能可以在拖动过程中自动滚动图表。该功能默认启用，但可以通过 [autoscroll](api/config/autoscroll.md) 选项进行控制。
+在这种情况下，自动滚动功能会非常有用。默认启用，但你可以通过 [autoscroll](api/config/autoscroll.md) 配置选项来管理此行为。
 
 ~~~js
 gantt.config.autoscroll = false;
 gantt.init("gantt_here");
 ~~~
 
-你也可以通过 [autoscroll_speed](api/config/autoscroll_speed.md) 属性以毫秒为单位调整自动滚动的速度:
+此外，你还可以通过相应属性 [autoscroll_speed](api/config/autoscroll_speed.md) 调整自动滚动的速度，单位为毫秒：
 
 ~~~js
 gantt.config.autoscroll = true;
 gantt.config.autoscroll_speed = 50;
- 
+
 gantt.init("gantt_here");
 ~~~
 
-## 禁止特定任务调整大小
 
-如需防止某些任务被调整大小，有两种方法:
 
-1. 通过 CSS 隐藏 UI 中的调整大小手柄。
-使用 **task_class** 模板为特定任务添加自定义 CSS 类:
+## 禁用特定任务的调整大小
+
+如果你想阻止某些任务被调整大小，可以有两种做法：
+
+1. 通过 CSS 从 UI 中移除任务的调整大小手柄。为此，需要使用 **task_class** 模板为所需项添加额外的 CSS 类，以便通过选择器定位它们：
 
 ~~~js
-gantt.templates.task_class = function(start, end, task){
-    if(task.no_resize) { // no_resize 为演示用自定义属性
+gantt.templates.task_class = (startDate, endDate, task) => {
+    if (task.no_resize) { // no_resize 是演示中自定义的属性
         return "no_resize";
     }
     return "";
+};
 ~~~
 
-然后通过如下 CSS 隐藏调整大小手柄:
+然后，可以使用以下 CSS 隐藏调整大小手柄：
 
 ~~~css
-.no_resize .gantt_task_drag{
-   display: none !important;
+.no_resize .gantt_task_drag {
+    display: none !important;
 }
 ~~~
 
-2. 通过 [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) 事件在代码中阻止调整大小。
-在处理函数中返回 *false* 即可阻止调整大小:
+2. 通过代码使用 [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) 事件来阻止拖放。处理程序返回 *false* 将阻止调整大小：
 
 ~~~js
-gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
-    if(mode === "resize" && gantt.getTask(id).no_resize){
+gantt.attachEvent("onBeforeTaskDrag", (taskId, dragMode, event) => {
+    if (dragMode === "resize" && gantt.getTask(taskId).no_resize) {
         return false;
     }
     return true;
 });
 ~~~
 
-## 识别任务被调整的是哪一端
+## 哪一边在调整任务的大小
 
-在拖拽中，"resize" 模式表示用户正在更改任务的开始或结束日期。
+拖放的 ["resize"](api/event/onbeforetaskdrag.md) 模式意味着用户从开始日期或结束日期之一调整任务的大小。
 
-要检测正在修改哪一端，可以检查 **gantt.getState().drag_from_start** 标志:
+如果你需要知道用户在调整大小时修改的是哪个日期，可以使用 **gantt.getState().drag_from_start** 标志：
 
 ~~~js
-gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
-    if(mode === "resize"){
-        if(gantt.getState().drag_from_start === true) {
-            // 正在更改开始日期
+gantt.attachEvent("onBeforeTaskDrag", (taskId, dragMode, event) => {
+    if (dragMode === "resize") {
+        if (gantt.getState().drag_from_start === true) {
+            // 改变任务的开始日期
         } else {
-            // 正在更改结束日期
+            // 改变任务的结束日期
         }
     }
     return true;
 });
 ~~~
 
-## 禁用任务开始或结束日期的调整大小
+## 禁用任务的开始日期或结束日期的调整大小
 
-调整大小手柄可通过以下选择器定位:
+你可以使用以下选择器定位调整大小手柄：
 
-- .gantt_task_drag[data-bind-property="start_date"]
-- .gantt_task_drag[data-bind-property="end_date"]
+- `.gantt_task_drag[data-bind-property="start_date"]`
+- `.gantt_task_drag[data-bind-property="end_date"]`
 
-如需禁用开始日期的调整大小，可使用如下 CSS:
+以下 CSS 可用于禁用任务开始日期的调整大小：
 
 ~~~css
-.gantt_task_drag[data-bind-property="start_date"]{
-   display: none !important;
+.gantt_task_drag[data-bind-property="start_date"] {
+    display: none !important;
 }
 ~~~
 
-同理，如需禁用结束日期的调整大小:
+同样，阻止结束日期的调整大小如下：
 
 ~~~css
-.gantt_task_drag[data-bind-property="end_date"]{
-   display: none !important;
+.gantt_task_drag[data-bind-property="end_date"] {
+    display: none !important;
 }
 ~~~
 
-或者，也可以通过 [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) 事件阻止调整大小。
-在处理函数中返回 *false* 即可阻止调整大小:
+另一种方法是使用 [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) 事件。处理程序返回 *false* 将阻止调整大小：
 
 ~~~js
-gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
-    if(mode === "resize"){
-        if(gantt.getState().drag_from_start === true) {
-             return false;
+gantt.attachEvent("onBeforeTaskDrag", (taskId, dragMode, event) => {
+    if (dragMode === "resize") {
+        if (gantt.getState().drag_from_start === true) {
+            return false;
         } else {
-             // 允许调整结束日期
+            // 改变任务的结束日期
         }
     }
     return true;
 });
 ~~~
-

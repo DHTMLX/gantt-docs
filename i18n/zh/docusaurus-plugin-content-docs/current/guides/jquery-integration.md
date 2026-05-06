@@ -1,15 +1,15 @@
 ---
-title: "与 JQuery 集成"
-sidebar_label: "与 JQuery 集成"
+title: "与 JQuery 的集成"
+sidebar_label: "与 JQuery 的集成"
 ---
 
-# 与 JQuery 集成
+# 与 JQuery 的集成
 
-在使用 JQuery 库时，可以通过熟悉的语法将甘特图添加到页面中。
+如果你使用的是 jQuery 库，可以使用常用的语法在页面上渲染甘特图。
 
-以下是使用 JQuery 初始化基本甘特图的示例:
+通过 JQuery 的标准甘特图可以按如下方式初始化：
 
-**使用 JQuery 初始化甘特图**
+**通过 JQuery 初始化的甘特图**
 ~~~js
 $(".mygantt").dhx_gantt({
     data:demo_tasks,
@@ -24,21 +24,19 @@ $("#gantt1").dhx_gantt().parse(tasksA);
 <div class="mygantt" id='gantt1' style='width:100%; height:30%;'></div>
 ~~~
 
-
 [jQuery integration](https://docs.dhtmlx.com/gantt/samples/01_initialization/07_jquery.html)
 
 
-详细说明:
+其中：
 
-- **".mygantt"** - 一个兼容 jQuery 的 CSS 选择器，用于标识甘特图渲染的容器
-- **dhx_gantt()** 方法用于创建 dhtmlxGantt 实例。它接收一个配置对象作为参数:
-  - **data** - (*object*) 要加载到甘特图的数据集
-  - **[scales](api/config/scales.md)** - (*array*) 定义时间刻度的设置列表
+- **".mygantt"** - 一个与 jQuery 兼容的容器 CSS 选择器，用于创建甘特图 
+- **dhx_gantt()** 方法用于实例化 dhtmlxGantt。作为参数，该方法接收一个配置对象：
+  - **data** - (*object*) 将被加载到甘特图的数据集
+  - **[scales](api/config/scales.md)** - (*array*) 一个包含时间刻度配置信息的数组
   
 :::note
-通过 jQuery 初始化的甘特图，与直接用 JavaScript 创建的甘特图使用相同的配置选项和 API。
+通过 jQuery 调用初始化的甘特图使用的配置和 API，与通过 JavaScript 初始化的标准甘特图相同。
 :::
 
 
 [jQuery integration](https://docs.dhtmlx.com/gantt/samples/01_initialization/07_jquery.html)
-

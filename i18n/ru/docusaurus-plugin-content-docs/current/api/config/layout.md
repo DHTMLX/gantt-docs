@@ -1,14 +1,14 @@
 ---
 sidebar_label: layout
-title: layout config
-description: "определяет объект layout"
+title: конфигурация layout
+description: "указывается объект layout"
 ---
 
 # layout
 
 ### Description
 
-@short: Определяет объект layout
+@short: Указывает объект layout
 
 @signature: layout: any
 
@@ -33,17 +33,17 @@ gantt.config.layout = {
 gantt.init("gantt_here");
 ~~~
 
+
 ### Details
 
 :::note
- Конфигурация layout должна быть задана до инициализации диаграммы Ганта. Если вы обновляете layout позже, обязательно выполните его обновление с помощью [resetLayout](api/method/resetlayout.md). 
+Обратите внимание, что конфигурацию layout следует задавать до инициализации Gantt. Если вы внесёте изменения в layout, вам нужно обновить его с помощью [resetLayout](api/method/resetlayout.md). 
 :::
 
 ### Related API
 - [resetLayout](api/method/resetlayout.md)
 
 ### Related Guides
-- [Макет Gantt](guides/layout-config.md)
-- [Решения](guides/how-to.md#howtotogglegridchart) (читайте, как переключать grid/chart)
-- [Решения](guides/how-to.md#howtotoggletheresourceview) (читайте, как переключать ресурсный вид)
-
+- [Gantt Layout](guides/layout-config.md)
+- [How-tos](guides/how-to.md#how-to-toggle-gridchart) (прочитайте, как переключать grid/chart)
+- [How-tos](guides/how-to.md#how-to-toggle-the-resource-view) (прочитайте, как переключать представление ресурсов)

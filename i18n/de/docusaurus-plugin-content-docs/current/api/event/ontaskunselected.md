@@ -1,36 +1,35 @@
 ---
 sidebar_label: onTaskUnselected
 title: onTaskUnselected event
-description: "Wird ausgelöst, wenn ein Benutzer eine Aufgabe durch Auswahl einer anderen deselektiert."
+description: "Wird ausgelöst, wenn der Benutzer eine Aufgabe abwählt, indem er eine andere Aufgabe auswählt"
 ---
 
 # onTaskUnselected
 
 ### Description
 
-@short: Wird ausgelöst, wenn ein Benutzer eine Aufgabe durch Auswahl einer anderen deselektiert.
+@short: Wird ausgelöst, wenn der Benutzer eine Aufgabe abwählt, indem er eine andere Aufgabe auswählt
 
 @signature: onTaskUnselected: (id: string | number) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die ID der Aufgabe, die deselektiert wurde
+- `id` - (required) *string | number* - die ID der abgewählten Aufgabe
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onTaskUnselected", function(id){
-    // benutzerdefinierte Logik kann hier eingefügt werden
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Details
 
-Dieses Event tritt für jede Aufgabe innerhalb des Multiselectionsbereichs auf.
+Das Ereignis wird für jede Aufgabe im Bereich der Mehrfachauswahl aufgerufen.
 
-Wenn die [multiselect](guides/extensions-list.md#multitaskselection) Extension aktiv ist, wird es ebenfalls ausgelöst, wenn ein Benutzer eine Aufgabe aus der aktuellen Auswahl entfernt.
+Falls die Erweiterung [multiselect](guides/extensions-list.md#multitaskselection) aktiviert ist, wird das Ereignis auch ausgelöst, wenn der Benutzer die Auswahl von der ausgewählten Aufgabe entfernt.
 
 ### Related API
 - [onBeforeTaskSelected](api/event/onbeforetaskselected.md)
 - [onTaskSelected](api/event/ontaskselected.md)
-

@@ -1,34 +1,34 @@
 ---
 sidebar_label: getSubtaskDuration
-title: getSubtaskDuration method
-description: "вычисляет общую длительность задач, вложенных в проект или другую задачу."
+title: метод getSubtaskDuration
+description: "вычисляет общую продолжительность задач, вложенных в проект или другую задачу."
 ---
 
 # getSubtaskDuration
 
 ### Description
 
-@short: Вычисляет общую длительность задач, вложенных в проект или другую задачу.
+@short: Вычисляет общую продолжительность задач, вложенных в проект или другую задачу.
 
 @signature: getSubtaskDuration: (task_id?: string | number) =\> number
 
 ### Parameters
 
-- `task_id` - (optional) *string | number* -       идентификатор задачи; если не указан, по умолчанию будет использован [root_id](api/config/root_id.md)
+- `task_id` - (optional) *string | number* - идентификатор задачи, [root_id](api/config/root_id.md) будет использоваться, если не указан
 
 ### Returns
-- ` duration` - (number) - общая длительность вложенных задач
+- ` duration` - (number) - общая продолжительность вложенных задач
 
 ### Example
 
 ~~~jsx
 const formatter = gantt.ext.formatters.durationFormatter();
-//длительность всего проекта
+//duration of the whole project
 let duration = gantt.getSubtaskDuration();
     
 console.log(formatter.format(duration));
 
-//длительность субпроекта
+//duration of the subproject
 duration = gantt.getSubtaskDates(1);
     
 console.log(formatter.format(duration));
@@ -36,16 +36,15 @@ console.log(formatter.format(duration));
 
 ### Details
 
-Этот метод вычисляет общую длительность всех задач, вложенных внутри проекта или другой задачи.
+Вычисляет общую продолжительность задач, вложенных в проект или другую задачу.
 
-Обратите внимание, что задачи типа [project](api/config/types.md) исключаются из этого итога.
+Задачи типа [тип проекта](api/config/types.md) не учитываются в общей продолжительности.
 
-Возвращаемое значение указано в [единицах длительности](api/config/duration_unit.md), определённых в конфигурации.
+Возвращаемое значение вычисляется в [единицах продолжительности](api/config/duration_unit.md) из конфигурации.
 
 ### Related API
 - [getSubtaskDates](api/method/getsubtaskdates.md)
 - [getTaskBy](api/method/gettaskby.md)
 
 ### Related Guides
-- [Расширение Formatters](guides/formatters-ext.md#durationformatter)
-
+- [Расширение форматтеров](guides/formatters-ext.md#durationformatter)

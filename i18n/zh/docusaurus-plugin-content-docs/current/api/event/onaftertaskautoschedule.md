@@ -1,42 +1,41 @@
 ---
 sidebar_label: onAfterTaskAutoSchedule
 title: onAfterTaskAutoSchedule event
-description: "触发每个被自动调度的任务"
+description: "对每个已自动排程的任务触发"
 ---
 
 # onAfterTaskAutoSchedule
-
+:::info
+ 此功能仅在 PRO 版本中可用。 
+:::
 ### Description
 
-@short: 触发每个被自动调度的任务
+@short: 对于每个已自动排程的任务触发
 
 @signature: onAfterTaskAutoSchedule: (task: Task, start: Date, link: Link, predecessor: Task) =\> void;
 
 ### Parameters
 
 - `task` - (required) *Task* - 任务对象
-- `start` - (required) *Date* - 更新后的开始日期
-- `link` - (required) *Link* - 导致约束的链接对象
-- `predecessor` - (required) *Task* - 前置任务对象
+- `start` - (required) *Date* - 一个新的起始日期
+- `link` - (required) *Link* - 用于创建约束的链接对象
+- `predecessor` - (required) *Task* - 前驱任务对象
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAfterTaskAutoSchedule",function(task, start, link, predecessor){
-    // 在这里添加您的自定义逻辑
+    // 在这里插入您的自定义逻辑
 });
 ~~~
 
 ### Related samples
-- [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
+- [自动排程扩展](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
 
 :::note
-pronote 此功能仅在PRO版本中可用。 
-:::
-:::note
-note 此事件是**auto_scheduling**扩展的一部分，因此请确保启用[auto_scheduling](guides/extensions-list.md#zidongpaicheng)插件。更多信息请参见[自动调度](guides/auto-scheduling.md)文章。 
+此事件在 **auto_scheduling** 扩展中定义，因此您需要激活 [auto_scheduling](guides/extensions-list.md#autoscheduling) 插件。请在 [自动排程](guides/auto-scheduling.md) 文章中阅读详细信息。
 :::
 
 ### Related API
@@ -56,5 +55,4 @@ note 此事件是**auto_scheduling**扩展的一部分，因此请确保启用[a
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- [自动调度](guides/auto-scheduling.md)
-
+- [自动排程](guides/auto-scheduling.md)

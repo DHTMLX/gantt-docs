@@ -1,19 +1,19 @@
 ---
 sidebar_label: getUndoStack
-title: getUndoStack method
-description: "提供存储的撤销用户操作的堆栈"
+title: getUndoStack 方法
+description: "返回存储的撤销用户操作栈"
 ---
 
 # getUndoStack
 
 ### Description
 
-@short: 提供存储的撤销用户操作的堆栈
+@short: 返回存储的撤销用户操作栈
 
 @signature: getUndoStack: () =\> UndoRedoAction[]
 
 ### Returns
-- ` stack` - (UndoRedoAction[]) - 包含撤销用户操作的数组
+- ` stack` - (UndoRedoAction[]) - 一个包含撤销用户操作的数组
 
 ### Example
 
@@ -22,7 +22,7 @@ var stack = gantt.getUndoStack();
 ~~~
 
 ### Related samples
-- [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
+- [Gantt 中的撤销/重做更改](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
 ### Details
 
@@ -31,15 +31,14 @@ note 此方法属于 **undo** 扩展，因此必须启用 [undo](guides/extensio
 :::
 
 
-返回的堆栈由撤销用户操作组成，每个操作包含一组命令。命令是具有以下属性的对象:
+返回的栈是撤销用户操作的一个数组。每个用户操作包含一组命令。一个命令是具有以下属性的对象：
+ 
+- **type** - (*string*) 命令的类型："add/remove/update"
+- **entity** - (*string*) 被更改对象的类型： "task" 或 "link"
+- **value** - (*object*) 已更改的 task/link 对象 
+- **oldValue** - (*object*) 更改前的 task/link 对象
 
-- **type** - (*string*) 指定命令类型:"add/remove/update"
-- **entity** - (*string*) 指示被修改对象的类型:"task" 或 "link"
-- **value** - (*object*) 变更后的任务或链接对象
-- **oldValue** - (*object*) 变更前的任务或链接对象
-
-下面是一个示例说明:
-
+请看下面的示例：
 ![get_undo_stack](/img/get_undo_stack.png)
 
 **getUndoStack()** 方法返回一个包含 2 个撤销用户操作的堆栈。第一个操作包含 3 个命令，第二个操作包含 1 个命令。
@@ -50,8 +49,7 @@ note 此方法属于 **undo** 扩展，因此必须启用 [undo](guides/extensio
 - [clearUndoStack](api/method/clearundostack.md)
 
 ### Related Guides
-- [撤销/重做功能](guides/undo-redo.md)
+- [Undo/Redo Functionality](guides/undo-redo.md)
 
 ### Change log
-- 在版本 4.0 中新增
-
+- added in version 4.0

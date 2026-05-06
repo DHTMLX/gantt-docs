@@ -1,25 +1,24 @@
 ---
 sidebar_label: grid_date_format
-title: grid_date_format template
-description: "definiert, wie Daten in Spalten angezeigt werden, die Datumswerte darstellen (gibt die `Date`-Werte zurück)"
+title: grid_date_format Vorlage
+description: "bestimmt das Format von Datumsangaben in den Spalten, die Datumswerte anzeigen (gibt die `Date`-Werte zurück)"
 ---
 
 # grid_date_format
 
 ### Description
 
-@short: Definiert, wie Daten in Spalten angezeigt werden, die Datumswerte darstellen (gibt die `Date`-Werte zurück)
+@short: Gibt das Format der Datumswerte in den Spalten an, die Datumswerte anzeigen (die `Date`-Werte zurückgeben)
 
 @signature: grid_date_format: (date: Date, column?: string) =\> string;
 
 ### Parameters
 
-- `date` - (required) *Date* - das Datum, das formatiert werden soll
-- `column` - (optional) *string* - der Name der Spalte, die die Vorlage ausgelöst hat
-
+- `date` - (erforderlich) *Date* - das Datum, das formatiert werden muss
+- `column` - (optional) *string* - der Name der Spalte, die die Vorlage aufgerufen hat
 
 ### Returns
-- ` text` - (string) - html-Text, der im Gantt angezeigt wird
+- `text` - (string) - HTML-Text, der im Gantt gerendert wird
 
 ### Example
 
@@ -31,15 +30,15 @@ gantt.templates.grid_date_format = function(date, column){
 
 ### Details
 
-Diese Template-Funktion wird für alle Aufgaben aufgerufen, außer für jene, die nicht geplant sind.
+Die Template-Funktion wird für alle Aufgaben aufgerufen, außer den ungeplanten.
 
 :::note
- Die **grid_date_format**-Vorlage wird nur von der [date_grid](api/template/date_grid.md) Vorlage verwendet, daher wirken sich Änderungen hier auch auf **grid_date_format** aus. 
+Die **grid_date_format**-Vorlage wird nur von der [date_grid](api/template/date_grid.md) Vorlage verwendet, daher, wenn Sie Änderungen daran vornehmen, wird **grid_date_format** beeinflusst.
 :::
 
 ### Related API
 - [task_end_date](api/template/task_end_date.md)
 
 ### Related Guides
-- ["Vorlagen des Grids"](guides/table-templates.md)
+- [Vorlagen des Grids](guides/table-templates.md)
 

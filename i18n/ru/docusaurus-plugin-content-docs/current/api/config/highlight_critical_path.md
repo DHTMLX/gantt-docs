@@ -1,16 +1,18 @@
 ---
 sidebar_label: highlight_critical_path
 title: highlight_critical_path config
-description: "выделяет критический путь на диаграмме"
+description: "показывает критический путь на диаграмме"
 ---
 
 # highlight_critical_path
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в версии PRO.
 :::
+
 ### Description
 
-@short: Выделяет критический путь на диаграмме
+@short: Показывает критический путь на диаграмме
 
 @signature: highlight_critical_path: boolean
 
@@ -22,15 +24,15 @@ gantt.config.highlight_critical_path = true; /*!*/
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**Значение по умолчанию:** false
 
 ### Related samples
-- [Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
+- [Критический путь](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
 ### Details
 
 :::note
- Эта настройка является частью расширения **critical_path**, поэтому убедитесь, что плагин [critical_path](guides/extensions-list.md#criticalpath) включен. Подробнее об этом можно прочитать в статье [Критический путь](guides/critical-path.md). 
+Этот параметр определяется в расширении **critical_path**, поэтому вам нужно активировать плагин [critical_path](guides/extensions-list.md#critical-path). Подробнее см. в статье [Критический путь](guides/critical-path.md).
 :::
 
 ### Related API
@@ -39,4 +41,3 @@ gantt.init("gantt_here");
 
 ### Related Guides
 - [Критический путь](guides/critical-path.md)
-

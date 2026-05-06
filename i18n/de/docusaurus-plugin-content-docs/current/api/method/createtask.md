@@ -1,7 +1,7 @@
 ---
 sidebar_label: createTask
-title: createTask method
-description: "Fügt eine neue Aufgabe hinzu und öffnet die Lightbox zur Bestätigung"
+title: createTask Methode
+description: "fügt eine neue Aufgabe hinzu und öffnet die Lightbox zur Bestätigung"
 ---
 
 # createTask
@@ -13,12 +13,13 @@ description: "Fügt eine neue Aufgabe hinzu und öffnet die Lightbox zur Bestät
 @signature: createTask: (task?: NewTask, parent?: string | number, index?: number) =\> string | number
 
 ### Parameters
-- `task` - (optional) *NewTask* - das Aufgabenobjekt
-- `parent` - (optional) *string | number* - die ID des übergeordneten Elements
-- `index` - (optional) *number* - die Position, an der die Aufgabe eingefügt wird (0 oder größer)
+
+- `task`    -	 (optional) *NewTask*	- optional, das Task-Objekt
+- `parent`	-	(optional) *string | number*	- optional, die ID des Elternteils
+- `index`	-	(optional) *number*	-  optional, die Position, an der die Aufgabe hinzugefügt wird (0 oder größer)
 
 ### Returns
-- ` id` - (string, number) - die ID der Aufgabe
+- ` id` - (string, number) - die Aufgaben-ID
 
 ### Example
 
@@ -33,14 +34,12 @@ var taskId = gantt.createTask({
 
 ### Details
 
-Wenn Sie den Parameter *index* mit einem Wert von 0 oder höher angeben, wird die Aufgabe an genau dieser Position innerhalb des Zweigs eingefügt. 
-Ist der *index* nicht angegeben, wird die Aufgabe einfach am Ende des Zweigs hinzugefügt.
+Wenn Sie den *index*-Parameter mit einem Wert von 0 oder größer setzen, wird eine Aufgabe an der angegebenen Position im Zweig hinzugefügt.
+Andernfalls wird die Aufgabe am Ende des Aufgaben-Zweigs hinzugefügt.
 
-Diese Methode löst das Event [onTaskCreated](api/event/ontaskcreated.md) aus. Beachten Sie, dass dieses Event auftritt, bevor die neue Aufgabe tatsächlich zum Datensatz hinzugefügt wird, 
-was bedeutet, dass Sie das Speichern der Aufgabe vollständig abbrechen können - beispielsweise wenn der Benutzer im Lightbox den 'Abbrechen'-Button drückt.
+Die Methode löst das [onTaskCreated](api/event/ontaskcreated.md) Ereignis aus. Beachten Sie, dass das Ereignis ausgelöst wird, bevor die neue Aufgabe dem Datensatz hinzugefügt wird, was Ihnen ermöglicht, das Speichern dieser Aufgabe ganz zu widerrufen, z. B. wenn der Benutzer im Lightbox-Fenster auf 'Abbrechen' klickt.
 
-
-Hier ist die Reihenfolge der Ereignisse, die ablaufen, wenn Sie eine Aufgabe mit createTask() erstellen:
+Die endgültige Reihenfolge der Ereignisse, die ausgelöst werden, wenn Sie eine Aufgabe mit der createTask() Methode erstellen:
 
 1. [onTaskCreated](api/event/ontaskcreated.md)
 2. [onBeforeLightbox](api/event/onbeforelightbox.md)
@@ -54,5 +53,4 @@ Hier ist die Reihenfolge der Ereignisse, die ablaufen, wenn Sie eine Aufgabe mit
 - [addTask](api/method/addtask.md)
 
 ### Related Guides
-- ["Grundlegende Operationen mit Aufgaben"](guides/crud-task.md)
-
+- [Grundoperationen mit Aufgaben](guides/crud-task.md)

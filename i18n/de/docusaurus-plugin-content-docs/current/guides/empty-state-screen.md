@@ -1,29 +1,28 @@
 ---
-title: "Leerer Zustand Bildschirm"
-sidebar_label: "Leerer Zustand Bildschirm"
+title: "Leerzustand-Bildschirm"
+sidebar_label: "Leerzustand-Bildschirm"
 ---
 
-# Leerer Zustand Bildschirm
+# Leerzustand-Bildschirm
 
-Seit Version 8.0 unterstützt die Bibliothek das Anzeigen eines leeren Bildschirms („Empty State") mit einem Platzhalter-Element im Grid, wenn keine Daten im Gantt-Diagramm geladen sind.
+Ab Version 8.0 bietet die Bibliothek die Möglichkeit, einen leeren Bildschirm ("Leerzustand") mit dem Platzhalter-Element im Gantt-Gitter anzuzeigen, wenn im Gantt-Diagramm keine Daten geladen sind.
 
-![empty screen tip](/img/empty_screen.png)
+![Tipp zum leeren Bildschirm](/img/empty_screen.png)
 
-Standardmäßig bleibt das Platzhalter-Element verborgen. Um es zu aktivieren, setzen Sie folgende Konfiguration:
+Standardmäßig ist das Platzhalter-Element ausgeblendet. Um es anzuzeigen, verwenden Sie die Konfiguration [show_empty_state](api/config/show_empty_state.md):
 
 ~~~js
 gantt.config.show_empty_state = true;
 ~~~
 
+[Leeren-Zustand-Bildschirm anzeigen](https://docs.dhtmlx.com/gantt/samples/08_api/24_empty_state_screen.html)
 
-[Show empty state screen](https://docs.dhtmlx.com/gantt/samples/08_api/24_empty_state_screen.html)
 
+## EmptyStateElement-Objekt
 
-## EmptyStateElement Objekt
+Der Leerzustand kommt mit einer Reihe von API-Methoden, die von der Erweiterung [emptyStateElement](guides/empty-state-element-ext.md) bereitgestellt werden. 
 
-Die „Empty State"-Funktion bietet verschiedene API-Methoden, die über die [emptyStateElement](guides/empty-state-element-ext.md) Erweiterung verfügbar sind.
-
-Der leere Zustand kann nicht nur angezeigt werden, wenn keine Aufgaben im Gantt geladen sind, sondern auch, wenn Aufgaben zwar geladen, aber herausgefiltert wurden und somit auf der Seite unsichtbar sind. Um dies zu steuern, verwenden Sie die Methode **isEnabled()**:
+Die Anzeige des Leerzustands ist nicht nur möglich, wenn im Gantt keine Aufgaben geladen sind. Sie können ihn auch anzeigen, wenn die Aufgaben geladen, aber gefiltert sind und auf der Seite nicht sichtbar sind. Verwenden Sie dazu die **isEnabled()**-Methode:
 
 ~~~js
 gantt.ext.emptyStateElement.isEnabled = function (){
@@ -31,7 +30,8 @@ gantt.ext.emptyStateElement.isEnabled = function (){
 }
 ~~~
 
-Wenn Sie den leeren Zustand im Zeitachsenbereich statt im Grid anzeigen möchten, verwenden Sie die Methode **getContainer()**:
+
+Wenn Sie den Leerzustand im Timeline-Bereich statt im Grid anzeigen möchten, verwenden Sie die **getContainer()**-Methode:
 
 ~~~js
 gantt.ext.emptyStateElement.getContainer = function() {
@@ -39,7 +39,7 @@ gantt.ext.emptyStateElement.getContainer = function() {
 };
 ~~~
 
-Um den angezeigten Inhalt im leeren Zustand anzupassen, überschreiben Sie die Methode **renderContent()**:
+Um den im Leerzustand gerenderten Inhalt zu ändern, wenden Sie die **renderContent()**-Methode an:
 
 ~~~js
 gantt.ext.emptyStateElement.renderContent = function (container) {

@@ -57,7 +57,5 @@ gantt.init("gantt_here");
 </table>
 
 :::note
-
 注意，所有 **keys** 属性的数据类型均为"number"。
- 
 :::

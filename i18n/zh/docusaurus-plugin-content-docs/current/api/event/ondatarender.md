@@ -1,16 +1,16 @@
 ---
 sidebar_label: onDataRender
-title: onDataRender event
-description: "数据在页面上显示后立即触发"
+title: onDataRender 事件
+description: "在页面数据渲染完成后触发"
 ---
 
 # onDataRender
 
 ### Description
 
-@short: 数据在页面上显示后立即触发
+@short: 数据已在页面渲染完成后触发
 
-@signature: onDataRender: () =\> void;
+@signature: onDataRender: () => void;
 
 ### Example
 
@@ -32,4 +32,3 @@ gantt.parse(demo_tasks);
 - [onBeforeDataRender](api/event/onbeforedatarender.md)
 - [onGanttRender](api/event/onganttrender.md)
 - [onLoadEnd](api/event/onloadend.md)
-

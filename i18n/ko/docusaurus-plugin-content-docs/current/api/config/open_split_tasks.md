@@ -1,14 +1,14 @@
 ---
 sidebar_label: open_split_tasks
-title: open_split_tasks config
-description: "+/- 버튼을 클릭하여 분할 작업(split tasks)을 확장하거나 축소할 수 있습니다."
+title: open_split_tasks 구성
+description: "더하기/빼기 버튼을 클릭하여 분할 작업을 확장/축소할 수 있는 기능을 활성화합니다"
 ---
 
 # open_split_tasks
 
 ### Description
 
-@short: +/- 버튼을 클릭하여 분할 작업(split tasks)을 확장하거나 축소할 수 있습니다.
+@short: 더하기/빼기 버튼을 클릭하여 분할 작업을 확장/축소할 수 있는 기능을 활성화합니다
 
 @signature: open_split_tasks: boolean
 
@@ -19,11 +19,11 @@ gantt.config.open_split_tasks = true;
 ~~~
 
 ### Related samples
-- [Expand and collapse split tasks](https://docs.dhtmlx.com/gantt/samples/04_customization/21_open_split_task.html)
+- [분할 작업 확장 및 축소](https://docs.dhtmlx.com/gantt/samples/04_customization/21_open_split_task.html)
 
 ### Details
 
-![분할 작업 확장하기](/img/expand_split_task.png)
+![분할 작업 확장](/img/expand_split_task.png)
 
 ### Related Guides
-- [작업 분할](guides/split-tasks.md#expandingandcollapsingsplittasks)
+- [분할 작업](guides/split-tasks.md#expandingcollapsingsplittasks)

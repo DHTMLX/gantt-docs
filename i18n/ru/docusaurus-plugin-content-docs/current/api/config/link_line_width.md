@@ -1,14 +1,14 @@
 ---
 sidebar_label: link_line_width
-title: link_line_width config
-description: "регулирует толщину связей зависимостей в секции timeline"
+title: link_line_width конфигурация
+description: "устанавливает ширину линий зависимостей в области временной шкалы"
 ---
 
 # link_line_width
 
 ### Description
 
-@short: Регулирует толщину связей зависимостей в секции timeline
+@short: Sets the width of dependency links in the timeline area
 
 @signature: link_line_width: number
 
@@ -19,4 +19,4 @@ gantt.config.link_line_width = 3;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 2
+**Значение по умолчанию:** 2

@@ -1,26 +1,26 @@
 ---
 sidebar_label: onMultiSelect
 title: onMultiSelect event
-description: "当选中一个或多个任务完成时触发"
+description: "在完成对一个任务或一组任务的选择后触发"
 ---
 
 # onMultiSelect
 
 ### Description
 
-@short: 当选中一个或多个任务完成时触发
+@short: 在完成对一个任务或一组任务的选择后触发
 
-@signature: onMultiSelect: (e: Event) =\> void;
+@signature: onMultiSelect: (e: Event) => void;
 
 ### Parameters
 
-- `e` - (required) *Event* - 一个原生事件对象
+- `e` - (必填) *Event* - 一个原生事件对象
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onMultiSelect", function(e){
-    // 一些逻辑处理
+    // 在这里插入您的自定义逻辑 
     return true;
 });
 ~~~
@@ -28,7 +28,7 @@ gantt.attachEvent("onMultiSelect", function(e){
 ### Details
 
 :::note
- 此事件属于 **multiselect** 扩展的一部分，因此请确保已启用 [multiselect](guides/extensions-list.md) 插件。更多详情请参阅 [多任务选择](guides/multiselection.md) 文章。 
+此事件在 **multiselect** 扩展中定义，因此需要激活 [multiselect](guides/extensions-list.md#multitaskselection) 插件。请在 [Multi-Task Selection](guides/multiselection.md) 文章中了解详情。
 :::
 
 ### Related API
@@ -37,5 +37,4 @@ gantt.attachEvent("onMultiSelect", function(e){
 - [onTaskMultiSelect](api/event/ontaskmultiselect.md)
 
 ### Related Guides
-- [多任务选择](guides/multiselection.md#apishijian)
-
+- [Multi-Task Selection](guides/multiselection.md#apievents)

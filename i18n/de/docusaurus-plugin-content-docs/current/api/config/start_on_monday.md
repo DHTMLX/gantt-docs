@@ -1,7 +1,7 @@
 ---
 sidebar_label: start_on_monday
 title: start_on_monday config
-description: "legt den Starttag der Woche fest"
+description: "setzt den Starttag der Woche fest"
 ---
 
 # start_on_monday
@@ -20,8 +20,8 @@ gantt.config.start_on_monday = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Standardwert:** true
 
 ### Details
 
-Wenn diese Option aktiviert ist (<i>true</i>), beginnt die Woche am Montag. Ist sie deaktiviert, startet die Woche stattdessen am Sonntag.
+Wenn der Parameter auf true gesetzt ist, beginnt eine Woche am Montag (ansonsten am Sonntag).

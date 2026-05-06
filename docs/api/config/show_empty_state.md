@@ -29,8 +29,8 @@ gantt.config.show_empty_state = true;
 ![empty screen tip](/img/empty_screen.png)
 
 ### Related Guides
-- [](../../guides/empty-state-screen.md)
-- [](../../guides/empty-state-element-ext.md)
+- [Empty State Screen](guides/empty-state-screen.md)
+- [emptyStateElement Extension](guides/empty-state-element-ext.md)
 
 ### Change log
 - added in version 8.0

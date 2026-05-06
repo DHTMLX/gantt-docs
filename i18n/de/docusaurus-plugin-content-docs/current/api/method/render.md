@@ -1,14 +1,14 @@
 ---
 sidebar_label: render
 title: render method
-description: "zeichnet das gesamte Gantt-Diagramm"
+description: "rendert das gesamte Gantt-Diagramm"
 ---
 
 # render
 
 ### Description
 
-@short: Zeichnet das gesamte Gantt-Diagramm
+@short: Rendert das gesamte Gantt-Diagramm
 
 @signature: render: () =\> void
 
@@ -20,7 +20,7 @@ gantt.config.scales = [
     {unit: "day", step: 1, format: "%j, %D"}
 ];
 gantt.init("gantt_here");
-
+ 
 gantt.config.scales = [
     {unit: "day", step: 1, format: "%j, %D"}
 ];

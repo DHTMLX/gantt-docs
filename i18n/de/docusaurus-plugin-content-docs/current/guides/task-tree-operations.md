@@ -1,17 +1,17 @@
 ---
-title: "Task Parent/Child"
-sidebar_label: "Task Parent/Child"
+title: "Aufgabe: Elternteil/Kind"
+sidebar_label: "Aufgabe: Elternteil/Kind"
 ---
 
-# Task Parent/Child
+# Aufgabe: Elternteil/Kind
 
-Dieser Artikel behandelt Methoden, die mit der hierarchischen Struktur von Aufgaben im Gantt-Diagramm arbeiten.
+In diesem Artikel finden Sie Methoden, die sich auf die baumartige Struktur der Gantt-Diagramm-Aufgaben beziehen.
 
-*Für grundlegende Operationen wie das Abrufen des Aufgabenobjekts oder der ID siehe den Artikel [Task Object/Id](guides/task-object-operations.md).*
+*Um grundlegende Operationen zum Abrufen des Task-Objekts/der ID zu lernen, lesen Sie den Artikel [Task Object/Id](guides/task-object-operations.md).*
 
-## Elternelement einer Aufgabe
+## Elternteil einer Aufgabe
 
-Um das Elternelement einer Aufgabe zu finden, können Sie die Methode [getParent](api/method/getparent.md) verwenden oder auf die Eigenschaft "**parent**" des Aufgabenobjekts zugreifen:
+Um das Elternelement einer Aufgabe zu erhalten, verwenden Sie die [getParent](api/method/getparent.md) Methode oder die **parent**-Eigenschaft des Aufgabenobjekts:
 
 ~~~js
 gantt.getParent("t1");//->"pr_2"
@@ -19,11 +19,12 @@ gantt.getParent("t1");//->"pr_2"
 var taskObj = gantt.getTask("t1");//-> {id:"t1", text:"Task #5", parent:"pr_2", ...}
 var taskParent = taskObj.parent;  //-> "pr_2"
 ~~~
-Beachten Sie, dass die Methode, falls die Aufgabe kein Elternelement hat, die [root id](api/config/root_id.md) zurückgibt.
+Hinweis: Falls es kein Elternelement für die angegebene Aufgabe gibt, gibt die Methode die [root id](api/config/root_id.md) zurück.
+
 
 ## Kinder einer Aufgabe
 
-Um die Kinder einer übergeordneten Aufgabe abzurufen, verwenden Sie die Methode [getChildren](api/method/getchildren.md):
+Um die Kinder einer Elternaufgabe zu erhalten, verwenden Sie die [getChildren](api/method/getchildren.md) Methode:
 
 ~~~js
 var data = {
@@ -35,19 +36,20 @@ var data = {
 gantt.getChildren("p_1");//->["t_1"]
 ~~~
 
-Wenn Sie alle Kinder einer Aufgabe (nicht nur die direkten) erhalten möchten, verwenden Sie die Methode [eachTask()](api/method/eachtask.md) mit der ID der übergeordneten Aufgabe als zweites Argument:
+Um alle Kinder einer Aufgabe zu erhalten (nicht nur die Kinder der ersten Ebene), wenden Sie die [eachTask()](api/method/eachtask.md) Methode an und übergeben Sie die ID der Elterne-Aufgabe als zweites Argument:
 
 ~~~js
 const children = [];
-// Alle Kinder einer Aufgabe durchlaufen
+// durchläuft alle Kinder einer Aufgabe
 gantt.eachTask(function(child){
     children.push(child)
 }, 11);
 ~~~
 
-## Prüfen, ob eine Aufgabe Kinder hat
 
-Um festzustellen, ob eine Aufgabe untergeordnete Aufgaben hat, verwenden Sie die Methode [hasChild](api/method/haschild.md):
+## Prüfen, ob eine Aufgabe ein Kind hat
+
+Um zu prüfen, ob eine Aufgabe ein Kind hat, verwenden Sie die [hasChild](api/method/haschild.md) Methode:
 
 ~~~js
 var data = {
@@ -67,9 +69,10 @@ gantt.hasChild("p_1"); //-> true  /*!*/
 gantt.hasChild("t_1"); //-> false /*!*/
 ~~~
 
-## Nächste Aufgabe im Baum
 
-Um das Aufgabenobjekt zu erhalten, das nach einer bestimmten Aufgabe kommt, verwenden Sie die Methode [getNext](api/method/getnext.md):
+## Nächste Aufgabe in der Baumstruktur
+
+Um das Objekt der Aufgabe zu erhalten, die neben der angegebenen liegt, verwenden Sie die [getNext](api/method/getnext.md) Methode:
 
 ~~~js
 var data = {
@@ -90,11 +93,13 @@ gantt.getNext("t_1"); -> "t_2"   /*!*/
 gantt.getNext("t_2"); -> null    /*!*/
 ~~~
 
-Beachten Sie, dass gantt Aufgaben unabhängig von ihrer Baumebene gleich behandelt.
 
-## Vorherige Aufgabe im Baum
+Hinweis: Der Gantt berücksichtigt Aufgaben unabhängig von der Baumebene
 
-Um das Aufgabenobjekt zu erhalten, das vor einer bestimmten Aufgabe kommt, verwenden Sie die Methode [getPrev](api/method/getprev.md):
+
+## Vorherige Aufgabe in der Baumstruktur
+
+Um das Objekt der Aufgabe neben der angegebenen zu erhalten, verwenden Sie die [getPrev](api/method/getprev.md) Methode:
 
 ~~~js
 var data = {
@@ -115,11 +120,13 @@ gantt.getPrev("t_1"); -> "p_1"   /*!*/
 gantt.getPrev("t_2"); -> "t_1"   /*!*/
 ~~~
 
-Auch hier werden Aufgaben unabhängig von ihrer Baumebene betrachtet.
+
+Hinweis: Der Gantt berücksichtigt Aufgaben unabhängig von der Baumebene
+
 
 ## Geschwister einer Aufgabe
 
-Um die Geschwister einer bestimmten Aufgabe zu erhalten, verwenden Sie die Methode [getSiblings](api/method/getsiblings.md):
+Um die Geschwister der angegebenen Aufgabe zu erhalten, verwenden Sie die [getSiblings](api/method/getsiblings.md) Methode:
 
 ~~~js
 var data = {
@@ -135,13 +142,13 @@ var data = {
 gantt.init("gantt_here");
 gantt.parse(data);
  
-gantt.getSiblings("t_1"); ->  ["t_1", "t_2"] /*!*/
+gantt.getSiblings("t_1"); ->  ["t_1", "t_2] /*!*/
 ~~~
 
 
-## Nächstes Geschwister einer Aufgabe
+## Nächstes Geschwisterteil einer Aufgabe
 
-Um das nächste Geschwister einer Aufgabe zu finden, verwenden Sie die Methode [getNextSibling](api/method/getnextsibling.md):
+Um das nächste Geschwisterteil einer angegebenen Aufgabe zu erhalten, verwenden Sie die [getNextSibling](api/method/getnextsibling.md) Methode:
 
 ~~~js
 var data = {
@@ -158,13 +165,13 @@ gantt.init("gantt_here");
 gantt.parse(data);
  
 gantt.getNextSibling("t_1"); ->  "t_2" /*!*/
-gantt.getNextSibling("t_2"); ->  null (wenn kein nächstes Geschwister vorhanden ist) /*!*/
+gantt.getNextSibling("t_2"); ->  null (if no next sibling) /*!*/
 ~~~
 
 
-## Vorheriges Geschwister einer Aufgabe
+## Vorheriges Geschwisterteil einer Aufgabe
 
-Um das vorherige Geschwister einer Aufgabe zu erhalten, verwenden Sie die Methode [getPrevSibling](api/method/getprevsibling.md):
+Um das vorherige Geschwisterteil der angegebenen Aufgabe zu erhalten, verwenden Sie die [getPrevSibling](api/method/getprevsibling.md) Methode:
 
 ~~~js
 var data = {
@@ -181,6 +188,5 @@ gantt.init("gantt_here");
 gantt.parse(data);
  
 gantt.getPrevSibling("t_2"); ->  "t_1" /*!*/
-gantt.getPrevSibling("t_1"); ->  null (wenn kein vorheriges Geschwister vorhanden ist) /*!*/
+gantt.getPrevSibling("t_1"); ->  null (if no previous sibling) /*!*/
 ~~~
-

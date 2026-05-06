@@ -1,23 +1,25 @@
 ---
 sidebar_label: modalbox
-title: modalbox method
-description: "открывает modalbox"
+title: метод modalbox
+description: "вызывает modalbox"
 ---
 
 # modalbox
 
 ### Description
 
-@short: Открывает modalbox
+@short: Вызывает modalbox
 
 @signature: modalbox: (config: ModalBoxConfig) =\> HTMLElement
 
 ### Parameters
 
-- `config` - (required) *ModalBoxConfig* - настройки конфигурации для modalbox
+- `config` - (required) *ModalBoxConfig* - конфигурация модального окна
+
+- `div` - (HTMLElement) - div-контейнер модального окна
 
 ### Returns
-- ` div` - (HTMLElement) - div элемент, содержащий modalbox
+- ` div` - (HTMLElement) - div-контейнер модального окна
 
 ### Example
 
@@ -30,27 +32,25 @@ let box = gantt.modalbox({
 
 ### Details
 
-Объект конфигурации включает следующие свойства:
+Объект конфигурации использует следующие свойства:
 
-- **id?** - (*number | string*) - необязательно, уникальный идентификатор для modalbox
-- **text** - (*number | string*) - текст содержимого, отображаемый внутри modalbox
-- **title?** - (*number | string*) - необязательно, заголовок modalbox
-- **position?** - (*string*) - необязательно, управляет позицией modalbox; в настоящее время поддерживается только "top", любые другие значения по умолчанию приводят к "center-align"
-- **buttons** - (*string[] | number[] | ModalboxButton[]*) - массив, указывающий кнопки для отображения
-- **width?** - (*string*) - необязательно, задаёт ширину modalbox с помощью CSS [&#60;length&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/length) или [&#60;percentage&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) значений, например "100px" или "50%"
-- **height?** - (*string*) - необязательно, задаёт высоту modalbox с помощью CSS [&#60;length&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/length) или [&#60;percentage&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) единиц, например "100px" или "50%"
-- **callback? (result): void** - необязательная функция, вызываемая при клике на кнопку. Функция получает *true* или *false* в зависимости от нажатой кнопки
-    - **_result_** - (*string | number | boolean*) - callback получает строковое представление индекса нажатой кнопки из массива ("0", "1", "2", ...)
+- **id?** - (*number | string*) - необязателен, идентификатор модального окна
+- **text** - (*number | string*) - текст тела модального окна
+- **title?** - (*number | string*) - необязательное, текст заголовка
+- **position?** - (*string*) - необязательное, положение модального окна; на данный момент поддерживается только одно значение — 'top'; любое другое значение приведет к 'center-align'
+- **buttons** - (*string[] | number[] | ModalboxButton[]*) - массив кнопок
+- **width?** - (*string*) - необязательное, ширина модального окна (устанавливается как значения CSS \<length\> или \<percentage\>, например, "100px", "50%")
+- **height?** - (*string*) - необязательное, высота модального окна (устанавливается как значения CSS \<length\> или \<percentage\>, например, "100px", "50%")
+- **callback? (result): void** - необязательная, функция, вызываемая при нажатии кнопки. Принимает true или false в качестве параметра (в зависимости от нажатой кнопки)
+    - **_result_** - (*string | number | boolean*) - Результат функции обратного вызова будет равен строковому индексу нажатой кнопки из массива ("0", "1", "2",...)
 
+У ModalboxButton есть следующие типы:
 
-Тип ModalboxButton включает следующие свойства:
+- **label** - (*string | number*) - текст кнопки
+- **value?** - (*string | number | boolean*) - необязательное значение, возвращаемое в аргумент result функции callback
+- **css?** - (*string | number*) - необязательное, пользовательское имя класса для кнопки, с префиксом "gantt_"
 
-- **label** - (*string | number*) - текст метки кнопки
-- **value?** - (*string | number | boolean*) - необязательно, значение, возвращаемое как *result* в функции *callback*
-- **css?** - (*string | number*) - необязательно, пользовательский CSS класс для кнопки, который должен начинаться с префикса "gantt_"
-
-
-Для дополнительной информации о параметрах конфигурации modalbox смотрите статью [Всплывающие сообщения и модальные окна](guides/message-boxes.md).
+Для дополнительной информации о поддерживаемых параметрах конфигурации modalbox смотрите статью [Сообщения во всплывающих окнах и модальные окна](guides/message-boxes.md).
 
 ### Related API
 - [alert](api/method/alert.md)
@@ -58,8 +58,7 @@ let box = gantt.modalbox({
 - [message](api/method/message.md)
 
 ### Related Guides
-- [Всплывающие сообщения и модальные окна](guides/message-boxes.md)
+- [Сообщения во всплывающих окнах и модальные окна](guides/message-boxes.md)
 
 ### Change log
 - добавлено в версии 4.0
-

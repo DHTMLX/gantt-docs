@@ -1,20 +1,20 @@
 ---
 sidebar_label: buttons_right
-title: buttons_right config
-description: "enthält eine Reihe von Buttons, die sich in der unteren rechten Ecke des Lightbox befinden"
+title: buttons_right Konfiguration
+description: "Speichert eine Sammlung von Buttons, die sich in der rechten unteren Ecke des Lightbox-Fensters befinden"
 ---
 
 # buttons_right
 
 ### Description
 
-@short: Enthält eine Reihe von Buttons, die sich in der unteren rechten Ecke des Lightbox befinden
+@short: Speichert eine Sammlung von Buttons, die sich in der rechten unteren Ecke des Lightbox-Fensters befinden
 
 @signature: buttons_right: string[]
 
 ### Example
 
-~~~jsx
+~~~html
 <style>
     .complete_button{
         margin-top: 2px;
@@ -25,7 +25,7 @@ description: "enthält eine Reihe von Buttons, die sich in der unteren rechten E
 <script>
     gantt.locale.labels["complete_button"] = "Complete";
     gantt.attachEvent("onGanttReady", function(){                               /*!*/ 
-        gantt.config.buttons_right = ["gantt_delete_btn","complete_button"];   /*!*/                              
+        gantt.config.buttons_right = ["gantt_delete_btn","complete_button"];   /*!*/
     });                                                                           /*!*/ 
     gantt.init("gantt_here");
 
@@ -40,7 +40,7 @@ description: "enthält eine Reihe von Buttons, die sich in der unteren rechten E
 </script>
 ~~~
 
-**Default value:** ["gantt_delete_btn"];
+**Default value:** ["gantt_delete_btn"]
 
 ### Related samples
 - [Custom button in the lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/06_custom_button.html)
@@ -48,16 +48,13 @@ description: "enthält eine Reihe von Buttons, die sich in der unteren rechten E
 ### Details
 
 :::note
+Bitte beachten Sie, dass bei Verwendung des [Material skin](guides/skins.md#materialskin) die Buttons-Konfiguration neu definiert wird. 
+Um dies zu verhindern, müssen Sie die Konfiguration der Buttons im Ereignishandler [onGanttReady](api/event/onganttready.md) festlegen.
+::: 
 
-Beachten Sie, dass wenn das [Material skin](guides/skins.md#materialskin) angewendet wird, es die Buttons-Konfiguration überschreibt. 
-Um dies zu vermeiden, definieren Sie die Buttons-Konfiguration innerhalb des [onGanttReady](api/event/onganttready.md) Event-Handlers.
- 
-:::
-
-<br>
 ![property_buttons_left](/img/property_buttons_left.png)
 
-Sie können die Bezeichnungen der Buttons auf der rechten Seite vor der Initialisierung von Gantt mit dieser Syntax ändern:
+You can redefine labels of the right button by using the following syntax before initialization of Gantt:
 
 ~~~js
 gantt.locale.labels.icon_delete= "New Label";
@@ -65,7 +62,7 @@ gantt.locale.labels.icon_delete= "New Label";
 gantt.init("gantt_here");
 ~~~
 
-Alternativ können Sie die Bezeichnung auch nach der Initialisierung von Gantt wie folgt anpassen:
+Sie können auch den Bezeichner nach der Initialisierung von Gantt mit einer anderen Syntax ändern, wie folgt:
 
 ~~~js
 gantt.attachEvent("onGanttReady", function(){
@@ -73,7 +70,7 @@ gantt.attachEvent("onGanttReady", function(){
 });
 ~~~
 
-Ab Version 7.0 können Labels auch über das [i18n](api/other/i18n.md) Objekt geändert werden:
+From version 7.0, the labels also can be changed by using the [i18n](api/other/i18n.md) object:
 
 ~~~js
 gantt.i18n.setLocale({
@@ -89,5 +86,4 @@ gantt.i18n.setLocale({
 - [i18n](api/other/i18n.md)
 
 ### Related Guides
-- ["Ändern der Schaltflächen im Lightbox"](guides/custom-button.md)
-
+- [Changing Buttons in the Lightbox](guides/custom-button.md)

@@ -5,40 +5,40 @@ sidebar_label: "Unterstützte Datenformate"
 
 # Unterstützte Datenformate
 
-dhtmlxGantt unterstützt das Laden von Daten in mehreren Formaten:
+dhtmlxGantt kann Daten in den folgenden Formaten laden:
 
-1. [JSON](guides/supported-data-formats.md#json);
+1. [JSON](guides/supported-data-formats.md);
 2. [XML (dhtmlxGantt 2.0+)](guides/supported-data-formats.md#xmldhtmlxgantt20).
-3. [JSON mit Collections](guides/supported-data-formats.md#jsonwithcollections)
+3. [JSON mit Sammlungen](guides/supported-data-formats.md#jsonwithcollections)
 4. [XML (dhtmlxGantt < 2.0)](guides/supported-data-formats.md#xmldhtmlxganttlt20)
 
-Es ist außerdem möglich, [beliebige benutzerdefinierte Eigenschaften in die Gantt-Daten aufzunehmen](guides/supported-data-formats.md#custompropertiesindata).
+Sie können außerdem beliebige benutzerdefinierte Eigenschaften zu den Gantt-Daten hinzufügen.
 
 
-## JSON {#json}
+## JSON
 
-### Aufgaben und Verknüpfungen
+### Tasks and links
 
 ~~~js
 {
     "tasks":[
-        {"id":"1", "text":"Project #2", "start_date":"01-04-2020", "duration":18,
-            "progress":0.4, "open": true},
-        {"id":"2", "text":"Task #1", "start_date":"02-04-2020", "duration":8,
-            "progress":0.6, "parent":"1"},
-        {"id":"3", "text":"Task #2", "start_date":"11-04-2020", "duration":8,
-            "progress":0.6, "parent":"1"}
-      ],
-      "links":[
-        {"id":"1", "source":"1", "target":"2", "type":"1"},
-        {"id":"2", "source":"2", "target":"3", "type":"0"},
-        {"id":"3", "source":"3", "target":"4", "type":"0"},
-        {"id":"4", "source":"2", "target":"5", "type":"2"}
-      ]
+        { "id": "1", "text": "Project #2", "start_date": "01-04-2026", "duration": 18,
+            "progress": 0.4, "open": true },
+        { "id": "2", "text": "Task #1", "start_date": "02-04-2026", "duration": 8,
+            "progress": 0.6, "parent": "1" },
+        { "id": "3", "text": "Task #2", "start_date": "11-04-2026", "duration": 8,
+            "progress": 0.6, "parent": "1" }
+    ],
+    "links":[
+        { "id": "1", "source": "1", "target": "2", "type": "1" },
+        { "id": "2", "source": "2", "target": "3", "type": "0" },
+        { "id": "3", "source": "3", "target": "4", "type": "0" },
+        { "id": "4", "source": "2", "target": "5", "type": "2" }
+    ]
 }
 ~~~
 
-### Aufgaben mit Ressourcen und Ressourcenzuweisungen
+### Tasks with resources and resource assignments
 
 ~~~js
 {
@@ -48,15 +48,15 @@ Es ist außerdem möglich, [beliebige benutzerdefinierte Eigenschaften in die Ga
             id: 5,
             text: "Interior office",
             type: "task",
-            start_date: "03-04-2024 00:00",
+            start_date: "03-04-2026 00:00",
             duration: 7,
             parent: "2",
             owner: [
                 {
                     resource_id: "6",
                     value: 3,
-                    start_date: "03-04-2024 00:00",
-                    end_date: "05-04-2024 00:00",
+                    start_date: "03-04-2026 00:00",
+                    end_date: "05-04-2026 00:00",
                 }
             ]
         },
@@ -64,16 +64,16 @@ Es ist außerdem möglich, [beliebige benutzerdefinierte Eigenschaften in die Ga
     ],
     links: [],
     resources: [
-        {id: 6, text: "John", unit: "hours/day" },
-        {id: 7, text: "Mike", unit: "hours/day" },
-        {id: 8, text: "Anna", unit: "hours/day" },
-        {id: 9, text: "Bill", unit: "hours/day" },
-        {id: 10, text: "Floe", unit: "hours/day" }
+        { id: 6, text: "John", unit: "hours/day" },
+        { id: 7, text: "Mike", unit: "hours/day" },
+        { id: 8, text: "Anna", unit: "hours/day" },
+        { id: 9, text: "Bill", unit: "hours/day" },
+        { id: 10, text: "Floe", unit: "hours/day" }
     ]
 }
 ~~~
 
-Ressourcenzuweisungen können auch separat von Aufgaben bereitgestellt werden:
+Resource assignments können separat von den Aufgaben an die Methode übergeben werden:
 
 ~~~js
 {
@@ -83,7 +83,7 @@ Ressourcenzuweisungen können auch separat von Aufgaben bereitgestellt werden:
             id: 5,
             text: "Interior office",
             type: "task",
-            start_date: "03-04-2024 00:00",
+            start_date: "03-04-2026 00:00",
             duration: 7,
             parent: "2",
             priority: 1
@@ -94,16 +94,16 @@ Ressourcenzuweisungen können auch separat von Aufgaben bereitgestellt werden:
     assignments: [
         {
             id: 1, task_id: 5, resource_id: 6, value: 3,
-            start_date: "03-04-2024 00:00", 
-            end_date: "05-04-2024 00:00"
+            start_date: "03-04-2026 00:00", 
+            end_date: "05-04-2026 00:00"
         }
     ],
     resources: [
-        {id: 6, text: "John", unit: "hours/day" },
-        {id: 7, text: "Mike", unit: "hours/day" },
-        {id: 8, text: "Anna", unit: "hours/day" },
-        {id: 9, text: "Bill", unit: "hours/day" },
-        {id: 10, text: "Floe", unit: "hours/day" }
+        { id: 6, text: "John", unit: "hours/day" },
+        { id: 7, text: "Mike", unit: "hours/day" },
+        { id: 8, text: "Anna", unit: "hours/day" },
+        { id: 9, text: "Bill", unit: "hours/day" },
+        { id: 10, text: "Floe", unit: "hours/day" }
     ]
 }
 ~~~
@@ -112,16 +112,16 @@ Ressourcenzuweisungen können auch separat von Aufgaben bereitgestellt werden:
 
 ~~~xml
 <data>
-    <task id='1' parent='' start_date='01-04-2020' duration='18' open='true'
-            progress='0.4' end_date='19-04-2020'>
+    <task id='1' parent='' start_date='01-04-2026' duration='18' open='true'
+            progress='0.4' end_date='19-04-2026'>
         <![CDATA[Project #2]]>
     </task>
-    <task id='2' parent='1' start_date='02-04-2020' duration='8' progress='0.6'
-            end_date='10-04-2020'>
+    <task id='2' parent='1' start_date='02-04-2026' duration='8' progress='0.6'
+            end_date='10-04-2026'>
         <![CDATA[Task #1]]>
     </task>
-    <task id='3' parent='1' start_date='11-04-2020' duration='8' progress='0.6'
-            end_date='19-04-2020'>
+    <task id='3' parent='1' start_date='11-04-2026' duration='8' progress='0.6'
+            end_date='19-04-2026'>
         <![CDATA[Task #2]]>
     </task>
     <coll_options for='links'>
@@ -133,30 +133,30 @@ Ressourcenzuweisungen können auch separat von Aufgaben bereitgestellt werden:
 </data>
 ~~~
 
-## Benutzerdefinierte Eigenschaften in den Daten
+## Custom Properties in Data
 
-Die folgenden Beispiele enthalten zwei benutzerdefinierte Eigenschaften:
+Betrachten wir die obigen Beispiele mit 2 benutzerdefinierten Eigenschaften:
 
-- **priority** - gibt die Prioritätsstufe der Aufgabe an.
-- **holder**  - gibt die für die Aufgabe verantwortliche Person an.
+- **priority** - die Priorität der Aufgabe.
+- **holder**  - der Name der Person, der der Aufgabe zugewiesen ist.
 
 #### JSON
 
 ~~~js
 {
     "tasks":[
-        {"id":"1", "text":"Project #2", "start_date":"01-04-2020", "duration":18,
-            "progress":0.4, "open": true, "holder":"Mike", "priority":"High"},
-        {"id":"2", "text":"Task #1", "start_date":"02-04-2020", "duration":8,
-            "progress":0.6, "parent":1, "holder":"John", "priority":"Medium"},
-        {"id":"3", "text":"Task #2", "start_date":"11-04-2020", "duration":8,
-            "progress":0.6, "parent":1, "holder":"Alex", "priority":"Low"}
+        { "id": "1", "text": "Project #2", "start_date": "01-04-2026", "duration": 18,
+            "progress": 0.4, "open": true, "holder": "Mike", "priority": "High" },
+        { "id": "2", "text": "Task #1", "start_date": "02-04-2026", "duration": 8,
+            "progress": 0.6, "parent": 1, "holder": "John", "priority": "Medium" },
+        { "id": "3", "text": "Task #2", "start_date": "11-04-2026", "duration": 8,
+            "progress": 0.6, "parent": 1, "holder": "Alex", "priority": "Low" }
       ],
-      "links":[
-        {"id":"1", "source":"1", "target":"2", "type":"1"},
-        {"id":"2", "source":"2", "target":"3", "type":"0"},
-        {"id":"3", "source":"3", "target":"4", "type":"0"},
-        {"id":"4", "source":"2", "target":"5", "type":"2"}
+    "links":[
+        { "id": "1", "source": "1", "target": "2", "type": "1" },
+        { "id": "2", "source": "2", "target": "3", "type": "0" },
+        { "id": "3", "source": "3", "target": "4", "type": "0" },
+        { "id": "4", "source": "2", "target": "5", "type": "2" }
     ]
 }
 ~~~
@@ -165,20 +165,21 @@ Die folgenden Beispiele enthalten zwei benutzerdefinierte Eigenschaften:
 
 ~~~xml
 <data>
-    <task id='1' parent='' start_date='01-04-2020' duration='18' open='true'
-            progress='0.4' end_date='19-04-2020''>
+    <task id='1' parent='' start_date='01-04-2026' duration='18' open='true'
+            progress='0.4' end_date='19-04-2026'>
         <holder><![CDATA[Mike]]></holder>
         <priority><![CDATA[High]]></priority>
         <![CDATA[Project #2]]>
+
     </task>
-    <task id='2' parent='1' start_date='02-04-2020' duration='8' progress='0.6'
-        end_date='10-04-2020'>
+    <task id='2' parent='1' start_date='02-04-2026' duration='8' progress='0.6'
+        end_date='10-04-2026'>
         <holder><![CDATA[John]]></holder>
         <priority><![CDATA[Medium]]></priority>
         <![CDATA[Task #1]]>
     </task>
-    <task id='3' parent='1' start_date='11-04-2020' duration='8' progress='0.6'
-        end_date='19-04-2020'>
+    <task id='3' parent='1' start_date='11-04-2026' duration='8' progress='0.6'
+        end_date='19-04-2026'>
         <holder><![CDATA[Alex]]></holder>
         <priority><![CDATA[Low]]></priority>
         <![CDATA[Task #2]]>
@@ -194,37 +195,37 @@ Die folgenden Beispiele enthalten zwei benutzerdefinierte Eigenschaften:
 ~~~
 
 
-## JSON mit Collections {#jsonwithcollections}
+## JSON mit Sammlungen {#jsonwithcollections}
 
-JSON-Daten können mehrere zusätzliche Arrays innerhalb der Eigenschaft "collections" des *data*-Objekts enthalten.
+JSON-Daten können eine beliebige Anzahl zusätzlicher Arrays in der Eigenschaft "collections" des *data*-Objekts enthalten.
 
-~~~js
+~~~js {16-22}
 {
     "tasks":[
-        {"id":"1", "text":"Project #2", "start_date":"01-04-2020", "duration":18,
-            "progress":0.4, "open": true},
-        {"id":"2", "text":"Task #1", "start_date":"02-04-2020", "duration":8,
-            "progress":0.6, "parent":"1"},
-        {"id":"3", "text":"Task #2", "start_date":"11-04-2020", "duration":8,
-            "progress":0.6, "parent":"1"}
+        { "id": "1", "text": "Project #2", "start_date": "01-04-2026", "duration": 18,
+            "progress": 0.4, "open": true },
+        { "id": "2", "text": "Task #1", "start_date": "02-04-2026", "duration": 8,
+            "progress": 0.6, "parent": "1" },
+        { "id": "3", "text": "Task #2", "start_date": "11-04-2026", "duration": 8,
+            "progress": 0.6, "parent": "1" }
     ],
     "links":[
-        {"id":"1", "source":"1", "target":"2", "type":"1"},
-        {"id":"2", "source":"2", "target":"3", "type":"0"},
-        {"id":"3", "source":"3", "target":"4", "type":"0"},
-        {"id":"4", "source":"2", "target":"5", "type":"2"}
+        { "id": "1", "source": "1", "target": "2", "type": "1" },
+        { "id": "2", "source": "2", "target": "3", "type": "0" },
+        { "id": "3", "source": "3", "target": "4", "type": "0" },
+        { "id": "4", "source": "2", "target": "5", "type": "2" }
     ],
-    "collections": { /*!*/
-        "sections":[                            /*!*/
-            {"value":"1","label":"Simple"},        /*!*/
-            {"value":"2","label":"Complex"},    /*!*/
-            {"value":"3","label":"Unknown"}        /*!*/
-        ]                                        /*!*/
-    }                                            /*!*/
+    "collections": { 
+        "sections":[                            
+            { "value":"1","label":"Simple" },        
+            { "value":"2","label":"Complex" },   
+            { "value":"3","label":"Unknown" }        
+        ]                                       
+    }                                           
 }
 ~~~
 
-Auf diese Collections kann mit ihren Namen über die Methode [gantt.serverList](api/method/serverlist.md) zugegriffen werden.
+Die angewendeten Sammlungen können über ihre Namen mit Hilfe der Methode [gantt.serverList](api/method/serverlist.md) abgerufen werden.
 
 ## XML (dhtmlxGantt < 2.0) {#xmldhtmlxganttlt20}
 
@@ -279,4 +280,3 @@ Auf diese Collections kann mit ihren Namen über die Methode [gantt.serverList](
   </project>
 </projects>
 ~~~
-

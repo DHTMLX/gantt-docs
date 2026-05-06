@@ -1,23 +1,23 @@
 ---
 sidebar_label: selectTask
 title: selectTask method
-description: "지정된 태스크를 선택합니다"
+description: "지정된 작업을 선택합니다."
 ---
 
 # selectTask
 
 ### Description
 
-@short: 지정된 태스크를 선택합니다
+@short: 지정된 작업을 선택합니다
 
 @signature: selectTask: (id: string | number) =\> string | number
 
 ### Parameters
 
-- `id` - (required) *string | number* -        태스크 ID
+- `id` - (필수) *string | number* - 작업 ID
 
 ### Returns
-- ` id` - (string | number) - 선택된 태스크의 ID
+- ` id` - (string | number) - 선택된 작업의 ID
 
 ### Example
 
@@ -38,9 +38,8 @@ gantt.selectTask("t_1"); /*!*/
 
 ### Details
 
-이 메서드는 [onTaskSelected](api/event/ontaskselected.md) 이벤트를 트리거합니다.
+이 메서드는 [onTaskSelected](api/event/ontaskselected.md) 이벤트를 발생시킵니다.
 
 ### Related API
 - [unselectTask](api/method/unselecttask.md)
 - [getSelectedId](api/method/getselectedid.md)
-

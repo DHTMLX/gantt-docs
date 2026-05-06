@@ -1,23 +1,23 @@
 ---
 sidebar_label: onLightboxDelete
-title: onLightboxDelete event
-description: "Wird ausgelöst, wenn der Benutzer im Lightbox auf die Schaltfläche 'Delete' klickt"
+title: onLightboxDelete Ereignis
+description: "löst aus, wenn der Benutzer auf den 'Delete'-Knopf im Lightbox klickt"
 ---
 
 # onLightboxDelete
 
 ### Description
 
-@short: Wird ausgelöst, wenn der Benutzer im Lightbox auf die Schaltfläche „Delete" klickt
+@short: Wird ausgelöst, wenn der Benutzer auf den 'Delete'-Knopf im Lightbox klickt
 
 @signature: onLightboxDelete: (id: string | number) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die ID der Aufgabe (die aktuell in der Lightbox geöffnete Aufgabe)
+- `id` - (erforderlich) *string | number* - die ID der Aufgabe (die im Lightbox geöffnete Aufgabe)
 
 ### Returns
-- ` result` - (boolean) - bestimmt, ob die Standardaktion des Events ausgeführt wird (<b>true</b>) oder verhindert wird (<b>false</b>)
+- ` result` - (boolean) - gibt an, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
@@ -34,9 +34,8 @@ gantt.attachEvent("onLightboxDelete", function(id){
 
 ### Details
 
-Dieses Event kann blockiert werden. Wenn *false* zurückgegeben wird, wird die „Delete"-Aktion abgebrochen und die Lightbox bleibt sichtbar.
+Das Ereignis ist blockierbar. Geben Sie false zurück, um die Löschoperation abzubrechen und das Lightbox-Fenster geöffnet zu halten.
 
 ### Related Guides
 - [onLightboxCancel](api/event/onlightboxcancel.md)
 - [onLightboxSave](api/event/onlightboxsave.md)
-

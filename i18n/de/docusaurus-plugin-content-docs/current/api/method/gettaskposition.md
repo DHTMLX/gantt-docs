@@ -1,23 +1,25 @@
 ---
 sidebar_label: getTaskPosition
 title: getTaskPosition method
-description: "Ermittelt die Position und Größe des DOM-Elements der Aufgabe innerhalb des Timeline-Bereichs."
+description: "Berechnet die Position und Größe des DOM-Elements der Aufgabe im Timeline-Bereich"
 ---
 
 # getTaskPosition
 
 ### Description
 
-@short: Ermittelt die Position und Größe des DOM-Elements der Aufgabe innerhalb des Timeline-Bereichs.
+@short: Berechnet die Position und Größe des DOM-Elements der Aufgabe im Timeline-Bereich
 
 @signature: getTaskPosition: (task: Task, from?: Date, to?: Date) =\> any
 
 ### Parameters
+
 - `task` - (required) *Task* - das Task-Objekt
-- `from` - (optional) *Date* - optionales Startdatum für das Element
-- `to` - (optional) *Date* - 	optionales Enddatum für das Element
+- `from` - (optional) *Date* -  das Startdatum des Elements
+- `to`- (optional) *Date* -  das Enddatum des Elements
+
 ### Returns
-- ` object` - (object) - ein Objekt, das Größe und Position beschreibt
+- `object` - (object) - das Größen-Objekt
 
 ### Example
 
@@ -39,28 +41,27 @@ gantt.addTaskLayer(function draw_planned(task) {
 ~~~
 
 ### Related samples
-- [Displaying deadlines](https://docs.dhtmlx.com/gantt/samples/04_customization/14_deadline.html)
-- [Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
+- [Fristen anzeigen](https://docs.dhtmlx.com/gantt/samples/04_customization/14_deadline.html)
+- [Baseline-Linien anzeigen](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
 
 ### Details
 
-Diese Methode liefert ein Objekt mit folgenden Eigenschaften:
+Die Methode gibt ein Objekt mit den folgenden Eigenschaften zurück:
 
-- **left** - die CSS left-Position in Pixel
-- **top** - die CSS top-Position in Pixel
-- **height** - die CSS Höhe des Balken-Elements in Pixel (festgelegt entweder durch die [bar_height](api/config/bar_height.md) Konfiguration oder die *task.bar_height* Eigenschaft)
-- **rowHeight** - die CSS Höhe der Aufgabenreihe in Pixel (festgelegt entweder durch die [row_height](api/config/row_height.md) Konfiguration oder die *task.row_height* Eigenschaft) (hinzugefügt in v7.1)
-- **width** - die CSS Breite in Pixel (basierend auf dem Zeitraum zwischen Start- und Enddatum der Aufgabe oder den optionalen 'from' und 'to' Daten, falls angegeben)
+- **left** - die CSS-left-Position in Pixeln
+- **top** - die CSS-top-Position in Pixeln
+- **height** - die CSS-Höhe des Balkenelements in Pixeln (definiert entweder durch die [bar_height](api/config/bar_height.md) Konfiguration oder durch die *task.bar_height*-Eigenschaft des Task-Objekts)
+- **rowHeight** - die CSS-Höhe der Aufgabenzeile in Pixeln (definiert entweder durch die [row_height](api/config/row_height.md) Konfiguration oder durch die *task.row_height*-Eigenschaft des Task-Objekts) (in Version 7.1 hinzugefügt)
+- **width** - die CSS-Breite in Pixeln (definiert durch den Zeitraum zwischen Start- und Enddatum der Aufgabe oder aus den `'from'`, `'to'`-Datumswerten, falls angegeben)
 
-Wenn Sie nur ein Argument angeben, verwendet die Methode **task.start_date** und **task.end_date**, um **width** und **left** zu berechnen. Wenn Sie das zweite und dritte Argument angeben, werden diese Daten stattdessen verwendet.
+Wenn nur ein Argument übergeben wird, verwendet die Methode **task.start_date**/**task.end_date**, um **width** und **left**-Werte zu berechnen. Andernfalls werden die Datumswerte aus dem zweiten und dritten Argument verwendet.
 
-Beachten Sie, dass die Methode immer sowohl das Datum als auch die Uhrzeit der Daten berücksichtigt, unabhängig von den Einstellungen der Zeitskala. Zum Beispiel liefern diese beiden Aufrufe:
+Hinweis, dass die Methode immer sowohl Datum- als auch Zeitanteile der übergebenen Daten verwendet, unabhängig von den Einstellungen des Zeitmaßstabs. Das bedeutet, dass zwei Aufrufe der unten gezeigten Funktion:
 
 ~~~js
 gantt.getTaskPosition(task, new Date(2019, 3, 19, 1, 0), new Date(2019, 3, 19, 1, 0)); 
 // und
 gantt.getTaskPosition(task, new Date(2019, 3, 19, 1, 0), new Date(2019, 3, 19, 5, 0)); 
-~~~
+~~~ 
 
-Boxen unterschiedlicher Größe zurück, egal ob Sie eine *hour*, *day*, *month* oder *year* Skala verwenden.
-
+verschiedene Größen der Boxen zurückgeben werden, nicht nur in der *Stunden*-Skala, sondern auch in den *Tag/Monat/Jahr*-Skalen.

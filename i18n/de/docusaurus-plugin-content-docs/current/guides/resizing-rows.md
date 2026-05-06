@@ -1,35 +1,34 @@
+--- 
+title: "Zeilenhöhe im Grid anpassen"
+sidebar_label: "Zeilenhöhe im Grid anpassen"
 ---
-title: "Größenänderung von Zeilen im Grid"
-sidebar_label: "Größenänderung von Zeilen im Grid"
----
 
-# Größenänderung von Zeilen im Grid
+# Zeilenhöhe im Grid anpassen
 
-Es ist möglich, die Höhe einzelner Zeilen im Grid anzupassen. 
+Es besteht die Möglichkeit, die Höhe der einzelnen Zeilen im Grid zu ändern. 
 
+Die dhtmlxGantt-Bibliothek bietet zwei Möglichkeiten, die Zeilenhöhe zu verwalten:
 
-Die dhtmlxGantt-Bibliothek bietet zwei Möglichkeiten, die Zeilenhöhe zu steuern:
-
-- Durch Festlegen sowohl der Zeilenhöhe als auch der Taskleistenhöhe für ein bestimmtes Task-Objekt;
-- Durch Ziehen des unteren Rands der Grid-Zeile.
+- Durch Festlegen sowohl der Zeilenhöhe als auch der Höhe des Aufgabenbalkens des jeweiligen Aufgabenobjekts;
+- Durch Ziehen des unteren Randes der Grid-Zeile.
 
 :::note
-Diese Funktion ist ab Version 7.1 verfügbar.
+Die Funktionalität ist in v7.1 und höher verfügbar.
 :::
 
-## Festlegen der Zeilenhöhe {#settingtherowheight}
+## Festlegen der Zeilenhöhe
 
 Sie können die Höhe einer bestimmten Zeile nach Bedarf anpassen.
 
 :::note
-Aktuell funktioniert die individuelle Zeilenhöhe nicht mit [static background rendering](api/config/static_background.md).
+Die individuelle Zeilenhöhe ist derzeit nicht kompatibel mit der [statischen Hintergrunddarstellung](api/config/static_background.md).
 :::
 
 ![row_height](/img/row_height.png)
 
-Dazu definieren Sie die Eigenschaften **row_height** und **bar_height** im Task-Objekt innerhalb Ihres Datensatzes neu: 
+Dazu müssen Sie die Eigenschaften **row_height** und **bar_height** des Aufgabenobjekts im Datensatz neu definieren: 
 
-**Spezifizieren des Typs einer Aufgabe im Datensatz**
+**Angabe des Typs einer Aufgabe im Datensatz**
 ~~~js
 gantt.parse({
     data: [
@@ -44,43 +43,40 @@ gantt.parse({
 });
 ~~~
 
-Alternativ können Sie diese Eigenschaften auch dynamisch festlegen:
+oder Sie können es dynamisch implementieren:
 
 ~~~js
 gantt.getTask(11).row_height = 50;
 gantt.getTask(11).bar_height = 25;
-// Gantt neu rendern, um die Änderungen anzuwenden
+// erneutes Rendern von Gantt, um die Änderungen anzuwenden
 gantt.render();
 ~~~
 
-Falls die Attribute **row_height** und **bar_height** fehlen oder leer sind (was der Standard ist), werden die Werte aus [gantt.config.row_height](api/config/row_height.md) und [gantt.config.bar_height](api/config/bar_height.md) verwendet.
+Falls die Attribute **row_height** und **bar_height** des Aufgabenobjekts nicht angegeben oder leer sind (Standardzustand), werden die Werte von [gantt.config.row_height](api/config/row_height.md) und [gantt.config.bar_height](api/config/bar_height.md) verwendet.
 
-## Größenänderung von Zeilen per Drag & Drop {#resizingrowsbydraganddrop}
+## Zeilen per Drag-and-Drop ändern
 
 ![resize_row](/img/resize_row.png)
 
-Um Benutzern zu erlauben, eine Zeile durch Ziehen ihres unteren Randes in der Größe zu verändern, aktivieren Sie die Option [gantt.config.resize_rows](api/config/resize_rows.md):
+Um dem Benutzer die Möglichkeit zu geben, eine Zeile im Grid durch Ziehen des unteren Randes der Zeile anzupassen, setzen Sie die Option [gantt.config.resize_rows](api/config/resize_rows.md) auf *true*:
 
 ~~~js
 gantt.config.resize_rows = true;
 ~~~
 
+[Anpassbare Zeilen im Grid](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_row_resize.html)
 
-[Resizable rows in grid](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_row_resize.html)
-
-
-Mit der Option [gantt.config.min_task_grid_row_height](api/config/min_task_grid_row_height.md) können Sie die minimale Zeilenhöhe beim Vergrößern oder Verkleinern festlegen:
+Die Option [gantt.config.min_task_grid_row_height](api/config/min_task_grid_row_height.md) ermöglicht es, die minimale Zeilenhöhe zu definieren, die während des Größenänderungsprozesses einer Aufgabe festgelegt werden kann:
 
 ~~~js
 gantt.config.min_task_grid_row_height = 45;
 ~~~
 
-### Events
+### Ereignisse
 
-Es stehen vier Events zur Verfügung, um das Größenändern von Zeilen per Drag-and-Drop zu steuern:
+Es gibt 4 Ereignisse, die Sie verwenden können, um das Verhalten beim Ändern der Zeilenhöhe per Drag-and-Drop zu steuern:
 
-- [onBeforeRowResize](api/event/onbeforerowresize.md) - wird ausgelöst, bevor der Benutzer beginnt, eine Zeile durch Ziehen zu vergrößern/verkleinern
-- [onRowResize](api/event/onrowresize.md) - wird ausgelöst, während der Benutzer die Zeilengrenze zum Verändern der Größe zieht
-- [onBeforeRowResizeEnd](api/event/onbeforerowresizeend.md) - wird unmittelbar vor dem Abschluss der Größenänderung ausgelöst
-- [onAfterRowResize](api/event/onafterrowresize.md) - wird ausgelöst, nachdem die Größenänderung der Zeile abgeschlossen ist
-
+- [onBeforeRowResize](api/event/onbeforerowresize.md) - wird ausgelöst, bevor der Benutzer beginnt, die Zeilenhöhe per Drag-and-Drop zu ändern
+- [onRowResize](api/event/onrowresize.md) - wird ausgelöst, wenn der Benutzer den Rand der Zeile zum Ändern der Zeilenhöhe zieht
+- [onBeforeRowResizeEnd](api/event/onbeforerowresizeend.md) - wird ausgelöst, bevor das Ändern der Zeilenhöhe abgeschlossen ist
+- [onAfterRowResize](api/event/onafterrowresize.md) - wird ausgelöst, nachdem das Ändern der Zeilenhöhe abgeschlossen ist

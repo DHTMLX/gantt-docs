@@ -1,26 +1,26 @@
 ---
 sidebar_label: onBeforeCollapse
 title: onBeforeCollapse event
-description: "wird ausgelöst, kurz bevor der Gantt aus dem Vollbildmodus wechselt und zur normalen Ansicht zurückkehrt"
+description: "Bevor Gantt den Vollbildmodus verlässt und in den normalen Modus zurückkehrt"
 ---
 
 # onBeforeCollapse
 
 ### Description
 
-@short: Wird ausgelöst, kurz bevor der Gantt aus dem Vollbildmodus wechselt und zur normalen Ansicht zurückkehrt
+@short: Bevor Gantt den Vollbildmodus verlässt und in den normalen Modus zurückkehrt
 
 @signature: onBeforeCollapse: () =\> boolean;
 
 ### Returns
-- ` result` - (boolean) - bestimmt, ob die Standardaktion des Events fortgesetzt wird (<b>true</b>) oder gestoppt wird (<b>false</b>)
+- ` result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
 ~~~jsx
-gantt.attachEvent("onBeforeCollapse",function(){  
-    // hier Ihre benutzerdefinierte Logik einfügen  
-    return true;  
+gantt.attachEvent("onBeforeCollapse",function(){
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein 
+    return true;
 });
 ~~~
 
@@ -29,10 +29,10 @@ gantt.attachEvent("onBeforeCollapse",function(){
 
 ### Details
 
-Dieses Event kann blockiert werden. Die Rückgabe von *false* verhindert weitere Aktionen.
+Das Ereignis ist blockierbar. Die Rückgabe von *false* wird die weitere Verarbeitung abbrechen.
 
 :::note
- Dieses Event ist Teil der **fullscreen**-Erweiterung, daher stellen Sie sicher, dass das [fullscreen](guides/extensions-list.md#fullscreen) Plugin über die Methode [gantt.plugins](api/method/plugins.md) aktiviert ist. Weitere Details finden Sie im Artikel ["Vollbildmodus"](guides/fullscreen-mode.md). 
+Dieses Ereignis ist in der **fullscreen**-Erweiterung definiert, daher müssen Sie das [fullscreen](guides/extensions-list.md#fullscreen) Plugin über die Methode [gantt.plugins](api/method/plugins.md) aktivieren. Lesen Sie die Details im Artikel [Full Screen Mode](guides/fullscreen-mode.md). 
 :::
 
 ### Related API
@@ -43,5 +43,4 @@ Dieses Event kann blockiert werden. Die Rückgabe von *false* verhindert weitere
 - [expand](api/method/expand.md)
 
 ### Related Guides
-- ["Vollbildmodus"](guides/fullscreen-mode.md)
-
+- [Full Screen Mode](guides/fullscreen-mode.md)

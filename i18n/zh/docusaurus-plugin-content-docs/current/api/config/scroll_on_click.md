@@ -1,14 +1,14 @@
 ---
 sidebar_label: scroll_on_click
-title: scroll_on_click config
-description: "决定时间线在点击任务时是否自动滚动以显示所选任务"
+title: scroll_on_click 配置项
+description: "指定在选择以显示所选任务时，时间轴区域是否应滚动"
 ---
 
 # scroll_on_click
 
 ### Description
 
-@short: 决定时间线在点击任务时是否自动滚动以显示所选任务
+@short: 指定在选择并显示所选任务时，时间轴区域是否应滚动
 
 @signature: scroll_on_click: boolean
 
@@ -19,4 +19,4 @@ gantt.config.scroll_on_click= false;
 gantt.init('gantt_here');
 ~~~
 
-**Default value:** true
+**默认值：** true

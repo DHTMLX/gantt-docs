@@ -1,6 +1,6 @@
 ---
 sidebar_label: onBeforeLinkDelete
-title: onBeforeLinkDelete event
+title: onBeforeLinkDelete 事件
 description: "在用户删除链接之前触发"
 ---
 
@@ -10,29 +10,28 @@ description: "在用户删除链接之前触发"
 
 @short: 在用户删除链接之前触发
 
-@signature: onBeforeLinkDelete: (id: string | number, link: Link) =\> boolean;
+@signature: onBeforeLinkDelete: (id: string | number, link: Link) => boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - 链接的标识符
-- `link` - (required) *Link* - 链接对象本身
+- `id` - (required) *string | number* - 链接 ID
+- `link` - (required) *Link* - 链接对象
 
 ### Returns
-- ` result` - (boolean) - 决定是否继续执行默认事件操作（<b>true</b>）或取消操作（<b>false</b>）
+- ` result` - (boolean) - 定义事件的默认动作是否会被触发（<b>true</b>）或取消（<b>false</b>）
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeLinkDelete", function(id,link){
-    // 可以在这里添加自定义逻辑
+    // 在这里插入您的自定义逻辑 
     return true;
 });
 ~~~
 
 ### Details
 
-此事件可以被阻止。返回 false 将阻止链接被删除。
+该事件是可阻塞的。返回 false 以取消删除该链接。
 
 ### Related API
 - [deleteLink](api/method/deletelink.md)
-

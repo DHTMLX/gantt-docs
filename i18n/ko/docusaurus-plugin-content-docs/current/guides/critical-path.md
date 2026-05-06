@@ -1,37 +1,32 @@
 ---
-title: "Critical Path"
-sidebar_label: "Critical Path"
----
+title: "임계 경로" 
+sidebar_label: "임계 경로" 
+--- 
 
-# Critical Path
+# 임계 경로
 
-:::info
-이 기능은 PRO 에디션에서만 사용할 수 있습니다
-:::
+:::info  
+이 기능은 PRO 에디션에서만 사용할 수 있습니다.  
+:::  
 
-크리티컬 패스는 전체 프로젝트를 지연시키지 않고는 미룰 수 없는 일련의 작업들을 의미합니다.
+임계 경로는 지연될 수 없는 작업들의 순서입니다. 그렇지 않으면 전체 프로젝트가 지연됩니다.  
 
+임계 경로는 또한 프로젝트가 소요할 수 있는 최단 시간을 결정합니다.  
 
-또한, 프로젝트를 완수하는 데 필요한 최소 기간을 정의합니다.
+작업이 임계로 간주되려면 여유 시간이 0일이어야 하며, 어떤 지연이라도 프로젝트 완료 날짜에 직접 영향을 미칩니다. 임계 경로 계산 로직의 작동 방식에 대한 자세한 설명은 [임계 경로 로직](#critical-path-logic) 섹션에 나와 있습니다.  
 
+여유 시간은 다른 작업이나 프로젝트의 완료 날짜에 영향을 주지 않고 작업이 지나갈 수 있는 시간입니다.  
 
+<div style="text-align:center;">![critical_path](/img/critical_path.png)</div>  
 
-작업의 여유 시간이 0일 때, 즉 해당 작업이 지연되면 프로젝트의 종료일이 직접적으로 영향을 받는 경우, 해당 작업은 크리티컬로 간주됩니다. 크리티컬 패스가 어떻게 계산되는지에 대한 자세한 내용은 [Critical path logic](#criticalpathlogic) 섹션에서 확인하실 수 있습니다.
+:::note  
+확장 기능을 사용하려면 [gantt.plugins](api/method/plugins.md) 메서드를 사용해 활성화합니다.  
+:::  
 
+Gantt 차트에 임계 경로를 표시하려면 [highlight_critical_path](api/config/highlight_critical_path.md) 속성을 'true'로 설정합니다:  
 
-여유 시간(slack time)이란, 작업이 다음 작업이나 전체 프로젝트 마감일에 영향을 주지 않고 지연될 수 있는 시간을 의미합니다.
-
-
-<div style="text-align:center;">![critical_path](/img/critical_path.png)</div>
-
-:::note
-이 확장 기능을 사용하려면 [gantt.plugins](api/method/plugins.md) 메서드를 통해 활성화하세요.
-:::
-
-간트 차트에서 크리티컬 패스를 표시하려면 [highlight_critical_path](api/config/highlight_critical_path.md) 속성을 'true'로 설정하세요:
-
-**간트 차트에서 크리티컬 패스 표시 활성화**
-~~~js
+(Gantt 차트에서 임계 경로를 표시하기)  
+~~~js  
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,38 +43,33 @@ sidebar_label: "Critical Path"
 </html>
 ~~~
 
+[임계 경로](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
-[Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
+참고로 속성이 활성화되면 dhtmlxGantt가 작업의 상태를 자동으로 확인하고 임계 경로를 업데이트합니다.  
+임계 작업과 링크에는 각각 추가로 *'critical_task'* 와 *'critical_link'* CSS 클래스가 적용됩니다.  
 
-
-
-이 속성이 활성화되면, dhtmlxGantt는 작업 상태를 자동으로 모니터링하고 크리티컬 패스를 업데이트합니다.
-크리티컬 작업과 링크에는 각각 *'critical_task'* 및 *'critical_link'*라는 추가 CSS 클래스가 지정됩니다.
-
-작업이 업데이트될 때마다, dhtmlxGantt는 데이터를 완전히 다시 그려 크리티컬 패스를 재계산합니다.
-이 과정은 성능에 영향을 줄 수 있습니다. 이를 해결하기 위해, 특정 작업이나 링크만 확인할 수 있는 공개 메서드가 제공되어 크리티컬 패스 표시 시 더 나은 성능을 보장할 수 있습니다.
+작업이 수정될 때마다 dhtmlxGantt는 임계 경로를 재계산하기 위해 데이터를 전체적으로 다시 그림니다. 때때로 성능 문제가 발생할 수 있습니다. 이러한 경우, 컴포넌트는 특정 작업이나 링크를 확인하고 임계 경로를 표시하기 위한 성능 친화적 전략을 구현할 수 있도록 공용 메서드를 제공합니다.  
 
 
-## Critical path logic
+## 임계 경로 로직
 
-간트는 다음 조건에서 작업을 크리티컬로 표시합니다:
+다음과 같은 경우에 Gantt는 작업을 임계로 간주합니다:
 
-1. 해당 작업이 전체 차트에서 가장 마지막 종료일을 가진 경우.
+1. 차트 전체에서 가장 마지막 날짜를 갖는 작업입니다.
 
-![](/img/critical_tasks.png)
+![critical_tasks](/img/critical_tasks.png)
 
-2. 해당 작업이 지연(lag)이 0인 크리티컬 작업과 연결된 경우.
+2. 해당 작업이 임계 작업에 연결되어 있고, 두 작업 간의 lag가 0일 때.
 
-지연(lag)은 **gantt.config.duration_unit** 설정에 따라 달라집니다. **duration_unit**이 *'day'*로 설정되어 있고 작업 기간이 여러 시간에 걸쳐 있을 경우, 간트는 기간을 다음과 같이 반올림합니다:
+그 lag는 **gantt.config.duration_unit** 매개변수의 값에 따라 달라집니다. **duration_unit**이 *'일'*로 설정되고 작업 간 지속 시간이 여러 시간이 걸리는 경우, Gantt는 다음 규칙에 따라 지속 시간을 반올림합니다:
 
-- 기간이 12시간 이상이면 내림(round down)
-- 12시간 미만이면 올림(round up)
+- 지속 시간이 12시간 이상인 경우 내림 처리
+- 지속 시간이 12시간 미만인 경우 올림 처리
 
-링크 객체에 lag 파라미터가 포함되어 있으면 작업 간의 기간이 변경됩니다. 예를 들어, *lag*가 1이면 두 작업 간의 기간이 1일 때 해당 작업이 크리티컬이 됩니다.
-    
-아래는 **link.lag** 값이 다른 예시입니다:
+링크 객체에 lag 매개변수가 포함되어 있으면 작업 간 지속 시간을 변경할 수 있습니다. 예를 들어 *lag*가 1로 설정되면 작업 간 지속 시간이 1일일 때 해당 작업이 임계가 됩니다.  
+다음은 **link.lag** 값이 다른 몇 가지 예입니다:
 
-- link.lag이 0일 때
+- link.lag가 0인 경우
 
 ~~~js
 const tasks = {
@@ -94,9 +84,9 @@ const tasks = {
 }
 ~~~
 
-![](/img/lag0.png)
+![lag0](/img/lag0.png)
 
-- link.lag이 1일 때
+- link.lag가 1인 경우
 
 ~~~js
 const tasks = {
@@ -111,9 +101,9 @@ const tasks = {
 }
 ~~~
 
-![](/img/lag1.png)
+![lag1](/img/lag1.png)
 
-- link.lag이 -1일 때
+- link.lag가 -1인 경우
 
 ~~~js
 const tasks = {
@@ -128,16 +118,16 @@ const tasks = {
 }
 ~~~
 
-![](/img/lag_1.png)
+![lag_1](/img/lag_1.png)
 
-3. **gantt.config.project_end** 파라미터가 설정되어 있고, 작업 날짜가 이를 초과할 때.
+3. **gantt.config.project_end** 매개변수가 지정되어 있고 작업 날짜가 **gantt.config.project_end** 날짜보다 큰 경우.
 
-현재 내장된 크리티컬 패스 로직은 변경할 수 없습니다.
-하지만 [크리티컬 패스 동작을 커스터마이징](#customizingthecriticalpathbehaviour)할 수 있습니다.
+안타깝게도 임계 경로를 정의하는 내장 로직을 변경하는 방법은 없습니다. 그러나 [임계 경로 동작 사용자 정의](#customizing-the-critical-path-behaviour)를 사용할 수 있습니다.  
 
-## Checking if a task is critical 
 
-작업이 크리티컬인지 확인하려면 [isCriticalTask](api/method/iscriticaltask.md) 메서드를 사용하세요:
+## 작업이 임계인지 확인
+
+일부 작업이 임계인지 확인하려면 [isCriticalTask](api/method/iscriticaltask.md) 메서드를 사용합니다:
 
 ~~~js
 gantt.config.highlight_critical_path = true; /*!*/
@@ -148,29 +138,28 @@ gantt.isCriticalTask(gantt.getTask("task3"));// ->'true' /*!*/
 ~~~
 
 
-[Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
+[임계 경로](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
 
-## Checking if a link is critical 
+## 링크가 임계인지 확인
 
-링크가 두 크리티컬 작업을 연결하는지 확인하려면 [isCriticalLink](api/method/iscriticallink.md) 메서드를 사용하세요:
+링크가 임계인지 확인하려면 (두 임계 작업을 연결하는지) [isCriticalLink](api/method/iscriticallink.md) 메서드를 사용합니다:
 
 ~~~js
 gantt.isCriticalLink(gantt.getLink("link1"));
 ~~~
 
 
-[Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
+[임계 경로](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
 
+## 자유 여유 시간 및 전체 여유 시간 {#gettingfreeandtotalslack}
 
-## Getting free and total slack
+**자유 여유 시간** - 연결된 다음 작업에 영향을 주지 않고 작업의 지속 시간을 늘리거나 타임라인에서 위치를 옮길 수 있는 시간의 기간.
 
-**Free slack(자유 여유 시간)**은 작업이나 마일스톤이 다음 연결된 작업을 지연시키지 않고 연장되거나 이동될 수 있는 시간입니다.
+자유 여유 시간은 'task' 타입과 'milestone' 타입의 작업에 대해 계산될 수 있습니다.
 
-자유 여유 시간은 'task' 및 'milestone' 타입에 적용됩니다.
-
-작업의 자유 여유 시간을 가져오려면, [getFreeSlack](api/method/getfreeslack.md) 메서드에 작업 객체를 전달하세요:
+작업의 자유 여유 시간을 얻으려면 [getFreeSlack](api/method/getfreeslack.md) 메서드를 사용합니다. 이 메서드는 작업 객체를 매개변수로 받습니다:
 
 ~~~js
 var task = gantt.getTask(7);
@@ -178,14 +167,14 @@ gantt.getFreeSlack(task);
 ~~~
 
 
-[Show Slack time](https://docs.dhtmlx.com/gantt/samples/08_api/17_show_task_slack.html)
+[슬랙 시간 표시](https://docs.dhtmlx.com/gantt/samples/08_api/17_show_task_slack.html)
 
 
-**Total slack(총 여유 시간)**은 작업이 프로젝트 전체 완료 일자에 영향을 주지 않고 지연될 수 있는 시간입니다.
+**전체 여유 시간** - 전체 프로젝트의 종료 시간에 영향을 주지 않고 작업의 지속 시간을 늘리거나 타임라인에서 위치를 옮길 수 있는 시간의 기간.
 
-총 여유 시간은 프로젝트를 포함한 모든 작업 유형에 대해 계산할 수 있습니다.
+전체 여유 시간은 프로젝트를 포함한 모든 유형의 작업에 대해 계산될 수 있습니다.
 
-작업의 총 여유 시간을 얻으려면 [getTotalSlack](api/method/gettotalslack.md) 메서드에 작업 객체를 사용하세요:
+작업의 전체 여유 시간을 얻으려면 [getTotalSlack](api/method/gettotalslack.md) 메서드를 사용합니다. 이 메서드는 작업 객체를 매개변수로 받습니다:
 
 ~~~js
 var task = gantt.getTask(7);
@@ -193,16 +182,17 @@ gantt.getTotalSlack(task);
 ~~~
 
 
-[Show Slack time](https://docs.dhtmlx.com/gantt/samples/08_api/17_show_task_slack.html)
+[슬랙 시간 표시](https://docs.dhtmlx.com/gantt/samples/08_api/17_show_task_slack.html)
 
 
 ![Slack](/img/show_slack.png)
 
-## Customizing the critical path behaviour
 
-기본적으로 gantt는 크리티컬 패스에 대해 기본 하이라이트 스타일을 적용하고, 데이터가 변경될 때마다 경로를 다시 계산합니다.
+## 임계 경로 동작 사용자 정의
 
-크리티컬 패스의 표시 여부를 제어하려면 다음과 같은 방법을 사용할 수 있습니다:
+기본적으로 Gantt는 임계 경로에 기본 동작을 적용합니다. 예를 들어 강조 표시의 기본 스타일이나 데이터 업데이트마다 임계 경로를 재계산하는 방식 등이 해당됩니다.
+
+임계 경로의 가시성을 조정하려면 다음과 같은 방법을 사용합니다:
 
 ~~~js
 var isEnabled = false
@@ -215,10 +205,11 @@ function updateCriticalPath(){
 }
 ~~~
 
-많은 작업을 관리할 때 크리티컬 패스를 자주 재계산하면 성능에 영향을 줄 수 있으므로, 이 방법이 유용합니다.
+
+태스크 수가 많아 임계 경로를 재계산하는 것이 성능에 영향을 줄 수 있을 때 유용합니다.  
 
 
-크리티컬 패스를 수동으로 재계산하고 스타일을 업데이트하려면 다음과 같이 하세요:
+임계 경로를 수동으로 재계산하고 관련 스타일링을 적용하려면 아래와 같은 방법을 사용합니다:
 
 ~~~js
 gantt.templates.task_class = function(start, end, task){
@@ -257,24 +248,24 @@ gantt.parse(data);
 ~~~
 
 
+다음과 같이 수동으로 강조 표시도 가능합니다:
+
+- [task_class 템플릿에서 "gantt_critical_task"를 반환하면 해당 작업은 임계 작업으로 강조 표시됩니다.]  
+- [link_class 템플릿에서 "gantt_critical_link"를 반환하면 해당 링크는 임계 링크로 강조 표시됩니다.]
+
+**관련 샘플:** [Custom critical path per project](https://snippet.dhtmlx.com/jd4dyc5p)
 
 
-작업과 링크를 수동으로 하이라이트 할 수도 있습니다:
+## 작업 간 지연(lag) 및 선행 시간 설정
 
-- [task_class](api/template/task_class.md) 템플릿에서 "gantt_critical_task"를 반환하면 해당 작업이 크리티컬로 표시됩니다.
-- [link_class](api/template/link_class.md) 템플릿에서 "gantt_critical_link"를 반환하면 해당 링크가 크리티컬로 표시됩니다.
+작업 간 임계 경로의 지연(lag) 및 선행 시간을 설정하는 것이 가능합니다. 자세한 내용은 [여기](guides/auto-scheduling.md#settinglagandleadtimesbetweentasks)를 참조하십시오.  
 
-**관련 예제:** [Custom critical path per project](https://snippet.dhtmlx.com/jd4dyc5p)
 
-## Setting lag and lead times between tasks
+## 완료된 작업의 스케줄링
 
-크리티컬 패스 작업 간의 지연(lag) 및 리드(lead) 시간을 설정할 수 있습니다. 자세한 내용은 [여기](guides/auto-scheduling.md#settinglagandleadtimesbetweentasks)에서 확인하세요.
+기본적으로 임계 경로 알고리즘이 완료된 작업(진행 값이 1인 작업)과 미완료 작업을 처리하는 방식에는 차이가 없습니다.
 
-## Scheduling completed tasks
-
-기본적으로 크리티컬 패스 알고리즘은 완료된 작업(progress 값이 1인 작업)도 미완료 작업과 동일하게 처리합니다.
-
-이 동작을 변경하려면 [auto_scheduling_use_progress](api/config/auto_scheduling_use_progress.md) 설정을 활성화할 수 있습니다:
+원하면 이 동작을 바꾸기 위해 [auto_scheduling_use_progress](api/config/auto_scheduling_use_progress.md) 설정을 활성화할 수 있습니다:
 
 ~~~js
 gantt.config.auto_scheduling_use_progress = true;
@@ -282,8 +273,6 @@ gantt.config.auto_scheduling_use_progress = true;
 gantt.init("gantt_here");
 ~~~
 
-이 옵션을 활성화하면, 완료된 작업은 크리티컬 패스 및 자동 스케줄링에서 제외됩니다.
+구성 요소가 활성화되면 완료된 작업은 임계 경로와 자동 스케줄링에서 제외됩니다.
 
-자세한 정보는 [API 페이지](api/config/auto_scheduling_use_progress.md)에서 확인할 수 있습니다.
-
-
+자세한 내용은 [API 페이지](api/config/auto_scheduling_use_progress.md)를 참조하십시오.

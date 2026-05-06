@@ -1,30 +1,29 @@
 ---
 sidebar_label: onAfterLinkAdd
-title: onAfterLinkAdd event
-description: "Wird unmittelbar ausgelöst, nachdem ein neuer Link zum Gantt-Diagramm hinzugefügt wurde"
+title: onAfterLinkAdd-Ereignis
+description: "Wird ausgelöst, nachdem ein neuer Link zum Gantt-Diagramm hinzugefügt wurde"
 ---
 
 # onAfterLinkAdd
 
 ### Description
 
-@short: Wird unmittelbar ausgelöst, nachdem ein neuer Link zum Gantt-Diagramm hinzugefügt wurde
+@short: Wird ausgelöst, nachdem ein neuer Link zum Gantt-Diagramm hinzugefügt wurde
 
 @signature: onAfterLinkAdd: (id: string | number, link: Link) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string,number* - die ID des Links
-- `link` - (required) *Link* - das Link-Objekt selbst
+- `id` - (erforderlich) *string | number* - die Link-ID
+- `link` - (erforderlich) *Link* - das Link-Objekt
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAfterLinkAdd", function(id,link){
-    //hier kann benutzerdefinierte Logik eingefügt werden
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Related API
 - [addLink](api/method/addlink.md)
-

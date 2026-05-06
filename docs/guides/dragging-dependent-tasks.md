@@ -230,5 +230,3 @@ The full code will be as follows:
 })();
 ~~~
 
-@linkclass:hidden
-

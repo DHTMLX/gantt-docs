@@ -8,18 +8,18 @@ description: "툴팁에 표시될 텍스트를 설정합니다"
 
 ### Description
 
-@short: 툴팁에 표시될 텍스트를 설정합니다
+@short: 툴팁의 텍스트를 지정합니다
 
-@signature: tooltip_text: (start: Date, end: Date, task: Task) =\> string | void;
+@signature: tooltip_text: (start: Date, end: Date, task: Task) => string | void;
 
 ### Parameters
 
-- `start` - (required) *Date* - 작업이 시작될 예정인 날짜
-- `end` - (required) *Date* - 작업이 완료될 예정인 날짜
-- `task` - (required) *Task* - 작업 객체
+- `start` - (필수) *Date* - 작업이 시작될 예정 날짜
+- `end` - (필수) *Date* - 작업이 종료될 예정 날짜
+- `task` - (필수) *Task* - 작업 객체
 
 ### Returns
-- ` text` - (string | void) - 간트 툴팁에 표시될 HTML 문자열
+- ` text` - (string | void) - gantt에서 렌더링될 HTML 텍스트
 
 ### Example
 
@@ -34,7 +34,7 @@ gantt.templates.tooltip_text = function(start,end,task){
 ### Details
 
 :::note
- 이 템플릿은 **tooltip** 확장의 일부이므로, [tooltip](guides/extensions-list.md#tooltip) 플러그인이 활성화되어 있어야 합니다. 자세한 내용은 [Gantt 요소의 툴팁](guides/tooltips.md) 문서를 참고하세요. 
+이 템플릿은 **tooltip** 확장에 정의되어 있으므로 [tooltip](guides/extensions-list.md#tooltip) 플러그인을 활성화해야 합니다. 자세한 내용은 [Tooltips for Gantt Elements](guides/tooltips.md) 문서를 참조하세요.
 :::
 
 ### Related API

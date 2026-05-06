@@ -1,14 +1,14 @@
 ---
 sidebar_label: detachAllEvents
-title: detachAllEvents method
-description: "从 dhtmlxGantt 中移除所有事件（包括自定义事件和内置事件）"
+title: detachAllEvents 方法
+description: "从 dhtmlxGantt 解除所有事件（包括自定义和内部事件）"
 ---
 
 # detachAllEvents
 
 ### Description
 
-@short: 从 dhtmlxGantt 中移除所有事件（包括自定义事件和内置事件）
+@short: 从 dhtmlxGantt 解除所有事件（包括自定义和内部事件）
 
 ### Example
 
@@ -27,9 +27,7 @@ gantt.detachAllEvents();
 
 请注意，**detachAllEvents** 方法会移除所有事件处理程序--包括自定义代码添加的和 dhtmlxGantt 内部用于连接不同功能的事件处理程序，因此可能会破坏 dhtmlxGantt 的正常功能。
 
-更好的做法是保存 [attachEvent](api/method/attachevent.md) 方法返回的事件ID，然后在需要时使用 [detachEvent](api/method/detachevent.md) 移除那些特定事件，如上例所示。
 
-<br>
 :::note
  **detachAllEvents** 方法已被废弃。建议使用以下方式替代: 
 :::
@@ -54,5 +52,4 @@ while (events.length)
 - [attachEvent](api/method/attachevent.md)
 
 ### Related Guides
-- [事件处理](guides/handling-events.md)
-
+- [Event Handling](guides/handling-events.md)

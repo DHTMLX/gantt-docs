@@ -6,9 +6,13 @@ description: "определяет шаг временной шкалы (ось 
 
 # step
 
+:::warning
+Свойство устарело.
+:::
+
 ### Description
 
-@short: Определяет шаг временной шкалы (ось X)
+@short: Устанавливает шаг шкалы времени (ось X)
 
 ### Example
 
@@ -20,15 +24,13 @@ gantt.config.date_scale = "%Y";
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 1
-
 ### Related samples
 - [Step config for the Quarter scale](https://docs.dhtmlx.com/gantt/samples/03_scales/03_full_year.html)
 
 ### Details
 
 :::note
-note Свойство **step** устарело. Вместо этого настройте **step** внутри [scales](api/config/scales.md): 
+Свойство **step** устарело. Используйте свойство **step** из [scales](api/config/scales.md) вместо этого:
 :::
 
 ~~~js
@@ -39,13 +41,14 @@ gantt.config.scales = [
 ];
 ~~~
 
+**Значение по умолчанию:** 1
+
 ### Related API
 - [scale_unit](api/config/scale_unit.md)
 - [date_scale](api/config/date_scale.md)
 
 ### Related Guides
-- [Настройка шкалы](guides/configuring-time-scale.md#timestep)
+- [Setting up Scale](guides/configuring-time-scale.md#timestep)
 
 ### Change log
 - устарело с версии v6.2
-

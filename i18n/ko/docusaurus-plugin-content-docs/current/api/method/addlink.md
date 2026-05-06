@@ -1,6 +1,6 @@
 ---
 sidebar_label: addLink
-title: addLink method
+title: addLink 메서드
 description: "새로운 의존성 링크를 추가합니다"
 ---
 
@@ -10,11 +10,11 @@ description: "새로운 의존성 링크를 추가합니다"
 
 @short: 새로운 의존성 링크를 추가합니다
 
-@signature: addLink: (link: any) =\> string | number
+@signature: addLink: (link: any) => string | number
 
 ### Parameters
 
-- `link` - (required) *object* - 링크 객체
+- `link` - (필수) *객체* - 링크 객체
 
 ### Returns
 - ` id` - (string | number) - 링크의 ID
@@ -40,5 +40,4 @@ var linkId = gantt.addLink({
 - [addTask](api/method/addtask.md)
 
 ### Related Guides
-- [링크 추가/수정/삭제](guides/crud-dependency.md)
-
+- [Adding/Updating/Deleting Links](guides/crud-dependency.md)

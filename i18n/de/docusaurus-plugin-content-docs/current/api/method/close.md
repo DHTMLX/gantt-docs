@@ -8,13 +8,13 @@ description: "schließt den Branch, der durch die angegebene ID identifiziert wi
 
 ### Description
 
-@short: Schließt den Branch, der durch die angegebene ID identifiziert wird
+@short: Schließt den Branch mit der angegebenen ID
 
 @signature: close: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -    die ID des Branches
+- `id` - (required) *string | number* -    die Branch-ID
 
 ### Example
 
@@ -37,12 +37,11 @@ gantt.close("p_1");/*!*/
 
 ### Details
 
-Beachten Sie, dass diese Methode das Event [onTaskClosed](api/event/ontaskclosed.md) auslöst.
+Hinweis: Die Methode löst das [onTaskClosed](api/event/ontaskclosed.md) Event aus.
 
 ### Related API
 - [open](api/method/open.md)
 - [onTaskClosed](api/event/ontaskclosed.md)
 
 ### Related Guides
-- ["Konfiguration der Baumspalte"](guides/tree-column.md)
-
+- [Configuring the Tree Column](guides/tree-column.md)

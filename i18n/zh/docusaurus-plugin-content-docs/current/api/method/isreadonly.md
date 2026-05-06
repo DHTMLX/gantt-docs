@@ -1,23 +1,23 @@
 ---
 sidebar_label: isReadonly
-title: isReadonly method
-description: "确定指定的任务、链接或整个甘特图是否设置为只读模式"
+title: isReadonly 方法
+description: "检查指定的任务/链接，或整个 Gantt 是否为只读"
 ---
 
 # isReadonly
 
 ### Description
 
-@short: 确定指定的任务、链接或整个甘特图是否设置为只读模式
+@short: 检查指定的任务/链接，或整个甘特图是否为只读
 
 @signature: isReadonly: (item?: number | string | Task | Link) =\> boolean
 
 ### Parameters
 
-- `item` - (optional) *number | string | Task | Link* -    可选，表示任务或链接的ID或对象。如果省略，则方法检查整个甘特图是否为只读状态
+- `item` -	(optional) *number | string | Task | Link*	- 可选，任务/链接的 ID 或对象。若未指定，该方法将检查甘特图是否为只读
 
 ### Returns
-- ` mode` - (boolean) - <i>true</i> 表示指定的任务/链接或整个甘特图为只读；否则为 <i>false</i>
+- ` `mode` - (boolean) - <i>true</i>，如果任务/链接，或甘特图为只读。否则，<i>false</i>
 
 ### Example
 
@@ -36,4 +36,4 @@ gantt.isReadonly(gantt.getTask(10)); // -> false
 ~~~
 
 ### Related Guides
-- [只读模式](guides/readonly-mode.md)
+- [只读模式](guides/readonly-mode.md#readonlymodeforspecifictaskslinks)

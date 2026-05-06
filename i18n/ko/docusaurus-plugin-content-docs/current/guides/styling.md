@@ -5,10 +5,10 @@ sidebar_label: "스타일링"
 
 # 스타일링
 
-- [CSS 문서](guides/css-overview.md)
-- [스킨(Skins)](guides/skins.md)
-- [스킨 커스터마이제이션](guides/custom-skins.md)
-- [간트 차트의 템플릿](guides/templates.md)
-- [Tasks Coloring](guides/colouring-tasks.md)
-- [링크 색상 및 스타일링](guides/colouring-lines.md)
-- [Gantt 스타일 작업하기](guides/styling-guide.md)
+- [CSS 개요](guides/css-overview.md)
+- [스킨](guides/skins.md)
+- [스킨 커스터마이징](guides/custom-skins.md)
+- [간트 차트 템플릿](guides/templates.md)
+- [작업 색상 지정](guides/colouring-tasks.md)
+- [링크 색상 지정 및 스타일링](guides/colouring-lines.md)
+- [간트 스타일 가이드](guides/styling-guide.md)

@@ -26,7 +26,7 @@ var cfg = gantt.config;
 var strToDate = gantt.date.str_to_date(cfg.date_format, cfg.server_utc);
 
 gantt.templates.parse_date = function(date){
-    return strToDate (date);
+    return strToDate(date);
 };
 ~~~
 

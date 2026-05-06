@@ -1,16 +1,16 @@
----
-title: "Hinzufügen von vertikalen Markierungen"
-sidebar_label: "Hinzufügen von vertikalen Markierungen"
+--- 
+title: "Vertikale Marker hinzufügen"
+sidebar_label: "Vertikale Marker hinzufügen"
 ---
 
-# Hinzufügen von vertikalen Markierungen
+# Vertikale Marker hinzufügen
 
-Die Bibliothek enthält die **marker**-Erweiterung, mit der Sie bestimmte Daten oder Datumsbereiche auf der Zeitleiste hervorheben können.
+Die Bibliothek bietet die Erweiterung **marker**, die es Ihnen ermöglicht, bestimmte Daten oder Datumsbereiche zu markieren (hervorzuheben).
 
 <div style="text-align:center;">![today_marker](/img/today_marker.png)</div>
 
 :::note
-Um diese Erweiterung zu verwenden, aktivieren Sie das **marker**-Plugin, indem Sie die Methode [gantt.plugins](api/method/plugins.md) aufrufen.
+Hinweis: Um die Erweiterung zu verwenden, aktivieren Sie das **marker**-Plugin mit der Methode [gantt.plugins](api/method/plugins.md).
 :::
 
 ~~~js
@@ -24,17 +24,17 @@ Um diese Erweiterung zu verwenden, aktivieren Sie das **marker**-Plugin, indem S
     gantt.plugins({ /*!*/
         marker: true /*!*/
     }); /*!*/
-    //Ihr Code kommt hier hin
+    //your code will be here
 </body>
 </html>
 ~~~
 
-[Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
+[Heute- und Statuszeilen in Gantt (vertikale Marker)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
 
 
-## Hinzufügen einer Markierung
+## Marker hinzufügen
 
-Um eine Markierung auf der Zeitleiste zu platzieren, zum Beispiel für das heutige Datum, verwenden Sie die Methode [addMarker](api/method/addmarker.md):
+Um einen Marker in den Zeitachsenbereich hinzuzufügen, z. B. den Marker für heute, rufen Sie die Methode [addMarker](api/method/addmarker.md) auf:
 
 ~~~js
 var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
@@ -46,15 +46,15 @@ var markerId = gantt.addMarker({
 });
 ~~~
 
-[Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
+[Heute- und Statuszeilen in Gantt (vertikale Marker)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
 
 
 :::note
-Beachten Sie, dass die Eigenschaft 'text' beliebigen HTML-Inhalt akzeptieren kann.
+Hinweis: Als Wert der Eigenschaft 'text' kann die Methode beliebiges HTML verwenden.
 :::
 
 
-Um ein Objekt abzurufen, das die hinzugefügte Markierung repräsentiert, verwenden Sie die Methode [getMarker](api/method/getmarker.md):
+Um ein Objekt des hinzugefügten Markers zu erhalten, verwenden Sie die Methode [getMarker](api/method/getmarker.md):
 
 ~~~js
 var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
@@ -64,15 +64,15 @@ var markerId = gantt.addMarker({  /*!*/
     text: "Now", 
     title: dateToStr(new Date()) 
 });
-gantt.getMarker(markerId); // gibt {css:"today", text:"Now", id:...} zurück
+gantt.getMarker(markerId); //->{css:"today", text:"Now", id:...}
 ~~~
 
-[Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
+[Heute- und Statuszeilen in Gantt (vertikale Marker)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
 
 
-## Entfernen einer Markierung
+## Marker entfernen
 
-Um eine zuvor hinzugefügte Markierung zu löschen, verwenden Sie die Methode [deleteMarker](api/method/deletemarker.md): 
+Um einen zuvor hinzugefügten Marker zu entfernen, verwenden Sie die Methode [deleteMarker](api/method/deletemarker.md): 
 
 ~~~js
 var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
@@ -86,21 +86,21 @@ var markerId = gantt.addMarker({  /*!*/
 gantt.deleteMarker(markerId); /*!*/
 ~~~
 
-## Markierungen ausblenden
+## Marker ausblenden
 
-Um alle hinzugefügten Markierungen auszublenden, setzen Sie die Option [show_markers](api/config/show_markers.md) auf 'false': 
+Um alle hinzugefügten Marker auszublenden, setzen Sie die Konfigurationsoption [show_markers](api/config/show_markers.md) auf 'false': 
 
 ~~~js
 var marker1 = gantt.addMarker({ ...}); 
 var marker2 = gantt.addMarker({ ...}); 
 var marker3 = gantt.addMarker({ ...}); 
 
-gantt.config.show_markers = false; // blendet alle 3 Markierungen aus
+gantt.config.show_markers = false;// hides all 3 markers
 ~~~
 
-## Aktualisieren einer Markierung
+## Marker aktualisieren
 
-Um eine Markierung zu ändern, verwenden Sie die Methode [updateMarker](api/method/updatemarker.md):
+Um einen Marker zu aktualisieren, verwenden Sie die Methode [updateMarker](api/method/updatemarker.md):
 
 ~~~js
 var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
@@ -115,7 +115,7 @@ gantt.getMarker(markerId).css = "today_new";
 gantt.updateMarker(markerId); /*!*/
 ~~~
 
-Um alle Markierungen gleichzeitig zu aktualisieren, verwenden Sie die Methode [renderMarkers](api/method/rendermarkers.md): 
+Um alle hinzugefügten Marker zu aktualisieren, verwenden Sie die Methode [renderMarkers](api/method/rendermarkers.md):
 
 ~~~js
 var marker1 = gantt.addMarker({ ...}); 
@@ -125,9 +125,9 @@ var marker3 = gantt.addMarker({ ...});
 gantt.renderMarkers(); /*!*/
 ~~~
 
-## Markierungen gestalten 
+## Marker stylen
 
-Markierungen können mit der Vorlage [gantt.templates.marker_class](api/template/marker_class.md) gestaltet werden:
+Um Marker zu stylen, verwenden Sie das Template [gantt.templates.marker_class](api/template/marker_class.md):
 
 ~~~js
 var showAdvancedMarkers;
@@ -138,9 +138,9 @@ gantt.templates.marker_class = function(marker){
 }
 ~~~
 
-## Markierung für den heutigen Tag
+## Heutiger Marker
 
-Wenn Sie eine Markierung für den aktuellen Tag in Ihrem Gantt-Diagramm anzeigen möchten, müssen Sie sowohl die Markierung hinzufügen als auch eine Funktion bereitstellen, die ihre Position mit fortschreitender Zeit aktualisiert. Dies kann mit folgendem Code erreicht werden:
+Angenommen, Sie möchten den heutigen Marker in Ihrem Gantt-Diagramm anzeigen. In diesem Fall benötigen Sie beides: Einen Marker auf der Seite hinzufügen und eine Funktion bereitstellen, die den Marker mit der Zeitänderung verschiebt. Dies können Sie mit folgendem Code erreichen:
 
 ~~~js
 var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
@@ -148,15 +148,14 @@ var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
 var id = gantt.addMarker({ 
     start_date: new Date(), 
     css: "today", 
-    title: dateToStr(new Date())
+    title:dateToStr(new Date())
 });
 setInterval(function(){
     var today = gantt.getMarker(id);
     today.start_date = new Date();
-    today.title = dateToStr(today.start_date);
+    today.title = date_to_str(today.start_date);
     gantt.updateMarker(id);
 }, 1000*60);
 ~~~
 
-[Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
-
+[Heute- und Statuszeilen in Gantt (vertikale Marker)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)

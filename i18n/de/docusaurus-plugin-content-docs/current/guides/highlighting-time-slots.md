@@ -1,20 +1,20 @@
 ---
-title: "Hervorheben von Zeitfenstern"
-sidebar_label: "Hervorheben von Zeitfenstern"
+title: "Zeitfenster hervorheben"
+sidebar_label: "Zeitfenster hervorheben"
 ---
 
-# Hervorheben von Zeitfenstern
+# Zeitfenster hervorheben
 
-Um bestimmte Zeitfenster hervorzuheben, können Sie diese markieren.
+Um die Aufmerksamkeit des Benutzers auf bestimmte Zeitfenster zu lenken, können Sie sie hervorheben.
 
-- Um eine Zelle im Bereich der Zeitleiste hervorzuheben, verwenden Sie die [timeline_cell_class](api/template/timeline_cell_class.md)-Vorlage.
-- Um eine Zelle in der Zeitskala der Zeitleiste hervorzuheben, verwenden Sie die [scale_cell_class](api/template/scale_cell_class.md)-Vorlage.
+- Um eine Zelle des Timeline-Bereichs hervorzuheben, verwenden Sie die Vorlage [timeline_cell_class](api/template/timeline_cell_class.md).
+- Um eine Zelle der Timeline-Zeitskala hervorzuheben, verwenden Sie die Vorlage [scale_cell_class](api/template/scale_cell_class.md).
 
-Diese Vorlagen sind Funktionen, die alle Daten durchlaufen und der entsprechenden Zelle die angegebene CSS-Klasse zuweisen.
+Die Vorlage ist eine Funktion, die alle Datumswerte durchläuft und die angegebene CSS-Klasse auf die entsprechenden Zellen anwendet.
 
 ![highlighting_weekends](/img/highlighting_weekends.png)
 
-Zum Beispiel kann das Hervorheben von Wochenenden helfen, die Skala visuell in Wochen zu unterteilen:
+Beispielsweise können Sie Wochenenden hervorheben, um die Skala visuell in Wochen zu unterteilen:
 
 ~~~js
 <style>
@@ -37,7 +37,8 @@ gantt.templates.timeline_cell_class = function(task,date){
 gantt.init("gantt_here");
 ~~~
 
-Wenn Sie [Arbeitszeitberechnungen](guides/working-time.md) verwenden, empfiehlt es sich, [isWorkTime](api/method/isworktime.md) zu nutzen, statt Werte fest zu kodieren:
+
+Beachten Sie, dass, während Sie [Berechnungen der Arbeitszeit](guides/working-time.md) verwenden, Sie statt harter Werte auch [isWorkTime](api/method/isworktime.md) verwenden können:
 
 ~~~js
 gantt.config.work_time = true;
@@ -60,6 +61,5 @@ gantt.init("gantt_here");
 
 
 :::note
-Die Verwendung des 'important'-Schlüsselworts stellt sicher, dass die CSS-Eigenschaft wie vorgesehen auf die Zelle angewendet wird.
+Verwenden Sie das Stichwort 'important', um sicherzustellen, dass die angegebene CSS-Eigenschaft auf die Zelle angewendet wird.
 :::
-

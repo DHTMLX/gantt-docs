@@ -1,23 +1,23 @@
 ---
 sidebar_label: onError
 title: onError event
-description: "Wird ausgelöst, sobald assert einen Wert 'false' erhält, was bedeutet, dass eine Assertion nicht bestanden wurde."
+description: "löst aus, wenn [assert](api/method/assert.md) einen Wert 'false' erhält, d.h. wenn die Assertion fehlschlägt"
 ---
 
 # onError
 
 ### Description
 
-@short: Wird ausgelöst, sobald [assert](api/method/assert.md) einen Wert 'false' erhält, was bedeutet, dass eine Assertion nicht bestanden wurde.
+@short: Wird ausgelöst, wenn [assert](api/method/assert.md) einen Wert 'false' erhält, d.h. wenn die Assertion fehlschlägt
 
 @signature: onError: (errorMessage: string) =\> boolean;
 
 ### Parameters
 
-- `errorMessage` - (required) *string* - ein String, der die Fehlermeldung der [assert](api/method/assert.md) Methode enthält
+- `errorMessage` - (erforderlich) *string* - ein String mit einer Fehlermeldung aus der [assert](api/method/assert.md) Methode
 
 ### Returns
-- ` result` - (boolean) - bestimmt, ob die Standardaktion des Events ausgeführt wird (<b>true</b>) oder gestoppt wird (<b>false</b>)
+- ` result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
@@ -32,8 +32,7 @@ gantt.attachEvent("onError", function(errorMessage){
 
 ### Details
 
-Dieses Event kann blockiert werden. Wenn false zurückgegeben wird, wird das Standardverhalten gestoppt, welches darin besteht, die Fehlermeldung in einem roten Kästchen oben rechts anzuzeigen.
+Das Ereignis ist blockierbar. Wenn false zurückgegeben wird, wird das Standardverhalten verhindert (die Anzeige der Fehlermeldung in einer roten Box oben rechts)
 
 ### Change log
-- hinzugefügt in Version 4.0
-
+- in Version 4.0 hinzugefügt

@@ -1,14 +1,14 @@
 ---
 sidebar_label: getLastSelectedTask
 title: getLastSelectedTask method
-description: "liefert die ID der zuletzt ausgewählten Aufgabe"
+description: "gibt die ID der zuletzt ausgewählten Aufgabe zurück"
 ---
 
 # getLastSelectedTask
 
 ### Description
 
-@short: Liefert die ID der zuletzt ausgewählten Aufgabe
+@short: Gibt die ID der zuletzt ausgewählten Aufgabe zurück
 
 @signature: getLastSelectedTask: () =\> string | number
 
@@ -24,7 +24,7 @@ gantt.getLastSelectedTask();
 ### Details
 
 :::note
- Diese Methode ist Teil der **multiselect** Erweiterung. Stellen Sie daher sicher, dass das [multiselect](guides/extensions-list.md#multitaskselection) Plugin aktiviert ist. Weitere Informationen finden Sie im Artikel ["Multi-Task-Auswahl"](guides/multiselection.md). 
+Diese Methode ist in der **multiselect**-Erweiterung definiert, daher müssen Sie das [multiselect](guides/extensions-list.md#multitaskselection) Plugin aktivieren. Lesen Sie die Details im Artikel [Multi-Task Selection](guides/multiselection.md).
 :::
 
 ### Related API
@@ -36,5 +36,4 @@ gantt.getLastSelectedTask();
 - [toggleTaskSelection](api/method/toggletaskselection.md)
 
 ### Related Guides
-- ["Multi-Task-Auswahl"](guides/multiselection.md)
-
+- [Multi-Task Selection](guides/multiselection.md)

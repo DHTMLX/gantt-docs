@@ -1,11 +1,13 @@
 ---
 sidebar_label: baseline_text
-title: baseline_text template
-description: "definiert den Text, der innerhalb des baseline-Elements angezeigt wird"
+title: baseline_text Vorlage
+description: "bestimmt den Text, der innerhalb des Baseline-Elements angezeigt wird"
 ---
 
 # baseline_text
-
+:::info
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
+:::
 ### Description
 
 @short: Definiert den Text, der innerhalb des baseline-Elements angezeigt wird
@@ -14,9 +16,9 @@ description: "definiert den Text, der innerhalb des baseline-Elements angezeigt 
 
 ### Parameters
 
-- `task` - (required) *Task* - Das Task-Objekt, das mit der Baseline verknüpft ist
-- `baseline` - (required) *Baseline* - Das Baseline-Objekt selbst
-- `index` - (required) *number* - Die Position der Baseline innerhalb des Baselines-Arrays der Task
+- `task` - (erforderlich) *Task* - das Task-Objekt, das mit dem Baseline verknüpft ist
+- `baseline` - (erforderlich) *Baseline* - das Baseline-Objekt
+- `index` - (erforderlich) *number* - der Index der Baseline im baselines-Array der Aufgabe
 
 ### Returns
 - ` text` - (string | number | void) - Der HTML-Inhalt, der als innerHTML des baseline-Elements gesetzt wird. Standardmäßig wird ein leerer String zurückgegeben.

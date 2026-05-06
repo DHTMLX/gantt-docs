@@ -1,20 +1,20 @@
+--- 
+title: "Standard 与 PRO 库版本对比"
+sidebar_label: "Standard 与 PRO 库版本对比"
 ---
-title: "标准版与PRO版库的区别"
-sidebar_label: "标准版与PRO版库的区别"
----
 
-# 标准版与PRO版库的区别
+# 标准版与 PRO 库版本对比
 
-如果您想了解 dhtmlxGantt 库的标准版与 PRO 版之间的区别，以及 PRO 版额外提供了哪些功能，本指南将为您详细说明。
+如果您不确定 dhtmlxGantt 库的 Standard 与 PRO 版本之间的区别，或想了解 PRO 版将带来哪些额外功能，本指南正是您所需要的。
 
-PRO 版包含了标准版的所有功能，并在此基础上增加了多项实用的高级特性。下表列出了这些功能，方便您对比两个版本的差异。
+PRO 版本包含 Standard 版本的全部功能，并且还包含额外的有用功能。下表列出了功能清单，便于对比 dhtmlxGantt 的两个版本。
 
 <table>
   <thead>
   <tr>
-  <th style="width: 60%;">Feature</th>
-  <th style="text-align:center;width: 20%;">Standard</th>
-  <th style="text-align:center;width: 20%;">PRO</th>
+  <th style="width: 60%;">功能</th>
+  <th style="text-align:center;width: 20%;">标准版</th>
+  <th style="text-align:center;width: 20%;">PRO 版</th>
   </tr>
   </thead>
   <tbody>
@@ -24,305 +24,304 @@ PRO 版包含了标准版的所有功能，并在此基础上增加了多项实�
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[4 types of tasks linking: finish-to-start, start-to-start, finish-to-finish, start-to-finish](guides/loading.md#dataproperties)</td>
+  <td>[4 种任务链接类型：finish-to-start、start-to-start、finish-to-finish、start-to-finish](guides/loading.md#dataproperties)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[7 different skins](guides/skins.md)</td>
+  <td>[7 种不同的皮肤](guides/skins.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Ability to hide time units on the time scale](guides/custom-scale.md)</td>
+  <td>[在时间刻度上隐藏时间单位的能力](guides/custom-scale.md)</td>
   <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Accessibility](guides/accessibility.md)</td>
+  <td>[可访问性](guides/accessibility.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Assigning Calendar to Project](guides/working-time.md#assigning-calendar-to-project)</td>
+  <td>[将日历分配给项目](guides/working-time.md#assigning-calendar-to-project)</td>
   <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Assigning Calendar to Resource](guides/working-time.md#assigningcalendartoresource)</td>
+  <td>[将日历分配给资源](guides/working-time.md#assigningcalendartoresource)</td>
   <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Auto scheduling](guides/auto-scheduling.md)</td>
+  <td>[自动排程](guides/auto-scheduling.md)</td>
   <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Automatic detection of tasks types](api/config/auto_types.md)</td>
+  <td>[自动检测任务类型](api/config/auto_types.md)</td>
   <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Backward planning](guides/loading.md#loadingtaskdates)</td>
+  <td>[向后计划](guides/loading.md#loadingtaskdates)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Configurable columns in the grid](guides/specifying-columns.md)</td>
+  <td>[网格中的可配置列](guides/specifying-columns.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Constraint Control](guides/constraint.md)</td>
+  <td>[约束控制](guides/constraint.md)</td>
   <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Content Security Policy compliance](guides/content-security-policy.md)</td>
+  <td>[符合内容安全策略](guides/content-security-policy.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Creating multiple Gantt charts on one page (**Commercial (since October 6, 2021), Enterprise and Ultimate licenses**)](guides/multiple-gantts.md)</td>
+  <td>[在同一页面创建多个甘特图（**商业版（自 2021 年 10 月 6 日起）、企业版和 Ultimate 许可**）](guides/multiple-gantts.md)</td>
   <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Critical path calculation](guides/critical-path.md)</td>
+  <td>[关键路径计算](guides/critical-path.md)</td>
   <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>Cross-browser: IE, FF, Chrome, Safari, Edge</td>
+  <td>跨浏览器：IE、FF、Chrome、Safari、Edge</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Customizable task edit form (lightbox)](guides/edit-form.md)</td>
+  <td>[可自定义的任务编辑表单（灯箱）](guides/edit-form.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Customizable time scale](guides/dynamic-scale.md)</td>
+  <td>[可定制的时间刻度](guides/dynamic-scale.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Decimal units for tasks durations](guides/working-time.md#taskdurationindecimalformat)</td>
+  <td>[任务持续时间的小数单位](guides/working-time.md#taskdurationindecimalformat)</td>
   <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Dragging and dropping multiple tasks horizontally](guides/multiselection.md#multitaskselectionanddragndrop)</td>
+  <td>[水平拖拽多个任务](guides/multiselection.md#multitaskselectionanddragndrop)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Dynamic loading](guides/dynamic-loading.md)</td>
+  <td>[动态加载](guides/dynamic-loading.md)</td>
   <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Editable or readonly Gantt chart](guides/readonly-mode.md)</td>
+  <td>[可编辑或只读甘特图](guides/readonly-mode.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Export to PDF and PNG](guides/export.md)</td>
+  <td>[导出为 PDF 和 PNG](guides/export.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Export to and import from Excel and export to iCal](guides/excel.md)</td>
+  <td>[导出到和从 Excel 导入以及导出到 iCal](guides/excel.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Export/import from MS Project](guides/export-msproject.md)</td>
+  <td>[从 MS Project 导出/导入](guides/export-msproject.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Filtering tasks](guides/filtering.md)</td>
+  <td>[过滤任务](guides/filtering.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Flexible gantt layout](guides/layout-config.md)</td>
+  <td>[灵活的甘特图布局](guides/layout-config.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>Full control with JavaScript API</td>
+  <td>通过 JavaScript API 实现的完整控制</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Fullscreen mode](guides/fullscreen-mode.md)</td>
+  <td>[全屏模式](guides/fullscreen-mode.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Hiding/showing columns of the grid](guides/specifying-columns.md#overview)</td>
+  <td>[隐藏/显示网格列](guides/specifying-columns.md#overview)</td>
   <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Inline editing in Grid](guides/inline-editing.md)</td>
+  <td>[网格中的内联编辑](guides/inline-editing.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Keyboard navigation](guides/keyboard-navigation.md)</td>
+  <td>[键盘导航](guides/keyboard-navigation.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Link formatter for the Predecessor editor](guides/inline-editing.md#linkformatter)</td>
+  <td>[前置任务编辑器的链接格式化器](guides/inline-editing.md#linkformatter)</td>
   <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Loading from XML, JSON](guides/loading.md)</td>
+  <td>[从 XML、JSON 加载](guides/loading.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Managing editability/readonly modes of individual tasks](guides/readonly-mode.md#readonlymodeforspecifictaskslinks)</td>
+  <td>[单个任务的可编辑性/只读模式管理](guides/readonly-mode.md#readonlymodeforspecifictaskslinks)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Marking specific times in the timeline area](guides/highlighting-time-slots.md)</td>
+  <td>[在时间线区域标记特定时间](guides/highlighting-time-slots.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Material design](guides/skins.md#materialskin)</td>
+  <td>[材料设计](guides/skins.md#materialskin)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Multi-task selection](guides/multiselection.md)</td>
+  <td>[多任务选择](guides/multiselection.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Optional tree view](guides/tree-column.md)</td>
+  <td>[可选树视图](guides/tree-column.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Per-column grid sorting](guides/sorting.md#percolumngridsorting)</td>
+  <td>[每列网格排序](guides/sorting.md#percolumngridsorting)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Placeholder row for creating new tasks](api/config/placeholder_task.md)</td>
+  <td>[用于创建新任务的占位行](api/config/placeholder_task.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Progress percent coloring for tasks](guides/colouring-tasks.md#specifyingstyleinthepropertiesofataskobject)</td>
+  <td>[任务进度百分比着色](guides/colouring-tasks.md#specifyingstyleinthepropertiesofataskobject)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Projects and Milestones task types](guides/task-types.md)</td>
+  <td>[项目和里程碑任务类型](guides/task-types.md)</td>
   <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[RTL (Right-to-left) mode](guides/rtl-mode.md)</td>
+  <td>[RTL（从右到左）模式](guides/rtl-mode.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Resizing grid columns and the grid itself from the UI](guides/specifying-columns.md#resizing)</td>
+  <td>[从 UI 调整网格列和网格本身的大小](guides/specifying-columns.md#resizing)</td>
   <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Resource management](guides/resource-management.md)</td>
+  <td>[资源管理](guides/resource-management.md)</td>
   <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Rich drag-and-drop behavior to manage tasks](guides/dnd.md)</td>
+  <td>[丰富的拖放行为以管理任务](guides/dnd.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Scrolling the Timeline by click and drag](guides/extensions-list.md#drag-timeline)</td>
+  <td>[通过单击并拖动滚动时间线](guides/extensions-list.md#drag-timeline)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Smart rendering](guides/performance.md#smart-rendering)</td>
+  <td>[智能渲染](guides/performance.md#smart-rendering)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Sorting columns](guides/sorting.md)</td>
+  <td>[排序列](guides/sorting.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Splitting tasks into subtasks](guides/split-tasks.md)</td>
+  <td>[将任务拆分为子任务](guides/split-tasks.md)</td>
   <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Support for baselines, deadlines and other custom elements](guides/baselines.md)</td>
+  <td>[对基线、截止日期及其他自定义元素的支持](guides/baselines.md)</td>
   <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Support for custom types of tasks](guides/task-types.md#creating-a-custom-type)</td>
+  <td>[对自定义任务类型的支持](guides/task-types.md#creating-a-custom-type)</td>
   <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>Support for touch devices: iOS, Android</td>
+  <td>对触控设备的支持：iOS、Android</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Support for unscheduled tasks](guides/unscheduled-tasks.md)</td>
+  <td>[对未计划任务的支持](guides/unscheduled-tasks.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Tasks grouping](guides/grouping.md)</td>
+  <td>[任务分组](guides/grouping.md)</td>
   <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Tooltips](guides/tooltips.md)</td>
+  <td>[工具提示](guides/tooltips.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Undo/redo functionality](guides/undo-redo.md)</td>
+  <td>[撤销/重做功能](guides/undo-redo.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[WBS codes calculation](guides/specifying-columns.md#wbscode)</td>
+  <td>[WBS 编码计算](guides/specifying-columns.md#wbscode)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Working days and hours for individual tasks](guides/working-time.md#multipleworktimecalendars)</td>
+  <td>[单个任务的工作日和工作时间](guides/working-time.md#multipleworktimecalendars)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[jQuery integration](guides/jquery-integration.md)</td>
+  <td>[jQuery 集成](guides/jquery-integration.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   </tbody>
 </table>
-

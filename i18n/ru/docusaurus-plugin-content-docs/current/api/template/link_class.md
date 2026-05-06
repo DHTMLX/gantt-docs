@@ -1,20 +1,20 @@
 ---
 sidebar_label: link_class
-title: link_class template
-description: "определяет CSS класс, назначаемый ссылке"
+title: Шаблон link_class
+description: "определяет CSS класс, который будет применяться к ссылке"
 ---
 
 # link_class
 
 ### Description
 
-@short: Определяет CSS класс, назначаемый ссылке
+@short: Задает CSS класс, который будет применяться к ссылке
 
 @signature: link_class: (link: Link) =\> string | void;
 
 ### Parameters
 
-- `link` - (required) *Link* - объект ссылки
+- `link` - (обязательный) *Link* - объект ссылки
 
 ### Returns
 - ` text` - (string | void) - CSS класс для соответствующего элемента
@@ -28,4 +28,4 @@ gantt.templates.link_class = function(link){
 ~~~
 
 ### Related Guides
-- [Шаблоны связей зависимостей](guides/dependency-templates.md)
+- [Шаблоны зависимых связей](guides/dependency-templates.md)

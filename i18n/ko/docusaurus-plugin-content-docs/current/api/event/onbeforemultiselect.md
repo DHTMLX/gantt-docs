@@ -1,26 +1,26 @@
----
+--- 
 sidebar_label: onBeforeMultiSelect
 title: onBeforeMultiSelect event
-description: "하나 이상의 작업을 선택하기 직전에 발생합니다."
+description: "작업 하나 또는 여러 작업 범위를 선택하기 전에 발생합니다"
 ---
 
 # onBeforeMultiSelect
 
 ### Description
 
-@short: 하나 이상의 작업을 선택하기 직전에 발생합니다.
+@short: 작업 하나 또는 여러 작업 범위를 선택하기 전에 발생합니다
 
-@signature: onBeforeMultiSelect: (e: Event) =\> void;
+@signature: onBeforeMultiSelect: (e: Event) => void;
 
 ### Parameters
 
-- `e` - (required) *Event* - 네이티브 이벤트 객체
+- `e` - (필수) *Event* - 네이티브 이벤트 객체
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeMultiSelect", function(e){
-    // 여기에 로직 작성
+    // some logic here
     return true;
 });
 ~~~
@@ -28,11 +28,10 @@ gantt.attachEvent("onBeforeMultiSelect", function(e){
 ### Details
 
 :::note
- 이 이벤트는 **multiselect** 확장의 일부이므로, [multiselect](guides/extensions-list.md#multitaskselection) 플러그인이 활성화되어 있는지 확인하세요. 자세한 내용은 [멀티 태스크 선택](guides/multiselection.md) 문서를 참고하세요. 
+이벤트는 **multiselect** 확장에서 정의되므로, [multiselect](guides/extensions-list.md#multitaskselection) 플러그인을 활성화해야 합니다. 자세한 내용은 [Multi-Task Selection](guides/multiselection.md) 문서를 참고하십시오.
 :::
 
-
-이 이벤트는 차단할 수 있으며, *false*를 반환하면 다중 작업 선택이 발생하지 않습니다.
+이벤트는 차단 가능하며, *false*를 반환하면 다중 선택이 취소됩니다.
 
 ### Related API
 - [onBeforeTaskMultiSelect](api/event/onbeforetaskmultiselect.md)
@@ -40,5 +39,4 @@ gantt.attachEvent("onBeforeMultiSelect", function(e){
 - [onMultiSelect](api/event/onmultiselect.md)
 
 ### Related Guides
-- [멀티 태스크 선택](guides/multiselection.md#apievents)
-
+- [Multi-Task Selection](guides/multiselection.md#apievents)

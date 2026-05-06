@@ -1,14 +1,14 @@
 ---
 sidebar_label: calendar_property
 title: calendar_property config
-description: "устанавливает имя свойства, используемого для связывания календаря с задачей или группой задач"
+description: "changes the name of the property that affects binding of a calendar to a task/group of tasks"
 ---
 
 # calendar_property
 
 ### Description
 
-@short: Устанавливает имя свойства, используемого для связывания календаря с задачей или группой задач
+@short: Изменяет имя свойства, влияющего на связывание календаря с задачей или группой задач
 
 @signature: calendar_property: string
 
@@ -20,9 +20,9 @@ gantt.config.calendar_property = "property_name";
 
 ### Details
 
-введено в версии 4.2
+added in version 4.2
 
-По умолчанию эта опция установлена в значение "calendar_id".
+The default value of the option is "calendar_id".
 
 ~~~js
 {
@@ -43,5 +43,4 @@ gantt.config.calendar_property = "property_name";
 - [isWorkTime](api/method/isworktime.md)
 
 ### Related Guides
-- [Расчёт рабочего времени](guides/working-time.md#unsettingtheworkingtime)
-
+- [Расчёт рабочего времени](guides/working-time.md)

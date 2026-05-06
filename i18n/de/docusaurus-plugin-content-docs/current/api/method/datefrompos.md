@@ -1,23 +1,23 @@
 ---
 sidebar_label: dateFromPos
 title: dateFromPos method
-description: "ermittelt das Datum, das einer gegebenen horizontalen Position innerhalb des Chartbereichs entspricht"
+description: "liefert das Datum der angegebenen horizontalen Position im Diagrammbereich"
 ---
 
 # dateFromPos
 
 ### Description
 
-@short: Ermittelt das Datum, das einer gegebenen horizontalen Position innerhalb des Chartbereichs entspricht
+@short: Liefert das Datum der angegebenen horizontalen Position im Diagrammbereich
 
 @signature: dateFromPos: (pos: number) =\> Date
 
 ### Parameters
 
-- `pos` - (required) *number* - die relative horizontale Position, für die das Datum ermittelt werden soll
+- `pos` - (erforderlich) *number* - die relative horizontale Position, zu der Sie das Datum ermitteln möchten
 
 ### Returns
-- ` date` - (Date) - das Datum, das der angegebenen horizontalen Position im Chartbereich entspricht
+- ` date` - (Date) - das Datum der angegebenen horizontalen Position im Diagrammbereich
 
 ### Example
 
@@ -28,14 +28,10 @@ var date = gantt.dateFromPos(200);
 ### Details
 
 :::note
-
-Diese Methode gibt ein Datum zurück, das aktuell im Gantt-Chart sichtbar ist. Wenn das Datum an der angegebenen Position nicht im Chart angezeigt wird, wird 'null' zurückgegeben.
- 
+Die Methode gibt ein Datum zurück, das derzeit im Gantt-Diagramm gerendert wird. Falls kein Datum im Diagramm gerendert wird - gibt die Methode 'null' zurück.
 :::
 
-![gantt_localized](/img/gantt_localized.png)
-
-Als Beispiel liefert die Methode für den oben gezeigten Gantt-Chart Folgendes zurück:
+Beispielsweise gibt die Methode beim obigen Gantt-Diagramm Folgendes zurück:
 
 ~~~js
 gantt.dateFromPos(0); // -> Sun Mar 31 2013 00:00:00
@@ -44,4 +40,3 @@ gantt.dateFromPos(74);  // -> Mon Apr 01 2013 01:22:17
 
 ### Related API
 - [getLayoutView](api/method/getlayoutview.md)
-

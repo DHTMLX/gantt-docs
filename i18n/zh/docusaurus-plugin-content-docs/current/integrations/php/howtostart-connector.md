@@ -1,107 +1,87 @@
----
+--- 
 title: "dhtmlxGantt 与 dhtmlxConnector"
-sidebar_label: "dhtmlxConnector"
+sidebar_label: "dhtmlxGantt 与 dhtmlxConnector"
 ---
 
 # dhtmlxGantt 与 dhtmlxConnector
 
-本教程将指导你如何在网页上搭建一个简单的甘特图，并实现将任务保存和更新到服务器端数据库的功能。
+本教程将教你如何在网页上创建一个基本的甘特图，使其能够将任务保存到数据库（即服务器端）并进行更新。
 
+当前教程旨在使用 [dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html) 创建 Gantt。
+如果你想改用某种服务端技术，请查看下面列出的可用集成变体教程：
 
-本文重点介绍如何使用 [dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html) 构建甘特图。
-如果你更倾向于使用其他服务器端技术，可以参考以下针对不同集成方式的教程:
-
-- [dhtmlxGantt와 PHP: Laravel 연동](integrations/php/howtostart-php-laravel.md)
-- [dhtmlxGantt와 PHP:Slim3 사용하기](integrations/php/howtostart-php.md)
-- [dhtmlxGantt와 Python](integrations/other/howtostart-python.md)
-- [dhtmlxGantt와 Node.js 연동하기](integrations/node/howtostart-nodejs.md)
-- [dhtmlxGantt와 ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
-- [dhtmlxGantt와 Salesforce LWC 연동하기](integrations/salesforce/howtostart-salesforce.md)
-- [dhtmlxGantt와 Ruby on Rails 연동하기](integrations/other/howtostart-ruby.md)
+- [dhtmlxGantt 与 ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
+- [dhtmlxGantt 与 Node.js](integrations/node/howtostart-nodejs.md)
+- [dhtmlxGantt 与 Python](integrations/other/howtostart-python.md)
+- [dhtmlxGantt 与 PHP:Slim3](integrations/php/howtostart-php.md)
+- [dhtmlxGantt 与 PHP: Laravel](integrations/php/howtostart-php-laravel.md)
+- [dhtmlxGantt 与 Salesforce LWC](integrations/salesforce/howtostart-salesforce.md)
+- [dhtmlxGantt 与 Ruby on Rails](integrations/other/howtostart-ruby.md)
 
 ![gantt_basic](/img/gantt_basic.png)
 
 
-[Basic initialization](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
+**相关示例**: [基本初始化](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
 
 
-## 步骤 1. 下载 dhtmlxGantt 包
+### 第一步。下载 dhtmlxGantt 包
 
-<div>
-<p>
+让我们从在你的计算机上获取库包开始本教程。
 
-首先，将该库包下载到你的电脑上。
-
-<div>![finger](/img/finger.png) <span>请按照以下步骤操作:</span></div>
+**请执行如下操作：**
 
 <ul>
-  <li>如果尚未下载，请点击 <a href='https://github.com/DHTMLX/connector-php' title='dhtmlxConnector for PHP repository' target='_blank'>这里</a> 下载 dhtmlxGantt 包。</li>
-  <li>将下载得到的包解压到本地 Web 服务器的根目录下。解压后文件会被放在以包名命名的文件夹中（如 dhtmlxGantt）。</li>
+  <li>如果你还没有下载，请下载 dhtmlxGantt 包 <a href='https://github.com/DHTMLX/connector-php' title='dhtmlxConnector for PHP repository' target='_blank'>此处</a>。</li>
+  <li>将包解压到本地 Web 服务器的根目录。解压后的文件将存放在与包文件同名的文件夹中——dhtmlxGantt。</li>
 </ul>
-</p>
-</div>
 
-## 步骤 2. 引入 dhtmlxGantt 代码文件
 
-<div>
-<p>
-接下来，在 HTML 文件中引入 dhtmlxGantt 的代码文件，从而可以使用该库的功能。
+## 第 2 步。引入 dhtmlxGantt 代码文件
 
-需要引入的 dhtmlxGantt 代码文件有:
+接下来，需要在你的 HTML 文件中引入 dhtmlxGantt 的代码文件（以便能够使用库的功能）。 
+dhtmlxGantt 的代码文件为：
 
-<ul>
-  <li>dhtmlxgantt.js</li>
-  <li>dhtmlxgantt.css</li>
-</ul> 
+- `dhtmlxgantt.js`
+- `dhtmlxgantt.css`
 
-<div>![finger](/img/finger.png) <span>请按照以下步骤操作:</span></div>
+**请执行以下操作：**
 
-<ul>
+1. 在 `dhtmlxGantt` 文件夹中创建一个 HTML 文件（包含 dhtmlxGantt 文件的文件夹）。将其命名为，例如 `myGantt.html`。
+2. 将 dhtmlxGantt 的代码文件引入到 **myGantt.html**（两个文件都位于 `codebase` 文件夹中）。请参阅 myGantt.html：
 
-- 在 'dhtmlxGantt' 文件夹内创建一个 HTML 文件，例如命名为 'myGantt.html'。
-- 在 <b>myGantt.html</b> 中引入 dhtmlxGantt 的代码文件（两个文件都在 'codebase' 文件夹中）。
-
-**myGantt.html**
 ~~~html
 <!DOCTYPE html>
 <html>
 <head>
-   <title>How to Start with dhtmlxGantt</title>
-   <script src="codebase/dhtmlxgantt.js"></script> /*!*/  
-   <link href="codebase/dhtmlxgantt.css" rel="stylesheet"> /*!*/  
+  <title>How to Start with dhtmlxGantt</title>
+  <script src="codebase/dhtmlxgantt.js"></script> <!-- important -->
+  <link href="codebase/dhtmlxgantt.css" rel="stylesheet"> <!-- important -->
 </head>
 <body>
-       //your code will be here
+  <!-- your code will be here -->
 </body>
 </html>
 ~~~
 
-</ul> 
 
-</p>
-</div>
-
-## 步骤 3. 初始化 dhtmlxGantt
+## 第 3 步。初始化 dhtmlxGantt
 
 <div>
-<p>
 
-然后，创建一个 DIV 容器，并在其中初始化 dhtmlxGantt。
+接着，我们需要创建一个 DIV 容器并在其中初始化 dhtmlxGantt。
 
- 请注意，dhtmlxGantt 是一个静态对象，每个页面只能实例化一次。
-你可以通过 <b>dhtmlxGantt</b> 或 <b>gantt</b> 来引用该实例。
+请注意，dhtmlxGantt 是一个静态对象，只能在页面上实例化一次。 
+要引用 dhtmlxGantt 的实例，你可以使用 **dhtmlxGantt**，也可以简称为 **gantt**。
 
-<div>![finger](/img/finger.png) <span>请按照以下步骤操作:</span></div>
+<div>
+  <span>请执行以下操作：</span>
+</div>
 
-<ul>
+- 在 **myGantt.html** 文件中定义一个 DIV 容器。
+- 使用 <code>gantt.init("gantt_here")</code> 命令初始化 dhtmlxGantt。  
+  作为参数，该方法接收一个将放置甘特图的 HTML 容器。
 
-- 在 <b>myGantt.html</b> 文件中添加一个 DIV 容器。
-- 使用 <code>gantt.init("gantt_here")</code> 初始化 dhtmlxGantt。该方法参数为甘特图渲染的 HTML 容器的 ID。
-  
-
-
-**myGantt.html**
-~~~html
+~~~html title="myGantt.html"
 <!DOCTYPE html>
 <html>
 <head>
@@ -110,21 +90,18 @@ sidebar_label: "dhtmlxConnector"
    <link href="codebase/dhtmlxgantt.css" rel="stylesheet">
 </head>
 <body>
-    <div id="gantt_here" style='width:1000px; height:400px;'></div>
+	<div id="gantt_here" style='width:1000px; height:400px;'></div>
     <script type="text/javascript">
-        gantt.init("gantt_here"); /*!*/  
-    </script>
+		gantt.init("gantt_here"); /*!*/  
+	</script>
 </body>
 </html>
-~~~    
+~~~
 
-</ul> 
-
-</p>
 </div>
+如果使用全屏模式，请指定当前样式以确保正确行为：
 
-如果你使用全屏模式，请添加如下 CSS 以保证显示正常:
-~~~html
+~~~js
 <style type="text/css" media="screen">
     html, body{
         margin:0px;
@@ -135,47 +112,37 @@ sidebar_label: "dhtmlxConnector"
 </style>
 ~~~
 
-## 步骤 4. 向甘特图加载数据
+## 第 4 步。向甘特图加载数据
 
-<div>
-
-<p>
-现在，我们将用一个示例数据源为甘特图填充数据。这里以内联对象作为数据源。
-
-
-加载数据时，使用 [parse](api/method/parse.md) 方法，并将数据源作为参数传入。
-
-
-对象属性说明如下:
-
+接着，我们需要用一个示例数据源的数据来填充甘特图。我们将使用最简单的方法，将数据源指定为一个内联对象。 
+要加载数据，我们将使用 [parse] 方法（它以数据源的名称作为参数）。
+该对象的属性如下：
 <ul>
-  <li><b>data</b> - 包含任务数据</li>
+  <li><b>data</b> - 指定甘特任务</li>
   <ul>
-  <li><b>id</b> - (<i>string, number</i>) 任务唯一标识。</li>
-  <li><b>start_date</b> - (<i>Date</i>) 任务计划开始时间。</li>
+  <li><b>id</b> - (<i>string, number</i>) 事件的 ID。</li>
+  <li><b>start_date</b> - (<i>Date</i>) 事件开始计划的日期。 </li>
   <li><b>text</b> - (<i>string</i>) 任务描述。</li>
-  <li><b>progress</b> - (<i>number</i>) 任务完成度，取值 0~1。</li>
-  <li><b>duration</b> - (<i>number</i>) 任务持续时间，单位为当前时间刻度。</li>
-  <li><b>parent</b> - (<i>number</i>) 父任务 ID（如有）。</li>
+  <li><b>progress</b> - (<i>number</i>) 表示任务完成百分比的数字，范围从 0 到 1。 </li>
+  <li><b>duration</b> - (<i>number</i>) 当前时间刻度单位中的任务持续时间。 </li>
+  <li><b>parent</b> - (<i>number</i>) 父任务的 ID。 </li>
   </ul>
-  <li><b>links</b> - 定义任务之间的依赖关系</li>
+  <li><b>links</b> - 指定甘特图的依赖链接</li>
   <ul>
-  <li><b>id</b>-(<i>string, number</i>) 依赖关系唯一标识。</li>
-  <li><b>source</b>-(<i>number</i>) 源任务 ID。</li>
-  <li><b>target</b>-(<i>number</i>) 目标任务 ID。</li>
-  <li><b>type</b>-(<i>string</i>) 依赖类型:0 - '完成到开始'，1 - '开始到开始'，2 - '完成到完成'。</li>
+  <li><b>id</b>-(<i>string, number</i>) 事件的 ID。</li>
+  <li><b>source</b>-(<i>number</i>) 源任务的 ID。 </li>
+  <li><b>target</b>-(<i>number</i>) 目标任务的 ID。 </li>
+  <li><b>type</b>-(<i>string</i>) 依赖类型：0 - 'finish to start'，1 - 'start to start'，2 - 'finish to finish'。 </li>
   </ul>
 </ul> 
 
-<div>![finger](/img/finger.png) <span>请按照以下步骤操作:</span></div>
-
-<ul>
-
-- 在 <b>myGantt.html</b> 文件中声明 'tasks' 变量:
+<div> <span>请执行以下操作：</span></div>
 
 
-**myGantt.html**
-~~~js
+在 <b>myGantt.html</b> 文件中声明 'tasks' 变量：
+
+
+~~~js title="myGantt.html"
 var tasks = {
     data:[
         {id:1, text:"Project #1",start_date:"01-04-2013", duration:11,
@@ -200,47 +167,30 @@ var tasks = {
     ]
 };
 ~~~
-- 在 <code>gantt.init("gantt_here")</code> 之后，添加 <code>gantt.parse(tasks)</code> 命令:
 
+在 <code>gantt.init("gantt_here")</code> 行之后调用 <code>gantt.parse(tasks)</code> 命令：
 
-**myGantt.html**
-~~~js
+~~~js title="myGantt.html"
 gantt.init("gantt_here"); 
 gantt.parse (tasks);/*!*/  
 ~~~
 
-</ul>
-
-</p>
-</div>
-
-[Basic initialization](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
+**相关示例**: [基本初始化](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
 
 
-## 步骤 5. 创建数据库
+## 第 5 步。创建数据库
 
 :::note
-本步骤及后续步骤适用于需要从数据库加载数据而非使用内联数据的场景。
+如果你想从数据库加载数据，而不是从内联对象加载，请阅读此处及后续步骤。
 :::
-<div>
 
-<p>
-接下来，需建立两个表，用于存储任务和依赖关系。
+接着，我们需要创建一个包含 2 张表的数据库，用于存储任务和依赖关系。 
+<i><b>sortorder</b> 是仅在从数据库加载数据时使用的属性。该属性用于在同级任务之间设定索引。</i>
+<span>请执行以下操作：</span>
+创建一个名为 - <i>gantt</i> 的新数据库。
+在其中执行以下代码以创建 2 张表：<i>gantt_tasks</i> 和 <i>gantt_links</i>。
 
-
-![/img/tutorial_db_tables.png](/img/tutorial_db_tables.png)
-
-
-<i><b>sortorder</b> 字段仅在从数据库加载数据时使用，用于确定同级任务的顺序。</i>
-
-<div>![finger](/img/finger.png) <span>请按照以下步骤操作:</span></div>
-
-<ul>
-
-- 创建名为 <i>gantt</i> 的新数据库。
-- 运行以下 SQL 代码，创建 <i>gantt_tasks</i> 和 <i>gantt_links</i> 表:
-  
-~~~js
+~~~sql
 CREATE TABLE `gantt_links` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `source` int(11) NOT NULL,
@@ -261,48 +211,32 @@ CREATE TABLE `gantt_tasks` (
 );
 ~~~
 
-</ul> 
 
-</p>
-</div>
+要在某一列为空时也能够将任务保存到数据库，请将以下代码添加到 **myGantt.html** 文件中：
 
-为确保任务即使某些字段为空也能正常保存，请在 **myGantt.html** 文件中添加如下代码:
-
-**myGantt.html**
-~~~js 
+~~~js title="myGantt.html"
 gantt.attachEvent("onBeforeTaskAdd", function(id,task){
     task.sortorder = 0;
     return true;
 });
 ~~~
 
-## 步骤 6. 从数据库加载数据
+
+## 第 6 步。从数据库加载数据
 
 :::note
-接下来的两个步骤将使用 PHP 进行前后端集成。
+在接下来的两步中，我们将使用 PHP 平台来实现服务器端与客户端的集成。
 
-如果你使用其他平台，请参阅 [데이터 로딩](guides/loading.md) 文章，获取自定义服务器脚本的实现方法。
+如果你使用的是其他平台，请阅读文章 [](guides/loading.md) 以了解如何自行实现服务器端脚本。
 :::
 
-<div>
 
-<p>
-现在，我们将实现从数据库加载数据到甘特图。使用 [load](api/method/load.md) 方法，该方法接收一个指向数据源的 URL。
-对于数据库访问，该 URL 指向负责服务器端逻辑的 PHP 文件。
+接着，我们需要提供一个在图表中显示来自数据库的数据的能力。我们将使用 [load] 方法（它以数据源的 URL 作为参数）。在数据库的情形下，它是一个实现与服务器端连接的 PHP 文件。我们将使用 PHP 平台以及 <a href="https://docs.dhtmlx.com/connector__php__index.html">dhtmlxConnector</a> 库，因为这是为 dhtmlxGantt 实现服务器端逻辑的最简单方式。
+<span>请执行以下操作：</span>
+在 'dhtmlxGantt' 文件夹中创建一个 PHP 文件，命名为，例如 <b>data.php</b>。
+打开 <b>data.php</b> 文件并添加以下服务器端代码：
 
-
-这里我们使用 PHP 和 [dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html) 库，简化 dhtmlxGantt 的服务器端集成。
-
-<div>![finger](/img/finger.png) <span>请按照以下步骤操作:</span></div>
-
-<ul>
-
-- 在 'dhtmlxGantt' 文件夹内创建一个 PHP 文件，例如 <b>data.php</b>。
-- 编辑 <b>data.php</b>，添加以下服务器端代码:
-
-
-**data.php**
-~~~php
+~~~php title="data.php"
 <?php
 
 include ('codebase/connector/gantt_connector.php');
@@ -319,123 +253,106 @@ $gantt->render_table(
 ?>
 ~~~
 
-- 在 <b>myGantt.html</b> 文件中，将 <code>gantt.config.date_format</code> 属性设置为 <i> "%Y-%m-%d %H:%i"</i>，以保证日期格式与 dhtmlxGantt 的格式一致。
+切换回 <b>myGantt.html</b> 文件，将 <code>gantt.config.date_format</code> 属性设置为 <i> "%Y-%m-%d %H:%i"</i>，以使输出数据的格式与 dhtmlxGantt 的格式兼容。
 
-
-**myGantt.html**
-~~~js
+~~~js title="myGantt.html"
 gantt.config.date_format = "%Y-%m-%d %H:%i";/*!*/ 
 gantt.init("gantt_here");
 ~~~
 
-- 调用 <code>gantt.load('data.php')</code>，即可将数据库中的数据加载到甘特图中。
 
+调用 <code>gantt.load('data.php')</code> 命令，将数据库中的数据加载到 Gantt 图上。
 
-**myGantt.html**
-~~~js
+~~~js title="myGantt.html"
 gantt.config.date_format = "%Y-%m-%d %H:%i";
 gantt.init("gantt_here");
 gantt.load('data.php');//loads data to Gantt from the database  /*!*/  
 ~~~
 
-</ul> 
-
-</p>
-</div>
 
 ### 映射数据库列
 
-请注意，在 **$connector->render_table** 方法中，列的顺序非常重要。列表中的前三列始终对应客户端任务对象的 *start_date/duration/text* 或 *start_date/end_date/text* 属性，无论你使用的列名是什么。具体映射逻辑如下所述。
+请注意，在 **$connector->render_table** 的列顺序是很重要的。列列表中的前 3 列将分别映射到客户端任务对象的 *start_date/duration/text* 或 *start_date/end_date/text* 属性，无论你指定的列名为何。下面描述了列映射的逻辑。
 
-如果在配置中指定了 'duration'，第二列会被分配给 *task.duration*:
+第二列被映射到 *task.duration*，如果在配置中指定了 'duration'：
 
 ~~~js
 $gantt->render_table("gantt_tasks","id","Start,duration,Name,progress,parent","");
 ~~~
 
-或者，使用别名:
+
+或，使用别名：
 
 ~~~js
 $gantt->render_table("gantt_tasks","id","Start,Length(duration),Name,progress,parent","");
-// JS: task.start_date, task.duration, task.text, task.progress, task.parent
+ // JS: task.start_date, task.duration, task.text, task.progress, task.parent
 ~~~
 
-如果使用了不同的列名，第二列将会映射到 *end_date* 属性:
+
+如果设置了其他列名，第二列将映射到 *end_date* 属性：
 
 ~~~js
 $gantt->render_table("gantt_tasks","id","Start,End,Name,progress,parent","");
-// JS: task.start_date, task.end_date, task.text, task.progress, task.parent
+ // JS: task.start_date, task.end_date, task.text, task.progress, task.parent
 ~~~
+
 
 #### 映射其他列
 
-所有其他列都将直接按照它们的名称进行映射，不做修改:
+所有其他列将按名称映射，且不做改动：
 
 ~~~js
 $gantt->render_table("gantt_tasks","id","start_date,duration,text,custom,parent","");
-// JS: task.start_date, task.duration, task.text, task.custom, task.parent
+ // JS: task.start_date, task.duration, task.text, task.custom, task.parent
 ~~~
 
-也可以为其他列使用别名:
+
+别名也可用于其他列：
 
 ~~~js
 $gantt->render_table("gantt_tasks","id",
     "start_date,duration,text,custom_column(customProperty),parent","");
-// JS: task.start_date, task.duration, task.text, task.customProperty, task.parent
+ // JS: task.start_date, task.duration, task.text, task.customProperty, task.parent
 ~~~
 
 
-## 第七步:更新数据库中的数据
+## 第 7 步。更新数据库中的数据
 
-<div>
+然后，我们需要提供将甘特图中的变更保存到数据库的能力。为此，我们将使用 [DataProcessor] 助手库。所需做的就是初始化 DataProcessor 并将其附加到 dhtmlxGantt 对象。
 
-<p>
+<span>请执行以下操作：</span>
 
-接下来，需要确保在甘特图中所做的更改能够保存回数据库。为此，将使用 [dataProcessor](api/method/dataprocessor.md) 辅助库。该过程包括初始化 DataProcessor 并将其链接到 dhtmlxGantt 实例。
+打开 <b>myGantt.html</b> 文件，使用 <code>dataProcessor("data.php")</code> 命令初始化 dhtmlxDataProcessor。用 <code>dp.init(gantt)</code> 命令将 dhtmlxDataProcessor 对象附加到 dhtmlxGantt 对象。
 
-<div>![finger](/img/finger.png) <span>操作步骤如下:</span></div>
-
-<ul>
-
-- 打开 <b>myGantt.html</b> 文件，并使用 <code>dataProcessor("data.php")</code> 命令创建一个新的 dhtmlxDataProcessor 实例。
-- 使用 <code>dp.init(gantt)</code> 将 dhtmlxDataProcessor 对象连接到 dhtmlxGantt 实例。
-
-
-**myGantt.html**
-~~~js
+~~~js title="myGantt.html"
 gantt.init("gantt_here");
 gantt.load('data.php');
         
 var dp="new" gantt.dataProcessor("data.php"); /*!*/ 
 dp.init(gantt); /*!*/ 
 ~~~
-</ul>
-</p>
-</div>
 
-## 错误日志记录
+## 记录错误
 
-如果一切设置无误但仍有问题，可以启用 Gantt 的日志功能来帮助定位问题。
+如果你完成了上述步骤仍然有问题，请在 Gantt 中启用日志记录以检测错误。
 
-首先，确保包含 HTML 文件的目录有写入权限。然后，在 **data.php** 文件中添加以下代码:
+首先，确保 HTML 文件所在的目录具有写入权限。然后在 **data.php** 文件中添加以下行：
 
-**data.php**
-~~~php
+~~~php title="data.php"
 $gantt = new JSONGanttConnector($res);
 
 $gantt->enable_log("log.txt"); /*!*/
 ~~~
 
-之后可以检查 **log.txt** 文件，查看日志信息。
+之后，你可以在 **log.txt** 文件中查看日志。
 
-## 下一步？
+## 接下来怎么做？
 
-就是这样！现在已经有了一个可以从数据库加载数据并将修改保存回数据库的基本甘特图。
-你可以根据具体需求对其进行调整和扩展。
+就这些。一个可以从数据库加载数据并将修改保存回数据库的基本但可用的甘特图已经就绪。
+现在你可以据此进行配置和定制，以满足你的所有需求。
 
-如需进一步指导，建议阅读以下文章:
+我们建议你将以下文章作为下一步阅读：
 
-- [Configuration](guides/common-configuration.md)
-- [이벤트 처리](guides/handling-events.md)
-- [데이터 로딩](guides/loading.md)
-
+- [配置](guides/common-configuration.md)
+- [事件处理](guides/handling-events.md)
+- [数据加载](guides/loading.md)

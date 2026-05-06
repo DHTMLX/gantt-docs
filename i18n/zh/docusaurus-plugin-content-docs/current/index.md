@@ -41,7 +41,7 @@ DHTMLX Gantt 提供 Standard 和 PRO 两个版本。PRO 版本包括自动排程
   </div>
   </a>
 
-  <a className="framework-card" href="integrations/angular/howtostart-angular/">
+  <a className="framework-card" href="integrations/angular/">
   <FrameworkIcon name="angular" className="framework-icon" />
   <div className="framework-title">Angular</div>
   <div className="framework-desc">
@@ -49,7 +49,7 @@ DHTMLX Gantt 提供 Standard 和 PRO 两个版本。PRO 版本包括自动排程
   </div>
   </a>
 
-  <a className="framework-card" href="integrations/vue/howtostart-vue/">
+  <a className="framework-card" href="integrations/vue/">
   <FrameworkIcon name="vue" className="framework-icon" />
   <div className="framework-title">Vue</div>
   <div className="framework-desc">
@@ -153,7 +153,7 @@ DHTMLX Gantt 可与外部系统集成并支持多种导出/导入格式:
 DHTMLX Gantt 是框架无关的原生 JavaScript 组件，可在所有现代浏览器中运行，可用方式包括:
 
 - 独立的 JS 组件
-- 在 [React](integrations/react)、[Angular](integrations/angular/howtostart-angular)、[Vue](integrations/vue/howtostart-vue)、[Svelte](integrations/svelte/howtostart-svelte) 中封装使用
+- 在 [React](integrations/react)、[Angular](integrations/angular/)、[Vue](integrations/vue/、[Svelte](integrations/svelte/howtostart-svelte) 中封装使用
 
 针对 **React**:
 

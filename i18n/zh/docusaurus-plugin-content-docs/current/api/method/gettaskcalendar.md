@@ -1,23 +1,23 @@
 ---
 sidebar_label: getTaskCalendar
 title: getTaskCalendar method
-description: "获取与特定任务关联的日历（任务级别设置的日历）"
+description: "为指定任务分配的日历（任务级日历）"
 ---
 
 # getTaskCalendar
 
 ### Description
 
-@short: 获取与特定任务关联的日历（任务级别设置的日历）
+@short: 获取分配给指定任务的日历（任务级日历）
 
-@signature: getTaskCalendar: (task: any) =\> any
+@signature: getTaskCalendar: (task: *string | number | object) =\> any
 
 ### Parameters
 
-- `task` - (required) *string | number | object* -        任务的ID或任务对象本身
+- `task` - (required) *string | number | object* -        任务的 ID 或对象
 
 ### Returns
-- ` task_calendar` - (object) - 与任务关联的日历对象
+- ` task_calendar` - (object) - 该任务日历对象
 
 ### Example
 
@@ -36,13 +36,13 @@ gantt.getTaskCalendar(2);
 ~~~
 
 ### Related samples
-- [Task level calendars](https://docs.dhtmlx.com/gantt/samples/09_worktime/06_task_calendars.html)
+- [任务级日历](https://docs.dhtmlx.com/gantt/samples/09_worktime/06_task_calendars.html)
 
 ### Details
 
 版本4.2中新增
 
-上面示例中返回的对象对应于一个[calendar object](api/other/calendar.md)。当[work_time](api/config/work_time.md)选项关闭时，该方法默认返回一个配置为全天候24/7工作的日历。
+上述示例返回的对象是一个 [日历对象](api/other/calendar.md)。如果 [work_time](api/config/work_time.md) 选项被禁用，该方法将返回启用 24/7 工作时间的日历对象。
 
 ### Related API
 - [getCalendar](api/method/getcalendar.md)
@@ -50,4 +50,3 @@ gantt.getTaskCalendar(2);
 
 ### Related Guides
 - [工作时间计算](guides/working-time.md)
-

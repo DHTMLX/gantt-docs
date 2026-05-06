@@ -1,14 +1,14 @@
 ---
 sidebar_label: wai_aria_attributes
-title: wai_aria_attributes config
-description: "aktiviert die WAI-ARIA-Unterstützung, sodass die Komponente von Screenreadern korrekt erkannt werden kann"
+title: wai_aria_attributes Konfiguration
+description: "Aktiviert WAI-ARIA-Unterstützung, damit die Komponente für Bildschirmleser erkennbar ist"
 ---
 
 # wai_aria_attributes
 
 ### Description
 
-@short: Aktiviert die WAI-ARIA-Unterstützung, sodass die Komponente von Screenreadern korrekt erkannt werden kann
+@short: Aktiviert WAI-ARIA-Unterstützung, damit die Komponente für Bildschirmleser erkennbar ist
 
 @signature: wai_aria_attributes: boolean
 
@@ -20,11 +20,11 @@ gantt.config.wai_aria_attributes = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Standardwert:** true
 
 ### Details
 
-eingeführt in Version 4.1
+Hinzugefügt in Version 4.1
 
 ### Related Guides
-- ["Barrierefreiheit"](guides/accessibility.md#waiariaattributes)
+- [Accessibility](guides/accessibility.md#wai-aria-attributes)

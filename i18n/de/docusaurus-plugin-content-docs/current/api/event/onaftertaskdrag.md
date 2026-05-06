@@ -1,37 +1,36 @@
 ---
 sidebar_label: onAfterTaskDrag
 title: onAfterTaskDrag event
-description: "Wird ausgelöst, sobald der Benutzer das Dragging beendet und die Maustaste loslässt."
+description: "löst aus, nachdem der Benutzer das Ziehen beendet und die Maustaste losgelassen hat"
 ---
 
 # onAfterTaskDrag
 
 ### Description
 
-@short: Wird ausgelöst, sobald der Benutzer das Dragging beendet und die Maustaste loslässt.
+@short: Auslöst, nachdem der Benutzer das Ziehen beendet und die Maustaste losgelassen hat
 
 @signature: onAfterTaskDrag: (id: string | number, mode: string, e: Event) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die ID der Aufgabe
-- `mode` - (required) *string* - der Drag-and-Drop-Modus ("resize", "progress", "move", "ignore")
-- `e` - (required) *Event* - ein nativer Event-Objekt
+- `id` - (erforderlich) *string | number* - die Aufgaben-ID
+- `mode` - (erforderlich) *string* - der Drag-and-Drop-Modus ("resize", "progress", "move", "ignore")
+- `e` - (erforderlich) *Event* - ein natives Event-Objekt
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
-    //beliebige benutzerdefinierte Logik hier
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Details
 
-Dieses Event tritt auf, wenn eine Aufgabe innerhalb des Timeline-Bereichs gezogen wurde.
+Das Event wird ausgelöst, wenn der Benutzer eine Aufgabe im Timeline-Bereich zieht.
 
 ### Related API
 - [drag_mode](api/config/drag_mode.md)
 - [onBeforeTaskDrag](api/event/onbeforetaskdrag.md)
 - [onBeforeTaskChanged](api/event/onbeforetaskchanged.md)
-

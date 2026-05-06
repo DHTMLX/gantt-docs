@@ -1,30 +1,30 @@
 ---
-title: "여러 개의 차트를 한 페이지에 표시하기"
-sidebar_label: "여러 개의 차트를 한 페이지에 표시하기"
+title: "한 페이지에 있는 여러 차트" 
+sidebar_label: "한 페이지에 있는 여러 차트" 
 ---
 
-# 여러 개의 차트를 한 페이지에 표시하기
+# 한 페이지에 있는 여러 차트
 
 :::info
-이 기능은 Gantt PRO 버전에 포함되어 있으며, Commercial(2021년 10월 6일부터), Enterprise, Ultimate 라이선스에서 제공됩니다.
+이 기능은 상용(Gantt PRO 버전, 2021년 10월 6일 이후), Enterprise 및 Ultimate 라이선스에서 사용할 수 있습니다
 :::
 
-기본적으로 dhtmlxGantt는 정적 객체로 동작하며, 그 기본 인스턴스는 항상 페이지에 존재합니다. 전역 **gantt** 객체를 통해 언제든지 접근할 수 있습니다. 하지만 필요하다면 새로운 gantt 인스턴스를 생성할 수도 있습니다.
+기본적으로 DHTMLX Gantt는 정적 객체이며 기본 인스턴스가 페이지에 지속적으로 존재합니다. 언제든지 전역 `gantt` 객체를 통해 접근할 수 있습니다. 필요하다면 새로 gantt 객체를 생성할 수도 있습니다.
 
-## Gantt 인스턴스 구성 {#ganttinstanceconfiguration}
+## Gantt 인스턴스 구성
 
-새로운 dhtmlxGantt 인스턴스를 생성하려면 **Gantt.getGanttInstance()** 메서드를 사용하세요:
+새로운 DHTMLX Gantt 인스턴스를 만들려면 `Gantt.getGanttInstance()` 메서드를 사용하세요:
 
 ~~~js
-// "Gantt"의 첫 글자는 대문자임에 유의하세요.
+// 주의: 명령의 "Gantt"는 대문자로 시작합니다
 const ganttChart = Gantt.getGanttInstance();
 ~~~
 
-이 메서드는 구성 객체를 인자로 받을 수 있습니다:
+메서드는 매개변수로 구성 객체를 받을 수 있습니다:
 
 ~~~js
-const gantt = Gantt.getGanttInstance({
-    plugins:{
+const ganttInstance = Gantt.getGanttInstance({
+    plugins: {
         auto_scheduling: true,
     },
     container: "gantt_here",
@@ -35,27 +35,27 @@ const gantt = Gantt.getGanttInstance({
         auto_scheduling: true,
         auto_scheduling_strict: true,
         auto_scheduling_initial: true,
-        start_date: new Date(2020, 0, 1),
-        end_date: new Date(2021, 0, 1),
+        start_date: new Date(2027, 0, 1),
+        end_date: new Date(2028, 0, 1),
     },
     calendars: [
         {
-            id:"global",
+            id: "global",
             worktime: {
                 hours: ["8:00-17:00"],
-                days: [ 0, 1, 1, 1, 1, 0 ,0],
+                days: [0, 1, 1, 1, 1, 0, 0],
                 customWeeks: {
                     lastMonthOfYear: {
-                        from: new Date(2020, 11, 1),// 2020년 12월 1일
-                        to: new Date(2021, 0, 1),// 2021년 1월 1일 00:00
+                        from: new Date(2027, 11, 1),
+                        to: new Date(2028, 0, 1),
                         hours: ["9:00-13:00"],
-                        days: [ 0, 1, 1, 1, 1, 1, 0]
+                        days: [0, 1, 1, 1, 1, 1, 0]
                     },
-                    firstMonthOfNextYear:{
-                        from: new Date(2021, 0, 1),// 2021년 1월 1일
-                        to: new Date(2021, 1, 1),// 2021년 2월 1일 00:00
+                    firstMonthOfNextYear: {
+                        from: new Date(2028, 0, 1),
+                        to: new Date(2028, 1, 1),
                         hours: ["14:00-16:00"],
-                        days: [ 1, 1, 1, 1, 1, 0, 1]
+                        days: [1, 1, 1, 1, 1, 0, 1]
                     }
                 }
             }
@@ -64,17 +64,12 @@ const gantt = Gantt.getGanttInstance({
     data: {
         tasks: [
             { id: 11, text: "Project #1", type: "project", "open": true, "parent": 0 },
-            { id: 1, start_date: "05-04-2020", text: "1", duration: 1, parent: "11", 
-            type: "task" },
-            { id: 2, start_date: "05-04-2020", text: "2", duration: 3, parent: "11", 
-            type: "task" },
-            { id: 3, start_date: "05-04-2020", text: "3", duration: 3, parent: "11", 
-            type: "task" },
-            { id: 4, start_date: "05-04-2020", text: "4", duration: 3, parent: "11", 
-            type: "task" },
-            { id: 5, start_date: "05-04-2020", text: "5", duration: 1, parent: "11", 
-            type: "task" }
-        ], 
+            { id: 1, text: "1", start_date: "2027-04-05", duration: 1, parent: "11" },
+            { id: 2, text: "2", start_date: "2027-04-05", duration: 3, parent: "11" },
+            { id: 3, text: "3", start_date: "2027-04-05", duration: 3, parent: "11" },
+            { id: 4, text: "4", start_date: "2027-04-05", duration: 3, parent: "11" },
+            { id: 5, text: "5", start_date: "2027-04-05", duration: 1, parent: "11" }
+        ],
         links: [
             { source: "1", target: "2", type: "0", id: 1 },
             { source: "1", target: "3", type: "0", id: 2 },
@@ -87,158 +82,170 @@ const gantt = Gantt.getGanttInstance({
 });
 ~~~
 
-이렇게 하면 지정한 옵션으로 초기화된 Gantt 차트가 생성됩니다.
+그 결과, 지정된 설정으로 초기화된 Gantt 차트를 얻을 수 있습니다.
 
-config 객체는 다음과 같은 속성을 지원합니다:
+구성 객체는 다음 속성을 포함할 수 있습니다:
 
-- **container** - (*string|HTMLElement*) Gantt 차트를 렌더링할 HTML 컨테이너(또는 그 id). 생략하면 Gantt는 컨테이너 없이 초기화됩니다.
-- **config** - (*object*) Gantt 차트의 구성 설정
-- **calendars** - (*array*) gantt에 로드할 근무시간 캘린더 배열. 캘린더는 [gantt.addCalendar](api/method/addcalendar.md) 메서드에서 지원하는 형식이어야 합니다.
-- **templates** - (*object*) 템플릿 객체
-- **events** - (*object*) 이벤트 핸들러 객체 
+- `container` - (*string|HTMLElement*) Gantt 차트가 표시될 HTML 컨테이너 또는 그 ID. 지정되지 않으면 Gantt가 컨테이너 없이 초기화됩니다.
+- `config` - (*object*) Gantt 차트 구성 설정이 담긴 객체
+- `calendars` - (*array*) gantt 인스턴스에 로드될 작업 시간 캘린더 배열. 캘린더는 [`gantt.addCalendar()`](api/method/addcalendar.md) 메서드에서 지원하는 형식으로 지정되어야 합니다.
+- `templates` - (*object*) 템플릿이 들어 있는 객체
+- `events` - (*object*) 이벤트 핸들러가 들어 있는 객체
 
-
-새로운 Gantt 인스턴스에 이벤트 핸들러를 지정할 때는 다음과 같이 작성하세요:
+새로운 Gantt 인스턴스에 대해 이벤트 핸들러를 지정할 때는 다음 형식을 사용해야 합니다:
 
 ~~~js
-const gantt = Gantt.getGanttInstance({
-     events: {
-          onTaskCreated: function(task){
-               task.owner = null;
-               return true;
-          },
-          onTaskClick: function(id){
-               alert(gantt.getTask(id).text);
-               return true;
-          }
-     }
-})
+const ganttInstance = Gantt.getGanttInstance({
+    events: {
+        onTaskCreated: (task) => {
+            task.owner = null;
+            return true;
+        },
+        onTaskClick: (taskId) => {
+            alert(ganttInstance.getTask(taskId).text);
+            return true;
+        }
+    }
+});
 ~~~
 
-- **data** - (*object|string*) 로드할 데이터 또는 데이터를 가져올 URL
-- **plugins** - (*object*) 활성화할 플러그인
-- **locale** - (*string|object*) 활성화할 2자리 언어 코드 또는 로케일 객체
+- `data` - (*object|string*) 로드할 데이터가 들어 있는 객체 또는 데이터를 로드할 URL
+- `plugins` - (*object*) 활성화해야 할 확장 기능
+- `locale` - (*string|object*) 활성화해야 하는 두 글자 언어 코드 또는 활성화해야 할 로케일 객체
 
-**참고:** **Gantt.getGanttInstance()**를 인자 없이 호출하면 기본 설정을 가진 gantt 객체가 반환됩니다. 이 경우 새 인스턴스를 일반적으로 구성, 초기화, 데이터 로드해야 합니다.
+참고: 파라미터 없이 `Gantt.getGanttInstance()` 메서드를 호출하면 기본 구성 설정이 적용된 gantt 객체가 반환됩니다. 따라서 새 인스턴스를 구성하고, 초기화하며, 데이터를 로드하는 것이 일반적인 절차입니다.
 
-두 개의 Gantt 차트를 세로로 배치하는 간단한 예시는 다음과 같습니다:
+간단한 예를 들어 보겠습니다: 두 개의 Gantt 차트를 서로 아래에 배치합니다.
 
 ~~~js
-window.addEventListener("DOMContentLoaded", function(){
-    var gantt1 = Gantt.getGanttInstance();
-    gantt1.init("gantt_here");
-    gantt1.parse(tasksA);
+window.addEventListener("DOMContentLoaded", () => {
+    const firstGantt = Gantt.getGanttInstance();
+    firstGantt.init("gantt_here");
+    firstGantt.parse(tasksA);
 
-    var gantt2 = Gantt.getGanttInstance();
-    gantt2.init("gantt_here_2");
-    gantt2.parse(tasksB);
+    const secondGantt = Gantt.getGanttInstance();
+    secondGantt.init("gantt_here_2");
+    secondGantt.parse(tasksB);
 });
+~~~
 
+~~~html
 <body>
-<div id="gantt_here" style="width:100%; height: 50%;"></div>
-<div id="gantt_here_2" style="width:100%; height: 50%;"></div>
+    <div id="gantt_here" style="width: 100%; height: 50%;"></div>
+    <div id="gantt_here_2" style="width: 100%; height: 50%;"></div>
 </body>
 ~~~
 
-## dhtmlxLayout과의 통합 {#integrationwithdhtmlxlayout}
+## DHTMLX Layout와의 통합
 
-여러 개의 Gantt 차트를 한 페이지에 깔끔하게 배치하는 효과적인 방법 중 하나는 [dhtmlxLayout](https://docs.dhtmlx.com/layout__index.html)을 사용하는 것입니다. dhtmlxLayout은 레이아웃 프레임워크를 제공하며, 다른 페이지 요소와의 상호작용 및 크기 조정 이벤트도 잘 처리합니다.
+두 개의 Gantt 차트를 페이지에 배치하는 좋은 방법은 [DHTMLX Layout](https://docs.dhtmlx.com/suite/layout/)을 사용하는 것입니다.
+레이아웃 프레임을 편리하게 제공할 뿐만 아니라 페이지의 다른 요소와의 상호 작용도 올바르게 보장하고 페이지 크기 변경에 대응합니다.
 
 :::note
-dhtmlxLayout은 별도의 제품으로, dhtmlxGantt 라이브러리에 포함되어 있지 않습니다. 프로젝트에서 dhtmlxLayout을 사용하려면 별도의 라이선스 구매가 필요합니다.
-라이선스 옵션을 [여기에서 확인](https://dhtmlx.com/docs/products/dhtmlxLayout/#editions-licenses)하세요.
+DHTMLX Layout은 독립적인 제품이며 DHTMLX Gantt 라이브러리의 일부가 아닙니다. 애플리케이션에서 DHTMLX Layout을 사용하고자 한다면 라이선스를 구매해야 합니다.
+라이선스 옵션을 [확인하십시오](https://dhtmlx.com/docs/products/licenses.shtml).
 :::
 
-**dhtmlxGantt 인스턴스를 레이아웃 셀에 연결하려면** **attachGantt()** 메서드를 사용하세요.
-
-**참고:** dhtmlxGantt를 셀에 연결하면 자동으로 초기화됩니다. 따라서 레이아웃에 연결하기 전에 gantt 인스턴스를 구성해야 합니다.
+DHTMLX Gantt 인스턴스는 셀 내 컨테이너를 정의하고 그 안에서 Gantt를 초기화함으로써 레이아웃 셀에 배치될 수 있습니다.
 
 ~~~js
-function init() {
-    var dhxLayout = new dhtmlXLayoutObject(document.body, "2U");
+new dhx.Layout("layout_container", {
+    rows: [
+        {
+            id: "top",
+            height: "50%",
+            html: '<div id="gantt_here" style="width: 100%; height: 100%;"></div>'
+        },
+        {
+            id: "bottom",
+            height: "50%",
+            html: '<div id="gantt_here_2" style="width: 100%; height: 100%;"></div>'
+        }
+    ]
+});
 
-    gantt1 = Gantt.getGanttInstance();
-    gantt1.config.min_column_width = 50;
-    gantt1.config.scale_height = 90;
-    dhxLayout.cells("a").attachGantt(null, null, gantt1); /*!*/
-    gantt1.parse(tasksA);
-        
-    gantt2 = Gantt.getGanttInstance();
-    gantt2.config.date_grid = "%Y-%m-%d %H:%i";
-    gantt2.config.xml_date = "%Y-%m-%d %H:%i:%s";
-    dhxLayout.cells("b").attachGantt(null, null, gantt2);/*!*/
-    gantt2.parse(tasksB);
-}
+const firstGantt = Gantt.getGanttInstance();
+firstGantt.init("gantt_here");
+firstGantt.parse(tasksA);
+
+const secondGantt = Gantt.getGanttInstance();
+secondGantt.init("gantt_here_2");
+secondGantt.parse(tasksB);
 ~~~
 
-## Gantt와 DataProcessor 인스턴스의 소멸자 {#destructorofganttanddataprocessorinstances}
+## Gantt 및 DataProcessor 인스턴스의 소멸자 {#destructorofganttanddataprocessorinstances}
 
-버전 5.1부터 dhtmlxGantt 객체는 불필요한 gantt 인스턴스를 정리할 수 있는 [destructor](api/method/destructor.md)를 제공합니다.
+버전 5.1부터는 DHTMLX Gantt 객체에 더 이상 필요 없는 인스턴스를 제거하는 데 사용할 수 있는 [`destructor()`](api/method/destructor.md) 메서드가 추가되었습니다.
 
-gantt 인스턴스에 소멸자를 사용하는 방법은 다음과 같습니다:
+gantt 인스턴스의 `destructor()` 메서드는 다음과 같이 사용할 수 있습니다:
 
 ~~~js
-var gantt = Gantt.getGanttInstance();
-gantt.destructor();
+const ganttInstance = Gantt.getGanttInstance();
+ganttInstance.destructor();
 ~~~
 
-이 소멸자는 다음 작업을 수행합니다:
+소멸자는 다음 작업을 수행합니다:
 
-- gantt 인스턴스에 로드된 데이터를 초기화합니다.
-- 연결된 dataProcessor를 제거합니다.
-- gantt를 DOM에서 분리합니다.
-- [gantt.event()](api/method/event.md) 메서드를 통해 연결된 모든 DOM 이벤트를 제거합니다.
+- gantt 인스턴스에 로드된 데이터를 삭제합니다
+- gantt에 연결된 데이터 프로세서를 제거합니다
+- DOM에서 gantt를 분리합니다
+- [`gantt.event()`](api/method/event.md) 메서드를 통해 DOM에 연결된 모든 이벤트를 분리합니다
 
-소멸자는 [gantt.createDatastore()](api/method/createdatastore.md) 메서드로 생성된 데이터 스토어는 제거하지 않는다는 점에 유의하세요. 이런 데이터 스토어는 다음과 같이 직접 제거해야 합니다:
+참고로 소멸자는 [`gantt.createDatastore()`](api/method/createdatastore.md) 메서드로 생성된 데이터 저장소를 파괴하지 않습니다. 이를 수동으로 파괴해야 합니다. 예시는 다음과 같습니다:
 
 ~~~js
-// 데이터 스토어 생성
-var resourcesStore = gantt.createDatastore({
-    name:"resource",
-    initItem: function(item){
-        item.id = item.key || gantt.uid();
+// 데이터스토어 생성
+const ganttInstance = Gantt.getGanttInstance();
+const resourcesStore = ganttInstance.createDatastore({
+    name: "resource",
+    initItem: (item) => {
+        item.id = item.key || ganttInstance.uid();
         return item;
     }
 });
 
-// 나중에 데이터 스토어 제거
+// 나중에 데이터스토어 파괴
 resourcesStore.destructor();
 ~~~
 
-### Angular에서 소멸자 사용하기
+### Angular에서의 destructor 사용
 
-Angular에서 gantt 인스턴스를 해제하는 예시입니다:
+다음은 Angular 프레임워크를 사용하는 동안 소멸자를 이용해 gantt 인스턴스를 폐기하는 예시입니다:
 
-~~~js
-@Component({selector: 'app-gantt', template: `...`})
-class MyGanttComponent implements OnDestroy {
-  ngOnInit() {
-     this.$gantt = Gantt.getGanttInstance();
+~~~ts
+@Component({ template: '...' })
+class MyGanttComponent implements OnInit, OnDestroy {
+    private ganttInstance;
 
-     // 구성 및 초기화
-  }
-  
-  ngOnDestroy() {
-     this.$gantt.destructor();
-     this.$gantt = null;
-  }
+    ngOnInit() {
+        this.ganttInstance = Gantt.getGanttInstance();
+
+        // 구성 및 초기화
+    }
+
+    ngOnDestroy() {
+        if (this.ganttInstance) {
+            this.ganttInstance.destructor();
+        }
+    }
 }
 ~~~
 
-### dataProcessor 분리하기
+### dataProcessor 분리
 
-dataProcessor에 소멸자를 호출하면 인스턴스를 정리하고 gantt에서 분리합니다. 예시:
+다음은 dataProcessor의 소멸자를 호출하여 gantt에서 데이터 프로세서를 분리하는 예시입니다:
 
 ~~~js
-var gantt = Gantt.getGanttInstance();
-var dp = new gantt.dataProcessor("url");
-dp.init(gantt);
+const ganttInstance = Gantt.getGanttInstance();
+const dataProcessor = ganttInstance.createDataProcessor({
+    url: "url",
+    mode: "REST"
+});
 
-// dataProcessor를 제거하고 gantt에서 분리
-dp.destructor();
+// 데이터 프로세서 파괴 및 gantt로부터 분리
+dataProcessor.destructor();
 ~~~
 
 :::note
-여러 gantt 인스턴스를 지원하지 않는 패키지(GPL 또는 Commercial 에디션)를 사용하는 경우, gantt 소멸자를 호출하면 페이지를 새로고침할 때까지 gantt를 사용할 수 없습니다.
+만약 다중 인스턴스 생성을 허용하지 않는 패키지(GPL 또는 상용 에디션)을 사용하는 경우, gantt 소멸자를 호출하면 페이지를 다시 로드할 때까지 gantt에 접근할 수 없게 됩니다.
 :::
-

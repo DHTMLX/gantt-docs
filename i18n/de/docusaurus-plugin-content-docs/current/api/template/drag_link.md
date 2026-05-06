@@ -38,4 +38,4 @@ gantt.templates.drag_link = function(from, from_start, to, to_start) {
 ~~~
 
 ### Related Guides
-- ["Vorlagen für Abhängigkeitsverknüpfungen"](guides/dependency-templates.md)
+- [Vorlagen für Abhängigkeitsverknüpfungen](guides/dependency-templates.md)

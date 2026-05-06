@@ -1,23 +1,23 @@
 ---
 sidebar_label: defined
 title: defined method
-description: "gibt false zurück, wenn das übergebene Argument undefined ist, und true sonst"
+description: "Gibt false zurück, wenn das übergebene Argument undefiniert ist, andernfalls true"
 ---
 
 # defined
 
 ### Description
 
-@short: Gibt false zurück, wenn das übergebene Argument undefined ist, und true sonst
+@short: Gibt false zurück, wenn das übergebene Argument undefiniert ist, andernfalls true
 
 @signature: defined: (param: any) =\> boolean
 
 ### Parameters
 
-- `param` - (required) *any* - die Eigenschaft eines Objekts, die überprüft werden soll
+- `param` - (required) *any* - eine Eigenschaft eines Objekts, die geprüft werden soll
 
 ### Returns
-- ` state` - (boolean) - false, wenn das Argument undefined ist, true, wenn es einen Wert hat
+- ` state` - (boolean) - false, wenn das übergebene Argument undefiniert ist, andernfalls true
 
 ### Example
 

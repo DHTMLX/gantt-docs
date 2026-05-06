@@ -1,32 +1,32 @@
 ---
 sidebar_label: onDataProcessorReady
 title: onDataProcessorReady event
-description: "ausgelöst, wenn `dp.init(gantt)` aufgerufen wird"
+description: "wird beim Aufruf von `dp.init(gantt)` ausgelöst"
 ---
 
 # onDataProcessorReady
 
 ### Description
 
-@short: Ausgelöst, wenn `dp.init(gantt)` aufgerufen wird
+@short: Wird beim Aufruf von `dp.init(gantt)` ausgelöst
 
 @signature: onDataProcessorReady: (DataProcessor: any) =\> void;
 
 ### Parameters
 
-- `DataProcessor` - (required) *object* - die DataProcessor-Instanz
+- `DataProcessor` - (erforderlich) *Objekt* - das DataProcessor-Objekt
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onDataProcessorReady",function(DataProcessor){
-    // hier können Sie Ihre eigene Logik platzieren
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Details
 
-Dieses Event ermöglicht es Ihnen, Handler direkt aus Ihrem Anwendungscode am DataProcessor anzuhängen.
+Sie können dieses Ereignis verwenden, um Handler für DataProcessor aus dem App-Code hinzuzufügen.
 
 ### Related Guides
-- ["Serverseitige Integration"](guides/server-side.md)
+- [Serverseitige Integration](guides/server-side.md)

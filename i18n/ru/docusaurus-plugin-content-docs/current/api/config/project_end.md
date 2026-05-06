@@ -1,16 +1,18 @@
 ---
 sidebar_label: project_end
-title: project_end config
-description: "устанавливает дату окончания проекта"
+title: конфигурация project_end
+description: "указывает конечную дату проекта"
 ---
 
 # project_end
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в PRO-версии.
 :::
+
 ### Description
 
-@short: Устанавливает дату окончания проекта
+@short: Указывает конечную дату проекта
 
 @signature: project_end: Date | undefined
 
@@ -21,15 +23,14 @@ gantt.config.project_end = new Date(2019, 2, 1);
 ~~~
 
 ### Related samples
-- [Auto-Schedule From Project End (backward)](https://docs.dhtmlx.com/gantt/samples/02_extensions/20_backwards_scheduling.html)
+- [Автоматическое планирование от конца проекта (обратное)](https://docs.dhtmlx.com/gantt/samples/02_extensions/20_backwards_scheduling.html)
 
 ### Details
 
-Этот параметр может использоваться как дата окончания по умолчанию для новых задач при включенном обратном планировании.
+Значение этой конфигурации может использоваться как дата окончания по умолчанию для новых задач, когда включено обратное планирование.
 
 ### Related API
 - [schedule_from_end](api/config/schedule_from_end.md)
 
 ### Related Guides
 - [Автоматическое планирование](guides/auto-scheduling.md)
-

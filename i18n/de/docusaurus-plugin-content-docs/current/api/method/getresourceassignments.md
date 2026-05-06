@@ -1,31 +1,33 @@
 ---
 sidebar_label: getResourceAssignments
-title: getResourceAssignments method
-description: "gibt alle Aufgaben zurück, die mit der angegebenen Ressource verknüpft sind"
+title: getResourceAssignments Methode
+description: "liefert alle Aufgaben, die der Ressource zugewiesen sind"
 ---
 
 # getResourceAssignments
+
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
+
 ### Description
 
-@short: Gibt alle Aufgaben zurück, die mit der angegebenen Ressource verknüpft sind
+@short: Gibt alle Aufgaben zurück, die der Ressource zugewiesen sind
 
-@signature: getResourceAssignments: (resourceId: string | number, taskId?: string | number) =\> ResourceAssignment[]
+@signature: getResourceAssignments: (resourceId: string | number, taskId?: string | number) => ResourceAssignment[]
 
 ### Parameters
 
-- `resourceId` - (required) *string | number* - die Kennung der Ressource
-- `taskId` - (optional) *string | number* - die Kennung der Aufgabe
+- `resourceId` - (required) *string | number* - die ID der Ressource
+- `taskId` - (required) *string | number* - die ID der Aufgabe
 
 ### Returns
-- ` assignments` - (ResourceAssignment[]) - ein Array von Objekten, die den der Ressource zugewiesenen Aufgaben entsprechen
+- `assignments` - (ResourceAssignment[]) - ein Array von Objekten mit den der Ressource zugewiesenen Aufgaben
 
 ### Example
 
 ~~~jsx
-gantt.getResourceAssignments("6"); // -> Details werden angezeigt
+gantt.getResourceAssignments("6"); // -> see details
 ~~~
 
 ### Related samples
@@ -35,7 +37,7 @@ gantt.getResourceAssignments("6"); // -> Details werden angezeigt
 
 ### Details
 
-Diese Methode liefert ein Array von Objekten, die folgendermaßen strukturiert sind:
+Die Methode gibt ein Array von Objekten wie folgt zurück:
 
 ~~~js
 [ 
@@ -54,22 +56,21 @@ Diese Methode liefert ein Array von Objekten, die folgendermaßen strukturiert s
 ]
 ~~~
 
-Jedes Objekt enthält folgende Eigenschaften:
+Jedes Objekt enthält die folgenden Eigenschaften:
 
-- **id** - (*string | number*) - die eindeutige Kennung der Zuweisung
-- **task_id** - (*string | number*) - die ID der der Ressource zugewiesenen Aufgabe
-- **resource_id** - (*string | number*) - die ID der der Aufgabe zugewiesenen Ressource
-- **value** - (*number | string*) - der Umfang der Ressourcenzuweisung für die Aufgabe
-- **delay** - (*number*) - der Versatz zwischen dem Startdatum der Zuweisung und dem Startdatum der Aufgabe
-- **start_date** - (*Date*) - wann die Zuweisung beginnen soll
-- **end_date** - (*Date*) - wann die Zuweisung enden soll
-- **duration** - (*number*) - wie lange die Zuweisung dauert
-- **mode** - (*string*) - der Modus, der zur Berechnung der Ressourcenzuweisungszeit verwendet wird: "default"|"fixedDates"|"fixedDuration"
-- **[customProperty: string]** - (*any*) - beliebige zusätzliche benutzerdefinierte Eigenschaften
-
+- **id** - (*string | number*) - die ID der Zuweisung
+- **task_id** - (*string | number*) - die ID der Aufgabe, der die Ressource zugewiesen ist
+- **resource_id** - (*string | number*) - die ID der Ressource, die der Aufgabe zugewiesen ist
+- **value** - (*number | string*) - die Menge der der Aufgabe zugewiesenen Ressourcen
+- **delay** - (*number*) - die Differenz zwischen dem Startdatum der Zuweisung und dem Startdatum der Aufgabe
+- **start_date** - (*Date*) - das Datum, an dem die Zuweisung beginnen soll
+- **end_date** - (*Date*) - das Datum, an dem die Zuweisung enden soll
+- **duration** - (*number*) - die Dauer der Zuweisung
+- **mode** - (*string*) - der Berechnungsmodus der Zeit der Ressourcenzuweisung: "default"|"fixedDates"|"fixedDuration"
+- **[customProperty: string]** - (*any*) - beliebige benutzerdefinierte Eigenschaft
 
 :::note
- Die Eigenschaften *delay*, *duration*, *start_date*, *end_date*, *id* und *mode* werden nur automatisch ausgefüllt, wenn [process_resource_assignments](api/config/process_resource_assignments.md) aktiviert ist. 
+ *delay*, *duration*, *start_date*, *end_date*, *id*, *mode* werden automatisch nur dann gefüllt, wenn [process_resource_assignments](api/config/process_resource_assignments.md) aktiviert ist.  
 :::
 
 ### Related API
@@ -77,8 +78,7 @@ Jedes Objekt enthält folgende Eigenschaften:
 - [process_resource_assignments](api/config/process_resource_assignments.md)
 
 ### Related Guides
-- ["Ressourcenmanagement"](guides/resource-management.md)
+- [Resource Management](guides/resource-management.md)
 
 ### Change log
-- ab Version 7.1 enthält das zurückgegebene Objekt die Eigenschaften *delay*, *duration*, *start_date*, *end_date*, *id* und *mode*
-
+- das Rückgabeobjekt wird die Eigenschaften *delay*, *duration*, *start_date*, *end_date*, *id*, *mode* enthalten, beginnend mit Version 7.1

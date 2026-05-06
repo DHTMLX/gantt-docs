@@ -1,14 +1,14 @@
----
+--- 
 title: "样式"
 sidebar_label: "样式"
 ---
 
 # 样式
 
-- [CSS 문서](guides/css-overview.md)
-- [스킨(Skins)](guides/skins.md)
-- [스킨 커스터마이제이션](guides/custom-skins.md)
-- [간트 차트의 템플릿](guides/templates.md)
-- [Tasks Coloring](guides/colouring-tasks.md)
-- [링크 색상 및 스타일링](guides/colouring-lines.md)
-- [Gantt 스타일 작업하기](guides/styling-guide.md)
+- [CSS 文档](guides/css-overview.md)
+- [皮肤](guides/skins.md)
+- [皮肤定制](guides/custom-skins.md)
+- [甘特图模板](guides/templates.md)
+- [任务着色](guides/colouring-tasks.md)
+- [链接着色与样式](guides/colouring-lines.md)
+- [使用甘特图样式](guides/styling-guide.md)

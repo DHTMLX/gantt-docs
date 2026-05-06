@@ -1,6 +1,6 @@
 ---
 sidebar_label: dataProcessor
-title: dataProcessor method
+title: dataProcessor 메서드
 description: "dataProcessor 생성자"
 ---
 
@@ -10,7 +10,7 @@ description: "dataProcessor 생성자"
 
 @short: DataProcessor 생성자
 
-@signature: dataProcessor: (url: string) =\> void
+@signature: dataProcessor: (url: string) => void
 
 ### Parameters
 
@@ -24,7 +24,7 @@ const dp = new gantt.dataProcessor("api/");
 
 ### Details
 
-dataProcessor와 그 API에 대한 자세한 내용은 [여기](guides/server-side.md#resources_crud)에서 확인할 수 있습니다.
+dataProcessor에 대한 자세한 정보와 API는 [여기](guides/server-side.md#resources_crud)에서 확인할 수 있습니다.
 
 ### Change log
-- 버전 4.0에 추가됨
+- 버전 4.0에서 추가됨

@@ -1,14 +1,14 @@
 ---
 sidebar_label: autoscroll_speed
 title: autoscroll_speed config
-description: "定义当拖动任务或链接超出当前浏览器视图时，自动滚动的速度（以毫秒为单位）"
+description: "在拖动任务或链接离开当前浏览器屏幕时，定义 autoscroll_speed 的滚动速度（单位：毫秒）"
 ---
 
 # autoscroll_speed
 
 ### Description
 
-@short: 定义当拖动任务或链接超出当前浏览器视图时，自动滚动的速度（以毫秒为单位）
+@short: 在拖动任务或链接离开当前浏览器屏幕时，定义 autoscroll_speed 的滚动速度（单位：毫秒）
 
 @signature: autoscroll_speed: number
 
@@ -21,14 +21,13 @@ gantt.config.autoscroll_speed = 50;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 30
+**默认值：** 30
 
 ### Details
 
-此功能自版本 4.2 引入
+在版本 4.2 中添加
 
-"autoscroll"功能通过 [autoscroll](api/config/autoscroll.md) 选项进行控制。
+“autoscroll” 功能由 [autoscroll](api/config/autoscroll.md) 选项启用。
 
 ### Related API
 - [autoscroll](api/config/autoscroll.md)
-

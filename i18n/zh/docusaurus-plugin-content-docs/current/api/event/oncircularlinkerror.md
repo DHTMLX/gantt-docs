@@ -1,38 +1,38 @@
 ---
 sidebar_label: onCircularLinkError
-title: onCircularLinkError event
-description: "当检测到循环引用且自动排程无法继续时触发"
+title: onCircularLinkError 事件
+description: "在检测到循环引用且无法自动调度时触发"
 ---
 
 # onCircularLinkError
 :::info
- 此功能仅在PRO版本中可用。 
+此功能仅在 PRO 版中可用。
 :::
 ### Description
 
-@short: 当检测到循环引用且自动排程无法继续时触发
+@short: 在检测到循环引用且无法自动调度时触发
 
 @signature: onCircularLinkError: (link: Link, group: any) =\> void;
 
 ### Parameters
 
 - `link` - (required) *Link* - 链接对象
-- `group` - (required) *object* - 形成循环的一组任务和链接集合
+- `group` - (required) *object* - 在循环中连接的任务和链接的一个组
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onCircularLinkError",function(link, group){
-    // 在这里编写您的自定义逻辑
+    // 在这里插入您的自定义逻辑 
 });
 ~~~
 
 ### Related samples
-- [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
+- [Auto Scheduling 扩展](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
 
-**group** 参数包含一个对象，表示参与循环的任务和链接的集合。
+**group** 参数表示一个对象，其中包含一个在循环中连接的任务和链接的组。
 
 ~~~js
 { 
@@ -41,9 +41,8 @@ gantt.attachEvent("onCircularLinkError",function(link, group){
 }
 ~~~
 
-
 :::note
- 该方法需要启用 [auto_scheduling](guides/extensions-list.md#zidongpaicheng) 插件。 
+该方法需要启用 [auto_scheduling](guides/extensions-list.md#autoscheduling) 插件。
 :::
 
 ### Related API
@@ -66,5 +65,4 @@ gantt.attachEvent("onCircularLinkError",function(link, group){
 - [自动调度](guides/auto-scheduling.md)
 
 ### Change log
-- **group** 参数在版本4.1中引入。
-
+- 参数 **group** 在版本 4.1 中新增。

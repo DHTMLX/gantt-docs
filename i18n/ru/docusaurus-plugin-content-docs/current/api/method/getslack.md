@@ -1,24 +1,26 @@
 ---
 sidebar_label: getSlack
-title: getSlack method
-description: "определяет, сколько времени (в текущих единицах длительности) у задачи есть, прежде чем она повлияет на другие задачи"
+title: метод getSlack
+description: "проверяет, сколько времени (в текущей единице длительности) задача имеет до момента, когда она начнет влиять на другие задачи"
 ---
 
 # getSlack
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Метод **getSlack** доступен только в PRO-версии.
 :::
+
 ### Description
 
-@short: Определяет, сколько времени (в текущих единицах длительности) у задачи есть, прежде чем она повлияет на другие задачи
+@short: Проверяет, сколько времени (в текущей единице длительности) задача имеет до момента, когда она начнет влиять на другие задачи
 
 ### Parameters
 
-- `task1` - (required) *object* - первый объект задачи для проверки slack
-- `task2` - (required) *object* - второй объект задачи для проверки slack
+- `task1` - (обязательно) *объект* - объект первой задачи, для которой нужно проверить запас
+- `task2` - (обязательно) *объект* - объект второй задачи, для которой нужно проверить запас
 
 ### Returns
-- ` slack` - (number,string) - запаздывание между задачами в текущих единицах длительности или 'Infinity', если задачи не связаны
+- ` slack` - (число, строка) - запас между задачами в текущих единицах длительности или 'Infinity', если задачи не связаны
 
 ### Example
 
@@ -43,13 +45,13 @@ gantt.getSlack(gantt.getTask(2), gantt.getTask(3)); // -> 1  /*!*/
 ~~~
 
 ### Related samples
-- [Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
+- [Критический путь](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
 ### Details
 
-:::note
- Метод **getSlack** устарел. Вместо него используйте следующие методы для получения свободного или общего запаздывания задачи: 
-:::
+:::warning
+Метод **getSlack** устарел. Используйте следующие методы, чтобы получить свободный/общий запас задачи: 
+~~~
 
 ~~~js
 gantt.getFreeSlack(task);
@@ -57,13 +59,9 @@ gantt.getFreeSlack(task);
 gantt.getTotalSlack(task);
 ~~~
 
-<br>
-
 :::note
- Этот метод является частью расширения **critical_path**, поэтому убедитесь, что оно подключено на вашей странице. Подробнее в статье [Критический путь](guides/critical-path.md). 
+Этот метод определён в расширении **critical_path**, поэтому его нужно подключить на странице. Прочитайте детали в статье [Critical Path](guides/critical-path.md). 
 :::
-
-![iscritical_path](/img/iscritical_path.png)
 
 ### Related API
 - [highlight_critical_path](api/config/highlight_critical_path.md)
@@ -72,4 +70,3 @@ gantt.getTotalSlack(task);
 
 ### Related Guides
 - [Критический путь](guides/critical-path.md)
-

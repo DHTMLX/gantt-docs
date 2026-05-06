@@ -1,39 +1,39 @@
 ---
 sidebar_label: onBeforeRowResize
-title: onBeforeRowResize event
-description: "срабатывает непосредственно перед тем, как пользователь начинает изменять высоту строки с помощью drag-and-drop"
+title: Событие onBeforeRowResize
+description: "Срабатывает до того, как пользователь начнет изменять высоту строки перетаскиванием"
 ---
 
 # onBeforeRowResize
 
 ### Description
 
-@short: Срабатывает непосредственно перед тем, как пользователь начинает изменять высоту строки с помощью drag-and-drop
+@short: Срабатывает до того, как пользователь начнет изменять высоту строки перетаскиванием
 
 @signature: onBeforeRowResize: (task: Task) =\> boolean;
 
 ### Parameters
 
-- `task` - (required) *Task* - объект задачи
+- `task` - (required) *Task* - объект Task
 
 ### Returns
-- ` param` - (boolean) - указывает, будет ли выполнено действие по умолчанию события (<b>true</b>) или оно будет остановлено (<b>false</b>)
+- `param` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeRowResize", function (task) {
-    gantt.message(`Начало изменения размера <b>${task.text}</b>`);
+    gantt.message(`Start resizing <b>${task.text}</b>`);
     return true;
 });
 ~~~
 
 ### Related samples
-- [Resizable rows in grid](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_row_resize.html)
+- [Строки, изменяемые по высоте, в grid](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_row_resize.html)
 
 ### Details
 
-Это событие можно заблокировать. Возврат *false* остановит изменение высоты строки.
+Событие можно заблокировать. Возвращение значения <b>false</b> предотвратит изменение высоты строки.
 
 ### Related API
 - [resize_rows](api/config/resize_rows.md)
@@ -42,5 +42,4 @@ gantt.attachEvent("onBeforeRowResize", function (task) {
 - [onAfterRowResize](api/event/onafterrowresize.md)
 
 ### Change log
-- добавлено в версии v7.1
-
+- добавлено в версии 7.1

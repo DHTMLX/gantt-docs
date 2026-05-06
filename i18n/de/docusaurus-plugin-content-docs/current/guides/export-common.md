@@ -5,10 +5,10 @@ sidebar_label: "Exportieren und Importieren von Daten"
 
 # Exportieren und Importieren von Daten
 
-- [Export to PDF and PNG](guides/export.md)
-- [Export/Import for Excel, Export to iCal](guides/excel.md)
-- [Export and Import from MS Project](guides/export-msproject.md)
-- [Export and Import from Primavera P6](guides/export-primavera.md)
-- [Serializing Data into XML and JSON](guides/serialization.md)
-- [Export and Import Data on Node.js](guides/export-nodejs.md)
-- [Export Modules](guides/export-modules.md)
+- [In PDF- und PNG-Dateien exportieren](guides/export.md)
+- [Export/Import für Excel, Export nach iCal](guides/excel.md)
+- [Exportieren und Importieren aus MS Project](guides/export-msproject.md)
+- [Exportieren und Importieren aus Primavera P6](guides/export-primavera.md)
+- [Daten in XML und JSON serialisieren](guides/serialization.md)
+- [Export und Import von Daten in Node.js](guides/export-nodejs.md)
+- [Module exportieren](guides/export-modules.md)

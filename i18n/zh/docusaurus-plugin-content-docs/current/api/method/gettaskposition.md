@@ -1,25 +1,25 @@
 ---
 sidebar_label: getTaskPosition
-title: getTaskPosition method
-description: "计算任务的DOM元素在时间线区域内的位置和大小。"
+title: getTaskPosition 方法
+description: "在时间线区域计算任务的 DOM 元素的位置和大小"
 ---
 
 # getTaskPosition
 
 ### Description
 
-@short: 计算任务的DOM元素在时间线区域内的位置和大小。
+@short: 计算任务的 DOM 元素在时间线区域的位置和大小
 
 @signature: getTaskPosition: (task: Task, from?: Date, to?: Date) =\> any
 
 ### Parameters
 
 - `task` - (required) *Task* - 任务对象
-- `from` - (optional) *Date* - 可选，项目的开始日期
-- `to` - (optional) *Date* - 可选，项目的结束日期
+- `from` - (optional) *Date* -  项目的起始日期
+- `to`- (optional) *Date* -  项目的结束日期
 
 ### Returns
-- ` object` - (object) - 一个描述大小和位置的对象
+- ` object` - (object) - 尺寸对象
 
 ### Example
 
@@ -63,6 +63,3 @@ gantt.getTaskPosition(task, new Date(2019, 3, 19, 1, 0), new Date(2019, 3, 19, 1
 // 和
 gantt.getTaskPosition(task, new Date(2019, 3, 19, 1, 0), new Date(2019, 3, 19, 5, 0)); 
 ~~~
-
-无论您使用的是*hour*、*day*、*month*还是*year*刻度，都会返回不同大小的框。
-

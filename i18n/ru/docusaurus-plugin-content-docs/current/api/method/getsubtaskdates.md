@@ -1,34 +1,34 @@
 ---
 sidebar_label: getSubtaskDates
-title: getSubtaskDates method
-description: "вычисляет объединённые даты начала/окончания задач, вложенных в проект или другую задачу"
+title: Метод getSubtaskDates
+description: "вычисляет объединенные даты начала и окончания задач, вложенных в проект или другую задачу"
 ---
 
 # getSubtaskDates
 
 ### Description
 
-@short: Вычисляет объединённые даты начала/окончания задач, вложенных в проект или другую задачу
+@short: Вычисляет объединенные даты начала и окончания задач, вложенных в проект или другую задачу
 
 @signature: getSubtaskDates: (task_id?: string | number) =\> any
 
 ### Parameters
 
-- `task_id` - (optional) *string | number* -        ID задачи, будет использован [root_id](api/config/root_id.md), если не указан
+- `task_id` - (optional) *string | number* - идентификатор задачи; если он не указан, будет использоваться [root_id](api/config/root_id.md)
 
 ### Returns
-- ` dates` - (object) - объект, содержащий свойства <b>start_date</b> и <b>end_date</b>
+- `dates` - (object) - объект, содержащий свойства <b>start_date</b> и <b>end_date</b>
 
 ### Example
 
 ~~~jsx
-// длительность всего проекта
+// duration of the whole project
 let dates = gantt.getSubtaskDates();
 const dateToStr = gantt.templates.task_date;
     
 console.log(`${dateToStr(dates.start_date)} - ${dateToStr(dates.end_date)}`);
 
-// длительность подпроекта
+// duration of the subproject
 dates = gantt.getSubtaskDates(1);
     
 console.log(`${dateToStr(dates.start_date)} - ${dateToStr(dates.end_date)}`);
@@ -36,9 +36,9 @@ console.log(`${dateToStr(dates.start_date)} - ${dateToStr(dates.end_date)}`);
 
 ### Details
 
-Этот метод возвращает объект, который показывает дату начала самой ранней подзадачи и дату окончания самой поздней подзадачи.
+Метод возвращает объект, содержащий дату начала самой ранней подзадачи и дату окончания самой поздней подзадачи.
 
-Возвращаемый объект выглядит следующим образом:
+Объект возврата имеет следующий формат:
 
 ~~~js
 {
@@ -47,9 +47,8 @@ console.log(`${dateToStr(dates.start_date)} - ${dateToStr(dates.end_date)}`);
 }
 ~~~
 
-Если в диаграмме Ганта присутствуют запланированные задачи, оба свойства будут содержать значения дат. Если диаграмма пуста или содержит только незапланированные задачи, оба свойства будут равны `null`.
+Если у диаграммы Ганта есть запланированные задачи, обе свойства будут иметь значения даты. Если диаграмма Ганта пустая или содержит только незапланированные задачи, обе свойства будут иметь значение `null`.
 
 ### Related API
 - [getSubtaskDuration](api/method/getsubtaskduration.md)
 - [getTaskBy](api/method/gettaskby.md)
-

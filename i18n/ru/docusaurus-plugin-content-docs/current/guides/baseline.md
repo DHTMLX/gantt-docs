@@ -1,15 +1,15 @@
 ---
-title: "Контроль базовых планов"
-sidebar_label: "Контроль базовых планов"
+title: "Контроль базовых линий"
+sidebar_label: "Контроль базовых линий"
 ---
 
-# Контроль базовых планов
+# Контроль базовых линий
 
 :::info
-Эта функция доступна только в редакции PRO.
+Эта функциональность доступна только в PRO-версии.
 :::
 
-Это набор селекторов, предназначенных для установки [базовых планов](guides/inbuilt-baselines.md) задачи путем задания её даты начала и длительности в днях.
+Набор селекторов для настройки [baselines] для задачи путём указания даты начала задачи и количества дней.
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -20,12 +20,12 @@ gantt.config.lightbox.sections = [
 ~~~
 
 
-[Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
+[Показать базовые линии](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
 
 
 ## Инициализация
 
-Чтобы добавить элемент управления **baselines** в lightbox, выполните следующие шаги:
+Чтобы добавить управление **baselines** к lightbox, выполните следующие шаги:
 
 1) Добавьте секцию в конфигурацию lightbox:
 
@@ -37,35 +37,35 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
   
-2) Задайте метку для этой секции:
+2) Установите подпись для секции:
 
 ~~~js
-gantt.locale.labels.section_baselines = "Baselines";
+gantt.locale.labels.section_baselines = "Базовые линии";
 ~~~
 
 ## Свойства
 
-Ниже приведены основные свойства, которые часто используются с элементом управления **baselines** (полный список смотрите [здесь](api/config/lightbox.md)):
+Следующие свойства в большинстве случаев являются наиболее важными и часто используются для **baselines** (см. полный список [здесь](api/config/lightbox.md)):
 
-- **name** - (*string*) идентификатор секции 
+- **name** - (*string*) имя секции
 - **height** - (*number*) высота секции
-- **map_to** - (*string*) должно быть установлено в "baselines"
+- **map_to** - (*string*) установите значение в "baselines"
 - **formatter** - (object) экземпляр объекта [durationFormatter](guides/working-time.md#taskdurationindecimalformat)
-- **type** - (*string*) тип [элемента управления секцией](guides/default-edit-form.md#lightboxcontrols)
-- **focus** - (*boolean*) если true, эта секция будет в фокусе при открытии lightbox
-- **readonly** - (*boolean*) если true, секция будет только для чтения
-- **year_range** - (*array,number*) определяет диапазон для выбора года. Можно задать двумя способами: 
-    - *year_range: [2005, 2025]* - с 2005 по 2025 год 
-    - *year_range: 10*  - от (текущий год - 10) до (текущий год + 10)
-- **single_date** - (*boolean*) если true, будет отображаться только селектор *start Date*. Задачи, отредактированные таким образом, будут иметь нулевую длительность, что полезно в основном для [вех](guides/task-types.md#milestones)
-- **time_format** - (*string*) задаёт порядок селекторов даты и времени
+- **type** - (*string*) тип [контроля секции](guides/default-edit-form.md#lightboxcontrols)
+- **focus** - (*boolean*) если установлен в *true*, секция получит фокус при открытии lightbox
+- **readonly** - (*boolean*) если установить значение "true", секция будет доступна только для чтения
+- **year_range** - (*array,number*) задаёт диапазон для выбора года. Диапазон можно задать двумя способами: 
+    - *year_range: [2005, 2025]* - период с 2005 по 2025
+    - *year_range: 10*  - период [текущий год - 10 лет; текущий год + 10 лет]
+- **single_date** - (*boolean*) если значение "true" установлено, в секции будет представлен только селектор даты начала. 
+Редактируемые задачи будут задаваться только по дате начала и будут иметь нулевую продолжительность. Имеет смысл только для [вех](guides/task-types.md#milestones)
+- **time_format** - (*string*) устанавливает порядок селекторов даты и времени
 
 ## Локализация
 
-Вы можете настроить метки для следующих частей элемента управления **baselines**:
+Вы можете локализовать подписи следующих элементов контроля **baselines**:
 
-- **gantt.locale.labels.baselines_section_placeholder** - текст, отображаемый, когда базовые планы не добавлены
-- **gantt.locale.labels.baselines_remove_button** - подпись для кнопки удаления базового плана (по умолчанию: *"Remove"*)
-- **gantt.locale.labels.baselines_add_button** - подпись для кнопки добавления нового базового плана (по умолчанию: *"Add Baseline"*)
-- **gantt.locale.labels.baselines_remove_all_button** - подпись для кнопки удаления всех базовых планов (по умолчанию: *"Remove All"*)
-
+- **gantt.locale.labels.baselines_section_placeholder** - текст, отображаемый, когда базовых линий нет
+- **gantt.locale.labels.baselines_remove_button** - текст кнопки удаления базовой линии (*"Remove"*, по умолчанию)
+- **gantt.locale.labels.baselines_add_button** - текст кнопки добавления новой базовой линии (*"Add Baseline"*, по умолчанию)
+- **gantt.locale.labels.baselines_remove_all_button** - текст кнопки удаления всех базовых линий (*"Remove All"*, по умолчанию)

@@ -1,20 +1,20 @@
 ---
 sidebar_label: onAfterLinkAdd
-title: onAfterLinkAdd event
-description: "срабатывает сразу после добавления новой связи в диаграмму Ганта"
+title: onAfterLinkAdd событие
+description: "Срабатывает после добавления новой связи на диаграмме Ганта"
 ---
 
 # onAfterLinkAdd
 
 ### Description
 
-@short: Срабатывает сразу после добавления новой связи в диаграмму Ганта
+@short: Срабатывает после добавления новой связи на диаграмме Ганта
 
 @signature: onAfterLinkAdd: (id: string | number, link: Link) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - ID связи
+- `id` - (required) *string | number* - идентификатор связи
 - `link` - (required) *Link* - объект связи
 
 ### Example
@@ -27,4 +27,3 @@ gantt.attachEvent("onAfterLinkAdd", function(id,link){
 
 ### Related API
 - [addLink](api/method/addlink.md)
-

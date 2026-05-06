@@ -1,20 +1,20 @@
 ---
 sidebar_label: roundTaskDates
-title: roundTaskDates method
-description: "调整任务的开始和结束日期，使其与时间线刻度上的最近日期对齐"
+title: roundTaskDates 方法
+description: "将开始任务和结束任务的日期四舍五入到时间刻度中的最近日期"
 ---
 
 # roundTaskDates
 
 ### Description
 
-@short: 调整任务的开始和结束日期，使其与时间线刻度上的最近日期对齐
+@short: 将开始和结束任务的日期四舍五入到时间刻度中的最近日期
 
 @signature: roundTaskDates: (task: Task) =\> void
 
 ### Parameters
 
-- `task` - (required) *Task* - 任务对象
+- `task` - (必填) *Task* - 任务对象
 
 ### Example
 
@@ -48,6 +48,8 @@ gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
 
 ### Details
 
-- 此方法会遵循已配置的工作时间设置。
-- 它可能会在调整过程中修改任务的持续时间。
-- 当在 onbeforedragend 事件中使用时，四舍五入行为会根据拖放操作进行调整:例如，"move"操作会调整任务日期但不改变持续时间，而"resize"操作则会根据调整方向改变持续时间以及开始或结束日期。
+- 该方法会考虑指定的工作时间。
+
+- 该方法可能会改变任务的持续时间。
+
+- 如果该方法从 onbeforedragend 调用，将根据拖放操作的类型对日期进行四舍五入（例如 "move" 操作将改变任务的日期而不影响持续时间，"resize" 操作将改变任务的持续时间以及任务的一个日期：start 或 end，具体取决于调整方向）

@@ -1,23 +1,23 @@
 ---
 sidebar_label: addLink
-title: addLink method
-description: "Fügt einen neuen Abhängigkeitslink hinzu"
+title: addLink Methode
+description: "fügt eine neue Abhängigkeitsverknüpfung hinzu"
 ---
 
 # addLink
 
 ### Description
 
-@short: Fügt einen neuen Abhängigkeitslink hinzu
+@short: Fügt eine neue Abhängigkeitsverknüpfung hinzu
 
 @signature: addLink: (link: any) =\> string | number
 
 ### Parameters
 
-- `link` - (required) *object* - Das Link-Objekt
+- `link` - (erforderlich) *Objekt* - das Link-Objekt
 
 ### Returns
-- ` id` - (string | number) - Die ID des Links
+- `id` - (string | number) - die ID des Links
 
 ### Example
 
@@ -32,7 +32,7 @@ var linkId = gantt.addLink({
 
 ### Details
 
-Diese Methode löst die Events [onBeforeLinkAdd](api/event/onbeforelinkadd.md) und [onAfterLinkAdd](api/event/onafterlinkadd.md) aus.
+Die Methode löst die Ereignisse [onBeforeLinkAdd](api/event/onbeforelinkadd.md) und [onAfterLinkAdd](api/event/onafterlinkadd.md) aus.
 
 ### Related API
 - [updateLink](api/method/updatelink.md)
@@ -40,5 +40,4 @@ Diese Methode löst die Events [onBeforeLinkAdd](api/event/onbeforelinkadd.md) u
 - [addTask](api/method/addtask.md)
 
 ### Related Guides
-- ["Hinzufügen/Aktualisieren/Löschen von Verknüpfungen"](guides/crud-dependency.md)
-
+- [Adding/Updating/Deleting Links](guides/crud-dependency.md)

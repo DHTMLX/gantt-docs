@@ -1,14 +1,14 @@
 ---
 sidebar_label: onAfterBatchUpdate
-title: onAfterBatchUpdate event
-description: "在 batchUpdate 方法完成后立即触发"
+title: onAfterBatchUpdate 事件
+description: "在 batchUpdate 方法被调用之后触发"
 ---
 
 # onAfterBatchUpdate
 
 ### Description
 
-@short: 在 [batchUpdate](api/method/batchupdate.md) 方法完成后立即触发
+@short: 在 [batchUpdate](api/method/batchupdate.md) 方法被调用之后触发
 
 @signature: onAfterBatchUpdate: () =\> void;
 
@@ -16,7 +16,7 @@ description: "在 batchUpdate 方法完成后立即触发"
 
 ~~~jsx
 gantt.attachEvent("onAfterBatchUpdate", function(){
-    // 你的代码写在这里
+    // 在这里插入您的自定义逻辑
 });
 ~~~
 
@@ -25,5 +25,4 @@ gantt.attachEvent("onAfterBatchUpdate", function(){
 - [onBeforeBatchUpdate](api/event/onbeforebatchupdate.md)
 
 ### Change log
-- 版本 4.0 中新增
-
+- 在版本 4.0 中新增

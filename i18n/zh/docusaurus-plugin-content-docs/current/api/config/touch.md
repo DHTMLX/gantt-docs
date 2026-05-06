@@ -8,7 +8,7 @@ description: "控制甘特图是否启用或禁用 touch 支持"
 
 ### Description
 
-@short: 控制甘特图是否启用或禁用 touch 支持
+@short: 启用/禁用甘特图的触控支持
 
 @signature: touch: boolean | string
 
@@ -24,18 +24,15 @@ gantt.init("gantt_here");
 
 ### Details
 
-当设置为字符串时，唯一接受的值是 **'force'**。
+作为一个字符串，该参数只能取一个值 - **'force'**。
 
-<br>
+因此，该参数共有 3 种可能的取值：
 
-该参数有三种可能的选项:
-
-- *true* - dhtmlxGantt 会通过检查浏览器的 user-agent 字符串来尝试检测设备是否支持 touch，如果检测到支持 touch 的设备，则启用 touch 支持。
-- *'force'* - 无论使用何种设备，都强制启用 touch 支持。
-- *false* - 完全禁用 touch 支持。
+- *true* - dhtmlxGantt 通过分析浏览器的 user-agent 字符串来尝试检测是否存在触控设备；若检测到触控设备，则启用触控支持。
+- *'force'* - 启用持续的触控支持，无论使用何种设备。
+- *false* - 关闭触控支持。
 
 ### Related API
 - [touch_drag](api/config/touch_drag.md)
 - [touch_feedback](api/config/touch_feedback.md)
 - [touch_feedback_duration](api/config/touch_feedback_duration.md)
-

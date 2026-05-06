@@ -5,64 +5,66 @@ sidebar_label: "Экспорт в PDF и PNG"
 
 # Экспорт в PDF и PNG
 
-dhtmlxGantt предоставляет онлайн-сервис экспорта, позволяющий сохранить вашу диаграмму Gantt в файл [PDF](guides/export.md#exporttopdf) или 
-[PNG](guides/export.md#exporttopng).
+dhtmlxGantt предоставляет онлайн-сервис экспорта, позволяющий экспортировать диаграмму Ганта в форматы [PDF](guides/export.md#export-to-pdf) или [PNG](guides/export.md#export-to-png).
 
 :::note
-Этот сервис предоставляется бесплатно, однако экспортируемые PDF/PNG-файлы будут содержать водяной знак библиотеки согласно лицензии GPL. 
-Если вы приобретаете лицензию, экспорт будет выполняться без водяных знаков в течение периода активной поддержки (12 месяцев для всех PRO-лицензий).
+Сервис бесплатный, но итоговый файл PDF/PNG будет содержать водяной знак библиотеки в рамках лицензии GPL. 
+Если вы приобретете лицензию, результат экспорта будет доступен без водяного знака в течение действующего срока поддержки (12 месяцев для всех PRO лицензий).
 :::
 
-Существует несколько сервисов экспорта, которые вы можете установить на свой компьютер для локального экспорта диаграмм Gantt в PDF или PNG.
-Обратите внимание, что сервисы экспорта не входят в сам пакет Gantt - ознакомьтесь с [соответствующей статьёй](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) для получения информации об условиях использования каждого сервиса.
+Существует несколько сервисов экспорта. Вы можете установить их на свой компьютер и экспортировать диаграмму Ганта в PDF или PNG локально.
+Обратите внимание, что сервисы экспорта не включены в пакет Gantt, 
+прочитайте [соответствующую статью](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml), чтобы узнать условия использования каждого из них.
 
-## Ограничения онлайн-сервиса экспорта {#onlineexportservicerestrictions}
+## Ограничения онлайн-сервиса экспорта
 
 :::note
-Сервис экспорта имеет ограничения по времени обработки и размеру запроса.
+Сервис экспорта имеет ограничения по времени и объему запроса.
 :::
 
 ### Ограничения по времени
 
-Если процесс экспорта занимает больше 20 секунд, он будет остановлен, и вы увидите следующую ошибку:
+Если процесс занимает более 20 секунд, экспорт будет отменен и возникнет следующая ошибка:
 
 ~~~html
 Error: Timeout trigger 20 seconds
 ~~~
 
-Когда несколько пользователей экспортируют диаграммы Gantt одновременно, процесс может занять больше времени, однако время отсчитывается отдельно для каждого запроса пользователя.
+Если несколько пользователей экспортируют Gantt одновременно, процесс может занять больше обычного времени. Но это нормально, потому что время, затраченное на экспортный запрос от конкретного пользователя, учитывается отдельно.
 
 ### Ограничения по размеру запроса
 
-Общий API-эндпоинт **https://export.dhtmlx.com/gantt** обрабатывает все методы экспорта (*exportToPDF*, *exportToPNG*, *exportToMSProject* и др.). Максимальный размер запроса здесь - **10 МБ**.
+Существует общий API-эндпоинт `https://export.dhtmlx.com/gantt`, который обслуживает все методы экспорта (*exportToPDF*, *exportToPNG*, *exportToMSProject* и т. д.). **Максимальный размер запроса — 10 МБ**.
 
-Также существует отдельный API-эндпоинт **https://export.dhtmlx.com/gantt/project** для сервисов экспорта/импорта [MSProject](guides/export-msproject.md) и 
+Также существует отдельный API-эндпоинт `https://export.dhtmlx.com/gantt/project`, предназначенный специально для сервисов экспорта/импорта MSProject и 
 [Primavera P6](guides/export-primavera.md) 
-(*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*). Этот эндпоинт поддерживает запросы до **40 МБ**.
+(только для (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*)). **Макс. размер запроса: 40 МБ**.
 
-## Использование модулей экспорта {#usingexportmodules}
+## Использование модулей экспорта
 
 :::note
-Для экспорта больших диаграмм вы можете использовать [отдельный модуль экспорта](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). 
-Этот модуль предоставляется бесплатно при наличии [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) или [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) лицензии, либо вы можете [приобрести его отдельно](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
+Если вам нужно экспортировать большие диаграммы, вы можете воспользоваться отдельным standalone-модулем экспорта. 
+Модуль экспорта предоставляется бесплатно, если вы получили Gantt по лицензии [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) или [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), или же вы можете приобрести сам модуль отдельно ([купить модуль отдельно](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210)).
 :::
 
-[Подробнее об использовании модуля экспорта в PDF](guides/pdf-export-module.md).
+[Подробнее об использовании модуля экспорта для PDF](guides/pdf-export-module.md).
 
-## Экспорт в PDF {#exporttopdf}
+## Экспорт в PDF
 
-Чтобы экспортировать диаграмму Gantt в PDF, выполните следующие шаги:
+Чтобы экспортировать диаграмму Gantt в PDF-документ, выполните следующие шаги:
 
-- Включите плагин <b>export_api</b> с помощью метода [plugins](api/method/plugins.md):
+- Чтобы использовать функциональность экспорта/импорта, включите плагин <b>export_api</b> через метод [plugins](api/method/plugins.md):
 
 ~~~js
 gantt.plugins({
-      export_api: true
+    export_api: true
 });
 ~~~
 
+Он позволяет использовать либо онлайн-сервис экспорта, либо локальный модуль экспорта.
+
 :::note
-Если вы используете версию Gantt ниже 8.0, подключите **https://export.dhtmlx.com/gantt/api.js** на вашей странице для включения онлайн-сервиса экспорта, например:
+Если версия Gantt ниже 8.0, нужно подключить на страницу `https://export.dhtmlx.com/gantt/api.js`, чтобы включить функциональность экспорта, например:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -70,10 +72,10 @@ gantt.plugins({
 ~~~
 :::
 
-- Затем вызовите метод [exportToPDF](guides/export.md#parametersoftheexportmethods) для экспорта диаграммы:
+- Вызовите метод [exportToPDF](api/method/exporttopdf.md) для экспорта диаграммы Gantt:
 
 ~~~html
-<input value="Export to PDF" type="button" onclick='gantt.exportToPDF()'>/*!*/
+<input value="Export to PDF" type="button" onclick='gantt.exportToPDF()'>
 
 <script>
     gantt.init("gantt_here");
@@ -82,23 +84,23 @@ gantt.plugins({
 ~~~
 
 
-[Export data from Gantt](https://docs.dhtmlx.com/gantt/samples/08_api/06_export.html)
+**Связанный пример**: [Export data from Gantt](https://docs.dhtmlx.com/gantt/samples/08_api/06_export.html)
 
 
-## Экспорт в PNG {#exporttopng}
+## Экспорт в PNG
 
 Чтобы экспортировать диаграмму Gantt в PNG-изображение, выполните следующие шаги:
 
-- Включите плагин <b>export_api</b> с помощью метода [plugins](api/method/plugins.md):
+- Чтобы использовать онлайн-сервис экспорта, включите плагин <b>export_api</b> через метод [plugins](api/method/plugins.md):
 
 ~~~js
 gantt.plugins({
-      export_api: true
+    export_api: true
 });
 ~~~
 
 :::note
-Если вы используете версию Gantt ниже 8.0, подключите **https://export.dhtmlx.com/gantt/api.js** на вашей странице для включения онлайн-сервиса экспорта, например:
+Если версия Gantt ниже 8.0, нужно подключить на страницу файл `https://export.dhtmlx.com/gantt/api.js`, чтобы включить онлайн-сервис экспорта, например:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -106,10 +108,10 @@ gantt.plugins({
 ~~~
 :::
 
-- Затем вызовите метод [exportToPNG](guides/export.md#parametersoftheexportmethods) для экспорта диаграммы:
+- Вызовите метод [exportToPNG](api/method/exporttopng.md) для экспорта диаграммы Gantt:
 
 ~~~html
-<input value="Export to PNG" type="button" onclick='gantt.exportToPNG()'>/*!*/
+<input value="Export to PNG" type="button" onclick='gantt.exportToPNG()'>
 
 <script>
     gantt.init("gantt_here");
@@ -118,313 +120,374 @@ gantt.plugins({
 ~~~
 
 
-[Export data from Gantt](https://docs.dhtmlx.com/gantt/samples/08_api/06_export.html)
+**Связанный пример**: [Export data from Gantt](https://docs.dhtmlx.com/gantt/samples/08_api/06_export.html)
 
 
-## Параметры методов экспорта {#parametersoftheexportmethods}
+## Параметры методов экспорта
 
-Методы [exportToPDF](api/method/exporttopdf.md) и [exportToPNG](api/method/exporttopng.md) принимают объект с различными необязательными свойствами:
+Методы [exportToPDF](api/method/exporttopdf.md) и [exportToPNG](api/method/exporttopng.md) принимают в качестве параметра один и тот же объект с набором свойств (все свойства являются необязательными):
 
 <table class="webixdoc_links">
   <tbody>
   <tr>
   <td class="webixdoc_links0"><b>name</b></td>
-  <td>(<i>string</i>) задаёт имя выходного файла</td>
+  <td>(<i>string</i>) имя выходного файла</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>skin</b></td>
-  <td>(<i>string</i>) устанавливает [скин](guides/skins.md) для экспортируемой диаграммы Gantt</td>
+  <td>(<i>string</i>) [скин](guides/skins.md) выходной диаграммы Gantt</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>locale</b></td>
-  <td>(<i>string</i>) определяет язык, используемый в экспортируемой диаграмме Gantt</td>
+  <td>(<i>string</i>) задаёт язык, который будет использоваться в выходной диаграмме Gantt</td>
   </tr> 
   <tr>
   <td class="webixdoc_links0"><b>start</b></td>
-  <td>(<i>string</i>) начальная дата диапазона данных для экспорта. Формат даты соответствует конфигурации [date_format](api/config/date_format.md)</td>
+  <td>(<i>string</i>) задаёт начальную дату диапазона данных, которые будут представлены в выходной диаграмме Gantt. Формат даты задаётся конфигурацией [date_format](api/config/date_format.md)</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>end</b></td>
-  <td>(<i>string</i>) конечная дата диапазона данных для экспорта. Формат даты соответствует конфигурации [date_format](api/config/date_format.md)</td>
+  <td>(<i>string</i>) задаёт конечную дату диапазона данных, которые будут представлены в выходной диаграмме Gantt. Формат даты задаётся конфигурацией [date_format](api/config/date_format.md)</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>data</b></td>
-  <td>(<i>object</i>) предоставляет пользовательский источник данных, который будет отображён в экспортируемой диаграмме Gantt</td>
+  <td>(<i>object</i>) задаёт произвольный источник данных, который будет представлен в выходной диаграмме Gantt</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>header</b></td>
-  <td>(<i>string</i>) добавляет заголовок к экспортируемому PDF-изображению. Можно использовать любой HTML-контент</td>
+  <td>(<i>string</i>) задаёт заголовок, который будет добавлен к выходному изображению PDF. Обратите внимание, здесь можно использовать любой HTML</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>footer</b></td>
-  <td>(<i>string</i>) добавляет подвал к экспортируемому PDF-изображению. Можно использовать любой HTML-контент</td>
+  <td>(<i>string</i>) задаёт нижний колонтитул, который будет добавлен к выходному изображению PDF. Обратите внимание, здесь можно использовать любой HTML</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) задаёт API-эндпоинт для запроса экспорта. Полезно при использовании локального сервиса экспорта. По умолчанию <strong>https://export.dhtmlx.com/gantt</strong></td>
+  <td>(<i>string</i>) задаёт конечную точку API для запроса. Может использоваться с локальной установкой сервиса экспорта. Значение по умолчанию — <strong>https://export.dhtmlx.com/gantt</strong></td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>raw</b></td>
-  <td>(<i>boolean</i>) экспортирует всю разметку Gantt как есть, включая пользовательские элементы. По умолчанию <em>false</em>. [Подробнее ниже](guides/export.md#exportingcustommarkupandstyles)</td>
+  <td>(<i>boolean</i>) определяет, что весь разметочный код Gantt будет экспортирован как есть, со всеми пользовательскими элементами. Значение по умолчанию — <em>false</em>. <a href="#exportingcustommarkupandstyles">Подробнее ниже</a></td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>callback</b></td>
-  <td>(<i>function</i>) получает JSON-объект с URL для загрузки сгенерированного PDF/PNG-файла</td>
+  <td>(<i>function</i>) Если нужно получить URL для скачивания сгенерированного файла PDF/PNG, можно использовать свойство callback. Оно получает JSON-объект с полем url</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>additional_settings</b></td>
-  <td>(<i>object</i>) дополнительные настройки для метода <b>exportToPDF()</b>, включая: <ul> <li><b>format</b> - (<i>string</i>) формат выходного файла: <i>'A3', 'A4', 'A5', 'Legal', 'Letter', 'Tabloid'</i></li> <li><b>landscape</b> - (<i>boolean</i>) ориентация выходного файла; применяется только если задан "format"</li> <li><b>width</b> - (<i>string | number | "content"</i>) ширина страницы для многостраничного экспорта</li> <li><b>height</b> - (<i>string | number | "content"</i>) высота страницы для многостраничного экспорта</li> <li><b>merge_pages</b> - (<i>boolean</i>) включает экспорт нескольких страниц в один файл; если <i>false</i>, потребуется несколько экспортов для всех данных Gantt</li> <li><b>fixed_headers</b> - (<i>boolean</i>) отображает заголовки грида и шкалы времени на каждой странице; по умолчанию <i>false</i>. Работает только при включённом <b>merge_pages</b></li> </ul></td>
+  <td>(<i>object</i>) объект с дополнительными настройками для метода <b>exportToPDF()</b>. Объект может содержать следующие атрибуты: <ul> <li><b>format</b> - (<i>string</i>) формат выходного файла: <i>"A0", "A1", "A2", "A3", "A4", "A5", "A6", "Legal", "Ledger", "Letter", "Tabloid"</i></li> <li><b>landscape</b> - (<i>boolean</i>) портретная или альбомная ориентация выходного файла. Атрибут работает только если указан атрибут \"format\".</li> <li><b>width</b> - (<i>string | number | "content"</i>) ширина выходной страницы. Атрибут используется при экспорте нескольких страниц. </li> <li><b>height</b> - (<i>string | number | "content"</i>) высота выходной страницы. Атрибут используется при экспорте нескольких страниц.</li> <li><b>merge_pages</b> - (<i>boolean</i>) включает [многостраничный экспорт](api/method/exporttopdf.md#multi-page-export) в одном файле; если установить <i>false</i>, придётся экспортировать данные несколько раз, чтобы получить все данные Gantt</li> <li><b>fixed_headers</b> - (<i>boolean</i>) включает отображение заголовков грида и временной шкалы на каждой странице; по умолчанию <i>false</i>. Работает только с включённой настройкой <b>merge_pages</b></li> <li><b>margins</b> - (<i>object</i>) объект с верхними, нижними, левыми и правыми полями для выходного файла PDF. <a href="#margins-of-the-output-pdf-file">Подробнее ниже</a></li> <li><b>header</b> - (<i>string</i>) задаёт заголовок, который будет добавлен на каждой странице выходного файла PDF. <a href="#headerfooter-of-the-output-file">Подробнее ниже</a></li> <li><b>footer</b> - (<i>string</i>) задаёт нижний колонтитул, который будет добавлен на каждой странице выходного файла PDF. <a href="#headerfooter-of-the-output-file">Подробнее ниже</a></li> </ul></td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>additional_settings</b></td>
-  <td>(<i>object</i>) дополнительные настройки для метода <b>exportToPNG()</b>, включая: <ul> <li><b>width</b> - (<i>number|string</i>) ширина выходного изображения</li> <li><b>height</b> - (<i>number|string</i>) высота выходного изображения</li> Эти параметры игнорируются, если задан <b>slice_archive</b>. <li><b>slice_archive</b> - (<i>boolean|object</i>) позволяет экспортировать большие диаграммы по частям, сохраняемым в архив. Если объект, можно указать <b>width</b> и <b>height</b>. По умолчанию 1000×1000 при значении <i>true</i>.</li> <li><b>slice_check</b> - (<i>boolean</i>) добавляет HTML-страницу в архив для проверки корректности экспорта всех частей.</li> </ul></td>
+  <td>(<i>object</i>) объект с дополнительными настройками для метода <b>exportToPNG()</b>. Объект может содержать следующие атрибуты: <ul> <li><b>width</b> - (<i>number|string</i>) ширина выходной страницы</li> <li><b>height</b> - (<i>number|string</i>) высота выходной страницы</li> Атрибуты <b>width</b> и <b>height</b> будут проигнорированы, если указан <b>slice_archive</b>. <li><b>slice_archive</b> - (<i>boolean|object</i>) позволяет сохранять большую диаграмму по частям и получать их в архиве. В виде объекта атрибут принимает параметры <b>width</b> и <b>height</b>. Если размер куска не определён (то есть <i>slice_archive: true</i>), используются значения по умолчанию 1000×1000. </li> <li><b>slice_check</b> - (<i>boolean</i>) добавляет HTML-страницу в архив. Эта страница позволяет проверить, что все части экспортированы корректно.</li> </ul></td>
   </tr>
   </tbody>
 </table>
 
 
-**Пример вызова методов экспорта с дополнительными параметрами**
-~~~js
+~~~js title="Calling export methods with optional properties"
 gantt.exportToPDF({
-    name:"mygantt.pdf",
-    header:"<h1>My company</h1>",
-    footer:"<h4>Bottom line</h4>",
-    locale:"en",
-    start:"01-04-2013",
-    end:"11-04-2013",
-    skin:'terrace',
-    data:{ },
-    server:"https://myapp.com/myexport/gantt",
-    raw:true,
-    callback: function(res){
+    name: "mygantt.pdf",
+    header: "<h1>My company</h1>",
+    footer: "<h4>Bottom line</h4>",
+    locale: "en",
+    start: "01-04-2026",
+    end: "11-04-2026",
+    skin: "terrace",
+    data: {},
+    server: "https://myapp.com/myexport/gantt",
+    raw: true,
+    callback: (res) => {
         alert(res.url);
     }
 });
 
 gantt.exportToPNG({
-    name:"mygantt.png",
-    header:"<h1>My company</h1>",
-    footer:"<h4>Bottom line</h4>",
-    locale:"en",
-    start:"01-04-2013",
-    end:"11-04-2013",
-    skin:'terrace',
-    data:{ },
-    server:"https://myapp.com/myexport/gantt",
-    raw:true,
-    callback: function(res){
+    name: "mygantt.png",
+    header: "<h1>My company</h1>",
+    footer: "<h4>Bottom line</h4>",
+    locale: "en",
+    start: "01-04-2026",
+    end: "11-04-2026",
+    skin: "terrace",
+    data: {},
+    server: "https://myapp.com/myexport/gantt",
+    raw: true,
+    callback: (res) => {
         alert(res.url);
     }
 });
 ~~~
 
-## Имя выходного файла
+## Название выходного файла
 
-Чтобы задать пользовательское имя для экспортируемого файла, используйте свойство **name** в параметрах методов [exportToPDF/exportToPNG](guides/export.md#parametersoftheexportmethods):
+Чтобы задать пользовательское имя выходного файла, используйте свойство **name** в параметре методов [exportToPDF/exportToPNG](guides/export.md#parameters-of-the-export-methods):
 
 ~~~js
 gantt.exportToPDF({
-    name:"my_beautiful_gantt.pdf"/*!*/
+    name: "my_beautiful_gantt.pdf"
 });
 ~~~
 
 ## Язык выходного файла
 
-По умолчанию экспортируемая диаграмма Gantt использует тот же язык, что и на странице.
+По умолчанию диаграмма Gantt будет экспортироваться на том же языке, что и на странице.
 
-Чтобы экспортировать на другом языке, укажите свойство **locale** в параметрах методов [exportToPDF/exportToPNG](guides/export.md#parametersoftheexportmethods):
+Чтобы задать пользовательский язык выходного файла, используйте свойство **locale** в параметре методов [exportToPDF/exportToPNG](guides/export.md#parameters-of-the-export-methods):
 
 ~~~js
 gantt.exportToPDF({
-    name:"mygantt.pdf",
-    locale:"de" /*!*/
+    name: "mygantt.pdf",
+    locale: "de"
 });
 ~~~
 
+## Данные для экспорта
 
-## Данные для экспорта {#datatoexport}
+Чтобы задать задачи, которые должны быть представлены в выходном PDF или PNG файле, используйте один из следующих способов:
 
-Есть два способа указать, какие задачи попадут в экспортируемый PDF или PNG:
-
-1. [Задать диапазон дат для экспортируемых данных.](#daterange)
-2. [Указать собственный источник данных для экспорта.](#customdata)
+1. <a href="#daterange">Укажите диапазон дат выходных данных.</a>
+2. <a href="#customdata">Укажите произвольный источник данных для экспорта.</a>
 
 <a id="daterange"></a>
 
-### Задание диапазона дат для экспорта задач
+### Указание диапазона дат выходных задач
 
-Чтобы задать диапазон задач для экспорта, используйте свойства **start** и **end** в параметрах методов [exportToPDF/exportToPNG](guides/export.md#parametersoftheexportmethods):
+Чтобы задать диапазон задач, которые будут представлены в выходном документе, используйте свойства **start** и **end** в параметре методов [exportToPDF/exportToPNG](guides/export.md#parameters-of-the-export-methods):
 
 ~~~js
 gantt.exportToPDF({
-    name:"mygantt.pdf",
-    start:"01-04-2013",/*!*/
-    end:"11-04-2013"/*!*/
+    name: "mygantt.pdf",
+    start: "01-04-2026",
+    end: "11-04-2026"
 });
 ~~~
 
 :::note
-Имейте в виду, что формат даты определяется конфигурацией [date_format](api/config/date_format.md).
+Обратите внимание, формат даты определяется конфигурацией [date_format](api/config/date_format.md).
 :::
 
-<a id="customdata"></a>
+### Установка произвольного источника данных для экспорта {#customdata}
 
-### Задание пользовательского источника данных для экспорта
+Чтобы экспортировать диаграмму Gantt с произвольным набором данных (то есть не тем, который представлен в исходной диаграмме), используйте свойство **data** в параметре методов 
+[exportToPDF/exportToPNG](guides/export.md#parameters-of-the-export-methods):
 
-Если вы хотите экспортировать диаграмму Gantt с другим набором данных, отличным от отображаемого на странице, используйте свойство **data** в параметрах методов 
-[exportToPDF/exportToPNG](guides/export.md#parametersoftheexportmethods):
-
-~~~js
+~~~js {2}
 gantt.exportToPDF({
-    data:{/*!*/
-        data:[
-            {id:1, text:"Project #1", start_date:"01-04-2013", duration:18},
-            {id:2, text:"Task #1", start_date:"02-04-2013",duration:8, parent:1},
-            {id:3, text:"Task #2", start_date:"11-04-2013",duration:8, parent:1}
+    data: {
+        tasks: [
+            { id: 1, text: "Project #1", start_date: "01-04-2026", duration: 18 },
+            { id: 2, text: "Task #1", start_date: "02-04-2026", duration: 8, parent: 1 },
+            { id: 3, text: "Task #2", start_date: "11-04-2026", duration: 8, parent: 1 }
         ],
-        links:[
-            {id:1, source:1, target:2, type:"1"},
-            {id:2, source:2, target:3, type:"0"},
-            {id:3, source:3, target:4, type:"0"},
-            {id:4, source:2, target:5, type:"2"}
+        links: [
+            { id: 1, source: 1, target: 2, type: "1" },
+            { id: 2, source: 2, target: 3, type: "0" },
+            { id: 3, source: 3, target: 4, type: "0" },
+            { id: 4, source: 2, target: 5, type: "2" }
         ]
     }
 });
 ~~~
 
 :::note
-Обратите внимание, что параметр **data** должен быть объектом с данными; нельзя указывать URL в качестве значения.
+Обратите внимание, что в качестве значения параметра **data** нельзя указать URL, используется только объект данных.
 :::
 
-## Скин экспортируемой диаграммы Gantt {#skinoftheoutputganttchart}
+## Скин выходной диаграммы Gantt
 
-По умолчанию экспортируемая диаграмма Gantt сохраняет тот же скин, что и на странице.
+По умолчанию диаграмма Gantt будет экспортирована с тем же скином, что и на странице.
 
-Чтобы применить другой скин к экспортируемому PNG или PDF-файлу, используйте свойство **skin** в параметрах методов [exportToPDF/exportToPNG](guides/export.md#parametersoftheexportmethods):
+Чтобы задать другой скин для выходного PNG или PDF, используйте свойство **skin** в параметре методов [exportToPDF/exportToPNG](guides/export.md#parameters-of-the-export-methods):
 
 ~~~js
 gantt.exportToPDF({
-    name:"mygantt.pdf",
-    skin:"material"/*!*/ 
+    name: "mygantt.pdf",
+    skin: "material"
 });
 ~~~
 
-[Смотрите полный список доступных скинов Gantt](guides/skins.md).
+[Посмотреть полный список доступных скинов Gantt](guides/skins.md).
 
 
-## Заголовок/подвал выходного файла {#headerfooteroftheoutputfile}
+## Заголовок/нижний колонтитул выходного файла
 
-Вы можете добавить заголовок или подвал в экспортируемый PNG или PDF файл, используя свойства **header** и **footer** в параметрах методов [exportToPDF/exportToPNG](guides/export.md#parametersoftheexportmethods):
+Чтобы добавить заголовок/нижний колонтитул к выходному PNG или PDF файлу, используйте свойства **header**/**footer** в параметрах методов [exportToPDF/exportToPNG](guides/export.md#parameters-of-the-export-methods):
 
 :::note
-В эти параметры можно включать любой HTML. При добавлении изображений убедитесь, что используете глобальные пути для атрибута "src".
+Заметьте, вы можете использовать любой HTML при указании параметров. При использовании изображений помните, что нужно задавать глобальные пути в качестве значения атрибута "src".
 :::
 
 ~~~js
 gantt.exportToPDF({
-    name:"mygantt.pdf",
-    header:"<h1>My company</h1>",/*!*/
-    footer:"<h4>Bottom line</h4>"/*!*/
+    name: "mygantt.pdf",
+    header: "<h1>My company</h1>",
+    footer: "<h4>Bottom line</h4>"
 });
 ~~~
 
-## Пользовательский стиль для выходного файла {#customstylefortheoutputfile}
+### Заголовок/нижний колонтитул для каждой страницы выходного PDF {#headerfooterforeachpage}
 
-Чтобы настроить стиль экспортируемой диаграммы Gantt, вы можете добавить таблицу стилей с вашими CSS-классами двумя способами:
+Чтобы добавить заголовок/нижний колонтитул для каждой страницы выходного PDF, используйте свойства **header**/**footer** в объекте **additional_settings** метода `exportToPDF`.
 
-- Подключив внешнюю таблицу стилей:
+Вы можете задать номер текущей страницы с помощью элемента с `class="pageNumber"` и общее количество страниц с помощью элемента с `class="totalPages"` в свойствах **header**/**footer**:
 
 ~~~js
 gantt.exportToPDF({
-    name:"calendar.pdf",
-    header:'<link rel="stylesheet" href="http://mysite.com/custom.css">' /*!*/
+    additional_settings: {
+        format: "A4",
+        // правильные поля необходимы для корректного рендирования заголовков/нижних колонтитулов
+        margins: {
+            top: 10,
+            bottom: 10,
+            left: 0.1,
+            right: 1
+        },
+        header: "Each page header",
+        footer: 'Page: <span class="pageNumber"></span>/<span class="totalPages"></span>'
+    }
 });
 ~~~
 
-- Или встроив стили напрямую с помощью тега 'style':
+Обратите внимание, что эти настройки работают только при указанных полях (margins) и если есть достаточно места для корректного отображения заголовков/нижних колонтитулов. В противном случае заголовки/нижние колонтитулы будут выведены за пределы графика. Рекомендуется установить минимальные поля в 10 мм для простой текстовой строки.
+
+## Отступы выходного PDF файла
+
+Чтобы добавить отступы к выходному PDF файлу, используйте свойство **margins** в объекте **additional_settings** метода 
+[exportToPDF](guides/export.md#parameters-of-the-export-methods). Свойство **margins** работает как для одностраничного, так и для
+[multipage export](api/method/exporttopdf.md#multi-page-export).
+
+Значения настроек полей задаются числами:
 
 ~~~js
 gantt.exportToPDF({
-    name:"calendar.pdf",
-    header:'<style>... custom css classes here ...</style>' /*!*/
+    additional_settings: {
+        margins: {
+            top: 5,
+            bottom: 10,
+            left: 2,
+            right: 2
+        },
+    },
 });
 ~~~
 
-Обратите внимание, что этот способ работает с HTTP-ссылками, доступными глобально. Если ваши CSS-файлы размещены во внутренней сети или локально, вы можете встроить стили напрямую следующим образом:
+Если какое-либо из настроек полей не указано, оно будет проигнорировано.
+
+Значения по умолчанию задаются в миллиметрах, но можно указать и дюймы, добавив свойство <b>unit: "inch"</b>:
+
+~~~js {8}
+gantt.exportToPDF({
+    additional_settings: {
+        margins: {
+            top: 5,
+            bottom: 10,
+            left: 2,
+            right: 2,
+            unit: "inch"
+        },
+    },
+});
+~~~
+
+## Пользовательский стиль выходного файла {#customstylefortheoutputfile}
+
+Чтобы применить собственный стиль к диаграмме, подключите таблицу стилей с вашими кастомными CSS-классами:
+
+- через ссылку (link):
 
 ~~~js
 gantt.exportToPDF({
-    header:"<style>.tier1{background: red; color:white;}</style>"
+    name: "calendar.pdf",
+    header: '<link rel="stylesheet" href="http://mysite.com/custom.css">'
+});
+~~~
+
+- или через тег 'style':
+
+~~~js
+gantt.exportToPDF({
+    name: "calendar.pdf",
+    header: '<style>... custom css classes here ...</style>'
+});
+~~~
+
+
+Замечание: вышеупомянутый способ работает для глобального HTTP-ссылки. Если у вас CSS-классы указаны в локальной/интранет-среде, можно встроить все стили как в примере ниже:
+
+~~~js
+gantt.exportToPDF({
+    header: "<style>.tier1{background: red; color:white;}</style>"
 });
 ~~~
 
 :::note
-Дополнительные примеры смотрите в статье [How to add resource chart or custom styles in the exported PDF file](guides/how-to.md#howtoaddresourcechartorcustomstylesintheexportedpdffile).
+Для большего числа примеров смотрите статью [Решения по добавлению ресурcного графика или пользовательских стилей в экспортированный PDF-файл](guides/how-to.md#how-to-add-resource-chart-or-custom-styles-in-the-exported-pdf-file).
 :::
 
 ### Сбор всех стилей для функции экспорта
 
-Иногда стили разбросаны по нескольким файлам, которые недоступны публично, и неудобно подключать их по отдельности. Вы можете собрать все стили, используемые на странице, и включить их в header для экспорта.
+Иногда стили прописаны в разных файлах, недоступных для публичного доступа, и неудобно подключать стили по отдельности. Есть способ собрать все стили вместе для экспорта.
 
-Все стили доступны в объекте **document.styleSheets**. Если стили находятся на одном домене, вы можете собрать их CSS-правила и вставить в **header**. Пример:
+Все стили хранятся в объекте `document.styleSheets` на HTML-странице. Если используется элемент `<style>` или `<link>`, подключённый с того же сайта, можно собрать все стили и затем указать их в заголовке. Ниже приведён пример:
 
 ~~~js
-const styles = []
-for (el in document.styleSheets) {
+const styles = [];
+
+for (const styleSheet of document.styleSheets) {
     try {
-        const rules = (document.styleSheets[el]).cssRules;
-        for (rule in rules) {
-            styles.push(rules[rule].cssText)
+        const rules = styleSheet.cssRules;
+
+        for (const rule of rules) {
+            styles.push(rule.cssText);
         }
+    } catch (error) {
+        // Игнорировать таблицы стилей, которые невозможно прочитать
     }
-    catch (e) { }
 }
 
 gantt.exportToPDF({
     raw: true,
     header: "<style>" + styles.join(" ") + "</style>"
 });
-~~~ 
+~~~
+
+**Связанный пример**: [Export Gantt with custom icons to PDF](https://snippet.dhtmlx.com/osbscj62)
 
 
-**Related example:** [Export Gantt with custom icons to PDF](https://snippet.dhtmlx.com/osbscj62)
+**Связанный пример**: [Export Gantt with resource load diagram to PDF with no need to specify styles](https://snippet.dhtmlx.com/duf5ijuv)
 
+## Экспорт пользовательских разметки и стилей {#exportingcustommarkupandstyles}
 
-**Related example:** [Export Gantt with resource load diagram to PDF with no need to specify styles](https://snippet.dhtmlx.com/duf5ijuv)
-
-
-## Экспорт пользовательской разметки и стилей {#exportingcustommarkupandstyles}
-
-По умолчанию диаграмма Gantt экспортируется на основе заданной конфигурации и загруженных данных, однако [пользовательские элементы](guides/baselines.md) и некоторые шаблоны не включаются.
-
-Чтобы экспортировать всю разметку Gantt так, как она отображается, включая все пользовательские элементы, установите свойство **raw:true** в параметрах методов [exportToPDF/exportToPNG](guides/export.md#parametersoftheexportmethods).
+По умолчанию диаграмма Gantt экспортируется на основе заданной конфигурации и загруженных данных, в то время как [пользовательские элементы](guides/baselines.md) и некоторые шаблоны не экспортируются.
+Чтобы экспортировать всю разметку Gantt как есть, со всеми пользовательскими элементами, можно установить свойство **raw: true** в параметре методов [exportToPDF/exportToPNG](guides/export.md#parameters-of-the-export-methods).
 
 ~~~js
 gantt.exportToPDF({
-    raw:true
+    raw: true
 });
 ~~~
 
-Имейте в виду, что пользовательским элементам могут понадобиться [пользовательские стили](guides/export.md#customstylefortheoutputfile) для корректного отображения.
+Обратите внимание, что пользовательские элементы потребуют указания [пользовательских стилей](guides/export.md#customstylefortheoutputfile) для корректного отображения.
 
-Также при использовании этого режима увеличивается размер API-запроса. Крупные диаграммы могут превысить лимит в 10 МБ онлайн-сервиса экспорта и не экспортироваться. В таких случаях потребуется установить [экспортный сервис](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) локально и скорректировать допустимый размер запроса.
+Учтите, что использование этого режима увеличивает размер API-запроса. Большие диаграммы могут превысить лимит онлайн-экспорта в 10 МБ и экспортаmay not be possible таким образом.
+В таком случае вам потребуется локально иметь [сервис экспорта](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) и увеличить размер запроса.
 
+Проверьте [системные требования](guides/export-requirements.md) для локальной установки сервисов экспорта.
 
-См. [системные требования](guides/export-requirements.md) для локальной настройки сервисов экспорта.
+## Экспорт HTML-элементов
 
-## Экспорт HTML-элементов {#exportinghtmlelements}
+При экспорте диаграммы Gantt в форматы PNG и PDF следует учитывать, что экспорт HTML-элементов ограничен по причине возможной небезопасности.
 
-При экспорте диаграммы Gantt в PNG или PDF учтите, что экспорт HTML-элементов имеет ограничения по соображениям безопасности.
+Существуют HTML-элементы, экспорт которых не полностью разрешён, такие как `<canvas>`, `<svg>`, `<script>` и изображения с атрибутом *src*, содержащие изображение в формате Base64. Однако существуют безопасные способы экспорта изображений в форматах SVG и Base64:
 
-Некоторые HTML-элементы, такие как `<canvas>`, `<svg>`, `<script>`, а также изображения с Base64-данными в атрибуте *src*, запрещены. Однако есть безопасные способы экспорта изображений в SVG и Base64:
-
-- Используйте элемент `<img>` с атрибутом *src*, указывающим на URL SVG-изображения (работает для экспорта PNG и JPG, но не Base64), например:
+- можно использовать элемент `<img>` с атрибутом *src*, содержащим URL изображения в формате SVG (подходит для PNG и JPG форматов, не работает с Base64), например:
 
 ~~~html
 <img src="https://www.svgrepo.com/download/530597/hat.svg">
 ~~~
 
-- Используйте CSS-стили, такие как *background* или *background-image* со значением `url`, указывающим на URL изображения или Base64-данные (работает для экспорта PNG, JPG и SVG):
+- можно использовать элементы style, такие как *background* или *background-image* и задавать значение `url` со ссылкой на изображение или изображение в формате Base64 (подходит для PNG/JPG/SVG форматов)
 
 ~~~css
 .red {
@@ -435,9 +498,6 @@ gantt.exportToPDF({
 }
 ~~~
 
+**Связанный пример**: [Exporting safe and insecure HTML elements to PDF](https://snippet.dhtmlx.com/hj6w4dk3?text="gantt")
 
-**Related example:** [Exporting safe and insecure HTML elements to PDF](https://snippet.dhtmlx.com/hj6w4dk3?text="gantt")
-
-
-Если у вас есть модуль экспорта и требуется экспортировать HTML-элементы, которые не поддерживаются онлайн-сервером экспорта, вы можете обратиться в поддержку за инструкциями по модификации вашего модуля для снятия этих ограничений. Имейте в виду, что это может сделать ваш сервер уязвимым для XSS-атак.
-
+Если у вас есть модуль экспорта и вам нужно экспортировать HTML-элементы, которые не поддерживаются нашим онлайн-сервером экспорта, вы можете подать запрос в службу поддержки за инструкциями по внесению изменений в ваш модуль, чтобы снять ограничения. Однако следует учитывать, что ваш сервер станет подвержен XSS-атакам.

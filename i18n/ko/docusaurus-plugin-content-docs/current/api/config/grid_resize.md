@@ -1,16 +1,22 @@
 ---
 sidebar_label: grid_resize
-title: grid_resize config
-description: "그리드의 오른쪽 경계를 드래그하여 크기를 조절할 수 있도록 합니다"
+title: grid_resize 구성
+description: "오른쪽 그리드의 경계선을 드래그하여 그리드를 크기 조절 가능하게 만듭니다"
 ---
 
 # grid_resize
+
+:::warning
+이 속성은 더 이상 사용되지 않습니다.
+:::
+
 :::info
 이 기능은 PRO 에디션에서만 사용할 수 있습니다. 
 :::
+
 ### Description
 
-@short: 그리드의 오른쪽 경계를 드래그하여 크기를 조절할 수 있도록 합니다
+@short: 오른쪽 그리드의 경계선을 드래그하여 그리드를 크기 조절 가능하게 만듭니다
 
 ### Example
 
@@ -26,7 +32,7 @@ gantt.config.grid_resize = true; /*!*/
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**기본 값:** false
 
 ### Related samples
 - [Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
@@ -34,7 +40,7 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
- 이 속성은 현재 더 이상 권장되지 않습니다. 대신 [gantt.config.layout](api/config/layout.md)을 사용하고 필요한 경우 grid 및 resizer 객체를 구성하세요. 자세한 내용은 [여기](guides/layout-config.md#defaultlayout)에서 확인할 수 있습니다. 
+이 속성은 더 이상 사용되지 않습니다. 대신 [gantt.config.layout](api/config/layout.md) 를 사용하고 필요한 구성으로 내부의 grid와 resizer 객체를 지정하십시오. 자세한 내용은 [here](guides/layout-config.md#default-layout)를 확인하십시오.
 :::
 
 ~~~js
@@ -64,5 +70,4 @@ gantt.init("gantt_here");
 - [컬럼 지정하기](guides/specifying-columns.md)
 
 ### Change log
-- 버전 5.0부터 deprecated 처리됨
-
+- 버전 5.0부터 더 이상 사용되지 않음

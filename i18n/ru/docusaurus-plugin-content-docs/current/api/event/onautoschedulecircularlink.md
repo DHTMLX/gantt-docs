@@ -1,7 +1,7 @@
 ---
 sidebar_label: onAutoScheduleCircularLink
 title: onAutoScheduleCircularLink event
-description: "Срабатывает при обнаружении циклов зависимостей во время авторасписания"
+description: "срабатывает, если во время автоматического планирования обнаружены циклы зависимостей"
 ---
 
 # onAutoScheduleCircularLink
@@ -10,19 +10,19 @@ description: "Срабатывает при обнаружении циклов 
 :::
 ### Description
 
-@short: Срабатывает при обнаружении циклов зависимостей во время авторасписания
+@short: Вызывается, если во время автоматического планирования обнаружены циклы зависимостей
 
 @signature: onAutoScheduleCircularLink: (groups: any[]) =\> void;
 
 ### Parameters
 
-- `groups` - (required) *array* - массив, содержащий обнаруженные циклы зависимостей в gantt
+- `groups` - (required) *array* - массив циклов зависимостей, обнаруженных в gantt
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAutoScheduleCircularLink",function(groups){
-    // разместите здесь любую пользовательскую логику
+    // любая ваша логика здесь
 });
 ~~~
 
@@ -32,19 +32,19 @@ gantt.attachEvent("onAutoScheduleCircularLink",function(groups){
 ### Details
 
 :::note
- Для использования этого метода необходимо включить плагин [auto_scheduling](guides/extensions-list.md#autoscheduling). 
+Метод требует включенного плагина [auto_scheduling](guides/extensions-list.md#autoscheduling). 
 :::
 
-Задачи остаются без изменений при возникновении этого события.
+Задачи не изменяются при срабатывании этого события. 
 
-Параметр *groups* содержит массив циклов зависимостей, найденных в gantt. 
-Каждый элемент массива представляет собой группу задач и связей, образующих цикл.
+Параметр *groups* представляет собой массив циклов зависимостей, обнаруженных в gantt. 
+Каждый элемент массива является группой задач и связей, образующих цикл.
 
 ~~~js
 [ 
     { 
-        tasks: [//id задач, участвующих в цикле], 
-        links: [//id связей, участвующих в цикле]
+        tasks: [//ids of tasks connected in a loop], 
+        links: [//ids of links connected in a loop]
     },
     {
         
@@ -54,15 +54,12 @@ gantt.attachEvent("onAutoScheduleCircularLink",function(groups){
 ]
 ~~~
 
-Посмотрите пример ниже:
-
-![on_autoschedule_circular_link](/img/on_autoschedule_circular_link.png)
-
+Смотрите приведенный ниже пример:
 
 - Задача #3 имеет id = 10
 - Задача #4.1 имеет id = 12
-- Связь от конца задачи #3 к началу задачи #4 имеет id = 1
-- Связь от конца задачи #4.1 к началу задачи #3 имеет id = 2
+- Связь от конца Задачи #3 к началу Задачи #4 имеет id = 1
+- Связь от конца Задачи #4.1 к началу Задачи #3 имеет id = 2
 
 Параметр *groups* будет содержать следующий объект группы:
 
@@ -92,8 +89,7 @@ gantt.attachEvent("onAutoScheduleCircularLink",function(groups){
 - [onCircularLinkError](api/event/oncircularlinkerror.md)
 
 ### Related Guides
-- [Автоматическое планирование](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
 ### Change log
 - добавлено в версии 4.1
-

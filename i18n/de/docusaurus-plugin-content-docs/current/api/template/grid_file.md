@@ -1,7 +1,7 @@
 ---
 sidebar_label: grid_file
 title: grid_file template
-description: "definiert das Icon für untergeordnete Elemente in der Baumspalte"
+description: "legt das Symbol der untergeordneten Elemente in der Baumspalte fest"
 ---
 
 # grid_file
@@ -14,10 +14,10 @@ description: "definiert das Icon für untergeordnete Elemente in der Baumspalte"
 
 ### Parameters
 
-- `task` - (required) *Task* - das Task-Objekt
+- `task` - (erforderlich) *Task* - das Task-Objekt
 
 ### Returns
-- ` text` - (string) - html-Text, der im Gantt angezeigt wird
+- ` text` - (string) - HTML-Text, der im Gantt gerendert wird
 
 ### Example
 
@@ -25,8 +25,8 @@ description: "definiert das Icon für untergeordnete Elemente in der Baumspalte"
 gantt.templates.grid_file = function(item) {
     return "<div class='gantt_tree_icon gantt_file'></div>";
 };
-~~~
+~~~ 
 
 ### Related Guides
-- ["Vorlagen des Grids"](guides/table-templates.md)
-- ["Konfiguration der Baumspalte"](guides/tree-column.md)
+- [Vorlagen des Grids](guides/table-templates.md)
+- [Konfiguration der Baumspalte](guides/tree-column.md)

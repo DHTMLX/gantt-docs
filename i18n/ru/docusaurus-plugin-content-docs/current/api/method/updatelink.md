@@ -1,20 +1,20 @@
 ---
 sidebar_label: updateLink
-title: updateLink method
-description: "обновляет указанный dependency link"
+title: Метод updateLink
+description: "обновляет указанную зависимую связь"
 ---
 
 # updateLink
 
 ### Description
 
-@short: Обновляет указанный dependency link
+@short: Обновляет указанную зависимую связь
 
 @signature: updateLink: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -    идентификатор задачи
+- `id` - (обязателен) *string | number* - идентификатор задачи
 
 ### Example
 
@@ -26,26 +26,27 @@ gantt.addLink({
     type:1
 });
 
-gantt.getLink(5).type = 2; // изменяет данные ссылки
-gantt.updateLink(5); // применяет обновленную ссылку визуально и функционально
+gantt.getLink(5).type = 2; //changes link's data
+gantt.updateLink(5); //renders the updated link
 ~~~
 
 ### Details
 
 :::note
- Метод вызывает событие [onAfterLinkUpdate](api/event/onafterlinkupdate.md). 
-:::
+Метод вызывает событие [onAfterLinkUpdate](api/event/onafterlinkupdate.md). 
+::: 
+
 :::note
- Если включен dataProcessor, этот метод активирует [DataProcessor](guides/server-side.md). 
+Метод инициирует DataProcessor, если dataProcessor включён. 
 :::
 
-Этот метод следует использовать после любых изменений объекта ссылки, чтобы обновить внутреннее состояние Gantt, обновить соответствующие UI компоненты и отправить изменения на сервер.
+Этот метод следует вызывать после изменения объекта ссылки, чтобы обновить состояние Gantt, перекрасить связанные элементы интерфейса и отправить изменения на сервер.
 
-Вызов этой функции инициирует событие [onAfterLinkUpdate](api/event/onafterlinkupdate.md), что может привести к дополнительным перерасчетам.
+Вызов этого метода вызовет событие onAfterLinkUpdate, которое может привести к дополнительным перерасчётам.
 
-При использовании [DataProcessor](guides/server-side.md) этот метод инициирует запрос **update** на сервер.
+Если вы используете [DataProcessor](guides/server-side.md), вызов этого метода инициирует запрос на **обновление** на сервер.
 
-Для визуального обновления, которое не требует сохранения, лучше использовать метод [refreshLink](api/method/refreshlink.md). Он просто перерисует ссылку в Gantt без запуска дополнительных расчетов или общения с сервером.
+Для внесения визуальных изменений, которые не требуют сохранения, используйте метод [refreshLink](api/method/refreshlink.md) вместо этого. Это перерисует запись в Gantt без дополнительных вычислений или запросов к серверу.
 
 ~~~js
 let selectedLink = null;
@@ -68,5 +69,4 @@ gantt.attachEvent("onLinkClick", function(id,e){
 - [onAfterLinkUpdate](api/event/onafterlinkupdate.md)
 
 ### Related Guides
-- [Интеграция с серверной стороной](guides/server-side.md#updatingdataontheserver)
-
+- [Server-Side Integration](guides/server-side.md)

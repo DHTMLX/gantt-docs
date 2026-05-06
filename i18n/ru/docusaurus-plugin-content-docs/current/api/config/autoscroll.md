@@ -1,14 +1,14 @@
 ---
 sidebar_label: autoscroll
 title: autoscroll config
-description: "позволяет диаграмме Ганта автоматически прокручивать содержимое при перетаскивании задачи или связи за пределы видимой области браузера"
+description: "включает автоскролл во время перетаскивания задачи или ссылки за пределы текущего экрана браузера"
 ---
 
 # autoscroll
 
 ### Description
 
-@short: Позволяет диаграмме Ганта автоматически прокручивать содержимое при перетаскивании задачи или связи за пределы видимой области браузера
+@short: Включает автоскроллинг во время перетаскивания задачи или ссылки за пределы текущего экрана браузера
 
 @signature: autoscroll: boolean
 
@@ -19,29 +19,30 @@ gantt.config.autoscroll = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
+
 
 ### Related samples
-- [Working with 30000 tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/13_smart_rendering.html)
+- [Работа с 30000 задачами](https://docs.dhtmlx.com/gantt/samples/02_extensions/13_smart_rendering.html)
 
 ### Details
 
-До версии 7.1.11 для включения функции **autoscroll** необходимо было использовать [зарезервированные views и их специфические ID для scrollbars](guides/layout-config.md#requiredviewsandsettings).
+Note that **up to version 7.1.11**
+you need to use [зарезервированные представления и их идентификаторы для полос прокрутки](guides/layout-config.md#required-views-and-settings) while using the **autoscroll** option. 
 
 ~~~js
-// горизонтальная scrollbar:
+// horizontal scrollbar:
 {view: "scrollbar", id: "scrollHor"}
-// вертикальная scrollbar:
+// vertical scrollbar:
 {view: "scrollbar", id: "scrollVer"}
 ~~~
 
-Использование других ID приведёт к отображению scrollbars, но функциональность autoscroll работать корректно не будет.
+If you use different names, the scrollbars will work, but the "autoscroll" functionality won't. 
 
-Начиная с версии 7.1.11, scrollbars могут иметь любые имена без влияния на autoscroll.
+Начиная с версии v7.1.11, вы можете использовать любые имена для полос прокрутки.
 
 ### Related API
 - [autoscroll_speed](api/config/autoscroll_speed.md)
 
 ### Change log
 - добавлено в версии 4.2
-

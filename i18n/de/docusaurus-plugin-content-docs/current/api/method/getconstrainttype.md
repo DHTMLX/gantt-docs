@@ -1,25 +1,27 @@
 ---
 sidebar_label: getConstraintType
-title: getConstraintType method
-description: "gibt den auf die Aufgabe angewendeten Constraint-Typ zurück"
+title: getConstraintType Methode
+description: "gibt den dem Task zugewiesenen Constraint-Typ zurück"
 ---
 
 # getConstraintType
-:::info
- Diese Funktion ist nur in der PRO Edition verfügbar. 
+
+:::info 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar. 
 :::
+
 ### Description
 
-@short: Gibt den auf die Aufgabe angewendeten Constraint-Typ zurück
+@short: Gibt den dem Task zugewiesenen Constraint-Typ zurück
 
 @signature: getConstraintType: (task: Task) =\> string
 
 ### Parameters
 
-- `task` - (required) *Task* - ein Task-Objekt
+- `task` - (erforderlich) *Task* - ein Task-Objekt
 
 ### Returns
-- ` constraintType` - (string) - der Constraint-Typ, wie in der [constraint_types](api/config/constraint_types.md) Konfiguration angegeben
+- `constraintType` - (string) - Constraint-Typ, wie in der [constraint_types](api/config/constraint_types.md) Konfiguration definiert.
 
 ### Example
 
@@ -35,13 +37,12 @@ if (constraintType != types.ASAP &&
 
 ### Details
 
-Der zurückgegebene Wert entspricht dem **constraint_type** der Aufgabe, sofern dieser gesetzt wurde.
+Der Rückgabewert entspricht dem Wert von **constraint_type** des Tasks, sofern dieser nicht leer ist.
 
-Ist der **constraint_type** nicht gesetzt, basiert der Rückgabewert auf dem aktuellen Scheduling-Ansatz - entweder "asap" oder "alap", wenn das Scheduling vom Projektende aktiv ist.
+Wenn der **constraint_type** leer ist, hängt der Rückgabewert von der aktuellen Scheduling-Strategie ab – entweder "asap" oder "alap", falls die Planung vom Projektende aus aktiviert ist.
 
-Alle gültigen Constraint-Typen sind in der Konfiguration **gantt.config.constraint_types** zu finden.
+Alle zulässigen Constraint-Typen sind in der **gantt.config.constraint_types**-Konfiguration definiert.
 
 ### Related API
 - [constraint_types](api/config/constraint_types.md)
 - [getConstraintLimitations](api/method/getconstraintlimitations.md)
-

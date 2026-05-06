@@ -1,23 +1,23 @@
 ---
 sidebar_label: isSelectedTask
-title: isSelectedTask method
-description: "проверяет, выбрана ли в данный момент указанная задача"
+title: isSelectedTask метод
+description: "проверяет, выбрана ли указанная задача в данный момент"
 ---
 
 # isSelectedTask
 
 ### Description
 
-@short: Проверяет, выбрана ли в данный момент указанная задача
+@short: Проверяет, выбрана ли указанная задача в данный момент
 
 @signature: isSelectedTask: (task: string | number) =\> boolean
 
 ### Parameters
 
-- `task` - (required) *string | number* -    идентификатор задачи
+- `task` - (required) *string | number* - идентификатор задачи
 
 ### Returns
-- ` value` - (boolean) - возвращает 'true', если задача выбрана, иначе 'false'
+- ` value` - (boolean) - 'true' если указанная задача в данный момент выбрана, иначе - 'false'
 
 ### Example
 
@@ -36,7 +36,7 @@ gantt.templates.task_row_class = function (start, end, task) {
 ### Details
 
 :::note
-note Этот метод предоставляется расширением **multiselect**, поэтому убедитесь, что плагин [multiselect](guides/extensions-list.md#multitaskselection) включен. Дополнительную информацию можно найти в статье [Множественный выбор задач](guides/multiselection.md). 
+Этот метод определяется в расширении **multiselect**, поэтому вам необходимо активировать плагин [multiselect](guides/extensions-list.md#multitaskselection). Подробности читайте в статье [Multi-Task Selection](guides/multiselection.md). 
 :::
 
 ### Related API
@@ -48,5 +48,4 @@ note Этот метод предоставляется расширением *
 - [toggleTaskSelection](api/method/toggletaskselection.md)
 
 ### Related Guides
-- [Множественный выбор задач](guides/multiselection.md)
-
+- [Multi-Task Selection](guides/multiselection.md)

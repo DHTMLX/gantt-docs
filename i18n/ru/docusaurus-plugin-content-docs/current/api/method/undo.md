@@ -1,14 +1,14 @@
 ---
 sidebar_label: undo
-title: undo method
-description: "отменяет изменения, внесённые в gantt"
+title: метод undo
+description: "Отменяет изменения, внесённые в диаграмму Ганта"
 ---
 
 # undo
 
 ### Description
 
-@short: Отменяет изменения, внесённые в gantt
+@short: Отменяет изменения, внесённые в диаграмму Ганта
 
 @signature: undo: () =\> void
 
@@ -24,7 +24,7 @@ gantt.undo();
 ### Details
 
 :::note
- Этот метод является частью расширения **undo**, поэтому убедитесь, что плагин [undo](guides/extensions-list.md#undo) включён. Дополнительную информацию можно найти в статье [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md). 
+Этот метод определён в расширении **undo**, поэтому нужно активировать плагин [undo](guides/extensions-list.md#undo). Подробности читайте в статье [Функциональность Undo/Redo](guides/undo-redo.md). 
 :::
 
 ### Related API
@@ -35,8 +35,7 @@ gantt.undo();
 - [onAfterUndo](api/event/onafterundo.md)
 
 ### Related Guides
-- [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md)
+- [Функциональность Undo/Redo](guides/undo-redo.md)
 
 ### Change log
 - добавлено в версии 4.0
-

@@ -1,14 +1,14 @@
 ---
 sidebar_label: touch
 title: touch config
-description: "управляет включением или отключением поддержки touch для диаграммы Ганта"
+description: "enables/disables the touch support for the Gantt chart"
 ---
 
 # touch
 
 ### Description
 
-@short: Управляет включением или отключением поддержки touch для диаграммы Ганта
+@short: Включает/выключает поддержку касания в Gantt-чарте
 
 @signature: touch: boolean | string
 
@@ -24,18 +24,15 @@ gantt.init("gantt_here");
 
 ### Details
 
-Если задано строкой, единственное допустимое значение - **'force'**.
+Как строка, параметр может принимать единственное значение - **'force'**.
 
-<br>
+Итак, параметр может принимать 3 возможных значения:
 
-Для этого параметра доступны три варианта:
-
-- *true* - dhtmlxGantt пытается определить, поддерживает ли устройство touch, проверяя user-agent браузера, и если обнаруживает устройство с поддержкой touch, включает поддержку touch.
-- *'force'* - поддержка touch включена независимо от используемого устройства.
-- *false* - полностью отключает поддержку touch.
+- *true* - dhtmlxGantt пытается определить сенсорное устройство, анализируя строку user-agent браузера, и, если обнаружено сенсорное устройство, включает поддержку касания.
+- *'force'* - включает постоянную поддержку касания, независимо от типа используемого устройства.
+- *false* - отключает поддержку касания.
 
 ### Related API
 - [touch_drag](api/config/touch_drag.md)
 - [touch_feedback](api/config/touch_feedback.md)
 - [touch_feedback_duration](api/config/touch_feedback_duration.md)
-

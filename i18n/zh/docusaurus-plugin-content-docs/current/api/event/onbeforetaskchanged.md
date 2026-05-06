@@ -1,31 +1,31 @@
 ---
 sidebar_label: onBeforeTaskChanged
-title: onBeforeTaskChanged event
-description: "在用户完成拖拽并释放鼠标按钮后触发，但在任何更改应用之前触发"
+title: onBeforeTaskChanged 事件
+description: "在用户完成拖拽并释放鼠标按钮后，但在应用变更之前触发"
 ---
 
 # onBeforeTaskChanged
 
 ### Description
 
-@short: 在用户完成拖拽并释放鼠标按钮后触发，但在任何更改应用之前触发
+@short: 在用户完成拖拽并释放鼠标按钮后，但在应用变更之前触发
 
 @signature: onBeforeTaskChanged: (id: string | number, mode: string, task: Task) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - 任务的ID
-- `mode` - (required) *string* - 拖拽模式（"resize"、"progress"、"move"、"ignore"）
-- `task` - (required) *Task* - 任务对象的原始状态副本（拖拽前的状态）
+- `id` - (required) *string | number* - 任务 ID
+- `mode` - (required) *string* - 拖放模式（"resize", "progress", "move", "ignore"）
+- `task` - (required) *Task* - 在拖拽前的原始状态下的任务对象的拷贝
 
 ### Returns
-- ` result` - (boolean) - 决定默认事件动作是否继续执行（<b>true</b>）或取消（<b>false</b>）
+- `result` - (boolean) - 定义事件默认动作是否会被触发（<b>true</b>）还是被取消（<b>false</b>）
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeTaskChanged", function(id, mode, task){
-    // 可以在这里添加自定义逻辑
+    // 在这里插入您的自定义逻辑 
     return true;
 });
 ~~~
@@ -43,4 +43,3 @@ gantt.attachEvent("onBeforeTaskChanged", function(id, mode, task){
 ### Related API
 - [drag_mode](api/config/drag_mode.md)
 - [onAfterTaskDrag](api/event/onaftertaskdrag.md)
-

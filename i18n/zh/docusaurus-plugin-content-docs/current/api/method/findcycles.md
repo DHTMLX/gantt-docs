@@ -1,21 +1,23 @@
 ---
 sidebar_label: findCycles
-title: findCycles method
-description: "返回甘特图中所有检测到的依赖循环"
+title: findCycles 方法
+description: "返回图表中的所有依赖环路"
 ---
 
 # findCycles
+
 :::info
  此功能仅包含在PRO版本中。 
 :::
+
 ### Description
 
-@short: 返回甘特图中所有检测到的依赖循环
+@short: 返回图表中的所有依赖环路
 
 @signature: findCycles: () =\> any[]
 
 ### Returns
-- ` cycles` - (array) - 一个数组，包含在甘特图中检测到的依赖循环
+- `cycles` - (array) - 在甘特图中发现的依赖环路数组
 
 ### Example
 
@@ -27,11 +29,12 @@ var cycles = gantt.findCycles();
 - [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
+
 :::note
- 该方法需要启用 [auto_scheduling](guides/extensions-list.md#zidongpaicheng) 插件。 
+该方法需要先激活 [auto_scheduling](guides/extensions-list.md#autoscheduling) 插件。
 :::
 
-*cycles* 数组中的每个条目代表一组形成循环的任务和链接。
+每个 *cycles* 数组元素都是组成一个循环的一组任务和链接。
 
 ~~~js
 [ 
@@ -47,17 +50,14 @@ var cycles = gantt.findCycles();
 ]
 ~~~
 
-以下是一个示例供参考:
-
-![on_autoschedule_circular_link](/img/on_autoschedule_circular_link.png)
-
+请看下面的示例：
 
 - 任务 #3 的 id = 10
 - 任务 #4.1 的 id = 12
 - 从任务 #3 结束到任务 #4 开始的链接 id = 1
 - 从任务 #4.1 结束到任务 #3 开始的链接 id = 2
 
-*gantt.findCycles* 方法将返回以下结果:
+The *gantt.findCycles* 方法将返回以下值：
 
 ~~~js
 [ 
@@ -85,7 +85,7 @@ var cycles = gantt.findCycles();
 - [onCircularLinkError](api/event/oncircularlinkerror.md)
 
 ### Related Guides
-- [自动调度](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
 ### Change log
 - 4.1版本新增

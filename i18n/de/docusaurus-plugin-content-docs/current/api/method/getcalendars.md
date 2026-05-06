@@ -1,19 +1,19 @@
 ---
 sidebar_label: getCalendars
-title: getCalendars method
-description: "ruft alle derzeit zum Gantt hinzugefügten Kalender ab"
+title: getCalendars Methode
+description: "ruft alle in Gantt hinzugefügten Kalender ab"
 ---
 
 # getCalendars
 
 ### Description
 
-@short: Ruft alle derzeit zum Gantt hinzugefügten Kalender ab
+@short: Ruft alle in Gantt hinzugefügten Kalender ab
 
 @signature: getCalendars: () =\> any[]
 
 ### Returns
-- ` calendars` - (array) - ein Array, das alle Kalender enthält
+- ` calendars` - (array) - ein Array von Kalendern
 
 ### Example
 
@@ -23,12 +23,11 @@ var calendars = gantt.getCalendars();
 
 ### Details
 
-eingeführt in Version 4.2
+In Version 4.2 hinzugefügt
 
 ### Related API
 - [getCalendar](api/method/getcalendar.md)
 - [getTaskCalendar](api/method/gettaskcalendar.md)
 
 ### Related Guides
-- ["Arbeitszeitberechnung"](guides/working-time.md#multipleworktimecalendars)
-
+- [Arbeitszeitberechnung](guides/working-time.md)

@@ -1,14 +1,20 @@
 ---
 sidebar_label: schedule_from_end
-title: schedule_from_end config
-description: "ermöglicht rückwärts gerichtete Planung"
+title: schedule_from_end Konfiguration
+description: "Aktiviert die Rückwärtsplanung"
 ---
 
 # schedule_from_end
+:::info
+This functionality is available in the PRO edition only. 
+:::
 
+:::warning
+Die Eigenschaft wurde in v9.1 veraltet; verwenden Sie stattdessen die `schedule_from_end`-Eigenschaft von [gantt.config.auto_scheduling](api/config/auto_scheduling.md#schedule_from_end).
+:::
 ### Description
 
-@short: Ermöglicht rückwärts gerichtete Planung
+@short: Aktiviert Rückwärtsplanung
 
 @signature: schedule_from_end: boolean
 
@@ -16,27 +22,26 @@ description: "ermöglicht rückwärts gerichtete Planung"
 
 ~~~jsx
 gantt.config.schedule_from_end = true;
-gantt.config.project_end = new Date(2019, 4, 1);
+gantt.config.project_end = new Date(2025, 10, 1);
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Related samples
 - [Auto-Schedule From Project End (backward)](https://docs.dhtmlx.com/gantt/samples/02_extensions/20_backwards_scheduling.html)
 
 ### Details
 
-:::note
- Diese Funktionalität ist nur in der PRO Edition verfügbar. 
-:::
+Wenn diese Konfiguration auf `true` gesetzt wird, wechselt die automatische Planung in den Modus 'so spät wie möglich'.
 
-Das Aktivieren dieser Option durch Setzen auf `true` wechselt den Auto-Scheduling-Modus auf „so spät wie möglich".
-
-Diese Einstellung wird nur wirksam, wenn [project_end](api/config/project_end.md) ebenfalls angegeben ist.
+Der Wert wird nur angewendet, wenn auch [project_end](api/config/project_end.md) angegeben ist.
 
 ### Related API
 - [project_end](api/config/project_end.md)
+- [auto_scheduling](api/config/auto_scheduling.md)
 
 ### Related Guides
-- ["Auto Scheduling"](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
+### Change log
+- Die Eigenschaft wurde in v9.1 veraltet

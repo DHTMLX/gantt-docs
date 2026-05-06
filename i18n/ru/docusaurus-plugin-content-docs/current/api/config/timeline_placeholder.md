@@ -1,14 +1,14 @@
 ---
 sidebar_label: timeline_placeholder
 title: timeline_placeholder config
-description: "отображает фоновую grid, когда timeline пустой"
+description: "показывает фоновую сетку в пустом таймлайне"
 ---
 
 # timeline_placeholder
 
 ### Description
 
-@short: Отображает фоновую grid, когда timeline пустой
+@short: Показывает фоновую сетку в пустом таймлайне
 
 @signature: timeline_placeholder: boolean
 
@@ -25,35 +25,34 @@ gantt.init("gantt_here");
 
 ### Details
 
-Фоновая grid отображается в timeline, когда в Gantt не загружены задачи:
+Фоновая сетка будет отображаться в таймлайне, если в Gantt не загружены задачи:
 
-![background grid](/img/background_grid_in_empty_timeline.png)
+![Фоновая сетка](/img/background_grid_in_empty_timeline.png)
 
-Она также появляется, если строки с задачами не покрывают весь timeline:
+или если строки с задачами не занимают всю таймлайн:
 
-![background grid](/img/background_grid_in_timeline.png)
+![Фоновая сетка](/img/background_grid_in_timeline.png)
 
-Чтобы выделить колонки и ячейки в фоновой grid, используйте шаблон [timeline_cell_class](api/template/timeline_cell_class.md):
+Чтобы выделить столбцы и клетки в фоновую сетку, используйте шаблон [`timeline_cell_class`](api/template/timeline_cell_class.md):
 
 ~~~js
-gantt.templates.timeline_cell_class = function (task, date) {
-    if (!gantt.isWorkTime({ date: date, task: task })) {
+gantt.templates.timeline_cell_class = function (task, date) (
+    if (!gantt.isWorkTime(( date: date, task: task ))) (
         return "weekend";
-    }
-};
+    )
+);
 ~~~
 
-Для фоновых строк в шаблон передается временный объект задачи. Этот объект можно распознать по его id:
+Для фоновых строк в шаблон будет добавлен временный объект задачи. Объект можно идентифицировать по его id:
 
 ~~~js
-if(task.id === "timeline_placeholder_task"){
+if(task.id === "timeline_placeholder_task")(
     ...
-}
+)
 ~~~
 
 ### Related API
-- [timeline_cell_class](api/template/timeline_cell_class.md)
+- [`timeline_cell_class`](api/template/timeline_cell_class.md)
 
 ### Change log
 - добавлено в v8.0
-

@@ -1,24 +1,26 @@
 ---
 sidebar_label: updateTaskAssignments
-title: updateTaskAssignments method
-description: "обновляет свойство resource объекта задачи на основе текущих назначений ресурсов, хранящихся в datastore"
+title: метод updateTaskAssignments
+description: "Обновляет свойство ресурса объекта задачи значениями назначений ресурсов из хранилища данных"
 ---
 
 # updateTaskAssignments
-:::info
- Эта функция доступна только в PRO-версии. 
-:::
-### Description
 
-@short: Обновляет свойство resource объекта задачи на основе текущих назначений ресурсов, хранящихся в datastore
+:::info
+Эта функциональность доступна только в PRO-версии. 
+:::
+
+### Описание
+
+@short: Обновляет свойство ресурса объекта задачи значениями назначений ресурсов из хранилища данных
 
 @signature: updateTaskAssignments: (taskId: number | string) =\> void
 
-### Parameters
+### Параметры
 
-- `taskId` - (required) *number | string* - идентификатор задачи
+- `taskId` - (обязательный) *number | string* - идентификатор задачи
 
-### Example
+### Пример
 
 ~~~jsx
 var assignmentStore = gantt.getDatastore(gantt.config.resource_assignment_store);
@@ -31,21 +33,21 @@ assignmentStore.addItem({
 assignmentStore.removeItem(assignment.id);
 assignmentStore.updateItem(assignment.id);
 
-// после изменения назначений в datastore  
-// вызовите `updateTaskAssignments` для синхронизации этих изменений обратно в объект задачи:
+// after assignments are updated in the datastore, you need 
+// to call `updateTaskAssignments` to write changes to the task object:
 gantt.updateTaskAssignments(taskId);
 ~~~
 
-### Related samples
-- [Assign resource values to specific days](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
 
-### Details
+### Связанные примеры
+- [Назначение значений ресурсов на конкретные дни](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
 
+### Подробности
 :::note
- Этот метод работает только при включенной конфигурации [process_resource_assignments](api/config/process_resource_assignments.md). 
+Этот метод доступен только при включении конфигурации [process_resource_assignments](api/config/process_resource_assignments.md).
 :::
 
-Обычно хранилище назначений заполняется из объектов задач. Это означает, что если вы обновляете свойство resource в задаче (например, task.users), эти изменения автоматически отразятся в datastore.
+По умолчанию хранилище назначений заполняется данными из объектов задачи. Это означает, что если вы измените свойство ресурса объекта задачи (например, task.users), изменения будут автоматически отражены в хранилище данных.
 
 ~~~js
 task[gantt.config.resource_property] = [
@@ -59,8 +61,7 @@ task[gantt.config.resource_property] = [
 gantt.updateTask(taskId);
 ~~~
 
-<br>
-Иногда может понадобиться обновить назначения наоборот - изменив их напрямую в datastore, а затем применив эти изменения обратно к объекту задачи. Для этого вызовите **gantt.updateTaskAssignments()**, чтобы обновить свойство resource задачи значениями из datastore:
+Возможно, вам понадобится обновить данные назначений в обратном направлении. Например, чтобы изменить назначение ресурсов с использованием API хранилища данных, а затем применить изменения к объекту задачи. В этом случае вам нужно обновить свойство ресурса объекта задачи значениями из хранилища данных, вызвав метод **gantt.updateTaskAssignments()**:
 
 ~~~js
 var taskId = 2;
@@ -73,18 +74,18 @@ assignmentStore.addItem({
 })
 gantt.updateTaskAssignments(taskId);
 
+
 console.log(gantt.getTask(taskId));
 // -> { id: 2, users: [{resource_id: 3, value: 8, delay: 1, start_date: ...}], ...)
 ~~~
 
-### Related API
+### Связанные API
 - [resource_assignment_store](api/config/resource_assignment_store.md)
 - [resource_property](api/config/resource_property.md)
 - [process_resource_assignments](api/config/process_resource_assignments.md)
 
-### Related Guides
+### Связанные руководства
 - [Управление ресурсами](guides/resource-management.md#managingresourceassignments)
 
-### Change log
-- добавлено в версии v7.1
-
+### История изменений
+- добавлено в v7.1

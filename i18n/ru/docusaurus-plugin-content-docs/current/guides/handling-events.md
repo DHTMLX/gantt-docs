@@ -5,103 +5,100 @@ sidebar_label: "Обработка событий"
 
 # Обработка событий
 
-События являются ключевыми для создания интерактивной и отзывчивой страницы в ответ на действия пользователя.
+События помогают взаимодействовать с пользователями и добавлять интерактивность на страницу.
 
-Каждый раз, когда пользователь взаимодействует с диаграммой Gantt, dhtmlxGantt вызывает событие. Эти события можно использовать для определения произошедших действий и выполнения соответствующего кода.
+Когда пользователь выполняет какое-либо действие в диаграмме Gantt, dhtmlxGantt вызывает событие. Вы можете использовать это событие для определения действия и выполнения нужного кода.
 
-## Привязка событий
+## Подключение обработчиков событий
 
-Для добавления обработчика события используйте метод [attachEvent](api/method/attachevent.md).
+Чтобы подключить обработчик события, используйте метод [`attachEvent()`](api/method/attachevent.md).
 
 ~~~js
-gantt.attachEvent("onTaskClick", function(id, e) {
-    alert("You've just clicked an item with id="+id);
+gantt.attachEvent("onTaskClick", (id, e) => {
+    alert(`Вы только что кликнули по элементу с id=${id}`);
 });
 ~~~
 
-[D'n'D Events](https://docs.dhtmlx.com/gantt/samples/08_api/01_dnd_events.html)
+**Связанный пример**: [D'n'D Events](https://docs.dhtmlx.com/gantt/samples/08_api/01_dnd_events.html)
 
 
-**Обратите внимание:**
+**Примечание:**
 
 - Названия событий не чувствительны к регистру.
-- К одному событию можно привязать несколько обработчиков.
+- Вы можете привязать несколько обработчиков к одному и тому же событию.
 
-## Отвязка событий
+## Отключение обработчиков
 
-Для удаления обработчика события используйте метод [detachEvent](api/method/detachevent.md):
+Чтобы отключить обработчик события, используйте метод [`detachEvent()`](api/method/detachevent.md):
 
-[Общий способ привязки/отвязки обработчика события](Общий способ привязки/отвязки обработчика события)
-~~~js
-// для привязки события
-var eventId = gantt.attachEvent("onTaskClick", function(id, e) {
-    alert("You've just clicked an item with id="+id);
+~~~jsx {6} title="Общий способ подключения/отключения обработчика события"
+// чтобы подключить обработчик
+const eventId = gantt.attachEvent("onTaskClick", (id, e) => {
+    alert(`Вы только что кликнули по элементу с id=${id}`);
 });
-// для отвязки события
-gantt.detachEvent(eventId);/*!*/
+// чтобы отключить обработчик
+gantt.detachEvent(eventId);
 ~~~
 
-Если необходимо удалить все обработчики сразу, используйте следующий подход:
+Чтобы отключить все обработчики сразу, можно использовать следующую логику:
 
-~~~js
-// сохранение id обработчиков при их привязке
-var events = [];
-events.push(gantt.attachEvent("onTaskClick", function(id, e) {
-    alert("You've just clicked an item with id="+id);
-});
-events.push(gantt.attachEvent("onTaskDblClick", function(id, e) {
-    alert("You've just double clicked an item with id="+id);
-});
- 
-// отвязка всех сохранённых обработчиков
-while (events.length)
-   gantt.detachEvent(events.pop()); /*!*/
+~~~js {13}
+// сохраняем идентификаторы обработчиков при подключении событий
+const eventIds = [];
+
+// подключаем обработчики
+eventIds.push(gantt.attachEvent("onTaskClick", (id, e) => {
+    alert(`Вы только что кликнули по элементу с id=${id}`);
+}));
+eventIds.push(gantt.attachEvent("onTaskDblClick", (id, e) => {
+    alert(`Вы дважды кликнули по элементу с id=${id}`);
+}));
+
+// отключаем все сохраненные события
+while (eventIds.length) {
+    gantt.detachEvent(eventIds.pop());
+}
 ~~~
 
-## Проверка наличия обработчика
+## Проверка существования обработчика
 
-Чтобы проверить, есть ли у определённого события привязанные обработчики, используйте метод [checkEvent](api/method/checkevent.md):
+Чтобы проверить, прикреплены ли к конкретному событию какие-либо обработчики, используйте метод [`checkEvent()`](api/method/checkevent.md):
 
-~~~js
-gantt.attachEvent("onTaskClick", function(id, e) {
-    alert("You've just clicked a task with id="+id);
+~~~js {5}
+gantt.attachEvent("onTaskClick", (id, e) => {
+    alert(`Вы кликнули по задаче с id=${id}`);
 });
- 
-gantt.checkEvent("onTaskClick"); //возвращает 'true' /*!*/
+
+gantt.checkEvent("onTaskClick"); // возвращает 'true'
 ~~~
 
 ## Отменяемые события
 
-События, начинающиеся с 'onbefore', могут быть отменены.
+Все события с префиксом 'onBefore' можно отменить.
 
-Чтобы отменить такое событие, необходимо вернуть **false** из обработчика события.
+Чтобы отменить некоторое событие, верните **false** из соответствующего обработчика события.
 
-**Отмена выполнения обработчика**
-~~~js
-gantt.attachEvent("onBeforeTaskChanged", function(id, mode, old_task){
-    var task = gantt.getTask(id);
-    if(mode == gantt.config.drag_mode.progress){
-        if(task.progress < old_task.progress){
-            dhtmlx.message(task.text + " progress can't be undone!");
-            return false; /*!*/
+~~~jsx {6} title="Отмена обработчика события"
+gantt.attachEvent("onBeforeTaskChanged", (id, mode, oldTask) => {
+    const task = gantt.getTask(id);
+    if (mode === gantt.config.drag_mode.progress) {
+        if (task.progress < oldTask.progress) {
+            dhtmlx.message(`${task.text} прогресс не может быть отменен!`);
+            return false;
         }
     }
     return true;
 });
 ~~~
 
-
-[D'n'D Events](https://docs.dhtmlx.com/gantt/samples/08_api/01_dnd_events.html)
-
+**Связанный пример**: [D'n'D Events](https://docs.dhtmlx.com/gantt/samples/08_api/01_dnd_events.html)
 
 ## Доступ к объекту gantt внутри обработчика
 
-Внутри обработчика события объект gantt доступен через ключевое слово **this**. <br/>
+Внутри обработчика события вы можете ссылаться на объект gantt через ключевое слово `this`.
 
-**Обращение внутри обработчика события**
-~~~js
-gantt.attachEvent("onTaskClick", function(id, e){
-    parentId = this.getTask(id).parent;
+~~~jsx title="Обращение внутри обработчика события"
+gantt.attachEvent("onTaskClick", function(id, e) {
+    const parentId = this.getTask(id).parent;
 });
 ~~~
-

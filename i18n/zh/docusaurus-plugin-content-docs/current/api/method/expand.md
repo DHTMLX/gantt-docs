@@ -1,14 +1,14 @@
 ---
 sidebar_label: expand
-title: expand method
-description: "切换甘特图到全屏模式，使其占据整个屏幕空间。"
+title: expand 方法
+description: "将甘特图扩展到全屏模式"
 ---
 
 # expand
 
 ### Description
 
-@short: 切换甘特图到全屏模式，使其占据整个屏幕空间。
+@short: 将甘特图扩展到全屏模式
 
 @signature: expand: () =\> void
 
@@ -19,12 +19,12 @@ gantt.expand();
 ~~~
 
 ### Related samples
-- [Full Screen](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
+- [全屏](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
 
 ### Details
 
 :::note
- 此方法属于 **fullscreen** 扩展，因此需要通过 [gantt.plugins](api/method/plugins.md) 方法启用 [fullscreen](guides/extensions-list.md#quanpingxianshi) 插件。更多信息请参阅 [全屏模式](guides/fullscreen-mode.md) 文章中的详细说明。 
+此方法在 **fullscreen** 扩展中定义，因此您需要使用 [gantt.plugins](api/method/plugins.md) 方法激活 [fullscreen](guides/extensions-list.md#fullscreen) 插件。请参阅 [全屏模式](guides/fullscreen-mode.md) 文章获取详细信息。
 :::
 
 ### Related API
@@ -36,4 +36,3 @@ gantt.expand();
 
 ### Related Guides
 - [全屏模式](guides/fullscreen-mode.md)
-

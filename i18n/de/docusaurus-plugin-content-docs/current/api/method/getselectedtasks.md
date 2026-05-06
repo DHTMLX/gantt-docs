@@ -1,6 +1,6 @@
 ---
 sidebar_label: getSelectedTasks
-title: getSelectedTasks method
+title: getSelectedTasks Methode
 description: "Gibt ein Array der aktuell ausgewählten Tasks zurück"
 ---
 
@@ -10,10 +10,10 @@ description: "Gibt ein Array der aktuell ausgewählten Tasks zurück"
 
 @short: Gibt ein Array der aktuell ausgewählten Tasks zurück
 
-@signature: getSelectedTasks: () =\> any[]
+@signature: getSelectedTasks: () => any[]
 
 ### Returns
-- ` tasks` - (array) - Ein Array mit den IDs der Tasks
+- ` tasks` - (array) - ein Array der IDs der Tasks
 
 ### Example
 
@@ -24,7 +24,7 @@ gantt.getSelectedTasks();
 ### Details
 
 :::note
-note Diese Methode stammt aus der **multiselect**-Erweiterung, daher stellen Sie sicher, dass das [multiselect](guides/extensions-list.md#multitaskselection) Plugin aktiviert ist. Für weitere Details lesen Sie den Artikel ["Multi-Task-Auswahl"](guides/multiselection.md). 
+Diese Methode ist in der **multiselect**-Erweiterung definiert, daher müssen Sie das [multiselect](guides/extensions-list.md#multitaskselection) Plugin aktivieren. Lesen Sie die Details im Artikel [Multi-Task Selection](guides/multiselection.md).
 :::
 
 ### Related API
@@ -37,5 +37,4 @@ note Diese Methode stammt aus der **multiselect**-Erweiterung, daher stellen Sie
 - [toggleTaskSelection](api/method/toggletaskselection.md)
 
 ### Related Guides
-- ["Multi-Task-Auswahl"](guides/multiselection.md)
-
+- [Multi-Task Selection](guides/multiselection.md)

@@ -1,14 +1,14 @@
 ---
 sidebar_label: onBeforeGanttRender
-title: onBeforeGanttRender event
-description: "Wird ausgelöst, kurz bevor das Gantt-Diagramm auf der Seite gerendert wird."
+title: onBeforeGanttRender Event
+description: "Wird ausgelöst, bevor das Gantt-Diagramm auf der Seite gerendert wird"
 ---
 
 # onBeforeGanttRender
 
 ### Description
 
-@short: Wird ausgelöst, kurz bevor das Gantt-Diagramm auf der Seite gerendert wird.
+@short: Wird vor dem Rendern des Gantt-Diagramms auf der Seite ausgelöst
 
 @signature: onBeforeGanttRender: () =\> void;
 
@@ -16,7 +16,7 @@ description: "Wird ausgelöst, kurz bevor das Gantt-Diagramm auf der Seite geren
 
 ~~~jsx
 gantt.attachEvent("onBeforeGanttRender", function(){
-    //Fügen Sie hier Ihre benutzerdefinierte Logik ein
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
@@ -29,4 +29,3 @@ gantt.attachEvent("onBeforeGanttRender", function(){
 - [onDataRender](api/event/ondatarender.md)
 - [onGanttRender](api/event/onganttrender.md)
 - [onLoadEnd](api/event/onloadend.md)
-

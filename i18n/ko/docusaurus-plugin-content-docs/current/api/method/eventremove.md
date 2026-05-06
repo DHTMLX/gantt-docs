@@ -1,23 +1,23 @@
 ---
 sidebar_label: eventRemove
-title: eventRemove method
-description: "지정된 HTML 요소에서 이벤트 핸들러를 제거합니다."
+title: eventRemove 메서드
+description: "HTML 요소에서 이벤트 핸들러를 제거합니다"
 ---
 
 # eventRemove
 
 ### Description
 
-@short: 지정된 HTML 요소에서 이벤트 핸들러를 제거합니다.
+@short: HTML 요소에서 이벤트 핸들러를 제거합니다
 
 @signature: eventRemove: (node: HTMLElement | string, event: string, handler: GanttCallback, options?: boolean | HandlerSettings) =\> void
 
 ### Parameters
 
-- `node` - (required) *HTMLElement | string* -            HTML 요소 또는 해당 ID
-- `event` - (required) *string* - 이벤트 이름 ('on' 접두어 없이)
-- `handler` - (required) *function* - 이벤트를 처리할 함수
-- `options` - (optional) *boolean | HandlerSettings* -                선택 사항, <i>useCapture</i> 플래그 또는 <i>options</i> 객체. [자세한 내용 보기](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)
+- `node` - (필수) *HTMLElement | string* - HTML 노드 또는 그 아이디
+- `event` - (필수) *string* - HTML 이벤트의 이름('on' 접두사 없이)
+- `handler` - (필수) *function* - 이벤트 핸들러
+- `options` - (선택적) *boolean | HandlerSettings* - useCapture 또는 options 매개변수의 값. 자세한 내용은 아래를 참조하십시오
 
 ### Example
 

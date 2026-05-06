@@ -983,4 +983,3 @@ gantt.event(gantt.$root, "click", function(e){
     }
 });
 ~~~
-

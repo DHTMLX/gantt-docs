@@ -1,14 +1,18 @@
 ---
 sidebar_label: lightbox_additional_height
-title: lightbox_additional_height config
-description: "fügt der Lightbox zusätzliche Höhe hinzu"
+title: lightbox_additional_height Konfiguration
+description: "erhöht die Höhe der Lightbox"
 ---
 
 # lightbox_additional_height
 
+:::warning
+Die Eigenschaft ist veraltet.
+:::
+
 ### Description
 
-@short: Fügt der Lightbox zusätzliche Höhe hinzu
+@short: Erhöht die Höhe der Lightbox
 
 @signature: lightbox_additional_height: number
 
@@ -22,7 +26,7 @@ gantt.config.lightbox_additional_height = 90;
 
 ### Details
 
-Die **lightbox_additional_height** repräsentiert die kombinierte Höhe der Header- und Footer-Bereiche der Lightbox.
+Die **lightbox_additional_height** addiert zwei Werte: die Höhe des Lightbox-Headers und die Höhe der Lightbox-Fußzeile.
 
 ### Change log
-- Seit Version 9.0 veraltet
+- Seit v9.0 veraltet

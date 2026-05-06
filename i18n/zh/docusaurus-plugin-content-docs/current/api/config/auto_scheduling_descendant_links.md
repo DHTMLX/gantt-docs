@@ -1,16 +1,22 @@
 ---
 sidebar_label: auto_scheduling_descendant_links
-title: auto_scheduling_descendant_links config
-description: "控制是否允许从父任务（项目）创建到其子任务的链接"
+title: auto_scheduling_descendant_links 配置
+description: "允许或禁止从父任务（项目）向其子任务创建链接"
 ---
 
 # auto_scheduling_descendant_links
+
 :::info
- 此功能仅在PRO版本中可用。 
+此功能仅在 PRO 版本中可用。
 :::
+
+:::warning
+属性在 v9.1 中已被弃用，请改用 [gantt.config.auto_scheduling](api/config/auto_scheduling.md#descendant_links) 的 `descendant_links` 属性。
+:::
+
 ### Description
 
-@short: 控制是否允许从父任务（项目）创建到其子任务的链接
+@short: 允许或禁止从父任务（项目）向其子任务创建链接
 
 @signature: auto_scheduling_descendant_links: boolean
 
@@ -30,11 +36,10 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
- 此设置是 **auto_scheduling** 扩展的一部分，因此请确保启用 [auto_scheduling](guides/extensions-list.md) 插件。更多详情请参阅 [自动调度](guides/auto-scheduling.md) 文章。 
+此配置在 **auto_scheduling** 扩展中定义，因此需要激活 [auto_scheduling](guides/extensions-list.md#autoscheduling) 插件。请在 [Auto Scheduling](guides/auto-scheduling.md) 文章中阅读详情。 
 :::
 
-
-默认情况下，不允许从父任务（项目）创建到其子任务的链接。
+默认情况下，无法从父任务（项目）向其子任务创建链接。
 
 ### Related API
 - [auto_scheduling](api/config/auto_scheduling.md)
@@ -53,8 +58,8 @@ gantt.init("gantt_here");
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- [自动调度](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
 ### Change log
-- 在版本 4.0 中新增
-
+- 该属性在 v9.1 中已废弃
+- 于 4.0 版本中新增

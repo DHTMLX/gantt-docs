@@ -1,14 +1,14 @@
 ---
-sidebar_label: deadlines
-title: deadlines config
-description: "Schaltet die Anzeige von Deadline-Elementen für Aufgaben ein oder aus"
+sidebar_label: Fristen
+title: Fristen-Konfiguration
+description: "Aktiviert oder deaktiviert die Anzeige von Deadline-Elementen für Aufgaben"
 ---
 
-# deadlines
+# Fristen
 
 ### Description
 
-@short: Schaltet die Anzeige von Deadline-Elementen für Aufgaben ein oder aus
+@short: Aktiviert oder deaktiviert die Anzeige von Deadline-Elementen für Aufgaben
 
 @signature: deadlines: boolean
 
@@ -19,17 +19,17 @@ gantt.config.deadlines = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Standardwert:** true
 
 ### Related samples
-- [Displaying deadlines](https://docs.dhtmlx.com/gantt/samples/04_customization/14_deadline.html)
+- [Fristen anzeigen](https://docs.dhtmlx.com/gantt/samples/04_customization/14_deadline.html)
 
 ### Details
 
-Diese Einstellung steuert, ob Deadline-Elemente für Aufgaben angezeigt werden. Wenn aktiviert, überprüft Gantt die Eigenschaft `task.deadline` und wenn sie ein gültiges Datum enthält, wird die Deadline auf der Timeline angezeigt.
+Diese Konfiguration aktiviert oder deaktiviert die Anzeige von Deadline-Elementen für Aufgaben. Wenn sie aktiviert ist, prüft Gantt die Eigenschaft `task.deadline`, und falls sie ein gültiges Datum enthält, wird das Deadline-Element im Zeitstrahl angezeigt.
 
 ### Related Guides
-- ["Zusätzliche Elemente in der Zeitleiste"](guides/inbuilt-baselines.md)
+- [Zusätzliche Elemente in der Timeline](guides/inbuilt-baselines.md)
 
 ### Change log
-- hinzugefügt in v9.0
+- Hinzugefügt in v9.0

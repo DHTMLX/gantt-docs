@@ -1,16 +1,22 @@
 ---
 sidebar_label: grid_resize
-title: grid_resize config
-description: "позволяет изменять размер grid, перетаскивая его правую границу"
+title: grid_resize конфигурация
+description: "делает сетку изменяемой путем перетаскивания правого края сетки"
 ---
 
 # grid_resize
-:::info
- Эта функция доступна только в PRO-версии. 
+
+:::warning
+Свойство устарело.
 :::
+
+:::info
+Эта функциональность доступна только в PRO-версии.
+:::
+
 ### Description
 
-@short: Позволяет изменять размер grid, перетаскивая его правую границу
+@short: Делает сетку изменяемой путем перетаскивания правого края сетки
 
 ### Example
 
@@ -29,12 +35,12 @@ gantt.init("gantt_here");
 **Default value:** false
 
 ### Related samples
-- [Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
+- [События изменения ширины столбцов сетки](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
 
 ### Details
 
 :::note
-Это свойство устарело. Вместо него используйте [gantt.config.layout](api/config/layout.md) и настраивайте объекты grid и resizer по необходимости. Подробнее можно узнать [здесь](guides/layout-config.md#defaultlayout). 
+Свойство устарело. Используйте [gantt.config.layout](api/config/layout.md) вместо этого и укажите в конфигурации объекты grid и resizer внутри. Подробности см. [здесь](guides/layout-config.md#default-layout). 
 :::
 
 ~~~js
@@ -61,8 +67,7 @@ gantt.init("gantt_here");
 - [min_grid_column_width](api/config/min_grid_column_width.md)
 
 ### Related Guides
-- [Указание колонок](guides/specifying-columns.md)
+- [Указание столбцов](guides/specifying-columns.md)
 
 ### Change log
-- отмечено как устаревшее, начиная с версии 5.0
-
+- устарело с версии 5.0

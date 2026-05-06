@@ -1,14 +1,14 @@
 ---
 sidebar_label: onBeforeBatchUpdate
-title: onBeforeBatchUpdate event
-description: "wird unmittelbar vor dem Ausführen der [batchUpdate](api/method/batchupdate.md) Methode ausgelöst"
+title: onBeforeBatchUpdate-Ereignis
+description: "führt aus, bevor die [batchUpdate](api/method/batchupdate.md) Methode aufgerufen wird"
 ---
 
 # onBeforeBatchUpdate
 
 ### Description
 
-@short: Wird unmittelbar vor dem Ausführen der [batchUpdate](api/method/batchupdate.md) Methode ausgelöst
+@short: Führt aus, bevor die [batchUpdate](api/method/batchupdate.md) Methode aufgerufen wird
 
 @signature: onBeforeBatchUpdate: () =\> void;
 
@@ -16,7 +16,7 @@ description: "wird unmittelbar vor dem Ausführen der [batchUpdate](api/method/b
 
 ~~~jsx
 gantt.attachEvent("onBeforeBatchUpdate", function(){
-    // Ihr Code hier
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 

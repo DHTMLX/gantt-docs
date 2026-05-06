@@ -1,6 +1,6 @@
 ---
 sidebar_label: getGridColumns
-title: getGridColumns method
+title: getGridColumns 方法
 description: "获取甘特图的列"
 ---
 
@@ -10,10 +10,10 @@ description: "获取甘特图的列"
 
 @short: 获取甘特图的列
 
-@signature: getGridColumns: () =\> GridColumn[]
+@signature: getGridColumns: () => GridColumn[]
 
 ### Returns
-- ` columns` - (GridColumn[]) - 包含列的数组
+- ` columns` - (GridColumn[]) - 列的数组
 
 ### Example
 
@@ -28,8 +28,7 @@ gantt.getGridColumns(); //-> [{ name:"text", tree:true, width:150}, {...}, {...}
 ~~~
 
 ### Related samples
-- [Hiding grid columns](https://docs.dhtmlx.com/gantt/samples/02_extensions/07_managing_grid_columns.html)
+- [隐藏网格列](https://docs.dhtmlx.com/gantt/samples/02_extensions/07_managing_grid_columns.html)
 
 ### Related Guides
 - [getGridColumn](api/method/getgridcolumn.md)
-

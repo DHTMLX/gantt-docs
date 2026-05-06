@@ -1,23 +1,23 @@
 ---
 sidebar_label: getChildren
-title: getChildren method
-description: "获取指定父节点的直接子任务"
+title: getChildren 方法
+description: "返回指定父分支的一级子任务"
 ---
 
 # getChildren
 
 ### Description
 
-@short: 获取指定父节点的直接子任务
+@short: 返回指定父分支的一级子任务
 
-@signature: getChildren: (id: string | number) =\> any[]
+@signature: getChildren: (id: string | number) => any[]
 
 ### Parameters
 
-- `id` - (required) *string | number* -        父节点的id
+- `id` - (必填) *string | number* -        父分支的 ID
 
 ### Returns
-- ` ids` - (array) - 包含子任务id的数组
+- ` ids` - (array) - 子任务 IDs 的数组
 
 ### Example
 
@@ -43,7 +43,7 @@ gantt.getChildren("p_1");//->["t_1", "t_2"] /*!*/
 
 ### Details
 
-另一种遍历特定任务子任务的方法是使用 [eachTask](api/method/eachtask.md)。
+另一种遍历某任务的子任务的方法是 [eachTask](api/method/eachtask.md)。
 
 ### Related API
 - [hasChild](api/method/haschild.md)
@@ -55,5 +55,4 @@ gantt.getChildren("p_1");//->["t_1", "t_2"] /*!*/
 - [eachTask](api/method/eachtask.md)
 
 ### Related Guides
-- [配置树形列](guides/tree-column.md)
-
+- [树形列配置](guides/tree-column.md)

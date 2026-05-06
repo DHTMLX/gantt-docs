@@ -8,7 +8,7 @@ description: "테이블 내에서 정렬을 허용합니다"
 
 ### Description
 
-@short: 테이블 내에서 정렬을 허용합니다
+@short: 테이블에서 정렬을 활성화합니다
 
 @signature: sort: boolean
 
@@ -21,10 +21,10 @@ gantt.init("gantt_here");
 gantt.parse("tasks.json");
 ~~~
 
-**Default value:** false
+**기본값:** false
 
 ### Related samples
-- [Built-in sorting](https://docs.dhtmlx.com/gantt/samples/07_grid/01_builtin_sorting.html)
+- [내장 정렬](https://docs.dhtmlx.com/gantt/samples/07_grid/01_builtin_sorting.html)
 
 ### Related API
 - [sort](api/method/sort.md)
@@ -32,4 +32,3 @@ gantt.parse("tasks.json");
 
 ### Related Guides
 - [컬럼 정렬](guides/sorting.md)
-

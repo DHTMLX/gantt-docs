@@ -1,14 +1,18 @@
 ---
 sidebar_label: date_scale
-title: date_scale config
-description: "задаёт формат временной шкалы (ось X)"
+title: date_scale конфигурация
+description: "устанавливает формат шкалы времени (ось X)"
 ---
 
 # date_scale
 
+:::warning
+Свойство устарело.
+:::
+
 ### Description
 
-@short: Задаёт формат временной шкалы (ось X)
+@short: Задает формат шкалы времени (оси X)
 
 ### Example
 
@@ -20,15 +24,16 @@ gantt.config.date_scale = "%F, %Y";
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** "%d %M"
+**Значение по умолчанию:** "%d %M"
+
 
 ### Related samples
-- [Multiple scales](https://docs.dhtmlx.com/gantt/samples/03_scales/01_multiple_scales.html)
+- [Несколько шкал](https://docs.dhtmlx.com/gantt/samples/03_scales/01_multiple_scales.html)
 
 ### Details
 
 :::note
- Свойство **date_scale** устарело. Вместо него используйте свойство **format** в [scales](api/config/scales.md): 
+Свойство **date_scale** устарело. Используйте свойство **format** из [scales](api/config/scales.md) вместо него:
 :::
 
 ~~~js
@@ -44,9 +49,8 @@ gantt.config.scales = [
 - [step](api/config/step.md)
 
 ### Related Guides
-- [Настройка шкалы](guides/configuring-time-scale.md#settingthescalesformat)
+- [Настройка шкалы](guides/configuring-time-scale.md#dateformat)
 - [Спецификация формата даты](guides/date-format.md)
 
 ### Change log
 - устарело с версии v6.2
-

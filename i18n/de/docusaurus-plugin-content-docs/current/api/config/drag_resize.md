@@ -1,14 +1,14 @@
 ---
 sidebar_label: drag_resize
 title: drag_resize config
-description: "Ermöglicht das Ändern der Größe von Aufgaben mittels Drag-and-Drop"
+description: "Ermöglicht die Größenveränderung von Aufgaben per Drag-and-Drop"
 ---
 
 # drag_resize
 
 ### Description
 
-@short: Ermöglicht das Ändern der Größe von Aufgaben mittels Drag-and-Drop
+@short: Die Möglichkeit aktivieren, Aufgaben per Drag-and-Drop in der Größe anzupassen
 
 @signature: drag_resize: boolean
 
@@ -19,19 +19,19 @@ gantt.config.drag_resize = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Standardwert:** true
 
 ### Details
 
 ![property_drag_resize](/img/property_drag_resize.png)
 
-Anleitungen zum Entfernen der Resize-Handles von allen Aufgaben finden Sie im [entsprechenden Abschnitt der CSS-Dokumentation](guides/css-overview.md#resizer).
+Schauen Sie sich den verwandten Abschnitt in der CSS-Dokumentation (guides/css-overview.md#resizer) an, um zu erfahren, wie Sie Resize-Griffe für alle Aufgaben deaktivieren.
 
-Für eine detailliertere Steuerung beim Ändern der Größe von Aufgaben siehe den Artikel [Dragging Tasks within the Timeline](guides/dnd.md), der folgende Themen behandelt:
+Lesen Sie den Artikel [Dragging Tasks within the Timeline](guides/dnd.md) für Details zur Feinsteuerung von Größenänderungsvorgängen, nämlich:
 
-- [Deaktivieren der Größenänderung für bestimmte Aufgaben](guides/dnd.md#disablingresizingofspecifictasks)
-- [Ermitteln, welche Seite einer Aufgabe geändert wird](guides/dnd.md#identifyingwhichsideofataskisbeingresized)
-- [Deaktivieren der Größenänderung des Start- oder Enddatums einer Aufgabe](guides/dnd.md#disablingresizingofthestartorenddateofatask)
+- [Deaktivieren der Größenänderung bestimmter Aufgaben](guides/dnd.md#disabling-resize-of-specific-tasks)
+- [Welche Seite einer Aufgabe wird bei der Größenänderung angepasst](guides/dnd.md#which-side-of-a-task-is-being-resized)
+- [Deaktivieren der Größenänderung des Start- oder Enddatums einer Aufgabe](guides/dnd.md#disabling-resize-of-the-start-or-the-end-date-of-a-task)
 
 ### Related Guides
 - [drag_lightbox](api/config/drag_lightbox.md)
@@ -39,4 +39,3 @@ Für eine detailliertere Steuerung beim Ändern der Größe von Aufgaben siehe d
 - [drag_mode](api/config/drag_mode.md)
 - [drag_move](api/config/drag_move.md)
 - [drag_progress](api/config/drag_progress.md)
-

@@ -1,20 +1,19 @@
 ---
-title: "RTL (Rechts-nach-links) Modus"
-sidebar_label: "RTL (Rechts-nach-links) Modus"
+title: "RTL-Modus (Rechts-nach-Links-Modus)"
+sidebar_label: "RTL-Modus (Rechts-nach-Links-Modus)"
 ---
 
-# RTL (Rechts-nach-links) Modus
+# RTL-Modus (Rechts-nach-Links-Modus)
 
 ![rtl_mode](/img/rtl_mode.png)
 
-Das Gantt-Diagramm unterstützt einen Rechts-nach-links-Modus (RTL), der über die Konfigurationsoption [rtl](api/config/rtl.md) aktiviert werden kann. 
-Wenn diese Option auf *true* gesetzt ist, ändert sich die Richtung der Zeitskala im Zeitstrahl, und die Reihenfolge der Zeilen im Grid wird umgekehrt, sodass sie von rechts nach links verlaufen.
+Sie können das Gantt-Diagramm im Rechts-nach-Links-Modus verwenden, der über die Konfigurationsoption [rtl](api/config/rtl.md) aktiviert wird. Wenn Sie ihn auf *true* setzen, ändert sich die Richtung der Zeitachse im Zeitstrahl und die Reihenfolge der Zeilen im Raster von rechts nach links.
 
 ~~~js
 gantt.config.rtl = true;
 ~~~
 
-Das Aktivieren des RTL-Modus aktualisiert nicht automatisch die [gantt.config.layout](api/config/layout.md), daher muss das Layout angepasst werden, um die Positionen von Grid und Timeline zu tauschen. Dies kann folgendermaßen umgesetzt werden:
+Das Aktivieren des RTL-Modus wirkt sich nicht auf das [gantt.config.layout](api/config/layout.md) des Gantt aus, daher müssen Sie es neu definieren, um die Positionen des Grids und der Timeline zu tauschen. So wird es im Folgenden gemacht:
 
 ~~~js
 gantt.config.layout = {
@@ -33,9 +32,6 @@ gantt.config.layout = {
 };
 ~~~
 
+[Gantt rechts-nach-links](https://docs.dhtmlx.com/gantt/samples/10_layout/04_rtl.html)
 
-[Right to left gantt](https://docs.dhtmlx.com/gantt/samples/10_layout/04_rtl.html)
-
-
-Es kann außerdem sinnvoll sein, [die Textausrichtung für Beschriftungen im Gantt-Diagramm anzupassen](https://developer.mozilla.org/en-US/docs/Web/CSS/direction).
-
+Sie möchten außerdem vielleicht [die Textausrichtung für Beschriftungen im Gantt festlegen](https://developer.mozilla.org/en-US/docs/Web/CSS/direction).

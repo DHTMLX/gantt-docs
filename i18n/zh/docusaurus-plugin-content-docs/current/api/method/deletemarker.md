@@ -1,20 +1,20 @@
 ---
 sidebar_label: deleteMarker
-title: deleteMarker method
-description: "删除指定的 marker"
+title: deleteMarker 方法
+description: "删除指定的标记"
 ---
 
 # deleteMarker
 
 ### Description
 
-@short: 删除指定的 marker
+@short: 删除指定的标记
 
-@signature: deleteMarker: (markerId: string | number) =\> void
+@signature: deleteMarker: (markerId: string | number) => void
 
 ### Parameters
 
-- `markerId` - (required) *string | number* -    要删除的 marker 的 ID
+- `markerId` - (必需) *string | number* - 标记的 ID
 
 ### Example
 
@@ -28,12 +28,12 @@ gantt.deleteMarker(todayMarker);/*!*/
 ~~~
 
 ### Related samples
-- [Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
+- [今天和状态线在 Gantt 中（竖向标记）](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
 
 ### Details
 
 :::note
- 此方法属于 **marker** 扩展，因此请确保已启用 [marker](guides/extensions-list.md) 插件。更多详情请参阅 [添加垂直标记](guides/markers.md) 文章。 
+此方法在 **marker** 扩展中定义，因此您需要启用 [marker](guides/extensions-list.md#vertical-marker) 插件。请在 [添加垂直标记](guides/markers.md) 文章中了解详细信息。
 :::
 
 ### Related API
@@ -45,4 +45,3 @@ gantt.deleteMarker(todayMarker);/*!*/
 
 ### Related Guides
 - [添加垂直标记](guides/markers.md)
-

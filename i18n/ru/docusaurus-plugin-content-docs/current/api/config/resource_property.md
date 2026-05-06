@@ -1,16 +1,16 @@
 ---
 sidebar_label: resource_property
-title: resource_property config
-description: "определяет, какое свойство объекта задачи содержит id ресурса, связанного с resourceGrid/Timeline/Histogram/Calendar"
+title: конфигурация resource_property
+description: "определяет свойство объекта задачи, которое хранит идентификатор ресурса, связанный с resourceGrid/Timeline/Histogram/Calendar"
 ---
 
 # resource_property
 :::info
- Эта функция доступна только в PRO-версии. 
+This functionality is available in the PRO edition only. 
 :::
 ### Description
 
-@short: Определяет, какое свойство объекта задачи содержит id ресурса, связанного с resourceGrid/Timeline/Histogram/Calendar
+@short: Определяет свойство объекта задачи, которое хранит идентификатор ресурса, связанный с resourceGrid/Timeline/Histogram/Calendar
 
 @signature: resource_property: string
 
@@ -71,20 +71,20 @@ resourcesStore.parse([
 ]);
 ~~~
 
+
 **Default value:** "owner_id"
 
 ### Related samples
-- [Resource load diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
-- [Templates of the Resource diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/05_resource_usage_templates.html)
+- [Диаграмма использования ресурсов](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
+- [Шаблоны диаграммы ресурсов](https://docs.dhtmlx.com/gantt/samples/11_resources/05_resource_usage_templates.html)
 
 ### Details
 
-Определяет свойство в объекте задачи, которое содержит id ресурса, связанного с resourceGrid/Timeline/Histogram/Calendar. Эта настройка может быть изменена во время выполнения.
+Указывает свойство объекта задачи, в котором хранится идентификатор ресурса, связанный с resourceGrid/Timeline/Histogram/Calendar. Может быть изменено во время выполнения.
 
 ### Related API
 - [resource_store](api/config/resource_store.md)
 
 ### Related Guides
 - [Управление ресурсами](guides/resource-management.md)
-- [Расчёт рабочего времени](guides/working-time.md#assigningcalendartoresource)
-
+- [Расчет рабочего времени](guides/working-time.md#assigningcalendartoresource)

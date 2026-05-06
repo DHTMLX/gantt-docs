@@ -1,88 +1,187 @@
 ---
-title: "서드파티 라이선스"
-sidebar_label: "서드파티 라이선스"
+title: "제3자 소프트웨어 라이선스"
+sidebar_label: "제3자 소프트웨어 라이선스"
 ---
 
-# 서드파티 라이선스
+# 제3자 소프트웨어 라이선스
 
-이 문서에서는 DHTMLX Gantt 라이브러리에 포함된 서드파티 소프트웨어 구성요소에 대한 고지 및 추가 약관을 제공합니다.
+본 문서는 DHTMLX Gantt 라이브러리에 포함된 제3자 소프트웨어 구성요소에 대한 제3자 소프트웨어 고지 및/또는 추가 약관을 포함합니다.
 
-MIT 라이선스로 라이선스된 컴파일된 **Bluebird** 라이브러리가 Gantt 차트의 JS 파일에 포함되어 있습니다. 해당 JS 파일의 주석에서 이를 참조할 수 있습니다. Gantt와의 통합 방식에 대한 자세한 내용은 [Promise](api/method/promise.md)를 참조하세요.
 
-Material 스킨에서 사용되는 **Roboto Google 폰트**는 기본적으로 라이브러리에 번들되어 있지 않으나, 일반적으로 문서에 안내된 대로 수동으로 추가됩니다.
+**Inter font**는 대부분의 테마에서 기본 폰트로 사용됩니다. 이 폰트는 CSS `@import` 규칙을 통해 dhtmlxgantt.css에서 동적으로 가져옵니다. 인터 폰트의 로컬 복사본은 저작권 고지 및 라이선스 사본과 함께 DHTMLX Gantt의 공식 배포판의 `/sources/less/fonts`에 포함되어 있습니다.
 
-또한 샘플 애플리케이션에서는 **Node.js Express 모듈, body_parser, strip_tags** 등 일부 오픈소스 라이브러리를 사용합니다(샘플의 패키지 backend/package.json에 명시). 이들은 Gantt 라이브러리 자체의 일부가 아니며, 데모 목적으로만 포함되어 있습니다.
+**Roboto Google font**가 우리의 Material 스킨에서 사용되지만 기본적으로 라이브러리에 포함되어 있지 않습니다. 그러나 일반적으로 문서에 설명된 대로 수동으로 추가됩니다.
 
-## Gantt 핵심 라이브러리에 사용된 구성요소
+또한 샘플에서 **Node.js Express 모듈, body_parser 및 strip_tags** 와 같은 일부 오픈 소스 라이브러리를 사용합니다(샘플의 package, backend/package.json에서 확인 가능). 다만 이들은 Gantt 라이브러리의 일부가 아니며 시연 목적에만 사용됩니다.
 
-### Bluebird Promise 라이브러리
 
-The MIT License (MIT)
+## Gantt의 핵심 라이브러리에서 사용되는 구성 요소
 
-Copyright (c) 2013-2019 Petka Antonov
+### 인터 폰트
 
-Permission is granted, free of charge, to anyone obtaining a copy of this software and its documentation files (the "Software") to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to allow others to do so, under the following conditions:
+저작권 2020 The Inter Project Authors ([https://github.com/rsms/inter](https://github.com/rsms/inter))
 
-The above copyright notice and this permission notice must be included in all copies or significant portions of the Software.
+이 글꼴 소프트웨어는 SIL Open Font License, Version 1.1에 따라 라이선스됩니다. 이 라이선스 전문은 아래에 기재되어 있으며 FAQ도 함께 제공됩니다. 또한 아래의 FAQ에서 확인할 수 있습니다:
+[https://openfontlicense.org](https://openfontlicense.org)
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT ANY WARRANTY, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. THE AUTHORS OR COPYRIGHT HOLDERS ARE NOT LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM THE SOFTWARE OR ITS USE.
+
+
+#### SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+
+PREAMBLE
+Open Font License(OFL)의 목표는 전 세계적으로 협업 폰트 프로젝트의
+개발을 촉진하고, 학술 및 언어학 커뮤니티의 글꼴 창작 노력을 지원하며,
+다른 사람과 함께 글꼴을 공유하고 파트너십으로 개선할 수 있는 자유롭고
+개방된 프레임워크를 제공하는 것입니다.
+
+OFL은 허가된 글꼴을 원본으로 하여, 글꼴의 사용, 연구, 수정 및
+재배포를 자유롭게 할 수 있도록 허용합니다. 글꼴과 파생작업은
+다른 소프트웨어와 함께 번들로 제공되거나 임베드되거나
+재배포 및/또는 판매될 수 있지만, 파생작업에 대해
+예약된 이름이 사용되지 않아야 합니다. 글꼴 및 파생물은
+다른 종류의 라이선스로 공개될 수 없으며, 글꼴을
+사용하여 생성한 문서에는 이 라이선스가 적용되지 않는다는
+것은 아닙니다. 문서 생성에는 이 라이선스의 적용이 면제됩니다.
+
+정의
+"Font Software"는 이 라이선스하에 저작권 보유자에 의해 공개되고
+그 표기가 명확하게 표시된 파일 세트를 가리킵니다. 소스 파일,
+빌드 스크립트 및 문서를 포함할 수 있습니다.
+
+"Reserved Font Name"은 저작권 고지문 뒤에 명시된 이름을 가리킵니다.
+
+"Original Version"은 저작권 보유자에 의해 배포된 Font Software 구성요소의 모음을 말합니다.
+
+"Modified Version"은 Original Version의 구성요소 중 일부 또는 전체를
+추가, 삭제, 대체하거나 형식을 변경하거나 Font Software를 새로운
+환경으로 포팅하는 등 파생물을 만들어 만든 버전을 말합니다.
+
+"Author"는 Font Software에 기여한 디자이너, 엔지니어, 프로그래머, 기술 작가
+또는 기타 인물을 가리킵니다.
+
+허가 및 조건
+다음 조건에 따라 Font Software의 복사본을 얻은 사람에게
+필요한 비용 없이 자유롭게 사용할 수 있습니다: 연구, 복사, 병합, 임베드,
+수정, 재배포 및 수정되거나 수정되지 않은 복사본의 판매도 가능하되,
+다음 조건을 충족해야 합니다:
+
+1) Font Software나 그 개별 구성요소의 원본 버전이나 수정 버전은
+그 자체로 판매될 수 없습니다.
+
+2) Font Software의 원본 버전 또는 수정 버전은
+다른 소프트웨어와 번들로 묶여 재배포되고/또는 판매될 수 있으며,
+각 복사본에는 위 저작권 고지 및 본 라이선스가 포함되어 있어야 합니다. 이는
+개별 텍스트 파일로, 사람 눈에 쉽게 보이는 헤더로,
+또는 텍스트나 이진 파일의 적절한 기계 판독 메타데이터 필드에
+포함되면 됩니다.
+
+3) 수정 버전의 Font Software는 Reserved Font Name을 사용할 수 없으며,
+해당 권한은 해당 저작권 보유자에게서 명시적으로 서면으로 허가받은 경우에만
+허용됩니다. 이 제한은 사용자에게 제시되는 주요 폰트 이름에만 적용됩니다.
+
+4) 저작권 보유자(또는 저자)의 이름은 Modified Version을 홍보, 보증 또는 광고하는 데 사용할 수 없으며,
+저작권 보유자 및 저자의 기여를 인정하거나 그들의 명시적 서면 허가가 있을 때만 예외가 허용됩니다.
+
+5) Font Software는 수정 여부와 무관하게 본 라이선스에 따라 전체적으로 배포되어야 하며,
+다른 라이선스 하에 배포될 수 없습니다. Font Software를 사용해 생성한 문서에는 이 라이선스의 적용이 면제됩니다.
+
+해지
+위 조건 중 하나라도 충족되지 않으면 이 라이선스는 무효가 됩니다.
+
+면책 조항
+Font Software는 "있는 그대로" 제공되며, 어떠한 종류의 보증도 명시적이든 묵시적이든
+제공되지 않습니다. 상품성, 특정 목적에의 적합성 및 저작권, 특허, 상표 또는
+기타 권리 침해에 대한 보증을 포함하되 이에 국한되지 않습니다. 저작권 보유자는
+저작권 소유권 주장, 손해 배상 또는 기타 책임에 대해 어떠한 경우에도
+책임을 지지 않으며, Font Software의 사용이나 사용 불가, 또는 Font Software
+와의 기타 거래로 인한 손해에 대해 책임지지 않습니다.
+
 
 ### Roboto Google Font
 
-Copyright 2020 DHTMLX
+저작권 2020 DHTMLX
 
-Licensed under the Apache License, Version 2.0 (the "License"); use of this file must comply with the License. You can review the License at:
+Apache License, Version 2.0(이하 "라이선스"에 따라 허용되며,
+라이선스에 따라야 하며, 라이선스를 준수하지 않는 한
+이 파일을 사용할 수 없습니다.
+다음 위치에서 라이선스 사본을 얻을 수 있습니다:
 
 
+<p align="center">http://www.apache.org/licenses/LICENSE-2.0</p>
 
-<p>http://www.apache.org/licenses/LICENSE-2.0</p>
+해당 법률에 의해 적용되거나 서면으로 합의된 경우를 제외하고, 소프트웨어는
+"있는 그대로" 제공되며 어떠한 명시적 또는 묵시적 보증도 포함하지 않습니다.
+특정 목표에의 적합성 및 비침해성에 대한 보증도 포함하지 않습니다.
+라이선스에 따른 권한은 명시적으로 부여되며, 어떠한 경우에도
+저작권 보유자 또는 저자에 의해 보증이 부여되거나 보증이
+확인되지 않습니다. 라이선스에 따른 권한은 남아 있고,
+다른 조건의 조항은 포함되지 않으며, 본 라이선스의 조건은
+소프트웨어의 사용 및 기타 거래에 관한 모든 관련 조건을 다룹니다.
 
-Unless required by law or agreed to in writing, software distributed under this License is provided "AS IS", without warranties or conditions of any kind, either express or implied. Please refer to the License for specific language governing permissions and limitations.
 
-## 샘플 애플리케이션에 사용된 구성요소
+## 샘플 애플리케이션에서 사용되는 구성 요소
 
 ### body-parser
 
-The MIT License
+MIT 라이선스
 
 Copyright (c) 2014 Jonathan Ong &lt;me@jongleberry.com&gt;
 
 
 Copyright (c) 2014-2015 Douglas Christopher Wilson &lt;doug@somethingdoug.com&gt;
 
-Permission is granted, free of charge, to anyone obtaining a copy of this software and its documentation files (the "Software") to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to allow others to do so, under the following conditions:
+본 소프트웨어 및 관련 문서 파일(이하 "Software")의 사본을
+얻은 사람에게 소프트웨어를 제한 없이 다룰 수 있도록 자유를 부여합니다(복사, 수정, 병합,
+게시, 배포, 재라이선스 및 소프트웨어의 사본을 판매하는 권한 포함) 아래 조건에 따라.
 
-The copyright notice and this permission notice must be included in all copies or substantial portions of the Software.
+상기의 저작권 고지 및 이 허가 고지는 소프트웨어의 모든 복사본 또는 실질적인
+부분에 포함되어야 합니다.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. THE AUTHORS OR COPYRIGHT HOLDERS ARE NOT LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM THE SOFTWARE OR ITS USE.
+소프트웨어는 어떠한 형태의 보증 없이 "있는 그대로" 제공됩니다.
+또한 어떤 종류의 보증도 명시적으로든 묵시적이든 제공되지 않습니다. 저작권 보유자나
+저자들은 계약상, 불법 행위 또는 그 밖의 행위로 인해 발생하는
+손해에 대해 책임을 지지 않습니다.
+
 
 ### express
 
-(The MIT License)
+(MIT 라이선스)
 
-Copyright (c) 2009-2014 TJ Holowaychuk &lt;tj@vision-media.ca&gt;
-
-
-Copyright (c) 2013-2014 Roman Shtylman &lt;shtylman+expressjs@gmail.com&gt;
+저작권 (c) 2009-2014 TJ Holowaychuk &lt;tj@vision-media.ca&gt;
 
 
-Copyright (c) 2014-2015 Douglas Christopher Wilson &lt;doug@somethingdoug.com&gt;
+저작권 (c) 2013-2014 Roman Shtylman &lt;shtylman+expressjs@gmail.com&gt;
 
-Permission is granted, free of charge, to anyone obtaining a copy of this software and its documentation files (the "Software") to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to allow others to do so, under the following conditions:
 
-The copyright notice and this permission notice must be included in all copies or substantial portions of the Software.
+저작권 (c) 2014-2015 Douglas Christopher Wilson &lt;doug@somethingdoug.com&gt;
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. THE AUTHORS OR COPYRIGHT HOLDERS ARE NOT LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM THE SOFTWARE OR ITS USE.
+다음과 같이 본 소프트웨어 및 관련 문서 파일의 사본을
+얻은 사람에게 소프트웨어를 제한 없이 다룰 수 있도록 자유를 부여합니다(복사, 수정, 병합, 게시, 배포,
+부분 면허 부여 및/또는 소프트웨어의 사본 판매 등).
+
+상기의 저작권 고지 및 이 허가 고지는 소프트웨어의 모든 복사본 또는 실질적인
+부분에 포함되어야 합니다.
+
+소프트웨어는 어떠한 형태의 보증 없이 "있는 그대로" 제공됩니다.
+또한 어떤 종류의 보증도 명시적으로든 묵시적이든 제공되지 않습니다. 저자나
+저작권 보유자는 계약상, 불법 행위 또는 그 밖의 행위로 인해
+발생하는 손해에 대해 책임을 지지 않습니다.
+
 
 ### striptags
 
-The MIT License (MIT)
+MIT 라이선스(MIT)
 
-Copyright (c) [2017] [Eric Norris]
+저작권 (c) [2017] [Eric Norris]
 
-Permission is granted, free of charge, to anyone obtaining a copy of this software and its documentation files (the "Software") to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to allow others to do so, under the following conditions:
+본 소프트웨어 및 관련 문서 파일(이하 "Software")의 사본을
+얻은 사람에게 소프트웨어를 제한 없이 다룰 수 있도록 자유를 부여합니다(복사, 수정, 병합, 게시,
+배포, 하위 라이선스 부여 및/또는 소프트웨어의 사본 판매 등) 아래 조건에 따라:
 
-The copyright notice and this permission notice must be included in all copies or significant portions of the Software.
+상기의 저작권 고지 및 이 허가 고지는 모든
+복사본 또는 실질적인 부분에 포함되어야 합니다.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. THE AUTHORS OR COPYRIGHT HOLDERS ARE NOT LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM THE SOFTWARE OR ITS USE.
-
+소프트웨어는 어떠한 형태의 보증 없이 "있는 그대로" 제공됩니다.
+또한 어떤 종류의 보증도 명시적으로든 묵시적으로든 제공되지 않습니다. 저자나
+저작권 보유자는 계약상, 불법 행위 또는 그 밖의 행위로 인해
+발생하는 손해에 대해 책임을 지지 않습니다.

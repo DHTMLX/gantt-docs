@@ -1,24 +1,24 @@
 ---
 sidebar_label: callEvent
-title: callEvent method
-description: "löst ein internes Event aus"
+title: callEvent Methode
+description: "ruft ein inneres Event auf"
 ---
 
 # callEvent
 
 ### Description
 
-@short: Löst ein internes Event aus
+@short: Ruft ein inneres Event auf
 
 @signature: callEvent: (name: string, params?: any[]) =\> boolean
 
 ### Parameters
 
-- `name` - (required) *string* - der Name des Events, Groß-/Kleinschreibung wird nicht beachtet
-- `params` - (optionale) *array* - optionale Parameter, ein Array mit datenbezogenen Informationen zum Event
+- `name` - (erforderlich) *string* - der Name des Events, Groß-/Kleinschreibung wird ignoriert
+- `params` - (optional) *array* - ein Array der zum Event gehörenden Daten
 
 ### Returns
-- ` result` - (boolean) - <i>false</i>, wenn einer der Event-Handler <i>false</i> zurückgibt. Andernfalls <i>true</i>
+- ` result` - (boolean) - <i>false</i>, falls einige der Event-Handler <i>false</i> zurückgeben. Andernfalls <i>true</i>
 
 ### Example
 
@@ -32,4 +32,4 @@ var res = gantt.callEvent("CustomEvent", [param1, param2]);
 
 ### Details
 
-Normalerweise werden Events automatisch ausgelöst, daher ist es in der Regel nicht notwendig, diese Methode manuell aufzurufen.
+Normalerweise werden Ereignisse automatisch aufgerufen, und Sie müssen diese Methode nicht verwenden.

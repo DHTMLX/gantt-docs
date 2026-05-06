@@ -1,30 +1,27 @@
 ---
-title: "Empty State Screen"
-sidebar_label: "Empty State Screen"
+title: "빈 상태 화면"
+sidebar_label: "빈 상태 화면"
 ---
 
-# Empty State Screen  
+# 빈 상태 화면
 
-버전 8.0부터, 라이브러리는 간트 차트에 데이터가 로드되지 않았을 때 그리드에 플레이스홀더 요소가 포함된 빈 화면("empty state")을 표시하는 기능을 지원합니다.
+버전 8.0부터 라이브러리에는 로드된 데이터가 없을 경우 Gantt 차트의 그리드에 자리 표시 요소를 포함한 빈 화면("empty state")을 표시하는 기능이 포함되어 있습니다.
 
-![empty screen tip](/img/empty_screen.png)
+![빈 화면 팁](/img/empty_screen.png)
 
-기본적으로, 플레이스홀더 요소는 숨겨져 있습니다. 이를 활성화하려면 다음과 같이 설정합니다:
+기본적으로 자리 표시 요소는 숨겨져 있습니다. 표시하려면 [show_empty_state](api/config/show_empty_state.md) 구성을 사용하십시오:
 
 ~~~js
 gantt.config.show_empty_state = true;
 ~~~
 
-
-[Show empty state screen](https://docs.dhtmlx.com/gantt/samples/08_api/24_empty_state_screen.html)
-
-
+[빈 상태 화면 보기](https://docs.dhtmlx.com/gantt/samples/08_api/24_empty_state_screen.html)
 
 ## EmptyStateElement 객체
 
-"empty state" 기능은 [emptyStateElement](guides/empty-state-element-ext.md) 익스텐션을 통해 다양한 API 메서드를 제공합니다.
+"empty state"는 [emptyStateElement](guides/empty-state-element-ext.md) 확장에서 제공하는 API 메서드 세트를 포함합니다.
 
-빈 상태는 간트에 작업이 전혀 로드되지 않았을 때뿐만 아니라, 작업이 로드되어 있지만 필터링되어 페이지에 보이지 않을 때도 표시될 수 있습니다. 이러한 경우를 처리하려면 **isEnabled()** 메서드를 사용하세요:
+"empty state"의 표시가 가능하다는 것은 Gantt 차트에 로드된 작업이 전혀 없을 때뿐만 아니라 작업이 로드되었지만 필터링되어 페이지에 보이지 않는 경우에도 표시할 수 있음을 의미합니다. 이를 위해 **isEnabled()** 메서드를 사용하세요:
 
 ~~~js
 gantt.ext.emptyStateElement.isEnabled = function (){
@@ -32,7 +29,7 @@ gantt.ext.emptyStateElement.isEnabled = function (){
 }
 ~~~
 
-빈 상태를 그리드 대신 타임라인 영역에 표시하려면 **getContainer()** 메서드를 사용하세요:
+그리드가 아닌 타임라인 영역에 "empty state"를 표시하려면 **getContainer()** 메서드를 사용하십시오:
 
 ~~~js
 gantt.ext.emptyStateElement.getContainer = function() {
@@ -40,7 +37,7 @@ gantt.ext.emptyStateElement.getContainer = function() {
 };
 ~~~
 
-빈 상태에 표시되는 콘텐츠를 사용자 정의하려면 **renderContent()** 메서드를 오버라이드하세요:
+"empty state"에서 렌더링되는 내용을 변경하려면 **renderContent()** 메서드를 적용하십시오:
 
 ~~~js
 gantt.ext.emptyStateElement.renderContent = function (container) {

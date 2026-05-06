@@ -24,7 +24,7 @@ description: "converts a date object to a date string. Used to send data back to
 ~~~jsx
 var dateToStr = gantt.date.date_to_str("%Y-%m-%d %H:%i");
 gantt.templates.format_date = function(date){
-    return dateToStr (date);
+    return dateToStr(date);
 };
 ~~~
 
@@ -62,7 +62,7 @@ var cfg = gantt.config;
 var strToDate = gantt.date.str_to_date(cfg.date_format, cfg.server_utc);
 
 gantt.templates.parse_date = function(date){
-    return strToDate (date);
+    return strToDate(date);
 };
 ~~~
 

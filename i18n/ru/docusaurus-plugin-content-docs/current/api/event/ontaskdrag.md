@@ -1,6 +1,6 @@
 ---
 sidebar_label: onTaskDrag
-title: onTaskDrag event
+title: событие onTaskDrag
 description: "срабатывает, когда пользователь перетаскивает задачу"
 ---
 
@@ -14,34 +14,38 @@ description: "срабатывает, когда пользователь пер
 
 ### Parameters
 
-- `id` - (required) *string | number* - id задачи
+- `id` - (required) *string | number* - идентификатор задачи
 - `mode` - (required) *string* - режим перетаскивания ("resize", "progress", "move", "ignore")
 - `task` - (required) *Task* - текущий (перетаскиваемый) объект задачи
-- `original` - (required) *Task* - оригинальный (начальный) объект задачи
+- `original` - (required) *Task* - исходный (первоначальный) объект задачи
 - `e` - (required) *Event* - нативный объект события
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
-    //любая ваша логика здесь
+    // любая ваша логика здесь
 });
 ~~~
 
 ### Related samples
-- [Drag parent task with its children](https://docs.dhtmlx.com/gantt/samples/08_api/05_limit_drag_dates.html)
-- [Limit drag and drop dates](https://docs.dhtmlx.com/gantt/samples/08_api/02_constraints.html)
+- [Перетащить родительскую задачу вместе с её дочерними задачами](https://docs.dhtmlx.com/gantt/samples/08_api/05_limit_drag_dates.html)
+- [Ограничить даты перетаскивания и отпускания](https://docs.dhtmlx.com/gantt/samples/08_api/02_constraints.html)
 
 ### Details
 
-Это событие происходит каждый раз, когда пользователь перетаскивает мышь в области timeline, чтобы переместить, изменить размер задачи или обновить прогресс задачи. Тип перетаскивания указывается во втором аргументе - **mode**. Все возможные значения режима перетаскивания можно найти в файле [drag_mode](api/config/drag_mode.md).
+The event:
 
-Вкратце процесс выглядит так:
+- Вызывается каждый раз, когда пользователь выполняет перемещение мыши в области временной шкалы: перемещает, изменяет размер задачи или прогресс задачи.
+- Тип перемещения, используемого при перетаскивании, передаётся как второй аргумент - **mode**.
+- Все доступные значения типа перемещения перетаскивания хранятся в свойстве [drag_mode](api/config/drag_mode.md).
 
-1. Пользователь начинает действие перетаскивания.
-2. dhtmlxGantt пересчитывает даты задачи на основе нового положения.
-3. dhtmlxGantt вызывает событие [onTaskDrag](api/event/ontaskdrag.md).
-4. dhtmlxGantt обновляет отображение задачи на диаграмме Ганта.
+Кратко, всё происходит в следующем порядке:
+
+1. Пользователь выполняет перемещение.
+2. dhtmlxGantt перерасчитывает дату задачи в соответствии с новым положением.
+3. dhtmlxGantt возбуждает событие [onTaskDrag](api/event/ontaskdrag.md).
+4. dhtmlxGantt повторно отрисовывает задачу на диаграмме Ганта.
 
 ### Related API
 - [onBeforeTaskDrag](api/event/onbeforetaskdrag.md)
@@ -49,6 +53,5 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 - [drag_mode](api/config/drag_mode.md)
 
 ### Related Guides
-- [Перетаскивание задач на временной шкале](guides/dnd.md#preventingdraggingtasksoutsidecertaindates)
-- [Решения](guides/how-to.md#howtohaveaninfinitescrollinthetimeline)
-
+- [Перетаскивание задач в Timeline](guides/dnd.md#denying-dragging-tasks-out-of-specific-dates)
+- [Как сделать бесконечную прокрутку в timeline](guides/how-to.md#how-to-have-an-infinite-scroll-in-the-timeline)

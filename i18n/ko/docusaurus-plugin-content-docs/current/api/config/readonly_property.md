@@ -1,14 +1,14 @@
 ---
 sidebar_label: readonly_property
 title: readonly_property config
-description: "작업과 링크의 읽기 전용 상태를 제어하는 프로퍼티 이름을 설정합니다."
+description: "작업/링크의 읽기 전용 동작에 영향을 주는 속성의 이름을 변경합니다"
 ---
 
 # readonly_property
 
 ### Description
 
-@short: 작업과 링크의 읽기 전용 상태를 제어하는 프로퍼티 이름을 설정합니다.
+@short: 작업/링크의 읽기 전용 동작에 영향을 주는 속성의 이름을 변경합니다
 
 @signature: readonly_property: string
 
@@ -20,11 +20,10 @@ gantt.config.readonly_property = "property_name";
 
 ### Details
 
-기본적으로 이 옵션은 "readonly"로 설정되어 있습니다.
+옵션의 기본 값은 "readonly"입니다.
 
 ### Related API
 - [editable_property](api/config/editable_property.md)
 
 ### Related Guides
-- [읽기 전용 모드](guides/readonly-mode.md#readonlymodeforspecifictaskslinks)
-
+- [Read-Only Mode](guides/readonly-mode.md)

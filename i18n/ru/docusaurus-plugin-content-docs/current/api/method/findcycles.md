@@ -1,21 +1,23 @@
 ---
 sidebar_label: findCycles
-title: findCycles method
-description: "возвращает все циклы зависимостей, найденные в диаграмме"
+title: Метод findCycles
+description: "возвращает все циклы зависимостей на диаграмме"
 ---
 
 # findCycles
+
 :::info
  Эта функция доступна только в PRO-версии. 
 :::
+
 ### Description
 
-@short: Возвращает все циклы зависимостей, найденные в диаграмме
+@short: Возвращает все циклы зависимостей на диаграмме
 
 @signature: findCycles: () =\> any[]
 
 ### Returns
-- ` cycles` - (array) - массив, содержащий обнаруженные циклы зависимостей в gantt
+- ` cycles` - (array) - массив циклов зависимостей, найденных в gantt
 
 ### Example
 
@@ -29,16 +31,16 @@ var cycles = gantt.findCycles();
 ### Details
 
 :::note
- Для работы метода должен быть включён плагин [auto_scheduling](guides/extensions-list.md#autoscheduling). 
-:::
+Метод требует активации плагина [auto_scheduling](guides/extensions-list.md#autoscheduling). 
+::: 
 
-Каждый элемент массива *cycles* представляет собой набор задач и связей, образующих цикл.
+Каждый элемент массива *cycles* представляет собой группу задач и связей, образующих цикл.
 
 ~~~js
 [ 
     { 
-        tasks: [//id задач, участвующих в цикле], 
-        links: [//id связей, участвующих в цикле]
+        tasks: [//ids of tasks connected in a loop], 
+        links: [//ids of links connected in a loop]
     },
     {
         
@@ -48,17 +50,14 @@ var cycles = gantt.findCycles();
 ]
 ~~~
 
-Пример для наглядности:
-
-![on_autoschedule_circular_link](/img/on_autoschedule_circular_link.png)
-
+Посмотрите пример ниже:
 
 - Задача #3 имеет id = 10
 - Задача #4.1 имеет id = 12
-- Связь от конца задачи #3 к началу задачи #4 имеет id = 1
-- Связь от конца задачи #4.1 к началу задачи #3 имеет id = 2
+- Связь от конца Задачи #3 к началу Задачи #4 имеет id = 1
+- Связь от конца Задачи #4.1 к началу Задачи #3 имеет id = 2
 
-Метод *gantt.findCycles* вернёт следующий результат:
+Метод *gantt.findCycles* вернет следующее значение:
 
 ~~~js
 [ 
@@ -86,8 +85,7 @@ var cycles = gantt.findCycles();
 - [onCircularLinkError](api/event/oncircularlinkerror.md)
 
 ### Related Guides
-- [Автоматическое планирование](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
 ### Change log
 - добавлено в версии 4.1
-

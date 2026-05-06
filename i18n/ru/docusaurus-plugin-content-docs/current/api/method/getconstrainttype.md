@@ -1,16 +1,18 @@
 ---
 sidebar_label: getConstraintType
 title: getConstraintType method
-description: "возвращает тип ограничения, применённого к задаче"
+description: "возвращает тип ограничения, применяемый к задаче"
 ---
 
 # getConstraintType
+
 :::info
  Эта функция доступна только в PRO-версии. 
 :::
+
 ### Description
 
-@short: Возвращает тип ограничения, применённого к задаче
+@short: Возвращает тип ограничения, применяемый к задаче
 
 @signature: getConstraintType: (task: Task) =\> string
 
@@ -19,7 +21,7 @@ description: "возвращает тип ограничения, применё
 - `task` - (required) *Task* - объект задачи
 
 ### Returns
-- ` constraintType` - (string) - тип ограничения, как указано в конфигурации [constraint_types](api/config/constraint_types.md)
+- ` constraintType` - (string) - тип ограничения, как определено в конфигурации [constraint_types](api/config/constraint_types.md) конфигурации
 
 ### Example
 
@@ -35,13 +37,12 @@ if (constraintType != types.ASAP &&
 
 ### Details
 
-Возвращаемое значение соответствует **constraint_type** задачи, если оно было установлено.
+Возвращаемое значение будет соответствовать значению **constraint_type** задачи, если оно не пустое.
 
-Если **constraint_type** не задан, возвращаемое значение будет основано на текущем подходе к планированию - "asap" или "alap" при активном планировании от конца проекта.
+Если значение **constraint_type** пустое, возвращаемое значение будет зависеть от текущей стратегии планирования - либо "asap" или "alap", если включено планирование от конца проекта.
 
-Все допустимые типы ограничений можно найти в конфигурации **gantt.config.constraint_types**.
+Все допустимые типы ограничений определены в конфигурации **gantt.config.constraint_types**.
 
 ### Related API
 - [constraint_types](api/config/constraint_types.md)
 - [getConstraintLimitations](api/method/getconstraintlimitations.md)
-

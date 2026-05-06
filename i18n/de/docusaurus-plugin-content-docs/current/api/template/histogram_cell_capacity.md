@@ -1,29 +1,29 @@
 ---
 sidebar_label: histogram_cell_capacity
-title: histogram_cell_capacity template
-description: "definiert die Höhe der Linie, die die verfügbare Kapazität einer Ressource darstellt"
+title: histogram_cell_capacity Vorlage
+description: "bestimmt die Höhe der Linie, die die verfügbare Kapazität der Ressource definiert"
 ---
 
 # histogram_cell_capacity
 :::info
- Dieses Feature ist nur in der PRO Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
 ### Description
 
 @short: Definiert die Höhe der Linie, die die verfügbare Kapazität einer Ressource darstellt
 
-@signature: histogram_cell_capacity: (start_date: Date, end_date: Date, resource: any, tasks: Array\<Task\>, assignments: any[]) =\> number | void;
+@signature: histogram_cell_capacity: (start_date: Date, end_date: Date, resource: any, tasks: Array\<Task\>, assignments: any[]) => number | void;
 
 ### Parameters
 
-- `start_date` - (required) *Date* - das Startdatum der Skalen-Zelle  
-- `end_date` - (required) *Date* - das Enddatum der Skalen-Zelle
-- `resource` - (required) *object* - das Ressourcenobjekt selbst
-- `tasks` - (required) *Array* - &lt;Task&gt;        den der Ressource zugewiesenen Aufgaben, die sich mit den Start-/Enddaten der Zelle überschneiden
-- `assignments` - (required) *array* - Ressourcenzuweisungen, die mit den angegebenen Start-/Enddaten der Aufgabe verknüpft sind
+- `start_date` - (required) *Date* - Startdatum der Skalenzelle  
+- `end_date` - (required) *Date* - Enddatum der Skalenzelle
+- `resource` - (required) *object* - das Ressourcenobjekt
+- `tasks` - (required) *Array* - &lt;Task&gt;        Aufgaben, die dem angegebenen Ressourcenobjekt zugewiesen sind und sich mit Start- bzw. Enddatum der Zelle überschneiden
+- `assignments` - (required) *array* - Ressourcenzuordnungen, die dem angegebenen Start- bzw. Enddatum der Aufgabe zugewiesen sind
 
 ### Returns
-- ` height` - (number | void) - die Höhe der Linie, die die verfügbare Kapazität der Ressource anzeigt
+- `height` - (number | void) - die Höhe der Linie, die die verfügbare Kapazität der Ressource definiert
 
 ### Example
 
@@ -35,32 +35,32 @@ gantt.templates.histogram_cell_capacity=function(start_date,end_date,resource,ta
 ~~~
 
 ### Related samples
-- [Resource histogram](https://docs.dhtmlx.com/gantt/samples/11_resources/09_resource_histogram.html)
-- [Assign workload in percents](https://docs.dhtmlx.com/gantt/samples/11_resources/10_resource_histogram_workload_percents.html)
-- [Assign resource values to specific days](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
+- [Ressourcen-Histogramm](https://docs.dhtmlx.com/gantt/samples/11_resources/09_resource_histogram.html)
+- [Arbeitslast in Prozent zuweisen](https://docs.dhtmlx.com/gantt/samples/11_resources/10_resource_histogram_workload_percents.html)
+- [Ressourcenwerte bestimmten Tagen zuweisen](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
 
 ### Details
 
 :::note
- Der Parameter "assignments" ist nur zugänglich, wenn die Konfiguration [process_resource_assignments](api/config/process_resource_assignments.md) aktiviert ist. 
+Der "assignments"-Parameter ist nur verfügbar, wenn die [](api/config/process_resource_assignments.md) Konfiguration aktiviert ist.
 :::
 
-Der Rückgabewert der template-Funktion kann von -1 bis maxCapacity reichen. Werte unter 0 verhindern die Darstellung der Linie.
+Der Wert der Vorlage kann von -1 bis maxCapacity festgelegt werden. Werte kleiner als 0 rendern die Linie nicht.
 
-**maxCapacity erklärt**
+**Definition von maxCapacity**
 
-Man kann sich jede Histogramm-Zeile als Balkendiagramm vorstellen; maxCapacity repräsentiert die Y-Achsen-Höhe dieses Diagramms. Im folgenden Bild ist maxCapacity gleich 24:
+Wenn jede Zeile des Histogramms als Balkendiagramm betrachtet wird, ist maxCapacity die Höhe der Y-Skala dieses Diagramms. Im untenstehenden Bild entspricht maxCapacity = 24:
 
 ![maxCapacity](/img/maxcapacity.png)
 
-Standardmäßig ist **maxCapacity** für alle Ressourcen auf 24 gesetzt. Ein Rückgabewert über 24 im *histogram_cell_capacity* Template wird zwar korrekt berechnet, jedoch füllen die Zellenbereiche im Ressourcen-Panel möglicherweise nicht wie erwartet.
+Standardmäßig ist **maxCapacity** für alle Ressourcen 24. Das bedeutet, dass, wenn Sie den Wert größer als 24 in der *histogram_cell_capacity*-Vorlage zurückgeben, die Zahlen korrekt berechnet werden, aber der Bereich der Zellen des Ressourcenpanels möglicherweise nicht so ausgefüllt wird, wie Sie es erwarten.
 
 ![filled_capacity](/img/filled_capacity.png)
 
-Es gibt außerdem eine Möglichkeit, **maxCapacity** global für das gesamte Histogramm oder individuell für jede Ressource zu konfigurieren. Siehe folgendes Beispiel:
+Aber es gibt die Möglichkeit, **maxCapacity** für alle Histogramme auf einmal und für jede Ressource separat zu konfigurieren. Sehen Sie unten das Beispiel:
 
 :::note
-Sample: [Konfiguration von maxCapacity ](https://snippet.dhtmlx.com/glnqcsgq)
+  https://snippet.dhtmlx.com/glnqcsgq Konfigurieren von maxCapacity 
 :::
 
 ### Related API
@@ -71,7 +71,7 @@ Sample: [Konfiguration von maxCapacity ](https://snippet.dhtmlx.com/glnqcsgq)
 - [resource_property](api/config/resource_property.md)
 
 ### Related Guides
-- [Resource Management](guides/resource-management.md#resourceviewpanel)
+- [Ressourcenverwaltung](guides/resource-management.md#resourceviewpanel)
 
 ### Change log
 - der Parameter **assignments** wurde in Version 7.1 hinzugefügt

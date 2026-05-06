@@ -1,14 +1,14 @@
 ---
 sidebar_label: show_markers
-title: show_markers config
-description: "Steuert die Sichtbarkeit der Marker auf der Seite"
+title: show_markers Konfiguration
+description: "Marker auf der Seite anzeigen/ausblenden"
 ---
 
 # show_markers
 
 ### Description
 
-@short: Steuert die Sichtbarkeit der Marker auf der Seite
+@short: Zeigt/Versteckt Marker auf der Seite
 
 @signature: show_markers: boolean
 
@@ -22,15 +22,15 @@ var marker3 = gantt.addMarker({ ...});
 gantt.config.show_markers = false; // blendet alle 3 Marker aus
 ~~~
 
-**Default value:** true
+**Standardwert:** true
 
 ### Related samples
-- [Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
+- [Heute- und Statuslinien im Gantt (vertikale Marker)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
 
 ### Details
 
 :::note
- Diese Option ist Teil der **marker**-Erweiterung, daher stellen Sie sicher, dass das [marker](guides/extensions-list.md#verticalmarker) Plugin aktiviert ist. Weitere Details finden Sie im Artikel ["Hinzufügen von vertikalen Markierungen"](guides/markers.md). 
+Diese Option ist in der **Marker-Erweiterung** definiert, daher müssen Sie das [marker](guides/extensions-list.md#vertical-marker) Plugin aktivieren. Lesen Sie die Details im Artikel [Vertikale Marker hinzufügen](guides/markers.md). 
 :::
 
 ### Related API
@@ -41,5 +41,4 @@ gantt.config.show_markers = false; // blendet alle 3 Marker aus
 - [deleteMarker](api/method/deletemarker.md)
 
 ### Related Guides
-- ["Hinzufügen von vertikalen Markierungen"](guides/markers.md)
-
+- [Vertikale Marker hinzufügen](guides/markers.md)

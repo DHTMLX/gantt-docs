@@ -1,6 +1,6 @@
 ---
 sidebar_label: drag_move
-title: drag_move config
+title: drag_move Konfiguration
 description: "Ermöglicht das Verschieben von Aufgaben per Drag-and-Drop"
 ---
 
@@ -19,7 +19,7 @@ gantt.config.drag_move = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Standardwert:** true
 
 ### Related API
 - [drag_lightbox](api/config/drag_lightbox.md)
@@ -27,4 +27,3 @@ gantt.init("gantt_here");
 - [drag_mode](api/config/drag_mode.md)
 - [drag_progress](api/config/drag_progress.md)
 - [drag_resize](api/config/drag_resize.md)
-

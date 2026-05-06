@@ -1,32 +1,32 @@
 ---
 sidebar_label: onEmptyClick
-title: onEmptyClick event
-description: "Wird ausgelöst, wenn der Benutzer auf einen leeren Bereich innerhalb des Gantt-Diagramms klickt (außerhalb von Aufgaben)"
+title: onEmptyClick-Ereignis
+description: "wird ausgelöst, wenn der Benutzer auf einen leeren Bereich im Gantt-Diagramm klickt (nicht auf Aufgaben)"
 ---
 
 # onEmptyClick
 
 ### Description
 
-@short: Wird ausgelöst, wenn der Benutzer auf einen leeren Bereich innerhalb des Gantt-Diagramms klickt (außerhalb von Aufgaben)
+@short: Wird ausgelöst, wenn der Benutzer auf einen leeren Bereich im Gantt-Diagramm klickt (nicht auf Aufgaben)
 
 @signature: onEmptyClick: (e: Event) =\> void;
 
 ### Parameters
 
-- `e` - (required) *Event* - Ein natives Event-Objekt
+- `e` - (erforderlich) *Event* - ein natives Event-Objekt
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onEmptyClick", function (e){
-    // Hier kann benutzerdefinierte Logik hinzugefügt werden
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Details
 
-Das **onEmptyClick**-Event wird auch aktiviert, wenn der Benutzer auf einen Link klickt. Wenn Sie dieses Verhalten deaktivieren möchten, können Sie prüfen, ob das `e.target`-Element oder sein nächster Vorfahr die Eigenschaft **link_attribute** enthält, wie hier gezeigt:
+Das **onEmptyClick**-Ereignis wird auch ausgelöst, wenn der Benutzer auf einen Link klickt. Sie können dieses Verhalten des Ereignisses verhindern. Dazu müssen Sie prüfen, ob das `e.target`-Element oder das ihm am nächsten liegende Element die **link_attribute**-Eigenschaft enthält, wie in:
 
 ~~~js
 gantt.attachEvent("onEmptyClick", function (e) {

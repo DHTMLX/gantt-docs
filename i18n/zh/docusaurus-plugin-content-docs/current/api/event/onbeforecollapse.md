@@ -1,38 +1,38 @@
 ---
 sidebar_label: onBeforeCollapse
-title: onBeforeCollapse event
-description: "在甘特图退出全屏模式并返回普通视图之前触发"
+title: onBeforeCollapse 事件
+description: "在甘特图退出全屏模式并返回到普通模式之前"
 ---
 
 # onBeforeCollapse
 
 ### Description
 
-@short: 在甘特图退出全屏模式并返回普通视图之前触发
+@short: 在甘特图退出全屏模式并返回到普通模式之前
 
 @signature: onBeforeCollapse: () =\> boolean;
 
 ### Returns
-- ` result` - (boolean) - 决定事件的默认操作是否继续执行（<b>true</b>）或被阻止（<b>false</b>）
+- ` result` - (boolean) - 定义事件的默认操作是否将被触发 (<b>true</b>) 或取消 (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeCollapse",function(){
-    // 在这里添加您的自定义逻辑    
+    // 在这里插入您的自定义逻辑 
     return true;
 });
 ~~~
 
 ### Related samples
-- [Full Screen](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
+- [全屏示例](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
 
 ### Details
 
-此事件可以被阻止。返回 *false* 将防止任何后续操作。
+该事件是可阻塞的。返回 *false* 将取消后续处理。
 
 :::note
- 此事件属于 **fullscreen** 扩展的一部分，因此请确保通过 [gantt.plugins](api/method/plugins.md) 方法启用 [fullscreen](guides/extensions-list.md) 插件。更多详情请参见 [全屏模式](guides/fullscreen-mode.md) 文章。 
+此事件在 **fullscreen** 扩展中定义，因此需要通过 [gantt.plugins](api/method/plugins.md) 方法来激活该插件。请在 [Full Screen Mode](guides/fullscreen-mode.md) 一文中了解详细信息。
 :::
 
 ### Related API
@@ -44,4 +44,3 @@ gantt.attachEvent("onBeforeCollapse",function(){
 
 ### Related Guides
 - [全屏模式](guides/fullscreen-mode.md)
-

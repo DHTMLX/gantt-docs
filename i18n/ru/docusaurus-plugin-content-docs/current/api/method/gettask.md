@@ -1,6 +1,6 @@
 ---
 sidebar_label: getTask
-title: getTask method
+title: метод getTask
 description: "возвращает объект задачи"
 ---
 
@@ -14,10 +14,10 @@ description: "возвращает объект задачи"
 
 ### Parameters
 
-- `id` - (required) *string* - | number    идентификатор задачи
+- `id` - (required) *string | number* - идентификатор задачи
 
 ### Returns
-- ` obj` - (Task) - объект задачи
+- `obj` - (Task) - объект задачи
 
 ### Example
 
@@ -36,33 +36,32 @@ gantt.getTask(7);
 
 ### Details
 
-При вызове **getTask()** возвращается объект задачи, который содержит две удобные свойства, помогающие определить связи, связанные с этой задачей:
+Объект задачи, возвращаемый методом **getTask()**, содержит 2 важных свойства, которые можно использовать для получения связей, связанных с задачей:
 
-- **$source** - ссылки, исходящие из задачи.
-- **$target** - ссылки, указывающие на задачу.
+- **$source** - связи, исходящие из задачи.
+- **$target** - связи, входящие в задачу.
 
-Эти свойства генерируются автоматически и содержат ID ссылок, исходящих из задачи и входящих в неё.
+Эти свойства генерируются автоматически и содержат идентификаторы входящих и исходящих связей.
 
 ~~~js
 const taskObj = gantt.getTask("t1");
  
-const sourceLinks = taskObj.$source;        //-> ["l1","l4"] - ID исходящих ссылок  
-const targetLinks = taskObj.$target;       //-> ["l5","l8"] - ID входящих ссылок
+const sourceLinks = taskObj.$source;        //-> ["l1","l4"] - ids of coming-out links  
+const targetLinks = taskObj.$target;       //-> ["l5","l8"] - ids of coming-into links
 ~~~
 
 
-## Ошибка
+## Error
 
-Метод **getTask** требует, чтобы задача с указанным "id" уже была загружена в диаграмме Ганта. Если задачи с таким "id" не существует, будет выброшено сообщение об ошибке: "Task not found id = ID". 
+Метод **getTask** ожидает, что в Gantt загружена задача с обязательным полем "id". therefore, if no task with this "id" is found, the method will produce an error message: "Task not found id = ID". 
 
 ~~~js
 const task = gantt.getTask("fake-id");
 ...
 ~~~
 
-![gettask_error](/img/gettask_error.png)
 
-Чтобы избежать этой ошибки, лучше сначала проверить наличие задачи с помощью метода [isTaskExists](api/method/istaskexists.md):
+Мы рекомендуем устранить причины этой ошибки, прежде чем пытаться получить объект задачи. Для этого нужно проверить, существует ли задача через метод [isTaskExists](api/method/istaskexists.md):
 
 ~~~js
 if(gantt.isTaskExists("fake-id")){
@@ -71,11 +70,12 @@ if(gantt.isTaskExists("fake-id")){
 }
 ~~~
 
-Также можно [отключить эти сообщения об ошибках перед публикацией приложения](faq.md#anerroralertappearsintherighttopcorner), установив конфигурационный параметр [show_errors](api/config/show_errors.md):
+Но также можно [отключить эти сообщения перед выпуском вашего приложения для конечных пользователей](faq.md#an-error-alert-appears-in-the-right-top-corner) через конфигурацию [show_errors](api/config/show_errors.md):
 
 ~~~js
 gantt.config.show_errors = false;
 ~~~
+
 
 ### Related API
 - [getTaskByTime](api/method/gettaskbytime.md)
@@ -84,5 +84,4 @@ gantt.config.show_errors = false;
 
 ### Related Guides
 - [Task Object/Id](guides/task-object-operations.md)
-- [Получение объекта/ID связи](guides/link-object-operations.md#gettingthelinksrelatedtoacertaintask)
-
+- [Getting the Link Object/Id](guides/link-object-operations.md#getting-the-links-related-to-a-certain-task)

@@ -1,23 +1,23 @@
 ---
 sidebar_label: getTaskTop
-title: getTaskTop method
-description: "получает верхнюю позицию DOM-элемента задачи в области timeline"
+title: Метод getTaskTop
+description: "получает верхнюю позицию DOM-элемента задачи на временной шкале"
 ---
 
 # getTaskTop
 
 ### Description
 
-@short: Получает верхнюю позицию DOM-элемента задачи в области timeline
+@short: Получает верхнюю позицию DOM-элемента задачи на временной шкале
 
-@signature: getTaskTop: (id: number | string) =\> number
+@signature: getTaskTop: (id: number | string) => number
 
 ### Parameters
 
-- `id` - (required) *number | string* -    ID задачи
+- `id` - (обязательный) *number | string* - идентификатор задачи
 
 ### Returns
-- ` top` - (number) - CSS-свойство top для DOM-элемента задачи в пикселях
+- `top` - (number) - положение CSS top у DOM-элемента задачи в пикселях
 
 ### Example
 
@@ -27,4 +27,3 @@ gantt.getTaskTop(2);
 
 ### Related API
 - [getTaskPosition](api/method/gettaskposition.md)
-

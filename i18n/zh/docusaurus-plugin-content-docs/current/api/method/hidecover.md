@@ -1,20 +1,18 @@
 ---
 sidebar_label: hideCover
 title: hideCover method
-description: "移除阻止与屏幕其他部分交互的lightbox modal覆盖层"
+description: "隐藏阻止与剩余屏幕交互的灯箱模态覆盖层"
 ---
 
 # hideCover
 
 ### Description
 
-@short: 移除阻止与屏幕其他部分交互的lightbox modal覆盖层
+@short: 隐藏阻止剩余屏幕交互的灯箱模态覆盖层
 
 @signature: hideCover: (box?: HTMLElement) =\> void
 
 ### Parameters
-
-- `box` - (optional) *HTMLElement* - 要隐藏的元素
 
 ### Example
 
@@ -24,8 +22,7 @@ gantt.hideCover(gantt.getLightbox());
 
 ### Details
 
-当提供输入参数时，该方法通过将元素的display属性设置为"none"来隐藏指定的HTML元素。
+如果你指定了输入参数，该方法将隐藏指定的 HTML 对象元素（通过将 display 属性设置为 "none"）。
 
 ### Related API
 - [showCover](api/method/showcover.md)
-

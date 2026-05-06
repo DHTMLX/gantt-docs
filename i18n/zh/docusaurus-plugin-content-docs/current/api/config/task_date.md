@@ -1,14 +1,14 @@
 ---
 sidebar_label: task_date
-title: task_date config
-description: "定义在 lightbox 的'时间段'部分显示的日期标签格式"
+title: task_date 配置
+description: "设置 lightbox 的 'Time period' 部分日期标签的格式"
 ---
 
 # task_date
 
 ### Description
 
-@short: 定义在 lightbox 的"时间段"部分显示的日期标签格式
+@short: 设置 lightbox 的 'Time period' 部分日期标签的格式
 
 @signature: task_date: string
 
@@ -25,5 +25,4 @@ gantt.init("gantt_here");
 - [task_date](api/template/task_date.md)
 
 ### Related Guides
-- [日期格式规范](guides/date-format.md)
-
+- [Date Format Specification](guides/date-format.md)

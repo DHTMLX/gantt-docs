@@ -1,23 +1,23 @@
 ---
 sidebar_label: onBeforeLightbox
 title: onBeforeLightbox event
-description: "在 lightbox（编辑表单）打开之前触发"
+description: "在用户打开 lightbox（编辑表单）之前立即触发"
 ---
 
 # onBeforeLightbox
 
 ### Description
 
-@short: 在 lightbox（编辑表单）打开之前触发
+@short: 在用户打开 lightbox（编辑表单）之前立即触发
 
 @signature: onBeforeLightbox: (id: string | number) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - 任务的 ID
+- `id` - (required) *string | number* - 任务 ID
 
 ### Returns
-- ` result` - (boolean) - 决定是否继续执行默认事件动作（<b>true</b>）或阻止执行（<b>false</b>）
+- ` result` - (boolean) - 定义事件的默认行为是否会被触发（<b>true</b>）或取消（<b>false</b>）
 
 ### Example
 
@@ -36,5 +36,5 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 
 ### Details
 
-- 该事件可以被阻止。返回 *false* 将阻止 lightbox 打开。
-- 这是在 lightbox 显示之前进行自定义调整的便捷方式。
+- 该事件是可阻塞的。返回 *false* 以取消默认处理（打开 lightbox）。
+- 使用此事件是自定义 lightbox 中某些内容的一个好方法。
