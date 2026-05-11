@@ -96,7 +96,7 @@ note 이 메서드는 **export** 확장의 일부이므로, 반드시 [export_ap
 	</tr>
     <tr>
 			<td class="webixdoc_links0"><b>server</b></td>
-			<td>(<i>string</i>) 요청의 API 엔드포인트를 설정합니다. 로컬에 설치된 내보내기 서비스와 함께 사용할 수 있습니다. 기본값은 <strong>https://export.dhtmlx.com/gantt</strong>입니다</td>
+			<td>(<i>string</i>) 요청의 API 엔드포인트를 설정합니다. 로컬에 설치된 내보내기 서비스와 함께 사용할 수 있습니다. 기본값은 `https://export.dhtmlx.com/gantt` 입니다</td>
 	</tr>
     <tr>
 			<td class="webixdoc_links0"><b>raw</b></td>

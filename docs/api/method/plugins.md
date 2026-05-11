@@ -33,5 +33,5 @@ gantt.plugins({
 - [Full List of Extensions](guides/extensions-list.md)
 
 ### Change log
-- The **export_api** plugin was included into the list of plugins in v8.0. To activate export service in earlier versions, you need to include the **https://export.dhtmlx.com/gantt/api.js** file on your page. Check the [Migration](migration.md#71---80) article.
+- The **export_api** plugin was included into the list of plugins in v8.0. To activate export service in earlier versions, you need to include the `https://export.dhtmlx.com/gantt/api.js` file on your page. Check the [Migration](migration.md#71---80) article.
 - Added in v7.0

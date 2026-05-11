@@ -42,7 +42,7 @@ Diese Methode ist in der **export**-Erweiterung definiert, daher müssen Sie das
 :::
 
 :::note
-Wenn Sie eine Gantt-Version verwenden, die älter als 8.0 ist, müssen Sie auf Ihrer Seite das **https://export.dhtmlx.com/gantt/api.js** einbinden, um den Online-Export-Service zu aktivieren, z.B.:
+Wenn Sie eine Gantt-Version verwenden, die älter als 8.0 ist, müssen Sie auf Ihrer Seite das `https://export.dhtmlx.com/gantt/api.js` einbinden, um den Online-Export-Service zu aktivieren, z.B.:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -53,7 +53,7 @@ Wenn Sie eine Gantt-Version verwenden, die älter als 8.0 ist, müssen Sie auf I
 
 Die Methode nimmt als Parameter ein Objekt mit Konfigurationsparametern einer importierten Datei:
 
-- **server** - legt den API-Endpunkt für die Anfrage fest. Kann mit der lokalen Installation des Importdienstes verwendet werden. Der Standardwert ist **https://export.dhtmlx.com/gantt**.
+- **server** - legt den API-Endpunkt für die Anfrage fest. Kann mit der lokalen Installation des Importdienstes verwendet werden. Der Standardwert ist `https://export.dhtmlx.com/gantt`.
 - **data** - eine Instanz von [File](https://developer.mozilla.org/en-US/docs/Web/API/File) die eine Excel-Datei (xlsx) enthalten sollte.
 - **callback** - eine Callback-Funktion.
 - **sheet** - die Nummer des Arbeitsblatts des Dokuments, das vom Importdienst zurückgegeben werden soll.

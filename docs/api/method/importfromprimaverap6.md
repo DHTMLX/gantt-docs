@@ -45,7 +45,7 @@ This method is defined in the **export** extension, so you need to activate the 
 :::
 
 :::note
-If you use the Gantt version older than 8.0, you need to include the **https://export.dhtmlx.com/gantt/api.js** on your page to enable the online export service, e.g.:
+If you use the Gantt version older than 8.0, you need to include the `https://export.dhtmlx.com/gantt/api.js` on your page to enable the online export service, e.g.:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>

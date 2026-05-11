@@ -282,7 +282,7 @@ Starting from DHTMLX Gantt v8.0, changes made to resources and resource assignme
 
 From v8.0, the import/export functionality is included in the gantt library.
 
-Therefore, if you have already included the **https://export.dhtmlx.com/gantt/api.js** on your page to enable the online export service, for example:
+Therefore, if you have already included the `https://export.dhtmlx.com/gantt/api.js` on your page to enable the online export service, for example:
 
 ~~~html
 <script src="codebase/dhtmlxgantt.js"></script>
