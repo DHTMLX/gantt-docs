@@ -40,8 +40,6 @@ gantt.exportToICal({
 - **server** - (*string*) 요청의 API 엔드포인트를 설정합니다. 내보내기 서비스의 로컬 설치와 함께 사용할 수 있습니다. 기본값은 `https://export.dhtmlx.com/gantt`입니다;
 - **name** - (*string*) 파일의 이름과 확장자를 커스텀으로 지정할 수 있습니다. 다만 파일은 여전히 iCal 형식으로 내보내집니다. [Check the example](https://snippet.dhtmlx.com/atbhz9vq).
 
-- **server** - (*string*) 내보내기 요청을 위한 API 엔드포인트를 지정합니다. 로컬에 설치된 export 서비스와 함께 사용할 때 유용합니다. 기본 엔드포인트는 **https://export.dhtmlx.com/gantt** 입니다;
-- **name** - (*string*) 사용자 지정 파일명과 확장자를 설정할 수 있지만, 파일은 여전히 iCal 포맷으로 내보내집니다. [예제 보기](https://snippet.dhtmlx.com/atbhz9vq).
 
 ### Related API
 - [exportToMSProject](api/method/exporttomsproject.md)

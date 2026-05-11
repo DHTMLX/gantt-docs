@@ -45,7 +45,7 @@ gantt.importFromPrimaveraP6({
 :::
 
 :::note
-Если у вас версия Gantt старше 8.0, необходимо подключить на страницу файл **https://export.dhtmlx.com/gantt/api.js**, чтобы включить онлайн-сервис экспорта, например:
+Если у вас версия Gantt старше 8.0, необходимо подключить на страницу файл `https://export.dhtmlx.com/gantt/api.js`, чтобы включить онлайн-сервис экспорта, например:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>

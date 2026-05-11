@@ -158,7 +158,7 @@ Gantt 버전이 8.0 미만인 경우, 온라인 내보내기 서비스를 활성
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) 요청의 API 엔드포인트를 설정합니다. 로컬 내보내기 서비스 설치와 함께 사용할 수 있습니다. 기본 값은 [https://export.dhtmlx.com/gantt](https://export.dhtmlx.com/gantt)</td>
+  <td>(<i>string</i>) 요청의 API 엔드포인트를 설정합니다. 로컬 내보내기 서비스 설치와 함께 사용할 수 있습니다. 기본 값은 `https://export.dhtmlx.com/gantt`</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>raw</b></td>

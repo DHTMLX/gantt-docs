@@ -51,7 +51,7 @@ gantt.exportToPNG({
 :::
 
 :::note
- 对于 8.0 版本之前的 Gantt，需要在页面中引入 **https://export.dhtmlx.com/gantt/api.js** 脚本以使用在线导出服务，例如:
+ 对于 8.0 版本之前的 Gantt，需要在页面中引入 `https://export.dhtmlx.com/gantt/api.js` 脚本以使用在线导出服务，例如:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -98,7 +98,7 @@ gantt.exportToPNG({
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) 导出请求的 API 端点 URL。适用于本地导出服务。默认值为 <strong>https://export.dhtmlx.com/gantt</strong></td>
+  <td>(<i>string</i>) 导出请求的 API 端点 URL。适用于本地导出服务。默认值为 `https://export.dhtmlx.com/gantt`</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>raw</b></td>
