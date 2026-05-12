@@ -150,9 +150,9 @@ Typical function shape:
 
 Use this when changes are mostly singular and easy to process one by one.
 
-### `data.batchSave`
+### `data.batchSave` {#databatchsave}
 
-`batchSave` receives grouped changes:
+`batchSave` receives changes grouped into four buckets, one per data type:
 
 ~~~ts
 interface BatchChanges {
@@ -163,12 +163,7 @@ interface BatchChanges {
 }
 ~~~
 
-Entity-to-bucket mapping:
-
-- `task` / `tasks` -> `tasks`
-- `link` / `links` -> `links`
-- `resource` / `resources` -> `resources`
-- `assignment` / `resourceAssignment` / `resourceAssignments` -> `resourceAssignments`
+Iterate whichever buckets you care about - the wrapper fills them automatically from Gantt's per-change events.
 
 Queue behavior summary:
 

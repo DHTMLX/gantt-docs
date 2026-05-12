@@ -18,10 +18,13 @@ Use this page with:
 Start with the lowest-cost option that solves the task:
 
 - Use `config` and `templates` for visual output and built-in behavior changes
+- Use `theme` and `locale` for chart-wide skin and language switches
+- Return a Vue `VNode` from `h()` inside any template function - `templates.task_text`, `templates.tooltip_text`, scale/timeline cell templates, and column `template`/`label` - whenever you need an interactive or composable Vue element instead of a string
 - Use `events` and `@ready` for interaction rules and startup orchestration
 - Use `modals` for delete-confirmation control
-- Use `customLightbox` and `inlineEditors` when edit UI must be application-specific
-- Use `templateWrapper` when you need a shared wrapper around VNodes returned by templates
+- Use `customLightbox` when edit UI must be application-specific and fits in a modal
+- Use `events.onBeforeLightbox` returning `false` + `vue-router` when the editor needs its own route or full-page UI
+- Use `inlineEditors` when grid cells need custom editing widgets
 
 Keep one data ownership model while customizing UI. If the chart edits data, make sure your Vue state strategy matches it.
 
@@ -43,6 +46,92 @@ const templates = {
 ~~~
 
 Use this when your changes map cleanly to native Gantt template APIs.
+
+## Themes, Locales, And Vue Components Inside Templates
+
+Use the `theme` and `locale` props for chart-wide skin and language switches. Use `h()` to return Vue `VNode`s from any template function - both the timeline-side `templates` prop (`task_text`, `tooltip_text`, `timeline_cell_content`, ...) and column `template` / `label`. The wrapper mounts the result into the right place - the timeline bar, the scale cell, the grid cell, or the tooltip.
+
+- `theme` accepts the built-in skin names (for example `"terrace"`, `"dark"`)
+- `locale` accepts a locale code (`"en"`, `"es"`, `"de"`, `"cn"`, ...) or a full locale object
+- Any template function can return either a plain string/HTML (the native Gantt template shape) or `h(Component, props)` for a Vue component
+- Wire interaction (`onToggle`, `onClick`, ...) through Vue event props on the rendered component, the same way you would in a template
+
+~~~vue
+<script setup lang="ts">
+import { computed, h, ref } from "vue";
+import {
+  VueGantt,
+  type GanttConfigOptions,
+  type Task,
+  type VueGanttRef
+} from "@dhtmlx/trial-vue-gantt";
+import DoneToggleButton from "./components/DoneToggleButton.vue";
+import FilterDropdown from "./components/FilterDropdown.vue";
+import TaskTextBadge from "./components/TaskTextBadge.vue";
+
+const ganttRef = ref<VueGanttRef | null>(null);
+const theme = ref<"terrace" | "dark">("terrace");
+const locale = ref<"en" | "es" | "de" | "cn">("en");
+const filterMode = ref<"all" | "done" | "notDone">("all");
+
+const toggleTheme = () => (theme.value = theme.value === "terrace" ? "dark" : "terrace");
+
+// Vue component inside a timeline template (task_text):
+const templates = {
+  task_text: (_start: Date, _end: Date, task: Task) =>
+    h(TaskTextBadge, { task, onToggle: () => toggleCompleted(task.id) })
+} as any;
+
+// Vue components inside column template/label:
+const config = computed<Partial<GanttConfigOptions>>(() => ({
+  columns: [
+    { name: "text", tree: true, width: 220 },
+    {
+      name: "status",
+      width: 180,
+      label: h(FilterDropdown, {
+        modelValue: filterMode.value,
+        "onUpdate:modelValue": (next: typeof filterMode.value) => (filterMode.value = next)
+      }),
+      template: (task: Task) =>
+        h(DoneToggleButton, { task, onToggle: () => toggleCompleted(task.id) })
+    }
+  ]
+}));
+</script>
+
+<template>
+  <button @click="toggleTheme">Switch Theme</button>
+  <VueGantt
+    ref="ganttRef"
+    :tasks="tasks"
+    :links="links"
+    :theme="theme"
+    :locale="locale"
+    :config="config"
+    :templates="templates"
+  />
+</template>
+~~~
+
+:::note
+The native `GanttTemplates` type declares timeline template returns as `string | number | void`. The wrapper accepts a Vue `VNode` at runtime, but an `as any` cast (or per-function cast) is currently required to satisfy TypeScript. Templates that return plain strings can still use `defineGanttTemplates(...)` for full type inference.
+:::
+
+For bulk operations on the live chart (expand/collapse all, toggle a flag on every task), reach for the instance and call `render()` afterwards:
+
+~~~ts
+const collapseAll = () => {
+  const gantt = ganttRef.value?.instance;
+  if (!gantt) return;
+  gantt.eachTask((task: Task & { $open?: boolean }) => {
+    task.$open = false;
+  });
+  gantt.render();
+};
+~~~
+
+Pair this with the `filter` prop for grid-side filtering driven by the toolbar state.
 
 ## Replace The Task Form (`customLightbox`)
 
@@ -179,6 +268,56 @@ h3 {
 
 ~~~
 
+
+## Replace The Lightbox With A Route
+
+Use this pattern when the task editor needs its own page, deep-linkable URL, or layout that does not fit in a modal. Instead of supplying `customLightbox`, intercept lightbox events and route to a separate Vue Router view.
+
+Two events do the work:
+
+- `onBeforeLightbox(taskId)` - fires before the built-in editor opens. Return `false` to suppress it and navigate to your editor route.
+- `onTaskCreated(task)` - fires when the user adds a new row. Stage the new task in your store (so the editor route can read it), navigate, and return `false`.
+
+~~~vue title="GanttView.vue"
+<script setup lang="ts">
+import { inject } from "vue";
+import { useRouter } from "vue-router";
+import { defineGanttEvents, VueGantt, type Task } from "@dhtmlx/trial-vue-gantt";
+
+const router = useRouter();
+const context = inject(CUSTOM_EDIT_VIEW_CONTEXT_KEY)!; // tasks, links, upsertTask, applyBatch, ...
+
+const events = defineGanttEvents({
+  onBeforeLightbox: (taskId: string | number) => {
+    router.push(`/editor/${taskId}`);
+    return false;
+  },
+  onTaskCreated: (task: Task) => {
+    context.upsertTask({ ...(task as any), $new: true });
+    router.push(`/editor/${task.id}`);
+    return false;
+  }
+});
+
+const data = {
+  batchSave: (changes) => context.applyBatch(changes)
+};
+</script>
+
+<template>
+  <VueGantt :tasks="context.tasks.value" :links="context.links.value" :events="events" :data="data" />
+</template>
+~~~
+
+The editor route reads and mutates the same store the chart binds to (typically shared via `provide`/`inject` or Pinia), so the chart re-renders automatically after `save`/`delete`.
+
+Use this instead of `customLightbox` when:
+
+- The editor needs more space than a modal allows (multi-pane layout, embedded media)
+- You want deep links and browser back/forward to navigate between edits
+- The editor should remain mounted after navigation (for example unsaved-changes flows)
+
+For modal-style replacement, prefer [`customLightbox`](#replace-the-task-form-customlightbox).
 
 ## Custom Grid Inline Editors
 
