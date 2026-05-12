@@ -455,6 +455,12 @@ Use this when grid editing is central to the workflow and built-in editors are n
 
 Use `modals` to replace built-in task/link deletion confirmations.
 
+The handler receives `{ task, callback, message, title, ganttInstance }` for task deletion (and `{ link, ... }` for link deletion). **Deletion only proceeds when you invoke `callback()`** — skip the call and the deletion is cancelled.
+
+### Quick Path: `window.confirm`
+
+Good enough for prototypes and internal tools:
+
 ~~~ts
 const modals = {
   onBeforeTaskDelete: ({ task, callback }) => {
@@ -466,7 +472,58 @@ const modals = {
 };
 ~~~
 
-Use this when your app needs a branded confirmation flow or extra business checks before deletion.
+### Production Path: Custom Vue Dialog Component
+
+Real apps usually need a branded modal that matches the rest of the UI. The handler can't show a Vue component synchronously — the user has to click first — so you capture the `callback` in component state, open the dialog, and invoke the callback (or don't) when the user chooses.
+
+~~~vue
+<script setup lang="ts">
+import { ref } from "vue";
+import { VueGantt, type OnBeforeTaskDeleteConfirmArgs } from "@dhtmlx/trial-vue-gantt";
+import TaskDeleteDialog from "./TaskDeleteDialog.vue";
+
+const showTaskDeleteDialog = ref(false);
+const pendingTaskDelete = ref<{ message: string; callback: () => void } | null>(null);
+
+const handleDeleteTaskConfirm = ({ task, callback }: OnBeforeTaskDeleteConfirmArgs) => {
+  pendingTaskDelete.value = {
+    message: `Delete "${task.text}"?`,
+    callback
+  };
+  showTaskDeleteDialog.value = true;
+};
+
+const onDialogConfirm = () => {
+  pendingTaskDelete.value?.callback();
+  pendingTaskDelete.value = null;
+};
+
+const onDialogCancel = () => {
+  pendingTaskDelete.value = null;
+};
+
+const modals = {
+  onBeforeTaskDelete: handleDeleteTaskConfirm
+};
+</script>
+
+<template>
+  <VueGantt :tasks="tasks" :links="links" :modals="modals" />
+
+  <TaskDeleteDialog
+    v-model="showTaskDeleteDialog"
+    :text="pendingTaskDelete?.message ?? ''"
+    @confirm="onDialogConfirm"
+    @cancel="onDialogCancel"
+  />
+</template>
+~~~
+
+`TaskDeleteDialog.vue` is any Vue dialog component you like — a Vuetify `v-dialog`, an Element Plus `el-dialog`, a custom-rolled `<Teleport>` overlay, etc. The contract is just `modelValue` (or any open/close prop), a `confirm` action and a `cancel` action.
+
+See the runnable Vue version in the `templates` route of [`vue-gantt-examples`](https://github.com/DHTMLX/vue-gantt-examples).
+
+The `OnBeforeTaskDeleteConfirmArgs` and `OnBeforeLinkDeleteConfirmArgs` types are listed in the [Configuration Reference](integrations/vue/configuration-props.md#type-exports).
 
 ## Orchestrate Behavior With `events` + `@ready`
 
