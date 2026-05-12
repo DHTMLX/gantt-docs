@@ -455,7 +455,7 @@ Use this when grid editing is central to the workflow and built-in editors are n
 
 Use `modals` to replace built-in task/link deletion confirmations.
 
-The handler receives `{ task, callback, message, title, ganttInstance }` for task deletion (and `{ link, ... }` for link deletion). **Deletion only proceeds when you invoke `callback()`** — skip the call and the deletion is cancelled.
+The handler receives `{ task, callback, message, title, ganttInstance }` for task deletion (and `{ link, ... }` for link deletion). **Deletion only proceeds when you invoke `callback()`** - skip the call and the deletion is cancelled.
 
 ### Quick Path: `window.confirm`
 
@@ -474,7 +474,7 @@ const modals = {
 
 ### Production Path: Custom Vue Dialog Component
 
-Real apps usually need a branded modal that matches the rest of the UI. The handler can't show a Vue component synchronously — the user has to click first — so you capture the `callback` in component state, open the dialog, and invoke the callback (or don't) when the user chooses.
+Real apps usually need a branded modal that matches the rest of the UI. The handler can't show a Vue component synchronously - the user has to click first - so you capture the `callback` in component state, open the dialog, and invoke the callback (or don't) when the user chooses.
 
 ~~~vue
 <script setup lang="ts">
@@ -519,7 +519,7 @@ const modals = {
 </template>
 ~~~
 
-`TaskDeleteDialog.vue` is any Vue dialog component you like — a Vuetify `v-dialog`, an Element Plus `el-dialog`, a custom-rolled `<Teleport>` overlay, etc. The contract is just `modelValue` (or any open/close prop), a `confirm` action and a `cancel` action.
+`TaskDeleteDialog.vue` is any Vue dialog component you like - a Vuetify `v-dialog`, an Element Plus `el-dialog`, a custom-rolled `<Teleport>` overlay, etc. The contract is just `modelValue` (or any open/close prop), a `confirm` action and a `cancel` action.
 
 See the runnable Vue version in the `templates` route of [`vue-gantt-examples`](https://github.com/DHTMLX/vue-gantt-examples).
 
