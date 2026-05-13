@@ -14,6 +14,14 @@ Unlike the [MCP server](integrations/ai-tools/mcp-server.md), which provides rea
 
 ## Available Skills
 
+### DHTMLX JS Gantt
+
+Covers integration of the core JavaScript Gantt into plain JavaScript and TypeScript applications. The skill recognises all three delivery channels — the free `dhtmlx-gantt` (Standard / GPL) package, the `@dhx/trial-gantt` evaluation package, the commercial `@dhx/gantt` package, and `<script>` / CDN loading — and adapts its guidance accordingly. It covers setup and lifecycle, `gantt.parse` / `gantt.load`, templates, events, plugins, the DataProcessor, task and link CRUD, resources and assignments, working calendars, undo/redo, row reorder, baselines, critical path, locale and i18n, theming, and live updates. 
+
+As with the other skills, unfamiliar APIs are routed through the [DHTMLX MCP server](integrations/ai-tools/mcp-server.md) rather than guessed.
+
+The skill files are readable Markdown - you can review exactly what rules your assistant will follow in the [GitHub repository](https://github.com/DHTMLX/skills/tree/main/dhtmlx-js-gantt).
+
 ### DHTMLX React Gantt
 
 Covers integration of `@dhtmlx/trial-react-gantt` and `@dhx/react-gantt` into React applications. The skill helps the assistant add Gantt to a project and set it up correctly, connect CRUD operations, and handle theming so that Gantt reuses the app's own theme rather than drifting out of sync. It also includes known pitfalls extracted from real projects and directs the assistant to verify unfamiliar APIs through the [DHTMLX MCP server](integrations/ai-tools/mcp-server.md) rather than guessing.
@@ -25,12 +33,13 @@ For a worked example of these patterns applied end-to-end, see the [React Gantt 
 ## Installing
 
 ```bash
+npx skills add DHTMLX/skills --skill dhtmlx-js-gantt
 npx skills add DHTMLX/skills --skill dhtmlx-react-gantt
 ```
 
 ### Manual Installation
 
-Clone or download the [DHTMLX/skills](https://github.com/DHTMLX/skills) repository and copy the `dhtmlx-react-gantt` folder into your project's skills directory (e.g., `.claude/skills/` for Claude Code, `.cursor/skills/` for Cursor).
+Clone or download the [DHTMLX/skills](https://github.com/DHTMLX/skills) repository and copy the relevant skill folder (`dhtmlx-js-gantt` or `dhtmlx-react-gantt`) into your project's skills directory (e.g., `.claude/skills/` for Claude Code, `.cursor/skills/` for Cursor).
 
 ## Using Skills with MCP
 
