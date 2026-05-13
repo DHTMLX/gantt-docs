@@ -6,6 +6,10 @@ description: "Install, configure, and use DHTMLX Gantt in Angular with the offic
 
 Angular Gantt is the official Angular wrapper for DHTMLX Gantt. It gives you an Angular component API for the chart while preserving access to the full Gantt engine.
 
+:::tip AI-assisted development
+If you use an AI coding assistant, the [DHTMLX Angular Gantt agent skill](integrations/ai-tools/agent-skills.md#available-skills) can help it follow correct wrapper integration patterns - matching CSS imports, providing an explicit height chain, choosing a data ownership model, normalizing dates around `data.save` / `data.batchSave`, and mapping the app theme through Gantt CSS variables. For real-time API reference, connect the [DHTMLX MCP server](integrations/ai-tools/mcp-server.md).
+:::
+
 ## What You Get With The Wrapper
 
 - Declarative inputs for `tasks`, `links`, `config`, `templates`, `plugins`, `theme`, and `locale`.

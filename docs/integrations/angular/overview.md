@@ -10,6 +10,10 @@ Angular Gantt is the official Angular wrapper for DHTMLX Gantt. It exposes the G
 
 If you need installation and project setup first, start with [Quick Start with Angular Gantt](integrations/angular/quick-start.md).
 
+:::tip AI-assisted development
+If you use an AI coding assistant, the [DHTMLX Angular Gantt agent skill](integrations/ai-tools/agent-skills.md#available-skills) can help it follow correct wrapper integration patterns and avoid common mistakes such as mismatched CSS imports, missing container height, mixed ownership between Angular state and the Gantt `instance`, and unstable date serialization through `data.save` / `data.batchSave`. For real-time API reference, connect the [DHTMLX MCP server](integrations/ai-tools/mcp-server.md).
+:::
+
 ## Core Capabilities
 
 The wrapper is built for both simple and advanced Angular integrations:
