@@ -89,7 +89,8 @@ export default function CopyPageButton({ mdUrl, pageTitle }) {
 
   const openInLLM = (baseUrl) => {
     setOpen(false);
-    const prompt = buildPrompt(toAbsolute(mdUrl), pageTitle);
+    const pageUrl = window.location.origin + window.location.pathname;
+    const prompt = buildPrompt(pageUrl, pageTitle);
     window.open(baseUrl + encodeURIComponent(prompt), '_blank', 'noopener,noreferrer');
   };
 
