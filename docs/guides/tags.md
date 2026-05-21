@@ -60,7 +60,8 @@ sidebar_label: "Properties for importing from MS Project"
 | CV%  (internal MSP property that is not added to files)| LateStart | RemainingCost | WBS |
 | Deadline | LevelAssignments | RemainingDuration | Work |
 | Duration | LevelingCanSplit | RemainingOvertimeCost | WorkVariance |
-| DurationVariance | LevelingDelay | | |
+| DurationFormat | LevelingDelay | | |
+| DurationVariance | | | |
 </div>
 
 
