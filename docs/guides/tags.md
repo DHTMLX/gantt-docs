@@ -33,35 +33,34 @@ sidebar_label: "Properties for importing from MS Project"
 <div class="msp-properties">
 | | | | |
 |---|---|---|---|
-| Active | DurationText | LevelingDelayFormat | RemainingOvertimeWork |
-| ActualCost | EarlyFinish | LinkedFields | RemainingWork |
-| ActualDuration | EarlyStart | Manual | ResponsePending |
-| ActualFinish | EarnedValueMethod | ManualDuration | Resume |
-| ActualOvertimeCost | EffortDriven | Marked | ResumeValid |
-| ActualOvertimeWork | Estimated | Milestone | Rollup |
-| ActualStart | Finish | Name | SPI |
-| ActualWork | FinishSlack | Notes | Start |
-| ACWP | FinishText | Objects | StartSlack |
-| Baseline | FinishVariance | OutlineLevel | StartText |
-| BCWP | FixedCost | OutlineNumber | StartVariance |
-| BCWS | FixedCostAccrual | OverAllocated | Stop |
-| CalendarUID | FreeSlack | OvertimeCost | SubprojectName |
-| CompleteThrough | GUID | OvertimeWork | SubprojectReadOnly |
-| ConstraintDate | HideBar | PercentComplete | Successors |
-| ConstraintType | Hyperlink | PercentWorkComplete | Summary |
-| Contact | HyperlinkAddress | PhysicalPercentComplete | SV |
-| Cost | HyperlinkSubAddress | Placeholder | SVPercent (internal MSP property that is not added to files) |
-| CostVariance | ID (don't include it if it doesn't match the task ID) | Predecessors | SV% (internal MSP property that is not added to files) |
-| CPI | IgnoreResourceCalendar | Project | TaskMode |
-| CreateDate | Indicators | Publish | TotalSlack |
-| Critical | IsPublished | Priority | Type |
-| CV | IsSubproject | Recurring | UID |
-| CVPercent (internal MSP property that is not added to files) | LateFinish | RegularWork | UpdateNeeded |
-| CV%  (internal MSP property that is not added to files)| LateStart | RemainingCost | WBS |
-| Deadline | LevelAssignments | RemainingDuration | Work |
-| Duration | LevelingCanSplit | RemainingOvertimeCost | WorkVariance |
-| DurationFormat | LevelingDelay | | |
-| DurationVariance | | | |
+| Active | DurationFormat | LevelingDelay | RemainingOvertimeWork |
+| ActualCost | DurationText | LevelingDelayFormat | RemainingWork |
+| ActualDuration | EarlyFinish | LinkedFields | ResponsePending |
+| ActualFinish | EarlyStart | Manual | Resume |
+| ActualOvertimeCost | EarnedValueMethod | ManualDuration | ResumeValid |
+| ActualOvertimeWork | EffortDriven | Marked | Rollup |
+| ActualStart | Estimated | Milestone | SPI |
+| ActualWork | Finish | Name | Start |
+| ACWP | FinishSlack | Notes | StartSlack |
+| Baseline | FinishText | Objects | StartText |
+| BCWP | FinishVariance | OutlineLevel | StartVariance |
+| BCWS | FixedCost | OutlineNumber | Stop |
+| CalendarUID | FixedCostAccrual | OverAllocated | SubprojectName |
+| CompleteThrough | FreeSlack | OvertimeCost | SubprojectReadOnly |
+| ConstraintDate | GUID | OvertimeWork | Successors |
+| ConstraintType | HideBar | PercentComplete | Summary |
+| Contact | Hyperlink | PercentWorkComplete | SV |
+| Cost | HyperlinkAddress | PhysicalPercentComplete | SVPercent (internal MSP property that is not added to files) |
+| CostVariance | HyperlinkSubAddress | Placeholder | SV% (internal MSP property that is not added to files) |
+| CPI | ID (don't include it if it doesn't match the task ID) | Predecessors | TaskMode |
+| CreateDate | IgnoreResourceCalendar | Project | TotalSlack |
+| Critical | Indicators | Publish | Type |
+| CV | IsPublished | Priority | UID |
+| CVPercent (internal MSP property that is not added to files) | IsSubproject | Recurring | UpdateNeeded |
+| CV%  (internal MSP property that is not added to files)| LateFinish | RegularWork | WBS |
+| Deadline | LateStart | RemainingCost | Work |
+| Duration | LevelAssignments | RemainingDuration | WorkVariance |
+| DurationVariance | LevelingCanSplit | RemainingOvertimeCost | |
 </div>
 
 
