@@ -6,6 +6,13 @@ sidebar_label: "What's new in PDF Export Module"
 What's new in PDF Export Module
 ================================
 
+## 0.8.0
+
+- Migrated PDF/PNG rendering engine to Puppeteer
+- Header and footer that are displayed for each page in multipage PDF export are now displayed over the page content
+- Set correct DPI scale for Scheduler in PDF and PNG export
+- Reduced Docker image size
+
 ## 0.7.7
 
 - Fixed `width` and `height` parameters not being ignored in multipage PDF export when the `format` parameter is specified
