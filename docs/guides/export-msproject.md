@@ -17,6 +17,10 @@ There are several export services available. You can install them on your comput
 Note that export services are not included into the Gantt package, 
 read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) to learn the terms of using each of them.
 
+:::info
+If you need a ready-to-use tool, try GanttPRO - [project management Gantt chart software](https://ganttpro.com/) that uses our Gantt scheduler component.
+:::
+
 ## Online export service restrictions
 
 :::note
