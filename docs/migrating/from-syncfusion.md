@@ -327,7 +327,7 @@ Remove Syncfusion dependency:
 npm uninstall @syncfusion/ej2
 ```
 
-Install DHTMLX Gantt following the [installation guide](https://docs.dhtmlx.com/gantt/guides/installation/).
+Install DHTMLX Gantt following the [installation guide](guides/installation.md).
 
 For this tutorial, we will use the trial version of DHTMLX Gantt:
 
@@ -387,7 +387,7 @@ app.get('/data', async (req, res) => {
 ### Add CRUD Endpoints for Tasks and Links
 
 DHTMLX Gantt's `DataProcessor` uses RESTful endpoints to synchronize data with the server. Each operation (create, update, delete) is sent as a separate HTTP request with the appropriate method.
-Learn more about [Server-side integration](https://docs.dhtmlx.com/gantt/guides/server-side/).
+Learn more about [Server-side integration](guides/server-side.md).
 
 Add handlers for **task operations**:
 

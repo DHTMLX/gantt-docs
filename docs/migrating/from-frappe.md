@@ -248,7 +248,7 @@ In the Frappe server, data loading and CRUD for tasks go through `/data/tasks`. 
 
 ### Install DHTMLX Gantt Package
 
-Install DHTMLX Gantt following the [installation guide](https://docs.dhtmlx.com/gantt/guides/installation/).
+Install DHTMLX Gantt following the [installation guide](guides/installation.md).
 
 For this tutorial, we will use the trial version of DHTMLX Gantt:
 
@@ -290,7 +290,7 @@ app.get('/data', async (req, res) => {
 
 ### Add CRUD Endpoints for Tasks and Links
 
-DHTMLX Gantt's `DataProcessor` uses RESTful endpoints to synchronize data with the server. Each operation (create, update, delete) is sent as a separate HTTP request. Learn more about [Server-side integration](https://docs.dhtmlx.com/gantt/guides/server-side/).
+DHTMLX Gantt's `DataProcessor` uses RESTful endpoints to synchronize data with the server. Each operation (create, update, delete) is sent as a separate HTTP request. Learn more about [Server-side integration](guides/server-side.md).
 
 Replace the Frappe task endpoints (`POST /data/tasks`, `PUT /data/tasks/:id`, `DELETE /data/tasks/:id`) with:
 
@@ -432,7 +432,7 @@ function sendResponse(res, action, tid = null, error = null) {
 }
 ```
 
-**Note:** The response format is different from Frappe. Frappe endpoints returned the full task object (or HTTP 204 for deletes). DHTMLX's `DataProcessor` expects a JSON object with an `action` field (e.g., `{ action: "inserted", tid: 5 }`, `{ action: "updated" }`, `{ action: "deleted" }`). Learn more the [Request and Responses details](https://docs.dhtmlx.com/gantt/guides/server-side/#requestresponsedetails).
+**Note:** The response format is different from Frappe. Frappe endpoints returned the full task object (or HTTP 204 for deletes). DHTMLX's `DataProcessor` expects a JSON object with an `action` field (e.g., `{ action: "inserted", tid: 5 }`, `{ action: "updated" }`, `{ action: "deleted" }`). Learn more the [Request and Responses details](guides/server-side.md#requestresponsedetails).
 
 ## Step 3: Frontend Migration
 
