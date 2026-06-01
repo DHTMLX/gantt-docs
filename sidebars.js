@@ -1615,6 +1615,20 @@ module.exports = {
                         "guides/multiuser-live-updates",
                     ]
                 },
+                {
+                    type: "category",
+                    label: "Migrating",
+                    link: {
+                        type: "doc",
+                        id: "migrating/index",
+                    },
+                    items: [
+                        "migrating/from-bryntum",
+                        "migrating/from-syncfusion",
+                        "migrating/from-devexpress",
+                        "migrating/from-frappe",
+                    ],
+                },
                 "guides/extensions-list",
                 "guides/overview"
             ]

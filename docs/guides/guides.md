@@ -165,5 +165,15 @@ Describes the elements of the Gantt Chart interface from the point of view of th
 
 - ### [Interface of Gantt Chart](guides/overview.md)
 
+## Migrating from Other Gantt Libraries
+
+Step-by-step tutorials for moving an existing app from Bryntum, Syncfusion, DevExpress, or Frappe Gantt to DHTMLX Gantt, with companion demo repositories on GitHub.
+
+- ### [Migrating to DHTMLX Gantt](/migrating/)
+- ### [From Bryntum](/migrating/from-bryntum)
+- ### [From Syncfusion](/migrating/from-syncfusion)
+- ### [From DevExpress](/migrating/from-devexpress)
+- ### [From Frappe](/migrating/from-frappe)
+
 
 </div>
