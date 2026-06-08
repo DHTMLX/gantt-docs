@@ -63,7 +63,12 @@ Start with the state section if you already know you need store/backend synchron
 
 Browse the public Vue Gantt examples for runnable demos of the wrapper:
 
-- [Live demo](https://dhtmlx.github.io/vue-gantt-examples/)
-- [GitHub repository](https://github.com/DHTMLX/vue-gantt-examples)
+- [Live demo](https://dhtmlx.github.io/vue-gantt-examples/) - all wrapper features running in the browser
+- [GitHub repository](https://github.com/DHTMLX/vue-gantt-examples) - source for every sample referenced in the overview
+
+Minimal starter projects (one wrapper feature each):
+
+- [vue-gantt-quick-start](https://github.com/DHTMLX/vue-gantt-quick-start) - smallest possible setup, matches the [Quick Start](integrations/vue/quick-start.md)
+- [vue-gantt-pinia-starter](https://github.com/DHTMLX/vue-gantt-pinia-starter) - Pinia store with `batchSave` and store-level undo/redo, matches the [Pinia tutorial](integrations/vue/state/pinia.md)
 
 If you're evaluating Vue Gantt, the evaluation page provides access to technical support during the evaluation period. See [Installation](integrations/vue/installation.md).

@@ -441,3 +441,46 @@ gantt.config.auto_scheduling = {
 ### Related API
 - [auto_scheduling](api/config/auto_scheduling.md)
 
+## Auto-scheduling engine update in v10.0 {#v2-engine}
+
+In v10.0 the auto-scheduling engine was reworked. The public API and the visible behavior stay the same, except for cases that previously worked incorrectly. The practical effects are described below.
+
+### Repeated scheduling is stable
+
+Auto-scheduling no longer changes a project that is already scheduled and hasn't changed. If you call `gantt.autoSchedule()` again without modifying any data, the task dates stay the same. This is expected behavior. (Earlier versions could shift tasks forward on projects that mixed several calendars.)
+
+### Moving a project keeps its tasks together
+
+When [move_projects](api/config/auto_scheduling.md#move_projects) is enabled and a project is rescheduled (for example, dragged or pushed by a constraint), all of its tasks move by the same amount, keeping their positions relative to each other and to the start of the project. If a task's own constraint conflicts with the new position, the task is still moved and the conflict is reported through the [onAutoScheduleConflict](api/event/onautoscheduleconflict.md) event, so you can show it in the UI:
+
+~~~js
+gantt.attachEvent("onAutoScheduleConflict", function(conflict){
+    if (conflict.kind === "constraint-violation") {
+        console.warn(`Task ${conflict.taskId}: the ${conflict.constraintType} constraint could not be satisfied`);
+    }
+});
+~~~
+
+### New events
+
+- [onAutoScheduleConflict](api/event/onautoscheduleconflict.md) — fires for each conflict found during scheduling (for example, a task whose constraint can't be satisfied at its new position).
+- [onAutoScheduleNoConverge](api/event/onautoschedulenoconverge.md) — fires when scheduling can't settle on a stable result, which usually points to an over-constrained project.
+
+### New config
+
+- [strict_calendar](api/config/auto_scheduling.md#strict_calendar) — when enabled, an `onAutoScheduleConflict` event is reported whenever scheduling moves a task onto its own non-working time. The task date is applied in either case; the option only controls whether the situation is reported.
+
+### Switching back to the previous engine
+
+The previous engine is still available through transitional opt-out flags. They will be removed in v10.1, so use them only during the transition:
+
+~~~js
+gantt.config.auto_scheduling = {
+    enabled: true,
+    _engine: "v1",          // previous scheduling engine
+    _analysis_engine: "v1"  // previous slack / critical path calculation
+};
+~~~
+
+See the [migration guide](migration.md#auto-scheduling-v2) for the full list of behavior changes.
+

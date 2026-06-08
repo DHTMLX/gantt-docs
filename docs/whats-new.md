@@ -9,21 +9,29 @@ sidebar_label: "What's New"
 Updating from an earlier version? Check the [migration guide](migration.md) for required changes and update steps.
 :::
 
-## 9.2
+## 10.0
 
-<span class='release_date'>Minor update</span>
+<span class='release_date'>Major release</span>
 
-### Breaking Changes
+This update brings some changes in the structure of the Gantt package and behavior of the functionality. Make sure to check the 
+[Migration notes](migration.md#91---100) to be on the safe side.
 
-This update brings some changes in the behavior of framework wrappers. Make sure to check the
-[Migration notes](migration.md#91---92) to be on the safe side.
 
 ### New Functionality
 
+
+
+- DHTMLX Gantt Community Edition 
+- Angular Gantt Wrapper is officially released
+- Vue Gantt Wrapper is officially released
+- Zoom-to-fit functionality is available out of the box
 - [React Gantt](integrations/react.md), [Vue Gantt](integrations/vue.md), and [Angular Gantt](integrations/angular.md) wrappers now **HTML-escape string values returned from template functions** by default to prevent XSS attacks. This applies to `templates`, `config.columns[].template`, and `config.scales[].format` functions
 - [React Gantt](integrations/react.md) now passes the **gantt instance** to the [customLightbox](integrations/react/overview.md#by-providing-a-custom-component-via-the-customlightbox-prop) component, allowing direct access to the Gantt API from the custom editor
 
 ### Updates
+
+
+- The Auto Scheduling engine has been deeply reworked, which allowed fixing long-lived bugs. It adds the [onAutoScheduleConflict](api/event/onautoscheduleconflict.md) and [onAutoScheduleNoConverge](api/event/onautoschedulenoconverge.md) events and the [strict_calendar](api/config/auto_scheduling.md#strict_calendar) option. See the [migration guide](migration.md#auto-scheduling-v2) for the behavior changes.
 
 - Updated TypeScript typings: added `SerializedTask`, `SerializedLink`, `SerializedBaseline`, `SerializedResourceAssignment`, and `GanttData` types. See the [Data Model](guides/data-model.md) overview for details
 
@@ -42,6 +50,7 @@ This update brings some changes in the behavior of framework wrappers. Make sure
 - Fix the issue where the [reorder](guides/reordering-tasks.md) drag marker and task placeholder had incorrect sizes when the grid was scrollable
 - Fix the issue where [DataProcessor](guides/server-side.md) did not use the [ISO date format](guides/date-format.md) by default when tasks were loaded with dates in the `Date` format
 - Fix the script error thrown when [drag_links](api/config/drag_links.md) was disabled and a [split task](guides/split-tasks.md) row was taller than its parent row
+- Fix regression in the timeline scales cells disappearing after changing the zoom level
 
 ## 9.1.3
 

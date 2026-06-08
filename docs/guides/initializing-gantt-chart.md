@@ -29,6 +29,10 @@ This guide tells about initialization of dhtmlxGantt in plain JS and HTML. You c
   </tbody>
 </table>
 
+:::tip AI-assisted development
+If you use an AI coding assistant, the [DHTMLX JS Gantt agent skill](integrations/ai-tools/agent-skills.md#available-skills) can help it follow correct integration patterns and avoid common mistakes. For real-time API reference, connect the [DHTMLX MCP server](integrations/ai-tools/mcp-server.md).
+:::
+
 
 ## Creating basic Gantt chart
 

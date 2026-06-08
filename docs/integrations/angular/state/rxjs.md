@@ -1,19 +1,21 @@
 ---
 title: Using Angular Gantt with RxJS
 sidebar_label: RxJS
-description: "Step-by-step guide to integrating Angular Gantt with an RxJS store service using BehaviorSubject and data.batchSave."
+description: "Step-by-step guide to integrating Angular Gantt with an RxJS state service using BehaviorSubject and data.batchSave."
 ---
 
 # Angular Gantt + RxJS Tutorial
 
-This tutorial shows a practical Angular pattern for wrapper-driven Gantt state management using an injectable RxJS service.
+This tutorial shows a practical Angular pattern for state-driven Gantt management using an injectable RxJS service.
 
 The result:
 
-- `BehaviorSubject` holds tasks/links/UI state,
-- template binds with `AsyncPipe`,
+- a `BehaviorSubject` holds tasks, links, and Gantt config,
+- the component composes a view model with `combineLatest` and binds with `AsyncPipe`,
 - Gantt edits flow into the store through `data.batchSave`,
-- undo/redo and zoom changes are handled in the same service.
+- undo/redo and zoom changes are handled in the same service against snapshots of the state.
+
+A complete working project that follows this tutorial is on GitHub: [angular-gantt-rxjs-starter](https://github.com/DHTMLX/angular-gantt-rxjs-starter).
 
 ## Prerequisites
 
@@ -21,88 +23,77 @@ The result:
 - Working wrapper render (see [Quick Start](integrations/angular/quick-start.md))
 - Basic Angular DI and RxJS knowledge
 
-## 1. Define A Batch Apply Helper
+## Project layout
 
-Create `src/app/gantt-state/apply-batch-changes.ts` to apply grouped changes from `data.batchSave`.
+We split the Gantt feature into three folders so each piece has one job:
 
-~~~ts
-import type { BatchChanges, DataCallbackChange } from '@dhtmlx/trial-angular-gantt';
+```text
+src/app/
+  data/
+    gantt-seed.data.ts           initial tasks, links, and zoom config
+  gantt/
+    gantt-shell.component.*      feature shell and DHTMLX Gantt host
+    gantt-toolbar.component.ts   zoom and history controls
+    gantt.types.ts               shared Gantt feature types
+  state/
+    apply-batch-changes.ts       pure task/link batch change helper
+    gantt-state.models.ts        RxJS state and history types
+    gantt-state.service.ts       RxJS state, batch flow, zoom, history
+```
 
-const toId = (value: string | number) => String(value);
+`GanttStateService` is provided by `GanttShellComponent` (not at root), so each rendered shell gets isolated tasks, links, and undo/redo history.
 
-function applyEntityChanges(prev: any[], changes: DataCallbackChange[] = []): any[] {
-  const next = [...prev];
+## 1. Define types and seed data
 
-  changes.forEach((change) => {
-    const index = next.findIndex((item) => toId(item.id) === toId(change.id));
+### Shared types: `src/app/gantt/gantt.types.ts`
 
-    if (change.action === 'update' && index !== -1) {
-      next[index] = { ...next[index], ...change.data };
-      return;
-    }
+```ts
+import type { GanttConfigOptions, ZoomLevel } from '@dhtmlx/trial-angular-gantt';
 
-    if (change.action === 'create') {
-      next.push(change.data);
-      return;
-    }
+export type ZoomLevelName = 'day' | 'month' | 'year';
 
-    if (change.action === 'delete' && index !== -1) {
-      next.splice(index, 1);
-    }
-  });
-
-  return next;
-}
-
-export function applyBatchChanges(tasks: any[], links: any[], changes: BatchChanges) {
-  return {
-    tasks: applyEntityChanges(tasks, changes.tasks),
-    links: applyEntityChanges(links, changes.links),
+export interface GanttConfig {
+  zoom: {
+    current: ZoomLevelName;
+    levels: readonly ZoomLevel[];
   };
+  options?: Partial<GanttConfigOptions>;
 }
-~~~
+```
 
-This is the core reducer-like step for grouped Gantt changes.
+`ZoomLevelName` is a narrow string union the toolbar and store exchange. `GanttConfig` keeps zoom state alongside any additional Gantt options the feature needs.
 
-## 2. Create An Injectable RxJS Store Service
+### State models: `src/app/state/gantt-state.models.ts`
 
-Create `src/app/gantt-state/gantt-rx-store.service.ts`.
+```ts
+import type { SerializedLink, SerializedTask } from '@dhtmlx/trial-angular-gantt';
+import type { GanttConfig } from '../gantt/gantt.types';
 
-The wrapper exports `SerializedTask` and `SerializedLink` - use these to type tasks and links held outside of gantt (store state, API responses, initial data). Dates can be `Date` objects or strings.
-
-~~~ts
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, map } from 'rxjs';
-import type { AngularGanttDataConfig, BatchChanges, SerializedTask, SerializedLink } from '@dhtmlx/trial-angular-gantt';
-import { applyBatchChanges } from './apply-batch-changes';
-
-export type ZoomLevel = 'day' | 'month' | 'year';
-
-interface Snapshot {
+export interface HistorySnapshot {
   tasks: SerializedTask[];
   links: SerializedLink[];
-  zoomLevel: ZoomLevel;
+  config: GanttConfig;
 }
 
-interface StoreState {
+export interface GanttState {
   tasks: SerializedTask[];
   links: SerializedLink[];
-  zoomLevel: ZoomLevel;
-  config: any;
-  past: Snapshot[];
-  future: Snapshot[];
+  config: GanttConfig;
+  past: HistorySnapshot[];
+  future: HistorySnapshot[];
+  maxHistory: number;
 }
+```
 
-interface ViewModel {
-  tasks: SerializedTask[];
-  links: SerializedLink[];
-  zoomLevel: ZoomLevel;
-  canUndo: boolean;
-  canRedo: boolean;
-  config: any;
-}
+Snapshots include `config` (which carries the current zoom level), so undo restores zoom along with data.
 
-const zoomLevels = [
+### Seed data: `src/app/data/gantt-seed.data.ts`
+
+```ts
+import type { SerializedLink, SerializedTask, ZoomLevel } from '@dhtmlx/trial-angular-gantt';
+import type { GanttConfig } from '../gantt/gantt.types';
+
+export const defaultZoomLevels: readonly ZoomLevel[] = [
   {
     name: 'day',
     scale_height: 27,
@@ -124,267 +115,444 @@ const zoomLevels = [
     min_column_width: 36,
     scales: [{ unit: 'year', step: 1, format: '%Y' }],
   },
-] as const;
+];
 
-function cloneTask(task: any) {
+export const seedTasks: SerializedTask[] = [
+  { id: '1', text: 'Project setup', type: 'project', start_date: '2026-04-02T00:00:00.000Z', duration: 8, progress: 0.35, parent: 0, open: true },
+  { id: '2', text: 'Install Angular shell', type: 'task', start_date: '2026-04-02T00:00:00.000Z', duration: 2, progress: 1, parent: '1' },
+  { id: '3', text: 'Verify Gantt wrapper', type: 'task', start_date: '2026-04-04T00:00:00.000Z', duration: 3, progress: 0.4, parent: '1' },
+  { id: '4', text: 'Static render ready', type: 'milestone', start_date: '2026-04-08T00:00:00.000Z', duration: 0, progress: 0, parent: '1' },
+];
+
+export const seedLinks: SerializedLink[] = [
+  { id: '1', source: '2', target: '3', type: '0' },
+  { id: '2', source: '3', target: '4', type: '0' },
+];
+
+export const defaultGanttConfig: GanttConfig = {
+  zoom: {
+    current: 'day',
+    levels: defaultZoomLevels,
+  },
+  options: {
+    row_height: 36,
+    bar_height: 24,
+  },
+};
+```
+
+Use string ids and ISO date strings throughout. The wrapper accepts both, but mixing styles makes diffs and snapshots harder to reason about.
+
+## 2. Define the batch apply helper
+
+`src/app/state/apply-batch-changes.ts` is a pure function that applies a list of `DataCallbackChange` records to an entity array. It is shared by tasks and links via a generic, so the store calls it twice with different types.
+
+```ts
+import type { DataCallbackChange, TaskId } from '@dhtmlx/trial-angular-gantt';
+
+type EntityWithId = {
+  id: TaskId;
+};
+
+function idsMatch(left: TaskId, right: TaskId): boolean {
+  return String(left) === String(right);
+}
+
+function isObject(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null;
+}
+
+function isSupportedAction(action: string): action is 'create' | 'update' | 'delete' {
+  return action === 'create' || action === 'update' || action === 'delete';
+}
+
+export function applyEntityChanges<T extends EntityWithId>(
+  entities: T[],
+  changes: DataCallbackChange[] = [],
+): T[] {
+  const nextEntities = [...entities];
+
+  changes.forEach((change) => {
+    if (!isSupportedAction(change.action)) {
+      return;
+    }
+
+    const index = nextEntities.findIndex((entity) => idsMatch(entity.id, change.id));
+
+    if (change.action === 'delete') {
+      if (index !== -1) {
+        nextEntities.splice(index, 1);
+      }
+      return;
+    }
+
+    if (!isObject(change.data)) {
+      return;
+    }
+
+    if (change.action === 'create') {
+      nextEntities.push({ ...(change.data as T) });
+      return;
+    }
+
+    if (index !== -1) {
+      nextEntities[index] = {
+        ...nextEntities[index],
+        ...(change.data as Partial<T>),
+      };
+    }
+  });
+
+  return nextEntities;
+}
+```
+
+This is the reducer-like core for grouped Gantt changes. The function:
+
+- Returns a new array (never mutates input).
+- Coerces ids with `String()` because the wrapper uses `string | number` and either form should match.
+- Skips unsupported actions and non-object payloads instead of throwing - the Gantt callback runs in the wrapper's render cycle, so a malformed change should not crash the page.
+
+## 3. Build the GanttStateService
+
+`src/app/state/gantt-state.service.ts` owns the state, derives observable streams for the component, and applies batches.
+
+```ts
+import { Injectable } from '@angular/core';
+import type {
+  BatchChanges,
+  GanttConfigOptions,
+  SerializedLink,
+  SerializedTask,
+  TaskId,
+} from '@dhtmlx/trial-angular-gantt';
+import { BehaviorSubject, distinctUntilChanged, map } from 'rxjs';
+import { defaultGanttConfig, seedLinks, seedTasks } from '../data/gantt-seed.data';
+import type { GanttConfig, ZoomLevelName } from '../gantt/gantt.types';
+import { applyEntityChanges } from './apply-batch-changes';
+import type { GanttState, HistorySnapshot } from './gantt-state.models';
+
+function buildZoomConfig(config: GanttConfig, zoomLevel: ZoomLevelName): GanttConfig {
   return {
-    ...task,
-    start_date: task.start_date instanceof Date ? new Date(task.start_date.getTime()) : task.start_date,
-    end_date: task.end_date instanceof Date ? new Date(task.end_date.getTime()) : task.end_date,
+    ...config,
+    zoom: { ...config.zoom, current: zoomLevel },
   };
 }
 
-function cloneLink(link: any) {
-  return { ...link };
+function snapshotState(state: GanttState): HistorySnapshot {
+  return {
+    tasks: state.tasks.map((task) => ({ ...task })),
+    links: state.links.map((link) => ({ ...link })),
+    config: structuredClone(state.config),
+  };
 }
 
-function createConfig(zoomLevel: ZoomLevel) {
-  return {
-    zoom: {
-      current: zoomLevel,
-      levels: zoomLevels,
-    },
-  };
+function idsMatch(left: TaskId, right: TaskId): boolean {
+  return String(left) === String(right);
 }
 
 @Injectable()
-export class GanttRxStoreService {
-  private readonly maxHistory = 50;
-
-  private readonly stateSubject = new BehaviorSubject<StoreState>({
-    tasks: [
-      { id: 1, text: 'Project', type: 'project', open: true, start_date: new Date(2026, 1, 2).toISOString(), duration: 8, parent: 0 },
-      { id: 2, text: 'Planning', start_date: new Date(2026, 1, 2).toISOString(), duration: 3, parent: 1 },
-      { id: 3, text: 'Implementation', start_date: new Date(2026, 1, 5).toISOString(), duration: 4, parent: 1 },
-    ],
-    links: [{ id: 1, source: 2, target: 3, type: '0' }],
-    zoomLevel: 'day',
-    config: createConfig('day'),
+export class GanttStateService {
+  private readonly stateSubject = new BehaviorSubject<GanttState>({
+    tasks: seedTasks,
+    links: seedLinks,
+    config: buildZoomConfig(defaultGanttConfig, defaultGanttConfig.zoom.current),
     past: [],
     future: [],
+    maxHistory: 50,
   });
 
-  readonly vm$ = this.stateSubject.asObservable().pipe(
-    map((state): ViewModel => ({
-      tasks: state.tasks,
-      links: state.links,
-      zoomLevel: state.zoomLevel,
-      canUndo: state.past.length > 0,
-      canRedo: state.future.length > 0,
-      config: state.config,
-    }))
+  readonly state$ = this.stateSubject.asObservable();
+
+  readonly tasks$ = this.state$.pipe(map((state) => state.tasks));
+  readonly links$ = this.state$.pipe(map((state) => state.links));
+  readonly config$ = this.state$.pipe(map((state) => state.config));
+
+  private buildWrapperConfig(config: GanttConfig): Partial<GanttConfigOptions> {
+    const zoomConfig = config.zoom.levels.find((level) => level.name === config.zoom.current);
+    if (!zoomConfig) {
+      return config.options ?? {};
+    }
+    return {
+      ...config.options,
+      scale_height: zoomConfig.scale_height,
+      min_column_width: zoomConfig.min_column_width,
+      scales: zoomConfig.scales.map((scale) => ({ ...scale })) as typeof zoomConfig.scales,
+    };
+  }
+
+  readonly wrapperConfig$ = this.config$.pipe(map((config) => this.buildWrapperConfig(config)));
+
+  readonly zoomLevel$ = this.config$.pipe(
+    map((config) => config.zoom.current),
+    distinctUntilChanged<ZoomLevelName>(),
   );
 
-  readonly templates = {
-    format_date: (d: Date) => d.toISOString(),
-    parse_date: (s: string) => new Date(s),
-  };
+  readonly canUndo$ = this.state$.pipe(
+    map((state) => state.past.length > 0),
+    distinctUntilChanged<boolean>(),
+  );
 
-  readonly dataConfig: AngularGanttDataConfig = {
-    batchSave: (changes: BatchChanges) => this.applyBatch(changes),
-  };
+  readonly canRedo$ = this.state$.pipe(
+    map((state) => state.future.length > 0),
+    distinctUntilChanged<boolean>(),
+  );
 
-  setZoom(level: ZoomLevel): void {
+  applyBatch(changes: BatchChanges): void {
+    const hasChanges = Boolean(changes.tasks?.length) || Boolean(changes.links?.length);
+    if (!hasChanges) return;
+
     const state = this.stateSubject.value;
-    if (state.zoomLevel === level) return;
+    const tasks = applyEntityChanges<SerializedTask>(state.tasks, changes.tasks);
+    const links = applyEntityChanges<SerializedLink>(state.links, changes.links);
 
-    const withHistory = this.pushHistory(state);
-    this.stateSubject.next({
-      ...withHistory,
-      zoomLevel: level,
-      config: {
-        ...withHistory.config,
-        zoom: { ...withHistory.config.zoom, current: level },
-      },
-    });
+    this.commit({ tasks, links });
+  }
+
+  setZoom(zoomLevel: ZoomLevelName): void {
+    const state = this.stateSubject.value;
+    if (state.config.zoom.current === zoomLevel) return;
+    this.commit({ config: buildZoomConfig(state.config, zoomLevel) });
   }
 
   undo(): void {
     const state = this.stateSubject.value;
-    if (!state.past.length) return;
-
-    const previous = state.past[state.past.length - 1];
-    const current = this.createSnapshot(state);
+    const previous = state.past.at(-1);
+    if (!previous) return;
 
     this.stateSubject.next({
       ...state,
-      tasks: previous.tasks.map(cloneTask),
-      links: previous.links.map(cloneLink),
-      zoomLevel: previous.zoomLevel,
-      config: {
-        ...state.config,
-        zoom: { ...state.config.zoom, current: previous.zoomLevel },
-      },
+      tasks: previous.tasks,
+      links: previous.links,
+      config: previous.config,
       past: state.past.slice(0, -1),
-      future: [current, ...state.future],
+      future: [snapshotState(state), ...state.future],
     });
   }
 
   redo(): void {
     const state = this.stateSubject.value;
-    if (!state.future.length) return;
-
     const next = state.future[0];
-    const current = this.createSnapshot(state);
+    if (!next) return;
 
     this.stateSubject.next({
       ...state,
-      tasks: next.tasks.map(cloneTask),
-      links: next.links.map(cloneLink),
-      zoomLevel: next.zoomLevel,
-      config: {
-        ...state.config,
-        zoom: { ...state.config.zoom, current: next.zoomLevel },
-      },
-      past: this.trimPast([...state.past, current]),
+      tasks: next.tasks,
+      links: next.links,
+      config: next.config,
+      past: [...state.past, snapshotState(state)].slice(-state.maxHistory),
       future: state.future.slice(1),
     });
   }
 
-  applyBatch(changes: BatchChanges): void {
-    const hasChanges = (changes.tasks?.length ?? 0) > 0 || (changes.links?.length ?? 0) > 0;
-    if (!hasChanges) return;
+  // CRUD helpers (createTask, updateTask, deleteTask, createLink, updateLink, deleteLink)
+  // are omitted here for brevity. Each goes through `commit()` so it lands in history.
+  // See the demo for the full implementations.
 
+  private commit(change: Partial<Pick<GanttState, 'tasks' | 'links' | 'config'>>): void {
     const state = this.stateSubject.value;
-    const withHistory = this.pushHistory(state);
-    const next = applyBatchChanges(withHistory.tasks, withHistory.links, changes);
-
     this.stateSubject.next({
-      ...withHistory,
-      tasks: next.tasks,
-      links: next.links,
+      ...state,
+      ...change,
+      past: [...state.past, snapshotState(state)].slice(-state.maxHistory),
+      future: [],
     });
   }
-
-  private pushHistory(state: StoreState): StoreState {
-    return {
-      ...state,
-      past: this.trimPast([...state.past, this.createSnapshot(state)]),
-      future: [],
-    };
-  }
-
-  private createSnapshot(state: StoreState): Snapshot {
-    return {
-      tasks: state.tasks.map(cloneTask),
-      links: state.links.map(cloneLink),
-      zoomLevel: state.zoomLevel,
-    };
-  }
-
-  private trimPast(past: Snapshot[]): Snapshot[] {
-    return past.length <= this.maxHistory ? past : past.slice(past.length - this.maxHistory);
-  }
 }
-~~~
+```
 
 Why this shape works:
 
-- `vm$` exposes a render-ready view model for the component.
-- `dataConfig.batchSave` keeps chart edits inside one store boundary.
-- `templates` hands Gantt ISO-safe `format_date`/`parse_date` callbacks so date formatting is consistent across the chart and the store.
-- snapshots make undo/redo independent from Gantt internals.
+- The service exposes **multiple narrow streams** (`tasks$`, `links$`, `wrapperConfig$`, `zoomLevel$`, `canUndo$`, `canRedo$`) instead of a single bundled view model. The component picks the streams it needs and the framework rebinds only those `<dhx-gantt>` inputs that actually changed.
+- `wrapperConfig$` projects the demo's typed `GanttConfig` into the `Partial<GanttConfigOptions>` shape the wrapper expects - the store's domain model and the wrapper's input shape are intentionally not the same type.
+- `distinctUntilChanged` is applied only to streams of primitives (`zoomLevel$`, `canUndo$`, `canRedo$`). On `tasks$` / `links$` / `config$` the operator would do nothing - every commit produces a fresh array or object, so the default reference equality test never sees a duplicate.
+- `commit()` always pushes a snapshot to `past` and clears `future`, so any state-changing action is undoable. `setZoom` goes through `commit` for the same reason.
+- Snapshots clone tasks and links shallowly (`{ ...task }`) and `structuredClone` the config - enough to keep undo/redo independent of subsequent edits without a deep-clone tax on every commit.
 
 :::note
-Since v9.1.3, Gantt automatically detects ISO date strings and these `format_date`/`parse_date` overrides are no longer needed. They are shown here for compatibility with earlier Gantt versions. See [Loading dates in ISO format](guides/loading.md#loading-dates-in-iso-format).
+Since v9.1.3 the wrapper auto-detects ISO date strings, so this demo skips `format_date`/`parse_date` overrides on the store. The shell component still installs them as `templates` (see step 5) for the case where a chart is fed `Date` instances mixed with strings - the `parse_date` template normalizes both. See [Loading dates in ISO format](guides/loading.md#loading-dates-in-iso-format) for the wrapper's full date-handling story.
 :::
 
-## 3. Bind The Component To The Store With `AsyncPipe`
+## 4. Build the toolbar component
 
-Create `src/app/gantt-state/gantt-rx-page.component.ts`.
+`src/app/gantt/gantt-toolbar.component.ts` is a presentation-only component: inputs for the current state, outputs for the user's intent. It does not know about the store.
 
-~~~ts
-import { AsyncPipe, NgIf } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { DhxGanttComponent } from '@dhtmlx/trial-angular-gantt';
-import { GanttRxStoreService, type ZoomLevel } from './gantt-rx-store.service';
+```ts
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import type { ZoomLevelName } from './gantt.types';
 
 @Component({
-  selector: 'app-gantt-rx-page',
+  selector: 'app-gantt-toolbar',
   standalone: true,
-  imports: [AsyncPipe, NgIf, DhxGanttComponent],
-  providers: [GanttRxStoreService],
-  templateUrl: './gantt-rx-page.component.html',
+  template: `
+    <div class="gantt-toolbar" aria-label="Gantt toolbar">
+      <div class="gantt-toolbar-group" aria-label="Zoom level">
+        <button type="button" [class.active]="zoomLevel === 'day'" (click)="zoomSelected.emit('day')">Day</button>
+        <button type="button" [class.active]="zoomLevel === 'month'" (click)="zoomSelected.emit('month')">Month</button>
+        <button type="button" [class.active]="zoomLevel === 'year'" (click)="zoomSelected.emit('year')">Year</button>
+      </div>
+
+      <div class="gantt-toolbar-group" aria-label="History controls">
+        <button type="button" [disabled]="!canUndo" (click)="undoSelected.emit()">Undo</button>
+        <button type="button" [disabled]="!canRedo" (click)="redoSelected.emit()">Redo</button>
+      </div>
+    </div>
+  `,
 })
-export class GanttRxPageComponent {
-  private readonly store = inject(GanttRxStoreService);
+export class GanttToolbarComponent {
+  @Input({ required: true }) zoomLevel!: ZoomLevelName;
+  @Input({ required: true }) canUndo = false;
+  @Input({ required: true }) canRedo = false;
 
-  readonly vm$ = this.store.vm$;
-  readonly templates = this.store.templates;
-  readonly dataConfig = this.store.dataConfig;
+  @Output() readonly zoomSelected = new EventEmitter<ZoomLevelName>();
+  @Output() readonly undoSelected = new EventEmitter<void>();
+  @Output() readonly redoSelected = new EventEmitter<void>();
+}
+```
 
-  setZoom(level: ZoomLevel): void {
-    this.store.setZoom(level);
+Keeping the toolbar dumb means the shell can change how state is sourced (different store, different input names) without touching the toolbar.
+
+## 5. Compose the shell with `combineLatest`
+
+`src/app/gantt/gantt-shell.component.ts` provides the store, builds a single view model from the store's narrow streams, and exposes the templates/dataConfig that the wrapper needs.
+
+```ts
+import { AsyncPipe } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import {
+  DhxGanttComponent,
+  type AngularGanttDataConfig,
+  type AngularGanttTemplates,
+} from '@dhtmlx/trial-angular-gantt';
+import { combineLatest } from 'rxjs';
+import type { ZoomLevelName } from './gantt.types';
+import { GanttStateService } from '../state/gantt-state.service';
+import { GanttToolbarComponent } from './gantt-toolbar.component';
+
+@Component({
+  selector: 'app-gantt-shell',
+  standalone: true,
+  imports: [AsyncPipe, DhxGanttComponent, GanttToolbarComponent],
+  providers: [GanttStateService],
+  templateUrl: './gantt-shell.component.html',
+})
+export class GanttShellComponent {
+  private readonly ganttState = inject(GanttStateService);
+
+  protected readonly vm$ = combineLatest({
+    tasks: this.ganttState.tasks$,
+    links: this.ganttState.links$,
+    config: this.ganttState.wrapperConfig$,
+    zoomLevel: this.ganttState.zoomLevel$,
+    canUndo: this.ganttState.canUndo$,
+    canRedo: this.ganttState.canRedo$,
+  });
+
+  protected readonly templates: AngularGanttTemplates = {
+    parse_date: (value: string | Date) => this.parseDate(value),
+    format_date: (date: string | Date) => this.formatDate(date),
+  };
+
+  protected readonly dataConfig: AngularGanttDataConfig = {
+    batchSave: (changes) => {
+      this.ganttState.applyBatch(changes);
+    },
+  };
+
+  protected setZoom(zoomLevel: ZoomLevelName): void {
+    this.ganttState.setZoom(zoomLevel);
   }
 
-  undo(): void {
-    this.store.undo();
+  protected undo(): void {
+    this.ganttState.undo();
   }
 
-  redo(): void {
-    this.store.redo();
+  protected redo(): void {
+    this.ganttState.redo();
+  }
+
+  private parseDate(value: string | Date): Date {
+    return value instanceof Date ? value : new Date(value);
+  }
+
+  private formatDate(value: string | Date): string {
+    return this.parseDate(value).toISOString();
   }
 }
-~~~
+```
 
-Create `src/app/gantt-state/gantt-rx-page.component.html`.
+The template uses Angular 17+ control flow:
 
-~~~html
-<section *ngIf="vm$ | async as vm">
-  <div style="display:flex; gap:8px; margin-bottom:8px; align-items:center;">
-    <button (click)="undo()" [disabled]="!vm.canUndo">Undo</button>
-    <button (click)="redo()" [disabled]="!vm.canRedo">Redo</button>
-    <button (click)="setZoom('day')" [disabled]="vm.zoomLevel === 'day'">Day</button>
-    <button (click)="setZoom('month')" [disabled]="vm.zoomLevel === 'month'">Month</button>
-    <button (click)="setZoom('year')" [disabled]="vm.zoomLevel === 'year'">Year</button>
-  </div>
+```html
+@if (vm$ | async; as vm) {
+  <section class="gantt-feature-shell" aria-label="Gantt feature area">
+    <app-gantt-toolbar
+      [zoomLevel]="vm.zoomLevel"
+      [canUndo]="vm.canUndo"
+      [canRedo]="vm.canRedo"
+      (zoomSelected)="setZoom($event)"
+      (undoSelected)="undo()"
+      (redoSelected)="redo()">
+    </app-gantt-toolbar>
 
-  <div style="height: 600px;">
-    <dhx-gantt [tasks]="vm.tasks" [links]="vm.links" [config]="vm.config" [templates]="templates" [data]="dataConfig"></dhx-gantt>
-  </div>
-</section>
-~~~
+    <div class="gantt-host">
+      <dhx-gantt
+        [tasks]="vm.tasks"
+        [links]="vm.links"
+        [config]="vm.config"
+        [templates]="templates"
+        [data]="dataConfig">
+      </dhx-gantt>
+    </div>
+  </section>
+}
+```
 
-This keeps the component thin. The service owns mutations, history, and Gantt callback handling.
+A few details worth highlighting:
 
-## 4. Wire It Into The App
+- `providers: [GanttStateService]` on the shell, not on the root - every shell instance gets its own store. Two side-by-side Gantts on the same page won't share undo history.
+- `combineLatest` waits until every contributing stream has emitted at least once. That is fine here because the `BehaviorSubject` and the derived `distinctUntilChanged` streams all have an initial value.
+- `templates` and `dataConfig` live on the component, not on the service. The service stays unaware of how the wrapper formats dates or where its callbacks come from - only the shell knows the wrapper's API surface.
 
-Use the RxJS page component as your root page (or route target).
+## 6. Wire it into the app
 
-~~~ts
+`src/app/app.ts` mounts the shell as the root view (or as a route target):
+
+```ts
 import { Component } from '@angular/core';
-import { GanttRxPageComponent } from './gantt-state/gantt-rx-page.component';
+import { GanttShellComponent } from './gantt/gantt-shell.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [GanttRxPageComponent],
-  template: `<app-gantt-rx-page></app-gantt-rx-page>`,
+  imports: [GanttShellComponent],
+  template: `<app-gantt-shell></app-gantt-shell>`,
 })
 export class AppComponent {}
-~~~
+```
 
-## 5. Data Flow And Rationale
+## 7. Data flow and rationale
 
-Flow for a typical edit (for example dragging a task):
+For a typical edit (for example, dragging a task):
 
 1. User edits a task in the chart.
 2. Gantt emits multiple low-level changes.
-3. Wrapper batches them and calls `data.batchSave(changes)`.
-4. Store applies grouped changes with `applyBatchChanges(...)`.
-5. Store emits next state through `vm$`.
-6. Angular rebinds `<dhx-gantt>` with updated `tasks` and `links`.
+3. The wrapper batches them and calls `data.batchSave(changes)`.
+4. The shell forwards the call to `GanttStateService.applyBatch(changes)`.
+5. The service runs `applyEntityChanges` on tasks and links, then `commit({ tasks, links })`.
+6. `commit` pushes a `HistorySnapshot` onto `past`, clears `future`, and emits the new state.
+7. `tasks$`, `links$`, `wrapperConfig$`, and the `canUndo$` / `canRedo$` flags all push through the `combineLatest`, the view model rebuilds, and Angular rebinds the changed `<dhx-gantt>` inputs.
 
-This keeps your Angular state as the source of truth and still handles high-volume chart actions efficiently.
+This keeps Angular state as the source of truth and still handles high-volume chart actions efficiently - Gantt's `batchSave` collapses one user gesture into one store update.
 
-## 6. Common Pitfalls
+## 8. Common Pitfalls
 
-- Using `data.save` instead of `batchSave` for auto-scheduling-heavy pages (too many store updates).
-- Mutating `vm.tasks` or `vm.links` directly in the component template or component class.
-- Reusing snapshot arrays without cloning when implementing undo/redo (history corruption).
-- Mixing imperative `gantt.instance` data mutations with store-driven inputs unless you also update the store.
+- **Using `data.save` instead of `batchSave` for auto-scheduling-heavy pages.** A single drag with auto-scheduling on can produce dozens of low-level changes; `data.save` would commit a snapshot per change, blowing up history and triggering many re-renders. `batchSave` collapses one gesture into one commit.
+- **Mutating `vm.tasks` or `vm.links` directly in the component.** The view model's arrays are the same references the store holds. Mutating them in place corrupts both current state and any snapshots that share those references.
+- **Reusing snapshot arrays without cloning when implementing undo/redo.** `snapshotState` clones each task and link with a spread so future commits cannot retroactively change history. Skipping that step looks fine until your second undo.
+- **Mixing imperative `gantt.instance` mutations with store-driven inputs.** If you reach into the underlying Gantt instance to add a task, the store does not see it - the next emission from `tasks$` will overwrite your imperative change.
 
-## 7. Continue With
+## 9. Continue With
 
 - [Data Binding and State Management Basics](integrations/angular/state/state-management-basics.md)
 - [Configuration Reference](integrations/angular/configuration-props.md)

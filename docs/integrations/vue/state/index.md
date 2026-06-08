@@ -33,6 +33,8 @@ Use **Gantt as source of truth** when:
 
 Use [Using Vue Gantt with Pinia](integrations/vue/state/pinia.md) for a store-driven implementation with `batchSave` and optional store-level undo/redo.
 
+A runnable companion project lives at [vue-gantt-pinia-starter on GitHub](https://github.com/DHTMLX/vue-gantt-pinia-starter).
+
 ## Minimal Starter Pattern
 
 ~~~ts

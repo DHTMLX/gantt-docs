@@ -262,6 +262,23 @@ gantt.init("gantt_here");
 
 - [Constraint Scheduling](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
+#### strict_calendar
+
+**Type**: boolean
+
+**Default**: `false`
+
+Controls whether a task landing on its own non-working time is reported as a conflict.
+
+~~~jsx
+gantt.config.auto_scheduling = {
+    enabled: true,
+    strict_calendar: true
+};
+~~~
+
+When set to `true`, the [onAutoScheduleConflict](api/event/onautoscheduleconflict.md) event fires (with `kind: "calendar-non-working"`) whenever scheduling moves a task onto its own non-working time. The task date is applied in both modes — this option only controls whether the situation is reported, so you can surface it in the UI.
+
 ### Related API
 - [project_start](api/config/project_start.md)
 - [project_end](api/config/project_end.md)
@@ -280,11 +297,14 @@ gantt.init("gantt_here");
 - [onBeforeTaskAutoSchedule](api/event/onbeforetaskautoschedule.md)
 - [onCircularLinkError](api/event/oncircularlinkerror.md)
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
+- [onAutoScheduleConflict](api/event/onautoscheduleconflict.md)
+- [onAutoScheduleNoConverge](api/event/onautoschedulenoconverge.md)
 
 ### Related Guides
 - [Auto Scheduling](guides/auto-scheduling.md)
 
 ### Change log
+- the `strict_calendar` option has been added in v10.0
 - since v9.1, using the object configuration for `auto_scheduling` is the recommended approach
 - Can be set as an object since v9.0
 

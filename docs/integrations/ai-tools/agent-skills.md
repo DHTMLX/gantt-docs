@@ -14,23 +14,37 @@ Unlike the [MCP server](integrations/ai-tools/mcp-server.md), which provides rea
 
 ## Available Skills
 
+### DHTMLX JS Gantt
+
+Covers integration of the core JavaScript Gantt into plain JavaScript and TypeScript applications. The skill recognises all delivery channels - the free `dhtmlx-gantt` (Standard / GPL) package, the `@dhx/trial-gantt` evaluation package, the commercial `@dhx/gantt` package, and `<script>` / CDN loading - and adapts setup, data, and theming guidance to each.
+
+Review the rules in the [GitHub repository](https://github.com/DHTMLX/skills/tree/main/dhtmlx-js-gantt).
+
 ### DHTMLX React Gantt
 
-Covers integration of `@dhtmlx/trial-react-gantt` and `@dhx/react-gantt` into React applications. The skill helps the assistant add Gantt to a project and set it up correctly, connect CRUD operations, and handle theming so that Gantt reuses the app's own theme rather than drifting out of sync. It also includes known pitfalls extracted from real projects and directs the assistant to verify unfamiliar APIs through the [DHTMLX MCP server](integrations/ai-tools/mcp-server.md) rather than guessing.
+Covers integration of `@dhtmlx/trial-react-gantt` and `@dhx/react-gantt` into React applications. The skill teaches the assistant the wrapper-specific setup, data ownership and persistence patterns, and theming approach that are easy to get wrong - and lists known pitfalls extracted from real projects with concrete fixes.
 
-The skill files are readable Markdown - you can review exactly what rules your assistant will follow in the [GitHub repository](https://github.com/DHTMLX/skills/tree/main/dhtmlx-react-gantt).
+Review the rules in the [GitHub repository](https://github.com/DHTMLX/skills/tree/main/dhtmlx-react-gantt).
 
 For a worked example of these patterns applied end-to-end, see the [React Gantt Lovable Starter](https://github.com/DHTMLX/react-gantt-lovable-starter) - a multi-project planner generated in Lovable, with the full build recipe in its [`lovable/`](https://github.com/DHTMLX/react-gantt-lovable-starter/tree/main/lovable) folder.
+
+### DHTMLX Angular Gantt
+
+Covers integration of `@dhtmlx/trial-angular-gantt` and `@dhx/angular-gantt` into Angular applications. The skill teaches the assistant the wrapper-specific setup, data ownership and persistence patterns (`data.save` / `data.batchSave`), and theming approach that are easy to get wrong - and lists the known failure modes with concrete fixes.
+
+Review the rules in the [GitHub repository](https://github.com/DHTMLX/skills/tree/main/dhtmlx-angular-gantt).
 
 ## Installing
 
 ```bash
+npx skills add DHTMLX/skills --skill dhtmlx-js-gantt
 npx skills add DHTMLX/skills --skill dhtmlx-react-gantt
+npx skills add DHTMLX/skills --skill dhtmlx-angular-gantt
 ```
 
 ### Manual Installation
 
-Clone or download the [DHTMLX/skills](https://github.com/DHTMLX/skills) repository and copy the `dhtmlx-react-gantt` folder into your project's skills directory (e.g., `.claude/skills/` for Claude Code, `.cursor/skills/` for Cursor).
+Clone or download the [DHTMLX/skills](https://github.com/DHTMLX/skills) repository and copy the relevant skill folder (`dhtmlx-js-gantt`, `dhtmlx-react-gantt`, or `dhtmlx-angular-gantt`) into your project's skills directory (e.g., `.claude/skills/` for Claude Code, `.cursor/skills/` for Cursor).
 
 ## Using Skills with MCP
 

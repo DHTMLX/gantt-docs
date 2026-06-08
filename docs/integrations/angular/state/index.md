@@ -36,12 +36,12 @@ Use [Using Angular Gantt with RxJS](integrations/angular/state/rxjs.md) for a pr
 ## Minimal Starter Pattern
 
 ~~~ts
-readonly dataConfig = {
-  batchSave: (changes) => this.ganttStore.applyBatch(changes)
+readonly dataConfig: AngularGanttDataConfig = {
+  batchSave: (changes) => this.ganttState.applyBatch(changes),
 };
 ~~~
 
-Use this pattern when one user action can generate many task/link updates.
+Where `ganttState` is an injected `GanttStateService` (see the [RxJS tutorial](integrations/angular/state/rxjs.md) for the service shape). Use this pattern when one user action can generate many task/link updates.
 
 ## Performance Note
 

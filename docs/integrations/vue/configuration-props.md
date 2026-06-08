@@ -69,7 +69,7 @@ Use it as a reference after [Overview](integrations/vue/overview.md) or [Quick S
     <tr>
       <td>plugins</td>
       <td>GanttPlugins</td>
-      <td>Plugin activation map (for example <code>auto_scheduling</code>).</td>
+      <td><a href="/guides/extensions-list/">Gantt extensions</a> to activate (for example <a href="/guides/auto-scheduling/"><code>auto_scheduling</code></a>, <a href="/guides/critical-path/"><code>critical_path</code></a>).</td>
     </tr>
     <tr>
       <td>templates</td>
@@ -208,6 +208,21 @@ const events = {
 };
 ~~~
 
+The map is typed as `VueGanttEvents`. The wrapper declares the following known events with full type signatures; any other Gantt event name is also accepted (custom events are typed as string-keyed handlers).
+
+| Event | Signature | Notes |
+|-------|-----------|-------|
+| `onBeforeLightbox` | `(taskId: string \| number) => boolean \| void` | Return `false` to suppress the built-in lightbox (for example to route to an external editor). |
+| `onTaskCreated` | `(task: Task) => boolean \| void` | Return `false` to cancel task creation. |
+| `onAfterTaskAdd` | `(id: string \| number, task: Task) => void` | Fires after a task is added. |
+| `onAfterTaskUpdate` | `(id: string \| number, task: Task) => void` | Fires after a task is updated. |
+| `onAfterTaskDelete` | `(id: string \| number, task: Task) => void` | Fires after a task is deleted. |
+| `onAfterLinkAdd` | `(id: string \| number, link: Link) => void` | Fires after a dependency link is added. |
+| `onAfterLinkUpdate` | `(id: string \| number, link: Link) => void` | Fires after a dependency link is updated. |
+| `onAfterLinkDelete` | `(id: string \| number, link: Link) => void` | Fires after a dependency link is deleted. |
+
+For the full Gantt event list (including events not enumerated above), see the [Gantt events overview](api/overview/events-overview.md). Use `defineGanttEvents(...)` to author the map with autocomplete on these known events.
+
 ### `@ready`
 
 `ready(instance)` fires once after initialization and the first sync:
@@ -283,10 +298,6 @@ Replace the built-in task form UI with a Vue component.
 
 Map Gantt inline editor type names to Vue components.
 
-### `templateWrapper`
-
-Wrap VNodes produced by the wrapper template bridge.
-
 ### `modals`
 
 Override delete confirmations and call `callback()` to confirm deletion.
@@ -331,10 +342,39 @@ From `@dhtmlx/trial-vue-gantt` or `@dhx/vue-gantt`:
 
 ### Type Exports
 
+Import every type from the wrapper package itself (`@dhx/vue-gantt` or `@dhtmlx/trial-vue-gantt`). The wrapper bundles the underlying Gantt engine and re-exports its types alongside the Vue-specific ones - there is no separate `@dhx/gantt` package to install or import from.
+
+**Wrapper-owned types**
+
 | Export | Description |
 |--------|------------|
-| `SerializedTask` | User-facing task shape with `Date \| string` dates. Use for store state, initial data, and `batchSave` payloads. |
+| `SerializedTask` | User-facing task shape with `Date \| string` dates. Use for store state, initial data, and `save`/`batchSave` payloads. |
 | `SerializedLink` | User-facing link shape. Use alongside `SerializedTask` in store state and data definitions. |
+| `VueGanttRef` | Type of the value exposed via component ref - `{ instance: GanttStatic \| null }`. |
+| `VueGanttDataConfig` | Shape of the `data` prop (`load`, `save`, `batchSave`). |
+| `BatchChanges` | Argument passed to `data.batchSave` - grouped `tasks`/`links`/`resources`/`resourceAssignments` changes. |
+| `DataCallbackChange` | Individual change entry inside a `BatchChanges` bucket - `{ entity, action, data, id }`. |
+| `Marker` | Shape of items in the `markers` prop. |
+| `WrapperCalendar` | Wrapper-friendly calendar shape accepted by the `calendars` prop (alongside raw `CalendarConfig`). |
+| `GanttModals` | Shape of the `modals` prop - `onBeforeTaskDelete` and `onBeforeLinkDelete` callback signatures. |
+| `CustomLightboxProps` | Props received by your `customLightbox` component (`data`, `onSave`, `onCancel`, `onDelete`, `ganttInstance`). |
+| `InlineEditorComponentProps` | Props received by your inline editor components (`initialValue`, `task`, `save`, `cancel`, `ganttInstance`). |
+| `VueGanttEvents` | Type of the `events` prop - known events plus string-keyed custom events. |
+
+**Frequently used types from the Gantt engine**
+
+The wrapper re-exports every type from the underlying Gantt engine. The ones below come up most often in wrapper code - each row maps a core type to where it shows up in the Vue API.
+
+| Export | Where it appears in wrapper code |
+|--------|------------|
+| `Task`, `Link` | Runtime task/link shapes (include `$`-prefixed properties). Used inside event handlers, template callbacks, and filter functions. |
+| `GanttStatic` | Type of `ganttRef.value?.instance` and the `@ready` argument. |
+| `GanttConfigOptions` | Shape of the object passed to the `config` prop. |
+| `GanttTemplates` | Shape of the object passed to the `templates` prop. |
+| `GanttPlugins` | Shape of the object passed to the `plugins` prop. |
+| `CalendarConfig` | Raw Gantt calendar shape - alternative to `WrapperCalendar` in the `calendars` prop. |
+
+Every other type from the Gantt engine is also exported from the wrapper - if you can import a name from `@dhx/gantt` in the standalone library, you can import it from `@dhx/vue-gantt` here.
 
 Use `SerializedTask` and `SerializedLink` for data you own (Pinia state, `ref<>`, API responses, initial literals). Use `Task` and `Link` for data gantt owns (inside event handlers, template callbacks, filter functions), where runtime task objects include internal `$`-prefixed properties.
 
@@ -345,13 +385,42 @@ Use `SerializedTask` and `SerializedLink` for data you own (Pinia state, `ref<>`
 - `defineGanttEvents(events)` for typed event map authoring
 - `defineInlineEditors(inlineEditors)` for typed inline editor maps
 
+These are **TypeScript-only identity helpers** - at runtime, `defineGanttTemplates(x)` returns `x` unchanged. You can skip them entirely without any behavior change. Their value is **type preservation on object literals**: you get autocomplete on `templates.task_text`, `config.scales[0].unit`, `events.onAfterTaskAdd`, etc., without manually annotating the variable.
+
+If you skip them in TypeScript, either annotate the variable yourself or pass the literal inline on the prop:
+
+~~~ts
+// Option 1: explicit type annotation
+const templates: Partial<GanttTemplates> = {
+  task_text: (_s, _e, task) => task.text
+};
+
+// Option 2: helper for autocomplete on the literal
+const templates = defineGanttTemplates({
+  task_text: (_s, _e, task) => task.text
+});
+
+// Option 3: inline literal - inference works through the prop type
+<VueGantt :templates="{ task_text: (_s, _e, task) => task.text }" />
+~~~
+
 ### Composables
 
-- `useWorkTime(ganttRef)` for work-time checks and date calculations
-- `useResourceAssignments(ganttRef)` for task-resource/assignment reads
-- `useGanttDatastore(ganttRef, storeName)` for raw datastore access
-- `useGanttActions(ganttRef)` for wrapper-safe imperative actions (undo/redo/export/render)
-- `useGanttEvent(ganttRef, eventName, handler)` for lifecycle-safe attach/detach of a single event
+The wrapper exposes five composables that wrap common instance-side calls in a ref-aware, lifecycle-safe form. Each one takes a `Ref<VueGanttRef | null>` so it can wait for the instance to become available.
+
+#### `useGanttActions(ganttRef)`
+
+Returns wrapper-safe imperative actions:
+
+| Method | Signature | Notes |
+|--------|-----------|-------|
+| `undo()` | `() => void` | Requires `plugins: { undo: true }`. |
+| `redo()` | `() => void` | Requires `plugins: { undo: true }`. |
+| `render()` | `() => void` | Forces a redraw - pair with `instance.eachTask(...)` for bulk mutations. |
+| `exportToPDF()` | `() => void` | Requires `plugins: { export_api: true }`. |
+| `exportToPNG()` | `() => void` | Requires `plugins: { export_api: true }`. |
+| `exportToExcel(config?)` | `(config?: object) => void` | Requires `plugins: { export_api: true }`. Pass exporter options through `config`. |
+| `exportToMSProject()` | `() => void` | Requires `plugins: { export_api: true }`. |
 
 ~~~ts
 import { ref } from "vue";
@@ -360,10 +429,88 @@ import { useGanttActions, type VueGanttRef } from "@dhtmlx/trial-vue-gantt";
 const ganttRef = ref<VueGanttRef | null>(null);
 const actions = useGanttActions(ganttRef);
 
-function exportPdf() {
-  actions.exportToPDF();
-}
+const exportPdf = () => actions.exportToPDF();
+const exportExcel = () => actions.exportToExcel({ visual: "base-colors" });
 ~~~
+
+#### `useWorkTime(ganttRef)`
+
+Returns a computed wrapper around the Gantt work-time API. Useful in templates and constraint calculations.
+
+| Method | Signature |
+|--------|-----------|
+| `isWorkTime({ date, task?, unit? })` | `(args) => boolean` |
+| `calculateEndDate({ start, duration, unit?, task? })` | `(args) => Date` |
+| `calculateDuration({ start, end, task? })` | `(args) => number` |
+| `getClosestWorkTime({ date, task?, unit, dir? })` | `(args) => Date` |
+
+~~~ts
+import { useWorkTime, type VueGanttRef } from "@dhtmlx/trial-vue-gantt";
+
+const ganttRef = ref<VueGanttRef | null>(null);
+const workTime = useWorkTime(ganttRef);
+
+const templates = {
+  scale_cell_class: (date: Date) =>
+    workTime.value.isWorkTime({ date }) ? "" : "weekend"
+};
+~~~
+
+#### `useGanttDatastore<T>(ganttRef, storeName)`
+
+Returns a computed reader for any Gantt datastore (for example `"task"`, `"link"`, `"resource"`).
+
+| Method | Signature |
+|--------|-----------|
+| `getItem(id)` | `(id: string \| number) => T \| null` |
+| `getItems()` | `() => T[]` |
+| `hasChild(id)` | `(id: string \| number) => boolean` |
+| `getChildren(id)` | `(id: string \| number) => (string \| number)[]` |
+
+~~~ts
+import type { Task } from "@dhtmlx/trial-vue-gantt";
+import { useGanttDatastore } from "@dhtmlx/trial-vue-gantt";
+
+const taskStore = useGanttDatastore<Task>(ganttRef, "task");
+
+const rootTasks = computed(() => taskStore.value.getChildren(0));
+~~~
+
+#### `useResourceAssignments(ganttRef)`
+
+Returns a computed reader for resource/task assignment data.
+
+| Method | Signature |
+|--------|-----------|
+| `getResourceAssignments(resourceId, taskId?)` | `(resourceId: string \| number, taskId?: string \| number) => any[]` |
+| `getTaskResources(taskId)` | `(taskId: string \| number) => any[]` |
+
+~~~ts
+import { useResourceAssignments } from "@dhtmlx/trial-vue-gantt";
+
+const assignments = useResourceAssignments(ganttRef);
+
+const showAssignments = (resourceId: string | number) => {
+  console.log(assignments.value.getResourceAssignments(resourceId));
+};
+~~~
+
+#### `useGanttEvent(ganttRef, eventName, handler)`
+
+Attaches a single Gantt event with a lifecycle-safe lifetime. The handler is detached automatically on component unmount and re-attached if `ganttRef`, `eventName`, or `handler` change. Returns `{ detach }` for manual control.
+
+~~~ts
+import { useGanttEvent } from "@dhtmlx/trial-vue-gantt";
+
+const { detach } = useGanttEvent(ganttRef, "onTaskDblClick", id => {
+  console.log("dbl-click", id);
+});
+
+// Optional: detach early
+// detach();
+~~~
+
+Use this when one-off listeners do not fit cleanly into the `events` map (for example listeners that need to update or unsubscribe based on local state).
 
 ## What To Read Next
 

@@ -5,7 +5,8 @@ sidebar_label: "Migration from Older Versions"
 
 # Migration from Older Versions
 
-## 9.1 -> 9.2 {#91---92}
+
+## 9.1 -> 10.0
 
 ### XSS protection in framework wrappers
 
@@ -54,6 +55,48 @@ Set the `allowRawHTML` component prop to `true` to restore pre-9.2 behavior and 
 ~~~html
 <dhx-gantt [allowRawHTML]="true" /* ... */></dhx-gantt>
 ~~~
+
+
+### Auto-scheduling engine update {#auto-scheduling-v2}
+
+v10.0 ships a reworked auto-scheduling engine. It fixes a number of long-standing bugs, mostly around slack calculation and the scheduling of projects (summary tasks) when [move_projects](api/config/auto_scheduling.md#move_projects) is enabled.
+
+The public API and the visible behavior stay the same, except for cases that previously worked incorrectly. The changes that may affect existing code are listed below.
+
+The new engine is used by default. If you need to switch back to the previous one during the transition, use the opt-out flags:
+
+~~~js
+gantt.config.auto_scheduling = {
+    enabled: true,
+    _engine: "v1",          // previous scheduling engine
+    _analysis_engine: "v1"  // previous slack / critical path calculation
+};
+~~~
+
+These flags are transitional and will be removed in v10.1, so plan to migrate before then.
+
+#### Behavior changes
+
+| Area | Before (v9.x) | Since v10.0 | What to do |
+|---|---|---|---|
+| Repeated `gantt.autoSchedule()` calls | Tasks could shift forward on projects that mix several calendars | Running auto-scheduling again on unchanged data keeps the same dates | No action needed |
+| Slack and critical-path values | Could change when `move_projects` / `gap_behavior` changed | Depend only on the data, not on scheduling-mode options | No action needed |
+| `getTotalSlack()` / `getFreeSlack()` for tasks excluded from the calculation (dependency loops, completed tasks) | Could return `undefined` | Return `0` | Update code that treats `undefined` and `0` differently |
+| `getSlack(task1, task2)` | Accurate only for directly linked tasks | More accurate values across linked tasks; values for unlinked pairs are unchanged | Prefer `getTotalSlack` / `getFreeSlack` |
+| `onBeforeTaskAutoSchedule` / `onAfterTaskAutoSchedule` arguments for constraint- and preference-driven moves | The `link` and source-task arguments could be set | These arguments are `null` for such moves | Add a null-check in listeners that assumed the `link` argument was always set |
+| Start-to-Finish links with `gap_behavior: "preserve"` | The successor was always scheduled as soon as possible (as if `"compress"`) | The `gap_behavior` option is respected | No action needed — this is the corrected behavior |
+| Moving a project with `move_projects: true` | A descendant's own constraint could silently keep the whole project in place | The whole project moves together; a descendant whose constraint conflicts is reported via `onAutoScheduleConflict` | Optionally listen to `onAutoScheduleConflict` to surface conflicts |
+
+#### New events and config
+
+- [onAutoScheduleConflict](api/event/onautoscheduleconflict.md) — fires for each conflict found during scheduling.
+- [onAutoScheduleNoConverge](api/event/onautoschedulenoconverge.md) — fires when scheduling can't settle on a stable result.
+- [strict_calendar](api/config/auto_scheduling.md#strict_calendar) — opt-in option (default `false`) that reports when a task lands on its own non-working time.
+
+#### Known limitations
+
+- When a constraint date (for example, **must-finish-on** or **start-no-later-than**) falls on the non-working time of a custom calendar, the task gets a constraint-correct date, but its stored `end_date` (calculated as start + duration) may not match the constraint date exactly. The [onAutoScheduleConflict](api/event/onautoscheduleconflict.md) event fires so you can react to the mismatch. To have the constraint honored exactly, use a calendar whose working time includes the constraint date.
+- Setting a constraint type on a project (summary task) directly in code right after data parsing may be overwritten during parsing. Set such constraints in the loaded data, or through the lightbox / inline editor.
 
 ## 9.0 -> 9.1
 

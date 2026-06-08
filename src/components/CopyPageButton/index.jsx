@@ -89,13 +89,15 @@ export default function CopyPageButton({ mdUrl, pageTitle }) {
 
   const openInLLM = (baseUrl) => {
     setOpen(false);
-    const prompt = buildPrompt(toAbsolute(mdUrl), pageTitle);
+    const pageUrl = window.location.origin + window.location.pathname;
+    const prompt = buildPrompt(pageUrl, pageTitle);
     window.open(baseUrl + encodeURIComponent(prompt), '_blank', 'noopener,noreferrer');
   };
 
   return (
     <div className={styles.wrapper} ref={wrapperRef}>
       <button
+        id="copy-menu-clipboard-top"
         type="button"
         className={styles.mainButton}
         onClick={copyMarkdown}
@@ -116,21 +118,35 @@ export default function CopyPageButton({ mdUrl, pageTitle }) {
       </button>
       {open && (
         <div className={styles.menu} role="menu">
-          <button type="button" className={styles.menuItem} onClick={viewAsMarkdown} role="menuitem">
+          <button
+            id="copy-menu-clipboard"
+            type="button"
+            className={styles.menuItem}
+            onClick={copyMarkdown}
+            aria-label={copied ? 'Page markdown copied' : 'Copy page as markdown'}
+            role="menuitem"
+          >
+            <span className={styles.menuIcon}><CopyIcon /></span>
+            <span className={styles.menuText}>
+              <span className={styles.menuTitle}>Copy page</span>
+              <span className={styles.menuDesc}>Copy page as Markdown</span>
+            </span>
+          </button>
+          <button type="button" id="copy-menu-markdown" className={styles.menuItem} onClick={viewAsMarkdown} role="menuitem">
             <span className={styles.menuIcon}><ExternalIcon /></span>
             <span className={styles.menuText}>
               <span className={styles.menuTitle}>View as Markdown</span>
               <span className={styles.menuDesc}>Open the raw .md in a new tab</span>
             </span>
           </button>
-          <button type="button" className={styles.menuItem} onClick={() => openInLLM(CHATGPT_URL)} role="menuitem">
+          <button type="button" id="copy-menu-chatgpt" className={styles.menuItem} onClick={() => openInLLM(CHATGPT_URL)} role="menuitem">
             <span className={styles.menuIcon}><ExternalIcon /></span>
             <span className={styles.menuText}>
               <span className={styles.menuTitle}>Open in ChatGPT</span>
               <span className={styles.menuDesc}>Ask ChatGPT about this page</span>
             </span>
           </button>
-          <button type="button" className={styles.menuItem} onClick={() => openInLLM(CLAUDE_URL)} role="menuitem">
+          <button type="button" id="copy-menu-claude" className={styles.menuItem} onClick={() => openInLLM(CLAUDE_URL)} role="menuitem">
             <span className={styles.menuIcon}><ExternalIcon /></span>
             <span className={styles.menuText}>
               <span className={styles.menuTitle}>Open in Claude</span>

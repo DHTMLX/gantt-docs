@@ -190,12 +190,14 @@ Use `filter` for task filtering and `resourceFilter` for resource-panel filterin
 
 ## Public Sample Scenario Map
 
-These wrapper features are covered in public sample routes:
+These wrapper features are covered in public sample routes. Run them locally from [`vue-gantt-examples` on GitHub](https://github.com/DHTMLX/vue-gantt-examples) or try the [live demo](https://dhtmlx.github.io/vue-gantt-examples/).
 
 - `basic-init`: baseline props, config, and templates
+- `templates`: theme/locale switching, Vue `h()`-based column templates, grid-side filtering, expand/collapse via instance
 - `custom-form`: `customLightbox`
 - `custom-edit-view`: event-driven external editor flow
 - `inline-editors`: Vue inline editor mapping
+- `auto-scheduling`: `plugins.auto_scheduling` + `critical_path` with `useWorkTime`
 - `resource-panel`: resources + `resourceFilter`
 - `state-management`: Pinia store-driven updates
 - `export-data`: imperative actions with export plugin
