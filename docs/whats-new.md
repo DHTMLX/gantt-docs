@@ -9,6 +9,26 @@ sidebar_label: "What's New"
 Updating from an earlier version? Check the [migration guide](migration.md) for required changes and update steps.
 :::
 
+## 10.0
+
+<span class='release_date'>Major release</span>
+
+This update brings some changes in the structure of the Gantt package and behavior of the functionality. Make sure to check the 
+[Migration notes](migration.md#91---100) to be on the safe side.
+
+### New functionality
+
+- DHTMLX Gantt Community Edition 
+- Angular Gantt Wrapper is officially released
+- Vue Gantt Wrapper is officially released
+- Zoom-to-fit functionality is available out of the box
+
+### Updates
+
+- The Auto Scheduling engine has been deeply reworked, which allowed fixing long-lived bugs. It adds the [onAutoScheduleConflict](api/event/onautoscheduleconflict.md) and [onAutoScheduleNoConverge](api/event/onautoschedulenoconverge.md) events and the [strict_calendar](api/config/auto_scheduling.md#strict_calendar) option. See the [migration guide](migration.md#auto-scheduling-v2) for the behavior changes.
+- React/Angular/Vue wrappers provide default sanitizing of string templates
+
+
 ## 9.1.4
 
 <span class='release_date'>April 28, 2026. Bugfix release</span>

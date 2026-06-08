@@ -991,6 +991,16 @@ module.exports = {
                         },
                         {
                             type: "doc",
+                            id: "api/event/onautoscheduleconflict",
+                            className: "pro-version"
+                        },
+                        {
+                            type: "doc",
+                            id: "api/event/onautoschedulenoconverge",
+                            className: "pro-version"
+                        },
+                        {
+                            type: "doc",
                             id: "api/event/onbeforeautoschedule",
                             className: "pro-version"
                         },
