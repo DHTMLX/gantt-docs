@@ -244,7 +244,7 @@ Starting from DHTMLX Gantt v10, the free edition is the **Community edition** di
   </tr>
   <tr>
   <td>[Resizing grid columns and the grid itself from the UI](guides/specifying-columns.md#resizing)</td>
-  <td style="text-align:center;">❌</td>
+  <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
