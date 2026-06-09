@@ -31,9 +31,13 @@ This update brings some changes in the structure of the Gantt package and behavi
 ### Updates
 
 
-- The Auto Scheduling engine has been deeply reworked, which allowed fixing long-lived bugs. It adds the [onAutoScheduleConflict](api/event/onautoscheduleconflict.md) and [onAutoScheduleNoConverge](api/event/onautoschedulenoconverge.md) events and the [strict_calendar](api/config/auto_scheduling.md#strict_calendar) option. See the [migration guide](migration.md#auto-scheduling-v2) for the behavior changes.
+- The Auto Scheduling engine has been deeply reworked, which allowed fixing long-lived bugs.
 
-- Updated TypeScript typings: added `SerializedTask`, `SerializedLink`, `SerializedBaseline`, `SerializedResourceAssignment`, and `GanttData` types. See the [Data Model](guides/data-model.md) overview for details
+- Updated TypeScript typings, see the [Data Model](guides/data-model.md) overview for details
+
+- Date parsing and formatting now use a single [CSP](api/config/csp.md)-safe implementation
+
+- The [`gantt.date`](api/other/date.md) interval-start helpers are now **pure** - they return a new `Date` instead of modifying the passed one.
 
 ## 9.1.4
 

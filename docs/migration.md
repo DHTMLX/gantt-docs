@@ -84,19 +84,41 @@ These flags are transitional and will be removed in v10.1, so plan to migrate be
 | `getTotalSlack()` / `getFreeSlack()` for tasks excluded from the calculation (dependency loops, completed tasks) | Could return `undefined` | Return `0` | Update code that treats `undefined` and `0` differently |
 | `getSlack(task1, task2)` | Accurate only for directly linked tasks | More accurate values across linked tasks; values for unlinked pairs are unchanged | Prefer `getTotalSlack` / `getFreeSlack` |
 | `onBeforeTaskAutoSchedule` / `onAfterTaskAutoSchedule` arguments for constraint- and preference-driven moves | The `link` and source-task arguments could be set | These arguments are `null` for such moves | Add a null-check in listeners that assumed the `link` argument was always set |
-| Start-to-Finish links with `gap_behavior: "preserve"` | The successor was always scheduled as soon as possible (as if `"compress"`) | The `gap_behavior` option is respected | No action needed — this is the corrected behavior |
+| Start-to-Finish links with `gap_behavior: "preserve"` | The successor was always scheduled as soon as possible (as if `"compress"`) | The `gap_behavior` option is respected | No action needed - this is the corrected behavior |
 | Moving a project with `move_projects: true` | A descendant's own constraint could silently keep the whole project in place | The whole project moves together; a descendant whose constraint conflicts is reported via `onAutoScheduleConflict` | Optionally listen to `onAutoScheduleConflict` to surface conflicts |
 
 #### New events and config
 
-- [onAutoScheduleConflict](api/event/onautoscheduleconflict.md) — fires for each conflict found during scheduling.
-- [onAutoScheduleNoConverge](api/event/onautoschedulenoconverge.md) — fires when scheduling can't settle on a stable result.
-- [strict_calendar](api/config/auto_scheduling.md#strict_calendar) — opt-in option (default `false`) that reports when a task lands on its own non-working time.
+- [onAutoScheduleConflict](api/event/onautoscheduleconflict.md) - fires for each conflict found during scheduling.
+- [onAutoScheduleNoConverge](api/event/onautoschedulenoconverge.md) - fires when scheduling can't settle on a stable result.
+- [strict_calendar](api/config/auto_scheduling.md#strict_calendar) - opt-in option (default `false`) that reports when a task lands on its own non-working time.
 
 #### Known limitations
 
 - When a constraint date (for example, **must-finish-on** or **start-no-later-than**) falls on the non-working time of a custom calendar, the task gets a constraint-correct date, but its stored `end_date` (calculated as start + duration) may not match the constraint date exactly. The [onAutoScheduleConflict](api/event/onautoscheduleconflict.md) event fires so you can react to the mismatch. To have the constraint honored exactly, use a calendar whose working time includes the constraint date.
 - Setting a constraint type on a project (summary task) directly in code right after data parsing may be overwritten during parsing. Set such constraints in the loaded data, or through the lightbox / inline editor.
+
+### Date helper changes {#date-helpers}
+
+#### Interval-start helpers are now pure
+
+The [`gantt.date`](api/other/date.md) interval-start helpers - `day_start`, `week_start`, `month_start`, `quarter_start`, `year_start`, `hour_start`, `minute_start`, and `date_part` - now return a new `Date` and no longer modify the date passed to them.
+
+The return value is unchanged, so only code that relied on the in-place mutation and ignored the return value needs updating:
+
+~~~js
+// before v10.0 - relied on day_start mutating `date`
+gantt.date.day_start(date);
+
+// since v10.0 - use the returned date
+date = gantt.date.day_start(date);
+~~~
+
+#### Single date parser and the deprecated `csp` config
+
+Gantt no longer ships the `new Function`-based "fast" date parser. The [CSP](api/config/csp.md)-safe parser is now the only implementation and the [csp](api/config/csp.md) config no longer affects date formatting.
+
+The option is kept and still read by the lightbox as a secure-environment hint, so existing configurations keep working. No migration is required - code that set `gantt.config.csp` only for date formatting can remove it.
 
 ## 9.0 -> 9.1
 

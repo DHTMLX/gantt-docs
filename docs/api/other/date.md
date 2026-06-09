@@ -83,7 +83,7 @@ const copiedDate = gantt.date.copy(new Date(2027, 5, 29)); // -> 29 June, 2027
 ---
 
 #### `date_part(date)`
-Resets the time part of the provided date to 00:00:00
+Returns a copy of the date with the time part reset to 00:00:00
 
 **Parameters**:
 - `date` - (Date) - The date object to format
@@ -116,7 +116,7 @@ const formattedDate = formatDate(new Date(2027, 5, 29)); // -> "29/06/2027"
 ---
 
 #### `day_start(date)`
-Resets the time part of the provided date to 00:00:00 (alias of `date_part()`)
+Returns a copy of the date with the time part reset to 00:00:00 (alias of `date_part()`)
 
 **Parameters**:
 - `date` - (Date) - The date object to format
@@ -279,7 +279,7 @@ const unchangedNumber = gantt.date.to_fixed(10); // ->10
 ---
 
 #### `minute_start(date)`
-Resets seconds to 00
+Returns a copy of the date with the seconds and milliseconds reset to 00
 
 **Parameters**:
 - `date` - (Date) - The date object
@@ -295,7 +295,7 @@ const minuteStart = gantt.date.minute_start(new Date(2027, 5, 29, 14, 30, 10));
 ---
 
 #### `hour_start(date)`
-Resets minutes and seconds to 00
+Returns a copy of the date with the minutes and seconds reset to 00
 
 **Parameters**:
 - `date` - (Date) - The date object
