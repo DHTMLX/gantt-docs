@@ -47,7 +47,7 @@ The reworked [Auto Scheduling](guides/auto-scheduling.md) engine resolves a numb
 - Fix unexpected shifting of sibling tasks to earlier dates during [Auto Scheduling](guides/auto-scheduling.md) when [auto_scheduling_move_projects](api/config/auto_scheduling_move_projects.md) was enabled
 - Fix the issue where child tasks were rescheduled to wrong dates when their parent project used a different [calendar](api/method/addcalendar.md) than its children
 - Fix the issue where child tasks were moved to a future date when their linked predecessor had non-working time and the child used a full-time calendar
-- Fix the issue where child tasks with their own calendar were scheduled to a future date when [inherit_calendar](api/config/inherit_calendar.md) was enabled in multi-level projects
+- Fix the issue where child tasks with their own calendars were scheduled to a future date when [inherit_calendar](api/config/inherit_calendar.md) was enabled in multi-level projects
 - Fix the issue where tasks could be scheduled past the `project_end` date during backward [Auto Scheduling](guides/auto-scheduling.md)
 - Fix the issue where [Auto Scheduling](guides/auto-scheduling.md) did not resize tasks whose `end_date` changed after the [work time](api/method/setworktime.md) settings were modified, even when the task did not need to move
 - Fix the error thrown when a task had a [constraint](guides/constraint.md) but its `auto_scheduling` property was set to `false`
