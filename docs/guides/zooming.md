@@ -87,6 +87,59 @@ The detailed information about the zooming module and its API is given in the ar
 
 **Related sample**: [Mouse wheel zoom](https://docs.dhtmlx.com/gantt/samples/03_scales/14_scale_zoom_by_wheelmouse.html)
 
+### Default zoom levels
+
+If you call `gantt.ext.zoom.init()` without the `levels` setting, the extension uses a set of ready-to-use named levels - **"hour"**, **"day"**, **"week"**, **"month"**, and **"year"**. This lets you enable zooming with a single call and switch the scale by name:
+
+~~~js
+gantt.ext.zoom.init();
+
+gantt.ext.zoom.setLevel("week");
+~~~
+
+Provide the `levels` array when you need custom scales or labels.
+
+## Zoom to fit
+
+The Zoom extension can automatically pick the most detailed zoom level at which all tasks fit into the timeline width without horizontal scrolling. Call [`gantt.ext.zoom.zoomToFit()`](guides/zoom.md#methods) and, when you want to return to the previous scale, [`gantt.ext.zoom.resetZoom()`](guides/zoom.md#methods):
+
+~~~js
+gantt.ext.zoom.init();
+
+// fit all loaded tasks into the visible timeline
+gantt.ext.zoom.zoomToFit();
+
+// restore the scale that was active before the first zoomToFit() call
+gantt.ext.zoom.resetZoom();
+~~~
+
+`zoomToFit()` returns `true` when a fitting level was applied, and `false` otherwise (for example, for an empty chart).
+
+By default `zoomToFit()` fits **all loaded tasks**. You can change what gets fitted and even redefine the selection logic via the `fit` setting of `init()`, or via the options passed to `zoomToFit()`:
+
+~~~js
+gantt.ext.zoom.init({
+    levels: [ /* interactive zoom levels */ ],
+    fit: {
+        scope: "all", // "all" (default) fits every loaded task, "visible" - only expanded rows
+        levels: [ /* optional, a set of scales used only for fitting */ ],
+        handler: (context) => {
+            // context: { range, viewportWidth, levels, padding, defaultLevel }
+            return context.defaultLevel; // return a level name/index, or false to abort
+        }
+    }
+});
+
+// per-call options override the init() defaults
+gantt.ext.zoom.zoomToFit({ scope: "visible" });               // fit only the expanded rows
+gantt.ext.zoom.zoomToFit({ taskId: 5 });                      // fit a task and its subtree
+gantt.ext.zoom.zoomToFit({ range: { start_date, end_date } });// fit an explicit date range
+~~~
+
+The full list of options is given in the [Zoom Extension](guides/zoom.md#zoom-to-fit) article.
+
+**Related sample**: [Zoom to fit](https://docs.dhtmlx.com/gantt/samples/03_scales/13_zoom_to_fit.html)
+
 ## Custom zooming settings
 
 In case you don't want to use the zooming module and prefer controlling scale settings manually, you can do so via corresponding configuration options.

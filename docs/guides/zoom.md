@@ -23,8 +23,8 @@ The Zoom extension uses a set of the scale settings and allows quickly switching
 ## Methods
 
 - <span class="submethod">**init(zoomConfig): void**</span> - initializes the extension with the provided configuration.
-    - **_zoomConfig_** - (*object*) - an object with configuration settings that contains the *levels* array of zooming levels and a number of additional properties:
-        - **_levels_** - (*ZoomLevel[]*) - required, an array of zooming levels
+    - **_zoomConfig?_** - (*object*) - an object with configuration settings that contains the *levels* array of zooming levels and a number of additional properties:
+        - **_levels?_** - (*ZoomLevel[]*) - an array of zooming levels. Optional - when omitted, a set of [default named levels](guides/zooming.md#default-zoom-levels) ("hour", "day", "week", "month", "year") is used
         - **_handler?_** - (*Function*): void - allows specifying a custom handler of the mouse wheel to work with zooming manually
             - **_e_** - (*Event*) - a native event object.
         - **_startDate?_** - (*Date*) - the start value of the time scale zooming
@@ -36,6 +36,7 @@ The Zoom extension uses a set of the scale settings and allows quickly switching
         - **_useKey?_** - (*string*) - the key that enables zooming by scrolling the mouse wheel:"ctrlKey" | "altKey" | "shiftKey"
         - **_trigger?_** - (*string | null | undefined*) - the trigger of zooming: "wheel" | null | undefined 
         - **_element?_** - (*HTMLElement | Function*): HTMLElement - a DOM element over which zooming is triggered or a function that returns a DOM element
+        - **_fit?_** - (*object*) - the default [zoom-to-fit](#zoom-to-fit) settings. Along with the `zoomToFit` options listed below, it accepts *levels* (a dedicated set of scales used only for fitting) and *handler* (a function that overrides the level selection)
 
 These are two examples of setting the `zoom` configuration:
 
@@ -186,6 +187,20 @@ For the same purpose you can also use:
 gantt.ext.zoom.setLevel(gantt.ext.zoom.getCurrentLevel() + 1);
 ~~~
 
+- <span class="submethod">**zoomToFit(options?): boolean**</span> - picks the most detailed zoom level at which the target tasks fit into the timeline width without horizontal scrolling, and applies it. See [Zoom to fit](#zoom-to-fit) for the list of options. The method is idempotent and returns *true* when a fitting level was applied, *false* otherwise.
+
+~~~js
+gantt.ext.zoom.zoomToFit();
+// or fit only the currently visible (expanded) rows
+gantt.ext.zoom.zoomToFit({ scope: "visible" });
+~~~
+
+- <span class="submethod">**resetZoom(): boolean**</span> - restores the zoom level and time scale that were active before the first `zoomToFit()` call. Returns *true* when a saved scale was restored, *false* when there is nothing to restore.
+
+~~~js
+gantt.ext.zoom.resetZoom();
+~~~
+
 - <span class="submethod">**attachEvent(name, handler): string**</span> - attaches an event handler
     - **_name_** - (*string*) - the name of the event handler
     - **_handler_** - (*Function*) - the function that will be called when the event fires
@@ -201,6 +216,47 @@ gantt.ext.zoom.setLevel(gantt.ext.zoom.getCurrentLevel() + 1);
     - **_name_** - (*string*) - the event's name
 
 Returns <i>true</i>, if some handler is specified for the event.
+
+## Zoom to fit
+
+[`zoomToFit(options)`](#methods) and the `fit` setting of [`init()`](#methods) accept the following options:
+
+- <span class="subproperty">**scope?**</span> - (*"all" | "visible"*) - which tasks to fit: *"all"* (default) fits every loaded task, including tasks under collapsed branches; *"visible"* fits only the currently expanded rows
+- <span class="subproperty">**taskId?**</span> - (*string | number*) - fits a single task together with its subtree
+- <span class="subproperty">**range?**</span> - (*object*) - fits an explicit date range with the *start_date* and *end_date* (*Date*) properties
+- <span class="subproperty">**rangeMode?**</span> - (*"auto" | "preserve" | "target"*) - whether to overwrite the displayed `start_date`/`end_date` with the fitted range. *"target"* always sets the fitted range, *"preserve"* keeps the current bounds, *"auto"* (default) preserves explicit bounds when they are set and sets the fitted range otherwise
+- <span class="subproperty">**padding?**</span> - (*number*) - the number of extra columns added before the first and after the last fitted date. Default: *1*
+- <span class="subproperty">**minLevel?**</span> - (*string | number*) - the most detailed zoom level that `zoomToFit` is allowed to pick
+- <span class="subproperty">**maxLevel?**</span> - (*string | number*) - the most coarse zoom level that `zoomToFit` is allowed to pick
+
+When set via the `fit` property of `init()`, the configuration additionally accepts:
+
+- <span class="subproperty">**levels?**</span> - (*ZoomLevel[]*) - a dedicated set of zoom levels considered only by `zoomToFit`. When omitted, the interactive zoom levels are used
+- <span class="subproperty">**handler?**</span> - (*Function*): string | number | boolean | void - overrides the level selection. It receives a *context* object and should return a level name/index to apply, `false` to abort the fit, or nothing to keep the computed level
+    - **_context_** - (*object*) - an object `{ range, viewportWidth, levels, padding, defaultLevel }`, where *defaultLevel* is the level index the built-in algorithm picked
+
+Options passed directly to `zoomToFit()` override the defaults set via `init({ fit })`.
+
+~~~js
+gantt.ext.zoom.init({
+    fit: {
+        scope: "all",
+        // a dedicated set of scales used only for fitting
+        levels: [
+            { name: "weeks", scale_height: 50, scales: [{ unit: "week", step: 1, format: "Week #%W" }] },
+            { name: "months", scale_height: 50, scales: [{ unit: "month", step: 1, format: "%F, %Y" }] }
+        ],
+        handler: (context) => {
+            // return a level name/index, false to abort, or nothing to keep the default
+            return context.defaultLevel;
+        }
+    }
+});
+
+gantt.ext.zoom.zoomToFit();
+~~~
+
+**Related sample**: [Zoom to fit](https://docs.dhtmlx.com/gantt/samples/03_scales/13_zoom_to_fit.html)
 
 ## Events
 

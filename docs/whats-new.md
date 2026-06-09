@@ -22,23 +22,19 @@ This update brings some changes in the structure of the Gantt package and behavi
 - DHTMLX Gantt Community Edition is officially released
 - [Angular Gantt](integrations/angular.md) wrapper is officially released
 - [Vue Gantt](integrations/vue.md) wrapper is officially released
-- Zoom-to-fit functionality is available out of the box
+- [Zoom-to-fit](guides/zooming.md#zoom-to-fit) is available out of the box: [`gantt.ext.zoom.zoomToFit()`](guides/zoom.md#methods) picks the most detailed zoom level that fits all tasks into the timeline without horizontal scrolling, and [`resetZoom()`](guides/zoom.md#methods) reverts to the previous scale
 
 
 
 ### Updates
 
 
-- The Auto Scheduling engine has been deeply reworked, which allowed fixing long-lived bugs.
-
+- The Auto Scheduling engine has been deeply reworked, which allowed fixing long-lived bugs
 - Updated TypeScript typings, see the [Data Model](guides/data-model.md) overview for details
-
 - Date parsing and formatting now use a single [CSP](api/config/csp.md)-safe implementation
-
+- The [Zoom extension](guides/zoom.md) now ships with ready-to-use named [default levels](guides/zooming.md#default-zoom-levels), so it can be initialized without a custom `levels` config (`gantt.ext.zoom.init()`)
 - The [`gantt.date`](api/other/date.md) interval-start helpers are now **pure** - they return a new `Date` instead of modifying the passed one
-
 - [React Gantt](integrations/react.md) now passes the **gantt instance** to the [customLightbox](integrations/react/overview.md#by-providing-a-custom-component-via-the-customlightbox-prop) component, allowing direct access to the Gantt API from the custom editor
-
 - [React Gantt](integrations/react.md), [Vue Gantt](integrations/vue.md), and [Angular Gantt](integrations/angular.md) wrappers now **HTML-escape string values returned from template functions** by default to prevent XSS attacks. This applies to `templates`, `config.columns[].template`, and `config.scales[].format` functions
 
 ## 9.1.4
