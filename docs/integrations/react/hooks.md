@@ -1,14 +1,14 @@
 ---
 title: "React Gantt Hooks"
 sidebar_label: "Hooks"
-description: "Built-in React hooks for DHTMLX Gantt — event subscriptions, resource assignments, undo/redo, zoom, selection, datastores, and work time calculations."
+description: "Built-in React hooks for DHTMLX Gantt - event subscriptions, resource assignments, undo/redo, zoom, selection, datastores, and work time calculations."
 ---
 
 # React Gantt Hooks
 
-The `@dhx/react-gantt` wrapper provides a set of React hooks that bridge your components to Gantt's internal APIs without requiring direct access to the Gantt instance. These hooks handle lifecycle management automatically — subscriptions are created on mount and cleaned up on unmount.
+The `@dhx/react-gantt` wrapper provides a set of React hooks that bridge your components to Gantt's internal APIs without requiring direct access to the Gantt instance. These hooks handle lifecycle management automatically - subscriptions are created on mount and cleaned up on unmount.
 
-All hooks accept a `ganttRef` parameter — a React ref to the `ReactGantt` component:
+All hooks accept a `ganttRef` parameter - a React ref to the `ReactGantt` component:
 
 ~~~tsx
 import { useRef } from 'react';
@@ -37,12 +37,12 @@ useGanttEvent(ganttRef, eventName, handler, options?)
 
 **Parameters:**
 
-- `ganttRef` — ref to the ReactGantt component
-- `eventName` — the Gantt event name (e.g., `'onAfterTaskUpdate'`, `'onStoreUpdated'`)
-- `handler` — callback function
-- `options.target` — *(optional)* accessor function that resolves the event source from the Gantt instance. When omitted, events attach to the Gantt instance itself.
+- `ganttRef` - ref to the ReactGantt component
+- `eventName` - the Gantt event name (e.g., `'onAfterTaskUpdate'`, `'onStoreUpdated'`)
+- `handler` - callback function
+- `options.target` - *(optional)* accessor function that resolves the event source from the Gantt instance. When omitted, events attach to the Gantt instance itself.
 
-Works with any object that implements `attachEvent`/`detachEvent` — the Gantt instance, extensions, datastores, and UI modules:
+Works with any object that implements `attachEvent`/`detachEvent` - the Gantt instance, extensions, datastores, and UI modules:
 
 ~~~tsx
 import { useGanttEvent } from '@dhx/react-gantt';
@@ -53,7 +53,7 @@ function MyComponent({ ganttRef }) {
     console.log('Task updated:', id);
   });
 
-  // Extension events — pass a target accessor
+  // Extension events - pass a target accessor
   useGanttEvent(ganttRef, 'onAfterZoom', (level) => {
     console.log('Zoomed to level:', level);
   }, { target: (gantt) => gantt.ext.zoom });
@@ -79,11 +79,11 @@ import { useResourceAssignments } from '@dhx/react-gantt';
 
 **Returns:**
 
-- `getResourceAssignments(resourceId, taskId?)` — bridge to [](api/method/getresourceassignments.md). Returns assignments for a resource, optionally filtered by task.
-- `getTaskResources(taskId)` — bridge to [](api/method/gettaskresources.md). Returns unique resources assigned to a task.
-- `getTaskAssignments(taskId)` — bridge to [](api/method/gettaskassignments.md). Returns all assignments for a task.
-- `getAllResources()` — returns all items from the resource datastore.
-- `setTaskAssignments(taskId, assignments)` — replaces all assignments for a task. Each assignment should have `resource_id` and optionally `value`.
+- `getResourceAssignments(resourceId, taskId?)` - bridge to [](api/method/getresourceassignments.md). Returns assignments for a resource, optionally filtered by task.
+- `getTaskResources(taskId)` - bridge to [](api/method/gettaskresources.md). Returns unique resources assigned to a task.
+- `getTaskAssignments(taskId)` - bridge to [](api/method/gettaskassignments.md). Returns all assignments for a task.
+- `getAllResources()` - returns all items from the resource datastore.
+- `setTaskAssignments(taskId, assignments)` - replaces all assignments for a task. Each assignment should have `resource_id` and optionally `value`.
 
 ~~~tsx
 import { useResourceAssignments } from '@dhx/react-gantt';
@@ -114,7 +114,7 @@ function ResourcePanel({ ganttRef, taskId }) {
 
 ## useGanttDatastore
 
-Read-only access to any Gantt datastore — tasks, links, resources, assignments, baselines, or custom stores.
+Read-only access to any Gantt datastore - tasks, links, resources, assignments, baselines, or custom stores.
 
 ~~~ts
 import { useGanttDatastore } from '@dhx/react-gantt';
@@ -127,14 +127,14 @@ const store = useGanttDatastore<T>(ganttRef, storeName)
 
 **Returns:**
 
-- `getItem(id)` — returns a single item by ID
-- `getItems()` — returns all items
-- `hasChild(id)` — checks if an item has children (tree datastores)
-- `getChildren(id)` — returns child IDs (tree datastores)
-- `eachItem(callback)` — iterates through all items in the datastore
-- `find(filter)` — returns items matching a predicate function
-- `count()` — returns total number of items
-- `exists(id)` — checks if an item exists
+- `getItem(id)` - returns a single item by ID
+- `getItems()` - returns all items
+- `hasChild(id)` - checks if an item has children (tree datastores)
+- `getChildren(id)` - returns child IDs (tree datastores)
+- `eachItem(callback)` - iterates through all items in the datastore
+- `find(filter)` - returns items matching a predicate function
+- `count()` - returns total number of items
+- `exists(id)` - checks if an item exists
 
 ~~~tsx
 import { useGanttDatastore, ResourceItem } from '@dhx/react-gantt';
@@ -168,10 +168,10 @@ import { useUndoRedo } from '@dhx/react-gantt';
 
 **Returns:**
 
-- `canUndo` — `boolean`, true when the undo stack is non-empty
-- `canRedo` — `boolean`, true when the redo stack is non-empty
-- `undo()` — performs an undo operation
-- `redo()` — performs a redo operation
+- `canUndo` - `boolean`, true when the undo stack is non-empty
+- `canRedo` - `boolean`, true when the redo stack is non-empty
+- `undo()` - performs an undo operation
+- `redo()` - performs a redo operation
 
 Returns disabled state (`canUndo: false, canRedo: false`) if the undo plugin is not enabled.
 
@@ -212,16 +212,16 @@ const zoom = useZoom(ganttRef, levels?)
 
 **Parameters:**
 
-- `ganttRef` — ref to the ReactGantt component
-- `levels` — *(optional)* array of zoom level configurations. Defaults to 5 built-in levels: Day, Week, Month, Quarter, Year.
+- `ganttRef` - ref to the ReactGantt component
+- `levels` - *(optional)* array of zoom level configurations. Defaults to 5 built-in levels: Day, Week, Month, Quarter, Year.
 
 **Returns:**
 
-- `currentLevel` — name of the active zoom level
-- `levels` — the zoom level configurations
-- `zoomIn()` — zoom to a more detailed level
-- `zoomOut()` — zoom to a less detailed level
-- `setLevel(name)` — jump to a specific zoom level by name
+- `currentLevel` - name of the active zoom level
+- `levels` - the zoom level configurations
+- `zoomIn()` - zoom to a more detailed level
+- `zoomOut()` - zoom to a less detailed level
+- `setLevel(name)` - jump to a specific zoom level by name
 
 ~~~tsx
 import { useZoom } from '@dhx/react-gantt';
@@ -273,7 +273,7 @@ import { useSelection } from '@dhx/react-gantt';
 
 **Returns:**
 
-- `selectedId` — the ID of the currently selected task, or `null` if nothing is selected
+- `selectedId` - the ID of the currently selected task, or `null` if nothing is selected
 
 ~~~tsx
 import { useSelection } from '@dhx/react-gantt';
@@ -297,10 +297,10 @@ import { useWorkTime } from '@dhx/react-gantt';
 
 **Returns:**
 
-- `isWorkTime({ date, unit?, task? })` — bridge to [](api/method/isworktime.md)
-- `calculateEndDate({ start, duration, unit?, task? })` — bridge to [](api/method/calculateenddate.md)
-- `calculateDuration({ start, end, task? })` — bridge to [](api/method/calculateduration.md)
-- `getClosestWorkTime({ date, unit, task?, dir? })` — bridge to [](api/method/getclosestworktime.md)
+- `isWorkTime({ date, unit?, task? })` - bridge to [](api/method/isworktime.md)
+- `calculateEndDate({ start, duration, unit?, task? })` - bridge to [](api/method/calculateenddate.md)
+- `calculateDuration({ start, end, task? })` - bridge to [](api/method/calculateduration.md)
+- `getClosestWorkTime({ date, unit, task?, dir? })` - bridge to [](api/method/getclosestworktime.md)
 
 ~~~tsx
 import ReactGantt, { GanttTemplates, ReactGanttRef, useWorkTime } from '@dhx/react-gantt';

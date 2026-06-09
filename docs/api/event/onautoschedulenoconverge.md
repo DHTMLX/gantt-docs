@@ -35,7 +35,7 @@ gantt.attachEvent("onAutoScheduleNoConverge", function(result){
 This event is defined in the **auto_scheduling** extension, so you need to activate the [auto_scheduling](guides/extensions-list.md#autoscheduling) plugin. Read the details in the [Auto Scheduling](guides/auto-scheduling.md) article. 
 :::
 
-Auto scheduling places tasks in repeated passes until the result stops changing. This event fires when the result keeps changing and the engine stops after a number of passes without reaching a stable state. In practice this points to an over-constrained project — for example, a set of constraints and dependencies that cannot all be satisfied at the same time.
+Auto scheduling places tasks in repeated passes until the result stops changing. This event fires when the result keeps changing and the engine stops after a number of passes without reaching a stable state. In practice this points to an over-constrained project - for example, a set of constraints and dependencies that cannot all be satisfied at the same time.
 
 The `result` parameter contains the details of the run:
 

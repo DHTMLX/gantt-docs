@@ -50,7 +50,7 @@ Set the `htmlTemplatePolicy` prop to `"unsafe-html"` to render template strings 
 
 #### Per-template raw HTML
 
-Wrap an individual template with `allowRawHTML` to bypass sanitizing for just that template — sanitize any user data yourself with the exported `escapeHTML` helper:
+Wrap an individual template with `allowRawHTML` to bypass sanitizing for just that template - sanitize any user data yourself with the exported `escapeHTML` helper:
 
 ~~~jsx
 import { allowRawHTML, escapeHTML } from "@dhx/react-gantt";

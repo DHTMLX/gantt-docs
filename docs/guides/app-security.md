@@ -385,7 +385,7 @@ It helps preventing various code injection attacks and improve the safety of app
 
 ## Framework Wrapper XSS Protection
 
-Starting from v10.0, the [React](integrations/react.md), [Vue](integrations/vue.md), and [Angular](integrations/angular.md) wrappers process the string values returned by user-provided template functions so that HTML coming from templates is safe by default — even when it embeds unsanitized task/event data. This covers:
+Starting from v10.0, the [React](integrations/react.md), [Vue](integrations/vue.md), and [Angular](integrations/angular.md) wrappers process the string values returned by user-provided template functions so that HTML coming from templates is safe by default - even when it embeds unsanitized task/event data. This covers:
 
 - Functions passed via the `templates` prop
 - `config.columns[].template` functions
@@ -396,11 +396,11 @@ The behavior is controlled by the `htmlTemplatePolicy` component prop:
 | Policy | Behavior |
 | --- | --- |
 | `"basic-sanitize"` *(default)* | Allowlist-sanitizes the returned HTML: safe formatting (`b`, `i`, `span`, `div`, `mark`, ...), `class`, a limited set of inline styles, `data-*` attributes, `contenteditable` and `img` with a safe `src` are kept. `<script>`, inline event handlers (`on*`), and dangerous URLs (`javascript:`, `vbscript:`, non-image `data:`) are removed. |
-| `"escape"` | Renders the string as text — HTML tags become visible characters. (Built-in templates such as the grid tree icons are still sanitized so the grid renders correctly.) |
-| `"unsafe-html"` | Renders the raw string with no processing — the pre-v10 behavior, equivalent to `dangerouslySetInnerHTML`. Use only with fully trusted output. |
+| `"escape"` | Renders the string as text - HTML tags become visible characters. (Built-in templates such as the grid tree icons are still sanitized so the grid renders correctly.) |
+| `"unsafe-html"` | Renders the raw string with no processing - the pre-v10 behavior, equivalent to `dangerouslySetInnerHTML`. Use only with fully trusted output. |
 | `{ mode: "sanitize", sanitize }` | Delegates to a custom sanitizer such as [DOMPurify](https://github.com/cure53/DOMPurify), letting you sanitize rich HTML without making it a wrapper dependency. |
 
-`"basic-sanitize"` is a small, dependency-free sanitizer meant for simple formatting, labels, colors and images — **not** a complete general-purpose sanitizer. For arbitrary rich HTML, prefer returning framework nodes from templates (see below) or plug in a dedicated sanitizer.
+`"basic-sanitize"` is a small, dependency-free sanitizer meant for simple formatting, labels, colors and images - **not** a complete general-purpose sanitizer. For arbitrary rich HTML, prefer returning framework nodes from templates (see below) or plug in a dedicated sanitizer.
 
 ### Returning framework nodes (recommended for rich markup)
 
@@ -416,7 +416,7 @@ The safest way to render custom markup is to return a framework element from the
 
 ### Per-template raw HTML
 
-To render the raw string for one specific template regardless of the active policy, wrap it with the `allowRawHTML` helper exported from the wrapper package. You are then responsible for sanitizing user-provided data — use the exported `escapeHTML` utility:
+To render the raw string for one specific template regardless of the active policy, wrap it with the `allowRawHTML` helper exported from the wrapper package. You are then responsible for sanitizing user-provided data - use the exported `escapeHTML` utility:
 
 ~~~js
 import { allowRawHTML, escapeHTML } from "@dhx/react-gantt";

@@ -37,7 +37,7 @@ gantt.attachEvent("onAutoScheduleConflict", function(conflict){
 This event is defined in the **auto_scheduling** extension, so you need to activate the [auto_scheduling](guides/extensions-list.md#autoscheduling) plugin. Read the details in the [Auto Scheduling](guides/auto-scheduling.md) article. 
 :::
 
-The event fires once for every conflict that auto scheduling runs into. Auto scheduling still produces a result — the event lets you surface the conflicts in the UI or react to them.
+The event fires once for every conflict that auto scheduling runs into. Auto scheduling still produces a result - the event lets you surface the conflicts in the UI or react to them.
 
 The `conflict.kind` field defines the type of the conflict and the available fields:
 

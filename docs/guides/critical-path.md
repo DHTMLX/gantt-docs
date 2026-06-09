@@ -284,12 +284,12 @@ You can find more details on the [API page](api/config/auto_scheduling_use_progr
 
 ## Critical path and slack in v10.0 {#v2-analysis}
 
-In v10.0 the slack and critical-path calculation was reworked. The results no longer depend on auto-scheduling mode options such as [move_projects](api/config/auto_scheduling.md#move_projects) and [gap_behavior](api/config/auto_scheduling.md#gap_behavior) — the same data always produces the same slack and critical-path values.
+In v10.0 the slack and critical-path calculation was reworked. The results no longer depend on auto-scheduling mode options such as [move_projects](api/config/auto_scheduling.md#move_projects) and [gap_behavior](api/config/auto_scheduling.md#gap_behavior) - the same data always produces the same slack and critical-path values.
 
 A few related behavior notes:
 
 - A task is critical when its total slack is not greater than zero. Completed tasks (when [use_progress](api/config/auto_scheduling_use_progress.md) is enabled) and tasks that belong to a dependency loop are never critical.
-- `getTotalSlack` and `getFreeSlack` return `0` (instead of `undefined`) for tasks excluded from the calculation — tasks in a dependency loop, and completed tasks when `use_progress` is enabled.
+- `getTotalSlack` and `getFreeSlack` return `0` (instead of `undefined`) for tasks excluded from the calculation - tasks in a dependency loop, and completed tasks when `use_progress` is enabled.
 
 ### Switching back to the previous calculation
 

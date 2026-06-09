@@ -277,7 +277,7 @@ gantt.config.auto_scheduling = {
 };
 ~~~
 
-When set to `true`, the [onAutoScheduleConflict](api/event/onautoscheduleconflict.md) event fires (with `kind: "calendar-non-working"`) whenever scheduling moves a task onto its own non-working time. The task date is applied in both modes — this option only controls whether the situation is reported, so you can surface it in the UI.
+When set to `true`, the [onAutoScheduleConflict](api/event/onautoscheduleconflict.md) event fires (with `kind: "calendar-non-working"`) whenever scheduling moves a task onto its own non-working time. The task date is applied in both modes - this option only controls whether the situation is reported, so you can surface it in the UI.
 
 ### Related API
 - [project_start](api/config/project_start.md)

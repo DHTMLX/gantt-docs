@@ -206,13 +206,13 @@ The `@dhx/react-gantt` library provides hooks for event subscriptions, resource 
 
 See the dedicated **[Hooks](integrations/react/hooks.md)** page for the complete reference, including:
 
-- [useGanttEvent](integrations/react/hooks.md#useganttEvent) — event subscriptions with lifecycle management
-- [useResourceAssignments](integrations/react/hooks.md#useresourceassignments) — resource assignment queries and mutations
-- [useGanttDatastore](integrations/react/hooks.md#useganttdatastore) — read-only datastore access
-- [useUndoRedo](integrations/react/hooks.md#useundoredo) — undo/redo state and actions
-- [useZoom](integrations/react/hooks.md#usezoom) — zoom control and state
-- [useSelection](integrations/react/hooks.md#useselection) — task selection tracking
-- [useWorkTime](integrations/react/hooks.md#useworktime) — work time calculations
+- [useGanttEvent](integrations/react/hooks.md#useganttEvent) - event subscriptions with lifecycle management
+- [useResourceAssignments](integrations/react/hooks.md#useresourceassignments) - resource assignment queries and mutations
+- [useGanttDatastore](integrations/react/hooks.md#useganttdatastore) - read-only datastore access
+- [useUndoRedo](integrations/react/hooks.md#useundoredo) - undo/redo state and actions
+- [useZoom](integrations/react/hooks.md#usezoom) - zoom control and state
+- [useSelection](integrations/react/hooks.md#useselection) - task selection tracking
+- [useWorkTime](integrations/react/hooks.md#useworktime) - work time calculations
 
 ### Direct access to Gantt instance with ref
 
