@@ -23,6 +23,8 @@ This update brings some changes in the structure of the Gantt package and behavi
 - [Angular Gantt](integrations/angular.md) wrapper is officially released
 - [Vue Gantt](integrations/vue.md) wrapper is officially released
 - [Zoom-to-fit](guides/zooming.md#zoom-to-fit) is available out of the box: [`gantt.ext.zoom.zoomToFit()`](guides/zoom.md#methods) picks the most detailed zoom level that fits all tasks into the timeline without horizontal scrolling, and [`resetZoom()`](guides/zoom.md#methods) reverts to the previous scale
+- [React Gantt](integrations/react.md) now provides ready-to-use [React hooks](integrations/react/hooks.md) for the most commonly used Gantt APIs and ships with working defaults for the resource histogram, removing most of the boilerplate previously needed to access the native instance
+- Support for additional [locales](guides/localization.md) is added - including Simplified Chinese, Traditional Chinese, Cantonese, Thai, and Vietnamese - and existing translations have been improved
 
 
 
@@ -36,6 +38,29 @@ This update brings some changes in the structure of the Gantt package and behavi
 - The [`gantt.date`](api/other/date.md) interval-start helpers are now **pure** - they return a new `Date` instead of modifying the passed one
 - [React Gantt](integrations/react.md) now passes the **gantt instance** to the [customLightbox](integrations/react/overview.md#by-providing-a-custom-component-via-the-customlightbox-prop) component, allowing direct access to the Gantt API from the custom editor
 - [React Gantt](integrations/react.md), [Vue Gantt](integrations/vue.md), and [Angular Gantt](integrations/angular.md) wrappers now **HTML-escape string values returned from template functions** by default to prevent XSS attacks. This applies to `templates`, `config.columns[].template`, and `config.scales[].format` functions
+
+### Fixes
+
+The reworked [Auto Scheduling](guides/auto-scheduling.md) engine resolves a number of long-standing scheduling, constraint, and critical path bugs:
+
+- Fix the issue where tasks with the **ASAP** behavior were moved before the `project_start` date when their siblings had `snet`/`snlt` [constraints](guides/constraint.md)
+- Fix unexpected shifting of sibling tasks to earlier dates during [Auto Scheduling](guides/auto-scheduling.md) when [auto_scheduling_move_projects](api/config/auto_scheduling_move_projects.md) was enabled
+- Fix the issue where child tasks were rescheduled to wrong dates when their parent project used a different [calendar](api/method/addcalendar.md) than its children
+- Fix the issue where child tasks were moved to a future date when their linked predecessor had non-working time and the child used a full-time calendar
+- Fix the issue where child tasks with their own calendar were scheduled to a future date when [inherit_calendar](api/config/inherit_calendar.md) was enabled in multi-level projects
+- Fix the issue where tasks could be scheduled past the `project_end` date during backward [Auto Scheduling](guides/auto-scheduling.md)
+- Fix the issue where [Auto Scheduling](guides/auto-scheduling.md) did not resize tasks whose `end_date` changed after the [work time](api/method/setworktime.md) settings were modified, even when the task did not need to move
+- Fix the error thrown when a task had a [constraint](guides/constraint.md) but its `auto_scheduling` property was set to `false`
+- Fix the issue where the [onBeforeTaskAutoSchedule](api/event/onbeforetaskautoschedule.md) event did not fire for tasks that had no links, so they could not be excluded from scheduling
+- Fix incorrect Total Slack and [critical path](guides/critical-path.md) calculation for **Start-to-Finish** and **Start-to-Start** links
+- Fix the issue where a predecessor was not highlighted as critical when a negative-lag link made its successor finish earlier than the predecessor
+- Fix the `invalid end_date argument` error thrown by [getTotalSlack](api/method/gettotalslack.md) when a project contained only a single parent task with no subtasks
+
+Other fixes:
+
+- Fix the issue where milestones were not converted to projects by [auto_types](api/config/auto_types.md) when a subtask was added to them
+- Fix the issue in [React Gantt](integrations/react.md) where ISO date strings were not handled correctly without explicit `parse_date`/`format_date` templates
+- Fix the issue in [React Gantt](integrations/react.md) where a task could lose its parent when a new dataset was loaded with the child placed above its parent in the data
 
 ## 9.1.4
 
