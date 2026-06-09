@@ -385,38 +385,56 @@ It helps preventing various code injection attacks and improve the safety of app
 
 ## Framework Wrapper XSS Protection
 
-Starting from v9.2, the [React](integrations/react.md), [Vue](integrations/vue.md), and [Angular](integrations/angular.md) wrappers automatically HTML-escape string values returned by user-provided template functions. This covers:
+Starting from v10.0, the [React](integrations/react.md), [Vue](integrations/vue.md), and [Angular](integrations/angular.md) wrappers process the string values returned by user-provided template functions so that HTML coming from templates is safe by default — even when it embeds unsanitized task/event data. This covers:
 
 - Functions passed via the `templates` prop
 - `config.columns[].template` functions
 - `config.scales[].format` functions
 
-This means that if a template returns a string containing HTML tags, those tags will be rendered as text rather than as markup, preventing XSS through unsanitized data.
+The behavior is controlled by the `htmlTemplatePolicy` component prop:
 
-### Per-template opt-out
+| Policy | Behavior |
+| --- | --- |
+| `"basic-sanitize"` *(default)* | Allowlist-sanitizes the returned HTML: safe formatting (`b`, `i`, `span`, `div`, `mark`, ...), `class`, a limited set of inline styles, `data-*` attributes, `contenteditable` and `img` with a safe `src` are kept. `<script>`, inline event handlers (`on*`), and dangerous URLs (`javascript:`, `vbscript:`, non-image `data:`) are removed. |
+| `"escape"` | Renders the string as text — HTML tags become visible characters. (Built-in templates such as the grid tree icons are still sanitized so the grid renders correctly.) |
+| `"unsafe-html"` | Renders the raw string with no processing — the pre-v10 behavior, equivalent to `dangerouslySetInnerHTML`. Use only with fully trusted output. |
+| `{ mode: "sanitize", sanitize }` | Delegates to a custom sanitizer such as [DOMPurify](https://github.com/cure53/DOMPurify), letting you sanitize rich HTML without making it a wrapper dependency. |
 
-If a specific template needs to return raw HTML, wrap it with the `allowRawHTML` helper exported from the wrapper package:
+`"basic-sanitize"` is a small, dependency-free sanitizer meant for simple formatting, labels, colors and images — **not** a complete general-purpose sanitizer. For arbitrary rich HTML, prefer returning framework nodes from templates (see below) or plug in a dedicated sanitizer.
+
+### Returning framework nodes (recommended for rich markup)
+
+The safest way to render custom markup is to return a framework element from the template instead of an HTML string. React/Vue/Angular escape interpolated values by default, so no HTML sanitization is involved:
+
+~~~tsx
+<ReactGantt
+  templates={{
+    task_text: (start, end, task) => <span className="task-label"><b>{task.text}</b></span>
+  }}
+/>
+~~~
+
+### Per-template raw HTML
+
+To render the raw string for one specific template regardless of the active policy, wrap it with the `allowRawHTML` helper exported from the wrapper package. You are then responsible for sanitizing user-provided data — use the exported `escapeHTML` utility:
 
 ~~~js
 import { allowRawHTML, escapeHTML } from "@dhx/react-gantt";
 
 const templates = {
-  task_text: allowRawHTML((start, end, task) => {
-    return `<b>${escapeHTML(task.text)}</b>`;
-  })
+  task_text: allowRawHTML((start, end, task) => `<b>${escapeHTML(task.text)}</b>`)
 };
 ~~~
 
-:::note
-When using `allowRawHTML`, you are responsible for sanitizing any user-provided data inside that template. Use the exported `escapeHTML` utility for values that come from user input.
-:::
-
-### Global opt-out
-
-Set the `allowRawHTML` component prop to `true` to disable escaping for all templates:
+### Choosing a global policy
 
 ~~~jsx
-<ReactGantt allowRawHTML={true} />
+// keep raw HTML everywhere (pre-v10 behavior)
+<ReactGantt htmlTemplatePolicy="unsafe-html" />
+
+// plug in DOMPurify for rich HTML
+import DOMPurify from "dompurify";
+<ReactGantt htmlTemplatePolicy={{ mode: "sanitize", sanitize: (html) => DOMPurify.sanitize(html) }} />
 ~~~
 
 See [Migration notes](migration.md#91---92) for more details.

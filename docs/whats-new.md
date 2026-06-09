@@ -19,14 +19,12 @@ This update brings some changes in the structure of the Gantt package and behavi
 
 ### New Functionality
 
-
-
-- DHTMLX Gantt Community Edition 
-- Angular Gantt Wrapper is officially released
-- Vue Gantt Wrapper is officially released
+- DHTMLX Gantt Community Edition is officially released
+- [Angular Gantt](integrations/angular.md) wrapper is officially released
+- [Vue Gantt](integrations/vue.md) wrapper is officially released
 - Zoom-to-fit functionality is available out of the box
-- [React Gantt](integrations/react.md), [Vue Gantt](integrations/vue.md), and [Angular Gantt](integrations/angular.md) wrappers now **HTML-escape string values returned from template functions** by default to prevent XSS attacks. This applies to `templates`, `config.columns[].template`, and `config.scales[].format` functions
-- [React Gantt](integrations/react.md) now passes the **gantt instance** to the [customLightbox](integrations/react/overview.md#by-providing-a-custom-component-via-the-customlightbox-prop) component, allowing direct access to the Gantt API from the custom editor
+
+
 
 ### Updates
 
@@ -37,7 +35,11 @@ This update brings some changes in the structure of the Gantt package and behavi
 
 - Date parsing and formatting now use a single [CSP](api/config/csp.md)-safe implementation
 
-- The [`gantt.date`](api/other/date.md) interval-start helpers are now **pure** - they return a new `Date` instead of modifying the passed one.
+- The [`gantt.date`](api/other/date.md) interval-start helpers are now **pure** - they return a new `Date` instead of modifying the passed one
+
+- [React Gantt](integrations/react.md) now passes the **gantt instance** to the [customLightbox](integrations/react/overview.md#by-providing-a-custom-component-via-the-customlightbox-prop) component, allowing direct access to the Gantt API from the custom editor
+
+- [React Gantt](integrations/react.md), [Vue Gantt](integrations/vue.md), and [Angular Gantt](integrations/angular.md) wrappers now **HTML-escape string values returned from template functions** by default to prevent XSS attacks. This applies to `templates`, `config.columns[].template`, and `config.scales[].format` functions
 
 ## 9.1.4
 

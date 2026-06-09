@@ -110,9 +110,9 @@ This page documents the public wrapper surface of `@dhtmlx/trial-angular-gantt` 
       <td>Predicate for filtering rows in the configured resource datastore.</td>
     </tr>
     <tr>
-      <td>allowRawHTML</td>
-      <td>boolean</td>
-      <td>When <code>false</code> (default), string values returned from template functions are HTML-escaped to prevent XSS. Set to <code>true</code> to allow raw HTML in all templates. For per-template control, wrap individual template functions with the exported <code>allowRawHTML()</code> helper. See <a href="/migration#91---92">Migration notes</a>.</td>
+      <td>htmlTemplatePolicy</td>
+      <td>HtmlTemplatePolicy</td>
+      <td>Controls how string values returned from template functions are rendered. <code>"basic-sanitize"</code> (default) allowlist-sanitizes the returned HTML: safe formatting, classes, limited inline styles, <code>data-*</code> attributes and <code>img</code> are kept, while scripts, event handlers and dangerous URLs are removed. <code>"escape"</code> renders the string as text; <code>"unsafe-html"</code> renders the raw string (pre-v10 behavior); a custom sanitizer object (<code>mode: "sanitize"</code> with a <code>sanitize(html)</code> function) lets you plug in a library such as DOMPurify. For per-template control, wrap individual template functions with the exported <code>allowRawHTML()</code> helper. See <a href="/migration#91---92">Migration notes</a>.</td>
     </tr>
   </tbody>
 </table>

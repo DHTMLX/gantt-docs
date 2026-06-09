@@ -10,51 +10,50 @@ sidebar_label: "Migration from Older Versions"
 
 ### XSS protection in framework wrappers
 
-Starting from v9.2, [React Gantt](integrations/react.md), [Vue Gantt](integrations/vue.md), and [Angular Gantt](integrations/angular.md) wrappers automatically HTML-escape string values returned from user-provided template functions. This prevents XSS vulnerabilities caused by unsanitized user data rendered through templates.
+Starting from v10.0, [React Gantt](integrations/react.md), [Vue Gantt](integrations/vue.md), and [Angular Gantt](integrations/angular.md) wrappers sanitize string values returned from user-provided template functions by default, instead of inserting them as raw HTML. This prevents XSS vulnerabilities caused by unsanitized data rendered through templates.
 
-The escaping applies to:
+It applies to:
 
 - Functions passed via the `templates` prop
 - `config.columns[].template` functions
 - `config.scales[].format` functions
 
-If your templates intentionally return HTML markup (e.g. `<b>`, `<span>`, `<div>`), the markup will now be escaped and rendered as plain text by default.
+By default (`htmlTemplatePolicy="basic-sanitize"`) the returned HTML is allowlist-sanitized: common formatting (`<b>`, `<span>`, `<div>`, ...), `class`, a limited set of inline styles, `data-*` attributes and `<img>` with a safe `src` are preserved, while `<script>`, inline event handlers and dangerous URLs are removed. Templates that return simple markup keep working; only unsafe constructs are stripped.
 
-#### Per-template opt-out (recommended)
+#### Restoring the previous raw-HTML behavior
 
-Wrap specific templates that need to output raw HTML with the `allowRawHTML` helper:
+Set the `htmlTemplatePolicy` prop to `"unsafe-html"` to render template strings exactly as before, with no processing:
 
 ~~~jsx
-import { allowRawHTML } from "@dhx/react-gantt";
+<ReactGantt htmlTemplatePolicy="unsafe-html" /* ... */ />
+~~~
+
+~~~vue
+<VueGantt htmlTemplatePolicy="unsafe-html" /* ... */ />
+~~~
+
+~~~html
+<dhx-gantt htmlTemplatePolicy="unsafe-html" /* ... */></dhx-gantt>
+~~~
+
+#### Per-template raw HTML
+
+Wrap an individual template with `allowRawHTML` to bypass sanitizing for just that template — sanitize any user data yourself with the exported `escapeHTML` helper:
+
+~~~jsx
+import { allowRawHTML, escapeHTML } from "@dhx/react-gantt";
 // or "@dhx/vue-gantt" / "@dhx/angular-gantt"
 
 <ReactGantt
     templates={{
-        task_text: allowRawHTML((start, end, task) => `<b>${escapeHTML(task.text)}</b>`),
-        task_class: (start, end, task) => task.priority // still escaped
+        task_text: allowRawHTML((start, end, task) => `<b>${escapeHTML(task.text)}</b>`)
     }}
 />
 ~~~
 
-:::note
-When using `allowRawHTML`, you are responsible for sanitizing any user-provided data inside that template. Use the exported `escapeHTML` utility for values that come from user input.
-:::
+#### Custom sanitizer or text rendering
 
-#### Full opt-out
-
-Set the `allowRawHTML` component prop to `true` to restore pre-9.2 behavior and disable escaping for all templates:
-
-~~~jsx
-<ReactGantt allowRawHTML={true} /* ... */ />
-~~~
-
-~~~vue
-<VueGantt :allowRawHTML="true" /* ... */ />
-~~~
-
-~~~html
-<dhx-gantt [allowRawHTML]="true" /* ... */></dhx-gantt>
-~~~
+Use `htmlTemplatePolicy={{ mode: "sanitize", sanitize }}` to plug in a sanitizer such as DOMPurify, or `"escape"` to render template strings as plain text. See [App security](guides/app-security.md#framework-wrapper-xss-protection) for details.
 
 
 ### Auto-scheduling engine update {#auto-scheduling-v2}
