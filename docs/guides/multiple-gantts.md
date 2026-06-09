@@ -6,7 +6,7 @@ sidebar_label: "Multiple Charts on a Page"
 # Multiple Charts on a Page
 
 :::info
-This functionality is available in the Gantt PRO version under the Commercial (since October 6, 2021), Enterprise and Ultimate licenses
+Starting from v10, this functionality is available in all editions (the free Community edition and the PRO editions). In earlier versions it was limited to the Commercial (since October 6, 2021), Enterprise and Ultimate licenses.
 :::
 
 Basically, DHTMLX Gantt is a static object and the default instance of it continually exists on the page. You may access it via the global `gantt` object at any time. But you can also create a new gantt object if needed.
@@ -249,5 +249,5 @@ dataProcessor.destructor();
 ~~~
 
 :::note
-If you use a package that does not allow creating multiple instances of the gantt object (GPL or Commercial editions), calling the gantt destructor will make the gantt inaccessible until the page is reloaded.
+If you use a package that does not allow creating multiple instances of the gantt object (the legacy GPL edition in v9.x and earlier, or the single-domain Commercial build), calling the gantt destructor will make the gantt inaccessible until the page is reloaded.
 :::

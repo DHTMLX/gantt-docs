@@ -33,7 +33,7 @@ Calling a destructor will:
 - detach all DOM events attached via the [event](api/method/event.md) and [attachEvent](api/method/attachevent.md) methods
 
 :::note
-If you use a package that does not allow creating multiple instances of a gantt (GPL or Individual editions), calling the gantt destructor will make gantt inaccessible until page reload.
+Starting from v10, multiple Gantt instances are supported in all editions (the free Community edition and the PRO editions). In legacy versions that do not allow creating multiple instances (the GPL edition in v9.x and earlier, or the single-domain Commercial build), calling the gantt destructor will make gantt inaccessible until page reload.
 :::
 
 ### Related API

@@ -8,8 +8,8 @@ sidebar_label: "Export/Import for Excel, Export to iCal"
 The dhtmlxGantt library allows you to export data from the Gantt chart in the Excel and iCal formats. You can also import data into Gantt from an Excel file.
 
 :::note
-The service is free, but the output Excel/iCal file will contain the library's watermark under the GPL license. 
-In case you buy a license, the result of export will be available without a watermark
+The service is free, but the output Excel/iCal file will contain the library's watermark.
+To export without the watermark you need a valid license - the result of export will be available without a watermark
 during the valid support period (12 months for all PRO licenses).
 :::
 

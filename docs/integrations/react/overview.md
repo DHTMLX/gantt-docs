@@ -9,7 +9,7 @@ description: "Overview of the official React wrapper: features, props, theming, 
 
 :::note
 React Gantt is available under [Commercial, Enterprise and Ultimate licenses](https://dhtmlx.com/docs/products/licenses.shtml).
-If you're using Individual or GPL editions of Gantt, please refer to the [How to Start](integrations/react/js-gantt-react.md) article for React.
+If you're using the free Community edition (v10+), a legacy GPL edition (v9.x and earlier), or the Individual edition of Gantt, please refer to the [How to Start](integrations/react/js-gantt-react.md) article for React.
 :::
 
 ## Overview

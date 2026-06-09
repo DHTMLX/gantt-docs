@@ -8,6 +8,18 @@ sidebar_label: "Migration from Older Versions"
 
 ## 9.1 -> 10.0
 
+### Migrating from the GPL edition to the Community (MIT) edition {#gpl-to-mit}
+
+Starting from v10, the free edition of DHTMLX Gantt is the **Community edition**, distributed under the **MIT license**. It replaces the former free **GPL** distribution of the same `dhtmlx-gantt` package. GPL v2 still applies to the previous free versions (v9.x and earlier), which remain available in a dedicated branch of the [main GitHub repository](https://github.com/DHTMLX/gantt) but are no longer actively maintained.
+
+To move an existing project from the GPL edition to the Community edition:
+
+- **Check the package version.** `dhtmlx-gantt` v10 and later is the Community (MIT) edition; v9.x and earlier is the GPL edition.
+- **Update the license notices** in your project if you reference the Gantt license anywhere - the free edition is now MIT, not GPL.
+- **Verify the license value at runtime** - [`gantt.license`](api/other/license.md) returns `"mit"` for the Community edition (it returned `"gpl"` for the previous free edition).
+- **Test the export behavior.** The online export service still adds a watermark to free exports; this is unchanged and is no longer tied to the GPL license (the export service is a separate product).
+- **Review the feature differences.** The Community edition is **not** a strict superset of the old GPL edition. It **adds** projects (summary tasks), milestones, custom task types, and support for multiple Gantt instances per page, but it **drops** undo/redo, markers, multiselect, unscheduled tasks, the new-task placeholder row, working-time calendars, and WBS codes. See [Community vs PRO Library Versions](guides/editions-comparison.md) for the full feature comparison.
+
 ### XSS protection in framework wrappers
 
 Starting from v10.0, [React Gantt](integrations/react.md), [Vue Gantt](integrations/vue.md), and [Angular Gantt](integrations/angular.md) wrappers sanitize string values returned from user-provided template functions by default, instead of inserting them as raw HTML. This prevents XSS vulnerabilities caused by unsanitized data rendered through templates.

@@ -28,7 +28,8 @@ This method returns a short license name that can be used for diagnostics.
 
 Possible values are:
 
-- "gpl"
+- "mit" - the free Community edition (v10 and later)
+- "gpl" - the legacy free edition (v9.x and earlier)
 - "evaluation"
 - "individual"
 - "commercial"
@@ -37,4 +38,5 @@ Possible values are:
 - "site"
 
 ### Change log
+- the "mit" value added in v10.0
 - added in v6.2.2

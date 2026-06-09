@@ -19,7 +19,7 @@ This update brings some changes in the structure of the Gantt package and behavi
 
 ### New Functionality
 
-- DHTMLX Gantt Community Edition is officially released
+- DHTMLX Gantt Community Edition is officially released - the free edition is now distributed under the [MIT license](migration.md#gpl-to-mit) (replacing the former GPL distribution), and [`gantt.license`](api/other/license.md) returns `"mit"`
 - [Angular Gantt](integrations/angular.md) wrapper is officially released
 - [Vue Gantt](integrations/vue.md) wrapper is officially released
 - [Zoom-to-fit](guides/zooming.md#zoom-to-fit) is available out of the box: [`gantt.ext.zoom.zoomToFit()`](guides/zoom.md#methods) picks the most detailed zoom level that fits all tasks into the timeline without horizontal scrolling, and [`resetZoom()`](guides/zoom.md#methods) reverts to the previous scale

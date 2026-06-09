@@ -16,7 +16,7 @@ Unlike the [MCP server](integrations/ai-tools/mcp-server.md), which provides rea
 
 ### DHTMLX JS Gantt
 
-Covers integration of the core JavaScript Gantt into plain JavaScript and TypeScript applications. The skill recognises all delivery channels - the free `dhtmlx-gantt` (Standard / GPL) package, the `@dhx/trial-gantt` evaluation package, the commercial `@dhx/gantt` package, and `<script>` / CDN loading - and adapts setup, data, and theming guidance to each.
+Covers integration of the core JavaScript Gantt into plain JavaScript and TypeScript applications. The skill recognises all delivery channels - the free `dhtmlx-gantt` package (the Community edition under MIT for v10+, the legacy GPL edition for v9.x and earlier), the `@dhx/trial-gantt` evaluation package, the commercial `@dhx/gantt` package, and `<script>` / CDN loading - and adapts setup, data, and theming guidance to each.
 
 Review the rules in the [GitHub repository](https://github.com/DHTMLX/skills/tree/main/dhtmlx-js-gantt).
 

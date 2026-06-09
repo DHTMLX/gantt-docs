@@ -8,7 +8,7 @@ description: "Step-by-step guide to render the official Vue Gantt wrapper in a V
 
 :::note
 This tutorial covers the Vue wrapper included in the **Commercial, Enterprise, and Ultimate** editions of DHTMLX Gantt. 
-If you are using the **Individual** or **GPL** edition, follow the alternative guide: 
+If you are using the free **Community** edition (v10+), a legacy **GPL** edition (v9.x and earlier), or the **Individual** edition, follow the alternative guide: 
 [How to Start with Vue](integrations/vue/js-gantt-vue.md).
 :::
 
