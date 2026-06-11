@@ -123,7 +123,7 @@ module.exports = {
                 },
                {
                     type: "category",
-                    label: "Vue (BETA)",
+                    label: "Vue",
                     link: {
                         type: "doc",
                         id: "integrations/vue/index"
@@ -162,7 +162,7 @@ module.exports = {
                 }, 
                 {
                     type: "category",
-                    label: "Angular (BETA)",
+                    label: "Angular",
                     link: {
                         type: "doc",
                         id: "integrations/angular/index"
