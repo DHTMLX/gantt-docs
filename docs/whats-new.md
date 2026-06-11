@@ -11,7 +11,7 @@ Updating from an earlier version? Check the [migration guide](migration.md) for 
 
 ## 10.0
 
-<span class='release_date'>Major release</span>
+<span class='release_date'>June 11, 2026. Major release</span>
 
 This update brings some changes in the structure of the Gantt package and behavior of the functionality. Make sure to check the 
 [Migration notes](migration.md#91---100) to be on the safe side.
@@ -26,10 +26,7 @@ This update brings some changes in the structure of the Gantt package and behavi
 - [React Gantt](integrations/react.md) now provides ready-to-use [React hooks](integrations/react/hooks.md) for the most commonly used Gantt APIs and ships with working defaults for the resource histogram, removing most of the boilerplate previously needed to access the native instance
 - Support for additional [locales](guides/localization.md) is added - including Simplified Chinese, Traditional Chinese, Cantonese, Thai, and Vietnamese - and existing translations have been improved
 
-
-
 ### Updates
-
 
 - The Auto Scheduling engine has been deeply reworked, which allowed fixing long-lived bugs
 - Updated TypeScript typings, see the [Data Model](guides/data-model.md) overview for details
@@ -55,6 +52,9 @@ The reworked [Auto Scheduling](guides/auto-scheduling.md) engine resolves a numb
 - Fix incorrect Total Slack and [critical path](guides/critical-path.md) calculation for **Start-to-Finish** and **Start-to-Start** links
 - Fix the issue where a predecessor was not highlighted as critical when a negative-lag link made its successor finish earlier than the predecessor
 - Fix the `invalid end_date argument` error thrown by [getTotalSlack](api/method/gettotalslack.md) when a project contained only a single parent task with no subtasks
+- Fix the issue where a subtask with the **ASAP** behavior jumped back and forth between dates on every [Auto Scheduling](guides/auto-scheduling.md) run when a sibling had an [MSO/MFO constraint](guides/constraint.md) and the parent project was connected with a **Finish-to-Finish** or **Start-to-Finish** link
+- Fix the issue where [Auto Scheduling](guides/auto-scheduling.md) still applied [constraint](guides/constraint.md) logic to MSO/MFO tasks when [auto_scheduling_compatibility](api/config/auto_scheduling_compatibility.md) was enabled
+- Fix incorrect scheduling of a linked subtask when its link used a **negative lag** larger than the successor's duration and the parent project was connected with a **Finish-to-Finish** or **Start-to-Finish** link
 
 Other fixes:
 
