@@ -61,6 +61,7 @@ Other fixes:
 - Fix the issue where milestones were not converted to projects by [auto_types](api/config/auto_types.md) when a subtask was added to them
 - Fix the issue in [React Gantt](integrations/react.md) where ISO date strings were not handled correctly without explicit `parse_date`/`format_date` templates
 - Fix the issue in [React Gantt](integrations/react.md) where a task could lose its parent when a new dataset was loaded with the child placed above its parent in the data
+- Fix the issue in [React Gantt](integrations/react.md) where the vertical [reorder](guides/reordering-tasks.md) marker did not stretch to the full grid width
 
 ## 9.1.4
 
