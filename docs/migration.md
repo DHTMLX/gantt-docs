@@ -964,8 +964,6 @@ const taskData = {
 gantt.load("tasks.xml", "oldxml");
 ~~~
 
-**Related sample**: [Loading data in Gantt 1.6 format](https://docs.dhtmlx.com/gantt/samples/01_initialization/09_backward_compatibility.html)
-
 5. **Design-time Objects**:
 
 - Methods of the *GanttProjectInfo* object are replaced with:
