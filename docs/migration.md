@@ -131,6 +131,35 @@ Gantt no longer ships the `new Function`-based "fast" date parser. The [CSP](api
 
 The option is kept and still read by the lightbox as a secure-environment hint, so existing configurations keep working. No migration is required - code that set `gantt.config.csp` only for date formatting can remove it.
 
+### TypeScript: `SerializedTask` is now strictly serialized {#serialized-task-types}
+
+The `SerializedTask` and `SerializedLink` types now describe the **JSON form only**:
+
+- date fields (`start_date`, `end_date`, `constraint_date`, `deadline`, …) are typed `string`. In 9.x they were `Date | string`.
+- `SerializedTask.id` is now optional.
+
+If you typed application data - a store, a seed array, a demo - as `SerializedTask[]` but populated it with `Date` objects, the compiler now reports errors such as *"Type 'Date' is not assignable to type 'string'"*.
+
+Pick the type that matches what the data actually holds:
+
+- **`Task` / `Link`** - runtime objects with `Date` dates and `$`-prefixed fields (what `gantt.getTask()` returns).
+- **`SerializedTask` / `SerializedLink`** - JSON with `string` dates (server exchange, persisted JSON).
+- **`TaskInput`** - data you *provide* to Gantt; dates may be `Date` **or** `string` and every field (including `id`) is optional. This is usually the right type for application-owned state.
+
+~~~ts
+// before v10 - SerializedTask accepted Date, so this compiled
+const tasks: SerializedTask[] = [
+    { id: 1, text: "Task #1", start_date: new Date(2026, 3, 1), duration: 5 }
+];
+
+// since v10 - use Task (Date dates), or TaskInput when the date form may vary
+const tasks: TaskInput[] = [
+    { id: 1, text: "Task #1", start_date: new Date(2026, 3, 1), duration: 5 }
+];
+~~~
+
+`TaskInput` is the canonical input type and replaces the previously deprecated `NewTask` alias (still exported for backward compatibility). See [Data Model](guides/data-model.md#taskinput) for the full picture.
+
 ## 9.0 -> 9.1
 
 Version 9.1 does not introduce breaking changes, but several configuration options have been deprecated, and [migration to the new unified format](#autoscheduling) is recommended.

@@ -10,11 +10,11 @@ description: "adds a new task"
 
 @short: Adds a new task
 
-@signature: addTask: (task: NewTask, parent?: string | number, index?: number) =\> string | number
+@signature: addTask: (task: TaskInput, parent?: string | number, index?: number) =\> string | number
 
 ### Parameters
 
-- `task` - (required) *NewTask* - the task object
+- `task` - (required) *TaskInput* - the task object
 - `parent` - (optional) *string | number* - the parent's id
 - `task` - (optional) *number* - the position the task will be added into (0 or greater)
 

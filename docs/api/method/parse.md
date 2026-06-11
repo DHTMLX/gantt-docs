@@ -98,14 +98,14 @@ gantt.parse({
 
 `data` and `tasks` are alternative keys for the same task array. `tasks` is preferred in new code.
 
-If you load data from a JavaScript object created in code, `Task`, `ResourceAssignment`, and other runtime objects may contain `Date`. When data is exchanged as JSON with the server, date fields should be strings.
+If you load data from a JavaScript object created in code, `Task`, `ResourceAssignment`, and other runtime objects may contain `Date`. When data is exchanged as JSON with the server, date fields should be strings. The lenient input shape that accepts either date form (and an optional `id`) is [`TaskInput`](guides/data-model.md#taskinput).
 
 ### Legacy Compatibility Names
 
 Older API docs and typings still use several compatibility aliases:
 
 - `DataToLoad1`, `DataToLoad2`
-- `NewTask`
+- `NewTask` - legacy alias of [`TaskInput`](guides/data-model.md#taskinput)
 - `NewResourceItem`
 - `NewAssignmentItem`
 

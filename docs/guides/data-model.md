@@ -11,6 +11,8 @@ Gantt works with two main representations of task and link data:
 - **Serialized**: JSON-compatible shapes with string dates, used in server responses, persisted JSON, and DataProcessor exchange
 - **Runtime**: client-side objects with `Date` fields and computed `$`-prefixed properties, returned by methods like [gantt.getTask()](api/method/gettask.md) and [gantt.getLink()](api/method/getlink.md)
 
+When you *provide* data to Gantt (rather than read it back), date fields may be either a `Date` or a `string`. The [`TaskInput`](#taskinput) type captures this lenient input shape, so you don't have to commit to `Task` or `SerializedTask` for data you author or hold in application state.
+
 The canonical top-level payload passed to [gantt.parse()](api/method/parse.md) is `GanttData`.
 
 Core runtime and serialized types are exported from `@dhx/gantt`. Wrapper packages re-export and consume these types in their public APIs, but the exact prop surface differs by wrapper.
@@ -117,6 +119,26 @@ Common runtime-only task fields:
 The runtime `Link` object has the same field set as `SerializedLink`, but it is the client-side object returned by methods like `gantt.getLink()`.
 
 For the full runtime lists, see [Task Properties](guides/task-properties.md#dynamic-properties) and [Link Properties](guides/link-properties.md).
+
+## TaskInput
+
+When you *provide* task data to Gantt - [gantt.parse()](api/method/parse.md), [gantt.addTask()](api/method/addtask.md), the `tasks` config/prop, or your own application store - use `TaskInput`. It is the lenient input shape: date fields accept either a `Date` or a `string`, and every field (including `id`) is optional, since Gantt generates an id when one is not supplied.
+
+~~~ts
+type TaskInput = Partial<SerializedTask> | Partial<Task>;
+~~~
+
+Use `TaskInput` for data you author or hold in application state. Use `Task` (runtime, `Date` dates, `$`-prefixed fields) when reading Gantt's own objects via methods like `gantt.getTask()`, and `SerializedTask` (string dates only) for JSON you exchange with a server.
+
+~~~ts
+// Application-owned task data handed to Gantt - either date form is accepted:
+const tasks: TaskInput[] = [
+    { id: 1, text: "Task #1", start_date: new Date(2026, 3, 1), duration: 5 },
+    { id: 2, text: "Task #2", start_date: "2026-04-02", duration: 3 }
+];
+~~~
+
+Storing application state as `TaskInput[]` is preferable to typing it as `SerializedTask[]` or `Task[]`: it avoids mismatches when your seed data uses `Date` objects but the type expects strings (or vice versa). Pick `Task` / `SerializedTask` only for the specific boundaries where the date representation is fixed.
 
 ## Supporting Types
 
@@ -233,11 +255,11 @@ gantt.parse({
 Older API docs and typings still use several compatibility names:
 
 - `DataToLoad1`, `DataToLoad2`: deprecated keyed variants of `GanttData`
-- `NewTask`: deprecated compatibility alias for `Partial<SerializedTask> | Partial<Task> | string | {}`
+- `NewTask`: legacy alias of [`TaskInput`](#taskinput) (defined as `TaskInput | string | {}`), kept for backward compatibility. Prefer `TaskInput` in new code.
 - `NewResourceItem`: deprecated compatibility alias for `Partial<ResourceItem>`
 - `NewAssignmentItem`: deprecated compatibility alias for `SerializedResourceAssignment | ResourceAssignment`
 
-These names are kept for backward compatibility, but `GanttData`, `SerializedTask`, `SerializedLink`, `Task`, and `Link` are the canonical concepts used in this guide.
+These names are kept for backward compatibility, but `GanttData`, `TaskInput`, `SerializedTask`, `SerializedLink`, `Task`, and `Link` are the canonical concepts used in this guide.
 
 ## Date Rules
 
