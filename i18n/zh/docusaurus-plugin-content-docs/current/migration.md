@@ -232,7 +232,7 @@ gantt.config.scales = [
 
 自 v8.0 起，导入/导出功能已集成到 gantt 库中。
 
-因此，如果你已在页面中包含 **https://export.dhtmlx.com/gantt/api.js** 以启用在线导出服务，例如:
+因此，如果你已在页面中包含 `https://export.dhtmlx.com/gantt/api.js` 以启用在线导出服务，例如:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>

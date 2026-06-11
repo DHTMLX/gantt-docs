@@ -8,8 +8,8 @@ sidebar_label: "Export and Import from Primavera P6"
 The dhtmlxGantt library allows you to export data from the Gantt chart into Primavera P6. You can also import data into Gantt from Primavera P6.
 
 :::note
-The service is free, but the output file will contain the library's watermark under the GPL license. 
-In case you buy a license, the result of export will be available without a watermark
+The service is free, but the output file will contain the library's watermark.
+To export without the watermark you need a valid license - the result of export will be available without a watermark
 during the valid support period (12 months for all PRO licenses).
 :::
 

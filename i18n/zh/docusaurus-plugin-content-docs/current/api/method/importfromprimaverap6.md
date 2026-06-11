@@ -45,7 +45,7 @@ gantt.importFromPrimaveraP6({
 :::
 
 :::note
-如果您使用的 Gantt 版本早于 8.0，请在页面中包含 **https://export.dhtmlx.com/gantt/api.js** 以启用在线导出服务，例如：
+如果您使用的 Gantt 版本早于 8.0，请在页面中包含 `https://export.dhtmlx.com/gantt/api.js` 以启用在线导出服务，例如：
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>

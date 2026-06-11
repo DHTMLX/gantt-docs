@@ -9,8 +9,8 @@ dhtmlxGantt provides an online export service that allows you to export the Gant
 [PNG](guides/export.md#export-to-png) format.
 
 :::note
-The service is free, but the output PDF/PNG file will contain the library's watermark under the GPL license. 
-In case you buy a license, the result of export will be available without a watermark
+The service is free, but the output PDF/PNG file will contain the library's watermark.
+To export without the watermark you need a valid license - the result of export will be available without a watermark
 during the valid support period (12 months for all PRO licenses).
 :::
 
@@ -165,7 +165,7 @@ The [exportToPDF](api/method/exporttopdf.md) and [exportToPNG](api/method/export
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is <strong>https://export.dhtmlx.com/gantt</strong></td>
+  <td>(<i>string</i>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is `https://export.dhtmlx.com/gantt`</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>raw</b></td>

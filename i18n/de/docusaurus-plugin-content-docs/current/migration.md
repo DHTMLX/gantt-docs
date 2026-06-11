@@ -235,7 +235,7 @@ Ab DHTMLX Gantt v8.0 können Änderungen an Ressourcen und Ressourcen-Zuweisunge
 
 Ab v8.0 ist die Import/Export-Funktionalität in die Gantt-Bibliothek integriert.
 
-Falls Sie bereits **https://export.dhtmlx.com/gantt/api.js** auf Ihrer Seite eingebunden haben, um den Online-Export-Service zu nutzen, z.B.:
+Falls Sie bereits `https://export.dhtmlx.com/gantt/api.js` auf Ihrer Seite eingebunden haben, um den Online-Export-Service zu nutzen, z.B.:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>

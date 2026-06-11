@@ -9,7 +9,7 @@ description: "Overview of the official React wrapper: features, props, theming, 
 
 :::note
 React Gantt is available under [Commercial, Enterprise and Ultimate licenses](https://dhtmlx.com/docs/products/licenses.shtml).
-If you're using Individual or GPL editions of Gantt, please refer to the [How to Start](integrations/react/js-gantt-react.md) article for React.
+If you're using the free Community edition (v10+), a legacy GPL edition (v9.x and earlier), or the Individual edition of Gantt, please refer to the [How to Start](integrations/react/js-gantt-react.md) article for React.
 :::
 
 ## Overview
@@ -355,6 +355,7 @@ import React, { useState } from 'react';
 
 export interface CustomLightboxProps {
   data: any;
+  gantt: any;
   onSave: (task: any) => void;
   onCancel: () => void;
   onDelete: () => void;
@@ -362,6 +363,7 @@ export interface CustomLightboxProps {
 
 const CustomLightbox: React.FC<CustomLightboxProps> = ({
   data,
+  gantt,
   onSave,
   onCancel,
   onDelete
@@ -918,7 +920,7 @@ In most cases, ReactGantt props are enough to configure your chart. However, som
 
 ### Using built-in hooks
 
-ReactGantt provides ready to use hooks that expose some methods of Gantt API. Please check the related article [](integrations/react/configuration-props.md).
+ReactGantt provides hooks for event subscriptions, resource management, undo/redo, zoom, selection, datastore access, and work time calculations. See the **[Hooks reference](integrations/react/hooks.md)** for the complete API.
 
 ### Using a Ref
 

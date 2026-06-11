@@ -19,7 +19,7 @@ To implement the Gantt chart in non-English language, you need to activate the n
 gantt.i18n.setLocale("fr");    
 ~~~
 
-You can use and update any of the [predefined locales](#predefinedlocales) that are bundled with the dhtmlxgantt.js file or define a custom locale.
+You can use and update any of the 50+ [predefined locales](#predefinedlocales) that are bundled with the dhtmlxgantt.js file or define a custom locale.
 
 :::note
 The locale can be switched dynamically but the changes will be applied only after a complete redrawing of the Gantt chart either with the **gantt.render()** or **gantt.init()** call.
@@ -35,40 +35,63 @@ gantt.init("gantt_here");
 
 ## Predefined locales {#predefinedlocales}
 
+:::note
+The set of bundled locales was significantly expanded and the translations were reworked in **v10.0**, so all predefined locales now ship with a complete set of labels.
+:::
+
 <table>
 <tr><td>Language</td><td>Language code</td><td>Translation status</td></tr>
-<tr><td>Arabic</td><td>ar</td><td>partial</td></tr>
+<tr><td>Afrikaans</td><td>af</td><td>full</td></tr>
+<tr><td>Albanian</td><td>sq</td><td>full</td></tr>
+<tr><td>Arabic</td><td>ar</td><td>full</td></tr>
 <tr><td>Belarusian</td><td>be</td><td>full</td></tr>
-<tr><td>English</td><td>en</td><td>full</td></tr>
-<tr><td>Catalan</td><td>ca</td><td>partial</td></tr>
-<tr><td>Chinese</td><td>cn</td><td>partial</td></tr>
+<tr><td>Bosnian</td><td>bs</td><td>full</td></tr>
+<tr><td>Bulgarian</td><td>bg</td><td>full</td></tr>
+<tr><td>Catalan</td><td>ca</td><td>full</td></tr>
+<tr><td>Chinese (Simplified)</td><td>cn</td><td>full</td></tr>
+<tr><td>Chinese (Hong Kong)</td><td>zh_hk</td><td>full</td></tr>
+<tr><td>Chinese (Taiwan)</td><td>zh_tw</td><td>full</td></tr>
 <tr><td>Croatian</td><td>hr</td><td>full</td></tr>
-<tr><td>Czech</td><td>cs</td><td>partial</td></tr>
-<tr><td>Danish</td><td>da</td><td>partial</td></tr>
-<tr><td>Dutch</td><td>nl</td><td>partial</td></tr>
-<tr><td>Finnish</td><td>fi</td><td>partial</td></tr>
-<tr><td>French</td><td>fr</td><td>full</td></tr>
-<tr><td>German</td><td>de</td><td>full</td></tr>
-<tr><td>Greek</td><td>el</td><td>partial</td></tr>
-<tr><td>Hebrew</td><td>he</td><td>partial</td></tr>
-<tr><td>Hungarian</td><td>hu</td><td>partial</td></tr>
-<tr><td>Indonesian</td><td>id</td><td>partial</td></tr>
-<tr><td>Italian</td><td>it</td><td>partial</td></tr>
-<tr><td>Japanese</td><td>jp</td><td>partial</td></tr>
-<tr><td>Korean</td><td>kr</td><td>partial</td></tr>
-<tr><td>Norwegian</td><td>no</td><td>partial</td></tr>
-<tr><td>Norwegian Bokmål</td><td>nb</td><td>partial</td></tr>
+<tr><td>Czech</td><td>cs</td><td>full</td></tr>
+<tr><td>Danish</td><td>da</td><td>full</td></tr>
+<tr><td>Dutch</td><td>nl</td><td>full</td></tr>
+<tr><td>Dutch (Belgium)</td><td>nl_be</td><td>full</td></tr>
+<tr><td>English</td><td>en</td><td>full</td></tr>
+<tr><td>Estonian</td><td>et</td><td>full</td></tr>
+<tr><td>Finnish</td><td>fi</td><td>full</td></tr>
+<tr><td>French (France)</td><td>fr</td><td>full</td></tr>
+<tr><td>French (Canada)</td><td>fr_ca</td><td>full</td></tr>
+<tr><td>German (Germany)</td><td>de</td><td>full</td></tr>
+<tr><td>German (Austria)</td><td>de_at</td><td>full</td></tr>
+<tr><td>Greek</td><td>el</td><td>full</td></tr>
+<tr><td>Hebrew</td><td>he</td><td>full</td></tr>
+<tr><td>Hungarian</td><td>hu</td><td>full</td></tr>
+<tr><td>Indonesian</td><td>id</td><td>full</td></tr>
+<tr><td>Irish</td><td>ga</td><td>full</td></tr>
+<tr><td>Italian</td><td>it</td><td>full</td></tr>
+<tr><td>Japanese</td><td>jp</td><td>full</td></tr>
+<tr><td>Korean</td><td>kr</td><td>full</td></tr>
+<tr><td>Latvian</td><td>lv</td><td>full</td></tr>
+<tr><td>Lithuanian</td><td>lt</td><td>full</td></tr>
+<tr><td>Macedonian</td><td>mk</td><td>full</td></tr>
+<tr><td>Malay</td><td>ms</td><td>full</td></tr>
+<tr><td>Norwegian (Bokmål)</td><td>nb</td><td>full</td></tr>
+<tr><td>Norwegian (Nynorsk)</td><td>no</td><td>full</td></tr>
 <tr><td>Persian</td><td>fa</td><td>full</td></tr>
-<tr><td>Polish</td><td>pl</td><td>partial</td></tr>
-<tr><td>Portuguese</td><td>pt</td><td>partial</td></tr>
-<tr><td>Romanian</td><td>ro</td><td>partial</td></tr>
+<tr><td>Polish</td><td>pl</td><td>full</td></tr>
+<tr><td>Portuguese (Portugal)</td><td>pt</td><td>full</td></tr>
+<tr><td>Portuguese (Brazil)</td><td>pt_br</td><td>full</td></tr>
+<tr><td>Romanian</td><td>ro</td><td>full</td></tr>
 <tr><td>Russian</td><td>ru</td><td>full</td></tr>
-<tr><td>Slovak</td><td>sk</td><td>partial</td></tr>
-<tr><td>Slovenian</td><td>si</td><td>partial</td></tr>
-<tr><td>Spanish</td><td>es</td><td>partial</td></tr>
-<tr><td>Swedish</td><td>sv</td><td>partial</td></tr>
-<tr><td>Turkish</td><td>tr</td><td>partial</td></tr>
-<tr><td>Ukrainian</td><td>ua</td><td>partial</td></tr>
+<tr><td>Slovak</td><td>sk</td><td>full</td></tr>
+<tr><td>Slovenian</td><td>si</td><td>full</td></tr>
+<tr><td>Spanish (Spain)</td><td>es</td><td>full</td></tr>
+<tr><td>Spanish (Mexico)</td><td>es_mx</td><td>full</td></tr>
+<tr><td>Swedish</td><td>sv</td><td>full</td></tr>
+<tr><td>Thai</td><td>th</td><td>full</td></tr>
+<tr><td>Turkish</td><td>tr</td><td>full</td></tr>
+<tr><td>Ukrainian</td><td>ua</td><td>full</td></tr>
+<tr><td>Vietnamese</td><td>vi</td><td>full</td></tr>
 </table>
 
 ## Creating a custom locale 
@@ -133,14 +156,13 @@ gantt.i18n.setLocale({
         icon_details: "Details",
         icon_edit: "Edit",
         icon_delete: "Delete",
-        gantt_save_btn: "New Label",
-          gantt_cancel_btn: "New Label",
-          gantt_delete_btn: "New Label",
-        confirm_closing: "",// Your changes will be lost, are you sure?
         confirm_deleting: "Task will be deleted permanently, are you sure?",
         section_description: "Description",
         section_time: "Time period",
         section_type: "Type",
+        section_deadline: "Deadline",
+        section_baselines: "Baselines",
+        section_new_resources: "Resources",
 
         /* grid columns */
         column_wbs: "WBS",
@@ -162,7 +184,7 @@ gantt.i18n.setLocale({
         minutes: "Minutes",
         hours: "Hours",
         days: "Days",
-        weeks: "Week",
+        weeks: "Weeks",
         months: "Months",
         years: "Years",
 
@@ -184,8 +206,24 @@ gantt.i18n.setLocale({
         mfo: "Must Finish On",
 
         /* resource control */
-        resources_filter_placeholder: "type to filter",
-        resources_filter_label: "hide empty"
+        resources_add_button: "Add Assignment",
+        resources_filter_placeholder: "Search...",
+        resources_filter_label: "hide empty",
+        resources_section_placeholder: "Nothing assigned yet. Click 'Add Assignment' to assign resources.",
+
+        /* empty state screen */
+        empty_state_text_link: "Click here",
+        empty_state_text_description: "to create your first task",
+
+        /* baselines control */
+        baselines_section_placeholder: "Start adding a new baseline",
+        baselines_add_button: "Add Baseline",
+        baselines_remove_button: "Remove",
+        baselines_remove_all_button: "Remove All",
+
+        /* deadline control */
+        deadline_enable_button: "Set",
+        deadline_disable_button: "Remove"
     }
 });
 ~~~

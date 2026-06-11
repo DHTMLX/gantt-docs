@@ -33,5 +33,5 @@ gantt.plugins({
 - [확장 기능 전체 목록](guides/extensions-list.md)
 
 ### Change log
-- The **export_api** 플러그인은 v8.0에서 플러그인 목록에 포함되었습니다. 이전 버전에서 내보내기(export) 서비스를 활성화하려면 페이지에 **https://export.dhtmlx.com/gantt/api.js** 파일을 포함해야 합니다. Migration 문서의 [Migration](migration.md#71---80) 항목을 확인하십시오.
+- The **export_api** 플러그인은 v8.0에서 플러그인 목록에 포함되었습니다. 이전 버전에서 내보내기(export) 서비스를 활성화하려면 페이지에 `https://export.dhtmlx.com/gantt/api.js` 파일을 포함해야 합니다. Migration 문서의 [Migration](migration.md#71---80) 항목을 확인하십시오.
 - 7.0 버전에 추가되었습니다

@@ -14,19 +14,23 @@ dhtmlxGantt can load data in the following formats:
 
 You can also [add any custom properties to the Gantt data](guides/supported-data-formats.md#custom-properties-in-data).
 
+For a field-by-field overview of the serialized data shape, including resources, assignments, and baselines, see [Data Model](guides/data-model.md).
+
 
 ## JSON
+
+The examples below show serialized task and link payloads. Runtime-only `$...` fields belong to the client-side object state and are not part of the JSON format.
 
 ### Tasks and links
 
 ~~~js
 {
     "tasks":[
-        { "id": "1", "text": "Project #2", "start_date": "01-04-2026", "duration": 18,
+        { "id": "1", "text": "Project #2", "start_date": "2026-04-01", "duration": 18,
             "progress": 0.4, "open": true },
-        { "id": "2", "text": "Task #1", "start_date": "02-04-2026", "duration": 8,
+        { "id": "2", "text": "Task #1", "start_date": "2026-04-02", "duration": 8,
             "progress": 0.6, "parent": "1" },
-        { "id": "3", "text": "Task #2", "start_date": "11-04-2026", "duration": 8,
+        { "id": "3", "text": "Task #2", "start_date": "2026-04-11", "duration": 8,
             "progress": 0.6, "parent": "1" }
     ],
     "links":[
@@ -48,15 +52,15 @@ You can also [add any custom properties to the Gantt data](guides/supported-data
             id: 5,
             text: "Interior office",
             type: "task",
-            start_date: "03-04-2026 00:00",
+            start_date: "2026-04-03T00:00:00",
             duration: 7,
             parent: "2",
             owner: [
                 {
                     resource_id: "6",
                     value: 3,
-                    start_date: "03-04-2026 00:00",
-                    end_date: "05-04-2026 00:00",
+                    start_date: "2026-04-03T00:00:00",
+                    end_date: "2026-04-05T00:00:00",
                 }
             ]
         },
@@ -83,7 +87,7 @@ Resource assignments can be passed into the method separately from tasks:
             id: 5,
             text: "Interior office",
             type: "task",
-            start_date: "03-04-2026 00:00",
+            start_date: "2026-04-03T00:00:00",
             duration: 7,
             parent: "2",
             priority: 1
@@ -94,8 +98,8 @@ Resource assignments can be passed into the method separately from tasks:
     assignments: [
         {
             id: 1, task_id: 5, resource_id: 6, value: 3,
-            start_date: "03-04-2026 00:00", 
-            end_date: "05-04-2026 00:00"
+            start_date: "2026-04-03T00:00:00", 
+            end_date: "2026-04-05T00:00:00"
         }
     ],
     resources: [
@@ -112,16 +116,16 @@ Resource assignments can be passed into the method separately from tasks:
 
 ~~~xml
 <data>
-    <task id='1' parent='' start_date='01-04-2026' duration='18' open='true'
-            progress='0.4' end_date='19-04-2026'>
+    <task id='1' parent='' start_date='2026-04-01' duration='18' open='true'
+            progress='0.4' end_date='2026-04-19'>
         <![CDATA[Project #2]]>
     </task>
-    <task id='2' parent='1' start_date='02-04-2026' duration='8' progress='0.6'
-            end_date='10-04-2026'>
+    <task id='2' parent='1' start_date='2026-04-02' duration='8' progress='0.6'
+            end_date='2026-04-10'>
         <![CDATA[Task #1]]>
     </task>
-    <task id='3' parent='1' start_date='11-04-2026' duration='8' progress='0.6'
-            end_date='19-04-2026'>
+    <task id='3' parent='1' start_date='2026-04-11' duration='8' progress='0.6'
+            end_date='2026-04-19'>
         <![CDATA[Task #2]]>
     </task>
     <coll_options for='links'>
@@ -145,11 +149,11 @@ Let's consider the above examples with 2 custom properties:
 ~~~js
 {
     "tasks":[
-        { "id": "1", "text": "Project #2", "start_date": "01-04-2026", "duration": 18,
+        { "id": "1", "text": "Project #2", "start_date": "2026-04-01", "duration": 18,
             "progress": 0.4, "open": true, "holder": "Mike", "priority": "High" },
-        { "id": "2", "text": "Task #1", "start_date": "02-04-2026", "duration": 8,
+        { "id": "2", "text": "Task #1", "start_date": "2026-04-02", "duration": 8,
             "progress": 0.6, "parent": 1, "holder": "John", "priority": "Medium" },
-        { "id": "3", "text": "Task #2", "start_date": "11-04-2026", "duration": 8,
+        { "id": "3", "text": "Task #2", "start_date": "2026-04-11", "duration": 8,
             "progress": 0.6, "parent": 1, "holder": "Alex", "priority": "Low" }
       ],
     "links":[
@@ -165,20 +169,20 @@ Let's consider the above examples with 2 custom properties:
 
 ~~~xml
 <data>
-    <task id='1' parent='' start_date='01-04-2026' duration='18' open='true'
-            progress='0.4' end_date='19-04-2026'>
+    <task id='1' parent='' start_date='2026-04-01' duration='18' open='true'
+            progress='0.4' end_date='2026-04-19'>
         <holder><![CDATA[Mike]]></holder>
         <priority><![CDATA[High]]></priority>
         <![CDATA[Project #2]]>
     </task>
-    <task id='2' parent='1' start_date='02-04-2026' duration='8' progress='0.6'
-        end_date='10-04-2026'>
+    <task id='2' parent='1' start_date='2026-04-02' duration='8' progress='0.6'
+        end_date='2026-04-10'>
         <holder><![CDATA[John]]></holder>
         <priority><![CDATA[Medium]]></priority>
         <![CDATA[Task #1]]>
     </task>
-    <task id='3' parent='1' start_date='11-04-2026' duration='8' progress='0.6'
-        end_date='19-04-2026'>
+    <task id='3' parent='1' start_date='2026-04-11' duration='8' progress='0.6'
+        end_date='2026-04-19'>
         <holder><![CDATA[Alex]]></holder>
         <priority><![CDATA[Low]]></priority>
         <![CDATA[Task #2]]>
@@ -201,11 +205,11 @@ JSON data can contain any number of additional arrays in the "collections" prope
 ~~~js {16-22}
 {
     "tasks":[
-        { "id": "1", "text": "Project #2", "start_date": "01-04-2026", "duration": 18,
+        { "id": "1", "text": "Project #2", "start_date": "2026-04-01", "duration": 18,
             "progress": 0.4, "open": true },
-        { "id": "2", "text": "Task #1", "start_date": "02-04-2026", "duration": 8,
+        { "id": "2", "text": "Task #1", "start_date": "2026-04-02", "duration": 8,
             "progress": 0.6, "parent": "1" },
-        { "id": "3", "text": "Task #2", "start_date": "11-04-2026", "duration": 8,
+        { "id": "3", "text": "Task #2", "start_date": "2026-04-11", "duration": 8,
             "progress": 0.6, "parent": "1" }
     ],
     "links":[

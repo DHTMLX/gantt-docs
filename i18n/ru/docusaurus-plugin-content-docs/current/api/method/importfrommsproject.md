@@ -47,7 +47,7 @@ gantt.importFromMSProject({
 ::: 
 
 :::note
-Если вы используете версию Gantt старше 8.0, вам нужно включить на страницу файл **https://export.dhtmlx.com/gantt/api.js** для включения онлайн-сервиса экспорта, например:
+Если вы используете версию Gantt старше 8.0, вам нужно включить на страницу файл `https://export.dhtmlx.com/gantt/api.js` для включения онлайн-сервиса экспорта, например:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>

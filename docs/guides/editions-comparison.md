@@ -1,25 +1,29 @@
 ---
-title: "Standard vs PRO Library Versions"
-sidebar_label: "Standard vs PRO Library Versions"
+title: "Community vs PRO Library Versions"
+sidebar_label: "Community vs PRO Library Versions"
 ---
 
-# Standard vs PRO Library Versions
+# Community vs PRO Library Versions
 
-If you doubt what is the difference between the Standard and PRO versions of the dhtmlxGantt library and want to know what bonuses you will get with the PRO edition, this guide is what you are looking for.
+If you want to know the difference between the free Community edition and the PRO version of the dhtmlxGantt library and what bonuses you get with the PRO edition, this guide is what you are looking for.
 
-The PRO edition includes all the functionality of the Standard version and also contains additional useful features. The table below provides the list of features and allows you to compare the two versions of dhtmlxGantt.
+The PRO edition includes all the functionality of the Community edition and also contains additional useful features. The table below provides the list of features and allows you to compare the two versions of dhtmlxGantt.
+
+:::info
+Starting from DHTMLX Gantt v10, the free edition is the **Community edition** distributed under the **MIT license**. Previous free versions (v9.x and earlier) were distributed under the **GPL v2** license, which still applies to those versions. The PRO/Commercial editions remain separate paid editions. See the [migration guide](migration.md#gpl-to-mit) for details on moving from the GPL edition to the Community edition.
+:::
 
 <table>
   <thead>
   <tr>
   <th style="width: 60%;">Feature</th>
-  <th style="text-align:center;width: 20%;">Standard</th>
+  <th style="text-align:center;width: 20%;">Community</th>
   <th style="text-align:center;width: 20%;">PRO</th>
   </tr>
   </thead>
   <tbody>
   <tr>
-  <td>[32 locales](guides/localization.md)</td>
+  <td>[50+ locales](guides/localization.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
@@ -60,7 +64,7 @@ The PRO edition includes all the functionality of the Standard version and also 
   </tr>
   <tr>
   <td>[Automatic detection of tasks types](api/config/auto_types.md)</td>
-  <td style="text-align:center;">❌</td>
+  <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -84,8 +88,8 @@ The PRO edition includes all the functionality of the Standard version and also 
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Creating multiple Gantt charts on one page (**Commercial (since October 6, 2021), Enterprise and Ultimate licenses**)](guides/multiple-gantts.md)</td>
-  <td style="text-align:center;">❌</td>
+  <td>[Creating multiple Gantt charts on one page](guides/multiple-gantts.md)</td>
+  <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -115,7 +119,7 @@ The PRO edition includes all the functionality of the Standard version and also 
   </tr>
   <tr>
   <td>[Dragging and dropping multiple tasks horizontally](guides/multiselection.md#multitaskselectionanddragndrop)</td>
-  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -205,7 +209,7 @@ The PRO edition includes all the functionality of the Standard version and also 
   </tr>
   <tr>
   <td>[Multi-task selection](guides/multiselection.md)</td>
-  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -220,7 +224,7 @@ The PRO edition includes all the functionality of the Standard version and also 
   </tr>
   <tr>
   <td>[Placeholder row for creating new tasks](api/config/placeholder_task.md)</td>
-  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -230,7 +234,7 @@ The PRO edition includes all the functionality of the Standard version and also 
   </tr>
   <tr>
   <td>[Projects and Milestones task types](guides/task-types.md)</td>
-  <td style="text-align:center;">❌</td>
+  <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -240,7 +244,7 @@ The PRO edition includes all the functionality of the Standard version and also 
   </tr>
   <tr>
   <td>[Resizing grid columns and the grid itself from the UI](guides/specifying-columns.md#resizing)</td>
-  <td style="text-align:center;">❌</td>
+  <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -280,7 +284,7 @@ The PRO edition includes all the functionality of the Standard version and also 
   </tr>
   <tr>
   <td>[Support for custom types of tasks](guides/task-types.md#creating-a-custom-type)</td>
-  <td style="text-align:center;">❌</td>
+  <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -290,7 +294,7 @@ The PRO edition includes all the functionality of the Standard version and also 
   </tr>
   <tr>
   <td>[Support for unscheduled tasks](guides/unscheduled-tasks.md)</td>
-  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -305,17 +309,17 @@ The PRO edition includes all the functionality of the Standard version and also 
   </tr>
   <tr>
   <td>[Undo/redo functionality](guides/undo-redo.md)</td>
-  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
   <td>[WBS codes calculation](guides/specifying-columns.md#wbscode)</td>
-  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
   <td>[Working days and hours for individual tasks](guides/working-time.md#multipleworktimecalendars)</td>
-  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>

@@ -66,6 +66,7 @@ module.exports = {
                         "integrations/react/installation",
                         "integrations/react/quick-start",
                         "integrations/react/configuration-props",
+                        "integrations/react/hooks",
 
                         // Data & State Management
                         {
@@ -122,7 +123,7 @@ module.exports = {
                 },
                {
                     type: "category",
-                    label: "Vue (BETA)",
+                    label: "Vue",
                     link: {
                         type: "doc",
                         id: "integrations/vue/index"
@@ -161,7 +162,7 @@ module.exports = {
                 }, 
                 {
                     type: "category",
-                    label: "Angular (BETA)",
+                    label: "Angular",
                     link: {
                         type: "doc",
                         id: "integrations/angular/index"
@@ -991,6 +992,16 @@ module.exports = {
                         },
                         {
                             type: "doc",
+                            id: "api/event/onautoscheduleconflict",
+                            className: "pro-version"
+                        },
+                        {
+                            type: "doc",
+                            id: "api/event/onautoschedulenoconverge",
+                            className: "pro-version"
+                        },
+                        {
+                            type: "doc",
                             id: "api/event/onbeforeautoschedule",
                             className: "pro-version"
                         },
@@ -1339,6 +1350,7 @@ module.exports = {
                     },
                     items: [
                         "guides/loading",
+                        "guides/data-model",
                         {
                             type: "doc",
                             id: "guides/dynamic-loading",

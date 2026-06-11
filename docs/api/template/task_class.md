@@ -14,17 +14,17 @@ description: "specifies the CSS class that will be applied to task bars"
 
 ### Parameters
 
-- `start` - (required) *Date* - the date when a task is scheduled to begin  
+- `start` - (required) *Date* - the date when a task is scheduled to begin
 - `end` - (required) *Date* - the date when a task is scheduled to be completed
 - `task` - (required) *Task* - the task object
 
 ### Returns
-- ` text` - (string | void) - a CSS class for the item in question
+- `text` - (string | void) - a CSS class for the item in question
 
 ### Example
 
 ~~~jsx
-gantt.templates.task_class = function(start, end, task){return "";};
+gantt.templates.task_class = (start, end, task) => '';
 ~~~
 
 ### Related Guides

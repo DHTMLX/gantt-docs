@@ -33,5 +33,5 @@ gantt.plugins({
 - [扩展全集](guides/extensions-list.md)
 
 ### Change log
-- 在 v8.0 中，**export_api** 插件已被加入到插件列表中。若在早期版本中需要启用导出服务，需要在页面中引入 **https://export.dhtmlx.com/gantt/api.js** 文件。请参阅 [迁移](migration.md#71---80) 文档。
+- 在 v8.0 中，**export_api** 插件已被加入到插件列表中。若在早期版本中需要启用导出服务，需要在页面中引入 `https://export.dhtmlx.com/gantt/api.js` 文件。请参阅 [迁移](migration.md#71---80) 文档。
 - 于 v7.0 新增

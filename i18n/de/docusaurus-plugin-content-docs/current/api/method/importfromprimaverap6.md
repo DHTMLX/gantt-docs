@@ -45,7 +45,7 @@ Diese Methode ist in der **export**-Erweiterung definiert, daher muss das [expor
 :::
 
 :::note
-Wenn Sie die Gantt-Version älter als 8.0 verwenden, müssen Sie auf Ihrer Seite das **https://export.dhtmlx.com/gantt/api.js** einbinden, um den Online-Export-Service zu aktivieren, z. B.:
+Wenn Sie die Gantt-Version älter als 8.0 verwenden, müssen Sie auf Ihrer Seite das `https://export.dhtmlx.com/gantt/api.js` einbinden, um den Online-Export-Service zu aktivieren, z. B.:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>

@@ -441,3 +441,8 @@ gantt.config.auto_scheduling = {
 ### Related API
 - [auto_scheduling](api/config/auto_scheduling.md)
 
+
+### Change log
+
+- in v10.0 the auto-scheduling engine was reworked. The public API and the visible behavior stay the same, except for cases that previously worked incorrectly. See the [migration guide](migration.md#auto-scheduling-v2) for the full list of behavior changes.
+

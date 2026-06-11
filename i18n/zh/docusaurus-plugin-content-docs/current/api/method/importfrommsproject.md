@@ -45,7 +45,7 @@ gantt.importFromMSProject({
 :::
 
 :::note
- 对于 8.0 版本之前的 Gantt，请在页面中引入 **https://export.dhtmlx.com/gantt/api.js** 脚本以激活在线导出服务，例如:
+ 对于 8.0 版本之前的 Gantt，请在页面中引入 `https://export.dhtmlx.com/gantt/api.js` 脚本以激活在线导出服务，例如:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>

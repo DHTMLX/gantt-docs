@@ -10,11 +10,11 @@ description: "adds a new task and opens the lightbox to confirm"
 
 @short: Adds a new task and opens the lightbox to confirm
 
-@signature: createTask: (task?: NewTask, parent?: string | number, index?: number) =\> string | number
+@signature: createTask: (task?: TaskInput, parent?: string | number, index?: number) =\> string | number
 
 ### Parameters
 
-- `task`    -	 (optional) *NewTask*	- optional, the task object
+- `task`    -	 (optional) *TaskInput*	- optional, the task object
 - `parent`	-	(optional) *string | number*	- optional, the parent's id
 - `index`	-	(optional) *number*	-	optional, the position the task will be added into (0 or greater)
 

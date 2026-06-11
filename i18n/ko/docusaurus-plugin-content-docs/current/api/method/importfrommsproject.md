@@ -48,7 +48,7 @@ gantt.importFromMSProject({
 ::: 
 
 :::note
-Gantt 버전이 8.0 미만인 경우 온라인 내보내기 서비스를 활성화하려면 페이지에 **https://export.dhtmlx.com/gantt/api.js**를 포함해야 합니다. 예시:
+Gantt 버전이 8.0 미만인 경우 온라인 내보내기 서비스를 활성화하려면 페이지에 `https://export.dhtmlx.com/gantt/api.js` 를 포함해야 합니다. 예시:
  
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>

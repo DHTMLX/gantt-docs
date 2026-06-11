@@ -42,7 +42,7 @@ gantt.importFromExcel({
 :::
 
 :::note
-如果你使用的 Gantt 版本低于 8.0，请在页面中包含 **https://export.dhtmlx.com/gantt/api.js** 以启用在线导出服务，例如：
+如果你使用的 Gantt 版本低于 8.0，请在页面中包含 `https://export.dhtmlx.com/gantt/api.js` 以启用在线导出服务，例如：
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -53,7 +53,7 @@ gantt.importFromExcel({
 
 该方法的参数是包含导入文件配置属性的对象：
 
-- **server** - 设置请求的 API 端点。可以与导入服务的本地安装一起使用。默认值为 **https://export.dhtmlx.com/gantt**。
+- **server** - 设置请求的 API 端点。可以与导入服务的本地安装一起使用。默认值为 `https://export.dhtmlx.com/gantt`。
 - **data** - 一个 [File](https://developer.mozilla.org/en-US/docs/Web/API/File) 实例，应该包含一个 Excel (xlsx) 文件。 
 - **callback** - 回调函数。
 - **sheet** - 导入服务应返回的文档的工作表编号。

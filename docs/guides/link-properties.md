@@ -7,7 +7,27 @@ sidebar_label: "Link Properties"
 
 On this page you'll find the full list of properties that the link object may include.
 
+This article describes the client-side runtime link object used inside Gantt after data is loaded. For the serialized JSON shape used in [gantt.parse()](api/method/parse.md), [gantt.load()](api/method/load.md), and backend data exchange, see [Data Model](guides/data-model.md).
+
 The full list of properties of the task object is given in the [Task Properties](guides/task-properties.md) article.
+
+## Runtime shape at a glance
+
+~~~ts
+// Exported from @dhx/gantt as "Link"
+interface Link {
+    id: string | number;
+    source: string | number;
+    target: string | number;
+    type: string;
+    lag?: number;
+    readonly?: boolean;
+    editable?: boolean;
+    [customProperty: string]: any;
+}
+~~~
+
+Runtime link objects have the same shape as serialized links - they are client-side objects returned by methods like `gantt.getLink()`. For the serialized shape, see [Data Model - SerializedLink](guides/data-model.md#serializedlink).
 
 
 ## Required properties
@@ -76,16 +96,19 @@ Note, these values affect only the way the dependency type is stored, not the be
 ## Example
 
 ~~~js
-var data = {
+gantt.parse({
     tasks: [
-        {id:1, text:"Project #1", start_date:"01-04-2020", duration:18},
-         {id:2, text:"Task #1", start_date:"02-04-2020", duration:8, parent:1},
-         {id:3, text:"Task #2", start_date:"11-04-2020", duration:8, parent:1}
+        { id: 1, text: "Project #1", start_date: "2026-04-01", duration: 18 },
+        { id: 2, text: "Task #1", start_date: "2026-04-02", duration: 8, parent: 1 }
     ],
-    links:[
-        {id:1, source:1, target:2, type:"1"},
-        {id:2, source:2, target:3, type:"0"}
+    links: [
+        { id: 1, source: 1, target: 2, type: "0" }
     ]
-};
+});
+
+const link = gantt.getLink(1);
+
+console.log(link.type); // "0"
+console.log(link.source); // 1
 ~~~
 

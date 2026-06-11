@@ -98,7 +98,7 @@ Die [](api/method/exporttopng.md) Methode nimmt als Parameter ein Objekt mit ein
 		</tr>
   <tr>
 			<td class="webixdoc_links0"><b>server</b></td>
-			<td>(<i>string</i>) legt den API-Endpunkt für die Anfrage fest. Kann mit der lokalen Installation des Export-Services verwendet werden. Der Standardwert ist <strong>https://export.dhtmlx.com/gantt</strong></td>
+			<td>(<i>string</i>) legt den API-Endpunkt für die Anfrage fest. Kann mit der lokalen Installation des Export-Services verwendet werden. Der Standardwert ist `https://export.dhtmlx.com/gantt`</td>
 		</tr>
   <tr>
 			<td class="webixdoc_links0"><b>raw</b></td>

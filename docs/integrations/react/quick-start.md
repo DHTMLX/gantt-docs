@@ -8,7 +8,7 @@ description: "Step-by-step guide to using the React Gantt component"
 
 :::note
 This tutorial covers the React wrapper included in the **Commercial, Enterprise, and Ultimate** editions of DHTMLX Gantt. 
-If you are using the **Individual** or **GPL** edition, follow the alternative guide: 
+If you are using the free **Community** edition (v10+), a legacy **GPL** edition (v9.x and earlier), or the **Individual** edition, follow the alternative guide: 
 [How to Start with React](integrations/react/js-gantt-react.md).
 :::
 

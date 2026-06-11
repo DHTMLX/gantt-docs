@@ -7,7 +7,34 @@ sidebar_label: "Task Properties"
 
 On this page you'll find the full list of properties that the task object may include.
 
+This article describes the client-side runtime task object used inside Gantt after data is loaded. For the serialized JSON shape used in [gantt.parse()](api/method/parse.md), [gantt.load()](api/method/load.md), and backend data exchange, see [Data Model](guides/data-model.md).
+
 The full list of properties of the link object is given in the [Link Properties](guides/link-properties.md) article.
+
+## Runtime shape at a glance
+
+~~~ts
+// Exported from @dhx/gantt as "Task"
+interface Task {
+    id: string | number;
+    start_date?: Date;
+    end_date?: Date;
+    duration?: number;
+    text?: any;
+    parent?: string | number;
+    type?: string;
+    progress?: number;
+    open?: boolean;
+    baselines?: Baseline[];
+    resource?: string[];
+    readonly?: boolean;
+    editable?: boolean;
+    // ... plus computed $-prefixed fields (see Dynamic properties below)
+    [customProperty: string]: any;
+}
+~~~
+
+Runtime task objects inside Gantt use `Date` for date fields. They also include dynamic `$...` properties created on the client, which are listed later in this article. For the serialized (JSON-compatible) shape, see [Data Model - SerializedTask](guides/data-model.md#serializedtask).
 
 
 ## Required properties
@@ -353,13 +380,16 @@ Dynamic properties are created on the client and represent the current state of 
 ## Example
 
 ~~~js
-const data = {
+gantt.parse({
   tasks: [
-    { id: 1, text: "Project #1", start_date: "01-04-2025", duration: 18 },
-    { id: 2, text: "Task #1", start_date: "02-04-2025", duration: 8, parent: 1 },
-    { id: 3, text: "Task #2", start_date: "11-04-2025", duration: 8, parent: 1 }
+    { id: 1, text: "Project #1", start_date: "2026-04-01", duration: 18 }
   ],
   links: []
-};
+});
+
+const task = gantt.getTask(1);
+
+console.log(task.start_date instanceof Date); // true
+console.log(task.text); // "Project #1"
 ~~~
 
