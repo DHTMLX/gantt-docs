@@ -625,7 +625,7 @@ function updateOrder(taskId, target) {
 }
 ~~~
 
-你可以在 GitHub 上查看一个现成的演示 https://github.com/DHTMLX/gantt-howto-node。
+你可以在 GitHub 上查看一个现成的演示 `https://github.com/DHTMLX/gantt-howto-node`
 
 ## 应用安全
 

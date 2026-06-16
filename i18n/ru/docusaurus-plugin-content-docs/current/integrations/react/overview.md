@@ -9,7 +9,7 @@ description: "Обзор официальной обёртки React: возмо
 
 :::note
 React Gantt доступен по лицензиям [Commercial, Enterprise и Ultimate](https://dhtmlx.com/docs/products/licenses.shtml).
-Если вы используете Individual или GPL-версии Gantt, пожалуйста, обратитесь к статье [Как начать работу](integrations/react/js-gantt-react.md) для React.
+Если вы используете бесплатноe Community-издание (v10+), устаревшее GPL-издание (v9.x и ранее) или Individual-издание Gantt, пожалуйста, ознакомьтесь со статьёй [Решения по запуску](integrations/react/js-gantt-react.md) для React.
 :::
 
 ## Обзор

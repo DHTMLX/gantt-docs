@@ -21,14 +21,14 @@ description: "사용자가 드래그를 완료하고 마우스 버튼을 놓은 
 ### Example
 
 ~~~jsx
-gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
+gantt.attachEvent("onAfterTaskDrag", (id, mode, e) => {
     // 여기에 코드 작성
 });
 ~~~
 
 ### Details
 
-타임라인 영역에서 태스크를 드래그할 때 이벤트가 발생합니다.
+타임라인 영역에서 사용자가 작업을 드래그한 후에 이벤트가 발생합니다.
 
 ### Related API
 - [drag_mode](api/config/drag_mode.md)

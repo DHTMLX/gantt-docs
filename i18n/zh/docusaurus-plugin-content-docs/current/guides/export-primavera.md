@@ -7,9 +7,9 @@ sidebar_label: "导出与从 Primavera P6 导入"
 
 dhtmlxGantt 库允许将甘特图中的数据导出到 Primavera P6。你也可以将 Primavera P6 的数据导入到 Gantt。
 
-:::note
-服务是免费的，但输出文件将包含该库在 GPL 许可下的水印。若你购买了许可证，在有效的支持期内（所有 PRO 许可证均为 12 个月）导出的结果将无水印。
-:::
+:::note  
+该服务是免费的，但导出输出文件会包含库的水印。若要导出而不带水印，需要有效许可证——在有效支持期内（所有 PRO 许可证为 12 个月）导出的结果将不带水印。  
+:::  
 
 有多种导出服务可用。你可以在本地计算机上安装它们，将甘特图本地导出到 Primavera P6。请注意，导出服务不包含在 Gantt 包中，
 请阅读 [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) 以了解每种服务的使用条款。

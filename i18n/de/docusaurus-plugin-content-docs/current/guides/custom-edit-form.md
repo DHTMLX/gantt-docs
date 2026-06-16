@@ -5,54 +5,48 @@ sidebar_label: "Benutzerdefinierte Lightbox"
 
 # Benutzerdefinierte Lightbox
 
-## Die Möglichkeiten zur Erstellung einer benutzerdefinierten Lightbox
+## Möglichkeiten zur Erstellung einer benutzerdefinierten Lightbox
 
-Sie können eine vollständig benutzerdefinierte Lightbox für Gantt erstellen und die Standard-Lighbox damit ersetzen. Es gibt zwei mögliche Ansätze:
+Sie können eine vollständig benutzerdefinierte Lightbox für Gantt erstellen und die Standard-Lightbox durch diese ersetzen. Es gibt zwei mögliche Wege, dies zu tun:
 
-1) Indem Sie die [showLightbox](api/method/showlightbox.md) Methode neu definieren:
+1. Durch Neudefinition der [`showLightbox()`](api/method/showlightbox.md) Methode:
 
 ~~~js
-gantt.showLightbox = function(id){
+gantt.showLightbox = (id) => {
     // code of the custom form
-}
+};
 ~~~
 
-- id - (string/number) - die ID der Aufgabe
+- `id` - (string/number) - die Aufgaben-ID
 
-Es gibt auch die [hideLightbox](api/method/hidelightbox.md) Methode, die bei der Implementierung der Lightbox helfen wird.
+Es gibt auch die [`hideLightbox()`](api/method/hidelightbox.md) Methode, die bei der Implementierung der Lightbox hilft.
 
-
-Lassen Sie uns einen HTML-Container "my-form" erstellen, in dem wir eine benutzerdefinierte Lightbox platzieren:
+Erstellen wir einen HTML-Container "my-form", in dem wir eine benutzerdefinierte Lightbox platzieren:
 
 ~~~html
 <div id="my-form">
- <label for="description">Task text
-  <input type="text" name="description" value="" >
- </label>
- 
-
-
- <input type="button" name="save" value="Save">
- <input type="button" name="close" value="Close">
- <input type="button" name="delete" value="Delete">
+    <label for="description">Task text
+        <input type="text" name="description" value="">
+    </label>
+    <input type="button" name="save" value="Save">
+    <input type="button" name="close" value="Close">
+    <input type="button" name="delete" value="Delete">
 </div>
 ~~~
 
-
-Dann, um eine benutzerdefinierte Lightbox zu erstellen, können Sie eine Konfiguration verwenden, die der folgenden ähnelt:
-
+Dann, um eine benutzerdefinierte Lightbox zu erstellen, können Sie die Konfiguration verwenden, die der folgenden ähnlich ist:
 
 ~~~js
-var taskId = null;
+let currentTaskId = null;
 
-gantt.showLightbox = function(id) {
-    taskId = id;
-    var task = gantt.getTask(id);
+gantt.showLightbox = (id) => {
+    currentTaskId = id;
+    const task = gantt.getTask(id);
 
-    var form = getForm();
-    var input = form.querySelector("[name='description']");
-    input.focus();
-    input.value = task.text;
+    const form = getForm();
+    const descriptionInput = form.querySelector("[name='description']"); 
+    descriptionInput.focus();
+    descriptionInput.value = task.text;
 
     form.style.display = "block";
 
@@ -61,25 +55,24 @@ gantt.showLightbox = function(id) {
     form.querySelector("[name='delete']").onclick = remove;
 };
 
-gantt.hideLightbox = function(){
+gantt.hideLightbox = () => {
     getForm().style.display = "";
-    taskId = null;
-}
-
+    currentTaskId = null;
+};
 
 function getForm() {
     return document.getElementById("my-form");
-};
+}
 
 function save() {
-    var task = gantt.getTask(taskId);
+    const task = gantt.getTask(currentTaskId);
 
     task.text = getForm().querySelector("[name='description']").value;
 
-    if(task.$new){
+    if (task.$new) {
         delete task.$new;
-        gantt.addTask(task,task.parent);
-    }else{
+        gantt.addTask(task, task.parent);
+    } else {
         gantt.updateTask(task.id);
     }
 
@@ -87,77 +80,83 @@ function save() {
 }
 
 function cancel() {
-    var task = gantt.getTask(taskId);
+    const task = gantt.getTask(currentTaskId);
 
-    if(task.$new)
-    gantt.deleteTask(task.id);
+    if (task.$new) {
+        gantt.deleteTask(task.id);
+    }
+
     gantt.hideLightbox();
 }
 
 function remove() {
-    gantt.deleteTask(taskId);
+    gantt.deleteTask(currentTaskId);
     gantt.hideLightbox();
 }
 ~~~
 
-2) Verwendung des [onBeforeLightbox](api/event/onbeforelightbox.md) Ereignisses. In diesem Fall lautet der Ablauf wie folgt:
+2. Verwenden Sie das [`onBeforeLightbox`](api/event/onbeforelightbox.md) Event. In diesem Fall ist der Aktionsablauf wie folgt:
 
-- Erkennen, wann die Lightbox angezeigt werden soll
-- Blockieren der Standard-Lightbox
-- Anzeigen eines benutzerdefinierten Formulars und Ausfüllen der Aufgabendaten.
-
+- feststellen, wann die Lightbox angezeigt werden soll
+- die Standard-Lightbox blockieren
+- ein benutzerdefiniertes Formular anzeigen und die Aufgabendaten ausfüllen
 
 ~~~js
-gantt.attachEvent("onBeforeLightbox", function(id) {
-    var task = gantt.getTask(id);
-    if(task.$new){
+gantt.attachEvent("onBeforeLightbox", (id) => {
+    const task = gantt.getTask(id);
+
+    if (task.$new) {
         dhtmlx.confirm({
-            text:"Create task?",
-            callback: function(res){
-                if(res){
+            text: "Create task?",
+            callback: (confirmed) => {
+                if (confirmed) {
                     //..apply values
                     delete task.$new;
                     gantt.addTask(task);
-                }else{
+                } else {
                     gantt.deleteTask(task.id);
                 }
             }
         });
+
         return false;
     }
+
     return true;
 });
 ~~~
 
 ## Verarbeitung von Aktionen im benutzerdefinierten Formular
 
-Wenn der Benutzer das Formular speichert, müssen Sie die Formularwerte manuell abrufen und die entsprechende Aufgabe über die öffentliche API aktualisieren: [addTask](api/method/addtask.md), [updateTask](api/method/updatetask.md) und [deleteTask](api/method/deletetask.md).
+Wenn der Benutzer das Formular speichert, müssen Sie manuell die Formularwerte abrufen und den entsprechenden Task über die öffentliche API aktualisieren: [`addTask()`](api/method/addtask.md), [`updateTask()`](api/method/updatetask.md) und [`deleteTask()`](api/method/deletetask.md).
 
-Beachten Sie, dass, wenn eine Lightbox durch eine neue Aufgabe ausgelöst wird (durch Klicken auf die Plus-Schaltfläche), die gelöscht werden soll, wenn der Benutzer auf 'Abbrechen' klickt, um die Erstellung der Aufgabe rückgängig zu machen, das Aufgabenobjekt die Eigenschaft '$new' gesetzt hat.
+Beachten Sie, dass, wenn eine Lightbox durch einen neuen Task ausgelöst wird, zum Beispiel durch Klicken auf die '+'-Schaltfläche, und gelöscht werden soll, falls der Benutzer auf 'Cancel' klickt, um die Erstellung des Tasks rückgängig zu machen, das Task-Objekt die Eigenschaft '$new' gesetzt hat.
 
-Sie können das Schließen der Lightbox verarbeiten, wie im folgenden Beispiel gezeigt. Der Typ einer Aktion - 'save', 'cancel' oder 'delete' wird als Parameter "action" übergeben:
+Sie können das Schließen der Lightbox verarbeiten, wie im untenstehenden Beispiel gezeigt. Der Aktions-Typ, "save", "cancel" oder "delete", wird als der Parameter "action" übergeben:
 
 ~~~js
-switch(action){
-   case "save":
-      task.text = '';// apply values from form
+switch (action) {
+    case "save":
+        task.text = ""; // Werte aus dem Formular anwenden
 
-      // add new task or update already existing one
-      if(task.$new){
-        delete task.$new;
-        gantt.addTask(task,task.parent)
-      }else{
-        gantt.updateTask(id);
-      }
+        // Einen neuen Task hinzufügen oder einen bestehenden aktualisieren.
+        if (task.$new) {
+            delete task.$new;
+            gantt.addTask(task, task.parent);
+        } else {
+            gantt.updateTask(id);
+        }
 
-      break;
-   case "cancel":
-      // if cancel popup for creating a new task - delete it, otherwise do nothing
-      if(task.$new)
-         gantt.deleteTask(id);
-      break;
-   case "delete":
-      gantt.deleteTask(id);
-      break;
+        break;
+    case "cancel":
+        // Wenn der Benutzer die Erstellung eines neuen Tasks abbricht, löschen Sie ihn.
+        if (task.$new) {
+            gantt.deleteTask(id);
+        }
+
+        break;
+    case "delete":
+        gantt.deleteTask(id);
+        break;
 }
 ~~~

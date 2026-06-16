@@ -7,49 +7,46 @@ sidebar_label: "Настраиваемый Lightbox"
 
 ## Способы создания настраиваемого Lightbox
 
-Вы можете создать полностью настраиваемый Lightbox для Gantt и заменить им дефолтную реализацию. Есть два возможных способа сделать это:
+Вы можете создать полностью настраиваемый Lightbox для Gantt и заменить им стандартный. Есть два возможных способа сделать это:
 
-1) Переопределив метод [showLightbox](api/method/showlightbox.md):
+1. Переопределив метод [`showLightbox()`](api/method/showlightbox.md):
 
 ~~~js
-gantt.showLightbox = function(id){
+gantt.showLightbox = (id) => {
     // code of the custom form
-}
+};
 ~~~
 
-- id - (string/number) - идентификатор задачи
+- `id` - (string/number) - идентификатор задачи
 
-Также существует метод [hideLightbox](api/method/hidelightbox.md), который поможет в реализации Lightbox.
+Есть также метод [`hideLightbox()`](api/method/hidelightbox.md), который поможет в реализации Lightbox.
 
-Давайте создадим HTML-контейнер "my-form", в который поместим наш настраиваемый Lightbox:
+Давайте создадим HTML-контейнер "my-form", в который поместим настраиваемый Lightbox:
 
 ~~~html
 <div id="my-form">
- <label for="description">Task text
-  <input type="text" name="description" value="" >
- </label>
- 
-
-
- <input type="button" name="save" value="Save">
- <input type="button" name="close" value="Close">
- <input type="button" name="delete" value="Delete">
+    <label for="description">Task text
+        <input type="text" name="description" value="">
+    </label>
+    <input type="button" name="save" value="Save">
+    <input type="button" name="close" value="Close">
+    <input type="button" name="delete" value="Delete">
 </div>
 ~~~
 
-Затем, чтобы сделать настраиваемый Lightbox, можно использовать конфигурацию, похожую на следующую:
+Затем, чтобы создать настраиваемый Lightbox, можно использовать конфигурацию, подобную следующей:
 
 ~~~js
-var taskId = null;
+let currentTaskId = null;
 
-gantt.showLightbox = function(id) {
-    taskId = id;
-    var task = gantt.getTask(id);
+gantt.showLightbox = (id) => {
+    currentTaskId = id;
+    const task = gantt.getTask(id);
 
-    var form = getForm();
-    var input = form.querySelector("[name='description']");
-    input.focus();
-    input.value = task.text;
+    const form = getForm();
+    const descriptionInput = form.querySelector("[name='description']");
+    descriptionInput.focus();
+    descriptionInput.value = task.text;
 
     form.style.display = "block";
 
@@ -58,25 +55,24 @@ gantt.showLightbox = function(id) {
     form.querySelector("[name='delete']").onclick = remove;
 };
 
-gantt.hideLightbox = function(){
+gantt.hideLightbox = () => {
     getForm().style.display = "";
-    taskId = null;
-}
-
+    currentTaskId = null;
+};
 
 function getForm() {
     return document.getElementById("my-form");
-};
+}
 
 function save() {
-    var task = gantt.getTask(taskId);
+    const task = gantt.getTask(currentTaskId);
 
     task.text = getForm().querySelector("[name='description']").value;
 
-    if(task.$new){
+    if (task.$new) {
         delete task.$new;
-        gantt.addTask(task,task.parent);
-    }else{
+        gantt.addTask(task, task.parent);
+    } else {
         gantt.updateTask(task.id);
     }
 
@@ -84,76 +80,83 @@ function save() {
 }
 
 function cancel() {
-    var task = gantt.getTask(taskId);
+    const task = gantt.getTask(currentTaskId);
 
-    if(task.$new)
-    gantt.deleteTask(task.id);
+    if (task.$new) {
+        gantt.deleteTask(task.id);
+    }
+
     gantt.hideLightbox();
 }
 
 function remove() {
-    gantt.deleteTask(taskId);
+    gantt.deleteTask(currentTaskId);
     gantt.hideLightbox();
 }
 ~~~
 
-2) Использование события [onBeforeLightbox](api/event/onbeforelightbox.md). В этом случае алгоритм действий следующий:
+2. Используйте событие [`onBeforeLightbox`](api/event/onbeforelightbox.md). В этом случае алгоритм действий следующий:
 
-- определить момент, когда Lightbox собирается быть показан
-- заблокировать стандартный Lightbox
-- показать настраиваемую форму и заполнить данные задачи.
+- определить момент, когда Lightbox будет показан
+- заблокировать Lightbox по умолчанию
+- показать пользовательскую форму и заполнить данные задачи
 
 ~~~js
-gantt.attachEvent("onBeforeLightbox", function(id) {
-    var task = gantt.getTask(id);
-    if(task.$new){
+gantt.attachEvent("onBeforeLightbox", (id) => {
+    const task = gantt.getTask(id);
+
+    if (task.$new) {
         dhtmlx.confirm({
-            text:"Create task?",
-            callback: function(res){
-                if(res){
+            text: "Create task?",
+            callback: (confirmed) => {
+                if (confirmed) {
                     //..apply values
                     delete task.$new;
                     gantt.addTask(task);
-                }else{
+                } else {
                     gantt.deleteTask(task.id);
                 }
             }
         });
+
         return false;
     }
+
     return true;
 });
 ~~~
 
-## Обработка действий в настраиваемой форме
+## Обработка действий в пользовательской форме
 
-Когда пользователь saves форму, вам нужно будет вручную получить значения формы и обновить соответствующую задачу с использованием публичного API: [addTask](api/method/addtask.md), [updateTask](api/method/updatetask.md) и [deleteTask](api/method/deletetask.md).
+Когда пользователь сохраняет форму, вам нужно вручную получить значения формы и обновить соответствующую задачу с использованием публичного API: [`addTask()`](api/method/addtask.md), [`updateTask()`](api/method/updatetask.md) и [`deleteTask()`](api/method/deletetask.md).
 
-Обратите внимание, что когда Lightbox вызывается для новой задачи (при нажатии на кнопку 'плюс'), которая должна быть удалена, если пользователь нажимает 'Cancel' для отката создания задачи, у объекта задачи будет установлено свойство '$new'.
+Обратите внимание, что когда Lightbox вызывается для новой задачи, например, при нажатии кнопки 'плюс', и она должна быть удалена, если пользователь нажимает 'Cancel' для отмены создания задачи, объект задачи будет иметь установленное свойство '$new'.
 
-Вы можете обрабатывать закрытие Lightbox, как показано в примере ниже. Тип действия — 'save', 'cancel' или 'delete' передаётся как параметр "action":
+Вы можете обработать закрытие Lightbox, как показано в примере ниже. Тип действия, "save", "cancel" или "delete", передается как параметр "action":
 
 ~~~js
-switch(action){
-   case "save":
-      task.text = '';// применить значения из формы
+switch (action) {
+    case "save":
+        task.text = ""; // apply values from form
 
-      // добавить новую задачу или обновить уже существующую
-      если(task.$new){
-        delete task.$new;
-        gantt.addTask(task,task.parent)
-      }else{
-        gantt.updateTask(id);
-      }
+        // Add a new task or update an existing one.
+        if (task.$new) {
+            delete task.$new;
+            gantt.addTask(task, task.parent);
+        } else {
+            gantt.updateTask(id);
+        }
 
-      break;
-   case "cancel":
-      // если отмена для создания новой задачи - удалить её, иначе ничего не делать
-      if(task.$new)
-         gantt.deleteTask(id);
-      break;
-   case "delete":
-      gantt.deleteTask(id);
-      break;
+        break;
+    case "cancel":
+        // If the user cancels creation of a new task, delete it.
+        if (task.$new) {
+            gantt.deleteTask(id);
+        }
+
+        break;
+    case "delete":
+        gantt.deleteTask(id);
+        break;
 }
 ~~~

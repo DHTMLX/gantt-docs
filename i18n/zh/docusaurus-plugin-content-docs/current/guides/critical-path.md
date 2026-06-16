@@ -277,3 +277,25 @@ gantt.init("gantt_here");
 启用该配置后，已完成的任务将被排除在关键路径和自动调度之外。
 
 您可以在 [API 页面](api/config/auto_scheduling_use_progress.md) 上找到更多详细信息。
+
+## v10.0 的关键路径与松弛时间 {#v2-analysis}
+
+在 v10.0 中，松弛时间和关键路径的计算进行了重构。结果不再依赖于诸如 [move_projects](api/config/auto_scheduling.md#move_projects) 和 [gap_behavior](api/config/auto_scheduling.md#gap_behavior) 之类的自动调度模式选项——相同的数据总是产生相同的松弛时间和关键路径值。
+
+一些相关的行为说明：
+
+- 当总松弛时间不大于零时，任务被视为关键任务。已完成的任务（当 [use_progress](api/config/auto_scheduling_use_progress.md) 启用时）以及属于依赖循环的任务永远不是关键任务。
+- `getTotalSlack` 与 `getFreeSlack` 在从计算中排除的任务（处于依赖循环中的任务，以及在启用 `use_progress` 时的已完成任务）上返回 `0`（而不是 `undefined`）。
+
+### 切换回先前的计算
+
+以前的计算仍通过一个过渡性退出标志可用。该标志将在 v10.1 中移除，因此仅在过渡阶段使用：
+
+~~~js
+gantt.config.auto_scheduling = {
+    enabled: true,
+    _analysis_engine: "v1"  // previous slack / critical path calculation
+};
+~~~
+
+有关行为变化的完整列表，请参阅迁移指南 [migration guide](migration.md#auto-scheduling-v2)。

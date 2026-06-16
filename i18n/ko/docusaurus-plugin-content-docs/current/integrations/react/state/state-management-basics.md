@@ -46,9 +46,11 @@ React Gantt는 **두 가지 데이터 바인딩 패턴**을 지원합니다:
 
 다른 한편으로는 Gantt 데이터와 React 상태 간의 직접적 동기화가 끊깁니다. 그리고 React 상태에 작업/링크를 저장하는 경우 Gantt의 내부 상태를 의도치 않게 덮어쓰지 않도록 주의해야 합니다.
 
-## React 상태를 진실의 원천으로
+## 진실의 원천으로서의 React 상태 {#reactstateasthesourceoftruth}
 
-이 패턴에서는 모든 핵심 컬렉션을 상태로 보유하고 이를 props(`tasks`, `links`, `resources`, `resourceAssignments`)로 전달합니다. 사용자가 Gantt 내에서 작업이나 링크를 수정하면(예: 작업을 생성하거나 삭제하는 경우), Gantt는 콜백을 트리거합니다. 이 콜백에서 새로운 데이터로 React 상태를 업데이트합니다. 상태가 업데이트되면 React가 **ReactGantt** 컴포넌트를 재렌더링하고, 이 컴포넌트가 최신 상태의 props를 다시 읽습니다.
+이 패턴에서는 모든 핵심 컬렉션을 상태로 보유하고 이를 Props(`tasks`, `links`, `resources`, `resourceAssignments`)로 전달합니다. 사용자가 Gantt 내부에서 작업이나 링크를 수정할 때(예: 작업을 만들거나 삭제), Gantt는 콜백을 트리거합니다. 이 콜백에서 새 데이터로 React 상태를 업데이트합니다. 상태가 업데이트되면 React가 **ReactGantt** 컴포넌트를 재렌더링하고, 최신 상태로부터 업데이트된 props를 읽게 됩니다.
+
+상태를 정의할 때는 작업에는 `SerializedTask`, 링크에는 `SerializedLink`를 사용합니다. 이 타입은 사용자에게 표시되는 데이터 구조를 나타내며, 날짜 필드는 `Date | string`을 허용하고, 내부에 `$` 접두사가 붙은 속성은 없습니다. 데이터 내부에서 작업/링크를 다룰 때는 Gantt 이벤트 핸들러 안에서 Gantt가 이미 데이터를 파싱한 상태이므로 `Task`와 `Link`를 사용합니다.
 
 ### React 상태를 사용한 최소 예제
 

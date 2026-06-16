@@ -10,11 +10,11 @@ description: "добавляет новую задачу и открывает l
 
 @short: Добавляет новую задачу и открывает lightbox для подтверждения
 
-@signature: createTask: (task?: NewTask, parent?: string | number, index?: number) =\> string | number
+@signature: createTask: (task?: TaskInput, parent?: string | number, index?: number) =\> string | number
 
 ### Parameters
 
-- `task`    -	 (optional) *NewTask*	- необязательный, объект задачи
+- `task`    -	 (optional) *TaskInput*	- необязательный, объект задачи
 - `parent`	-	(optional) *string | number*	- необязательный, идентификатор родителя
 - `index`	-	(optional) *number*	- необязательный, позиция, в которую будет добавлена задача (0 или больше)
 

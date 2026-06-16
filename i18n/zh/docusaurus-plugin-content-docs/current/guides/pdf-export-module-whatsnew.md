@@ -6,6 +6,13 @@ sidebar_label: "PDF 导出模块的新特性"
 PDF 导出模块的新特性
 ================================
 
+## 0.8.0
+
+- 将 PDF/PNG 渲染引擎迁移到 Puppeteer
+- 在多页 PDF 导出中为每页显示的页眉和页脚现在覆盖在页面内容之上
+- 在 PDF 与 PNG 导出中为 Scheduler 设置正确的 DPI 缩放
+- 减小 Docker 镜像尺寸
+
 ## 0.7.7
 
 - 修复在指定 `format` 参数时，多页面 PDF 导出中 `width` 与 `height` 参数未被忽略的问题

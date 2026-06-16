@@ -486,13 +486,21 @@ yarn dev
 
 ## Что дальше
 
-Чтобы продолжить:
+Это первый учебник в последовательности по управлению состоянием в React Gantt:
 
-- Взять на заметку концепции, лежащие в основе этого примера, в [](integrations/react/state/state-management-basics.md)
-- Соединить управление состоянием через хранилище с продвинутой конфигурацией и шаблонами в обзоре React Gantt: Lösungen/Overview (React Gantt overview)
-- Исследовать тот же паттерн с другими менеджерами состояния:
-  - Испльзование React Gantt с Redux Toolkit (integrations/react/state/redux-toolkit.md)
-  - Использование React Gantt с MobX (integrations/react/state/mobx.md)
-  - Использование React Gantt с XState (integrations/react/state/xstate.md)
-  - Использование React Gantt с Jotai (integrations/react/state/jotai.md)
-  - Использование React Gantt с Valtio (integrations/react/state/valtio.md)
+1. **Zustand** - локальное in-memory состояние (вы находитесь здесь)
+2. [TanStack Query](integrations/react/state/tanstack-query.md) - состояние, поддерживаемое сервером, с бэкендом на JSON
+3. [TanStack Query + Supabase](integrations/react/state/tanstack-supabase.md) - синхронизация в реальном времени для нескольких пользователей на PostgreSQL
+
+Готовы к версии с поддержкой сервера? Продолжайте с [Using React Gantt with TanStack Query](integrations/react/state/tanstack-query.md).
+
+Вы также можете:
+
+- Вернуться к концепциям, лежащим в основе этого примера, в [](integrations/react/state/state-management-basics.md)
+- Совмещать состояние, управляемое хранилищем, с продвинутой конфигурацией и шаблонами в [обзоре React Gantt](integrations/react/overview.md)
+- Исследовать тот же шаблон с другими менеджерами состояния:
+  - [Using React Gantt with Redux Toolkit](integrations/react/state/redux-toolkit.md)
+  - [Using React Gantt with MobX](integrations/react/state/mobx.md)
+  - [Using React Gantt with XState](integrations/react/state/xstate.md)
+  - [Using React Gantt with Jotai](integrations/react/state/jotai.md)
+  - [Using React Gantt with Valtio](integrations/react/state/valtio.md)

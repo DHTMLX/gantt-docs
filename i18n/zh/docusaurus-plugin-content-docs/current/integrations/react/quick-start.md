@@ -7,10 +7,10 @@ description: "使用 React Gantt 组件的逐步指南"
 # React Gantt 快速入门
 
 :::note
-本教程涵盖 DHTMLX Gantt 的 **商业版、企业版和 Ultimate 版**中包含的 React 包装器。
-如果您使用的是 **Individual** 或 **GPL** 版，请参阅替代指南：
-[如何开始使用 React](integrations/react/js-gantt-react.md)。
-:::
+本教程涵盖 DHTMLX Gantt 的商业版、企业版和终极版中包含的 React 包装器。 
+如果您使用的是免费版 Community（v10+）、遗留 GPL 版本（v9.x 及更早版本），或 Individual 版本，请按照替代指南：
+[How to Start with React](integrations/react/js-gantt-react.md).
+::: 
 
 **React Gantt** 组件是 **DHTMLX Gantt** 的官方包装器。
 本指南将带你创建一个小型 React 应用并使用评估包渲染一个基本的甘特图。

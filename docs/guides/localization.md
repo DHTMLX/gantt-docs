@@ -132,10 +132,10 @@ gantt.i18n.setLocale("lang");
 
 - You can send your custom locale file to **support@dhtmlx.com** - so we will include it in the next release.
 - The currently active locale is also available in the **gantt.locale** object
-- **monthFull** - the full names of months starting from January;
-- **monthShort** - the short names of months starting from January;
-- **dayFull** - the full names of week days starting from Sunday;
-- **dayShort** - the short names of week days starting from Sunday.
+- **month_full** - the full names of months starting from January;
+- **month_short** - the short names of months starting from January;
+- **day_full** - the full names of week days starting from Sunday;
+- **day_short** - the short names of week days starting from Sunday.
 
 
 ~~~js title="English locale definition"

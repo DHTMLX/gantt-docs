@@ -917,12 +917,21 @@ yarn dev
 
 ## 下一步
 
-要进一步深入，可参考以下内容：
+## 下一步是什么
 
-- 重新查看本示例背后的概念：[](integrations/react/state/state-management-basics.md)
-- 在 [React Gantt 概览](integrations/react/overview.md) 中结合 store 驱动的状态与高级配置/模板
-- 将相同模式应用到其他状态管理器：
-  - [Using React Gantt with Zustand](integrations/react/state/zustand.md)
+这是 React Gantt 状态管理系列教程的第二部分：
+
+1. [Zustand](integrations/react/state/zustand.md) - 本地内存状态
+2. **TanStack Query** - 使用 JSON 文件后端的服务器端状态（你现在在这里）
+3. [TanStack Query + Supabase](integrations/react/state/tanstack-supabase.md) - 基于 PostgreSQL 的实时多用户同步
+
+准备将 JSON 后端替换为能实现实时多用户同步的真实数据库吗？继续阅读 [Using React Gantt with TanStack Query and Supabase](integrations/react/state/tanstack-supabase.md)。
+
+你还可以：
+
+- 重新查看本示例背后的概念 [](integrations/react/state/state-management-basics.md)
+- 将存储驱动的状态与高级配置及模板结合，在 [React Gantt 概览](integrations/react/overview.md) 中了解
+- 使用其它状态管理器探索同样的模式：
   - [Using React Gantt with Redux Toolkit](integrations/react/state/redux-toolkit.md)
   - [Using React Gantt with MobX](integrations/react/state/mobx.md)
   - [Using React Gantt with XState](integrations/react/state/xstate.md)

@@ -5,6 +5,164 @@ sidebar_label: "从旧版本迁移"
 
 # 从旧版本迁移
 
+## 9.1 -> 10.0
+
+### 從 GPL 版本遷移到社群版 Community (MIT) {#gpl-to-mit}
+### 从 GPL 版迁移到 Community (MIT) 版 {#gpl-to-mit}
+
+自 v10 起，DHTMLX Gantt 的免费版为 **Community 版**，在 **MIT 许可证**下分发。它取代了同一 `dhtmlx-gantt` 包之前的免费 **GPL** 版本。GPL v2 仍适用于之前的免费版本（v9.x 及更早版本），这些版本仍在 [main GitHub repository](https://github.com/DHTMLX/gantt) 的专门分支中可用，但不再 actively maintained。
+自 v10 起，DHTMLX Gantt 的免费版为 **Community 版**，在 **MIT 许可证**下分发。它取代了同一 `dhtmlx-gantt` 包之前的免费 **GPL** 版本。GPL v2 仍适用于之前的免费版本（v9.x 及更早版本），这些版本仍在 [main GitHub repository](https://github.com/DHTMLX/gantt) 的专门分支中可用，但不再积极维护。
+
+要将现有项目从 GPL 版迁移到 Community 版：
+
+- **检查软件包版本。** `dhtmlx-gantt` v10 及更高版本为 Community (MIT) 版；v9.x 及更早为 GPL 版。
+- **更新许可证说明**，若在项目中引用了 Gantt 的许可证——免费版现在是 MIT，而不是 GPL。
+- **在运行时验证许可证值** - [`gantt.license`](api/other/license.md) 对 Community 版返回 `"mit"`（之前的免费版返回的是 `"gpl"`）
+- **测试导出行为。** 在线导出服务对免费导出仍然会添加水印；此行为保持不变，与 GPL 许可证不再绑定（导出服务是独立产品）。
+- **查看功能差异。** Community 版不是旧 GPL 版的严格超集。它 **新增** 项目（摘要任务）、里程碑、自定义任务类型，以及每页支持多个 Gantt 实例的能力，但 **移除了** 撤销/重做、标记、多选、未排程任务、新任务占位行、工作日历和 WBS 码。完整功能对比请参见 [Community vs PRO Library Versions](guides/editions-comparison.md)。
+
+
+### XSS protection in framework wrappers
+
+自 v10.0 起，[React Gantt](integrations/react.md)、[Vue Gantt](integrations/vue.md) 及 [Angular Gantt](integrations/angular.md) 封装默认对来自用户提供的模板函数的字符串值进行清理，而不是直接将其作为原始 HTML 插入。这可防止通过模板渲染未经过净化的数据导致的 XSS 漏洞。
+
+它适用于：
+
+- 通过 `templates` 属性传递的函数
+- `config.columns[].template` 函数
+- `config.scales[].format` 函数
+
+默认情况（`htmlTemplatePolicy="basic-sanitize"`）返回的 HTML 采用白名单净化：保留常见的格式标签（`<b>`、`<span>`、`<div>` 等）、`class`、受限的一组内联样式、`data-*` 属性以及具有安全 `src` 的 `<img>`，同时移除 `<script>`、内联事件处理程序和危险的 URL。返回简单标记的模板仍然可以工作；只有不安全的结构会被删除。
+
+#### 还原以前的 raw-HTML 行为
+
+将 `htmlTemplatePolicy` 属性设为 `"unsafe-html"` 以按以前的方式原样渲染模板字符串，无需处理：
+
+~~~jsx
+<ReactGantt htmlTemplatePolicy="unsafe-html" /* ... */ />
+~~~
+
+~~~vue
+<VueGantt htmlTemplatePolicy="unsafe-html" /* ... */ />
+~~~
+
+~~~html
+<dhx-gantt htmlTemplatePolicy="unsafe-html" /* ... */></dhx-gantt>
+~~~
+
+#### 针对单个模板的原始 HTML
+
+用 `allowRawHTML` 包裹单个模板，以绕过该模板的净化——请自行使用导出的 `escapeHTML` 助手对任意用户数据进行清理：
+
+~~~jsx
+import { allowRawHTML, escapeHTML } from "@dhx/react-gantt";
+// 或 "@dhx/vue-gantt" / "@dhx/angular-gantt"
+
+<ReactGantt
+    templates={{
+        task_text: allowRawHTML((start, end, task) => `<b>${escapeHTML(task.text)}</b>`)
+    }}
+/>
+~~~
+
+#### 自定义清理器或文本渲染
+
+使用 `htmlTemplatePolicy={{ mode: "sanitize", sanitize }}` 来接入诸如 DOMPurify 之类的清理器，或使用 `"escape"` 将模板字符串渲染为纯文本。更多信息请参阅 [App security](guides/app-security.md#framework-wrapper-xss-protection)。
+
+
+### Auto-scheduling engine update {#auto-scheduling-v2}
+
+v10.0 内置了经过重新设计的自动排程引擎。它修复了若干长期存在的错误，主要集中在松弛时间（Slack）计算以及在启用 [move_projects](api/config/auto_scheduling.md#move_projects) 时对项目（汇总任务）的排程。
+公共 API 与可见行为保持不变，除了先前工作不正确的情况。可能影响现有代码的变更如下所列。
+
+新引擎默认为默认引擎。如果在过渡期间需要切换回旧的引擎，请使用如下的退出标志：
+
+~~~js
+gantt.config.auto_scheduling = {
+    enabled: true,
+    _engine: "v1",          // previous scheduling engine
+    _analysis_engine: "v1"  // previous slack / critical path calculation
+};
+~~~
+
+这些标志是过渡性的，将在 v10.1 中移除，因此请在此之前完成迁移。
+
+#### 行为变更
+
+| 领域 | 在 v9.x 的情况 | 自 v10.0 起 | 应该怎么做 |
+|---|---|---|---|
+| 重复调用 `gantt.autoSchedule()` | 在混合使用若干日历的项目上，任务可能向前移动 | 在未改动的数据上再次运行自动排程将保留相同日期 | 无需操作 |
+| Slack 与关键路径值 | 当 `move_projects` / `gap_behavior` 改变时可能变化 | 仅依赖数据，与排程模式选项无关 | 无需操作 |
+| 针对不参与计算的任务的 `getTotalSlack()` / `getFreeSlack()`（依赖环、已完成任务） | 可能返回 `undefined` | 返回 `0` | 更新将 `undefined` 与 `0` 区分对待的代码 |
+| `getSlack(task1, task2)` | 仅对直接相连的任务准确 | 跨链接任务的数值更准确；未链接对的数值保持不变 | 更推荐使用 `getTotalSlack` / `getFreeSlack` |
+| 约束与偏好驱动移动的 `onBeforeTaskAutoSchedule` / `onAfterTaskAutoSchedule` 参数 | `link` 和源任务参数可能被设置 | 对此类移动，这些参数为 `null` | 在假设 `link` 参数总是被设置的监听器中增加对 `null` 的检查 |
+| 含 `gap_behavior: "preserve"` 的 Start-to-Finish 链接 | 后继任务总是尽快调度（如同 `"compress"`） | 将遵循 `gap_behavior` 选项 | 无需操作——这是修正后的行为 |
+| 使用 `move_projects: true` 移动项目 | 子孙的自身约束可能悄悄地把整个项目保持在原地 | 整个项目一起移动；若子孙的约束冲突，会通过 `onAutoScheduleConflict` 报告 | 可选地监听 `onAutoScheduleConflict` 以暴露冲突 |
+
+#### 新的事件与配置
+
+- [onAutoScheduleConflict](api/event/onautoscheduleconflict.md) - 在排程期间发现的每个冲突时触发。
+- [onAutoScheduleNoConverge](api/event/onautoschedulenoconverge.md) - 当排程无法对稳定结果达成一致时触发。
+- [strict_calendar](api/config/auto_scheduling.md#strict_calendar) - 可选开启项（默认 `false`），在任务落在自家非工作时间时会发出报告。
+
+#### 已知限制
+
+- 当一个约束日期（例如 **must-finish-on** 或 **start-no-later-than**）落在自定义日历的非工作时间内，任务会获得一个受约束的正确日期，但其存储的 `end_date`（按 start + duration 计算）可能与约束日期完全一致地匹配不上。将触发 [onAutoScheduleConflict](api/event/onautoscheduleconflict.md) 事件，便于你对不匹配做出反应。若要严格遵守约束，请使用工作时间包括该约束日期的日历。
+- 在数据解析后直接在代码中对项目（汇总任务）设置约束类型，可能在解析过程中被覆盖。请在加载的数据中设置此类约束，或通过 lightbox / 内联编辑器进行设置。
+
+
+### Date helper changes {#date-helpers}
+
+#### Interval-start helpers are now pure
+
+[`gantt.date`](api/other/date.md) 的区间起始辅助函数 - `day_start`、`week_start`、`month_start`、`quarter_start`、`year_start`、`hour_start`、`minute_start`，以及 `date_part` - 现在返回一个新的 `Date`，不再修改传给它们的日期。
+
+返回值保持不变，因此仅对依赖就地变更并忽略返回值的代码需要更新：
+
+~~~js
+// before v10.0 - relied on day_start mutating `date`
+gantt.date.day_start(date);
+
+// since v10.0 - use the returned date
+date = gantt.date.day_start(date);
+~~~
+
+#### Single date parser and the deprecated `csp` config
+
+Gantt 不再提供基于 `new Function` 的“快速”日期解析器。现在唯一的实现是 [CSP](api/config/csp.md)-安全解析器，`[csp](api/config/csp.md)` 配置不再影响日期格式化。
+
+该选项仍然保留，并仍被 lightbox 视为一个安全环境提示，因此现有配置将继续工作。无需迁移——仅为日期格式设置的 `gantt.config.csp` 可以移除。
+
+
+### TypeScript: `SerializedTask` is now strictly serialized {#serialized-task-types}
+
+`SerializedTask` 和 `SerializedLink` 类型现在仅描述 **JSON 表单**：
+
+- 日期字段（`start_date`、`end_date`、`constraint_date`、`deadline`、…）被标注为 `string`。在 9.x 版本中它们是 `Date | string`。
+- `SerializedTask.id` 现已可选。
+
+如果你将应用数据（例如 store、种子数组、演示数据）定义为 `SerializedTask[]` 但实际用 `Date` 对象填充，它将导致编译器报错，例如 *"Type 'Date' is not assignable to type 'string'"*。
+
+请选取与数据实际保存的类型匹配的类型：
+
+- **`Task` / `Link`** - 运行时对象，日期为 `Date`，并带有 `$` 前缀的字段（这是 `gantt.getTask()` 返回的对象）。
+- **`SerializedTask` / `SerializedLink`** - 含 `string` 日期的 JSON（服务器交换、持久化 JSON）。
+- **`TaskInput`** - 你提供给 Gantt 的数据；日期可以是 `Date` 或 `string`，并且每个字段（包括 `id`）都是可选的。这通常是应用程序拥有的状态的正确类型。
+
+~~~ts
+// before v10 - SerializedTask accepted Date, so this compiled
+const tasks: SerializedTask[] = [
+    { id: 1, text: "Task #1", start_date: new Date(2026, 3, 1), duration: 5 }
+];
+
+// since v10 - use Task (Date dates), or TaskInput when the date form may vary
+const tasks: TaskInput[] = [
+    { id: 1, text: "Task #1", start_date: new Date(2026, 3, 1), duration: 5 }
+];
+~~~
+
+`TaskInput` 是規範的輸入類型，取代了先前已棄用的 `NewTask` 別名（為了向後相容，仍然導出）。有關完整信息，請參閱[資料模型](guides/data-model.md#taskinput)
+
 ## 9.0 -> 9.1
 
 v9.1 不会引入重大变更，但若干配置选项已被标记为 **弃用**，并建议 [迁移到新的统一格式](#autoscheduling)。

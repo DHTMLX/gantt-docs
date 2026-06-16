@@ -6,8 +6,75 @@ sidebar_label: "Was gibt es Neues"
 # Was gibt es Neues
 
 :::note
-Aktualisieren Sie von einer früheren Version? Prüfen Sie die [Migrationsanleitung](migration.md) auf erforderliche Änderungen und Schritte zur Aktualisierung.
+Aktualisieren Sie von einer früheren Version? Prüfen Sie die [Migrationshinweise](migration.md) auf erforderliche Änderungen und Update-Schritte.
 :::
+
+## 10.0
+
+<span class='release_date'>11. Juni 2026. Hauptveröffentlichung</span>
+
+Dieses Update bringt einige Änderungen an der Struktur des Gantt-Pakets und am Verhalten der Funktionalität mit sich. Stellen Sie sicher, die 
+[Migrationshinweise](migration.md#91---100) zu prüfen, um auf der sicheren Seite zu sein.
+
+
+### Neue Funktionen
+
+- DHTMLX Gantt Community Edition ist offiziell veröffentlicht worden - die kostenlose Edition wird jetzt unter der [MIT-Lizenz](migration.md#gpl-to-mit) vertrieben
+- [Angular Gantt](integrations/angular.md) Wrapper ist offiziell veröffentlicht worden
+- [Vue Gantt](integrations/vue.md) Wrapper ist offiziell veröffentlicht worden
+- [Zoom-to-fit](guides/zooming.md#zoom-to-fit) ist out-of-the-box verfügbar: [`gantt.ext.zoom.zoomToFit()`](guides/zoom.md#methods) wählt die detaillierteste Zoom-Stufe, die alle Aufgaben in der Timeline ohne horizontales Scrollen hineinpasst, und [`resetZoom()`](guides/zoom.md#methods) kehrt zur vorherigen Skala zurück
+- [React Gantt](integrations/react.md) bietet jetzt einsatzbereite [React-Hooks](integrations/react/hooks.md) für die am häufigsten verwendeten Gantt-APIs und liefert funktionsbereite Defaults für das Ressourcen-Histogramm, wodurch der meiste Boilerplate entfällt, der zuvor nötig war, um auf die native Instanz zuzugreifen
+- Unterstützung für zusätzliche [Sprachen](guides/localization.md) wurde hinzugefügt - darunter Vereinfachtes Chinesisch, Traditionelles Chinesisch, Kantonesisch, Thailändisch und Vietnamesisch - und vorhandene Übersetzungen wurden verbessert
+
+
+### Updates
+
+- Die Auto Scheduling-Engine wurde grundlegend überarbeitet, wodurch langbestehende Fehler behoben wurden
+- Aktualisierte TypeScript-Typdefinitionen, siehe die [Datenmodell-Übersicht](guides/data-model.md) für Details
+- Die Datumserkennung und -Formatierung verwenden nun eine einzige CSP-sichere Implementierung
+- Die [Zoom-Erweiterung](guides/zoom.md) liefert jetzt benannte, standardmäßige Zoom-Stufen (Default Levels), sodass sie ohne benutzerdefinierte `levels`-Konfiguration initialisiert werden kann (`gantt.ext.zoom.init()`)
+- Die [`gantt.date`](api/other/date.md) Intervallstart-Helfer sind nun **rein** – sie geben ein neues `Date` zurück, statt das übergebene zu verändern
+- [React Gantt](integrations/react.md) gibt nun die **Gantt-Instanz** an die [customLightbox](integrations/react/overview.md#by-providing-a-custom-component-via-the-customlightbox-prop) Komponente weiter, wodurch direkter Zugriff auf die Gantt-API vom benutzerdefinierten Editor möglich ist
+- [React Gantt](integrations/react.md), [Vue Gantt](integrations/vue.md) und [Angular Gantt](integrations/angular.md) Wrapper escapen standardmäßig Zeichenketten, die von Template-Funktionen zurückgegeben werden, um XSS-Angriffe zu verhindern. Dies gilt für `templates`, `config.columns[].template` und `config.scales[].format`-Funktionen
+
+
+### Fixes
+
+Die überarbeitete [Auto Scheduling]-Engine behebt eine Reihe von seit langem bestehenden Planungs-, Beschränkungs- und kritischen Pfad-Fehlern:
+
+- Behebung des Problems, bei dem Aufgaben mit dem **ASAP**-Verhalten vor dem Datum `project_start` verschoben wurden, wenn ihre Geschwister die [Beschränkungen](guides/constraint.md) hatten
+- Behebung der unerwarteten Verschiebung von Geschwisteraufgaben zu frühere Daten während des [Auto Scheduling], wenn [auto_scheduling_move_projects](api/config/auto_scheduling_move_projects.md) aktiviert war
+- Behebung des Problems, bei dem Unteraufgaben auf falsche Daten neu terminiert wurden, wenn ihr übergeordnetes Projekt einen anderen [Kalender](api/method/addcalendar.md) verwendete als seine Unteraufgaben
+- Behebung des Problems, bei dem Unteraufgaben auf ein zukünftiges Datum verschoben wurden, wenn ihr verknüpfter Vorgänger Nicht-Arbeitszeit hatte und die Unteraufgabe einen Vollzeitskalender verwendete
+- Behebung des Problems, bei dem Unteraufgaben mit eigenem Kalender auf ein zukünftiges Datum terminiert wurden, wenn [inherit_calendar](api/config/inherit_calendar.md) in Mehrfach-Ebenen-Projekten aktiviert war
+- Behebung des Problems, bei dem Aufgaben zeitlich über das `project_end`-Datum hinaus geplant wurden während des rückwärts gerichteten [Auto Scheduling]
+- Behebung des Problems, bei dem [Auto Scheduling] die Logik der Beschränkung weiterhin auf MSO/MFO-Aufgaben anwandte, obwohl auto_scheduling_compatibility aktiviert war
+- Behebung des Problems, bei dem eine verknüpfte Unteraufgabe falsch geplant wurde, wenn ihr Link eine negative Verzögerung hatte, größer als die Dauer des Nachfolgers war und das elterliche Projekt mit einem Finish-to-Finish- oder Start-to-Finish-Link verbunden war
+
+Andere Fixes:
+
+- Behebung des Problems, bei dem Meilensteine durch auto_types nicht in Projekte umgewandelt wurden, wenn eine Unteraufgabe ihnen hinzugefügt wurde
+- Behebung des Problems in [React Gantt](integrations/react.md), bei dem ISO-Datumsstrings ohne explizite `parse_date`/`format_date`-Templates nicht korrekt behandelt wurden
+- Behebung des Problems in [React Gantt](integrations/react.md), bei dem eine Aufgabe ihren Elternknoten verlor, wenn ein neues Dataset geladen wurde und das Kind oberhalb seines Elternteils in den Daten positioniert war
+- Behebung des Problems in [React Gantt](integrations/react.md), bei dem der vertikale [Reorder]-Marker nicht über die gesamte Rasterbreite zog
+
+
+## 9.1.4
+
+<span class='release_date'>27. März 2026. Bugfix-Veröffentlichung</span>
+
+### Neue Funktionen
+
+- Beta-Veröffentlichung des Angular Gantt-Wrappers
+
+### Fixes
+
+- Behebung des Problems, bei dem Rollup-Aufgaben auf Touch-Geräten nicht gezogen werden konnten
+- Behebung des Problems, bei dem Auto Scheduling ein verknüpftes Projekt auf ein zukünftiges Datum verschob, wenn das Projekt ungeplante Kindaufgaben hatte
+- Behebung des Problems, bei dem der Drag-Marker zum Neuanordnen und der Aufgaben-Platzhalter falsche Größen hatten, wenn das Raster scrollbar war
+- Behebung des Skriptfehlers, der auftrat, wenn DataProcessor standardmäßig nicht das ISO-Datumsformat verwendete, wenn Aufgaben mit Datumsangaben im Date-Format geladen wurden
+- Behebung des Skriptfehlers, der auftrat, wenn drag_links deaktiviert war und eine Split-Task-Zeile höher war als ihre Elternzeile
+- Behebung eines Regression-Fehlers, bei dem Timeline-Skalenzellen nach Änderung des Zoomlevels verschwanden
 
 ## 9.1.3
 

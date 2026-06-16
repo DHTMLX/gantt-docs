@@ -8,7 +8,9 @@ sidebar_label: "Export/Import für Excel, Export nach iCal"
 Die dhtmlxGantt-Bibliothek ermöglicht das Exportieren von Daten aus dem Gantt-Diagramm in die Formate Excel und iCal. Sie können auch Daten aus einer Excel-Datei in den Gantt importieren.
 
 :::note
-Der Dienst ist kostenlos, aber die erzeugte Excel-/iCal-Datei enthält unter der GPL-Lizenz das Wasserzeichen der Bibliothek. Falls Sie eine Lizenz erwerben, wird das Exportergebnis während des gültigen Supportzeitraums (12 Monate für alle PRO-Lizenzen) wasserzeichenfrei verfügbar.
+Der Service ist kostenlos, aber die exportierte Excel-/iCal-Datei enthält das Wasserzeichen der Bibliothek.
+Um ohne Wasserzeichen zu exportieren, benötigen Sie eine gültige Lizenz – das Export-Ergebnis steht ohne Wasserzeichen zur Verfügung
+während der gültigen Support-Periode (12 Monate für alle PRO-Lizenzen).
 :::
 
 Es gibt mehrere Export-Dienste. Sie können sie lokal auf Ihrem Computer installieren und das Gantt-Diagramm lokal nach Excel oder iCal exportieren. Beachten Sie, dass Export-Dienste nicht im Gantt-Paket enthalten sind. Lesen Sie den [entsprechenden Artikel](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml), um die Nutzungsbedingungen jedes Dienstes zu erfahren.

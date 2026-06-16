@@ -1,4 +1,4 @@
---- 
+---
 title: Verwendung der DHTMLX Gantt-Eigenschaften in ReactGantt
 sidebar_label: Konfiguration
 description: "Vollständige Referenz der Wrapper-Props, die der Gantt-Konfiguration, Templates, Events und Datenstoren zugeordnet sind"
@@ -6,7 +6,7 @@ description: "Vollständige Referenz der Wrapper-Props, die der Gantt-Konfigurat
 
 # Verwendung der DHTMLX Gantt-Eigenschaften in ReactGantt
 
-Diese Seite beschreibt die von React Gantt akzeptierten Props und wie sie auf DHTMLX Gantt-Funktionen abgebildet werden.
+Diese Seite beschreibt die von React Gantt akzeptierten Props und wie sie DHTMLX Gantt-Funktionen zugeordnet werden.
 
 ## Verfügbare Props
 
@@ -57,7 +57,7 @@ Diese Seite beschreibt die von React Gantt akzeptierten Props und wie sie auf DH
   <tr>
   <td>markers</td>
   <td>Marker[]</td>
-  <td>Ein Array von Marker-Objekten für [Timeline-Markierungen](/guides/markers).</td>
+  <td>Ein Array von Marker-Objekten für [Timeline-Marker](/guides/markers).</td>
   </tr>
   <tr>
   <td>plugins</td>
@@ -107,7 +107,12 @@ Diese Seite beschreibt die von React Gantt akzeptierten Props und wie sie auf DH
   <tr>
   <td>modals</td>
   <td>GanttModals</td>
-  <td>Ermöglicht das Ersetzen der Modals <code>onBeforeTaskDelete</code> und <code>onBeforeLinkDelete</code> durch benutzerdefinierte Komponenten.</td>
+  <td>Ermöglicht das Ersetzen von <code>onBeforeTaskDelete</code> und <code>onBeforeLinkDelete</code> Modalen durch benutzerdefinierte Komponenten.</td>
+  </tr>
+  <tr>
+  <td>htmlTemplatePolicy</td>
+  <td>HtmlTemplatePolicy</td>
+  <td>Steuert, wie Zeichenfolgen, die von Template-Funktionen zurückgegeben werden, gerendert werden. <code>"basic-sanitize"</code> (Standard) erlaubt, das zurückgegebene HTML zu sanitizen: sichere Formatierung, Klassen, eingeschränkte Inline-Stile, <code>data-*</code>-Attribute und <code>img</code> bleiben erhalten, während Skripte, Ereignis-Handler und gefährliche URLs entfernt werden. <code>"escape"</code> rendert die Zeichenfolge als Text; <code>"unsafe-html"</code> rendert die Rohzeichenfolge (vor V10-Verhalten); ein benutzerdefiniertes Sanitizer-Objekt (<code>mode: "sanitize"</code> mit einer <code>sanitize(html)</code>-Funktion) erlaubt es, eine Bibliothek wie DOMPurify einzubinden. Für die Ein-Zeilen-Pro Vorlage stecken Sie einzelne Template-Funktionen mit dem exportierten <code>allowRawHTML()</code>-Hilfsprogramm ein. See [Migration notes](/migration#91---92).</td>
   </tr>
   <tr>
   <td>(Event Props)</td>
@@ -116,6 +121,22 @@ Diese Seite beschreibt die von React Gantt akzeptierten Props und wie sie auf DH
   </tr>
   </tbody>
 </table>
+
+## Type Exports
+
+Das Paket `@dhx/react-gantt` re-exportsiert mehrere TypeScript-Typen, die Sie verwenden können, um Ihren Anwendungs-Code zu annotieren:
+
+| Export | Beschreibung |
+|--------|------------|
+| `Task` | Internes Gantt-Aufgaben-Objekt. Datumswerte sind `Date`-Objekte; umfasst `$`-präfixierte System-Eigenschaften. Verwenden Sie es in Ereignis-Handlern und beim Arbeiten mit Daten, die Gantt besitzt. |
+| `Link` | Internes Gantt-Verbindungsobjekt. Verwenden Sie es in Ereignis-Handlern und beim Arbeiten mit Daten, die Gantt besitzt. |
+| `SerializedTask` | Vom Benutzer sichtbare Aufgaben-Struktur für Store-Zustand, anfängliche Daten und Payloads von Save-Callbacks. Datumsfelder akzeptieren `Date | string`. |
+| `SerializedLink` | Vom Benutzer sichtbare Verbindungs-Struktur für Store-Zustand, anfängliche Daten und Payloads von Save-Callbacks. |
+
+**Wann API-Task/Link-Objekte vs SerializedTask/SerializedLink verwenden:**  
+
+- **`SerializedTask` / `SerializedLink`** – für Daten, die Sie besitzen: Store-Zustand, API-Antworten, anfängliche Daten-Literale. Datumsfelder akzeptieren Strings (z. B. ISO-Daten).  
+- **`Task` / `Link`** – für Daten, die Gantt besitzt: innerhalb von Ereignis-Handlern, nachdem Gantt die Daten geparst hat. Datumsfelder sind `Date`-Objekte. `Task` enthält `$`-präfixierte interne Eigenschaften.
 
 ## Beispielverwendung
 
@@ -146,11 +167,11 @@ Diese Seite beschreibt die von React Gantt akzeptierten Props und wie sie auf DH
     task_text: (start, end, task) => `#${task.id}: ${task.text}`,
   }}
 />
-~~~ 
+~~~
 
 ## Verwendung von Event-Props
 
-Sie können jedes DHTMLX Gantt-Ereignis auch als Prop übergeben. Zum Beispiel:
+Sie können jedes DHTMLX Gantt-Ereignis als Prop übergeben. Zum Beispiel:
 
 ~~~js
 <ReactGantt
@@ -158,150 +179,46 @@ Sie können jedes DHTMLX Gantt-Ereignis auch als Prop übergeben. Zum Beispiel:
   onTaskClick={(id, e) => {
     console.log('Task clicked:', id);
     return true; 
-  }}/>
+  }}
 
-~~~ 
-Internally, the wrapper calls [gantt.attachEvent("onBeforeTaskAdd", handler)](api/method/attachevent.md) if you pass a prop named `onBeforeTaskAdd`. For a full event list, see [DHTMLX Gantt API](api/overview/events-overview.md).
+/>
+~~~
+Internally, der Wrapper ruft [gantt.attachEvent("onBeforeTaskAdd", handler)](api/method/attachevent.md) auf, wenn Sie ein Prop mit dem Namen `onBeforeTaskAdd` übergeben. Für eine vollständige Ereignisliste siehe [DHTMLX Gantt API](api/overview/events-overview.md).
 
 ## Kombination von Props und der DHTMLX API
 
-Die Bibliothek `@dhx/react-gantt` ist darauf ausgelegt, so deklariert wie möglich zu sein – die meisten Anwendungsfälle lassen sich über die Standard-Props abdecken (wie tasks, links, resources, templates usw.). Dennoch kann es Szenarien geben, in denen Sie tieferen Zugriff auf die Gantt-Engine benötigen. Zum Beispiel für:
+Bibliothek `@dhx/react-gantt` ist darauf ausgelegt, so deklarativ wie möglich für den Alltag zu sein – die meisten Anwendungsfälle lassen sich über die Standard-Props lösen (wie tasks, links, resources, templates usw.). Es kann jedoch Situationen geben, in denen Sie tieferen Zugriff auf die Gantt-Engine benötigen. Beispielsweise für:
 
-- Arbeitszeitberechnungen
-- Automatische Terminplanung
-- Logik oder fortgeschrittene Funktionen wie Ressourcenberechnungen
+- [Arbeitszeitberechnungen](guides/working-time.md)
+- [Auto-Scheduling]-Logik oder fortgeschrittene Funktionen wie [Ressourcenberechnungen](guides/resource-management.md)
+- Aufruf spezieller Methoden der [Gantt API](api/api-overview.md)
 
-In diesen Fällen können Sie zwei zusätzliche Ansätze verwenden, um die zugrunde liegende DHTMLX Gantt-Funktionalität anzuzapfen:
+In diesen Fällen können Sie zwei zusätzliche Ansätze verwenden, um Zugriff auf die zugrunde liegende DHTMLX Gantt-Funktionalität zu erhalten:
 
-- **React-Hooks** speziell von dem Wrapper bereitgestellte Brückenhooks, um die Datenspeicher und Planungslogik von Gantt zu verbinden
+- **[React-Hooks](integrations/react/hooks.md)**, die speziell vom Wrapper bereitgestellt werden, um Gantts Datenspeicher- und Planungslogik zu überbrücken
 
-- **Direkter Zugriff** auf die Gantt-Instanz über eine `\ref`, falls die integrierten Hooks nicht alle Ihre Bedürfnisse abdecken
+- **Direkter Zugriff** auf die Gantt-Instanz über eine Ref, falls die integrierten Hooks nicht alle Bedürfnisse abdecken
 
 ### Verwendung integrierter Hooks
 
-Die Bibliothek `@dhx/react-gantt` stellt eine Reihe optionaler Hooks bereit, die React-Komponenten mit den internen Gantt-APIs verbinden. Diese Hooks bieten eine „Brücke“ zu den zugrunde liegenden Methoden und Daten speichern von Gantt. Sie können diese Hooks direkt in Ihren Komponenten verwenden oder zu eigenen, benutzerdefinierten Hooks kombinieren, um spezialisierte Features wie Ressourcen-Histogramme zu realisieren.
+Die Bibliothek `@dhx/react-gantt` stellt Hooks für Ereignisabonnements, Ressourcenverwaltung, Zugriff auf Datenspeicher, Undo/Redo, Zoom, Selektion und Arbeitszeitsberechnungen bereit.
 
-#### useGanttDatastore&lt;T&gt;(ganttRef, storeName)
+Siehe die专 dedicierte Seite **[Hooks](integrations/react/hooks.md)** für die vollständige Referenz, einschließlich:
 
-Der `useGanttDatastore`-Hook gewährt Lesezugriff auf einen bestimmten Gantt-Datenspeicher. 
-Häufig wird auf den Ressourcen-Datenspeicher, Baseline oder jeden anderen eingebauten oder benutzerdefinierten Speichertypen zugegriffen.
+- [useGanttEvent](integrations/react/hooks.md#useganttEvent) – Ereignisabonnements mit Lifecycle-Management
+- [useResourceAssignments](integrations/react/hooks.md#useresourceassignments) – Abfragen und Mutationen von Ressourcen-Zuweisungen
+- [useGanttDatastore](integrations/react/hooks.md#useganttdatastore) – schreibgeschützter Zugriff auf den Datenspeicher
+- [useUndoRedo](integrations/react/hooks.md#useundoredo) – Undo/Redo-Status und -Aktionen
+- [useZoom](integrations/react/hooks.md#usezoom) – Zoom-Steuerung und -Status
+- [useSelection](integrations/react/hooks.md#useselection) – Verfolgung der Aufgaben-Selektion
+- [useWorkTime](integrations/react/hooks.md#useworktime) – Arbeitszeitsberechnungen
 
-Er bietet die folgenden Funktionen:
+### Direkter Zugriff auf Gantt-Instanz mit Ref
 
-- `getItem(id)` -  gibt ein bestimmtes Element aus dem Datenspeicher zurück
+Während Hooks die meisten fortgeschrittenen Bedürfnisse abdecken, möchten Sie möglicherweise dennoch direkten Zugriff auf die gesamte Gantt-Instanz haben. Dafür bleibt der Ref-Ansatz verfügbar:
 
-- `getItems()` -  gibt alle Elemente im angegebenen Datenspeicher zurück
-
-- `hasChild(id: string | number)` - prüft, ob ein Element Kinder hat
-
-- `getChildren(id: string | number)` - ruft Kind-Elemente ab
-
-~~~js
-import { useMemo } from 'react';
-import { useGanttDatastore } from '@dhx/react-gantt';
-
-function MyResourceList({ ganttRef }) {
-  const resourceStore = useGanttDatastore(ganttRef, 'resource');
-
-  const resourceIds = resourceStore.getItems().map(item => item.id);
-
-  // zur Demonstration einfach Daten protokollieren
-  useMemo(() => {
-    console.log('Resource IDs:', resourceIds);
-  }, [resourceIds]);
-
-  return null; 
-}
-~~~
-
-Du kannst diesen Hook verwenden, wann immer du direkte Low-Level-Daten aus einem bestimmten Datenspeicher benötigst. Zum Beispiel, um zu prüfen, ob eine Ressource eine Gruppe ist oder eine Einzelressource.
-
-#### useResourceAssignments(ganttRef)
-
-Der `useResourceAssignments`-Hook stellt Gantts ressourcenbezogene Methoden bereit, z. B. das Abrufen von Zuordnungen für eine Ressource oder das Auflisten, welche Ressourcen einem bestimmten Task zugewiesen sind.
-
-Es bietet die folgenden Funktionen:
-
-- `getResourceAssignments(resourceId, taskId?)` - Brücke zu [](api/method/getresourceassignments.md)
-- `getTaskResources(taskId)` - Brücke zu [](api/method/gettaskresources.md)
-
-~~~js
-import React from 'react';
-import { useResourceAssignments } from '@dhx/react-gantt';
-
-export function ResourceUsage({ ganttRef, taskId }) {
-  const { getTaskResources } = useResourceAssignments(ganttRef);
-
-  const resources = getTaskResources(taskId);
-  return (
-    <div>
-      Task {taskId} assigned to: 
-      {resources.map(r => r.text).join(', ')}
-    </div>
-  );
-}
-~~~
-
-Sie benötigen diesen Hook möglicherweise für benutzerdefinierte Logik rund um die Ressourcennutzung, z. B. Berechnung von zugewiesenen Stunden oder Gruppierung von Aufgaben nach Eigentümer.
-
-#### useWorkTime(ganttRef)
-
-Stellt eine direkte Brücke zu eingebauten DHTMLX Gantt-Arbeitszeit-Funktionen bereit, wie [](api/method/isworktime.md), [](api/method/calculateenddate.md), [](api/method/calculateduration.md).
-
-Sie benötigen diesen Hook, um die Arbeits-/Nicht-Arbeitszeit gemäß den Gantt-Arbeitskalender-Einstellungen hervorzuheben, sowie für Datumsoperationen im Einklang mit Arbeitskalendern.
-
-Er bietet die folgenden Funktionen:
-
-- `isWorkTime({ date:Date, unit?: string, task?:Task })` - Brücke zu [](api/method/isworktime.md)
-- `calculateEndDate({start:Date, duration:number, unit?: string, task?: Task})` - Brücke zu [](api/method/calculateenddate.md)
-- `calculateDuration({start:Date, end:Date, task?: Task})` - Brücke zu [](api/method/calculateduration.md)
-- `getClosestWorkTime({ date:Date, unit?: string, task?: Task, dir?: "past"|"future" })` - Brücke zu [](api/method/getclosestworktime.md)
-
-
-~~~js
-import { useEffect, useRef, useState } from 'react';
-import ReactGantt, {GanttTemplates, useWorkTime} from "@dhx/react-gantt";
-import "@dhx/react-gantt/dist/react-gantt.css";
-
-export default function GanttTemplatesDemo() {
-  const ganttRef = useRef<ReactGanttRef>(null);
-
-  const { isWorkTime }= useWorkTime(ganttRef);
-  ...
-  const templates: GanttTemplates = {
-    timeline_cell_class: (task: Task, date: Date) => {
-      return isWorkTime({date, task}) ? "" : "weekend";
-    }
-  };
-  ...
-~~~
-
-#### Komposition von Hooks in eigene, benutzerdefinierte Hooks
-
-Eine gute Praxis besteht darin, eigene domänen- oder projektbezogene Hooks mithilfe dieser grundlegenden Bridging-Hooks zu erstellen. Zum Beispiel, wenn du ein Ressourcen-Histogramm erstellen möchtest, könntest du einen eigenen Hook erstellen, der Kapazitätswerte cacht, Ressourcennutzung summiert usw.:
-
-~~~js
-import { useMemo } from 'react';
-import { useGanttDatastore, useResourceAssignments } from '@dhx/react-gantt';
-
-export function useResourceHistogram(ganttRef) {
-  const resourceStore = useGanttDatastore(ganttRef, 'resource');
-  const { getResourceAssignments } = useResourceAssignments(ganttRef);
-
-  // Benutzerdefinierte Logik: Kapazität-Caching, Gruppenerkennung, etc.
-  // ...
-  return {
-    // z. B. getCapacity, getAllocatedValue
-  };
-}
-~~~
-
-### Direkter Zugriff auf die Gantt-Instanz per ref
-
-Obwohl diese Hooks die meisten fortgeschrittenen Bedürfnisse abdecken, möchtest du möglicherweise den direkten Zugriff auf die gesamte Gantt-Instanz behalten. Dafür bleibt der Ref-Ansatz verfügbar:
-
-~~~jsx
-import React, { useRef, useEffect } from 'react';
+~~~tsx
+import { useRef, useEffect } from 'react';
 import ReactGantt, { ReactGanttRef } from '@dhx/react-gantt';
 
 export function DirectRefExample({ tasks, links }) {
@@ -310,24 +227,15 @@ export function DirectRefExample({ tasks, links }) {
   useEffect(() => {
     const gantt = ganttRef.current?.instance;
     if (!gantt) return;
-
-    // hier kannst du JEDE Gantt-API-Methode aufrufen
-    console.log('All tasks:', gantt.getTaskByTime());
     gantt.showDate(new Date());
   }, []);
 
-  return (
-    <ReactGantt
-      ref={ganttRef}
-      tasks={tasks}
-      links={links}
-    />
-  );
+  return <ReactGantt ref={ganttRef} tasks={tasks} links={links} />;
 }
 ~~~
 
 :::note
-info Beachten Sie, dass wenn Sie Aufgaben/Links in der direkten Gantt-Instanz ändern, während Sie sie gleichzeitig als React-Props übergeben, Sie sie synchron halten oder die Daten erneut parsen sollten. Andernfalls könnte das nächste React-Re-Rendern Ihre manuellen Änderungen überschreiben.
-:::
+Wenn Sie Aufgaben oder Links über die direkte Gantt-Instanz ändern und sie gleichzeitig als React-Props liefern, halten Sie sie synchron. Andernfalls könnte das nächste React-Re-Render Ihre manuellen Änderungen überschreiben.
+:::  
 
-Wenn du etwas tun möchtest, das durch eine Prop nicht abgedeckt wird, kannst du dennoch Gantt-Methoden direkt aufrufen. Siehe [Accessing the Underlying Gantt API](integrations/react/overview.md#accessingtheunderlyingganttapi) für weitere Details.
+Siehe [Accessing the Underlying Gantt API](integrations/react/overview.md#accessingtheunderlyingganttapi) für weitere Details.

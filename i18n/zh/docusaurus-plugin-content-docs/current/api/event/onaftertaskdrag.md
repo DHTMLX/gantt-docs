@@ -21,14 +21,14 @@ description: "在用户完成拖拽并松开鼠标按钮后触发"
 ### Example
 
 ~~~jsx
-gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
+gantt.attachEvent("onAfterTaskDrag", (id, mode, e) => {
     // 在这里插入您的自定义逻辑
 });
 ~~~
 
 ### Details
 
-当用户在时间线区域拖动任务时触发。
+此事件在用户在时间线区域拖动任务后触发。
 
 ### Related API
 - [drag_mode](api/config/drag_mode.md)

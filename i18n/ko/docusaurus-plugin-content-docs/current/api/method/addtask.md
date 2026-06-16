@@ -10,11 +10,11 @@ description: "새로운 작업을 추가합니다"
 
 @short: 새로운 작업을 추가합니다
 
-@signature: addTask: (task: NewTask, parent?: string | number, index?: number) => string | number
+@signature: addTask: (task: TaskInput, parent?: string | number, index?: number) =\> string | number
 
 ### Parameters
 
-- `task` - (필수) *NewTask* - 작업 객체
+- `task` - (필수) *TaskInput* - 작업 객체
 - `parent` - (선택적) *string | number* - 부모의 id
 - `task` - (선택적) *number* - 태스크가 추가될 위치(0 이상)
 

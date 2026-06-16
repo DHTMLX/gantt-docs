@@ -14,7 +14,7 @@ description: "在一个容器中初始化一个 dhtmlxGantt"
 
 ### Parameters
 
-- `container` - (required) *string* - | HTMLElement        一个 HTML 容器（或其 id），将在其中初始化一个 dhtmlxGantt 对象
+- `container` - (required) *string | HTMLElement* -  一个 HTML 容器（或其 id），将在其中初始化一个 dhtmlxGantt 对象
 
 ### Example
 
@@ -28,35 +28,35 @@ gantt.load("tasks.json");
 
 ### Details
 
-使用该方法的第 2 个和第 3 个参数来设置时间尺度的边界值是一种很好的做法：
+使用 `init()` 的第二个和第三个参数来设置时间刻度的边界值：
 
 ~~~js
-gantt.init("gantt_here", new Date(2023, 08, 10), new Date(2023, 08, 20));
+gantt.init("gantt_here", new Date(2027, 8, 10), new Date(2027, 8, 20));
 ~~~
 
-请注意，`gantt.init` 方法的日期参数只是 [start_date](api/config/start_date.md) 和 [end_date](api/config/end_date.md) 配置的简写。
-下面的两个代码片段彼此等价：
+请注意，`init()` 的日期参数是 [start_date](api/config/start_date.md) 和 [end_date](api/config/end_date.md) 配置的快捷方式。
+下面的两段代码彼此等价：
 
 ~~~js
-gantt.init("gantt_here", new Date(2023, 08, 10), new Date(2023, 08, 20));
+gantt.init("gantt_here", new Date(2027, 8, 10), new Date(2027, 8, 20));
 ~~~
 
-以及
+和
 
 ~~~js
-gantt.config.start_date = new Date(2023, 08, 10);
-gantt.config.end_date = new Date(2023, 08, 20);
+gantt.config.start_date = new Date(2027, 8, 10);
+gantt.config.end_date = new Date(2027, 8, 20);
 gantt.init("gantt_here");
 ~~~
 
 这些配置的作用是定义并限制显示的日期范围。超出该范围的任务将不会被显示。
 
-使用 `gantt.init` 方法的日期参数，以及 [start_date](api/config/start_date.md) 和 [end_date](api/config/end_date.md) 配置，将取消 [fit_tasks](api/config/fit_tasks.md) 设置。
+使用 `init()` 的日期参数，以及 [start_date](api/config/start_date.md) 和 [end_date](api/config/end_date.md) 配置，将取消 [fit_tasks](api/config/fit_tasks.md) 设置。
 
 如果你希望时间刻度根据日期范围动态调整，可以跳过这些参数，或 [动态管理时间范围](guides/configuring-time-scale.md#range)。
 
 :::note
-本方法会通过 [addTaskLayer](api/method/addtasklayer.md) 和 [addLinkLayer](api/method/addlinklayer.md) 方法添加到时间线区域的自定义图层进行重置。因此，在调用 **gantt.init** 方法后，你需要重新定义这些自定义图层，以便它们在页面上显示。 
+此方法会重置通过 [`addTaskLayer()`](api/method/addtasklayer.md) 和 [`addLinkLayer()`](api/method/addlinklayer.md) 方法添加到时间线区域的自定义图层。因此，在调用 `init()` 之后，你需要重新定义它们，以便在页面上显示自定义图层。
 :::
 
 ### Related API

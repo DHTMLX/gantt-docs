@@ -33,34 +33,34 @@ sidebar_label: "从 MS Project 导入的属性"
 <div class="msp-properties">
 | | | | |
 |---|---|---|---|
-| Active | DurationText | LevelingDelayFormat | RemainingOvertimeWork |
-| ActualCost | EarlyFinish | LinkedFields | RemainingWork |
-| ActualDuration | EarlyStart | Manual | ResponsePending |
-| ActualFinish | EarnedValueMethod | ManualDuration | Resume |
-| ActualOvertimeCost | EffortDriven | Marked | ResumeValid |
-| ActualOvertimeWork | Estimated | Milestone | Rollup |
-| ActualStart | Finish | Name | SPI |
-| ActualWork | FinishSlack | Notes | Start |
-| ACWP | FinishText | Objects | StartSlack |
-| Baseline | FinishVariance | OutlineLevel | StartText |
-| BCWP | FixedCost | OutlineNumber | StartVariance |
-| BCWS | FixedCostAccrual | OverAllocated | Stop |
-| CalendarUID | FreeSlack | OvertimeCost | SubprojectName |
-| CompleteThrough | GUID | OvertimeWork | SubprojectReadOnly |
-| ConstraintDate | HideBar | PercentComplete | Successors |
-| ConstraintType | Hyperlink | PercentWorkComplete | Summary |
-| Contact | HyperlinkAddress | PhysicalPercentComplete | SV |
-| Cost | HyperlinkSubAddress | Placeholder | SVPercent (internal MSP property that is not added to files) |
-| CostVariance | ID (don't include it if it doesn't match the task ID) | Predecessors | SV% (internal MSP property that is not added to files) |
-| CPI | IgnoreResourceCalendar | Project | TaskMode |
-| CreateDate | Indicators | Publish | TotalSlack |
-| Critical | IsPublished | Priority | Type |
-| CV | IsSubproject | Recurring | UID |
-| CVPercent (internal MSP property that is not added to files) | LateFinish | RegularWork | UpdateNeeded |
-| CV%  (internal MSP property that is not added to files)| LateStart | RemainingCost | WBS |
-| Deadline | LevelAssignments | RemainingDuration | Work |
-| Duration | LevelingCanSplit | RemainingOvertimeCost | WorkVariance |
-| DurationVariance | LevelingDelay | | |
+| Active | DurationFormat | LevelingDelay | RemainingOvertimeWork |
+| ActualCost | DurationText | LevelingDelayFormat | RemainingWork |
+| ActualDuration | EarlyFinish | LinkedFields | ResponsePending |
+| ActualFinish | EarlyStart | Manual | Resume |
+| ActualOvertimeCost | EarnedValueMethod | ManualDuration | ResumeValid |
+| ActualOvertimeWork | EffortDriven | Marked | Rollup |
+| ActualStart | Estimated | Milestone | SPI |
+| ActualWork | Finish | Name | Start |
+| ACWP | FinishSlack | Notes | StartSlack |
+| Baseline | FinishText | Objects | StartText |
+| BCWP | FinishVariance | OutlineLevel | StartVariance |
+| BCWS | FixedCost | OutlineNumber | Stop |
+| CalendarUID | FixedCostAccrual | OverAllocated | SubprojectName |
+| CompleteThrough | FreeSlack | OvertimeCost | SubprojectReadOnly |
+| ConstraintDate | GUID | OvertimeWork | Successors |
+| ConstraintType | HideBar | PercentComplete | Summary |
+| Contact | Hyperlink | PercentWorkComplete | SV |
+| Cost | HyperlinkAddress | PhysicalPercentComplete | SVPercent (internal MSP property that is not added to files) |
+| CostVariance | HyperlinkSubAddress | Placeholder | SV% (internal MSP property that is not added to files) |
+| CPI | ID (don't include it if it doesn't match the task ID) | Predecessors | TaskMode |
+| CreateDate | IgnoreResourceCalendar | Project | TotalSlack |
+| Critical | Indicators | Publish | Type |
+| CV | IsPublished | Priority | UID |
+| CVPercent (internal MSP property that is not added to files) | IsSubproject | Recurring | UpdateNeeded |
+| CV%  (internal MSP property that is not added to files)| LateFinish | RegularWork | WBS |
+| Deadline | LateStart | RemainingCost | Work |
+| Duration | LevelAssignments | RemainingDuration | WorkVariance |
+| DurationVariance | LevelingCanSplit | RemainingOvertimeCost | |
 </div>
 
 
@@ -101,19 +101,19 @@ There are also the following supported task properties:
 | Text30 | | | | | | | | |
 </div>
 
-### 重要提示
+### 重要说明
 
-请注意，某些属性仅从 MPP 文件中获取，因为这些属性不会保存在 XML 文件中。
-因此，如果将 MPP 文件保存为 XML 格式，然后再在 MS Project 中打开它，那么相关属性也不会存在。例如，所有 OutlineCode 属性的工作方式都是：尽管可以从列表中选择值，但保存到 MPP 文件中的值在 XML 文件中将为空。
+请注意，某些属性仅从 MPP 文件获取，因为这些属性不会保存在 XML 文件中。
+因此，将 MPP 文件保存为 XML 格式后，再在 MS Project 打开时，相关属性也不会出现。例如，所有 OutlineCode 属性的工作方式如下：尽管可以从列表中选择值，但保存在 MPP 文件中的值在 XML 文件中将为空。
 
-某些属性是基于其他属性计算得出的，例如 CV% 和 SV%，因此文件中没有这些数值。为了提高使用便捷性，我们在导出模块端添加了计算。这就是为什么在导入 XML 文件时，所述属性会有数值，但它们可能与导出文件后再在 MS Project 中打开时的结果不同。
+某些属性是基于其他属性计算的，例如 CV% 和 SV%，因此文件中没有这些值。为提高便利性，我们在导出模块端增加了计算。因此，在导入 XML 文件时，所述属性会具有数值，但它们可能与导出文件并在 MS Project 中打开的结果不同。
 
 ## 资源属性
 
 :::info
-有些属性只能从 MPP 文件获取，而其他属性只能从 XML 文件获取。 
+一些属性只能从 MPP 文件获取，而其他属性只能从 XML 文件获取。
 
-某些属性是基于其他属性计算得出的，因此在导入过程中若未指定某些必需属性，它们将具有不同的数值。
+一些属性是基于其他属性计算的，因此如果在导入过程中未指定某些必需的属性，它们将具有不同的值。
 :::
 
 <div class="msp-properties">
@@ -160,9 +160,10 @@ There are also the following supported task properties:
 | Baseline6BudgetCost | CostRateD | OvertimeRateUnits | |
 </div>
 
-There are more supported resource properties:
+还有更多受支持的资源属性：
 
-<div class="msp-properties">
+<div class="msp-ext-properties">
+
 | Text | Number | Flag | Cost | Date | Start | Finish | Duration | OutlineCode | OutlineCodeIndex |
 |---|---|---|---|---|---|---|---|---|---|
 | Text1 | Number1 | Flag1 | Cost1 | Date1 | Start1 | Finish1 | Duration1 | OutlineCode1 | OutlineCode1Index |

@@ -10,11 +10,11 @@ description: "添加一个新任务"
 
 @short: 添加一个新任务
 
-@signature: addTask: (task: NewTask, parent?: string | number, index?: number) =\> string | number
+@signature: addTask: (task: TaskInput, parent?: string | number, index?: number) =\> string | number
 
 ### Parameters
 
-- `task` - (required) *NewTask* - 任务对象
+- `task` - (required) *TaskInput* - 任务对象
 - `parent` - (optional) *string | number* - 父级的 id
 - `task` - (optional) *number* - 将被添加到的任务位置（从 0 开始）
 

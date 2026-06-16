@@ -10,11 +10,11 @@ description: "添加一个新任务并打开 lightbox 以确认"
 
 @short: 添加一个新任务并打开 lightbox 以确认
 
-@signature: createTask: (task?: NewTask, parent?: string | number, index?: number) =\> string | number
+@signature: createTask: (task?: TaskInput, parent?: string | number, index?: number) =\> string | number
 
 ### Parameters
 
-- `task`    -	 (optional) *NewTask*	- 可选，任务对象
+- `task`    -	 (optional) *TaskInput*	- 可选，任务对象
 - `parent`	-	(optional) *string | number*	- 可选，父级的 id
 - `index`	-	(optional) *number*	- 可选，任务将被添加到分支中的位置（0 或更大）
 

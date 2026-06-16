@@ -918,14 +918,21 @@ yarn dev
 
 ## 다음 단계
 
-더 자세히 진행하려면:
+이 튜토리얼은 React Gantt 상태 관리 시퀀스의 두 번째 튜토리얼입니다:
 
-- [](integrations/react/state/state-management-basics.md)에서 이 예제의 개념을 다시 살펴보기
-- [React Gantt 개요](integrations/react/overview.md)에서 저장소 기반 상태와 고급 구성 및 템플릿을 결합하기
-- 같은 패턴을 다른 상태 관리 도구로도 탐색하기:
-  - [Using React Gantt with Zustand](integrations/react/state/zustand.md)
-  - [Using React Gantt with Redux Toolkit](integrations/react/state/redux-toolkit.md)
-  - [Using React Gantt with MobX](integrations/react/state/mobx.md)
-  - [Using React Gantt with XState](integrations/react/state/xstate.md)
-  - [Using React Gantt with Jotai](integrations/react/state/jotai.md)
-  - [Using React Gantt with Valtio](integrations/react/state/valtio.md)
+1. [Zustand](integrations/react/state/zustand.md) - 로컬 메모리 상태 관리
+2. **TanStack Query** - JSON 파일 백엔드를 이용한 서버 기반 상태 관리 (여기서 진행 중)
+3. [TanStack Query + Supabase](integrations/react/state/tanstack-supabase.md) - PostgreSQL을 통한 실시간 다중 사용자 동기화
+
+JSON 백엔드를 실제 데이터베이스로 대체하고 다중 사용자 실시간 동기화를 진행하고 싶다면 [React Gantt와 TanStack Query 및 Supabase 사용](integrations/react/state/tanstack-supabase.md)으로 계속 진행하세요.
+
+다음도 확인해 보세요:
+
+- 이 예제의 개념을 다시 살펴보기 [](integrations/react/state/state-management-basics.md)
+- 스토어 기반 상태와 고급 구성 및 템플릿화를 결합하는 방법은 [React Gantt 개요](integrations/react/overview.md)
+- 다른 상태 관리 도구와 같은 패턴 비교:
+  - [Redux Toolkit을 사용하는 React Gantt](integrations/react/state/redux-toolkit.md)
+  - [MobX를 사용하는 React Gantt](integrations/react/state/mobx.md)
+  - [XState를 사용하는 React Gantt](integrations/react/state/xstate.md)
+  - [Jotai를 사용하는 React Gantt](integrations/react/state/jotai.md)
+  - [Valtio를 사용하는 React Gantt](integrations/react/state/valtio.md)

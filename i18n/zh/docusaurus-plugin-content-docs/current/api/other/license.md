@@ -26,9 +26,10 @@ console.log(gantt.license);
 
 此方法返回一个简短的 license 名称，适用于诊断用途。
 
-可能的取值有：
+可用的取值有：
 
-- "gpl"
+- "mit" - 免费的 Community edition (v10 及以上版本)
+- "gpl" - 旧版免费版 (v9.x 及更早版本)
 - "evaluation"
 - "individual"
 - "commercial"
@@ -37,4 +38,5 @@ console.log(gantt.license);
 - "site"
 
 ### Change log
+- 在 v10.0 中新增了 "mit" 值
 - 在 v6.2.2 中新增

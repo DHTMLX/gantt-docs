@@ -1,78 +1,87 @@
---- 
+---
 title: "Integration mit Lovable AI"
 sidebar_label: "Lovable AI"
-description: "Anleitung zur Integration von DHTMLX React Gantt in eine von Lovable AI erzeugte Anwendung"
+description: "Anleitung zur Integration von DHTMLX React Gantt in eine Lovable AI-generierte Anwendung"
 ---
 
 # Integration mit Lovable AI
 
-Dieser Artikel beschreibt, wie man DHTMLX React Gantt in ein Lovable-Projekt integriert und präzisen Code generiert.
+Dieser Artikel beschreibt, wie man DHTMLX React Gantt zu einem Lovable-Projekt hinzufügt und genau generierten Code erhält.
 
 ## Wie Lovable DHTMLX Gantt handhabt
 
-Lovable erzeugt React‑Anwendungen aus natürlichsprachigen Eingaben. Es bewältigt gängige UI‑Muster gut – Layouts, Routen, Standardkomponenten – weil das Modell während des Trainings genügend Beispiele gesehen hat. DHTMLX Gantt ist eine spezialisierte Komponente mit eigener Konfigurations‑API, Eigenschaftsnamen und Datenformaten. Das Modell hat hier weniger Referenzmaterial, daher rät es. Manchmal richtig, oft nicht.
+Lovable erzeugt React-Apps aus Prompts in natürlicher Sprache. Es beherrscht gängige UI-Muster gut – Layouts, Routen, Standardkomponenten – weil das Modell während des Trainings genügend Beispiele gesehen hat. DHTMLX Gantt ist eine spezialisierte Komponente mit eigener Konfigurations-API, Eigenschaftsnamen und Datenformaten. Das Modell hat hier weniger Vorlagen, daher rät es. Manchmal korrekt, oft nicht.
 
-Die Lösung ist Kontext. Drei Mechanismen ermöglichen es, Lovable genaue API-Informationen zu liefern – jeweils auf unterschiedlicher Ebene:
+Die Lösung liegt im Kontext. Drei Mechanismen ermöglichen es, Lovable genaue API-Informationen zuzuführen, jeweils auf unterschiedlicher Ebene:
 
-| Methode | Am besten geeignet für | Umfang |
+| Method | Best for | Scope |
 |---|---|---|
-| **Inline-Eingaben** | Einmalige Anpassungen, bei denen Sie die genaue Eigenschaft kennen | Einzelner Prompt |
-| **Wissensdatenbank** | Wiederverwendbare Regeln über mehrere Eingaben hinweg | Projektebene |
-| **MCP** | Vollständige API‑Abdeckung ohne Copy-Paste | Externer Server-Verbindung |
+| **Inline prompts** | Einzelne Anpassungen, bei denen Sie die genaue Eigenschaft kennen | Einzelner Prompt |
+| **Knowledge Base** | Wiederverwendbare Regeln über mehrere Prompts hinweg | Projektweiter |
+| **MCP** | Vollständige API-Abdeckung ohne Copy-Paste | Externer Server verbunden |
 
-Diese Ansätze schließen sich nicht gegenseitig aus. Wissensdatenbank und MCP arbeiten gut zusammen – verwenden Sie die Wissensdatenbank für projektspezifische Konventionen, MCP für allgemeine API‑Genauigkeit.
+Diese Mechanismen schließen sich nicht aus. Knowledge Base und MCP arbeiten gut zusammen – verwenden Sie die Knowledge Base für projekt­spezifische Konventionen, MCP für allgemeine API-Genauigkeit.
 
-Die untenstehenden Abschnitte führen durch den vollständigen Ablauf: eine App scaffolden, Gantt hinzufügen und dann die Ausgabqualität mit jeder Methode verbessern.
+Die folgenden Abschnitte erläutern den vollständigen Workflow: Eine App scaffolden, Gantt hinzufügen und dann die Ausgabequalität mit jeder Methode verbessern.
+
+## Featured starter: React Gantt + Supabase project planner
+Wenn Sie eine komplette, funktionsreiche Referenz statt beim Aufbau von Grund auf neu zu arbeiten wünschen, ist der [React Gantt Lovable Starter](https://github.com/DHTMLX/react-gantt-lovable-starter) ein Mehrprojekt-Planer, der End-to-End in Lovable generiert wird, mit einem Supabase-Backend, Aufgaben- und Link-CRUD, Rückgängig/Wiederherstellen, funktionsfähigem Kalender, Ressourcen-Auslastung und einem Demo-Rollenmodell.
+
+- **Live-Demo**: [https://react-gantt-lovable-starter.lovable.app](https://react-gantt-lovable-starter.lovable.app)
+- **Quelle**: [github.com/DHTMLX/react-gantt-lovable-starter](https://github.com/DHTMLX/react-gantt-lovable-starter)
+- **Reproduzierbares Rezept**: Der Ordner [`lovable/`](https://github.com/DHTMLX/react-gantt-lovable-starter/tree/main/lovable) enthält die genaue Prompt-Sequenz (11 Schritte), den Knowledge-Base-Inhalt, der während des Builds verwendet wurde, und ein Protokoll jeder manuellen Korrektur, die am generierten Output vorgenommen wurde.
+
+Für eine geführte Übersicht über das Rezept und wie man es in Ihrem eigenen Arbeitsbereich reproduziert, siehe den Lovable Starter Walkthrough (integrations/ai-tools/lovable-starter-walkthrough.md).
+
+Wenn Sie nur einen Gantt in einer generischen Admin-App rendern müssen, fahren Sie mit den untenstehenden Schritten fort.
 
 ## Voraussetzungen
 
-- Ein Lovable‑Konto
+- Ein Lovable-Konto
 
-Für lokale Entwicklung (optional):
+Für die lokale Entwicklung (optional):
 
 - Node.js 18+
 - npm
 
-Für plattform­spezifische Details siehe die Lovable-Dokumentation.
+Für plattform­spezifische Details siehe die [Lovable-Dokumentation](https://docs.lovable.dev/).
 
 ## Generierung einer Basis-App
 
-Beginnen Sie mit einem standardmäßigen Admin‑Layout. Dieser Prompt erzeugt ein Dashboard mit Navigation, KPI‑Karten und einem Chart‑Bereich:
+Beginnen Sie mit einem standardmäßigen Admin-Layout. Dieser Prompt erzeugt ein Dashboard mit Navigation, KPI-Karten und einem Chart-Bereich:
 
-> Erstellen Sie eine Admin-Anwendung.
-> Anforderungen:
-> - Jedes Navigations-Element öffnet eine eigene Route
-> - Das Dashboard enthält KPI‑Karten und einen Hauptinhaltbereich mit einem Umsatz-Diagramm
+> Create an admin application.
+> Requirements:
+> - Each navigation item opens a separate route
+> - The Dashboard includes KPI cards and a main content block with a Sales chart.
 
-![Vom Lovable generiertes Admin-Dashboard-Layout](/img/lovable_admin_dashboard_layout.png)
+![Lovable-generiertes Admin-Dashboard-Layout](/img/lovable_admin_dashboard_layout.png)
 
-Nach der Generierung können Sie in Lovable weiter bearbeiten oder das Git‑Repository klonen und lokal arbeiten. Änderungen werden in beide Richtungen synchronisiert.
+Nach der Generierung können Sie die Bearbeitung in Lovable fortsetzen oder das Git-Repository klonen und lokal weiterarbeiten. Änderungen synchronisieren in beide Richtungen.
 
-Halten Sie den ersten Prompt auf Struktur und Navigation fokussiert – die komponentenspezifische Konfiguration kommt später.
+Halten Sie den ersten Prompt fokussiert auf Struktur und Navigation – komponenten­spezifische Konfiguration kommt danach.
 
-## Hinzufügen von DHTMLX React Gantt
-
+## Adding DHTMLX React Gantt
 Verweisen Sie auf das Trial-Paket in einem Prompt:
 
-> Ersetzen Sie das Umsatz-Diagramm durch ein DHTMLX React Gantt-Diagramm mit @dhtmlx/trial-react-gantt.
+> Replace the Sales chart with a DHTMLX React Gantt chart using @dhtmlx/trial-react-gantt.
 
-![DHTMLX Gantt-Diagramm im Lovable-Dashboard](/img/lovable_gantt_dashboard.png)
+![DHTMLX Gantt chart in Lovable dashboard](/img/lovable_gantt_dashboard.png)
 
-Lovable erzeugt React‑Apps, daher passt das React‑Wrapper am besten. Die Anleitung verwendet `@dhtmlx/trial-react-gantt` – den Evaluations‑Build von [DHTMLX React Gantt](../../react/overview/). Es ist öffentlich auf npm verfügbar, was bedeutet, dass Lovable es ohne zusätzliche Einrichtung installieren kann.
+Lovable erzeugt React-Apps, daher ist der React-Wraper die natürliche Passform. Die Anleitung verwendet `@dhtmlx/trial-react-gantt` – der Evaluations-Build von [DHTMLX React Gantt](../../react/overview/). Er ist öffentlich auf npm verfügbar, was bedeutet, dass Lovable ihn ohne zusätzliche Einrichtung installieren kann.
 
-Der Trial‑Build ist voll funktionsfähig, enthält jedoch ein Evaluationswasserzeichen. Für die Produktion wechseln Sie zu `@dhx/react-gantt`, das eine Authentifizierung mit dem [DHTMLX privaten npm‑Registry](../../react/installation/) erfordert. Alternativ fügen Sie die Paketdateien lokal in Ihr Projekt ein.
+Der Trial-Build ist voll funktionsfähig, enthält jedoch ein Evaluations-Wasserzeichen. Für die Produktion wechseln Sie zu `@dhx/react-gantt`, das eine Authentifizierung mit dem [DHTMLX privaten npm-Registry](../../react/installation/) erfordert. Alternativ fügen Sie die Paketdateien lokal in Ihr Projekt ein.
 
-Lovable installiert das Paket, erstellt einen Import und rendert einen grundlegenden Gantt mit Beispielaufgaben und einer Timeline. Die Ausgabe stimmt oft nicht exakt mit der API überein – Spaltenkonfiguration, Skaleneinstellungen und Datenformate werden geraten. Die untenstehenden Abschnitte zeigen, wie man diese Diskrepanz verringert.
+Lovable installiert das Paket, erstellt einen Import und rendert einen grundlegenden Gantt mit Beispielaufgaben und einer Timeline. Die Ausgabe stimmt oft nicht exakt mit der API überein – Spaltenkonfiguration, Skaleneinstellungen und Datenformate werden geraten. Die Abschnitte unten zeigen, wie man diese Lücke schließt.
 
-## Verbesserung der Ausgabe mit Inline‑Eingaben
+## Improving output with inline prompts
+Wenn Sie den genauen API-Aufruf kennen, geben Sie den Eigenschaftsnamen und einen Code-Schnipsel an, damit Lovable nicht rät:
 
-Wenn Sie den genauen API‑Aufruf kennen, fügen Sie den Eigenschaftsnamen und einen Codeausschnitt hinzu, damit Lovable nicht rät:
-
-> Aktualisieren Sie die DHTMLX React Gantt‑Konfiguration:
-> - Legen Sie die Zeilenhöhe auf `40px` fest über `config.row_height`
-> - Übergeben Sie das Config‑Objekt in die ReactGantt‑Komponente
+> Update the DHTMLX React Gantt configuration:
+> - Set row height to `40px` using `config.row_height`
+> - Pass the config object into the ReactGantt component
 >
-> Beispiel:
+> Example:
 > ```jsx
 > const config = {
 >   row_height: 40
@@ -81,24 +90,23 @@ Wenn Sie den genauen API‑Aufruf kennen, fügen Sie den Eigenschaftsnamen und e
 > <ReactGantt config={config} />
 > ```
 
-Funktioniert gut für isolierte Änderungen. Wenn die Konfiguration wächst, wird es unübersichtlich – Sie fügen am Ende dieselben API‑Details in jeden Prompt ein.
+Gute Ergebnisse für isolierte Änderungen. Bei wachsender Konfiguration zersplittert es – Sie fügen am Ende dieselben API-Details in jeden Prompt ein.
 
-## Regeln in der Wissensdatenbank speichern
+## Storing rules in the Knowledge Base
+Die Knowledge Base speichert wiederverwendbare Regeln, die in allen Prompts eines Projekts gelten. Definieren Sie API-Spezifika einmal, statt sie zu wiederholen:
 
-Die Wissensdatenbank speichert wiederverwendbare Regeln, die auf alle Prompts in einem Projekt anwendbar sind. Definieren Sie API‑Spezifika einmal statt sie zu wiederholen:
-
-> Thema:
-> - Gantt unterstützt Theming über die "theme" Prop.
+> Theme:
+> - Gantt unterstützt das Thematisieren über die "theme" Prop.
 > - Erlaubte Werte: `"terrace"` (hell) und `"dark"` (dunkel).
-> - Wenn die App ein globales Theme hat, weisen Sie zu:
+> - Wenn die App ein globales Theme hat, mappen Sie:
 >   - light -> `"terrace"`
 >   - dark  -> `"dark"`
 > - Übergeben Sie den gemappten Wert dem Gantt als `theme={ganttTheme}`.
 >
-> Rasterzeilenhöhe:
-> - Legen Sie die Zeilenhöhe über das Gantt‑Konfigurationsobjekt fest.
-> - Verwenden Sie `config.row_height` (Zahl, in Pixeln).
-> - Geben Sie das Config‑Objekt in die ReactGantt‑Komponente ein:
+> Grid row height:
+> - Setzen Sie die Zeilenhöhe über das Gantt-Konfigurationsobjekt.
+> - Verwenden Sie `config.row_height` (Zahl, in Pixel).
+> - Übergeben Sie die Konfiguration in die ReactGantt-Komponente:
 >
 >   ```jsx
 >   const config = { row_height: 40 };
@@ -106,39 +114,38 @@ Die Wissensdatenbank speichert wiederverwendbare Regeln, die auf alle Prompts in
 >   <ReactGantt config={config} />
 >   ```
 
-![Lovable Knowledge Base mit Regeln zur Gantt-Konfiguration](/img/lovable_knowledge_base_gantt_rules.png)
+![Lovable Knowledge Base with Gantt configuration rules](/img/lovable_knowledge_base_gantt_rules.png)
 
-Mit den Regeln können Prompts kurz gehalten werden:
+Mit den Regeln funktionieren Prompts auch kürzer:
 
-> Verwenden Sie die Projekt‑Wissensdatenbank. Stellen Sie die Gantt‑Rasterzeilenhöhe auf 60 ein.
+> Use the project Knowledge Base. Set the Gantt grid row height to 60.
 
-![Gantt nach Anwendung der Wissensdatenbank-Konfiguration in Lovable](/img/lovable_gantt_after_kb_update.png)
+![Gantt after applying Knowledge Base configuration in Lovable](/img/lovable_gantt_after_kb_update.png)
 
-Die Wissensdatenbank hat eine Obergrenze von ca. 100k Zeichen – ausreichend für eine fokussierte Referenz zur Konfiguration, aber nicht für die vollständige [DHTMLX Gantt API](https://github.com/DHTMLX/gantt-docs). Für breitere Abdeckung verbinden Sie MCP.
+Die Knowledge Base ist auf ~100k Zeichen begrenzt – ausreichend für eine fokussierte Konfigurationsreferenz, aber nicht für das vollständige [DHTMLX Gantt API](https://github.com/DHTMLX/gantt-docs). Für eine größere Abdeckung verbinden Sie MCP.
 
-## Verbindung von MCP für vollen API‑Zugang
+## Connecting MCP for full API access
+MCP (Model Context Protocol) verbindet Lovable mit einem externen Dokumentationsserver. Es ermöglicht Lovable den vollständigen, aktuellen API-Zugriff, ohne manuelles Copy-Pasting.
 
-MCP (Model Context Protocol) verbindet Lovable mit einem externen Dokumentationsserver. Es ermöglicht Lovable den Zugriff auf die vollständige, aktuelle API ohne manuelles Kopieren und Einfügen.
+Verbinden Sie den [DHTMLX MCP Server](../mcp-server/) in Ihren Lovable-Projekteinstellungen:
 
-Verbinden Sie den [DHTMLX MCP Server](../mcp-server/) in Ihren Lovable‑Projekteinstellungen:
+![Adding DHTMLX MCP server in Lovable](/img/lovable_mcp_server_setup.png)
 
-![Hinzufügen des DHTMLX MCP‑Servers in Lovable](/img/lovable_mcp_server_setup.png)
+Dann referenzieren Sie ihn in Prompts, damit Lovable die relevanten Dokumentationen vor der Codegenerierung abruft:
 
-Referenzieren Sie ihn dann in Prompts, damit Lovable die relevanten Dokumente vor dem Generieren des Codes abruft:
+> Use the DHTMLX MCP server. Set the Gantt grid row height to 60 pixels.
 
-> Verwenden Sie den DHTMLX MCP‑Server. Stellen Sie die Gantt‑Rasterzeilenhöhe auf 60 Pixel ein.
+Lovable löst Eigenschaftsnamen, Datenformate und Konfigurationsmuster aus der tatsächlichen API-Referenz statt zu raten.
 
-Lovable ermittelt Eigenschaftsnamen, Datenformate und Konfigurationsmuster aus der tatsächlichen API‑Referenz statt zu raten.
+## Practical tips
+- **One change per prompt.** Kleinere Prompts erleichtern die Fehlersuche, wenn das Ergebnis nicht stimmt.
+- **Check imports.** Lovable importiert manchmal aus dem falschen Paketpfad oder verwechselt benannte und Standard-Exporte. Überprüfen Sie die Importzeile nach jeder Änderung.
+- **Combine Knowledge Base and MCP.** Knowledge Base für projektspezifische Konventionen (Theme-Mapping, Spaltenlayout), MCP für allgemeine API-Genauigkeit. Sie ergänzen sich gegenseitig.
+- **Inspect the config object.** Wenn der Gantt nicht wie erwartet gerendert wird, protokollieren Sie das an `<ReactGantt />` übergebene config-Objekt und vergleichen Sie es mit der [configuration props reference](../../react/configuration-props/). Die meisten Probleme ergeben sich aus einer fehlenden oder falsch benannten Eigenschaft.
 
-## Praktische Tipps
-
-- **Eine Änderung pro Prompt.** Kleinere Prompts erleichtern es, Probleme zu isolieren, wenn die Ausgabe nicht stimmt.
-- **Imports überprüfen.** Lovable importiert manchmal aus dem falschen Paketpfad oder mischt benannte und Standard-Exporte. Überprüfen Sie nach jeder Änderung die Importzeile.
-- **Wissensdatenbank und MCP kombinieren.** Wissensdatenbank für projektspezifische Konventionen (Theming‑Zuordnung, Spaltenlayout), MCP für allgemeine API‑Genauigkeit. Sie ergänzen sich.
-- **Das Config‑Objekt inspizieren.** Wenn das Gantt nicht wie erwartet gerendert wird, protokollieren Sie das an `<ReactGantt />` übergebene Config‑Objekt und vergleichen Sie es mit der [Configuration Props Reference](../../react/configuration-props/). Die meisten Probleme ergeben sich aus einer fehlenden oder falsch benannten Eigenschaft.
-
-## Was Sie als Nächstes lesen sollten
-
-- [DHTMLX React Gantt overview](../../react/overview/) – API und Funktionen der Komponente
-- [Installationsanleitung](../../react/installation/) – Einrichtung des Profi-Pakets
-- [DHTMLX MCP Server](../mcp-server/) – MCP mit anderen KI‑Tools verbinden
+## What to read next
+- [DHTMLX React Gantt overview](../../react/overview/) - component API and features
+- [Installation guide](../../react/installation/) - setting up the professional package
+- [DHTMLX MCP Server](../mcp-server/) - connecting MCP to other AI tools
+- [Lovable Starter Walkthrough](integrations/ai-tools/lovable-starter-walkthrough.md) - reproduce the full project planner reference app
+- [Installing React Gantt](../../react/installation/) - includes the trial-to-commercial package swap procedure

@@ -6,7 +6,7 @@ sidebar_label: "一个页面上的多个甘特图"
 # 在一个页面上显示多个甘特图
 
 :::info
-此功能在 Gantt PRO 版本的商业许可（自 2021 年 10 月 6 日起）、Enterprise 和 Ultimate 许可下可用。
+从 v10 开始，这一功能在所有版本中均可用（免费 Community 版本和 PRO 版本）。在早期版本中，该功能仅限于 Commercial（自 2021 年 10 月 6 日起）、Enterprise 和 Ultimate 许可。
 :::
 
 基本上，DHTMLX Gantt 是一个静态对象，其默认实例会持续存在于页面上。你可以随时通过全局对象 `gantt` 访问它。但如果需要，也可以创建一个新的 gantt 对象。
@@ -247,5 +247,5 @@ dataProcessor.destructor();
 ~~~
 
 :::note
-如果你使用的包不允许创建同一个 gantt 对象的多个实例（GPL 或商业版），调用 gantt 的析构器将使 gantt 在页面重新加载之前不可访问。
+如果你使用的包不允许创建多个 gantt 对象实例（在 v9.x 及更早版本中的 legacy GPL 版本，或单域 Commercial 构建），调用 gantt 的析构函数将使 gantt 在页面重新加载前不可访问。
 :::

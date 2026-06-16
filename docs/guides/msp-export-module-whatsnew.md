@@ -6,6 +6,24 @@ sidebar_label: "What's new in MSP Project Export Module"
 What's new in MSP Project Export Module
 ===========================================
 
+## 2.4.1.0
+
+- Fixed MPXJ.Net library crashing when running the export module in a Docker container and importing MPP files
+
+## 2.4.0.0
+
+- Migrated MPXJ library from net.sf.mpxj-for-csharp package to MPXJ.NET package
+- Updated MPXJ library to the 14.0.0 version
+- Increased the list of supported project, task, and resource properties for Primavera P6 files
+- Added support for Primavera entities for import and export:
+Project Expenses, Roles, Project Codes, Activity Codes, Resource Codes, Cost Accounts
+- Added tree structure support for resources
+- Added support for multiple Baseline import from Primavera files
+- Updated DurationFormat units to more human-readable values
+- Added a way to export link lag with custom duration format
+- Fixed import of Primavera files that had null or empty calendars
+- Added experimental support to import files from other planning programs (Asta, ProjectLibre, etc.)
+
 ## 2.3.0.0
 
 - Updated MPXJ library to the 12.10.3 version.

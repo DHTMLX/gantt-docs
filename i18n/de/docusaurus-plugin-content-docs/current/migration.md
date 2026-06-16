@@ -5,6 +5,160 @@ sidebar_label: "Migration von älteren Versionen"
 
 # Migration von älteren Versionen
 
+## 9.1 -> 10.0
+
+### Migrieren von der GPL-Edition zur Community- (MIT-)Edition {#gpl-to-mit}
+
+Ab Version 10 ist die kostenlose Edition von DHTMLX Gantt die **Community-Edition**, verteilt unter der **MIT-Lizenz**. Sie ersetzt die frühere kostenlose **GPL**-Verteilung des gleichen `dhtmlx-gantt`-Pakets. GPL v2 gilt weiterhin für die vorherigen kostenlosen Versionen (v9.x und älter), die in einem eigenen Branch des [Haupt-GitHub-Repositories](https://github.com/DHTMLX/gantt) verfügbar bleiben, aber nicht mehr aktiv gewartet werden.
+
+Um ein bestehendes Projekt von der GPL-Edition zur Community-Edition zu migrieren:
+
+- **Passen Sie die Paketversion an.** `dhtmlx-gantt` v10 und höher ist die Community (MIT) Edition; v9.x und älter ist die GPL-Edition.
+- **Aktualisieren Sie die Lizenzhinweise** in Ihrem Projekt, falls Sie irgendwo die Gantt-Lizenz referenzieren – die kostenlose Edition ist jetzt MIT, nicht GPL.
+- **Überprüfen Sie den Lizenzwert zur Laufzeit** - [`gantt.license`](api/other/license.md) gibt `"mit"` für die Community-Edition zurück (früher wurde `"gpl"` für die vorherige kostenlose Edition zurückgegeben).
+- **Testen Sie das Export-Verhalten.** Der Online-Exportservice fügt weiterhin ein Wasserzeichen zu freien Exporten hinzu; dies bleibt unverändert und ist nicht mehr an die GPL-Lizenz gebunden (der Export-Service ist ein separates Produkt).
+- **Überprüfen Sie die Funktionsunterschiede.** Die Community-Edition ist kein striktes Supraset der alten GPL-Edition. Sie **fügt** Projekte (Summarische Aufgaben), Meilensteine, benutzerdefinierte Aufgabentypen und Unterstützung für mehrere Gantt-Instanzen pro Seite hinzu, lässt aber **Undo/Redo**, Marker, Mehrfachauswahl, ungeplante Aufgaben, die Platzhalterzeile für neue Aufgaben, Arbeitszeitkalender und WBS-Codes weg. Siehe [Community vs PRO Library Versions](guides/editions-comparison.md) für den vollständigen Funktionsvergleich.
+
+### XSS-Schutz in Framework-Wrappersystemen
+
+Ab Version 10.0 speichern [React Gantt](integrations/react.md), [Vue Gantt](integrations/vue.md) und [Angular Gantt](integrations/angular.md) Wrapper standardmäßig Zeichenkettenwerte, die von vom Benutzer bereitgestellten Template-Funktionen zurückgegeben werden, sanitisiert, statt sie als rohes HTML einzufügen. Dadurch werden XSS-Schwachstellen verhindert, die durch unsauber gerenderte Daten in Templates entstehen.
+
+Es gilt für:
+
+- Funktionen, die über die `templates`-Eigenschaft übergeben werden
+- `config.columns[].template`-Funktionen
+- `config.scales[].format`-Funktionen
+
+Standardmäßig (`htmlTemplatePolicy="basic-sanitize"`) wird das zurückgegebene HTML Whitelist-saniert: gängige Formatierungen (`<b>`, `<span>`, `<div>`, ...), `class`, ein begrenzter Satz von Inline-Stilen, `data-*`-Attribute und `<img>` mit einer sicheren `src` bleiben erhalten, während `<script>`, Inline-Ereignishandler und gefährliche URLs entfernt werden. Templates, die einfaches Markup zurückgeben, funktionieren weiterhin; nur unsichere Konstrukte werden entfernt.
+
+#### Wiederherstellung des vorherigen Raw-HTML-Verhaltens
+
+Stellen Sie die Eigenschaft `htmlTemplatePolicy` auf `"unsafe-html"`, um Templates genau wie zuvor zu rendern, ohne Verarbeitung:
+
+~~~jsx
+<ReactGantt htmlTemplatePolicy="unsafe-html" /* ... */ />
+~~~
+
+~~~vue
+<VueGantt htmlTemplatePolicy="unsafe-html" /* ... */ />
+~~~
+
+~~~html
+<dhx-gantt htmlTemplatePolicy="unsafe-html" /* ... */></dhx-gantt>
+~~~
+
+#### Raw-HTML pro Template
+
+Wickeln Sie eine einzelne Vorlage mit `allowRawHTML` ein, um die Sanitierung nur für diese Vorlage zu umgehen – bereinigen Sie Benutzereingaben selbst mit dem exportierten `escapeHTML`-Hilfsprogramm:
+
+~~~jsx
+import { allowRawHTML, escapeHTML } from "@dhx/react-gantt";
+// oder "@dhx/vue-gantt" / "@dhx/angular-gantt"
+
+<ReactGantt
+    templates={{
+        task_text: allowRawHTML((start, end, task) => `<b>${escapeHTML(task.text)}</b>`)
+    }}
+/>
+~~~
+
+#### Eigene Sanitizer oder Textdarstellung
+
+Verwenden Sie `htmlTemplatePolicy={{ mode: "sanitize", sanitize }}`, um einen Sanitizer wie DOMPurify zu integrieren, oder `"escape"`, um Template-Strings als reinen Text zu rendern. Details finden Sie unter App-Sicherheit [App security](guides/app-security.md#framework-wrapper-xss-protection).
+
+
+### Auto-Scheduling-Engine-Update {#auto-scheduling-v2}
+
+Version 10.0 führt eine überarbeitete Auto-Scheduling-Engine ein. Sie behebt eine Reihe lang bestehender Fehler, hauptsächlich rund um Slack-Berechnungen und die Planung von Projekten (Summarische Aufgaben), wenn [move_projects](api/config/auto_scheduling.md#move_projects) aktiviert ist.
+
+Die öffentliche API und das sichtbare Verhalten bleiben größtenteils gleich, mit Ausnahme von Fällen, die zuvor falsch funktioniert haben. Die Änderungen, die bestehenden Code betreffen können, sind unten aufgeführt.
+
+Die neue Engine wird standardmäßig verwendet. Wenn Sie während der Übergangsphase zur vorherigen Engine wechseln möchten, verwenden Sie die Opt-out-Flags:
+
+~~~js
+gantt.config.auto_scheduling = {
+    enabled: true,
+    _engine: "v1",          // vorherige Scheduling-Engine
+    _analysis_engine: "v1"  // vorherige Slack-/Critical-Path-Berechnung
+};
+~~~
+
+Diese Flags sind Übergangsmaßnahmen und werden in v10.1 entfernt, planen Sie also eine Migration vorher.
+
+#### Verhaltensänderungen
+
+| Bereich | Vorher (v9.x) | Seit v10.0 | Was zu tun ist |
+|---|---|---|---|
+| Wiederholte Aufrufe von `gantt.autoSchedule()` | Aufgaben könnten sich auf Projekten verschieben, die mehrere Kalender verwenden | Das erneute Ausführen von Auto-Scheduling bei unveränderten Daten behält dieselben Termine bei | Keine Aktion erforderlich |
+| Slack- und Critical-Path-Werte | Könnten sich ändern, wenn `move_projects` / `gap_behavior` geändert wurde | Abhängen nur von den Daten, nicht von Scheduling-Modus-Optionen | Keine Aktion erforderlich |
+| `getTotalSlack()` / `getFreeSlack()` für Aufgaben, die von der Berechnung ausgeschlossen sind (Abhängigkeits-Schleifen, abgeschlossene Aufgaben) | Könnte `undefined` zurückgeben | Rückgabe `0` | Code aktualisieren, der `undefined` und `0` unterschiedlich behandelt |
+| `getSlack(task1, task2)` | Genaue Werte nur für direkt verknüpfte Aufgaben | Genauere Werte über verknüpfte Aufgaben hinweg; Werte für nicht verknüpfte Paare bleiben unverändert | Bevorzugen Sie `getTotalSlack` / `getFreeSlack` |
+| Argumente von `onBeforeTaskAutoSchedule` / `onAfterTaskAutoSchedule` für constraint- und präferenzgetriebene Bewegungen | Die `link`- und Quell-Aufgaben-Argumente konnten gesetzt werden | Diese Argumente sind `null` für solche Bewegungen | Fügen Sie in Listenern einen Null-Check hinzu, falls angenommen wurde, dass das `link`-Argument immer gesetzt ist |
+| Start-to-Finish-Verknüpfungen mit `gap_behavior: "preserve"` | Der Nachfolger wurde immer so früh wie möglich geplant (als ob `"compress"`)| Die `gap_behavior`-Option wird respektiert | Keine Aktion erforderlich – dies ist das korrigierte Verhalten |
+| Verschieben eines Projekts mit `move_projects: true` | Der eigene Constraint eines Nachfahren könnte das gesamte Projekt stillschweigend an Ort und Stelle halten | Das gesamte Projekt bewegt sich zusammen; ein Nachfahre, dessen Constraint im Konflikt steht, wird über `onAutoScheduleConflict` gemeldet | Optional auf `onAutoScheduleConflict` hören, um Konflikte sichtbar zu machen |
+
+#### Neue Events und Konfiguration
+
+- [onAutoScheduleConflict](api/event/onautoscheduleconflict.md) - feuert für jeden während der Planung gefundenen Konflikt.
+- [onAutoScheduleNoConverge](api/event/onautoschedulenoconverge.md) - feuert, wenn die Planung kein stabiles Ergebnis finden kann.
+- [strict_calendar](api/config/auto_scheduling.md#strict_calendar) - Opt-in-Option (Standardwert `false`), die meldet, wenn eine Aufgabe in ihre eigene Nicht-Arbeitszeit fällt.
+
+#### Bekannte Einschränkungen
+
+- Wenn ein Constraint-Datum (zum Beispiel **must-finish-on** oder **start-no-later-than**) auf die Nicht-Arbeitszeit eines benutzerdefinierten Kalenders fällt, erhält die Aufgabe zwar ein konstanter-konformes Datum, aber ihr gespeichertes `end_date` (berechnet als Start + Dauer) muss möglicherweise exakt nicht mit dem Constraint-Datum übereinstimmen. Das [onAutoScheduleConflict](api/event/onautoscheduleconflict.md)-Event wird ausgelöst, damit Sie auf die Diskrepanz reagieren können. Um die Einschränkung exakt zu beachten, verwenden Sie einen Kalender, dessen Arbeitszeit das Constraint-Datum einschließt.
+- Das Festlegen eines Constraint-Typs auf ein Projekt (Summarische Aufgabe) direkt nach dem Parsen der Daten kann während des Parsings überschrieben werden. Legen Sie solche Einschränkungen in den geladenen Daten fest oder über das Lightbox-/Inline-Editor.
+
+### Date-Helfer-Änderungen {#date-helpers}
+
+#### Interval-Start-Helfer sind jetzt rein
+
+Die [`gantt.date`](api/other/date.md) Interval-Start-Helfer - `day_start`, `week_start`, `month_start`, `quarter_start`, `year_start`, `hour_start`, `minute_start` und `date_part` - geben jetzt ein neues `Date`-Objekt zurück und verändern das ihnen übergebene Datum nicht mehr.
+
+Der Rückgabewert bleibt unverändert, daher muss nur Code aktualisiert werden, der sich auf die In-Place-Veränderung verließ und den Rückgabewert ignorierte:
+
+~~~js
+// vor v10.0 - war angewiesen, dass day_start `date` verändert
+gantt.date.day_start(date);
+
+// seit v10.0 - nutze das zurückgegebene Datum
+date = gantt.date.day_start(date);
+~~~
+
+#### Einzelner Datumsparser und die veraltete `csp`-Konfiguration
+
+Gantt liefert den `new Function`-basierten "schnellen" Datumsparser nicht mehr aus. Der [CSP](api/config/csp.md)-sichere Parser ist jetzt die einzige Implementierung und die [csp](api/config/csp.md)-Konfiguration beeinflusst die Datumformatierung nicht mehr.
+
+Die Option bleibt erhalten und wird im Lightbox weiterhin als Hinweis auf eine sichere Umgebung gelesen, sodass bestehende Konfigurationen weiter funktionieren. Eine Migration ist nicht erforderlich – Code, der `gantt.config.csp` nur für die Datumformatierung gesetzt hat, kann ihn entfernen.
+
+### TypeScript: `SerializedTask` ist jetzt streng serialisiert {#serialized-task-types}
+
+Die Typen `SerializedTask` und `SerializedLink` beschreiben jetzt ausschließlich die **JSON-Form**:
+
+- Datumsfelder (`start_date`, `end_date`, `constraint_date`, `deadline`, …) sind vom Typ `string`. In 9.x waren sie `Date | string`.
+- `SerializedTask.id` ist jetzt optional.
+
+Wenn Sie Anwendungsdaten – einen Store, ein Seed-Array, eine Demo – als `SerializedTask[]` typisiert hatten, diese aber mit `Date`-Objekten befüllt haben, meldet der Compiler nun Fehler wie *"Type 'Date' is not assignable to type 'string'"*.
+
+Wählen Sie den Typ, der dem tatsächlichen Datentyp der Daten entspricht:
+
+- **`Task` / `Link`** - Laufzeitobjekte mit `Date`-Datumsfeldern und `$`-vorangestellte Felder (was `gantt.getTask()` zurückgibt).
+- **`SerializedTask` / `SerializedLink`** - JSON mit `string`-Datumsfeldern (Serveraustausch, persistiertes JSON).
+- **`TaskInput`** - Daten, die Sie Gantt liefern; Datumsangaben können `Date` oder `string` sein und jedes Feld (einschließlich `id`) ist optional. Dies ist in der Regel der passende Typ für vom Anwendungszustand verwaltete Daten.
+
+~~~ts
+// vor v10 - SerializedTask akzeptierte Date, daher kompiliert dieser Block
+const tasks: SerializedTask[] = [
+    { id: 1, text: "Task #1", start_date: new Date(2026, 3, 1), duration: 5 }
+];
+
+// seit v10 - nutze Task (Date-Daten), oder TaskInput, wenn das Datumsformat variieren kann
+const tasks: TaskInput[] = [
+    { id: 1, text: "Task #1", start_date: new Date(2026, 3, 1), duration: 5 }
+];
+~~~
+
+`TaskInput` ist der kanonische Eingabetyp und ersetzt den zuvor veralteten Alias `NewTask` (noch für Abwärtskompatibilität exportiert). Siehe [Data Model](guides/data-model.md#taskinput) für das Gesamtbild.
+
 ## 9.0 -> 9.1
 
 Version 9.1 führt keine inkompatiblen Änderungen ein, aber mehrere Konfigurationsoptionen sind **veraltet** und eine [Migration zum neuen einheitlichen Format](#autoscheduling) wird empfohlen.  

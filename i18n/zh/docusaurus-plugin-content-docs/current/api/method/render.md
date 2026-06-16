@@ -16,13 +16,13 @@ description: "渲染整个甘特图"
 
 ~~~jsx
 gantt.config.scales = [
-    {unit: "month", step: 1, format: "%F, %Y"},
-    {unit: "day", step: 1, format: "%j, %D"}
+    { unit: "month", step: 1, format: "%F, %Y" },
+    { unit: "day", step: 1, format: "%j, %D" }
 ];
 gantt.init("gantt_here");
- 
+
 gantt.config.scales = [
-    {unit: "day", step: 1, format: "%j, %D"}
+    { unit: "day", step: 1, format: "%j, %D" }
 ];
 gantt.render();
 ~~~
@@ -35,4 +35,4 @@ gantt.render();
 您可以使用 [batchUpdate](api/method/batchupdate.md) 方法一次性更新多個任務/連接，實現單次重新渲染，而不是多次更新並多次重新渲染。
 
 ### Related Guides
-- [Dynamic Change of Scale Settings](guides/dynamic-scale.md)
+- [刻度设置的动态更改](guides/dynamic-scale.md)

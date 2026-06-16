@@ -1,13 +1,17 @@
---- 
-title: "Standard 与 PRO 库版本对比"
-sidebar_label: "Standard 与 PRO 库版本对比"
+---
+title: "Community 与 PRO Library 版本对比"
+sidebar_label: "Community 与 PRO Library 版本对比"
 ---
 
-# 标准版与 PRO 库版本对比
+# Community 与 PRO Library 版本对比
 
-如果您不确定 dhtmlxGantt 库的 Standard 与 PRO 版本之间的区别，或想了解 PRO 版将带来哪些额外功能，本指南正是您所需要的。
+如果您想了解 dhtmlxGantt 库的免费 Community 版与 PRO 版之间的区别，以及 PRO 版带来的额外功能，本指南正是您所需要的。
 
-PRO 版本包含 Standard 版本的全部功能，并且还包含额外的有用功能。下表列出了功能清单，便于对比 dhtmlxGantt 的两个版本。
+PRO 版包含 Community 版的所有功能，并且还包含其他有用的特性。下表列出了功能清单，便于对比 dhtmlxGantt 的两个版本。
+
+:::info
+从 DHTMLX Gantt v10 起，免费版为在 MIT 许可下分发的 **Community 版**。早前的免费版本（v9.x 及更早版本）采用 **GPL v2** 许可分发，且对这些版本仍然适用。PRO/Commercial 版仍然是单独的付费版本。有关从 GPL 版迁移到 Community 版的详细信息，请参阅迁移指南 [migration guide](migration.md#gpl-to-mit)。
+:::
 
 <table>
   <thead>
@@ -19,7 +23,7 @@ PRO 版本包含 Standard 版本的全部功能，并且还包含额外的有用
   </thead>
   <tbody>
   <tr>
-  <td>[32 locales](guides/localization.md)</td>
+  <td>[50+ locales](guides/localization.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
@@ -60,7 +64,7 @@ PRO 版本包含 Standard 版本的全部功能，并且还包含额外的有用
   </tr>
   <tr>
   <td>[自动检测任务类型](api/config/auto_types.md)</td>
-  <td style="text-align:center;">❌</td>
+  <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -84,8 +88,8 @@ PRO 版本包含 Standard 版本的全部功能，并且还包含额外的有用
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[在同一页面创建多个甘特图（**商业版（自 2021 年 10 月 6 日起）、企业版和 Ultimate 许可**）](guides/multiple-gantts.md)</td>
-  <td style="text-align:center;">❌</td>
+  <td>[在同一页面创建多个甘特图](guides/multiple-gantts.md)</td>
+  <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -115,7 +119,7 @@ PRO 版本包含 Standard 版本的全部功能，并且还包含额外的有用
   </tr>
   <tr>
   <td>[水平拖拽多个任务](guides/multiselection.md#multitaskselectionanddragndrop)</td>
-  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -205,7 +209,7 @@ PRO 版本包含 Standard 版本的全部功能，并且还包含额外的有用
   </tr>
   <tr>
   <td>[多任务选择](guides/multiselection.md)</td>
-  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -220,7 +224,7 @@ PRO 版本包含 Standard 版本的全部功能，并且还包含额外的有用
   </tr>
   <tr>
   <td>[用于创建新任务的占位行](api/config/placeholder_task.md)</td>
-  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -230,7 +234,7 @@ PRO 版本包含 Standard 版本的全部功能，并且还包含额外的有用
   </tr>
   <tr>
   <td>[项目和里程碑任务类型](guides/task-types.md)</td>
-  <td style="text-align:center;">❌</td>
+  <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -240,7 +244,7 @@ PRO 版本包含 Standard 版本的全部功能，并且还包含额外的有用
   </tr>
   <tr>
   <td>[从 UI 调整网格列和网格本身的大小](guides/specifying-columns.md#resizing)</td>
-  <td style="text-align:center;">❌</td>
+  <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -280,7 +284,7 @@ PRO 版本包含 Standard 版本的全部功能，并且还包含额外的有用
   </tr>
   <tr>
   <td>[对自定义任务类型的支持](guides/task-types.md#creating-a-custom-type)</td>
-  <td style="text-align:center;">❌</td>
+  <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -290,7 +294,7 @@ PRO 版本包含 Standard 版本的全部功能，并且还包含额外的有用
   </tr>
   <tr>
   <td>[对未计划任务的支持](guides/unscheduled-tasks.md)</td>
-  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -305,17 +309,17 @@ PRO 版本包含 Standard 版本的全部功能，并且还包含额外的有用
   </tr>
   <tr>
   <td>[撤销/重做功能](guides/undo-redo.md)</td>
-  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
   <td>[WBS 编码计算](guides/specifying-columns.md#wbscode)</td>
-  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
   <td>[单个任务的工作日和工作时间](guides/working-time.md#multipleworktimecalendars)</td>
-  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>

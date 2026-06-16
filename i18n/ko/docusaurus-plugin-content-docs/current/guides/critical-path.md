@@ -276,3 +276,25 @@ gantt.init("gantt_here");
 구성 요소가 활성화되면 완료된 작업은 임계 경로와 자동 스케줄링에서 제외됩니다.
 
 자세한 내용은 [API 페이지](api/config/auto_scheduling_use_progress.md)를 참조하십시오.
+
+## v10.0의 크리티컬 경로와 잉여 시간 {#v2-analysis}
+
+v10.0에서 잉여 시간과 크리티컬 경로 계산이 재구성되었습니다. 결과는 더 이상 [move_projects](api/config/auto_scheduling.md#move_projects) 및 [gap_behavior](api/config/auto_scheduling.md#gap_behavior)와 같은 자동 스케줄링 모드 옵션에 의존하지 않으며, 동일한 데이터는 항상 동일한 잉여 시간과 크리티컬 경로 값을 생성합니다.
+
+다음은 관련된 동작에 대한 몇 가지 메모입니다:
+
+- 총 잉여 시간이 0 이하인 경우 태스크가 크리티컬합니다. 완료된 태스크([use_progress](api/config/auto_scheduling_use_progress.md)이 활성화된 경우) 및 의존성 루프에 속한 태스크는 절대 크리티컬하지 않습니다.
+- `getTotalSlack`와 `getFreeSlack`은 계산에서 제외된 태스크(의존성 루프에 속한 태스크 및 `use_progress`가 활성화된 경우 완료된 태스크)에 대해 0을 반환합니다. (undefined가 아님)
+
+### 이전 계산으로 되돌리기
+
+이전 계산은 전환용 옵트아웃 플래그를 통해 여전히 사용할 수 있습니다. v10.1에서 제거될 예정이므로 전환 기간 동안에만 사용하세요:
+
+~~~js
+gantt.config.auto_scheduling = {
+    enabled: true,
+    _analysis_engine: "v1"  // previous slack / critical path calculation
+};
+~~~
+
+전체 동작 변경 목록은 [migration guide](migration.md#auto-scheduling-v2)를 참조하세요.

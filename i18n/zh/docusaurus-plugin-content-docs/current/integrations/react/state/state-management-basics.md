@@ -48,7 +48,9 @@ React Gantt 支持 **两种数据绑定模式**：
 
 ## 以 React state 为真相来源 {#reactstateasthesourceoftruth}
 
-在此模式中，你将所有核心集合保存在状态中并将它们作为 props 传递（`tasks`、`links`、`resources`、`resourceAssignments`）。无论用户在 Gantt 中修改任务或链接（例如创建或删除任务），Gantt 都会触发一个回调。在这个回调中，你用新数据来更新你的 React state。一旦状态更新，React 会重新渲染 **ReactGantt** 组件，组件再从最新的 state 读取更新后的 props。
+在此模式中，你将所有核心集合保存在 state 中并将它们作为 props 传递（`tasks`、`links`、`resources`、`resourceAssignments`）。每当用户在 Gantt 内修改任务或链接（例如，通过创建或删除任务），Gantt 会触发回调。在这个回调中，你用新数据来更新你的 React state。一旦 state 更新，React 会重新渲染 **ReactGantt** 组件，进而从最新的 state 读取更新后的 props。
+
+在定义 state 的类型时，针对任务使用 `SerializedTask`，针对链接使用 `SerializedLink`。这些类型表示面向用户的数据结构——日期字段接受 `Date | string`，并且没有内部以 `$` 前缀的属性。仅在 Gantt 事件处理程序内工作数据时，才使用 `Task` 和 `Link`，其中 Gantt 已经解析了数据。
 
 ### 使用 React state 的最小示例
 

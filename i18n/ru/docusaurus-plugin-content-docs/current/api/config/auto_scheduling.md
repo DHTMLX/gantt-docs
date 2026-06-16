@@ -256,6 +256,23 @@ gantt.init("gantt_here");
 
 - [Constraint Scheduling](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
+#### strict_calendar
+
+**Тип**: boolean
+
+**По умолчанию**: `false`
+
+Контролирует, будет ли попадание задачи в своё нерабочее время считаться конфликтом.
+
+~~~jsx
+gantt.config.auto_scheduling = {
+    enabled: true,
+    strict_calendar: true
+};
+~~~
+
+Если установить в `true`, событие [onAutoScheduleConflict](api/event/onautoscheduleconflict.md) будет срабатывать (с `kind: "calendar-non-working"`) каждый раз, когда планирование перемещает задачу в своё нерабочее время. Дата задачи применяется в обоих режимах — этот параметр только управляет тем, следует ли об этом сообщать, чтобы отобразить это в UI.
+
 ### Related API
 - [project_start](api/config/project_start.md)
 - [project_end](api/config/project_end.md)
@@ -274,10 +291,13 @@ gantt.init("gantt_here");
 - [onBeforeTaskAutoSchedule](api/event/onbeforetaskautoschedule.md)
 - [onCircularLinkError](api/event/oncircularlinkerror.md)
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
+- [onAutoScheduleConflict](api/event/onautoscheduleconflict.md)
+- [onAutoScheduleNoConverge](api/event/onautoschedulenoconverge.md)
 
 ### Related Guides
 - [Auto Scheduling](guides/auto-scheduling.md)
 
 ### Change log
+- опция `strict_calendar` была добавлена в v10.0
 - начиная с v9.1 рекомендуется использование объектной конфигурации для `auto_scheduling`
 - может быть задан как объект начиная с v9.0

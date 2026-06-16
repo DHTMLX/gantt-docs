@@ -14,7 +14,7 @@ description: "컨테이너 안에 dhtmlxGantt를 초기화합니다"
 
 ### Parameters
 
-- `container` - (필수) *string* - | HTMLElement HTML 컨테이너(또는 그 ID)에서 dhtmlxGantt 객체가 초기화됩니다
+- `container` - (필수) *string | HTMLElement* -  HTML 컨테이너(또는 그 ID)에서 dhtmlxGantt 객체가 초기화됩니다
 
 ### Example
 
@@ -31,21 +31,21 @@ gantt.load("tasks.json");
 메서드의 두 번째 및 세 번째 매개변수를 사용하면 시간 축의 경계 값을 설정하는 좋은 방법입니다:
 
 ~~~js
-gantt.init("gantt_here", new Date(2023, 08, 10), new Date(2023, 08, 20));
+gantt.init("gantt_here", new Date(2027, 8, 10), new Date(2027, 8, 20));
 ~~~
 
 참고로 `gantt.init` 메서드의 날짜 매개변수는 [start_date](api/config/start_date.md) 및 [end_date](api/config/end_date.md) 구성의 축약형입니다.
 아래의 두 코드 스니펫은 서로 동등합니다:
 
 ~~~js
-gantt.init("gantt_here", new Date(2023, 08, 10), new Date(2023, 08, 20));
+gantt.init("gantt_here", new Date(2027, 8, 10), new Date(2027, 8, 20));
 ~~~
 
 그리고
 
 ~~~js
-gantt.config.start_date = new Date(2023, 08, 10);
-gantt.config.end_date = new Date(2023, 08, 20);
+gantt.config.start_date = new Date(2027, 8, 10);
+gantt.config.end_date = new Date(2027, 8, 20);
 gantt.init("gantt_here");
 ~~~
 
@@ -56,7 +56,7 @@ gantt.init("gantt_here");
 시간 범위에 따라 시간 축을 동적으로 조정하고 싶다면 이 매개변수를 건너뛰거나 [시간 범위를 동적으로 관리합니다](guides/configuring-time-scale.md#range).
 
 :::note
-이 메서드는 타임라인 영역에 추가된 사용자 정의 레이어를 [addTaskLayer](api/method/addtasklayer.md) 및 [addLinkLayer](api/method/addlinklayer.md) 메서드를 통해 재설정합니다. 따라서 페이지에 맞춤 레이어가 표시되려면 **gantt.init** 메서드를 호출한 후 이들 레이어를 다시 정의해야 합니다.
+이 메서드는 타임라인 영역에 추가된 커스텀 레이어를 [`addTaskLayer()`](api/method/addtasklayer.md) 및 [`addLinkLayer()`](api/method/addlinklayer.md) 메서드를 통해 재설정합니다. 따라서 페이지에 커스텀 레이어가 표시되려면 `init()`를 호출한 후 이를 다시 정의해야 합니다.
 :::
 
 ### Related API

@@ -4,7 +4,7 @@ title: Link-Konfiguration
 description: "Speichert die Typen der Link-Abhängigkeiten"
 ---
 
-# Links
+# links
 
 ### Description
 
@@ -15,10 +15,10 @@ description: "Speichert die Typen der Link-Abhängigkeiten"
 ### Example
 
 ~~~jsx
-var type1 = gantt.config.links.finish_to_start;
+const finishToStartType = gantt.config.links.finish_to_start;
 ~~~
 
-**Standardwert:**\{ "finish_to_start":"0", "start_to_start":"1", "finish_to_finish":"2", "start_to_finish":"3" \}
+**Standardwert:** `{ "finish_to_start":"0", "start_to_start":"1", "finish_to_finish":"2", "start_to_finish":"3" }`
 
 ### Details
 

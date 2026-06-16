@@ -4,7 +4,7 @@ title: Layout-Konfiguration
 description: "legt das Layout-Objekt fest"
 ---
 
-# Layout
+# layout
 
 ### Description
 
@@ -16,27 +16,27 @@ description: "legt das Layout-Objekt fest"
 
 ~~~jsx
 gantt.config.layout = {
-     css: "gantt_container",
-     rows:[
+    css: "gantt_container",
+    rows: [
         {
-           cols: [
-          {view: "grid", id: "grid", scrollX:"scrollHor", scrollY:"scrollVer"},
-          {resizer: true, width: 1},
-          {view: "timeline", id: "timeline", scrollX:"scrollHor", scrollY:"scrollVer"},
-          {view: "scrollbar", scroll: "y", id:"scrollVer"}
-           ]
-         },
-        {view: "scrollbar", scroll: "x", id:"scrollHor", height:20}
-     ]
+            cols: [
+                { view: "grid", id: "grid", scrollX: "scrollHor", scrollY: "scrollVer" },
+                { resizer: true, width: 1 },
+                { view: "timeline", id: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+                { view: "scrollbar", scroll: "y", id: "scrollVer" }
+            ]
+        },
+        { view: "scrollbar", scroll: "x", id: "scrollHor", height: 20 }
+    ]
 };
 
 gantt.init("gantt_here");
-~~~ 
+~~~
 
 ### Details
 
 :::note
-Beachten Sie, dass Sie die Layout-Konfiguration vor der Gantt-Initialisierung festlegen sollten. Wenn Sie Änderungen am Layout vornehmen, müssen Sie es mit [resetLayout](api/method/resetlayout.md) aktualisieren.
+Beachten Sie, dass Sie die Layout-Konfiguration vor der Gantt-Initialisierung festlegen sollten. Wenn Sie Änderungen am Layout vornehmen, müssen Sie es mit [`resetLayout()`](api/method/resetlayout.md) aktualisieren.
 :::
 
 ### Related API
@@ -44,5 +44,5 @@ Beachten Sie, dass Sie die Layout-Konfiguration vor der Gantt-Initialisierung fe
 
 ### Related Guides
 - [Gantt Layout](guides/layout-config.md)
-- [How-tos](guides/how-to.md#how-to-toggle-gridchart) (read how to toggle grid/chart)
-- [How-tos](guides/how-to.md#how-to-toggle-the-resource-view) (read how to toggle the resource view)
+- [How-tos](guides/how-to.md#how-to-toggle-gridchart) (lesen Sie, wie Sie Grid/Chart umschalten)
+- [How-tos](guides/how-to.md#how-to-toggle-the-resource-view) (lesen Sie, wie Sie die Ressourcenansicht umschalten)

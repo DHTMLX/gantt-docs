@@ -8,8 +8,8 @@ sidebar_label: "导出为 PDF 和 PNG"
 dhtmlxGantt 提供一个在线导出服务，允许您将甘特图导出为 [PDF](guides/export.md#export-to-pdf) 或 [PNG](guides/export.md#export-to-png) 格式。
 
 :::note
-该服务是免费的，但输出的 PDF/PNG 文件将包含基于 GPL 许可的库水印。
-如果您购买许可证，导出的结果在有效支持期内（所有 PRO 许可证为 12 个月）将不包含水印。
+该服务是免费的，但输出的 PDF/PNG 文件将包含库的水印。
+要在导出时不带水印，您需要一个有效的许可证——在有效支持期内（所有 PRO 许可证为 12 个月），导出的结果将不带水印。
 :::
 
 有多种导出服务可用。您可以在本地计算机上安装它们，并将甘特图导出为 PDF 或 PNG。本地导出服务并不包含在 Gantt 包中，

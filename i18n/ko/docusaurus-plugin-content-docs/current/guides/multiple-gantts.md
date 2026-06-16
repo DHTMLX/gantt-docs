@@ -6,7 +6,7 @@ sidebar_label: "한 페이지에 있는 여러 차트"
 # 한 페이지에 있는 여러 차트
 
 :::info
-이 기능은 상용(Gantt PRO 버전, 2021년 10월 6일 이후), Enterprise 및 Ultimate 라이선스에서 사용할 수 있습니다
+버전 10부터 이 기능은 모든 에디션에서 사용할 수 있습니다(무료 Community 에디션과 PRO 에디션 포함). 이전 버전에서는 Commercial(2021년 10월 6일 이후부터), Enterprise 및 Ultimate 라이선스에 한정되었습니다.
 :::
 
 기본적으로 DHTMLX Gantt는 정적 객체이며 기본 인스턴스가 페이지에 지속적으로 존재합니다. 언제든지 전역 `gantt` 객체를 통해 접근할 수 있습니다. 필요하다면 새로 gantt 객체를 생성할 수도 있습니다.
@@ -247,5 +247,5 @@ dataProcessor.destructor();
 ~~~
 
 :::note
-만약 다중 인스턴스 생성을 허용하지 않는 패키지(GPL 또는 상용 에디션)을 사용하는 경우, gantt 소멸자를 호출하면 페이지를 다시 로드할 때까지 gantt에 접근할 수 없게 됩니다.
+여러 인스턴스의 gantt 객체 생성을 허용하지 않는 패키지를 사용하는 경우(버전 9.x 이하의 레거시 GPL 에디션 또는 단일 도메인 Commercial 빌드) gantt의 destructor를 호출하면 페이지를 새로 고침할 때까지 gantt에 접근할 수 없게 됩니다.
 :::

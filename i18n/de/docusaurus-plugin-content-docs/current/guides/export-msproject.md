@@ -8,9 +8,9 @@ sidebar_label: "Export und Import aus MS Project"
 Die dhtmlxGantt-Bibliothek ermöglicht es, Daten aus dem Gantt-Diagramm nach MS Project zu exportieren. Sie können außerdem Daten aus MS Project in den Gantt importieren.
 
 :::note
-Der Dienst ist kostenlos, aber die Ausgabedatei enthält das Wasserzeichen der Bibliothek unter der GPL-Lizenz. 
-Wenn Sie eine Lizenz erwerben, ist das Export-Ergebnis während der gültigen Supportdauer (12 Monate für alle PRO-Lizenzen) watermarkfrei verfügbar.
-:::
+Der Service ist kostenfrei, aber die Ausgabedatei enthält das Wasserzeichen der Bibliothek.
+Um ohne Wasserzeichen zu exportieren, benötigen Sie eine gültige Lizenz – das Exportergebnis wird während des gültigen Support-Zeitraums (12 Monate für alle PRO-Lizenzen) ohne Wasserzeichen verfügbar sein.
+::: 
 
 Es gibt mehrere Exportdienste. Sie können sie auf Ihrem Computer installieren und das Gantt-Diagramm lokal nach MS Project exportieren.
 Beachten Sie, dass Exportdienste nicht im Gantt-Paket enthalten sind; lesen Sie den [entsprechenden Artikel](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml), um die Nutzungsbedingungen jedes Dienstes zu erfahren.

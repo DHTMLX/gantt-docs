@@ -717,7 +717,7 @@ Nun ist alles bereit. Starten Sie die Anwendung und es sollte ein vollwertiges G
 
 ## Fehlerbehandlung 
 
-[Exception-Filter](https://learn.microsoft.com/en-us/previous-versions/aspnet/gg416513(v="vs.98))" können verwendet werden, um Ausnahmen in CRUD-Handlern zu erfassen und eine Client-Antwort zurückzugeben, die vom client-seitigen Gantt erkannt werden kann.
+[Exception-Filter](https://learn.microsoft.com/en-us/previous-versions/aspnet/)" können verwendet werden, um Ausnahmen in CRUD-Handlern zu erfassen und eine Client-Antwort zurückzugeben, die vom client-seitigen Gantt erkannt werden kann.
 
 Um eine Fehlerbehandlung für das Gantt bereitzustellen, folgen Sie bitte den nachstehenden Schritten:
 

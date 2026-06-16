@@ -1,30 +1,32 @@
---- 
-sidebar_label: DHTMLX MCP-Server
-title: DHTMLX MCP-Server
-description: "Verbinde KI-Coding-Assistenten mit der DHTMLX-Dokumentation über den MCP-Server"
+---
+sidebar_label: DHTMLX MCP Server
+title: DHTMLX MCP Server
+description: "Verbinden Sie KI-Coding-Assistenten mit der DHTMLX-Dokumentation über den MCP-Server"
 ---
 
-# DHTMLX MCP-Server
+# DHTMLX MCP Server
 
-KI-Coding-Assistenten wie Claude, Cursor oder ChatGPT können veralteten oder ungenauen Code liefern, wenn sie mit bibliotekenspezifischen APIs arbeiten. Der DHTMLX MCP-Server schafft Abhilfe, indem er direkten Zugriff auf die aktuelle Dokumentation und API-Referenz bietet.
+KI-Coding-Assistenten wie Claude, Cursor oder ChatGPT können veralteten oder fehlerhaften Code erzeugen, wenn sie mit bibliotheksspezifischen APIs arbeiten. Der DHTMLX MCP-Server geht dieses Problem durch direkten Zugriff auf die aktuelle Dokumentation und API-Referenz an.
 
 ## Was ist MCP
 
-Model Context Protocol (MCP) ist ein Standard, der KI-Assistenten externen Kontext zu bestimmten Werkzeugen und Bibliotheken bereitstellt.
+Model Context Protocol (MCP) ist ein Standard, der KI-Assistenten externen Kontext zu bestimmten Tools und Bibliotheken bereitstellt.
 
-Große Sprachmodelle werden auf Daten bis zu einem bestimmten Datum trainiert und spiegeln jüngste API-Änderungen oder neue Funktionen nicht automatisch wider. Der DHTMLX MCP-Server schließt diese Lücke, indem er die vollständige und aktuelle Dokumentation über ein RAG (Retrieval-Augmented Generation) System zugänglich macht.
+Große Sprachmodelle werden auf Daten bis zu einem bestimmten Datum trainiert und spiegeln aktuelle API-Änderungen oder neue Funktionen nicht automatisch wider. Der DHTMLX MCP-Server überbrückt diese Lücke, indem er die vollständige und aktuelle Dokumentation über ein RAG-System (Retrieval-Augmented Generation) zugänglich macht.
 
-**Server-URL:** `https://docs.dhtmlx.com/mcp`
+**Server URL:** `https://docs.dhtmlx.com/mcp`
 
 :::note
-Der DHTMLX MCP-Server ist ein gemeinsamer Dienst, der alle wichtigen DHTMLX-Produkte abdeckt, nicht nur Gantt. Die Konfigurationsanweisungen in diesem Abschnitt gelten unabhängig davon, mit welcher DHTMLX-Komponente Sie arbeiten.
+Der DHTMLX MCP-Server ist ein gemeinsamer Dienst, der alle großen DHTMLX-Produkte abdeckt, nicht nur Gantt. Die Konfigurationsanweisungen in diesem Abschnitt gelten unabhängig davon, mit welcher DHTMLX-Komponente Sie arbeiten.
 :::
 
-Wenn Sie [React Gantt](integrations/react.md) verwenden, kombinieren Sie MCP mit dem [React Gantt agent skill](integrations/ai-tools/agent-skills.md#available-skills).
+Koppeln Sie MCP mit der passenden Agenten-Fähigkeit: die [JS Gantt skill](integrations/ai-tools/agent-skills.md#available-skills) für Vanilla JavaScript- oder TypeScript-Projekte, die [React Gantt skill](integrations/ai-tools/agent-skills.md#available-skills) für [React Gantt](integrations/react.md)-Projekte.
 
-## Unterstützte Produkte
+Für ein Praxisbeispiel von MCP + Lovable in der Anwendung siehe den [React Gantt Lovable Starter](https://github.com/DHTMLX/react-gantt-lovable-starter) und dessen [Walkthrough](integrations/ai-tools/lovable-starter-walkthrough.md).
 
-Nach der Verbindung kann das KI-Tool Dokumentationen abrufen, Code-Snippets basierend auf aktuellen APIs generieren und Konfigurationsfragen zu folgenden Produkten beantworten:
+## Supported Products
+
+Bei der Verbindung kann das KI-Tool Dokumentation abrufen, Code-Snippets basierend auf aktuellen APIs generieren und Konfigurationsfragen für folgende Produkte beantworten:
 
 - Gantt
 - Scheduler
@@ -35,9 +37,9 @@ Nach der Verbindung kann das KI-Tool Dokumentationen abrufen, Code-Snippets basi
 - Diagram
 - RichText
 
-## Datenschutz
+## Privacy
 
-Der MCP-Server ist ein gehosteter Dienst. Er läuft nicht lokal und greift nicht auf Ihre Dateien zu. Es werden keine personenbezogenen Informationen über Nutzer gespeichert. Anfragen können zu Debugging- und Verbesserungszwecken protokolliert werden. Für kommerzielle Optionen mit strengen No-Logging-Richtlinien kontaktieren Sie `info@dhtmlx.com`.
+Der MCP-Server ist ein gehosteter Dienst. Er läuft nicht lokal und greift nicht auf Ihre Dateien zu. Es werden keine personenbezogenen Daten von Nutzern gespeichert. Anfragen können zu Debugging- und Service-Verbesserungszwecken protokolliert werden. Für kommerzielle Optionen mit strengen No-Logging-Richtlinien kontaktieren Sie `info@dhtmlx.com`.
 
 ## Einrichtung
 
@@ -45,7 +47,7 @@ Wählen Sie unten Ihr KI-Tool aus und folgen Sie den entsprechenden Anweisungen.
 
 ### Claude Code
 
-Der empfohlene Weg erfolgt über die CLI:
+Der empfohlene Weg führt über die CLI:
 
 ```bash
 claude mcp add --transport http dhtmlx-mcp https://docs.dhtmlx.com/mcp
@@ -66,7 +68,7 @@ Alternativ fügen Sie Folgendes manuell zu Ihrer `mcp.json` hinzu:
 
 ### Cursor
 
-1. Öffnen Sie die Einstellungen (Mac: Cmd+Shift+J, Windows/Linux: Ctrl+Shift+J)
+1. Öffnen Sie die Einstellungen (Cmd+Shift+J auf Mac, Ctrl+Shift+J auf Windows/Linux)
 2. Gehen Sie zu **Tools & MCP**
 3. Klicken Sie auf **Add Custom MCP**
 4. Fügen Sie die folgende Konfiguration ein:
@@ -81,7 +83,7 @@ Alternativ fügen Sie Folgendes manuell zu Ihrer `mcp.json` hinzu:
 }
 ```
 
-Nach der Verbindung können Sie Abfragen wie „Check DHTMLX docs for how to add a custom column to Gantt“ direkt im Chat verwenden.
+Nach dem Verbinden können Sie Abfragen wie "Check DHTMLX docs for how to add a custom column to Gantt" direkt im Chat verwenden.
 
 ### Gemini CLI
 
@@ -102,38 +104,38 @@ Starten Sie Gemini CLI neu, um die Änderungen anzuwenden.
 ### Antigravity (Google)
 
 1. Öffnen Sie die Befehls-Palette
-2. Tippen Sie „mcp add“
-3. Wählen Sie „HTTP“
-4. Geben Sie URL ein: `https://docs.dhtmlx.com/mcp`
-5. Geben Sie Name ein: `dhtmlx-mcp`
+2. Geben Sie "mcp add" ein
+3. Wählen Sie "HTTP"
+4. URL eingeben: `https://docs.dhtmlx.com/mcp`
+5. Name eingeben: `dhtmlx-mcp`
 
 ### Andere Tools
 
-Die meisten modernen KI-Coding-Tools unterstützen MCP über ihre Einstellungen. Suchen Sie nach „Model Context Protocol“, „Context Sources“ oder einer ähnlichen Option und fügen Sie `https://docs.dhtmlx.com/mcp` als benutzerdefinierte Quelle hinzu.
+Die meisten modernen KI-Coding-Tools unterstützen MCP über deren Einstellungen. Suchen Sie nach "Model Context Protocol", "Context Sources" oder einer ähnlichen Option und fügen Sie `https://docs.dhtmlx.com/mcp` als benutzerdefinierte Quelle hinzu.
 
 ### ChatGPT
 
-Beachten Sie, dass die MCP-Integration mit ChatGPT zu langsameren Reaktionszeiten führen kann (ca. 20 Sekunden pro Abfrage). Für eine schnellere Erfahrung verwenden Sie eines der oben genannten Tools.
+Beachten Sie, dass die MCP-Integration mit ChatGPT zu langsameren Reaktionszeiten führen kann (etwa 20 Sekunden pro Abfrage). Für eine schnellere Erfahrung erwägen Sie die oben genannten Tools zu verwenden.
 
-Zum Konfigurieren von ChatGPT:
+So konfigurieren Sie ChatGPT:
 
-1. Gehen Sie zu **Settings** → **Apps & Connectors**
+1. Öffnen Sie **Settings** → **Apps & Connectors**
 2. Klicken Sie auf **Advanced settings**
 3. Aktivieren Sie **Developer mode**
-4. Kehren Sie zum Connectors-Bildschirm zurück und klicken Sie auf den **Create**-Button
+4. Kehren Sie zum Connectors-Bildschirm zurück und klicken Sie auf die **Create**-Schaltfläche
 5. Füllen Sie Folgendes aus:
    - Name: `dhtmlx-mcp`
    - URL: `https://docs.dhtmlx.com/mcp`
    - Authentication: `No authentication`
 6. Klicken Sie auf **Create**
 
-Nach der Einrichtung können Sie ChatGPT bitten, den DHTMLX MCP-Server zu konsultieren, wenn Sie mit einer beliebigen DHTMLX-Komponente arbeiten.
+Nach der Einrichtung können Sie ChatGPT bitten, den DHTMLX MCP-Server zu konsultieren, wenn Sie mit jeder DHTMLX-Komponente arbeiten.
 
 ## Tipps für beste Ergebnisse
 
-Beim Prompting beziehen Sie sich explizit auf die DHTMLX-Dokumentation für genaueres Ergebnis. Zum Beispiel:
+Wenn Sie prompts formulieren, beziehen Sie sich ausdrücklich auf die DHTMLX-Dokumentation, um genauere Ergebnisse zu erhalten. Zum Beispiel:
 
-- „Unter Verwendung der DHTMLX-Dokumente, wie ändere ich die Zeilenhöhe in Gantt?“
-- „Check DHTMLX MCP for Gantt task editing configuration“
+- "Using DHTMLX docs, how do I change the row height in Gantt?"
+- "Check DHTMLX MCP for Gantt task editing configuration"
 
-Je spezifischer der Prompt, desto genauer wird die Ausgabe.
+Je spezifischer der Prompt, desto genauer wird die Ausgabe sein.

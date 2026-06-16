@@ -6,6 +6,23 @@ sidebar_label: "Neuigkeiten im MSP Project Export Module"
 Neuigkeiten im MSP Project Export Module
 ========================================
 
+## 2.4.1.0
+
+- Absturz der MPXJ.NET-Bibliothek beim Ausführen des Exportmoduls in einem Docker-Container und Importieren von MPP-Dateien behoben
+
+## 2.4.0.0
+
+- Die MPXJ-Bibliothek wurde vom Paket net.sf.mpxj-for-csharp zum Paket MPXJ.NET migriert.
+- Die MPXJ-Bibliothek wurde auf Version 14.0.0 aktualisiert.
+- Die Liste der unterstützten Projekt-, Aufgaben- und Ressourceneigenschaften für Primavera P6-Dateien wurde erweitert.
+- Unterstützung für Primavera-Entitäten beim Import und Export hinzugefügt: Projektkosten, Rollen, Projektcodes, Aktivitätscodes, Ressourcencodes, Kostenstellen.
+- Unterstützung für die Baumstruktur von Ressourcen hinzugefügt.
+- Unterstützung für den Import mehrerer Baselines aus Primavera-Dateien hinzugefügt.
+- Die Einheiten des Dauerformats wurden auf besser lesbare Werte aktualisiert.
+- Die Möglichkeit zum Exportieren von Link-Lags mit benutzerdefiniertem Dauerformat hinzugefügt.
+- Der Import von Primavera-Dateien mit leeren oder fehlenden Kalendern wurde korrigiert.
+- Experimentelle Unterstützung für den Import von Dateien aus anderen Planungsprogrammen (Asta, ProjectLibre usw.) hinzugefügt.
+
 ## 2.3.0.0
 
 - Aktualisierte MPXJ-Bibliothek auf Version 12.10.3.

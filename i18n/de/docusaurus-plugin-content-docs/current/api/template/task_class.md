@@ -14,17 +14,17 @@ description: "bestimmt die CSS-Klasse, die auf Aufgabenbalken angewendet wird"
 
 ### Parameters
 
-- `start` - (erforderlich) *Date* - das Datum, an dem eine Aufgabe beginnen soll  
+- `start` - (erforderlich) *Date* - das Datum, an dem eine Aufgabe beginnen soll
 - `end` - (erforderlich) *Date* - das Datum, an dem eine Aufgabe voraussichtlich abgeschlossen wird
 - `task` - (erforderlich) *Task* - das Task-Objekt
 
 ### Returns
-- ` text` - (string | void) - eine CSS-Klasse für das betreffende Element
+- `text` - (string | void) - eine CSS-Klasse für das betreffende Element
 
 ### Example
 
 ~~~jsx
-gantt.templates.task_class = function(start, end, task){return "";};
+gantt.templates.task_class = (start, end, task) => '';
 ~~~
 
 ### Related Guides

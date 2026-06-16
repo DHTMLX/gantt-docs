@@ -24,11 +24,12 @@ console.log(gantt.license);
 
 ### Details
 
-Diese Methode gibt einen kurzen Lizenznamen zurück, der für Diagnosen verwendet werden kann. 
+Diese Methode gibt einen kurzen Lizenznamen zurück, der für Diagnosezwecke verwendet werden kann. 
 
 Mögliche Werte sind:
 
-- "gpl"
+- "mit" - die kostenlose Community-Edition (v10 und später)
+- "gpl" - die bisherige kostenlose Edition (v9.x und früher)
 - "evaluation"
 - "individual"
 - "commercial"
@@ -37,4 +38,5 @@ Mögliche Werte sind:
 - "site"
 
 ### Change log
-- hinzugefügt in v6.2.2
+- der Wert "mit" wurde in v10.0 hinzugefügt
+- in v6.2.2 hinzugefügt

@@ -16,18 +16,18 @@ description: "定义 layout 对象"
 
 ~~~jsx
 gantt.config.layout = {
-     css: "gantt_container",
-     rows:[
+    css: "gantt_container",
+    rows: [
         {
-           cols: [
-          {view: "grid", id: "grid", scrollX:"scrollHor", scrollY:"scrollVer"},
-          {resizer: true, width: 1},
-          {view: "timeline", id: "timeline", scrollX:"scrollHor", scrollY:"scrollVer"},
-          {view: "scrollbar", scroll: "y", id:"scrollVer"}
-           ]
-         },
-        {view: "scrollbar", scroll: "x", id:"scrollHor", height:20}
-     ]
+            cols: [
+                { view: "grid", id: "grid", scrollX: "scrollHor", scrollY: "scrollVer" },
+                { resizer: true, width: 1 },
+                { view: "timeline", id: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+                { view: "scrollbar", scroll: "y", id: "scrollVer" }
+            ]
+        },
+        { view: "scrollbar", scroll: "x", id: "scrollHor", height: 20 }
+    ]
 };
 
 gantt.init("gantt_here");
@@ -37,7 +37,7 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
-请在 Gantt 初始化之前指定布局配置。若对布局进行修改，需要使用 [resetLayout](api/method/resetlayout.md) 进行刷新。
+请在 Gantt 初始化之前指定布局配置。若对布局进行修改，需要使用 [`resetLayout()`](api/method/resetlayout.md) 进行刷新。
 :::
 
 ### Related API

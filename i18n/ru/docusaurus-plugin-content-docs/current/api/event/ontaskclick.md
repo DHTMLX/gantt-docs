@@ -18,12 +18,12 @@ description: "Срабатывает, когда пользователь кли
 - `e` - (optional) *Event* - объект нативного события
 
 ### Returns
-- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (true) или отменено (false)
+- `result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (true) или отменено (false)
 
 ### Example
 
 ~~~jsx
-gantt.attachEvent("onTaskClick", function(id,e){
+gantt.attachEvent("onTaskClick", (id, e) => {
     // любая ваша логика здесь
     return true;
 });
@@ -31,7 +31,7 @@ gantt.attachEvent("onTaskClick", function(id,e){
 
 ### Details
 
-Событие можно отменить. Возврат false отменит обработчик по умолчанию (выбор задачи)
+Событие можно прервать. Возврат `false` отменит обработчик по умолчанию, который выбирает задачу.
 
 ### Related API
 - [onTaskDblClick](api/event/ontaskdblclick.md)

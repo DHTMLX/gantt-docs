@@ -22,17 +22,17 @@ description: "添加一个新的依赖关系链接"
 ### Example
 
 ~~~jsx
-var linkId = gantt.addLink({
-    id:1,
-    source:1,
-    target:2,
-    type:gantt.config.links.finish_to_start
+const linkId = gantt.addLink({
+    id: 1,
+    source: 1,
+    target: 2,
+    type: gantt.config.links.finish_to_start
 });
 ~~~
 
 ### Details
 
-该方法会触发 [onBeforeLinkAdd](api/event/onbeforelinkadd.md) 和 [onAfterLinkAdd](api/event/onafterlinkadd.md) 事件。
+该方法会触发 [`onBeforeLinkAdd`](api/event/onbeforelinkadd.md) 和 [`onAfterLinkAdd`](api/event/onafterlinkadd.md) 事件。
 
 ### Related API
 - [updateLink](api/method/updatelink.md)

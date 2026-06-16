@@ -1,4 +1,4 @@
---- 
+---
 title: "React Gantt"
 sidebar_label: React Gantt
 description: "Installieren, konfigurieren und DHTMLX Gantt in React mit dem offiziellen Wrapper verwenden."
@@ -46,4 +46,9 @@ Wenn Sie eine Bibliothek zur Zustandsverwaltung verwenden, zeigen die Anleitunge
 
 ## Beispiele und Evaluationsressourcen
 
-Wenn Sie React Gantt evaluieren, bietet Ihnen die Evaluierungsseite technischen Support während der Evaluierungsphase. Siehe [Installation](integrations/react/installation.md).
+Durchsuchen Sie die öffentlichen React Gantt-Beispiele für lauffähige Demos des Wrappers:
+
+- [Live-Demo](https://dhtmlx.github.io/react-gantt-examples/)
+- [GitHub-Repository](https://github.com/DHTMLX/react-gantt-examples)
+
+Wenn Sie React Gantt evaluieren, bietet die Evaluierungsseite während des Evaluierungszeitraums technischen Support. Siehe [Installation](integrations/react/installation.md).

@@ -22,12 +22,12 @@ description: "Promise 객체 생성자"
 ### Example
 
 ~~~jsx
-new gantt.Promise(function(resolve, reject) {
-    setTimeout(function(){
+new gantt.Promise((resolve, reject) => {
+    setTimeout(() => {
         resolve();
     }, 5000);
-}).then(function(){
-    alert("Resolved")
+}).then(() => {
+    alert("Resolved");
 });
 ~~~
 

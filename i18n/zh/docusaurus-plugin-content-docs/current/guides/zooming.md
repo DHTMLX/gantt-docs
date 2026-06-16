@@ -1,15 +1,15 @@
---- 
+---
 title: "缩放"
 sidebar_label: "缩放"
 ---
 
 # 缩放
 
-dhtmlxGantt 提供一个内置模块，方便管理时间刻度的缩放。如果你想自定义默认的缩放行为，可以使用 [灵活的 API](guides/zoom.md)，它允许你实现动态更改时间刻度设置的能力。
+dhtmlxGantt 提供一个内置模块，用于便捷地管理时间刻度的缩放。如果你想自定义默认的缩放行为，可以使用 [灵活的 API](guides/zoom.md)，它允许你实现以动态方式更改时间刻度设置的能力。
 
 ## 内置缩放模块
 
-嵌入的 [zooming module](guides/zoom.md) 在 `gantt.ext.zoom` 扩展中声明。要启用此模块，你需要调用 `gantt.ext.zoom.init(zoomConfig)`，并传入一个包含缩放层级数组的配置对象 `zoomConfig`。例如：
+内嵌的 [zooming module](guides/zoom.md) 在 `gantt.ext.zoom` 扩展中声明。要启用该模块，你需要调用 `gantt.ext.zoom.init(zoomConfig)`，并传入一个包含缩放级别数组的 `zoomConfig` 对象。举例：
 
 ~~~js
 const zoomConfig = {
@@ -81,21 +81,74 @@ gantt.ext.zoom.init(zoomConfig);
 ~~~
 
 :::note
-关于缩放模块及其 API 的详细信息，请参阅文章 [Zoom Extension](guides/zoom.md)。
+有关缩放模块及其 API 的详细信息，请参见文章 [Zoom Extension](guides/zoom.md)。
 :::
 
-**相关示例**: [鼠标滚轮缩放](https://docs.dhtmlx.com/gantt/samples/03_scales/14_scale_zoom_by_wheelmouse.html)
+**相关示例**： [Mouse wheel zoom](https://docs.dhtmlx.com/gantt/samples/03_scales/14_scale_zoom_by_wheelmouse.html)
+
+### 默认缩放级别
+
+如果在没有设置 `levels` 的情况下调用 `gantt.ext.zoom.init()`，扩展将使用一组可直接使用的命名级别 - **"hour"**、**"day"**、**"week"**、**"month"**、以及 **"year"**。这使你可以通过一次调用启用缩放，并按名称切换刻度：
+
+~~~js
+gantt.ext.zoom.init();
+
+gantt.ext.zoom.setLevel("week");
+~~~
+
+在需要自定义刻度或标签时，请提供 `levels` 数组。
+
+## 缩放以适应
+
+Zoom 扩展可以自动选择最详细的缩放级别，使所有任务都能在时间线宽度内显示，没有水平滚动。请调用 [`gantt.ext.zoom.zoomToFit()`](guides/zoom.md#methods)，若要返回到之前的缩放，请调用 [`gantt.ext.zoom.resetZoom()`](guides/zoom.md#methods)：
+
+~~~js
+gantt.ext.zoom.init();
+
+// 将所有已加载的任务适配到可见的时间线
+gantt.ext.zoom.zoomToFit();
+
+// 还原到首次 zoomToFit() 调用之前处于活动状态的刻度
+gantt.ext.zoom.resetZoom();
+~~~
+
+`zoomToFit()` 在应用了合适的缩放级别时返回 `true`，否则返回 `false`（例如空图表）。
+
+默认情况下 `zoomToFit()` 适配 **所有已加载的任务**。你可以通过 `init()` 的 `fit` 设置，或通过传给 `zoomToFit()` 的选项，来改变被适配的对象，甚至重新定义选择逻辑：
+
+~~~js
+gantt.ext.zoom.init({
+    levels: [ /* interactive zoom levels */ ],
+    fit: {
+        scope: "all", // "all" (default) 适配每个已加载的任务，"visible" - 仅展开的行
+        levels: [ /* optional, a set of scales used only for fitting */ ],
+        handler: (context) => {
+            // context: { range, viewportWidth, levels, padding, defaultLevel }
+            return context.defaultLevel; // 返回一个级别名称/索引，或 false 以中止
+        }
+    }
+});
+
+// 每次调用的选项覆盖 init() 的默认值
+gantt.ext.zoom.zoomToFit({ scope: "visible" });               // 仅适配展开的行
+gantt.ext.zoom.zoomToFit({ taskId: 5 });                      // 适配一个任务及其子树
+gantt.ext.zoom.zoomToFit({ range: { start_date, end_date } });// 适配一个明确的日期范围
+~~~
+
+完整的选项列表请参见 [Zoom Extension](guides/zoom.md#zoom-to-fit) 文章。
+
+**相关示例**： [Zoom to fit](https://docs.dhtmlx.com/gantt/samples/03_scales/13_zoom_to_fit.html)
 
 ## 自定义缩放设置
 
-如果你不想使用缩放模块、而更愿意手动控制刻度设置，可以通过相应的配置选项实现。
+如果你不想使用缩放模块、而更倾向于手动控制刻度设置，则可通过相应的配置选项来实现。
 
-事实上，实现缩放功能意味着定义若干时间刻度配置的预设（缩放级别），并为用户提供在它们之间切换的能力。
+事实上，实现缩放功能意味着定义时间刻度配置的若干预设（缩放级别），并为用户提供在它们之间切换的能力。
 
-你将需要以下设置来配置时间刻度：
+要配置时间刻度，需要以下设置：
 
 - [`gantt.config.scales`](api/config/scales.md) - 允许设置任意数量的时间刻度行
-- [`gantt.config.min_column_width`](api/config/min_column_width.md), [`gantt.config.scale_height`](api/config/scale_height.md) - 刻度列宽和时间刻度的整体高度
+- [`gantt.config.min_column_width`](api/config/min_column_width.md), [`gantt.config.scale_height`](api/config/scale_height.md) - 时间刻度列宽和时间刻度的总体高度
 
 让我们考虑以下预设：
 
@@ -141,14 +194,15 @@ const setScaleConfig = (level) => {
 };
 ~~~
 
-上述函数可以通过四个预定义配置中的一个来配置 gantt 对象，从 "day" 到 "year" 时间刻度。Gantt 将需要重新绘制以显示配置的更改：
+所述函数可以通过从 "day" 到 "year" 时间刻度的四个预定义配置之一来配置 gantt 对象。
+Gantt 将需要一次完整的重绘才能显示配置的更改：
 
 ~~~js
 setScaleConfig("year");
 gantt.init("gantt_here");
 ~~~
 
-然后你可以实现一个 UI 让用户切换缩放级别：
+然后你可以实现一个 UI，让用户切换缩放级别：
 
 ~~~html
 <label><input type="radio" name="scale" value="day" checked/>日刻度</label>
@@ -169,4 +223,4 @@ scaleInputs.forEach((input) => {
 });
 ~~~
 
-**相关示例**: [动态刻度](https://docs.dhtmlx.com/gantt/samples/03_scales/05_dynamic_scales.html)
+**相关示例**： [Dynamic scales](https://docs.dhtmlx.com/gantt/samples/03_scales/05_dynamic_scales.html)

@@ -14,7 +14,7 @@ description: "initializes a dhtmlxGantt inside a container"
 
 ### Parameters
 
-- `container` - (required) *string* - | HTMLElement an HTML container (or its id) where a dhtmlxGantt object will be initialized
+- `container` - (required) *string | HTMLElement* -  an HTML container (or its id) where a dhtmlxGantt object will be initialized
 
 ### Example
 

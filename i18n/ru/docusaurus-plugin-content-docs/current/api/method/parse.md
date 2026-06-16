@@ -1,199 +1,127 @@
 ---
 sidebar_label: parse
-title: parse method
-description: "загружает данные из клиентского ресурса"
+title: parse метод
+description: "загружает данные из ресурса на стороне клиента"
 ---
 
 # parse
 
 ### Description
 
-@short: Загружает данные из клиентского ресурса
+@short: Загружает данные из ресурса на стороне клиента
 
-@signature: parse: (data: string | DataToLoad1 | DataToLoad2, type?: string) =\> void
+@signature: parse: (data: string | GanttData, type?: string) => void
 
 ### Parameters
 
-- `data` - (required) *string | DataToLoad* - строка или объект, который представляет [data](guides/loading.md#dataproperties)
-- `type`	-	(optional) *string*	-	 необязательный, (<i>'json', 'xml'</i>) тип данных. Значение по умолчанию - <i>'json'</i>
+- `data` - (required) *string | GanttData* - строка или объект, представляющий [данные](guides/loading.md#dataproperties)
+- `type` - (optional) *string* - необязательный, (`'json'`, `'xml'`) тип данных. Значение по умолчанию — `'json'`
 
 ### Example
 
 ~~~jsx
 gantt.parse({
-    data:[
-        {id:1, text:"Project #2", start_date:"01-04-2023", duration:18},
-        {id:2, text:"Task #1",    start_date:"02-04-2023", duration:8,
-            progress:0.6, parent:1},
-        {id:3, text:"Task #2",    start_date:"11-04-2023", duration:8,
-            progress:0.6, parent:1}
+    tasks: [
+        { id: 1, text: "Project #2", start_date: "2026-04-01", duration: 18 },
+        { id: 2, text: "Task #1", start_date: "2026-04-02", duration: 8, progress: 0.6, parent: 1 },
+        { id: 3, text: "Task #2", start_date: "2026-04-11", duration: 8, progress: 0.6, parent: 1 }
     ],
-    links:[
-        { id:1, source:1, target:2, type:1},
-        { id:2, source:2, target:3, type:0}
+    links: [
+        { id: 1, source: 1, target: 2, type: "1" },
+        { id: 2, source: 2, target: 3, type: "0" }
     ]
 });
 ~~~
 
 ### Related samples
-- [Basic initialization](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
+
+- [Базовая инициализация](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
 
 ### Details
 
-Gantt ожидает, что *массив с задачами* будет называться либо **data**, либо **tasks**, тогда как *массив со связями* будет называться **links**.
+Метод `parse()` принимает верхнеуровневый объект [GanttData](guides/data-model.md#ganttdata).
 
-Это список ожидаемых свойств:
+Gantt ожидает, что массив задач будет назван либо `data`, либо `tasks`, в то время как массив связей будет назван `links`.
 
-- **data** - (*[] | NewTask[]*) - массив данных задач
-- **links?** - (*Link[]*) - массив данных связей
-- **resources?** - (*NewResourceItem[]*) - массив данных ресурсов
-- **assignments?** - (*NewAssignmentItem[]*) - массив данных назначений
-- **collections?** - (*Сollections*) - объект, который содержит массивы с пользовательскими данными
+Это список поддерживаемых свойств:
 
-~~~js
-gantt.parse({
-    data: [
-        { id: 1, start_date: "2025-09-23", duration: 42, 
-            text: "House Construction" },
-        { id: 2, start_date: "2025-12-02", duration: 60, 
-            text: "House Construction" },
-    ],
-    "links": [
-        { id: "1", source: "1", target: "2", type: "0" },
-    ],
-    "resources": [
-        { id: 1, text: "Anna, Architect", unit: "hours/day", 
-            default_value: 8, type: "work" },
-    ],
-    "assignments": [
-      { task_id: "1", resource_id: "1", value: "8" },
-      { task_id: "2", resource_id: "1", value: "8", 
-            mode: "fixedDates", start_date: "2025-09-23", 
-            end_date: "2025-09-25", duration: 4, delay: 2,  },
-      { task_id: "2", resource_id: "1", value: "8", 
-            start_date: new Date("2025-09-23 00:00:00"), 
-            end_date: new Date("2025-09-26 00:00:00"), },
-    ]
-})
-~~~
-
-
-The **data** or **tasks** array expects the **NewTask** object that is different from the **Task** object. It can be a string, an empty object.
-It can have the same properties as the [**Task** object](guides/task-properties.md), and you can add any custom properties there. 
-The difference is that some properties of the **Task** object that start from the *$* sign are ignored and the dates can have the *string* type. 
-Here is the type description:
-
-- **NewTask** - (*string | {} | object*) - the task object that will be added to Gantt. It can have the following properties:
-    - **_id?_** - (*string | number*) - optional, the task ID, auto-generated if not set
-    - **_start_date?_** - (*string | Date*) - optional, the date when a task is scheduled to begin
-    - **_duration?_** - (*number*) - optional, the task duration
-    - **_end_date?_** - (*string | Date*) - optional, the date when a task is scheduled to be completed
-    - **_text?_** - (*string*) - optional, the task name
-    - **_open?_** - (*boolean*) - optional, specifies if the task will be opened on load (to show child tasks)
-    - **_parent?_** - (*string | number*) - optional, the ID of the parent task
-    - **_constraint_date?_** - (*string | Date*) - optional, the date of the task constraint
-    - **_[customProperty: string]_** - (*any*) - any other property you want to add, including the ones from the [**Task** object](guides/task-properties.md)
-
-This is not the full list of possible task properties. For that, please refer to [this article](guides/task-properties.md).
+- `tasks` или `data` - (`(SerializedTask | Task)[]`) массив данных задач
+- `links?` - (`(SerializedLink | Link)[]`) массив данных связей
+- `resources?` - (`Partial<ResourceItem>[]`) массив данных ресурсов
+- `assignments?` - (`(SerializedResourceAssignment | ResourceAssignment)[]`) массив данных назначений
+- `baselines?` - (`(SerializedBaseline | Baseline)[]`) массив базовых линий
+- `collections?` - (`Record<string, Array<Record<string, unknown>>>`) объект пользовательских коллекций
 
 ~~~js
 gantt.parse({
-    data: [
-        { id: 1, start_date: "2025-09-23", duration: 42, 
-            text: "House Construction" },
-    ]
-})
-~~~
-
-
----
-
-
-The **links** array expects the [**Link** objects](guides/link-properties.md).
-
-~~~js
-gantt.parse({
-    data: [],
+    tasks: [
+        { id: 1, start_date: "2026-04-01", duration: 42, text: "House Construction" },
+        { id: 2, start_date: "2026-04-20", duration: 60, text: "Interior Works" }
+    ],
     links: [
-        { id: "1", source: "1", target: "2", type: "0" },
-    ]
-})
-~~~
-
----
-
-
-The **resources** array expects the **NewResourceItem** object that may have the properties below:
-
-- **NewResourceItem** - (*object*) - the resource item object that will be added to Gantt. It can have the following properties:
-    - **_id?_** - (*string | number*) - optional, the resource ID, auto-generated if not set
-    - **_parent?_** - (*string | number*) - optional, the ID of the parent resource
-    - **_text?_** - (*string*) - optional, the resource name
-    - **_open?_** - (*boolean*) - optional, specifies if the resource will be opened on load (to show child items)
-    - **_unit?_** - (*string | number*) - optional, the unit of the resource assignment
-    - **_default_value?_** - (*string | number*) - optional, the value that is assigned by default when adding the assignment in the lightbox section
-    - **_[customProperty: string]_** - (*any*) - any other property you want to add
-
-~~~js
-gantt.parse({
-    data: [],
+        { id: "1", source: "1", target: "2", type: "0" }
+    ],
     resources: [
-        { id: 1, text: "Anna, Architect", unit: "hours/day", 
-            default_value: 8, type: "work" },
-    ]
-})
-~~~
-
-
----
-
-
-The **assignments** array expects the **NewAssignmentItem** object that may have the properties below:
-
-- **NewAssignmentItem** - (*object*) - the assignment item object that will be added to Gantt. It can have the following properties:
-    - **_id?_** - (*string | number*) - optional, the assignment ID, auto-generated if not set
-    - **_task_id_** - (*string | number*) - the ID of the task the resource is assigned to
-    - **_resource_id_** - (*string | number*) - the ID of the resource that is assigned to the task
-    - **_value_** - (*number | string*) - optional, the assignment value
-    - **_mode?_** - (*string*) - optional, the calculation mode of the time of the resource assignment: "default"|"fixedDates"|"fixedDuration"
-    - **_delay?_** - (*number*) - optional, the difference between the assignment start date and the task start date
-    - **_start_date?_** - (*string | Date*) - optional, the date the assignment should start
-    - **_duration?_** - (*number*) - optional, the assignment duration
-    - **_end_date?_** - (*string | Date*) - optional, the date the assignment should end
-    - **_[customProperty: string]_** - (*any*) - any other property you want to add
-
-
-~~~js
-gantt.parse({
-    data: [],
+        { id: 1, text: "Anna, Architect", unit: "hours/day", default_value: 8, type: "work" }
+    ],
     assignments: [
-      { task_id: "1", resource_id: "1", value: "8" },
+        { task_id: "1", resource_id: "1", value: "8" },
+        {
+            task_id: "2",
+            resource_id: "1",
+            value: "8",
+            mode: "fixedDates",
+            start_date: "2026-04-20",
+            end_date: "2026-04-22",
+            duration: 4,
+            delay: 2
+        },
+        {
+            task_id: "2",
+            resource_id: "1",
+            value: "8",
+            start_date: new Date("2026-04-20T00:00:00"),
+            end_date: new Date("2026-04-23T00:00:00")
+        }
+    ],
+    baselines: [
+        {
+            id: "b1",
+            task_id: 1,
+            start_date: "2026-03-28",
+            duration: 42,
+            end_date: "2026-05-09"
+        }
     ]
-})
+});
 ~~~
 
----
+`data` и `tasks` являются альтернативными ключами для одного и того же массива задач. В новом коде предпочтительнее использовать `tasks`.
 
-The **collections** object allows loading any custom data. The properties can have any name, и the value should be an array that contains the collection items:
+Если вы загружаете данные из JavaScript-объекта, созданного в коде, `Task`, `ResourceAssignment` и другие объекты времени выполнения могут содержать `Date`. При обмене данными в формате JSON с сервером поля дат должны быть строками. Гибкая форма входных данных, принимающая либо форму даты (и необязательный `id`), — [`TaskInput`](guides/data-model.md#taskinput).
 
-- **[collectionName: string]** - (*[] | СollectionItem[]*) - an array that contains the collection items.
+### Legacy Compatibility Names
 
-The **СollectionItem** is an object that can have any properties. It has the following types for its properties:
+Старые API-документации и типы по-прежнему используют несколько псевдонимов совместимости:
 
-- **[itemProperty: string]** - (*any*) - any custom property of the collection item.
+- `DataToLoad1`, `DataToLoad2`
+- `NewTask` - устаревший псевдоним для [`TaskInput`](guides/data-model.md#taskinput)
+- `NewResourceItem`
+- `NewAssignmentItem`
 
+Эти имена сохранены для обратной совместимости. Каноническое описание принятых форм — статья [Модель данных](guides/data-model.md).
+
+### Collections
+
+Объект `collections` позволяет загружать пользовательские списки, используемые редакторами и элементами управления. Имена свойств могут быть произвольными, и каждое значение должно быть массивом элементов коллекции.
 
 ~~~js
 gantt.parse({
-    data: [
-        { "id": "1", "text": "Task #1", "priority": 1, 
-            "start_date": "02-04-2019", "duration": 1, },
-        { "id": "2", "text": "Task #2", "priority": 2,  
-            "start_date": "01-04-2019", "duration": 1, },
-        { "id": "3", "text": "Task #3", "priority": 3,  
-            "start_date": "02-04-2019", "duration": 1, },
-        { "id": "4", "text": "Task #4", "priority": 1,  
-            "start_date": "03-04-2019", "duration": 1, },
+    tasks: [
+        { id: "1", text: "Task #1", priority: 1, start_date: "2026-04-01", duration: 1 },
+        { id: "2", text: "Task #2", priority: 2, start_date: "2026-04-02", duration: 1 },
+        { id: "3", text: "Task #3", priority: 3, start_date: "2026-04-03", duration: 1 },
+        { id: "4", text: "Task #4", priority: 1, start_date: "2026-04-04", duration: 1 }
     ],
     links: [],
     collections: {
@@ -206,63 +134,26 @@ gantt.parse({
 });
 ~~~
 
----
+### Empty Task Array
 
-
-If you want to load data which doesn't contain tasks, you still need to define an array of tasks in the object with data but it can be empty:
-
-~~~js
-gantt.parse({
-    tasks:[],
-    links:[
-        { id:1, source:1, target:2, type:1},
-        { id:2, source:2, target:3, type:0}
-    ]
-});
-~~~
-
-
-From v8.0, besides tasks and links, you can load resources и resource assignments into the gantt via the **parse()** method:
+Если нужно загрузить данные, не содержащие задач, все равно необходимо определить пустой массив задач:
 
 ~~~js
 gantt.parse({
-    tasks: [
-        ...,
-        {
-            id: 5,
-            text: "Interior office",
-            type: "task",
-            start_date: "03-04-2024 00:00",
-            duration: 7,
-            parent: "2",
-            owner: [
-                {
-                    resource_id: "6",
-                    value: 3,
-                    start_date: "03-04-2024 00:00",
-                    end_date: "05-04-2024 00:00",
-                }
-            ]
-        },
-        ...
-    ],
-    links: [],
-    resources: [
-        {id: 6, text: "John", unit: "hours/day" },
-        {id: 7, text: "Mike", unit: "hours/day" },
-        {id: 8, text: "Anna", unit: "hours/day" },
-        {id: 9, text: "Bill", unit: "hours/day" },
-        {id: 10, text: "Floe", unit: "hours/day" }
+    tasks: [],
+    links: [
+        { id: 1, source: 1, target: 2, type: "1" },
+        { id: 2, source: 2, target: 3, type: "0" }
     ]
 });
 ~~~
-
-You can read more [here](guides/resource-management.md#loading-resources-and-resource-assignments).
 
 ### Related API
+
 - [load](api/method/load.md)
 
 ### Related Guides
-- [Data Loading](guides/loading.md)
-- [Supported Data Formats](guides/supported-data-formats.md)
-- [Supported Data Formats](guides/supported-data-formats.md#jsonwithcollections) (read how to load JSON with Collections)
+
+- [Модель данных](guides/data-model.md)
+- [Загрузка данных](guides/loading.md)
+- [Поддерживаемые форматы данных](guides/supported-data-formats.md)

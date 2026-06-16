@@ -20,16 +20,16 @@ sidebar_label: "Установка"
 
 Вы можете получить доступ к приватному npm DHTMLX напрямую в [Личном кабинете](https://dhtmlx.com/clients/) путем создания логина и пароля для npm. Подробная инструкция по установке доступна там же. Обратите внимание, что доступ к приватному npm доступен только пока активна ваша проприетарная лицензия на Gantt.
 
-## npm - стандартная бесплатная версия
+## npm - Community edition
 
-Вы можете установить стандартную версию dhtmlxGantt из [npmjs.com](https://www.npmjs.com/package/dhtmlx-gantt), выполнив следующую командную строку:
+Вы можете установить бесплатную Community edition dhtmlxGantt из [npmjs.com], выполнив следующую команду:
 
 ~~~html
 npm install dhtmlx-gantt
 ~~~
 
 :::note
-Только стандартная версия Gantt доступна на [npmjs.com](https://www.npmjs.com/package/dhtmlx-gantt)
+С версии v10 открытый пакет `dhtmlx-gantt` является **Community edition** под **MIT лицензией**. Ранние версии пакета (v9.x и ниже) являются устаревшим выпуском **GPL**; GPL v2 по-прежнему применяется к этим версиям.
 :::
 
 ## NuGet
@@ -66,11 +66,19 @@ bower install gantt
 
 Полный список ссылок для CDN, зависящий от версии dhtmlxGantt, можно найти в отдельной статье (guides/cdn-links-list.md).
 
+:::note
+Для версий v10 и выше CDN предоставляет **Community edition** под MIT лицензией.
+:::
+
 ## Загрузка пакета
 
-### GPL версия
+### Community edition
 
-[Скачать пакет dhtmlxGantt GPL версии](https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml).
+[Скачайте пакет бесплатной dhtmlxGantt Community edition](https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml).
+
+### Устаревшие версии GPL
+
+Бесплатное издание до версии v10 распространялось по лицензии **GPL**. Эти версии (v9.x и ранее) доступны по-прежнему, и GPL v2 применяется к ним; они находятся в отдельной ветке основного репозитория [main GitHub repository](https://github.com/DHTMLX/gantt), но активно не поддерживаются.
 
 ### PRO версия
 
@@ -89,10 +97,10 @@ bower install gantt
 ### **Установить Pro-версию**
 
 :::note
-Перед установкой Pro-версии Gantt следует [удалить пакет пробной версии](#uninstall-trial-version) (если он установлен)
-::: 
+Перед установкой Pro версии Gantt вы должны [удалить пробную версию пакетa](#uninstall-trial-version) (если она установлена)
+:::
 
-Все публичные источники (CDN, NuGet, Bower и npm) содержат стандартную версию компонента, распространяемую по лицензии GPL.
+Для версий v10 и выше общедоступный пакет npm и CDN предоставляют бесплатную **Community edition** компонента, распространяемую под **MIT лицензией**. NuGet и Bower остаются на устаревшем GPL выпуске (v9.x) на данный момент. GPL v2 применяется только к этим предыдущим версиям.
 
 Мы также предоставляем наш приватный npm-реестр, откуда можно устанавливать Professional и Evaluation версии компонента.
 
@@ -119,7 +127,7 @@ bower install gantt
 3. Перейдите в каталог вашего проекта.
 4. Выполните `npm link dhtmlx-gantt`.
 
-Чтобы увидеть различия между стандартной и PRO-версиями библиотеки dhtmlxGantt, ознакомьтесь со статьей [Standard vs PRO Library Versions](guides/editions-comparison.md).
+Чтобы увидеть разницу между Community и PRO версиями библиотеки dhtmlxGantt, смотрите соответствующую статью [Community vs PRO Library Versions](guides/editions-comparison.md).
 
 ### **Удаление пробной версии**
 

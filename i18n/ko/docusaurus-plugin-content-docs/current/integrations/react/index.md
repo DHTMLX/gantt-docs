@@ -46,4 +46,9 @@ React 또는 상태 관리 도구에 작업/링크를 보관하고 이를 프롭
 
 ## 예제 및 평가 자료
 
-리액트 Gantt를 평가 중인 경우, 평가 페이지에서 평가 기간 동안 기술 지원에 접근할 수 있습니다. [설치](integrations/react/installation.md)를 참조하십시오.
+공개된 React Gantt 예제를 둘러봐 래퍼의 실행 가능한 데모를 확인하세요:
+
+- [라이브 데모](https://dhtmlx.github.io/react-gantt-examples/)
+- [GitHub 저장소](https://github.com/DHTMLX/react-gantt-examples)
+
+React Gantt를 평가 중이라면 평가 페이지에서 평가 기간 동안 기술 지원에 접속할 수 있습니다. [설치](integrations/react/installation.md)를 참조하세요.

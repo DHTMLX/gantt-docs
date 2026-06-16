@@ -14,17 +14,17 @@ description: "작업 바에 적용될 CSS 클래스를 지정합니다"
 
 ### Parameters
 
-- `start` - (필수) *Date* - 작업이 시작될 예정인 날짜  
+- `start` - (필수) *Date* - 작업이 시작될 예정인 날짜
 - `end` - (필수) *Date* - 작업이 완료될 예정인 날짜
 - `task` - (필수) *Task* - 작업 객체
 
 ### Returns
-- ` text` - (string | void) - 해당 항목에 대한 CSS 클래스
+- `text` - (string | void) - 해당 항목에 대한 CSS 클래스
 
 ### Example
 
 ~~~jsx
-gantt.templates.task_class = function(start, end, task){return "";};
+gantt.templates.task_class = (start, end, task) => '';
 ~~~
 
 ### Related Guides

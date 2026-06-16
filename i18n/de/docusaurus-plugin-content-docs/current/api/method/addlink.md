@@ -22,17 +22,17 @@ description: "fügt eine neue Abhängigkeitsverknüpfung hinzu"
 ### Example
 
 ~~~jsx
-var linkId = gantt.addLink({
-    id:1,
-    source:1,
-    target:2,
-    type:gantt.config.links.finish_to_start
+const linkId = gantt.addLink({
+    id: 1,
+    source: 1,
+    target: 2,
+    type: gantt.config.links.finish_to_start
 });
 ~~~
 
 ### Details
 
-Die Methode löst die Ereignisse [onBeforeLinkAdd](api/event/onbeforelinkadd.md) und [onAfterLinkAdd](api/event/onafterlinkadd.md) aus.
+Die Methode löst die Ereignisse [`onBeforeLinkAdd`](api/event/onbeforelinkadd.md) und [`onAfterLinkAdd`](api/event/onafterlinkadd.md) aus.
 
 ### Related API
 - [updateLink](api/method/updatelink.md)

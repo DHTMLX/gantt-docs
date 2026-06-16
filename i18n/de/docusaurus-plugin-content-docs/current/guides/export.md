@@ -9,8 +9,8 @@ dhtmlxGantt bietet einen Online-Exportdienst an, der es Ihnen ermöglicht, das G
 [PNG](guides/export.md#export-to-png) Format zu exportieren.
 
 :::note
-Der Dienst ist kostenlos, aber die exportierte PDF-/PNG-Datei enthält unter der GPL-Lizenz das Wasserzeichen der Bibliothek. 
-Wenn Sie eine Lizenz erwerben, ist das Exportergebnis während der gültigen Support-Periode (12 Monate für alle PRO-Lizenzen) wasserzeichenfrei verfügbar.
+Der Dienst ist kostenlos, aber die output PDF/PNG-Datei enthält das Wasserzeichen der Bibliothek.
+Um ohne Wasserzeichen zu exportieren, benötigen Sie eine gültige Lizenz – das Export-Ergebnis steht während der gültigen Support-Periode (12 Monate für alle PRO-Lizenzen) ohne Wasserzeichen zur Verfügung.
 :::
 
 Es gibt mehrere Exportdienste. Sie können sie lokal auf Ihrem Computer installieren und das Gantt-Diagramm lokal nach PDF oder PNG exportieren.

@@ -16,18 +16,18 @@ description: "указывается объект layout"
 
 ~~~jsx
 gantt.config.layout = {
-     css: "gantt_container",
-     rows:[
+    css: "gantt_container",
+    rows: [
         {
-           cols: [
-          {view: "grid", id: "grid", scrollX:"scrollHor", scrollY:"scrollVer"},
-          {resizer: true, width: 1},
-          {view: "timeline", id: "timeline", scrollX:"scrollHor", scrollY:"scrollVer"},
-          {view: "scrollbar", scroll: "y", id:"scrollVer"}
-           ]
-         },
-        {view: "scrollbar", scroll: "x", id:"scrollHor", height:20}
-     ]
+            cols: [
+                { view: "grid", id: "grid", scrollX: "scrollHor", scrollY: "scrollVer" },
+                { resizer: true, width: 1 },
+                { view: "timeline", id: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+                { view: "scrollbar", scroll: "y", id: "scrollVer" }
+            ]
+        },
+        { view: "scrollbar", scroll: "x", id: "scrollHor", height: 20 }
+    ]
 };
 
 gantt.init("gantt_here");
@@ -37,7 +37,7 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
-Обратите внимание, что конфигурацию layout следует задавать до инициализации Gantt. Если вы внесёте изменения в layout, вам нужно обновить его с помощью [resetLayout](api/method/resetlayout.md). 
+Учтите, что конфигурацию layout следует задавать до инициализации Gantt. Если вы внесете изменения в layout, нужно обновить его с помощью [`resetLayout()`](api/method/resetlayout.md).
 :::
 
 ### Related API

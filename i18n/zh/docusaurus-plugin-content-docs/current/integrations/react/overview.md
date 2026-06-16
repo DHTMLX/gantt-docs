@@ -7,10 +7,10 @@ description: "对官方 React 封装器的概览：特性、props、主题、事
 
 # React Gantt 概览
 
-:::note  
-React Gantt 在 [Commercial、Enterprise 和 Ultimate 许可](https://dhtmlx.com/docs/products/licenses.shtml) 下可用。  
-如果你使用的是 Gantt 的 Individual 或 GPL 版本，请参考 React 的 [入门指南](integrations/react/js-gantt-react.md) 文章。  
-:::  
+:::note
+React Gantt 可在 [Commercial, Enterprise and Ultimate 许可](https://dhtmlx.com/docs/products/licenses.shtml) 下获得。
+如果您正在使用免费 Community 版（v10+）、或较早版本的 GPL 版（v9.x 及更早），或 Gantt 的 Individual 版，请参考 React 的 [如何入门](integrations/react/js-gantt-react.md) 文章。
+:::
 
 ## 概览
 

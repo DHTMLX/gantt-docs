@@ -9,10 +9,10 @@ Dieser Artikel hebt die wichtigsten Merkmale der Verwendung der Gantt-Instanz he
 
 Betrachten wir den häufigsten Fall – der Aufbau einer Anwendung mit mehreren Seiten/Tabs/Ansichten. 
 
-Der folgende Ansatz kann auf Angular-basierten (oder React-basierten) Apps anwendbar sein und ist nur in der Commercial-, Enterprise- oder Ultimate-Version von dhtmlxGantt verfügbar (und nicht in der GPL- oder Individual-Edition):
+Der folgende Ansatz ist für Angular-basierte (oder React-basierte) Apps anwendbar. Ab Version 10 ist es in allen Editionen von dhtmlxGantt verfügbar (die kostenfreie Community-Edition und die PRO-Editionen); in älteren Versionen (die GPL-Edition in v9.x und früher) ist es nicht verfügbar:
 
-- Wenn Sie eine Seite/Tab/Ansicht mit Gantt öffnen, müssen Sie eine neue Gantt-Instanz erstellen;
-- Wenn Sie zu einer anderen Seite/zu einem anderen Tab/zu einer anderen Ansicht wechseln, müssen Sie die Gantt-Instanz [destroy the Gantt instance](guides/multiple-gantts.md#destructorofganttanddataprocessorinstances).
+- wenn Sie eine Seite/einen Tab/eine Ansicht mit Gantt öffnen, müssen Sie eine neue Gantt-Instanz erstellen;
+- wenn Sie zu einer anderen Seite/Tab/Ansicht wechseln, müssen Sie die [Gantt-Instanz zerstören](guides/multiple-gantts.md#destructorofganttanddataprocessorinstances). 
 
 **Der alternative Ansatz** (der für alle Versionen funktioniert) besteht darin, alles manuell selbst zurückzusetzen. 
 

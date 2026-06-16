@@ -6,8 +6,8 @@ sidebar_label: "Mehrere Gantt-Diagramme auf einer Seite"
 # Mehrere Gantt-Diagramme auf einer Seite
 
 :::info
-Diese Funktionalität steht in der Gantt PRO-Version unter kommerziellen Lizenzen (seit dem 6. Oktober 2021) sowie in den Lizenzen Enterprise und Ultimate zur Verfügung.
-::: 
+Ab Version 10 ist diese Funktionalität in allen Editionen verfügbar (der kostenlosen Community-Edition und den PRO-Editionen). In früheren Versionen war sie auf Commercial-Lizenzen (seit dem 6. Oktober 2021), Enterprise- und Ultimate-Lizenzen beschränkt.
+:::
 
 Grundsätzlich ist DHTMLX Gantt ein statisches Objekt, und die Standardinstanz existiert kontinuierlich auf der Seite. Sie können jederzeit über das globale Objekt `gantt` darauf zugreifen. Sie können bei Bedarf jedoch auch ein neues Gantt-Objekt erstellen.
 
@@ -246,5 +246,5 @@ dataProcessor.destructor();
 ~~~
 
 :::note
-Wenn Sie ein Paket verwenden, das das Erstellen mehrerer Instanzen des gantt-Objekts nicht zulässt (GPL- oder kommerzielle Editionen), macht der Aufruf des gantt-Destruktors das gantt-Objekt unzugänglich, bis die Seite neu geladen wird.
+Wenn Sie ein Paket verwenden, das das Erstellen mehrerer Instanzen des gantt-Objekts nicht zulässt (die ältere GPL-Edition in v9.x und früher oder der Single-Domain-Commercial-Build), macht der Aufruf des Destructors das gantt unzugänglich, bis die Seite neu geladen wird.
 :::
