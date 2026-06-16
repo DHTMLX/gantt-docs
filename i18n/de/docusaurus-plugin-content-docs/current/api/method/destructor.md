@@ -33,7 +33,7 @@ Das Aufrufen eines Destruktors bewirkt Folgendes:
 - trennt alle DOM-Ereignisse, die über die Methoden [event](api/method/event.md) und [attachEvent](api/method/attachevent.md) an das DOM angehängt wurden
 
 :::note
-Wenn Sie ein Paket verwenden, das das Erstellen mehrerer Instanzen eines Gantt nicht zulässt (GPL- oder Individualeditionen), macht der Aufruf des Destruktors die Gantt-Instanz bis zum Neuladen der Seite unzugänglich.
+Ab Version 10 werden in allen Editionen mehrere Gantt-Instanzen unterstützt (die kostenlose Community-Edition und die PRO-Editionen). In älteren Versionen, die das Erstellen mehrerer Instanzen nicht zulassen (die GPL-Edition in v9.x und früher oder der kommerzielle Build mit einer einzelnen Domain) führt der Aufruf des Gantt-Destructors dazu, dass der Gantt bis zur Neuladung der Seite unzugänglich bleibt.
 :::
 
 ### Related API

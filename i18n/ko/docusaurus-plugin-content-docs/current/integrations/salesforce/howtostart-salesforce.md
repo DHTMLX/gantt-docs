@@ -21,7 +21,7 @@ Salesforce LWC와의 DHTMLX 컴포넌트 통합 데모를 онлайн에서 확
 - [Ruby on Rails와 함께하는 dhtmlxGantt](integrations/other/howtostart-ruby.md)
 
 우리는 Lightning Web Component를 만들고 조직에 업로드하기 위해 [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli)를 사용할 것입니다.  
-또한 개발 조직과 함께 작업하기 위해 Visual Studio Code에 [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName="salesforce.salesforcedx-vscode)"를 설치할 수 있습니다.
+또한 개발 조직과 함께 작업하기 위해 Visual Studio Code에 [Salesforce Extension Pack](https://marketplace.visualstudio.com/)"를 설치할 수 있습니다.
 
 :::note
 이 튜토리얼에서 생성된 데모의 전체 소스 코드는 [GitHub에서 확인할 수 있습니다](https://github.com/DHTMLX/salesforce-gantt-demo).

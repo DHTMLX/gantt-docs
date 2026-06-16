@@ -33,7 +33,7 @@ myGantt.destructor();
 - 分离通过 [event](api/method/event.md) 和 [attachEvent](api/method/attachevent.md) 方法附加的所有 DOM 事件
 
 :::note
-如果你使用的包不允许创建多个 gantt 实例（GPL 或 Individual 版本），调用 gantt 的 destructor 将在页面重新加载前使 gantt 不可访问。
+从 v10 开始，所有版本（免费 Community 版和 PRO 版）都支持多个 Gantt 实例。在遗留版本中，如果不允许创建多个实例（v9.x 及更早版本的 GPL 版，或单域 Commercial 构建），调用 gantt destructor 将使 gantt 不可访问，直到页面重新加载。
 :::
 
 ### Related API

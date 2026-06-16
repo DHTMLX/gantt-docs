@@ -262,6 +262,23 @@ gantt.init("gantt_here");
 
 - [Constraint Scheduling](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
+#### strict_calendar
+
+**Type**: boolean
+
+**Default**: `false`
+
+控制任务落在其自身非工作时间是否报告为冲突。
+
+~~~jsx
+gantt.config.auto_scheduling = {
+    enabled: true,
+    strict_calendar: true
+};
+~~~
+
+当设为 `true` 时，每当排程将任务移动到其自身的非工作时间，就会触发 [onAutoScheduleConflict](api/event/onautoscheduleconflict.md) 事件（`kind: "calendar-non-working"`）。在两种模式下，任务日期都会应用 — 这个选项只控制是否报告这种情况，因此可以在用户界面中将其暴露。
+
 ### Related API
 - [project_start](api/config/project_start.md)
 - [project_end](api/config/project_end.md)
@@ -280,10 +297,13 @@ gantt.init("gantt_here");
 - [onBeforeTaskAutoSchedule](api/event/onbeforetaskautoschedule.md)
 - [onCircularLinkError](api/event/oncircularlinkerror.md)
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
+- [onAutoScheduleConflict](api/event/onautoscheduleconflict.md)
+- [onAutoScheduleNoConverge](api/event/onautoschedulenoconverge.md)
 
 ### Related Guides
 - [Auto Scheduling](guides/auto-scheduling.md)
 
 ### Change log
+- 已在 v10.0 版本中新增了 `strict_calendar` 选项
 - 自 v9.1 版本起，建議使用物件配置 `auto_scheduling`。
 - 自 v9.0 版本起，可將其設定為物件。

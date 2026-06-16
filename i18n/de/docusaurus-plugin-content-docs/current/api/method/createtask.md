@@ -10,11 +10,11 @@ description: "fügt eine neue Aufgabe hinzu und öffnet die Lightbox zur Bestät
 
 @short: Fügt eine neue Aufgabe hinzu und öffnet die Lightbox zur Bestätigung
 
-@signature: createTask: (task?: NewTask, parent?: string | number, index?: number) =\> string | number
+@signature: createTask: (task?: TaskInput, parent?: string | number, index?: number) =\> string | number
 
 ### Parameters
 
-- `task`    -	 (optional) *NewTask*	- optional, das Task-Objekt
+- `task`    -	 (optional) *TaskInput*	- optional, das Task-Objekt
 - `parent`	-	(optional) *string | number*	- optional, die ID des Elternteils
 - `index`	-	(optional) *number*	-  optional, die Position, an der die Aufgabe hinzugefügt wird (0 oder größer)
 

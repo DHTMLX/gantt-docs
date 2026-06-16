@@ -431,4 +431,4 @@ remoteUpdates.links({ type: "update-link", link: LINK_OBJECT });
 remoteUpdates.links({ type: "delete-link", link: {id: LINK_ID}});
 ~~~
 
-请查看 GitHub 仓库中的示例，了解 Gantt 如何连接到 Firestore 更新：https://github.com/DHTMLX/firebase-gantt-demo/。
+请查看 GitHub 仓库中的示例，了解 Gantt 如何连接到 Firestore 更新：https://github.com/DHTMLX/firebase-gantt-demo/

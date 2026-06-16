@@ -484,13 +484,21 @@ yarn dev
 遵循本教程的一个完整可运行项目已在 GitHub 提供：
 https://github.com/dhtmlx/react-gantt-zustand-starter
 
-## 后续步骤
+## 接下来要做的事
 
-如需继续深入学习，可以：
+这是 React Gantt 状态管理系列的第一篇教程：
 
-- 回顾此示例背后的概念 [](integrations/react/state/state-management-basics.md)
-- 将存储驱动的状态与高级配置和模板结合，在 [React Gantt 总览](integrations/react/overview.md) 中查看
-- 将同样的模式应用于其他状态管理器：
+1. **Zustand** - 本地内存状态（你现在在这里）  
+2. [TanStack Query](integrations/react/state/tanstack-query.md) - 服务器端状态，带 JSON 文件后端  
+3. [TanStack Query + Supabase](integrations/react/state/tanstack-supabase.md) - 基于 PostgreSQL 的实时多用户同步
+
+准备好一个服务器端版本吗？继续阅读 [Using React Gantt with TanStack Query](integrations/react/state/tanstack-query.md)。
+
+你也可以：
+
+- 复习此示例背后的概念，参见 [](integrations/react/state/state-management-basics.md)
+- 将存储驱动的状态与高级配置和模板在 [React Gantt 综述](integrations/react/overview.md) 中结合
+- 以其他状态管理器探索相同的模式：
   - [Using React Gantt with Redux Toolkit](integrations/react/state/redux-toolkit.md)
   - [Using React Gantt with MobX](integrations/react/state/mobx.md)
   - [Using React Gantt with XState](integrations/react/state/xstate.md)

@@ -698,7 +698,7 @@ namespace DHX.Gantt.Web.Controllers
 
 ## 오류 처리
 
-[예외 필터](https://learn.microsoft.com/en-us/previous-versions/aspnet/gg416513(v="vs.98))"를 CRUD 핸들러에서 예외를 포착하고 클라이언트 측 간트가 인식할 수 있는 응답으로 반환하는 데 사용할 수 있습니다.
+[예외 필터](https://learn.microsoft.com/en-us/previous-versions/aspnet/)"를 CRUD 핸들러에서 예외를 포착하고 클라이언트 측 간트가 인식할 수 있는 응답으로 반환하는 데 사용할 수 있습니다.
 
 간트를 위한 오류 처리를 제공하려면 아래 단계를 따르십시오:
 

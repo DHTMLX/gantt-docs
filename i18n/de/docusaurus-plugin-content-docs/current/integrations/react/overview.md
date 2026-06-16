@@ -7,9 +7,9 @@ description: "Übersicht der offiziellen React-Hülle: Funktionen, Props, Themat
 # React Gantt Überblick
 
 :::note
-React Gantt ist unter [Commercial, Enterprise und Ultimate-Lizenzen](https://dhtmlx.com/docs/products/licenses.shtml) erhältlich.
-Falls Sie die Individual- oder GPL-Ausgaben von Gantt verwenden, verweisen Sie bitte auf den [How to Start](integrations/react/js-gantt-react.md)-Artikel für React.
-::: 
+React Gantt ist verfügbar unter [Commercial-, Enterprise- und Ultimate-Lizenzen](https://dhtmlx.com/docs/products/licenses.shtml).
+Wenn Sie die kostenlose Community-Edition (v10+) verwenden, eine Legacy GPL-Edition (v9.x und älter) oder die Individual-Edition von Gantt nutzen, lesen Sie bitte den [Erste Schritte](integrations/react/js-gantt-react.md) Artikel für React.
+:::
 
 ## Übersicht
 

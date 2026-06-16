@@ -63,7 +63,7 @@ Response:
 ]
 ```
 
-다음은 최소한의 FastAPI 구현 예제입니다. 이 예제는 [Ollama](https://ollama.com/)와 [all-minilm](https://ollama.com/library/all-minilm) 모델을 사용하여 모든 설정이 외부 API 호출 없이 로컬에서 실행되도록 만듭니다. 다른 공급자를 사용하려면 `get_embedding()` 함수를 교체하십시오 - 아래의 Embedding provider 예시를 참고하십시오.
+다음은 최소한의 FastAPI 구현 예시입니다. 전체 설정은 [ollama](https://ollama.com/)와 [all-minilm](https://ollama.com/library/all-minilm) 모델을 사용하여 외부 API 호출 없이 로컬에서 실행됩니다. 다른 공급자를 사용하려면 `get_embedding()` 함수를 교체하면 됩니다 - 아래의 [Embedding provider examples](#embedding-provider-examples) 참조를 확인하세요.
 
 ```python
 from fastapi import FastAPI
@@ -151,9 +151,9 @@ task_vectors[task.id] = get_embedding(get_indexable_text(task))
 
 Gantt 차트 위에 검색 입력을 추가하고 제출 시 백엔드로 쿼리를 보냅니다. 세 가지 상태를 추적합니다:
 
-- `searchResults` - 원시 응답 배열(또는 검색이 비활성화되면 `null`)
+- `searchResults` - 원시 응답 배열(검색이 비활성화되면 `null`)
 - `matchedIds` - 빠른 조회를 위한 매칭된 작업 식별자의 `Set`
-- `scoreMap` - 작업 식별자에서 관련 점수로의 매핑을 담는 `Map`
+- `scoreMap` - 작업 식별자에서 관련도 점수로의 매핑
 
 ```js
 let searchResults = null;
@@ -296,6 +296,6 @@ gantt.attachEvent("onBeforeGanttRender", function () {
 
 ## GitHub demo repository
 
-이 튜토리얼을 따라 만든 완전한 작동 프로젝트가 GitHub에 제공됩니다.
+이 튜토리얼을 따라가는 완전한 작동 프로젝트는 [GitHub에서 제공됩니다](https://github.com/DHTMLX/gantt-semantic-search-ai-demo).
 
 The accompanying demo application includes a Python backend with Ollama, a static frontend, and Docker Compose for one-command startup. Its search UI also expands parent branches for matched tasks, scrolls to the top match, dims links during active search, and adds a relevance column in the grid.

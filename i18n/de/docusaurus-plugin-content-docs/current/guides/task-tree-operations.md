@@ -1,192 +1,167 @@
 ---
-title: "Aufgabe: Elternteil/Kind"
-sidebar_label: "Aufgabe: Elternteil/Kind"
+title: "Aufgabe Elternteil/Kind"
+sidebar_label: "Aufgabe Elternteil/Kind"
 ---
 
-# Aufgabe: Elternteil/Kind
+# Elternteil/Kind einer Aufgabe
 
-In diesem Artikel finden Sie Methoden, die sich auf die baumartige Struktur der Gantt-Diagramm-Aufgaben beziehen.
+In diesem Artikel finden Sie Methoden, die sich auf die Baumstruktur der Gantt-Diagramm-Aufgaben beziehen.
 
-*Um grundlegende Operationen zum Abrufen des Task-Objekts/der ID zu lernen, lesen Sie den Artikel [Task Object/Id](guides/task-object-operations.md).*
+*Um sich über grundlegende Operationen zum Abrufen des Task-Objekts oder der ID zu informieren, lesen Sie den Artikel [Task Object/Id](guides/task-object-operations.md).*
 
 ## Elternteil einer Aufgabe
 
-Um das Elternelement einer Aufgabe zu erhalten, verwenden Sie die [getParent](api/method/getparent.md) Methode oder die **parent**-Eigenschaft des Aufgabenobjekts:
+Um das Elternelement einer Aufgabe zu erhalten, verwenden Sie die Methode [`getParent()`](api/method/getparent.md) oder die `"parent"`-Eigenschaft des Task-Objekts:
 
 ~~~js
-gantt.getParent("t1");//->"pr_2"
-//oder
-var taskObj = gantt.getTask("t1");//-> {id:"t1", text:"Task #5", parent:"pr_2", ...}
-var taskParent = taskObj.parent;  //-> "pr_2"
+gantt.getParent("t1"); // -> "pr_2"
+// oder
+const task = gantt.getTask("t1"); // -> { id: "t1", text: "Task #5", parent: "pr_2", ... }
+const parentId = task.parent; // -> "pr_2"
 ~~~
-Hinweis: Falls es kein Elternelement für die angegebene Aufgabe gibt, gibt die Methode die [root id](api/config/root_id.md) zurück.
 
+Wenn es kein Elternelement für die angegebene Aufgabe gibt, gibt die Methode die [Wurzel-ID](api/config/root_id.md) zurück.
 
 ## Kinder einer Aufgabe
 
-Um die Kinder einer Elternaufgabe zu erhalten, verwenden Sie die [getChildren](api/method/getchildren.md) Methode:
+Um die Kinder einer Verzweigungsaufgabe zu erhalten, verwenden Sie die [`getChildren()`](api/method/getchildren.md) Methode:
 
 ~~~js
-var data = {
-  tasks:[
-     {id:"p_1", text:"Project #1", start_date:"01-04-2020", duration:18},
-     {id:"t_1", text:"Task #1",    start_date:"02-04-2020", duration:8,
-     parent:"p_1"}
-]};
-gantt.getChildren("p_1");//->["t_1"]
+const taskData = {
+    tasks: [
+        { id: "p_1", text: "Projekt #1", start_date: "2027-04-01", duration: 18 },
+        { id: "t_1", text: "Aufgabe #1", start_date: "2027-04-02", duration: 8, parent: "p_1" }
+    ]
+};
+
+gantt.getChildren("p_1"); // -> ["t_1"]
 ~~~
 
-Um alle Kinder einer Aufgabe zu erhalten (nicht nur die Kinder der ersten Ebene), wenden Sie die [eachTask()](api/method/eachtask.md) Methode an und übergeben Sie die ID der Elterne-Aufgabe als zweites Argument:
+Um alle Kinder einer Aufgabe zu erhalten, nicht nur direkte Unteraufgaben der ersten Ebene, verwenden Sie die [`eachTask()`](api/method/eachtask.md) Methode und übergeben die ID der Elternaufgabe als zweiten Parameter:
 
 ~~~js
-const children = [];
-// durchläuft alle Kinder einer Aufgabe
-gantt.eachTask(function(child){
-    children.push(child)
+const childTasks = [];
+
+// Alle Kinder einer Aufgabe iterieren.
+gantt.eachTask((childTask) => {
+    childTasks.push(childTask);
 }, 11);
 ~~~
 
-
 ## Prüfen, ob eine Aufgabe ein Kind hat
 
-Um zu prüfen, ob eine Aufgabe ein Kind hat, verwenden Sie die [hasChild](api/method/haschild.md) Methode:
+Um zu prüfen, ob eine Aufgabe ein Kind hat, verwenden Sie die [`hasChild()`](api/method/haschild.md) Methode:
 
-~~~js
-var data = {
-  tasks:[
-     {id:"p_1", text:"Project #1", start_date:"01-04-2020", duration:18, 
-     open:true},
-     {id:"t_1", text:"Task #1", start_date:"02-04-2020", duration:8,
-     parent:"p_1"},
-     {id:"t_2", text:"Task #2", start_date:"11-04-2020", duration:8,
-     parent:"p_1"}
-   ]
+~~~js {11-12}
+const taskData = {
+    tasks: [
+        { id: "p_1", text: "Projekt #1", start_date: "2027-04-01", duration: 18, open: true },
+        { id: "t_1", text: "Aufgabe #1", start_date: "2027-04-02", duration: 8, parent: "p_1" }
+    ]
 };
 gantt.init("gantt_here");
-gantt.parse(data);
- 
-gantt.hasChild("p_1"); //-> true  /*!*/
-gantt.hasChild("t_1"); //-> false /*!*/
+gantt.parse(taskData);
+
+gantt.hasChild("p_1"); // -> true
+gantt.hasChild("t_1"); // -> false
 ~~~
 
+## Nächste Aufgabe im Baum
 
-## Nächste Aufgabe in der Baumstruktur
+Um die ID der Aufgabe zu erhalten, die der angegebenen Folgeaufgabe folgt, verwenden Sie die [`getNext()`](api/method/getnext.md) Methode:
 
-Um das Objekt der Aufgabe zu erhalten, die neben der angegebenen liegt, verwenden Sie die [getNext](api/method/getnext.md) Methode:
-
-~~~js
-var data = {
-  tasks:[
-     {id:"p_1", text:"Project #1", start_date:"01-04-2020", duration:18, 
-     open:true},
-     {id:"t_1", text:"Task #1", start_date:"02-04-2020", duration:8,
-     parent:"p_1"},
-     {id:"t_2", text:"Task #2", start_date:"11-04-2020", duration:8,
-     parent:"p_1"}
-   ]
+~~~js {11-13}
+const taskData = {
+    tasks: [
+        { id: "p_1", text: "Projekt #1", start_date: "2027-04-01", duration: 18, open: true },
+        { id: "t_1", text: "Aufgabe #1", start_date: "2027-04-02", duration: 8, parent: "p_1" },
+        { id: "t_2", text: "Aufgabe #2", start_date: "2027-04-11", duration: 8, parent: "p_1" }
+    ]
 };
 gantt.init("gantt_here");
-gantt.parse(data);
- 
-gantt.getNext("p_1"); -> "t_1"   /*!*/
-gantt.getNext("t_1"); -> "t_2"   /*!*/
-gantt.getNext("t_2"); -> null    /*!*/
+gantt.parse(taskData);
+
+gantt.getNext("p_1"); // -> "t_1"
+gantt.getNext("t_1"); // -> "t_2"
+gantt.getNext("t_2"); // -> null
 ~~~
 
+Gantt berücksichtigt Aufgaben unabhängig von der Baumebene.
 
-Hinweis: Der Gantt berücksichtigt Aufgaben unabhängig von der Baumebene
+## Vorherige Aufgabe im Baum
 
+Um die ID der Vorgängeraufgabe der angegebenen Aufgabe zu erhalten, verwenden Sie die [`getPrev()`](api/method/getprev.md) Methode:
 
-## Vorherige Aufgabe in der Baumstruktur
-
-Um das Objekt der Aufgabe neben der angegebenen zu erhalten, verwenden Sie die [getPrev](api/method/getprev.md) Methode:
-
-~~~js
-var data = {
-  tasks:[
-     {id:"p_1", text:"Project #1", start_date:"01-04-2020", duration:18, 
-     open:true},
-     {id:"t_1", text:"Task #1", start_date:"02-04-2020", duration:8,
-     parent:"p_1"},
-     {id:"t_2", text:"Task #2", start_date:"11-04-2020", duration:8,
-     parent:"p_1"}
-   ]
+~~~js {11-13}
+const taskData = {
+    tasks: [
+        { id: "p_1", text: "Projekt #1", start_date: "2027-04-01", duration: 18, open: true },
+        { id: "t_1", text: "Aufgabe #1", start_date: "2027-04-02", duration: 8, parent: "p_1" },
+        { id: "t_2", text: "Aufgabe #2", start_date: "2027-04-11", duration: 8, parent: "p_1" }
+    ]
 };
 gantt.init("gantt_here");
-gantt.parse(data);
- 
-gantt.getPrev("p_1"); ->  null   /*!*/
-gantt.getPrev("t_1"); -> "p_1"   /*!*/
-gantt.getPrev("t_2"); -> "t_1"   /*!*/
+gantt.parse(taskData);
+
+gantt.getPrev("p_1"); // -> null
+gantt.getPrev("t_1"); // -> "p_1"
+gantt.getPrev("t_2"); // -> "t_1"
 ~~~
 
-
-Hinweis: Der Gantt berücksichtigt Aufgaben unabhängig von der Baumebene
-
+Gantt berücksichtigt Aufgaben unabhängig von der Baumebene.
 
 ## Geschwister einer Aufgabe
 
-Um die Geschwister der angegebenen Aufgabe zu erhalten, verwenden Sie die [getSiblings](api/method/getsiblings.md) Methode:
+Um die Geschwister der angegebenen Aufgabe zu erhalten, verwenden Sie die [`getSiblings()`](api/method/getsiblings.md) Methode:
 
-~~~js
-var data = {
-  tasks:[
-     {id:"p_1", text:"Project #1", start_date:"01-04-2020", duration:18, 
-     open:true},
-     {id:"t_1", text:"Task #1", start_date:"02-04-2020", duration:8,
-     parent:"p_1"},
-     {id:"t_2", text:"Task #2", start_date:"11-04-2020", duration:8,
-     parent:"p_1"}
-   ]
+~~~js {11}
+const taskData = {
+    tasks: [
+        { id: "p_1", text: "Projekt #1", start_date: "2027-04-01", duration: 18, open: true },
+        { id: "t_1", text: "Aufgabe #1", start_date: "2027-04-02", duration: 8, parent: "p_1" },
+        { id: "t_2", text: "Aufgabe #2", start_date: "2027-04-11", duration: 8, parent: "p_1" }
+    ]
 };
 gantt.init("gantt_here");
-gantt.parse(data);
- 
-gantt.getSiblings("t_1"); ->  ["t_1", "t_2] /*!*/
-~~~
+gantt.parse(taskData);
 
+gantt.getSiblings("t_1"); // -> ["t_1", "t_2"]
+~~~
 
 ## Nächstes Geschwisterteil einer Aufgabe
 
-Um das nächste Geschwisterteil einer angegebenen Aufgabe zu erhalten, verwenden Sie die [getNextSibling](api/method/getnextsibling.md) Methode:
+Um das nächste Geschwisterteil der angegebenen Aufgabe zu erhalten, verwenden Sie die [`getNextSibling()`](api/method/getnextsibling.md) Methode:
 
-~~~js
-var data = {
-  tasks:[
-     {id:"p_1", text:"Project #1", start_date:"01-04-2020", duration:18, 
-     open:true},
-     {id:"t_1", text:"Task #1", start_date:"02-04-2020", duration:8,
-     parent:"p_1"},
-     {id:"t_2", text:"Task #2", start_date:"11-04-2020", duration:8,
-     parent:"p_1"}
-   ]
+~~~js {11-12}
+const taskData = {
+    tasks: [
+        { id: "p_1", text: "Projekt #1", start_date: "2027-04-01", duration: 18, open: true },
+        { id: "t_1", text: "Aufgabe #1", start_date: "2027-04-02", duration: 8, parent: "p_1" },
+        { id: "t_2", text: "Aufgabe #2", start_date: "2027-04-11", duration: 8, parent: "p_1" }
+    ]
 };
 gantt.init("gantt_here");
-gantt.parse(data);
- 
-gantt.getNextSibling("t_1"); ->  "t_2" /*!*/
-gantt.getNextSibling("t_2"); ->  null (if no next sibling) /*!*/
-~~~
+gantt.parse(taskData);
 
+gantt.getNextSibling("t_1"); // -> "t_2"
+gantt.getNextSibling("t_2"); // -> null
+~~~
 
 ## Vorheriges Geschwisterteil einer Aufgabe
 
-Um das vorherige Geschwisterteil der angegebenen Aufgabe zu erhalten, verwenden Sie die [getPrevSibling](api/method/getprevsibling.md) Methode:
+Um das vorherige Geschwisterteil der angegebenen Aufgabe zu erhalten, verwenden Sie die [`getPrevSibling()`](api/method/getprevsibling.md) Methode:
 
-~~~js
-var data = {
-  tasks:[
-     {id:"p_1", text:"Project #1", start_date:"01-04-2020", duration:18, 
-     open:true},
-     {id:"t_1", text:"Task #1", start_date:"02-04-2020", duration:8,
-     parent:"p_1"},
-     {id:"t_2", text:"Task #2", start_date:"11-04-2020", duration:8,
-     parent:"p_1"}
-   ]
+~~~js {11-12}
+const taskData = {
+    tasks: [
+        { id: "p_1", text: "Projekt #1", start_date: "2027-04-01", duration: 18, open: true },
+        { id: "t_1", text: "Aufgabe #1", start_date: "2027-04-02", duration: 8, parent: "p_1" },
+        { id: "t_2", text: "Aufgabe #2", start_date: "2027-04-11", duration: 8, parent: "p_1" }
+    ]
 };
 gantt.init("gantt_here");
-gantt.parse(data);
- 
-gantt.getPrevSibling("t_2"); ->  "t_1" /*!*/
-gantt.getPrevSibling("t_1"); ->  null (if no previous sibling) /*!*/
+gantt.parse(taskData);
+
+gantt.getPrevSibling("t_2"); // -> "t_1"
+gantt.getPrevSibling("t_1"); // -> null
 ~~~

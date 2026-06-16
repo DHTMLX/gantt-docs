@@ -423,3 +423,7 @@ gantt.config.auto_scheduling = {
 
 ### 관련 API
 - [auto_scheduling](api/config/auto_scheduling.md)
+
+### 변경 로그
+
+- v10.0에서 자동 스케줄링 엔진이 재작업되었습니다. 공개 API와 보이는 동작은 동일하게 유지되지만, 이전에 잘못 작동했던 케이스를 제외하고는 동일합니다. 전체 동작 변경 목록은 [migration guide](migration.md#auto-scheduling-v2)를 참고하십시오.

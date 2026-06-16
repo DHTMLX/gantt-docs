@@ -48,7 +48,9 @@ Auf der anderen Seite geht die direkte Synchronisierung zwischen Gantt-Daten und
 
 ## React-Zustand als Quelle der Wahrheit {#reactstateasthesourceoftruth}
 
-In diesem Muster halten Sie alle Kerndatensammlungen im State und übergeben sie als Props (`tasks`, `links`, `resources`, `resourceAssignments`). Jedes Mal, wenn der Benutzer Tasks oder Links innerhalb des Gantt ändert (z. B. durch Erstellen oder Löschen eines Tasks), löst das Gantt einen Callback aus. In diesem Callback aktualisieren Sie Ihren React-State mit den neuen bzw. entfernten Daten. Sobald der State aktualisiert ist, rendert React die **ReactGantt**-Komponente erneut, die daraufhin die aktualisierten Props aus dem neuesten State liest.
+In diesem Muster halten Sie alle Kerndaten-Sammlungen im State und übergeben sie als Props (`tasks`, `links`, `resources`, `resourceAssignments`). Jedes Mal, wenn der Benutzer Tasks oder Links im Gantt ändert (z. B. durch Erstellen oder Löschen eines Tasks), löst das Gantt einen Callback aus. In diesem Callback aktualisieren Sie Ihren React-State mit den neuen oder entfernten Daten. Sobald der State aktualisiert ist, rendert React die **ReactGantt**-Komponente neu, die wiederum die aktualisierten Props aus dem neuesten State liest.
+
+Beim Typisieren Ihres States verwenden Sie `SerializedTask` für Tasks und `SerializedLink` für Links. Diese Typen repräsentieren die benutzerseitige Datenstruktur – Datumsfelder akzeptieren `Date | string`, und es gibt keine internen `$`-Präfix-Eigenschaften. Verwenden Sie `Task` und `Link` nur, wenn Sie mit Daten innerhalb von Gantt-Ereignishandlern arbeiten, wo Gantt die Daten bereits geparst hat.
 
 ### Minimalbeispiel mit React-Zustand
 

@@ -340,15 +340,15 @@ app.listen(PORT, () => console.log(`Server running on ${PORT}`));
 
 Сервер предоставляет следующие эндпоинты:
 
-| Метод | Путь         | Действие                                        |
+| Метод | Путь         | Действие                                          |
 | ------ | ------------ | ------------------------------------------------ |
 | GET    | `/data`      | Возвращает все задачи и ссылки                   |
 | POST   | `/tasks`     | Создает задачу, присваивает стабильный DB id     |
-| PUT    | `/tasks/:id` | Обновляет задачу                                   |
-| DELETE | `/tasks/:id` | Удаляет задачу                                     |
-| POST   | `/links`     | Создает связь, присваивает стабильный DB id       |
-| PUT    | `/links/:id` | Обновляет связь                                      |
-| DELETE | `/links/:id` | Удаляет связь                                        |
+| PUT    | `/tasks/:id` | Обновляет задачу                                 |
+| DELETE | `/tasks/:id` | Удаляет задачу                                   |
+| POST   | `/links`     | Создает связь, присваивает стабильный DB id      |
+| PUT    | `/links/:id` | Обновляет связь                                  |
+| DELETE | `/links/:id` | Удаляет связь                                    |
 
 Когда задача или связь создаются, сервер префиксирует сгенерированный клиентом id строкой `DB_ID:` и возвращает новую запись. Компонент Gantt использует возвращенный id для обновления своей внутренней ссылки.
 
@@ -914,16 +914,23 @@ yarn dev
 
 ## Репозиторий демонстрации на GitHub
 
-Полноценный рабочий проект, идущий за этим руководством, доступен на GitHub: https://github.com/dhtmlx/react-gantt-tanstack-query-starter.
+Полноценный рабочий проект, идущий за этим руководством, [доступен на GitHub](https://github.com/dhtmlx/react-gantt-tanstack-query-starter).
 
 ## Что дальше
 
-Чтобы углубиться:
+Это второе руководство в серии про управление состоянием в React Gantt:
 
-- повторно ознакомиться с концепциями, лежащими в основе примера, в [](integrations/react/state/state-management-basics.md)
-- сочетать store-управляемое состояние с продвинутой конфигурацией и шаблонизацией в обзорe React Gantt: [React Gantt overview](integrations/react/overview.md)
-- рассмотреть аналогичную схему с другими менеджерами состояния:
-  - [Using React Gantt with Zustand](integrations/react/state/zustand.md)
+1. [Zustand](integrations/react/state/zustand.md) — локальное in-memory состояние
+2. **TanStack Query** — сервер-опорное состояние с бэкендом на JSON-файлах (вы здесь)
+3. [TanStack Query + Supabase](integrations/react/state/tanstack-supabase.md) — синхронизация в реальном времени для нескольких пользователей через PostgreSQL
+
+Готовы заменить JSON-бэкенд на реальную базу данных с живой синхронизацией нескольких пользователей? Продолжайте с [Using React Gantt with TanStack Query and Supabase] (integrations/react/state/tanstack-supabase.md).
+
+Вы также можете:
+
+- Вновь ознакомиться с концепциями, лежащими в основе этого примера, в [](integrations/react/state/state-management-basics.md)
+- Совместить управление состоянием через store с продвинутой конфигурацией и шаблонами в [React Gantt overview](integrations/react/overview.md)
+- Исследовать тот же паттерн с другими менеджерами состояния:
   - [Using React Gantt with Redux Toolkit](integrations/react/state/redux-toolkit.md)
   - [Using React Gantt with MobX](integrations/react/state/mobx.md)
   - [Using React Gantt with XState](integrations/react/state/xstate.md)

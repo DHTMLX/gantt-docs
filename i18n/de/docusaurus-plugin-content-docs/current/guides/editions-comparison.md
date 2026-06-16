@@ -1,13 +1,17 @@
 ---
-title: "Standard- und PRO-Bibliotheksversionen"
-sidebar_label: "Standard- und PRO-Bibliotheksversionen"
+title: "Community- und PRO-Bibliotheksversionen"
+sidebar_label: "Community- und PRO-Bibliotheksversionen"
 ---
 
-# Standard- und PRO-Bibliotheksversionen
+# Community- und PRO-Bibliotheksversionen
 
-Wenn Sie sich fragen, worin der Unterschied zwischen der Standard- und der PRO-Version der dhtmlxGantt-Bibliothek besteht und welche Vorteile Sie mit der PRO-Edition erhalten, ist dieser Leitfaden genau das, wonach Sie suchen.
+Wenn Sie den Unterschied zwischen der kostenlosen Community Edition und der PRO-Version der dhtmlxGantt-Bibliothek kennenlernen möchten und welche Vorteile Ihnen die PRO-Edition bietet, ist dieser Leitfaden genau das, was Sie suchen.
 
-Die PRO-Edition umfasst alle Funktionen der Standard-Version und enthält zudem zusätzliche nützliche Features. Die unten stehende Tabelle bietet die Liste der Funktionen und ermöglicht den Vergleich der beiden Versionen von dhtmlxGantt.
+Die PRO-Edition enthält alle Funktionen der Community-Edition und zusätzlich nützliche weitere Features. Die nachstehende Tabelle bietet eine Übersicht der Funktionen und ermöglicht es Ihnen, die beiden Versionen von dhtmlxGantt zu vergleichen.
+
+:::info
+Ab DHTMLX Gantt v10 ist die kostenlose Edition die **Community edition**, die unter der **MIT-Lizenz** distribu­tiert wird. Frühere kostenlose Versionen (v9.x und älter) wurden unter der **GPL v2**-Lizenz distribuiert, die für diese Versionen weiterhin gilt. Die PRO-/Commercial-Editionen bleiben eigenständige kostenpflichtige Editionen. Details zum Umstieg von der GPL-Edition zur Community edition finden Sie im [migration guide](migration.md#gpl-to-mit).
+:::
 
 <table>
   <thead>
@@ -19,7 +23,7 @@ Die PRO-Edition umfasst alle Funktionen der Standard-Version und enthält zudem 
   </thead>
   <tbody>
   <tr>
-  <td>[32 Lokalisierungen](guides/localization.md)</td>
+  <td>[50+ Lokalisierungen](guides/localization.md)</td>
   <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
@@ -60,7 +64,7 @@ Die PRO-Edition umfasst alle Funktionen der Standard-Version und enthält zudem 
   </tr>
   <tr>
   <td>[Automatische Erkennung von Aufgabentypen](api/config/auto_types.md)</td>
-  <td style="text-align:center;">❌</td>
+  <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -84,8 +88,8 @@ Die PRO-Edition umfasst alle Funktionen der Standard-Version und enthält zudem 
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
-  <td>[Erstellen mehrerer Gantt-Diagramme auf einer Seite (**Kommerzielle (seit dem 6. Oktober 2021), Enterprise- und Ultimate-Lizenzen**)](guides/multiple-gantts.md)</td>
-  <td style="text-align:center;">❌</td>
+  <td>[Erstellen mehrerer Gantt-Diagramme auf einer Seite](guides/multiple-gantts.md)</td>
+  <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -115,7 +119,7 @@ Die PRO-Edition umfasst alle Funktionen der Standard-Version und enthält zudem 
   </tr>
   <tr>
   <td>[Mehrfaches Ziehen und Ablegen mehrerer Aufgaben horizontal](guides/multiselection.md#multitaskselectionanddragndrop)</td>
-  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -205,7 +209,7 @@ Die PRO-Edition umfasst alle Funktionen der Standard-Version und enthält zudem 
   </tr>
   <tr>
   <td>[Multi-Task-Auswahl](guides/multiselection.md)</td>
-  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -220,7 +224,7 @@ Die PRO-Edition umfasst alle Funktionen der Standard-Version und enthält zudem 
   </tr>
   <tr>
   <td>[Platzhalterzeile zum Erstellen neuer Aufgaben](api/config/placeholder_task.md)</td>
-  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -240,7 +244,7 @@ Die PRO-Edition umfasst alle Funktionen der Standard-Version und enthält zudem 
   </tr>
   <tr>
   <td>[Größenänderung der Grid-Spalten und des Grids über die UI](guides/specifying-columns.md#resizing)</td>
-  <td style="text-align:center;">❌</td>
+  <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -280,7 +284,7 @@ Die PRO-Edition umfasst alle Funktionen der Standard-Version und enthält zudem 
   </tr>
   <tr>
   <td>[Unterstützung für benutzerdefinierte Aufgabentypen](guides/task-types.md#creating-a-custom-type)</td>
-  <td style="text-align:center;">❌</td>
+  <td style="text-align:center;">✔️</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -290,7 +294,7 @@ Die PRO-Edition umfasst alle Funktionen der Standard-Version und enthält zudem 
   </tr>
   <tr>
   <td>[Unterstützung für ungeplante Aufgaben](guides/unscheduled-tasks.md)</td>
-  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
@@ -305,17 +309,17 @@ Die PRO-Edition umfasst alle Funktionen der Standard-Version und enthält zudem 
   </tr>
   <tr>
   <td>[Rückgängig-/Wiederherstellungs-Funktionalität](guides/undo-redo.md)</td>
-  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
   <td>[WBS-Codes-Berechnung](guides/specifying-columns.md#wbscode)</td>
-  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
   <td>[Arbeitswochen- und Arbeitszeiten für einzelne Aufgaben](guides/working-time.md#multipleworktimecalendars)</td>
-  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>

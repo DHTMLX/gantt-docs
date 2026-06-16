@@ -253,6 +253,23 @@ gantt.init("gantt_here");
 
 - [Constraint Scheduling](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
+#### strict_calendar
+
+**Type**: boolean
+
+**Default**: `false`
+
+작업이 자신의 비근무 시간에 떨어지는 경우를 충돌로 보고할지 여부를 제어합니다.
+
+~~~jsx
+gantt.config.auto_scheduling = {
+    enabled: true,
+    strict_calendar: true
+};
+~~~
+
+true로 설정하면, 일정이 작업을 자신의 비근무 시간으로 옮길 때 [onAutoScheduleConflict](api/event/onautoscheduleconflict.md) 이벤트가 (종류가 `calendar-non-working`인 경우) 발생합니다. 두 모드에서 작업 날짜는 적용되며, 이 옵션은 단지 상황이 보고되는지 여부를 제어하므로 UI에서 이를 표시할 수 있습니다.
+
 ### Related API
 - [project_start](api/config/project_start.md)
 - [project_end](api/config/project_end.md)
@@ -271,10 +288,13 @@ gantt.init("gantt_here");
 - [onBeforeTaskAutoSchedule](api/event/onbeforetaskautoschedule.md)
 - [onCircularLinkError](api/event/oncircularlinkerror.md)
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
+- [onAutoScheduleConflict](api/event/onautoscheduleconflict.md)
+- [onAutoScheduleNoConverge](api/event/onautoschedulenoconverge.md)
 
 ### Related Guides
 - [Auto Scheduling](guides/auto-scheduling.md)
 
 ### Change log
+- 버전 10.0에 `strict_calendar` 옵션이 추가되었습니다.
 - 버전 9.1부터 `auto_scheduling`에 객체 설정을 사용하는 것이 권장됩니다.
 - 버전 9.0부터 객체로 설정할 수 있습니다.

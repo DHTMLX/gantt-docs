@@ -1,13 +1,81 @@
 ---
-title: "What's New"
-sidebar_label: "What's New"
+title: "새로운 기능"
+sidebar_label: "새로운 기능"
 ---
 
-# What's New
+# 새로운 기능
 
 :::note
-현재 사용 중인 dhtmlxGantt 버전이 2.0보다 이전 버전이라면, 업데이트에 대한 자세한 내용은 [](migration.md)를 참고하세요.
+이전 버전에서 업데이트 중이신가요? 필요한 변경 사항과 업데이트 절차는 [Migration notes](migration.md)를 확인하십시오.
 :::
+
+## 10.0
+
+<span class='release_date'>2026년 6월 11일. 주요 릴리스</span>
+
+이번 업데이트는 Gantt 패키지의 구조와 기능 동작에 몇 가지 변경을 도입합니다. 안전하게 확인하시려면 [Migration notes](migration.md#91---100)를 확인하십시오.
+
+### 새로운 기능
+
+- DHTMLX Gantt 커뮤니티 에디션이 공식 출시되었습니다 - 무료 에디션은 이제 [MIT 라이선스](migration.md#gpl-to-mit) 하에 배포됩니다
+- [Angular Gantt](integrations/angular.md) 래퍼가 공식 출시되었습니다
+- [Vue Gantt](integrations/vue.md) 래퍼가 공식 출시되었습니다
+- [Zoom-to-fit](guides/zooming.md#zoom-to-fit) 기능이 기본 제공됩니다: [`gantt.ext.zoom.zoomToFit()`](guides/zoom.md#methods)은 모든 작업을 타임라인에 수평 스크롤 없이 맞추는 가장 상세한 확대 수준을 선택하고, [`resetZoom()`](guides/zoom.md#methods)은 이전 스케일로 되돌립니다
+- [React Gantt](integrations/react.md)에서 가장 일반적으로 사용되는 Gantt API에 대한 준비된 [React hooks](integrations/react/hooks.md)를 제공하고, 자원 히스토그램에 대한 동작 기본값을 포함하여 네이티브 인스턴스에 접근하는 데 필요한 보일러플레이트를 대폭 제거했습니다
+- 추가 로케일에 대한 지원이 추가되었습니다 - 간체 중국어, 번체 중국어, 광동어, 태국어, 베트남어 포함 - 그리고 기존 번역도 개선되었습니다
+
+### 업데이트
+
+- Auto Scheduling 엔진이 대대적으로 재구성되어 다년간의 버그를 수정할 수 있게 되었습니다
+- TypeScript 타입 정의가 업데이트되었습니다. 세부 내용은 [Data Model](guides/data-model.md) 개요를 참조하십시오
+- 날짜 구문 해석 및 형식화는 이제 단일 [CSP](api/config/csp.md)-안전 구현을 사용합니다
+- [Zoom 확장 기능](guides/zoom.md)에는 이제 준비된 이름이 지정된 [default levels](guides/zooming.md#default-zoom-levels)가 함께 제공되므로 커스텀 `levels` 설정 없이 초기화할 수 있습니다(`gantt.ext.zoom.init()`)
+- [`gantt.date`](api/other/date.md) 간격 시작 도우미는 이제 **순수**로 동작합니다 - 전달된 날짜를 수정하는 대신 새로운 `Date`를 반환합니다
+- [React Gantt](integrations/react.md) 래퍼는 이제 [customLightbox](integrations/react/overview.md#by-providing-a-custom-component-via-the-customlightbox-prop) 컴포넌트에 Gantt 인스턴스를 전달하여 커스텀 편집기에서 Gantt API에 직접 접근할 수 있도록 합니다
+- [React Gantt](integrations/react.md), [Vue Gantt](integrations/vue.md), [Angular Gantt](integrations/angular.md) 래퍼는 기본적으로 템플릿 함수에서 반환되는 문자열 값을 HTML 이스케이프하여 XSS 공격을 방지합니다. 이는 `templates`, `config.columns[].template`, 및 `config.scales[].format` 함수에 적용됩니다
+
+### 수정사항
+
+다음과 같은 오래된 일정, 제약 및 임계 경로 버그를 해결하는 재구성된 [Auto Scheduling](guides/auto-scheduling.md) 엔진:
+
+- ASAP 동작을 가진 작업이 형제 작업의 `snet`/`snlt` [제약](guides/constraint.md)을 가질 때 `project_start` 날짜 이전으로 이동하던 문제 수정
+- 자동 일정 지정에서 `auto_scheduling_move_projects`를 활성화했을 때 형제 작업이 더 이른 날짜로 예기치 않게 이동하던 현상 수정
+- 상위 프로젝트가 자식과 다른 [calendar](api/method/addcalendar.md)를 사용할 때 자식 작업이 잘못된 날짜로 재스케줄되던 문제 수정
+- 연결된 선행 작업에 비작업 시간이 있고 자식이 풀타임 캘린더를 사용할 때 자식 작업이 미래 날짜로 이동하던 문제 수정
+- 다단계 프로젝트에서 `inherit_calendar`가 활성화되었을 때 자체 캘린더를 가진 자식 작업이 미래 날짜로 예약되던 문제 수정
+- 역방향 [Auto Scheduling](guides/auto-scheduling.md) 중에 작업이 `project_end` 날짜를 초과해 예약될 수 있던 문제 수정
+- 작업의 `end_date`가 바뀐 뒤에도 Auto Scheduling이 크기 조정 없이 이동해야 하는 경우를 처리하지 못하던 문제 수정
+- 제약이 있는데도 `auto_scheduling`이 `false`로 설정된 작업에서 에러가 발생하던 문제 수정
+- 링크가 없는 작업에 대해 `onBeforeTaskAutoSchedule` 이벤트가 발생하지 않아 일정에서 제외되지 못하던 문제 수정
+- Start-to-Finish 및 Start-to-Start 링크에서 Total Slack 및 임계 경로 계산이 잘못되던 문제 수정
+- 음의 래그 링크로 인해 선행보다 후속이 먼저 종료되어도 선행이 임계로 강조되지 않던 문제 수정
+- 프로젝트가 단일 상위 작업만 포함하고 하위 작업이 없는 경우 `getTotalSlack`에서 잘못된 end_date 인자를 발생시키던 문제 수정
+- ASAP 동작을 가진 하위 작업이 MSO/MFO 제약을 가진 형제가 있고 상위 프로젝트가 Finish-to-Finish 또는 Start-to-Finish 링크로 연결된 경우 매 Auto Scheduling 실행마다 날짜가 앞뒤로 점프하던 문제 수정
+- Auto Scheduling이 여전히 MSO/MFO 작업에 제약 로직을 적용하던 문제(autScheduling_compatibility가 활성화된 경우) 수정
+- 음의 랑이 더 크고 상위가 Finish-to-Finish/Start-to-Finish 링크로 연결된 경우 연결된 하위 작업의 스케줄이 잘못되던 문제 수정
+
+다른 수정 사항:
+
+- 마일스톤이 auto_types에 의해 프로젝트로 변환되지 않던 문제 수정
+- ISO 날짜 문자열이 명시적 `parse_date`/`format_date` 템플릿 없이도 React Gantt에서 올바르게 처리되지 않던 문제 수정
+- 새로운 데이터셋이 로드되었을 때 자식이 부모 위에 배치된 경우 작업이 부모를 잃어버리던 문제 수정
+- 세로 정렬 마커가 전체 그리드 너비로 확장되지 않던 문제 수정
+
+## 9.1.4
+
+<span class='release_date'>2026년 4월 28일. 버그 수정 버전</span>
+
+### 새로운 기능
+- Angular Gantt 래퍼의 베타 출
+
+### 수정사항
+
+- 터치 디바이스에서 [rollup tasks]를 드래그할 수 없던 문제 수정
+- Auto Scheduling이 프로젝트에 연결된 프로젝트를 미래 날짜로 옮기던 문제 수정(프로젝트에 미스케줄된 자식 작업이 있을 때)
+- 그리드가 스크롤 가능할 때 재정렬 마커 및 작업 플레이스홀더의 크기가 잘못 보이던 문제 수정
+- DataProcessor가 기본적으로 ISO 날짜 형식을 사용하지 않고 Date 형식의 날짜로 로드될 때 발생하던 스크립트 오류 수정
+- drag_links가 비활성화되고 split task 행이 부모 행보다 높아진 경우 발생하던 스크립트 오류 수정
+- 줌 레벨 변경 후 타임라인 축 셀이 사라지던 문제의 회귀 수정
 
 ## 9.1.3
 

@@ -22,12 +22,12 @@ description: "Promise 对象构造函数"
 ### Example
 
 ~~~jsx
-new gantt.Promise(function(resolve, reject) {
-    setTimeout(function(){
+new gantt.Promise((resolve, reject) => {
+    setTimeout(() => {
         resolve();
     }, 5000);
-}).then(function(){
-    alert("Resolved")
+}).then(() => {
+    alert("Resolved");
 });
 ~~~
 

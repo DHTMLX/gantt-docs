@@ -33,40 +33,39 @@ sidebar_label: "Eigenschaften zum Import aus MS Project"
 <div class="msp-properties">
 | | | | |
 |---|---|---|---|
-| Active | DurationText | LevelingDelayFormat | RemainingOvertimeWork |
-| ActualCost | EarlyFinish | LinkedFields | RemainingWork |
-| ActualDuration | EarlyStart | Manual | ResponsePending |
-| ActualFinish | EarnedValueMethod | ManualDuration | Resume |
-| ActualOvertimeCost | EffortDriven | Marked | ResumeValid |
-| ActualOvertimeWork | Estimated | Milestone | Rollup |
-| ActualStart | Finish | Name | SPI |
-| ActualWork | FinishSlack | Notes | Start |
-| ACWP | FinishText | Objects | StartSlack |
-| Baseline | FinishVariance | OutlineLevel | StartText |
-| BCWP | FixedCost | OutlineNumber | StartVariance |
-| BCWS | FixedCostAccrual | OverAllocated | Stop |
-| CalendarUID | FreeSlack | OvertimeCost | SubprojectName |
-| CompleteThrough | GUID | OvertimeWork | SubprojectReadOnly |
-| ConstraintDate | HideBar | PercentComplete | Successors |
-| ConstraintType | Hyperlink | PercentWorkComplete | Summary |
-| Contact | HyperlinkAddress | PhysicalPercentComplete | SV |
-| Cost | HyperlinkSubAddress | Placeholder | SVPercent (internal MSP property that is not added to files) |
-| CostVariance | ID (don't include it if it doesn't match the task ID) | Predecessors | SV% (internal MSP property that is not added to files) |
-| CPI | IgnoreResourceCalendar | Project | TaskMode |
-| CreateDate | Indicators | Publish | TotalSlack |
-| Critical | IsPublished | Priority | Type |
-| CV | IsSubproject | Recurring | UID |
-| CVPercent (internal MSP property that is not added to files) | LateFinish | RegularWork | UpdateNeeded |
-| CV%  (internal MSP property that is not added to files)| LateStart | RemainingCost | WBS |
-| Deadline | LevelAssignments | RemainingDuration | Work |
-| Duration | LevelingCanSplit | RemainingOvertimeCost | WorkVariance |
-| DurationVariance | LevelingDelay | | |
+| Active | DurationFormat | LevelingDelay | RemainingOvertimeWork |
+| ActualCost | DurationText | LevelingDelayFormat | RemainingWork |
+| ActualDuration | EarlyFinish | LinkedFields | ResponsePending |
+| ActualFinish | EarlyStart | Manual | Resume |
+| ActualOvertimeCost | EarnedValueMethod | ManualDuration | ResumeValid |
+| ActualOvertimeWork | EffortDriven | Marked | Rollup |
+| ActualStart | Estimated | Milestone | SPI |
+| ActualWork | Finish | Name | Start |
+| ACWP | FinishSlack | Notes | StartSlack |
+| Baseline | FinishText | Objects | StartText |
+| BCWP | FinishVariance | OutlineLevel | StartVariance |
+| BCWS | FixedCost | OutlineNumber | Stop |
+| CalendarUID | FixedCostAccrual | OverAllocated | SubprojectName |
+| CompleteThrough | FreeSlack | OvertimeCost | SubprojectReadOnly |
+| ConstraintDate | GUID | OvertimeWork | Successors |
+| ConstraintType | HideBar | PercentComplete | SV |
+| Contact | Hyperlink | PercentWorkComplete | SVPercent (internal MSP property that is not added to files) |
+| Cost | HyperlinkAddress | PhysicalPercentComplete | SV% (internal MSP property that is not added to files) |
+| CostVariance | HyperlinkSubAddress | Placeholder | SV% (internal MSP property that is not added to files) |
+| CPI | ID (don't include it if it doesn't match the task ID) | Predecessors | TaskMode |
+| CreateDate | IgnoreResourceCalendar | Project | TotalSlack |
+| Critical | Indicators | Publish | Type |
+| CV | IsPublished | Priority | UID |
+| CVPercent (internal MSP property that is not added to files) | IsSubproject | Recurring | UpdateNeeded |
+| CV%  (internal MSP property that is not added to files)| LateFinish | RegularWork | WBS |
+| Deadline | LateStart | RemainingCost | Work |
+| Duration | LevelAssignments | RemainingDuration | WorkVariance |
+| DurationVariance | LevelingCanSplit | RemainingOvertimeCost | |
 </div>
 
+### Es gibt außerdem die folgenden unterstützten Aufgaben-Eigenschaften:
 
-There are also the following supported task properties:
-
-<div class="msp-task-properties">
+<div class="msp-ext-properties">
 | Text | Number | Flag | Cost | Date | Start | Finish | Duration | OutlineCode |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|
 | Text1 | Number1 | Flag1 | Cost1 | Date1 | Start1 | Finish1 | Duration1 | OutlineCode1 |
@@ -103,17 +102,19 @@ There are also the following supported task properties:
 
 ### Wichtige Hinweise
 
-Beachten Sie, dass einige Eigenschaften nur aus MPP-Dateien übernommen werden und diese Eigenschaften in XML-Dateien nicht gespeichert sind. Deshalb gibt es beim Speichern einer MPP-Datei im XML-Format und anschließenden Öffnen in MS Project diese Eigenschaften nicht. Zum Beispiel funktionieren alle OutlineCode-Eigenschaften auf diese Weise: Trotz der Möglichkeit, Werte aus der Liste auszuwählen, bleiben die in einer MPP-Datei gespeicherten Werte in einer XML-Datei leer.
+Beachten Sie, dass einige Eigenschaften nur aus MPP-Dateien bezogen werden können, da diese Eigenschaften nicht in XML-Dateien gespeichert werden.
 
-Einige Eigenschaften werden basierend auf anderen Eigenschaften berechnet, sodass Dateien diese Werte nicht enthalten. Um es komfortabler zu machen, haben wir Berechnungen auf der Seite des Export-Moduls hinzugefügt. Deshalb werden bei der Importierung von XML-Dateien die genannten Eigenschaften Werte haben, sich aber von dem Ergebnis beim Exportieren von Dateien und deren Öffnen in MS Project unterscheiden können.
+Wenn Sie eine MPP-Datei ins XML-Format speichern und sie anschließend in MS Project öffnen, werden die betreffenden Eigenschaften ebenfalls nicht vorhanden sein. Zum Beispiel funktionieren alle OutlineCode-Eigenschaften so: Obwohl Werte aus der Liste ausgewählt werden können, bleiben die in einer MPP-Datei gespeicherten Werte in einer XML-Datei leer.
+
+Einige Eigenschaften werden basierend auf anderen Eigenschaften berechnet, z. B. CV% und SV%, sodass Dateien diese Werte nicht enthalten. Um es praktischer zu gestalten, haben wir Berechnungen auf der Seite des Export-Moduls hinzugefügt. Daher besitzen beim Import von XML-Dateien die genannten Eigenschaften Werte, sie können sich jedoch vom Ergebnis des Exports von Dateien und dem anschließenden Öffnen in MS Project unterscheiden.
 
 ## Ressourcen-Eigenschaften
 
 :::info
-Einige der Eigenschaften können nur aus MPP-Dateien übernommen werden, während andere - nur aus XML-Dateien. 
+Einige Eigenschaften können nur aus MPP-Dateien bezogen werden, während andere nur aus XML-Dateien bezogen werden können.
 
-Einige der Eigenschaften werden basierend auf anderen Eigenschaften berechnet, sodass, falls einige der erforderlichen Eigenschaften beim Import nicht angegeben sind, sie unterschiedliche Werte haben.
-:::
+Einige der Eigenschaften werden basierend auf anderen Eigenschaften berechnet, daher haben sie unterschiedliche Werte, wenn während des Imports nicht die erforderlichen Eigenschaften angegeben sind.
+::: 
 
 <div class="msp-properties">
 | | | | |
@@ -161,7 +162,7 @@ Einige der Eigenschaften werden basierend auf anderen Eigenschaften berechnet, s
 
 Es gibt weitere unterstützte Ressourcen-Eigenschaften:
 
-<div class="msp-properties">
+<div class="msp-ext-properties">
 | Text | Number | Flag | Cost | Date | Start | Finish | Duration | OutlineCode | OutlineCodeIndex |
 |---|---|---|---|---|---|---|---|---|---|
 | Text1 | Number1 | Flag1 | Cost1 | Date1 | Start1 | Finish1 | Duration1 | OutlineCode1 | OutlineCode1Index |

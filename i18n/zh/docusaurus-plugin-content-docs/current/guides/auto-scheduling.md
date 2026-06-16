@@ -432,3 +432,7 @@ gantt.config.auto_scheduling = {
 
 ### 相关 API
 - [auto_scheduling](api/config/auto_scheduling.md)
+
+### 更新日志
+
+- v10.0 中自动排程引擎重新设计。公共 API 与可见行为保持不变，除了之前存在问题的情况。完整的行为变更列表，请参阅迁移指南 [migration guide](migration.md#auto-scheduling-v2)。

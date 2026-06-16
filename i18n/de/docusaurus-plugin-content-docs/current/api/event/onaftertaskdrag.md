@@ -21,14 +21,14 @@ description: "löst aus, nachdem der Benutzer das Ziehen beendet und die Maustas
 ### Example
 
 ~~~jsx
-gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
+gantt.attachEvent("onAfterTaskDrag", (id, mode, e) => {
     // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Details
 
-Das Event wird ausgelöst, wenn der Benutzer eine Aufgabe im Timeline-Bereich zieht.
+Das Ereignis wird ausgelöst, nachdem der Benutzer eine Aufgabe im Timeline-Bereich gezogen hat.
 
 ### Related API
 - [drag_mode](api/config/drag_mode.md)

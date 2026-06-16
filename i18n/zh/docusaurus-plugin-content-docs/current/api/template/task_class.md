@@ -19,12 +19,12 @@ description: "定义应用于任务条的 CSS 类"
 - `task` - (required) *Task* - 任务对象本身
 
 ### Returns
-- ` text` - (string | void) - 分配给该项的 CSS 类
+- `text` - (string | void) - 分配给该项的 CSS 类
 
 ### Example
 
 ~~~jsx
-gantt.templates.task_class = function(start, end, task){return "";};
+gantt.templates.task_class = (start, end, task) => '';
 ~~~
 
 ### Related Guides

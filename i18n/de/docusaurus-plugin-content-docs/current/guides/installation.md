@@ -21,16 +21,16 @@ Beachten Sie, dass die Test-Gantt-Version nur 30 Tage verfügbar ist.
 
 Sie können direkt im [Kundenbereich](https://dhtmlx.com/clients/) auf das private npm zugreifen, indem Sie Ihre Login-Daten und Ihr Passwort für npm generieren. Eine detaillierte Installationsanleitung ist dort ebenfalls verfügbar. Bitte beachten Sie, dass der Zugriff auf das private npm nur aktiv ist, solange Ihre proprietäre Gantt-Lizenz gültig ist.
 
-## npm - Standardversion (kostenlos)
+## npm - Community-Edition
 
-Sie können die Standardversion von dhtmlxGantt aus [npmjs.com](https://www.npmjs.com/package/dhtmlx-gantt) installieren, indem Sie folgenden Befehl ausführen:
+Sie können die kostenfreie Community-Edition von dhtmlxGantt von [npmjs.com](https://www.npmjs.com/package/dhtmlx-gantt) installieren, indem Sie den folgenden Befehlszeilenbefehl ausführen
 
 ~~~html
 npm install dhtmlx-gantt
 ~~~
 
 :::note
-Nur die Standardversion von dhtmlxGantt ist unter [npmjs.com](https://www.npmjs.com/package/dhtmlx-gantt) verfügbar.
+Ab Version 10 ist das öffentliche Paket `dhtmlx-gantt` die **Community-Edition** unter der **MIT-Lizenz**. Frühere Versionen des Pakets (v9.x und niedriger) sind die veraltete **GPL**-Edition; GPL v2 gilt weiterhin für diese Versionen.
 :::
 
 
@@ -70,13 +70,19 @@ Um JS/CSS-Dateien von CDN einzubinden, sollten Sie direkte Links zu **dhtmlxgant
 
 Sie finden die vollständige Liste der Links, die Sie je nach Version von dhtmlxGantt über CDN einbinden können, in einem [separaten Artikel](guides/cdn-links-list.md).
 
+:::note
+Für Version 10 und später stellt das CDN die **Community-Edition** unter der MIT-Lizenz bereit.
+:::
 
 ## Das Paket herunterladen
 
-### GPL-Version
+### Community Edition
 
-[Herunterladen des dhtmlxGantt GPL-Pakets](https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml). 
+[Downloaden Sie das Paket der kostenlosen dhtmlxGantt Community Edition](https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml).
 
+### Veraltete GPL-Versionen
+
+Die kostenlose Edition vor Version 10 wurde unter der **GPL**-Lizenz verteilt. Diese Versionen (v9.x und älter) bleiben verfügbar und GPL v2 gilt weiterhin für sie; sie befinden sich in einem dedizierten Zweig des [Haupt-GitHub-Repositories](https://github.com/DHTMLX/gantt), werden jedoch nicht mehr aktiv gepflegt.
 
 ### PRO-Version
 
@@ -98,7 +104,7 @@ Dann binden Sie die Dateien **dhtmlxgantt.js** und **dhtmlxgantt.css** in eine S
 Bevor Sie die Pro-Version von Gantt installieren, sollten Sie das Trial-Version-Paket deinstallieren (falls Sie es installiert haben)
 :::
 
-Alle öffentlichen Quellen (CDN, NuGet, Bower und npm) enthalten eine Standardedition der Komponente, die unter der GPL-Lizenz vertrieben wird.
+Für Version 10 und später bieten das öffentliche npm-Paket und das CDN die kostenfreie **Community-Edition** der Komponente, verteilt unter der **MIT-Lizenz**. NuGet und Bower bleiben vorerst auf der veralteten GPL-Edition (v9.x) für jetzt. GPL v2 gilt nur für diese früheren Versionen.
 
 Wir bieten auch unser [privates npm-Registry](#npmevaluationandproversions) an, von dem aus die Professional- und Evaluation-Versionen der Komponente installiert werden können.
 
@@ -125,7 +131,7 @@ Es gibt Schritt-für-Schritt-Anleitungen für beide Varianten:
 3. Wechseln Sie in Ihr Projektverzeichnis.
 4. Führen Sie `npm link dhtmlx-gantt` aus.
 
-Um den Unterschied zwischen der Standard- und PRO-Version der dhtmlxGantt-Bibliothek zu sehen, lesen Sie den entsprechenden Artikel [Standard vs PRO Library Versions](guides/editions-comparison.md).
+Um den Unterschied zwischen der Community- und PRO-Version der dhtmlxGantt-Bibliothek zu sehen, lesen Sie den entsprechenden Artikel [Community vs PRO Library Versions](guides/editions-comparison.md).
 
 ### **Trial-Version deinstallieren**
 

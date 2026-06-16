@@ -14,7 +14,7 @@ description: "инициализирует dhtmlxGantt внутри контей
 
 ### Parameters
 
-- `container` - (required) *string* - | HTMLElement        HTML-контейнер (или его id), в котором будет инициализирован объект dhtmlxGantt
+- `container` - (required) *string | HTMLElement* - HTML-контейнер (или его id), в котором будет инициализирован объект dhtmlxGantt
 
 ### Example
 
@@ -28,34 +28,35 @@ gantt.load("tasks.json");
 
 ### Details
 
-Использование второго и третьего параметров метода — эффективный способ задать границы временного масштаба:
+Использование второго и третьего параметров `init()` — надёжный способ задать границы отображаемой временной шкалы:
 
 ~~~js
-gantt.init("gantt_here", new Date(2023, 08, 10), new Date(2023, 08, 20));
+gantt.init("gantt_here", new Date(2027, 8, 10), new Date(2027, 8, 20));
 ~~~
 
-Обратите внимание, что параметры дат метода `gantt.init` являются краткими формами конфигураций [start_date](api/config/start_date.md) и [end_date](api/config/end_date.md). Два приведённых ниже фрагмента кода эквивалентны друг другу:
+Обратите внимание, что параметры даты в `init()` являются сокращениями для конфигураций [start_date](api/config/start_date.md) и [end_date](api/config/end_date.md).
+Два приведённых ниже примера кода эквивалентны друг другу:
 
 ~~~js
-gantt.init("gantt_here", new Date(2023, 08, 10), new Date(2023, 08, 20));
+gantt.init("gantt_here", new Date(2027, 8, 10), new Date(2027, 8, 20));
 ~~~
 
 и
 
 ~~~js
-gantt.config.start_date = new Date(2023, 08, 10);
-gantt.config.end_date = new Date(2023, 08, 20);
+gantt.config.start_date = new Date(2027, 8, 10);
+gantt.config.end_date = new Date(2027, 8, 20);
 gantt.init("gantt_here");
 ~~~
 
 Что делают эти конфигурации — они задают и ограничивают отображаемый диапазон дат. Задачи, выходящие за пределы указанного диапазона, не будут отображаться.
 
-Использование параметров дат метода `gantt.init`, а также конфигураций [start_date](api/config/start_date.md) и [end_date](api/config/end_date.md) отменят настройку [fit_tasks](api/config/fit_tasks.md).
+Использование параметров даты в `init()`, а также конфигураций [start_date](api/config/start_date.md) и [end_date](api/config/end_date.md) отменяет настройку [fit_tasks](api/config/fit_tasks.md).
 
-If you want the time scale to be dynamically adjusted according to the date range, you can either skip these parameters or [manage the time range dynamically](guides/configuring-time-scale.md#range).
+Если вы хотите, чтобы временная шкала динамически подстраивалась под диапазон дат, можно либо пропускать эти параметры, либо [управлять диапазоном времени динамически](guides/configuring-time-scale.md#range).
 
 :::note
-Этот метод сбрасывает пользовательские слои, добавленные на область временной шкалы с помощью методов [addTaskLayer](api/method/addtasklayer.md) и [addLinkLayer](api/method/addlinklayer.md). Поэтому после вызова метода **gantt.init** необходимо заново определить эти слои, чтобы пользовательские слои отображались на странице.
+Этот метод сбрасывает пользовательские слои, добавленные в область временной шкалы через методы [`addTaskLayer()`](api/method/addtasklayer.md) и [`addLinkLayer()`](api/method/addlinklayer.md). Поэтому после вызова `init()` необходимо заново определить их, чтобы пользовательские слои отображались на странице.
 :::
 
 ### Related API

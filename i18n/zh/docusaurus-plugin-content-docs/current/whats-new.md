@@ -6,8 +6,77 @@ sidebar_label: "更新日志"
 # 更新日志
 
 :::note
-从较早的版本进行更新？请查看 [迁移指南](migration.md) 以了解所需变更和更新步骤。
+从较早版本更新？请参阅 [迁移指南](migration.md) 了解所需变更和更新步骤。
 :::
+
+## 10.0
+
+<span class='release_date'>2026年6月11日。重大版本发布</span>
+
+此次更新对 Gantt 软件包的结构和功能行为带来了一些变化。为确保安全，请务必查看 [迁移说明](migration.md#91---100)。
+
+### 新增功能
+
+- DHTMLX Gantt Community Edition 已正式发布 - 免费版现以 [MIT 许可证](migration.md#gpl-to-mit) 分发
+- [Angular Gantt](integrations/angular.md) 封装现已正式发布
+- [Vue Gantt](integrations/vue.md) 封装现已正式发布
+- [Zoom-to-fit](guides/zooming.md#zoom-to-fit) 已开箱即用：[`gantt.ext.zoom.zoomToFit()`](guides/zoom.md#methods) 选择能够在时间轴内容纳所有任务且不需要水平滚动的最详细缩放级别，且 [`resetZoom()`](guides/zoom.md#methods) 将回滚到之前的比例
+- [React Gantt](integrations/react.md) 现提供现成可用的 [React 钩子（hooks）](integrations/react/hooks.md) 来访问最常用的 Gantt API，并内置资源直方图的工作默认值，减少了以往访问本地实例所需的大量样板代码
+- 新增对更多 [本地化语言](guides/localization.md) 的支持 — 包括简体中文、繁体中文、粤语、泰语和越南语 — 并对现有翻译进行了改进
+
+### 更新
+
+- 自动排程引擎已进行深度重构，从而修复了长期存在的排程、约束和关键路径相关的多项问题
+- 更新了 TypeScript 的类型定义，详情请参阅 [数据模型](guides/data-model.md) 概览
+- 日期解析与格式化现在使用单一的 [CSP](api/config/csp.md) 安全实现
+- [Zoom 扩展](guides/zoom.md) 现随附可直接使用的命名 [默认级别](guides/zooming.md#default-zoom-levels)，因此在没有自定义 `levels` 配置的情况下也可以初始化（`gantt.ext.zoom.init()`）
+- [`gantt.date`](api/other/date.md) 的 interval-start 助手现在为 **纯函数** —— 它们返回一个新的 `Date`，而不是修改传入的那个
+- [React Gantt](integrations/react.md) 现将 **gantt 实例** 传递给 [customLightbox](integrations/react/overview.md#by-providing-a-custom-component-via-the-customlightbox-prop) 组件，允许从自定义编辑器直接访问 Gantt API
+- [React Gantt](integrations/react.md)、[Vue Gantt](integrations/vue.md) 与 [Angular Gantt](integrations/angular.md) 封装现在默认为对模板函数返回的字符串值进行 HTML 转义，以防止 XSS 攻击。这适用于 `templates`、`config.columns[].template` 和 `config.scales[].format` 函数
+
+### 修复
+
+对经重新设计的 [Auto Scheduling](guides/auto-scheduling.md) 引擎，解决了大量长期存在的排程、约束和关键路径问题：
+
+- 修复当具有 ASAP 行为的任务在其同级任务具有 `snet`/`snlt` [约束](guides/constraint.md) 时被移动到 `project_start` 日期之前的问题
+- 修复启用 auto_scheduling_move_projects 时，在 Auto Scheduling 过程中同级任务提前日期的问题
+- 修复当父项目使用与子任务不同的 [日历](api/method/addcalendar.md) 时，子任务重新调度到错误日期的问题
+- 修复当前驱任务具有非工作时间且子任务使用全工时日历时，子任务被移动到未来日期的问题
+- 修复在多级项目中启用 [inherit_calendar](api/config/inherit_calendar.md) 时，具有自己日历的子任务被调度到未来日期的问题
+- 修复在向后自动排程期间任务可能被排到超过 `project_end` 日期的问题
+- 修复在修改工作时间设置后，`end_date` 发生变化时，自动排程未重置任务大小的问题，即使任务不需要移动
+- 修复当任务具有 [约束] 但其 `auto_scheduling` 属性设为 `false` 时抛出的错误
+- 修复对没有链接的任务不触发 [onBeforeTaskAutoSchedule](api/event/onbeforetaskautoschedule.md) 事件的问题，因此它们无法在排程中被排除
+- 修复 Start-to-Finish 和 Start-to-Start 链路的总松弛时间（Total Slack）及关键路径计算错误
+- 修复当前驱任务被负滞后链接使后继任务提前完成时，前驱未被高亮为关键路径的问题
+- 修复当项目仅包含单个父任务且无子任务时，`getTotalSlack` 抛出的 `invalid end_date argument` 错误
+- 修复当子任务具有 ASAP 行为且同级存在 MSO/MFO 约束、父项目通过 Finish-to-Finish 或 Start-to-Finish 链接连接时，在每次 Auto Scheduling 运行中子任务在日期之间来回跳动的问题
+- 修复启用 auto_scheduling_compatibility 时，Auto Scheduling 仍对 MSO/MFO 任务应用约束逻辑的问题
+- 修复当其链接使用的负滞后大于后继任务的持续时间且父项目通过 Finish-to-Finish 或 Start-to-Finish 链接连接时，相关子任务的排程不正确的问题
+
+其他修复：
+
+- 修复在子任务被添加到里程碑时，里程碑未能通过 auto_types 转换为项目的问题
+- 修复在 [React Gantt](integrations/react.md) 中若未显式提供 `parse_date`/`format_date` 模板，ISO 日期字符串处理不正确的问题
+- 修复在 [React Gantt](integrations/react.md) 中，当加载新数据集且子任务在数据中位于父任务之上时，任务可能丢失父级的问题
+- 修复在 [React Gantt](integrations/react.md) 中垂直 [重新排序](guides/reordering-tasks.md) 标记未延展至整个网格宽度的问题
+
+## 9.1.4
+
+<span class='release_date'>2026年4月28日。错误修复版本</span>
+
+### 新增功能
+
+- [Angular Gantt](integrations/angular.md) 封装的 Beta 版本
+
+### 修复
+
+- 修复在触控设备上无法拖动 [rollup tasks](guides/milestones.md#rolluptasksandmilestones) 的问题
+- 修复在项目具有未排程子任务时，Auto Scheduling 将关联项目移动到未来日期的问题
+- 修复当网格可滚动时，拖拽标记和任务占位符大小不正确的问题
+- 修复 DataProcessor 在任务以 Date 格式加载时未默认使用 ISO 日期格式的问题
+- 修复禁用 drag_links 且拆分任务行高于父行时抛出的脚本错误
+- 修复在更改缩放级别后时间线的缩放单元格消失的回归问题
 
 ## 9.1.3
 

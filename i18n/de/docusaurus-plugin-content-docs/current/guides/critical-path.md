@@ -279,3 +279,25 @@ gantt.init("gantt_here");
 Wenn die Konfiguration aktiviert ist, werden abgeschlossene Aufgaben aus dem kritischen Pfad und der automatischen Planung ausgeschlossen.
 
 Weitere Details finden Sie auf der [API-Seite](api/config/auto_scheduling_use_progress.md).
+
+## Kritischer Pfad und Slack in v10.0 {#v2-analysis}
+
+In Version 10.0 wurde die Slack- und Kritischer-Pfad-Berechnung überarbeitet. Die Ergebnisse hängen nicht mehr von Optionen des Auto-Scheduling-Modus ab – dieselben Daten liefern immer dieselben Slack- und kritischen Pfad-Werte.
+
+Einige zugehörige Verhaltenshinweise:
+
+- Eine Aufgabe ist kritisch, wenn ihre Gesamtpufferzeit nicht größer als Null ist. Abgeschlossene Aufgaben (wenn [use_progress](api/config/auto_scheduling_use_progress.md) aktiviert ist) und Aufgaben, die zu einer Abhängigkeits-Schleife gehören, sind niemals kritisch.
+- `getTotalSlack` und `getFreeSlack` geben `0` zurück (statt `undefined`) für Aufgaben, die von der Berechnung ausgeschlossen sind – Aufgaben in einer Abhängigkeits-Schleife und abgeschlossene Aufgaben, wenn `use_progress` aktiviert ist.
+
+### Zurück zur vorherigen Berechnung
+
+Die vorherige Berechnung ist weiterhin über ein Übergangs-Opt-out-Flag verfügbar. Sie wird in v10.1 entfernt, verwenden Sie sie daher nur während der Transition:
+
+~~~js
+gantt.config.auto_scheduling = {
+    enabled: true,
+    _analysis_engine: "v1"  // vorherige Slack- / kritischer Pfad-Berechnung
+};
+~~~
+
+Siehe den [Migrationsleitfaden](migration.md#auto-scheduling-v2) für die vollständige Liste der Verhaltensänderungen.

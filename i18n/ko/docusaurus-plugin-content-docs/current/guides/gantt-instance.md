@@ -9,10 +9,10 @@ sidebar_label: "Gantt 인스턴스의 특이점"
 
 가장 일반적인 경우를 살펴보겠습니다 — 여러 페이지/탭/뷰가 있는 애플리케이션을 구축하는 경우.  
 
-다음 방법은 Angular 기반(또는 React 기반) 앱에 적용될 수 있으며, dhtmlxGantt의 Commercial, Enterprise 또는 Ultimate 버전에서만 사용할 수 있습니다(GPL 또는 Individual 에디션에서는 사용할 수 없습니다):
+다음 접근 방식은 Angular 기반(혹은 React 기반) 앱에 적용될 수 있습니다. 버전 10부터는 dhtmlxGantt의 모든 에디션(무료 Community 에디션 및 PRO 에디션)에서 사용할 수 있습니다. 구버전(GPL 에디션 v9.x 이하)에서는 사용할 수 없습니다:
 
-- Gantt가 있는 페이지/탭/뷰를 열 때 새 Gantt 인스턴스를 생성해야 합니다;
-- 다른 페이지/탭/뷰로 전환할 때 [Gantt 인스턴스를 제거합니다](guides/multiple-gantts.md#destructorofganttanddataprocessorinstances).
+- Gantt로 페이지/탭/뷰를 열 때 새 Gantt 인스턴스를 생성해야 합니다;
+- 다른 페이지/탭/뷰로 전환할 때는 [Gantt 인스턴스를 파괴합니다](guides/multiple-gantts.md#destructorofganttanddataprocessorinstances). 
 
 대안적 방법(모든 버전에서 작동하는 방법)은 사용자가 모든 것을 직접 수동으로 재설정하는 것입니다.
 

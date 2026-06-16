@@ -18,12 +18,12 @@ description: "ruft auf, wenn der Benutzer im Grid-Bereich auf eine Aufgabenzeile
 - `e` - (optional) *Event* - ein natives Event-Objekt
 
 ### Returns
-- ` result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
+- `result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
 ~~~jsx
-gantt.attachEvent("onTaskClick", function(id,e){
+gantt.attachEvent("onTaskClick", (id, e) => {
     // Fügen Sie hier Ihre benutzerdefinierte Logik ein
     return true;
 });
@@ -31,7 +31,7 @@ gantt.attachEvent("onTaskClick", function(id,e){
 
 ### Details
 
-Das Event ist blockierbar. Gibt man false zurück, wird der Standard-Handler abgebrochen (Auswahl einer Aufgabe)
+Das Event ist blockierbar. Gibt man `false` zurück, wird der Standard-Handler abgebrochen (Auswahl einer Aufgabe)
 
 ### Related API
 - [onTaskDblClick](api/event/ontaskdblclick.md)

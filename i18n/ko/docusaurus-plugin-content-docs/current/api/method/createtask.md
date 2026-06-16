@@ -10,11 +10,11 @@ description: "새 작업을 추가하고 확인을 위해 라이트박스를 엽
 
 @short: 새 작업을 추가하고 확인을 위해 라이트박스를 엽니다
 
-@signature: createTask: (task?: NewTask, parent?: string | number, index?: number) =\> string | number
+@signature: createTask: (task?: TaskInput, parent?: string | number, index?: number) =\> string | number
 
 ### Parameters
 
-- `task`    -	 (optional) *NewTask*	- 선택적, 태스크 객체
+- `task`    -	 (optional) *TaskInput*	- 선택적, 태스크 객체
 - `parent`	-	(optional) *string | number*	- 선택적, 상위 태스크의 아이디
 - `index`	-	(optional) *number*	- 선택적, 태스크가 추가될 위치(0 이상)
 

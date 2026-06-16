@@ -7,8 +7,8 @@ sidebar_label: "PDF 및 PNG로 내보내기"
 
 dhtmlxGantt는 Gantt 차트를 [PDF](guides/export.md#export-to-pdf) 또는 [PNG](guides/export.md#export-to-png) 형식으로 내보낼 수 있는 온라인 내보내기 서비스를 제공합니다.
 
-:::note
-서비스는 무료이지만 출력되는 PDF/PNG 파일에는 GPL 라이선스 하의 라이브러리 워터마크가 포함됩니다. 라이선스를 구입하는 경우에는 지원 기간(모든 PRO 라이선스의 경우 12개월) 동안 워터마크 없이 내보내기 결과를 사용할 수 있습니다.
+:::note  
+이 서비스는 무료이지만 출력된 PDF/PNG 파일에는 라이브러리의 워터마크가 포함됩니다. 워터마크 없는 내보내기를 원하면 유효한 라이선스가 필요하며, 워터마크 없는 내보내기 결과는 유효한 지원 기간(모든 PRO 라이선스의 경우 12개월) 동안 제공됩니다.  
 :::
 
 Gantt 차트를 PDF 또는 PNG로 로컬에서 내보내기 위해 직접 설정할 수 있는 다양한 내보내기 서비스가 있습니다. 내보내기 서비스는 Gantt 패키지에 포함되어 있지 않으므로 각 서비스의 사용 조건에 대해서는 [관련 문서](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)를 참고하세요.

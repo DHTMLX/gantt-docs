@@ -716,7 +716,7 @@ namespace DHX.Gantt.Web.Controllers
 
 ## Обработка ошибок 
 
-[Exception filters](https://learn.microsoft.com/en-us/previous-versions/aspnet/gg416513(v="vs.98)) можно использовать для перехвата исключений в обработчиках CRUD и возврата клиенту ответа, который может быть [распознан](guides/server-side.md#error-handling) клиентской диаграммой Gantt.
+[Exception filters](https://learn.microsoft.com/en-us/previous-versions/aspnet/) можно использовать для перехвата исключений в обработчиках CRUD и возврата клиенту ответа, который может быть [распознан](guides/server-side.md#error-handling) клиентской диаграммой Gantt.
 
 Чтобы обеспечить обработку ошибок для Gantt, выполните следующие действия:
 

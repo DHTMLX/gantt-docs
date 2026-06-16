@@ -7,8 +7,8 @@ description: "Schritt-für-Schritt-Anleitung zur Verwendung der React Gantt-Komp
 # Schnellstart mit React Gantt
 
 :::note
-Dieses Tutorial behandelt den React-Wraper, der in den **Commercial, Enterprise und Ultimate** Editionen von DHTMLX Gantt enthalten ist. 
-Falls Sie die **Individual**- oder **GPL**-Edition verwenden, folgen Sie der alternativen Anleitung: 
+Dieses Tutorial deckt den React-Wrapper ab, der in den Editionen **Commercial, Enterprise und Ultimate** von DHTMLX Gantt enthalten ist. 
+Wenn Sie die kostenlose **Community**-Edition (v10+) verwenden, eine ältere GPL-Edition (v9.x und früher) oder die **Individual**-Edition, folgen Sie der alternativen Anleitung: 
 [How to Start with React](integrations/react/js-gantt-react.md).
 :::
 

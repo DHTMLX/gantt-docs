@@ -5,6 +5,159 @@ sidebar_label: "구 버전에서의 마이그레이션"
 
 # 구 버전에서의 마이그레이션
 
+## 9.1 -> 10.0
+
+### GPL 에디션에서 Community (MIT) 에디션으로의 마이그레이션 {#gpl-to-mit}
+
+버전 10부터 DHTMLX Gantt의 무료 에디션은 MIT 라이선스 하에 배포되는 **Community 에디션**입니다. 이는 동일한 `dhtmlx-gantt` 패키지의 이전 무료 배포인 **GPL** 배포를 대체합니다. GPL v2는 여전히 이전의 무료 버전(v9.x 및 그 이전)에 적용되며, [주요 GitHub 저장소](https://github.com/DHTMLX/gantt)의 전용 브랜치에서 계속 사용할 수 있지만 더 이상 적극적으로 유지되지는 않습니다.
+
+GPL 에디션에서 Community 에디션으로 기존 프로젝트를 이동하려면:
+
+- **패키지 버전을 확인하세요.** `dhtmlx-gantt` v10 이상은 Community(MIT) 에디션이고, v9.x 이하는 GPL 에디션입니다.
+- **라이선스 고지를 업데이트하세요** 프로젝트에서 Gantt 라이선스에 참조가 있다면 — 이제 무료 에디션은 GPL이 아니라 MIT입니다.
+- **런타임 시 라이선스 값을 확인하세요** - [`gantt.license`](api/other/license.md) 는 Community 에디션에서 `"mit"`를 반환합니다(이전의 무료 에디션은 `"gpl"`을 반환했습니다).
+- **내보내기 동작을 테스트하세요.** 온라인 내보내기 서비스는 무료 내보내기에 워터마크를 추가합니다; 이는 변경 없이 유지되며 GPL 라이선스와 더 이상 연결되어 있지 않습니다(내보내기 서비스는 별도 제품입니다).
+- **기능 차이점을 검토하세요.** Community 에디션은 예전 GPL 에디션의 엄격한 부분집합이 아닙니다. 프로젝트(요약 작업), 마일스톤, 커스텀 작업 유형, 페이지당 다중 Gantt 인스턴스 지원 등의 기능이 **추가되지만**, 실행 취소/다시 실행, 마커, 다중 선택, 미배치 작업, 새 작업 자리 표시 행, 작업 시간 캘린더, WBS 코드는 **제거**되었습니다. 전체 기능 비교는 [Community vs PRO Library Versions](guides/editions-comparison.md) 를 참조하세요.
+
+### 프레임워크 래퍼의 XSS 보호
+
+버전 10.0부터 [React Gantt](integrations/react.md), [Vue Gantt](integrations/vue.md), [Angular Gantt](integrations/angular.md) 래퍼는 기본적으로 사용자 제공 템플릿 함수에서 반환된 문자열 값을 원시 HTML로 삽입하지 않고 먼저 정제합니다. 이를 통해 템플릿을 통해 렌더링된 데이터로 인한 XSS 취약점을 방지합니다.
+
+다음에 적용됩니다:
+
+- `templates` 프롭을 통해 전달된 함수
+- `config.columns[].template` 함수
+- `config.scales[].format` 함수들
+
+기본값(`htmlTemplatePolicy="basic-sanitize"`)은 반환된 HTML을 화이트리스트 방식으로 정제합니다: 일반 형식(``<b>``, ``<span>``, ``<div>``, ...), `class`, 제한된 인라인 스타일 세트, `data-*` 속성, 그리고 안전한 `src`를 가진 `<img>`가 보존되며, `<script>`, 인라인 이벤트 핸들러, 위험한 URL은 제거됩니다. 간단한 마크업을 반환하는 템플릿은 작동을 계속합니다; 안전하지 않은 구성 요소만 제거됩니다.
+
+#### 이전의 Raw-HTML 동작 복원
+
+`htmlTemplatePolicy` 프롭을 `"unsafe-html"`로 설정하여 템플릿 문자열을 처리 없이 예전과 같이 정확히 렌더링하려면 아래와 같이 설정합니다:
+
+~~~jsx
+<ReactGantt htmlTemplatePolicy="unsafe-html" /* ... */ />
+~~~
+
+~~~vue
+<VueGantt htmlTemplatePolicy="unsafe-html" /* ... */ />
+~~~
+
+~~~html
+<dhx-gantt htmlTemplatePolicy="unsafe-html" /* ... */></dhx-gantt>
+~~~
+
+#### 템플릿별 Raw HTML
+
+개별 템플릿을 `allowRawHTML`로 감싸서 해당 템플릿에 대해서만 정화를 우회합니다 — 로그를 직접 처리하려면 내보낸 `escapeHTML` 도우미를 사용하세요:
+
+~~~jsx
+import { allowRawHTML, escapeHTML } from "@dhx/react-gantt";
+// 또는 "@dhx/vue-gantt" / "@dhx/angular-gantt"
+
+<ReactGantt
+    templates={{
+        task_text: allowRawHTML((start, end, task) => `<b>${escapeHTML(task.text)}</b>`)
+    }}
+/>
+~~~
+
+#### 커스텀 화 sanitizers 또는 텍스트 렌더링
+
+`htmlTemplatePolicy={{ mode: "sanitize", sanitize }}` 와 같이 DOMPurify 같은 커 sanitizer를 연결하거나, 템플릿 문자열을 일반 텍스트로 렌더링하려면 `"escape"`를 사용하세요. 자세한 내용은 [App security](guides/app-security.md#framework-wrapper-xss-protection) 를 참조하세요.
+
+### Auto-scheduling 엔진 업데이트 {#auto-scheduling-v2}
+
+v10.0은 재작업된 자동 스케줄링 엔진을 제공합니다. 상당수의 오랜 버그를 수정했으며, 주로 슬랙 계산 및 [move_projects](api/config/auto_scheduling.md#move_projects)가 활성화된 상태에서 프로젝트(요약 작업)의 스케줄링과 관련된 문제를 해결합니다.
+
+공개 API와 보이는 동작은 동일하게 유지되지만, 이전에 잘못 작동하던 케이스에 한해 영향이 있을 수 있습니다. 기존 코드에 영향을 미칠 수 있는 변경 사항은 아래에 나와 있습니다.
+
+새 엔진은 기본적으로 사용됩니다. 전환 과정에서 이전 엔진으로 되돌려야 하는 경우 아래의 옵트아웃 플래그를 사용하세요:
+
+~~~js
+gantt.config.auto_scheduling = {
+    enabled: true,
+    _engine: "v1",          // 이전 스케줄링 엔진
+    _analysis_engine: "v1"  // 이전 슬랙/크리티컬 경로 계산
+};
+~~~
+
+이 플래그들은 이행 과정의 임시 구성으로, v10.1에서 제거될 예정이므로 그 전에 이행 계획을 마련하세요.
+
+#### 동작 변화
+
+| 영역 | 이전 (v9.x) | v10.0 이후 | 적용 방법 |
+|---|---|---|---|
+| 반복적인 `gantt.autoSchedule()` 호출 | 여러 달력을 혼합하는 프로젝트에서 작업이 앞당겨질 수 있음 | 변경되지 않은 데이터에 대해 자동 스케줄링을 다시 실행해도 날짜가 동일하게 유지 | 조치 필요 없음 |
+| 슬랙 및 크리티컬 경로 값 | `move_projects` / `gap_behavior` 변경 시 변화 가능 | 데이터에 의존하고 스케줄링 모드 옵션에 의존하지 않게 됨 | 조치 필요 없음 |
+| 작업이 계산에서 제외된 경우의 `getTotalSlack()` / `getFreeSlack()` (종속성 루프, 완료된 작업) | `undefined`를 반환할 수 있음 | `0`을 반환 | `undefined`와 `0`을 다르게 처리하는 코드를 업데이트 |
+| `getSlack(task1, task2)` | 직접 연결된 작업에 대해서만 정확 | 연결된 작업들 간에 더 정확한 값, 연결되지 않은 쌍은 변경 없음 | `getTotalSlack` / `getFreeSlack`를 선호 |
+| constraint- 및 preference-driven 이동에 대한 `onBeforeTaskAutoSchedule` / `onAfterTaskAutoSchedule` 인수 | `link` 및 원본 작업 인수가 설정될 수 있음 | 이러한 인수는 해당 이동에 대해 `null`인 경우가 있음 | `link` 인수가 항상 설정되었다고 가정한 리스너에서 null 체크 추가 |
+| Start-to-Finish 링크에서 `gap_behavior: "preserve"` | 후임 작업이 가능한 한 빨리 스케줄링됨(마치 `"compress"`인 것처럼) | `gap_behavior` 옵션이 적용됩니다 | No action needed - this is the corrected behavior |
+| `move_projects: true`로 프로젝트를 이동 | 하위의 제약 조건이 있어도 전체 프로젝트가 제자리에 남아 있을 수 있음 | 전체 프로젝트가 함께 이동합니다; 제약 조건이 충돌하는 하위 항목은 `onAutoScheduleConflict`를 통해 보고됩니다 | 충돌을 표면화하려면 선택적으로 `onAutoScheduleConflict`를 수신 |
+ 
+#### 새로운 이벤트 및 설정
+
+- [onAutoScheduleConflict](api/event/onautoscheduleconflict.md) - 스케줄링 중 발견된 각 충돌에 대해 발생합니다.
+- [onAutoScheduleNoConverge](api/event/onautoschedulenoconverge.md) - 스케줄링이 안정적인 결과에 수렴하지 못할 때 발생합니다.
+- [strict_calendar](api/config/auto_scheduling.md#strict_calendar) - 기본값은 `false`인 옵트인 옵션으로, 작업이 고유의 비작업 시간에 착지하는 경우를 보고합니다.
+
+#### 알려진 한계점
+
+- 제약 날짜(예: 반드시 완료해야 함은 must-finish-on, 시작은 늦추지 않음은 start-no-later-than)가 커스텀 캘린더의 비작업 시간에 걸리면, 작업에는 제약에 맞는 날짜가 저장되지만 시작 시점에 더해진 `end_date`가 제약 날짜와 정확히 일치하지 않을 수 있습니다. 이 불일치에 대응하려면 onAutoScheduleConflict 이벤트가 작동합니다. 제약을 정확하게 존중하려면 제약 날짜를 포함하는 작업 시간대를 가진 캘린더를 사용하세요.
+- 데이터 파싱 직후 코드에서 프로젝트(요약 작업)에 제약 유형을 설정하면 파싱 과정에서 덮어쓰여질 수 있습니다. 로드된 데이터나 라이트박스/인라인 편집기를 통해 이러한 제약을 설정하세요.
+
+### Date helper 변경사항 {#date-helpers}
+
+#### 간격 시작 도우미는 이제 순수 함수(pure)입니다
+
+[`gantt.date`](api/other/date.md) 의 간격 시작 도우미 - `day_start`, `week_start`, `month_start`, `quarter_start`, `year_start`, `hour_start`, `minute_start`, 그리고 `date_part` 는 이제 새 `Date` 를 반환하며 전달된 날짜를 더 이상 직접 수정하지 않습니다.
+
+반환 값은 동일하므로, in-place 변형에 의존하고 반환 값을 무시하던 코드만 업데이트하면 됩니다:
+
+~~~js
+// v10.0 이전 - day_start가 `date`를 변형하는 것에 의존
+gantt.date.day_start(date);
+
+// v10.0 이후 - 반환된 날짜를 사용
+date = gantt.date.day_start(date);
+~~~
+
+#### 단일 날짜 파서와 더 이상 사용되지 않는 `csp` 설정
+
+Gantt는 더 이상 `new Function` 기반의 "빠른" 날짜 파서를 제공하지 않습니다. 이제 CSP-안전 파서가 유일한 구현이며, [csp](api/config/csp.md) 설정은 날짜 형식 지정에 더 이상 영향을 주지 않습니다.
+
+해당 옵션은 유지되며 여전히 라이트박스에서 보안 환경 힌트로 읽히므로 기존 구성은 작동합니다. 마이그레이션은 필요하지 않으며, 날짜 형식 지정만을 위해 `gantt.config.csp`를 설정했다면 이를 제거해도 됩니다.
+
+### TypeScript: `SerializedTask` 가 이제 엄격하게 직렬화됩니다 {#serialized-task-types}
+
+`SerializedTask`와 `SerializedLink` 타입은 이제 **오직 JSON 형식만**을 설명합니다:
+
+- 날짜 필드(`start_date`, `end_date`, `constraint_date`, `deadline`, …)는 타입이 `string`입니다. 9.x에서는 `Date | string`이었습니다.
+- `SerializedTask.id`는 이제 선택적(Optional)입니다.
+
+응용 프로그램 데이터를 타입으로 지정했는데 — 예를 들어 `SerializedTask[]`로 선언하고 실제로는 `Date` 객체를 채운 경우 — 컴파일러가 이제 *"Type 'Date' is not assignable to type 'string'"* 같은 오류를 보고합니다.
+
+데이터가 실제로 보유한 형식과 일치하는 타입을 선택하세요:
+
+- **`Task` / `Link`** - 런타임 객체로 `Date` 날짜와 `$` 접두사 필드를 가지며(예: `gantt.getTask()`가 반환하는 것)
+- **`SerializedTask` / `SerializedLink`** - 날짜가 `string`인 JSON(서버 교환, 저장된 JSON)
+- **`TaskInput`** - Gantt에 제공하는 데이터; 날짜는 `Date` 이거나 `string`일 수 있으며 모든 필드(특히 `id`)가 선택적입니다. 일반적으로 애플리케이션 소유 상태에 적합한 타입입니다.
+
+~~~ts
+// v10 이전 - SerializedTask는 Date를 허용했으므로 컴파일 됨
+const tasks: SerializedTask[] = [
+    { id: 1, text: "Task #1", start_date: new Date(2026, 3, 1), duration: 5 }
+];
+
+ // v10 이후 - Date 날짜를 사용하는 Task( Date 날짜) 또는 날짜 형식이 바뀔 수 있을 때는 TaskInput 사용
+const tasks: TaskInput[] = [
+    { id: 1, text: "Task #1", start_date: new Date(2026, 3, 1), duration: 5 }
+];
+~~~
+
+`TaskInput`은 표준 입력 타입이며, 이전에 더 이상 사용되지 않는 `NewTask` 별칭을 교체합니다(역호환을 위해 여전히 내보냄). 전체 그림은 [Data Model](guides/data-model.md#taskinput) 를 참조하세요.
+
 ## 9.0 -> 9.1
 
 v9.1은 끊김 변경사항을 도입하지 않지만, 몇 가지 구성 옵션이 **deprecated**되었고 

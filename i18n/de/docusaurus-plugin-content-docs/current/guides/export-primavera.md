@@ -8,8 +8,9 @@ sidebar_label: "Export und Import aus Primavera P6"
 Die dhtmlxGantt-Bibliothek ermöglicht das Exportieren von Daten aus dem Gantt-Diagramm nach Primavera P6. Sie können außerdem Daten aus Primavera P6 in Gantt importieren.
 
 :::note
-Der Dienst ist kostenlos, aber die Ausgabedatei enthält unter der GPL-Lizenz das Wasserzeichen der Bibliothek. Falls Sie eine Lizenz erwerben, steht das Exportergebnis während des gültigen Supportzeitraums (12 Monate für alle PRO-Lizenzen) ohne Wasserzeichen zur Verfügung.
-:::
+Der Dienst ist kostenlos, aber die Ausgabedatei enthält das Wasserzeichen der Bibliothek.
+Um ohne Wasserzeichen zu exportieren, benötigen Sie eine gültige Lizenz - das Exportergebnis wird während der gültigen Support-Periode (12 Monate für alle PRO-Lizenzen) ohne Wasserzeichen verfügbar sein.
+::: 
 
 Es gibt mehrere Exportdienste. Sie können sie lokal auf Ihrem Computer installieren und das Gantt-Diagramm lokal nach Primavera P6 exportieren. Beachten Sie, dass Exportdienste nicht im Gantt-Paket enthalten sind; lesen Sie den [entsprechenden Artikel], um die Nutzungsbedingungen jedes einzelnen Dienstes zu erfahren.
 

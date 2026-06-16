@@ -918,14 +918,21 @@ Ein vollständiges funktionsfähiges Projekt, das dieses Tutorial verfolgt, find
 
 ## Was kommt als Nächstes
 
-Um weiterzugehen:
+Dies ist das zweite Tutorial in der React Gantt-State-Management-Sequenz:
 
-- Die Konzepte hinter diesem Beispiel erneut betrachten: [](integrations/react/state/state-management-basics.md)
-- Store-gesteuerten Zustand mit fortgeschrittener Konfiguration und Templates im [React Gantt-Überblick](integrations/react/overview.md) kombinieren
-- Dasselbe Muster mit anderen Zustandsmanagern erkunden:
-  - [Verwendung von React Gantt mit Zustand](integrations/react/state/zustand.md)
-  - [Verwendung von React Gantt mit Redux Toolkit](integrations/react/state/redux-toolkit.md)
-  - [Verwendung von React Gantt mit MobX](integrations/react/state/mobx.md)
-  - [Verwendung von React Gantt mit XState](integrations/react/state/xstate.md)
-  - [Verwendung von React Gantt mit Jotai](integrations/react/state/jotai.md)
-  - [Verwendung von React Gantt mit Valtio](integrations/react/state/valtio.md)
+1. [Zustand](integrations/react/state/zustand.md) – lokaler In-Memory-Zustand
+2. **TanStack Query** – servergestützter Zustand mit einem JSON-Datei-Backend (du bist hier)
+3. [TanStack Query + Supabase](integrations/react/state/tanstack-supabase.md) – echte Echtzeit-Synchronisierung mehrerer Benutzer über PostgreSQL
+
+Bereit, das JSON-Backend durch eine echte Datenbank mit Live-Multi-User-Sync zu ersetzen? Dann weiter mit [Using React Gantt with TanStack Query and Supabase](integrations/react/state/tanstack-supabase.md).
+
+Sie können auch:
+
+- Die Konzepte hinter diesem Beispiel erneut aufrufen in [](integrations/react/state/state-management-basics.md)
+- Store-gesteuerten Zustand mit fortgeschrittener Konfiguration und Template-Funktionen im [React Gantt-Überblick](integrations/react/overview.md) kombinieren
+- Dasselbe Muster mit anderen Zustands-Providern erkunden:
+  - [Using React Gantt with Redux Toolkit](integrations/react/state/redux-toolkit.md)
+  - [Using React Gantt with MobX](integrations/react/state/mobx.md)
+  - [Using React Gantt with XState](integrations/react/state/xstate.md)
+  - [Using React Gantt with Jotai](integrations/react/state/jotai.md)
+  - [Using React Gantt with Valtio](integrations/react/state/valtio.md)

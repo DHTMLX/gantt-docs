@@ -2,14 +2,13 @@
 title: React Gantt 개요
 sidebar_label: 개요
 description: "공식 React 래퍼의 개요: 기능, props, 테마, 이벤트 및 기본 Gantt API에 접근"
-
 ---
 
 # React Gantt 개요
 
 :::note
-React Gantt는 [Commercial, Enterprise 및 Ultimate 라이선스](https://dhtmlx.com/docs/products/licenses.shtml) 하에서 이용 가능합니다.  
-Gantt의 Individual 또는 GPL 에디션을 사용하는 경우 React에 대한 [시작 방법](integrations/react/js-gantt-react.md) 문서를 참조해 주십시오.
+React Gantt는 [상용, 엔터프라이즈 및 Ultimate 라이선스](https://dhtmlx.com/docs/products/licenses.shtml)에서 이용할 수 있습니다.
+무료 Community 에디션(v10 이상), 레거시 GPL 에디션(v9.x 및 그 이전), 또는 Gantt의 Individual 에디션을 사용하는 경우 React용 [시작하기](integrations/react/js-gantt-react.md) 문서를 참고하십시오.
 :::
 
 ## 개요

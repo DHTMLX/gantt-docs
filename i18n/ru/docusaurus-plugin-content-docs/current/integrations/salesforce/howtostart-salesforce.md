@@ -21,7 +21,7 @@ sidebar_label: "Salesforce"
 - [dhtmlxGantt с Ruby on Rails](integrations/other/howtostart-ruby.md)
 
 Мы будем использовать Salesforce CLI ([Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli)) для создания Lightning Web Component и загрузки его в организацию. 
-Вы также можете установить [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName="salesforce.salesforcedx-vscode)" в Visual Studio Code для работы с разработческими организациями. 
+Вы также можете установить [Salesforce Extension Pack](https://marketplace.visualstudio.com/) в Visual Studio Code для работы с разработческими организациями. 
 
 :::note
 Полный исходный код демо, созданного в этом руководстве, доступен на [GitHub](https://github.com/DHTMLX/salesforce-gantt-demo).

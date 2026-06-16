@@ -18,12 +18,12 @@ description: "그리드 영역에서 작업 행을 클릭하거나(확장/축소
 - `e` - (선택적) *Event* - 네이티브 이벤트 객체
 
 ### Returns
-- ` result` - (boolean) - 이벤트의 기본 동작이 트리거될지 여부를 정의합니다 (<b>true</b>) 또는 취소될지 (<b>false</b>)
+- `result` - (boolean) - 이벤트의 기본 동작이 트리거될지 여부를 정의합니다 (<b>true</b>) 또는 취소될지 (<b>false</b>)
 
 ### Example
 
 ~~~jsx
-gantt.attachEvent("onTaskClick", function(id,e){
+gantt.attachEvent("onTaskClick", (id, e) => {
     // 여기에 코드 작성
     return true;
 });
@@ -31,7 +31,7 @@ gantt.attachEvent("onTaskClick", function(id,e){
 
 ### Details
 
-이벤트는 차단 가능(blockable)합니다. false를 반환하면 기본 핸들러가 취소됩니다(작업 선택)
+이벤트는 차단 가능합니다. `false`를 반환하면 기본 핸들러가 취소되며, 이 핸들러는 작업을 선택합니다.
 
 ### Related API
 - [onTaskDblClick](api/event/ontaskdblclick.md)

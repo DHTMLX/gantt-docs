@@ -8,7 +8,8 @@ sidebar_label: "Excel 导出/导入，iCal 导出"
 dhtmlxGantt 库允许将甘特图数据导出为 Excel 和 iCal 格式。你也可以从 Excel 文件将数据导入到甘特图中。
 
 :::note
-该服务是免费的，但输出的 Excel/iCal 文件在 GPL 许可下会包含本库的水印。若购买许可，在有效的技术支持期内（所有 PRO 许可证为 12 个月），导出的结果将不带水印。
+服务是免费的，但导出的 Excel/iCal 文件会包含本库的水印。
+要在导出时去除水印，你需要获得有效的许可证——在有效的支持期内（所有 PRO 许可证为 12 个月）导出的结果将不带水印。
 :::
 
 有多种导出服务可用。你可以在本地计算机上安装它们，并将甘特图导出为 Excel 或 iCal。本地导出服务并不包含在 Gantt 包中，请阅读 [相应文章](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) 以了解每种服务的使用条款。

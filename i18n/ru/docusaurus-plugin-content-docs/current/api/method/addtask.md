@@ -10,11 +10,11 @@ description: "adds a new task"
 
 @short: Добавляет новую задачу
 
-@signature: addTask: (task: NewTask, parent?: string | number, index?: number) => string | number
+@signature: addTask: (task: TaskInput, parent?: string | number, index?: number) => string | number
 
 ### Parameters
 
-- `task` - (required) *NewTask* - объект задачи
+- `task` - (required) *TaskInput* - объект задачи
 - `parent` - (optional) *string | number* - идентификатор родителя
 - `task` - (optional) *number* - позиция, в которую будет добавлена задача (0 и далее)
 

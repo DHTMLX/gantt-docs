@@ -15,10 +15,10 @@ description: "링크 의존성 유형을 저장합니다"
 ### Example
 
 ~~~jsx
-var type1 = gantt.config.links.finish_to_start;
+const finishToStartType = gantt.config.links.finish_to_start;
 ~~~
 
-**Default value:**\{ "finish_to_start":"0", "start_to_start":"1", "finish_to_finish":"2", "start_to_finish":"3" \}
+**기본값:** `{ "finish_to_start":"0", "start_to_start":"1", "finish_to_finish":"2", "start_to_finish":"3" }`
 
 ### Details
 

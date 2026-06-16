@@ -7,8 +7,8 @@ description: "Пошаговый гид по использованию комп
 ## Быстрый старт с React Gantt
 
 :::note
-Этот туториал охватывает обертку React, включенную в издания **Commercial, Enterprise и Ultimate** DHTMLX Gantt. 
-Если вы используете **Individual** или **GPL** издания, следуйте альтернативному руководству: 
+Этот учебник охватывает обёртку React, входящую в версии **Commercial, Enterprise и Ultimate** DHTMLX Gantt. 
+Если вы используете бесплатную **Community** версию (v10+), устаревшую **GPL** версию (v9.x и ранее) или **Individual** версию, следуйте альтернативному руководству: 
 [Как начать с React](integrations/react/js-gantt-react.md).
 :::
 

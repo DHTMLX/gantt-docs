@@ -33,34 +33,34 @@ sidebar_label: "Свойства для импорта из MS Project"
 <div class="msp-properties">
 | | | | |
 |---|---|---|---|
-| Active | DurationText | LevelingDelayFormat | RemainingOvertimeWork |
-| ActualCost | EarlyFinish | LinkedFields | RemainingWork |
-| ActualDuration | EarlyStart | Manual | ResponsePending |
-| ActualFinish | EarnedValueMethod | ManualDuration | Resume |
-| ActualOvertimeCost | EffortDriven | Marked | ResumeValid |
-| ActualOvertimeWork | Estimated | Milestone | Rollup |
-| ActualStart | Finish | Name | SPI |
-| ActualWork | FinishSlack | Notes | Start |
-| ACWP | FinishText | Objects | StartSlack |
-| Baseline | FinishVariance | OutlineLevel | StartText |
-| BCWP | FixedCost | OutlineNumber | StartVariance |
-| BCWS | FixedCostAccrual | OverAllocated | Stop |
-| CalendarUID | FreeSlack | OvertimeCost | SubprojectName |
-| CompleteThrough | GUID | OvertimeWork | SubprojectReadOnly |
-| ConstraintDate | HideBar | PercentComplete | Successors |
-| ConstraintType | Hyperlink | PercentWorkComplete | Summary |
-| Contact | HyperlinkAddress | PhysicalPercentComplete | SV |
-| Cost | HyperlinkSubAddress | Placeholder | SVPercent (internal MSP property that is not added to files) |
-| CostVariance | ID (don't include it if it doesn't match the task ID) | Predecessors | SV% (internal MSP property that is not added to files) |
-| CPI | IgnoreResourceCalendar | Project | TaskMode |
-| CreateDate | Indicators | Publish | TotalSlack |
-| Critical | IsPublished | Priority | Type |
-| CV | IsSubproject | Recurring | UID |
-| CVPercent (internal MSP property that is not added to files) | LateFinish | RegularWork | UpdateNeeded |
-| CV%  (internal MSP property that is not added to files)| LateStart | RemainingCost | WBS |
-| Deadline | LevelAssignments | RemainingDuration | Work |
-| Duration | LevelingCanSplit | RemainingOvertimeCost | WorkVariance |
-| DurationVariance | LevelingDelay | | |
+| Active | DurationFormat | LevelingDelay | RemainingOvertimeWork |
+| ActualCost | DurationText | LevelingDelayFormat | RemainingWork |
+| ActualDuration | EarlyFinish | LinkedFields | ResponsePending |
+| ActualFinish | EarlyStart | Manual | Resume |
+| ActualOvertimeCost | EarnedValueMethod | ManualDuration | ResumeValid |
+| ActualOvertimeWork | EffortDriven | Marked | Rollup |
+| ActualStart | Estimated | Milestone | SPI |
+| ActualWork | Finish | Name | Start |
+| ACWP | FinishSlack | Notes | StartSlack |
+| Baseline | FinishText | Objects | StartText |
+| BCWP | FinishVariance | OutlineLevel | StartVariance |
+| BCWS | FixedCost | OutlineNumber | Stop |
+| CalendarUID | FixedCostAccrual | OverAllocated | SubprojectName |
+| CompleteThrough | FreeSlack | OvertimeCost | SubprojectReadOnly |
+| ConstraintDate | GUID | OvertimeWork | Successors |
+| ConstraintType | HideBar | PercentComplete | Summary |
+| Contact | Hyperlink | PercentWorkComplete | SV |
+| Cost | HyperlinkAddress | PhysicalPercentComplete | SVPercent (internal MSP property that is not added to files) |
+| CostVariance | HyperlinkSubAddress | Placeholder | SV% (internal MSP property that is not added to files) |
+| CPI | ID (don't include it if it doesn't match the task ID) | Predecessors | TaskMode |
+| CreateDate | IgnoreResourceCalendar | Project | TotalSlack |
+| Critical | Indicators | Publish | Type |
+| CV | IsPublished | Priority | UID |
+| CVPercent (internal MSP property that is not added to files) | IsSubproject | Recurring | UpdateNeeded |
+| CV%  (internal MSP property that is not added to files)| LateFinish | RegularWork | WBS |
+| Deadline | LateStart | RemainingCost | Work |
+| Duration | LevelAssignments | RemainingDuration | WorkVariance |
+| DurationVariance | LevelingCanSplit | RemainingOvertimeCost | |
 </div>
 
 
@@ -103,16 +103,17 @@ There are also the following supported task properties:
 
 ### Важные примечания
 
-Обратите внимание, что некоторые свойства получаются только из MPP-файлов, поскольку эти свойства не сохраняются в XML-файлах. Поэтому, если сохранить MPP-файл в формате XML, а затем открыть его в MS Project, указанные свойства также не будут присутствовать. Например, все свойства OutlineCode работают таким образом: несмотря на возможность выбора значений из списка, значения, сохранённые в MPP-файле, будут пустыми в XML-файле.
+Обратите внимание, что некоторые свойства доступны только из MPP-файлов, так как эти свойства не сохраняются в XML-файлах.
+Таким образом, если вы сохраните MPP-файл в формате XML, а затем откроете его в MS Project, указанные свойства также не будут присутствовать. Например, все свойства OutlineCode работают следующим образом: несмотря на возможность выборa значений из списка, значения, сохранённые в MPP-файле, будут пустыми в XML-файле.
 
-Некоторые свойства рассчитываются на основе других свойств, например CV% и SV%, поэтому в файлах нет этих значений. Чтобы упростить работу, мы добавили вычисления на стороне модуля экспорта. Именно поэтому при импорте XML-файлов указанные свойства будут иметь значения, но они могут отличаться от результата экспорта файлов и их открытия в MS Project.
+Некоторые свойства рассчитываются на основе других свойств, поэтому если некоторые из необходимых свойств не указаны при импорте, они будут иметь другие значения. Чтобы упростить задачу, мы добавили вычисления на стороне экспортного модуля. Именно поэтому при импорте XML-файлов упомянутые свойства будут иметь значения, но они могут отличаться от результата экспорта файлов и их открытия в MS Project.
 
 ## Свойства ресурсов
 
 :::info
 Некоторые свойства можно получить только из MPP-файлов, в то время как другие — только из XML-файлов. 
 
-Некоторые свойства рассчитываются на основе других свойств, поэтому если некоторые требуемые свойства не указаны во время импорта, они будут иметь разные значения.
+Некоторые свойства рассчитываются на основе других свойств, поэтому если некоторые из необходимых свойств не указаны при импорте, они будут иметь другие значения.
 :::
 
 <div class="msp-properties">
@@ -161,6 +162,8 @@ There are also the following supported task properties:
 
 There are more supported resource properties:
 
+<div class="msp-ext-properties">
+
 | Text | Number | Flag | Cost | Date | Start | Finish | Duration | OutlineCode | OutlineCodeIndex |
 |---|---|---|---|---|---|---|---|---|---|
 | Text1 | Number1 | Flag1 | Cost1 | Date1 | Start1 | Finish1 | Duration1 | OutlineCode1 | OutlineCode1Index |
@@ -173,23 +176,24 @@ There are more supported resource properties:
 | Text8 | Number8 | Flag8 | Cost8 | Date8 | Start8 | Finish8 | Duration8 | OutlineCode8 | OutlineCode8Index |
 | Text9 | Number9 | Flag9 | Cost9 | Date9 | Start9 | Finish9 | Duration9 | OutlineCode9 | OutlineCode9Index |
 | Text10 | Number10 | Flag10 | Cost10 | Date10 | Start10 | Finish10 | Duration10 | OutlineCode10 | OutlineCode10Index |
-| Text11 | Number11 | Flag11 | | | | | | | |
-| Text12 | Number12 | Flag12 | | | | | | | |
-| Text13 | Number13 | Flag13 | | | | | | | |
-| Text14 | Number14 | Flag14 | | | | | | | |
-| Text15 | Number15 | Flag15 | | | | | | | |
-| Text16 | Number16 | Flag16 | | | | | | | |
-| Text17 | Number17 | Flag17 | | | | | | | |
-| Text18 | Number18 | Flag18 | | | | | | | |
-| Text19 | Number19 | Flag19 | | | | | | | |
-| Text20 | Number20 | Flag20 | | | | | | | |
-| Text21 | | | | | | | | | |
-| Text22 | | | | | | | | | |
-| Text23 | | | | | | | | | |
-| Text24 | | | | | | | | | |
-| Text25 | | | | | | | | | |
-| Text26 | | | | | | | | | |
-| Text27 | | | | | | | | | |
-| Text28 | | | | | | | | | |
-| Text29 | | | | | | | | | |
-| Text30 | | | | | | | | | |
+| Text11 | Number11 | Flag11 | | | | | | |
+| Text12 | Number12 | Flag12 | | | | | | |
+| Text13 | Number13 | Flag13 | | | | | | |
+| Text14 | Number14 | Flag14 | | | | | | |
+| Text15 | Number15 | Flag15 | | | | | | |
+| Text16 | Number16 | Flag16 | | | | | | |
+| Text17 | Number17 | Flag17 | | | | | | |
+| Text18 | Number18 | Flag18 | | | | | | |
+| Text19 | Number19 | Flag19 | | | | | | |
+| Text20 | Number20 | Flag20 | | | | | | |
+| Text21 | | | | | | | | |
+| Text22 | | | | | | | | |
+| Text23 | | | | | | | | |
+| Text24 | | | | | | | | |
+| Text25 | | | | | | | | |
+| Text26 | | | | | | | | |
+| Text27 | | | | | | | | |
+| Text28 | | | | | | | | |
+| Text29 | | | | | | | | |
+| Text30 | | | | | | | | |
+</div>

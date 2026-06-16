@@ -46,4 +46,9 @@ React Gantt 支持两种数据绑定方法：
 
 ## 示例与评估资源
 
-如果你正在评估 React Gantt，评估页面在评估期间提供技术支持。请参阅 [安装](integrations/react/installation.md)。
+浏览公开的 React Gantt 示例，以查看包装器的可运行演示：
+
+- [实时演示](https://dhtmlx.github.io/react-gantt-examples/)
+- [GitHub 仓库](https://github.com/DHTMLX/react-gantt-examples)
+
+如果您正在评估 React Gantt，评估页面在评估期内提供技术支持。请参阅 [安装](integrations/react/installation.md)。

@@ -6,6 +6,13 @@ sidebar_label: "Was gibt es Neues im PDF-Export-Modul"
 Neuigkeiten im PDF-Export-Modul
 ================================
 
+## 0.8.0
+
+- PDF/PNG Rendering-Engine auf Puppeteer migriert
+- Kopfzeile und Fußzeile, die bei jeder Seite im Mehrseiten-PDF-Export angezeigt werden, erscheinen nun über dem Seiteninhalt
+- Die korrekte DPI-Skalierung für den Scheduler im PDF- und PNG-Export festgelegt
+- Docker-Image-Größe reduziert
+
 ## 0.7.7
 
 - Behebung: Die Parameter `width` und `height` werden beim Mehrseiten-PDF-Export ignoriert, wenn der Parameter `format` angegeben ist

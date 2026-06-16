@@ -460,7 +460,7 @@ yarn dev
 
 ## GitHub 演示仓库
 
-按照本教程构建的完整可运行项目已在 GitHub 提供：https://github.com/dhtmlx/react-gantt-valtio-starter。
+按照本教程构建的完整可运行项目已在 GitHub 提供：`https://github.com/dhtmlx/react-gantt-valtio-starter`
 
 ## 下一步
 

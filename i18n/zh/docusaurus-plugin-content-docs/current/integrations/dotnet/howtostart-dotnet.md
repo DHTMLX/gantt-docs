@@ -695,7 +695,7 @@ namespace DHX.Gantt.Web.Controllers
 
 ## 错误处理
 
-[异常筛选器](https://learn.microsoft.com/en-us/previous-versions/aspnet/gg416513(v="vs.98))" 可用于在 CRUD 处理程序中捕获异常，并返回客户端可以 [识别](guides/server-side.md#error-handling) 的响应，供前端 gantt 使用。
+[异常筛选器](https://learn.microsoft.com/en-us/previous-versions/aspnet/)" 可用于在 CRUD 处理程序中捕获异常，并返回客户端可以 [识别](guides/server-side.md#error-handling) 的响应，供前端 gantt 使用。
 
 要为 gantt 提供错误处理，请按以下步骤操作：
 

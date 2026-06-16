@@ -21,16 +21,16 @@ sidebar_label: "安装"
 
 你可以在 [Client's Area](https://dhtmlx.com/clients/) 直接通过为 npm 生成的登录名和密码来访问 DHTMLX 私有 npm。那里也有详细的安装指南。请注意，私有 npm 的访问仅在你的专有 Gantt 许可证处于激活状态时才可用。
 
-## npm - 标准免费版本
+## npm - Community edition
 
-你可以从 [npmjs.com](https://www.npmjs.com/package/dhtmlx-gantt) 安装 dhtmlxGantt 的标准版本，执行以下命令：
+你可以从 [npmjs.com](https://www.npmjs.com/package/dhtmlx-gantt) 安装 dhtmlxGantt 的免费 Community edition，执行以下命令：
 
 ~~~html
 npm install dhtmlx-gantt
 ~~~
 
 :::note
-Only the Standard version of the Gantt is available at [npmjs.com](https://www.npmjs.com/package/dhtmlx-gantt)
+从 v10 开始，公开的 `dhtmlx-gantt` 包是 **社区版**，在 **MIT 许可证** 下分发。该包的早期版本（v9.x 及以下）是遗留的 **GPL** 版本；GPL v2 仍然适用于这些版本。
 :::
 
 ## NuGet
@@ -67,11 +67,19 @@ bower install gantt
 
 你可以在一个[单独的文章](guides/cdn-links-list.md)中找到可包含的 CDN 链接完整列表，具体取决于 dhtmlxGantt 的版本。
 
-## 下载包
+:::note
+对于 v10 及更高版本，CDN 提供的 **社区版** 在 MIT 许可证下。
+:::
 
-### GPL 版本
+## 下载软件包
 
-[下载 dhtmlxGantt GPL 版本的软件包](https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml)。 
+### Community edition
+
+[下载 dhtmlxGantt Community edition 的免费包](https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml)。
+
+### 遗留 GPL 版本
+
+在 v10 之前的免费版本是以 **GPL** 许可证分发的。这些版本（v9.x 及更早）仍然可用，且 GPL v2 仍适用于它们；它们位于 [主 GitHub 仓库](https://github.com/DHTMLX/gantt) 的专门分支中，但不再 actively maintained（不再积极维护）。 
 
 
 ### PRO 版本
@@ -91,10 +99,10 @@ bower install gantt
 ### **安装 Pro 版本**
 
 :::note
-在安装 Gantt 的 Pro 版本之前，如果你已经安装了试用版本包，请先 [卸载试用版本包](#uninstall-trial-version)（若你已安装过）。
+在安装 Gantt 的 Pro 版本之前，应该先 [卸载试用版本包](#uninstall-trial-version)（如果你已安装）
 :::
 
-所有公开来源（CDN、NuGet、Bower 和 npm）都包含组件的 Standard 版本，该版本在 GPL 许可下分发。
+对于 v10 及更高版本，公开的 npm 包和 CDN 提供该组件的免费 **社区版**，在 **MIT 许可证** 下分发。NuGet 和 Bower 目前仍维持在遗留的 GPL 版本（v9.x）之上。GPL v2 仅适用于这些早期版本。
 
 我们还提供 [私有 npm 注册表](#npmevaluationandproversions)，可从中安装 Professional 和 Evaluation 版本的组件。
 
@@ -121,7 +129,7 @@ bower install gantt
 3. 进入你的项目目录。
 4. 运行 `npm link dhtmlx-gantt`。
 
-要查看 dhtmlxGantt 库的 Standard 与 PRO 版本之间的差异，请参阅相关文档 [Standard vs PRO Library Versions](guides/editions-comparison.md)。
+要查看 Community 与 PRO 版本之间的差异，请查看相关文档 [Community vs PRO Library Versions](guides/editions-comparison.md)。
 
 ### **卸载试用版本** 
 

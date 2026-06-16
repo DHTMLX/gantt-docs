@@ -720,7 +720,7 @@ Now everything is ready. Run the application and a fully-fledged Gantt should ap
 
 ## Error handling 
 
-[Exception filters](https://learn.microsoft.com/en-us/previous-versions/aspnet/gg416513(v="vs.98))" can be used for capturing exceptions in CRUD handlers and returning a client response that can be [recognized](guides/server-side.md#error-handling) by the client-side gantt.
+[Exception filters](https://learn.microsoft.com/en-us/previous-versions/aspnet/)" can be used for capturing exceptions in CRUD handlers and returning a client response that can be [recognized](guides/server-side.md#error-handling) by the client-side gantt.
 
 To provide error handling for the gantt, follow the steps below:
 

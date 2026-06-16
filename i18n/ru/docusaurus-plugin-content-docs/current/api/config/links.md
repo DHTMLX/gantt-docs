@@ -15,10 +15,10 @@ description: "хранит типы зависимостей links"
 ### Example
 
 ~~~jsx
-var type1 = gantt.config.links.finish_to_start;
+const finishToStartType = gantt.config.links.finish_to_start;
 ~~~
 
-**Default value:**\{ "finish_to_start":"0", "start_to_start":"1", "finish_to_finish":"2", "start_to_finish":"3" \}
+**Default value:** `{ "finish_to_start":"0", "start_to_start":"1", "finish_to_finish":"2", "start_to_finish":"3" }`
 
 ### Details
 

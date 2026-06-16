@@ -22,17 +22,17 @@ description: "добавляет новую зависимую связь"
 ### Example
 
 ~~~jsx
-var linkId = gantt.addLink({
-    id:1,
-    source:1,
-    target:2,
-    type:gantt.config.links.finish_to_start
+const linkId = gantt.addLink({
+    id: 1,
+    source: 1,
+    target: 2,
+    type: gantt.config.links.finish_to_start
 });
 ~~~
 
 ### Details
 
-Метод вызывает события [onBeforeLinkAdd](api/event/onbeforelinkadd.md) и [onAfterLinkAdd](api/event/onafterlinkadd.md).
+Метод вызывает события [`onBeforeLinkAdd`](api/event/onbeforelinkadd.md) и [`onAfterLinkAdd`](api/event/onafterlinkadd.md).
 
 ### Related API
 - [updateLink](api/method/updatelink.md)

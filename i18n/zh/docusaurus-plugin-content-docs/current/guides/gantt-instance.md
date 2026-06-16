@@ -9,10 +9,10 @@ sidebar_label: "Gantt 实例的特性"
 
 让我们考虑最常见的场景——构建一个包含多个页面/标签页/视图的应用程序。
 
-以下方法适用于基于 Angular 的（或基于 React 的）应用程序，并且仅在 dhtmlxGantt 的 Commercial、Enterprise 或 Ultimate 版本中可用（在 GPL 或 Individual 版本中不可用）：
+以下方法同样适用于基于 Angular（或 React）的应用。从 v10 开始，它在 dhtmlxGantt 的所有版本中可用（免费 Community 版和 PRO 版）；在较旧的版本（v9.x 及更早的 GPL 版）中不可用：
 
-- 当你用 Gantt 打开一个页面/标签页/视图时，需要创建一个新的 Gantt 实例；
-- 当你切换到不同的页面/标签页/视图时，需要 [destroy the Gantt instance](guides/multiple-gantts.md#destructorofganttanddataprocessorinstances)。
+- 当你打开带有 Gantt 的页面/标签页/视图时，需要创建一个新的 Gantt 实例；
+- 当你切换到不同的页面/标签页/视图时，需要 [销毁 Gantt 实例](guides/multiple-gantts.md#destructorofganttanddataprocessorinstances)。
 
 
 **替代方法**（适用于所有版本）是自行手动重置一切。
