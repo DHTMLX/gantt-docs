@@ -6,6 +6,10 @@ sidebar_label: "What's new in MSP Project Export Module"
 What's new in MSP Project Export Module
 ===========================================
 
+## 2.4.1.0
+
+- Fixed MPXJ.Net library crashing when running the export module in a Docker container and importing MPP files
+
 ## 2.4.0.0
 
 - Migrated MPXJ library from net.sf.mpxj-for-csharp package to MPXJ.NET package
