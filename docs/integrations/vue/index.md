@@ -7,6 +7,10 @@ image: /img/frameworks/vue.png
 
 Vue Gantt is the official Vue wrapper for DHTMLX Gantt. It targets Vue 3 and keeps full access to the Gantt API while adding Vue-friendly props, events, and composables.
 
+:::tip AI-assisted development
+If you use an AI coding assistant, the [DHTMLX Vue Gantt agent skill](integrations/ai-tools/agent-skills.md#available-skills) can help it follow correct wrapper integration patterns - matching CSS imports, providing an explicit height chain, choosing a data ownership model, normalizing dates around `data.save` / `data.batchSave`, and mapping the app theme through Gantt CSS variables. For real-time API reference, connect the [DHTMLX MCP server](integrations/ai-tools/mcp-server.md).
+:::
+
 ## What You Get With The Wrapper
 
 - Declarative setup through props (`config`, `templates`, `plugins`, `theme`, `locale`)
