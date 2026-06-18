@@ -67,6 +67,10 @@ Or, with Yarn:
 yarn add @dhx/react-gantt
 ~~~
 
+:::note
+Access to the private registry ends when your subscription expires. To keep using the paid `@dhx` packages afterward, [back them up first](guides/using-packages-after-subscription-expires.md).
+:::
+
 ## Moving from the trial package to the commercial one
 
 Most projects start on the trial package and switch later, once the prototype is approved and a commercial license is in place. Both packages share the same API, so the move is mostly mechanical: swap the package name, swap the CSS import, and reinstall.

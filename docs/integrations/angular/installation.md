@@ -71,6 +71,10 @@ npm install @dhx/angular-gantt
 yarn add @dhx/angular-gantt
 ~~~
 
+:::note
+Access to the private registry ends when your subscription expires. To keep using the paid `@dhx` packages afterward, [back them up first](guides/using-packages-after-subscription-expires.md).
+:::
+
 ## Angular Project Requirements
 
 Wrapper peer dependencies currently require:

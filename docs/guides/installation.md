@@ -51,7 +51,7 @@ Then install the package:
 npm install @dhx/gantt
 ~~~
 
-Access to the private npm is available only while your proprietary Gantt license is active.
+Access to the private npm is available only while your proprietary Gantt license is active. To keep using the paid `@dhx` packages after your subscription expires, [back them up first](guides/using-packages-after-subscription-expires.md).
 
 ## Moving from the trial package to the commercial one
 
