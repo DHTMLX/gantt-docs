@@ -8,8 +8,6 @@ description: "Install agent skills for AI assistants working with DHTMLX Gantt"
 
 AI coding assistants such as Claude Code or Codex can generate DHTMLX Gantt code, but they often make mistakes with specialized APIs: wrong prop names, missing CSS imports, incorrect callback signatures, or mixing incompatible data patterns. Agent skills address this by teaching the assistant the correct patterns and known pitfalls before it writes code.
 
-Unlike the [MCP server](integrations/ai-tools/mcp-server.md), which provides real-time API reference, skills focus on integration patterns, decision points, and failure prevention.
-
 **GitHub:** [DHTMLX/skills](https://github.com/DHTMLX/skills)
 
 ## Available Skills
@@ -30,9 +28,15 @@ For a worked example of these patterns applied end-to-end, see the [React Gantt 
 
 ### DHTMLX Angular Gantt
 
-Covers integration of `@dhtmlx/trial-angular-gantt` and `@dhx/angular-gantt` into Angular applications. The skill teaches the assistant the wrapper-specific setup, data ownership and persistence patterns (`data.save` / `data.batchSave`), and theming approach that are easy to get wrong - and lists the known failure modes with concrete fixes.
+Covers `@dhtmlx/trial-angular-gantt` and `@dhx/angular-gantt` for Angular applications - wrapper-specific setup, data ownership and persistence (`data.save` / `data.batchSave`), and theming, with known failure modes and concrete fixes.
 
 Review the rules in the [GitHub repository](https://github.com/DHTMLX/skills/tree/main/dhtmlx-angular-gantt).
+
+### DHTMLX Vue Gantt
+
+Covers `@dhtmlx/trial-vue-gantt` and `@dhx/vue-gantt` for Vue 3 applications - the same wrapper patterns, plus events, `@ready`, refs, and composables.
+
+Review the rules in the [GitHub repository](https://github.com/DHTMLX/skills/tree/main/dhtmlx-vue-gantt).
 
 ## Installing
 
@@ -40,11 +44,12 @@ Review the rules in the [GitHub repository](https://github.com/DHTMLX/skills/tre
 npx skills add DHTMLX/skills --skill dhtmlx-js-gantt
 npx skills add DHTMLX/skills --skill dhtmlx-react-gantt
 npx skills add DHTMLX/skills --skill dhtmlx-angular-gantt
+npx skills add DHTMLX/skills --skill dhtmlx-vue-gantt
 ```
 
 ### Manual Installation
 
-Clone or download the [DHTMLX/skills](https://github.com/DHTMLX/skills) repository and copy the relevant skill folder (`dhtmlx-js-gantt`, `dhtmlx-react-gantt`, or `dhtmlx-angular-gantt`) into your project's skills directory (e.g., `.claude/skills/` for Claude Code, `.cursor/skills/` for Cursor).
+Clone or download the [DHTMLX/skills](https://github.com/DHTMLX/skills) repository and copy the relevant skill folder (`dhtmlx-js-gantt`, `dhtmlx-react-gantt`, `dhtmlx-angular-gantt`, or `dhtmlx-vue-gantt`) into your project's skills directory (e.g., `.claude/skills/` for Claude Code, `.cursor/skills/` for Cursor).
 
 ## Using Skills with MCP
 

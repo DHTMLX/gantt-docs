@@ -6,6 +6,11 @@ sidebar_label: "What's new in PDF Export Module"
 What's new in PDF Export Module
 ================================
 
+## 0.8.1
+
+- Fixed broken PDF and PNG export for Gantt v6.0 and older introduced in 0.8.0
+- Fixed orphaned Chrome processes accumulating under load, which could eventually make the export service unresponsive
+
 ## 0.8.0
 
 - Migrated PDF/PNG rendering engine to Puppeteer

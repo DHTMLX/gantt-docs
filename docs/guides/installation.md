@@ -5,21 +5,64 @@ sidebar_label: "Installation"
 
 # How to Install dhtmlxGantt 
 
-You can use [npm](https://www.npmjs.com/), [NuGet](https://www.nuget.org/) or [Bower](https://bower.io/) package managers to install the dhtmlxGantt package into your project.
+You can use the [npm](https://www.npmjs.com/) package manager to install the dhtmlxGantt package into your project.
 
 It's also possible to include the necessary JS/CSS files from CDN.
 
+:::tip Using a frontend framework?
+If you're building with React, Angular, or Vue, use the dedicated wrapper package and its installation guide instead of the core library:
+
+- [React Gantt installation](integrations/react/installation.md)
+- [Angular Gantt installation](integrations/angular/installation.md)
+- [Vue Gantt installation](integrations/vue/installation.md)
+
+The rest of this guide covers the core JavaScript library.
+:::
 
 ## npm - Evaluation and PRO versions {#npmevaluationandproversions}
 
+The Evaluation and Professional builds are published to the private DHTMLX npm registry under the `@dhx` scope. Point the `@dhx` scope at the registry first:
+
+~~~bash
+npm config set @dhx:registry=https://npm.dhtmlx.com
+~~~
+
 **Professional Evaluation version**
 
-Download the [trial Gantt package](https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml) and follow the steps mentioned in the README file. 
-Note that the trial Gantt version is available 30 days only.
+The evaluation build is fully functional but displays a watermark indicating that it runs in evaluation mode. Install it with npm:
+
+~~~bash
+npm install @dhx/trial-gantt
+~~~
+
+You can also [start an official evaluation](https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml) on the website. A formal trial grants free technical support for the 30-day evaluation period and includes downloadable offline examples.
 
 **Professional version**
 
-You can access the DHTMLX private npm directly in the [Client's Area](https://dhtmlx.com/clients/) by generating your login and password for npm. A detailed installation guide is also available there. Please note that access to the private npm is available only while your proprietary Gantt license is active.
+The Professional build is intended for production and requires an active commercial license. After you obtain a license, generate your npm credentials in the [Client's Area](https://dhtmlx.com/clients/) and log in to the registry:
+
+~~~bash
+npm login --registry=https://npm.dhtmlx.com --scope=@dhx
+~~~
+
+Then install the package:
+
+~~~bash
+npm install @dhx/gantt
+~~~
+
+Access to the private npm is available only while your proprietary Gantt license is active.
+
+## Moving from the trial package to the commercial one
+
+Most projects start on the evaluation package and switch once a commercial license is in place. Both packages share the same API, so the move is mostly mechanical:
+
+1. [Configure the private registry and log in](#npmevaluationandproversions) with your commercial credentials.
+2. In `package.json`, replace the `@dhx/trial-gantt` dependency with `@dhx/gantt` (keep the version you need).
+3. Update every `@dhx/trial-gantt` reference in your code to `@dhx/gantt` - including the stylesheet import, if your setup imports the CSS separately.
+4. Run `npm install` and rebuild.
+
+Search the project for any leftover `@dhx/trial-gantt` mentions - the CSS import is the easiest to forget. See [Uninstall trial version](#uninstall-trial-version) for verifying that no evaluation files remain. Once the watermark is gone and the UI behaves identically, the swap is complete.
 
 ## npm - Community edition
 
@@ -34,37 +77,14 @@ Starting from v10, the public `dhtmlx-gantt` package is the **Community edition*
 :::
 
 
-## NuGet
-
-To install dhtmlxGantt through [NuGet](https://www.nuget.org/), execute the following command line:
-
-~~~html
-nuget install DHTMLX.Gantt
-~~~
-
-If you are using Microsoft Visual Studio, run the following command from the Package Manager Console:
-
-~~~html
-install-package DHTMLX.Gantt
-~~~
-
-
-## Bower
-
-To install dhtmlxGantt through [Bower](https://bower.io/), execute the following command line:
-
-~~~html
-bower install gantt
-~~~
-
 ## CDN
 
 To include JS/CSS files from CDN, you should set direct links to **dhtmlxgantt.js** and **dhtmlxgantt.css** files:
 
 ~~~html
-<link rel="stylesheet" href="http://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css" 
+<link rel="stylesheet" href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css" 
     type="text/css"> 
-<script src="http://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
+<script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
 ~~~
 
 You can find the full list of links that you can include from CDN, depending on the version of dhtmlxGantt in a [separate article](guides/cdn-links-list.md).
@@ -104,11 +124,7 @@ Then include **dhtmlxgantt.js** and **dhtmlxgantt.css** files into a page. Make 
 Before installing the Pro version of Gantt, you should [uninstall the trial version package](#uninstall-trial-version) (if you've installed it)
 :::
 
-For v10 and later, the public npm package and the CDN provide the free **Community edition** of the component, distributed under the **MIT license**. NuGet and Bower remain on the legacy GPL edition (v9.x) for now. GPL v2 applies only to those previous versions.
-
-We also provide our [private npm registry](#npmevaluationandproversions) from where the Professional and Evaluation versions of the component can be installed.
-
-If for some reason the methods described above are not available to you, there are two possible ways out:
+The Professional and Evaluation builds are installed from the [private npm registry](#npmevaluationandproversions) described above. If that isn't an option, there are two other ways to add the Pro version:
  
 - you can add the Pro version to your project by hand
 - you can install the Pro version to your project via npm from a local directory
@@ -118,13 +134,13 @@ If for some reason the methods described above are not available to you, there a
 If case of **npm**, you can install the Pro package from a local folder using  [`npm install ./local_path`](https://docs.npmjs.com/cli/install/) or [`npm link`](https://docs.npmjs.com/cli/link/).
 There are step-by-step instructions for both variants:
 
-### npm install
+#### npm install
 
 1. Copy the Gantt package into some local directory.
 2. Go to your project directory. 
 3. Call `npm install ../gantt-local-package-path`.
 
-### npm link
+#### npm link
 
 1. Copy the Gantt package into some local directory.
 2. Call `npm link` in the package folder.
@@ -138,7 +154,7 @@ To see the difference between the Community and PRO versions of the dhtmlxGantt 
 The correct way to install the Pro version would be to remove the trial version package:
 
 ~~~js
-npm uninstall dhtmlx-gantt
+npm uninstall @dhx/trial-gantt
 ~~~
 
 Then you need to thoroughly check that your applications don't have the *dhtmlxgantt.js* file anywhere.
