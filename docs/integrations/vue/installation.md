@@ -78,6 +78,10 @@ npm install @dhx/vue-gantt
 yarn add @dhx/vue-gantt
 ~~~
 
+:::note
+Access to the private registry ends when your subscription expires. To keep using the paid `@dhx` packages afterward, [back them up first](guides/using-packages-after-subscription-expires.md).
+:::
+
 ## Use The Matching Imports
 
 Use imports that match the package you installed.

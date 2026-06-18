@@ -1638,6 +1638,10 @@ module.exports = {
             type: "doc",
             id: "guides/editions-comparison"
         },
+        {
+            type: "doc",
+            id: "guides/using-packages-after-subscription-expires"
+        },
 
 
 
