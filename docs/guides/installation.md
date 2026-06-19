@@ -97,7 +97,7 @@ For v10 and later, the CDN serves the **Community edition** under the MIT licens
 
 ### Community edition
 
-[Download the package of the free dhtmlxGantt Community edition](https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml).
+[Download the free dhtmlxGantt Community edition from GitHub](https://github.com/DHTMLX/gantt).
 
 ### Legacy GPL versions
 
