@@ -37,6 +37,7 @@ Project Expenses, Roles, Project Codes, Activity Codes, Resource Codes, Cost Acc
 - Added a way to import most of the standard resource properties with a single property (so that you don't need to list all the properties)
 - Fixed the resource export when assignments don't have the units value
 - Fixed various errors that prevented file import and export because of some values in the task properties
+- Fixed import of the custom properties with custom names
 
 ## 2.2.1.0
 

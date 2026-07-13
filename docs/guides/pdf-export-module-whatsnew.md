@@ -32,6 +32,10 @@ What's new in PDF Export Module
 - Improved sanitizing HTML content for PDF and PNG export for Gantt and Scheduler
 - Fixed Remote Code Execution and File Read vulnerabilities
 
+## 0.7.5
+
+- Fixed ReDos vulnerability for the Excel import
+
 ## 0.7.4
 
 - Fixed background color in the multipage PDF headers and footers
