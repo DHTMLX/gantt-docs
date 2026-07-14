@@ -235,12 +235,14 @@ table th:first-child {
 }
 .msp-properties {
     overflow-x: auto;
+    margin-bottom: 20px;
 }
 .msp-properties table th {
     display: none;
 }
 .msp-ext-properties {
     overflow-x: auto;
+    margin-bottom: 20px;
 }
 .msp-ext-properties table th:first-child {
     width: 10%;

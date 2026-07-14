@@ -500,6 +500,8 @@ gantt.attachEvent("onTaskLoading", function(task) {
 });
 ~~~
 
+**Related sample**: [Gantt. Import and export Primavera P6 files with additional project, task and resource properties and entities](https://snippet.dhtmlx.com/z1ewe48v)
+
 #### Getting task types
 
 The following logic allows you to obtain the task type: the tasks with the **Project** type have the `Summary: "1"` property, and the tasks with the **Milestone** type have the `Milestone: "1"` property. We need to import the data with these properties and then set the task type depending on these properties.
@@ -597,6 +599,20 @@ gantt.exportToPrimaveraP6({
 This way, the exported file will have the same **Start Milestone** / **Finish Milestone** type as the source Primavera P6 file, instead of every milestone being exported as a **Finish Milestone** by default.
 
 **Related sample**: [Gantt. Import and export Primavera P6 files with the ActivityType to get Start and Finish Milestones](https://snippet.dhtmlx.com/elyeppkv)
+
+The **ActivityType** property supports the full list of Primavera P6 activity types. Both the PascalCase and the UPPER_SNAKE_CASE form of a value are accepted:
+
+| Value | Description |
+|---|---|
+| TaskDependent / TASK_DEPENDENT | A regular task, scheduled based on its predecessor tasks |
+| ResourceDependent / RESOURCE_DEPENDENT | A regular task, scheduled based on the resource calendar (used by default if **ActivityType** isn't specified) |
+| StartMilestone / START_MILESTONE | A milestone marking the start of an activity |
+| FinishMilestone / FINISH_MILESTONE | A milestone marking the finish of an activity |
+| WbsSummary / WBS_SUMMARY | A WBS summary task |
+| LevelOfEffort / LEVEL_OF_EFFORT | A task whose duration is driven by the activities it supports |
+| Hammock / HAMMOCK | A task whose duration spans from the start of the first linked activity to the finish of the last one |
+| StartFlag / START_FLAG | A flag activity marking a specific point at the start of the project |
+| FinishFlag / FINISH_FLAG | A flag activity marking a specific point at the finish of the project |
 
 #### Adding and adjusting calendars
 

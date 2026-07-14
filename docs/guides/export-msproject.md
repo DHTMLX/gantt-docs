@@ -456,6 +456,8 @@ gantt.attachEvent("onTaskLoading", (task) => {
 });
 ~~~
 
+**Related sample**: [Gantt. Import and export MSP files with additional and extended task and resource properties](https://snippet.dhtmlx.com/rveo6ukz)
+
 #### Getting task types
 
 The following logic allows you to obtain the task type: tasks with the `Project` type have the `Summary: "1"` property, and tasks with the `Milestone` type have the `Milestone: "1"` property. We need to import the data with these properties and then set the task type depending on these properties.
