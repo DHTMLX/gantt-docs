@@ -132,7 +132,7 @@ gantt.exportToMSProject({
 ~~~
 
 The properties of this object correspond to the appropriate properties of the [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)).
-The list of supported properties can be found [here](guides/tags.md). The properties may contain either fixed values or functions that will be executed when export is called.
+The list of supported properties can be found [here](guides/msp-import-properties.md#project-properties). The properties may contain either fixed values or functions that will be executed when export is called.
 
 - `tasks` - (object) allows setting custom properties to the exported task items
 
@@ -154,7 +154,7 @@ gantt.exportToMSProject({
 ~~~
 
 The properties of this object correspond to the appropriate properties of the [Task entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)),
-here is a list of supported [properties](guides/tags.md#tasks-properties).
+here is a list of supported [properties](guides/msp-import-properties.md#tasks-properties).
 The properties may contain either fixed values or functions that will be called for each task in the dataset when export is called.
 
 - `data` - (object) allows setting a custom data source that will be presented in the output Gantt chart
@@ -389,7 +389,7 @@ gantt.importFromMSProject({
 
 To get project fields, the `projectProperties` input with an array of necessary fields can be sent to the server.
 It extracts arbitrary properties of [the Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))
-into the `config` property of the output. Here is the list of supported [properties](guides/tags.md#project-properties).
+into the `config` property of the output. Here is the list of supported [properties](guides/msp-import-properties.md#project-properties).
 
  - `projectProperties` - specifies an array of project properties that should be put into the response.
 
@@ -421,7 +421,7 @@ gantt.importFromMSProject({
 #### Getting tasks properties
 
 To get task fields, the `taskProperties` input with an array of necessary fields can be sent to the server.
-It extracts arbitrary properties of the [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Here is the list of supported [properties](guides/tags.md#tasks-properties):
+It extracts arbitrary properties of the [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Here is the list of supported [properties](guides/msp-import-properties.md#tasks-properties):
 
  - `taskProperties` - specify an array of additional task properties to be imported.
 
@@ -455,6 +455,8 @@ gantt.attachEvent("onTaskLoading", (task) => {
     return true;
 });
 ~~~
+
+**Related sample**: [Gantt. Import and export MSP files with additional and extended task and resource properties](https://snippet.dhtmlx.com/rveo6ukz)
 
 #### Getting task types
 

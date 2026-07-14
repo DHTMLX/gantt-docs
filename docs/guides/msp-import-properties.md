@@ -10,23 +10,44 @@ sidebar_label: "Properties for importing from MS Project"
 <div class="msp-properties">
 | | | | |
 |---|---|---|---|
-| ActualsInSync | DaysPerMonth | InsertedProjectsLikeSummary | RemoveFileProperties |
-| AdminProject | DefaultFinishTime | LastSaved | Revision |
-| Author | DefaultFixedCostAccrual | Manager | ScheduleFromStart |
-| AutoAddNewResourcesAndTasks | DefaultOvertimeRate | MicrosoftProjectServerURL | SplitsInProgressTasks |
-| Autolink | DefaultStandardRate | MinutesPerDay | SpreadActualCost |
-| BaselineForEarnedValue | DefaultStartTime | MinutesPerWeek | SpreadPercentComplete |
-| CalendarUID | DefaultTaskEVMethod | MoveCompletedEndsBack | StartDate |
-| Category | DefaultTaskType | MoveCompletedEndsForward | StatusDate |
-| Company | DurationFormat | MoveRemainingStartsBack | Subject |
-| CreationDate | EarnedValueMethod | MoveRemainingStartsForward | TaskUpdatesResource |
-| CriticalSlackLimit | EditableActualCosts | MultipleCriticalPaths | Title |
-| CurrencyCode | ExtendedCreationDate | Name | UID |
-| CurrencyDigits | FinishDate | NewTasksEffortDriven | WeekStartDay |
-| CurrencySymbol | FiscalYearStart | NewTasksEstimated | WorkFormat |
-| CurrencySymbolPosition | FYStartDate | NewTaskStartDate | |
-| CurrentDate | HonorConstraints | ProjectExternallyEdited | |
+| AMText | CriticalSlackLimit | GUID | PlannedStart |
+| ActivityIdIncrement | CurrencyDigits | HonorConstraints | PreserveMinimumFloatWhenLeveling |
+| ActivityIdIncrementBasedOnSelectedActivity | CurrencySymbol | HyperlinkBase | PreserveScheduledEarlyAndLateDates |
+| ActivityIdPrefix | CurrentDate | IgnoreRelationshipsToAndFromOtherProjects | ProjectExternallyEdited |
+| ActivityIdSuffix | CustomProperties | InsertedProjectsLikeSummary | ProjectID |
+| ActualCost | DataDateAndPlannedStartSetToProjectForecastStart | LevelAllResources | ProjectIsBaseline |
+| ActualDuration | DateFormat | LevelResourcesOnlyWithinActivityTotalFloat | ProjectTitle |
+| ActualFinish | DateOrder | LevelingPriorities | ProjectWebsiteUrl |
+| ActualStart | DateSeparator | LimitNumberOfFloatPathsToCalculate | RelationshipLagCalendar |
+| ActualWork | DaysPerMonth | MakeOpenEndedActivitiesCritical | RemoveFileProperties |
+| ActualsInSync | DecimalSeparator | MaxPercentToOverallocateResources | ScheduleFrom |
+| AdminProject | DefaultCalendarUniqueID | MaximumNumberOfFloatPathsToCalculate | ScheduledFinish |
+| AutoAddNewResourcesAndTasks | DefaultDurationIsFixed | MicrosoftProjectServerURL | SchedulingProgressedActivities |
+| AutoFilter | DefaultDurationUnits | MinutesPerDay | ShowProjectSummaryTask |
+| Autolink | DefaultEndTime | MinutesPerMonth | SplitInProgressTasks |
+| BarTextDateFormat | DefaultFixedCostAccrual | MinutesPerWeek | SpreadActualCost |
+| BaselineCalendarName | DefaultOvertimeRate | MinutesPerYear | SpreadPercentComplete |
+| BaselineCost | DefaultStandardRate | MoveCompletedEndsBack | StartDate |
+| BaselineDate | DefaultStartTime | MoveCompletedEndsForward | StartVariance |
+| BaselineDuration | DefaultTaskEarnedValueMethod | MoveRemainingStartsBack | StatusDate |
+| BaselineFinish | DefaultTaskType | MoveRemainingStartsForward | SymbolPosition |
+| BaselineForEarnedValue | DefaultWorkUnits | MultipleCriticalPaths | ThousandsSeparator |
+| BaselineProjectUniqueID | DisplayFloatPathsEndingWithActivityUniqueId | MustFinishBy | TimeFormat |
+| BaselineWork | Duration | Name | TimeSeparator |
+| CalculateFloatBasedOnFinishDateOfEachProject | EditableActualCosts | NewTaskStartIsProjectStart | TotalSlackCalculationType |
+| CalculateMultipleFloatPaths | EditingTime | NewTasksAreManual | UniqueID |
+| CalculateMultipleFloatPathsUsingTotalFloat | ExportFlag | NewTasksEffortDriven | UpdatingTaskStatusUpdatesResourceStatus |
+| ComputeStartToStartLagFromEarlyStart | FileApplication | NewTasksEstimated | UseExpectedFinishDates |
+| ConsiderAssignmentsInOtherProjects | FileType | Notes | WbsCodeSeparator |
+| ConsiderAssignmentsInOtherProjectsWithPriorityEqualHigherThan | FinishDate | NotesObject | WeekStartDay |
+| Cost | FinishVariance | PMText | Work |
+| CreationDate | FiscalYearStart | PercentageComplete | Work2 |
+| CriticalActivityType | FiscalYearStartMonth | | |
 </div>
+
+:::info
+The **CustomProperties** property can contain other properties. For MS Project files, the **CustomProperties** property contains all the custom properties.
+:::
 
 ## Tasks properties
 
@@ -198,3 +219,5 @@ There are more supported resource properties:
 | Text30 | | | | | | | | | |
 
 </div>
+
+**Related sample**: [Gantt. Import and export MSP files with additional and extended task and resource properties](https://snippet.dhtmlx.com/rveo6ukz)
