@@ -552,9 +552,7 @@ Primavera P6 has two distinct activity types for milestones: **Start Milestone**
 
 Thus, during the import of a Primavera P6 project into Gantt, all milestones - regardless of whether they are start or finish milestones in the source file - are converted into tasks of the **milestone** type.
 
-To preserve the information about the original Primavera P6 milestone type, you can use the **ActivityType** property for tasks. During the import, the type of the source file is saved into this property. Since **ActivityType** is a custom property for Gantt, it is kept as is and doesn't affect the task type in Gantt. Besides, it allows customizing the appearance of start and finish milestones in the Gantt chart.
-
-While exporting a file back to Primavera P6, you can specify the **ActivityType** property in the [tasks](#export-settings) object of the [exportToPrimaveraP6()](api/method/exporttoprimaverap6.md) call. In this case, when the exported file is opened in Primavera P6 again the type of the task will remain the same as it had been before the file import from Primavera P6:
+To preserve the information about the original Primavera P6 milestone type, request the **ActivityType** task property during the import, by adding it to the **taskProperties** array. The property comes back in the `$custom_data` object of each task, so copy it to the task itself in the [onTaskLoading](api/event/ontaskloading.md) event:
 
 ~~~js
 gantt.importFromPrimaveraP6({
@@ -568,14 +566,35 @@ gantt.importFromPrimaveraP6({
     }
 });
 
+gantt.attachEvent("onTaskLoading", function (task) {
+    if (task.$custom_data) {
+        task.ActivityType = task.$custom_data.ActivityType;
+    }
+    return true;
+});
+~~~
+
+For milestones, the property stores the original Primavera P6 type as a string - "START_MILESTONE" or "FINISH_MILESTONE". Since **ActivityType** is a custom property for Gantt, it doesn't affect the task type on the Gantt side - the task still has the **milestone** type. You can use this property, for example, to customize the appearance of start and finish milestones in the Gantt chart.
+
+To carry the original milestone type over when exporting data back to Primavera P6, return it from the **ActivityType** property in the [tasks](#export-settings) object of the [exportToPrimaveraP6()](api/method/exporttoprimaverap6.md) call. As **ActivityType** describes all Primavera P6 activities, not only milestones, provide a value for the other task types as well:
+
+~~~js
 gantt.exportToPrimaveraP6({
     tasks: {
         ActivityType: function (task) {
-            return task.$custom_data && task.$custom_data.ActivityType;
+            if (task.type == "milestone") {
+                return task.ActivityType == "START_MILESTONE" ? "START_MILESTONE" : "FINISH_MILESTONE";
+            }
+            if (task.type == "project") {
+                return "WBS_SUMMARY";
+            }
+            return "TASK_DEPENDENT";
         }
     }
 });
 ~~~
+
+This way, the exported file will have the same **Start Milestone** / **Finish Milestone** type as the source Primavera P6 file, instead of every milestone being exported as a **Finish Milestone** by default.
 
 **Related sample**: [Gantt. Import and export Primavera P6 files with the ActivityType to get Start and Finish Milestones](https://snippet.dhtmlx.com/elyeppkv)
 
