@@ -144,7 +144,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-Die Eigenschaften dieses Objekts entsprechen den entsprechenden Eigenschaften der [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Die Liste der unterstützten Eigenschaften finden Sie [hier](guides/properties.md). Die Eigenschaften können feste Werte oder Funktionen enthalten, die beim Aufruf des Exports ausgeführt werden.
+Die Eigenschaften dieses Objekts entsprechen den entsprechenden Eigenschaften der [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Die Liste der unterstützten Eigenschaften finden Sie [hier](guides/primavera-import-properties.md). Die Eigenschaften können feste Werte oder Funktionen enthalten, die beim Aufruf des Exports ausgeführt werden.
 
 - **tasks** - (object) ermöglicht das Festlegen benutzerdefinierter Eigenschaften für die exportierten Task-Einträge
 
@@ -168,7 +168,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-Die Eigenschaften dieses Objekts entsprechen den entsprechenden Eigenschaften der [Task entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)), hier finden Sie eine Liste der unterstützten [Eigenschaften](guides/properties.md#tasks-properties). Die Eigenschaften können feste Werte oder Funktionen enthalten, die für jeden Datensatz beim Export aufgerufen werden.
+Die Eigenschaften dieses Objekts entsprechen den entsprechenden Eigenschaften der [Task entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)), hier finden Sie eine Liste der unterstützten [Eigenschaften](guides/primavera-import-properties.md#tasks-properties). Die Eigenschaften können feste Werte oder Funktionen enthalten, die für jeden Datensatz beim Export aufgerufen werden.
 
 - **data** - (object) ermöglicht das Festlegen einer benutzerdefinierten Datenquelle, die in der Output-Gantt-Diagramm angezeigt wird.
 
@@ -425,7 +425,7 @@ gantt.importFromPrimaveraP6({
 #### Abrufen von Eigenschaften des Projekts
 
 Um Felder des Projekts abzurufen, kann die Eingabe **projectProperties** mit einem Array der benötigten Felder an den Server gesendet werden.
-Sie extrahiert beliebige Eigenschaften der [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) in die **config**-Eigenschaft der Ausgabe. Hier ist die Liste der unterstützten [Eigenschaften](guides/properties.md#project-properties).
+Sie extrahiert beliebige Eigenschaften der [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) in die **config**-Eigenschaft der Ausgabe. Hier ist die Liste der unterstützten [Eigenschaften](guides/primavera-import-properties.md#project-properties).
 
  - **projectProperties** - gibt ein Array von Projekt-Eigenschaften an, die in die Antwort aufgenommen werden sollen.
 
@@ -457,7 +457,7 @@ gantt.importFromPrimaveraP6({
 #### Abrufen von Aufgaben-Eigenschaften
 
 Um Felder der Aufgaben abzurufen, kann die Eingabe **taskProperties** mit einem Array der benötigten Felder an den Server gesendet werden.
-Sie extrahiert beliebige Eigenschaften der [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Hier ist die Liste der unterstützten [Eigenschaften](guides/properties.md#tasks-properties):
+Sie extrahiert beliebige Eigenschaften der [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Hier ist die Liste der unterstützten [Eigenschaften](guides/primavera-import-properties.md#tasks-properties):
 
  - **taskProperties** - geben Sie ein Array zusätzlicher Aufgaben-Eigenschaften an, die importiert werden sollen.
 
