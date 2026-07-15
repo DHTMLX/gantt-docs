@@ -69,23 +69,6 @@ properties are exported
 - **data** - (*object*) sets a custom data source that will be presented in the output Gantt chart
 - **date_format** - (*string*) sets the format the date will be displayed in the exported Excel document. The following format code can be used:
 
-~~~css
-table.my_table {
-    width: 70%;
-    padding: 0 20px;
-}
-table.my_table tr td {
-    text-align: left;
-    vertical-align: middle;
-    width: 35%;
-    border-bottom: 1px solid grey;
-}
-table.my_table td.version_info {
-    text-align: left;
-    font-weight: bold;
-}
-~~~
-
 Format codeOutput:
 
 <table class="my_table">
