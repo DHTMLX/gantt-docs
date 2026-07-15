@@ -160,7 +160,7 @@ Der **end_date** hat eine höhere Priorität als der **duration**-Parameter. Wen
 }
 ~~~
 
-## Laden von Daten im ISO-Format
+## Laden von Daten im ISO-Format {#loading-dates-in-iso-format}
 
 Seit v9.1.3 erkennt und parst Gantt automatisch ISO-8601-Datumsstrings. Keine zusätzliche Konfiguration erforderlich.
 

@@ -343,7 +343,7 @@ Eine produktive Integration benötigt einige zusätzliche Absicherungen über de
 - **Verlaufsbereinigung.** Token-Budgets sind begrenzt. Trimmen Sie nach *Blöcken* – jede Benutzer-Nachricht und ihre vollständige Assistenz-Antwort (einschließlich jeglicher Tool-Aufruf-/Tool-Ergebnis-Kette) bildet einen Block – sodass Sie nie einen Tool-Aufruf-Zyklus über die Trennlinie hinweg umbrechen. Halten Sie die System-Nachricht fest an Index 0. Die Demo-`trimHistory()` in [`backend/helper.ts`](https://github.com/DHTMLX/gantt-maker-ai-demo/blob/main/backend/helper.ts) hält die letzten `MAX_MESSAGES = 20` Blöcke.
 - **Validierung von Tool-Argumenten.** Die obige Helferfunktion `parseToolArguments` erzwingt nur „ist ein JSON-Objekt“. Darüber hinaus validieren Sie gegen das JSON-Schema, das Sie mit dem Modell registriert haben, oder akzeptieren Sie, dass der Runner fehlerhafte Argumente am Rand abfangen wird.
 
-## Zustandserfassende Befehle
+## Zustandserfassende Befehle {#state-aware-commands}
 
 Einige Befehle hängen nicht vom aktuellen Diagrammzustand ab (z. B. `zoom`). Befehle, die vorhandene Tasks ändern, benötigen Zugriff auf den aktuellen Gantt-Zustand, damit das Modell Task-IDs referenzieren und Updates vorbereiten kann.
 

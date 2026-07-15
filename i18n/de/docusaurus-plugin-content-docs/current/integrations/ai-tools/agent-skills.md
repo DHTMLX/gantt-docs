@@ -12,7 +12,7 @@ Im Gegensatz zum [MCP-Server](integrations/ai-tools/mcp-server.md), der eine Ech
 
 **GitHub:** [DHTMLX/skills](https://github.com/DHTMLX/skills)
 
-## Verfügbare Fähigkeiten
+## Verfügbare Fähigkeiten {#available-skills}
 
 ### DHTMLX JS Gantt
 

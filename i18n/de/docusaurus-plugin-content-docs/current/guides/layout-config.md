@@ -177,7 +177,7 @@ Folgen Sie den Beispielen unten:
 - [Gantt. Layout-Views mit eigenen Scrollbars](https://snippet.dhtmlx.com/cv9w37tu)
 - [Gantt. Universale Layout-Konfiguration](https://snippet.dhtmlx.com/uqejdyqc)
 
-## Layout-Anpassung
+## Layout-Anpassung {#layout-customization}
 
 Sie können die Standardlayout-Konfiguration ändern und das gewünschte Schema zur Anordnung der Elemente im Gantt-Diagramm auf einer Seite mithilfe zusätzlicher Layout-Views festlegen.
 
@@ -302,7 +302,7 @@ Um die Resizer wieder anzuzeigen, entfernen Sie einfach die Klasse:
 gantt.$container.classList.remove("no_resizers");
 ~~~
 
-## HTML als Innere Ansicht
+## HTML als Innere Ansicht {#html-as-inner-view}
 
 Sie können auch benutzerdefiniertes HTML als innere Ansichten des Gantt-Layouts verwenden. Zum Beispiel:
 
@@ -384,7 +384,7 @@ gantt.config.layout = {
 
 Das Layout kann eine beliebige Anzahl weiterer Views enthalten.
 
-## Configs und Templates der Views
+## Configs und Templates der Views {#configs-and-templates-of-views}
 
 Grid- und Timeline-Views verwenden die Templates und Configs aus dem globalen [gantt.config/gantt.templates](guides/common-configuration.md). Allerdings können diese Einstellungen auf View-Ebene im Layout überschrieben werden.
 
@@ -473,7 +473,7 @@ gantt.config.layout = {
 
 Schauen Sie sich den Artikel Resource Management an. (guides/resource-management.md)
 
-## Sichtbarkeits-Gruppen
+## Sichtbarkeits-Gruppen {#visibility-groups}
 
 Manchmal müssen Sie die Sichtbarkeit einiger Elemente im Layout synchronisieren. Zum Beispiel möchten Sie möglicherweise, dass horizontale Scrollbars in benachbarten Zellen gleichzeitig angezeigt oder versteckt werden.
 

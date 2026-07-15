@@ -74,7 +74,7 @@ gantt.render();
 
 2. [Erstellen eines benutzerdefinierten Baseline-Elements](guides/baselines.md) zum Hinzufügen in die Zeitachse.
 
-### Baselines zusammen mit Aufgaben laden
+### Baselines zusammen mit Aufgaben laden {#loading-baselines-with-tasks}
 
 Baselines können direkt zusammen mit Aufgaben geladen werden. Das folgende Beispiel zeigt dies:
 
@@ -196,7 +196,7 @@ gantt.templates.baseline_text = function(task, baseline, index) {
 };
 ~~~
 
-## Fristen und Beschränkungen
+## Fristen und Beschränkungen {#deadlines-and-constraints}
 
 Im Projektmanagement ist das Verfolgen von Fristen und das Verstehen von Beschränkungen von entscheidender Bedeutung für eine rechtzeitige Lieferung. DHTMLX Gantt bietet eine integrierte Visualisierung für Fristen und Beschränkungen, wodurch die Verwaltung von Projektzeitplänen effektiver wird.
 
@@ -235,7 +235,7 @@ Danach können Sie die Anzeige von Fristen anpassen, indem Sie [ein benutzerdefi
 
 Die **gantt.config.deadlines**-Konfiguration ermöglicht bzw. verhindert die Anzeige von Fristen-Elementen für Aufgaben. Falls aktiviert, prüft Gantt die Eigenschaft **task.deadline** und, falls sie ein gültiges Datum enthält, wird das Deadline-Element in der Zeitachse angezeigt.
 
-### Task-Beschränkungen
+### Task-Beschränkungen {#task-constraints}
 
 Seit Version v9.0 zeigt Gantt automatisch Beschränkungsdaten in der Grafik an, wenn [Auto Scheduling](guides/auto-scheduling.md) aktiviert ist und im Constraint-Modus arbeitet ([auto_scheduling_compatibility](api/config/auto_scheduling_compatibility.md) ist auf *false* gesetzt).
 

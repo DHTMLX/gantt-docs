@@ -48,7 +48,7 @@ Sie können sich die Videoanleitung ansehen, die zeigt, wie man Inline-Bearbeitu
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/0rIPrC0GtME" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## Typen von Editoren
+## Typen von Editoren {#types-of-editors}
 
 Die Inline-Editoren werden im Konfigurationsobjekt [editor_types](api/config/editor_types.md) verwaltet.
 
@@ -439,7 +439,7 @@ Ein gutes Beispiel für eine solche Steuerung ist der integrierte Vorgänger-Edi
 **Related sample** [Built-in predecessor editor](https://snippet.dhtmlx.com/xz6192wd)
 
 
-## Inline-Bearbeitungsmodi
+## Inline-Bearbeitungsmodi {#inline-editing-modes}
 
 ### Grundlegende Inline-Bearbeitung 
 

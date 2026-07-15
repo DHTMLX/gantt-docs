@@ -20,7 +20,7 @@ Die Zoom-Erweiterung verwendet eine Reihe von Skaleneinstellungen und ermöglich
 - <span class="subproperty">**scales**</span> - (*Scales*) - ein Array von Skalen, zwischen denen beim Zoomen innerhalb dieser Stufe gewechselt wird
 
 
-## Methoden
+## Methoden {#methods}
 
 - <span class="submethod">**init(zoomConfig): void**</span> - initialisiert die Erweiterung mit der übergebenen Konfiguration.
     - **_zoomConfig?_** - (*object*) - ein Objekt mit Konfigurationseinstellungen, das das *levels*-Array der Zoom-Stufen und eine Reihe zusätzlicher Eigenschaften enthält:

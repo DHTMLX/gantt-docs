@@ -44,7 +44,7 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-## Festlegen des Standardwerts für einen Lightbox-Abschnitt
+## Festlegen des Standardwerts für einen Lightbox-Abschnitt {#setting-the-default-value-for-a-lightboxs-control}
 
 Um den Standardwert für einen Lightbox-Abschnitt festzulegen, verwenden Sie die **default_value**-Eigenschaft des Abschnittsobjekts.
 

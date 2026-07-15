@@ -302,7 +302,7 @@ You should see all your tasks and links properly transferred with the correct fi
 | `StartDate`      | `start_date`    | Task start date                                                       |
 | `EndDate`        | `end_date`      | Task end date (calculated in DHTMLX if not provided)                  |
 | `Duration`       | `duration`      | Task duration                                                         |
-| `DurationUnit`   | _(config)_      | DHTMLX Gantt uses a global duration unit configured via `gantt.config.duration_unit`. During migration, it's recommended to normalize all durations to a single unit. If you want to have different duration units for different tasks, i.e. to show durations of some tasks in hours and some tasks in "days", you can use the [formatter module](guides/working-time.md#task-duration-in-decimal-format-taskdurationindecimalformat).                     |
+| `DurationUnit`   | _(config)_      | DHTMLX Gantt uses a global duration unit configured via `gantt.config.duration_unit`. During migration, it's recommended to normalize all durations to a single unit. If you want to have different duration units for different tasks, i.e. to show durations of some tasks in hours and some tasks in "days", you can use the [formatter module](guides/working-time.md#taskdurationindecimalformat).                     |
 | `Progress`       | `progress`      | Syncfusion: 0-100%, DHTMLX: 0-1 (decimal)                             |
 | `ParentId`       | `parent`        | Parent task ID (0 for root tasks)                                     |
 | `Predecessor`    | _(links table)_ | Syncfusion stores as string, DHTMLX uses separate `gantt_links` table |

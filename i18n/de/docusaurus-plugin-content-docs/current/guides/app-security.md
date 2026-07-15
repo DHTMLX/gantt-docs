@@ -361,7 +361,7 @@ Sie hilft, verschiedene Code-Injektionsangriffe zu verhindern und die Sicherheit
 
 [Lesen Sie mehr über die Anwendung des CSP-Standards auf eine dhtmlxGantt-Anwendung](api/config/csp.md).
 
-## Framework Wrapper XSS-Schutz
+## Framework Wrapper XSS-Schutz {#framework-wrapper-xss-protection}
 
 Ab Version v10.0 verarbeiten die Wrapper für [React](integrations/react.md), [Vue](integrations/vue.md) und [Angular](integrations/angular.md) die von benutzerdefinierten Template-Funktionen zurückgegebenen Zeichenfolgen so, dass HTML, das aus Templates stammt, standardmäßig sicher ist – auch wenn es unsaniert eingebettete Aufgaben-/Ereignisdaten enthält. Dies umfasst:
 
@@ -415,4 +415,4 @@ import DOMPurify from "dompurify";
 <ReactGantt htmlTemplatePolicy={{ mode: "sanitize", sanitize: (html) => DOMPurify.sanitize(html) }} />
 ~~~
 
-Siehe [Migration notes](migration.md#91---92) für weitere Details.
+Siehe [Migration notes](migration.md#91---100) für weitere Details.

@@ -11,7 +11,7 @@ Ab Version 10 ist diese Funktionalität in allen Editionen verfügbar (der koste
 
 Grundsätzlich ist DHTMLX Gantt ein statisches Objekt, und die Standardinstanz existiert kontinuierlich auf der Seite. Sie können jederzeit über das globale Objekt `gantt` darauf zugreifen. Sie können bei Bedarf jedoch auch ein neues Gantt-Objekt erstellen.
 
-## Konfiguration der Gantt-Instanz
+## Konfiguration der Gantt-Instanz {#gantt-instance-configuration}
 
 Um eine neue Instanz von DHTMLX Gantt zu erstellen, verwenden Sie die Methode `Gantt.getGanttInstance()`:
 

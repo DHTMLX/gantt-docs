@@ -115,7 +115,7 @@ gantt.config.lightbox.milestone_sections = [
 **Zugehöriges Beispiel**: [Rollup task and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/21_rollup_tasks.html)
 
 
-## Verbergen von Aufgaben und Meilensteinen
+## Verbergen von Aufgaben und Meilensteinen {#hiding-tasks-and-milestones}
 
 Ab Version 7.1 können Sie [Aufgabenleisten](guides/task-types.md#regular-tasks) und [Meilensteine](guides/task-types.md#milestones) im Timeline-Bereich ausblenden, indem Sie die Eigenschaft **hide_bar: true** eines Datenelements setzen:
 

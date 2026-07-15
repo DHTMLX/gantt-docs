@@ -129,7 +129,7 @@ const tasks = [
 
 **Zugehöriges Beispiel**: [Per-child placement of split subtasks](https://docs.dhtmlx.com/gantt/samples/04_customization/26_custom_child_split_tasks.html)
 
-## Filtern split Task
+## Filtern split Task {#filtering-split-tasks}
 
 Um die Unteraufgaben der im Gantt-Diagramm dargestellten Split-Aufgabe zu filtern, verwenden Sie das Event [`onBeforeSplitTaskDisplay`](api/event/onbeforesplittaskdisplay.md) und geben Sie zurück:
 

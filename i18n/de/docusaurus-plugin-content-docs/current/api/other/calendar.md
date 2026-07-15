@@ -125,7 +125,7 @@ calendar.getClosestWorkTime({
 
 
 - **calculateEndDate (config, duration, unit): Date** - berechnet das Enddatum einer Aufgabe
-    - **_config_** - (*Date | object*) - entweder das Datum, an dem eine Aufgabe beginnen soll, oder das [configuration object](api/method/calculateenddate.md#configuration-object-properties) eines Zeitabschnitts:
+    - **_config_** - (*Date | object*) - entweder das Datum, an dem eine Aufgabe beginnen soll, oder das [configuration object](api/method/calculateenddate.md#configurationobjectproperties) eines Zeitabschnitts:
         - **_start_date_** - (*Date*) - das Datum, an dem eine Aufgabe beginnen soll
         - **_duration_** - (*number*) - die Dauer einer Aufgabe
         - **_unit?_** - (*string*) - optional, die Zeiteinheit der Dauer: "minute", "hour", "day", "week", "month", "year"

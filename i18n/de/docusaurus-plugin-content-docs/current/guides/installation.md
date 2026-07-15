@@ -84,7 +84,7 @@ Für Version 10 und später stellt das CDN die **Community-Edition** unter der M
 
 Die kostenlose Edition vor Version 10 wurde unter der **GPL**-Lizenz verteilt. Diese Versionen (v9.x und älter) bleiben verfügbar und GPL v2 gilt weiterhin für sie; sie befinden sich in einem dedizierten Zweig des [Haupt-GitHub-Repositories](https://github.com/DHTMLX/gantt), werden jedoch nicht mehr aktiv gepflegt.
 
-### PRO-Version
+### PRO-Version {#adding-pro-edition-into-project}
 
 Wenn Sie die PRO-Version der Komponente besitzen, gehen Sie in den [Kundenbereich](https://dhtmlx.com/clients/) und laden Sie dort das PRO-Paket herunter.
 

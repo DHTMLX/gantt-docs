@@ -50,7 +50,7 @@ Die Methode funktioniert nicht, nachdem nur der **duration**-Parameter geändert
 
 Hinweis: Wenn die [work_time](api/config/work_time.md) Option aktiviert ist, berechnet die [calculateDuration](api/method/calculateduration.md) Methode die Dauer der Aufgabe in der Arbeitszeit. 
 
-## Aufgabenhöhe
+## Aufgabenhöhe {#task-height}
 
 Um die Höhe des DOM-Elements der Aufgabe zu erhalten, verwenden Sie die [getTaskBarHeight](api/method/gettaskbarheight.md) Methode:
 

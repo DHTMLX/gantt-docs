@@ -349,7 +349,7 @@ Dynamische Eigenschaften werden auf dem Client erstellt und stellen den aktuelle
   </tbody>
 </table>
 
-## Beispiel
+## Beispiel {#dynamic-properties}
 
 ~~~js
 const data = {

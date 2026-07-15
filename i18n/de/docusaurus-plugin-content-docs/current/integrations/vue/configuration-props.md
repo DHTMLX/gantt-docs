@@ -124,7 +124,7 @@ Verwenden Sie sie als Referenz nach der [Übersicht](integrations/vue/overview.m
     <tr>
       <td>htmlTemplatePolicy</td>
       <td>HtmlTemplatePolicy</td>
-      <td>Steuert, wie Zeichenfolgen, die von Template-Funktionen zurückgegeben werden, gerendert werden. <code>"basic-sanitize"</code> (Standard) erlaubt das Saubermachen des zurückgegebenen HTMLs: Sicheres Formatieren, Klassen, eingeschränkte Inline-Stile, <code>data-*</code> Attribute und <code>img</code> bleiben erhalten, während Skripte, Ereignishandler und gefährliche URLs entfernt werden. <code>"escape"</code> rendert die Zeichenfolge als Text; <code>"unsafe-html"</code> rendert die rohe Zeichenfolge (Vor-V10-Verhalten); ein benutzerdefiniertes Sanitizer-Objekt (<code>mode: "sanitize"</code> mit einer <code>sanitize(html)</code>-Funktion) ermöglicht das Einbinden einer Bibliothek wie DOMPurify. Für die Steuerung pro Vorlage, umhüllen Sie einzelne Template-Funktionen mit dem exportierten Hilfsprogramm <code>allowRawHTML()</code>.See [Migration notes](/migration#91---92).</td>
+      <td>Steuert, wie Zeichenfolgen, die von Template-Funktionen zurückgegeben werden, gerendert werden. <code>"basic-sanitize"</code> (Standard) erlaubt das Saubermachen des zurückgegebenen HTMLs: Sicheres Formatieren, Klassen, eingeschränkte Inline-Stile, <code>data-*</code> Attribute und <code>img</code> bleiben erhalten, während Skripte, Ereignishandler und gefährliche URLs entfernt werden. <code>"escape"</code> rendert die Zeichenfolge als Text; <code>"unsafe-html"</code> rendert die rohe Zeichenfolge (Vor-V10-Verhalten); ein benutzerdefiniertes Sanitizer-Objekt (<code>mode: "sanitize"</code> mit einer <code>sanitize(html)</code>-Funktion) ermöglicht das Einbinden einer Bibliothek wie DOMPurify. Für die Steuerung pro Vorlage, umhüllen Sie einzelne Template-Funktionen mit dem exportierten Hilfsprogramm <code>allowRawHTML()</code>.See [Migration notes](/migration#91---100).</td>
     </tr>
   </tbody>
 </table>
@@ -340,7 +340,7 @@ Das Paket exportiert sowohl eine Standard-Komponenten-Exportseite `VueGantt` als
 
 Aus `@dhtmlx/trial-vue-gantt` oder `@dhx/vue-gantt`:
 
-### Typ-Exporte
+### Typ-Exporte {#type-exports}
 
 Importieren Sie jeden Typ aus dem Wrapper-Paket selbst (`@dhx/vue-gantt` oder `@dhtmlx/trial-vue-gantt`). Der Wrapper bündelt die zugrundeliegende Gantt-Engine und exportiert ihre Typen neben den Vue-spezifischen – es gibt kein separates `@dhx/gantt`-Paket, das installiert oder importiert werden müsste.
 

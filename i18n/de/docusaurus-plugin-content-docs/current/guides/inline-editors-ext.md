@@ -31,7 +31,7 @@ Das *inlineEditors*-Objekt verfügt über die folgende API:
 - <span class="submethod">**isChanged (): boolean**</span> - prüft, ob der aktuelle Editorwert vom ursprünglichen Wert abweicht
 - <span class="submethod">**isVisible (): boolean**</span> - prüft, ob der Editor geöffnet ist
 
-### Ereignisse:
+### Ereignisse: {#events}
 
 - <span class="submethod">**attachEvent (name, handler): string**</span> - hängt einen Ereignishandler an das inlineEditors-Objekt an
     - **_name_** - (*string*) - der Name des Ereignishandlers

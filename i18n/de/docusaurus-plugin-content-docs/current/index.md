@@ -18,7 +18,7 @@ DHTMLX Gantt ist in den Editionen Standard und PRO verfügbar. Die PRO-Edition u
 
 ---
 
-## Schnellstart nach Framework
+## Schnellstart nach Framework {#quick-start-by-framework}
 
 Sie können DHTMLX Gantt als Vanilla-JavaScript-Widget verwenden oder in moderne Frameworks integrieren. Starten Sie mit einer Schritt-für-Schritt-Anleitung für Ihren Stack:
 

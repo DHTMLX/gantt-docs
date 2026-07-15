@@ -55,7 +55,7 @@ gantt.isWorkTime({date: new Date(2023,3,3,17,00), unit:  "day"});
 //-> true, da Montag ein Arbeitstag ist
 ~~~
 
-## Konfigurationsobjekt-Eigenschaften
+## Konfigurationsobjekt-Eigenschaften {#configuration-object-properties}
 
 Das Konfigurationsobjekt kann die folgenden Eigenschaften enthalten:
 

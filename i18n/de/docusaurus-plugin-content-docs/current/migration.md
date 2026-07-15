@@ -290,7 +290,7 @@ Die verfügbaren Variablen finden Sie auf der Seite [Skins-Anpassung](guides/cus
 Bei der Migration ist es wahrscheinlich notwendig, bestehendes CSS zu aktualisieren, um das gewünschte Design zu erzielen.
 :::
 
-### Einzelne CSS-Datei
+### Einzelne CSS-Datei {#single-css-file}
 
 Alle Themes sind jetzt in einer einzigen **dhtmlxgantt.css** Datei enthalten.
 
@@ -667,7 +667,7 @@ Stellen Sie sicher, dass der Modulname für jede Datei im Paket als *relativer P
 
 ### Inline-Editoren {#inline_editors}
 
-Vor Version 6.3 waren die minimalen und maximalen Werte des **date** [Inline-Editors](guides/inline-editing.md#typesofeditors) auf die im Zeitstrahl sichtbaren Daten beschränkt, sofern keine benutzerdefinierten Min-/Max-Werte angegeben wurden.
+Vor Version 6.3 waren die minimalen und maximalen Werte des **date** [Inline-Editors](guides/inline-editing.md#types-of-editors) auf die im Zeitstrahl sichtbaren Daten beschränkt, sofern keine benutzerdefinierten Min-/Max-Werte angegeben wurden.
 
 Ab Version 6.3 gibt es keine Standardgrenzen für die minimalen und maximalen Werte von Datumseditoren mehr.
 

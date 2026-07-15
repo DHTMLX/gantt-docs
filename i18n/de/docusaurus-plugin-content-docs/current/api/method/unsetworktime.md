@@ -37,7 +37,7 @@ hinzugefügt in Version 4.1
 - Die Methode verwendet den [globalen Arbeitszeitkalender](guides/working-time.md#multipleworktimecalendars), falls keine Aufgabe angegeben ist.
 - Außerdem kann die Methode direkt von einem [Kalenderobjekt](api/other/calendar.md) aufgerufen werden.
 
-## Konfigurationsobjekt-Eigenschaften
+## Konfigurationsobjekt-Eigenschaften {#configuration-object-properties}
 
 
 Das Konfigurationsobjekt kann folgende Eigenschaften enthalten:

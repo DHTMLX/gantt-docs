@@ -161,7 +161,7 @@ Wenn Sie bereits Gantt mit Aufgaben-Dauern in Minuten, Stunden oder einer andere
 :::
 
 
-## Globale Einstellungen
+## Globale Einstellungen {#global-settings}
 
 ### Arbeitszeit festlegen
 
@@ -313,7 +313,7 @@ gantt.setWorkTime({
 **Related sample** [Using `customWeeks` to make all days in the calendar days-off](https://snippet.dhtmlx.com/i0o74zg7)
 
 
-### Arbeitszeit zurücksetzen
+### Arbeitszeit zurücksetzen {#unsetting-the-working-time}
 
 Sie können die Arbeitszeit mit der [unsetWorkTime](api/method/unsetworktime.md)-Methode zurücksetzen:
 
@@ -535,7 +535,7 @@ Um die Nicht-Arbeitszeit auszublenden, verwenden Sie die im Artikel beschriebene
 Zusätzlich zu den globalen Arbeitszeiteinstellungen ermöglicht Gantt das Erstellen mehrerer Arbeitszeitkalender. Sie können sie einzelnen Aufgaben oder Aufgaben-Gruppen zuweisen.
 
 
-### Einen Arbeitskalender erstellen
+### Einen Arbeitskalender erstellen {#getting-calendars}
 
 Eine neue Kalenderinstanz kann mit der [createCalendar](api/method/createcalendar.md) Methode erstellt werden.
 
@@ -725,7 +725,7 @@ const calendars = gantt.getCalendars();
 Die Methode gibt ein Array von [Calendar interface](api/other/calendar.md) Objekten zurück.
 
 
-### Kalender löschen
+### Kalender löschen {#assigning-calendar-to-project}
 
 Falls Sie einen Kalender nicht mehr benötigen, können Sie ihn einfach über die Methode [deleteCalendar](api/method/deletecalendar.md) entfernen.
 Sie müssen der Methode die Kalender-ID übergeben:

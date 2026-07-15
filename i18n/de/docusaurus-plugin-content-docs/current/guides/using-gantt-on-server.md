@@ -15,7 +15,7 @@ Aus diesem Grund bieten wir eine separate Build von dhtmlxGantt an, die serverse
 
 DHTMLX Gantt für Node.js hat die gleiche Funktionalität wie die Commercial/Enterprise/Ultimate-Pakete, was bedeutet, dass die Methode **Gantt.getGanttInstance** verfügbar ist und das Erstellen einer neuen Instanz eines Gantt ermöglicht.
 
-## Nutzungsbedingungen
+## Nutzungsbedingungen {#terms-of-using}
 
 
 Das Node.js-Servermodul von DHTMLX Gantt wird als Add-on-Paket zur clientseitigen Version von Gantt bereitgestellt. Daher können Sie die Node.js-Build gegen eine zusätzliche Gebühr hinzufügen, während Sie Gantt unter jeder kommerziellen Lizenz erwerben ([Individual](https://dhtmlx.com/docs/products/dhtmlxGantt/individual/), [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/commercial/), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/enterprise/)). Die [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/ultimate/) Lizenz umfasst es standardmäßig.

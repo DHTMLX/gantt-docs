@@ -112,7 +112,7 @@ Diese Seite beschreibt die von React Gantt akzeptierten Props und wie sie DHTMLX
   <tr>
   <td>htmlTemplatePolicy</td>
   <td>HtmlTemplatePolicy</td>
-  <td>Steuert, wie Zeichenfolgen, die von Template-Funktionen zurückgegeben werden, gerendert werden. <code>"basic-sanitize"</code> (Standard) erlaubt, das zurückgegebene HTML zu sanitizen: sichere Formatierung, Klassen, eingeschränkte Inline-Stile, <code>data-*</code>-Attribute und <code>img</code> bleiben erhalten, während Skripte, Ereignis-Handler und gefährliche URLs entfernt werden. <code>"escape"</code> rendert die Zeichenfolge als Text; <code>"unsafe-html"</code> rendert die Rohzeichenfolge (vor V10-Verhalten); ein benutzerdefiniertes Sanitizer-Objekt (<code>mode: "sanitize"</code> mit einer <code>sanitize(html)</code>-Funktion) erlaubt es, eine Bibliothek wie DOMPurify einzubinden. Für die Ein-Zeilen-Pro Vorlage stecken Sie einzelne Template-Funktionen mit dem exportierten <code>allowRawHTML()</code>-Hilfsprogramm ein. See [Migration notes](/migration#91---92).</td>
+  <td>Steuert, wie Zeichenfolgen, die von Template-Funktionen zurückgegeben werden, gerendert werden. <code>"basic-sanitize"</code> (Standard) erlaubt, das zurückgegebene HTML zu sanitizen: sichere Formatierung, Klassen, eingeschränkte Inline-Stile, <code>data-*</code>-Attribute und <code>img</code> bleiben erhalten, während Skripte, Ereignis-Handler und gefährliche URLs entfernt werden. <code>"escape"</code> rendert die Zeichenfolge als Text; <code>"unsafe-html"</code> rendert die Rohzeichenfolge (vor V10-Verhalten); ein benutzerdefiniertes Sanitizer-Objekt (<code>mode: "sanitize"</code> mit einer <code>sanitize(html)</code>-Funktion) erlaubt es, eine Bibliothek wie DOMPurify einzubinden. Für die Ein-Zeilen-Pro Vorlage stecken Sie einzelne Template-Funktionen mit dem exportierten <code>allowRawHTML()</code>-Hilfsprogramm ein. See [Migration notes](/migration#91---100).</td>
   </tr>
   <tr>
   <td>(Event Props)</td>
@@ -205,7 +205,7 @@ Die Bibliothek `@dhx/react-gantt` stellt Hooks für Ereignisabonnements, Ressour
 
 Siehe die专 dedicierte Seite **[Hooks](integrations/react/hooks.md)** für die vollständige Referenz, einschließlich:
 
-- [useGanttEvent](integrations/react/hooks.md#useganttEvent) – Ereignisabonnements mit Lifecycle-Management
+- [useGanttEvent](integrations/react/hooks.md#useganttevent) – Ereignisabonnements mit Lifecycle-Management
 - [useResourceAssignments](integrations/react/hooks.md#useresourceassignments) – Abfragen und Mutationen von Ressourcen-Zuweisungen
 - [useGanttDatastore](integrations/react/hooks.md#useganttdatastore) – schreibgeschützter Zugriff auf den Datenspeicher
 - [useUndoRedo](integrations/react/hooks.md#useundoredo) – Undo/Redo-Status und -Aktionen

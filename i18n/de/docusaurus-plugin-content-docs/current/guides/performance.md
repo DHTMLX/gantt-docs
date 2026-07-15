@@ -5,7 +5,7 @@ sidebar_label: "Leistung: Wege zur Verbesserung"
 
 # Leistung: Wege zur Verbesserung
 
-## Gängige Techniken
+## Gängige Techniken {#common-techniques}
 
 Ab 10.000–20.000 Aufgaben, abhängig von den verwendeten Konfigurationsoptionen und Plugins, kann es zu Verzögerungen bei der Darstellung des Gantt-Diagramms auf der Seite kommen.
 
@@ -47,7 +47,7 @@ Allerdings ermöglicht das Smart Rendering von [custom layers](guides/baselines.
 
  *Siehe den Artikel [addTaskLayer](api/method/addtasklayer.md#smart-rendering-for-custom-layers), um zu erfahren, wie Sie das horizontale Smart Rendering für benutzerdefinierte Ebenen aktivieren.*
 
-### Arbeiten mit einem großen Datumsbereich
+### Arbeiten mit einem großen Datumsbereich {#working-with-a-large-date-range}
 
 :::note
 Diese Funktionalität ist nur in der PRO-Version verfügbar

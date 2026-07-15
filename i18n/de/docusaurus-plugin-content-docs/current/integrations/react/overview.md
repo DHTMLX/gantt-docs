@@ -338,7 +338,7 @@ DHTMLX Gantt wird mit einem integrierten, konfigurierbaren Task-Editor namens [L
 
 Falls nötig, können Sie ihn durch ein React-basiertes Modal oder eine andere Komponente ersetzen, und zwar auf eine der folgenden Arten:
 
-### Durch Bereitstellen einer benutzerdefinierten Komponente über die `customLightbox`-Prop
+### Durch Bereitstellen einer benutzerdefinierten Komponente über die `customLightbox`-Prop {#by-providing-a-custom-component-via-the-customlightbox-prop}
 
 Dazu übergeben Sie eine Komponente über die **customLightbox**-Prop:
 
@@ -724,7 +724,7 @@ return (
 );
 ~~~
 
-## Arbeitskalender
+## Arbeitskalender {#working-calendars}
 
 Um Arbeitszeitberechnungen in **ReactGantt** zu ermöglichen, stellen Sie sicher, dass Sie [work_time](api/config/work_time.md) aktivieren:
 

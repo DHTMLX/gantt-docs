@@ -27,7 +27,7 @@ var links = gantt.getLinks();
 
 Es gibt ein Array von Link-Objekten zurück.
 
-## Verknüpfungen zu einer bestimmten Aufgabe abrufen
+## Verknüpfungen zu einer bestimmten Aufgabe abrufen {#getting-the-links-related-to-a-certain-task}
 
 Um Links zu einer Aufgabe zu erhalten, verwenden Sie die **$source**- und **$target**-Eigenschaften des Aufgabenobjekts.
 

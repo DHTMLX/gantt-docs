@@ -222,7 +222,7 @@ Gantt bietet keine integrierte UI zum Bearbeiten von Lag oder anderen Eigenschaf
 
 **Zugehöriges Beispiel** [Edit-lag Popup](https://snippet.dhtmlx.com/2208ic0t)
 
-## Deaktivieren von Auto Scheduling für bestimmte Aufgaben
+## Deaktivieren von Auto Scheduling für bestimmte Aufgaben {#disabling-auto-scheduling-for-specific-tasks}
 
 Um Auto Scheduling für eine bestimmte Aufgabe zu deaktivieren und manuell zu planen, setzen Sie die **auto_scheduling**-Eigenschaft des Aufgabenobjekts auf *false*:
 

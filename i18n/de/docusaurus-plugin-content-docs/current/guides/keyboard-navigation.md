@@ -29,7 +29,7 @@ Um dies zu aktivieren, setzen Sie die Eigenschaft [keyboard_navigation](api/conf
 
 Um diese Art der Navigation zu verwenden, setzen Sie die Eigenschaft [keyboard_navigation_cells](api/config/keyboard_navigation_cells.md) auf *true*.
 
-## Fokusverhalten während der Tastaturnavigation
+## Fokusverhalten während der Tastaturnavigation {#focus-behavior-during-keyboard-navigation}
 
 ### Fokus auf Gantt
 
@@ -56,7 +56,7 @@ Wenn Sie den Fokus auf eine Grid-Zelle/eine Grid-Zeile setzen und anschließend 
 Ab Version 7.1.13 können Sie der benutzerdefinierten Elementklasse *'no_keyboard_navigation'* hinzufügen, damit der Fokus nicht auf die Grid-Zelle/die Grid-Zeile wiederhergestellt wird.
 :::
 
-## Bereiche (Scopes)
+## Bereiche (Scopes) {#scopes}
 
 Eine durch einen Tastendruck ausgelöste Aktion hängt vom Kontext ab. Das bedeutet, dass unterschiedliche Aktionen an verschiedene Elemente (Bereiche) gebunden werden können. Es gibt die folgenden Kontext-Elemente (Bereiche) im Gantt-Diagramm:
 
