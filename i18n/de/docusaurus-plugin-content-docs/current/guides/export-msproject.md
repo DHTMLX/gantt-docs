@@ -128,7 +128,7 @@ gantt.exportToMSProject({
 ~~~
 
 Die Eigenschaften dieses Objekts entsprechen den entsprechenden Eigenschaften der [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)).
-Die Liste der unterstützten Eigenschaften finden Sie [hier](guides/tags.md). Die Eigenschaften können entweder feste Werte oder Funktionen enthalten, die beim Aufruf des Exports ausgeführt werden.
+Die Liste der unterstützten Eigenschaften finden Sie [hier](guides/msp-import-properties.md). Die Eigenschaften können entweder feste Werte oder Funktionen enthalten, die beim Aufruf des Exports ausgeführt werden.
 
 - **tasks** - (object) ermöglicht das Festlegen benutzerdefinierter Eigenschaften für die exportierten Aufgaben
  
@@ -153,7 +153,7 @@ gantt.exportToMSProject({
 ~~~
 
 Die Eigenschaften dieses Objekts entsprechen den entsprechenden Eigenschaften der [Task entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)), 
-hier ist eine Liste der unterstützten [Eigenschaften](guides/tags.md#tasks-properties).
+hier ist eine Liste der unterstützten [Eigenschaften](guides/msp-import-properties.md#tasks-properties).
 Die Eigenschaften können entweder feste Werte oder Funktionen enthalten, die für jede Aufgabe im Datensatz beim Export aufgerufen werden.
 
 - **data** - (object) ermöglicht das Festlegen einer benutzerdefinierten Datenquelle, die im output Gantt-Diagramm dargestellt wird
@@ -414,7 +414,7 @@ gantt.importFromMSProject({
 Um Felder des Projekts zu erhalten, kann der Input **projectProperties** mit einem Array der benötigten Felder an den Server gesendet werden.
 Es extrahiert beliebige Eigenschaften der [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))
 in die **config**-Eigenschaft der Ausgabe.
-Hier ist die Liste der unterstützten [Eigenschaften](guides/tags.md#project-properties).
+Hier ist die Liste der unterstützten [Eigenschaften](guides/msp-import-properties.md#project-properties).
 
  - **projectProperties** - gibt ein Array von Projekt-Eigenschaften an, die in die Antwort aufgenommen werden sollen.
 
@@ -446,7 +446,7 @@ gantt.importFromMSProject({
 #### Abfragen von Aufgaben-Eigenschaften
 
 Um Feldwerte der Aufgaben abzurufen, kann der Input **taskProperties** mit einem Array der benötigten Felder an den Server gesendet werden.
-Es extrahiert beliebige Eigenschaften der [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Hier ist die Liste der unterstützten [Eigenschaften](guides/tags.md#tasks-properties):
+Es extrahiert beliebige Eigenschaften der [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Hier ist die Liste der unterstützten [Eigenschaften](guides/msp-import-properties.md#tasks-properties):
 
  - **taskProperties** - geben Sie ein Array zusätzlicher Eigenschaften der Aufgaben an, die importiert werden sollen.
 

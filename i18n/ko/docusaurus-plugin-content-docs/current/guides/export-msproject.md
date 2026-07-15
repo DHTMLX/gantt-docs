@@ -121,7 +121,7 @@ gantt.exportToMSProject({
 });
 ~~~
 
-이 객체의 속성은 MS Project의 해당 속성에 대응합니다. 지원되는 속성 목록은 [여기](guides/tags.md)에서 확인할 수 있습니다. 속성은 고정 값이거나 내보내기 호출 시 실행될 함수일 수 있습니다.
+이 객체의 속성은 MS Project의 해당 속성에 대응합니다. 지원되는 속성 목록은 [여기](guides/msp-import-properties.md)에서 확인할 수 있습니다. 속성은 고정 값이거나 내보내기 호출 시 실행될 함수일 수 있습니다.
 
 - **tasks** - (object) 내보낸 작업 항목에 커스텀 속성을 설정합니다.
 
@@ -145,7 +145,7 @@ gantt.exportToMSProject({
 });
 ~~~
 
-이 객체의 속성은 MS Project의 해당 작업 엔티티에 대응합니다. 지원되는 속성 목록은 [여기](guides/tags.md#tasks-properties)에서 확인할 수 있습니다. 속성은 고정 값이거나 내보내기 호출 시 각 작업마다 실행될 함수일 수 있습니다.
+이 객체의 속성은 MS Project의 해당 작업 엔티티에 대응합니다. 지원되는 속성 목록은 [여기](guides/msp-import-properties.md#tasks-properties)에서 확인할 수 있습니다. 속성은 고정 값이거나 내보내기 호출 시 각 작업마다 실행될 함수일 수 있습니다.
 
 - **data** - (object) 출력 Gantt 차트에 표시될 커스텀 데이터 소스를 설정합니다.
 
@@ -394,7 +394,7 @@ gantt.importFromMSProject({
 
 #### 프로젝트 속성 얻기
 
-프로젝트 필드를 얻으려면 필요한 필드들의 배열을 포함하는 projectProperties 입력을 서버로 보낼 수 있습니다. 이는 MS Project 엔티티의 임의 속성을 추출하여 출력의 config 속성에 넣습니다. 지원되는 [속성] 목록은 [여기](guides/tags.md#project-properties)에서 확인할 수 있습니다.
+프로젝트 필드를 얻으려면 필요한 필드들의 배열을 포함하는 projectProperties 입력을 서버로 보낼 수 있습니다. 이는 MS Project 엔티티의 임의 속성을 추출하여 출력의 config 속성에 넣습니다. 지원되는 [속성] 목록은 [여기](guides/msp-import-properties.md#project-properties)에서 확인할 수 있습니다.
 
  - **projectProperties** - 응답에 포함될 프로젝트 속성의 배열을 지정합니다.
 
@@ -425,7 +425,7 @@ gantt.importFromMSProject({
 
 #### 작업 속성 얻기
 
-작업 필드를 얻으려면 필요한 필드들의 배열을 포함하는 taskProperties 입력을 서버로 보낼 수 있습니다. 이는 MS Project Task 엔티티의 임의 속성을 추출합니다. 지원되는 [속성] 목록은 [여기](guides/tags.md#tasks-properties)에서 확인할 수 있습니다:
+작업 필드를 얻으려면 필요한 필드들의 배열을 포함하는 taskProperties 입력을 서버로 보낼 수 있습니다. 이는 MS Project Task 엔티티의 임의 속성을 추출합니다. 지원되는 [속성] 목록은 [여기](guides/msp-import-properties.md#tasks-properties)에서 확인할 수 있습니다:
 
  - **taskProperties** - 가져올 추가 작업 속성의 배열을 지정합니다.
 

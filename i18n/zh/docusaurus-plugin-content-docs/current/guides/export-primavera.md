@@ -147,7 +147,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-该对象的属性对应 [Project entity] 的相应属性。支持的属性列表可在 [这里](guides/properties.md) 找到。属性可以包含固定值或在导出调用时执行的函数。
+该对象的属性对应 [Project entity] 的相应属性。支持的属性列表可在 [这里](guides/primavera-import-properties.md) 找到。属性可以包含固定值或在导出调用时执行的函数。
 
 - **tasks** - (object) 允许为导出的任务项设置自定义属性
 
@@ -427,7 +427,7 @@ gantt.importFromPrimaveraP6({
 #### 获取项目属性
 
 要获取项目字段，可以向服务器发送带有所需字段数组的 **projectProperties** 输入。
-它将 [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 的任意属性提取到输出的 config 属性中。支持的 [properties](guides/properties.md#project-properties) 列表如下。
+它将 [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 的任意属性提取到输出的 config 属性中。支持的 [properties](guides/primavera-import-properties.md#project-properties) 列表如下。
 
  - **projectProperties** - 指定应放入响应中的项目属性数组。
 
@@ -459,7 +459,7 @@ gantt.importFromPrimaveraP6({
 #### 获取任务属性
 
 要获取任务字段，可以向服务器发送带有必要字段的 **taskProperties** 输入。
-它将 [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 的任意属性提取到输出中的任务属性。下面是 [properties](guides/properties.md#tasks-properties) 的支持列表：
+它将 [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 的任意属性提取到输出中的任务属性。下面是 [properties](guides/primavera-import-properties.md#tasks-properties) 的支持列表：
 
  - **taskProperties** - 指定要导入的额外任务属性数组。
 
