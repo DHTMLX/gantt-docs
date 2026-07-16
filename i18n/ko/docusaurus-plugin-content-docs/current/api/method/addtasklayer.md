@@ -100,7 +100,7 @@ gantt.addTaskLayer((task) => {
 - 주의: 커스텀 레이어는 다음 gantt.init 호출 후에 재설정됩니다
 - [gantt.resetLayout()](api/method/resetlayout.md) 메서드를 호출하면 커스텀 레이어도 재설정됩니다. 페이지에 커스텀 레이어를 표시하려면 resetlayout.md를 호출한 후 **gantt.addTaskLayer** 메서드를 다시 정의해야 합니다.
 
-## 사용자 정의 레이어의 스마트 렌더링
+## 사용자 정의 레이어의 스마트 렌더링 {#smart-rendering-for-custom-layers}
 
 [Smart rendering](guides/performance.md#smart-rendering) 은 사용자가 현재 볼 수 있는 HTML 요소만 표시하려고 시도하고 수평 및 수직 스크롤 바 아래에 숨겨지지 않도록 합니다.
 
@@ -251,5 +251,5 @@ gantt.addTaskLayer({
 
 ### Related Guides
 - [타임라인 영역의 커스텀 요소](guides/baselines.md)
-- [How-tos](guides/how-to.md#howtoverticallyreordertasksinthetimeline) (타임라인에서 작업을 수직으로 재정렬하는 방법 설명)
+- [How-tos](guides/how-to.md#how-to-vertically-reorder-tasks-in-the-timeline) (타임라인에서 작업을 수직으로 재정렬하는 방법 설명)
 

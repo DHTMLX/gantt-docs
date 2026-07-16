@@ -50,7 +50,7 @@ gantt.parse(data); /*!*/
 데이터 객체에 "start_date"와 "end_date" 값이 모두 포함되어 있고, 날짜 값이 시간 부분을 포함하지 않는 경우(예: 01-12-2025이고 01-12-2025 00:00이 아닌 경우) 추가 구성이 필요할 수 있습니다. 이 기사 [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates)를 꼭 확인하십시오.
 :::
 
-## 서버에서 로딩하기
+## 서버에서 로딩하기 {#loading-from-server}
 
 ### 클라이언트 측
 
@@ -161,7 +161,7 @@ End_date는 duration 매개변수보다 더 높은 우선순위를 가집니다.
 }
 ~~~
 
-## ISO 형식의 날짜 로딩
+## ISO 형식의 날짜 로딩 {#loading-dates-in-iso-format}
 
 v9.1.3부터 Gantt는 ISO 8601 날짜 문자열을 자동으로 감지하고 구문 분석합니다. 설정이 필요하지 않습니다.
 

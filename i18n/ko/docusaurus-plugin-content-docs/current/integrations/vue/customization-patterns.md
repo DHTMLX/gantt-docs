@@ -133,7 +133,7 @@ const collapseAll = () => {
 
 이를 도구 모음 상태로 구동되는 그리드 측 필터링과 함께 사용하세요.
 
-## Task Form(를 교체) (`customLightbox`)
+## Task Form(를 교체) (`customLightbox`) {#replace-the-task-form-customlightbox}
 
 내장 라이트박스가 충분하지 않고 태스크 편집에 Vue 컴포넌트가 필요할 때 `customLightbox`를 사용합니다.
 

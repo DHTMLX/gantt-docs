@@ -142,7 +142,7 @@ gantt.setWorkTime({
 	</tbody>
 </table>
 
-## 야간 근무 시간 설정하기
+## 야간 근무 시간 설정하기 {#configuration-object-properties}
 
 [setWorkTime](api/method/setworktime.md) 구성 객체에서 **hours** 속성을 지정할 때, 구간은 이른 시간부터 늦은 시간 순서로 나열해야 합니다. 내림차순으로 제공하면 일부 구간이 무시될 수 있습니다. 예를 들어, 다음과 같은 경우 `18:00` 이후 구간은 무시됩니다:
 

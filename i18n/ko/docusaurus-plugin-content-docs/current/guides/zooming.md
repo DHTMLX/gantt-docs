@@ -7,7 +7,7 @@ sidebar_label: "줌"
 
 dhtmlxGantt는 시간 축의 확대/축소를 편리하게 관리할 수 있는 내장 모듈을 제공합니다. 기본 줌 동작을 커스터마이즈하고 싶다면, 시간 축의 설정을 동적으로 변경하는 기능을 구현할 수 있게 해주는 [유연한 API](guides/zoom.md)가 있습니다.
 
-## 내장 줌 모듈
+## 내장 줌 모듈 {#built-in-zooming-module}
 
 내장된 [줌 모듈](guides/zoom.md)은 `gantt.ext.zoom` 확장에 선언되어 있습니다. 모듈을 활성화하려면 `gantt.ext.zoom.init(zoomConfig)`를 호출하고, 축 확대 수준 배열을 포함하는 구성 설정을 가진 `zoomConfig` 객체를 전달해야 합니다. 예시는 아래와 같습니다:
 
@@ -86,7 +86,7 @@ The detailed information about the zooming module and its API is given in the ar
 
 **Related sample**: [마우스 휠 확대/축소](https://docs.dhtmlx.com/gantt/samples/03_scales/14_scale_zoom_by_wheelmouse.html)
 
-### 기본 줌 레벨
+### 기본 줌 레벨 {#default-zoom-levels}
 
 만약 `levels` 설정 없이 `gantt.ext.zoom.init()`를 호출하면, 확장 기능은 준비된 이름이 있는 기본 레벨 세트를 사용합니다. - **"hour"**, **"day"**, **"week"**, **"month"**, 및 **"year"**. 이를 통해 한 번의 호출로 줌을 활성화하고 이름으로 축을 전환할 수 있습니다:
 
@@ -98,7 +98,7 @@ gantt.ext.zoom.setLevel("week");
 
 사용자 정의 스케일 또는 레이블이 필요하면 `levels` 배열을 제공합니다.
 
-## 화면에 맞추기(Zoom to fit)
+## 화면에 맞추기(Zoom to fit) {#zoom-to-fit}
 
 Zoom 확장은 모든 작업이 수평 스크롤 없이 타임라인 너비에 맞게 들어갈 수 있는 가장 상세한 줌 레벨을 자동으로 선택할 수 있습니다. [`gantt.ext.zoom.zoomToFit()`](guides/zoom.md#methods)를 호출하고, 이전 배율로 돌아가고 싶을 때는 [`gantt.ext.zoom.resetZoom()`](guides/zoom.md#methods)를 호출합니다:
 

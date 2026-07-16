@@ -51,7 +51,7 @@ Gantt 차트에 임계 경로를 표시하려면 [highlight_critical_path](api/c
 작업이 수정될 때마다 dhtmlxGantt는 임계 경로를 재계산하기 위해 데이터를 전체적으로 다시 그림니다. 때때로 성능 문제가 발생할 수 있습니다. 이러한 경우, 컴포넌트는 특정 작업이나 링크를 확인하고 임계 경로를 표시하기 위한 성능 친화적 전략을 구현할 수 있도록 공용 메서드를 제공합니다.  
 
 
-## 임계 경로 로직
+## 임계 경로 로직 {#critical-path-logic}
 
 다음과 같은 경우에 Gantt는 작업을 임계로 간주합니다:
 
@@ -188,7 +188,7 @@ gantt.getTotalSlack(task);
 ![Slack](/img/show_slack.png)
 
 
-## 임계 경로 동작 사용자 정의
+## 임계 경로 동작 사용자 정의 {#customizing-the-critical-path-behaviour}
 
 기본적으로 Gantt는 임계 경로에 기본 동작을 적용합니다. 예를 들어 강조 표시의 기본 스타일이나 데이터 업데이트마다 임계 경로를 재계산하는 방식 등이 해당됩니다.
 

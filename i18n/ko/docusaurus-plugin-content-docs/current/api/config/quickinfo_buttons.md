@@ -45,5 +45,5 @@ gantt.$click.buttons.advanced_details_button=function(id){
 - [onAfterQuickInfo](api/event/onafterquickinfo.md)
 
 ### Related Guides
-- [확장 기능 전체 목록](guides/extensions-list.md#quickinfo)
+- [확장 기능 전체 목록](guides/extensions-list.md#quick-info)
 

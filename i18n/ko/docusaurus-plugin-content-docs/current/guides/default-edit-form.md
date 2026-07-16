@@ -31,7 +31,7 @@ sidebar_label: "라이트박스 요소 구성"
 버전 7.1.13부터, [gantt.config.csp](api/config/csp.md)가 *true*로 설정되거나 Gantt가 Salesforce 환경에서 동작하는 경우, 라이트박스가 Gantt 컨테이너 내부에 렌더링됩니다.
 :::
 
-## 라이트박스 구조
+## 라이트박스 구조 {#lightbox-structure}
 
 ### 섹션
 

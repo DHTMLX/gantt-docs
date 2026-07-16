@@ -93,7 +93,7 @@ gantt.attachEvent("onTaskDblClick", function(id,e){
 gantt.config.readonly_property = "property_name";
 ~~~
 
-## "editable_property" 구성 옵션의 세부 정보
+## "editable_property" 구성 옵션의 세부 정보 {#details-of-the-editable_property-config-option}
 
 'editable_property'는 라이트박스 섹션이나 왼쪽 그리드의 열이 아니라, 태스크 데이터 객체의 속성을 가리킵니다:
 

@@ -103,7 +103,7 @@ gantt.exportToPrimaveraP6({
 
 **관련 샘플**: [Custom properties for WBS tasks (PrimaveraP6's Summary tasks)](https://snippet.dhtmlx.com/r90hjlvo?tag="gantt")
 
-### Export 설정
+### Export 설정 {#export-settings}
 
 `exportToPrimaveraP6()` 메서드는 여러 속성을 포함하는 객체를 매개변수로 받습니다(모든 속성은 선택적).
 
@@ -307,7 +307,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-## Primavera P6에서 가져오기
+## Primavera P6에서 가져오기 {#import-from-primavera-p6}
 
 XML 또는 XER 파일을 변환하려면 내보내기 서비스에 다음 요청을 보내야 합니다:
 
@@ -391,7 +391,7 @@ gantt.importFromPrimaveraP6({
             - 주의 7일(일요일 0에서 토요일 6까지) 중 1/true는 근무일, 0/false는 비근무일
             - 다른 기록은 날짜
 
-### Import 설정
+### Import 설정 {#import-settings}
 
 #### 지속 시간 단위 설정
 

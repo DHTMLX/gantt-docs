@@ -38,7 +38,7 @@ gantt.unsetWorkTime({ hours: [\"9:00-18:00\"] });
 - 또한, [캘린더 객체](api/other/calendar.md)에서 직접 호출할 수 있습니다.
 
 
-## 설정 객체 속성 {#configurationobjectproperties}
+## 설정 객체 속성 {#configuration-object-properties}
 
 
 <table class="list" cellspacing="0" cellpadding="5" border="0">

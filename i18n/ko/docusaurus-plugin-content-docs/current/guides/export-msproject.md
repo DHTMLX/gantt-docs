@@ -45,7 +45,7 @@ Gantt를 [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), 
 
 [MS Project용 내보내기 모듈 사용 방법 읽기](guides/msp-export-module.md).
 
-## MS Project로 내보내기
+## MS Project로 내보내기 {#export-to-ms-project}
 
 Gantt 컴포넌트는 Gantt 차트의 링크, 작업 및 리소스를 MS Project로 내보낼 수 있습니다.
 
@@ -80,7 +80,7 @@ gantt.exportToMSProject();
 
 **관련 샘플**: [Export data : MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
 
-### Export 설정
+### Export 설정 {#export-settings}
 
 The exportToMSProject() 메서드는 여러 속성을 가진 객체를 매개변수로 받습니다(모든 속성은 선택적).
 
@@ -281,7 +281,7 @@ gantt.exportToMSProject({
 });
 ~~~
 
-## MS Project에서의 가져오기
+## MS Project에서의 가져오기 {#import-from-ms-project}
 
 XML 또는 MPP MS Project 파일을 변환하려면 내보내기 서비스에 다음 요청을 보내야 합니다:
 

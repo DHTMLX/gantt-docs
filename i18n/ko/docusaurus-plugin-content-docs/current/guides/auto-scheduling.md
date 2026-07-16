@@ -400,7 +400,7 @@ gantt.attachEvent("onAutoScheduleCircularLink", (groups) => {
 });
 ~~~
 
-## 버전 호환성
+## 버전 호환성 {#version-compatibility}
 
 마우스 포인터로 작업의 날짜를 이동시키거나 라이트박스를 통해 날짜를 변경할 때, 작업은 자동으로 두 가지 제약 유형 중 하나를 받게 됩니다: **start no earlier than+%start date%** 또는 **finish no later than+%end date%**, 선택한 계획 전략에 따라 다릅니다.
 

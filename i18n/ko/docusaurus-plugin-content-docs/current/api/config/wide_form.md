@@ -34,5 +34,5 @@ gantt.config.wide_form = true;
 - [resizeLightbox](api/method/resizelightbox.md)
 
 ### Related Guides
-- [Lightbox 요소 작업하기](guides/lightbox-manipulations.md#settingsectionanditslabelonthesameline)
+- [Lightbox 요소 작업하기](guides/lightbox-manipulations.md#setting-section-and-its-label-on-the-same-line)
 

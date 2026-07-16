@@ -350,7 +350,7 @@ sidebar_label: "작업 속성"
   </tbody>
 </table>
 
-## 예제
+## 예제 {#dynamic-properties}
 
 ~~~js
 const data = {

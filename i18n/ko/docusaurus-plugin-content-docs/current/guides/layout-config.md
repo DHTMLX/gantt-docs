@@ -23,7 +23,7 @@ sidebar_label: "간트 차트 레이아웃"
 **관련 샘플**: [리소스 패널이 있는 간트 차트](https://docs.dhtmlx.com/gantt/samples/10_layout/02_resource_panel.html)
 
 
-## 기본 레이아웃
+## 기본 레이아웃 {#default-layout}
 
 레이아웃은 [gantt.config.layout](api/config/layout.md) 구성 옵션을 통해 설정됩니다. 기본 레이아웃 구성은 아래와 같습니다:
 
@@ -75,7 +75,7 @@ Gantt의 레이아웃은 뷰로 채워지는 셀로 구성됩니다. 주요 및 
 참고: Gantt 초기화 이전에 레이아웃 구성을 지정해야 합니다. 레이아웃에 변경을 가한 경우 [resetLayout](api/method/resetlayout.md)으로 새로 고쳐야 합니다.
 :::
 
-## 스크롤바
+## 스크롤바 {#scrollbar}
 
 레이아웃의 스크롤바는 **"scrollbar"** 뷰에 의해 지정됩니다. 수평 스크롤바와 수직 스크롤바를 모두 설정할 수 있습니다.
 
@@ -173,7 +173,7 @@ gantt.config.layout = {
 - [Gantt. Layout views with own scrollbars](https://snippet.dhtmlx.com/cv9w37tu)
 - [Gantt. Universal Layout configuration](https://snippet.dhtmlx.com/uqejdyqc)
 
-## 레이아웃 커스터마이징
+## 레이아웃 커스터마이징 {#layout-customization}
 
 기본 레이아웃 구성을 바꾸고 페이지의 Gantt 차트 요소 배치를 위한 필요한 스키마를 추가 레이아웃 뷰를 사용해 지정할 수 있습니다.
 
@@ -296,7 +296,7 @@ gantt.$container.classList.add("no_resizers");
 gantt.$container.classList.remove("no_resizers");
 ~~~
 
-## Inner View로서의 HTML
+## Inner View로서의 HTML {#html-as-inner-view}
 
 또한 Gantt 레이아웃의 내부 뷰로 일부 커스텀 HTML을 사용할 수 있습니다. 예를 들어:
 
@@ -323,7 +323,7 @@ gantt.config.layout = {
 ~~~
 
 
-## 필수 뷰 및 설정
+## 필수 뷰 및 설정 {#required-views-and-settings}
 
 gantt 객체의 공개 API에는 특정 레이아웃 뷰에서 파생된 메서드들이 포함됩니다. 예: [getTaskPosition](api/method/gettaskposition.md), [getTaskNode](api/method/gettasknode.md), [getScrollState](api/method/getscrollstate.md). 
 
@@ -376,7 +376,7 @@ gantt.config.layout = {
 
 레이아웃은 필요한 추가 뷰를 얼마든지 포함할 수 있습니다.
 
-## 뷰의 구성 및 템플릿
+## 뷰의 구성 및 템플릿 {#configs-and-templates-of-views}
 
 Grid와 Timeline 뷰는 전역 [gantt.config/gantt.templates](guides/common-configuration.md) 의 템플릿과 구성(configuration)을 재사용합니다. 다만 이러한 설정은 레이아웃 레벨에서 특정 뷰에 대해 재정의할 수 있습니다.
 
@@ -466,7 +466,7 @@ gantt.config.layout = {
 자원 관리(Resource Management) 문서를 확인하십시오.
 
 
-## 가시성 그룹
+## 가시성 그룹 {#visibility-groups}
 
 레이아웃의 일부 요소의 가시성을 동기화해야 하는 경우가 있습니다. 예를 들어 인접 셀에 수평 스크롤바가 있다면 두 스크롤바를 동시에 표시하거나 숨기고 싶을 수 있습니다.
 

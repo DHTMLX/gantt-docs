@@ -62,7 +62,7 @@ gantt.locale.labels["section_parent"] = "상위 작업";
 - **template** - (*function*) 선택 옵션에 대한 템플릿을 설정합니다
   
 
-## 옵션 필터링
+## 옵션 필터링 {#options-filtering}
 
 **parent** 컨트롤에 표시되는 옵션을 필터링하려면 **filter** 속성을 사용하세요:
 
@@ -95,7 +95,7 @@ gantt.config.lightbox.sections = [
 - *false*, 목록에서 제거되어야 하는 작업에 대해
 
 
-## 옵션 정렬
+## 옵션 정렬 {#options-sorting}
 
 **parent** 컨트롤에 표시되는 옵션을 정렬하려면 **sort** 속성을 사용합니다:
 

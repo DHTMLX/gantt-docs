@@ -96,7 +96,7 @@ store.updateItem(resourceId, { text: "modified" });
 
  datastore.updateItem()의 동등한 쌍은 [gantt.updateTask()](api/method/updatetask.md) 및 [gantt.updateLink()](api/method/updatelink.md)입니다.
 
-다음 이벤트들([onBeforeUpdate](#onbeforeupdate-id-item), [onAfterUpdate](#onafterupdate-id-item) 및 [onStoreUpdated](#onstoreupdated-id-item))을 발생시킵니다.
+다음 이벤트들([onBeforeUpdate](#onbeforeupdate-id-item), [onAfterUpdate](#onafterupdate-id-item) 및 [onStoreUpdated](#onstoreupdated-id-item-action))을 발생시킵니다.
 
 ---
 

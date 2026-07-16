@@ -340,7 +340,7 @@ const modals = {
 
 From `@dhtmlx/trial-vue-gantt` 또는 `@dhx/vue-gantt`:
 
-### 타입 수출(Type Exports)
+### 타입 수출(Type Exports) {#type-exports}
 
  wrapper 패키지 자체에서 모든 타입을 가져옵니다(`@dhx/vue-gantt` 또는 `@dhtmlx/trial-vue-gantt`). 래퍼는 기본 Gantt 엔진의 타입을 Vue에 특화된 타입과 함께 다시 내보내며, 설치하거나 import해야 하는 별도의 `@dhx/gantt` 패키지는 없습니다.
 

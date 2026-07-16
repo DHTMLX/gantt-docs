@@ -149,7 +149,7 @@ gantt.config.columns = [
 이미 분(minute), 시간(hour) 또는 다른 단위로 지속 시간이 저장된 상태에서 시작했다면 [Duration Formatter](guides/formatters-ext.md) 모듈을 사용해 소수 형식으로 지속 시간을 표시할 수 있습니다.
 :::
 
-## 글로벌 설정
+## 글로벌 설정 {#global-settings}
 
 ### 근무 시간 설정
 

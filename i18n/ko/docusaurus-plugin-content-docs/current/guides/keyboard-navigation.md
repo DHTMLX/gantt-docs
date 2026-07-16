@@ -29,7 +29,7 @@ gantt.plugins({
 
 이 탐색 유형을 사용하려면 [keyboard_navigation_cells](api/config/keyboard_navigation_cells.md) 속성을 *true*로 설정합니다.
 
-## 키보드 네비게이션 중 포커스 동작
+## 키보드 네비게이션 중 포커스 동작 {#focus-behavior-during-keyboard-navigation}
 
 ### Gantt에 포커스
 
@@ -56,7 +56,7 @@ Tab 키를 두 번째로 누르면 포커스가 Gantt를 벗어나 페이지의 
 버전 7.1.13부터는 커스텀 요소에 *'no_keyboard_navigation'* 클래스를 추가하여 포커스가 그리드 셀/행로 복원되지 않도록 할 수 있습니다.
 :::
 
-## 스코프
+## 스코프 {#scopes}
 
 키 클릭 시 호출되는 동작은 컨텍스트에 따라 다릅니다. 즉, 서로 다른 요소(스코프)에 서로 다른 동작을 연결할 수 있습니다. Gantt 차트에는 다음과 같은 컨텍스트 요소(스코프)가 있습니다:
 

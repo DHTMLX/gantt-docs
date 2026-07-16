@@ -37,7 +37,7 @@ gantt.config.lightbox.sections="["
 gantt.locale.labels.section_period = "기간";
 ~~~
 
-## 속성
+## 속성 {#properties}
 
 다음 속성은 주로 중요하고 'time' 컨트롤에 대해 일반적으로 설정됩니다(전체 목록은 [여기](api/config/lightbox.md)를 참조하십시오):
 
@@ -120,7 +120,7 @@ gantt.config.lightbox.sections = [
 일부 속성이 지정되지 않으면 컨트롤은 관련 필수 날짜 속성의 값을 사용합니다.
 :::
 
-## 섹션 가시성 전환
+## 섹션 가시성 전환 {#switching-section-visibility}
 
 섹션의 가시성을 제어하려면 lightbox 구성을 할 때 **type:"time_optional"** 및 **button: true**를 지정할 수 있습니다:
 

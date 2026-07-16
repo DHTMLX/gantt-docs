@@ -24,7 +24,7 @@ gantt.config.columns = [
 <iframe width="676" height="400" src="https://www.youtube.com/embed/-BoznxJmJIo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-## 개요
+## 개요 {#overview}
 
 기본적으로 그리드에는 4개의 열이 있습니다:
 
@@ -85,7 +85,7 @@ gantt.templates.grid_row_class = ( start, end, task ) => {
 **관련 샘플**: [Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
 
 
-## 너비
+## 너비 {#width}
 
 열의 너비를 설정하려면 관련 열 객체의 속성 [width](api/config/columns.md)을 사용합니다:
 
@@ -475,7 +475,7 @@ gantt.config.external_render = {
 - 만약 **isElement**가 true를 반환하면 해당 객체가 **renderElement**로 전달되며, 이는 셀의 DOM 요소 안에 컴포넌트 객체를 초기화하는 역할을 합니다.
 
 
-## 수평 스크롤바
+## 수평 스크롤바 {#horizontal-scrollbar}
 
 그리드를 스크롤 가능하게 만들려면 레이아웃 구성 옵션의 **scrollable** 속성을 사용할 수 있습니다. 
 [레이아웃 뷰를 스크롤바에 바인딩하는 방법 읽기](guides/layout-config.md#scrollbar).
