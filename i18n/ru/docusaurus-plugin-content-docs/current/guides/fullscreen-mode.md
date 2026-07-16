@@ -127,7 +127,7 @@ gantt.ext.fullscreen.getFullscreenElement();
 
 По умолчанию метод **getFullscreenElement()** возвращает HTML-контейнер диаграммы Gantt. Вы можете переопределить этот метод [для расширения Gantt дополнительными элементами в полноэкранном режиме](guides/fullscreen-mode.md#gantt-with-the-headertoolbar-in-the-fullscreen).
 
-## Gantt с заголовком/панелью инструментов в полноэкранном режиме
+## Gantt с заголовком/панелью инструментов в полноэкранном режиме {#gantt-with-the-headertoolbar-in-the-fullscreen}
 
 API Gantt предоставляет возможность расширить Gantt до полноэкранного режима через метод **getFullscreenElement()** объекта *fullscreen*:
 

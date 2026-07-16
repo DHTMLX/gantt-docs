@@ -92,7 +92,7 @@ bower install gantt
 <link rel="stylesheet" href="codebase/dhtmlxgantt.css">
 ~~~
 
-## Добавление PRO-версии в проект
+## Добавление PRO-версии в проект {#adding-pro-edition-into-project}
 
 ### **Установить Pro-версию**
 
@@ -129,7 +129,7 @@ bower install gantt
 
 Чтобы увидеть разницу между Community и PRO версиями библиотеки dhtmlxGantt, смотрите соответствующую статью [Community vs PRO Library Versions](guides/editions-comparison.md).
 
-### **Удаление пробной версии**
+### **Удаление пробной версии** {#uninstall-trial-version}
 
 Правильный способ установки Pro-версии — удалить пакет пробной версии:
 

@@ -45,7 +45,7 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-## setting default value for a lightbox's control
+## setting default value for a lightbox's control {#setting-the-default-value-for-a-lightboxs-control}
 
 Чтобы задать значение по умолчанию для секции Lightbox, используйте свойство **default_value** объекта секции.
 

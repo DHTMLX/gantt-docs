@@ -20,7 +20,7 @@ DataProcessor — встроенный модуль, который отслеж
 <iframe width="704" height="400" src="https://www.youtube.com/embed/D8YzyzBfyP8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-## Методика
+## Методика {#technique}
 
 Вообще, чтобы загрузить данные со стороны сервера с использованием REST API, нужно:
 
@@ -455,7 +455,7 @@ tasks.save(currentTask);
 [Rails](integrations/other/howtostart-ruby.md#storingtheorderoftasks).
 
 
-## Пользовательские заголовки и параметры запроса 
+## Пользовательские заголовки и параметры запроса {#custom-request-headers-and-parameters}
 
 ### Добавление пользовательских заголовков запроса
 
@@ -699,7 +699,7 @@ gantt.createDataProcessor((entity, action, data, id) => {
 ~~~
 
 
-## Обработка ошибок
+## Обработка ошибок {#error-handling}
 
 Сервер может уведомлять Gantt о неудачном выполнении действия, вернув ответ типа "action":"error":
 

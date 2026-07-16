@@ -57,7 +57,7 @@ task.start_date = gantt.calculateEndDate({
 });
 ~~~
 
-## Свойства объекта конфигурации
+## Свойства объекта конфигурации {#configuration-object-properties}
 
 Объект конфигурации может содержать следующие свойства:
 

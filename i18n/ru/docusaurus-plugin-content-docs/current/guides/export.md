@@ -50,7 +50,7 @@ Error: Timeout trigger 20 seconds
 
 [Подробнее об использовании модуля экспорта для PDF](guides/pdf-export-module.md).
 
-## Экспорт в PDF
+## Экспорт в PDF {#export-to-pdf}
 
 Чтобы экспортировать диаграмму Gantt в PDF-документ, выполните следующие шаги:
 
@@ -88,7 +88,7 @@ gantt.plugins({
 **Связанный пример**: [Export data from Gantt](https://docs.dhtmlx.com/gantt/samples/08_api/06_export.html)
 
 
-## Экспорт в PNG
+## Экспорт в PNG {#export-to-png}
 
 Чтобы экспортировать диаграмму Gantt в PNG-изображение, выполните следующие шаги:
 
@@ -124,7 +124,7 @@ gantt.plugins({
 **Связанный пример**: [Export data from Gantt](https://docs.dhtmlx.com/gantt/samples/08_api/06_export.html)
 
 
-## Параметры методов экспорта
+## Параметры методов экспорта {#parameters-of-the-export-methods}
 
 Методы [exportToPDF](api/method/exporttopdf.md) и [exportToPNG](api/method/exporttopng.md) принимают в качестве параметра один и тот же объект с набором свойств (все свойства являются необязательными):
 
@@ -311,7 +311,7 @@ gantt.exportToPDF({
 [Посмотреть полный список доступных скинов Gantt](guides/skins.md).
 
 
-## Заголовок/нижний колонтитул выходного файла
+## Заголовок/нижний колонтитул выходного файла {#headerfooter-of-the-output-file}
 
 Чтобы добавить заголовок/нижний колонтитул к выходному PNG или PDF файлу, используйте свойства **header**/**footer** в параметрах методов [exportToPDF/exportToPNG](guides/export.md#parameters-of-the-export-methods):
 
@@ -352,7 +352,7 @@ gantt.exportToPDF({
 
 Обратите внимание, что эти настройки работают только при указанных полях (margins) и если есть достаточно места для корректного отображения заголовков/нижних колонтитулов. В противном случае заголовки/нижние колонтитулы будут выведены за пределы графика. Рекомендуется установить минимальные поля в 10 мм для простой текстовой строки.
 
-## Отступы выходного PDF файла
+## Отступы выходного PDF файла {#margins-of-the-output-pdf-file}
 
 Чтобы добавить отступы к выходному PDF файлу, используйте свойство **margins** в объекте **additional_settings** метода 
 [exportToPDF](guides/export.md#parameters-of-the-export-methods). Свойство **margins** работает как для одностраничного, так и для
@@ -476,7 +476,7 @@ gantt.exportToPDF({
 
 Проверьте [системные требования](guides/export-requirements.md) для локальной установки сервисов экспорта.
 
-## Экспорт HTML-элементов
+## Экспорт HTML-элементов {#exporting-html-elements}
 
 При экспорте диаграммы Gantt в форматы PNG и PDF следует учитывать, что экспорт HTML-элементов ограничен по причине возможной небезопасности.
 

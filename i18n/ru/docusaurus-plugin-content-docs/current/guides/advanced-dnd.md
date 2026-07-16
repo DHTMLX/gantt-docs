@@ -85,7 +85,7 @@ gantt.$task_data.attachEvent("onBeforeDrag", function (coords) {
 Обратите внимание, что обработчики событий можно добавлять только для существующего элемента. Поэтому следует добавлять обработчики после инициализации Gantt, иначе они не будут работать, поскольку элементы ещё не созданы.
 :::
 
-## Создание задач с помощью перетаскивания
+## Создание задач с помощью перетаскивания {#creating-tasks-with-drag-n-drop}
 
 Вы можете создавать задачи с помощью перетаскивания прямо на временной шкале, щёлкнув в пустом месте, чтобы задать начальную дату задачи, и перетащив вправо, чтобы задать её продолжительность.
 
@@ -117,11 +117,11 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 
 [Create new tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/24_click_drag.html)
 
-## Установка времени для задач без расписания
+## Установка времени для задач без расписания {#setting-time-for-unscheduled-tasks}
 
 Расширение **click_drag** позволяет задавать время для [задач без расписания](guides/unscheduled-tasks.md) с помощью перетаскивания.
 
-## Выбор задач с помощью перетаскивания
+## Выбор задач с помощью перетаскивания {#selecting-tasks-with-drag-n-drop}
 
 Возможен выбор задач с помощью перетаскивания в нескольких режимах: по датам, по строкам или в пределах ограничений.
 
@@ -167,7 +167,7 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 
 [Select multiple tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/25_click_drag_select_by_drag.html)
 
-## Создание частей разбитых задач
+## Создание частей разбитых задач {#creating-parts-of-split-tasks}
 
 :::info
 Эта функциональность доступна только в PRO-Edition.

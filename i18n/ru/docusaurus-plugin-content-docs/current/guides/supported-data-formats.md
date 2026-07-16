@@ -12,7 +12,7 @@ dhtmlxGantt поддерживает загрузку данных в неско
 3. [JSON с коллекциями](guides/supported-data-formats.md#jsonwithcollections)
 4. [XML (dhtmlxGantt < 2.0)](guides/supported-data-formats.md#xmldhtmlxganttlt20)
 
-Также возможно [добавлять любые пользовательские свойства в данные Gantt](guides/supported-data-formats.md#custompropertiesindata).
+Также возможно [добавлять любые пользовательские свойства в данные Gantt](guides/supported-data-formats.md#custom-properties-in-data).
 
 
 ## JSON {#json}
@@ -133,7 +133,7 @@ dhtmlxGantt поддерживает загрузку данных в неско
 </data>
 ~~~
 
-## Пользовательские свойства в данных {#custompropertiesindata}
+## Пользовательские свойства в данных {#custom-properties-in-data}
 
 В следующих примерах используются два пользовательских свойства:
 

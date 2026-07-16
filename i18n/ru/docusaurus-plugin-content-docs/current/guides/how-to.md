@@ -5,7 +5,7 @@ sidebar_label: "Решения"
 
 # Решения
 
-## Как переключать грид и чарт
+## Как переключать грид и чарт {#how-to-toggle-gridchart}
 
 Если вы используете конфигурацию макета по умолчанию, вы можете изменить параметры [show_grid](api/config/show_grid.md) или [show_chart](api/config/show_chart.md) и использовать метод [render()](api/method/render.md) для перерисовки изменений.
 
@@ -65,7 +65,7 @@ function toggleChart() {
 
 **Связанный пример** [Gantt. Переключение таймлайна (пользовательский макет)](https://snippet.dhtmlx.com/aukjyqc8)
 
-## Как переключать представление ресурсов
+## Как переключать представление ресурсов {#how-to-toggle-the-resource-view}
 
 Как и в предыдущем случае использования, нужно создать несколько конфигураций макета — с представлениями ресурсов и без них. Чтобы переключаться между ними, необходимо изменить параметр [gantt.config.layout](api/config/layout.md) и применить метод [init()](api/method/init.md) для просмотра изменений:
 
@@ -107,7 +107,7 @@ function layoutChange() {
 
 **Связанный пример** [Gantt. Создание макета](https://snippet.dhtmlx.com/3dnzfhit)
 
-## Как обеспечить бесконечную прокрутку в таймлайне
+## Как обеспечить бесконечную прокрутку в таймлайне {#how-to-have-an-infinite-scroll-in-the-timeline}
 
 Существует несколько способов реализации бесконечной прокрутки. Но в большинстве случаев нужно изменить отображаемый диапазон дат ([gantt.config.start_date](api/config/start_date.md) и [gantt.config.end_date](api/config/end_date.md) параметры):
 
@@ -221,7 +221,7 @@ gantt.attachEvent("onTaskDrag", function (id, mode, task, original) {
 
 **Связанный пример** [Gantt. Бесконечная прокрутка при перетаскивании задачи (явный диапазон)](https://snippet.dhtmlx.com/3lrm0wyp)
 
-## Как динамически загружать задачи
+## Как динамически загружать задачи {#how-to-load-tasks-dynamically}
 
 Вы можете определить, что прокрутили до последней видимой задачи в событии [onGanttScroll](api/event/onganttscroll.md), и использовать метод [parse()](api/method/parse.md) для загрузки новых задач:
 
@@ -239,7 +239,7 @@ gantt.attachEvent("onGanttScroll", function (left, top) {
 
 **Связанный пример** [Gantt. Динамическая загрузка данных](https://snippet.dhtmlx.com/39l7o0rm)
 
-## Как добавить/развернуть все задачи при помощи кнопки
+## Как добавить/развернуть все задачи при помощи кнопки {#how-to-expandcollapse-all-tasks-with-a-button}
 
 Можно использовать методы [open()](api/method/open.md) и [close()](api/method/close.md) для открытия и закрытия задачи. Чтобы выполнить это для всех задач на диаграмме, нужно использовать метод внутри функции [eachTask()](api/method/eachtask.md). Чтобы переработать изменения только один раз, можно обернуть функцию в метод [batchUpdate()](api/method/batchupdate.md):
 
@@ -265,7 +265,7 @@ function expandAll() {
 
 **Связанный пример** [Gantt. Сворачивать/разворачивать все задачи](https://snippet.dhtmlx.com/72zahagy)
 
-## Как отображать несколько строк в ячейке/заголовке грид
+## Как отображать несколько строк в ячейке/заголовке грид {#how-to-display-several-lines-in-the-grid-cellheader}
 
 Это можно добиться добавлением некоторых правил стилей.
 
@@ -294,7 +294,7 @@ function expandAll() {
 
 **Связанный пример** [Gantt. Многострочный текст в ячейках столбца Grid](https://snippet.dhtmlx.com/bwil9sxs)
 
-## Как добавить пользовательский столбец в грид
+## Как добавить пользовательский столбец в грид {#how-to-add-a-custom-column-in-the-grid}
 
 Чтобы добавить пользовательский столбец, нужно изменить параметр [gantt.config.columns](api/config/columns.md). Если вы указываете параметр **name**, Gantt вернет значение свойства задачи с тем же именем. Также можно использовать функцию [template()](guides/specifying-columns.md#datamappingandtemplates), чтобы вернуть любое пользовательское значение даты или HTML-элементы.
 
@@ -319,7 +319,7 @@ gantt.config.columns = [
 
 **Связанный пример** [Gantt. Пользовательский столбец с шаблоном для кнопок действий](https://snippet.dhtmlx.com/gfsdp121)
 
-## Как добавить пользовательскую кнопку добавления (+)
+## Как добавить пользовательскую кнопку добавления (+) {#how-to-add-a-custom-add-button}
 
 Необходимо создать пользовательский столбец через параметр [gantt.config.columns](api/config/columns.md). Вы можете задать любое имя для этого столбца, кроме *add*. В противном случае Gantt автоматически добавит столбец по умолчанию *add*. Возможно вернуть любые HTML-элементы в столбец грида с помощью функции [template](guides/specifying-columns.md#datamappingandtemplates). Это означает, что вы можете вернуть кнопку и привязать к ней обработчик клика с вашей собственной функцией для добавления задач.
 
@@ -454,7 +454,7 @@ gantt.config.scales = [
 
 **Связанный пример** [Gantt. Недели года на шкале](https://snippet.dhtmlx.com/gbowxpmr)
 
-## Как копировать и вставлять задачи
+## Как копировать и вставлять задачи {#how-to-copy-and-paste-tasks}
 
 Можно использовать метод [copy()](api/method/copy.md) для создания глубокой копии объекта задачи. Затем можно изменить ID клонированной задачи. После этого можно добавить клонированную задачу с помощью методов [addTask()](api/method/addtask.md) или [createTask()](api/method/createtask.md).
 
@@ -598,7 +598,7 @@ gantt.ext.keyboardNavigation.addShortcut("ctrl+v", function (e) {
 
 **Связанный пример** [Gantt. Копирование и вставка задач через Ctrl+C, Ctrl+V](https://snippet.dhtmlx.com/kck3pnmh)
 
-## Как добавить диаграмму ресурсов или пользовательские стили в экспортируемый PDF
+## Как добавить диаграмму ресурсов или пользовательские стили в экспортируемый PDF {#how-to-add-resource-chart-or-custom-styles-in-the-exported-pdf-file}
 
 Необходимо экспортировать данные в режиме [raw](guides/export.md#exportingcustommarkupandstyles) и включить стили в параметры экспорта [header](guides/export.md#customstylefortheoutputfile) или [footer](guides/export.md#customstylefortheoutputfile) экспортной функции.
 
@@ -655,7 +655,7 @@ gantt.exportToPDF({
 
 **Связанный пример** [Gantt. Экспорт Gantt с ресурсной гистограммой в PDF](https://snippet.dhtmlx.com/i9me4oxl)
 
-## Как рассчитывать прогресс задачи в зависимости от дочерних задач
+## Как рассчитывать прогресс задачи в зависимости от дочерних задач {#how-to-calculate-task-progress-depending-on-child-tasks}
 
 Простой способ реализации — вычислять прогресс родительской задачи после обновления дочерней задачи. Чтобы пройтись по родительским задачам, можно использовать метод [eachParent()](api/method/eachparent.md).
 
@@ -795,7 +795,7 @@ gantt.templates.task_class = (start, end, task) =>
 [Calculate Progress of Summary Tasks](https://docs.dhtmlx.com/gantt/samples/08_api/16_dynamic_progress.html)
 
 
-## КакVertically reorder tasks in the timeline
+## КакVertically reorder tasks in the timeline {#how-to-vertically-reorder-tasks-in-the-timeline}
 
 You can use the [addTaskLayer()](api/method/addtasklayer.md) method to display custom HTML elements in the timeline and add functions to drag them vertically and horizontally.
 
@@ -807,7 +807,7 @@ You can use the [addTaskLayer()](api/method/addtasklayer.md) method to display c
 
 **Связанный пример** [Gantt. Перемещение разделённых задач по вертикали в таймлайне](https://snippet.dhtmlx.com/usfulweq)
 
-## Как зафиксировать колонки в гриде
+## Как зафиксировать колонки в гриде {#how-to-freezefix-columns-in-the-grid}
 
 Это можно сделать с помощью CSS. Необходимо задать элементу с позицией 'relative' фиксируемую колонку. Параметр 'left' должен иметь такое же значение, как и положение полосы прокрутки, чтобы можно было повесить обработчик на прокрутку и обновлять CSS-переменную:
 

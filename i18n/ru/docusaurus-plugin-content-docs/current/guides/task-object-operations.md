@@ -50,7 +50,7 @@ gantt.calculateDuration(new Date(2020,03,30),new Date (2020,04,02)); // ->16
 
 Замечание: если опция [work_time](api/config/work_time.md) включена, метод [calculateDuration](api/method/calculateduration.md) рассчитывает длительность задачи в рабочем времени. 
 
-## Высота задачи
+## Высота задачи {#task-height}
 
 Чтобы получить высоту DOM‑элемента задачи, используйте метод [getTaskBarHeight](api/method/gettaskbarheight.md):
 

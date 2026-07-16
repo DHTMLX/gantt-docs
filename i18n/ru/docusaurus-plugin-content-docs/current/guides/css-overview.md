@@ -7,7 +7,7 @@ sidebar_label: "Документация по CSS"
 
 Эта статья показывает способы переопределения настроек цвета по умолчанию для элементов Gantt с использованием пользовательских значений. В статье рассмотрены основные селекторы классов и шаблоны для стилизации следующих частей Gantt: [Grid area](guides/css-overview.md#styling-grid), [Timeline area](guides/css-overview.md#styling-timeline), [Resource panel](guides/css-overview.md#resource-panel).
 
-## Стилизация грида
+## Стилизация грида {#styling-grid}
 
 В этом разделе вы найдете CSS-селекторы для стилизации основных элементов [ Grid area ].
 
@@ -225,7 +225,7 @@ gantt.config.row_height = 40;
 
 - или же можно добиться того же результата, применив селектор `.gantt_row .gantt_cell[data-column-index="1"]`, который определяет столбец по индексу.
 
-## Стилизация таймлайна
+## Стилизация таймлайна {#styling-timeline}
 
 Раздел "Styling Timeline" приведёт вас через CSS-селекторы, которые можно применить, чтобы изменить стиль по умолчанию элементов [таймлайна](guides/time-scale.md).
 
@@ -765,7 +765,7 @@ gantt.templates.timeline_cell_class = (task, date) => {
 
 **Связанный пример**: [Duration includes only working days](https://docs.dhtmlx.com/gantt/samples/09_worktime/02_working_days.html)
 
-## Панель ресурсов
+## Панель ресурсов {#resource-panel}
 
 [Панель ресурсов](guides/resource-management.md#resourceviewpanel) состоит из гридов и таймлайнов, аналогичных основной зоне Gantt.
 

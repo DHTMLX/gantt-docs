@@ -104,7 +104,7 @@ gantt.exportToPrimaveraP6({
 
 **Связанный пример**: [Custom properties for WBS tasks (PrimaveraP6's Summary tasks)](https://snippet.dhtmlx.com/r90hjlvo?tag="gantt")
 
-### Настройки экспорта
+### Настройки экспорта {#export-settings}
 
 Метод **exportToPrimaveraP6()** принимает в качестве параметра объект с рядом свойств (все свойства являются необязательными):
 
@@ -309,7 +309,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-## Импорт из Primavera P6
+## Импорт из Primavera P6 {#import-from-primavera-p6}
 
 Чтобы преобразовать XML или XER файл, необходимо отправить следующий запрос на сервис экспорта:
 
@@ -672,7 +672,7 @@ gantt.importFromPrimaveraP6({
 
 
 
-## Ограничения на размер запроса и импорт больших файлов
+## Ограничения на размер запроса и импорт больших файлов {#limits-on-request-size-and-import-of-large-files}
 
 Существуют два API-эндпойнта для сервисов экспорта/импорта Primavera P6:
 

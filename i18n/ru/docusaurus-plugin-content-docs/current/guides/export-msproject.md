@@ -51,7 +51,7 @@ Error: Timeout trigger 20 seconds
 [Подробнее об использовании модуля экспорта для MS Project](guides/msp-export-module.md). 
 
 
-## Экспорт в MS Project
+## Экспорт в MS Project {#export-to-ms-project}
 
 Компонент Gantt позволяет экспортировать связи, задачи и ресурсы в MS Project.
 
@@ -88,7 +88,7 @@ gantt.exportToMSProject();
 **Связанный пример**: [Export data : MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
 
 
-### Настройки экспорта
+### Настройки экспорта {#export-settings}
 
 Метод **exportToMSProject()** принимает в качестве параметра объект с набором свойств (все свойства являются необязательными):
 
@@ -293,7 +293,7 @@ gantt.exportToMSProject({
 });
 ~~~
 
-## Импорт из MS Project
+## Импорт из MS Project {#import-from-ms-project}
 
 Чтобы конвертировать XML или MPP файл MS Project, нужно отправить следующий запрос к сервису экспорта:
 
@@ -379,7 +379,7 @@ gantt.importFromMSProject({
             - 7 дней недели (от 0 — воскресенье до 6 — суббота), где 1/true обозначает рабочий день и 0/false — нерабочий день
             - другие записи — даты
   
-### Настройки импорта
+### Настройки импорта {#import-settings}
 
 #### Установка единицы продолжительности
 
@@ -656,7 +656,7 @@ gantt.importFromMSProject({
 }
 ~~~
 
-## Ограничения по размеру запроса и импорт крупных файлов
+## Ограничения по размеру запроса и импорт крупных файлов {#limits-on-request-size-and-import-of-large-files}
 
 Существуют два API-эндпойнта для сервисов экспорта/импорта MSProject:
 

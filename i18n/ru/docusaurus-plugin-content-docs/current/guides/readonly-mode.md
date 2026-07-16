@@ -95,7 +95,7 @@ gantt.config.readonly_property = "property_name";
 ~~~
 
 
-## Детали конфигурационной опции "editable_property"
+## Детали конфигурационной опции "editable_property" {#details-of-the-editable_property-config-option}
 
 Свойство 'editable_property' относится к свойству объекта данных задачи, а не к разделу lightbox или к колонке левой панели grid:
 
