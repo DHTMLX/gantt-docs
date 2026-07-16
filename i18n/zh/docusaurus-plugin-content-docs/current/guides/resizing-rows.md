@@ -16,7 +16,7 @@ dhtmlxGantt 库提供两种方式来管理行高：
 本功能在 v7.1 及以上版本可用。
 :::
 
-## 设置行高
+## 设置行高 {#setting-the-row-height}
 
 您可以根据需要调整某一行的高度。
 
@@ -54,7 +54,7 @@ gantt.render();
 
 如果任务对象的 **row_height** 和 **bar_height** 属性未指定或为空（默认状态），将使用 [gantt.config.row_height](api/config/row_height.md) 和 [gantt.config.bar_height](api/config/bar_height.md) 的值。
 
-## 通过拖放调整行高
+## 通过拖放调整行高 {#tongguotuozhuaidiaozhengxinggao}
 
 ![resize_row](/img/resize_row.png)
 

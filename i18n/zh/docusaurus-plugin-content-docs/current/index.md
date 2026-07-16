@@ -18,7 +18,7 @@ DHTMLX Gantt 提供 Standard 和 PRO 两个版本。PRO 版本包括自动排程
 
 ---
 
-## 按框架快速开始
+## 按框架快速开始 {#quick-start-by-framework}
 
 您可以将 DHTMLX Gantt 作为原生 JavaScript 组件使用，也可以集成到现代框架中。 
 从适合您技术栈的分步"入门指南"开始:

@@ -22,7 +22,7 @@ sidebar_label: "拖动时间线中的任务"
 5. [设置最小任务时长](#setting-minimal-task-duration)。
 6. [在任务拖动时自动滚动](#autoscrollduringtasksdragging)。
 
-## 拒绝特定任务的拖动
+## 拒绝特定任务的拖动 {#denying-dragging-of-specific-tasks}
 
 要禁止特定任务的拖动，请使用 [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) 事件：
 
@@ -35,7 +35,7 @@ gantt.attachEvent("onBeforeTaskDrag", (taskId, dragMode, event) => {
 });
 ~~~
 
-## 拒绝将任务拖出特定日期范围
+## 拒绝将任务拖出特定日期范围 {#denying-dragging-tasks-out-of-specific-dates}
 
 要禁止将任务拖出特定日期，请使用 [onTaskDrag](api/event/ontaskdrag.md) 事件。
 
@@ -90,7 +90,7 @@ gantt.attachEvent("onTaskDrag", (taskId, dragMode, task, originalTask) => {
 });
 ~~~
 
-## 拖动子任务与父任务一起拖动
+## 拖动子任务与父任务一起拖动 {#dragging-children-together-with-the-parent}
 
 要在用户拖动父任务时同时允许拖动子任务，请使用 [onTaskDrag](api/event/ontaskdrag.md) 事件（见上文对该事件的说明）：
 
@@ -151,7 +151,7 @@ gantt.config.drag_project = true;
 
 实现任务及其依赖任务一起移动有多种方式。你可以在单独的文章中了解它们 [Dragging Tasks Together with Their Dependent Tasks](guides/dragging-dependent-tasks.md)。
 
-## 设置最小任务时长
+## 设置最小任务时长 {#setting-minimal-task-duration}
 
 最小任务时长可以通过 [min_duration](api/config/min_duration.md) 设置。
 
@@ -190,7 +190,7 @@ gantt.init("gantt_here");
 
 
 
-## 禁用特定任务的调整大小
+## 禁用特定任务的调整大小 {#disabling-resize-of-specific-tasks}
 
 如果你想阻止某些任务被调整大小，可以有两种做法：
 
@@ -224,7 +224,7 @@ gantt.attachEvent("onBeforeTaskDrag", (taskId, dragMode, event) => {
 });
 ~~~
 
-## 哪一边在调整任务的大小
+## 哪一边在调整任务的大小 {#which-side-of-a-task-is-being-resized}
 
 拖放的 ["resize"](api/event/onbeforetaskdrag.md) 模式意味着用户从开始日期或结束日期之一调整任务的大小。
 
@@ -243,7 +243,7 @@ gantt.attachEvent("onBeforeTaskDrag", (taskId, dragMode, event) => {
 });
 ~~~
 
-## 禁用任务的开始日期或结束日期的调整大小
+## 禁用任务的开始日期或结束日期的调整大小 {#disabling-resize-of-the-start-or-the-end-date-of-a-task}
 
 你可以使用以下选择器定位调整大小手柄：
 

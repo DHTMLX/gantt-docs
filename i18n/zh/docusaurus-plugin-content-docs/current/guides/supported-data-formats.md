@@ -134,7 +134,7 @@ dhtmlxGantt 可以加载以下数据格式：
 </data>
 ~~~
 
-## 自定义数据属性
+## 自定义数据属性 {#custom-properties-in-data}
 
 让我们以上述示例添加两个自定义属性：
 

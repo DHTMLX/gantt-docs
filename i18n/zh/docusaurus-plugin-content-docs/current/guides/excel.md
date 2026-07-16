@@ -167,7 +167,7 @@ gantt.exportToExcel({
 请注意，不能将 URL 作为 data 参数的值来使用，只能使用数据对象。
 :::
 
-### 导出任务颜色
+### 导出任务颜色 {#adding-colors-of-tasks-to-export}
 
 你可以通过将 exportToExcel 的 **visual** 属性设为 *"base-colors"*，将任务颜色导出到 Excel 文件中：
 
@@ -263,7 +263,7 @@ gantt.importFromExcel({
 ~~~
 
 
-## 导出到 iCal
+## 导出到 iCal {#export-to-ical}
 
 要将甘特图的数据导出为 iCal 字符串，请执行以下操作：
 

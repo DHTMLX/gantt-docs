@@ -67,7 +67,7 @@ npm install @dhx/react-gantt
 yarn add @dhx/react-gantt
 ~~~
 
-## 从试用包切换到商业版
+## 从试用包切换到商业版 {#moving-from-the-trial-package-to-the-commercial-one}
 
 大多数项目最初使用试用包，待原型获得批准并获得商业许可后再切换。两者具有相同的 API，因此切换大多是机械性的：更换包名、替换 CSS 导入、重新安装。
 

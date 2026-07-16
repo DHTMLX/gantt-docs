@@ -20,7 +20,7 @@ Zoom 扩展使用一组缩放设置，并允许在它们之间快速切换。
 - <span class="subproperty">**scales**</span> - (*Scales*) - 在此级别放大/缩小时要切换的缩放数组
 
 
-## 方法
+## 方法 {#methods}
 
 - <span class="submethod">**init(zoomConfig): void**</span> - 使用提供的配置初始化扩展。
     - **_zoomConfig?_** - (*object*) - 包含 *levels* 缩放级别数组及若干附加属性的配置对象：
@@ -217,7 +217,7 @@ gantt.ext.zoom.resetZoom();
 
 返回 <i>true</i>，如果为该事件指定了某些处理程序。
 
-## 放大以适应
+## 放大以适应 {#zoom-to-fit}
 
 [`zoomToFit(options)`](#methods) 和 [`init()`](#methods) 的 `fit` 设置接受以下选项：
 

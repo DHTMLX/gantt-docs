@@ -41,7 +41,7 @@ npm start
 
 或者，您也可以访问主页 [http://localhost:3200](http://localhost:3200) 并点击 Test 链接。
 
-## 无图形界面的服务器使用
+## 无图形界面的服务器使用 {#using-server-without-graphical-interface}
 
 如果你计划在无头服务器上使用导出模块，需要安装额外的组件。以下是在基于 Deb 的发行版上的命令：
 

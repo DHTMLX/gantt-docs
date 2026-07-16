@@ -158,7 +158,7 @@ gantt.config.columns = [
 :::
 
 
-## 全局设置
+## 全局设置 {#global-settings}
 
 ### 设置工作时间
 
@@ -307,7 +307,7 @@ gantt.setWorkTime({
 **相关示例** [Using `customWeeks` to make all days in the calendar days-off](https://snippet.dhtmlx.com/i0o74zg7)
 
 
-### 将休息日时段着色
+### 将休息日时段着色 {#unsetting-the-working-time}
 
 要在图表区域对休息日时段进行着色，请使用 timeline_cell_class 模板：
 
@@ -510,7 +510,7 @@ const closestTime = gantt.getClosestWorkTime({ date: date, task: task });
 ~~~
 
 
-### 获取所有 Gantt 日历
+### 获取所有 Gantt 日历 {#getting-calendars}
 
 要获取 Gantt 中添加的所有日历（全球日历和分配给各任务的日历），请使用 [getCalendars](api/method/getcalendars.md) 方法：
 

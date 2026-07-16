@@ -47,7 +47,7 @@ gantt.exportToPNG({
 ### Details
 
 :::note
- 该方法属于 **export** 扩展，因此请确保已启用 [export_api](guides/extensions-list.md#daochufuwu) 插件。更多信息请参见 [导出为 PDF 和 PNG](guides/export.md) 文章。 
+ 该方法属于 **export** 扩展，因此请确保已启用 [export_api](guides/extensions-list.md#export-service) 插件。更多信息请参见 [导出为 PDF 和 PNG](guides/export.md) 文章。 
 :::
 
 :::note

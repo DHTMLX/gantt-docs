@@ -341,7 +341,7 @@ const modals = {
 
 来自 `@dhtmlx/trial-vue-gantt` 或 `@dhx/vue-gantt`：
 
-### 类型导出
+### 类型导出 {#type-exports}
 
 按 wrapper 包本身导入所有类型（`@dhx/vue-gantt` 或 `@dhtmlx/trial-vue-gantt`）。包装器将底层 Gantt 引擎的类型与 Vue 特定类型一并导出——没有单独的 `@dhx/gantt` 包需要安装或导入。  
 

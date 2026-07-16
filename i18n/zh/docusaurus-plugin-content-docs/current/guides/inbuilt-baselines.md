@@ -197,7 +197,7 @@ gantt.templates.baseline_text = function(task, baseline, index) {
 };
 ~~~
 
-## 截止日期与约束
+## 截止日期与约束 {#jiezhiriqiyuyueshu}
 
 在项目管理中，跟踪截止日期以及理解任务约束对于按时交付至关重要。DHTMLX Gantt 具备内置的截止日期和约束可视化，提升了有效管理项目时间线的能力。
 
@@ -236,7 +236,7 @@ gantt.config.deadlines = false;
 
 配置项 **gantt.config.deadlines** 启用或禁用任务的截止日期元素的显示。如果启用，Gantt 将检查 **task.deadline** 属性；如果包含有效日期，则在时间线中显示截止日期元素。
 
-### 任务约束
+### 任务约束 {#taskconstraints}
 
 从 v9.0 开始，当启用并在约束模式下工作时（[自动排程](guides/auto-scheduling.md) 并且 [auto_scheduling_compatibility](api/config/auto_scheduling_compatibility.md) 设置为 *false*），Gantt 将在图表中自动显示约束日期。
 

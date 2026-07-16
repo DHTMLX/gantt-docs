@@ -127,7 +127,7 @@ const tasks = [
 
 **相关示例**: [Per-child placement of split subtasks](https://docs.dhtmlx.com/gantt/samples/04_customization/26_custom_child_split_tasks.html)
 
-## 过滤拆分任务
+## 过滤拆分任务 {#shaixuanchaifenrenwu}
 
 要过滤在甘特图上呈现的拆分任务的子任务，请应用 [`onBeforeSplitTaskDisplay`](api/event/onbeforesplittaskdisplay.md) 事件并返回：
 
@@ -143,7 +143,7 @@ gantt.attachEvent("onBeforeSplitTaskDisplay", (id, task, parent) => {
 });
 ~~~
 
-## 样式
+## 样式 {#yangshi}
 
 拆分任务被定义为父项的子任务，背景中的淡绿色条是该父项的条形，并应用了额外的样式。
 

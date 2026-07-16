@@ -93,7 +93,7 @@ gantt.attachEvent("onTaskDblClick", function(id,e){
 gantt.config.readonly_property = "property_name";
 ~~~
 
-## editable_property 配置选项的详细信息
+## editable_property 配置选项的详细信息 {#details-of-the-editable_property-config-option}
 
 'editable_property' 指向任务数据对象的属性，而不是灯箱部分或左侧网格的列：
 

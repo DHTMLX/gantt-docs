@@ -69,7 +69,7 @@ gantt.deleteLink(linkId);
 gantt.clearAll();
 ~~~
 
-## 从 UI 编辑链接的值
+## 从 UI 编辑链接的值 {#editing-link-values-from-ui}
 
 没有内置的界面供用户编辑链接的延迟（lag）或其他属性。因此如果你需要这样的界面，必须手动实现。
 

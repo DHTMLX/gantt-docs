@@ -118,7 +118,7 @@ gantt.locale.labels.section_resource_selector = "Resources";
 初始的 *start_date*, *end_date*, 和 *duration* 属性可能为 `null`。如果是，它们将使用任务对象中的相应值进行初始化。
 :::
 
-## 在 lightbox 中配置资源网格列
+## 在 lightbox 中配置资源网格列 {#configuring-resource-grid-columns-in-the-lightbox}
 
 资源表在 lightbox 中的默认列配置如下所示：
 

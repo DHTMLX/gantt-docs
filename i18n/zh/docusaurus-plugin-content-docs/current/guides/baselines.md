@@ -266,7 +266,7 @@ gantt.event(window, 'mouseup', (event) => {
 });
 ~~~
 
-## 图表的额外覆盖层
+## 图表的额外覆盖层 {#extra-overlay-for-the-chart}
 
 dhtmlxGantt 提供了在甘特图上方添加额外图层以放置自定义内容的可能性。作为覆盖层，你可以使用一个 div 容器、HTML 画布等。绘制覆盖层内容时，可以使用任意第三方库。
 

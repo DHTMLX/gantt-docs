@@ -49,7 +49,7 @@ Error: Timeout trigger 20 seconds
 [了解更多 MS Project 的导出模块用法](guides/msp-export-module.md). 
 
 
-## 导出到 MS Project
+## 导出到 MS Project {#export-to-ms-project}
 
 Gantt 组件允许将链接、任务和资源导出到 MS Project。
 
@@ -86,7 +86,7 @@ gantt.exportToMSProject();
 **相关示例**： [Export data : MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
 
 
-### 导出设置
+### 导出设置 {#export-settings}
 
 exportToMSProject() 方法的参数是一个包含若干属性的对象（所有属性均为可选）：
 
@@ -290,7 +290,7 @@ gantt.exportToMSProject({
 });
 ~~~
 
-## 从 MS Project 导入
+## 从 MS Project 导入 {#import-from-ms-project}
 
 为了将 XML 或 MPP MS Project 文件转换为甘特图，你需要向导出服务发送以下请求：
 
@@ -651,7 +651,7 @@ gantt.importFromMSProject({
 }
 ~~~
 
-## 对请求大小和大文件导入的限制
+## 对请求大小和大文件导入的限制 {#limits-on-request-size-and-import-of-large-files}
 
 MSProject 导出/导入服务共有两个 API 端点：
 

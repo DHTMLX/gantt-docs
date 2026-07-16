@@ -339,7 +339,7 @@ dhtmlxGantt 是一个 100% 客户端组件，因此 SQL 注入必须由后端开
 
 [了解将 CSP 标准应用到 dhtmlxGantt 应用程序中的更多信息](api/config/csp.md)。
 
-## 框架包装 XSS 保护
+## 框架包装 XSS 保护 {#framework-wrapper-xss-protection}
 
 从 v10.0 起，React、Vue 和 Angular 包装将处理由用户提供的模板函数返回的字符串值，以确保来自模板的 HTML 默认为安全——即使它嵌套了未清洗的任务/事件数据。覆盖范围包括：
 
@@ -393,4 +393,4 @@ import DOMPurify from "dompurify";
 <ReactGantt htmlTemplatePolicy={{ mode: "sanitize", sanitize: (html) => DOMPurify.sanitize(html) }} />
 ~~~
 
-请参阅迁移说明以获取更多详情。[Migration notes](migration.md#91---92)
+请参阅迁移说明以获取更多详情。[Migration notes](migration.md#91---100)

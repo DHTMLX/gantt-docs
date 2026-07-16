@@ -24,7 +24,7 @@ gantt.config.columns = [
 <iframe width="676" height="400" src="https://www.youtube.com/embed/-BoznxJmJIo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-## 概览
+## 概览 {#overview}
 
 默认情况下，网格包含 4 列：
 
@@ -85,7 +85,7 @@ gantt.templates.grid_row_class = ( start, end, task ) => {
 **相关示例**： [Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
 
 
-## 宽度
+## 宽度 {#width}
 
 要设置列的宽度，请在相关列对象中使用 [width](api/config/columns.md) 属性：
 
@@ -476,7 +476,7 @@ gantt.config.external_render = {
 - 如果 **isElement** 返回 true，则对象将传递给 **renderElement**，该函数应在单元格的 DOM 元素中初始化该组件对象。
 
 
-## 水平滚动条
+## 水平滚动条 {#horizontal-scrollbar}
 
 你可以使用 [layout](guides/layout-config.md) 配置选项的 **scrollable** 属性使网格可滚动。  
 [关于将布局视图绑定到滚动条的说明](guides/layout-config.md#scrollbar)。

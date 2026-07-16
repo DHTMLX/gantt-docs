@@ -39,7 +39,7 @@ gantt.locale.labels.section_period = "Time period";
 
 （注：此处的字符串如 Time period 保留为原文，若需要，可以改为中文。）
 
-## 属性
+## 属性 {#shuxing}
 
 以下属性对 'time' 控件最为重要且常被设置（参见完整列表 [此处](api/config/lightbox.md)）：
 

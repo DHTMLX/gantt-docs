@@ -590,11 +590,11 @@ gantt.config.skip_off_time = false; /*!*/
 
 ![first_scale_cell_without_skip_off_time](/img/disable_skip_off_time.png)
 
-## 无限滚动
+## 无限滚动 {#wuxiangundong}
 
 你可以在相关 [how-to 有关无限滚动的文章](guides/how-to.md#how-to-have-an-infinite-scroll-in-the-timeline) 中找到实现时间轴无限滚动的详细示例。
 
-## 粘性标签
+## 粘性标签 {#nianxingbiaoqian}
 
 自 v9.0 起，时间刻度标签默认是粘性的。这意味着当单元格宽度远大于标签宽度时，标签在滚动时间轴时将保持可见，直至滚动出视口才会消失。这提升了在放大或缩小时刻度标签的可见性。
 
@@ -622,7 +622,7 @@ gantt.config.scales = [
 gantt.init("gantt_here");
 ~~~
 
-## 固定列宽
+## 固定列宽 {#fixed-column-width}
 
 默认情况下，时间线列具有自适应宽度。它们要么扩展以填满容器的宽度，要么收缩到在出现水平滚动条前的最小列宽 [min_column_width](api/config/min_column_width.md) 。
 

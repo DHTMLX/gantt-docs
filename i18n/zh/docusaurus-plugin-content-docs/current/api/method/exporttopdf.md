@@ -170,7 +170,7 @@ gantt.exportToPDF({
 
 在 [相关博客文章](https://dhtmlx.com/blog/maintenance-release-pdf-export-module-gantt-0-6-4-scheduler-0-6-5-suite-8-3-10-kanban-1-5-12/#:~:text=Multipage%20Export%20in%20One%20PDF%20File) 中查看多页导出的一览
 
-#### 手动进行多次数据导出
+#### 手动进行多次数据导出 {#making-several-data-exports-manually}
 
 由于甘特图的大小几乎总是超过标准文档尺寸，因此图表需要多于一页才能放下。
 在导出甘特图时，每次都会将最左边部分导出到 PDF 文档中。

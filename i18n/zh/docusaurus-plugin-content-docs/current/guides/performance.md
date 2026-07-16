@@ -5,7 +5,7 @@ sidebar_label: "性能：提升性能的方法"
 
 # 性能：提升性能的方法
 
-## 常用技巧
+## 常用技巧 {#common-techniques}
 
 从 10,000–20,000 个任务开始，取决于你使用的配置选项和插件，页面上的甘特图渲染可能会有延迟。
 
@@ -23,7 +23,7 @@ sidebar_label: "性能：提升性能的方法"
 
 **相关示例**： [Performance tweaks](https://docs.dhtmlx.com/gantt/samples/08_api/10_performance_tweaks.html)
 
-## 智能渲染
+## 智能渲染 {#smart-rendering}
 
 智能渲染技术在处理大量数据时能够显著提升数据渲染的速度。在此模式下，只对屏幕上当前可见的任务和链接进行渲染。
 
@@ -47,7 +47,7 @@ gantt.config.smart_rendering = false;
 
  *你可以参考 [addTaskLayer](api/method/addtasklayer.md#smart-rendering-for-custom-layers) 文章，了解如何为自定义图层启用水平智能渲染。*
 
-### 处理大日期范围
+### 处理大日期范围 {#working-with-a-large-date-range}
 
 :::note
 该功能仅在 PRO 版本中可用

@@ -40,7 +40,7 @@ const data = {
 **相关示例**: [Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 
-## 常规任务
+## 常规任务 {#regular-tasks}
 
 默认情况下，dhtmlxGantt 提供创建常规任务（**type="task"** 的任务）。
 
@@ -74,7 +74,7 @@ const data = {
 - 可以在时间线中隐藏。详见 [详细信息](guides/milestones.md#hiding-tasks-and-milestones)。
 
 
-## 项目任务
+## 项目任务 {#project-tasks}
 
 项目任务是在其最早子任务开始时开始、在其最后一个子任务结束时结束的任务。
 
@@ -182,7 +182,7 @@ gantt.config.lightbox.milestone_sections = [
 要了解灯箱配置的详细信息，您可以阅读 [Configuring Edit Form](guides/edit-form.md) 章节。
 
 
-## 创建自定义类型
+## 创建自定义类型 {#creating-a-custom-type}
 
 所有任务的类型都在 [types](api/config/types.md) 对象中定义。 
 

@@ -31,7 +31,7 @@ Lightbox 配置会因任务类型而异。每种类型的设置存储在 [lightb
 自 v7.1.13 起，如果 [gantt.config.csp](api/config/csp.md) 被设置为 *true*，或 Gantt 在 Salesforce 环境中运行，Lightbox 将在 Gantt 容器内呈现。
 :::
 
-## Lightbox 结构
+## Lightbox 结构 {#lightbox-structure}
 
 ### 区段
 
