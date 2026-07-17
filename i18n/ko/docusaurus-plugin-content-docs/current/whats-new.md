@@ -232,7 +232,7 @@ sidebar_label: "새로운 기능"
 ### 업데이트
 
 - [gantt.env](api/other/env.md)에 `isSalesforce` 플래그 추가
-- [React Gantt](integrations/react.md#groupingtasks)에 `groupTasks` prop 추가
+- [React Gantt](integrations/react/overview.md#groupingtasks)에 `groupTasks` prop 추가
 
 ## 9.0.10
 

@@ -111,7 +111,7 @@ description: "Angular Gantt 입력, 출력, 콜백 계약 및 Angular 전용 템
     <tr>
       <td>htmlTemplatePolicy</td>
       <td>HtmlTemplatePolicy</td>
-      <td>템플릿 함수에서 반환된 문자열 값을 렌더링하는 방식을 제어합니다. <code>"basic-sanitize"</code> (기본값)은 allowlist- sanitizes된 HTML을 유지하고, 안전한 포맷팅, 클래스, 제한된 인라인 스타일, <code>data-*</code> 속성 및 <code>img</code>를 보존하며, 스크립트, 이벤트 핸들러 및 위험한 URL은 제거합니다. <code>"escape"</code>는 문자열을 텍스트로 렌더링합니다; <code>"unsafe-html"</code>은 원시 문자열(버전 10 이전 동작)을 렌더링합니다; <code>mode: "sanitize"</code>와 <code>sanitize(html)</code> 함수가 있는 커스텀 sanitizer 객체를 사용하면 DOMPurify 같은 라이브러리를 연결할 수 있습니다. per-template 제어를 위해 내보낸 <code>allowRawHTML()</code> 헬퍼로 개별 템플릿 함수를 래핑하세요. 자세한 내용은 [Migration notes](/migration#91---92).를 참조하십시오.</td>
+      <td>템플릿 함수에서 반환된 문자열 값을 렌더링하는 방식을 제어합니다. <code>"basic-sanitize"</code> (기본값)은 allowlist- sanitizes된 HTML을 유지하고, 안전한 포맷팅, 클래스, 제한된 인라인 스타일, <code>data-*</code> 속성 및 <code>img</code>를 보존하며, 스크립트, 이벤트 핸들러 및 위험한 URL은 제거합니다. <code>"escape"</code>는 문자열을 텍스트로 렌더링합니다; <code>"unsafe-html"</code>은 원시 문자열(버전 10 이전 동작)을 렌더링합니다; <code>mode: "sanitize"</code>와 <code>sanitize(html)</code> 함수가 있는 커스텀 sanitizer 객체를 사용하면 DOMPurify 같은 라이브러리를 연결할 수 있습니다. per-template 제어를 위해 내보낸 <code>allowRawHTML()</code> 헬퍼로 개별 템플릿 함수를 래핑하세요. 자세한 내용은 [Migration notes](/migration#91---100).를 참조하십시오.</td>
     </tr>
   </tbody>
 </table>

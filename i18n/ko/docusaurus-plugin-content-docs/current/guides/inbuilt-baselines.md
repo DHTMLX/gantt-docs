@@ -79,7 +79,7 @@ gantt.render();
 
 2. [타임라인에 추가하는 커스텀 기준선 요소 생성](guides/baselines.md) 
 
-### 작업과 함께 로딩되는 기준선
+### 작업과 함께 로딩되는 기준선 {#loading-baselines-with-tasks}
 
 기준선은 작업과 함께 직접 로드될 수 있습니다. 아래 예제를 확인하십시오:
 
