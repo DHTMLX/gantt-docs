@@ -375,7 +375,7 @@ sidebar_label: "Что нового"
 - Исправлена регрессия с некорректным положением связи при перетаскивании с включённым [smart_rendering](api/config/smart_rendering.md)
 - Исправлена регрессия, при которой [Resource Control](guides/resources.md) в [lightbox](guides/default-edit-form.md) выходил за пределы контейнера
 - Исправлена отсутствующая нижняя граница ячеек [шкалы времени](guides/configuring-time-scale.md) в последней строке при их выделении с помощью пользовательского CSS
-- Исправлено некорректное поведение [липких меток](guides/configuring-time-scale.md#sticky-labels) при отключённом [smart_scales](api/config/smart_scales.md)
+- Исправлено некорректное поведение [фиксированных меток](guides/configuring-time-scale.md#sticky-labels) при отключённом [smart_scales](api/config/smart_scales.md)
 - Решена проблема, при которой Gantt продолжал [вертикальное перетаскивание](api/config/order_branch.md) задачи после клика правой кнопкой мыши
 - Исправлена проблема, при которой вызов [resetLayout](api/method/resetlayout.md) нарушал работу плагина [S-Curve Overlay](guides/baselines.md#extra-overlay-for-the-chart)
 - Предотвращено создание дублирующихся связей редактором предшественников ([predecessor editor](guides/inline-editing.md#types-of-editors))
@@ -397,7 +397,7 @@ sidebar_label: "Что нового"
 - Новый [тёмный скин](guides/skins.md#darkskin)
 - Добавлена встроенная поддержка [baselines](guides/inbuilt-baselines.md)
 - Поддержка [вручную планируемых суммарных задач](guides/custom-projects-dates.md)
-- [Липкие метки для шкалы времени](guides/configuring-time-scale.md#sticky-labels)
+- [Фиксированные метки для шкалы времени](guides/configuring-time-scale.md#sticky-labels)
 
 ### Обновления
 

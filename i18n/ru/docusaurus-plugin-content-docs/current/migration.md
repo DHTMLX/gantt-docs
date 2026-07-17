@@ -352,11 +352,11 @@ gantt.config.auto_scheduling = {
 
 Это отключит отображение ограничений задач по умолчанию, сохранив при этом функциональность авто-м расписания включенной.
 
-### Привязанные к Timeline ярлыки (Sticky labels)
+### Фиксированные метки на Timeline (Sticky labels)
 
-Начиная с v9.0 шкалы времени по умолчанию остаются липкими на экране при прокрутке и следуют за областью просмотра, пока не окажутся за пределами экрана. В предыдущих версиях ярлыки былиCenter в своих ячейках и не оставались видимыми при прокрутке.
+Начиная с v9.0 метки временной шкалы по умолчанию являются фиксированными. Это означает, что метки остаются видимыми на экране при прокрутке, следуя за областью просмотра, пока не окажутся за её пределами. В предыдущих версиях метки были центрированы в своих ячейках и не оставались видимыми при прокрутке.
 
-Если нужно вернуть старое поведение и отключить липкие ярлыки, можно установить свойство `sticky` объекта [scale](guides/configuring-time-scale.md) в значение false:
+Если нужно вернуть старое поведение и отключить фиксированные метки, можно установить свойство `sticky` объекта [scale](guides/configuring-time-scale.md) в значение false:
 
 ~~~js
 gantt.config.scales = [
@@ -576,7 +576,206 @@ gantt.templates.xml_date = function(datestring){
 };
 ~~~
 
-### Unused API удалён
+## 6.2 -> 6.3
+
+### Множественный выбор задач (Multi-task selection)
+
+Начиная с версии 6.3, расширение `ext/dhtmlxgantt_multiselect.js` автоматически позволяет перетаскивать несколько одновременно выбранных задач по горизонтали.
+Если вы хотите отключить эту функциональность, используйте [`drag_multiple`](api/config/drag_multiple.md) и установите значение `false` (по умолчанию включено).
+
+~~~js
+gantt.config.drag_multiple = false;
+~~~
+
+### Шрифт Google Roboto больше не включён в скин Material
+
+До версии 6.3 шрифт Google [Roboto](https://fonts.google.com/specimen/Roboto) был включён в [скин 'Material'](guides/skins.md#materialskin) dhtmlxGantt через выражение `import`.
+Начиная с версии 6.3, этот импорт был удалён, поэтому вам нужно добавить шрифт `Roboto` вручную:
+
+~~~html
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:regular,medium,thin,bold">
+~~~
+
+### Использование с Require.JS
+
+Ранее вы могли использовать произвольные имена для различных файлов библиотеки dhtmlxGantt, подключаемых в приложении на основе RequireJS:
+
+~~~js
+requirejs.config({
+    paths: {
+        "gantt": "../../codebase/dhtmlxgantt",
+        "tooltip": "../../codebase/ext/dhtmlxgantt_tooltip",
+        "marker": "../../codebase/ext/dhtmlxgantt_marker",
+        "locale_de": "../../codebase/locale/locale_de"
+    },
+    shim: {
+        "tooltip": ["gantt"],
+        "marker": ["gantt"],
+        "locale_de": ["gantt"]
+    }
+});
+requirejs(["gantt", "tooltip", "marker", "locale_de"], (dhx) => {
+    const gantt = dhx.gantt;
+    ...
+});
+~~~
+
+Начиная с версии 6.3, имена модулей должны быть зафиксированы в соответствии со структурой папок библиотеки dhtmlxGantt:
+
+~~~js
+requirejs.config({
+    paths: {
+        "dhtmlxgantt": "../../codebase/dhtmlxgantt",
+        "ext/dhtmlxgantt_tooltip": "../../codebase/ext/dhtmlxgantt_tooltip",
+        "ext/dhtmlxgantt_critical_path": "../../codebase/ext/dhtmlxgantt_critical_path",
+        "locale/locale_de": "../../codebase/locale/locale_de"
+    },
+    shim: {
+        "ext/dhtmlxgantt_tooltip": ["dhtmlxgantt"],
+        "ext/dhtmlxgantt_critical_path": ["dhtmlxgantt"],
+        "locale/locale_de": ["dhtmlxgantt"]
+    }
+});
+
+requirejs([
+    "dhtmlxgantt",
+    "ext/dhtmlxgantt_tooltip",
+    "ext/dhtmlxgantt_critical_path",
+    "locale/locale_de"
+], (dhx) => {
+    const gantt = dhx.gantt;
+    ...
+});
+~~~
+
+Убедитесь, что имя модуля для любого файла внутри пакета указано как *относительный путь внутри папки `codebase` пакета* плюс *имя файла*, например:
+
+**основная библиотека:**
+
+- `"dhtmlxgantt": "./vendor/dhtmlxgantt/dhtmlxgantt"`
+
+**расширения:**
+
+- `"ext/dhtmlxgantt_critical_path": "./vendor/dhtmlxgantt/ext/dhtmlxgantt_critical_path"`
+- `"ext/dhtmlxgantt_tooltip": "./vendor/dhtmlxgantt/ext/dhtmlxgantt_tooltip"`
+
+**локализации:**
+
+- `"locale/locale_de": "./vendor/dhtmlxgantt/locale/locale_de"`
+- `"locale/locale_be": "./vendor/dhtmlxgantt/locale/locale_be"`
+
+### Встроенные редакторы {#inline_editors}
+
+До версии 6.3 минимальные и максимальные значения [встроенного редактора](guides/inline-editing.md#types-of-editors) даты **date** ограничивались датами, видимыми на временной шкале, если не были заданы собственные значения `min` или `max`.
+
+Начиная с версии 6.3, для редакторов дат больше нет ограничений по умолчанию для минимальных и максимальных значений.
+
+Чтобы восстановить прежнее поведение, вы можете задать динамические значения `min` и `max`:
+
+~~~js
+const dateEditor = {
+    type: "date",
+    map_to: "start_date",
+    min: (taskId) => gantt.getState().min_date,
+    max: (taskId) => gantt.getState().max_date
+};
+~~~
+
+## 6.1 -> 6.2
+
+Обновление до v6.2 в целом совместимо с v6.1 и не должно требовать изменений в коде. Однако некоторые особенности поведения компонента изменились, прежнее поведение можно восстановить через конфигурацию, а некоторые API были признаны устаревшими.
+
+### Smart rendering и статичный фон
+
+Функциональность smart rendering была обновлена и теперь встроена в компонент. Она должна работать как в основной области временной шкалы, так и в панелях ресурсов. Отныне все временные шкалы должны отрисовывать только строки и ячейки, которые в данный момент видимы.
+
+Smart rendering можно отключить через конфигурацию `smart_rendering`, что вернёт gantt к поведению по умолчанию из v6.1:
+
+~~~js
+gantt.config.smart_rendering = false;
+~~~
+
+Расширение `dhtmlxgantt_smart_rendering` больше не требуется и должно быть удалено из gantt. Само расширение по-прежнему доступно в пакете на случай проблем с совместимостью.
+Если расширение добавлено на страницу, gantt вернётся к режиму smart rendering из v6.1.
+
+Поведение [`static_background`](api/config/static_background.md) также было обновлено. Начиная с v6.2, оно отрисовывает PNG-фон и любые ячейки, к которым через функцию-шаблон прикреплён CSS-класс.
+
+Если вам нужно вернуться к поведению v6.1, используйте конфигурацию `static_background_cells`:
+
+~~~js
+gantt.config.static_background_cells = false;
+~~~
+
+### Настройки временной шкалы {#timescalesettings}
+
+Конфигурация временной шкалы была упрощена. Вместо указания нескольких настроек шкалы отдельно для каждой шкалы теперь следует использовать единую конфигурационную опцию [`scales`](api/config/scales.md), содержащую объекты шкал с их настройками.
+
+В целом устарели следующие API временной шкалы:
+
+- `gantt.config.scale_unit`
+- `gantt.config.step`
+- `gantt.config.date_scale`
+- `gantt.templates.date_scale`
+- `gantt.config.subscales`
+
+Например, приведённый ниже код:
+
+~~~js
+gantt.config.scale_unit = "day";
+gantt.config.step = 1;
+gantt.config.date_scale = "%d %M";
+gantt.templates.date_scale = null;
+gantt.config.subscales = [];
+~~~
+
+Теперь выглядит так:
+
+~~~js
+gantt.config.scales = [{ unit: "day", step: 1, format: "%d %M" }];
+~~~
+
+#### Шаблон task_cell_class переименован
+
+Шаблон, используемый для определения CSS-класса, применяемого к ячейкам области временной шкалы, переименован следующим образом:
+
+- `gantt.templates.task_cell_class` → [`gantt.templates.timeline_cell_class`](api/template/timeline_cell_class.md)
+
+Пример использования переименованного шаблона:
+
+~~~html
+<style>
+    .weekend { background: #f4f7f4 !important; }
+</style>
+
+<script>
+    gantt.templates.timeline_cell_class = (task, date) => {
+        if (date.getDay() === 0 || date.getDay() === 6) {
+            return "weekend";
+        }
+
+        return "";
+    };
+</script>
+~~~
+
+### Конфигурация `xml_date` и шаблоны, а также шаблоны `xml_format` переименованы
+
+Ниже приведена схема замены ранее использовавшегося API:
+
+- `gantt.config.xml_date` → [`gantt.config.date_format`](api/config/date_format.md)
+- `gantt.templates.xml_date` → [`gantt.templates.parse_date`](api/template/parse_date.md)
+- `gantt.templates.xml_format` → [`gantt.templates.format_date`](api/template/format_date.md)
+
+Начиная с v6.2 значения по умолчанию для конфигурации `xml_date` и шаблонов `xml_date` и `xml_format` — *undefined*. Таким образом, если вы не назначали им никаких значений, они не будут работать.
+
+Однако Gantt продолжит использовать старые имена конфигурации и шаблонов, поэтому если вы переопределили эти API в своём коде, они будут работать как прежде. Например:
+
+~~~js
+// будет работать корректно
+gantt.templates.xml_date = (dateString) => new Date(dateString);
+~~~
+
+### Неиспользуемые API удалены
 
 Конфигурация **gantt.config.api_date** и шаблон **gantt.templates.api_date** удалены из API, так как они не использовались внутри кода gantt. Если вы использовали их в своем коде, необходимо объявить их заново.
 
@@ -664,12 +863,41 @@ Version 4.0 вводит некоторые изменения в публичн
 
 Если вы используете эти методы, ваше приложение будет работать после обновления до v4.0 без каких-либо немедленных изменений. В будущем рекомендуется обновить их до более новой версии API.
 
-Полный список устаревших методов включение в таблицу ниже:
+Полный список устаревших методов приведён в таблице ниже:
 
 <table class="my_table">
 
 <tr><td class="version_info">Up to version 3.3</td><td class="version_info">From version 4.0</td></tr>
 
+<tr><td>dhtmlx.alert</td><td>gantt.alert</td></tr>
+<tr><td>dhtmlx.confirm</td><td>gantt.confirm</td></tr>
+<tr><td>dhtmlx.modalbox</td><td>gantt.modalbox</td></tr>
+<tr><td>dhtmlx.uid</td><td>gantt.uid</td></tr>
+<tr><td>dhtmlx.copy</td><td>gantt.copy</td></tr>
+<tr><td>dhtmlx.mixin</td><td>gantt.mixin</td></tr>
+<tr><td>dhtmlx.defined</td><td>gantt.defined</td></tr>
+<tr><td>dhtmlx.bind</td><td>gantt.bind</td></tr>
+<tr><td>dhtmlx.assert</td><td>gantt.assert</td></tr>
+<tr><td>window.dataProcessor</td><td>gantt.dataProcessor</td></tr>
+</table>
+
+### Устаревший (неиспользуемый) API
+
+Некоторые методы стали неактуальными и больше не будут использоваться в v4.x.
+Если вы всё ещё используете эти методы или объекты, вам нужно либо изменить код приложения, либо подключить на странице файл `dhtmlxgantt_deprecated.js`.
+
+Обзор:
+
+- `window.dhx4` больше не определяется файлом `dhtmlxgantt.js`
+- Переменные окружения, ранее определённые в `window.dhx4`, теперь доступны в объекте `gantt.env`
+- Модуль Ajax перемещён из `dhx4.ajax` в `gantt.ajax`
+- Вместо `dhtmlxEvent`/`dhtmlxDetachEvent` следует использовать `gantt.event` и `gantt.eventRemove`
+
+Полный список устаревшего API приведён ниже:
+
+<table class="my_table">
+
+<tr><td class="version_info">Up to version 3.3</td><td class="version_info">From version 4.0</td></tr>
 <tr><td>window.dhtmlxEvent</td><td>gantt.event</td></tr>
 <tr><td>window.dhtmlxDetachEvent</td><td>gantt.eventRemove</td></tr>
 <tr><td>window.dhx4.isIE</td><td>gantt.env.isIE</td></tr>
@@ -682,7 +910,6 @@ Version 4.0 вводит некоторые изменения в публичн
 <tr><td>window.dhx4.isFF</td><td>gantt.env.isFF</td></tr>
 <tr><td>window.dhx4.isIPad</td><td>gantt.env.isIPad</td></tr>
 </table>
-
 
 ## 2.0 -> 3.0
 

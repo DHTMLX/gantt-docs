@@ -299,11 +299,115 @@ gantt.setWorkTime({
 
 **Связанный пример** [Using `customWeeks` to make all days in the calendar days-off](https://snippet.dhtmlx.com/i0o74zg7)
 
-### Установка календаря выходных {#unsetting-the-working-time}
+### Отмена рабочего времени {#unsetting-the-working-time}
 
-Чтобы скрыть выходной времени, используйте подход, описанный в статье - [Скрытие единиц времени на шкале](guides/custom-scale.md).
+Вы можете отменить установленное рабочее время с помощью метода [unsetWorkTime](api/method/unsetworktime.md):
+
+~~~js
+// изменяет рабочее время рабочих дней с ["8:00-17:00"] на ["8:00-12:00"]
+gantt.setWorkTime({ hours: ["8:00-12:00"] });
+// отменяет рабочее время
+gantt.unsetWorkTime({ hours: ["8:00-12:00"] });
+~~~
+
+### Проверка рабочего времени
+
+Чтобы проверить, является ли указанная дата рабочим временем, используйте метод [isWorkTime](api/method/isworktime.md):
+
+~~~js
+// делает 1 января 2025 года выходным днём
+gantt.setWorkTime({ date: new Date(2025, 0, 1), hours: false });
+gantt.isWorkTime(new Date(2025, 0, 1)); // -> false  /*!*/
+
+// делает 15 марта 2025 года рабочим днём с 9:00 до 18:00
+gantt.setWorkTime({ date: new Date(2025, 2, 15), hours: ["8:00-17:00"] });
+gantt.isWorkTime(new Date(2025, 2, 15, 10, 0), "hour"); // -> true  /*!*/
+gantt.isWorkTime(new Date(2025, 2, 15, 8, 0), "hour"); // -> false  /*!*/
+~~~
+
+**Связанный пример**: [Correct task position on drag](https://docs.dhtmlx.com/gantt/samples/09_worktime/05_adjust_to_worktime.html)
+
+### Получение рабочего времени
+
+Чтобы получить рабочие часы указанной даты, используйте метод [getWorkHours](api/method/getworkhours.md):
+
+~~~js
+gantt.getWorkHours(new Date(2025, 3, 30)); // -> ["8:00-17:00"]
+~~~
+
+Чтобы получить ближайший рабочий день к указанной дате, используйте метод [getClosestWorkTime](api/method/getclosestworktime.md):
+
+~~~js
+gantt.getClosestWorkTime(new Date(2025, 3, 30));
+~~~
+
+### Повторение определённого рабочего времени
+
+Часто требуется задать рабочее время, которое повторяется только в определённые дни (например, последняя пятница месяца — короткий день, 25 декабря — праздник), но на протяжении всего срока проекта.
+
+Текущая версия dhtmlxGantt не предоставляет отдельных конфигураций для установки такого типа рабочего времени.
+
+Библиотека позволяет только:
+
+- задать рабочее время для дня недели (понедельник, вторник...)
+- задать рабочее время для конкретной даты (4 июня 2025 года)
+- переопределить правила рабочего времени для диапазона дат (1 июня 2025 года - 1 сентября 2025 года)
+
+Поэтому, если у вас есть исключения из правил рабочего времени, вам нужно вручную получить даты, соответствующие вашему правилу, и применить настройки рабочего времени к каждой из этих дат отдельно.
+
+Например, у вас есть проект длительностью 5 лет, и вы хотите сделать 1 января выходным днём, а последнюю пятницу каждого месяца — коротким днём.
+
+Чтобы задать 1 января как выходной день, можно просто захардкодить значения, как в примере:
+
+~~~js
+gantt.setWorkTime({ hours: false, date: new Date(2025, 0, 1) });
+gantt.setWorkTime({ hours: false, date: new Date(2026, 0, 1) });
+gantt.setWorkTime({ hours: false, date: new Date(2027, 0, 1) });
+gantt.setWorkTime({ hours: false, date: new Date(2028, 0, 1) });
+gantt.setWorkTime({ hours: false, date: new Date(2029, 0, 1) });
+~~~
+
+А вот пример кода, показывающий, как сделать последнюю пятницу месяца коротким днём на протяжении всего проекта:
+
+~~~js
+const lastFridayOfMonth = (date) => {
+    let lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+    if (lastDay.getDay() < 5) {
+        lastDay.setDate(lastDay.getDate() - 7);
+    }
+
+    lastDay.setDate(lastDay.getDate() - (lastDay.getDay() - 5));
+
+    return lastDay;
+};
+
+const projectStart = new Date(2025, 5, 1);
+const projectEnd = new Date(2026, 5, 1);
+let currentDate = new Date(projectStart);
+
+while (currentDate <= projectEnd) {
+    const lastFriday = lastFridayOfMonth(currentDate);
+    gantt.setWorkTime({ hours: ["8:00-12:00", "13:00-15:00"], date: lastFriday });
+    currentDate = gantt.date.add(currentDate, 1, "month");
+}
+~~~
+
+### Выделение времени выходных
+
+Чтобы выделить время выходных в области диаграммы, используйте шаблон [timeline_cell_class](api/template/timeline_cell_class.md):
+
+~~~js
+gantt.templates.timeline_cell_class = (task, date) => 
+    !gantt.isWorkTime({ task, date }) ? "week_end" : "";
+~~~
+
+**Связанный пример**: [Custom working days and time](https://docs.dhtmlx.com/gantt/samples/09_worktime/04_custom_workday_duration.html)
+
+Подробнее см. в статье [Highlighting Time Slots](guides/highlighting-time-slots.md).
+
 :::note
-Чтобы скрыть выходной период, используйте приведённую в статье технику - [Скрытие единиц времени в масштабе](guides/custom-scale.md).
+Чтобы скрыть период выходных, используйте технику, описанную в статье - [Hiding Time Units in the Scale](guides/custom-scale.md).
 :::
 
 ## Несколько календарей рабочего времени {#multipleworktimecalendars}

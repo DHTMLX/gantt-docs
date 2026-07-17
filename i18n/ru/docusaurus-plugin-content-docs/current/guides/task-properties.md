@@ -7,7 +7,34 @@ sidebar_label: "Свойства задачи"
 
 На этой странице приведён полный список свойств, которые может включать объект задачи.
 
+Эта статья описывает клиентский объект задачи времени выполнения, используемый внутри Gantt после загрузки данных. Сериализованную JSON-форму, используемую в [gantt.parse()](api/method/parse.md), [gantt.load()](api/method/load.md) и при обмене данными с бэкендом, см. в разделе [Модель данных](guides/data-model.md).
+
 Полный список свойств объекта ссылки приведён в статье [Свойства ссылки](guides/link-properties.md).
+
+## Структура времени выполнения вкратце
+
+~~~ts
+// Exported from @dhx/gantt as "Task"
+interface Task {
+    id: string | number;
+    start_date?: Date;
+    end_date?: Date;
+    duration?: number;
+    text?: any;
+    parent?: string | number;
+    type?: string;
+    progress?: number;
+    open?: boolean;
+    baselines?: Baseline[];
+    resource?: string[];
+    readonly?: boolean;
+    editable?: boolean;
+    // ... plus computed $-prefixed fields (see Dynamic properties below)
+    [customProperty: string]: any;
+}
+~~~
+
+Объекты задач времени выполнения внутри Gantt используют `Date` для полей дат. Они также включают динамические свойства `$...`, создаваемые на клиенте, которые перечислены далее в этой статье. Сериализованную (JSON-совместимую) форму см. в разделе [Модель данных - SerializedTask](guides/data-model.md#serializedtask).
 
 
 ## Обязательные свойства

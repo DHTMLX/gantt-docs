@@ -256,11 +256,13 @@ gantt.ext.zoom.init({
 gantt.ext.zoom.zoomToFit();
 ~~~
 
-- <span class="eventname">onAfterZoom</span> Ereignis
--  löst beim Wechsel der Zoom-Stufe aus. Die Argumente sind:
+## Events
+
+- **<span class="eventname">onAfterZoom</span>** - löst beim Wechsel der Zoom-Stufe aus.
+Die Argumente sind:
 <span class="eventarguments">
-    - <span class="eventargument">_level_</span> - (*number | string*) - die Nummer der Stufe
-    - <span class="eventargument">_config_</span> - (*ZoomLevel*) - die Konfiguration der Stufe
+    - **_level_** - (*number | string*) - die Nummer der Stufe
+    - **_config_** - (*ZoomLevel*) - die Konfiguration der Stufe
 </span>
 
 ~~~js

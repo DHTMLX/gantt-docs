@@ -509,6 +509,113 @@ gantt.config.resources = {
 }
 ~~~
 
+**Связанный пример**: [Assign resource values to specific days](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
+
+1. *Даты начала и окончания* назначения ресурса будут отражены в гистограмме и диаграмме ресурсов.
+
+2. Необязательное свойство *id* назначения можно добавить к объекту назначения ресурса:
+
+~~~js
+{
+    id: 1, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6,
+    users: [{
+        id: 5, 
+        resource_id: 2,
+        value: 8, 
+        delay: 1
+    }]
+}
+~~~
+
+Объект назначения будет доступен через API gantt по этому id:
+
+~~~js
+const assignment = gantt.getDatastore("resourceAssignments").getItem(5);
+~~~
+
+:::note
+Хранилище данных [«resourceAssignments»](api/config/resource_assignment_store.md) доступно только при включённой конфигурации [process_resource_assignments](api/config/process_resource_assignments.md).
+:::
+
+3. Работа остальных свойств определяется значением свойства **mode**:
+
+- **_режим "default"_**
+
+~~~js
+{
+    id: 1, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6,
+    users: [
+        { resource_id: 2, value: 8, delay: 1},
+        { resource_id: 3, value: 6},
+    ]
+}
+~~~
+
+Если *mode* не указан или установлен в значение "default", *start_date* и *end_date* назначения вычисляются на основе дат задачи. По умолчанию дата начала назначения совпадает с датой начала задачи. Такой же подход применяется к дате окончания.
+
+Свойство *delay* работает аналогично свойству *Delay* в <a href="https://support.microsoft.com/en-us/office/assignment-delay-fields-427ac799-225c-4e10-9dcb-f58e524c8173">MS Project</a>.
+
+Если указан delay, *start_date* назначения вычисляется как
+
+`gantt.calculateEndDate({start_date:task.start_date, duration:assignment.delay, task:task})`.
+
+Назначение ресурса начнётся с указанной задержкой от начала задачи. Дата окончания назначения будет совпадать с датой окончания задачи.
+
+При обновлении объекта задачи даты начала/окончания назначения будут обновляться соответствующим образом.
+
+- **_режим "fixedDuration"_**
+
+~~~js
+{
+    id: 1, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6,
+    users: [
+        { resource_id: 2, value: 8, duration: 1, delay: 0, mode: "fixedDuration" },
+        { resource_id: 2, value: 2, duration: 1, delay: 1, mode: "fixedDuration" },
+        { resource_id: 2, value: 3, delay: 2, mode: "default" }
+    ]
+}
+~~~
+
+*start_date* назначения вычисляется так же, как и в режиме *"default"*.
+
+*end_date* больше не привязан к дате окончания задачи. Вместо этого он вычисляется как
+
+ `gantt.calculateEndDate({start_date:assignment.start_date, duration:assignment.delay, task:task})`.
+
+При обновлении объекта задачи даты назначений пересчитываются, а продолжительности назначений остаются неизменными.
+
+- **_режим "fixedDates"_**
+
+~~~js
+{
+    id: 1, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6,
+    users: [{
+        resource_id: 2, value: 8,
+        start_date: "03-04-2025", end_date: "11-04-2025", mode: "fixedDates"
+    }]
+}
+~~~
+
+В этом режиме даты назначения ресурса имеют ровно те значения, которые указаны в данных, и не изменяются при изменении задачи.
+
+Поле *delay* не влияет на даты назначения при использовании режима *"fixedDates"*.
+
+Ниже приведена краткая сводка того, как вычисляются даты назначения в каждом режиме:
+
+- **default**
+
+  - assignment.start_date = task.start_date + assignment.delay
+  - assignment.end_date = task.end_date
+
+- **fixedDuration**
+
+  - assignment.start_date = task.start_date + assignment.delay
+  - assignment.end_date = assignment.start_date + assignment.duration
+
+- **fixedDates**
+
+  - assignment.start_date = assignment.start_date
+  - assignment.end_date = assignment.end_date
 
 ### Получение задач, назначенных ресурсу
 
