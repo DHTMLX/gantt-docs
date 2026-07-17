@@ -50,7 +50,7 @@ gantt.calculateDuration(new Date(2013,02,15), new Date(2013,02,25)); //->6
 - 当未指定任务时，该方法将使用全局工作时间日历（[global work time calendar](guides/working-time.md#getting-calendars)）。
 - 此外，该方法也可以直接用于一个 [日历对象](api/other/calendar.md)。
 
-## 配置对象属性
+## 配置对象属性 {#configuration-object-properties}
 
 配置对象可以包含以下属性：
 
