@@ -58,7 +58,7 @@ task.start_date = gantt.calculateEndDate({
 });
 ~~~
 
-## 配置对象属性
+## 配置对象属性 {#configuration-object-properties}
 
 配置对象可以包含以下属性：
 

@@ -5,7 +5,7 @@ sidebar_label: "操作指南"
 
 # 操作指南
 
-## 如何切换网格/图表
+## 如何切换网格/图表 {#how-to-toggle-gridchart}
 
 如果使用默认布局配置，您可以修改 [show_grid](api/config/show_grid.md) 或 [show_chart](api/config/show_chart.md) 参数，并使用 [render()](api/method/render.md) 方法重新绘制变更。
 
@@ -65,7 +65,7 @@ function toggleChart() {
 
 **相关示例**  [Gantt. Toggle timeline (custom layout)](https://snippet.dhtmlx.com/aukjyqc8)
 
-## 如何切换资源视图
+## 如何切换资源视图 {#how-to-toggle-the-resource-view}
 
 与前面的用例类似，您需要创建多种布局配置 —— 同时包含资源视图和不包含资源视图。要在它们之间切换，需要修改 [gantt.config.layout](api/config/layout.md) 参数并应用 [init()](api/method/init.md) 方法以查看变更：
 
@@ -107,7 +107,7 @@ function layoutChange() {
 
 **相关示例**  [Gantt. Generate layout](https://snippet.dhtmlx.com/3dnzfhit)
 
-## 如何在时间线实现无限滚动
+## 如何在时间线实现无限滚动 {#how-to-have-an-infinite-scroll-in-the-timeline}
 
 实现无限滚动有多种方式，但在大多数情况下，您需要修改显示的日期范围（[gantt.config.start_date](api/config/start_date.md) 和 [gantt.config.end_date](api/config/end_date.md) 参数）：
 
@@ -221,7 +221,7 @@ gantt.attachEvent("onTaskDrag", function (id, mode, task, original) {
 
 **相关示例**  [Gantt. Infinite scroll while dragging a task (explicit range settings)](https://snippet.dhtmlx.com/3lrm0wyp)
 
-## 如何动态加载任务
+## 如何动态加载任务 {#how-to-load-tasks-dynamically}
 
 您可以在 [onGanttScroll](api/event/onganttscroll.md) 事件中检测滚动到底部可见任务，并使用 [parse()](api/method/parse.md) 方法加载新任务：
 
@@ -239,7 +239,7 @@ gantt.attachEvent("onGanttScroll", function (left, top) {
 
 **相关示例**  [Gantt. Load data dynamically](https://snippet.dhtmlx.com/39l7o0rm)
 
-## 如何用按钮展开/折叠所有任务
+## 如何用按钮展开/折叠所有任务 {#how-to-expandcollapse-all-tasks-with-a-button}
 
 您可以使用 [open()](api/method/open.md) 和 [close()](api/method/close.md) 方法来打开和关闭某个任务。要对图表中的所有任务执行此操作，您需要在 [eachTask()](api/method/eachtask.md) 函数中使用该方法。要仅绘制一次变更，您可以将函数包裹在 [batchUpdate()](api/method/batchupdate.md) 方法中：
 
@@ -265,7 +265,7 @@ function expandAll() {
 
 **相关示例**  [Gantt. Collapse/expand all tasks](https://snippet.dhtmlx.com/72zahagy)
 
-## 如何在网格单元格/表头显示多行文本
+## 如何在网格单元格/表头显示多行文本 {#how-to-display-several-lines-in-the-grid-cellheader}
 
 这可以通过添加一些样式规则实现。
 
@@ -294,7 +294,7 @@ function expandAll() {
 
 **相关示例**  [Gantt. Multiline text in cells of a Grid column](https://snippet.dhtmlx.com/bwil9sxs)
 
-## 如何在网格中添加自定义列
+## 如何在网格中添加自定义列 {#how-to-add-a-custom-column-in-the-grid}
 
 要添加自定义列，您需要修改 [gantt.config.columns](api/config/columns.md) 参数。如果指定了 **name** 参数，Gantt 将返回具有同名的任务属性的值。您还可以使用 [template()](guides/specifying-columns.md#datamappingandtemplates) 函数返回任意自定义日期或 HTML 元素。
 
@@ -319,7 +319,7 @@ gantt.config.columns = [
 
 **相关示例**  [Gantt. Custom column with template for action buttons](https://snippet.dhtmlx.com/gfsdp121)
 
-## 如何添加自定义（添加）按钮
+## 如何添加自定义（添加）按钮 {#how-to-add-a-custom-add-button}
 
 您需要通过 [gantt.config.columns](api/config/columns.md) 参数创建自定义列。您可以为该列设置任意名称，除了 *add*，否则 Gantt 将添加默认的 *add* 列。可以在网格列中使用 [template](guides/specifying-columns.md#datamappingandtemplates) 函数返回任意 HTML 元素，并附加一个点击事件来实现添加任务的自定义逻辑。
 
@@ -454,7 +454,7 @@ gantt.config.scales = [
 
 **相关示例**  [Gantt. Weeks of the year on the scale](https://snippet.dhtmlx.com/gbowxpmr)
 
-## 如何复制与粘贴任务
+## 如何复制与粘贴任务 {#how-to-copy-and-paste-tasks}
 
 您可以使用 [copy()](api/method/copy.md) 方法创建任务对象的深拷贝。然后，您可以更改克隆任务的 ID。之后，您可以使用 [addTask()](api/method/addtask.md) 或 [createTask()](api/method/createtask.md) 方法添加克隆任务。
 
@@ -598,7 +598,7 @@ gantt.ext.keyboardNavigation.addShortcut("ctrl+v", function (e) {
 
 **相关示例**  [Gantt. Copy and paste tasks via Ctrl+C, Ctrl+V](https://snippet.dhtmlx.com/kck3pnmh)
 
-## 如何在导出的 PDF 文件中添加资源图表或自定义样式
+## 如何在导出的 PDF 文件中添加资源图表或自定义样式 {#how-to-add-resource-chart-or-custom-styles-in-the-exported-pdf-file}
 
 您需要在导出时以 [raw](guides/export.md#exportingcustommarkupandstyles) 模式导出数据，并将样式包含在导出函数的 [header](guides/export.md#customstylefortheoutputfile) 或 [footer](guides/export.md#customstylefortheoutputfile) 参数中。
 
@@ -655,7 +655,7 @@ gantt.exportToPDF({
 
 **相关示例**  [Gantt. Export Gantt with resource histogram to PDF](https://snippet.dhtmlx.com/i9me4oxl)
 
-## 如何根据子任务计算任务进度
+## 如何根据子任务计算任务进度 {#how-to-calculate-task-progress-depending-on-child-tasks}
 
 实现此功能的一种简单方法是在更新子任务后计算父任务的进度。要遍历父任务，您可以使用 [eachParent()](api/method/eachparent.md) 方法。
 
@@ -795,7 +795,7 @@ gantt.templates.task_class = (start, end, task) =>
 [Calculate Progress of Summary Tasks](https://docs.dhtmlx.com/gantt/samples/08_api/16_dynamic_progress.html)
 
 
-## 如何在时间线中垂直重新排序任务
+## 如何在时间线中垂直重新排序任务 {#how-to-vertically-reorder-tasks-in-the-timeline}
 
 您可以使用 [addTaskLayer()](api/method/addtasklayer.md) 方法在时间线中显示自定义 HTML 元素，并为其添加垂直和水平拖动的功能。
 
@@ -807,7 +807,7 @@ gantt.templates.task_class = (start, end, task) =>
 
 **相关示例**  [Gantt. Reorder split tasks vertically in timeline](https://snippet.dhtmlx.com/usfulweq)
 
-## 如何冻结/固定网格中的列
+## 如何冻结/固定网格中的列 {#how-to-freezefix-columns-in-the-grid}
 
 这可以通过使用 CSS 实现。您需要将需要固定的列设置为相对定位。将 left 参数设为与滚动条位置相同的值，因此，您可以为滚动条添加事件处理程序并更新 CSS 变量：
 

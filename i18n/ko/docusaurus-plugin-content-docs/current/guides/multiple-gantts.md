@@ -11,7 +11,7 @@ sidebar_label: "한 페이지에 있는 여러 차트"
 
 기본적으로 DHTMLX Gantt는 정적 객체이며 기본 인스턴스가 페이지에 지속적으로 존재합니다. 언제든지 전역 `gantt` 객체를 통해 접근할 수 있습니다. 필요하다면 새로 gantt 객체를 생성할 수도 있습니다.
 
-## Gantt 인스턴스 구성
+## Gantt 인스턴스 구성 {#gantt-instance-configuration}
 
 새로운 DHTMLX Gantt 인스턴스를 만들려면 `Gantt.getGanttInstance()` 메서드를 사용하세요:
 

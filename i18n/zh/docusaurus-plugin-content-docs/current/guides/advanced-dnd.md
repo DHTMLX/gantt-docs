@@ -85,7 +85,7 @@ gantt.$task_data.attachEvent("onBeforeDrag", function (coords) {
 请注意，事件处理程序只能为已有元素添加。因此应在 Gantt 初始化后再添加事件处理程序，否则它们将不起作用，因为这些元素尚未创建。
 :::
 
-## 通过拖放创建任务
+## 通过拖放创建任务 {#creating-tasks-with-drag-n-drop}
 
 您可以在时间线直接通过拖放创建任务：在空白处点击以设置任务的开始日期，然后向右拖动以设置其持续时间。
 
@@ -117,11 +117,11 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 
 [Create new tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/24_click_drag.html)
 
-## 为未排程的任务设置时间
+## 为未排程的任务设置时间 {#setting-time-for-unscheduled-tasks}
 
 通过拖放扩展，您可以为 [unscheduled tasks](guides/unscheduled-tasks.md) 设置时间。
 
-## 通过拖放选择任务
+## 通过拖放选择任务 {#selecting-tasks-with-drag-n-drop}
 
 可以在多种模式下通过拖放来选择任务：按照日期、按行，或在边界内。
 
@@ -169,7 +169,7 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 [Select multiple tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/25_click_drag_select_by_drag.html)
 
 
-## 通过拖放创建拆分任务的部分
+## 通过拖放创建拆分任务的部分 {#creating-parts-of-split-tasks}
 
 :::info
 此功能仅在 PRO 版中可用。

@@ -21,7 +21,7 @@ sidebar_label: "甘特图布局"
 **相关示例**: [带资源面板的甘特图](https://docs.dhtmlx.com/gantt/samples/10_layout/02_resource_panel.html)
 
 
-## 默认布局
+## 默认布局 {#default-layout}
 
 布局通过 [gantt.config.layout](api/config/layout.md) 配置选项设置。布局的默认配置如下：
 
@@ -73,7 +73,7 @@ gantt.config.layout = {
 请注意，在初始化 Gantt 之前应指定布局的配置。如果对布局进行了修改，需要使用 [resetLayout](api/method/resetlayout.md) 进行刷新。
 :::
 
-## 滚动条
+## 滚动条 {#scrollbar}
 
 布局的滚动条由 **"scrollbar"** 视图指定。你可以设置水平和垂直滚动条。
 
@@ -173,7 +173,7 @@ gantt.config.layout = {
 - [Gantt. Layout views with own scrollbars](https://snippet.dhtmlx.com/cv9w37tu)
 - [Gantt. Universal Layout configuration](https://snippet.dhtmlx.com/uqejdyqc)
 
-## 布局自定义
+## 布局自定义 {#bujuzidingyi}
 
 你可以更改默认布局配置，并使用附加布局视图来指定甘特图在页面上的元素排列方案。
 
@@ -269,7 +269,7 @@ const tasksStore = gantt.getDatastore("task");
 该方法将数据存储的名称作为参数。
 
 :::note
-如果你使用内置的资源视图，甘特图可以自动为它们创建数据存储。[阅读详细信息](guides/resource-management.md#working-with-resource-view-panel)。
+如果你使用内置的资源视图，甘特图可以自动为它们创建数据存储。[阅读详细信息](guides/resource-management.md#shiyongziyuanshitumianban)。
 :::
 
 ### 动态禁用/启用调整大小器 {#enable_disable_resizers}
@@ -296,7 +296,7 @@ gantt.$container.classList.add("no_resizers");
 gantt.$container.classList.remove("no_resizers");
 ~~~
 
-## 将 HTML 作为 Inner View
+## 将 HTML 作为 Inner View {#htmlzuoweineibushitu}
 
 你也可以将自定义 HTML 用作甘特图布局的内部视图。例如：
 
@@ -374,7 +374,7 @@ gantt.config.layout = {
 
 布局可以包含任意数量的其他视图。
 
-## 视图的配置与模板
+## 视图的配置与模板 {#configs-and-templates-of-views}
 
 网格和时间线视图复用全局 [gantt.config/gantt.templates](guides/common-configuration.md) 的模板和配置。但是，这些设置可以在布局层级覆盖到特定视图。
 
@@ -462,7 +462,7 @@ gantt.config.layout = {
 
 请参考 [Resource Management](guides/resource-management.md) 文章。
 
-## 可见性分组
+## 可见性分组 {#kejianxingfenzu}
 
 有时候你需要同步布局中某些元素的可见性。例如，如果相邻单元格中有水平滚动条，你可能希望它们同时显示或隐藏。
 

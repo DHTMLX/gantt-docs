@@ -27,7 +27,7 @@ var links = gantt.getLinks();
 
 이는 링크 객체의 배열을 반환합니다.
 
-## 특정 작업과 관련된 링크 가져오기
+## 특정 작업과 관련된 링크 가져오기 {#getting-the-links-related-to-a-certain-task}
 
 특정 작업과 연관된 링크를 가져오려면 작업 객체의 **$source**, **$target** 속성을 사용하세요.
 

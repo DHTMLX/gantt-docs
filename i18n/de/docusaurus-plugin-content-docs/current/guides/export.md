@@ -50,7 +50,7 @@ Das Exportmodul ist kostenlos, falls Sie Gantt unter einer Commercial-, Enterpri
 
 [Mehr zur Nutzung des Exportmoduls für PDF lesen](guides/pdf-export-module.md).
 
-## Export nach PDF
+## Export nach PDF {#export-to-pdf}
 
 Um das Gantt-Diagramm als PDF-Dokument zu exportieren, führen Sie die folgenden Schritte aus:
 
@@ -88,7 +88,7 @@ Wenn Sie eine Gantt-Version älter als 8.0 verwenden, müssen Sie die Datei `htt
 **Zugehöriges Beispiel**: [Export data from Gantt](https://docs.dhtmlx.com/gantt/samples/08_api/06_export.html)
 
 
-## Export nach PNG
+## Export nach PNG {#export-to-png}
 
 Um das Gantt-Diagramm als PNG-Bild zu exportieren, führen Sie die folgenden Schritte aus:
 
@@ -124,7 +124,7 @@ Wenn Sie eine Gantt-Version älter als 8.0 verwenden, müssen Sie die Datei `htt
 **Zugehöriges Beispiel**: [Export data from Gantt](https://docs.dhtmlx.com/gantt/samples/08_api/06_export.html)
 
 
-## Parameter der Exportmethoden
+## Parameter der Exportmethoden {#parameters-of-the-export-methods}
 
 Die Methoden [exportToPDF](api/method/exporttopdf.md) und [exportToPNG](api/method/exporttopng.md) nehmen als Parameter dasselbe Objekt mit einer Reihe von Eigenschaften (alle Eigenschaften sind optional):
 
@@ -311,7 +311,7 @@ gantt.exportToPDF({
 [Checken Sie die vollständige Liste der verfügbaren Gantt-Skins](guides/skins.md).
 
 
-## Kopf-/Fußzeile der Ausgabedatei
+## Kopf-/Fußzeile der Ausgabedatei {#headerfooter-of-the-output-file}
 
 Um eine Kopf-/Fußzeile zur Ausgabedatei (PNG oder PDF) hinzuzufügen, verwenden Sie die Eigenschaften **header**/**footer** im Parameter der Methoden [exportToPDF/exportToPNG](guides/export.md#parameters-of-the-export-methods):
 
@@ -352,7 +352,7 @@ gantt.exportToPDF({
 
 Beachten Sie, dass diese Einstellungen nur funktionieren, wenn auch **margins** angegeben sind und genügend Platz vorhanden ist, um Kopf-/Fußzeilen korrekt anzuzeigen. Andernfalls werden Kopfzeilen/Fußzeilen außerhalb des Gantt gerendert. Es wird empfohlen, als Minimalrand 10 zu verwenden, damit lediglich Textzeilen dargestellt werden können.
 
-## Ränder der Ausgabedatei PDF
+## Ränder der Ausgabedatei PDF {#margins-of-the-output-pdf-file}
 
 Um Randabstände zur Ausgabedatei PDF hinzuzufügen, verwenden Sie die Eigenschaft **margins** im **additional_settings**-Objekt der
 [Methode exportToPDF](guides/export.md#parameters-of-the-export-methods). Die Eigenschaft margins funktioniert sowohl für den einseitigen Export als auch
@@ -476,7 +476,7 @@ In einem solchen Fall müssen Sie einen [Exportdienst](https://dhtmlx.com/docs/p
 
 Schauen Sie in den [Systemanforderungen](guides/export-requirements.md) nach, wie Sie Exportdienste lokal installieren.
 
-## Exportieren von HTML-Elementen
+## Exportieren von HTML-Elementen {#exporting-html-elements}
 
 Beim Export des Gantt-Diagramms in die Formate PNG und PDF sollten Sie beachten, dass der Export von HTML-Elementen aufgrund potenzieller Sicherheitsrisiken eingeschränkt ist.
 

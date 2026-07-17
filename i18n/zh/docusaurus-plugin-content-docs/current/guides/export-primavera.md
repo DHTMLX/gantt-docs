@@ -106,7 +106,7 @@ gantt.exportToPrimaveraP6({
 
 **相关示例**： [Custom properties for WBS tasks (PrimaveraP6's Summary tasks)](https://snippet.dhtmlx.com/r90hjlvo?tag="gantt")
 
-### 导出设置
+### 导出设置 {#export-settings}
 
 **exportToPrimaveraP6()** 方法接收一个对象作为参数，该对象包含若干属性（所有属性均为可选）：
 
@@ -311,7 +311,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-## 从 Primavera P6 导入
+## 从 Primavera P6 导入 {#import-from-primavera-p6}
 
 为了转换 XML 或 XER 文件，你需要向导出服务发送以下请求：
 
@@ -397,7 +397,7 @@ gantt.importFromPrimaveraP6({
             - 每周的 7 天（从 0 - 星期日，到 6 - 星期六），其中 1/true 代表工作日，0/false 代表非工作日
             - 其他记录为日期
 
-### 导入设置
+### 导入设置 {#import-settings}
 
 #### 设置持续时间单位
 
@@ -670,7 +670,7 @@ gantt.importFromPrimaveraP6({
 }
 ~~~
 
-## 请求大小限制与大文件导入
+## 请求大小限制与大文件导入 {#limits-on-request-size-and-import-of-large-files}
 
  Primavera P6 导出/导入服务有两个 API 端点：
 

@@ -45,7 +45,7 @@ Example 2
 有两种方式可以显示隐藏非工作时间的图表:
 
 - 添加一个较小单位的刻度（例如，在天刻度旁边添加小时刻度，或在周刻度旁边添加天刻度）
-- 使用仅显示工作小时或工作日的[自定义刻度](guides/configuring-time-scale.md#zidingyishijiandanwei)
+- 使用仅显示工作小时或工作日的[自定义刻度](guides/configuring-time-scale.md#customtimeunits)
 
 :::note
 样例: [刻度上的5天工作周](https://snippet.dhtmlx.com/eq70o558)

@@ -27,7 +27,7 @@ gantt.attachEvent("onTaskClick", (id, e) => {
 - Die Namen der Ereignisse sind Groß-/Kleinschreibung unabhängig.
 - Sie können mehreren Handlern denselben Ereignis zuordnen.
 
-## Ereignisse trennen
+## Ereignisse trennen {#detaching-events}
 
 Um einen Ereignis-Handler zu trennen, verwenden Sie die [`detachEvent()`](api/method/detachevent.md) Methode:
 

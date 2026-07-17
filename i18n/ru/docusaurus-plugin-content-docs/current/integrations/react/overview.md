@@ -344,7 +344,7 @@ DHTMLX Gantt поставляется с встроенным конфигури
 
 Если нужно, вы можете заменить его на модальное окно на базе React или любой другой компонент одним из следующих способов:
 
-### Передача пользовательского компонента через проп `customLightbox`
+### Передача пользовательского компонента через проп `customLightbox` {#by-providing-a-custom-component-via-the-customlightbox-prop}
 
 Чтобы сделать это, передайте компонент через проп **customLightbox**:
 
@@ -736,7 +736,7 @@ return (
 
 ~~~
 
-## Рабочие календари (Working Calendars)
+## Рабочие календари (Working Calendars) {#working-calendars}
 
 Чтобы включить расчеты рабочего времени в **ReactGantt**, убедитесь, что включено [work_time](api/config/work_time.md):
 

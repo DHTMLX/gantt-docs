@@ -58,7 +58,7 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
 
 **Связанный пример**: [Базовая инициализация](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
  
-## Как добавить файлы Gantt в проект
+## Как добавить файлы Gantt в проект {#how-to-add-gantt-source-files-into-a-project}
 
 Вы можете добавить файлы кода Gantt в ваш проект несколькими способами, в зависимости от типа создаваемого вами приложения:
 
@@ -69,7 +69,7 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
 - [Включение файлов в приложение на базе RequireJS](#include-files-into-a-requirejs-based-app)
 
 
-## Включение файлов через тег &lt;script&gt;
+## Включение файлов через тег &lt;script&gt; {#include-files-via-the-script-tag}
 
 dhtmlxGantt требует подключения двух файлов кода на страницу:
 
@@ -103,7 +103,7 @@ import { gantt } from 'dhtmlx-gantt';
 import { gantt, Gantt } from 'dhtmlx-gantt';
 ~~~
 
-## Использование Gantt с Vite
+## Использование Gantt с Vite {#using-gantt-with-vite}
 
 Если в вашем проекте используется Vite, для файла **vite.config.js** требуется следующая настройка, чтобы Gantt корректно включался в приложение:
 
@@ -115,7 +115,7 @@ optimizeDeps: {
 }
 ~~~
 
-## Производственная сборка Svelte
+## Производственная сборка Svelte {#svelte-production-build}
 
 Если вы используете [Gantt в приложении на Svelte](integrations/svelte/howtostart-svelte.md), вам нужно добавить следующую настройку в файл **vite.config.js** для сборки в production, заменив папку *gantt_9.0.14_evaluation* на путь к вашей папке Gantt:
 
@@ -130,7 +130,7 @@ build: {
 }
 ~~~
 
-## Включение файлов в приложение на базе RequireJS
+## Включение файлов в приложение на базе RequireJS {#include-files-into-a-requirejs-based-app}
 
 Чтобы включить файлы dhtmlxGantt в приложение на базе RequireJS, необходимо следовать логике, показанной в примере ниже:
 

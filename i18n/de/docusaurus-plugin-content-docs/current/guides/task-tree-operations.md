@@ -9,7 +9,7 @@ In diesem Artikel finden Sie Methoden, die sich auf die Baumstruktur der Gantt-D
 
 *Um sich über grundlegende Operationen zum Abrufen des Task-Objekts oder der ID zu informieren, lesen Sie den Artikel [Task Object/Id](guides/task-object-operations.md).*
 
-## Elternteil einer Aufgabe
+## Elternteil einer Aufgabe {#parent-of-a-task}
 
 Um das Elternelement einer Aufgabe zu erhalten, verwenden Sie die Methode [`getParent()`](api/method/getparent.md) oder die `"parent"`-Eigenschaft des Task-Objekts:
 

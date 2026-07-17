@@ -56,7 +56,7 @@ gantt.locale.labels["section_parent"] = "Parent task";
 - **sort** - (*function*) 为下拉选项设置排序函数（参见 [选项排序](guides/parent.md#options-sorting)）
 - **template** - (*function*) 为下拉选项设置模板
 
-## 选项过滤
+## 选项过滤 {#options-filtering}
 
 若要过滤在 **parent** 控件中展示的选项，请使用 **filter** 属性：
 
@@ -88,7 +88,7 @@ gantt.config.lightbox.sections = [
 - false，表示应从选项列表中移除该任务
 
 
-## 选项排序
+## 选项排序 {#options-sorting}
 
 要对在 **parent** 控件中显示的选项进行排序，请使用 **sort** 属性：
 

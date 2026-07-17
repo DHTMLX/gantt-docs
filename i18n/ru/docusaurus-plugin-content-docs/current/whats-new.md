@@ -220,10 +220,10 @@ sidebar_label: "Что нового"
 
 - Исправлена проблема, при которой [mergeCalendars](api/method/mergecalendars.md) объединял значения `customWeeks` некорректно
 - Исправлена ошибка, возникающая в функции `onrender`, когда [колонка](guides/specifying-columns.md#wbscode) `name` содержит пробелы
-- Исправлена проблема, при которой Gantt оставался в режиме только для чтения после [click_drag](guides/extensions-list.md#advanceddragndrop) Таймлайна при включённой [S-Curve Overlay](guides/baselines.md#extraoverlayforthechart)
+- Исправлена проблема, при которой Gantt оставался в режиме только для чтения после [click_drag](guides/extensions-list.md#advanced-drag-n-drop) Таймлайна при включённой [S-Curve Overlay](guides/baselines.md#extra-overlay-for-the-chart)
 - Исправлена проблема, при которой длительность задачи сбрасывалась в `0` при использовании [ресурсного календаря](guides/resource-management.md) и секция [Resources](guides/resource-management.md#resourceviewpanel) находилась ниже секции длительности в [Lightbox](guides/default-edit-form.md)
 - Исправлена ошибка консоли, вызванная предупреждением "This is a Trial version" при использовании Gantt в **React StrictMode**
-- Исправлена проблема, при которой функция [adjustTaskHeightForBaselines](api/method/adjusttaskheightforbaselines.md) не пересчитывала высоту строки при отключённом [gantt.config.baselines.render_mode](api/config/baselines.md#rendermode)
+- Исправлена проблема, при которой функция [adjustTaskHeightForBaselines](api/method/adjusttaskheightforbaselines.md) не пересчитывала высоту строки при отключённом [gantt.config.baselines.render_mode](api/config/baselines.md#details)
 - Исправлена проблема, мешающая отображению задач при [скрытом](api/config/show_chart.md) Таймлайне в среде Salesforce
 - Исправлена проблема, при которой календари не наследовались от родительских задач при отключённой конфигурации [dynamic_resource_calendars](api/config/dynamic_resource_calendars.md)
 - Исправлена проблема, при которой позиция скролла сбрасывалась при повторном рендере, если [ReactGantt](integrations/react.md) находился в режиме groupBy
@@ -231,7 +231,7 @@ sidebar_label: "Что нового"
 ### Обновления
 
 - Добавлен флаг `isSalesforce` в [gantt.env](api/other/env.md)
-- Добавлено свойство `groupTasks` для [React Gantt](integrations/react.md#groupingtasks)
+- Добавлено свойство `groupTasks` для [React Gantt](integrations/react/overview.md#groupingtasks)
 
 ## 9.0.10
 
@@ -241,11 +241,11 @@ sidebar_label: "Что нового"
 
 - Исправлена проблема, мешающая изменять значение поля `parent` в [Lightbox](guides/default-edit-form.md)
 - Исправлена избыточная скорость прокрутки при использовании колеса мыши в Firefox 88 и новее
-- Исправлена невозможность перемещения [проектных задач](guides/task-types.md#projecttasks), если подзадача не запланирована и не содержит параметры даты
+- Исправлена невозможность перемещения [проектных задач](guides/task-types.md#project-tasks), если подзадача не запланирована и не содержит параметры даты
 - Исключён неожиданный вызов [gantt.render()](api/method/render.md) во время операции [gantt.silent](api/method/silent.md) при использовании методов [open](api/method/open.md) или [close](api/method/close.md)
-- Исправлена проблема, при которой [проектные задачи](guides/task-types.md#projecttasks) не перерисовывались, если событие [onBeforeTaskChanged](api/event/onbeforetaskchanged.md) возвращало `false`
+- Исправлена проблема, при которой [проектные задачи](guides/task-types.md#project-tasks) не перерисовывались, если событие [onBeforeTaskChanged](api/event/onbeforetaskchanged.md) возвращало `false`
 - Обеспечено, что индикаторы прогресса задачи занимают всю ширину задачи, как ожидается
-- Удалены некорректные WAI-ARIA-атрибуты из ссылок задач только для чтения для повышения [доступности](guides/accessibility.md#waiariaattributes)
+- Удалены некорректные WAI-ARIA-атрибуты из ссылок задач только для чтения для повышения [доступности](guides/accessibility.md#wai-aria-attributes)
 - Исправлена проблема, при которой ресайзеры панели задач не адаптировались к изменению высоты панели задачи
 
 ## 9.0.9
@@ -262,7 +262,7 @@ sidebar_label: "Что нового"
 - Исправлена проблема, при которой всплывающее окно [Quick Info](guides/quick-info.md) появлялось после нажатия на кнопку разворачивания/сворачивания в представлениях [Timeline](guides/configuring-time-scale.md) или [грид](guides/specifying-columns.md)
 - Исправлена ошибка, возникающая при уничтожении Gantt без инициализации грида
 - Исправлена ошибка, возникающая при загрузке задачи с несуществующим родителем при включённой [Undo extension](guides/undo-redo.md)
-- Исправлена проблема, при которой расширение [click_drag](guides/extensions-list.md#advanceddragndrop) не работало на сенсорных устройствах
+- Исправлена проблема, при которой расширение [click_drag](guides/extensions-list.md#advanced-drag-n-drop) не работало на сенсорных устройствах
 - Улучшена отзывчивость прокрутки грида на сенсорных устройствах
 
 ## 9.0.7
@@ -273,15 +273,15 @@ sidebar_label: "Что нового"
 
 - Исправлена ошибка, возникающая при клике по задаче в таймлайне без грида при включённой [keyboard_navigation](guides/keyboard-navigation.md)
 - Исправлен расчёт [WBS кода](guides/specifying-columns.md#wbscode) для отсортированных задач, включающих [placeholder task](api/config/placeholder_task.md)
-- Решена проблема, при которой ячейки шкалы в ресурсном таймлайне исчезали при сворачивании задач или [изменении размера грида](guides/layout-config.md#defaultlayout)
+- Решена проблема, при которой ячейки шкалы в ресурсном таймлайне исчезали при сворачивании задач или [изменении размера грида](guides/layout-config.md#default-layout)
 - Обеспечен правильный порядок задач при добавлении как дочерних, так и родительских задач внутри функции [`gantt.silent`](api/method/silent.md)
-- Сохранён фокус в редактируемых [ресурсных ячейках](guides/resource-management.md#resourcecellvalue) после редактирования значения
+- Сохранён фокус в редактируемых [ресурсных ячейках](api/template/resource_cell_value.md) после редактирования значения
 - Предотвращён скролл Gantt к самой левой позиции грида при клике по задаче
 - Сохранено свойство `group` при добавлении новых задач в режиме [group](api/method/groupby.md)
 - Исправлена проблема, при которой [маркеры](guides/markers.md) не отображались, если таймлайн был изначально отключён
 - Предотвращено дублирование [маркеров](guides/markers.md), когда график изначально не отображается в конфигурации layout
 - Исправлено исчезновение элементов drag handles (ссылки, прогресс, изменение размера задачи) после [перетаскивания таймлайна](api/config/drag_timeline.md)
-- Обеспечена корректная работа [инлайн-редактора предшественников](guides/inline-editors-ext.md#predecessoreditor) при числовом типе id ссылки
+- Обеспечена корректная работа [инлайн-редактора предшественников](guides/inline-editing.md#types-of-editors) при числовом типе id ссылки
 - Предотвращено дублирование элементов `gantt_marker_area`
 - Исправлена работа [undo](guides/undo-redo.md) с действием `changeTaskId`
 
@@ -296,7 +296,7 @@ sidebar_label: "Что нового"
 - Предотвращено некорректное перемещение задач в конец ветки после изменения типа свойства `parent` с числового на строковый
 - Улучшено поведение полос прокрутки за счёт корректировки ресайзеров возле скроллбаров
 - Обеспечено сохранение [назначений ресурсов](guides/resource-management.md#assigningresources) при добавлении задач внутри [gantt.batchUpdate](api/method/batchupdate.md)
-- Исправлена проблема исчезновения задач при drag-and-drop в [бесконечной шкале](guides/configuring-time-scale.md#infinitescroll)
+- Исправлена проблема исчезновения задач при drag-and-drop в [бесконечной шкале](guides/configuring-time-scale.md#infinite-scroll)
 - Обеспечено корректное отображение имён ресурсов в [lightbox](guides/default-edit-form.md) после многократного парсинга данных
 - Исправлен некорректный расчёт даты в [`getClosestWorkTime`](api/method/getclosestworktime.md) при использовании конфигурации [duration_step](api/config/duration_step.md)
 - Разрешено отменять событие [onColumnDragMove](api/config/reorder_grid_columns.md)
@@ -313,7 +313,7 @@ sidebar_label: "Что нового"
 - Исправлено положение стрелок ссылок, зависящее от CSS-свойства `line-height`
 - Исправлена ошибка при загрузке [коллекций](guides/supported-data-formats.md#jsonwithcollections) без массива `links`
 - Решена проблема с `gantt.config.baselines`, когда значение ложно, но не установлено явно в `false`
-- Исправлена проблема, при которой [click_drag](guides/extensions-list.md#advanceddragndrop) не работал после вызова [resetLayout](api/method/resetlayout.md)
+- Исправлена проблема, при которой [click_drag](guides/extensions-list.md#advanced-drag-n-drop) не работал после вызова [resetLayout](api/method/resetlayout.md)
 - Обеспечено, чтобы выбранные дочерние задачи не отображались выше родительских при включённой [keyboard_navigation](guides/keyboard-navigation.md)
 - Исправлены проблемы навигации с клавиатуры, возникающие, если идентификаторы задач содержат одинарные кавычки
 - Исправлено поведение [calculateEndDate](api/method/calculateenddate.md) при отрицательной длительности
@@ -342,7 +342,7 @@ sidebar_label: "Что нового"
 - Предотвращено удаление [назначения ресурса](guides/resource-management.md#assigningresources) при обновлении через lightbox
 - Исправлена проблема с пустым массивом задач в [resource_cell_value](api/template/resource_cell_value.md) в нерабочие дни при включённой опции [resource_render_empty_cells](api/config/resource_render_empty_cells.md)
 - Исправлена ошибка при клике по кнопкам, встроенным в секции [lightbox](guides/default-edit-form.md)
-- Обеспечена синхронизация [ресурсной панели](guides/resource-management.md#resourceviewpanel) и [уровней масштабирования](guides/zooming.md#builtinzoomingmodule)
+- Обеспечена синхронизация [ресурсной панели](guides/resource-management.md#resourceviewpanel) и [уровней масштабирования](guides/zooming.md#built-in-zooming-module)
 - Предотвращено удаление событий [Inline Editors](guides/inline-editors-ext.md) после [переинициализации](api/method/init.md) Gantt или [сброса layout](api/method/resetlayout.md)
 - Исправлена проблема, при которой состояние открытия не восстанавливалось после [redo](guides/undo-redo.md) изменений
 
@@ -355,10 +355,10 @@ sidebar_label: "Что нового"
 - Исправлена регрессия, вызывавшая некорректные стили для границ задач и прогресса при указании цвета задачи через [свойства объекта задачи](guides/colouring-tasks.md#specifyingstyleinthepropertiesofataskobject)
 - Восстановлена работоспособность шаблона [marker_class](api/template/marker_class.md)
 - Восстановлен отсутствующий класс для секции [textarea](guides/textarea.md) в lightbox
-- Исправлена проблема, при которой [дедлайны](guides/inbuilt-baselines.md#deadlinesandconstraints) отображались вне строки задачи и были не полностью по центру
+- Исправлена проблема, при которой [дедлайны](guides/inbuilt-baselines.md#deadlines-and-constraints) отображались вне строки задачи и были не полностью по центру
 - Обеспечено отображение связей поверх других связей при наведении курсора мыши
 - Исправлена проблема, при которой даты [baseline](guides/inbuilt-baselines.md) не рассчитывались при их загрузке через метод [parse](api/method/parse.md)
-- Исправлены позиции [ограничений](guides/inbuilt-baselines.md#deadlinesandconstraints) как для обычного, так и для [RTL](guides/rtl-mode.md) режимов
+- Исправлены позиции [ограничений](guides/inbuilt-baselines.md#deadlines-and-constraints) как для обычного, так и для [RTL](guides/rtl-mode.md) режимов
 - Предотвращено появление лишних циклических связей при связывании частей разбитых задач
 - Исправлена проблема, при которой [Quick Info](guides/quick-info.md) в [detached mode](api/config/quick_info_detached.md) не скрывалась из-за увеличенной ширины и жёстко заданных стилей
 - Обновлён [Export API](api/method/exporttoexcel.md) для поддержки отступов дерева при экспорте в Excel
@@ -375,10 +375,10 @@ sidebar_label: "Что нового"
 - Исправлена регрессия с некорректным положением связи при перетаскивании с включённым [smart_rendering](api/config/smart_rendering.md)
 - Исправлена регрессия, при которой [Resource Control](guides/resources.md) в [lightbox](guides/default-edit-form.md) выходил за пределы контейнера
 - Исправлена отсутствующая нижняя граница ячеек [шкалы времени](guides/configuring-time-scale.md) в последней строке при их выделении с помощью пользовательского CSS
-- Исправлено некорректное поведение [липких меток](guides/configuring-time-scale.md#stickylabels) при отключённом [smart_scales](api/config/smart_scales.md)
+- Исправлено некорректное поведение [фиксированных меток](guides/configuring-time-scale.md#sticky-labels) при отключённом [smart_scales](api/config/smart_scales.md)
 - Решена проблема, при которой Gantt продолжал [вертикальное перетаскивание](api/config/order_branch.md) задачи после клика правой кнопкой мыши
-- Исправлена проблема, при которой вызов [resetLayout](api/method/resetlayout.md) нарушал работу плагина [S-Curve Overlay](guides/baselines.md#extraoverlayforthechart)
-- Предотвращено создание дублирующихся связей редактором предшественников ([predecessor editor](guides/inline-editing.md#typesofeditors))
+- Исправлена проблема, при которой вызов [resetLayout](api/method/resetlayout.md) нарушал работу плагина [S-Curve Overlay](guides/baselines.md#extra-overlay-for-the-chart)
+- Предотвращено создание дублирующихся связей редактором предшественников ([predecessor editor](guides/inline-editing.md#types-of-editors))
 
 ## <b>9.0</b>
 
@@ -397,13 +397,13 @@ sidebar_label: "Что нового"
 - Новый [тёмный скин](guides/skins.md#darkskin)
 - Добавлена встроенная поддержка [baselines](guides/inbuilt-baselines.md)
 - Поддержка [вручную планируемых суммарных задач](guides/custom-projects-dates.md)
-- [Липкие метки для шкалы времени](guides/configuring-time-scale.md#stickylabels)
+- [Фиксированные метки для шкалы времени](guides/configuring-time-scale.md#sticky-labels)
 
 ### Обновления
 
 - Обновлён [Terrace skin](guides/skins.md#terraceskin)
-- Добавлено отображение [дедлайнов](guides/inbuilt-baselines.md#deadlinesandconstraints) по умолчанию
-- Добавлено отображение [ограничений задач](guides/inbuilt-baselines.md#taskconstraints) по умолчанию
+- Добавлено отображение [дедлайнов](guides/inbuilt-baselines.md#deadlines-and-constraints) по умолчанию
+- Добавлено отображение [ограничений задач](guides/inbuilt-baselines.md#task-constraints) по умолчанию
 - [Исходные файлы скинов](guides/custom-skins.md) теперь включены в пакет
 - В [Undo plugin](guides/undo-redo.md) добавлены методы `setUndoStack` и `setRedoStack` для управления стеками undo/redo
 - Возможность [установки профессиональных версий Gantt через npm](guides/installation.md)
@@ -416,10 +416,10 @@ sidebar_label: "Что нового"
 - Исправлены некорректные позиции связей для Milestones при увеличенной высоте родительской задачи
 - Исправлена ошибка, возникавшая при [автоматическом планировании](guides/auto-scheduling.md), если автоматическое планирование отменено для задачи
 - Обеспечено корректное отображение [разбитых задач](guides/split-tasks.md) в строке родителя
-- Исправлено [автоматическое планирование](guides/auto-scheduling.md#summaryscheduling) проектов при наличии связи подзадачи с лагом 0
+- Исправлено [автоматическое планирование](guides/auto-scheduling.md) проектов при наличии связи подзадачи с лагом 0
 - Исправлены некорректные позиции связей для [разбитых задач](guides/split-tasks.md) с разной высотой строк
 - Gantt корректно автоматически планирует проекты с двумя уровнями задач
-- Исправлена проблема, при которой Gantt не возвращал fixedDate "assignments" в [resource_cell_value](guides/resource-management.md#resourcecellvalue), если задача вне указанного диапазона дат
+- Исправлена проблема, при которой Gantt не возвращал fixedDate "assignments" в [resource_cell_value](api/template/resource_cell_value.md), если задача вне указанного диапазона дат
 
 ## 8.0.11
 
@@ -456,7 +456,7 @@ sidebar_label: "Что нового"
 - Исправлена проблема, при которой тип задачи 'project' [type](guides/typeselect.md) не устанавливался в lightbox
 - Исправлена проблема, при которой [настройки рабочего времени](guides/working-time.md) [объединённого](guides/working-time.md#mergingcalendars)" календаря считались выходными
 - Исправлена проблема, мешавшая [группировке](api/method/groupby.md) по ресурсам при наличии [назначений ресурсов](guides/resource-management.md) на разные даты
-- Исправлена ошибка при попытке [отфильтровать разбитые задачи](guides/split-tasks.md#filteringsplittasks) без дочерних элементов с помощью события [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md)
+- Исправлена ошибка при попытке [отфильтровать разбитые задачи](guides/split-tasks.md#filtering-split-tasks) без дочерних элементов с помощью события [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md)
 - Исправлена проблема, при которой [назначения ресурсов](guides/resource-management.md) не обновлялись после [перетаскивания проекта с подзадачами](api/config/drag_project.md)
 
 ## 8.0.9
@@ -514,11 +514,11 @@ sidebar_label: "Что нового"
 
 ### Исправления
 
-- Улучшения и исправления в использовании [WAI-ARIA атрибутов](guides/accessibility.md#waiariaattributes) для повышения доступности
+- Улучшения и исправления в использовании [WAI-ARIA атрибутов](guides/accessibility.md#wai-aria-attributes) для повышения доступности
 - Исправлена проблема уменьшения ширины грида после перерисовки при включённой конфигурации [`grid_elastic_columns`](api/config/grid_elastic_columns.md)
-- Значение по умолчанию для [`undo_steps`](guides/undo-redo.md#configuringtheundofunctionality) увеличено с 10 до 100
-- [Export API client](guides/extensions-list.md#exportservice) теперь интегрирован в GPL-версию Gantt, ранее был доступен только в PRO-версиях
-- Добавлена поддержка https export [server endpoints](guides/export.md#parametersoftheexportmethods) в [Node.js версии Gantt](guides/using-gantt-on-server.md)
+- Значение по умолчанию для [`undo_steps`](guides/undo-redo.md#configuring-the-undo-functionality) увеличено с 10 до 100
+- [Export API client](guides/extensions-list.md#export-service) теперь интегрирован в GPL-версию Gantt, ранее был доступен только в PRO-версиях
+- Добавлена поддержка https export [server endpoints](guides/export.md#parameters-of-the-export-methods) в [Node.js версии Gantt](guides/using-gantt-on-server.md)
 
 ## 8.0.5
 
@@ -536,10 +536,10 @@ sidebar_label: "Что нового"
 
 ### Исправления
 
-- Исправлена проблема с [DataProcessor](guides/server-side.md#resources_crud), не отслеживающим изменения [Resource Datastore](guides/resource-management.md#workingwithresourceviewpanel)
+- Исправлена проблема с [DataProcessor](guides/server-side.md#resources_crud), не отслеживающим изменения [Resource Datastore](guides/resource-management.md#working-with-resource-view-panel)
 - Исправлена ошибка, возникающая после перетаскивания задачи при отключённой конфигурации [process_resource_assignments](api/config/process_resource_assignments.md)
 - Исправлена некорректная работа [gantt.calculateEndDate](api/method/calculateenddate.md) при вычитании дат в минутах
-- Незначительное повышение производительности для макетов с [visibility groups](guides/layout-config.md#visibilitygroups)
+- Незначительное повышение производительности для макетов с [visibility groups](guides/layout-config.md#visibility-groups)
 
 ## 8.0.3
 
@@ -573,7 +573,7 @@ sidebar_label: "Что нового"
 - Исправлена ошибка, возникающая при вызове [gantt.showCover()](api/method/showcover.md), когда [lightbox](guides/default-edit-form.md) не открыт
 - Исправлен регресс в [split tasks](guides/split-tasks.md), вызывавший ошибку скрипта для задач вне временной шкалы
 - Исправлен регресс в методе [gantt.addLinkLayer()](api/method/addlinklayer.md)
-- Исправлена некорректная работа [auto scheduling](guides/auto-scheduling.md) с ограничениями [MSO, FNET и FNLT](guides/auto-scheduling.md#timeconstraintsfortasks) при наличии минутных настроек рабочего времени ([settings of work time](guides/working-time.md#globalsettings))
+- Исправлена некорректная работа [auto scheduling](guides/auto-scheduling.md) с ограничениями [MSO, FNET и FNLT](guides/auto-scheduling.md#timeconstraintsfortasks) при наличии минутных настроек рабочего времени ([settings of work time](guides/working-time.md#global-settings))
 - Исправлена работа события [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md) при прокрутке
 
 ## <b>8.0</b>
@@ -591,7 +591,7 @@ sidebar_label: "Что нового"
 - Обновлённое управление ресурсами:
     - ресурсы и назначения ресурсов теперь могут быть [загружены вместе с данными](guides/supported-data-formats.md#json)
     - изменения ресурсов и назначений ресурсов можно отслеживать с помощью [DataProcessor](guides/server-side.md#resources_crud)
-    - уменьшено количество шаблонного кода для использования [панели ресурсов](guides/resource-management.md#workingwithresourceviewpanel)
+    - уменьшено количество шаблонного кода для использования [панели ресурсов](guides/resource-management.md#working-with-resource-view-panel)
 - Группировка задач теперь может сохранять оригинальную структуру дерева Gantt внутри групп:
     - новый параметр **save_tree_structure** метода [groupBy()](api/method/groupby.md)
 - [Экран пустого состояния](guides/empty-state-screen.md):
@@ -601,9 +601,9 @@ sidebar_label: "Что нового"
     - новое свойство [timeline_placeholder](api/config/timeline_placeholder.md)
 - Улучшения для rollup-элементов и split tasks:
     - возможность стилизовать отдельные [rollup-элементы](guides/milestones.md#stylingseparaterollupitems) и [split tasks](guides/split-tasks.md#styling)
-    - возможность [скрывать все rollup-элементы для задачи проекта](guides/milestones.md#hidingtasksandmilestones)
+    - возможность [скрывать все rollup-элементы для задачи проекта](guides/milestones.md#hiding-tasks-and-milestones)
     - возможность контролировать, где отображаются rollup-элементы (новое событие [onBeforeRollupTaskDisplay](api/event/onbeforerolluptaskdisplay.md))
-    - возможность [фильтровать split tasks](guides/split-tasks.md#filteringsplittasks) (новое событие [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md))
+    - возможность [фильтровать split tasks](guides/split-tasks.md#filtering-split-tasks) (новое событие [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md))
     - оптимизация производительности отображения split tasks
 - Возможность удалять элементы только после подтверждения от backend:
     - новый параметр **deleteAfterConfirmation** объекта конфигурации [dataProcessor](api/method/createdataprocessor.md)
@@ -619,7 +619,7 @@ sidebar_label: "Что нового"
     - новый параметр **types** метода [getTaskBy()](api/method/gettaskby.md)
 - Возможность добавлять любой HTML-контент в ячейки Timeline:
     - новый шаблон [timeline_cell_content](api/template/timeline_cell_content.md)
-- Экспорт API теперь включён в [gantt.plugins](guides/extensions-list.md#exportservice) и больше не требует подключения отдельного JS-файла. Подробнее в статье по [миграции](migration.md#71---80)
+- Экспорт API теперь включён в [gantt.plugins](guides/extensions-list.md#export-service) и больше не требует подключения отдельного JS-файла. Подробнее в статье по [миграции](migration.md#71---80)
 
 ### Обновления
 
@@ -627,12 +627,12 @@ sidebar_label: "Что нового"
 
 ### Исправления
 
-- Исправлена проблема [расчёта длительности](guides/working-time.md) с минутной [duration_unit](api/config/duration_unit.md) и пользовательскими настройками [рабочего времени](guides/working-time.md#globalsettings)
+- Исправлена проблема [расчёта длительности](guides/working-time.md) с минутной [duration_unit](api/config/duration_unit.md) и пользовательскими настройками [рабочего времени](guides/working-time.md#global-settings)
 - Исправлены различные ошибки расчёта slack
 - Исправлена ошибка скрипта при загрузке данных при включённых [Slack calculations](guides/critical-path.md#gettingfreeandtotalslack)
 - Метод [setWorkTime](api/method/setworktime.md) теперь поддерживает установку правил для дат внутри customWeeks
 - Исправлена проблема с smart rendering, вызывающая появление пустых областей вместо данных в Gantt
-- Исправлена проблема [вертикального перемещения](guides/reordering-tasks.md) строк в гриде при наличии строк с [нестандартной высотой](guides/resizing-rows.md#settingtherowheight)
+- Исправлена проблема [вертикального перемещения](guides/reordering-tasks.md) строк в гриде при наличии строк с [нестандартной высотой](guides/resizing-rows.md#setting-the-row-height)
 - Исправлена некорректная работа [Inline editors](guides/inline-editing.md) при включённом расширении [Multiselect](guides/multiselection.md)
 - Исправлено некорректное отображение всплывающего окна [Quick Info](guides/quick-info.md) при установленном значении [gantt.config.quick_info_detached](api/config/quick_info_detached.md) в `false`
 - Исправлены аргументы функции `is_valid` интерфейса [Inline Editor](guides/inline-editing.md#custominlineeditor). Теперь функция получает объект колонки
@@ -649,7 +649,7 @@ sidebar_label: "Что нового"
 ### Исправления
 
 - Исправлена некорректная работа метода [gantt.addLinkLayer()](api/method/addlinklayer.md) с параметром [smart_rendering](api/config/smart_rendering.md)
-- Исправлены проблемы отображения [S-Curve Overlay](guides/baselines.md#extraoverlayforthechart) совместно с различными [шкалами времени](guides/configuring-time-scale.md)
+- Исправлены проблемы отображения [S-Curve Overlay](guides/baselines.md#extra-overlay-for-the-chart) совместно с различными [шкалами времени](guides/configuring-time-scale.md)
 - Исправлена проблема с [изменением размера колонок грида](guides/specifying-columns.md#resizing) при включённой опции [grid_elastic_columns](api/config/grid_elastic_columns.md)
 - Исправлена проблема, из-за которой Gantt сбрасывал позицию вертикального скролла после удаления задачи с помощью [Клавиатурной навигации](guides/keyboard-navigation.md)
 - Исправлена некорректная работа метода [treeDatastore.move()](api/other/treedatastore.md)
@@ -658,8 +658,8 @@ sidebar_label: "Что нового"
 - Исправлены проблемы совместимости с Vue.js v3.x
 - Исправлена ошибка скрипта, возникавшая при вызове метода [gantt.getConstraintLimitations()](api/method/getconstraintlimitations.md) для задачи без параметра 'constraint_date'
 - Исправлены проблемы совместимости с SalesForce Web Security
-- Исправлена проблема, из-за которой фокус возвращался в Gantt после клика вне контейнера Gantt при включённой [Клавиатурной навигации](guides/keyboard-navigation.md#focusbehaviorduringkeyboardnavigation)
-- Обновлена [немецкая локализация](guides/localization.md#activatingalocale)
+- Исправлена проблема, из-за которой фокус возвращался в Gantt после клика вне контейнера Gantt при включённой [Клавиатурной навигации](guides/keyboard-navigation.md#focus-behavior-during-keyboard-navigation)
+- Обновлена [немецкая локализация](guides/localization.md#activating-a-locale)
 - Теперь возможно открыть встроенный редактор одним кликом по задаче в режиме мультивыделения (добавлено свойство [inline_editors_multiselect_open](api/config/inline_editors_multiselect_open.md))
 
 ## 7.1.12
@@ -689,9 +689,9 @@ sidebar_label: "Что нового"
 - Исправлено некорректное положение [тултипов](guides/tooltips.md) и некоторых других элементов Gantt, если контейнер Gantt имел дополнительный отступ или вертикальные смещения
 - Исправлена проблема, из-за которой строки [редактируемой диаграммы ресурсов](guides/resource-management.md) меняли порядок после редактирования первой ячейки назначения ресурса
 - Исправлена некорректная работа [smart rendering](api/config/smart_rendering.md) после сворачивания или разворачивания задач в некоторых случаях
-- Исправлена проблема с событием [onBeforeDrag](guides/advanced-dnd.md), которое не блокировало стандартные действия при активных расширениях [click_drag](guides/extensions-list.md#advanceddragndrop) и [drag_timeline](guides/extensions-list.md#dragtimeline)
+- Исправлена проблема с событием [onBeforeDrag](guides/advanced-dnd.md), которое не блокировало стандартные действия при активных расширениях [click_drag](guides/extensions-list.md#advanced-drag-n-drop) и [drag_timeline](guides/extensions-list.md#drag-timeline)
 - Исправлена ошибка скрипта при вызове метода [changeId()](api/other/datastore.md) для [хранилища назначений ресурсов](guides/resource-management.md#assigningresources)
-- Полосы прокрутки стандартного [макета Gantt](guides/layout-config.md#defaultlayout) больше не требуют фиксированных имён **scrollVer**/**scrollHor** для корректной работы
+- Полосы прокрутки стандартного [макета Gantt](guides/layout-config.md#default-layout) больше не требуют фиксированных имён **scrollVer**/**scrollHor** для корректной работы
 - [Разделённые задачи](guides/split-tasks.md) теперь получают класс 'gantt_selected' при [выделении](api/config/select_task.md), как и обычные задачи
 
 ## 7.1.10
@@ -700,9 +700,9 @@ sidebar_label: "Что нового"
 
 ### Исправления
 
-- Исправлена проблема, из-за которой Gantt не отображал [проектную задачу](guides/task-types.md#projecttasks), если у неё не было дочерних задач и был указан параметр `start_date`
-- Исправлена проблема с [изменением размера строки задачи перетаскиванием](guides/resizing-rows.md#resizingrowsbydraganddrop), если ID задачи был не числовым значением или строкой-числом длиннее 16 символов
-- Исправлена некорректная работа [групп видимости](guides/layout-config.md#visibilitygroups), мешавшая синхронизации размеров грида и шкалы времени в [сложном макете](guides/layout-config.md)
+- Исправлена проблема, из-за которой Gantt не отображал [проектную задачу](guides/task-types.md#project-tasks), если у неё не было дочерних задач и был указан параметр `start_date`
+- Исправлена проблема с [изменением размера строки задачи перетаскиванием](guides/resizing-rows.md#resizing-rows-by-drag-and-drop), если ID задачи был не числовым значением или строкой-числом длиннее 16 символов
+- Исправлена некорректная работа [групп видимости](guides/layout-config.md#visibility-groups), мешавшая синхронизации размеров грида и шкалы времени в [сложном макете](guides/layout-config.md)
 - Исправлены проблемы с датами задач после горизонтального перетаскивания нескольких задач одновременно
 - Исправлена проблема, из-за которой [dataProcessor](guides/server-side.md) не отправлял все обновления из разных хранилищ при отключённом [режиме автообновления](https://docs.dhtmlx.com/api__dataprocessor_setupdatemode.html)
 - Исправлена проблема, из-за которой [milestone](guides/milestones.md) со связью [FF](api/config/links.md) переносился на следующий день
@@ -733,7 +733,7 @@ sidebar_label: "Что нового"
 - Исправлена ошибка скрипта, возникавшая после загрузки Gantt при наличии горизонтального скроллбара, прикреплённого к 3 и более вертикальным представлениям
 - Исправлена некорректная работа события [onBeforeTaskAutoSchedule](api/event/onbeforeautoschedule.md) после установки [ограничения ASAP](guides/auto-scheduling.md#timeconstraintsfortasks) для задачи без связей при включённом [строгом режиме](api/config/auto_scheduling_strict.md)
 - Исправлена ошибка при запуске минифицированных версий Gantt в проектах Next.js
-- Исправлена проблема, из-за которой ширина Gantt изменялась после инициализации [экземпляра gantt](guides/multiple-gantts.md#ganttinstanceconfiguration) внутри пустого контейнера
+- Исправлена проблема, из-за которой ширина Gantt изменялась после инициализации [экземпляра gantt](guides/multiple-gantts.md#gantt-instance-configuration) внутри пустого контейнера
 
 ## 7.1.8
 
@@ -758,8 +758,8 @@ sidebar_label: "Что нового"
 - Исправлены ошибки некорректного расчёта значений [total slack](api/method/gettotalslack.md)
 - Улучшена производительность расчёта [total slack](guides/critical-path.md#gettingfreeandtotalslack)
 - Исправлены стили для [lightbox](guides/edit-form.md) в скине [Material](guides/skins.md#materialskin)
-- Исправлена проблема с [Zoom plugin](guides/zooming.md#builtinzoomingmodule), из-за которой метод [zoom.init](guides/zoom.md) не работал при вызове после [gantt.init](api/method/init.md)
-- Исправлена ошибка скрипта при использовании настройки [inherit_calendar](guides/working-time.md#assigningcalendartoproject) совместно с методом [gantt.groupBy](guides/grouping.md)
+- Исправлена проблема с [Zoom plugin](guides/zooming.md#built-in-zooming-module), из-за которой метод [zoom.init](guides/zoom.md) не работал при вызове после [gantt.init](api/method/init.md)
+- Исправлена ошибка скрипта при использовании настройки [inherit_calendar](guides/working-time.md#assigning-calendar-to-project) совместно с методом [gantt.groupBy](guides/grouping.md)
 - Исправлена ошибка скрипта при добавлении задач через [gantt.batchUpdate](api/method/batchupdate.md), если активна [placeholder task](api/config/placeholder_task.md)
 - Исправлена проблема, позволявшая [placeholder task](api/config/placeholder_task.md) сортироваться, менять порядок или принимать подзадачи
 - Исправлены ошибки с некорректным размером [столбцов грида](guides/specifying-columns.md)
@@ -774,7 +774,7 @@ sidebar_label: "Что нового"
 - Исправлена некорректная работа настройки [auto_scheduling_move_projects](api/config/auto_scheduling_move_projects.md) при включённой опции [schedule_from_end](api/config/schedule_from_end.md)
 - Исправлена некорректная работа колбэка [onrender](api/config/columns.md) столбца, из-за которой пользовательские элементы исчезали при быстрой прокрутке грида
 - Исправлен регресс (появился в v7.1.5), из-за которого строки грида исчезали после изменения размера ячейки в сложных макетах
-- Исправлена некорректная работа [групп видимости/размера](guides/layout-config.md#visibilitygroups), из-за которой размеры столбцов не синхронизировались в сложных макетах
+- Исправлена некорректная работа [групп видимости/размера](guides/layout-config.md#visibility-groups), из-за которой размеры столбцов не синхронизировались в сложных макетах
 - Улучшено отображение грида при рендеринге Gantt в маленьком контейнере
 
 ## 7.1.5
@@ -783,12 +783,12 @@ sidebar_label: "Что нового"
 
 ### Исправления
 
-- Исправлена некорректная работа вертикального изменения порядка задач в режиме ["marker"](guides/reordering-tasks.md#improvingperformancewithlargedatasets), когда строки Gantt имеют разную высоту
+- Исправлена некорректная работа вертикального изменения порядка задач в режиме ["marker"](guides/reordering-tasks.md#improving-performance-for-large-datasets), когда строки Gantt имеют разную высоту
 - Исправлена проблема с размерами временной шкалы и грида в некоторых макетах, когда отключены настройки [show_grid](api/config/show_grid.md) и [show_chart](api/config/show_chart.md)
 - Для ячеек заголовка грида добавлены атрибуты `data-column-name` и `data-column-index`
 - Исправлено некорректное отображение грида после [повторной инициализации](api/method/init.md) Gantt после удаления всех столбцов [из конфигурации](guides/specifying-columns.md#overview)
 - Исправлена проблема, из-за которой конфигурация панели ресурсов перезаписывала [основную конфигурацию](guides/common-configuration.md#ganttconfigobject) Gantt в приложениях на Vue.js
-- Добавлена возможность изменять конфигурацию [панели ресурсов](guides/resource-management.md#resourceviewpanel) на лету путём изменения объекта конфигурации, передаваемого в [resource layout](guides/layout-config.md#configsandtemplatesofviews)
+- Добавлена возможность изменять конфигурацию [панели ресурсов](guides/resource-management.md#resourceviewpanel) на лету путём изменения объекта конфигурации, передаваемого в [resource layout](guides/layout-config.md#configs-and-templates-of-views)
 
 ## 7.1.4
 
@@ -799,11 +799,11 @@ sidebar_label: "Что нового"
 - Исправлена некорректная работа [unsetWorkTime](api/method/unsetworktime.md), из-за которой затронутые даты имели неправильные рабочие часы
 - Исправлена ошибка скрипта в [Resource histogram](guides/resource-management.md#resourceviewpanel) после прокрутки, если [resource_render_empty_cells](api/config/resource_render_empty_cells.md) установлено в false и [smart_rendering](api/config/smart_rendering.md) включён
 - Исправлена некорректная работа методов `editNextRow` и `editPrevRow` модуля [Inline Editors](guides/inline-editors-ext.md)
-- Исправлена некорректная работа всплывающего окна [Quick Info](guides/extensions-list.md#quickinfo), из-за которой окно отображалось после нажатия кнопки "добавить" в гриде
+- Исправлена некорректная работа всплывающего окна [Quick Info](guides/extensions-list.md#quick-info), из-за которой окно отображалось после нажатия кнопки "добавить" в гриде
 - Исправлена некорректная работа ограничений [ASAP](guides/auto-scheduling.md#timeconstraintsfortasks), из-за которой задачи не переносились на самую раннюю дату проекта
 - Исправлена некорректная работа [Inline Editors](guides/inline-editors-ext.md), из-за которой [constraints](guides/auto-scheduling.md#timeconstraintsfortasks) нельзя было редактировать через inline editor
 - Исправлено некорректное поведение логики "scroll into view" для [Keyboard Navigation](guides/keyboard-navigation.md), вызывавшее ненужную прокрутку, когда выбранные бары задач уже видимы
-- Исправлена ошибка скрипта при перемещении мыши за пределы контейнера, если включено расширение [click_drag](guides/extensions-list.md#advanceddragndrop)
+- Исправлена ошибка скрипта при перемещении мыши за пределы контейнера, если включено расширение [click_drag](guides/extensions-list.md#advanced-drag-n-drop)
 - Улучшена производительность для опции конфигурации [auto_types](api/config/auto_types.md) в Gantt
 
 ## 7.1.3
@@ -833,7 +833,7 @@ sidebar_label: "Что нового"
 
 ### Исправления
 
-- Исправлен регресс в плагине [click_drag](guides/extensions-list.md#advanceddragndrop)
+- Исправлен регресс в плагине [click_drag](guides/extensions-list.md#advanced-drag-n-drop)
 - Исправлена ошибка Security Violation, возникавшая в Gantt при установке [gantt.config.csp](api/config/csp.md) в режим "auto"
 - Исправлены настройки сборки, из-за которых пакет версии v7.1.0 содержал синтаксис ES6, библиотека снова совместима с ES5
 - Исправлена ошибка скрипта при попытке изменить размер столбца грида при включённой настройке [gantt.config.reorder_grid_columns](api/config/reorder_grid_columns.md)
@@ -857,10 +857,10 @@ sidebar_label: "Что нового"
 - Новый метод [gantt.getTaskAssignments()](api/method/gettaskassignments.md)
 - [Возможность управлять назначениями ресурсов](guides/resource-management.md#managingresourceassignments) через новые API [gantt.config.process_resource_assignments](api/config/process_resource_assignments.md) и [gantt.updateTaskAssignments()](api/method/updatetaskassignments.md)
 - [Rollup задачи и вехи](guides/milestones.md#rolluptasksandmilestones)
-- [Возможность скрывать бары задач и вехи на временной шкале](guides/milestones.md#hidingtasksandmilestones)
+- [Возможность скрывать бары задач и вехи на временной шкале](guides/milestones.md#hiding-tasks-and-milestones)
 - [Возможность задавать разные рабочие часы для разных периодов времени](guides/working-time.md#rules_for_periods)
-- [Возможность задавать высоту отдельной строки в гриде](guides/resizing-rows.md#settingtherowheight)
-- [Возможность изменять размер строки в гриде перетаскиванием](guides/resizing-rows.md#resizingrowsbydraganddrop)
+- [Возможность задавать высоту отдельной строки в гриде](guides/resizing-rows.md#setting-the-row-height)
+- [Возможность изменять размер строки в гриде перетаскиванием](guides/resizing-rows.md#resizing-rows-by-drag-and-drop)
 - Возможность получить высоту DOM-элемента задачи через метод [gantt.getTaskBarHeight()](api/method/gettaskbarheight.md)
 - Новые события: [onBeforeRowResize](api/event/onbeforerowresize.md), [onRowResize](api/event/onrowresize.md), [onBeforeRowResizeEnd](api/event/onbeforerowresizeend.md), [onAfterRowResize](api/event/onafterrowresize.md)
 - Добавлен колбэк [onrender](guides/specifying-columns.md#modifyingcellsafterrendering) для рендера ячейки грида в DOM
@@ -883,9 +883,9 @@ sidebar_label: "Что нового"
 
 ### Исправления
 
-- Исправлена ошибка скрипта при динамическом изменении [конфигурации layout](guides/layout-config.md#layoutcustomization) и использовании [gantt.addTaskLayer](api/method/addtasklayer.md)
+- Исправлена ошибка скрипта при динамическом изменении [конфигурации layout](guides/layout-config.md#layout-customization) и использовании [gantt.addTaskLayer](api/method/addtasklayer.md)
 - Исправлена проблема с начальной внутренней высотой [resource histogram](guides/resource-management.md#resourceviewpanel) при использовании опции `fetchTasks`
-- Исправлена некорректная работа [predecessor editor](guides/inline-editing.md#typesofeditors), из-за которой существующие связи удалялись при редактировании значения
+- Исправлена некорректная работа [predecessor editor](guides/inline-editing.md#types-of-editors), из-за которой существующие связи удалялись при редактировании значения
 - Исправлена некорректная работа Gantt при добавлении [задачи с неуникальным ID](guides/task-object-operations.md) через методы [gantt.addTask](api/method/addtask.md) и [gantt.parse](api/method/parse.md)
 - Повышена производительность drag and drop при включённых опциях [auto_types](api/config/auto_types.md) и [drag_project](api/config/drag_project.md)
 - Улучшена производительность [расчёта рабочего времени](guides/working-time.md), когда [duration_unit](api/config/duration_unit.md) установлен в "day"
@@ -896,15 +896,15 @@ sidebar_label: "Что нового"
 
 ### Исправления
 
-- Исправлены некоторые мелкие проблемы с [вертикальным drag and drop](guides/reordering-tasks.md#draganddropacrosstheentireganttstructure) в крупных проектах
+- Исправлены некоторые мелкие проблемы с [вертикальным drag and drop](guides/reordering-tasks.md#drag-n-drop-within-the-whole-gantt-structure) в крупных проектах
 - Исправлена ошибка с некорректным размером контейнера при использовании конфигурации [autosize](api/config/autosize.md)
 - [Клавиатурная навигация](guides/keyboard-navigation.md) теперь корректно работает с горизонтальной прокруткой грида
-- [HTML-представления](guides/layout-config.md#htmlasinnerview) Layout теперь поддерживают внешние [скроллбары](guides/layout-config.md#scrollbar)
-- Исправлена ошибка, приводившая к некорректному состоянию грида после [изменения порядка задач](guides/reordering-tasks.md#draganddropacrosstheentireganttstructure), если в layout был добавлен [дополнительный грид](https://docs.dhtmlx.com/gantt/samples/10_layout/01_rightside_columns.html)
+- [HTML-представления](guides/layout-config.md#html-as-inner-view) Layout теперь поддерживают внешние [скроллбары](guides/layout-config.md#scrollbar)
+- Исправлена ошибка, приводившая к некорректному состоянию грида после [изменения порядка задач](guides/reordering-tasks.md#drag-n-drop-within-the-whole-gantt-structure), если в layout был добавлен [дополнительный грид](https://docs.dhtmlx.com/gantt/samples/10_layout/01_rightside_columns.html)
 - Исправлена ошибка скрипта, возникавшая после очистки и повторной загрузки [панели ресурсов](guides/resource-management.md), если был выбран ресурс
 - Добавлена возможность отключить автоматическую корректировку конечной даты в секции [time](guides/time.md) lightbox, которая применялась, когда выбранная дата начала превышала дату окончания
 - Исправлена опечатка в конфигурации по умолчанию [Duration Formatter](guides/formatters-ext.md)
-- Исправлена ошибка скрипта, возникавшая при уничтожении gantt через [gantt.destructor](api/method/destructor.md), если в это время отображалось [popup сообщение](guides/message-boxes.md#basicpopupmessage)
+- Исправлена ошибка скрипта, возникавшая при уничтожении gantt через [gantt.destructor](api/method/destructor.md), если в это время отображалось [popup сообщение](guides/message-boxes.md#basic-popup-message)
 - Исправлена начальная позиция горизонтальной прокрутки в Grid и Timeline в режиме [RTL](guides/rtl-mode.md)
 - Исправлена некорректная работа lightbox, из-за которой выбранный тип задачи не сохранялся, если в конфигурацию lightbox не был добавлен контрол [typeselect](guides/typeselect.md)
 - Исправлена ошибка, из-за которой [маркеры](guides/markers.md) исчезали после вызова метода [gantt.resetLayout()](api/method/resetlayout.md)
@@ -926,7 +926,7 @@ sidebar_label: "Что нового"
 - Исправлен конфликт между задачами [placeholder](api/config/placeholder_task.md) и [Автоматическим планированием](guides/auto-scheduling.md)
 - Исправлены лишние перерисовки при включенной опции [sort](api/config/sort.md)
 - Исправлена проблема с [Inline Editors](guides/inline-editing.md) и прокручиваемым гридом, когда inline editors теряли фокус сразу после клика
-- Исправлена ошибка, из-за которой Gantt закрывал тултип [Quick Info](guides/extensions-list.md#quickinfo) при клике по нему пользователем
+- Исправлена ошибка, из-за которой Gantt закрывал тултип [Quick Info](guides/extensions-list.md#quick-info) при клике по нему пользователем
 
 ## 7.0.10
 
@@ -934,7 +934,7 @@ sidebar_label: "Что нового"
 
 ### Исправления
 
-- Исправлена некорректная работа [вертикальных ресайзеров](guides/layout-config.md#defaultlayout) (регрессия появилась в v7.0.9)
+- Исправлена некорректная работа [вертикальных ресайзеров](guides/layout-config.md#default-layout) (регрессия появилась в v7.0.9)
 - Предотвращено неожиданное обновление страницы при вертикальном изменении порядка задач в Chrome на Android (pull-to-refresh)
 - Исправлена ошибка скрипта, возникавшая при создании связи на мобильном Firefox
 - Исправлена некорректная работа выбора задач при включенной конфигурации [multiselect](api/config/multiselect.md), но неактивированном плагине [multiselect](guides/extensions-list.md#multitaskselection)
@@ -970,7 +970,7 @@ sidebar_label: "Что нового"
 - Исправлены некоторые проблемы с поддержкой touch на Android/iOS устройствах
 - Исправлена регрессия (появилась в v7.0.6) с созданием связей и методом [gantt.isLinkAllowed](api/method/islinkallowed.md)
 - Исправлена ошибка скрипта при использовании параметра 'locale' в [gantt.getGanttInstance](guides/multiple-gantts.md)
-- Исправлена ошибка скрипта, возникавшая при вызове [gantt.destructor](api/method/destructor.md) при активных расширениях [Keyboard Navigation](guides/extensions-list.md#keyboardnavigation) и [Quick Info](guides/extensions-list.md#quickinfo)
+- Исправлена ошибка скрипта, возникавшая при вызове [gantt.destructor](api/method/destructor.md) при активных расширениях [Keyboard Navigation](guides/extensions-list.md#keyboardnavigation) и [Quick Info](guides/extensions-list.md#quick-info)
 
 ## 7.0.7
 
@@ -1000,7 +1000,7 @@ sidebar_label: "Что нового"
 
 - Улучшена производительность [расчёта рабочего времени](guides/working-time.md), когда конфигурация [duration_unit](api/config/duration_unit.md) установлена в "hour"
 - Улучшена производительность [расчёта рабочего времени](guides/working-time.md), когда конфигурация [duration_unit](api/config/duration_unit.md) установлена в "minute"
-- Добавлена возможность указывать рабочие календари в объекте конфигурации [`Gantt.getGanttInstance`](guides/multiple-gantts.md#ganttinstanceconfiguration)
+- Добавлена возможность указывать рабочие календари в объекте конфигурации [`Gantt.getGanttInstance`](guides/multiple-gantts.md#gantt-instance-configuration)
 
 ## 7.0.4
 
@@ -1038,7 +1038,7 @@ sidebar_label: "Что нового"
 ### Исправления
 
 - Исправлена некорректная работа [date formatters](api/other/date.md) при установленной опции [gantt.config.csp](api/config/csp.md) в true
-- Исправлена регрессия в расширениях [click_drag](guides/extensions-list.md#advanceddragndrop) и [drag_timeline](guides/extensions-list.md#dragtimeline), приводившая к ошибке при создании [нескольких экземпляров Gantt](guides/multiple-gantts.md)
+- Исправлена регрессия в расширениях [click_drag](guides/extensions-list.md#advanced-drag-n-drop) и [drag_timeline](guides/extensions-list.md#drag-timeline), приводившая к ошибке при создании [нескольких экземпляров Gantt](guides/multiple-gantts.md)
 - Исправлен некорректный css-класс строки задачи после возврата статуса ошибки из [dataProcessor router function](guides/server-side.md#customrouting)
 - Исправлена некорректная работа [inline editors](guides/inline-editing.md) внутри Shadow DOM
 
@@ -1053,7 +1053,7 @@ sidebar_label: "Что нового"
 - Исправлена проблема с [перетаскиванием столбцов грида](api/config/reorder_grid_columns.md), из-за которой происходила прокрутка временной шкалы при перемещении курсора мыши к краю грида во время drag and drop
 - Исправлено [неверное положение столбца после его перетаскивания к правой границе грида](api/config/reorder_grid_columns.md)
 - [dataProcessor custom router](guides/server-side.md#customrouting) теперь корректно работает с отклонёнными promise
-- Исправлена регрессия в [умном рендеринге](guides/performance.md#smartrendering), из-за которой некоторые связи не отображались
+- Исправлена регрессия в [умном рендеринге](guides/performance.md#smart-rendering), из-за которой некоторые связи не отображались
 - [Разделённые задачи](guides/split-tasks.md) теперь отображают не только дочерние элементы первого уровня, но и все вложенные подзадачи
 - Исправлена ошибка с [разделёнными задачами](guides/split-tasks.md) и умным рендерингом, возникавшая при наличии у разделённой задачи типа 'task'
 - Исправлена проблема с [разделёнными задачами](guides/split-tasks.md), из-за которой Gantt не рассчитывал длительность задач типа 'project', вложенных в разделённую задачу
@@ -1078,14 +1078,14 @@ sidebar_label: "Что нового"
 - Возможность [обрезать длинный текст с помощью троеточия в столбцах грида](guides/styling-guide.md#customizationgridcolumns)
 - Добавлены config [dynamic_resource_calendars](api/config/dynamic_resource_calendars.md) и метод [mergeCalendars](api/method/mergecalendars.md) [для объединения нескольких календарей автоматически и вручную](guides/working-time.md#mergingcalendars)
 - Добавлен метод [getResourceCalendar](api/method/getresourcecalendar.md)
-- Возможность указывать [рабочее время в минутах](guides/working-time.md#globalsettings)
+- Возможность указывать [рабочее время в минутах](guides/working-time.md#global-settings)
 
 
 ### Обновления
 
 - Файлы локализации удалены из пакета, добавлен [новый API](api/other/i18n.md) для локализации Gantt
 - Все расширения теперь должны активироваться через метод [plugins](api/method/plugins.md)
-- `Gantt.getGanttInstance` теперь [может принимать объект конфигурации](guides/multiple-gantts.md#ganttinstanceconfiguration) при создании нового экземпляра Gantt
+- `Gantt.getGanttInstance` теперь [может принимать объект конфигурации](guides/multiple-gantts.md#gantt-instance-configuration) при создании нового экземпляра Gantt
 - Расширение CSP удалено из пакета, [csp mode включён по умолчанию](api/config/csp.md)
 - В метод [attachEvent](api/method/attachevent.md) добавлен объект настроек в качестве третьего параметра
 - Формат задания рабочих часов в методе [setWorkTime](api/method/setworktime.md) упрощён
@@ -1115,11 +1115,11 @@ sidebar_label: "Что нового"
 ### Исправления
 
 - Исправлена регрессия в [gantt.resetLayout](api/method/resetlayout.md), вызывавшая ошибку скрипта
-- Исправлена проблема с [всплывающим окном QuickInfo](https://docs.dhtmlx.com/gantt/desktop__extensions_list.html#quickinfo ), из-за которой оно могло располагаться за [панелью ресурсов](https://docs.dhtmlx.com/gantt/desktop__resource_management.html#resourceviewpanel) в некоторых случаях
+- Исправлена проблема с [всплывающим окном QuickInfo](https://docs.dhtmlx.com/gantt/desktop__extensions_list.html#quick-info ), из-за которой оно могло располагаться за [панелью ресурсов](https://docs.dhtmlx.com/gantt/desktop__resource_management.html#resourceviewpanel) в некоторых случаях
 - Исправлена ошибка скрипта, возникавшая в методе [gantt.getShortcutHandler](api/method/getshortcuthandler.md)
 - Исправлена ошибка скрипта, возникавшая в методе [tooltip.show(x, y)](https://docs.dhtmlx.com/gantt/desktop__tooltips_ext.html)
 - [gantt.getTaskNode](api/method/gettasknode.md) теперь возвращает корректный HTML-элемент для [разделённых задач](https://docs.dhtmlx.com/gantt/desktop__split_tasks.html)
-- Исправлена проблема с [горизонтальными полосами прокрутки](https://docs.dhtmlx.com/gantt/desktop__specifying_columns.html#horizontalscrollbar), не отображавшимися при наличии [visibility groups](https://docs.dhtmlx.com/gantt/desktop__layout_config.html#visibilitygroups) в некоторых конфигурациях layout
+- Исправлена проблема с [горизонтальными полосами прокрутки](https://docs.dhtmlx.com/gantt/desktop__specifying_columns.html#horizontal-scrollbar), не отображавшимися при наличии [visibility groups](https://docs.dhtmlx.com/gantt/desktop__layout_config.html#visibilitygroups) в некоторых конфигурациях layout
 
 ## 6.3.5
 
@@ -1131,7 +1131,7 @@ sidebar_label: "Что нового"
 - Исправлена ошибка скрипта, возникавшая при установке config [drag_timeline](api/config/drag_timeline.md) в `null`
 - Исправлено некорректное положение выделенных ячеек при включённых [static_background](api/config/static_background.md) и [static_background_cells](api/config/static_background_cells.md) и отключённом [smart_rendering](api/config/smart_rendering.md)
 - Исправлена проблема, при которой событие [onAfterBranchLoading](api/event/onafterbranchloading.md) не вызывалось
-- Исправлена некорректная работа [умного рендеринга](guides/performance.md#smartrendering), когда значение [task_height](api/config/task_height.md) было меньше значения [row_height](api/config/row_height.md)
+- Исправлена некорректная работа [умного рендеринга](guides/performance.md#smart-rendering), когда значение [task_height](api/config/task_height.md) было меньше значения [row_height](api/config/row_height.md)
 
 ### Обновления
 
@@ -1143,10 +1143,10 @@ sidebar_label: "Что нового"
 
 ### Исправления
 
-- Исправлены сбои [диаграммы загрузки ресурсов](guides/resource-management.md#resourceviewpanel) при отключённом [умном рендеринге](guides/performance.md#smartrendering)
+- Исправлены сбои [диаграммы загрузки ресурсов](guides/resource-management.md#resourceviewpanel) при отключённом [умном рендеринге](guides/performance.md#smart-rendering)
 - Исправлена проблема с пользовательским свойством задачи "unit", которое Gantt воспринимал как единицу длительности и умножал длительность задачи после её перетаскивания
 - Исправлено некорректное положение [тултипа](guides/tooltips.md) при включённом config [autosize](api/config/autosize.md)
-- Исправлено некорректное выравнивание ячеек грида при одновременном включении свойства [scrollable](guides/specifying-columns.md#horizontalscrollbar) и config [autofit](api/config/autofit.md)
+- Исправлено некорректное выравнивание ячеек грида при одновременном включении свойства [scrollable](guides/specifying-columns.md#horizontal-scrollbar) и config [autofit](api/config/autofit.md)
 - Создание связи между задачей на временной шкале и [placeholder](api/config/placeholder_task.md) в гриде теперь заблокировано
 - Исправлена ошибка в [расширении авто-планирования](guides/auto-scheduling.md), которая приводила к зависанию Gantt при наличии у задачи [типа ограничения (SNET/FNET/SNLT/FNLT)](guides/auto-scheduling.md#timeconstraintsfortasks) без даты или с некорректной датой
 
@@ -1161,7 +1161,7 @@ sidebar_label: "Что нового"
 - Исправлена совместимость с фреймворком SalesForce Lightning Aura components (Evaluation build)
 - Исправлено некорректное положение [тултипа](guides/tooltips.md) в среде SalesForce
 - Исправлено некорректное положение [тултипа](guides/tooltips.md), если контейнер gantt имеет вертикальный отступ
-- Добавлены недостающие атрибуты [WAI-ARIA](guides/accessibility.md#waiariaattributes) для элементов внутри Gantt
+- Добавлены недостающие атрибуты [WAI-ARIA](guides/accessibility.md#wai-aria-attributes) для элементов внутри Gantt
 - Исправлена некорректная работа config [min_duration](api/config/min_duration.md)
 - Исправлена некорректная работа [link formatters](guides/formatters-ext.md#linkformatter) с пользовательскими [экземплярами Gantt](guides/multiple-gantts.md)
 
@@ -1186,10 +1186,10 @@ sidebar_label: "Что нового"
 
 ### Исправления
 
-- Исправлена регрессия в [умном рендеринге](api/method/addtasklayer.md#smartrenderingforcustomlayers), из-за которой связи не отображались в некоторых случаях
+- Исправлена регрессия в [умном рендеринге](api/method/addtasklayer.md#smart-rendering-for-custom-layers), из-за которой связи не отображались в некоторых случаях
 - Исправлена ошибка, позволявшая изменять и создавать новые задачи с помощью [навигации с клавиатуры](guides/keyboard-navigation.md) при активированном [режиме только для чтения](guides/readonly-mode.md)
 - Исправлена проблема отображения с [расширением Fullscreen](guides/fullscreen-mode.md), при которой некоторые элементы страницы отображались поверх Gantt в полноэкранном режиме
-- Исправлена ошибка, при которой [расширение drag-timeline](guides/extensions-list.md#dragtimeline) сбрасывало значение config [readonly](guides/readonly-mode.md)
+- Исправлена ошибка, при которой [расширение drag-timeline](guides/extensions-list.md#drag-timeline) сбрасывало значение config [readonly](guides/readonly-mode.md)
 
 ## 6.3
 
@@ -1198,12 +1198,12 @@ sidebar_label: "Что нового"
 [Обзор релиза в блоге](https://dhtmlx.com/blog/dhtmlx-gantt-chart-6-3-decimal-durations-link-formatting-drag-n-drop-multiple-tasks-even-smarter-rendering/)
 ### Важные изменения
 
-Обновление вносит множество изменений в методы API. Ознакомьтесь со статьёй [Миграция](migration.md#62---63), чтобы быть в курсе последних изменений.
+Обновление вносит множество изменений в методы API. Ознакомьтесь со статьёй [Миграция](migration.md), чтобы быть в курсе последних изменений.
 
 ### Новая функциональность
 
 - [Возможность указывать дробные единицы длительности задач](guides/working-time.md#taskdurationindecimalformat)
-- [Возможность прокручивать временную шкалу с помощью мыши (клик и drag)](guides/extensions-list.md#dragtimeline)
+- [Возможность прокручивать временную шкалу с помощью мыши (клик и drag)](guides/extensions-list.md#drag-timeline)
 - [Возможность горизонтального drag and drop для нескольких задач](guides/multiselection.md#multitaskselectionanddragndrop)
 
 
@@ -1212,16 +1212,16 @@ sidebar_label: "Что нового"
 - Возможность [отображать задачи](api/config/show_tasks_outside_timescale.md) вне явного диапазона [start_date](api/config/start_date.md) и [end_date](api/config/end_date.md) [шкалы времени](guides/configuring-time-scale.md#range)
 - Добавлен новый шаблон [task_end_date](api/template/task_end_date.md) для форматирования конечных дат задач
 - Возможность добавлять пользовательские действия в стек [Undo](guides/undo-redo.md#undoingredoingchangesmadefromcode)
-- Возможность подключать пользовательские слои к [умному рендерингу](api/method/addtasklayer.md#smartrenderingforcustomlayers)
+- Возможность подключать пользовательские слои к [умному рендерингу](api/method/addtasklayer.md#smart-rendering-for-custom-layers)
 - [Встроенные редакторы](guides/inline-editing.md) для **предшественников** теперь поддерживают форматированные значения связей
-- Удалены стандартные ограничения для вводимых значений в [встроенных редакторах дат](migration.md#inline_editors)
+- Удалены стандартные ограничения для вводимых значений в [встроенных редакторах дат](migration.md)
 - Возможность указать корневой узел для [расширения полноэкранного режима](guides/fullscreen-mode.md)
 - Возможность изменять или отключать [горизонтальную прокрутку](api/config/horizontal_scroll_key.md) с помощью `shiftKey`+`mousewheel`
 - Шрифт Roboto был удалён из [Material skin](guides/skins.md#materialskin) и теперь должен импортироваться вручную
 
 ### Исправления
 
-- Исправлены сбои [гистограммы ресурсов](guides/resource-management.md#resourceviewpanel) при отключённом [умном рендеринге](guides/performance.md#smartrendering)
+- Исправлены сбои [гистограммы ресурсов](guides/resource-management.md#resourceviewpanel) при отключённом [умном рендеринге](guides/performance.md#smart-rendering)
 - Исправлена совместимость с компрессором r.js
 - Исправлены различные конфликты между [клавиатурной навигацией](guides/keyboard-navigation.md) и [встроенными редакторами](guides/inline-editing.md)
 - Исправлено некорректное состояние [DataProcessor](guides/server-side.md#customrouting) при последовательном изменении задач и связей из [пользовательского роутера](guides/server-side.md#customrouting)
@@ -1233,7 +1233,7 @@ sidebar_label: "Что нового"
 
 ### Исправления
 
-- Исправлена проблема с вертикальным изменением размера [гридов с горизонтальной прокруткой](guides/specifying-columns.md#horizontalscrollbar) в [сложных макетах](guides/resource-management.md#resourceviewpanel)
+- Исправлена проблема с вертикальным изменением размера [гридов с горизонтальной прокруткой](guides/specifying-columns.md#horizontal-scrollbar) в [сложных макетах](guides/resource-management.md#resourceviewpanel)
 - Исправлена некорректная работа [гистограммы ресурсов](guides/resource-management.md#resourceviewpanel) при [шаге шкалы времени](guides/configuring-time-scale.md#timestep) больше одного
 - Исправлена повторно возникшая ошибка со свернутыми ветками после вызова [gantt.parse](api/method/parse.md) из исправления ошибок [v6.2.4](#624)
 
@@ -1244,7 +1244,7 @@ sidebar_label: "Что нового"
 ### Исправления
 
 - Исправлен регресс в [умном рендеринге v6.2](#62), который в некоторых случаях приводил к некорректному вертикальному расположению задач после [повторной инициализации](api/method/init.md) Gantt
-- Исправлена проблема с [всплывающим окном QuickInfo](guides/extensions-list.md#quickinfo), не отображавшимся для [незапланированных задач](guides/unscheduled-tasks.md)
+- Исправлена проблема с [всплывающим окном QuickInfo](guides/extensions-list.md#quick-info), не отображавшимся для [незапланированных задач](guides/unscheduled-tasks.md)
 - Исправлена некорректная работа файлов расширения с Ultimate-сборкой Gantt
 
 ## 6.2.5
@@ -1265,7 +1265,7 @@ sidebar_label: "Что нового"
 ### Исправления
 
 - Исправлена проблема со свёрнутыми ветками задач после обновления данных методом [parse](api/method/parse.md)
-- Исправлена некорректная работа [умного рендеринга](guides/performance.md#smartrendering) в [ресурсном представлении](guides/resource-management.md#resourceviewpanel)
+- Исправлена некорректная работа [умного рендеринга](guides/performance.md#smart-rendering) в [ресурсном представлении](guides/resource-management.md#resourceviewpanel)
 - Исправлена проблема, из-за которой [Zoom-модуль](guides/zooming.md) добавлял лишние обработчики DOM-событий при каждой [повторной инициализации](api/method/init.md) Gantt
 
 ## 6.2.3
@@ -1325,13 +1325,13 @@ sidebar_label: "Что нового"
 
 ### Изменения, нарушающие обратную совместимость
 
-Обновление вносит множество изменений в методы API. Ознакомьтесь со статьёй [Миграция](migration.md#61---62), чтобы оставаться в курсе последней версии.
+Обновление вносит множество изменений в методы API. Ознакомьтесь со статьёй [Миграция](migration.md), чтобы оставаться в курсе последней версии.
 
 ### Новая функциональность
 
 - [Создание и выбор задач с помощью drag-n-drop](guides/advanced-dnd.md)
 - Плавное [масштабирование](guides/zooming.md) колесом мыши
-- Возможность [разворачивать/сворачивать раздельные задачи](guides/split-tasks.md#expandingandcollapsingsplittasks) (PRO)
+- Возможность [разворачивать/сворачивать раздельные задачи](guides/split-tasks.md#expandingcollapsingsplittasks) (PRO)
 
 ### Обновления
 
@@ -1354,7 +1354,7 @@ sidebar_label: "Что нового"
 - Исправлено некорректное поведение [getClosestWorkTime](api/method/getclosestworktime.md)
 - Исправлена проблема с [autoscroll](api/config/autoscroll.md), возникшая после [переключения видимости](api/config/show_chart.md) шкалы времени
 - Исправлена ошибка в [расширении Multiselect](guides/multiselection.md), из-за которой выбранные задачи теряли подсветку после перерисовки диаграммы
-- Исправлена ошибка скрипта, возникавшая после [вертикального drag-and-drop](guides/reordering-tasks.md), если были включены [умный рендеринг](guides/performance.md#smartrendering) и [клавиатурная навигация](guides/keyboard-navigation.md)
+- Исправлена ошибка скрипта, возникавшая после [вертикального drag-and-drop](guides/reordering-tasks.md), если были включены [умный рендеринг](guides/performance.md#smart-rendering) и [клавиатурная навигация](guides/keyboard-navigation.md)
 - Исправлено некорректное поведение при попытке переключения между [встроенными редакторами](guides/inline-editing.md) с помощью клавиши `Tab`, если некоторые колонки грида были [скрыты](guides/specifying-columns.md#visibility)
 - Исправлено неожиданное поведение, мешающее [lightbox](guides/edit-form.md) и [встроенным редакторам](guides/inline-editing.md) переопределять [даты ограничений](guides/auto-scheduling.md#timeconstraintsfortasks)
 
@@ -1364,8 +1364,8 @@ sidebar_label: "Что нового"
 
 ### Исправления
 
-- Исправлена проблема с неработающими [обработчиками кликов](api/config/quickinfo_buttons.md) во [всплывающем окне QuickInfo](guides/extensions-list.md#quickinfo) после второго вызова [init](api/method/init.md)
-- Исправлена проблема с [всплывающим окном QuickInfo](guides/extensions-list.md#quickinfo), не появлявшимся при установке [show_chart](api/config/show_chart.md) в false
+- Исправлена проблема с неработающими [обработчиками кликов](api/config/quickinfo_buttons.md) во [всплывающем окне QuickInfo](guides/extensions-list.md#quick-info) после второго вызова [init](api/method/init.md)
+- Исправлена проблема с [всплывающим окном QuickInfo](guides/extensions-list.md#quick-info), не появлявшимся при установке [show_chart](api/config/show_chart.md) в false
 - Исправлен некорректный аргумент `action` для [роутера dataProcessor](guides/server-side.md#customrouting) после [вертикального drag-and-drop](guides/reordering-tasks.md)
 - Исправлена проблема, когда [createTask](api/method/createtask.md) игнорировал параметр `index`
 
@@ -1376,7 +1376,7 @@ sidebar_label: "Что нового"
 ### Исправления
 
 - Исправлена ошибка скрипта при втором вызове [init](api/method/init.md), если конфиг [show_chart](api/config/show_chart.md) отключён
-- Исправлено некорректное положение плейсхолдера [вертикального drag-and-drop](guides/reordering-tasks.md) в [режиме маркера](guides/reordering-tasks.md#improvingperformancewithlargedatasets)
+- Исправлено некорректное положение плейсхолдера [вертикального drag-and-drop](guides/reordering-tasks.md) в [режиме маркера](guides/reordering-tasks.md#improving-performance-for-large-datasets)
 
 ## 6.1.4
 
@@ -1398,7 +1398,7 @@ sidebar_label: "Что нового"
 
 - [gantt.createTask](api/method/createtask.md)/[gantt.addTask](api/method/addtask.md) теперь используют значение конфигурации [root_id](api/config/root_id.md) вместо захардкоженного id 0
 - Повышена производительность [расчетов рабочего времени](guides/working-time.md) для единиц длительности `minute` и `hour` ([duration units](api/config/duration_unit.md))
-- Незначительное повышение производительности при отображении больших списков задач в режиме [умного рендеринга](guides/performance.md#smartrendering)
+- Незначительное повышение производительности при отображении больших списков задач в режиме [умного рендеринга](guides/performance.md#smart-rendering)
 - Гарантировано, что [вертикальное перетаскивание](guides/reordering-tasks.md) не начинается при выделении текста внутри [inline editor](guides/inline-editing.md)
 - Исправлена ошибка скрипта при [повторной инициализации](api/method/init.md) Gantt в браузере IE
 - Исправлена ошибка скрипта при [навигации с клавиатуры](guides/keyboard-navigation.md) в режиме `cell` после удаления последних задач из диаграммы
@@ -1411,7 +1411,7 @@ sidebar_label: "Что нового"
 - Исправлено некорректное положение задач и [маркеров](guides/markers.md) при использовании конфигурации [skip_off_time](api/config/skip_off_time.md)
 - Исправлена некорректная высота [маркеров](guides/markers.md) после изменения порядка задач через [drag and drop](guides/reordering-tasks.md)
 - Новые задачи получают начальное значение свойства `progress`
-- Исправлено некорректное положение задачи после вертикального drag and drop в режиме [marker](guides/reordering-tasks.md#improvingperformancewithlargedatasets)
+- Исправлено некорректное положение задачи после вертикального drag and drop в режиме [marker](guides/reordering-tasks.md#improving-performance-for-large-datasets)
 - Исправлена ошибка скрипта из [gantt.destructor](api/method/destructor.md) при включенной [панели ресурсов](guides/resource-management.md#resourceviewpanel)
 - Исправлена ошибка, из-за которой отображалась пустая строка в блоке [typeselect](guides/typeselect.md)
 - Исправлена ошибка, из-за которой задача не распознавалась как часть [критического пути](guides/critical-path.md) после [изменения id](api/method/changetaskid.md)
@@ -1458,7 +1458,7 @@ sidebar_label: "Что нового"
 
 ### Новая функциональность
 
-- [Возможность добавлять overlay для Gantt](guides/baselines.md#extraoverlayforthechart) (PRO)
+- [Возможность добавлять overlay для Gantt](guides/baselines.md#extra-overlay-for-the-chart) (PRO)
 - [Ограничения по времени для задач](guides/auto-scheduling.md#timeconstraintsfortasks) (PRO)
 - [Обратное планирование](guides/auto-scheduling.md#backwardscheduling) (PRO)
 - В пакет добавлены определения типов TypeScript
@@ -1467,7 +1467,7 @@ sidebar_label: "Что нового"
 
 - Возможность [создавать тултипы для всех элементов](guides/tooltips.md#tooltipsfordifferentelements) dhtmlxGantt
 - [Опции маршрутизации для dataProcessor](guides/server-side.md#customrouting)
-- [Рабочие календари на уровне проекта](guides/working-time.md#assigningcalendartoproject) (PRO)
+- [Рабочие календари на уровне проекта](guides/working-time.md#assigning-calendar-to-project) (PRO)
 - Возможность [импортировать dhtmlxGantt как ES6-модуль](guides/initializing-gantt-chart.md#moduleimport)
 
 ## 6.0.7
@@ -1526,7 +1526,7 @@ sidebar_label: "Что нового"
 ### Конфигурация
 
 - [Контрол ресурсов](guides/resources.md) в lightbox для назначения ресурсов задаче (PRO версия)
-- [Улучшена производительность перестановки задач](guides/reordering-tasks.md#improvingperformancewithlargedatasets) в режиме "branch"
+- [Улучшена производительность перестановки задач](guides/reordering-tasks.md#improving-performance-for-large-datasets) в режиме "branch"
 - Обновление производительности конфигурации [auto_types](api/config/auto_types.md) (PRO версия)
 
 ### API
@@ -1571,14 +1571,14 @@ sidebar_label: "Что нового"
 
 - [Управление ресурсами](guides/resource-management.md) (PRO версия)
 - [RTL-режим](guides/rtl-mode.md)
-- [Горизонтальный скролл для грида](guides/specifying-columns.md#horizontalscrollbar) и [другие улучшения layout](guides/layout-config.md)
+- [Горизонтальный скролл для грида](guides/specifying-columns.md#horizontal-scrollbar) и [другие улучшения layout](guides/layout-config.md)
 - [Деструкторы для экземпляров Gantt и DataProcessor](guides/multiple-gantts.md#destructorofganttanddataprocessorinstances)
 
 
 ### Конфигурация
 
 - [Возможность задавать мин/макс ширины столбцов грида](guides/specifying-columns.md#width)
-- [Возможность перетаскивать проекты вместе с подзадачами](guides/dnd.md#draggingprojectsalongwiththeirsubtasks) (PRO версия)
+- [Возможность перетаскивать проекты вместе с подзадачами](guides/dnd.md#draggingprojectswithsubtasks) (PRO версия)
 - [Расширенные параметры для методов экспорта](guides/export-common.md)
 
 
@@ -1619,7 +1619,7 @@ sidebar_label: "Что нового"
 
 - [Календари рабочего времени на уровне задачи и ресурса](guides/working-time.md#multipleworktimecalendars)
 - [Расчет кода WBS (outline numbers)](guides/specifying-columns.md#wbscode)
-- [Автопрокрутка при операциях drag and drop](guides/dnd.md#autoscrollwhiledraggingtasks)
+- [Автопрокрутка при операциях drag and drop](guides/dnd.md#autoscrollduringtasksdragging)
 - [Добавлена персидская (фарси) локализация](guides/localization.md#predefinedlocales)
 
 ### Конфигурация
@@ -1640,7 +1640,7 @@ sidebar_label: "Что нового"
 ### Функциональность
 
 - [Навигация с клавиатуры](guides/keyboard-navigation.md)
-- [Поддержка WAI-ARIA](guides/accessibility.md#waiariaattributes)
+- [Поддержка WAI-ARIA](guides/accessibility.md#wai-aria-attributes)
 - [Темы с высоким контрастом](guides/accessibility.md#highcontrastthemes)
 - Обновлен расчет [автоматического планирования](guides/auto-scheduling.md) и [критического пути](guides/critical-path.md) (PRO версия)
 
@@ -1659,7 +1659,7 @@ sidebar_label: "Что нового"
 
 ### Функциональность
 
-- [Умный рендеринг](guides/performance.md#smartrendering) для больших наборов данных
+- [Умный рендеринг](guides/performance.md#smart-rendering) для больших наборов данных
 - Расширения для [отмены/повтора действий](guides/undo-redo.md)
 
 ### Конфигурация
@@ -1688,8 +1688,8 @@ sidebar_label: "Что нового"
 ### Конфигурация
 
 - Начальная поддержка [Content Security Policy](guides/content-security-policy.md)
-- Возможность задавать [сортировку грида по отдельным колонкам](guides/sorting.md#sortingpercolumninthegrid)
-- Улучшена функция сортировки веток - [drag-n-drop между уровнями](guides/reordering-tasks.md#draganddropacrosstheentireganttstructure)
+- Возможность задавать [сортировку грида по отдельным колонкам](guides/sorting.md#percolumngridsorting)
+- Улучшена функция сортировки веток - [drag-n-drop между уровнями](guides/reordering-tasks.md#drag-n-drop-within-the-whole-gantt-structure)
 
 ### API
 
@@ -1715,7 +1715,7 @@ sidebar_label: "Что нового"
 
 ### API
 
-- [События для управления доступными целями при переупорядочивании задач](guides/reordering-tasks.md#restrictingdroppositions)
+- [События для управления доступными целями при переупорядочивании задач](guides/reordering-tasks.md#denyingdroppingtospecificpositions)
 - [События для управления процессом загрузки](guides/loading.md#eventsflow)
 - Новые примеры, методы, события
 
@@ -1781,7 +1781,7 @@ sidebar_label: "Что нового"
 
 ### Функциональность
 
-- Поддержка [вех](guides/milestones.md) и [проектов](guides/task-types.md#projecttasks) (PRO версия)
+- Поддержка [вех](guides/milestones.md) и [проектов](guides/task-types.md#project-tasks) (PRO версия)
 - [Возможность рассчитывать длительность задач в рабочих днях/часах вместо календарного времени](guides/working-time.md)
 - [Поддержка нескольких диаграмм Gantt на странице](guides/multiple-gantts.md) (PRO версия)
 

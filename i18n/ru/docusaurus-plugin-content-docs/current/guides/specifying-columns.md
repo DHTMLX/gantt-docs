@@ -24,7 +24,7 @@ gantt.config.columns = [
 <iframe width="676" height="400" src="https://www.youtube.com/embed/-BoznxJmJIo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-## Обзор
+## Обзор {#overview}
 
 По умолчанию в гриде содержатся 4 колонки:
 
@@ -89,7 +89,7 @@ gantt.templates.grid_row_class = ( start, end, task ) => {
 **Связанный пример**: [Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
 
 
-## Ширина
+## Ширина {#width}
 
 Чтобы задать ширину колонки, используйте атрибут [width](api/config/columns.md) в соответствующем объекте колонки:
 
@@ -483,7 +483,7 @@ gantt.config.external_render = {
 - Если **isElement** возвращает true, объект будет передан в **renderElement**, который должен инициализировать объект компонента внутри DOM‑элемента ячейки.
 
 
-## Горизонтальная полоса прокрутки
+## Горизонтальная полоса прокрутки {#horizontal-scrollbar}
 
 Вы можете сделать Grid прокручиваемым с помощью свойства **scrollable** конфигурационной опции layout. 
 [Узнать о привязке представлений макета к полосе прокрутки](guides/layout-config.md#scrollbar).

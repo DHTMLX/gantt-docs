@@ -16,7 +16,7 @@ Die dhtmlxGantt-Bibliothek bietet zwei Möglichkeiten, die Zeilenhöhe zu verwal
 Die Funktionalität ist in v7.1 und höher verfügbar.
 :::
 
-## Festlegen der Zeilenhöhe
+## Festlegen der Zeilenhöhe {#setting-the-row-height}
 
 Sie können die Höhe einer bestimmten Zeile nach Bedarf anpassen.
 
@@ -54,7 +54,7 @@ gantt.render();
 
 Falls die Attribute **row_height** und **bar_height** des Aufgabenobjekts nicht angegeben oder leer sind (Standardzustand), werden die Werte von [gantt.config.row_height](api/config/row_height.md) und [gantt.config.bar_height](api/config/bar_height.md) verwendet.
 
-## Zeilen per Drag-and-Drop ändern
+## Zeilen per Drag-and-Drop ändern {#resizing-rows-by-drag-and-drop}
 
 ![resize_row](/img/resize_row.png)
 

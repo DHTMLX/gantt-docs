@@ -149,7 +149,7 @@ gantt.config.columns = [
 이미 분(minute), 시간(hour) 또는 다른 단위로 지속 시간이 저장된 상태에서 시작했다면 [Duration Formatter](guides/formatters-ext.md) 모듈을 사용해 소수 형식으로 지속 시간을 표시할 수 있습니다.
 :::
 
-## 글로벌 설정
+## 글로벌 설정 {#global-settings}
 
 ### 근무 시간 설정
 
@@ -234,6 +234,7 @@ gantt.setWorkTime({ hours: ["8:15-12:45"] });
 
 ~~~js
 gantt.setWorkTime({ hours: [9, 18] });
+~~~
 :::
 
 ### 근무 시간 규칙 재작성
@@ -263,7 +264,7 @@ gantt.setWorkTime({ day: 6, hours: [] });
 
 그 결과 Gantt는 근무일 중 하나에 대해 메서드 적용을 무시하고, 근무 시간이 남아 있게 됩니다. 
 
-만약 특정 날짜에서 가장 가까운 근무 시간이나 지속 시간을 계산하려고 하면 그러한 날짜나 지속 시간이 존재하지 않게 됩니다. 이는 such calendar를 설정하는 것이 의미가 없다는 뜻입니다. 근무일/근무 시간이 포함된 날짜 범위를 벗어나 날짜를 계산하려고 하면 날짜가 없거나 여러 오류가 발생합니다.
+만약 특정 날짜에서 가장 가까운 근무 시간이나 지속 시간을 계산하려고 하면 그러한 날짜나 지속 시간이 존재하지 않게 됩니다. 이는 이러한 달력을 설정하는 것이 의미가 없다는 뜻입니다. 근무일/근무 시간이 포함된 날짜 범위를 벗어나 날짜를 계산하려고 하면 날짜가 없거나 여러 오류가 발생합니다.
 
 필요한 범위 내에서 근무일/근무 시간을 지정하려면 다음과 같이 해야 합니다:
 
@@ -293,6 +294,100 @@ gantt.setWorkTime({
 ~~~
 
 **Related sample** [Using `customWeeks` to make all days in the calendar days-off](https://snippet.dhtmlx.com/i0o74zg7)
+
+### 근무 시간 해제하기 {#unsetting-the-working-time}
+
+[unsetWorkTime](api/method/unsetworktime.md) 메서드를 사용하여 근무 시간을 해제할 수 있습니다:
+
+~~~js
+// 근무일의 근무 시간을 ["8:00-17:00"]에서 ["8:00-12:00"]으로 변경
+gantt.setWorkTime({ hours: ["8:00-12:00"] });
+// 근무 시간 해제
+gantt.unsetWorkTime({ hours: ["8:00-12:00"] });
+~~~
+
+### 근무 시간 확인하기
+
+지정한 날짜가 근무 시간인지 확인하려면 [isWorkTime](api/method/isworktime.md) 메서드를 사용합니다:
+
+~~~js
+// 2025년 1월 1일을 휴무일로 설정
+gantt.setWorkTime({ date: new Date(2025, 0, 1), hours: false });
+gantt.isWorkTime(new Date(2025, 0, 1)); // -> false  /*!*/
+
+// 2025년 3월 15일을 9:00부터 18:00까지의 근무일로 설정
+gantt.setWorkTime({ date: new Date(2025, 2, 15), hours: ["8:00-17:00"] });
+gantt.isWorkTime(new Date(2025, 2, 15, 10, 0), "hour"); // -> true  /*!*/
+gantt.isWorkTime(new Date(2025, 2, 15, 8, 0), "hour"); // -> false  /*!*/
+~~~
+
+**관련 샘플**: [Correct task position on drag](https://docs.dhtmlx.com/gantt/samples/09_worktime/05_adjust_to_worktime.html)
+
+### 근무 시간 가져오기
+
+지정한 날짜의 근무 시간을 가져오려면 [getWorkHours](api/method/getworkhours.md) 메서드를 사용합니다:
+
+~~~js
+gantt.getWorkHours(new Date(2025, 3, 30)); // -> ["8:00-17:00"]
+~~~
+
+지정한 날짜에서 가장 가까운 근무일을 가져오려면 [getClosestWorkTime](api/method/getclosestworktime.md) 메서드를 사용합니다:
+
+~~~js
+gantt.getClosestWorkTime(new Date(2025, 3, 30));
+~~~
+
+### 특정 근무 시간 반복 지정하기
+
+프로젝트 전체 기간 동안 특정 요일에만 반복되는 근무 시간을 지정해야 할 때가 있습니다(예: 매달 마지막 금요일은 단축 근무일, 12월 25일은 공휴일).
+
+현재 버전의 dhtmlxGantt는 이러한 유형의 근무 시간을 설정하기 위한 별도의 구성을 제공하지 않습니다.
+
+라이브러리는 다음만 허용합니다:
+
+- 요일 단위로 근무 시간 지정하기 (월요일, 화요일...)
+- 특정 날짜에 대해 근무 시간 지정하기 (2025년 6월 4일)
+- 날짜 범위에 대해 근무 시간 규칙 재정의하기 (2025년 6월 1일 - 2025년 9월 1일)
+
+따라서 근무 시간 규칙에 예외가 있는 경우, 규칙에 맞는 날짜를 직접 구해 각 날짜마다 개별적으로 근무 시간 설정을 적용해야 합니다.
+
+예를 들어 5년간 지속되는 프로젝트가 있고, 1월 1일을 휴무일로, 매달 마지막 금요일을 단축 근무일로 설정하고자 한다고 가정해 보겠습니다.
+
+1월 1일을 휴무일로 지정하려면 다음과 같이 값을 직접 하드코딩하면 됩니다:
+
+~~~js
+gantt.setWorkTime({ hours: false, date: new Date(2025, 0, 1) });
+gantt.setWorkTime({ hours: false, date: new Date(2026, 0, 1) });
+gantt.setWorkTime({ hours: false, date: new Date(2027, 0, 1) });
+gantt.setWorkTime({ hours: false, date: new Date(2028, 0, 1) });
+gantt.setWorkTime({ hours: false, date: new Date(2029, 0, 1) });
+~~~
+
+그리고 아래는 프로젝트 전체 기간 동안 매달 마지막 금요일을 단축 근무일로 설정하는 코드 예시입니다:
+
+~~~js
+const lastFridayOfMonth = (date) => {
+    let lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+    if (lastDay.getDay() < 5) {
+        lastDay.setDate(lastDay.getDate() - 7);
+    }
+
+    lastDay.setDate(lastDay.getDate() - (lastDay.getDay() - 5));
+
+    return lastDay;
+};
+
+const projectStart = new Date(2025, 5, 1);
+const projectEnd = new Date(2026, 5, 1);
+let currentDate = new Date(projectStart);
+
+while (currentDate <= projectEnd) {
+    const lastFriday = lastFridayOfMonth(currentDate);
+    gantt.setWorkTime({ hours: ["8:00-12:00", "13:00-15:00"], date: lastFriday });
+    currentDate = gantt.date.add(currentDate, 1, "month");
+}
+~~~
 
 ### 휴무 시간 색상 지정
 
@@ -402,115 +497,140 @@ gantt.setWorkTime({ hours: [9, 18] });
 ~~~
 :::
 
-### 근무 시간 규칙 재작성
+### 근무 시간 변경하기
 
-참고로 같은 날짜에 대한 메서드의 다음 호출은 이전의 근무 시간 규칙을 덮어씁니다. 따라서 특정 규칙을 제거해야 하는 경우 다른 구성으로 [setWorkTime()](api/method/setworktime.md) 메서드를 호출하십시오:
+[setWorkTime()](api/method/setworktime.md) 메서드를 통해 필요한 달력의 특정 날짜에 대한 근무 시간을 변경할 수 있습니다:
 
 ~~~js
-gantt.setWorkTime({ hours: ["8:00-12:00"] });
-gantt.setWorkTime({ hours: ["13:00-17:00"] });
-// 위 명령의 실행 결과는 근무 시간이 13:00-17:00 이다
-// 두 명령의 조합으로 얻어지는 혼합이 아니다
+const calendar = gantt.getCalendar("custom");
+calendar.setWorkTime({ day: 6, hours: ["8:00-12:00"] });
+calendar.setWorkTime({ date: new Date(2025, 0, 1), hours: ["8:00-12:00"] });
 ~~~
 
-### 서로 다른 시간 구간에 대한 근무일/휴무일 설정
+### 달력 가져오기 {#getting-calendars}
 
-근무 시간 설정에는 근무일/휴무일이 포함되지 않는 경우를 적용할 수 없다는 점에 주의하십시오. 예를 들어 아래와 같이 설정하면:
+이후에 작업할 근무 달력의 객체를 가져올 수 있습니다. 사용할 수 있는 몇 가지 옵션은 아래에서 설명합니다.
+
+#### 전역 Gantt 달력 가져오기
+
+[getCalendar](api/method/getcalendar.md) 메서드를 사용하여 전역 Gantt 달력의 객체를 가져옵니다:
 
 ~~~js
-gantt.setWorkTime({ day: 0, hours: [] });
-gantt.setWorkTime({ day: 1, hours: [] });
-gantt.setWorkTime({ day: 2, hours: [] });
-gantt.setWorkTime({ day: 3, hours: [] });
-gantt.setWorkTime({ day: 4, hours: [] });
-gantt.setWorkTime({ day: 5, hours: [] });
-gantt.setWorkTime({ day: 6, hours: [] });
+const calendar = gantt.getCalendar(id);
 ~~~
 
-결과적으로 Gantt는 이 방법을 한 근무일에만 적용하고 남은 근무 시간이 남지 않게 됩니다. 
+*calendar* 객체는 [calendar](api/other/calendar.md) 인터페이스의 인스턴스입니다.
 
-필요한 범위 내에서 근무일/근무 시간을 지정하려면 다음과 같이 해야 합니다:
-
-- 기간을 근무 시간이 없는 구간으로 나누기
-- 필요한 날짜에 대해 근무 시간을 설정하기
+기본 달력 인스턴스(전역 설정)는 미리 정의된 **"global"** id로 접근할 수 있습니다:
 
 ~~~js
-gantt.setWorkTime({ date: new Date(2025, 3, 10), hours: ["8:00-12:00"] })
-gantt.setWorkTime({ date: new Date(2025, 3, 11), hours: ["13:00-17:00"] })
+const globalSettings = gantt.getCalendar("global");
+~~~
 
-gantt.setWorkTime({
-    customWeeks: {
-        period1: {
-            from: new Date(2025, 3, 1),
-            to: new Date(2025, 3, 10),
-            hours: false,
-        },
+다른 달력이 지정되지 않은 경우 이 달력이 [작업 시간 메서드](guides/working-time.md#global-settings)에서 사용됩니다. 기본적으로 작업에 할당되는 달력이기도 합니다.
 
-        period2: {
-            from: new Date(2025, 3, 12),
-            to: new Date(2025, 5, 1),
-            hours: false,
-        },
+#### 작업의 현재 달력 가져오기
 
+특정 작업에 할당된 근무 달력의 객체를 가져오려면 [getTaskCalendar](api/method/gettaskcalendar.md) 메서드를 사용합니다. 이 메서드에는 작업 객체를 전달해야 합니다:
+
+~~~js
+const task = gantt.getTask(taskId);
+const calendar = gantt.getTaskCalendar(task);
+
+if (calendar.isWorkTime(date)) {
+    alert("TaskWorkTime");
+}
+~~~
+
+**관련 샘플**: [Task level calendars](https://docs.dhtmlx.com/gantt/samples/09_worktime/06_task_calendars.html)
+
+Gantt 구성에서 근무 시간이 비활성화되어 있으면 이 메서드는 24시간 연중무휴 근무 달력을 반환합니다.
+
+### 전역 메서드로 달력에 접근하기
+
+Gantt 객체의 [작업 시간 메서드](guides/working-time.md#global-settings)를 사용하면 작업의 달력에 직접 접근하지 않고도 특정 작업의 시간 지속 기간을 계산할 수 있습니다.
+
+이 경우 메서드는 관련 "task" 객체를 속성 중 하나로 전달받는 객체 인수를 받습니다.
+
+- [**gantt.isWorkTime**](api/method/isworktime.md)
+
+~~~js
+if (gantt.isWorkTime({ date: date, task: task })) {
+    alert(`Work time of a task: ${task.text}`);
+}
+~~~
+
+이는 다음과 동일합니다:
+
+~~~js
+const calendar = gantt.getTaskCalendar(task);
+
+if (calendar.isWorkTime({ date: date })) {
+    alert(`Work time of a task: ${task.text}`);
+}
+~~~
+
+- [**gantt.calculateEndDate**](api/method/calculateenddate.md)
+
+~~~js
+const endDate = gantt.calculateEndDate({  
+    start_date: date, duration: duration, task: task  
+});
+// or
+const endDate = gantt.calculateEndDate(task);
+~~~
+
+- [**gantt.calculateDuration**](api/method/calculateduration.md)
+
+~~~js
+const duration = gantt.calculateDuration({  
+    start_date: start, end_date: end, task: task  
+});
+// or
+const duration = gantt.calculateDuration(task);
+~~~
+
+- [**gantt.getClosestWorkTime**](api/method/getclosestworktime.md)
+
+~~~js
+const closestTime = gantt.getClosestWorkTime({ date: date, task: task });
+~~~
+
+### 모든 Gantt 달력 가져오기
+
+Gantt에 추가된 모든 달력(전역 달력과 개별 작업에 할당된 달력 모두)을 가져오려면 [getCalendars](api/method/getcalendars.md) 메서드를 사용합니다:
+
+~~~js
+const calendars = gantt.getCalendars();
+~~~
+
+이 메서드는 [Calendar 인터페이스](api/other/calendar.md) 객체의 배열을 반환합니다.
+
+### 달력 삭제하기
+
+더 이상 필요하지 않은 달력은 [deleteCalendar](api/method/deletecalendar.md) 메서드로 간단히 삭제할 수 있습니다.
+이 메서드에는 달력 id를 전달해야 합니다:
+
+~~~js
+// 달력 추가
+gantt.addCalendar({
+    id: "custom",
+    worktime: {
+        hours: ["8:00-17:00"],
+        days: [1, 1, 1, 1, 1, 1, 1]
     }
 });
+
+// 달력 삭제
+gantt.deleteCalendar("custom");
 ~~~
 
-**관련 샘플** [Using `customWeeks` to make all days in the calendar days-off](https://snippet.dhtmlx.com/i0o74zg7)
+## 작업에 달력 할당하기 {#assigningcalendartotask}
 
-### 휴무 시간 색상 지정
-
-차트 영역에서 휴무 시간에 색상을 입히려면 timeline_cell_class 템플릿을 사용합니다:
+작업에 근무 달력을 할당하려면 달력 id와 근무일 및 근무 시간을 포함하는 **worktime** 객체를 설정해야 합니다:
 
 ~~~js
-gantt.templates.timeline_cell_class = (task, date) => 
-    !gantt.isWorkTime({ task, date }) ? "week_end" : "";
-~~~
-
-**관련 샘플**: [맞춤 근무일 및 시간](https://docs.dhtmlx.com/gantt/samples/09_worktime/04_custom_workday_duration.html)
-
-더 자세한 내용은 [Highlighting Time Slots](guides/highlighting-time-slots.md) 문서를 참조하십시오.
-
-:::note
-일부러 휴일 시간을 숨기려면 글의 방법을 따라 [Hiding Time Units in the Scale](guides/custom-scale.md) 문서를 참조하십시오.
-:::
-
-## 다중 작업 시간 달력 {#multipleworktimecalendars}
-
-전역 근무 시간 설정 외에도 Gantt는 여러 작업 시간 달력을 만들 수 있습니다. 이를 개별 작업이나 작업 그룹에 할당할 수 있습니다.
-
-### 작업 달력 생성
-
-새 달력 인스턴스는 [createCalendar](api/method/createcalendar.md) 메서드를 사용해 생성할 수 있습니다. 이 메서드는 두 가지 옵션을 전제로 합니다:
-
-- 매개변수 없이 호출하면 전체 시간 달력: 하루 24시간, 주 7일
-
-~~~js
-const calendar = gantt.createCalendar();
-~~~
-
-- 이미 준비된 달력을 가지고 있으며 다른 옵션으로 새 달력을 만들어야 하는 경우, 달력을 파라미터로 전달해 [createCalendar](api/method/createcalendar.md) 메서드를 호출할 수 있습니다
-
-~~~js
-const newCalendar = gantt.createCalendar(calendar);
-~~~
-
-달력 객체는 처음에 Gantt로부터 분리되며, Gantt에 추가될 때까지 아무 효과도 가지지 않습니다.
-
-### Gantt에 작업 달력 추가
-
-달력을 만든 후에는 [addCalendar](api/method/addcalendar.md) 메서드를 사용해 Gantt에 추가해야 합니다. 두 가지 방법이 있습니다:
-
-- 기존 달력 구성 추가하기
-
-~~~js
-const calendarId = gantt.addCalendar(calendar);
-~~~
-
-- 달력 ID와 근무 시간을 포함하는 새로운 달력 구성 추가하기
-
-~~~js
-const calendarId = gantt.addCalendar({
+gantt.addCalendar({
     id: "custom", // optional
     worktime: {
         hours: ["8:00-17:00"],
@@ -519,67 +639,80 @@ const calendarId = gantt.addCalendar({
 });
 ~~~
 
-:::note
-이 옵션은 달력 생성에도 사용할 수 있습니다.
-:::
-
-### 서로 다른 시간 구간에 대해 서로 다른 근무 시간 규칙 {#rules_for_periods}
-
-v7.1부터 한 달력 내에서 서로 다른 기간의 근무 시간 규칙을 설정하는 기능이 추가되었습니다. 예를 들어 겨울 달에 대해 별도의 일정표를 적용하기 위해 Gantt에 달력을 추가할 때 [addCalendar] 메서드의 `customWeeks` 속성을 사용해야 합니다:
+그런 다음 작업 객체의 **"calendar_id"** 속성 값으로 해당 달력의 id를 설정합니다:
 
 ~~~js
-const calendarId = gantt.addCalendar({
-    id: "global", // optional
-    worktime: {
-        hours: ["8:00-17:00"],
-        days: [1, 1, 1, 1, 1, 1, 1],
-        customWeeks: {
-            winter: {
-                from: new Date(2025, 11, 1), // December 1st, 2025
-                to: new Date(2026, 2, 1), // March 1st, 00:00, 2026
-                hours: ["9:00-13:00", "14:00-16:00"],
-                days: [1, 1, 1, 1, 0, 0, 0]
-            }
+{
+    id: 2, text: "Task #1", start_date: "02-04-2025", duration: 8,
+    calendar_id: "custom" /*!*/
+}
+~~~
+
+[calendar_property](api/config/calendar_property.md) 구성 옵션을 통해 작업에 달력을 연결하는 속성의 이름을 변경할 수 있습니다:
+
+~~~js
+gantt.config.calendar_property = "property_name";
+~~~
+
+**관련 샘플**: [Task level calendars](https://docs.dhtmlx.com/gantt/samples/09_worktime/06_task_calendars.html)
+
+## 리소스에 달력 할당하기 {#assigningcalendartoresource}
+
+:::info
+이 기능은 PRO 에디션에서만 사용할 수 있습니다.
+:::
+
+특정 리소스(인력, 장비 등)가 필요한 작업에 특정 근무 달력을 할당하는 것도 가능합니다.
+
+예를 들어 작업이 할당된 사용자에 따라 개별 달력을 설정할 수 있습니다. 순서는 다음과 같습니다:
+
+- [resource_property](api/config/resource_property.md) 구성 속성을 통해 리소스 id를 저장할 작업 객체의 속성을 정의합니다. 아래 예시에서는 **user**라는 속성에 사용자의 id를 저장합니다:
+
+~~~js
+gantt.config.resource_property = "user";
+~~~
+
+- [resource_calendars](api/config/resource_calendars.md) 구성 옵션을 사용하여 각 사용자에 대해 원하는 달력을 추가하고, 이 달력들을 하나의 객체로 그룹화합니다.
+
+~~~js
+gantt.config.resource_calendars = {
+    1 : gantt.addCalendar({
+        worktime: {
+            days: [0, 1, 1, 1, 1, 1, 0]
         }
-    }
-});
+    }),
+    2 : gantt.addCalendar({
+        worktime: {
+            days: [1, 0, 0, 0, 0, 0, 1]
+        }
+    }),
+    3 : gantt.addCalendar({
+        worktime: {
+            days: [0, 1, 1, 1, 0, 1, 1]
+        }
+    })
+};
 ~~~
 
-**관련 샘플**: [Different worktimes for different time periods](https://docs.dhtmlx.com/gantt/samples/09_worktime/12_calendar_ranges.html)
+이 객체는 *key:value* 쌍의 집합으로 구성되며, key는 리소스의 id이고 value는 [addCalendar](api/method/addcalendar.md) 메서드가 반환하는 달력의 id에 해당합니다.
 
-다음과 같이 duration_unit를 *"minute"*로 설정하면 시/분 단위까지의 근무 시간을 지정할 수 있습니다.
+- 작업 구성 객체에 **user** 속성을 지정합니다.
+이 속성의 값으로는 **resource_calendars** 구성 옵션에서 정의한 객체의 key 중 필요한 달력의 key를 사용합니다:
 
-~~~js title="Setting a custom working time up to minutes"
-gantt.config.duration_unit = "minute";
-
-// 분 단위까지 근무 시간 설정
-gantt.setWorkTime({ hours: ["8:15-12:45"] });
+~~~js
+{ id: 1, user: 1, text: "Project #2", start_date: "01-04-2025", duration: 5 },
+{ id: 2, user: 0, text: "Task #1", start_date: "02-04-2025", duration: 2 },
+{ id: 3, user: 2, text: "Task #2", start_date: "11-04-2025", duration: 4 },
+{ id: 4, user: 3, text: "Task #3", start_date: "13-04-2025", duration: 3 },
+{ id: 5, user: 0, text: "Task #1.1", start_date: "02-04-2025", duration: 7 },
+{ id: 6, user: 1, text: "Task #1.2", start_date: "03-04-2025", duration: 7 }
 ~~~
+
+[Resource level calendars](https://docs.dhtmlx.com/gantt/samples/09_worktime/07_resource_calendars.html)
 
 :::note
-버전 7.0까지 사용된 형식의 근무 시간 설정은 이전과 동일하게 계속 작동합니다:
-
-~~~js
-gantt.setWorkTime({ hours: [9, 18] });
-~~~
+작업에 커스텀 달력과 리소스 달력이 모두 지정된 경우, 커스텀 달력이 더 높은 우선순위를 가지며 리소스 달력 설정을 재정의합니다.
 :::
-
-
-### 근무 시간 규칙 재작성
-
-참고로 같은 날짜에 대한 메서드 호출이 계속되면 이전 근무 시간 규칙은 덮어써집니다. 따라서 어떤 규칙을 제거하려면 다른 구성으로 [setWorkTime()](api/method/setworktime.md) 메서드를 호출하십시오:
-
-~~~js
-gantt.setWorkTime({ hours: ["8:00-12:00"] });
-gantt.setWorkTime({ hours: ["13:00-17:00"] });
-// 위 두 명령의 실행 결과는 13:00-17:00의 근무 시간이 됩니다.
-~~~
-
-### 달력 할당의 더 다양한 옵션
-
-다양한 달력의 합병과 우선순위에 대한 규칙은 아래와 같습니다.
-
-- 커스텀 달력이 리소스 달력보다 높은 우선순위를 가지며, 리소스 달력 설정을 재정의합니다.
 
 ### 여러 달력의 병합 {#mergingcalendars}
 
@@ -620,7 +753,7 @@ const joinedCalendar = gantt.mergeCalendars(
 
 더 자세한 병합 로직은 [mergeCalendars()](api/method/mergecalendars.md) 문서를 참조하십시오.
 
-## 프로젝트에 달력 할당
+## 프로젝트에 달력 할당 {#assigning-calendar-to-project}
 
 :::info
 이 기능은 PRO 에디션에서만 사용할 수 있습니다.

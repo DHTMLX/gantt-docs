@@ -92,7 +92,7 @@ gantt.form_blocks.textarea.set_value="function(node,value,ev){"
 }
 ~~~
 
-## 섹션과 레이블을 같은 줄에 배치하기
+## 섹션과 레이블을 같은 줄에 배치하기 {#setting-section-and-its-label-on-the-same-line}
 
 섹션의 레이블과 같은 줄에 배치하려면 [wide_form](api/config/wide_form.md) 구성 옵션을 *true*로 설정합니다:
 

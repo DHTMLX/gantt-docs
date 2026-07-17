@@ -83,7 +83,7 @@ CDN에서 포함할 수 있는 전체 링크 목록은 dhtmlxGantt의 버전에 
 
 버전 10 이전의 무료 에디션은 **GPL** 라이선스 하에 배포되었습니다. 이들 버전(v9.x 및 그 이전)은 여전히 사용 가능하며 GPL v2가 여전히 적용됩니다; 이들은 [주 저장소의 메인 GitHub 저장소](https://github.com/DHTMLX/gantt)의 전용 브랜치에 존재하지만 더 이상 적극적으로 유지되지 않습니다.
 
-### PRO 버전
+### PRO 버전 {#adding-pro-edition-into-project}
 
 컴포넌트의 PRO 버전이 있다면 [Client Area](https://dhtmlx.com/clients/)로 이동하여 거기에서 PRO 패키지를 다운로드해야 합니다.
 

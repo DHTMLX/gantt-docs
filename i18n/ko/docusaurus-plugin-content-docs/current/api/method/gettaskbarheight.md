@@ -57,7 +57,7 @@ gantt.getTaskBarHeight(2); // -> 25
 
 ### Related Guides
 - [그리드에서 행 크기 조정하기](guides/resizing-rows.md)
-- [Task Object/Id](guides/task-object-operations.md#taskheight)
+- [Task Object/Id](guides/task-object-operations.md#task-height)
 
 ### Change log
 - v7.1에서 추가됨

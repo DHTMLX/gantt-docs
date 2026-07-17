@@ -29,7 +29,7 @@ gantt.plugins({
 
 要使用此导航类型，请将 [keyboard_navigation_cells](api/config/keyboard_navigation_cells.md) 属性设置为 *true*。
 
-## Focus 行为在键盘导航过程中
+## Focus 行为在键盘导航过程中 {#jianpandaohangzhongdejiaodianxingwei}
 
 ### 甘特图上的焦点
 
@@ -54,7 +54,7 @@ gantt.plugins({
 你可以在相关的文章 [如何复制粘贴任务](guides/how-to.md#how-to-copy-and-paste-tasks) 中找到通过 **Ctrl+C/Ctrl+V** 组合实现复制/粘贴任务的示例。
 :::
 
-## 快捷键作用域 {#shortcutscope}
+## 快捷键作用域 {#scopes}
 
 一个按键触发的动作取决于上下文。这意味着不同的动作可以附加到不同的元素（作用域）。甘特图中有以下上下文元素（作用域）：
 

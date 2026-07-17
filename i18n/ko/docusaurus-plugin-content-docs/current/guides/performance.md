@@ -5,7 +5,7 @@ sidebar_label: "성능: 개선 방법"
 
 # 성능: 개선 방법
 
-## 일반적인 기법
+## 일반적인 기법 {#common-techniques}
 
 구성 옵션과 플러그인에 따라 10,000~20,000개의 작업을 처리할 경우, 페이지에 표시되는 간트 차트의 렌더링에 지연이 발생할 수 있습니다.
 
@@ -24,7 +24,7 @@ sidebar_label: "성능: 개선 방법"
 **관련 샘플**: [Performance tweaks](https://docs.dhtmlx.com/gantt/samples/08_api/10_performance_tweaks.html)
 
 
-## 스마트 렌더링
+## 스마트 렌더링 {#smart-rendering}
 
 스마트 렌더링 기법은 대량의 데이터를 다룰 때 데이터 렌더링 속도를 크게 향상시킵니다. 이 모드에서는 화면에 현재 보이는 작업 및 링크만 렌더링됩니다.
 

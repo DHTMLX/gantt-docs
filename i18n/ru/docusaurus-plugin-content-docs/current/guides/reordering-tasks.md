@@ -27,7 +27,7 @@ gantt.init("gantt_here");
 
 <iframe width="676" height="400" src="https://www.youtube.com/embed/srtb3nYOb-E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## Перетаскивание внутри всей структуры Gantt
+## Перетаскивание внутри всей структуры Gantt {#drag-n-drop-within-the-whole-gantt-structure}
 
 Опция [order_branch] позволяет перетаскивать задачи внутри одного уровня дерева.
 
@@ -68,7 +68,7 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 ~~~
 
 
-## Улучшение производительности для больших наборов данных
+## Улучшение производительности для больших наборов данных {#improving-performance-for-large-datasets}
 
 Если в вашем Gantt много задач, режим переупорядочивания ветвей по умолчанию может замедлять работу.
 Чтобы ускорить его, можно использовать режим «marker».

@@ -82,7 +82,7 @@ bower install gantt
 在 v10 之前的免费版本是以 **GPL** 许可证分发的。这些版本（v9.x 及更早）仍然可用，且 GPL v2 仍适用于它们；它们位于 [主 GitHub 仓库](https://github.com/DHTMLX/gantt) 的专门分支中，但不再 actively maintained（不再积极维护）。 
 
 
-### PRO 版本
+### PRO 版本 {#adding-pro-edition-into-project}
 
 如果你拥有组件的 PRO 版本，需要前往 [Client Area](https://dhtmlx.com/clients/) 并在那里下载 PRO 包。
 
@@ -122,7 +122,7 @@ bower install gantt
 2. 进入你的项目目录。 
 3. 运行 `npm install ../gantt-local-package-path`。
 
-### npm link
+### npm link {#uninstall-trial-version}
 
 1. 将 Gantt 包复制到本地某个目录。
 2. 在包目录中运行 `npm link`。

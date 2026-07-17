@@ -26,7 +26,7 @@ gantt.attachEvent("onTaskClick", (id, e) => {
 - 事件名称不区分大小写。
 - 您可以为同一个事件绑定多个处理程序。
 
-## 解绑事件
+## 解绑事件 {#detaching-events}
 
 要解绑事件处理程序，请使用 [`detachEvent()`](api/method/detachevent.md) 方法：
 

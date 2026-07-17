@@ -46,7 +46,7 @@ gantt.config.columns = [
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/0rIPrC0GtME" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## 编辑器的类型
+## 编辑器的类型 {#types-of-editors}
 
 内联编辑器存储在 [editor_types](api/config/editor_types.md) 配置对象中。
 
@@ -431,7 +431,7 @@ const editors = {
 
 **Related sample** [Built-in predecessor editor](https://snippet.dhtmlx.com/xz6192wd)
 
-## 内联编辑模式
+## 内联编辑模式 {#inline-editing-modes}
 
 ### 基本内联编辑
 

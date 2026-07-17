@@ -58,7 +58,7 @@ task.start_date = gantt.calculateEndDate({
 });
 ~~~
 
-## Eigenschaften des Konfigurationsobjekts {#configurationobjectproperties}
+## Eigenschaften des Konfigurationsobjekts {#configuration-object-properties}
 
 Das Konfigurationsobjekt kann folgende Eigenschaften enthalten:
 

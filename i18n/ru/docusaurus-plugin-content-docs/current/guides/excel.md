@@ -264,7 +264,7 @@ gantt.importFromExcel({
 ~~~
 
 
-## Экспорт в iCal
+## Экспорт в iCal {#export-to-ical}
 
 Чтобы экспортировать данные из диаграммы Gantt в строку iCal, выполните следующее:
 

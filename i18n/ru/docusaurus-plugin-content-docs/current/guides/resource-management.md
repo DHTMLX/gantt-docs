@@ -85,7 +85,7 @@ gantt.templates.resource_cell_value = (startDate, endDate, resource, tasks, assi
 **Related sample**: [Templates of the Resource diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/05_resource_usage_templates.html)
 
 
-### Гистограмма ресурсов
+### Гистограмма ресурсов {#resource-histogram}
 
 Этот тип макета для отображения загрузки ресурсов Gantt включает представления "resourceGrid" и "resourceHistogram" для грида и таймлайна соответственно.
 
@@ -206,7 +206,7 @@ resourcesStore.parse([
  емкость, определяемая на уровне ресурса, перекрывает глобальную емкость гистограммы для данного ресурса.
 :::
 
-## Работа с панелью просмотра ресурсов
+## Работа с панелью просмотра ресурсов {#working-with-resource-view-panel}
 
 По умолчанию обе панели (или "resourceGrid" и "resourceTimeline" или "resourceGrid" и "resourceHistogram") будут привязаны к хранилищу данных, указанному в конфигурации [gantt.config.resource_store].
 
@@ -259,7 +259,7 @@ gantt.config.lightbox = {
 ~~~
 
 
-### Ручная инициализация хранилища данных
+### Ручная инициализация хранилища данных {#manual-creation-of-data-store}
 
 Также возможно вручную инициализировать хранилище данных с помощью метода [createDatastore](api/method/createdatastore.md):
 
@@ -393,7 +393,271 @@ gantt.getResourceAssignments("6");
 - *mode* - режим расчета времени назначения ресурса: "default"|"fixedDates"|"fixedDuration"
 
 
-### Получение назначений ресурса задачи 
+## Назначение ресурсов {#assigningresources}
+
+### Связывание ресурсов с задачами
+
+Связь с ресурсом определяется параметром конфигурации [resource_property](api/config/resource_property.md):
+
+~~~js
+gantt.config.resource_property = "user_id";
+// task.user_id <-> resource.id
+~~~
+
+Ресурсы можно связывать с задачами через свойства объекта задачи одним из следующих способов:
+
+- назначение одного ресурса одной задаче
+
+~~~js
+{
+    id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6, 
+    user_id: 5 // 5 is the id of the resource 
+}
+~~~
+
+- назначение нескольких ресурсов одной задаче
+
+~~~js
+{
+    id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6, 
+    users: [2, 3] // 2 and 3 are the ids of resources
+}
+~~~
+
+Вы можете использовать этот формат с [пользовательским мультиселектом](guides/custom-editor.md#customthirdpartyeditor).
+
+- назначение нескольких ресурсов с указанием их количества
+
+~~~js
+{
+    id: 1, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6,
+    users: [{resource_id: 2, value: 8}, {resource_id: 3, value: 4}]
+}
+~~~
+
+Ресурсы назначаются задаче Task1 следующим образом: ресурс с id="2" — в количестве 8 единиц, а ресурс с id="3" — в количестве 4 единиц.
+Этот формат поддерживается [Resources Control](guides/resources.md) и [Resource Assignments control](guides/resource-assignments.md) лайтбокса.
+
+Начиная с v8.0 вы также можете загружать назначения ресурсов отдельным списком, и gantt автоматически свяжет их с задачами:
+
+~~~js
+gantt.parse({
+    tasks: [...],
+    links: [...],
+    resources: [...],
+    assignments: [{id: 1, resource_id: 2, task_id: 5, value: 8}, ...]
+});
+~~~
+
+Подробнее о форматах данных можно прочитать [здесь](guides/resource-management.md#loading-resources-and-resource-assignments).
+
+При отправке данных на сервер DataProcessor сериализует значения описанных свойств в JSON. Для удобной обработки таких записей на сервере используйте режим ["REST_JSON"](guides/server-side.md#restjson) dataprocessor.
+
+В некоторых случаях может потребоваться сохранять изменения в назначениях ресурсов отдельно от объектов задач. В этом случае можно включить следующую конфигурацию:
+
+~~~js
+gantt.config.resources = {
+    dataprocessor_assignments: true,
+    dataprocessor_resources: true,
+};
+~~~
+
+Подробнее об этом читайте в [отдельной статье](guides/server-side.md#resources_crud).
+
+
+### Установка времени назначений ресурсов {#resourceassignmenttime}
+
+По умолчанию считается, что ресурс назначен на всю продолжительность задачи.
+
+
+Начиная с v7.1, объект назначения ресурса может принимать дополнительные необязательные параметры, позволяющие указывать даты назначения в пределах задачи.
+
+Дополнительные свойства:
+
+- **id** - (*string|number*) id назначения
+- **start_date** - (*Date|string*) дата, на которую запланировано начало назначения
+- **end_date** - (*Date|string*) дата, на которую запланировано завершение назначения
+- **delay** - (*number*) разница между датой начала назначения и датой начала задачи
+- **duration** - (*number*) продолжительность назначения
+- **mode** - (*string*) режим расчёта времени назначения ресурса: "default"|"fixedDates"|"fixedDuration"
+
+~~~js {8,13-15,20-22}
+{
+    id: 5, text: "Interior office", type: "task", start_date: "03-04-2025 00:00",
+    duration: 7, parent: "2", progress: 0.6, priority: 1,
+    users: [
+        {
+            resource_id: "3",
+            value: 8,
+            delay: 1 
+        },
+        {
+            resource_id: "6",
+            value: 3,
+            start_date: "03-04-2025 00:00", 
+            end_date: "05-04-2025 00:00", 
+            mode: "fixedDates" 
+        },
+        {
+            resource_id: "7",
+            value: 3,
+            delay: 1, 
+            duration: 2, 
+            mode: "fixedDuration" 
+        }
+    ]
+}
+~~~
+
+**Связанный пример**: [Assign resource values to specific days](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
+
+1. *Даты начала и окончания* назначения ресурса будут отражены в гистограмме и диаграмме ресурсов.
+
+2. Необязательное свойство *id* назначения можно добавить к объекту назначения ресурса:
+
+~~~js
+{
+    id: 1, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6,
+    users: [{
+        id: 5, 
+        resource_id: 2,
+        value: 8, 
+        delay: 1
+    }]
+}
+~~~
+
+Объект назначения будет доступен через API gantt по этому id:
+
+~~~js
+const assignment = gantt.getDatastore("resourceAssignments").getItem(5);
+~~~
+
+:::note
+Хранилище данных [«resourceAssignments»](api/config/resource_assignment_store.md) доступно только при включённой конфигурации [process_resource_assignments](api/config/process_resource_assignments.md).
+:::
+
+3. Работа остальных свойств определяется значением свойства **mode**:
+
+- **_режим "default"_**
+
+~~~js
+{
+    id: 1, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6,
+    users: [
+        { resource_id: 2, value: 8, delay: 1},
+        { resource_id: 3, value: 6},
+    ]
+}
+~~~
+
+Если *mode* не указан или установлен в значение "default", *start_date* и *end_date* назначения вычисляются на основе дат задачи. По умолчанию дата начала назначения совпадает с датой начала задачи. Такой же подход применяется к дате окончания.
+
+Свойство *delay* работает аналогично свойству *Delay* в <a href="https://support.microsoft.com/en-us/office/assignment-delay-fields-427ac799-225c-4e10-9dcb-f58e524c8173">MS Project</a>.
+
+Если указан delay, *start_date* назначения вычисляется как
+
+`gantt.calculateEndDate({start_date:task.start_date, duration:assignment.delay, task:task})`.
+
+Назначение ресурса начнётся с указанной задержкой от начала задачи. Дата окончания назначения будет совпадать с датой окончания задачи.
+
+При обновлении объекта задачи даты начала/окончания назначения будут обновляться соответствующим образом.
+
+- **_режим "fixedDuration"_**
+
+~~~js
+{
+    id: 1, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6,
+    users: [
+        { resource_id: 2, value: 8, duration: 1, delay: 0, mode: "fixedDuration" },
+        { resource_id: 2, value: 2, duration: 1, delay: 1, mode: "fixedDuration" },
+        { resource_id: 2, value: 3, delay: 2, mode: "default" }
+    ]
+}
+~~~
+
+*start_date* назначения вычисляется так же, как и в режиме *"default"*.
+
+*end_date* больше не привязан к дате окончания задачи. Вместо этого он вычисляется как
+
+ `gantt.calculateEndDate({start_date:assignment.start_date, duration:assignment.delay, task:task})`.
+
+При обновлении объекта задачи даты назначений пересчитываются, а продолжительности назначений остаются неизменными.
+
+- **_режим "fixedDates"_**
+
+~~~js
+{
+    id: 1, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6,
+    users: [{
+        resource_id: 2, value: 8,
+        start_date: "03-04-2025", end_date: "11-04-2025", mode: "fixedDates"
+    }]
+}
+~~~
+
+В этом режиме даты назначения ресурса имеют ровно те значения, которые указаны в данных, и не изменяются при изменении задачи.
+
+Поле *delay* не влияет на даты назначения при использовании режима *"fixedDates"*.
+
+Ниже приведена краткая сводка того, как вычисляются даты назначения в каждом режиме:
+
+- **default**
+
+  - assignment.start_date = task.start_date + assignment.delay
+  - assignment.end_date = task.end_date
+
+- **fixedDuration**
+
+  - assignment.start_date = task.start_date + assignment.delay
+  - assignment.end_date = assignment.start_date + assignment.duration
+
+- **fixedDates**
+
+  - assignment.start_date = assignment.start_date
+  - assignment.end_date = assignment.end_date
+
+### Получение задач, назначенных ресурсу
+
+Существует сокращённый способ получить все задачи, назначенные ресурсу — [getResourceAssignments](api/method/getresourceassignments.md).
+
+~~~js
+gantt.getResourceAssignments("6"); 
+~~~
+
+Метод принимает в качестве параметра id ресурса и возвращает массив объектов с задачами, назначенными ресурсу:
+
+~~~js
+[ 
+    { task_id: 5, resource_id: "6", value: 5, delay: 0, duration: 7, 
+        start_date: "03-04-2025 00:00", end_date: "12-04-2025 00:00", 
+        id: 1617258553240, mode: "default" },
+    { task_id: 18, resource_id: "6", value: 2, delay: 0, duration: 2, 
+        start_date: "05-04-2025 00:00", end_date: "09-04-2025 00:00", 
+        id: 1617258553250, mode: "default" },
+    { task_id: 19, resource_id: "6", value: 3, delay: 0, duration: 4, 
+        start_date: "09-04-2025 00:00", end_date: "13-04-2025 00:00", 
+        id: 1617258553251, mode: "default" },
+    { task_id: 21, resource_id: "6", value: 5, delay: 0, duration: 4, 
+        start_date: "03-04-2025 00:00", end_date: "09-04-2025 00:00", 
+        id: 1617258553254, mode: "default" }
+]
+~~~
+
+Каждый объект содержит следующие свойства:
+
+- *task_id* - id задачи
+- *resource_id* - id ресурса
+- *value* - количество ресурса, назначенного задаче
+- *delay* - разница между датой начала назначения и датой начала задачи
+- *duration* - продолжительность назначения
+- *start_date* - дата, на которую запланировано начало назначения
+- *end_date* - дата, на которую запланировано завершение назначения
+- *id* - id назначения
+- *mode* - режим расчёта времени назначения ресурса: "default"|"fixedDates"|"fixedDuration"
+
+
+### Получение назначений ресурса задачи
 
 Метод [getTaskAssignments](api/method/gettaskassignments.md) позволяет получить разобранные назначения ресурсов конкретной задачи из хранилища:
 
@@ -479,7 +743,7 @@ gantt.updateCollection("people", [
 Читайте о том, как настроить управление ресурсами lightbox в статьях [Resources control](guides/resources.md) и [Resource Assignments control](guides/resource-assignments.md).
 
 
-## Загрузка ресурсов и назначений ресурсов
+## Загрузка ресурсов и назначений ресурсов {#loading-resources-and-resource-assignments}
 
 С версии v8.0 ресурсы и назначения ресурсов можно загружать в Gantt с помощью методов [gantt.parse()](api/method/parse.md) или [gantt.load()](api/method/load.md):
 

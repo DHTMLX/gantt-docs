@@ -12,7 +12,7 @@ Detaillierte Informationen zu jedem einzelnen Element finden Sie in den jeweilig
 
 
 
-## Styling des Gitters (Grid)
+## Styling des Gitters (Grid) {#styling-grid}
 
 Sie können den Stil des Grid-Bereichs über die entsprechenden [Vorlagen des Grid](guides/table-templates.md) ändern.
 

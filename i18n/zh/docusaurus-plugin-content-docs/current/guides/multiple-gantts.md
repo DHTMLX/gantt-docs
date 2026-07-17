@@ -11,7 +11,7 @@ sidebar_label: "一个页面上的多个甘特图"
 
 基本上，DHTMLX Gantt 是一个静态对象，其默认实例会持续存在于页面上。你可以随时通过全局对象 `gantt` 访问它。但如果需要，也可以创建一个新的 gantt 对象。
  
-## Gantt 实例配置
+## Gantt 实例配置 {#gantt-instance-configuration}
 
 要创建一个新的 DHTMLX Gantt 实例，请使用 `Gantt.getGanttInstance()` 方法：
 

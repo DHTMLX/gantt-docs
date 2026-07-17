@@ -31,7 +31,7 @@ The *inlineEditors*对象具备以下 API：
 - <span class="submethod">**isChanged (): boolean**</span> - 检查当前编辑器的值是否与初始值不同
 - <span class="submethod">**isVisible (): boolean**</span> - 检查编辑器是否已打开
 
-### 事件：
+### 事件： {#events}
 
 - <span class="submethod">**attachEvent (name, handler): string**</span> - 为 inlineEditors 对象附加事件处理程序
     - **_name_** - (*string*) - 事件处理程序的名称

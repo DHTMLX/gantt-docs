@@ -7,7 +7,7 @@ sidebar_label: "Zoomen"
 
 dhtmlxGantt bietet ein integriertes Modul zur bequemen Steuerung des Zooms des Zeitrasters. Falls Sie das Standardverhalten des Zoomings anpassen möchten, steht eine [flexible API](guides/zoom.md) zur Verfügung, mit der Sie die Einstellungen des Zeitrasters dynamisch ändern können.
 
-## Integriertes Zoom-Modul
+## Integriertes Zoom-Modul {#built-in-zooming-module}
 
 Das eingebettete [Zoom-Modul](guides/zoom.md) ist in der Erweiterung `gantt.ext.zoom` deklariert. Um das Modul zu aktivieren, müssen Sie `gantt.ext.zoom.init(zoomConfig)` aufrufen und ein `zoomConfig`-Objekt mit Konfigurationseinstellungen übergeben, das ein Array von Zoom-Stufen enthält. Zum Beispiel:
 
@@ -86,7 +86,7 @@ Detailed information about the zooming module and its API is given in the articl
 
 **Related sample**: [Zoom per Mausrad](https://docs.dhtmlx.com/gantt/samples/03_scales/14_scale_zoom_by_wheelmouse.html)
 
-### Standard-Zoomstufen
+### Standard-Zoomstufen {#default-zoom-levels}
 
 Wenn Sie `gantt.ext.zoom.init()` ohne die Einstellung `levels` aufrufen, verwendet die Erweiterung eine Reihe vorkonfigurierter, benannter Zoom-Stufen – **"hour"**, **"day"**, **"week"**, **"month"** und **"year"**. Dadurch können Sie das Zoomen mit einem einzigen Aufruf aktivieren und die Skala nach Namen wechseln:
 

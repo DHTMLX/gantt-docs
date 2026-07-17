@@ -85,7 +85,7 @@ gantt.$task_data.attachEvent("onBeforeDrag", function (coords) {
 Beachten Sie, dass die Ereignishandler auch nur für ein bereits vorhandenes Element hinzugefügt werden können. Daher sollten Sie Ereignishandler nach der Initialisierung von Gantt hinzufügen, andernfalls funktionieren sie nicht, da die Elemente noch nicht erstellt wurden.
 :::
 
-## Aufgaben mit Drag-and-Drop erstellen
+## Aufgaben mit Drag-and-Drop erstellen {#creating-tasks-with-drag-n-drop}
 
 Sie können Aufgaben direkt auf der Timeline mit Drag-and-Drop erstellen, indem Sie an einer leeren Stelle klicken, um das Startdatum einer Aufgabe festzulegen, und nach rechts ziehen, um deren Dauer festzulegen.
 
@@ -119,11 +119,11 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 [Neue Aufgaben per Drag-and-Drop erstellen](https://docs.dhtmlx.com/gantt/samples/02_extensions/24_click_drag.html)
 
 
-## Festlegen der Zeit für ungeplante Aufgaben
+## Festlegen der Zeit für ungeplante Aufgaben {#setting-time-for-unscheduled-tasks}
 
 Die **click_drag**-Erweiterung ermöglicht das Festlegen von Zeiten für [ungeplante Aufgaben](guides/unscheduled-tasks.md) mit Drag-and-Drop.
 
-## Aufgaben per Drag-and-Drop auswählen
+## Aufgaben per Drag-and-Drop auswählen {#selecting-tasks-with-drag-n-drop}
 
 Es ist möglich, Aufgaben mit Drag-and-Drop in mehreren Modi auszuwählen: nach Datum, nach Zeilen oder innerhalb von Begrenzungen.
 
@@ -171,7 +171,7 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 [Mehrere Aufgaben per Drag-and-Drop auswählen](https://docs.dhtmlx.com/gantt/samples/02_extensions/25_click_drag_select_by_drag.html)
 
 
-## Erstellen von Teilen gesplitteter Aufgaben
+## Erstellen von Teilen gesplitteter Aufgaben {#creating-parts-of-split-tasks}
 
 :::info
 Diese Funktionalität ist nur in der PRO-Edition verfügbar.

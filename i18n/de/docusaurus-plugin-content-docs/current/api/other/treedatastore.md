@@ -26,7 +26,7 @@ TreeDatastore erweitert [Datastore](api/other/datastore.md) und besitzt alle sei
 Die erweiterte API des **treeDatastore**-Objekts bietet die folgenden [Methoden](#methods) und [Ereignisse](#events):
 
 
-## Methoden
+## Methoden {#methods}
 
 - **move (sid, tindex, parent): boolean | void** - verschiebt ein Element an die neue Position oder zu einem neuen Elternteil
     - **_sid_** - (*string \| number*) - die ID des zu verschiebenden Elements
@@ -563,7 +563,7 @@ samle: [Gantt. Sorting resources by a custom function ](https://snippet.dhtmlx.c
 Der Zwilling von treeDatastore.sort() ist [gantt.sort()](api/method/sort.md).
 
 
-## Ereignisse
+## Ereignisse {#events}
 
 - **onBeforeItemMove (id, parent, tindex)** - löst aus, bevor ein Element an eine neue Position verschoben wird
     - **_id_** - (*string \| number*) - die ID des zu bewegenden Elements

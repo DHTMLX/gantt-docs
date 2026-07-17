@@ -63,7 +63,7 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 });
 ~~~
 
-## 针对大型数据集的性能提升
+## 针对大型数据集的性能提升 {#tishengdashujujixiadexingneng}
 
 如果你的 Gantt 含有大量任务，默认的分支重新排序模式可能会降低性能。要提速，可以使用“marker”模式。
 

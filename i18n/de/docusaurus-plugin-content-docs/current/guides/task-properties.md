@@ -7,7 +7,34 @@ sidebar_label: "Aufgaben-Eigenschaften"
 
 Auf dieser Seite finden Sie die vollständige Liste der Eigenschaften, die das Aufgabenobjekt enthalten kann.
 
+Dieser Artikel beschreibt das clientseitige Laufzeit-Aufgabenobjekt, das innerhalb von Gantt nach dem Laden der Daten verwendet wird. Die serialisierte JSON-Form, die bei [gantt.parse()](api/method/parse.md), [gantt.load()](api/method/load.md) und beim Datenaustausch mit dem Backend verwendet wird, finden Sie unter [Datenmodell](guides/data-model.md).
+
 Die vollständige Liste der Eigenschaften des Link-Objekts finden Sie im Artikel [Link-Eigenschaften](guides/link-properties.md).
+
+## Struktur zur Laufzeit im Überblick
+
+~~~ts
+// Exported from @dhx/gantt as "Task"
+interface Task {
+    id: string | number;
+    start_date?: Date;
+    end_date?: Date;
+    duration?: number;
+    text?: any;
+    parent?: string | number;
+    type?: string;
+    progress?: number;
+    open?: boolean;
+    baselines?: Baseline[];
+    resource?: string[];
+    readonly?: boolean;
+    editable?: boolean;
+    // ... plus computed $-prefixed fields (see Dynamic properties below)
+    [customProperty: string]: any;
+}
+~~~
+
+Laufzeit-Aufgabenobjekte innerhalb von Gantt verwenden `Date` für Datumsfelder. Sie enthalten außerdem dynamische `$...`-Eigenschaften, die auf dem Client erzeugt werden und später in diesem Artikel aufgeführt sind. Die serialisierte (JSON-kompatible) Form finden Sie unter [Datenmodell - SerializedTask](guides/data-model.md#serializedtask).
 
 
 ## Erforderliche Eigenschaften
@@ -180,7 +207,7 @@ Diese Eigenschaften können definiert sein oder auch nicht. Die Standardlogik un
   <tr>
   <td><b class="subproperty">type</b></td>
   <td><i>string</i></td>
-  <td>Der Aufgabentyp. Die verfügbaren Werte sind im Objekt [types](api/config/types.md) hinterlegt: <ul> <li>["task"](guides/task-types.md#regular-tasks) – eine reguläre Aufgabe (<i>Standardwert</i>).</li> <li>["project"](guides/task-types.md#project-tasks) – eine Aufgabe, die beginnt, wenn ihre früheste Kindaufgabe beginnt, und endet, wenn ihre späteste Kindaufgabe endet. <i>Die Eigenschaften <b>start_date</b>, <b>end_date</b>, <b>duration</b> werden für solche Aufgaben ignoriert.</i> </li> <li>["milestone"](guides/task-types.md#milestones) – eine Null-Dauer-Aufgabe, die verwendet wird, um wichtige Projekttermine zu markieren. <i>Die Eigenschaften <b>duration</b>, <b>progress</b>, <b>end_date</b> werden für solche Aufgaben ignoriert.</i></li> </ul></td>
+  <td>Der Aufgabentyp. Die verfügbaren Werte sind im Objekt [types](api/config/types.md) hinterlegt: <ul> <li>["task"](guides/task-types.md#regular-tasks) - eine reguläre Aufgabe (<i>Standardwert</i>).</li> <li>["project"](guides/task-types.md#project-tasks) - eine Aufgabe, die beginnt, wenn ihre früheste Kindaufgabe beginnt, und endet, wenn ihre späteste Kindaufgabe endet. <i>Die Eigenschaften <b>start_date</b>, <b>end_date</b>, <b>duration</b> werden für solche Aufgaben ignoriert.</i> </li> <li>["milestone"](guides/task-types.md#milestones) - eine Null-Dauer-Aufgabe, die verwendet wird, um wichtige Projekttermine zu markieren. <i>Die Eigenschaften <b>duration</b>, <b>progress</b>, <b>end_date</b> werden für solche Aufgaben ignoriert.</i></li> </ul></td>
   </tr>
   <tr>
   <td><b class="subproperty">unscheduled</b></td>
@@ -209,12 +236,12 @@ Dynamische Eigenschaften werden auf dem Client erstellt und stellen den aktuelle
   <tr>
   <td><b class="subproperty">$auto_end_date</b></td>
   <td><i>Date</i></td>
-  <td>Ein berechnetes Enddatum der Projektaufgabe basierend auf ihren Unteraufgaben. Hinzugefügt und aktualisiert, wenn „auto_scheduling“ deaktiviert ist.</td>
+  <td>Ein berechnetes Enddatum der Projektaufgabe basierend auf ihren Unteraufgaben. Hinzugefügt und aktualisiert, wenn "auto_scheduling" deaktiviert ist.</td>
   </tr>
   <tr>
   <td><b class="subproperty">$auto_start_date</b></td>
   <td><i>Date</i></td>
-  <td>Ein berechnetes Startdatum der Projektaufgabe basierend auf ihren Unteraufgaben. Hinzugefügt und aktualisiert, wenn „auto_scheduling“ deaktiviert ist.</td>
+  <td>Ein berechnetes Startdatum der Projektaufgabe basierend auf ihren Unteraufgaben. Hinzugefügt und aktualisiert, wenn "auto_scheduling" deaktiviert ist.</td>
   </tr>
   <tr>
   <td><b class="subproperty">$calculate_duration</b></td>
@@ -264,7 +291,7 @@ Dynamische Eigenschaften werden auf dem Client erstellt und stellen den aktuelle
   <tr>
   <td><b class="subproperty">$local_index</b></td>
   <td><i>number</i></td>
-  <td>Die vertikale Position der Aufgabe im Zweig (unter dem Parent). Sie ist nicht an die Aufgabe gebunden und ändert sich nicht, wenn darunter oder darüber liegende Aufgaben geöffnet oder geschlossen sind – sowohl innerhalb des Zweigs als auch global. Wenn der Parent der Aufgabe zusammengeklappt ist, zeigt die Eigenschaft nicht die tatsächliche Position der Aufgabe.</td>
+  <td>Die vertikale Position der Aufgabe im Zweig (unter dem Parent). Sie ist nicht an die Aufgabe gebunden und ändert sich nicht, wenn darunter oder darüber liegende Aufgaben geöffnet oder geschlossen sind - sowohl innerhalb des Zweigs als auch global. Wenn der Parent der Aufgabe zusammengeklappt ist, zeigt die Eigenschaft nicht die tatsächliche Position der Aufgabe.</td>
   </tr>
   <tr>
   <td><b class="subproperty">$new</b></td>
@@ -349,7 +376,7 @@ Dynamische Eigenschaften werden auf dem Client erstellt und stellen den aktuelle
   </tbody>
 </table>
 
-## Beispiel
+## Beispiel {#dynamic-properties}
 
 ~~~js
 const data = {

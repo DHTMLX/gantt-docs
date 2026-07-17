@@ -27,7 +27,7 @@ Sie können sich die Video-Anleitung ansehen, die zeigt, wie man Aufgaben im Gri
 
 <iframe width="676" height="400" src="https://www.youtube.com/embed/srtb3nYOb-E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## Drag-n-Drop innerhalb der gesamten Gantt-Struktur
+## Drag-n-Drop innerhalb der gesamten Gantt-Struktur {#drag-n-drop-within-the-whole-gantt-structure}
 
 Die [order_branch](api/config/order_branch.md) Option ermöglicht das Ziehen von Aufgaben innerhalb derselben Baum-Ebene.
 
@@ -69,7 +69,7 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 });
 ~~~
 
-## Leistungsverbesserung bei großen Datensätzen
+## Leistungsverbesserung bei großen Datensätzen {#improving-performance-for-large-datasets}
 
 Wenn Ihr Gantt viele Aufgaben enthält, kann der Standardmodus der Branch-Neuordnung die Leistung verlangsamen.
 Um ihn zu beschleunigen, können Sie den "marker"-Modus verwenden. 

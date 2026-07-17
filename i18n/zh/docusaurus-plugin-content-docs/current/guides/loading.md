@@ -50,7 +50,7 @@ gantt.parse(data); /*!*/
 如果数据对象同时包含 "start_date" 和 "end_date" 值，且日期值仅包含日期部分（即 01-12-2025 而非 01-12-2025 00:00）- 你可能需要额外的配置。请务必查看本文 [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates)。
 :::
 
-## 从服务器加载
+## 从服务器加载 {#loading-from-server}
 
 ### 客户端
 
@@ -159,7 +159,7 @@ app.get("/data", (req, res) => {
 }
 ~~~
 
-## 以 ISO 格式加载日期
+## 以 ISO 格式加载日期 {#loading-dates-in-iso-format}
 
 自 v9.1.3 以来，Gantt 会自动检测并解析 ISO 8601 日期字符串。无需配置。
 

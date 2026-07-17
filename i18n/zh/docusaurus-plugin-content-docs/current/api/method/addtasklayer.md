@@ -98,9 +98,9 @@ gantt.addTaskLayer((task) => {
 - 请注意，自定义图层会在下一次调用 [gantt.init](api/method/init.md) 后被清除。
 - 同时，调用 [gantt.resetLayout()](api/method/resetlayout.md) 会重置自定义图层。若要保持自定义图层可见，需要在调用 [resetLayout](api/method/resetlayout.md) 后重新定义 **gantt.addTaskLayer**。
 
-## 自定义图层的智能渲染
+## 自定义图层的智能渲染 {#smart-rendering-for-custom-layers}
 
-[智能渲染](guides/performance.md#zhinengxuanran)旨在仅显示用户可见的HTML元素，避免渲染被滚动条遮挡的元素。
+[智能渲染](guides/performance.md#smart-rendering)旨在仅显示用户可见的HTML元素，避免渲染被滚动条遮挡的元素。
 
 然而，对于[自定义图层](guides/baselines.md)，Gantt本身并不知道自定义元素的位置，因为渲染逻辑完全由用户控制。
 

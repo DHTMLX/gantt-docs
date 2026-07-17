@@ -9,7 +9,7 @@ sidebar_label: "작업의 상위/하위"
 
 *작업 객체나 ID를 얻기 위한 기본 연산에 대해 알아보려면 [Task Object/Id](guides/task-object-operations.md) 문서를 참조하세요.*
 
-## 작업의 상위
+## 작업의 상위 {#parent-of-a-task}
 
 작업의 상위를 얻으려면 [`getParent()`](api/method/getparent.md) 메서드 또는 작업 객체의 `"parent"` 속성을 사용하세요:
 

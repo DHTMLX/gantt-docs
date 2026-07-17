@@ -15,7 +15,7 @@ sidebar_label: "Node.js Gantt"
 
 Node.js용 DHTMLX Gantt는 Commercial/Enterprise/Ultimate 패키지와 동일한 기능을 가지므로, **Gantt.getGanttInstance** 메서드가 사용 가능하고 새로운 gantt 인스턴스를 생성할 수 있습니다.
 
-## 사용 약관
+## 사용 약관 {#terms-of-using}
 
 
 DHTMLX Gantt의 Node.js 서버 모듈은 Gantt의 클라이언트 측 버전에 애드온 패키지로 제공됩니다. 따라서 Gantt를 어떤 상용 라이선스([Individual](https://dhtmlx.com/docs/products/dhtmlxGantt/individual/), [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/commercial/), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/enterprise/))로 구입하실 때 추가 요금으로 Node.js 빌드를 추가하실 수 있습니다. [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/ultimate/) 라이선스에는 기본적으로 포함되어 있습니다.

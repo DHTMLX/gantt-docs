@@ -27,7 +27,7 @@ gantt.attachEvent("onTaskClick", (id, e) => {
 - 이벤트의 이름은 대소문자를 구분하지 않습니다.
 - 같은 이벤트에 여러 핸들러를 연결할 수 있습니다.
 
-## 이벤트 해제
+## 이벤트 해제 {#detaching-events}
 
 이벤트 핸들러를 해제하려면 [`detachEvent()`](api/method/detachevent.md) 메서드를 사용하세요:
 

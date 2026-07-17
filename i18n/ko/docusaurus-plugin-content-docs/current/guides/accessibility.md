@@ -14,7 +14,7 @@ sidebar_label: "접근성"
 - 키보드 탐색
 - 고대비 테마
 
-## WAI-ARIA 속성
+## WAI-ARIA 속성 {#wai-aria-attributes}
 
 DHTMLXGantt는 컴포넌트의 마크업에서 특수 속성의 사용을 수반하는 WAI-ARIA 지원을 제공합니다.
 이는 화면 읽기 기기가 컴포넌트를 인식하는 데 도움을 주는 추가 속성들입니다. 

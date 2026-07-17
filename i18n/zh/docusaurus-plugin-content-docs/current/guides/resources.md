@@ -95,12 +95,12 @@ gantt.locale.labels.section_resources = "Rooms";
 默认情况下，资源控件映射到 [resource_property](api/config/resource_property.md) 配置中指定的属性，因此可以省略 **map_to** 选项。
 ::
 :::note
-默认情况下，资源控件会通过 [resource datastore](guides/resource-management.md#working-with-resource-view-panel) 的 `gantt.serverList("resourceOptions")` [collection](api/method/serverlist.md) 自动填充。只有当你想要改变默认行为时，才需要手动指定选项列表。
+默认情况下，资源控件会通过 [resource datastore](guides/resource-management.md#shiyongziyuanshitumianban) 的 `gantt.serverList("resourceOptions")` [collection](api/method/serverlist.md) 自动填充。只有当你想要改变默认行为时，才需要手动指定选项列表。
 :::
 
 ## 用数据填充控件
 
-从 v8.0 开始，资源控件默认从 [resource Datastore](guides/resource-management.md#working-with-resource-view-panel) 获取选项。
+从 v8.0 开始，资源控件默认从 [resource Datastore](guides/resource-management.md#shiyongziyuanshitumianban) 获取选项。
 
 如果你使用 Gantt 创建的默认资源数据存储，并初始化的 [资源控件] 未带有 **options** 参数，它将连接到 **gantt.serverList("resourceOptions")** 集合。该集合将由资源数据存储中的资源填充。你可以通过代码访问选项：
 

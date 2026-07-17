@@ -12,7 +12,7 @@ sidebar_label: "Сервис экспорта - Требования к сист
 - PNG/PDF/Excel [требования к экспорту](guides/export-requirements.md#pdfpngexcel-service)
 - MS Project/Primavera P6 [требования к импорту и экспорту](guides/export-requirements.md#import-and-export-from-ms-project-and-primavera-p6)
 
-## Сервис PDF/PNG/Excel
+## Сервис PDF/PNG/Excel {#pdfpngexcel-service}
 
 ### Обзор
 
@@ -34,7 +34,7 @@ sidebar_label: "Сервис экспорта - Требования к сист
 </table>
 
 
-## Импорт и экспорт из MS Project и Primavera P6
+## Импорт и экспорт из MS Project и Primavera P6 {#import-and-export-from-ms-project-and-primavera-p6}
 
 ### Обзор
 

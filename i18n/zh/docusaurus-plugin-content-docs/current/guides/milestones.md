@@ -115,7 +115,7 @@ gantt.config.lightbox.milestone_sections = [
 **相关示例**： [Rollup tasks and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/21_rollup_tasks.html)
 
 
-## 隐藏任务和里程碑
+## 隐藏任务和里程碑 {#hiding-tasks-and-milestones}
 
 从 v7.1 开始，您可以通过在数据项上设置 **hide_bar: true** 属性在时间线区域隐藏 [task bars] 和 [milestones]：
 

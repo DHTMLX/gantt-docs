@@ -22,7 +22,7 @@ function MyGanttApp() {
 }
 ~~~  
 
-## useGanttEvent
+## useGanttEvent {#useganttEvent}
 
 订阅 Gantt 事件，并自动处理生命周期管理。挂载时附加处理函数，卸载时分离。
 

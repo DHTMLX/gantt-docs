@@ -125,7 +125,7 @@ var marker3 = gantt.addMarker({ ...});
 gantt.renderMarkers(); /*!*/
 ~~~
 
-## Marker stylen
+## Marker stylen {#styling-markers}
 
 Um Marker zu stylen, verwenden Sie das Template [gantt.templates.marker_class](api/template/marker_class.md):
 

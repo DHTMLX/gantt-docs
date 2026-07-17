@@ -59,7 +59,7 @@ Um ein grundlegendes Gantt-Diagramm auf der Seite anzuzeigen, folgen Sie 3 Schri
 
 **Verwandtes Beispiel**: [Grundlegende Initialisierung](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
  
-## Wie man Gantt-Quelldateien zu einem Projekt hinzufügt
+## Wie man Gantt-Quelldateien zu einem Projekt hinzufügt {#how-to-add-gantt-source-files-into-a-project}
 
 Sie können Gantt-Code-Dateien je nach Art der von Ihnen erstellten Anwendung auf verschiedene Weisen in Ihr Projekt einbinden:
 
@@ -70,7 +70,7 @@ Sie können Gantt-Code-Dateien je nach Art der von Ihnen erstellten Anwendung au
 - [Dateien in eine RequireJS-basierte Anwendung einbinden](#include-files-into-a-requirejs-based-app)
 
 
-## Dateien über das &#60;script&#62>-Tag einbinden
+## Dateien über das &#60;script&#62>-Tag einbinden {#include-files-via-the-script-tag}
 
 Für dhtmlxGantt müssen auf der Seite zwei Code-Dateien eingebunden werden:
 
@@ -104,7 +104,7 @@ Für die Commercial-, Enterprise- oder Ultimate-Version sieht der Befehl so aus:
 import { gantt, Gantt } from 'dhtmlx-gantt';
 ~~~
 
-## Gantt mit Vite verwenden
+## Gantt mit Vite verwenden {#using-gantt-with-vite}
 
 Wenn Sie Vite in Ihrem Projekt verwenden, ist folgende Einstellung für die **vite.config.js**-Datei erforderlich, um sicherzustellen, dass Gantt korrekt in die App eingebunden wird:
 
@@ -116,7 +116,7 @@ optimizeDeps: {
 }
 ~~~
 
-## Svelte-Produktionsbuild
+## Svelte-Produktionsbuild {#svelte-production-build}
 
 Wenn Sie [Gantt in einer Svelte-App](integrations/svelte/howtostart-svelte.md) verwenden, müssen Sie die folgende Einstellung in die **vite.config.js**-Datei für den Produktionsbuild aufnehmen, wobei der Ordner *gantt_9.0.14_evaluation* durch den Pfad zu Ihrem Gantt-Ordner ersetzt wird:
 
@@ -131,7 +131,7 @@ build: {
 }
 ~~~
 
-## Dateien in eine RequireJS-basierte Anwendung einbinden
+## Dateien in eine RequireJS-basierte Anwendung einbinden {#include-files-into-a-requirejs-based-app}
 
 Um dhtmlxGantt-Dateien in eine RequireJS-basierte Anwendung einzubinden, müssen Sie der untenstehenden Logik folgen, wie im Beispiel gezeigt:
 

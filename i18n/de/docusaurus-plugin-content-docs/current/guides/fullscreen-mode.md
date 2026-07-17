@@ -94,7 +94,7 @@ gantt.attachEvent("onCollapse", function (){
 });
 ~~~
 
-## Vollbild-API
+## Vollbild-API {#fullscreen-api}
 
 Es gibt vier Methoden des [fullscreen](guides/fullscreen-ext.md) Objekts, die verwendet werden, um den Anzeigemodus des Gantt zusammen mit zusätzlichen Elementen zu steuern:
 
@@ -124,7 +124,7 @@ gantt.ext.fullscreen.getFullscreenElement();
 
 Standardmäßig gibt die Methode **getFullscreenElement()** ein HTML-Container des Gantt-Diagramms zurück. Sie können diese Methode neu definieren [um das Gantt mit zusätzlichen Elementen zum Vollbildmodus zu erweitern](guides/fullscreen-mode.md#gantt-with-the-headertoolbar-in-the-fullscreen).
 
-## Gantt mit Kopfzeile/Symbolleiste im Vollbild
+## Gantt mit Kopfzeile/Symbolleiste im Vollbild {#gantt-with-the-headertoolbar-in-the-fullscreen}
 
 Die Gantt-API bietet die Möglichkeit, das Gantt durch die **getFullscreenElement()**-Methode des *fullscreen*-Objekts in den Vollbildmodus zu erweitern:
 

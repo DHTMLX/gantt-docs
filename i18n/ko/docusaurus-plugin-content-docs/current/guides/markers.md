@@ -129,7 +129,7 @@ gantt.renderMarkers(); /*!*/
 ~~~
 
 
-## 마커 스타일링
+## 마커 스타일링 {#styling-markers}
 
 마커의 스타일을 지정하려면 [gantt.templates.marker_class](api/template/marker_class.md) 템플릿을 사용합니다:
 

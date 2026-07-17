@@ -350,7 +350,7 @@ sidebar_label: "任务属性"
   </tbody>
 </table>
 
-## 示例
+## 示例 {#dynamic-properties}
 
 ~~~js
 const data = {

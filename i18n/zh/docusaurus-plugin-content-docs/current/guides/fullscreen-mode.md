@@ -126,7 +126,7 @@ gantt.ext.fullscreen.getFullscreenElement();
 
 默认情况下，**getFullscreenElement()** 方法返回 Gantt 图的 HTML 容器。您可以重新定义此方法 [将 gannt 与附加元素扩展到全屏模式](guides/fullscreen-mode.md#gantt-with-the-headertoolbar-in-the-fullscreen)。
 
-## Gantt 在全屏中的头部/工具栏
+## Gantt 在全屏中的头部/工具栏 {#gantt-with-the-headertoolbar-in-the-fullscreen}
 
 Gantt API 提供一个通过 *fullscreen* 对象的 getFullscreenElement() 方法将 gantt 扩展到全屏模式的可能性：
 

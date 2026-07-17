@@ -221,10 +221,10 @@ sidebar_label: "새로운 기능"
 
 - [mergeCalendars](api/method/mergecalendars.md)에서 `customWeeks` 값이 잘못 병합되는 문제 수정
 - [column](guides/specifying-columns.md#wbscode) `name`에 공백이 포함된 경우 `onrender` 함수에서 오류가 발생하는 현상 수정
-- [S-Curve Overlay](guides/baselines.md#extraoverlayforthechart)가 활성화된 상태에서 [click_drag](guides/extensions-list.md#advanceddragndrop)로 타임라인을 드래그한 후 Gantt가 읽기 전용 모드에 남아있는 문제 수정
+- [S-Curve Overlay](guides/baselines.md#extra-overlay-for-the-chart)가 활성화된 상태에서 [click_drag](guides/extensions-list.md#advanced-drag-n-drop)로 타임라인을 드래그한 후 Gantt가 읽기 전용 모드에 남아있는 문제 수정
 - [Resource calendar](guides/resource-management.md) 사용 시, [Lightbox](guides/default-edit-form.md)의 duration 섹션 아래에 [Resources](guides/resource-management.md#resourceviewpanel) 섹션이 위치할 때 작업 기간이 `0`으로 초기화되는 문제 수정
 - Gantt가 **React StrictMode**에서 사용될 때 "This is a Trial version" 경고로 인해 콘솔 오류가 발생하는 현상 수정
-- [gantt.config.baselines.render_mode](api/config/baselines.md#rendermode)가 비활성화된 경우 [adjustTaskHeightForBaselines](api/method/adjusttaskheightforbaselines.md) 함수가 행 높이를 다시 계산하지 않는 문제 수정
+- [gantt.config.baselines.render_mode](api/config/baselines.md#details)가 비활성화된 경우 [adjustTaskHeightForBaselines](api/method/adjusttaskheightforbaselines.md) 함수가 행 높이를 다시 계산하지 않는 문제 수정
 - Salesforce 환경에서 타임라인이 [숨겨진](api/config/show_chart.md) 경우 작업이 표시되지 않는 문제 수정
 - [dynamic_resource_calendars](api/config/dynamic_resource_calendars.md) 설정이 비활성화된 경우 상위 작업에서 캘린더가 상속되지 않는 문제 수정
 - [ReactGantt](integrations/react.md)가 groupBy 모드일 때 다시 렌더링 시 스크롤 위치가 초기화되는 문제 수정
@@ -232,7 +232,7 @@ sidebar_label: "새로운 기능"
 ### 업데이트
 
 - [gantt.env](api/other/env.md)에 `isSalesforce` 플래그 추가
-- [React Gantt](integrations/react.md#groupingtasks)에 `groupTasks` prop 추가
+- [React Gantt](integrations/react/overview.md#groupingtasks)에 `groupTasks` prop 추가
 
 ## 9.0.10
 
@@ -242,11 +242,11 @@ sidebar_label: "새로운 기능"
 
 - [Lightbox](guides/default-edit-form.md)에서 `parent` 필드 값을 변경할 수 없는 문제 수정
 - Firefox 88 이상에서 마우스 휠 사용 시 스크롤 속도가 과도하게 빨라지는 현상 수정
-- 하위 작업이 일정이 없고 날짜 파라미터가 없는 경우 [project tasks](guides/task-types.md#projecttasks)를 드래그할 수 없는 문제 수정
+- 하위 작업이 일정이 없고 날짜 파라미터가 없는 경우 [project tasks](guides/task-types.md#project-tasks)를 드래그할 수 없는 문제 수정
 - [open](api/method/open.md) 또는 [close](api/method/close.md) 메서드 사용 시 [gantt.silent](api/method/silent.md) 동작 중 [gantt.render()](api/method/render.md)가 예기치 않게 호출되지 않도록 보장
-- [onBeforeTaskChanged](api/event/onbeforetaskchanged.md) 이벤트가 `false`를 반환할 때 [project tasks](guides/task-types.md#projecttasks)가 다시 그려지지 않는 문제 수정
+- [onBeforeTaskChanged](api/event/onbeforetaskchanged.md) 이벤트가 `false`를 반환할 때 [project tasks](guides/task-types.md#project-tasks)가 다시 그려지지 않는 문제 수정
 - 작업 진행 바가 예상대로 작업 전체 너비를 차지하도록 보장
-- [접근성](guides/accessibility.md#waiariaattributes) 향상을 위해 읽기 전용 작업 링크에서 잘못된 WAI-ARIA 속성 제거
+- [접근성](guides/accessibility.md#wai-aria-attributes) 향상을 위해 읽기 전용 작업 링크에서 잘못된 WAI-ARIA 속성 제거
 - 작업 바 높이 변경에 따라 작업 바 리사이저가 적응하지 않는 문제 수정
 
 ## 9.0.9
@@ -263,7 +263,7 @@ sidebar_label: "새로운 기능"
 - [Quick Info](guides/quick-info.md) 팝업이 [Timeline](guides/configuring-time-scale.md) 또는 [Grid](guides/specifying-columns.md) 뷰의 확장/축소 버튼 클릭 시 나타나는 문제 수정
 - 그리드 뷰를 초기화하지 않고 Gantt를 제거할 때 발생하는 오류 수정
 - [Undo extension](guides/undo-redo.md)이 활성화된 상태에서 존재하지 않는 상위 작업을 가진 작업을 로드할 때 발생하는 오류 수정
-- [click_drag](guides/extensions-list.md#advanceddragndrop) 확장이 터치 디바이스에서 동작하지 않는 문제 수정
+- [click_drag](guides/extensions-list.md#advanced-drag-n-drop) 확장이 터치 디바이스에서 동작하지 않는 문제 수정
 - 터치 디바이스에서 그리드 스크롤 반응성 개선
 
 ## 9.0.7
@@ -274,15 +274,15 @@ sidebar_label: "새로운 기능"
 
 - [keyboard_navigation](guides/keyboard-navigation.md)이 활성화된 상태에서 그리드 없이 타임라인의 작업을 클릭할 때 발생하는 오류 수정
 - [placeholder task](api/config/placeholder_task.md)가 포함된 정렬된 작업의 [WBS code](guides/specifying-columns.md#wbscode) 계산 오류 수정
-- 작업을 축소하거나 [그리드 크기 조정](guides/layout-config.md#defaultlayout) 시 리소스 타임라인의 스케일 셀이 사라지는 문제 해결
+- 작업을 축소하거나 [그리드 크기 조정](guides/layout-config.md#default-layout) 시 리소스 타임라인의 스케일 셀이 사라지는 문제 해결
 - [`gantt.silent`](api/method/silent.md) 함수 내에서 자식과 부모 작업을 모두 추가할 때 올바른 작업 순서가 유지되도록 보장
-- [resource cells](guides/resource-management.md#resourcecellvalue)의 값을 편집한 후에도 포커스가 유지되도록 개선
+- [resource cells](api/template/resource_cell_value.md)의 값을 편집한 후에도 포커스가 유지되도록 개선
 - 작업 클릭 시 Gantt가 그리드의 가장 왼쪽 위치로 스크롤되는 현상 방지
 - [group](api/method/groupby.md) 모드에서 새 작업 추가 시 `group` 속성이 유지되도록 보장
 - [markers](guides/markers.md)가 타임라인이 처음에 비활성화된 경우 표시되지 않는 문제 수정
 - 레이아웃 구성에서 차트가 처음에 표시되지 않을 때 중복되는 [markers](guides/markers.md) 방지
 - [dragging the timeline](api/config/drag_timeline.md) 후 드래그 핸들(링크, 진행률, 작업 크기 조정)이 사라지는 문제 수정
-- 링크 id 타입이 숫자형일 때 [predecessor inline editor](guides/inline-editors-ext.md#predecessoreditor)가 올바르게 동작하도록 보장
+- 링크 id 타입이 숫자형일 때 [predecessor inline editor](guides/inline-editing.md#linkformatter)가 올바르게 동작하도록 보장
 - `gantt_marker_area` 요소 중복 방지
 - `changeTaskId` 액션에 대한 [undo](guides/undo-redo.md) 기능 수정
 
@@ -297,7 +297,7 @@ sidebar_label: "새로운 기능"
 - `parent` 속성 타입을 숫자에서 문자열로 변경한 후 작업이 잘못 하위 브랜치의 맨 아래로 이동하는 현상 방지
 - 스크롤바 근처 리사이저 조정으로 스크롤바 동작 개선
 - [gantt.batchUpdate](api/method/batchupdate.md) 내에서 작업 추가 시 [resource assignments](guides/resource-management.md#assigningresources)가 유지되도록 보장
-- [infinite scale](guides/configuring-time-scale.md#infinitescroll)에서 드래그 앤 드롭 중 작업이 사라지는 문제 수정
+- [infinite scale](guides/configuring-time-scale.md#infinite-scroll)에서 드래그 앤 드롭 중 작업이 사라지는 문제 수정
 - 데이터가 여러 번 파싱된 후 [lightbox](guides/default-edit-form.md)에서 리소스 이름이 올바르게 표시되도록 보장
 - [duration_step](api/config/duration_step.md) 설정 사용 시 [`getClosestWorkTime`](api/method/getclosestworktime.md)에서 잘못된 날짜 계산 수정
 - [onColumnDragMove](api/config/reorder_grid_columns.md) 이벤트를 취소할 수 있도록 허용
@@ -314,7 +314,7 @@ sidebar_label: "새로운 기능"
 - `line-height` CSS 스타일로 인해 영향을 받는 링크 화살표 위치 수정
 - `links` 배열 없이 [collections](guides/supported-data-formats.md#jsonwithcollections) 로드 시 발생하는 오류 수정
 - `gantt.config.baselines`가 falsy이지만 명시적으로 `false`로 설정되지 않은 경우 발생하는 문제 해결
-- [click_drag](guides/extensions-list.md#advanceddragndrop) 기능이 [resetLayout](api/method/resetlayout.md) 호출 후 동작하지 않는 문제 수정
+- [click_drag](guides/extensions-list.md#advanced-drag-n-drop) 기능이 [resetLayout](api/method/resetlayout.md) 호출 후 동작하지 않는 문제 수정
 - [keyboard_navigation](guides/keyboard-navigation.md) 활성화 시 선택된 하위 작업이 상위 작업보다 위에 표시되지 않도록 보장
 - 작업 ID에 작은따옴표가 포함된 경우 발생하는 키보드 내비게이션 문제 수정
 - duration이 음수일 때 [calculateEndDate](api/method/calculateenddate.md) 동작 수정
@@ -343,7 +343,7 @@ sidebar_label: "새로운 기능"
 - lightbox를 통해 업데이트 시 [resource assignment](guides/resource-management.md#assigningresources)가 제거되는 문제 방지
 - [resource_cell_value](api/template/resource_cell_value.md)에서 [resource_render_empty_cells](api/config/resource_render_empty_cells.md)가 활성화된 비작업일에 작업 배열이 비어있는 문제 수정
 - [lightbox](guides/default-edit-form.md) 섹션에 내장된 버튼 클릭 시 발생하는 오류 수정
-- [resource panel](guides/resource-management.md#resourceviewpanel)과 [zoom levels](guides/zooming.md#builtinzoomingmodule)가 동기화되도록 보장
+- [resource panel](guides/resource-management.md#resourceviewpanel)과 [zoom levels](guides/zooming.md#built-in-zooming-module)가 동기화되도록 보장
 - Gantt를 [재초기화](api/method/init.md)하거나 [레이아웃을 재설정](api/method/resetlayout.md)한 후 [Inline Editors](guides/inline-editors-ext.md) 이벤트가 제거되지 않도록 방지
 - [redoing](guides/undo-redo.md) 후 열림 상태가 복원되지 않는 문제 수정
 
@@ -357,10 +357,10 @@ sidebar_label: "새로운 기능"
 - [작업 객체의 속성](guides/colouring-tasks.md#specifyingstyleinthepropertiesofataskobject)을 통해 작업 색상이 지정될 때 작업 테두리 및 진행률에 잘못된 스타일이 적용되는 회귀 현상 수정
 - [marker_class](api/template/marker_class.md) 템플릿의 기능 복원
 - 라이트박스의 [textarea](guides/textarea.md) 섹션에서 누락된 classname 복원
-- [마감일](guides/inbuilt-baselines.md#deadlinesandconstraints)이 작업 행 밖에 표시되고 완전히 중앙 정렬되지 않는 문제 수정
+- [마감일](guides/inbuilt-baselines.md#deadlines-and-constraints)이 작업 행 밖에 표시되고 완전히 중앙 정렬되지 않는 문제 수정
 - 마우스 오버 시 링크가 다른 링크 위에 표시되도록 보장
 - [parse](api/method/parse.md) 메서드를 사용하여 [baseline](guides/inbuilt-baselines.md) 날짜를 로드할 때 날짜가 계산되지 않는 문제 수정
-- 일반 및 [RTL](guides/rtl-mode.md) 보기 모두에서 [제약 조건](guides/inbuilt-baselines.md#deadlinesandconstraints)의 위치를 올바르게 수정
+- 일반 및 [RTL](guides/rtl-mode.md) 보기 모두에서 [제약 조건](guides/inbuilt-baselines.md#deadlines-and-constraints)의 위치를 올바르게 수정
 - 분할 작업의 일부를 연결할 때 불필요한 링크 루프 방지
 - [Quick Info](guides/quick-info.md)가 [detached mode](api/config/quick_info_detached.md)에서 너비 증가 및 하드코딩된 스타일로 인해 숨겨지지 않는 문제 수정
 - [Export API](api/method/exporttoexcel.md)에서 Excel 내보내기 시 트리 들여쓰기 지원
@@ -377,10 +377,10 @@ sidebar_label: "새로운 기능"
 - [smart_rendering](api/config/smart_rendering.md)이 활성화된 상태에서 드래그 시 링크 위치가 잘못 표시되는 회귀 현상 수정
 - [lightbox](guides/default-edit-form.md)의 [Resource Control](guides/resources.md)이 컨테이너를 벗어나 확장되는 회귀 현상 수정
 - 커스텀 CSS로 강조 표시된 경우 마지막 행의 [time scale](guides/configuring-time-scale.md) 셀 하단 테두리가 누락되는 문제 수정
-- [smart_scales](api/config/smart_scales.md)가 비활성화된 경우 [sticky labels](guides/configuring-time-scale.md#stickylabels)의 잘못된 동작 수정
+- [smart_scales](api/config/smart_scales.md)가 비활성화된 경우 [sticky labels](guides/configuring-time-scale.md#sticky-labels)의 잘못된 동작 수정
 - 오른쪽 클릭 후에도 Gantt가 작업을 [수직 드래그](api/config/order_branch.md)하는 문제 해결
-- [resetLayout](api/method/resetlayout.md) 호출 시 [S-Curve Overlay](guides/baselines.md#extraoverlayforthechart) 플러그인의 기능이 중단되는 문제 수정
-- [predecessor editor](guides/inline-editing.md#typesofeditors)가 중복 링크를 생성하지 않도록 방지
+- [resetLayout](api/method/resetlayout.md) 호출 시 [S-Curve Overlay](guides/baselines.md#extra-overlay-for-the-chart) 플러그인의 기능이 중단되는 문제 수정
+- [predecessor editor](guides/inline-editing.md#types-of-editors)가 중복 링크를 생성하지 않도록 방지
 
 ## <b>9.0</b>
 
@@ -399,13 +399,13 @@ sidebar_label: "새로운 기능"
 - 새로운 [다크 스킨](guides/skins.md#darkskin) 도입
 - 내장 [baseline](guides/inbuilt-baselines.md) 지원 추가
 - [수동 일정 요약 작업](guides/custom-projects-dates.md) 지원
-- [시간 눈금의 스티키 라벨](guides/configuring-time-scale.md#stickylabels)
+- [시간 눈금의 스티키 라벨](guides/configuring-time-scale.md#sticky-labels)
 
 ### 업데이트
 
 - [Terrace 스킨](guides/skins.md#terraceskin) 업데이트
-- [마감일](guides/inbuilt-baselines.md#deadlinesandconstraints)의 기본 표시 추가
-- [작업 제약 조건](guides/inbuilt-baselines.md#taskconstraints)의 기본 표시 추가
+- [마감일](guides/inbuilt-baselines.md#deadlines-and-constraints)의 기본 표시 추가
+- [작업 제약 조건](guides/inbuilt-baselines.md#task-constraints)의 기본 표시 추가
 - [스킨 소스 파일](guides/custom-skins.md) 패키지 포함
 - [Undo 플러그인](guides/undo-redo.md)에 undo/redo 스택을 관리하는 `setUndoStack` 및 `setRedoStack` 메서드 추가
 - [npm을 통한 Gantt 프로페셔널 버전 설치](guides/installation.md) 지원
@@ -418,10 +418,10 @@ sidebar_label: "새로운 기능"
 - 부모 작업의 높이가 더 클 때 마일스톤의 링크 위치가 잘못 표시되는 문제 수정
 - [자동 스케줄링](guides/auto-scheduling.md) 중 작업에 대해 자동 스케줄링이 취소될 경우 발생하는 오류 해결
 - [분할 작업](guides/split-tasks.md)이 분할 부모 행 내에 올바르게 표시되도록 보장
-- 하위 작업의 링크 지연이 0인 경우 [프로젝트 자동 스케줄링](guides/auto-scheduling.md#summaryscheduling) 수정
+- 하위 작업의 링크 지연이 0인 경우 [프로젝트 자동 스케줄링](guides/auto-scheduling.md#settinglagandleadtimesbetweentasks) 수정
 - 서로 다른 행 높이를 가진 [분할 작업](guides/split-tasks.md)의 링크 위치 오류 수정
 - 2단계 작업이 있는 프로젝트도 Gantt가 제대로 자동 스케줄링하도록 보장
-- 작업이 지정된 날짜 범위 밖에 있을 때 [resource_cell_value](guides/resource-management.md#resourcecellvalue)에서 고정 날짜 "assignments"를 반환하지 않는 문제 수정
+- 작업이 지정된 날짜 범위 밖에 있을 때 [resource_cell_value](api/template/resource_cell_value.md)에서 고정 날짜 "assignments"를 반환하지 않는 문제 수정
 
 ## 8.0.11
 
@@ -458,7 +458,7 @@ sidebar_label: "새로운 기능"
 - lightbox에서 'project' 작업 [type](guides/typeselect.md)이 설정되지 않는 문제 수정
 - [병합된](guides/working-time.md#mergingcalendars)" 캘린더의 [worktime 설정](guides/working-time.md)이 주말로 처리되는 문제 수정
 - 작업에 [Resource Assignments](guides/resource-management.md)가 서로 다른 날짜에 할당된 경우 [리소스별 그룹화](api/method/groupby.md)가 동작하지 않는 문제 수정
-- [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md) 이벤트를 사용하여 자식이 없는 [분할 작업 필터링](guides/split-tasks.md#filteringsplittasks) 시 오류 발생 문제 수정
+- [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md) 이벤트를 사용하여 자식이 없는 [분할 작업 필터링](guides/split-tasks.md#filtering-split-tasks) 시 오류 발생 문제 수정
 - [프로젝트 및 하위 작업 드래그](api/config/drag_project.md) 후 [Resource Assignments](guides/resource-management.md)가 업데이트되지 않는 문제 수정
 
 ## 8.0.9
@@ -517,11 +517,11 @@ sidebar_label: "새로운 기능"
 
 ### 수정 사항
 
-- 접근성 향상을 위한 [WAI-ARIA attributes](guides/accessibility.md#waiariaattributes) 사용의 개선 및 수정
+- 접근성 향상을 위한 [WAI-ARIA attributes](guides/accessibility.md#wai-aria-attributes) 사용의 개선 및 수정
 - [`grid_elastic_columns`](api/config/grid_elastic_columns.md) 설정이 활성화된 상태에서 그리드 폭이 다시 그려진 후 감소하는 문제 수정
-- 기본 [`undo_steps`](guides/undo-redo.md#configuringtheundofunctionality) 수가 10에서 100으로 증가
-- [Export API client](guides/extensions-list.md#exportservice)가 이제 Gantt의 GPL 버전에 통합됨(이전에는 PRO 버전에만 포함)
-- [Node.js version of Gantt](guides/using-gantt-on-server.md)에서 https export [server endpoints](guides/export.md#parametersoftheexportmethods) 지원 추가
+- 기본 [`undo_steps`](guides/undo-redo.md#configuring-the-undo-functionality) 수가 10에서 100으로 증가
+- [Export API client](guides/extensions-list.md#export-service)가 이제 Gantt의 GPL 버전에 통합됨(이전에는 PRO 버전에만 포함)
+- [Node.js version of Gantt](guides/using-gantt-on-server.md)에서 https export [server endpoints](guides/export.md#parameters-of-the-export-methods) 지원 추가
 
 ## 8.0.5
 
@@ -539,10 +539,10 @@ sidebar_label: "새로운 기능"
 
 ### 수정 사항
 
-- [Resource Datastore](guides/resource-management.md#workingwithresourceviewpanel)의 변경 사항을 [DataProcessor](guides/server-side.md#resources_crud)가 추적하지 않던 문제 수정
+- [Resource Datastore](guides/resource-management.md#working-with-resource-view-panel)의 변경 사항을 [DataProcessor](guides/server-side.md#resources_crud)가 추적하지 않던 문제 수정
 - [process_resource_assignments](api/config/process_resource_assignments.md) 설정이 비활성화된 상태에서 작업을 드래그한 후 발생하던 오류 수정
 - [gantt.calculateEndDate](api/method/calculateenddate.md)에서 분 단위로 날짜를 빼는 경우 잘못 동작하던 문제 수정
-- [visibility groups](guides/layout-config.md#visibilitygroups)가 포함된 레이아웃의 성능 소폭 개선
+- [visibility groups](guides/layout-config.md#visibility-groups)가 포함된 레이아웃의 성능 소폭 개선
 
 ## 8.0.3
 
@@ -576,7 +576,7 @@ sidebar_label: "새로운 기능"
 - [lightbox](guides/default-edit-form.md)가 열려 있지 않을 때 [gantt.showCover()](api/method/showcover.md) 호출 시 발생하는 오류 수정
 - [split tasks](guides/split-tasks.md)에서 시간 축 외부에 표시되는 분할 작업으로 인한 스크립트 오류 발생 회귀 문제 수정
 - [gantt.addLinkLayer()](api/method/addlinklayer.md) 메서드의 회귀 문제 수정
-- [settings of work time](guides/working-time.md#globalsettings)에 분 단위가 포함된 경우 [auto scheduling](guides/auto-scheduling.md)과 [MSO, FNET, FNLT constraints](guides/auto-scheduling.md#timeconstraintsfortasks)가 잘못 동작하던 문제 수정
+- [settings of work time](guides/working-time.md#global-settings)에 분 단위가 포함된 경우 [auto scheduling](guides/auto-scheduling.md)과 [MSO, FNET, FNLT constraints](guides/auto-scheduling.md#timeconstraintsfortasks)가 잘못 동작하던 문제 수정
 - 스크롤 시 [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md) 이벤트 작동 오류 수정
 
 ## <b>8.0</b>
@@ -594,7 +594,7 @@ sidebar_label: "새로운 기능"
 - 리소스 관리 업데이트:
     - 리소스 및 리소스 할당 정보를 [데이터와 함께 불러오기](guides/supported-data-formats.md#json) 가능
     - 리소스 및 리소스 할당 변경을 [DataProcessor](guides/server-side.md#resources_crud)로 추적 가능
-    - [Resource panel](guides/resource-management.md#workingwithresourceviewpanel) 사용 시 필요한 보일러플레이트 코드 감소
+    - [Resource panel](guides/resource-management.md#working-with-resource-view-panel) 사용 시 필요한 보일러플레이트 코드 감소
 - 작업 그룹화 기능이 그룹 내에서 원래 Gantt 트리 구조를 보존할 수 있음:
     - [groupBy()](api/method/groupby.md) 메서드의 새로운 **save_tree_structure** 파라미터 추가
 - [Empty state screen](guides/empty-state-screen.md):
@@ -604,9 +604,9 @@ sidebar_label: "새로운 기능"
     - 새로운 [timeline_placeholder](api/config/timeline_placeholder.md) 속성
 - Rollup 항목 및 split tasks 개선:
     - 개별 [rollup items](guides/milestones.md#stylingseparaterollupitems) 및 [split tasks](guides/split-tasks.md#styling) 스타일 지정 가능
-    - [프로젝트 작업에서 모든 rollup 항목 숨기기](guides/milestones.md#hidingtasksandmilestones) 가능
+    - [프로젝트 작업에서 모든 rollup 항목 숨기기](guides/milestones.md#hiding-tasks-and-milestones) 가능
     - rollup 항목의 표시 위치 제어 가능(새로운 [onBeforeRollupTaskDisplay](api/event/onbeforerolluptaskdisplay.md) 이벤트)
-    - [split tasks 필터링](guides/split-tasks.md#filteringsplittasks) 가능(새로운 [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md) 이벤트)
+    - [split tasks 필터링](guides/split-tasks.md#filtering-split-tasks) 가능(새로운 [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md) 이벤트)
     - split tasks 표시 성능 최적화
 - 백엔드에서 확인을 받은 후에만 항목 삭제 가능:
     - [dataProcessor configuration object](api/method/createdataprocessor.md)의 새로운 **deleteAfterConfirmation** 파라미터
@@ -622,7 +622,7 @@ sidebar_label: "새로운 기능"
     - [getTaskBy()](api/method/gettaskby.md) 메서드의 새로운 **types** 파라미터
 - 타임라인 셀에 임의의 HTML 콘텐츠 삽입 가능:
     - 새로운 [timeline_cell_content](api/template/timeline_cell_content.md) 템플릿
-- [gantt.plugins](guides/extensions-list.md#exportservice)에 export API가 포함되어 별도의 JS 파일 추가 불필요. [Migration](migration.md#71---80) 문서 참고
+- [gantt.plugins](guides/extensions-list.md#export-service)에 export API가 포함되어 별도의 JS 파일 추가 불필요. [Migration](migration.md#71---80) 문서 참고
 
 ### 업데이트
 
@@ -630,12 +630,12 @@ sidebar_label: "새로운 기능"
 
 ### 수정 사항
 
-- 분 단위 [duration_unit](api/config/duration_unit.md) 및 사용자 지정 [working time](guides/working-time.md#globalsettings) 설정에서 [duration calculation](guides/working-time.md) 문제 수정
+- 분 단위 [duration_unit](api/config/duration_unit.md) 및 사용자 지정 [working time](guides/working-time.md#global-settings) 설정에서 [duration calculation](guides/working-time.md) 문제 수정
 - slack 계산 관련 다양한 문제 수정
 - [Slack calculations](guides/critical-path.md#gettingfreeandtotalslack) 활성화 시 데이터 로딩에서 발생하는 스크립트 오류 수정
 - [setWorkTime](api/method/setworktime.md) 메서드가 이제 customWeeks 내 날짜의 규칙 설정 지원
 - 스마트 렌더링 사용 시 Gantt에 데이터 대신 빈 공간이 표시되는 문제 수정
-- [custom heights](guides/resizing-rows.md#settingtherowheight)가 있는 행에서 [vertical reordering](guides/reordering-tasks.md) 시 그리드 행이 잘못 이동하던 문제 수정
+- [custom heights](guides/resizing-rows.md#setting-the-row-height)가 있는 행에서 [vertical reordering](guides/reordering-tasks.md) 시 그리드 행이 잘못 이동하던 문제 수정
 - [Multiselect](guides/multiselection.md) 확장 기능이 활성화된 상태에서 [Inline editors](guides/inline-editing.md)가 잘못 동작하던 문제 수정
 - [gantt.config.quick_info_detached](api/config/quick_info_detached.md) 설정이 `false`일 때 [Quick Info](guides/quick-info.md) 팝업이 잘못 표시되던 문제 수정
 - [Inline Editor](guides/inline-editing.md#custominlineeditor) 인터페이스의 `is_valid` 함수 인자 수정. 이제 함수는 컬럼 객체를 받음
@@ -652,7 +652,7 @@ sidebar_label: "새로운 기능"
 ### 수정 사항
 
 - [gantt.addLinkLayer()](api/method/addlinklayer.md) 메소드가 [smart_rendering](api/config/smart_rendering.md) 속성과 함께 동작하지 않던 문제를 수정했습니다.
-- 다양한 [time scales](guides/configuring-time-scale.md)에서 [S-Curve Overlay](guides/baselines.md#extraoverlayforthechart)가 제대로 표시되지 않던 문제를 수정했습니다.
+- 다양한 [time scales](guides/configuring-time-scale.md)에서 [S-Curve Overlay](guides/baselines.md#extra-overlay-for-the-chart)가 제대로 표시되지 않던 문제를 수정했습니다.
 - [grid_elastic_columns](api/config/grid_elastic_columns.md) 속성이 활성화된 경우 [그리드 열 크기 조정](guides/specifying-columns.md#resizing)에 문제가 있던 부분을 수정했습니다.
 - [Keyboard Navigation](guides/keyboard-navigation.md)을 사용하여 작업을 삭제한 후 Gantt의 수직 스크롤 위치가 초기화되는 문제를 수정했습니다.
 - [treeDatastore.move()](api/other/treedatastore.md) 메소드의 동작 오류를 수정했습니다.
@@ -661,8 +661,8 @@ sidebar_label: "새로운 기능"
 - Vue.js v3.x와의 호환성 문제를 해결했습니다.
 - 지정된 작업에 'constraint_date'가 없을 때 [gantt.getConstraintLimitations()](api/method/getconstraintlimitations.md) 메소드에서 발생하던 스크립트 오류를 수정했습니다.
 - SalesForce Web Security와의 호환성 문제를 해결했습니다.
-- [Keyboard Navigation](guides/keyboard-navigation.md#focusbehaviorduringkeyboardnavigation) 활성화 시 Gantt 컨테이너 밖을 클릭해도 포커스가 Gantt로 돌아오는 문제를 수정했습니다.
-- [German locale](guides/localization.md#activatingalocale)가 업데이트되었습니다.
+- [Keyboard Navigation](guides/keyboard-navigation.md#focus-behavior-during-keyboard-navigation) 활성화 시 Gantt 컨테이너 밖을 클릭해도 포커스가 Gantt로 돌아오는 문제를 수정했습니다.
+- [German locale](guides/localization.md#activating-a-locale)가 업데이트되었습니다.
 - 다중 선택 모드에서 작업을 한 번 클릭하면 인라인 에디터를 열 수 있습니다([inline_editors_multiselect_open](api/config/inline_editors_multiselect_open.md) 속성 추가).
 
 ## 7.1.12
@@ -692,9 +692,9 @@ sidebar_label: "새로운 기능"
 - Gantt 컨테이너에 여분의 margin이나 vertical offset이 있을 경우 [tooltip](guides/tooltips.md) 및 기타 요소의 위치가 잘못 표시되던 문제를 수정했습니다.
 - [editable resource diagram](guides/resource-management.md)의 첫 번째 셀을 편집한 후 행 순서가 변경되는 문제를 수정했습니다.
 - 작업을 확장하거나 축소한 후 [smart rendering](api/config/smart_rendering.md)이 잘못 동작하던 문제를 수정했습니다.
-- [onBeforeDrag](guides/advanced-dnd.md) 이벤트가 [click_drag](guides/extensions-list.md#advanceddragndrop) 및 [drag_timeline](guides/extensions-list.md#dragtimeline) 확장 사용 시 기본 동작을 차단하지 못하던 문제를 수정했습니다.
+- [onBeforeDrag](guides/advanced-dnd.md) 이벤트가 [click_drag](guides/extensions-list.md#advanced-drag-n-drop) 및 [drag_timeline](guides/extensions-list.md#drag-timeline) 확장 사용 시 기본 동작을 차단하지 못하던 문제를 수정했습니다.
 - [resource assignments store](guides/resource-management.md#assigningresources)에 대해 [changeId()](api/other/datastore.md) 메소드 호출 시 발생하던 스크립트 오류를 수정했습니다.
-- 기본 [Gantt layout](guides/layout-config.md#defaultlayout)의 스크롤바가 이제 **scrollVer**/**scrollHor** 이름 없이도 올바르게 작동합니다.
+- 기본 [Gantt layout](guides/layout-config.md#default-layout)의 스크롤바가 이제 **scrollVer**/**scrollHor** 이름 없이도 올바르게 작동합니다.
 - [split tasks](guides/split-tasks.md)가 [selection](api/config/select_task.md) 시 일반 작업과 동일하게 'gantt_selected' 클래스를 받도록 변경되었습니다.
 
 ## 7.1.10
@@ -703,9 +703,9 @@ sidebar_label: "새로운 기능"
 
 ### 수정 사항
 
-- [project task](guides/task-types.md#projecttasks)에 자식이 없고 `start_date` 파라미터만 지정된 경우 Gantt가 렌더링되지 않던 문제를 수정했습니다.
-- 작업 ID가 숫자가 아니거나 16자 이상의 숫자 문자열일 때 [작업 행을 드래그 앤 드롭으로 크기 조정](guides/resizing-rows.md#resizingrowsbydraganddrop)할 수 없던 문제를 수정했습니다.
-- [visibility groups](guides/layout-config.md#visibilitygroups)가 [complex layout](guides/layout-config.md)에서 그리드와 타임스케일의 크기 동기화를 막던 문제를 수정했습니다.
+- [project task](guides/task-types.md#project-tasks)에 자식이 없고 `start_date` 파라미터만 지정된 경우 Gantt가 렌더링되지 않던 문제를 수정했습니다.
+- 작업 ID가 숫자가 아니거나 16자 이상의 숫자 문자열일 때 [작업 행을 드래그 앤 드롭으로 크기 조정](guides/resizing-rows.md#resizing-rows-by-drag-and-drop)할 수 없던 문제를 수정했습니다.
+- [visibility groups](guides/layout-config.md#visibility-groups)가 [complex layout](guides/layout-config.md)에서 그리드와 타임스케일의 크기 동기화를 막던 문제를 수정했습니다.
 - 여러 작업을 동시에 수평 이동할 때 작업 날짜에 문제가 발생하던 부분을 수정했습니다.
 - [auto-update mode](https://docs.dhtmlx.com/api__dataprocessor_setupdatemode.html)가 비활성화된 경우 [dataProcessor](guides/server-side.md)가 여러 데이터스토어에서 모든 업데이트를 전송하지 않던 문제를 수정했습니다.
 - [milestone](guides/milestones.md)이 [FF link](api/config/links.md)와 함께 사용될 때 다음 날로 이동하던 문제를 수정했습니다.
@@ -735,7 +735,7 @@ sidebar_label: "새로운 기능"
 - 3개 이상의 수직 뷰에 수평 스크롤바가 연결된 경우 Gantt 로딩 후 스크립트 오류가 발생하던 문제를 수정했습니다.
 - [onBeforeTaskAutoSchedule](api/event/onbeforeautoschedule.md) 이벤트가 [strict mode](api/config/auto_scheduling_strict.md)에서 [ASAP constraint](guides/auto-scheduling.md#timeconstraintsfortasks)를 링크 없는 작업에 설정할 때 잘못 동작하던 문제를 수정했습니다.
 - Next.js 프로젝트에서 Gantt의 압축 버전을 실행할 때 오류가 발생하던 문제를 수정했습니다.
-- [gantt instance](guides/multiple-gantts.md#ganttinstanceconfiguration)를 빈 컨테이너에 초기화할 때 Gantt의 너비가 변경되는 문제를 수정했습니다.
+- [gantt instance](guides/multiple-gantts.md#gantt-instance-configuration)를 빈 컨테이너에 초기화할 때 Gantt의 너비가 변경되는 문제를 수정했습니다.
 
 ## 7.1.8
 
@@ -760,8 +760,8 @@ sidebar_label: "새로운 기능"
 - [total slack](api/method/gettotalslack.md) 값이 잘못 계산되는 문제 수정
 - [total slack](guides/critical-path.md#gettingfreeandtotalslack) 계산 성능 개선
 - [Material](guides/skins.md#materialskin) 스킨에서 [lightbox](guides/edit-form.md) 스타일 수정
-- [Zoom plugin](guides/zooming.md#builtinzoomingmodule)에서 [gantt.init](api/method/init.md) 이후 [zoom.init](guides/zoom.md) 메서드를 호출할 때 작동하지 않는 문제 수정
-- [inherit_calendar](guides/working-time.md#assigningcalendartoproject) 설정과 [gantt.groupBy](guides/grouping.md) 메서드를 함께 사용할 때 발생하는 스크립트 오류 수정
+- [Zoom plugin](guides/zooming.md#built-in-zooming-module)에서 [gantt.init](api/method/init.md) 이후 [zoom.init](guides/zoom.md) 메서드를 호출할 때 작동하지 않는 문제 수정
+- [inherit_calendar](guides/working-time.md#assigning-calendar-to-project) 설정과 [gantt.groupBy](guides/grouping.md) 메서드를 함께 사용할 때 발생하는 스크립트 오류 수정
 - [placeholder task](api/config/placeholder_task.md)가 활성화된 상태에서 [gantt.batchUpdate](api/method/batchupdate.md)로 작업을 추가할 때 발생하는 스크립트 오류 수정
 - [placeholder task](api/config/placeholder_task.md)가 정렬, 순서 변경, 하위 작업 추가가 가능했던 문제 수정
 - [grid columns](guides/specifying-columns.md) 크기가 잘못 표시되는 문제 수정
@@ -776,7 +776,7 @@ sidebar_label: "새로운 기능"
 - [schedule_from_end](api/config/schedule_from_end.md)가 활성화된 상태에서 [auto_scheduling_move_projects](api/config/auto_scheduling_move_projects.md) 설정이 올바르게 동작하지 않던 문제 수정
 - 컬럼의 [onrender](api/config/columns.md) 콜백이 그리드 스크롤 시 커스텀 요소가 사라지는 문제 수정
 - v7.1.5에서 발생한 회귀(regression)로, 복잡한 레이아웃에서 그리드 셀 크기 조정 후 행이 사라지는 문제 수정
-- [size/visibility groups](guides/layout-config.md#visibilitygroups)가 복잡한 레이아웃에서 컬럼 크기 동기화를 막던 문제 수정
+- [size/visibility groups](guides/layout-config.md#visibility-groups)가 복잡한 레이아웃에서 컬럼 크기 동기화를 막던 문제 수정
 - gantt가 작은 컨테이너에 렌더링될 때 그리드 표시 개선
 
 ## 7.1.5
@@ -785,12 +785,12 @@ sidebar_label: "새로운 기능"
 
 ### 수정 사항
 
-- ["marker" mode](guides/reordering-tasks.md#improvingperformancewithlargedatasets)에서 gantt 행 높이가 다를 때 작업의 수직 순서 변경이 잘못 동작하던 문제 수정
+- ["marker" mode](guides/reordering-tasks.md#improving-performance-for-large-datasets)에서 gantt 행 높이가 다를 때 작업의 수직 순서 변경이 잘못 동작하던 문제 수정
 - [show_grid](api/config/show_grid.md)와 [show_chart](api/config/show_chart.md) 설정이 비활성화된 일부 레이아웃에서 타임라인과 그리드 크기 문제 수정
 - 그리드 헤더 셀에 `data-column-name` 및 `data-column-index` 속성 추가
 - [gantt_init.md](api/method/init.md)로 재초기화 후 [구성에서](guides/specifying-columns.md#overview) 모든 컬럼을 제거했을 때 그리드가 올바르게 표시되지 않는 문제 수정
 - Vue.js 애플리케이션에서 리소스 패널 설정이 [gantt의 메인 설정](guides/common-configuration.md#ganttconfigobject)을 덮어쓰는 문제 수정
-- [resource layout](guides/layout-config.md#configsandtemplatesofviews)에 제공된 설정 객체를 수정하여 [resource panel](guides/resource-management.md#resourceviewpanel) 구성을 동적으로 변경할 수 있는 기능 추가
+- [resource layout](guides/layout-config.md#configs-and-templates-of-views)에 제공된 설정 객체를 수정하여 [resource panel](guides/resource-management.md#resourceviewpanel) 구성을 동적으로 변경할 수 있는 기능 추가
 
 ## 7.1.4
 
@@ -801,11 +801,11 @@ sidebar_label: "새로운 기능"
 - [unsetWorkTime](api/method/unsetworktime.md)이 잘못 동작하여 해당 날짜의 근무 시간이 잘못 지정되는 문제 수정
 - [resource_render_empty_cells](api/config/resource_render_empty_cells.md)가 false이고 [smart_rendering](api/config/smart_rendering.md)이 활성화된 상태에서 [Resource histogram](guides/resource-management.md#resourceviewpanel) 스크롤 시 발생하는 스크립트 오류 수정
 - [Inline Editors](guides/inline-editors-ext.md) 모듈의 `editNextRow` 및 `editPrevRow` 메서드가 잘못 동작하는 문제 수정
-- [Quick Info](guides/extensions-list.md#quickinfo) 팝업이 그리드의 "추가" 버튼 클릭 후 계속 표시되는 문제 수정
+- [Quick Info](guides/extensions-list.md#quick-info) 팝업이 그리드의 "추가" 버튼 클릭 후 계속 표시되는 문제 수정
 - [ASAP constraints](guides/auto-scheduling.md#timeconstraintsfortasks)가 프로젝트의 가장 빠른 날짜로 작업을 이동하지 않던 문제 수정
 - [Inline Editors](guides/inline-editors-ext.md)에서 [constraints](guides/auto-scheduling.md#timeconstraintsfortasks)를 인라인 에디터로 수정할 수 없던 문제 수정
 - [Keyboard Navigation](guides/keyboard-navigation.md)의 "scroll into view" 동작이 선택된 작업 바가 이미 보이는 경우에도 불필요하게 스크롤을 발생시키던 문제 수정
-- [click_drag](guides/extensions-list.md#advanceddragndrop) 확장 사용 시 마우스가 컨테이너 밖으로 이동할 때 스크립트 오류 발생 문제 수정
+- [click_drag](guides/extensions-list.md#advanced-drag-n-drop) 확장 사용 시 마우스가 컨테이너 밖으로 이동할 때 스크립트 오류 발생 문제 수정
 - Gantt의 [auto_types](api/config/auto_types.md) 설정 성능 개선
 
 ## 7.1.3
@@ -835,7 +835,7 @@ sidebar_label: "새로운 기능"
 
 ### 수정 사항
 
-- [click_drag](guides/extensions-list.md#advanceddragndrop) 플러그인의 회귀(regression) 문제 수정
+- [click_drag](guides/extensions-list.md#advanced-drag-n-drop) 플러그인의 회귀(regression) 문제 수정
 - [gantt.config.csp](api/config/csp.md) 설정을 "auto" 모드로 지정 시 Security Violation 오류 발생 문제 수정
 - v7.1.0 패키지 코드에 ES6 문법이 포함되어 있던 빌드 설정 오류 수정, 라이브러리는 다시 ES5 호환
 - [gantt.config.reorder_grid_columns](api/config/reorder_grid_columns.md) 설정이 활성화된 상태에서 그리드 컬럼 크기 조정 시 발생하는 스크립트 오류 수정
@@ -859,10 +859,10 @@ sidebar_label: "새로운 기능"
 - 새로운 [gantt.getTaskAssignments()](api/method/gettaskassignments.md) 메서드
 - 새로운 [gantt.config.process_resource_assignments](api/config/process_resource_assignments.md) 및 [gantt.updateTaskAssignments()](api/method/updatetaskassignments.md) Gantt API를 통한 [리소스 할당 관리](guides/resource-management.md#managingresourceassignments) 기능
 - [Rollup tasks 및 milestones](guides/milestones.md#rolluptasksandmilestones)
-- [타임라인 영역에서 작업 바 및 마일스톤 숨기기 기능](guides/milestones.md#hidingtasksandmilestones)
+- [타임라인 영역에서 작업 바 및 마일스톤 숨기기 기능](guides/milestones.md#hiding-tasks-and-milestones)
 - [기간별로 다른 근무 시간 설정 기능](guides/working-time.md#rules_for_periods)
-- [그리드의 개별 행 높이 설정 기능](guides/resizing-rows.md#settingtherowheight)
-- [드래그 앤 드롭으로 그리드 행 높이 조절 기능](guides/resizing-rows.md#resizingrowsbydraganddrop)
+- [그리드의 개별 행 높이 설정 기능](guides/resizing-rows.md#setting-the-row-height)
+- [드래그 앤 드롭으로 그리드 행 높이 조절 기능](guides/resizing-rows.md#resizing-rows-by-drag-and-drop)
 - [gantt.getTaskBarHeight()](api/method/gettaskbarheight.md) 메서드로 작업의 DOM 요소 높이 가져오기 기능
 - 신규 이벤트: [onBeforeRowResize](api/event/onbeforerowresize.md), [onRowResize](api/event/onrowresize.md), [onBeforeRowResizeEnd](api/event/onbeforerowresizeend.md), [onAfterRowResize](api/event/onafterrowresize.md)
 - 그리드 셀을 DOM에 렌더링할 때 사용하는 [onrender](guides/specifying-columns.md#modifyingcellsafterrendering) 콜백 추가
@@ -885,9 +885,9 @@ sidebar_label: "새로운 기능"
 
 ### 수정 사항
 
-- [layout configuration](guides/layout-config.md#layoutcustomization)을 동적으로 변경하고 [gantt.addTaskLayer](api/method/addtasklayer.md)를 사용할 때 발생하는 스크립트 오류 수정
+- [layout configuration](guides/layout-config.md#layout-customization)을 동적으로 변경하고 [gantt.addTaskLayer](api/method/addtasklayer.md)를 사용할 때 발생하는 스크립트 오류 수정
 - `fetchTasks` 옵션 사용 시 [resource histogram](guides/resource-management.md#resourceviewpanel)의 초기 내부 높이 문제 수정
-- [predecessor editor](guides/inline-editing.md#typesofeditors)가 값 수정 시 기존 링크를 삭제하는 문제 수정
+- [predecessor editor](guides/inline-editing.md#types-of-editors)가 값 수정 시 기존 링크를 삭제하는 문제 수정
 - [gantt.addTask](api/method/addtask.md) 및 [gantt.parse](api/method/parse.md) 메서드로 [중복된 ID의 작업](guides/task-object-operations.md)을 추가할 때 gantt가 잘못 동작하는 문제 수정
 - [auto_types](api/config/auto_types.md) 및 [drag_project](api/config/drag_project.md) 설정이 활성화된 상태에서 드래그 앤 드롭 성능 개선
 - [duration_unit](api/config/duration_unit.md)이 "day"로 지정된 경우 [작업 시간 계산](guides/working-time.md) 성능 개선
@@ -898,15 +898,15 @@ sidebar_label: "새로운 기능"
 
 ### 수정 사항
 
-- 대형 프로젝트에서 [수직 드래그 앤 드롭](guides/reordering-tasks.md#draganddropacrosstheentireganttstructure) 관련 일부 사소한 문제 수정
+- 대형 프로젝트에서 [수직 드래그 앤 드롭](guides/reordering-tasks.md#drag-n-drop-within-the-whole-gantt-structure) 관련 일부 사소한 문제 수정
 - [autosize](api/config/autosize.md) 설정 사용 시 컨테이너 크기가 잘못 표시되는 문제 수정
 - [키보드 내비게이션](guides/keyboard-navigation.md)이 이제 그리드의 수평 스크롤과 올바르게 작동하도록 수정
-- Layout의 [HTML 뷰](guides/layout-config.md#htmlasinnerview)가 외부 [스크롤바](guides/layout-config.md#scrollbar)를 지원하도록 개선
-- [추가 그리드](https://docs.dhtmlx.com/gantt/samples/10_layout/01_rightside_columns.html)가 레이아웃에 추가된 경우, [작업 재정렬](guides/reordering-tasks.md#draganddropacrosstheentireganttstructure) 후 그리드 상태가 잘못 표시되는 문제 수정
+- Layout의 [HTML 뷰](guides/layout-config.md#html-as-inner-view)가 외부 [스크롤바](guides/layout-config.md#scrollbar)를 지원하도록 개선
+- [추가 그리드](https://docs.dhtmlx.com/gantt/samples/10_layout/01_rightside_columns.html)가 레이아웃에 추가된 경우, [작업 재정렬](guides/reordering-tasks.md#drag-n-drop-within-the-whole-gantt-structure) 후 그리드 상태가 잘못 표시되는 문제 수정
 - 리소스가 선택된 상태에서 [리소스 패널](guides/resource-management.md)을 초기화 및 재로딩할 때 발생하던 스크립트 오류 수정
 - lightbox의 [time](guides/time.md) 섹션에서 시작 날짜가 종료 날짜보다 클 때 자동으로 종료 날짜를 보정하는 기능을 비활성화할 수 있는 옵션 추가
 - [Duration Formatter](guides/formatters-ext.md) 기본 설정의 오타 수정
-- [popup message](guides/message-boxes.md#basicpopupmessage)가 표시 중일 때 gantt가 [destroyed](api/method/destructor.md) 되면 발생하던 스크립트 오류 수정
+- [popup message](guides/message-boxes.md#basic-popup-message)가 표시 중일 때 gantt가 [destroyed](api/method/destructor.md) 되면 발생하던 스크립트 오류 수정
 - [RTL](guides/rtl-mode.md) 모드에서 Grid 및 Timeline의 수평 스크롤 초기 위치 문제 수정
 - lightbox에서 [typeselect](guides/typeselect.md) 컨트롤이 설정에 추가되지 않은 경우, 작업 유형 선택이 저장되지 않는 문제 수정
 - [gantt.resetLayout()](api/method/resetlayout.md) 메서드 호출 후 [markers](guides/markers.md)가 사라지는 문제 수정
@@ -928,7 +928,7 @@ sidebar_label: "새로운 기능"
 - [placeholder](api/config/placeholder_task.md) 작업과 [Auto Scheduling](guides/auto-scheduling.md) 간의 충돌 문제 수정
 - [sort](api/config/sort.md) 활성화 시 불필요한 리페인트 문제 수정
 - [Inline Editors](guides/inline-editing.md)와 스크롤 가능한 그리드에서 클릭 직후 인라인 에디터 포커스가 해제되는 문제 수정
-- 사용자가 [Quick Info](guides/extensions-list.md#quickinfo) 팝업을 클릭할 때 Gantt가 해당 팝업을 닫아버리는 문제 수정
+- 사용자가 [Quick Info](guides/extensions-list.md#quick-info) 팝업을 클릭할 때 Gantt가 해당 팝업을 닫아버리는 문제 수정
 
 ## 7.0.10
 
@@ -936,7 +936,7 @@ sidebar_label: "새로운 기능"
 
 ### 수정 사항
 
-- [수직 리사이저](guides/layout-config.md#defaultlayout) 동작 오류 수정 (v7.0.9에서 발생한 회귀)
+- [수직 리사이저](guides/layout-config.md#default-layout) 동작 오류 수정 (v7.0.9에서 발생한 회귀)
 - Android Chrome에서 작업의 수직 재정렬 중 예기치 않은 페이지 새로고침(풀-투-리프레시) 방지
 - 모바일 Firefox에서 링크 생성 중 발생하던 스크립트 오류 수정
 - [multiselect](api/config/multiselect.md) 설정은 활성화되어 있으나 [multiselect](guides/extensions-list.md#multitaskselection) 플러그인이 활성화되지 않은 경우 작업 선택이 올바르게 동작하지 않는 문제 수정
@@ -972,7 +972,7 @@ sidebar_label: "새로운 기능"
 - Android/iOS 기기에서 터치 지원 관련 문제 수정
 - v7.0.6에서 발생한 [링크 생성 및 gantt.isLinkAllowed](api/method/islinkallowed.md) 메서드 관련 회귀 문제 수정
 - [gantt.getGanttInstance](guides/multiple-gantts.md)에서 'locale' 파라미터 사용 시 발생하는 스크립트 오류 수정
-- [gantt.destructor](api/method/destructor.md)에서 [Keyboard Navigation](guides/extensions-list.md#keyboardnavigation) 및 [Quick Info](guides/extensions-list.md#quickinfo) 확장 기능 사용 시 발생하는 스크립트 오류 수정
+- [gantt.destructor](api/method/destructor.md)에서 [Keyboard Navigation](guides/extensions-list.md#keyboardnavigation) 및 [Quick Info](guides/extensions-list.md#quick-info) 확장 기능 사용 시 발생하는 스크립트 오류 수정
 
 ## 7.0.7
 
@@ -1002,7 +1002,7 @@ sidebar_label: "새로운 기능"
 
 - [duration_unit](api/config/duration_unit.md)가 "hour"로 설정된 경우 [작업 시간 계산](guides/working-time.md) 성능 개선
 - [duration_unit](api/config/duration_unit.md)가 "minute"으로 설정된 경우 [작업 시간 계산](guides/working-time.md) 성능 개선
-- [`Gantt.getGanttInstance`](guides/multiple-gantts.md#ganttinstanceconfiguration) 설정 객체에서 작업 캘린더 지정 기능 추가
+- [`Gantt.getGanttInstance`](guides/multiple-gantts.md#gantt-instance-configuration) 설정 객체에서 작업 캘린더 지정 기능 추가
 
 ## 7.0.4
 
@@ -1040,7 +1040,7 @@ sidebar_label: "새로운 기능"
 ### 수정 사항
 
 - [gantt.config.csp](api/config/csp.md)가 true로 설정된 경우 [date formatters](api/other/date.md) 동작 오류 수정
-- [click_drag](guides/extensions-list.md#advanceddragndrop) 및 [drag_timeline](guides/extensions-list.md#dragtimeline) 확장 기능에서 [여러 Gantt 인스턴스](guides/multiple-gantts.md) 생성 시 동작 오류 수정
+- [click_drag](guides/extensions-list.md#advanced-drag-n-drop) 및 [drag_timeline](guides/extensions-list.md#drag-timeline) 확장 기능에서 [여러 Gantt 인스턴스](guides/multiple-gantts.md) 생성 시 동작 오류 수정
 - [dataProcessor router function](guides/server-side.md#customrouting)에서 오류 상태 반환 후 작업 행 요소의 css 클래스가 잘못 표시되는 문제 수정
 - Shadow DOM 내 [inline editors](guides/inline-editing.md) 동작 오류 수정
 
@@ -1056,7 +1056,7 @@ sidebar_label: "새로운 기능"
 - [그리드 열 재정렬](api/config/reorder_grid_columns.md) 시 드래그 앤 드롭 중 마우스 포인터가 그리드 가장자리에 이동할 때 타임라인이 스크롤되는 문제 수정
 - [열을 오른쪽 그리드 경계로 드래그 앤 드롭 한 후 잘못된 위치에 나타나는 문제](api/config/reorder_grid_columns.md) 수정
 - [dataProcessor custom router](guides/server-side.md#customrouting)가 이제 거부된 Promise와도 올바르게 작동함
-- [스마트 렌더링](guides/performance.md#smartrendering)에서 일부 링크가 보이지 않던 회귀 문제 수정
+- [스마트 렌더링](guides/performance.md#smart-rendering)에서 일부 링크가 보이지 않던 회귀 문제 수정
 - [분할 작업](guides/split-tasks.md)이 이제 1단계 하위 작업뿐만 아니라 모든 중첩 하위 작업도 표시함
 - [분할 작업](guides/split-tasks.md) 및 스마트 렌더링에서 분할 작업이 'task' 타입일 때 발생하던 문제 수정
 - [분할 작업](guides/split-tasks.md) 내에 중첩된 'project' 작업의 기간을 Gantt가 계산하지 않던 문제 수정
@@ -1080,13 +1080,13 @@ sidebar_label: "새로운 기능"
 - [그리드 열에서 긴 텍스트를 말줄임표(...)로 표시](guides/styling-guide.md#customizationgridcolumns) 가능
 - [dynamic_resource_calendars](api/config/dynamic_resource_calendars.md) 설정 및 [mergeCalendars](api/method/mergecalendars.md) 메서드 추가로 [여러 캘린더를 자동 또는 수동으로 병합](guides/working-time.md#mergingcalendars) 가능
 - [getResourceCalendar](api/method/getresourcecalendar.md) 메서드 추가
-- [근무 시간을 분 단위로 지정](guides/working-time.md#globalsettings) 가능
+- [근무 시간을 분 단위로 지정](guides/working-time.md#global-settings) 가능
 
 ### 업데이트
 
 - 로케일 파일이 패키지에서 제거되었으며, Gantt 차트 현지화를 위한 [새로운 API](api/other/i18n.md) 추가
 - 모든 확장은 이제 [plugins](api/method/plugins.md) 메서드를 통해 활성화해야 함
-- `Gantt.getGanttInstance`가 [새 인스턴스 생성 시 설정 객체를 받을 수 있음](guides/multiple-gantts.md#ganttinstanceconfiguration)
+- `Gantt.getGanttInstance`가 [새 인스턴스 생성 시 설정 객체를 받을 수 있음](guides/multiple-gantts.md#gantt-instance-configuration)
 - CSP 확장이 패키지에서 제거되었으며, [csp 모드는 기본 활성화](api/config/csp.md)
 - [attachEvent](api/method/attachevent.md) 메서드의 세 번째 매개변수로 settings 객체 추가
 - [setWorkTime](api/method/setworktime.md) 메서드에서 근무 시간 설정 포맷이 단순화됨
@@ -1132,7 +1132,7 @@ sidebar_label: "새로운 기능"
 - [drag_timeline](api/config/drag_timeline.md) 설정이 `null`일 때 발생하던 스크립트 오류 수정
 - [static_background](api/config/static_background.md) 및 [static_background_cells](api/config/static_background_cells.md)가 활성화되고 [smart_rendering](api/config/smart_rendering.md)가 비활성화된 경우 강조 셀의 위치가 잘못 표시되는 문제 수정
 - [onAfterBranchLoading](api/event/onafterbranchloading.md) 이벤트가 호출되지 않던 문제 수정
-- [task_height](api/config/task_height.md) 값이 [row_height](api/config/row_height.md) 값보다 작을 때 [스마트 렌더링](guides/performance.md#smartrendering)이 잘못 동작하던 문제 수정
+- [task_height](api/config/task_height.md) 값이 [row_height](api/config/row_height.md) 값보다 작을 때 [스마트 렌더링](guides/performance.md#smart-rendering)이 잘못 동작하던 문제 수정
 
 ### 업데이트
 
@@ -1144,10 +1144,10 @@ sidebar_label: "새로운 기능"
 
 ### 수정 사항
 
-- [스마트 렌더링](guides/performance.md#smartrendering)을 끌 때 [리소스 부하 다이어그램](guides/resource-management.md#resourceviewpanel)이 충돌하던 문제 수정
+- [스마트 렌더링](guides/performance.md#smart-rendering)을 끌 때 [리소스 부하 다이어그램](guides/resource-management.md#resourceviewpanel)이 충돌하던 문제 수정
 - "unit"이라는 이름의 사용자 정의 작업 속성이 있을 때 Gantt가 이를 기간 단위 값으로 간주하여 작업 드래그 후 기간을 곱하던 문제 수정
 - [autosize](api/config/autosize.md) 설정이 활성화된 경우 [Tooltip](guides/tooltips.md) 위치가 잘못 표시되던 문제 수정
-- [scrollable](guides/specifying-columns.md#horizontalscrollbar) 속성과 [autofit](api/config/autofit.md) 설정이 모두 true일 때 그리드 셀 정렬이 잘못 동작하던 문제 수정
+- [scrollable](guides/specifying-columns.md#horizontal-scrollbar) 속성과 [autofit](api/config/autofit.md) 설정이 모두 true일 때 그리드 셀 정렬이 잘못 동작하던 문제 수정
 - 타임라인의 작업과 그리드의 [플레이스홀더](api/config/placeholder_task.md) 간 링크 생성이 이제 차단됨
 - [auto scheduling 확장](guides/auto-scheduling.md)에서 [제약 조건 타입(SNET/FNET/SNLT/FNLT)](guides/auto-scheduling.md#timeconstraintsfortasks)이 날짜 없이 지정되거나 잘못된 날짜가 지정된 경우 Gantt가 멈추던 버그 수정
 
@@ -1162,7 +1162,7 @@ sidebar_label: "새로운 기능"
 - SalesForce Lightning Aura 컴포넌트 프레임워크와의 호환성 수정(Evaluation 빌드)
 - SalesForce 환경에서 [Tooltip](guides/tooltips.md)의 잘못된 위치 문제 수정
 - gantt 컨테이너에 세로 여백이 있을 때 [Tooltip](guides/tooltips.md) 위치가 잘못 표시되던 문제 수정
-- gantt 내부 요소에 누락된 [WAI-ARIA](guides/accessibility.md#waiariaattributes) 속성 추가
+- gantt 내부 요소에 누락된 [WAI-ARIA](guides/accessibility.md#wai-aria-attributes) 속성 추가
 - [min_duration](api/config/min_duration.md) 설정의 잘못된 동작 수정
 - [링크 포매터](guides/formatters-ext.md#linkformatter)가 사용자 정의 [gantt 인스턴스](guides/multiple-gantts.md)와 함께 잘못 동작하던 문제 수정
 
@@ -1187,10 +1187,10 @@ sidebar_label: "새로운 기능"
 
 ### 수정 사항
 
-- [스마트 렌더링](api/method/addtasklayer.md#smartrenderingforcustomlayers)에서 일부 경우 링크가 렌더링되지 않던 회귀 문제 수정
+- [스마트 렌더링](api/method/addtasklayer.md#smart-rendering-for-custom-layers)에서 일부 경우 링크가 렌더링되지 않던 회귀 문제 수정
 - [읽기 전용 모드](guides/readonly-mode.md)에서 [키보드 내비게이션](guides/keyboard-navigation.md)으로 작업을 수정 및 생성할 수 있던 버그 수정
 - [전체화면 확장](guides/fullscreen-mode.md)에서 전체화면 모드 시 일부 페이지 요소가 gantt 위에 표시되던 문제 수정
-- [drag-timeline 확장](guides/extensions-list.md#dragtimeline)에서 [readonly 설정](guides/readonly-mode.md) 값을 초기화하던 버그 수정
+- [drag-timeline 확장](guides/extensions-list.md#drag-timeline)에서 [readonly 설정](guides/readonly-mode.md) 값을 초기화하던 버그 수정
 
 ## 6.3
 
@@ -1204,7 +1204,7 @@ sidebar_label: "새로운 기능"
 ### 새로운 기능
 
 - [작업 기간을 소수 단위로 지정](guides/working-time.md#taskdurationindecimalformat) 가능
-- [마우스 클릭 및 드래그로 타임라인 스크롤](guides/extensions-list.md#dragtimeline) 가능
+- [마우스 클릭 및 드래그로 타임라인 스크롤](guides/extensions-list.md#drag-timeline) 가능
 - [여러 작업을 수평으로 드래그 앤 드롭](guides/multiselection.md#multitaskselectionanddragndrop) 가능
 
 ### 업데이트
@@ -1212,7 +1212,7 @@ sidebar_label: "새로운 기능"
 - [타임스케일](guides/configuring-time-scale.md#range)의 명시적 [start_date](api/config/start_date.md) 및 [end_date](api/config/end_date.md) 범위 외부에 [작업을 표시](api/config/show_tasks_outside_timescale.md)할 수 있는 기능 추가
 - 작업의 종료일을 포맷팅하기 위한 새로운 [task_end_date](api/template/task_end_date.md) 템플릿 추가
 - [Undo](guides/undo-redo.md#undoingredoingchangesmadefromcode) 스택에 커스텀 액션을 추가할 수 있는 기능 추가
-- 커스텀 레이어를 [스마트 렌더링](api/method/addtasklayer.md#smartrenderingforcustomlayers)에 연결할 수 있는 기능 추가
+- 커스텀 레이어를 [스마트 렌더링](api/method/addtasklayer.md#smart-rendering-for-custom-layers)에 연결할 수 있는 기능 추가
 - **선행 작업**용 [인라인 에디터](guides/inline-editing.md)가 링크의 포맷된 값을 지원
 - 날짜 [인라인 에디터](migration.md#inline_editors)의 입력값에 대한 기본 제한 제거
 - [전체 화면 확장](guides/fullscreen-mode.md)을 위한 루트 노드를 지정할 수 있는 기능 추가
@@ -1221,7 +1221,7 @@ sidebar_label: "새로운 기능"
 
 ### 버그 수정
 
-- [스마트 렌더링](guides/performance.md#smartrendering)이 꺼졌을 때 [리소스 히스토그램](guides/resource-management.md#resourceviewpanel)이 크래시되는 문제 수정
+- [스마트 렌더링](guides/performance.md#smart-rendering)이 꺼졌을 때 [리소스 히스토그램](guides/resource-management.md#resourceviewpanel)이 크래시되는 문제 수정
 - r.js 컴프레서와의 호환성 문제 수정
 - [키보드 네비게이션](guides/keyboard-navigation.md)과 [인라인 에디터](guides/inline-editing.md) 간의 다양한 충돌 문제 수정
 - [커스텀 라우터](guides/server-side.md#customrouting)에서 작업 및 링크가 순차적으로 수정될 때 [DataProcessor](guides/server-side.md#customrouting)의 상태가 잘못되는 문제 수정
@@ -1233,7 +1233,7 @@ sidebar_label: "새로운 기능"
 
 ### 버그 수정
 
-- [복합 레이아웃](guides/resource-management.md#resourceviewpanel)의 [수평 스크롤이 있는 그리드](guides/specifying-columns.md#horizontalscrollbar)에서 수직 크기 조정 문제 수정
+- [복합 레이아웃](guides/resource-management.md#resourceviewpanel)의 [수평 스크롤이 있는 그리드](guides/specifying-columns.md#horizontal-scrollbar)에서 수직 크기 조정 문제 수정
 - [스케일 스텝](guides/configuring-time-scale.md#timestep)이 1보다 클 때 [리소스 히스토그램](guides/resource-management.md#resourceviewpanel)이 올바르게 동작하지 않는 문제 수정
 - [gantt.parse](api/method/parse.md) 호출 후 브랜치가 접힌 채로 남는 v6.2.4 버그 재발 문제 수정
 
@@ -1244,7 +1244,7 @@ sidebar_label: "새로운 기능"
 ### 버그 수정
 
 - [v6.2 스마트 렌더링](#62)에서 [Gantt 재초기화](api/method/init.md) 후 작업의 수직 위치가 올바르지 않게 되는 회귀 문제 수정
-- [QuickInfo 팝업](guides/extensions-list.md#quickinfo)이 [스케줄되지 않은 작업](guides/unscheduled-tasks.md)에 표시되지 않던 문제 수정
+- [QuickInfo 팝업](guides/extensions-list.md#quick-info)이 [스케줄되지 않은 작업](guides/unscheduled-tasks.md)에 표시되지 않던 문제 수정
 - Ultimate 빌드에서 확장 파일이 올바르게 동작하지 않던 문제 수정
 
 ## 6.2.5
@@ -1265,7 +1265,7 @@ sidebar_label: "새로운 기능"
 ### 버그 수정
 
 - [parse](api/method/parse.md) 메서드로 데이터 업데이트 후 작업 브랜치가 접히는 문제 수정
-- [리소스 뷰](guides/resource-management.md#resourceviewpanel)에서 [스마트 렌더링](guides/performance.md#smartrendering)이 올바르지 않게 동작하는 문제 수정
+- [리소스 뷰](guides/resource-management.md#resourceviewpanel)에서 [스마트 렌더링](guides/performance.md#smart-rendering)이 올바르지 않게 동작하는 문제 수정
 - [Zoom 모듈](guides/zooming.md)이 [Gantt 재초기화](api/method/init.md) 시 불필요한 DOM 이벤트 핸들러를 계속 추가하는 문제 수정
 
 ## 6.2.3
@@ -1331,7 +1331,7 @@ sidebar_label: "새로운 기능"
 
 - [드래그 앤 드롭으로 작업 생성 및 선택](guides/advanced-dnd.md)
 - 마우스 휠로 부드러운 [줌](guides/zooming.md)
-- [분할 작업 확장/축소](guides/split-tasks.md#expandingandcollapsingsplittasks) 기능 (PRO)
+- [분할 작업 확장/축소](guides/split-tasks.md#expandingcollapsingsplittasks) 기능 (PRO)
 
 ### 업데이트
 
@@ -1354,7 +1354,7 @@ sidebar_label: "새로운 기능"
 - [getClosestWorkTime](api/method/getclosestworktime.md)의 올바르지 않은 동작 수정
 - [타임라인 가시성 토글](api/config/show_chart.md) 후 [autoscroll](api/config/autoscroll.md)의 동작 문제 수정
 - [멀티 선택 확장](guides/multiselection.md)에서 선택된 작업이 차트 다시 그리기 후 강조 표시를 잃는 문제 수정
-- [수직 드래그 앤 드롭](guides/reordering-tasks.md) 후 [스마트 렌더링](guides/performance.md#smartrendering) 및 [키보드 네비게이션](guides/keyboard-navigation.md) 확장 활성화 시 발생하는 스크립트 오류 수정
+- [수직 드래그 앤 드롭](guides/reordering-tasks.md) 후 [스마트 렌더링](guides/performance.md#smart-rendering) 및 [키보드 네비게이션](guides/keyboard-navigation.md) 확장 활성화 시 발생하는 스크립트 오류 수정
 - 일부 그리드 컬럼이 [숨겨져](guides/specifying-columns.md#visibility) 있을 때 `Tab` 키로 [인라인 에디터](guides/inline-editing.md) 간 전환 시 올바르지 않은 동작 수정
 - [제약 날짜](guides/auto-scheduling.md#timeconstraintsfortasks)를 [lightbox](guides/edit-form.md) 및 [인라인 에디터](guides/inline-editing.md)에서 오버라이드하지 못하게 하는 예기치 않은 동작 수정
 
@@ -1364,8 +1364,8 @@ sidebar_label: "새로운 기능"
 
 ### 버그 수정
 
-- 두 번째 [init](api/method/init.md) 호출 후 [QuickInfo 팝업](guides/extensions-list.md#quickinfo)의 [클릭 핸들러](api/config/quickinfo_buttons.md)가 동작하지 않는 문제 수정
-- [show_chart](api/config/show_chart.md)가 false로 설정된 경우 [QuickInfo 팝업](guides/extensions-list.md#quickinfo)이 표시되지 않는 문제 수정
+- 두 번째 [init](api/method/init.md) 호출 후 [QuickInfo 팝업](guides/extensions-list.md#quick-info)의 [클릭 핸들러](api/config/quickinfo_buttons.md)가 동작하지 않는 문제 수정
+- [show_chart](api/config/show_chart.md)가 false로 설정된 경우 [QuickInfo 팝업](guides/extensions-list.md#quick-info)이 표시되지 않는 문제 수정
 - [수직 드래그 앤 드롭](guides/reordering-tasks.md) 후 [dataProcessor 라우터](guides/server-side.md#customrouting)의 `action` 인자가 올바르지 않은 문제 수정
 - [createTask](api/method/createtask.md)가 `index` 파라미터를 무시하는 문제 수정
 
@@ -1376,7 +1376,7 @@ sidebar_label: "새로운 기능"
 ### 버그 수정
 
 - [show_chart](api/config/show_chart.md) 설정이 비활성화된 상태에서 두 번째 [init](api/method/init.md) 호출 시 스크립트 오류 수정
-- [마커 모드](guides/reordering-tasks.md#improvingperformancewithlargedatasets)에서 [수직 드래그 앤 드롭](guides/reordering-tasks.md) 플레이스홀더 위치가 올바르지 않은 문제 수정
+- [마커 모드](guides/reordering-tasks.md#improving-performance-for-large-datasets)에서 [수직 드래그 앤 드롭](guides/reordering-tasks.md) 플레이스홀더 위치가 올바르지 않은 문제 수정
 
 ## 6.1.4
 
@@ -1398,7 +1398,7 @@ sidebar_label: "새로운 기능"
 
 - [gantt.createTask](api/method/createtask.md)/[gantt.addTask](api/method/addtask.md)가 하드코딩된 0 id 대신 [root_id](api/config/root_id.md) 설정 값을 사용하도록 수정
 - `minute` 및 `hour` [duration units](api/config/duration_unit.md)에 대한 [작업 시간 계산](guides/working-time.md) 성능 향상
-- [스마트 렌더링](guides/performance.md#smartrendering) 모드에서 대용량 작업 목록 렌더링 시 소폭 성능 개선
+- [스마트 렌더링](guides/performance.md#smart-rendering) 모드에서 대용량 작업 목록 렌더링 시 소폭 성능 개선
 - 사용자가 [인라인 에디터](guides/inline-editing.md) 내에서 텍스트를 선택할 때 [수직 드래그 앤 드롭](guides/reordering-tasks.md)이 시작되지 않도록 개선
 - IE 브라우저에서 gantt를 [재초기화](api/method/init.md)할 때 발생하는 스크립트 오류 수정
 - 차트에서 마지막 작업을 삭제한 후 `cell` 모드의 [키보드 내비게이션](guides/keyboard-navigation.md)에서 발생하는 스크립트 오류 수정
@@ -1411,7 +1411,7 @@ sidebar_label: "새로운 기능"
 - [skip_off_time](api/config/skip_off_time.md) 설정 시 작업 및 [마커](guides/markers.md)의 잘못된 위치 수정
 - [마커](guides/markers.md) 재정렬 후 [드래그 앤 드롭](guides/reordering-tasks.md)으로 인한 마커 높이 오류 수정
 - 새 작업이 `progress` 속성의 초기 값을 받도록 개선
-- [marker](guides/reordering-tasks.md#improvingperformancewithlargedatasets) 모드에서 수직 드래그 앤 드롭 후 작업 위치 오류 수정
+- [marker](guides/reordering-tasks.md#improving-performance-for-large-datasets) 모드에서 수직 드래그 앤 드롭 후 작업 위치 오류 수정
 - [resource panel](guides/resource-management.md#resourceviewpanel)이 활성화된 상태에서 [gantt.destructor](api/method/destructor.md) 사용 시 발생하는 스크립트 오류 수정
 - [typeselect](guides/typeselect.md) 블록에 빈 줄이 표시되는 버그 수정
 - [id change](api/method/changetaskid.md) 후 작업이 [critical path](guides/critical-path.md)의 일부로 인식되지 않는 버그 수정
@@ -1455,7 +1455,7 @@ sidebar_label: "새로운 기능"
 
 ### 새로운 기능
 
-- [Gantt 차트에 오버레이 추가 기능](guides/baselines.md#extraoverlayforthechart) (PRO)
+- [Gantt 차트에 오버레이 추가 기능](guides/baselines.md#extra-overlay-for-the-chart) (PRO)
 - [작업에 대한 시간 제약](guides/auto-scheduling.md#timeconstraintsfortasks) (PRO)
 - [역방향 스케줄링](guides/auto-scheduling.md#backwardscheduling) (PRO)
 - TypeScript 타입 정의가 패키지에 포함됨
@@ -1464,7 +1464,7 @@ sidebar_label: "새로운 기능"
 
 - dhtmlxGantt의 모든 요소에 [툴팁 생성 기능](guides/tooltips.md#tooltipsfordifferentelements) 추가
 - [dataProcessor의 라우팅 옵션](guides/server-side.md#customrouting)
-- [프로젝트 수준의 작업 캘린더](guides/working-time.md#assigningcalendartoproject) (PRO)
+- [프로젝트 수준의 작업 캘린더](guides/working-time.md#assigning-calendar-to-project) (PRO)
 - [dhtmlxGantt를 ES6 모듈로 가져오기](guides/initializing-gantt-chart.md#moduleimport) 지원
 
 ## 6.0.7
@@ -1521,7 +1521,7 @@ sidebar_label: "새로운 기능"
 ### 설정
 
 - 작업에 리소스 할당을 위한 lightbox 내 [Resources control](guides/resources.md) (PRO 버전)
-- "branch" 모드에서 [작업 재정렬 성능 개선](guides/reordering-tasks.md#improvingperformancewithlargedatasets)
+- "branch" 모드에서 [작업 재정렬 성능 개선](guides/reordering-tasks.md#improving-performance-for-large-datasets)
 - [auto_types](api/config/auto_types.md) 설정에 대한 성능 개선 (PRO 버전)
 
 ### API
@@ -1566,13 +1566,13 @@ sidebar_label: "새로운 기능"
 
 - [리소스 관리](guides/resource-management.md) (PRO 버전)
 - [RTL 모드](guides/rtl-mode.md)
-- [그리드의 수평 스크롤](guides/specifying-columns.md#horizontalscrollbar) 및 [기타 레이아웃 개선](guides/layout-config.md)
+- [그리드의 수평 스크롤](guides/specifying-columns.md#horizontal-scrollbar) 및 [기타 레이아웃 개선](guides/layout-config.md)
 - [Gantt 및 DataProcessor 인스턴스용 소멸자](guides/multiple-gantts.md#destructorofganttanddataprocessorinstances)
 
 ### 설정
 
 - [그리드 열의 최소/최대 너비 설정](guides/specifying-columns.md#width) 기능
-- [프로젝트와 하위 작업을 함께 드래그 앤 드롭](guides/dnd.md#draggingprojectsalongwiththeirsubtasks) 기능 (PRO 버전)
+- [프로젝트와 하위 작업을 함께 드래그 앤 드롭](guides/dnd.md#draggingprojectswithsubtasks) 기능 (PRO 버전)
 - [내보내기 메서드의 확장 파라미터](guides/export-common.md)
 
 ### API
@@ -1608,7 +1608,7 @@ sidebar_label: "새로운 기능"
 
 - [작업 및 리소스 수준의 작업 시간 캘린더](guides/working-time.md#multipleworktimecalendars)
 - [WBS 코드(개요 번호) 계산](guides/specifying-columns.md#wbscode)
-- [드래그 앤 드롭 작업 시 자동 스크롤](guides/dnd.md#autoscrollwhiledraggingtasks)
+- [드래그 앤 드롭 작업 시 자동 스크롤](guides/dnd.md#autoscrollduringtasksdragging)
 - [페르시아어(파르시) 로케일 추가](guides/localization.md#predefinedlocales)
 
 ### 설정
@@ -1629,7 +1629,7 @@ sidebar_label: "새로운 기능"
 ### 기능
 
 - [키보드 네비게이션](guides/keyboard-navigation.md)
-- [WAI-ARIA 지원](guides/accessibility.md#waiariaattributes)
+- [WAI-ARIA 지원](guides/accessibility.md#wai-aria-attributes)
 - [고대비 테마](guides/accessibility.md#highcontrastthemes)
 - [자동 스케줄링](guides/auto-scheduling.md) 및 [주요 경로](guides/critical-path.md) 계산 업데이트 (PRO 버전)
 
@@ -1648,7 +1648,7 @@ sidebar_label: "새로운 기능"
 
 ### 기능
 
-- [대용량 데이터셋을 위한 스마트 렌더링](guides/performance.md#smartrendering)
+- [대용량 데이터셋을 위한 스마트 렌더링](guides/performance.md#smart-rendering)
 - [실행 취소/다시 실행](guides/undo-redo.md) 확장
 
 ### 설정
@@ -1677,8 +1677,8 @@ sidebar_label: "새로운 기능"
 ### 설정
 
 - [콘텐츠 보안 정책](guides/content-security-policy.md) 초기 지원
-- [그리드의 열별 정렬](guides/sorting.md#sortingpercolumninthegrid) 설정 가능
-- 브랜치 순서 지정 기능 개선 - [계층 간 드래그 앤 드롭](guides/reordering-tasks.md#draganddropacrosstheentireganttstructure)
+- [그리드의 열별 정렬](guides/sorting.md#percolumngridsorting) 설정 가능
+- 브랜치 순서 지정 기능 개선 - [계층 간 드래그 앤 드롭](guides/reordering-tasks.md#drag-n-drop-within-the-whole-gantt-structure)
 
 ### API
 
@@ -1704,7 +1704,7 @@ sidebar_label: "새로운 기능"
 
 ### API
 
-- [작업 재정렬 시 사용 가능한 대상 위치 관리 이벤트](guides/reordering-tasks.md#restrictingdroppositions)
+- [작업 재정렬 시 사용 가능한 대상 위치 관리 이벤트](guides/reordering-tasks.md#denyingdroppingtospecificpositions)
 - [로딩 프로세스 관리 이벤트](guides/loading.md#eventsflow)
 - 신규 샘플, 메서드, 이벤트 추가
 
@@ -1770,7 +1770,7 @@ sidebar_label: "새로운 기능"
 
 ### 기능
 
-- [마일스톤](guides/milestones.md) 및 [프로젝트](guides/task-types.md#projecttasks) 지원 (PRO 버전)
+- [마일스톤](guides/milestones.md) 및 [프로젝트](guides/task-types.md#project-tasks) 지원 (PRO 버전)
 - [작업 기간을 달력 시간이 아닌 근무일/시간 단위로 계산](guides/working-time.md)
 - [페이지 내 다수의 Gantt 차트 지원](guides/multiple-gantts.md) (PRO 버전)
 

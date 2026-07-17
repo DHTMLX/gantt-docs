@@ -12,7 +12,7 @@ description: "为与 DHTMLX Gantt 搭配工作的 AI 助手安装技能"
 
 **GitHub:** [DHTMLX/skills](https://github.com/DHTMLX/skills)
 
-## 可用技能
+## 可用技能 {#available-skills}
 
 ### DHTMLX JS Gantt
 

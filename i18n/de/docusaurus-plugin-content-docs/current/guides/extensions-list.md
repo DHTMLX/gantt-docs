@@ -9,7 +9,7 @@ dhtmlxGantt enthält eine Reihe von Erweiterungen, die dem Standardverhalten zus
 
 Um eine Erweiterung zu verwenden, sollten Sie das Plugin mithilfe der Methode [gantt.plugins](api/method/plugins.md) aktivieren.
 
-## Fortgeschrittenes Drag-and-Drop
+## Fortgeschrittenes Drag-and-Drop {#advanced-drag-n-drop}
 
 Bietet die Möglichkeit, Aufgaben per Drag-and-Drop zu erstellen und auszuwählen.
 
@@ -49,7 +49,7 @@ API: [auto_scheduling](api/config/auto_scheduling.md)
 
 Beispiel: [Auto Scheduling-Erweiterung](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
-## Kritischer Pfad
+## Kritischer Pfad {#critical-path}
 
 :::note
 Diese Erweiterung ist nur in der PRO-Version verfügbar
@@ -138,7 +138,7 @@ Artikel: [Vollbildmodus](guides/fullscreen-mode.md)
 
 Beispiel: [Vollbild](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
 
-## Gruppierung
+## Gruppierung {#grouping}
 
 :::note
 Diese Erweiterung ist nur in der PRO-Version verfügbar
@@ -194,7 +194,7 @@ API: [multiselect](api/config/multiselect.md)
 
 Beispiel: [Mehrfachauswahl und Einrücken/Ausrücken von Aufgaben](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
-## Schnellinfo
+## Schnellinfo {#quick-info}
 
 Bietet ein Popup-Fenster mit Details zur Aufgabe.
 
@@ -246,7 +246,7 @@ API: [undo](api/config/undo.md), [redo](api/config/redo.md)
 
 Beispiel: [Rückgängig/Wiederherstellen von Änderungen im Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
-## Vertikale Marker
+## Vertikale Marker {#vertical-marker}
 
 Hebt bestimmte Daten oder Datumsbereiche hervor.
 

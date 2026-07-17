@@ -24,7 +24,7 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
- 이 옵션은 **Quick Info** 확장 기능의 일부이므로, 먼저 [quick_info](guides/extensions-list.md#quickinfo) 플러그인을 활성화해야 합니다. 
+ 이 옵션은 **Quick Info** 확장 기능의 일부이므로, 먼저 [quick_info](guides/extensions-list.md#quick-info) 플러그인을 활성화해야 합니다. 
 :::
 
 ### Related Guides

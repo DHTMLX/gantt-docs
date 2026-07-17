@@ -166,7 +166,7 @@ gantt.exportToExcel({
 Beachten Sie, dass Sie keinen URL-Wert für den Parameter **data** angeben können, sondern nur ein Datensatz-Objekt.
 :::
 
-### Farben der Aufgaben zum Export hinzufügen
+### Farben der Aufgaben zum Export hinzufügen {#adding-colors-of-tasks-to-export}
 
 Sie können die Farben der Aufgaben in die exportierte Excel-Datei des Gantt-Diagramms aufnehmen, indem Sie den Wert der Eigenschaft **visual** auf *"base-colors"* setzen:
 
@@ -262,7 +262,7 @@ gantt.importFromExcel({
 ~~~
 
 
-## Export nach iCal
+## Export nach iCal {#export-to-ical}
 
 Um Daten aus dem Gantt-Diagramm in eine iCal-Zeichenfolge zu exportieren, führen Sie Folgendes aus:
 

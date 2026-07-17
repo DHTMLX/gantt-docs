@@ -14,7 +14,7 @@ Sie können sich das Video-Guide anschauen, der zeigt, wie man auf der Seite ein
 <iframe width="704" height="400" src="https://www.youtube.com/embed/D8YzyzBfyP8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-## Technik
+## Technik {#technique}
 
 Generell benötigen Sie, um Daten von der Serverseite über REST API zu laden, Folgendes:
 
@@ -690,7 +690,7 @@ gantt.createDataProcessor((entity, action, data, id) => {
 ~~~
 
 
-## Fehlerbehandlung
+## Fehlerbehandlung {#error-handling}
 
 Ein Server kann Gantt mitteilen, dass eine Aktion fehlgeschlagen ist, indem er die Antwort "action":"error" zurückgibt:
 
@@ -742,7 +742,7 @@ gantt.render();
 ~~~
 
 
-## Kaskadierte Löschung
+## Kaskadierte Löschung {#cascade-deletion}
 
 Standardmäßig löst das Löschen einer Aufgabe eine Kaskadenlöschung ihrer verschachtelten Aufgaben und der zugehörigen Links aus. Gantt sendet für jede entfernte Aufgabe und jeden entfernten Link eine *delete*-Anfrage.
 Daher müssen Sie die Datenintegrität auf dem Backend nicht separat sicherstellen; Gantt übernimmt dies relativ gut.

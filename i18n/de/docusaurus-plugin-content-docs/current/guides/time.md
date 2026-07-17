@@ -40,7 +40,7 @@ gantt.locale.labels.section_period = "Time period";
 ~~~
 
 
-## Eigenschaften
+## Eigenschaften {#properties}
 
 Die folgenden Eigenschaften sind besonders wichtig und werden typischerweise für die 'time'-Steuerung festgelegt (siehe die vollständige Liste [hier](api/config/lightbox.md)):
 
@@ -127,7 +127,7 @@ Wenn eine Eigenschaft nicht angegeben wird, übernimmt die Steuerung den Wert de
 :::
 
 
-## Sichtbarkeit der Sektion umschalten
+## Sichtbarkeit der Sektion umschalten {#switching-section-visibility}
 
 Es ist möglich, die Sichtbarkeit des Zeit-Abschnitts zu steuern, wenn Sie beim Konfigurieren der Lightbox-Sektion den Typ **type:"time_optional"** und **button: true** angeben:
 

@@ -83,7 +83,7 @@ gantt.templates.resource_cell_value = (startDate, endDate, resource, tasks, assi
 **Verwandtes Beispiel**: [Templates of the Resource diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/05_resource_usage_templates.html)
 
 
-### Ressourcen-Histogramm
+### Ressourcen-Histogramm {#resource-histogram}
 
 Diese Layout-Ansicht zur Anzeige der Ressourcen-Auslastung von Gantt umfasst die Ansichten "resourceGrid" und "resourceHistogram" für Grid bzw. Timeline.
 
@@ -206,7 +206,7 @@ resourcesStore.parse([
 Die Kapazität, die auf Ressourcenebene definiert ist, überschreibt die globale Kapazität des Histogramms für eine gegebene Ressource.
 :::
 
-## Arbeiten mit der Ressourcen-Ansicht
+## Arbeiten mit der Ressourcen-Ansicht {#working-with-resource-view-panel}
 Standardmäßig werden beide Ansichten (entweder "resourceGrid" und "resourceTimeline" oder "resourceGrid" und "resourceHistogram") mit dem Datenspeicher verbunden, der im
 [gantt.config.resource_store](api/config/resource_store.md) konfiguriert ist.
 
@@ -259,7 +259,7 @@ gantt.config.lightbox = {
 ~~~
 
 
-### Manuelle Erstellung des Datenspeichers
+### Manuelle Erstellung des Datenspeichers {#manual-creation-of-data-store}
 
 Es ist auch möglich, den Datenspeicher manuell mithilfe der [createDatastore](api/method/createdatastore.md) Methode zu initialisieren:
 
@@ -715,7 +715,7 @@ Wenn Sie Ressourcen über die *serverList* Sammlung definieren, können sie zusa
 
 Lesen Sie, wie Sie die Ressourcensteuerung des Lightboxes konfigurieren, in den Artikeln Resources control und Resource Assignments control.
 
-## Laden von Ressourcen und Ressourcenzuweisungen
+## Laden von Ressourcen und Ressourcenzuweisungen {#loading-resources-and-resource-assignments}
 
 Seit Version 8.0 können Ressourcen und Ressourcenzuweisungen in Gantt mit [gantt.parse()](api/method/parse.md) oder [gantt.load()](api/method/load.md) Methoden geladen werden:
 

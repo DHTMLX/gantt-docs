@@ -20,7 +20,7 @@ Die Zoom-Erweiterung verwendet eine Reihe von Skaleneinstellungen und ermöglich
 - <span class="subproperty">**scales**</span> - (*Scales*) - ein Array von Skalen, zwischen denen beim Zoomen innerhalb dieser Stufe gewechselt wird
 
 
-## Methoden
+## Methoden {#methods}
 
 - <span class="submethod">**init(zoomConfig): void**</span> - initialisiert die Erweiterung mit der übergebenen Konfiguration.
     - **_zoomConfig?_** - (*object*) - ein Objekt mit Konfigurationseinstellungen, das das *levels*-Array der Zoom-Stufen und eine Reihe zusätzlicher Eigenschaften enthält:
@@ -256,11 +256,13 @@ gantt.ext.zoom.init({
 gantt.ext.zoom.zoomToFit();
 ~~~
 
-- <span class="eventname">onAfterZoom</span> Ereignis
--  löst beim Wechsel der Zoom-Stufe aus. Die Argumente sind:
+## Events
+
+- **<span class="eventname">onAfterZoom</span>** - löst beim Wechsel der Zoom-Stufe aus.
+Die Argumente sind:
 <span class="eventarguments">
-    - <span class="eventargument">_level_</span> - (*number | string*) - die Nummer der Stufe
-    - <span class="eventargument">_config_</span> - (*ZoomLevel*) - die Konfiguration der Stufe
+    - **_level_** - (*number | string*) - die Nummer der Stufe
+    - **_config_** - (*ZoomLevel*) - die Konfiguration der Stufe
 </span>
 
 ~~~js

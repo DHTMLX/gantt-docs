@@ -118,7 +118,7 @@ gantt.locale.labels.section_resource_selector = "Resources";
 Начальные свойства *start_date*, *end_date* и *duration* могут иметь значение `null`. В таком случае они будут инициализированы значениями, соответствующими объекту задачи.
 :::
 
-## Конфигурация столбцов грида ресурсов во lightbox
+## Конфигурация столбцов грида ресурсов во lightbox {#configuring-resource-grid-columns-in-the-lightbox}
 
 По умолчанию конфигурация столбцов таблицы ресурсов во lightbox приведена ниже:
 

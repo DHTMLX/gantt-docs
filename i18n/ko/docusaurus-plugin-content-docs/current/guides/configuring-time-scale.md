@@ -307,7 +307,7 @@ gantt.init("gantt_here");
 [Quarter 스케일의 스텝 구성](https://docs.dhtmlx.com/gantt/samples/03_scales/03_full_year.html)
 
 
-## 높이
+## 높이 {#height}
 
 ![scale_height](/img/scale_height.png)
 
@@ -721,12 +721,12 @@ gantt.config.skip_off_time = false; /*!*/
 ![first_scale_cell_without_skip_off_time](/img/disable_skip_off_time.png)
 
 
-## 무한 스크롤
+## 무한 스크롤 {#infinite-scroll}
 
 타임라인에서 무한 스크롤을 구현하는 방법에 대한 자세한 예제는 관련 문서의 기사에서 확인할 수 있습니다. [How-to 문서의 관련 섹션](guides/how-to.md#how-to-have-an-infinite-scroll-in-the-timeline)을 참고하십시오.
 
 
-## 고정된 라벨
+## 고정된 라벨 {#sticky-labels}
 
 버전 9.0부터 시간 축 라벨은 기본적으로 스티키로 표시됩니다. 이는 셀의 너비가 라벨의 너비보다 훨씬 클 때도 스크롤 시 라벨이 보이고 뷰포트에 따라 고정되어 남아 가시성을 높여줍니다. 라벨이 셀 안에서 가운데 정렬되도록 하고 스크롤 중에도 보이지 않길 원하면, 스케일 객체의 `sticky` 속성을 `false`로 설정해 이전 동작으로 되돌릴 수 있습니다:
 

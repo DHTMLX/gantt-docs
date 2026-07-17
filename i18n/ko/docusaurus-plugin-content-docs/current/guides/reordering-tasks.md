@@ -25,7 +25,7 @@ gantt.init("gantt_here");
 
 <iframe width="676" height="400" src="https://www.youtube.com/embed/srtb3nYOb-E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## 전체 Gantt 구조 내의 드래그 앤 드롭
+## 전체 Gantt 구조 내의 드래그 앤 드롭 {#drag-n-drop-within-the-whole-gantt-structure}
 
 The [order_branch](api/config/order_branch.md) 옵션은 같은 트리 레벨 내에서 작업을 드래그할 수 있게 해줍니다.
 
@@ -64,7 +64,7 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 });
 ~~~
 
-## 대용량 데이터셋의 성능 개선
+## 대용량 데이터셋의 성능 개선 {#improving-performance-for-large-datasets}
 
 もし 당신의 Gantt에 많은 작업이 포함되어 있다면, 기본 모드의 브랜치 재정렬은 성능을 저하시킬 수 있습니다.
 속도를 높이려면 "marker" 모드를 사용할 수 있습니다.

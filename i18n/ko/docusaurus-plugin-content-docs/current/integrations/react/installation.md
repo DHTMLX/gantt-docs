@@ -67,7 +67,7 @@ npm install @dhx/react-gantt
 yarn add @dhx/react-gantt
 ~~~
 
-## 평가 패키지에서 상용 패키지로의 전환
+## 평가 패키지에서 상용 패키지로의 전환 {#moving-from-the-trial-package-to-the-commercial-one}
 
 대부분의 프로젝트는 트라이얼 패키지에서 시작하여 프로토타입이 승인되고 상용 라이선스가 준비되면 나중에 전환합니다. 두 패키지는 동일한 API를 공유하므로 전환은 대개 기계적입니다: 패키지 이름을 바꾸고 CSS import를 바꾼 다음 재설치를 수행합니다.
 

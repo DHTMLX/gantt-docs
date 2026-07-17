@@ -206,7 +206,7 @@ resourcesStore.parse([
 在资源层定义的容量会覆盖给定资源的全局直方图容量。
 :::
 
-## Working with resource view panel
+## Working with resource view panel {#shiyongziyuanshitumianban}
 
 默认情况下，两种视图（无论是 "resourceGrid" 与 "resourceTimeline" 还是 "resourceGrid" 与 "resourceHistogram"）都将绑定到由配置选项 [gantt.config.resource_store](api/config/resource_store.md) 指定的数据存储。
 
@@ -713,7 +713,7 @@ gantt.updateCollection("people", [
 
 请参阅 [Resources control](guides/resources.md) 与 [Resource Assignments control](guides/resource-assignments.md) 文章，了解如何配置弹出层中的资源控制。
 
-## 加载资源和资源分配
+## 加载资源和资源分配 {#loading-resources-and-resource-assignments}
 
 从 v8.0 起，可以使用 [gantt.parse()](api/method/parse.md) 或 [gantt.load()](api/method/load.md) 方法将资源和资源分配加载到甘特图中：
 

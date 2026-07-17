@@ -48,7 +48,7 @@ Das Exportmodul ist kostenlos, wenn Sie Gantt unter einer Lizenz [Commercial](ht
 [Read more on the usage of the export module for MS Project](guides/msp-export-module.md). 
 
 
-## Export nach MS Project
+## Export nach MS Project {#export-to-ms-project}
 
 Die Gantt-Komponente ermöglicht das Exportieren von Verknüpfungen, Aufgaben und Ressourcen nach MS Project.
 
@@ -86,7 +86,7 @@ Die Methode sendet eine Anfrage an den Remote-Dienst, der entweder eine XML-Proj
 **Zugehöriges Beispiel**: [Export data : MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
 
 
-### Export-Einstellungen
+### Export-Einstellungen {#export-settings}
 
 Die **exportToMSProject()**-Methode nimmt als Parameter ein Objekt mit mehreren Eigenschaften (alle Eigenschaften sind optional):
 
@@ -291,7 +291,7 @@ gantt.exportToMSProject({
 });
 ~~~
 
-## Import aus MS Project
+## Import aus MS Project {#import-from-ms-project}
 
 Um eine XML- oder MPP-MS-Project-Datei zu konvertieren, müssen Sie die folgende Anfrage an den Exportdienst senden:
 
@@ -382,7 +382,7 @@ die die Ressourcenliste aus der Projektdatei repräsentieren.
             - 7 Tage der Woche (von 0 - Sonntag bis 6 - Samstag), wobei 1/wahr für einen Arbeitstag steht und 0/falsch für einen Nicht-Arbeitstag
             - andere Einträge sind Daten
   
-### Import-Einstellungen
+### Import-Einstellungen {#import-settings}
 
 #### Festlegen der Dauer-Einheit
 
@@ -659,7 +659,7 @@ Wenn es Ressourcen-Zuweisungen gibt, werden diese im Array **assignments** impor
 }
 ~~~
 
-## Grenzen der Anfragesgröße und Import von großen Dateien
+## Grenzen der Anfragesgröße und Import von großen Dateien {#limits-on-request-size-and-import-of-large-files}
 
 Es gibt zwei API-Endpunkte für die MSProject-Export-/Import-Dienste:
 

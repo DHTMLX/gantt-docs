@@ -38,7 +38,7 @@ const data = {
 **Related sample**: [Projekte und Meilensteine](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 
-## Reguläre Aufgaben
+## Reguläre Aufgaben {#regular-tasks}
 
 Standardmäßig bietet dhtmlxGantt die Erstellung regulärer Aufgaben (Aufgaben mit **type="task"**).
 
@@ -72,7 +72,7 @@ Aufgaben mit **type="task"** können wie folgt charakterisiert werden:
 - Können in der Timeline ausgeblendet werden.
 
 
-## Projektaufgaben
+## Projektaufgaben {#project-tasks}
 
 Projektaufgabe ist eine Aufgabe, die beginnt, wenn ihre früheste Unteraufgabe beginnt, und endet, wenn ihre späteste Unteraufgabe endet.
 
@@ -179,7 +179,7 @@ Sie können auch [einen benutzerdefinierten Typ hinzufügen](guides/task-types.m
 
 Um ins Detail über eine Lightbox-Konfiguration zu gehen, können Sie das Kapitel [Configuring Edit Form](guides/edit-form.md) lesen.
 
-## Erstellen eines benutzerdefinierten Typs
+## Erstellen eines benutzerdefinierten Typs {#creating-a-custom-type}
 
 Alle Aufgabentypen werden im [types](api/config/types.md) Objekt definiert.
 

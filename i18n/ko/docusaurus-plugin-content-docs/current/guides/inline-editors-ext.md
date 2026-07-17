@@ -31,7 +31,7 @@ sidebar_label: "Inline Editors Extension"
 - <span class="submethod">**isChanged (): boolean**</span> - 에디터의 현재 값이 초기 값과 다른지 확인합니다
 - <span class="submethod">**isVisible (): boolean**</span> - 에디터가 열려 있는지 확인합니다
 
-### 이벤트:
+### 이벤트: {#events}
 
 - <span class="submethod">**attachEvent (name, handler): string**</span> - inlineEditors 객체에 이벤트 핸들러를 연결합니다
     - **_name_** - (*string*) - 이벤트 핸들러의 이름
