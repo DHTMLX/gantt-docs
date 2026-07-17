@@ -19,7 +19,7 @@ sidebar_label: "时间线中的额外元素"
 
 Gantt 包括一些内置元素，如基线、截止日期和时间约束。除了默认的额外元素，您也可以 [创建自定义的附加层](guides/baselines.md)。
 
-## 基线
+## 基线 {#baselines}
 
 在像甘特图这样的项目管理工具中，基线对于将计划的项目时间线与实际进度进行比较至关重要。Gantt API 提供对基线实体的内置支持，极大地简化了与这一重要元素相关的工作。
 
@@ -74,7 +74,7 @@ gantt.render();
 
 2. [创建自定义基线元素](guides/baselines.md) 以添加到时间线中。
 
-### 与任务一起加载基线
+### 与任务一起加载基线 {#loading-baselines-with-tasks}
 
 基线可以直接与任务一起加载。请查看下面的示例：
 
@@ -197,7 +197,7 @@ gantt.templates.baseline_text = function(task, baseline, index) {
 };
 ~~~
 
-## 截止日期与约束 {#jiezhiriqiyuyueshu}
+## 截止日期与约束 {#deadlines-and-constraints}
 
 在项目管理中，跟踪截止日期以及理解任务约束对于按时交付至关重要。DHTMLX Gantt 具备内置的截止日期和约束可视化，提升了有效管理项目时间线的能力。
 

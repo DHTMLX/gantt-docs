@@ -355,10 +355,10 @@ sidebar_label: "更新日志"
 - 修复了当通过[任务对象属性](guides/colouring-tasks.md#specifyingstyleinthepropertiesofataskobject)指定任务颜色时，导致任务边框和进度样式错误的回归问题
 - 恢复了 [marker_class](api/template/marker_class.md) 模板的功能
 - 恢复了 lightbox 的 [textarea](guides/textarea.md) 区块缺失的 classname
-- 修正了 [deadlines](guides/inbuilt-baselines.md#jiezhiriqiyuyueshu) 显示在任务行之外且未完全居中的问题
+- 修正了 [deadlines](guides/inbuilt-baselines.md#deadlines-and-constraints) 显示在任务行之外且未完全居中的问题
 - 确保鼠标悬停时，链接显示在其他链接之上
 - 修复了通过 [parse](api/method/parse.md) 方法加载 [baseline](guides/inbuilt-baselines.md) 时，基线日期未被计算的问题
-- 修正了常规视图和 [RTL](guides/rtl-mode.md) 视图下 [constrains](guides/inbuilt-baselines.md#jiezhiriqiyuyueshu) 的位置
+- 修正了常规视图和 [RTL](guides/rtl-mode.md) 视图下 [constrains](guides/inbuilt-baselines.md#deadlines-and-constraints) 的位置
 - 防止在链接拆分任务的部分时出现不必要的链接循环
 - 修复了 [Quick Info](guides/quick-info.md) 在 [detached mode](api/config/quick_info_detached.md) 下由于宽度增加和硬编码样式未隐藏的问题
 - 更新了 [Export API](api/method/exporttoexcel.md)，支持导出 Excel 时的树形缩进
@@ -402,7 +402,7 @@ sidebar_label: "更新日志"
 ### 更新
 
 - 更新了 [Terrace skin](guides/skins.md#terraceskin)
-- 新增了 [deadlines](guides/inbuilt-baselines.md#jiezhiriqiyuyueshu) 的默认显示
+- 新增了 [deadlines](guides/inbuilt-baselines.md#deadlines-and-constraints) 的默认显示
 - 新增了 [task constraints](guides/inbuilt-baselines.md#taskconstraints) 的默认显示
 - [皮肤源文件](guides/custom-skins.md) 现已包含在包内
 - [Undo 插件](guides/undo-redo.md) 增加了 `setUndoStack` 和 `setRedoStack` 方法，用于管理撤销/重做栈

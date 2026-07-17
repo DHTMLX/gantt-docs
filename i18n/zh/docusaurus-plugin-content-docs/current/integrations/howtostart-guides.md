@@ -35,7 +35,7 @@ sidebar_label: "如何开始使用 dhtmlxGantt"
 </table>
 
 
-## 如何在服务器端开始使用 Gantt
+## 如何在服务器端开始使用 Gantt {#how-to-start-with-gantt-on-server-side}
 
 你可以观看视频指南，演示在页面上创建甘特图并在 Node.js 平台示例中将数据加载进去。
 
