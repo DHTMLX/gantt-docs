@@ -118,17 +118,53 @@ Some properties contain nested properties of their own. When importing files wit
 
 - **ActivityCodeValues** - includes both codes and values prepared beforehand, as well as custom ones.
 - **Baseline** - a baseline captures a snapshot of the whole project, not of a standalone task, meaning a task would need a full project with all its dates rather than just a baseline. Gantt doesn't support such a configuration yet. When importing Primavera files with baselines (used only in the XML files), **Baseline** contains all the available baselines.
-- **NotesObject** - an array with note objects. Each object has the following properties: *Notes*, *NotesTopic*, *TopicID*, *UniqueID*.
 - **ExpenseItems** - a complex object with many properties, including two nested objects: **Account** and **Category**. Its full property list: *Account*, *AccountUniqueID*, *AccrueType*, *ActualCost*, *ActualUnits*, *AtCompletionCost*, *AutoComputeActuals*, *Category*, *CategoryUniqueID*, *Description*, *DocumentNumber*, *Name*, *PlannedCost*, *PlannedUnits*, *PricePerUnit*, *RemainingCost*, *RemainingUnits*, *UniqueID*, *UnitOfMeasure*, *Vendor*.
 
   - The **Account** object contains the following properties: *ID*, *Name*, *Notes*, *NotesObject*, *Parent*, *ParentUniqueID*, *SequenceNumber*, *UniqueID*.
 
   - The **Category** object contains the following properties: *Name*, *SequenceNumber*, *UniqueID*.
 
+- **NotesObject** - an array with note objects. Each object has the following properties: *Notes*, *NotesTopic*, *TopicID*, *UniqueID*.
 - **Steps** - represents the stages of a task's execution, an enumeration used later for calculations. It's an array of objects, each containing the following properties: *Complete*, *Description*, *Name*, *PercentComplete*, *SequenceNumber*, *UniqueID*, *Weight*.
 
 ### WBS-tasks
 
 Primavera P6 also has WBS-tasks (**projects** in Gantt, **Summary Tasks** in MS Project), with their own set of properties, separate from those of usual Activity tasks. Still, this is a Primavera behavior that Gantt supports: properties with matching names can be defined on both Activity tasks and WBS-tasks.
+
+## Resource properties
+
+The properties below are supported when importing resources from Primavera P6 files.
+
+<div class="msp-properties">
+| | | | |
+|---|---|---|---|
+| Active | CostRate | Name | ResourceID |
+| ActualCost | CreationDate | Notes | RoleAssignments |
+| ActualOvertimeCost | Currency | NotesObject | SequenceNumber |
+| ActualOvertimeWork | CurrencyId | OverAllocated | Shift |
+| ActualWork | DefaultUnits | OvertimeRate | ShiftUniqueId |
+| Availability | EmailAddress | Parent | StandardRate |
+| AvailableFrom | Enterprise | ParentResource | Start |
+| AvailableTo | ExpensesOnly | ParentResourceUniqueID | TaskAssignments |
+| CalculateCostsFromUnits | Finish | PercentWorkComplete | Type |
+| Calendar | GUID | PrimaryRole | UniqueID |
+| CalendarUniqueID | Generic | PrimaryRoleUniqueId | UnitOfMeasure |
+| ChildResources | ID | RemainingCost | Work |
+| Code | MaterialLabel | RemainingWork | |
+| Cost | MaxUnits | ResourceCodeValues | |
+</div>
+
+### Properties containing other properties
+
+Some properties contain nested properties of their own. When importing files with such properties, you get objects instead of plain values:
+
+- **Availability** - an array of objects with the following properties: *Start*, *End*, *Units*.
+- **CostRate** - an object with the following properties: *CostPerUse*, *StandardRate*, *OvertimeRate*, *StartDate*, *EndDate*.
+- **Currency** - the object of the assigned currency, with the following properties: *UniqueID*, *CurrencyId*, *Name*, *Symbol*, *ExchangeRate*, *DecimalSymbol*, *NumberOfDecimalPlaces*, *DigitGroupingSymbol*, *PositiveCurrencyFormat*, *NegativeCurrencyFormat*.
+- **ResourceCodeValues** - includes both codes and values prepared beforehand, as well as custom ones. Examples of the built-in codes: *PMO_Yes*, *Location*, *Contractor*, *Classification*, *Plant*, *PMO_Deps*, *Department*.
+- **RoleAssignments** - roles represent personnel job titles or skills needed to execute projects. Gantt has no standalone array for roles, so all role data is stored in **RoleAssignments** on import; on export, the export module rebuilds roles from this same property. Its objects contain the following properties: *Name*, *Proficiency*, *ResourceID*, *UniqueID*, *Notes*, *SequenceNumber*.
+- **Shift** - work hours spanning a period of time, applied to specific resources. On import, you get an object with the following properties: *Name*, *UniqueID*, *Periods*.
+  - **Periods** is an array of objects containing *Duration*, *Start*, *UniqueID*.
+- **TaskAssignments** - an array of objects representing the assigned tasks, each containing the following properties: *task_id*, *start_date*, *end_date*, *uid*, *units*.
 
 **Related sample**: [Gantt. Import and export Primavera P6 files with additional project, task and resource properties and entities](https://snippet.dhtmlx.com/z1ewe48v)
