@@ -110,7 +110,7 @@ Different Primavera file formats support different sets of properties. A propert
 
 ### ConstraintName property
 
-*ConstraintName* is a synthetic property - it doesn't exist in Primavera files. The property actually stored in files is *ConstraintType*, which returns a number (the constraint's numeric code) rather than a human-readable value, kept this way for backward compatibility. *ConstraintName* lets you import constraints using values that are understandable for humans instead: if it's set instead of *ConstraintType*, the export module recognizes it and applies the corresponding constraint type.
+*ConstraintName* is a synthetic property - it doesn't exist in Primavera files. The property actually stored in files is *ConstraintType*. The export module accepts *ConstraintType* as either a number or a string, but on import it always returns a number, for backward compatibility. *ConstraintName* lets you import constraints using values that are understandable for humans instead: if it's set instead of *ConstraintType*, the export module recognizes it and applies the corresponding constraint type.
 
 ### Properties containing other properties
 
