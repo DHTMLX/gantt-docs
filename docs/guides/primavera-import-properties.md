@@ -7,6 +7,8 @@ sidebar_label: "Properties for importing from Primavera"
 
 ## Project properties
 
+The properties below are supported when importing project-level data from Primavera P6 files.
+
 <div class="msp-properties">
 | | | | |
 |---|---|---|---|
@@ -66,83 +68,67 @@ Primavera has codes and values prepared beforehand, as well as custom ones. The 
 
 ## Tasks properties
 
+The properties below are supported when importing Activity tasks from Primavera P6 files.
+
 <div class="msp-properties">
 | | | | |
 |---|---|---|---|
-| Active | ConstraintType | LongestPath | RemainingEarlyStart |
-| ActivityCodeValues | ConstraintName | Milestone | RemainingLateFinish |
-| ActivityID | Cost | Name | RemainingLateStart |
-| ActivityLevelingPriority | CostVariance | Notes | RemainingWork |
-| ActivityPercentComplete | CreateDate | NotesObject | RemainingWorkLabor |
-| ActivityStatus | Critical | OutlineLevel | RemainingWorkNonLabor |
-| ActivityType | Duration | OutlineNumber | ResponsePending |
-| ActualCost | DurationType | OverAllocated | Resume |
-| ActualDuration | DurationVariance | OvertimeCost | SecondaryConstraintDate |
-| ActualFinish | EarlyFinish | PercentCompleteType | SecondaryConstraintType |
-| ActualStart | EarlyStart | PercentageComplete | SequenceNumber |
-| ActualWork | EffectiveCalendar | PercentageWorkComplete | Start |
-| ActualWorkLabor | Expanded | PhysicalPercentComplete | StartSlack |
-| ActualWorkNonlabor | ExpectedFinish | PlannedCost | StartVariance |
-| Baseline | ExpenseItems | PlannedDuration | Steps |
-| BaselineCost | Finish | PlannedFinish | Successors |
-| BaselineDuration | FinishSlack | PlannedStart | Summary |
-| BaselineFinish | FinishVariance | PlannedWork | SuspendDate |
-| BaselineFixedCost | FixedCost | PlannedWorkLabor | TaskMode |
-| BaselineStart | FloatPath | PlannedWorkNonlabor | TotalSlack |
-| BaselineWork | FloatPathOrder | Predecessors | Type |
-| CalendarUID | FreeSlack | PrimaryConstraint | UniqueID |
-| Calendar | GUID | PrimaryResource | UpdateNeeded |
-| CalendarUniqueID | HasChildTasks | PrimaryResourceUniqueID | WBS |
-| CanonicalActivityID | ID | Priority | Work |
-| ChildTasks | IgnoreResourceCalendar | Recurring | WorkVariance |
-| CompleteThrough | LateFinish | RemainingCost | |
-| Confirmed | LateStart | RemainingDuration | |
-| ConstraintDate | LevelingPriority | RemainingEarlyFinish | |
+| Active | ConstraintType | LongestPath | RemainingEarlyFinish |
+| ActivityCodeValues | ConstraintName | Milestone | RemainingEarlyStart |
+| ActivityID | Cost | Name | RemainingLateFinish |
+| ActivityLevelingPriority | CostVariance | Notes | RemainingLateStart |
+| ActivityPercentComplete | CreateDate | NotesObject | RemainingWork |
+| ActivityStatus | Critical | OutlineLevel | RemainingWorkLabor |
+| ActivityType | Duration | OutlineNumber | RemainingWorkNonLabor |
+| ActualCost | DurationType | OverAllocated | ResponsePending |
+| ActualDuration | DurationVariance | OvertimeCost | Resume |
+| ActualFinish | EarlyFinish | PercentComplete | SecondaryConstraintDate |
+| ActualStart | EarlyStart | PercentCompleteType | SecondaryConstraintType |
+| ActualWork | EffectiveCalendar | PercentageComplete | SequenceNumber |
+| ActualWorkLabor | Expanded | PercentageWorkComplete | Start |
+| ActualWorkNonlabor | ExpectedFinish | PhysicalPercentComplete | StartSlack |
+| Baseline | ExpenseItems | PlannedCost | StartVariance |
+| BaselineCost | Finish | PlannedDuration | Steps |
+| BaselineDuration | FinishSlack | PlannedFinish | Successors |
+| BaselineFinish | FinishVariance | PlannedStart | Summary |
+| BaselineFixedCost | FixedCost | PlannedWork | SuspendDate |
+| BaselineStart | FloatPath | PlannedWorkLabor | TaskMode |
+| BaselineWork | FloatPathOrder | PlannedWorkNonlabor | TotalSlack |
+| CalendarUID | FreeSlack | Predecessors | Type |
+| Calendar | GUID | PrimaryConstraint | UID |
+| CalendarUniqueID | HasChildTasks | PrimaryResource | UniqueID |
+| CanonicalActivityID | ID | PrimaryResourceUniqueID | UpdateNeeded |
+| ChildTasks | IgnoreResourceCalendar | Priority | WBS |
+| CompleteThrough | LateFinish | Recurring | Work |
+| Confirmed | LateStart | RemainingCost | WorkVariance |
+| ConstraintDate | LevelingPriority | RemainingDuration | |
 </div>
 
 ### Format-specific properties
 
-Different Primavera file formats support different sets of properties. If a property is available in one format, this doesn't mean it's also available in another - these are the limits of the format itself. For example, the following properties are used in the XML files, but absent in the XER files:
-
-<div class="msp-properties">
-| | |
-|---|---|
-| BaselineCost | BaselineStart |
-| BaselineDuration | BaselineWork |
-| BaselineFinish | CostVariance |
-| BaselineFixedCost | DurationVariance |
-</div>
-
-Conversely, the following properties are used in the XER files, but absent in the XML files:
-
-<div class="msp-properties">
-| | |
-|---|---|
-| FloatPath | FreeSlack |
-| FloatPathOrder | LongestPath |
-</div>
+Different Primavera file formats support different sets of properties. A property available in one format isn't guaranteed to be available in another, since this is a limitation of the file format itself. For example, *BaselineCost*, *BaselineDuration*, *BaselineFinish*, *BaselineFixedCost*, *BaselineStart*, *BaselineWork*, *CostVariance*, and *DurationVariance* are used in the XML files, but absent in the XER files. Conversely, *FloatPath*, *FloatPathOrder*, *FreeSlack*, and *LongestPath* are used in the XER files, but absent in the XML files.
 
 ### ConstraintName property
 
-The **ConstraintName** property doesn't exist in Primavera files. The **ConstraintType** property is the one actually stored in files, but it returns a number (the constraint's numeric code) rather than a human-readable value, for backward compatibility. **ConstraintName** lets you import constraints using values that are understandable for humans. If **ConstraintName** is set instead of **ConstraintType**, the export module recognizes it and sets the corresponding constraint type.
+*ConstraintName* is a synthetic property - it doesn't exist in Primavera files. The property actually stored in files is *ConstraintType*, which returns a number (the constraint's numeric code) rather than a human-readable value, kept this way for backward compatibility. *ConstraintName* lets you import constraints using values that are understandable for humans instead: if it's set instead of *ConstraintType*, the export module recognizes it and applies the corresponding constraint type.
 
 ### Properties containing other properties
 
-Some properties contain other properties inside. When importing files with such properties, objects are received instead of plain values. These properties are:
+Some properties contain nested properties of their own. When importing files with such properties, you get objects instead of plain values:
 
 - **ActivityCodeValues** - includes both codes and values prepared beforehand, as well as custom ones.
-- **Baseline** - a baseline is used for the whole project, not a standalone task - it presents a snapshot of the whole project. This means that a task should have not a baseline, but a full project with all the dates. However, Gantt doesn't support such a configuration yet. When importing Primavera files with baselines (which are used only in the XML files), the **Baseline** property contains all the possible baselines.
+- **Baseline** - a baseline captures a snapshot of the whole project, not of a standalone task, meaning a task would need a full project with all its dates rather than just a baseline. Gantt doesn't support such a configuration yet. When importing Primavera files with baselines (used only in the XML files), **Baseline** contains all the available baselines.
 - **NotesObject** - an array with note objects. Each object has the following properties: *Notes*, *NotesTopic*, *TopicID*, *UniqueID*.
-- **ExpenseItems** - a complex object that contains many different properties. It contains 2 other "objects": **Account** and **Category**. The full list of the object's properties: *Account*, *AccountUniqueID*, *AccrueType*, *ActualCost*, *ActualUnits*, *AtCompletionCost*, *AutoComputeActuals*, *Category*, *CategoryUniqueID*, *Description*, *DocumentNumber*, *Name*, *PlannedCost*, *PlannedUnits*, *PricePerUnit*, *RemainingCost*, *RemainingUnits*, *UniqueID*, *UnitOfMeasure*, *Vendor*.
+- **ExpenseItems** - a complex object with many properties, including two nested objects: **Account** and **Category**. Its full property list: *Account*, *AccountUniqueID*, *AccrueType*, *ActualCost*, *ActualUnits*, *AtCompletionCost*, *AutoComputeActuals*, *Category*, *CategoryUniqueID*, *Description*, *DocumentNumber*, *Name*, *PlannedCost*, *PlannedUnits*, *PricePerUnit*, *RemainingCost*, *RemainingUnits*, *UniqueID*, *UnitOfMeasure*, *Vendor*.
 
-  The **Account** object contains the following properties: *ID*, *Name*, *Notes*, *NotesObject*, *Parent*, *ParentUniqueID*, *SequenceNumber*, *UniqueID*.
+  - The **Account** object contains the following properties: *ID*, *Name*, *Notes*, *NotesObject*, *Parent*, *ParentUniqueID*, *SequenceNumber*, *UniqueID*.
 
-  The **Category** object contains the following properties: *Name*, *SequenceNumber*, *UniqueID*.
+  - The **Category** object contains the following properties: *Name*, *SequenceNumber*, *UniqueID*.
 
-- **Steps** - presents something like stages of a task execution. Looks like an enumeration in a table that is later used for some calculations. This property is an array with objects, each containing the following properties: *Complete*, *Description*, *Name*, *PercentComplete*, *SequenceNumber*, *UniqueID*, *Weight*.
+- **Steps** - represents the stages of a task's execution, an enumeration used later for calculations. It's an array of objects, each containing the following properties: *Complete*, *Description*, *Name*, *PercentComplete*, *SequenceNumber*, *UniqueID*, *Weight*.
 
 ### WBS-tasks
 
-Primavera P6 also has WBS-tasks (**projects** in Gantt, **Summary Tasks** in MS Project). They have their own particular properties, which aren't related to the properties of usual Activity tasks. However, it is possible to create properties with the same names both for usual Activity tasks and for projects (WBS-tasks). Gantt supports this behavior of Primavera.
+Primavera P6 also has WBS-tasks (**projects** in Gantt, **Summary Tasks** in MS Project), with their own set of properties, separate from those of usual Activity tasks. Still, this is a Primavera behavior that Gantt supports: properties with matching names can be defined on both Activity tasks and WBS-tasks.
 
 **Related sample**: [Gantt. Import and export Primavera P6 files with additional project, task and resource properties and entities](https://snippet.dhtmlx.com/z1ewe48v)
