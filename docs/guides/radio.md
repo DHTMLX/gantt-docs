@@ -10,7 +10,7 @@ A block of options that allows selecting only one of them at a time.
 ![Radio Button](/img/radiobutton_control.png)
 
 
-[Radio control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/02_radio.html)
+**Related sample**: [Radio control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/02_radio.html)
 
 
 ## Initialization
@@ -19,17 +19,17 @@ To add the **radio button** control to the lightbox, follow these steps:
 
 1) Add a section to the lightbox configuration:
 
-~~~js
+~~~js {9}
 var opts = [
-    {key: 1, label: "High"},
-    {key: 2, label: "Normal"},
-    {key: 3, label: "Low"}                                        
+    { key: 1, label: "High" },
+    { key: 2, label: "Normal" },
+    { key: 3, label: "Low" }
 ];
 
 gantt.config.lightbox.sections = [
-    {name: "description", height: 38, map_to: "text", type: "textarea", focus: true},
-    {name: "priority", height: 22, map_to: "priority", type: "radio", options: [opts]}, /*!*/
-    {name: "time", type: "duration", map_to: "auto"}
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+    { name: "priority", height: 22, map_to: "priority", type: "radio", options: [opts] },
+    { name: "time", type: "duration", map_to: "auto" }
 ];
 ~~~
 
@@ -40,7 +40,7 @@ gantt.locale.labels.section_priority = "Priority";
 ~~~
   
 
-[Radio control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/02_radio.html)
+**Related sample**: [Radio control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/02_radio.html)
 
 
 ## Properties
@@ -63,12 +63,12 @@ the following properties:
 Generally, to set values for the **radio button** control, use the [options](api/config/lightbox.md) parameter:
 
 ~~~js
-gantt.config.lightbox.sections = [        
-    {name: "priority", map_to: "priority", type: "radio", options: [
-        {key: 1, label: "High"},
-        {key: 2, label: "Normal"},
-        {key: 3, label: "Low"},
-    ]}        
+gantt.config.lightbox.sections = [
+    { name: "priority", map_to: "priority", type: "radio", options: [
+        { key: 1, label: "High" },
+        { key: 2, label: "Normal" },
+        { key: 3, label: "Low" },
+    ] }
 ];
 ~~~
 

@@ -13,16 +13,16 @@ A complex control used to set [time constraints for Gantt tasks](guides/auto-sch
 
 ![Constraint control](/img/constraint_control.png)
 
-~~~js
+~~~js {3}
 gantt.config.lightbox.sections = [
-    { name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-    { name:"constraint", type:"constraint" },  /*!*/
-    { name:"time", type:"duration", map_to:"auto" }
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+    { name: "constraint", type: "constraint" },
+    { name: "time", type: "duration", map_to: "auto" }
 ];
 ~~~
 
 
-[Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
+**Related sample**: [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
 ## Initialization
@@ -31,11 +31,11 @@ To add the **constraint** control to the lightbox, follow the steps below:
 
 1. Add a section to the lightbox configuration:
 
-~~~js
+~~~js {3}
 gantt.config.lightbox.sections = [
-    { name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-    { name:"constraint", type:"constraint" },  /*!*/
-    { name:"time", type:"duration", map_to:"auto" }
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+    { name: "constraint", type: "constraint" },
+    { name: "time", type: "duration", map_to: "auto" }
 ];
 ~~~
 
@@ -46,7 +46,7 @@ gantt.locale.labels.section_constraint = "Constraint";
 ~~~
 
 
-[Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
+**Related sample**: [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
 ## Properties

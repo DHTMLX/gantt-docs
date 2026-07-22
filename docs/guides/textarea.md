@@ -15,11 +15,11 @@ One **textarea** control is added to the lightbox by default. To add another one
 
 1) Add a section to the lightbox configuration:
 
-~~~js
+~~~js {3}
 gantt.config.lightbox.sections = [
-    {name:"description", height:38, map_to:"desc", type:"textarea",focus:true},
-    {name:"details",     height:38, map_to:"text", type:"textarea"}, /*!*/
-    {name:"time",        height:72, map_to:"auto", type:"duration"}
+    { name: "description", height: 38, map_to: "desc", type: "textarea", focus: true },
+    { name: "details",     height: 38, map_to: "text", type: "textarea" },
+    { name: "time",        height: 72, map_to: "auto", type: "duration" }
 ];
 ~~~
 

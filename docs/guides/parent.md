@@ -11,16 +11,16 @@ Everything else is identical to [Select Control](guides/select.md).
 
 ![parent_control](/img/parent_control.png)
 
-~~~js
+~~~js {3}
 gantt.config.lightbox.sections = [
-    {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-    {name:"parent", type:"parent", allow_root:"true", root_label:"No parent"}, /*!*/
-    {name:"time", height:72, type:"time", map_to:"auto"}
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+    { name: "parent", type: "parent", allow_root: "true", root_label: "No parent" },
+    { name: "time", height: 72, type: "time", map_to: "auto" }
 ];
 ~~~
 
 
-[Parent selector](https://docs.dhtmlx.com/gantt/samples/05_lightbox/08_parent_selector.html)
+**Related sample**: [Parent selector](https://docs.dhtmlx.com/gantt/samples/05_lightbox/08_parent_selector.html)
 
 
 ## Initialization 
@@ -29,11 +29,11 @@ To add the **parent** control to the lightbox, follow these steps:
 
 1) Add a section to the lightbox configuration:
 
-~~~js
+~~~js {3}
 gantt.config.lightbox.sections = [
-    {name:"description", height:38, map_to:"text", type:"textarea",focus:true},
-       {name:"parent", type:"parent", allow_root:"true", root_label:"No parent"},   /*!*/
-    {name:"time", height:72, type:"duration", map_to:"auto"}
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+    { name: "parent", type: "parent", allow_root: "true", root_label: "No parent" },
+    { name: "time", height: 72, type: "duration", map_to: "auto" }
 ];
 ~~~
   
@@ -42,9 +42,8 @@ gantt.config.lightbox.sections = [
 ~~~js
 gantt.locale.labels["section_parent"] = "Parent task";
 ~~~
-  
 
-[Parent selector](https://docs.dhtmlx.com/gantt/samples/05_lightbox/08_parent_selector.html)
+**Related sample**: [Parent selector](https://docs.dhtmlx.com/gantt/samples/05_lightbox/08_parent_selector.html)
   
 
 
@@ -68,22 +67,21 @@ The following properties are mostly important and commonly set for the **parent*
 
 To filter options presented in the **parent** control, use the **filter** property:
 
-**Filtering. Displaying only tasks of the 1st level**
-~~~js
+~~~js {3-9} title="Filtering. Displaying only tasks of the 1st level"
 gantt.config.lightbox.sections = [
-    {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-    {name:"parent", type:"parent",  filter:function(id, task){ /*!*/
-         if(task.$level > 1){         /*!*/
-            return false;     /*!*/
-        }else{  /*!*/
-            return true; /*!*/
-        } /*!*/
-    }},
-    {name:"time", height:72, type:"time", map_to:"auto"}
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+    { name: "parent", type: "parent", filter: function(id, task){
+        if (task.$level > 1) {
+            return false;
+        } else {
+            return true;
+        }
+    } },
+    { name: "time", height: 72, type: "time", map_to: "auto" }
 ];
 ~~~
 
-[Parent selector](https://docs.dhtmlx.com/gantt/samples/05_lightbox/08_parent_selector.html)
+**Related sample**: [Parent selector](https://docs.dhtmlx.com/gantt/samples/05_lightbox/08_parent_selector.html)
 
 
 The **filter** property sets a filtering function that takes 2 parameters:
@@ -101,17 +99,16 @@ and returns:
 
 To sort options presented in the **parent** control, use the **sort** property:
 
-**Sorting tasks by the title's length**
-~~~js
-function sortByLength(a,b){
+~~~js {9} title="Sorting tasks by the title's length"
+function sortByLength(a, b){
     a = a.text.length();
     b = b.text.length();
-    return a>b?1:(a<b?-1:0);
+    return a > b ? 1 : (a < b ? -1 : 0);
 };
 gantt.config.lightbox.sections = [
-    {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-    {name:"parent", type:"parent",  sort:sortByLength}, /*!*/
-    {name:"time", height:72, type:"time", map_to:"auto"}
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+    { name: "parent", type: "parent", sort: sortByLength },
+    { name: "time", height: 72, type: "time", map_to: "auto" }
 ];
 ~~~
 
@@ -125,14 +122,14 @@ The **sort** property sets a sorting function that is called for each pair of ad
 
 To set the template of options in the **parent** control, use the **template** property:
 
-~~~js
+~~~js {3-6}
 gantt.config.lightbox.sections = [
-    {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-    {name:"parent", type:"parent",  template(start,end,ev){/*!*/
-        var title = ev.id+"."+ev.text;/*!*/
-        return title;/*!*/
-    }}, /*!*/
-    {name:"time", height:72, type:"time", map_to:"auto"}
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+    { name: "parent", type: "parent", template(start, end, ev){
+        var title = ev.id + "." + ev.text;
+        return title;
+    } },
+    { name: "time", height: 72, type: "time", map_to: "auto" }
 ];
 ~~~
 
