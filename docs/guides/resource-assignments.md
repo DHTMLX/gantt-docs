@@ -23,13 +23,13 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-[Resource Assignments control](https://docs.dhtmlx.com/gantt/samples/11_resources/07_assign_multiple_resources.html)
+**Related sample**: [Resource Assignments control](https://docs.dhtmlx.com/gantt/samples/11_resources/07_assign_multiple_resources.html)
 
 You can [configure the resource grid columns of the control](#configuring-resource-grid-columns-in-the-lightbox) and provide the necessary resource options:
 
 ![Resource Assignments control options](/img/resource_assignments_control_options.png)
 
-~~~js
+~~~js {38,39}
 // resource options
 const usageMap = [
     { key: 1, label: "wood", text: "wood", unit: "box" },
@@ -67,13 +67,14 @@ const resourceLightboxConfig = {
 gantt.config.lightbox.sections = [
     { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
     { name: "time", type: "duration", map_to: "auto" },
-    { name: "resource_selector", type: "resource_selector", map_to: "auto", /*!*/
-        config: resourceLightboxConfig } /*!*/
+    { name: "resource_selector", type: "resource_selector", map_to: "auto",
+        config: resourceLightboxConfig }
 ];
 
 gantt.locale.labels.section_resource_selector = "Resources";
 ~~~
-[Resource Assignments control](https://snippet.dhtmlx.com/id54i1b3)
+
+**Related sample**: [Resource Assignments control](https://snippet.dhtmlx.com/id54i1b3)
 
 :::note
  You can also create [a custom control to assign multiple resources to a task](guides/custom-editor.md#customthirdpartyeditor).

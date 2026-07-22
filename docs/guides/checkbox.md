@@ -14,7 +14,7 @@ For example, it is helpful for:
 ![Checkbox control](/img/checkbox_control.png)
 
 
-[Checkbox control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/02_checkbox.html)
+**Related sample**: [Checkbox control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/02_checkbox.html)
 
 
 - switching [between the split and tree modes for split tasks](guides/split-tasks.md)
@@ -22,18 +22,18 @@ For example, it is helpful for:
 ![Split task checkbox](/img/split_task_checkbox.png)
 
 
-~~~js
+~~~js {3-5}
 gantt.config.lightbox.project_sections = [
-    {name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
-    {name: "split", type:"checkbox", map_to: "render", options:[    /*!*/
-        {key:"split", label:"Split Task"}                            /*!*/                        
-    ]},                                                                /*!*/
-    {name: "time", type: "duration", readonly: true, map_to: "auto"}
+    { name: "description", height: 70, map_to: "text", type: "textarea", focus: true },
+    { name: "split", type: "checkbox", map_to: "render", options: [
+        { key: "split", label: "Split Task" }
+    ] },
+    { name: "time", type: "duration", readonly: true, map_to: "auto" }
 ];
 ~~~
 
 
-[Split task](https://docs.dhtmlx.com/gantt/samples/04_customization/11_split_task.html)
+**Related sample**: [Split task](https://docs.dhtmlx.com/gantt/samples/04_customization/11_split_task.html)
 
 
 ## Initialization
@@ -42,15 +42,15 @@ To add the **checkbox** control to the lightbox, follow these steps:
 
 1) Add a section to the lightbox configuration:
 
-~~~js
+~~~js {6}
 var opts = [
-    {key:"split", label:"Split Task"}                                        
+    { key: "split", label: "Split Task" }
 ];
 
 gantt.config.lightbox.sections = [
-    {name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
-    {name: "split", type:"checkbox", map_to: "render", options:opts},            /*!*/
-    {name: "time", type: "duration", readonly: true, map_to: "auto"}
+    { name: "description", height: 70, map_to: "text", type: "textarea", focus: true },
+    { name: "split", type: "checkbox", map_to: "render", options: opts },
+    { name: "time", type: "duration", readonly: true, map_to: "auto" }
 ];
 ~~~
 
@@ -59,9 +59,8 @@ gantt.config.lightbox.sections = [
 ~~~js
 gantt.locale.labels.section_split = "Display";
 ~~~
-  
 
-[Split task](https://docs.dhtmlx.com/gantt/samples/04_customization/11_split_task.html)
+**Related sample**: [Split task](https://docs.dhtmlx.com/gantt/samples/04_customization/11_split_task.html)
 
 
 ## Properties
@@ -86,9 +85,9 @@ Generally, to set values for the **checkbox** control, use the [options](api/con
 
 ~~~js
 gantt.config.lightbox.sections = [
-    {name: "split", type:"checkbox", map_to: "render", options:[
-        {key:"split", label:"Split Task"}
-    ]}                                                                
+    { name: "split", type: "checkbox", map_to: "render", options: [
+        { key: "split", label: "Split Task" }
+    ] }
 ];
 ~~~
 

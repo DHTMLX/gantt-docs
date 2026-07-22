@@ -9,22 +9,22 @@ A drop-down list box.
 
 ![select_control](/img/select_control.png)
 
-~~~js
+~~~js {3-7}
 gantt.config.lightbox.sections = [
-    {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-    {name:"priority", height:22, map_to:"priority", type:"select", options: [ /*!*/
-        {key:1, label: "High"},                                               /*!*/
-        {key:2, label: "Normal"},                                             /*!*/
-        {key:3, label: "Low"}                                                 /*!*/
-     ]},                                                                      /*!*/
-    {name:"time", height:72, type:"duration", map_to:"auto"}
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+    { name: "priority", height: 22, map_to: "priority", type: "select", options: [
+        { key: 1, label: "High" },
+        { key: 2, label: "Normal" },
+        { key: 3, label: "Low" }
+    ] },
+    { name: "time", height: 72, type: "duration", map_to: "auto" }
 ];
 
 gantt.locale.labels.section_priority = "Priority";
 ~~~
 
 
-[Select control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
+**Related sample**: [Select control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
 
 
 ## Initialization
@@ -33,17 +33,17 @@ To add the **select** control to the lightbox, follow these steps:
 
 1) Add a section to the lightbox configuration:
 
-~~~js
+~~~js {9}
 var opts = [
-    {key:1, label: "High"},                                            
-    {key:2, label: "Normal"},                                         
-    {key:3, label: "Low"}                                            
+    { key: 1, label: "High" },
+    { key: 2, label: "Normal" },
+    { key: 3, label: "Low" }
 ];
 
 gantt.config.lightbox.sections = [
-    {name:"description", height:38, map_to:"text", type:"textarea",focus:true},
-    {name:"priority", height:22, map_to:"priority",type:"select",options:opts},      /*!*/                                                                 
-    {name:"time", height:72, type:"duration", map_to:"auto"}
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+    { name: "priority", height: 22, map_to: "priority", type: "select", options: opts },
+    { name: "time", height: 72, type: "duration", map_to: "auto" }
 ];
 ~~~
 
@@ -52,10 +52,8 @@ gantt.config.lightbox.sections = [
 ~~~js
 gantt.locale.labels.section_priority = "Priority";
 ~~~
-  
-  
 
-[Select control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
+**Related sample**: [Select control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
 
 
 ## Properties
@@ -81,12 +79,12 @@ Generally, to set values for the **select** control, use the [options](api/confi
 
 ~~~js
 gantt.config.lightbox.sections = [
-    { name:"priority",height:22, map_to:"priority",type:"select",
-      options: [ 
-        {key:1, label: "High"},                                               
-        {key:2, label: "Normal"},                                             
-        {key:3, label: "Low"}                                                
-    ]}                                                                    
+    { name: "priority", height: 22, map_to: "priority", type: "select",
+      options: [
+        { key: 1, label: "High" },
+        { key: 2, label: "Normal" },
+        { key: 3, label: "Low" }
+    ] }
 ];
 ~~~
 
@@ -100,14 +98,14 @@ Items in the [options](api/config/lightbox.md) parameter have 2 mandatory proper
 
 To populate the control from the server, set the [options](api/config/lightbox.md) option to the value returned by the [serverList](api/method/serverlist.md) method:
 
-~~~js
+~~~js {4,6}
 gantt.config.lightbox.sections = [
-    {name:"description", ...},
-    { name:"priority",map_to:"priority",type:"select",
-        options:gantt.serverList("priority")}, /*!*/
-    {name:"category", map_to:"category", type:"select", 
-        options:gantt.serverList("category")}, /*!*/
-    {name:"time", ...}
+    { name: "description", ... },
+    { name: "priority", map_to: "priority", type: "select",
+        options: gantt.serverList("priority") },
+    { name: "category", map_to: "category", type: "select",
+        options: gantt.serverList("category") },
+    { name: "time", ... }
 ];
 gantt.init("gantt_here");
 gantt.load("/data");
@@ -115,7 +113,7 @@ gantt.load("/data");
 
 The output of the **/data** url is the following:
 
-~~~js
+~~~js {11}
 {
   "tasks":[
     {"id":1,"text":"Project #2","start_date":"01-04-2020","duration":18,"parent":0},
@@ -126,7 +124,7 @@ The output of the **/data** url is the following:
     {"id":1,"source":1,"target":2,"type":"1"},
     {"id":2,"source":2,"target":3,"type":"0"}
   ],
-  "collections": { /*!*/
+  "collections": {
     "priority":[
         {"value":"1","label":"Low"},
         {"value":"2","label":"Medium"},
