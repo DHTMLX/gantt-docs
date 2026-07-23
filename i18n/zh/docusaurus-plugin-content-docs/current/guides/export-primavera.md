@@ -459,7 +459,7 @@ gantt.importFromPrimaveraP6({
 #### 获取任务属性
 
 要获取任务字段，可以向服务器发送带有必要字段的 **taskProperties** 输入。
-它将 [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 的任意属性提取到输出中的任务属性。下面是 [properties](guides/primavera-import-properties.md#tasks-properties) 的支持列表：
+它将 [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 的任意属性提取到输出中的任务属性。下面是 [properties](guides/primavera-import-properties.md#task-properties) 的支持列表：
 
  - **taskProperties** - 指定要导入的额外任务属性数组。
 
