@@ -153,7 +153,7 @@ gantt.exportToMSProject({
 ~~~
 
 该对象的属性对应 [Task 实体](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 的相应属性，
-这里是支持的 [属性列表](guides/msp-import-properties.md#tasks-properties)。
+这里是支持的 [属性列表](guides/msp-import-properties.md#task-properties)。
 属性可以包含固定值或在导出调用时对每个任务执行的函数。
 
 - **data** - (object) 允许设置一个自定义数据源，将在输出的甘特图中显示
@@ -439,7 +439,7 @@ gantt.importFromMSProject({
 #### 获取任务属性
 
 要获取任务字段，可以向服务器发送带有所需字段数组的 **taskProperties** 输入。
-它将 [Task 实体](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 的任意属性提取出来。以下是支持的 [属性列表](guides/msp-import-properties.md#tasks-properties)：
+它将 [Task 实体](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 的任意属性提取出来。以下是支持的 [属性列表](guides/msp-import-properties.md#task-properties)：
 
  - **taskProperties** - 指定要导入的附加任务属性数组。
 

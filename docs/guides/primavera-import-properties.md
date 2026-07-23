@@ -5,6 +5,8 @@ sidebar_label: "Properties for importing from Primavera"
 
 # Properties for importing from Primavera
 
+This article lists the project, task, and resource properties that Gantt supports when importing Primavera P6 files (XML and XER), along with format-specific limitations and properties that require special handling.
+
 ## Project properties
 
 The properties below are supported when importing project-level data from Primavera P6 files.
@@ -47,26 +49,14 @@ The properties below are supported when importing project-level data from Primav
 | CriticalActivityType | FiscalYearStartMonth | PlannedStart | |
 </div>
 
+### Complex properties
 
-:::info
-The **CustomProperties** and **ProjectCodeValues** properties can contain other properties. For Primavera files, the **CustomProperties** property contains all the custom properties as well as **ProjectCodeValues**. The **ProjectCodeValues** property can also be used for grouping tasks and projects by categories.
-:::
+Some properties contain nested properties of their own. When importing files with such properties, you get objects instead of plain values:
 
-Primavera has codes and values prepared beforehand, as well as custom ones. The built-in ones are:
+- **CustomProperties** - contains all the custom properties, as well as **ProjectCodeValues**.
+- **ProjectCodeValues** - includes both codes and values prepared beforehand, as well as custom ones; it can also be used for grouping tasks and projects by categories. Examples of the built-in codes: *Business Process*, *Business Segment*, *Capacity Analysis*, *Current Phase*, *Estimated Project Size*, *Financial Rating*, *IT Investment Class*, *Location*, *Priority*, *Product Line*, *Project Manager*, *Project Status*, *Project Type*, *Resource Rating*, *Risk Rating*, *Sponsor*, *Stage-Gate Gate*, *Stage-Gate Stage*, *Strategic Objective*, *Strategic Rating*, *Technology Rating*.
 
-<div class="msp-properties">
-| | | |
-|---|---|---|
-| Business Process | Location | Risk Rating |
-| Business Segment | Priority | Sponsor |
-| Capacity Analysis | Product Line | Stage-Gate Gate |
-| Current Phase | Project Manager | Stage-Gate Stage |
-| Estimated Project Size | Project Status | Strategic Objective |
-| Financial Rating | Project Type | Strategic Rating |
-| IT Investment Class | Resource Rating | Technology Rating |
-</div>
-
-## Tasks properties
+## Task properties
 
 The properties below are supported when importing Activity tasks from Primavera P6 files.
 
@@ -112,23 +102,59 @@ Different Primavera file formats support different sets of properties. A propert
 
 *ConstraintName* is a synthetic property - it doesn't exist in Primavera files. The property actually stored in files is *ConstraintType*. The export module accepts *ConstraintType* as either a number or a string, but on import it always returns a number, for backward compatibility. *ConstraintName* lets you import constraints using values that are understandable for humans instead: if it's set instead of *ConstraintType*, the export module recognizes it and applies the corresponding constraint type.
 
-### Properties containing other properties
+### Complex properties
 
 Some properties contain nested properties of their own. When importing files with such properties, you get objects instead of plain values:
 
 - **ActivityCodeValues** - includes both codes and values prepared beforehand, as well as custom ones.
 - **Baseline** - a baseline captures a snapshot of the whole project, not of a standalone task, meaning a task would need a full project with all its dates rather than just a baseline. Gantt doesn't support such a configuration yet. When importing Primavera files with baselines (used only in the XML files), **Baseline** contains all the available baselines.
-- **NotesObject** - an array with note objects. Each object has the following properties: *Notes*, *NotesTopic*, *TopicID*, *UniqueID*.
 - **ExpenseItems** - a complex object with many properties, including two nested objects: **Account** and **Category**. Its full property list: *Account*, *AccountUniqueID*, *AccrueType*, *ActualCost*, *ActualUnits*, *AtCompletionCost*, *AutoComputeActuals*, *Category*, *CategoryUniqueID*, *Description*, *DocumentNumber*, *Name*, *PlannedCost*, *PlannedUnits*, *PricePerUnit*, *RemainingCost*, *RemainingUnits*, *UniqueID*, *UnitOfMeasure*, *Vendor*.
 
   - The **Account** object contains the following properties: *ID*, *Name*, *Notes*, *NotesObject*, *Parent*, *ParentUniqueID*, *SequenceNumber*, *UniqueID*.
 
   - The **Category** object contains the following properties: *Name*, *SequenceNumber*, *UniqueID*.
 
+- **NotesObject** - an array with note objects. Each object has the following properties: *Notes*, *NotesTopic*, *TopicID*, *UniqueID*.
 - **Steps** - represents the stages of a task's execution, an enumeration used later for calculations. It's an array of objects, each containing the following properties: *Complete*, *Description*, *Name*, *PercentComplete*, *SequenceNumber*, *UniqueID*, *Weight*.
 
 ### WBS-tasks
 
 Primavera P6 also has WBS-tasks (**projects** in Gantt, **Summary Tasks** in MS Project), with their own set of properties, separate from those of usual Activity tasks. Still, this is a Primavera behavior that Gantt supports: properties with matching names can be defined on both Activity tasks and WBS-tasks.
+
+## Resource properties
+
+The properties below are supported when importing resources from Primavera P6 files.
+
+<div class="msp-properties">
+| | | | |
+|---|---|---|---|
+| Active | CostRate | Name | ResourceID |
+| ActualCost | CreationDate | Notes | RoleAssignments |
+| ActualOvertimeCost | Currency | NotesObject | SequenceNumber |
+| ActualOvertimeWork | CurrencyId | OverAllocated | Shift |
+| ActualWork | DefaultUnits | OvertimeRate | ShiftUniqueId |
+| Availability | EmailAddress | Parent | StandardRate |
+| AvailableFrom | Enterprise | ParentResource | Start |
+| AvailableTo | ExpensesOnly | ParentResourceUniqueID | TaskAssignments |
+| CalculateCostsFromUnits | Finish | PercentWorkComplete | Type |
+| Calendar | GUID | PrimaryRole | UniqueID |
+| CalendarUniqueID | Generic | PrimaryRoleUniqueId | UnitOfMeasure |
+| ChildResources | ID | RemainingCost | Work |
+| Code | MaterialLabel | RemainingWork | |
+| Cost | MaxUnits | ResourceCodeValues | |
+</div>
+
+### Complex properties
+
+Some properties contain nested properties of their own. When importing files with such properties, you get objects instead of plain values:
+
+- **Availability** - an array of objects with the following properties: *Start*, *End*, *Units*.
+- **CostRate** - an object with the following properties: *CostPerUse*, *StandardRate*, *OvertimeRate*, *StartDate*, *EndDate*.
+- **Currency** - an object representing the specified currency, with the following properties: *UniqueID*, *CurrencyId*, *Name*, *Symbol*, *ExchangeRate*, *DecimalSymbol*, *NumberOfDecimalPlaces*, *DigitGroupingSymbol*, *PositiveCurrencyFormat*, *NegativeCurrencyFormat*.
+- **ResourceCodeValues** - includes both codes and values prepared beforehand, as well as custom ones. Examples of the built-in codes: *PMO_Yes*, *Location*, *Contractor*, *Classification*, *Plant*, *PMO_Deps*, *Department*.
+- **RoleAssignments** - contains roles that represent personnel job titles or skills needed to execute projects. Gantt has no standalone array for roles, so all role data is stored in **RoleAssignments** on import; on export, the export module rebuilds roles from this same property. Its objects contain the following properties: *Name*, *Proficiency*, *ResourceID*, *UniqueID*, *Notes*, *SequenceNumber*.
+- **Shift** - defines work hours spanning a period of time, applied to specific resources. On import, you get an object with the following properties: *Name*, *UniqueID*, *Periods*.
+  - The **Periods** array includes objects that contain the following properties: *Duration*, *Start*, *UniqueID*.
+- **TaskAssignments** - an array of objects representing the assigned tasks, each containing the following properties: *task_id*, *start_date*, *end_date*, *uid*, *units*.
 
 **Related sample**: [Gantt. Import and export Primavera P6 files with additional project, task and resource properties and entities](https://snippet.dhtmlx.com/z1ewe48v)

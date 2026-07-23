@@ -168,7 +168,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-이 객체의 속성은 [Task 엔티티](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))의 해당 속성과 대응합니다. 지원되는 [속성들](guides/primavera-import-properties.md#tasks-properties) 목록은 여기에 있습니다.
+이 객체의 속성은 [Task 엔티티](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))의 해당 속성과 대응합니다. 지원되는 [속성들](guides/primavera-import-properties.md#task-properties) 목록은 여기에 있습니다.
 속성은 고정 값이거나 export 호출 시 각 작업에 대해 실행될 함수일 수 있습니다.
 
 - **data** - (object) 출력 Gantt 차트에 표시될 사용자 정의 데이터 소스를 설정합니다.
@@ -453,7 +453,7 @@ gantt.importFromPrimaveraP6({
 #### 작업 속성 얻기
 
 작업 필드를 얻으려면 **taskProperties** 입력에 필요한 필드 배열을 서버로 보낼 수 있습니다.
-이는 [Task 엔티티](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))의 임의 속성을 추출합니다. 지원되는 [속성들](guides/primavera-import-properties.md#tasks-properties) 목록은 아래와 같습니다:
+이는 [Task 엔티티](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))의 임의 속성을 추출합니다. 지원되는 [속성들](guides/primavera-import-properties.md#task-properties) 목록은 아래와 같습니다:
 
  - **taskProperties** - 가져올 추가 작업 속성의 배열을 지정합니다.
 

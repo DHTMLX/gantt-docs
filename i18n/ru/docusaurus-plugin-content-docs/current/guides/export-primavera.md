@@ -169,7 +169,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-Свойства этого объекта соответствуют соответствующим свойствам [Task entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)), ниже приведен список поддерживаемых [properties](guides/primavera-import-properties.md#tasks-properties). Свойства могут содержать либо фиксированные значения, либо функции, которые будут вызываться для каждой задачи в наборе данных при вызове экспорта.
+Свойства этого объекта соответствуют соответствующим свойствам [Task entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)), ниже приведен список поддерживаемых [properties](guides/primavera-import-properties.md#task-properties). Свойства могут содержать либо фиксированные значения, либо функции, которые будут вызываться для каждой задачи в наборе данных при вызове экспорта.
 
 - **data** - (object) позволяет задать пользовательский источник данных, который будет представлен в выходной диаграмме Gantt. 
 
@@ -457,7 +457,7 @@ gantt.importFromPrimaveraP6({
 
 #### Получение свойств задач
 
-Чтобы получить поля задач, можно отправить на сервер входной параметр **taskProperties** с массивом необходимых полей. Он извлекает произвольные свойства сущностей [Task](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Ниже приведен список поддерживаемых [свойств](guides/primavera-import-properties.md#tasks-properties):
+Чтобы получить поля задач, можно отправить на сервер входной параметр **taskProperties** с массивом необходимых полей. Он извлекает произвольные свойства сущностей [Task](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Ниже приведен список поддерживаемых [свойств](guides/primavera-import-properties.md#task-properties):
 
  - **taskProperties** - указывает массив дополнительных свойств задач для импорта.
 
