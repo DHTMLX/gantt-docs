@@ -41,7 +41,7 @@ Um zu testen, wie es funktioniert, können Sie die folgende URL öffnen: **http:
 
 Oder öffnen Sie die Hauptseite und klicken Sie auf den Link Test: **http://localhost:3200**.
 
-## Verwendung des Servers ohne grafische Oberfläche
+## Verwendung des Servers ohne grafische Oberfläche {#using-server-without-graphical-interface}
 
 Wenn Sie das Exportmodul auf einem Headless-Server verwenden möchten, müssen Sie zusätzliche Komponenten installieren. Hier ist der Befehl für Debian-basierte Distributionen:
 

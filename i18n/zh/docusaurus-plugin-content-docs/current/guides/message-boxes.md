@@ -16,7 +16,7 @@ sidebar_label: "弹出消息与模态对话框"
 - [Modalbox](#modal)
 
 
-## 基本弹出消息
+## 基本弹出消息 {#basic-popup-message}
 
 要创建一个基本模态消息框，请使用 [gantt.message](api/method/message.md) 方法。该方法的必选参数是消息文本：
 
@@ -101,7 +101,7 @@ gantt.message.hide("myBox");
 ~~~
 
 
-## 模态消息框
+## 模态消息框 {#modal-message-boxes}
 
 模态消息框会阻塞父应用的工作，直到执行必要的操作（通常是按钮点击）。单击按钮时会关闭它们，若有回调函数则会执行。
 
@@ -196,7 +196,7 @@ gantt.modalbox({
 ~~~
 
 
-### 配置 modalbox 按钮
+### 配置 modalbox 按钮 {#configuring-modalbox-buttons}
 
 定义 modalbox 按钮配置有两种主要方式：
 
@@ -395,7 +395,7 @@ gantt.modalbox({
 ~~~
 
 
-## 样式
+## 样式 {#styling}
 
 对于任何类型的消息框，你都可以定义自定义样式以实现所需外观。通常，通过 *type* 参数来指定合适的 CSS 类：你定义一个 CSS 类并将该参数设置为它的名称。
 

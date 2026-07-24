@@ -437,5 +437,5 @@ import DOMPurify from "dompurify";
 <ReactGantt htmlTemplatePolicy={{ mode: "sanitize", sanitize: (html) => DOMPurify.sanitize(html) }} />
 ~~~
 
-See [Migration notes](migration.md#91---92) for more details.
+See [Migration notes](migration.md#91---100) for more details.
 

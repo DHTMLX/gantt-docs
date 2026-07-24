@@ -128,7 +128,7 @@ const tasks = [
 
 **관련 예제**: [Per-child placement of split subtasks](https://docs.dhtmlx.com/gantt/samples/04_customization/26_custom_child_split_tasks.html)
 
-## 분할 작업 필터링
+## 분할 작업 필터링 {#filtering-split-tasks}
 
 그리드에 렌더링된 분할 작업의 서브태스크를 필터링하려면 [`onBeforeSplitTaskDisplay`](api/event/onbeforesplittaskdisplay.md) 이벤트를 적용하고 다음을 반환합니다:
 

@@ -18,16 +18,16 @@ A select box for changing the [type of a task](guides/task-types.md).
 
 ![typeselect_control](/img/typeselect_control.png)
 
-~~~js
+~~~js {3}
 gantt.config.lightbox.sections = [
-    {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-    {name: "type", type: "typeselect", map_to: "type"},                             /*!*/
-    {name: "time", height: 72, type: "duration", map_to: "auto"}
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+    { name: "type", type: "typeselect", map_to: "type" },
+    { name: "time", height: 72, type: "duration", map_to: "auto" }
 ];
 ~~~
 
 
-[Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
+**Related sample**: [Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 
 ## Initialization
@@ -35,16 +35,16 @@ gantt.config.lightbox.sections = [
 
 To add the **typeselect** control to the lightbox, just add a section to the lightbox configuration as in:
 
-~~~js
+~~~js {3}
 gantt.config.lightbox.sections = [
-    {name:"description", height:38, map_to:"text", type:"textarea",focus:true},
-    {name: "type", type: "typeselect", map_to: "type"},                             /*!*/
-    {name: "time", height: 72, type: "duration", map_to: "auto"}
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+    { name: "type", type: "typeselect", map_to: "type" },
+    { name: "time", height: 72, type: "duration", map_to: "auto" }
 ];
 ~~~
 
 
-[Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
+**Related sample**: [Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 
 - [Each type of a task has its lightbox](guides/task-types.md#specificlightboxpertasktype). You can create a new type of tasks and define a specific structure of the lightbox for this type.

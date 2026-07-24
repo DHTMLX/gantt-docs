@@ -127,7 +127,7 @@ Als Objekt hat **map_to** 3 Eigenschaften:
 Wenn eine Eigenschaft nicht angegeben ist, übernimmt das Steuerelement den Wert der entsprechenden obligatorischen Datumseigenschaft.
 :::
 
-## Sichtbarkeit des Abschnitts umschalten
+## Sichtbarkeit des Abschnitts umschalten {#switching-section-visibility}
 
 Es ist möglich, die Sichtbarkeit des Dauer-Abschnitts zu steuern, wenn Sie beim Konfigurieren des Abschnitts für die Lightbox den Typ auf **type:"duration_optional"** und **button: true** setzen:
 

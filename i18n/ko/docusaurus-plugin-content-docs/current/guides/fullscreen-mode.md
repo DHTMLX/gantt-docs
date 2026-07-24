@@ -127,7 +127,7 @@ gantt.ext.fullscreen.getFullscreenElement();
 
 기본적으로 **getFullscreenElement()** 메서드는 Gantt 차트의 HTML 컨테이너를 반환합니다. 이 메서드를 [헤더/툴바가 있는 전체 화면 모드로 gannt를 확장하는 것](guides/fullscreen-mode.md#gantt-with-the-headertoolbar-in-the-fullscreen)으로 확장하도록 재정의할 수 있습니다.
 
-## 헤더/툴바를 포함한 전체 화면의 Gantt
+## 헤더/툴바를 포함한 전체 화면의 Gantt {#gantt-with-the-headertoolbar-in-the-fullscreen}
 
 Gantt API는 *fullscreen* 객체의 **getFullscreenElement()** 메서드를 통해 Gantt를 전체 화면 모드로 확장하는 기능을 제공합니다:
 

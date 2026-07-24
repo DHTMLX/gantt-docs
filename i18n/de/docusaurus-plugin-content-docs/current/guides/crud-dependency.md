@@ -68,7 +68,7 @@ Um das Gantt-Diagramm von allen Aufgaben und Verknüpfungen zu bereinigen, rufen
 gantt.clearAll();
 ~~~
 
-## Bearbeiten von Verknüpfungswerten in der UI
+## Bearbeiten von Verknüpfungswerten in der UI {#editing-link-values-from-ui}
 
 Es gibt kein integriertes UI, mit dem der Benutzer den lag-Wert oder andere Eigenschaften der Verknüpfung bearbeiten kann. Wenn Sie also eine UI benötigen, müssen Sie sie manuell implementieren.
 

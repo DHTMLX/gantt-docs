@@ -270,7 +270,7 @@ gantt.parse({
 
 자세한 내용과 예제는 [Data Loading - Loading Task Dates](guides/loading.md#loadingtaskdates)를 참조하십시오.
 
-## 사용자 정의 속성
+## 사용자 정의 속성 {#custom-properties}
 
 모든 데이터 타입은 `[customProperty: string]: any`를 통한 사용자 정의 속성을 지원합니다. 로딩 후 클라이언트 측에서 사용자 정의 속성은 보존되며 템플릿, 열, 편집기 및 백엔드 저장소에서 사용할 수 있습니다.
 

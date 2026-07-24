@@ -79,7 +79,7 @@ gantt.render();
 
 2. [타임라인에 추가하는 커스텀 기준선 요소 생성](guides/baselines.md) 
 
-### 작업과 함께 로딩되는 기준선
+### 작업과 함께 로딩되는 기준선 {#loading-baselines-with-tasks}
 
 기준선은 작업과 함께 직접 로드될 수 있습니다. 아래 예제를 확인하십시오:
 
@@ -201,7 +201,7 @@ gantt.templates.baseline_text = function(task, baseline, index) {
 };
 ~~~
 
-## 마감 기한 및 제약
+## 마감 기한 및 제약 {#deadlines-and-constraints}
 
 프로젝트 관리에서 마감 기한을 추적하고 작업 제약 조건을 이해하는 것은 제때에 Delivery를 달성하는 데 매우 중요합니다. 
 DHTMLX Gantt는 마감 기한과 제약에 대한 내장 시각화를 제공하여 프로젝트 타임라인 관리 능력을 효과적으로 향상시킵니다.
@@ -243,7 +243,7 @@ gantt.config.deadlines = false;
 
 gantt.config.deadlines 구성 옵션은 작업에 대한 마감 기한 요소의 표시를 활성화하거나 비활성화합니다. 활성화되면 Gantt는 **task.deadline** 속성을 확인하고 유효한 날짜가 포함되어 있으면 타임라인에 마감 기한 요소가 표시됩니다.
 
-### 작업 제약
+### 작업 제약 {#task-constraints}
 
 버전 9.0부터, 자동 스케줄링이 활성화되고 제약 모드에서 작동하는 경우([auto_scheduling_compatibility](api/config/auto_scheduling_compatibility.md)가 *false*로 설정되어 있을 때), Gantt는 차트에 제약 날짜를 자동으로 표시합니다.
 

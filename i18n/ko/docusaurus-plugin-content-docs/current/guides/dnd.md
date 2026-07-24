@@ -23,7 +23,7 @@ sidebar_label: "타임라인에서의 작업 드래그"
 5. [최소 작업 지속 시간 설정](#setting-minimal-task-duration)
 6. [작업 드래그 중 자동 스크롤](#autoscrollduringtasksdragging)
 
-## 특정 작업의 드래그 거부
+## 특정 작업의 드래그 거부 {#denying-dragging-of-specific-tasks}
 
 특정 작업의 드래그를 거부하려면 [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) 이벤트를 사용합니다:
 
@@ -36,7 +36,7 @@ gantt.attachEvent("onBeforeTaskDrag", (taskId, dragMode, event) => {
 });
 ~~~
 
-## 특정 날짜에서 벗어난 드래그 금지
+## 특정 날짜에서 벗어난 드래그 금지 {#denying-dragging-tasks-out-of-specific-dates}
 
 특정 날짜에서 벗어나 드래그하는 것을 거부하려면 [onTaskDrag](api/event/ontaskdrag.md) 이벤트를 사용합니다.
 
@@ -91,7 +91,7 @@ gantt.attachEvent("onTaskDrag", (taskId, dragMode, task, originalTask) => {
 });
 ~~~
 
-## 부모와 함께 자식 드래그하기
+## 부모와 함께 자식 드래그하기 {#dragging-children-together-with-the-parent}
 
 부모 작업을 드래그할 때 자식도 함께 드래그되도록 하려면 [onTaskDrag](api/event/ontaskdrag.md) 이벤트를 사용합니다(위의 이벤트에 대해 더 자세히 보려면 참조):
 
@@ -154,7 +154,7 @@ gantt.config.drag_project = true;
 의존 작업을 함께 이동시키는 여러 가지 방법이 있습니다.
 이 모든 방법에 대해서는 별도의 기사 [Dragging Tasks Together with Their Dependent Tasks]에서 확인할 수 있습니다. (guides/dragging-dependent-tasks.md)
 
-## 최소 작업 지속 시간 설정
+## 최소 작업 지속 시간 설정 {#setting-minimal-task-duration}
 
 최소 작업 지속 시간은 [min_duration](api/config/min_duration.md) 설정으로 지정할 수 있습니다.
 
@@ -191,7 +191,7 @@ gantt.config.autoscroll_speed = 50;
 gantt.init("gantt_here");
 ~~~
 
-## 특정 작업의 크기 조정 비활성화
+## 특정 작업의 크기 조정 비활성화 {#disabling-resize-of-specific-tasks}
 
 특정 작업의 크기 조정을 방지하고 싶다면 두 가지 방법이 있습니다:
 
@@ -227,7 +227,7 @@ gantt.attachEvent("onBeforeTaskDrag", (taskId, dragMode, event) => {
 });
 ~~~
 
-## 어느 쪽에서 크기 조정이 이루어지는가
+## 어느 쪽에서 크기 조정이 이루어지는가 {#which-side-of-a-task-is-being-resized}
 
 드래그 앤 드롭의 ["resize"](api/event/onbeforetaskdrag.md) 모드는 사용자가 시작일(start_date) 또는 종료일(end_date)에서 작업의 크기를 조정한다는 뜻입니다.
 
@@ -246,7 +246,7 @@ gantt.attachEvent("onBeforeTaskDrag", (taskId, dragMode, event) => {
 });
 ~~~
 
-## 시작 날짜 또는 종료 날짜의 크기 조정 비활성화
+## 시작 날짜 또는 종료 날짜의 크기 조정 비활성화 {#disabling-resize-of-the-start-or-the-end-date-of-a-task}
 
 크기 조정 핸들을 아래 선택자로 찾을 수 있습니다:
 

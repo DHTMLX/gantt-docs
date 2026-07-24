@@ -5,7 +5,11 @@ sidebar_label: "Properties for importing from MS Project"
 
 # Properties for importing from MS Project
 
+This article lists the project, task, and resource properties that Gantt supports when importing MS Project files (MPP and XML), along with format-specific limitations and properties that require special handling.
+
 ## Project properties
+
+The properties below are supported when importing project-level data from MS Project files.
 
 <div class="msp-properties">
 | | | | |
@@ -28,7 +32,9 @@ sidebar_label: "Properties for importing from MS Project"
 | CurrentDate | HonorConstraints | ProjectExternallyEdited | |
 </div>
 
-## Tasks properties
+## Task properties
+
+The properties below are supported when importing tasks from MS Project files.
 
 <div class="msp-properties">
 | | | | |
@@ -101,20 +107,20 @@ There are also the following supported task properties:
 | Text30 | | | | | | | | |
 </div>
 
-### Important notes
+### Format-specific properties
 
 Pay attention that some of the properties are received only from the MPP files, as these properties aren't saved in XML files.
 Thus, if you save an MPP file into the XML format, and then open it in MS Project, there won't be the properties in question as well. For example, all the OutlineCode properties work in this way: despite the possibility to select values from the list, the values saved in an MPP file will be empty in an XML file.
 
 Some properties are calculated based on other properties, e.g. CV% and SV%, so files don't have these values. To make it more convenient, we've added calculations on the side of the export module. That's why on importing XML files the mentioned properties will have values, but they may differ from the result of exporting files and opening them in MS Project.
 
+### ConstraintName property
+
+*ConstraintName* is a synthetic property - it doesn't exist in MS Project files. The property actually stored in files is *ConstraintType*. The export module accepts *ConstraintType* as either a number or a string, but on import it always returns a number, for backward compatibility. *ConstraintName* lets you import constraints using values that are understandable for humans instead: if it's set instead of *ConstraintType*, the export module recognizes it and applies the corresponding constraint type.
+
 ## Resource properties
 
-:::info
-Some of the properties can be received only from MPP-files, while others - only from XML-files. 
-
-Some of the properties are calculated based on other properties, so if some of the required properties aren't specified during the import, they will have different values.
-:::
+The properties below are supported when importing resources from MS Project files.
 
 <div class="msp-properties">
 | | | | |
@@ -160,6 +166,20 @@ Some of the properties are calculated based on other properties, so if some of t
 | Baseline6BudgetCost | CostRateD | OvertimeRateUnits | |
 </div>
 
+### Format-specific properties
+
+Some of the properties can be received only from MPP files, while others - only from XML files.
+
+Some properties are calculated based on other properties, so if some of the required properties aren't specified during the import, they will have different values.
+
+### Complex properties
+
+Some properties contain nested properties of their own. When importing files with such properties, you get objects instead of plain values:
+
+- **Availability** - an array of objects with the following properties: *Start*, *End*, *Units*.
+- **CostRateA** through **CostRateE** - MS Project supports up to five cost rate tables per resource. Each is an object with the following properties: *CostPerUse*, *StandardRate*, *OvertimeRate*, *StartDate*, *EndDate*.
+- **TaskAssignments** - an array of objects representing the assigned tasks, each containing the following properties: *task_id*, *start_date*, *end_date*, *uid*, *units*.
+
 There are more supported resource properties:
 
 <div class="msp-ext-properties">
@@ -198,3 +218,5 @@ There are more supported resource properties:
 | Text30 | | | | | | | | | |
 
 </div>
+
+**Related sample**: [Gantt. Import and export MSP files with additional and extended task and resource properties](https://snippet.dhtmlx.com/rveo6ukz)

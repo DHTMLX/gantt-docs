@@ -46,7 +46,7 @@ You can take a look at the video guide that shows how to implement inline editin
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/0rIPrC0GtME" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## Типы редакторов
+## Типы редакторов {#types-of-editors}
 
 Встроенные редакторы хранятся в конфигурационном объекте [editor_types](api/config/editor_types.md).
 
@@ -429,7 +429,7 @@ const editors = {
 
 **Related sample** [Built-in predecessor editor](https://snippet.dhtmlx.com/xz6192wd)
 
-## Режимы инлайн-редактирования
+## Режимы инлайн-редактирования {#inline-editing-modes}
 
 ### Базовое инлайн-редактирование
 

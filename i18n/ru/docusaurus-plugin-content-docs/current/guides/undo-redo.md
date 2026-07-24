@@ -141,7 +141,7 @@ console.log(task.text);
 
 Подробности о методе **saveState()** смотрите в статьe [Расширение Undo](guides/undo-ext.md).
 
-## Настройка функциональности Undo
+## Настройка функциональности Undo {#configuring-the-undo-functionality}
 
 
 Существует несколько настроек, которые помогают подстроить операцию Undo.

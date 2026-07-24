@@ -7,7 +7,7 @@ sidebar_label: "CSS-Dokumentation"
 
 Dieser Artikel zeigt Ihnen die Möglichkeiten, die standardmäßigen Farbeinstellungen der Elemente des Gantt-Diagramms mit benutzerdefinierten Farben zu überschreiben. Der Artikel behandelt die Hauptklassen-Selektoren und Templates für das Styling der folgenden Teile des Gantt: [Grid-Bereich](guides/css-overview.md#styling-grid), [Timeline-Bereich](guides/css-overview.md#styling-timeline), [Resource-Panel](guides/css-overview.md#resource-panel).
 
-## Rastergestaltung
+## Rastergestaltung {#styling-grid}
 
 In diesem Abschnitt finden Sie CSS-Selektoren zum Styling der Hauptelemente des [Grid-Bereichs](guides/table.md).
 
@@ -225,7 +225,7 @@ Beachten Sie, dass `.gantt_grid_head_cell` und `.gantt_cell` verschiedene Datena
 
 - oder Sie können dasselbe Ergebnis erzielen, indem Sie den Selektor `.gantt_row .gantt_cell[data-column-index="1"]` anwenden, der die Spalte nach ihrem Index definiert.
 
-## Styling der Timeline
+## Styling der Timeline {#styling-timeline}
 
 Der Abschnitt "Styling Timeline" wird Sie durch die CSS-Selektoren führen, die Sie anwenden können, um die Standard-Stile der Elemente des [Timeline-Bereichs](guides/time-scale.md) zu ändern.
 
@@ -765,7 +765,7 @@ und CSS anwenden:
 
 **Verwandtes Beispiel**: [Duration includes only working days](https://docs.dhtmlx.com/gantt/samples/09_worktime/02_working_days.html)
 
-## Ressourcenbereich
+## Ressourcenbereich {#resource-panel}
 
 Der [Ressourcenbereich](guides/resource-management.md#resourceviewpanel) besteht aus Grids und Timelines, ähnlich dem Haupt-Gantt-Bereich.
 

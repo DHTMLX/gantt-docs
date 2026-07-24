@@ -9,7 +9,7 @@ sidebar_label: "任务父子关系"
 
 *要了解获取任务对象或 ID 的基本操作，请参阅 [Task Object/Id](guides/task-object-operations.md) 文章。*
 
-## 任务的父任务
+## 任务的父任务 {#parent-of-a-task}
 
 要获取任务的父任务，请使用 [`getParent()`](api/method/getparent.md) 方法，或任务对象的 "parent" 属性：
 

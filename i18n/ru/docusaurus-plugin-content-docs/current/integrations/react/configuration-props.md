@@ -112,7 +112,7 @@ description: "Полное руководство по пропсам-оберт
   <tr>
   <td>htmlTemplatePolicy</td>
   <td>HtmlTemplatePolicy</td>
-  <td>Контролирует, как строки, возвращаемые из функций-шаблонов, рендерятся. <code>"basic-sanitize"</code> (по умолчанию) — whitelist-санитизация возвращаемого HTML: безопасное форматирование, классы, ограниченные встроенные стили, <code>data-*</code> атрибуты и <code>img</code> сохраняются; скрипты, обработчики событий и опасные URL-адреса удаляются. <code>"escape"</code> рендерит строку как текст; <code>"unsafe-html"</code> рендерит исходную строку (поведение до v10); пользовательский объект санитайзера (<code>mode: "sanitize"</code> с функцией <code>sanitize(html)</code>) позволяет подключить такую библиотеку, как DOMPurify. Для управления на уровне отдельных шаблонов оборачивайте отдельные функции-шаблоны экспортируемым помощником <code>allowRawHTML()</code>. [Migration notes](/migration#91---92).</td>
+  <td>Контролирует, как строки, возвращаемые из функций-шаблонов, рендерятся. <code>"basic-sanitize"</code> (по умолчанию) — whitelist-санитизация возвращаемого HTML: безопасное форматирование, классы, ограниченные встроенные стили, <code>data-*</code> атрибуты и <code>img</code> сохраняются; скрипты, обработчики событий и опасные URL-адреса удаляются. <code>"escape"</code> рендерит строку как текст; <code>"unsafe-html"</code> рендерит исходную строку (поведение до v10); пользовательский объект санитайзера (<code>mode: "sanitize"</code> с функцией <code>sanitize(html)</code>) позволяет подключить такую библиотеку, как DOMPurify. Для управления на уровне отдельных шаблонов оборачивайте отдельные функции-шаблоны экспортируемым помощником <code>allowRawHTML()</code>. [Migration notes](/migration#91---100).</td>
   </tr>
   <tr>
   <td>(Event Props)</td>
@@ -204,7 +204,7 @@ description: "Полное руководство по пропсам-оберт
 
 См. отдельную страницу **[Hooks](integrations/react/hooks.md)** для полного справочника, включая:
 
-- [useGanttEvent](integrations/react/hooks.md#useganttEvent) — подписки на события с управлением жизненным циклом
+- [useGanttEvent](integrations/react/hooks.md#useganttevent) — подписки на события с управлением жизненным циклом
 - [useResourceAssignments](integrations/react/hooks.md#useresourceassignments) — запросы и изменения назначений ресурсов
 - [useGanttDatastore](integrations/react/hooks.md#useganttdatastore) — доступ только для чтения к datastore
 - [useUndoRedo](integrations/react/hooks.md#useundoredo) — состояние undo/redo и действия

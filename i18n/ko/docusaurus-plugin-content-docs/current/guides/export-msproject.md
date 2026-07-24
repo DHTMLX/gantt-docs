@@ -45,7 +45,7 @@ Gantt를 [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), 
 
 [MS Project용 내보내기 모듈 사용 방법 읽기](guides/msp-export-module.md).
 
-## MS Project로 내보내기
+## MS Project로 내보내기 {#export-to-ms-project}
 
 Gantt 컴포넌트는 Gantt 차트의 링크, 작업 및 리소스를 MS Project로 내보낼 수 있습니다.
 
@@ -80,7 +80,7 @@ gantt.exportToMSProject();
 
 **관련 샘플**: [Export data : MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
 
-### Export 설정
+### Export 설정 {#export-settings}
 
 The exportToMSProject() 메서드는 여러 속성을 가진 객체를 매개변수로 받습니다(모든 속성은 선택적).
 
@@ -121,7 +121,7 @@ gantt.exportToMSProject({
 });
 ~~~
 
-이 객체의 속성은 MS Project의 해당 속성에 대응합니다. 지원되는 속성 목록은 [여기](guides/tags.md)에서 확인할 수 있습니다. 속성은 고정 값이거나 내보내기 호출 시 실행될 함수일 수 있습니다.
+이 객체의 속성은 MS Project의 해당 속성에 대응합니다. 지원되는 속성 목록은 [여기](guides/msp-import-properties.md)에서 확인할 수 있습니다. 속성은 고정 값이거나 내보내기 호출 시 실행될 함수일 수 있습니다.
 
 - **tasks** - (object) 내보낸 작업 항목에 커스텀 속성을 설정합니다.
 
@@ -145,7 +145,7 @@ gantt.exportToMSProject({
 });
 ~~~
 
-이 객체의 속성은 MS Project의 해당 작업 엔티티에 대응합니다. 지원되는 속성 목록은 [여기](guides/tags.md#tasks-properties)에서 확인할 수 있습니다. 속성은 고정 값이거나 내보내기 호출 시 각 작업마다 실행될 함수일 수 있습니다.
+이 객체의 속성은 MS Project의 해당 작업 엔티티에 대응합니다. 지원되는 속성 목록은 [여기](guides/msp-import-properties.md#task-properties)에서 확인할 수 있습니다. 속성은 고정 값이거나 내보내기 호출 시 각 작업마다 실행될 함수일 수 있습니다.
 
 - **data** - (object) 출력 Gantt 차트에 표시될 커스텀 데이터 소스를 설정합니다.
 
@@ -281,7 +281,7 @@ gantt.exportToMSProject({
 });
 ~~~
 
-## MS Project에서의 가져오기
+## MS Project에서의 가져오기 {#import-from-ms-project}
 
 XML 또는 MPP MS Project 파일을 변환하려면 내보내기 서비스에 다음 요청을 보내야 합니다:
 
@@ -394,7 +394,7 @@ gantt.importFromMSProject({
 
 #### 프로젝트 속성 얻기
 
-프로젝트 필드를 얻으려면 필요한 필드들의 배열을 포함하는 projectProperties 입력을 서버로 보낼 수 있습니다. 이는 MS Project 엔티티의 임의 속성을 추출하여 출력의 config 속성에 넣습니다. 지원되는 [속성] 목록은 [여기](guides/tags.md#project-properties)에서 확인할 수 있습니다.
+프로젝트 필드를 얻으려면 필요한 필드들의 배열을 포함하는 projectProperties 입력을 서버로 보낼 수 있습니다. 이는 MS Project 엔티티의 임의 속성을 추출하여 출력의 config 속성에 넣습니다. 지원되는 [속성] 목록은 [여기](guides/msp-import-properties.md#project-properties)에서 확인할 수 있습니다.
 
  - **projectProperties** - 응답에 포함될 프로젝트 속성의 배열을 지정합니다.
 
@@ -425,7 +425,7 @@ gantt.importFromMSProject({
 
 #### 작업 속성 얻기
 
-작업 필드를 얻으려면 필요한 필드들의 배열을 포함하는 taskProperties 입력을 서버로 보낼 수 있습니다. 이는 MS Project Task 엔티티의 임의 속성을 추출합니다. 지원되는 [속성] 목록은 [여기](guides/tags.md#tasks-properties)에서 확인할 수 있습니다:
+작업 필드를 얻으려면 필요한 필드들의 배열을 포함하는 taskProperties 입력을 서버로 보낼 수 있습니다. 이는 MS Project Task 엔티티의 임의 속성을 추출합니다. 지원되는 [속성] 목록은 [여기](guides/msp-import-properties.md#task-properties)에서 확인할 수 있습니다:
 
  - **taskProperties** - 가져올 추가 작업 속성의 배열을 지정합니다.
 

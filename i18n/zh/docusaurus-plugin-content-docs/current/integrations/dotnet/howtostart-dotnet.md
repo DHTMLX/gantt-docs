@@ -950,7 +950,7 @@ HTTP PUT 和 DELETE 请求在 IIS 上运行时可能返回 405 或 401 错误。
 
 Gantt 不提供任何防护措施来防止应用程序遭受各种威胁（如 SQL 注入、XSS 与 CSRF 攻击）。确保应用程序安全的责任在于实现后端的开发人员。请在对应文章中查看详细信息 [在此处](guides/app-security.md)。
 
-## 故障排除
+## 故障排除 {#trouble-shooting}
 
 ### 找不到 ASP.NET Web 应用模板
 

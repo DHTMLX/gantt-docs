@@ -41,7 +41,7 @@ npm start
 
 또는 메인 페이지를 열고 Test 링크를 클릭하세요: **http://localhost:3200**.
 
-## 그래픽 인터페이스 없이 서버 사용
+## 그래픽 인터페이스 없이 서버 사용 {#using-server-without-graphical-interface}
 
 헤드리스(headless) 서버에서 내보내기 모듈을 사용하려면 추가 구성 요소를 설치해야 합니다. Deb 기반 배포판의 명령은 다음과 같습니다:
 

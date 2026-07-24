@@ -114,7 +114,7 @@ gantt.config.lightbox.milestone_sections = [
 **관련 샘플**: [롤업 작업 및 마일스톤](https://docs.dhtmlx.com/gantt/samples/01_initialization/21_rollup_tasks.html)
 
 
-## 작업 및 마일스톤 숨기기
+## 작업 및 마일스톤 숨기기 {#hiding-tasks-and-milestones}
 
 버전 7.1부터 타임라인 영역에서 [작업 막대](guides/task-types.md#regular-tasks)와 [마일스톤](guides/task-types.md#milestones)을 숨길 수 있으며 데이터 항목의 **hide_bar: true** 속성을 설정합니다:
 

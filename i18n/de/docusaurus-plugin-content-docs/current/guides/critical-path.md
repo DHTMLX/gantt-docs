@@ -54,7 +54,7 @@ Jedes Mal, wenn eine Aufgabe geändert wird, wird dhtmlxGantt die Daten vollstä
 Manchmal kann dies zu Leistungsproblemen führen. Für diesen Fall stellt die Komponente öffentliche Methoden bereit, mit denen Sie eine bestimmte Aufgabe oder eine Verknüpfung überprüfen und eine leistungsschonendere Strategie zur Darstellung des kritischen Pfads implementieren können.
 
 
-## Logik des kritischen Pfads
+## Logik des kritischen Pfads {#critical-path-logic}
 
 Gantt betrachtet eine Aufgabe in den folgenden Fällen als kritisch:
 

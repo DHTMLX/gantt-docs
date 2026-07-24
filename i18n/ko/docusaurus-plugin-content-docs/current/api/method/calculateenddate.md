@@ -62,7 +62,7 @@ task.start_date = gantt.calculateEndDate({
 });
 ~~~
 
-## 구성 객체 속성 {#configurationobjectproperties}
+## 구성 객체 속성 {#configuration-object-properties}
 
 구성 객체는 다음 속성을 포함할 수 있습니다:
 

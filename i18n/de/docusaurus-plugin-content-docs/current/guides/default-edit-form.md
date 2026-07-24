@@ -32,7 +32,7 @@ Die allgemeine Typ-Struktur sieht folgendermaßen aus:
 Ab Version v7.1.13 gilt: Wenn entweder [gantt.config.csp](api/config/csp.md) auf *true* gesetzt ist oder Gantt in der Salesforce-Umgebung läuft, wird die Lightbox innerhalb des Gantt-Containers gerendert.
 :::
 
-## Lightbox-Struktur
+## Lightbox-Struktur {#lightbox-structure}
 
 ### Abschnitte
 

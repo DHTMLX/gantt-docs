@@ -106,7 +106,7 @@ gantt.exportToPrimaveraP6({
 
 **相关示例**： [Custom properties for WBS tasks (PrimaveraP6's Summary tasks)](https://snippet.dhtmlx.com/r90hjlvo?tag="gantt")
 
-### 导出设置
+### 导出设置 {#export-settings}
 
 **exportToPrimaveraP6()** 方法接收一个对象作为参数，该对象包含若干属性（所有属性均为可选）：
 
@@ -147,7 +147,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-该对象的属性对应 [Project entity] 的相应属性。支持的属性列表可在 [这里](guides/properties.md) 找到。属性可以包含固定值或在导出调用时执行的函数。
+该对象的属性对应 [Project entity] 的相应属性。支持的属性列表可在 [这里](guides/primavera-import-properties.md) 找到。属性可以包含固定值或在导出调用时执行的函数。
 
 - **tasks** - (object) 允许为导出的任务项设置自定义属性
 
@@ -311,7 +311,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-## 从 Primavera P6 导入
+## 从 Primavera P6 导入 {#import-from-primavera-p6}
 
 为了转换 XML 或 XER 文件，你需要向导出服务发送以下请求：
 
@@ -397,7 +397,7 @@ gantt.importFromPrimaveraP6({
             - 每周的 7 天（从 0 - 星期日，到 6 - 星期六），其中 1/true 代表工作日，0/false 代表非工作日
             - 其他记录为日期
 
-### 导入设置
+### 导入设置 {#import-settings}
 
 #### 设置持续时间单位
 
@@ -427,7 +427,7 @@ gantt.importFromPrimaveraP6({
 #### 获取项目属性
 
 要获取项目字段，可以向服务器发送带有所需字段数组的 **projectProperties** 输入。
-它将 [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 的任意属性提取到输出的 config 属性中。支持的 [properties](guides/properties.md#project-properties) 列表如下。
+它将 [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 的任意属性提取到输出的 config 属性中。支持的 [properties](guides/primavera-import-properties.md#project-properties) 列表如下。
 
  - **projectProperties** - 指定应放入响应中的项目属性数组。
 
@@ -459,7 +459,7 @@ gantt.importFromPrimaveraP6({
 #### 获取任务属性
 
 要获取任务字段，可以向服务器发送带有必要字段的 **taskProperties** 输入。
-它将 [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 的任意属性提取到输出中的任务属性。下面是 [properties](guides/properties.md#tasks-properties) 的支持列表：
+它将 [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 的任意属性提取到输出中的任务属性。下面是 [properties](guides/primavera-import-properties.md#task-properties) 的支持列表：
 
  - **taskProperties** - 指定要导入的额外任务属性数组。
 
@@ -670,7 +670,7 @@ gantt.importFromPrimaveraP6({
 }
 ~~~
 
-## 请求大小限制与大文件导入
+## 请求大小限制与大文件导入 {#limits-on-request-size-and-import-of-large-files}
 
  Primavera P6 导出/导入服务有两个 API 端点：
 

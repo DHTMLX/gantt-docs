@@ -28,7 +28,7 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
- 이 옵션은 **Quick Info** 확장의 일부이므로, 반드시 [quick_info](guides/extensions-list.md#quickinfo) 플러그인을 활성화해야 합니다. 
+ 이 옵션은 **Quick Info** 확장의 일부이므로, 반드시 [quick_info](guides/extensions-list.md#quick-info) 플러그인을 활성화해야 합니다. 
 :::
 
 ### Related API
@@ -39,5 +39,5 @@ gantt.init("gantt_here");
 - [onAfterQuickInfo](api/event/onafterquickinfo.md)
 
 ### Related Guides
-- [확장 기능 전체 목록](guides/extensions-list.md#quickinfo)
+- [확장 기능 전체 목록](guides/extensions-list.md#quick-info)
 

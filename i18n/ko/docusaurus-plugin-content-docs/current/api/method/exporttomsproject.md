@@ -27,7 +27,7 @@ gantt.exportToMSProject({
 ### Details
 
 :::note
-note 이 메서드는 **export** 확장 기능의 일부이므로 [export_api](guides/extensions-list.md#exportservice) 플러그인을 활성화해야 합니다. 자세한 내용은 [MS Project로부터의 내보내기 및 가져오기](guides/export-msproject.md#exporttomsproject) 문서를 참고하세요.
+note 이 메서드는 **export** 확장 기능의 일부이므로 [export_api](guides/extensions-list.md#export-service) 플러그인을 활성화해야 합니다. 자세한 내용은 [MS Project로부터의 내보내기 및 가져오기](guides/export-msproject.md#export-to-ms-project) 문서를 참고하세요.
  
 :::
 
@@ -67,5 +67,5 @@ The **exportToMSProject()** 메서드는 매개변수로 여러 속성을 가진
 - [importFromMSProject](api/method/importfrommsproject.md)
 
 ### Related Guides
-- [MS Project로부터의 내보내기 및 가져오기](guides/export-msproject.md#exporttomsproject)
+- [MS Project로부터의 내보내기 및 가져오기](guides/export-msproject.md#export-to-ms-project)
 

@@ -46,7 +46,7 @@ gantt.exportToPDF({
 ### Details
 
 :::note
-note 이 메서드는 **export** 확장의 일부이므로, 반드시 [export_api](guides/extensions-list.md#exportservice) 플러그인을 활성화해야 합니다. 자세한 내용은 [Export to PDF and PNG](guides/export.md) 문서를 참고하세요. 
+note 이 메서드는 **export** 확장의 일부이므로, 반드시 [export_api](guides/extensions-list.md#export-service) 플러그인을 활성화해야 합니다. 자세한 내용은 [Export to PDF and PNG](guides/export.md) 문서를 참고하세요. 
 :::
 
 :::note
@@ -114,7 +114,7 @@ note 이 메서드는 **export** 확장의 일부이므로, 반드시 [export_ap
   </tbody>
 </table>
 
-## 시간 제한
+## 시간 제한 {#time-restrictions}
 
 :::note
 내보내기 서비스에는 시간 제한이 있습니다. 
@@ -159,7 +159,7 @@ gantt.exportToPDF({
 
 다중 페이지 내보내기를 하나의 PDF 파일로 보는 상세 개요는 [관련 블로그 글](https://dhtmlx.com/blog/maintenance-release-pdf-export-module-gantt-0-6-4-scheduler-0-6-5-suite-8-3-10-kanban-1-5-12/#:~:text=Multipage%20Export%20in%20One%20PDF%20File)에서 확인할 수 있습니다.
 
-#### 여러 데이터 내보내기를 수동으로 만들기
+#### 여러 데이터 내보내기를 수동으로 만들기 {#making-several-data-exports-manually}
 
 Gantt 차트의 크기가 표준 문서 크기를 거의 항상 초과하므로 한 번에 한 페이지 이상에 맞추려면 차트가 왼쪽으로 이동되면서 여러 번 내보내야 합니다. 내보내기될 때마다 Gantt의 좌측 부분만 PDF 문서에 내보내집니다. 따라서 다중 페이지 내보내기를 구현하려면 Gantt를 여러 번 내보내고 매번 왼쪽으로 시프트해야 합니다.
 

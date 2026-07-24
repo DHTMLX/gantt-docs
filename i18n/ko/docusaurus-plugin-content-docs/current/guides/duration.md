@@ -123,7 +123,7 @@ gantt.config.lightbox.sections = [
 일부 속성이 지정되지 않으면 컨트롤은 관련 필수 날짜 속성의 값을 사용합니다.
 :::
 
-## 섹션 가시성 전환
+## 섹션 가시성 전환 {#switching-section-visibility}
 
 다음 구성에서 **type:"duration_optional"** 및 **button: true**를 지정하면 지속 시간 섹션의 가시성을 조작할 수 있습니다:
 

@@ -40,7 +40,7 @@ const data = {
 **관련 샘플**: [Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 
-## 일반 작업
+## 일반 작업 {#regular-tasks}
 
 기본적으로, dhtmlxGantt는 일반 작업(타입이 **type="task"**)의 생성을 제공합니다.
 
@@ -74,7 +74,7 @@ const data = {
 - 타임라인에서 숨길 수 있습니다. 자세한 내용은 [details](guides/milestones.md#hiding-tasks-and-milestones)를 참조하십시오.
 
 
-## 프로젝트 작업
+## 프로젝트 작업 {#project-tasks}
 
 프로젝트 작업은 가장 이른 자식 작업이 시작될 때 시작되고 가장 늦은 자식이 끝날 때 끝나는 작업입니다.
 
@@ -182,7 +182,7 @@ gantt.config.lightbox.milestone_sections = [
 라이트박스 구성에 대한 자세한 내용은 [Configuring Edit Form](guides/edit-form.md) 장을 참조하십시오.
 
 
-## 사용자 정의 유형 만들기
+## 사용자 정의 유형 만들기 {#creating-a-custom-type}
 
 모든 작업 유형은 [types](api/config/types.md) 객체에 정의되어 있습니다. 
 

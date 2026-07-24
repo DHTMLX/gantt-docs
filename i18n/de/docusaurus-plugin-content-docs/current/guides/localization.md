@@ -11,7 +11,7 @@ Standardmäßig verwendet dhtmlxGantt die [englische Lokalisierung](api/other/lo
 ![gantt_localized](/img/gantt_localized.png)
 
 
-## Aktivieren einer Lokalisierung
+## Aktivieren einer Lokalisierung {#activating-a-locale}
 
 Um das Gantt-Diagramm in einer nicht-englischen Sprache zu implementieren, müssen Sie die erforderliche Lokalisierung über die Methode **setLocale** des [gantt.i18n](api/other/i18n.md) Objekts aktivieren. 
 

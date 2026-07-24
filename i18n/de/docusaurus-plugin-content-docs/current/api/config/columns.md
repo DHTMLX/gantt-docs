@@ -92,8 +92,8 @@ gantt.init("gantt_here");
 
 ### Related Guides
 - ["Spalten festlegen"](guides/specifying-columns.md)
-- ["How-tos"](guides/how-to.md#howtoaddacustomcolumninthegrid) (Details zum Hinzufügen einer benutzerdefinierten column im grid)
-- ["How-tos"](guides/how-to.md#howtoaddacustomaddbutton) (Anleitung zum Hinzufügen eines benutzerdefinierten add(+)-Buttons)
+- ["How-tos"](guides/how-to.md#how-to-add-a-custom-column-in-the-grid) (Details zum Hinzufügen einer benutzerdefinierten column im grid)
+- ["How-tos"](guides/how-to.md#how-to-add-a-custom-add-button) (Anleitung zum Hinzufügen eines benutzerdefinierten add(+)-Buttons)
 
 ### Change log
 - Die **onrender**-Eigenschaft wurde in v7.1 eingeführt

@@ -124,7 +124,7 @@ description: "VueGantt 属性、数据/生命周期契约以及导出的 Vue 助
     <tr>  
       <td>htmlTemplatePolicy</td>  
       <td>HtmlTemplatePolicy</td>  
-      <td>控制模板函数返回的字符串值如何呈现。 <code>"basic-sanitize"</code>（默认）对返回的 HTML 进行白名单式清理：保留安全格式、类、受限的行内样式、<code>data-*</code> 属性和 <code>img</code>，移除脚本、事件处理程序和危险 URL。<code>"escape"</code> 将字符串渲染为文本；<code>"unsafe-html"</code> 将原始字符串渲染（v10 之前的行为）；一个自定义消毒器对象（<code>mode: "sanitize"</code>，并提供 <code>sanitize(html)</code> 函数）可让你接入诸如 DOMPurify 之类的库。若要对每个模板进行单独控制，请使用导出的 <code>allowRawHTML()</code> 助手对单独的模板函数进行包裹。另请参阅 <a href="/migration#91---92">Migration notes</a>。</td>  
+      <td>控制模板函数返回的字符串值如何呈现。 <code>"basic-sanitize"</code>（默认）对返回的 HTML 进行白名单式清理：保留安全格式、类、受限的行内样式、<code>data-*</code> 属性和 <code>img</code>，移除脚本、事件处理程序和危险 URL。<code>"escape"</code> 将字符串渲染为文本；<code>"unsafe-html"</code> 将原始字符串渲染（v10 之前的行为）；一个自定义消毒器对象（<code>mode: "sanitize"</code>，并提供 <code>sanitize(html)</code> 函数）可让你接入诸如 DOMPurify 之类的库。若要对每个模板进行单独控制，请使用导出的 <code>allowRawHTML()</code> 助手对单独的模板函数进行包裹。另请参阅 [Migration notes](/migration#91---100)。</td>  
     </tr>  
   </tbody>  
 </table>  
@@ -341,7 +341,7 @@ const modals = {
 
 来自 `@dhtmlx/trial-vue-gantt` 或 `@dhx/vue-gantt`：
 
-### 类型导出
+### 类型导出 {#type-exports}
 
 按 wrapper 包本身导入所有类型（`@dhx/vue-gantt` 或 `@dhtmlx/trial-vue-gantt`）。包装器将底层 Gantt 引擎的类型与 Vue 特定类型一并导出——没有单独的 `@dhx/gantt` 包需要安装或导入。  
 

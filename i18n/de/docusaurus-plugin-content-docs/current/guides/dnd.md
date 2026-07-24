@@ -23,7 +23,7 @@ Betrachten wir typische Fälle, in denen das Standard-Drag-Verhalten angepasst w
 5. [Festlegen der minimalen Aufgabendauer](#setting-minimal-task-duration).
 6. [Autoscroll während des Ziehens von Aufgaben](#autoscrollduringtasksdragging).
 
-## Verweigern des Ziehens bestimmter Aufgaben
+## Verweigern des Ziehens bestimmter Aufgaben {#denying-dragging-of-specific-tasks}
 
 Um das Ziehen bestimmter Aufgaben zu verweigern, verwenden Sie das [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) Event:
 
@@ -36,7 +36,7 @@ gantt.attachEvent("onBeforeTaskDrag", (taskId, dragMode, event) => {
 });
 ~~~
 
-## Verweigern des Ziehens von Aufgaben außerhalb bestimmter Termine
+## Verweigern des Ziehens von Aufgaben außerhalb bestimmter Termine {#denying-dragging-tasks-out-of-specific-dates}
 
 Um das Ziehen von Aufgaben außerhalb bestimmter Termine zu verweigern, verwenden Sie das [onTaskDrag](api/event/ontaskdrag.md) Event.
 
@@ -91,7 +91,7 @@ gantt.attachEvent("onTaskDrag", (taskId, dragMode, task, originalTask) => {
 });
 ~~~
 
-## Ziehen von Kindaufgaben zusammen mit der Elternaufgabe
+## Ziehen von Kindaufgaben zusammen mit der Elternaufgabe {#dragging-children-together-with-the-parent}
 
 Um das Ziehen von Kindaufgaben zu ermöglichen, während der Benutzer die Aufgabe des Elternteils zieht, verwenden Sie das [onTaskDrag](api/event/ontaskdrag.md) Event (siehe weiter oben auf das Event [oben](guides/dnd.md#denying-dragging-tasks-out-of-specific-dates)):
 
@@ -154,7 +154,7 @@ gantt.config.drag_project = true;
 Es gibt mehrere Wege, Aufgaben zusammen mit ihren abhängigen Aufgaben zu verschieben.
 Sie können alles darüber in einem separaten Artikel [Dragging Tasks Together with Their Dependent Tasks](guides/dragging-dependent-tasks.md) nachlesen.
 
-## Minimale Aufgabendauer festlegen
+## Minimale Aufgabendauer festlegen {#setting-minimal-task-duration}
 
 Die minimale Aufgabendauer kann über die Einstellung [min_duration](api/config/min_duration.md) festgelegt werden.
 
@@ -192,7 +192,7 @@ gantt.config.autoscroll_speed = 50;
 gantt.init("gantt_here");
 ~~~
 
-## Deaktivieren der Größenänderung bestimmter Aufgaben
+## Deaktivieren der Größenänderung bestimmter Aufgaben {#disabling-resize-of-specific-tasks}
 
 Wenn Sie verhindern möchten, dass bestimmte Aufgaben ihre Größe ändern, gibt es zwei Möglichkeiten:
 
@@ -223,6 +223,64 @@ Wenn der Handler false zurückgibt, wird das Größenändern verhindert:
 gantt.attachEvent("onBeforeTaskDrag", (taskId, dragMode, event) => {
     if (dragMode === "resize" && gantt.getTask(taskId).no_resize) {
         return false;
+    }
+    return true;
+});
+~~~
+
+## Welche Seite einer Aufgabe in der Größe geändert wird {#which-side-of-a-task-is-being-resized}
+
+Der ["resize"](api/event/onbeforetaskdrag.md)-Modus des Drag-and-Drop bedeutet, dass der Benutzer die Größe der Aufgabe entweder über das Start- oder über das Enddatum ändert.
+
+Wenn Sie herausfinden müssen, welches Datum der Benutzer bei der Größenänderung bearbeitet, können Sie das Flag **gantt.getState().drag_from_start** verwenden:
+
+~~~js
+gantt.attachEvent("onBeforeTaskDrag", (taskId, dragMode, event) => {
+    if (dragMode === "resize") {
+        if (gantt.getState().drag_from_start === true) {
+            // Änderung des Startdatums einer Aufgabe
+        } else {
+            // Änderung des Enddatums einer Aufgabe
+        }
+    }
+    return true;
+});
+~~~
+
+## Deaktivieren der Größenänderung des Start- oder Enddatums einer Aufgabe {#disabling-resize-of-the-start-or-the-end-date-of-a-task}
+
+Sie können die Griffe zum Ändern der Größe über die folgenden Selektoren finden:
+
+- `.gantt_task_drag[data-bind-property="start_date"]`
+- `.gantt_task_drag[data-bind-property="end_date"]`
+
+Das folgende CSS kann verwendet werden, um die Größenänderung der Startdaten von Aufgaben zu deaktivieren:
+
+~~~css
+.gantt_task_drag[data-bind-property="start_date"] {
+    display: none !important;
+}
+~~~
+
+Um die Größenänderung der Enddaten zu verhindern, gehen Sie ähnlich vor:
+
+~~~css
+.gantt_task_drag[data-bind-property="end_date"] {
+    display: none !important;
+}
+~~~
+
+Eine andere Möglichkeit besteht darin, das [onBeforeTaskDrag](api/event/onbeforetaskdrag.md)-Event zu verwenden.
+Wenn der Handler *false* zurückgibt, wird die Größenänderung verhindert:
+
+~~~js
+gantt.attachEvent("onBeforeTaskDrag", (taskId, dragMode, event) => {
+    if (dragMode === "resize") {
+        if (gantt.getState().drag_from_start === true) {
+            return false;
+        } else {
+            // Änderung des Enddatums einer Aufgabe
+        }
     }
     return true;
 });

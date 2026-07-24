@@ -124,7 +124,7 @@ var marker3 = gantt.addMarker({ ...});
 gantt.renderMarkers(); /*!*/
 ~~~
 
-## Стилизация маркеров
+## Стилизация маркеров {#styling-markers}
 
 Чтобы стилизовать маркеры, используйте шаблон [gantt.templates.marker_class](api/template/marker_class.md):
 

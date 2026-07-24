@@ -113,7 +113,7 @@ gantt.config.lightbox.milestone_sections = [
 **Связанный пример**: [Rollup задач и вех](https://docs.dhtmlx.com/gantt/samples/01_initialization/21_rollup_tasks.html)
 
 
-## Скрытие задач и вех
+## Скрытие задач и вех {#hiding-tasks-and-milestones}
 
 Начиная с v7.1, можно скрывать [знаки задач](guides/task-types.md#regular-tasks) и [вехи](guides/task-types.md#milestones) на временной шкале, устанавливая свойство hide_bar: true у элемента данных:
 

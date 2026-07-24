@@ -31,7 +31,7 @@ sidebar_label: "Расширение встроенных редакторов"
 - <span class="submethod">**isChanged (): boolean**</span> - проверяет, отличается ли текущее значение редактора от исходного значения
 - <span class="submethod">**isVisible (): boolean**</span> - проверяет, открыт ли редактор
 
-### События:
+### События: {#events}
 
 - <span class="submethod">**attachEvent (name, handler): string**</span> - прикрепляет обработчик события к объекту inlineEditors
     - **_name_** - (*string*) - имя обработчика события

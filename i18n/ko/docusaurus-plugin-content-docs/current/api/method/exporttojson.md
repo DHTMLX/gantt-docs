@@ -27,7 +27,7 @@ gantt.exportToJSON({
 ### Details
 
 :::note
-note 이 메서드는 **export** 확장 기능의 일부이므로, [export_api](guides/extensions-list.md#exportservice) 플러그인이 활성화되어 있는지 확인하세요.
+note 이 메서드는 **export** 확장 기능의 일부이므로, [export_api](guides/extensions-list.md#export-service) 플러그인이 활성화되어 있는지 확인하세요.
  
 :::
 

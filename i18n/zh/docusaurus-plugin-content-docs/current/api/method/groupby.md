@@ -77,7 +77,7 @@ gantt.groupBy(false);
 ### Details
 
 :::note
- 此方法属于 **grouping** 扩展，因此必须启用 [grouping](guides/extensions-list.md#renwufenzu) 插件。更多详情请参见 [任务分组](guides/grouping.md) 文章。 
+ 此方法属于 **grouping** 扩展，因此必须启用 [grouping](guides/extensions-list.md#grouping) 插件。更多详情请参见 [任务分组](guides/grouping.md) 文章。 
 :::
 
 分组配置对象包含以下属性:

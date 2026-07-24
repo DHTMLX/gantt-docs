@@ -104,7 +104,7 @@ gantt.exportToPrimaveraP6({
 
 **Связанный пример**: [Custom properties for WBS tasks (PrimaveraP6's Summary tasks)](https://snippet.dhtmlx.com/r90hjlvo?tag="gantt")
 
-### Настройки экспорта
+### Настройки экспорта {#export-settings}
 
 Метод **exportToPrimaveraP6()** принимает в качестве параметра объект с рядом свойств (все свойства являются необязательными):
 
@@ -145,7 +145,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-Свойства этого объекта соответствуют соответствующим свойствам [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Список поддерживаемых свойств можно найти [здесь](guides/properties.md). Свойства могут содержать либо фиксированные значения, либо функции, которые будут выполняться при вызове экспорта.
+Свойства этого объекта соответствуют соответствующим свойствам [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Список поддерживаемых свойств можно найти [здесь](guides/primavera-import-properties.md). Свойства могут содержать либо фиксированные значения, либо функции, которые будут выполняться при вызове экспорта.
 
 - **tasks** - (object) позволяет задать дополнительные свойства экспортируемых элементов задач
 
@@ -169,7 +169,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-Свойства этого объекта соответствуют соответствующим свойствам [Task entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)), ниже приведен список поддерживаемых [properties](guides/properties.md#tasks-properties). Свойства могут содержать либо фиксированные значения, либо функции, которые будут вызываться для каждой задачи в наборе данных при вызове экспорта.
+Свойства этого объекта соответствуют соответствующим свойствам [Task entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)), ниже приведен список поддерживаемых [properties](guides/primavera-import-properties.md#task-properties). Свойства могут содержать либо фиксированные значения, либо функции, которые будут вызываться для каждой задачи в наборе данных при вызове экспорта.
 
 - **data** - (object) позволяет задать пользовательский источник данных, который будет представлен в выходной диаграмме Gantt. 
 
@@ -309,7 +309,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-## Импорт из Primavera P6
+## Импорт из Primavera P6 {#import-from-primavera-p6}
 
 Чтобы преобразовать XML или XER файл, необходимо отправить следующий запрос на сервис экспорта:
 
@@ -426,7 +426,7 @@ gantt.importFromPrimaveraP6({
 
 #### Получение свойств проекта
 
-Чтобы получить поля проекта, на сервер можно отправить входной параметр **projectProperties** с массивом необходимых полей. Он извлекает произвольные свойства сущности [Project](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) в свойство config выходного файла. Ниже приведен список поддерживаемых [свойств](guides/properties.md#project-properties).
+Чтобы получить поля проекта, на сервер можно отправить входной параметр **projectProperties** с массивом необходимых полей. Он извлекает произвольные свойства сущности [Project](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) в свойство config выходного файла. Ниже приведен список поддерживаемых [свойств](guides/primavera-import-properties.md#project-properties).
 
  - **projectProperties** - задает массив свойств проекта, которые должны попасть в ответ.
 
@@ -457,7 +457,7 @@ gantt.importFromPrimaveraP6({
 
 #### Получение свойств задач
 
-Чтобы получить поля задач, можно отправить на сервер входной параметр **taskProperties** с массивом необходимых полей. Он извлекает произвольные свойства сущностей [Task](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Ниже приведен список поддерживаемых [свойств](guides/properties.md#tasks-properties):
+Чтобы получить поля задач, можно отправить на сервер входной параметр **taskProperties** с массивом необходимых полей. Он извлекает произвольные свойства сущностей [Task](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Ниже приведен список поддерживаемых [свойств](guides/primavera-import-properties.md#task-properties):
 
  - **taskProperties** - указывает массив дополнительных свойств задач для импорта.
 
@@ -539,6 +539,74 @@ gantt.attachEvent("onTaskLoading", function (task) {
 ~~~
 
 **Связанный пример**: [Gantt. Import Primavera P6 files. Get task type from properties](https://snippet.dhtmlx.com/y95rsxor)
+
+#### Экспорт/импорт типов активностей Primavera P6
+
+Primavera P6 использует типы задач, отличающиеся от [типов задач, используемых в Gantt](/guides/task-types) и MS Project. Чтобы сохранить информацию об исходном типе Primavera P6, используйте свойство задачи **ActivityType** при импорте/экспорте файлов. Поскольку **ActivityType** — это пользовательское свойство для Gantt, оно не влияет на тип задачи на стороне Gantt.
+
+Свойство **ActivityType** поддерживает полный список типов активностей Primavera P6. Значение, возвращаемое при импорте, задается в PascalCase, а при экспорте принимаются как форма PascalCase, так и UPPER_SNAKE_CASE:
+
+| Значение | Описание |
+|---|---|
+| TaskDependent / TASK_DEPENDENT | Обычная задача, планируемая на основе своих предшествующих задач |
+| ResourceDependent / RESOURCE_DEPENDENT | Обычная задача, планируемая на основе календаря ресурса (используется по умолчанию, если **ActivityType** не указан) |
+| StartMilestone / START_MILESTONE | Веха, отмечающая начало активности |
+| FinishMilestone / FINISH_MILESTONE | Веха, отмечающая завершение активности |
+| WbsSummary / WBS_SUMMARY | Суммарная задача WBS |
+| LevelOfEffort / LEVEL_OF_EFFORT | Задача, продолжительность которой определяется поддерживаемыми ею активностями |
+| Hammock / HAMMOCK | Задача, продолжительность которой охватывает период от начала первой связанной активности до завершения последней |
+| StartFlag / START_FLAG | Флаг-активность, отмечающая определённую точку в начале проекта |
+| FinishFlag / FINISH_FLAG | Флаг-активность, отмечающая определённую точку в конце проекта |
+
+##### Поддержка типов вех Primavera P6
+
+Примечательно, что перечисленные выше типы **Start Milestone** и **Finish Milestone** не имеют отдельных соответствий на стороне Gantt. Библиотека dhtmlxGantt поддерживает только один тип задачи-вехи, эквивалентный типу **Finish Milestone** в Primavera P6. Таким образом, при импорте проекта Primavera P6 в Gantt все вехи (независимо от того, являются ли они начальными или конечными вехами в исходном файле) преобразуются в задачи типа **milestone**.
+
+Чтобы сохранить информацию об исходном типе вехи Primavera P6, используйте свойство задачи **ActivityType** при импорте, добавив его в массив **taskProperties**. Это свойство возвращается в объекте `$custom_data` каждой задачи, поэтому скопируйте его в саму задачу в событии [onTaskLoading](api/event/ontaskloading.md):
+
+~~~js
+gantt.importFromPrimaveraP6({
+    data: file,
+    taskProperties: ["ActivityType"],
+    callback: function (project) {
+        if (project) {
+            gantt.clearAll();
+            gantt.parse(project.data);
+        }
+    }
+});
+
+gantt.attachEvent("onTaskLoading", function (task) {
+    if (task.$custom_data) {
+        task.ActivityType = task.$custom_data.ActivityType;
+    }
+    return true;
+});
+~~~
+
+Для вех это свойство хранит исходный тип Primavera P6 в виде строки, например "StartMilestone" или "FinishMilestone". Поскольку **ActivityType** не влияет на тип задачи на стороне Gantt, задача по-прежнему имеет тип **milestone**. Это свойство можно использовать, например, для настройки внешнего вида начальных и конечных вех в диаграмме Gantt.
+
+Чтобы сохранить исходный тип задачи при экспорте данных обратно в Primavera P6, верните его из свойства **ActivityType** в объекте [tasks](#export-settings) вызова [exportToPrimaveraP6()](api/method/exporttoprimaverap6.md). Поскольку **ActivityType** описывает все активности Primavera P6, а не только вехи, укажите значение и для остальных типов задач:
+
+~~~js
+gantt.exportToPrimaveraP6({
+    tasks: {
+        ActivityType: function (task) {
+            if (task.type == "milestone") {
+                return task.ActivityType == "StartMilestone" ? "START_MILESTONE" : "FINISH_MILESTONE";
+            }
+            if (task.type == "project") {
+                return "WBS_SUMMARY";
+            }
+            return "TASK_DEPENDENT";
+        }
+    }
+});
+~~~
+
+Таким образом, экспортированный файл будет содержать тот же тип **Start Milestone** / **Finish Milestone**, что и исходный файл Primavera P6, вместо того чтобы каждая веха экспортировалась как **Finish Milestone** по умолчанию.
+
+**Связанный пример**: [Gantt. Import and export Primavera P6 files with the ActivityType to get Start and Finish Milestones](https://snippet.dhtmlx.com/elyeppkv)
 
 #### Добавление и настройка календарей
 
@@ -672,7 +740,7 @@ gantt.importFromPrimaveraP6({
 
 
 
-## Ограничения на размер запроса и импорт больших файлов
+## Ограничения на размер запроса и импорт больших файлов {#limits-on-request-size-and-import-of-large-files}
 
 Существуют два API-эндпойнта для сервисов экспорта/импорта Primavera P6:
 

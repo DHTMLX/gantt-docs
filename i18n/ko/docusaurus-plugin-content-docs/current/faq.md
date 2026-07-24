@@ -82,7 +82,7 @@ dhtmlxGantt는 IE6, IE7 및 IE8의 표준 모드에서 올바르게 작동하지
 ~~~
 
 
-## 오른쪽 상단 모서리에 오류 경고가 표시됩니다
+## 오른쪽 상단 모서리에 오류 경고가 표시됩니다 {#an-error-alert-appears-in-the-right-top-corner}
 
 ![error_alert](/img/error_alert.png)
 
@@ -134,7 +134,7 @@ console.log(gantt.getTask(1).duration);
 
 기본적으로 작업의 마지막 날은 기간에서 제외되지만, 기본 동작을 변경하고 마지막 날을 기간에 포함시키는 옵션이 있습니다. 자세한 내용은 [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates) 문서를 확인하십시오.
 
-## 순환 참조 오류
+## 순환 참조 오류 {#cyclic-reference-error}
 
 Gantt에 잘못된 데이터를 전달하면 트리 형태의 구조가 순환하게 되어 순환 참조 오류가 발생합니다.
 

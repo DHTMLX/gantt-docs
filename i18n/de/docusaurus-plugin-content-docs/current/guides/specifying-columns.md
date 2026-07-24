@@ -24,7 +24,7 @@ Sie können sich das Video-Tutorial ansehen, das beschreibt, wie man Spalten des
 <iframe width="676" height="400" src="https://www.youtube.com/embed/-BoznxJmJIo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-## Überblick
+## Überblick {#overview}
 
 Standardmäßig enthält das Grid vier Spalten:
 
@@ -86,7 +86,7 @@ Dann blenden Sie die 'Add'-Schaltfläche für solche Zeilen aus:
 **Zugehöriges Beispiel**: [Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
 
 
-## Breite
+## Breite {#width}
 
 Um die Breite einer Spalte festzulegen, verwenden Sie das Attribut [width](api/config/columns.md) im entsprechenden Spaltenobjekt:
 
@@ -335,7 +335,183 @@ gantt.config.layout = {
         { view: "scrollbar", id: "scrollHor", scroll: "x", height: 20 }
     ]
 };
-~~~ 
+
+gantt.init("gantt_here");
+~~~
+
+Um die Größe des Grids während der Größenänderung der Spalten beizubehalten, setzen Sie die Option [keep_grid_width](api/config/keep_grid_width.md) auf *true*:
+
+~~~js
+gantt.config.columns = [
+    { name: "text",       width: "*", tree: true, resize: true },
+    { name: "start_date", width: 100, align: "center" },
+    { name: "duration",   width: 70, align: "center" },
+    { name: "add",        width: 44 }
+];
+
+gantt.config.keep_grid_width = true; /*!*/
+gantt.init("gantt_here");
+~~~
+
+
+**Zugehöriges Beispiel**: [Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
+
+
+### Events
+
+dhtmlxGantt bietet 6 Events zur Verarbeitung des Größenänderungsverhaltens:
+
+- [onColumnResizeStart](api/event/oncolumnresizestart.md) - wird ausgelöst, bevor der Benutzer beginnt, den Rand der Spalte zu ziehen, um die Spaltengröße zu ändern
+- [onColumnResize](api/event/oncolumnresize.md) - wird ausgelöst, während der Benutzer den Rand der Spalte zieht, um die Spaltengröße zu ändern
+- [onColumnResizeEnd](api/event/oncolumnresizeend.md) - wird ausgelöst, nachdem der Benutzer das Ziehen des Spaltenrandes zur Größenänderung beendet hat
+- [onGridResizeStart](api/event/ongridresizestart.md) - wird ausgelöst, bevor der Benutzer beginnt, den Rand des Grids zu ziehen, um die Größe des Grids zu ändern
+- [onGridResize](api/event/ongridresize.md) - wird ausgelöst, während der Benutzer den Rand des Grids zieht, um die Größe des Grids zu ändern
+- [onGridResizeEnd](api/event/ongridresizeend.md) - wird ausgelöst, nachdem der Benutzer das Ziehen des Grid-Randes zur Größenänderung beendet hat
+
+
+## Sichtbarkeit {#visibility}
+
+Um die Sichtbarkeit einer Spalte zu steuern, verwenden Sie das Attribut [hide](api/config/columns.md) im entsprechenden Spaltenobjekt.
+
+Die Sichtbarkeit kann dynamisch umgeschaltet werden, indem Sie den Wert der Eigenschaft 'hide' ändern und das Gantt-Diagramm aktualisieren:
+
+~~~jsx title="Umschalten zwischen einfacher und detaillierter Ansicht"
+gantt.config.columns = [
+    { name: "text",          label: "Task name", width: "*", tree: true, resize: true },
+    { name: "start_date",    label: "Start time" },
+    { name: "duration",      label: "Duration",      width: 60, hide: true }, 
+    { name: "planned_start", label: "Planned start", width: 80, hide: true }, 
+    { name: "planned_end",   label: "Planned end",   width: 80, hide: true },
+    { name: "add",           label: "",              width: 36 }
+];
+
+const showDetails = false;
+
+function toggleView() {
+    showDetails = !showDetails;
+    gantt.getGridColumn("duration").hide = !showDetails;
+    gantt.getGridColumn("planned_start").hide = !showDetails;
+    gantt.getGridColumn("planned_end").hide = !showDetails;
+
+    if (showDetails) {
+        gantt.config.grid_width = 600;
+    } else {
+        gantt.config.grid_width = 300;
+    }
+
+    gantt.render();
+};
+
+gantt.init("gantt_here");
+~~~
+
+
+**Zugehöriges Beispiel**: [Hiding grid columns](https://docs.dhtmlx.com/gantt/samples/02_extensions/07_managing_grid_columns.html)
+
+
+Im folgenden Video-Guide wird gezeigt, wie Sie die Sichtbarkeit von Spalten im Grid verwalten können.
+
+<iframe width="676" height="400" src="https://www.youtube.com/embed/rqYrqqoaI_U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+## Ändern von Zellen nach dem Rendern {#modifyingcellsafterrendering}
+
+In manchen Fällen müssen Sie das Aussehen oder Verhalten einer Grid-Zelle nach dem Rendern ändern.
+
+Seit v7.1 stellt die Bibliothek das Attribut **onrender** des Parameters [columns](api/config/columns.md) bereit, mit dem Sie die Zelle nach dem Rendern verändern können, zum Beispiel:
+
+~~~js
+gantt.config.columns = [
+    { name: "text", tree: true, width: "*", resize: true },
+    { name: "start_date", align: "center", resize: true },
+    { name: "duration",   align: "center", onrender: (task, node) => {
+        node.setAttribute("title", task.text);
+    } },
+    { name: "add", width: 44 }
+];
+~~~
+
+
+Der **onrender**-Callback kann auch verwendet werden, um externe Komponenten in die Zellen des Grids einzufügen. Zum Beispiel verwenden Sie DHTMLX Gantt mit React und müssen eine React-Komponente in die Grid-Zellen von Gantt einfügen. Das folgende Codebeispiel zeigt, wie dies umgesetzt werden kann:
+
+~~~js
+gantt.config.columns = [
+    { name: "text",       label: "Task name", tree: true, width: "*" },
+    { name: "start_date", label: "Start time", align: "center" },
+    { name: "duration",   label: "Duration",   align: "center" },
+    { 
+        name: "external", label: "Element 1",  align: "center",
+        onrender: (item, node) => {
+            return <DemoButton
+                text="Edit 1"
+                onClick="{()" => alert("Element as React Component")}
+            />
+        }
+    }
+];
+~~~
+
+Damit dies funktioniert und die React-Komponente angezeigt wird, muss die Konfiguration [gantt.config.external_render](api/config/external_render.md) definiert werden:
+
+~~~js
+import ReactDOM from 'react-dom';
+import React from 'react';
+
+gantt.config.external_render = { 
+    // prüft, ob das Element ein React-Element ist
+    isElement: (element) => {
+        return React.isValidElement(element);
+    },
+    // rendert das React-Element in das DOM
+    renderElement: (element, container) => {
+        ReactDOM.render(element, container);
+    }
+};
+~~~
+
+Die Logik ist wie folgt:
+
+- Zunächst wird das Rückgabeobjekt des **onrender**-Callbacks an die Funktion **isElement** übergeben, um zu prüfen, ob es sich um ein Objekt handelt, das vom verwendeten Framework/der verwendeten Bibliothek gerendert werden kann.
+- Wenn **isElement** *true* zurückgibt, wird das Objekt an **renderElement** übergeben, das die Komponente innerhalb des DOM-Elements der Zelle initialisieren soll.
+
+
+## Horizontaler Scrollbalken {#horizontal-scrollbar}
+
+Sie können das Grid scrollbar machen, indem Sie die Eigenschaft **scrollable** der Konfigurationsoption [layout](guides/layout-config.md) verwenden.
+[Lesen Sie mehr über das Verbinden von Layout-Views mit einer Scrollleiste](guides/layout-config.md#scrollbar).
+
+Das Vorhandensein einer horizontalen Scrollleiste im Grid ermöglicht es Gantt, die Breite der Spalten während der Größenänderung des Grids automatisch anzupassen. [Lesen Sie mehr darüber, wie Sie diese Funktionalität aktivieren](api/config/grid_elastic_columns.md).
+
+Zusätzlich zum Attribut **scrollable** müssen Sie ein *horizontales Scrollleisten-Element* zum Layout hinzufügen und es wie folgt mit dem Grid verbinden:
+
+~~~js
+gantt.config.layout = {
+    css: "gantt_container",
+    cols: [
+        {
+            width: 400,
+            minWidth: 200,
+            maxWidth: 600,
+
+            // Hinzufügen einer horizontalen Scrollleiste zum Grid über das Attribut scrollX
+            rows: [
+                { view: "grid", scrollX: "gridScroll", scrollable: true, /*!*/
+                    scrollY: "scrollVer" /*!*/
+                }, /*!*/
+                { view: "scrollbar", id: "gridScroll" } /*!*/
+            ]
+        },
+        { resizer: true, width: 1 },
+        {
+            rows: [
+                { view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+                { view: "scrollbar", id: "scrollHor" }
+            ]
+        },
+        { view: "scrollbar", id: "scrollVer" }
+    ]
+};
+~~~
 
 Da Sie separate Scrollleisten für Grid und Timeline anzeigen, möchten Sie möglicherweise deren Sichtbarkeit synchronisieren, sodass beide Scrollleisten gleichzeitig sichtbar oder versteckt sind. 
 

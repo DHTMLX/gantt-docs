@@ -399,4 +399,4 @@ import DOMPurify from "dompurify";
 <ReactGantt htmlTemplatePolicy={{ mode: "sanitize", sanitize: (html) => DOMPurify.sanitize(html) }} />
 ~~~
 
-자세한 내용은 [Migration notes](migration.md#91---92)를 참고하십시오.
+자세한 내용은 [Migration notes](migration.md#91---100)를 참고하십시오.

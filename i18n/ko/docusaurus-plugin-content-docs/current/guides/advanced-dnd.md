@@ -85,7 +85,7 @@ gantt.$task_data.attachEvent("onBeforeDrag", function (coords) {
 참고로 이벤트 핸들러는 기존 요소에 대해서만 추가될 수 있습니다. 따라서 Gantt 초기화 후에 이벤트 핸들러를 추가해야 하며, 그렇지 않으면 작동하지 않습니다. 왜냐하면 요소가 아직 생성되지 않았기 때문입니다.
 :::
 
-## 드래그 앤 드롭으로 작업 만들기
+## 드래그 앤 드롭으로 작업 만들기 {#creating-tasks-with-drag-n-drop}
 
 타임라인에서 비어 있는 위치를 클릭하여 작업의 시작 날짜를 설정하고 오른쪽으로 드래그하여 기간을 설정하면 드래그 앤 드롭으로 작업을 만들 수 있습니다.
 
@@ -119,11 +119,11 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 [Create new tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/24_click_drag.html)
 
 
-## 미정렬된 작업의 시간 설정
+## 미정렬된 작업의 시간 설정 {#setting-time-for-unscheduled-tasks}
 
 The **click_drag** extension allows setting time for [unscheduled tasks](guides/unscheduled-tasks.md) with drag-n-drop.
 
-## 드래그 앤 드롭으로 작업 선택하기
+## 드래그 앤 드롭으로 작업 선택하기 {#selecting-tasks-with-drag-n-drop}
 
 다양한 모드에서 드래그 앤 드롭으로 작업을 선택하는 것이 가능합니다: 날짜 안에서, 행 안에서, 또는 경계 안에서.
 
@@ -171,7 +171,7 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 [Select multiple tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/25_click_drag_select_by_drag.html)
 
 
-## 드래그 앤 드롭으로 분할 작업의 일부 만들기
+## 드래그 앤 드롭으로 분할 작업의 일부 만들기 {#creating-parts-of-split-tasks}
 
 :::info
 이 기능은 PRO 에디션에서만 사용할 수 있습니다.

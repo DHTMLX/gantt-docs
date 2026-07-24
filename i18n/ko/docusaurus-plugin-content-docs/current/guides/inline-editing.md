@@ -48,7 +48,7 @@ gantt.config.columns = [
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/0rIPrC0GtME" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## 편집기 유형
+## 편집기 유형 {#types-of-editors}
 
 인라인 편집기는 [editor_types](api/config/editor_types.md) 구성 객체에 저장됩니다.
 

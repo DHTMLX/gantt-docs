@@ -340,7 +340,7 @@ DHTMLX Gantt 自带一个内置的可配置任务编辑器，称为 [Lightbox](g
 
 如有需要，你可以通过以下任一方式将其替换为基于 React 的模态框或其他组件：
 
-### 通过 `customLightbox` 属性提供自定义组件
+### 通过 `customLightbox` 属性提供自定义组件 {#by-providing-a-custom-component-via-the-customlightbox-prop}
 
 要实现，请通过 **customLightbox** prop 传递一个组件：
 
@@ -730,7 +730,7 @@ return (
 );
 ~~~
 
-## 工作日历
+## 工作日历 {#working-calendars}
 
 要在 **ReactGantt** 中启用工作时间计算，请确保开启 [work_time](api/config/work_time.md)：
 

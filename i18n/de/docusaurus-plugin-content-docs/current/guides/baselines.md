@@ -270,7 +270,7 @@ gantt.event(window, 'mouseup', (event) => {
 });
 ~~~
 
-## Extra Overlay für das Diagramm
+## Extra Overlay für das Diagramm {#extra-overlay-for-the-chart}
 
 dhtmlxGantt bietet die Möglichkeit, eine zusätzliche Ebene über dem Gantt-Diagramm zu legen, um benutzerdefinierten Inhalt darin zu platzieren. Als Overlay können Sie einen Div-Container, ein HTML-Canvas usw. verwenden. Um den Overlay-Inhalt zu zeichnen, kann jede Drittanbieter-Bibliothek genutzt werden.
 

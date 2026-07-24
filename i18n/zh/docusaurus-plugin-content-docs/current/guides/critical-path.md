@@ -55,7 +55,7 @@ sidebar_label: "关键路径"
 某个特定任务或链接，并实现一个对性能更友好的显示关键路径的策略。
 
 
-## 关键路径逻辑
+## 关键路径逻辑 {#critical-path-logic}
 
 Gantt 在以下情况下将任务视为关键任务：
 
@@ -193,7 +193,7 @@ gantt.getTotalSlack(task);
 ![Slack](/img/show_slack.png)
 
 
-## 自定义关键路径行为
+## 自定义关键路径行为 {#customizing-the-critical-path-behaviour}
 
 默认情况下，甘特图将关键路径应用默认行为，例如用于高亮的默认样式，以及在每次数据更新时重新计算关键路径。
 

@@ -58,7 +58,7 @@ gantt.locale.labels["section_parent"] = "Parent task";
 - **sort** - (*function*) задаёт функцию сортировки для опций выбора [сортировки опций](guides/parent.md#options-sorting)
 - **template** - (*function*) задаёт шаблон опций выбора
 
-## Фильтрация опций
+## Фильтрация опций {#options-filtering}
 
 Чтобы отфильтровать опции, представляемые в **parent** control, используйте свойство **filter**:
 
@@ -90,7 +90,7 @@ gantt.config.lightbox.sections = [
 - *false*, для задачи, которую нужно удалить из списка опций
 
 
-## Сортировка опций
+## Сортировка опций {#options-sorting}
 
 Чтобы отсортировать опции, представляемые в **parent** control, используйте свойство **sort**:
 

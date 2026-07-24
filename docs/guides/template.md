@@ -9,11 +9,11 @@ A container with some HTML content inside.
 
 ![template_control](/img/template_control.png)
 
-~~~js
+~~~js {3}
 gantt.config.lightbox.sections = [
-    {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-    {name:"template", height:16, type:"template", map_to:"my_template"}, /*!*/
-    {name:"time", height:72, type:"duration", map_to:"auto"}
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+    { name: "template", height: 16, type: "template", map_to: "my_template" },
+    { name: "time", height: 72, type: "duration", map_to: "auto" }
 ];
 
 gantt.locale.labels.section_template = "Details";
@@ -26,7 +26,7 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 });
 ~~~
 
-[Template control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/05_template.html)
+**Related sample**: [Template control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/05_template.html)
 
 
 ## Initialization
@@ -35,11 +35,11 @@ To add the **template** control to the lightbox, follow these steps:
 
 1) Add a section to the lightbox configuration:
 
-~~~js
+~~~js {3}
 gantt.config.lightbox.sections = [
-    {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-    {name:"template", height:16, type:"template", map_to:"my_template"}, /*!*/
-    {name:"time", height:72, type:"duration", map_to:"auto"}
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+    { name: "template", height: 16, type: "template", map_to: "my_template" },
+    { name: "time", height: 72, type: "duration", map_to: "auto" }
 ];
 ~~~
 

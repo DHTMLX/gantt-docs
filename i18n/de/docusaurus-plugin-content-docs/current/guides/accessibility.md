@@ -14,7 +14,7 @@ Um den Zugriff und die Interaktion mit DHTMLX Gantt für Menschen mit Behinderun
 - Tastaturnavigation
 - Kontrastthema
 
-## WAI-ARIA-Attribute
+## WAI-ARIA-Attribute {#wai-aria-attributes}
 
 DHTMLXGantt bietet WAI-ARIA-Unterstützung, die die Verwendung spezieller Attribute im Markup der Komponente ermöglicht.  
 

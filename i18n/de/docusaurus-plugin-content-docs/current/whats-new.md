@@ -222,10 +222,10 @@ Dieses Update führt einige Änderungen in der Struktur des Gantt-Pakets und dem
 
 - Behebt das Problem, bei dem [mergeCalendars](api/method/mergecalendars.md) `customWeeks`-Werte falsch zusammengeführt hat
 - Behebt den Fehler, der in der `onrender`-Funktion auftrat, wenn der [Spaltenname](guides/specifying-columns.md#wbscode) Leerzeichen enthielt
-- Behebt das Problem, dass Gantt im schreibgeschützten Modus blieb, nachdem die Timeline per [click_drag](guides/extensions-list.md#advanceddragndrop) verschoben wurde, während das [S-Curve Overlay](guides/baselines.md#extraoverlayforthechart) aktiviert war
+- Behebt das Problem, dass Gantt im schreibgeschützten Modus blieb, nachdem die Timeline per [click_drag](guides/extensions-list.md#advanced-drag-n-drop) verschoben wurde, während das [S-Curve Overlay](guides/baselines.md#extra-overlay-for-the-chart) aktiviert war
 - Behebt das Problem, dass die Aufgabendauer auf `0` zurückgesetzt wurde, wenn ein [Ressourcenkalender](guides/resource-management.md) verwendet und der [Ressourcenbereich](guides/resource-management.md#resourceviewpanel) unterhalb des Dauerbereichs des [Lightbox](guides/default-edit-form.md) platziert war
 - Behebt den Konsolenfehler, der durch die Warnung "This is a Trial version" ausgelöst wurde, wenn Gantt im **React StrictMode** genutzt wurde
-- Behebt das Problem, dass die Funktion [adjustTaskHeightForBaselines](api/method/adjusttaskheightforbaselines.md) die Zeilenhöhe nicht neu berechnete, wenn [gantt.config.baselines.render_mode](api/config/baselines.md#rendermode) deaktiviert war
+- Behebt das Problem, dass die Funktion [adjustTaskHeightForBaselines](api/method/adjusttaskheightforbaselines.md) die Zeilenhöhe nicht neu berechnete, wenn [gantt.config.baselines.render_mode](api/config/baselines.md#details) deaktiviert war
 - Behebt das Problem, das die Anzeige von Aufgaben verhinderte, wenn die Timeline in der Salesforce-Umgebung [ausgeblendet](api/config/show_chart.md) war
 - Behebt das Problem, dass Kalender nicht von übergeordneten Aufgaben geerbt werden, wenn die [dynamic_resource_calendars](api/config/dynamic_resource_calendars.md) Konfiguration deaktiviert ist
 - Behebt das Problem, dass die Scroll-Position beim erneuten Rendern zurückgesetzt wurde, wenn sich [ReactGantt](integrations/react.md) im groupBy-Modus befand
@@ -233,7 +233,7 @@ Dieses Update führt einige Änderungen in der Struktur des Gantt-Pakets und dem
 ### Aktualisierungen
 
 - Hinzufügen des `isSalesforce`-Flags zu [gantt.env](api/other/env.md)
-- Hinzufügen der `groupTasks`-Eigenschaft zu [React Gantt](integrations/react.md#groupingtasks)
+- Hinzufügen der `groupTasks`-Eigenschaft zu [React Gantt](integrations/react/overview.md#groupingtasks)
 
 ## 9.0.10
 
@@ -243,11 +243,11 @@ Dieses Update führt einige Änderungen in der Struktur des Gantt-Pakets und dem
 
 - Behebt das Problem, das Änderungen am `parent`-Feldwert im [Lightbox](guides/default-edit-form.md) verhinderte
 - Behebt zu schnelles Scrollen mit dem Mausrad in Firefox 88 und neuer
-- Behebt das Problem, dass [Projektaufgaben](guides/task-types.md#projecttasks) nicht verschoben werden konnten, wenn ein Unteraufgabe nicht geplant und ohne Datumsangaben war
+- Behebt das Problem, dass [Projektaufgaben](guides/task-types.md#project-tasks) nicht verschoben werden konnten, wenn ein Unteraufgabe nicht geplant und ohne Datumsangaben war
 - Stellt sicher, dass [gantt.render()](api/method/render.md) nicht unerwartet während der [gantt.silent](api/method/silent.md)-Operation aufgerufen wird, wenn die Methoden [open](api/method/open.md) oder [close](api/method/close.md) verwendet werden
-- Behebt das Problem, dass [Projektaufgaben](guides/task-types.md#projecttasks) nicht neu gezeichnet werden, wenn das Ereignis [onBeforeTaskChanged](api/event/onbeforetaskchanged.md) `false` zurückgibt
+- Behebt das Problem, dass [Projektaufgaben](guides/task-types.md#project-tasks) nicht neu gezeichnet werden, wenn das Ereignis [onBeforeTaskChanged](api/event/onbeforetaskchanged.md) `false` zurückgibt
 - Stellt sicher, dass Fortschrittsbalken die gesamte Breite der Aufgabe abdecken, wenn erwartet
-- Entfernt ungültige WAI-ARIA-Attribute von schreibgeschützten Aufgabenverknüpfungen zur Verbesserung der [Barrierefreiheit](guides/accessibility.md#waiariaattributes)
+- Entfernt ungültige WAI-ARIA-Attribute von schreibgeschützten Aufgabenverknüpfungen zur Verbesserung der [Barrierefreiheit](guides/accessibility.md#wai-aria-attributes)
 - Behebt das Problem, dass Aufgabenbalken-Resizer sich nicht an Änderungen der Aufgabenbalkenhöhe anpassen
 
 ## 9.0.9
@@ -264,7 +264,7 @@ Dieses Update führt einige Änderungen in der Struktur des Gantt-Pakets und dem
 - Behebt das Problem, dass das [Quick Info](guides/quick-info.md)-Popup nach Klick auf die Auf-/Zuklapp-Schaltfläche in der [Timeline](guides/configuring-time-scale.md) oder [Grid](guides/specifying-columns.md) Ansicht erschien
 - Behebt den Fehler, der beim Zerstören von Gantt ohne Initialisierung der Grid-Ansicht auftrat
 - Behebt den Fehler, der beim Laden einer Aufgabe mit nicht vorhandenem Elternteil auftrat, während die [Undo-Erweiterung](guides/undo-redo.md) aktiviert war
-- Behebt das Problem, dass die [click_drag](guides/extensions-list.md#advanceddragndrop)-Erweiterung auf Touch-Geräten nicht funktionierte
+- Behebt das Problem, dass die [click_drag](guides/extensions-list.md#advanced-drag-n-drop)-Erweiterung auf Touch-Geräten nicht funktionierte
 - Verbessert das Scrollverhalten im Grid auf Touch-Geräten
 
 ## 9.0.7
@@ -275,15 +275,15 @@ Dieses Update führt einige Änderungen in der Struktur des Gantt-Pakets und dem
 
 - Behebt den Fehler, der auftritt, wenn auf eine Aufgabe in der Timeline ohne Grid geklickt wird, während [keyboard_navigation](guides/keyboard-navigation.md) aktiviert ist
 - Korrigiert die Berechnung des [WBS-Codes](guides/specifying-columns.md#wbscode) für sortierte Aufgaben, die eine [Platzhalteraufgabe](api/config/placeholder_task.md) enthalten
-- Behebt das Problem, dass Skalenzellen in der Ressourcentimeline beim Zusammenklappen von Aufgaben oder [Größenänderung des Grids](guides/layout-config.md#defaultlayout) verschwinden
+- Behebt das Problem, dass Skalenzellen in der Ressourcentimeline beim Zusammenklappen von Aufgaben oder [Größenänderung des Grids](guides/layout-config.md#default-layout) verschwinden
 - Stellt sicher, dass die richtige Aufgabenreihenfolge beibehalten wird, wenn sowohl Kind- als auch Elternaufgaben innerhalb der [`gantt.silent`](api/method/silent.md)-Funktion hinzugefügt werden
-- Erhält den Fokus in bearbeitbaren [Ressourcenzellen](guides/resource-management.md#resourcecellvalue) nach der Bearbeitung des Wertes
+- Erhält den Fokus in bearbeitbaren [Ressourcenzellen](api/template/resource_cell_value.md) nach der Bearbeitung des Wertes
 - Verhindert, dass Gantt beim Klicken auf eine Aufgabe ganz nach links scrollt
 - Behält die `group`-Eigenschaft bei, wenn neue Aufgaben im [Gruppenmodus](api/method/groupby.md) hinzugefügt werden
 - Behebt das Problem, dass [Marker](guides/markers.md) nicht angezeigt werden, wenn die Timeline initial deaktiviert war
 - Verhindert doppelte [Marker](guides/markers.md), wenn das Diagramm in der Layout-Konfiguration initial nicht angezeigt wird
 - Behebt das Verschwinden von Drag-Handles (Verknüpfung, Fortschritt, Aufgaben-Resize) nach [Ziehen der Timeline](api/config/drag_timeline.md)
-- Stellt sicher, dass der [Predecessor Inline Editor](guides/inline-editors-ext.md#predecessoreditor) korrekt funktioniert, wenn der Link-ID-Typ numerisch ist
+- Stellt sicher, dass der [Predecessor Inline Editor](guides/inline-editing.md#types-of-editors) korrekt funktioniert, wenn der Link-ID-Typ numerisch ist
 - Verhindert die Duplizierung der `gantt_marker_area`-Elemente
 - Behebt die [Undo](guides/undo-redo.md)-Funktionalität mit der `changeTaskId`-Aktion
 
@@ -298,7 +298,7 @@ Dieses Update führt einige Änderungen in der Struktur des Gantt-Pakets und dem
 - Verhindert, dass Aufgaben nach Änderung des Typs der `parent`-Eigenschaft von numerisch auf String fälschlicherweise an das Ende ihres Zweigs verschoben werden
 - Verbessert das Verhalten der Scrollleisten durch Anpassung der Resizer in der Nähe der Scrollbars
 - Stellt sicher, dass [Ressourcenzuweisungen](guides/resource-management.md#assigningresources) beim Hinzufügen von Aufgaben innerhalb von [gantt.batchUpdate](api/method/batchupdate.md) erhalten bleiben
-- Behebt ein Problem, bei dem Aufgaben während Drag-and-Drop-Aktionen in der [unendlichen Zeitskala](guides/configuring-time-scale.md#infinitescroll) verschwanden
+- Behebt ein Problem, bei dem Aufgaben während Drag-and-Drop-Aktionen in der [unendlichen Zeitskala](guides/configuring-time-scale.md#infinite-scroll) verschwanden
 - Stellt die korrekte Anzeige von Ressourcennamen im [Lightbox](guides/default-edit-form.md) nach mehrfachem Parsen der Daten sicher
 - Behebt eine falsche Datumsberechnung in [`getClosestWorkTime`](api/method/getclosestworktime.md) bei Verwendung der [duration_step](api/config/duration_step.md)-Konfiguration
 - Ermöglicht das Abbrechen des [onColumnDragMove](api/config/reorder_grid_columns.md)-Events
@@ -315,7 +315,7 @@ Dieses Update führt einige Änderungen in der Struktur des Gantt-Pakets und dem
 - Korrigiert die Position von Verknüpfungspfeilen, die durch den CSS-Stil `line-height` beeinflusst wurden
 - Behebt den Fehler beim Laden von [Sammlungen](guides/supported-data-formats.md#jsonwithcollections) ohne das `links`-Array
 - Behebt das Problem mit `gantt.config.baselines`, wenn es "falsy" ist, aber nicht explizit auf `false` gesetzt wurde
-- Behebt das Problem, dass [click_drag](guides/extensions-list.md#advanceddragndrop) nach Aufruf von [resetLayout](api/method/resetlayout.md) nicht funktioniert
+- Behebt das Problem, dass [click_drag](guides/extensions-list.md#advanced-drag-n-drop) nach Aufruf von [resetLayout](api/method/resetlayout.md) nicht funktioniert
 - Stellt sicher, dass ausgewählte Unteraufgaben nicht über ihren Eltern angezeigt werden, wenn [keyboard_navigation](guides/keyboard-navigation.md) aktiviert ist
 - Behebt Probleme mit der Tastaturnavigation, wenn Aufgaben-IDs einfache Anführungszeichen enthalten
 - Korrigiert das Verhalten von [calculateEndDate](api/method/calculateenddate.md), wenn die Dauer negativ ist
@@ -344,7 +344,7 @@ Dieses Update führt einige Änderungen in der Struktur des Gantt-Pakets und dem
 - Verhindert, dass [Ressourcenzuweisungen](guides/resource-management.md#assigningresources) entfernt werden, wenn sie über das Lightbox aktualisiert werden
 - Behebt das Problem mit einem leeren Aufgabenarray in [resource_cell_value](api/template/resource_cell_value.md) an arbeitsfreien Tagen, wenn [resource_render_empty_cells](api/config/resource_render_empty_cells.md) aktiviert ist
 - Korrigiert den Fehler, der beim Klicken auf Schaltflächen auftritt, die in Bereiche des [Lightbox](guides/default-edit-form.md) eingebettet sind
-- Stellt sicher, dass das [Ressourcenpanel](guides/resource-management.md#resourceviewpanel) und [Zoomstufen](guides/zooming.md#builtinzoomingmodule) synchron bleiben
+- Stellt sicher, dass das [Ressourcenpanel](guides/resource-management.md#resourceviewpanel) und [Zoomstufen](guides/zooming.md#built-in-zooming-module) synchron bleiben
 - Verhindert, dass [Inline-Editoren](guides/inline-editors-ext.md)-Events nach [Neuinitialisierung](api/method/init.md) von Gantt oder [Zurücksetzen des Layouts](api/method/resetlayout.md) entfernt werden
 - Behebt das Problem, dass der Offen-Status nach [Wiederherstellung](guides/undo-redo.md) von Änderungen nicht wiederhergestellt wird
 
@@ -357,10 +357,10 @@ Dieses Update führt einige Änderungen in der Struktur des Gantt-Pakets und dem
 - Behebung der Regression, die zu falschen Stilen für Aufgabenrahmen und Fortschritt führte, wenn die Aufgabenfarbe über [Eigenschaften eines Aufgabenobjekts](guides/colouring-tasks.md#specifyingstyleinthepropertiesofataskobject) festgelegt wurde
 - Wiederherstellung der Funktionalität der [marker_class](api/template/marker_class.md) Vorlage
 - Wiederherstellung des fehlenden Klassennamens im [Textarea](guides/textarea.md)-Abschnitt des Lightbox
-- Korrektur des Problems, bei dem [Deadlines](guides/inbuilt-baselines.md#deadlinesandconstraints) außerhalb der Aufgabenzeile angezeigt und nicht vollständig zentriert wurden
+- Korrektur des Problems, bei dem [Deadlines](guides/inbuilt-baselines.md#deadlines-and-constraints) außerhalb der Aufgabenzeile angezeigt und nicht vollständig zentriert wurden
 - Sicherstellung, dass Links beim Mouseover über anderen Links angezeigt werden
 - Behebung des Problems, bei dem [Baseline](guides/inbuilt-baselines.md)-Daten beim Laden über die Methode [parse](api/method/parse.md) nicht berechnet wurden
-- Korrekte Positionierung von [Constraints](guides/inbuilt-baselines.md#deadlinesandconstraints) sowohl für reguläre als auch für [RTL](guides/rtl-mode.md)-Ansichten
+- Korrekte Positionierung von [Constraints](guides/inbuilt-baselines.md#deadlines-and-constraints) sowohl für reguläre als auch für [RTL](guides/rtl-mode.md)-Ansichten
 - Verhinderung unnötiger Link-Schleifen beim Verknüpfen von Teilen aufgeteilter Aufgaben
 - Behebung des Problems, bei dem [Quick Info](guides/quick-info.md) im [detached mode](api/config/quick_info_detached.md) aufgrund erhöhter Breite und festkodierter Stile nicht ausgeblendet wurde
 - Aktualisierung der [Export API](api/method/exporttoexcel.md) zur Unterstützung der Baum-Einrückung beim Excel-Export
@@ -377,10 +377,10 @@ Dieses Update führt einige Änderungen in der Struktur des Gantt-Pakets und dem
 - Behebung der Regression mit der falschen Linkposition beim Ziehen mit aktiviertem [smart_rendering](api/config/smart_rendering.md)
 - Behebung der Regression, bei der die [Resource Control](guides/resources.md) des [Lightbox](guides/default-edit-form.md) über ihren Container hinaus erweitert wurde
 - Korrektur der fehlenden unteren Rahmenlinie von [Zeitskalen](guides/configuring-time-scale.md)-Zellen in der letzten Zeile, wenn Zellen mit benutzerdefiniertem CSS hervorgehoben werden
-- Behebung des falschen Verhaltens von [Sticky Labels](guides/configuring-time-scale.md#stickylabels), wenn [smart_scales](api/config/smart_scales.md) deaktiviert ist
+- Behebung des falschen Verhaltens von [Sticky Labels](guides/configuring-time-scale.md#sticky-labels), wenn [smart_scales](api/config/smart_scales.md) deaktiviert ist
 - Behebung des Problems, bei dem Gantt nach einem Rechtsklick weiterhin eine Aufgabe [vertikal verschiebt](api/config/order_branch.md)
-- Behebung des Problems, bei dem der Aufruf von [resetLayout](api/method/resetlayout.md) die Funktionalität des [S-Curve Overlay](guides/baselines.md#extraoverlayforthechart)-Plugins unterbrach
-- Verhinderung der Erstellung von doppelten Links durch den [Predecessor Editor](guides/inline-editing.md#typesofeditors)
+- Behebung des Problems, bei dem der Aufruf von [resetLayout](api/method/resetlayout.md) die Funktionalität des [S-Curve Overlay](guides/baselines.md#extra-overlay-for-the-chart)-Plugins unterbrach
+- Verhinderung der Erstellung von doppelten Links durch den [Predecessor Editor](guides/inline-editing.md#types-of-editors)
 
 ## <b>9.0</b>
 
@@ -399,13 +399,13 @@ Dieses Update bringt einige Änderungen in der Struktur des Gantt-Pakets und im 
 - Neues [Dark Skin](guides/skins.md#darkskin) eingeführt
 - Eingebaute Unterstützung für [Baselines](guides/inbuilt-baselines.md) hinzugefügt
 - [Manuell geplante Sammelaufgaben](guides/custom-projects-dates.md) werden jetzt unterstützt
-- [Sticky Labels für Zeitskalen](guides/configuring-time-scale.md#stickylabels)
+- [Sticky Labels für Zeitskalen](guides/configuring-time-scale.md#sticky-labels)
 
 ### Updates
 
 - [Terrace Skin](guides/skins.md#terraceskin) wurde aktualisiert
-- Standardmäßige Anzeige von [Deadlines](guides/inbuilt-baselines.md#deadlinesandconstraints) hinzugefügt
-- Standardmäßige Anzeige von [Task Constraints](guides/inbuilt-baselines.md#taskconstraints) hinzugefügt
+- Standardmäßige Anzeige von [Deadlines](guides/inbuilt-baselines.md#deadlines-and-constraints) hinzugefügt
+- Standardmäßige Anzeige von [Task Constraints](guides/inbuilt-baselines.md#task-constraints) hinzugefügt
 - [Quell-Dateien der Skins](guides/custom-skins.md) sind jetzt im Paket enthalten
 - Die Methoden `setUndoStack` und `setRedoStack` wurden dem [Undo-Plugin](guides/undo-redo.md) zum Verwalten der Undo/Redo-Stacks hinzugefügt
 - Möglichkeit, [die Professional-Versionen von Gantt über npm zu installieren](guides/installation.md)
@@ -418,10 +418,10 @@ Dieses Update bringt einige Änderungen in der Struktur des Gantt-Pakets und im 
 - Korrektur der falschen Linkpositionen für Meilensteine, wenn die übergeordnete Aufgabe eine größere Höhe hat
 - Behebung des Fehlers, der während des [Auto Scheduling](guides/auto-scheduling.md) auftritt, wenn die automatische Planung für eine Aufgabe abgebrochen wird
 - Sicherstellung, dass [Split Tasks](guides/split-tasks.md) korrekt innerhalb der übergeordneten Split-Zeile dargestellt werden
-- Korrektur des [Auto Scheduling](guides/auto-scheduling.md#summaryscheduling) von Projekten, wenn ein Subtask-Link einen Lag von 0 hat
+- Korrektur des [Auto Scheduling](guides/auto-scheduling.md) von Projekten, wenn ein Subtask-Link einen Lag von 0 hat
 - Behebung falscher Linkpositionen für [Split Tasks](guides/split-tasks.md), die unterschiedliche Zeilenhöhen haben
 - Sicherstellung, dass Gantt Projekte mit 2 Ebenen von Aufgaben korrekt automatisch plant
-- Behebung des Problems, dass Gantt das fixedDate "assignments" im [resource_cell_value](guides/resource-management.md#resourcecellvalue) nicht zurückgibt, wenn sich die Aufgabe außerhalb des angegebenen Datumsbereichs befindet
+- Behebung des Problems, dass Gantt das fixedDate "assignments" im [resource_cell_value](api/template/resource_cell_value.md) nicht zurückgibt, wenn sich die Aufgabe außerhalb des angegebenen Datumsbereichs befindet
 
 ## 8.0.11
 
@@ -458,7 +458,7 @@ Dieses Update bringt einige Änderungen in der Struktur des Gantt-Pakets und im 
 - Behebung des Problems, bei dem der 'project'-Aufgabentyp im Lightbox nicht gesetzt wurde
 - Behebung des Problems, bei dem [Worktime-Einstellungen](guides/working-time.md) des [zusammengeführten](guides/working-time.md#mergingcalendars)" Kalenders als Wochenenden behandelt wurden
 - Behebung des Problems, das das [Gruppieren](api/method/groupby.md) nach Ressourcen verhinderte, wenn eine Aufgabe [Resource Assignments](guides/resource-management.md) an unterschiedlichen Daten hatte
-- Behebung des Fehlers, der beim Versuch, [Split Tasks zu filtern](guides/split-tasks.md#filteringsplittasks), die keine Kinder haben, mit dem Event [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md) auftrat
+- Behebung des Fehlers, der beim Versuch, [Split Tasks zu filtern](guides/split-tasks.md#filtering-split-tasks), die keine Kinder haben, mit dem Event [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md) auftrat
 - Behebung des Problems, bei dem [Resource Assignments](guides/resource-management.md) nach [Verschieben des Projekts mit Unteraufgaben](api/config/drag_project.md) nicht aktualisiert wurden
 
 ## 8.0.9
@@ -516,11 +516,11 @@ Dieses Update bringt einige Änderungen in der Struktur des Gantt-Pakets und im 
 
 ### Fehlerbehebungen
 
-- Verbesserungen und Korrekturen bei der Verwendung von [WAI-ARIA-Attributen](guides/accessibility.md#waiariaattributes) für eine bessere Barrierefreiheit
+- Verbesserungen und Korrekturen bei der Verwendung von [WAI-ARIA-Attributen](guides/accessibility.md#wai-aria-attributes) für eine bessere Barrierefreiheit
 - Behebung des Problems der verringernden Breite des Grids nach dem Neuzeichnen, wenn die [`grid_elastic_columns`](api/config/grid_elastic_columns.md)-Konfiguration aktiviert ist
-- Die Standardanzahl der [`undo_steps`](guides/undo-redo.md#configuringtheundofunctionality) wurde von 10 auf 100 erhöht
-- Der [Export API Client](guides/extensions-list.md#exportservice) ist nun in die GPL-Version von Gantt integriert, zuvor war er nur in PRO-Versionen enthalten
-- Unterstützung für https Export-[Serverendpunkte](guides/export.md#parametersoftheexportmethods) in der [Node.js-Version von Gantt](guides/using-gantt-on-server.md) hinzugefügt
+- Die Standardanzahl der [`undo_steps`](guides/undo-redo.md#configuring-the-undo-functionality) wurde von 10 auf 100 erhöht
+- Der [Export API Client](guides/extensions-list.md#export-service) ist nun in die GPL-Version von Gantt integriert, zuvor war er nur in PRO-Versionen enthalten
+- Unterstützung für https Export-[Serverendpunkte](guides/export.md#parameters-of-the-export-methods) in der [Node.js-Version von Gantt](guides/using-gantt-on-server.md) hinzugefügt
 
 ## 8.0.5
 
@@ -538,10 +538,10 @@ Dieses Update bringt einige Änderungen in der Struktur des Gantt-Pakets und im 
 
 ### Fehlerbehebungen
 
-- Behebung eines Problems, bei dem der [DataProcessor](guides/server-side.md#resources_crud) Änderungen im [Resource Datastore](guides/resource-management.md#workingwithresourceviewpanel) nicht verfolgte
+- Behebung eines Problems, bei dem der [DataProcessor](guides/server-side.md#resources_crud) Änderungen im [Resource Datastore](guides/resource-management.md#working-with-resource-view-panel) nicht verfolgte
 - Behebung eines Fehlers, der nach dem Verschieben einer Aufgabe auftrat, wenn die [process_resource_assignments](api/config/process_resource_assignments.md)-Konfiguration deaktiviert war
 - Behebung der fehlerhaften Funktion von [gantt.calculateEndDate](api/method/calculateenddate.md) beim Subtrahieren von Datumswerten in Minuten
-- Kleine Leistungsverbesserung für Layouts mit [visibility groups](guides/layout-config.md#visibilitygroups)
+- Kleine Leistungsverbesserung für Layouts mit [visibility groups](guides/layout-config.md#visibility-groups)
 
 ## 8.0.3
 
@@ -575,7 +575,7 @@ Dieses Update bringt einige Änderungen in der Struktur des Gantt-Pakets und im 
 - Behebung eines Fehlers, der von [gantt.showCover()](api/method/showcover.md) ausgelöst wurde, wenn das [lightbox](guides/default-edit-form.md) nicht geöffnet war
 - Behebung einer Regression bei [split tasks](guides/split-tasks.md), die einen Skriptfehler für außerhalb der Zeitskala angezeigte Split Tasks verursachte
 - Behebung einer Regression in der Methode [gantt.addLinkLayer()](api/method/addlinklayer.md)
-- Behebung der fehlerhaften Funktion von [auto scheduling](guides/auto-scheduling.md) mit [MSO-, FNET- und FNLT-Beschränkungen](guides/auto-scheduling.md#timeconstraintsfortasks), wenn die [Einstellungen der Arbeitszeit](guides/working-time.md#globalsettings) einen Minutenanteil enthalten
+- Behebung der fehlerhaften Funktion von [auto scheduling](guides/auto-scheduling.md) mit [MSO-, FNET- und FNLT-Beschränkungen](guides/auto-scheduling.md#timeconstraintsfortasks), wenn die [Einstellungen der Arbeitszeit](guides/working-time.md#global-settings) einen Minutenanteil enthalten
 - Behebung der Funktion des [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md)-Ereignisses beim Scrollen
 
 ## <b>8.0</b>
@@ -593,7 +593,7 @@ Lesen Sie den [Migrationsartikel](migration.md#71---80), um mit der neuesten Ver
 - Aktualisiertes Ressourcenmanagement:
     - Ressourcen und Ressourcen-Zuweisungen können jetzt [zusammen mit den Daten geladen werden](guides/supported-data-formats.md#json)
     - Änderungen an Ressourcen und Ressourcen-Zuweisungen können mit dem [DataProcessor](guides/server-side.md#resources_crud) erfasst werden
-    - Reduzierter Boilerplate-Code für die Nutzung des [Resource panel](guides/resource-management.md#workingwithresourceviewpanel)
+    - Reduzierter Boilerplate-Code für die Nutzung des [Resource panel](guides/resource-management.md#working-with-resource-view-panel)
 - Gruppierungsfunktion für Aufgaben kann jetzt die ursprüngliche Gantt-Baumstruktur innerhalb von Gruppen beibehalten:
     - Neuer **save_tree_structure**-Parameter der [groupBy()](api/method/groupby.md)-Methode
 - [Leerer Status-Bildschirm](guides/empty-state-screen.md):
@@ -603,9 +603,9 @@ Lesen Sie den [Migrationsartikel](migration.md#71---80), um mit der neuesten Ver
     - Neue [timeline_placeholder](api/config/timeline_placeholder.md)-Eigenschaft
 - Verbesserungen für Rollup-Elemente und Split Tasks:
     - Möglichkeit, einzelne [Rollup-Elemente](guides/milestones.md#stylingseparaterollupitems) und [Split Tasks](guides/split-tasks.md#styling) zu stylen
-    - Möglichkeit, [alle Rollup-Elemente aus der Projektaufgabe auszublenden](guides/milestones.md#hidingtasksandmilestones)
+    - Möglichkeit, [alle Rollup-Elemente aus der Projektaufgabe auszublenden](guides/milestones.md#hiding-tasks-and-milestones)
     - Möglichkeit zu steuern, wo Rollup-Elemente angezeigt werden (neues [onBeforeRollupTaskDisplay](api/event/onbeforerolluptaskdisplay.md)-Ereignis)
-    - Möglichkeit, [Split Tasks zu filtern](guides/split-tasks.md#filteringsplittasks) (neues [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md)-Ereignis)
+    - Möglichkeit, [Split Tasks zu filtern](guides/split-tasks.md#filtering-split-tasks) (neues [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md)-Ereignis)
     - Performance-Optimierung für die Anzeige von Split Tasks
 - Möglichkeit, Elemente erst nach Bestätigung vom Backend zu löschen:
     - Neuer **deleteAfterConfirmation**-Parameter des [dataProcessor-Konfigurationsobjekts](api/method/createdataprocessor.md)
@@ -621,7 +621,7 @@ Lesen Sie den [Migrationsartikel](migration.md#71---80), um mit der neuesten Ver
     - Neuer **types**-Parameter der [getTaskBy()](api/method/gettaskby.md)-Methode
 - Möglichkeit, beliebigen HTML-Inhalt in die Zellen der Zeitleiste einzufügen:
     - Neues [timeline_cell_content](api/template/timeline_cell_content.md)-Template
-- Die Export-API ist jetzt in [gantt.plugins](guides/extensions-list.md#exportservice) enthalten und erfordert keine zusätzliche JS-Datei mehr. Siehe [Migration](migration.md#71---80)
+- Die Export-API ist jetzt in [gantt.plugins](guides/extensions-list.md#export-service) enthalten und erfordert keine zusätzliche JS-Datei mehr. Siehe [Migration](migration.md#71---80)
 
 ### Updates
 
@@ -629,12 +629,12 @@ Lesen Sie den [Migrationsartikel](migration.md#71---80), um mit der neuesten Ver
 
 ### Fehlerbehebungen
 
-- Behebung des Problems bei der [Dauerberechnung](guides/working-time.md) mit Minuten-[duration_unit](api/config/duration_unit.md) und benutzerdefinierten [Arbeitszeiteinstellungen](guides/working-time.md#globalsettings)
+- Behebung des Problems bei der [Dauerberechnung](guides/working-time.md) mit Minuten-[duration_unit](api/config/duration_unit.md) und benutzerdefinierten [Arbeitszeiteinstellungen](guides/working-time.md#global-settings)
 - Behebung verschiedener Probleme bei der Slack-Berechnung
 - Behebung eines Skriptfehlers beim Laden von Daten, wenn [Slack-Berechnungen](guides/critical-path.md#gettingfreeandtotalslack) aktiviert sind
 - Die Methode [setWorkTime](api/method/setworktime.md) unterstützt jetzt das Setzen von Regeln für Daten innerhalb von customWeeks
 - Behebung des Problems mit Smart Rendering, das leere Bereiche anstelle von Daten im Gantt verursacht
-- Behebung des Problems mit [vertikalem Reordering](guides/reordering-tasks.md) von Zeilen im Grid, wenn einige Zeilen [benutzerdefinierte Höhen](guides/resizing-rows.md#settingtherowheight) haben
+- Behebung des Problems mit [vertikalem Reordering](guides/reordering-tasks.md) von Zeilen im Grid, wenn einige Zeilen [benutzerdefinierte Höhen](guides/resizing-rows.md#setting-the-row-height) haben
 - Behebung der fehlerhaften Funktion von [Inline-Editoren](guides/inline-editing.md), wenn die [Multiselect](guides/multiselection.md)-Erweiterung aktiviert ist
 - Behebung der fehlerhaften Anzeige des [Quick Info](guides/quick-info.md)-Popups, wenn die [gantt.config.quick_info_detached](api/config/quick_info_detached.md)-Konfiguration auf `false` gesetzt ist
 - Korrekte Argumente der `is_valid`-Funktion des [Inline Editor](guides/inline-editing.md#custominlineeditor)-Interfaces. Die Funktion erhält nun das Spaltenobjekt
@@ -651,7 +651,7 @@ Lesen Sie den [Migrationsartikel](migration.md#71---80), um mit der neuesten Ver
 ### Fehlerbehebungen
 
 - Behebt das fehlerhafte Verhalten der Methode [gantt.addLinkLayer()](api/method/addlinklayer.md) zusammen mit der Eigenschaft [smart_rendering](api/config/smart_rendering.md)
-- Behebt Darstellungsprobleme des [S-Kurven-Overlays](guides/baselines.md#extraoverlayforthechart) in Kombination mit verschiedenen [Zeitskalen](guides/configuring-time-scale.md)
+- Behebt Darstellungsprobleme des [S-Kurven-Overlays](guides/baselines.md#extra-overlay-for-the-chart) in Kombination mit verschiedenen [Zeitskalen](guides/configuring-time-scale.md)
 - Behebt das Problem beim [Größenanpassen der Spalten im Grid](guides/specifying-columns.md#resizing), wenn die Eigenschaft [grid_elastic_columns](api/config/grid_elastic_columns.md) aktiviert ist
 - Behebt das Problem, dass Gantt die Position des vertikalen Scrollbalkens nach dem Löschen einer Aufgabe über die [Tastaturnavigation](guides/keyboard-navigation.md) zurücksetzt
 - Behebt das fehlerhafte Verhalten der Methode [treeDatastore.move()](api/other/treedatastore.md)
@@ -660,8 +660,8 @@ Lesen Sie den [Migrationsartikel](migration.md#71---80), um mit der neuesten Ver
 - Behebt Kompatibilitätsprobleme mit Vue.js v3.x
 - Behebt den Skriptfehler, der von der Methode [gantt.getConstraintLimitations()](api/method/getconstraintlimitations.md) ausgelöst wurde, wenn die angegebene Aufgabe kein 'constraint_date' hatte
 - Behebt Kompatibilitätsprobleme mit SalesForce Web Security
-- Behebt das Problem, dass der Fokus nach einem Klick außerhalb des Gantt-Containers wieder auf Gantt zurückgesetzt wurde, wenn die [Tastaturnavigation](guides/keyboard-navigation.md#focusbehaviorduringkeyboardnavigation) aktiviert war
-- [Deutsche Lokalisierung](guides/localization.md#activatingalocale) wurde aktualisiert
+- Behebt das Problem, dass der Fokus nach einem Klick außerhalb des Gantt-Containers wieder auf Gantt zurückgesetzt wurde, wenn die [Tastaturnavigation](guides/keyboard-navigation.md#focus-behavior-during-keyboard-navigation) aktiviert war
+- [Deutsche Lokalisierung](guides/localization.md#activating-a-locale) wurde aktualisiert
 - Es ist jetzt möglich, den Inline-Editor nach einem Klick auf eine Aufgabe im Multi-Selektionsmodus zu öffnen (die Eigenschaft [inline_editors_multiselect_open](api/config/inline_editors_multiselect_open.md) wurde hinzugefügt)
 
 ## 7.1.12
@@ -691,9 +691,9 @@ Lesen Sie den [Migrationsartikel](migration.md#71---80), um mit der neuesten Ver
 - Behebt die falsche Position des [Tooltips](guides/tooltips.md) und einiger anderer Gantt-Elemente, wenn der Gantt-Container zusätzlichen Rand oder vertikale Versätze hatte
 - Behebt das Problem, dass sich die Reihenfolge der Zeilen im [editierbaren Ressourcen-Diagramm](guides/resource-management.md) nach der Bearbeitung der ersten Zelle der Ressourcen-Zuweisung änderte
 - Behebt das Problem, das das fehlerhafte Verhalten des [smart rendering](api/config/smart_rendering.md) nach dem Erweitern oder Reduzieren von Aufgaben in einigen Fällen verursachte
-- Behebt das Problem mit dem [onBeforeDrag](guides/advanced-dnd.md)-Event, das die Standardaktionen nicht blockierte, wenn die Erweiterungen [click_drag](guides/extensions-list.md#advanceddragndrop) und [drag_timeline](guides/extensions-list.md#dragtimeline) aktiviert waren
+- Behebt das Problem mit dem [onBeforeDrag](guides/advanced-dnd.md)-Event, das die Standardaktionen nicht blockierte, wenn die Erweiterungen [click_drag](guides/extensions-list.md#advanced-drag-n-drop) und [drag_timeline](guides/extensions-list.md#drag-timeline) aktiviert waren
 - Behebt den Skriptfehler, der ausgelöst wurde, wenn die Methode [changeId()](api/other/datastore.md) für den [resource assignments store](guides/resource-management.md#assigningresources) aufgerufen wurde
-- Die Scrollbars des Standard-[Gantt-Layouts](guides/layout-config.md#defaultlayout) benötigen keine festen **scrollVer**/**scrollHor**-Namen mehr, um korrekt zu funktionieren
+- Die Scrollbars des Standard-[Gantt-Layouts](guides/layout-config.md#default-layout) benötigen keine festen **scrollVer**/**scrollHor**-Namen mehr, um korrekt zu funktionieren
 - [Split-Aufgaben](guides/split-tasks.md) erhalten jetzt die Klasse 'gantt_selected' bei [Auswahl](api/config/select_task.md), genauso wie reguläre Aufgaben
 
 ## 7.1.10
@@ -702,9 +702,9 @@ Lesen Sie den [Migrationsartikel](migration.md#71---80), um mit der neuesten Ver
 
 ### Fehlerbehebungen
 
-- Behebt das Problem, dass eine [Projektaufgabe](guides/task-types.md#projecttasks) nicht gerendert wurde, wenn sie keine Unteraufgaben hatte und der Parameter `start_date` für die Aufgabe angegeben war
-- Behebt das Problem beim [Größenanpassen einer Aufgabenzeile per Drag & Drop](guides/resizing-rows.md#resizingrowsbydraganddrop), wenn die Aufgaben-ID entweder ein Nicht-Zahlenwert oder eine numerische Zeichenkette mit mehr als 16 Symbolen war
-- Behebt das fehlerhafte Verhalten von [visibility groups](guides/layout-config.md#visibilitygroups), das verhinderte, dass die Größen von Grid und Zeitskala im [komplexen Layout](guides/layout-config.md) synchronisiert wurden
+- Behebt das Problem, dass eine [Projektaufgabe](guides/task-types.md#project-tasks) nicht gerendert wurde, wenn sie keine Unteraufgaben hatte und der Parameter `start_date` für die Aufgabe angegeben war
+- Behebt das Problem beim [Größenanpassen einer Aufgabenzeile per Drag & Drop](guides/resizing-rows.md#resizing-rows-by-drag-and-drop), wenn die Aufgaben-ID entweder ein Nicht-Zahlenwert oder eine numerische Zeichenkette mit mehr als 16 Symbolen war
+- Behebt das fehlerhafte Verhalten von [visibility groups](guides/layout-config.md#visibility-groups), das verhinderte, dass die Größen von Grid und Zeitskala im [komplexen Layout](guides/layout-config.md) synchronisiert wurden
 - Behebt Probleme mit Aufgabendaten nach dem gleichzeitigen horizontalen Verschieben mehrerer Aufgaben
 - Behebt das Problem, dass [dataProcessor](guides/server-side.md) nicht alle Updates aus verschiedenen Datastores sendete, wenn der [auto-update mode](https://docs.dhtmlx.com/api__dataprocessor_setupdatemode.html) deaktiviert war
 - Behebt das Problem, dass der [milestone](guides/milestones.md) mit dem [FF-Link](api/config/links.md) auf den nächsten Tag verschoben wurde
@@ -734,7 +734,7 @@ Lesen Sie den [Migrationsartikel](migration.md#71---80), um mit der neuesten Ver
 - Behebt den Skriptfehler, der nach dem Laden von Gantt auftrat, wenn ein horizontaler Scrollbalken an 3 oder mehr vertikale Ansichten angehängt war
 - Behebt das fehlerhafte Verhalten des [onBeforeTaskAutoSchedule](api/event/onbeforeautoschedule.md)-Events nach Setzen der [ASAP-Einschränkung](guides/auto-scheduling.md#timeconstraintsfortasks) für eine Aufgabe ohne Verknüpfungen, wenn der [strict mode](api/config/auto_scheduling_strict.md) aktiviert ist
 - Behebt den Fehler, der beim Ausführen von minifizierten Gantt-Versionen in Next.js-Projekten auftrat
-- Behebt das Problem, dass sich die Breite von Gantt nach der Initialisierung der [gantt instance](guides/multiple-gantts.md#ganttinstanceconfiguration) in einem leeren Container änderte
+- Behebt das Problem, dass sich die Breite von Gantt nach der Initialisierung der [gantt instance](guides/multiple-gantts.md#gantt-instance-configuration) in einem leeren Container änderte
 
 ## 7.1.8
 
@@ -759,8 +759,8 @@ Lesen Sie den [Migrationsartikel](migration.md#71---80), um mit der neuesten Ver
 - Behebung von Problemen bei der fehlerhaften Berechnung der [total slack](api/method/gettotalslack.md) Werte
 - Performance-Verbesserung bei der Berechnung von [total slack](guides/critical-path.md#gettingfreeandtotalslack)
 - Stilkorrekturen für das [lightbox](guides/edit-form.md) im [Material](guides/skins.md#materialskin) Skin
-- Behebung des Problems mit dem [Zoom plugin](guides/zooming.md#builtinzoomingmodule), das verhinderte, dass die [zoom.init](guides/zoom.md) Methode funktioniert, wenn sie nach [gantt.init](api/method/init.md) aufgerufen wurde
-- Behebung eines Skriptfehlers, der bei Verwendung der [inherit_calendar](guides/working-time.md#assigningcalendartoproject) Konfiguration zusammen mit der [gantt.groupBy](guides/grouping.md) Methode auftrat
+- Behebung des Problems mit dem [Zoom plugin](guides/zooming.md#built-in-zooming-module), das verhinderte, dass die [zoom.init](guides/zoom.md) Methode funktioniert, wenn sie nach [gantt.init](api/method/init.md) aufgerufen wurde
+- Behebung eines Skriptfehlers, der bei Verwendung der [inherit_calendar](guides/working-time.md#assigning-calendar-to-project) Konfiguration zusammen mit der [gantt.groupBy](guides/grouping.md) Methode auftrat
 - Behebung eines Skriptfehlers beim Hinzufügen von Aufgaben über [gantt.batchUpdate](api/method/batchupdate.md), wenn die [placeholder task](api/config/placeholder_task.md) aktiv ist
 - Behebung des Problems, das es erlaubte, die [placeholder task](api/config/placeholder_task.md) zu sortieren, neu anzuordnen oder Unteraufgaben zu akzeptieren
 - Behebung von Problemen mit der falschen Größe der [grid columns](guides/specifying-columns.md)
@@ -775,7 +775,7 @@ Lesen Sie den [Migrationsartikel](migration.md#71---80), um mit der neuesten Ver
 - Behebung des fehlerhaften Verhaltens der [auto_scheduling_move_projects](api/config/auto_scheduling_move_projects.md) Konfiguration, wenn [schedule_from_end](api/config/schedule_from_end.md) aktiviert ist
 - Behebung des fehlerhaften Verhaltens des [onrender](api/config/columns.md) Callbacks der Spalte, das dazu führte, dass benutzerdefinierte Elemente beim schnellen Scrollen im Grid verschwanden
 - Behebung der Regression (aufgetreten in v7.1.5), die dazu führte, dass Zeilen im Grid nach dem Ändern der Größe einer Zelle in komplexen Layouts verschwanden
-- Behebung des fehlerhaften Verhaltens der [size/visibility groups](guides/layout-config.md#visibilitygroups), das verhinderte, dass die Größen der Spalten im komplexen Layout synchronisiert wurden
+- Behebung des fehlerhaften Verhaltens der [size/visibility groups](guides/layout-config.md#visibility-groups), das verhinderte, dass die Größen der Spalten im komplexen Layout synchronisiert wurden
 - Verbesserte Darstellung des Grids, wenn das Gantt in einem kleinen Container gerendert wird
 
 ## 7.1.5
@@ -784,12 +784,12 @@ Lesen Sie den [Migrationsartikel](migration.md#71---80), um mit der neuesten Ver
 
 ### Fehlerbehebungen
 
-- Behebung des fehlerhaften Verhaltens beim vertikalen Umordnen von Aufgaben im ["marker" mode](guides/reordering-tasks.md#improvingperformancewithlargedatasets), wenn Gantt-Zeilen unterschiedliche Höhen haben
+- Behebung des fehlerhaften Verhaltens beim vertikalen Umordnen von Aufgaben im ["marker" mode](guides/reordering-tasks.md#improving-performance-for-large-datasets), wenn Gantt-Zeilen unterschiedliche Höhen haben
 - Behebung des Problems mit den Größen der Zeitleiste und des Grids in einigen Layouts, wenn die [show_grid](api/config/show_grid.md) und [show_chart](api/config/show_chart.md) Konfigurationen deaktiviert sind
 - Die Attribute `data-column-name` und `data-column-index` werden für Zellen des Grid-Headers hinzugefügt
 - Behebung der fehlerhaften Anzeige des Grids nach der [Reinitialisierung](api/method/init.md) des Gantt, nachdem alle Spalten [aus der Konfiguration](guides/specifying-columns.md#overview) entfernt wurden
 - Behebung eines Problems, das dazu führte, dass die Resource-Panel-Konfiguration [die Hauptkonfiguration](guides/common-configuration.md#ganttconfigobject) des Gantt in Vue.js-Anwendungen überschreibt
-- Hinzufügen der Möglichkeit, die Konfiguration des [resource panel](guides/resource-management.md#resourceviewpanel) dynamisch zu ändern, indem das Konfigurationsobjekt für das [resource layout](guides/layout-config.md#configsandtemplatesofviews) angepasst wird
+- Hinzufügen der Möglichkeit, die Konfiguration des [resource panel](guides/resource-management.md#resourceviewpanel) dynamisch zu ändern, indem das Konfigurationsobjekt für das [resource layout](guides/layout-config.md#configs-and-templates-of-views) angepasst wird
 
 ## 7.1.4
 
@@ -800,11 +800,11 @@ Lesen Sie den [Migrationsartikel](migration.md#71---80), um mit der neuesten Ver
 - Behebung des fehlerhaften Verhaltens von [unsetWorkTime](api/method/unsetworktime.md), das dazu führte, dass betroffene Daten falsche Arbeitszeiten hatten
 - Behebung eines Skriptfehlers im [Resource histogram](guides/resource-management.md#resourceviewpanel) nach Scrollen, wenn [resource_render_empty_cells](api/config/resource_render_empty_cells.md) auf false und [smart_rendering](api/config/smart_rendering.md) aktiviert ist
 - Behebung des fehlerhaften Verhaltens der Methoden `editNextRow` und `editPrevRow` des [Inline Editors](guides/inline-editors-ext.md) Moduls
-- Behebung des fehlerhaften Verhaltens des [Quick Info](guides/extensions-list.md#quickinfo) Popups, das dazu führte, dass das Popup nach einem Klick auf die "add"-Schaltfläche im Grid angezeigt wurde
+- Behebung des fehlerhaften Verhaltens des [Quick Info](guides/extensions-list.md#quick-info) Popups, das dazu führte, dass das Popup nach einem Klick auf die "add"-Schaltfläche im Grid angezeigt wurde
 - Behebung des fehlerhaften Verhaltens der [ASAP constraints](guides/auto-scheduling.md#timeconstraintsfortasks), das verhinderte, dass Aufgaben auf das früheste Datum des Projekts verschoben wurden
 - Behebung des fehlerhaften Verhaltens von [Inline Editors](guides/inline-editors-ext.md), das die Bearbeitung von [constraints](guides/auto-scheduling.md#timeconstraintsfortasks) über den Inline-Editor verhinderte
 - Behebung des fehlerhaften Scrollverhaltens bei der [Keyboard Navigation](guides/keyboard-navigation.md), das ein unnötiges Scrollen auslöste, wenn ausgewählte Aufgabenleisten sichtbar sind
-- Behebung eines Skriptfehlers, wenn die Maus den Container verlässt und die [click_drag](guides/extensions-list.md#advanceddragndrop) Erweiterung aktiviert ist
+- Behebung eines Skriptfehlers, wenn die Maus den Container verlässt und die [click_drag](guides/extensions-list.md#advanced-drag-n-drop) Erweiterung aktiviert ist
 - Performance-Verbesserungen für die [auto_types](api/config/auto_types.md) Konfiguration von Gantt
 
 ## 7.1.3
@@ -834,7 +834,7 @@ Lesen Sie den [Migrationsartikel](migration.md#71---80), um mit der neuesten Ver
 
 ### Fehlerbehebungen
 
-- Behebung der Regression im [click_drag](guides/extensions-list.md#advanceddragndrop) Plugin
+- Behebung der Regression im [click_drag](guides/extensions-list.md#advanced-drag-n-drop) Plugin
 - Behebung des Security Violation Fehlers, der beim Setzen der [gantt.config.csp](api/config/csp.md) Konfiguration auf "auto" ausgelöst wurde
 - Korrektur der Build-Einstellungen, die dazu führten, dass der Paketcode v7.1.0 ES6-Syntax enthielt; die Bibliothek ist wieder ES5-kompatibel
 - Behebung eines Skriptfehlers beim Versuch, eine Grid-Spalte zu skalieren, wenn die [gantt.config.reorder_grid_columns](api/config/reorder_grid_columns.md) Konfiguration aktiviert ist
@@ -858,10 +858,10 @@ Dieses Update bringt Änderungen an einigen Teilen der Komponente mit sich. Auch
 - Die neue [gantt.getTaskAssignments()](api/method/gettaskassignments.md) Methode
 - [Die Möglichkeit, Ressourcen-Zuweisungen](guides/resource-management.md#managingresourceassignments) über die neue [gantt.config.process_resource_assignments](api/config/process_resource_assignments.md) und [gantt.updateTaskAssignments()](api/method/updatetaskassignments.md) Gantt API zu verwalten
 - [Rollup-Aufgaben und Meilensteine](guides/milestones.md#rolluptasksandmilestones)
-- [Die Möglichkeit, Aufgabenleisten und Meilensteine im Zeitachsenbereich auszublenden](guides/milestones.md#hidingtasksandmilestones)
+- [Die Möglichkeit, Aufgabenleisten und Meilensteine im Zeitachsenbereich auszublenden](guides/milestones.md#hiding-tasks-and-milestones)
 - [Die Möglichkeit, unterschiedliche Arbeitszeiten für verschiedene Zeiträume festzulegen](guides/working-time.md#rules_for_periods)
-- [Die Möglichkeit, die Höhe einer einzelnen Zeile im Grid festzulegen](guides/resizing-rows.md#settingtherowheight)
-- [Die Möglichkeit, eine Zeile im Grid per Drag-and-Drop zu skalieren](guides/resizing-rows.md#resizingrowsbydraganddrop)
+- [Die Möglichkeit, die Höhe einer einzelnen Zeile im Grid festzulegen](guides/resizing-rows.md#setting-the-row-height)
+- [Die Möglichkeit, eine Zeile im Grid per Drag-and-Drop zu skalieren](guides/resizing-rows.md#resizing-rows-by-drag-and-drop)
 - Möglichkeit, die Höhe des DOM-Elements einer Aufgabe über die [gantt.getTaskBarHeight()](api/method/gettaskbarheight.md) Methode abzurufen
 - Neue Events: [onBeforeRowResize](api/event/onbeforerowresize.md), [onRowResize](api/event/onrowresize.md), [onBeforeRowResizeEnd](api/event/onbeforerowresizeend.md), [onAfterRowResize](api/event/onafterrowresize.md)
 - Das [onrender](guides/specifying-columns.md#modifyingcellsafterrendering) Callback für das Rendern einer Grid-Zelle im DOM wurde hinzugefügt
@@ -884,9 +884,9 @@ Dieses Update bringt Änderungen an einigen Teilen der Komponente mit sich. Auch
 
 ### Fehlerbehebungen
 
-- Behebung eines Skriptfehlers, der auftrat, wenn die [layout configuration](guides/layout-config.md#layoutcustomization) dynamisch geändert und [gantt.addTaskLayer](api/method/addtasklayer.md) verwendet wurde
+- Behebung eines Skriptfehlers, der auftrat, wenn die [layout configuration](guides/layout-config.md#layout-customization) dynamisch geändert und [gantt.addTaskLayer](api/method/addtasklayer.md) verwendet wurde
 - Behebung eines Problems mit der anfänglichen inneren Höhe des [resource histogram](guides/resource-management.md#resourceviewpanel), wenn die Option `fetchTasks` verwendet wurde
-- Behebung des fehlerhaften Verhaltens des [predecessor editor](guides/inline-editing.md#typesofeditors), das dazu führte, dass bestehende Links beim Bearbeiten des Werts gelöscht wurden
+- Behebung des fehlerhaften Verhaltens des [predecessor editor](guides/inline-editing.md#types-of-editors), das dazu führte, dass bestehende Links beim Bearbeiten des Werts gelöscht wurden
 - Behebung des fehlerhaften Verhaltens des Gantt, wenn eine [task with a non-unique ID](guides/task-object-operations.md) über [gantt.addTask](api/method/addtask.md) und [gantt.parse](api/method/parse.md) hinzugefügt wurde
 - Performance-Verbesserung für Drag-and-Drop, wenn die Optionen [auto_types](api/config/auto_types.md) und [drag_project](api/config/drag_project.md) aktiviert sind
 - Performance-Verbesserung für die [Berechnung der Arbeitszeit](guides/working-time.md), wenn [duration_unit](api/config/duration_unit.md) auf "day" gesetzt ist
@@ -897,15 +897,15 @@ Dieses Update bringt Änderungen an einigen Teilen der Komponente mit sich. Auch
 
 ### Fehlerbehebungen
 
-- Behebung einiger kleiner Probleme mit [vertikalem Drag-and-Drop](guides/reordering-tasks.md#draganddropacrosstheentireganttstructure) in großen Projekten
+- Behebung einiger kleiner Probleme mit [vertikalem Drag-and-Drop](guides/reordering-tasks.md#drag-n-drop-within-the-whole-gantt-structure) in großen Projekten
 - Behebung des Problems mit der inkorrekten Größe des Containers bei Verwendung der [autosize](api/config/autosize.md) Konfiguration
 - [Tastaturnavigation](guides/keyboard-navigation.md) funktioniert jetzt korrekt mit dem horizontalen Scrollen des Grids
-- [HTML-Ansichten](guides/layout-config.md#htmlasinnerview) des Layouts unterstützen jetzt externe [Scrollbars](guides/layout-config.md#scrollbar)
-- Behebung des Problems, das nach dem [Verschieben von Aufgaben](guides/reordering-tasks.md#draganddropacrosstheentireganttstructure) einen inkorrekten Zustand des Grids verursachte, wenn das [zusätzliche Grid](https://docs.dhtmlx.com/gantt/samples/10_layout/01_rightside_columns.html) dem Layout hinzugefügt wurde
+- [HTML-Ansichten](guides/layout-config.md#html-as-inner-view) des Layouts unterstützen jetzt externe [Scrollbars](guides/layout-config.md#scrollbar)
+- Behebung des Problems, das nach dem [Verschieben von Aufgaben](guides/reordering-tasks.md#drag-n-drop-within-the-whole-gantt-structure) einen inkorrekten Zustand des Grids verursachte, wenn das [zusätzliche Grid](https://docs.dhtmlx.com/gantt/samples/10_layout/01_rightside_columns.html) dem Layout hinzugefügt wurde
 - Behebung eines Skriptfehlers, der nach dem Leeren und erneuten Laden des [Ressourcen-Panels](guides/resource-management.md) auftrat, wenn eine Ressource ausgewählt war
 - Hinzufügen der Möglichkeit, die automatische Korrektur des Enddatums im [Zeit](guides/time.md)-Abschnitt der Lightbox zu deaktivieren, die angewendet wurde, wenn das ausgewählte Startdatum größer als das Enddatum war
 - Behebung eines Tippfehlers in der Standardkonfiguration des [Duration Formatter](guides/formatters-ext.md)
-- Behebung eines Skriptfehlers, der ausgelöst wurde, wenn das Gantt-Diagramm [zerstört](api/method/destructor.md) wurde, während eine [Popup-Nachricht](guides/message-boxes.md#basicpopupmessage) angezeigt wurde
+- Behebung eines Skriptfehlers, der ausgelöst wurde, wenn das Gantt-Diagramm [zerstört](api/method/destructor.md) wurde, während eine [Popup-Nachricht](guides/message-boxes.md#basic-popup-message) angezeigt wurde
 - Behebung der anfänglichen Position des horizontalen Scrolls in Grid und Timeline im [RTL](guides/rtl-mode.md)-Modus
 - Behebung des Problems mit der Lightbox, das dazu führte, dass der ausgewählte Typ einer Aufgabe nicht gespeichert wurde, wenn das [typeselect](guides/typeselect.md) Steuerelement nicht zur Lightbox-Konfiguration hinzugefügt wurde
 - Behebung des Problems, das dazu führte, dass [Marker](guides/markers.md) nach dem Aufruf der Methode [gantt.resetLayout()](api/method/resetlayout.md) verschwanden
@@ -927,7 +927,7 @@ Dieses Update bringt Änderungen an einigen Teilen der Komponente mit sich. Auch
 - Behebung des Konflikts zwischen [placeholder](api/config/placeholder_task.md)-Aufgaben und [Auto Scheduling](guides/auto-scheduling.md)
 - Behebung von überflüssigen Neuzeichnungen, wenn [sort](api/config/sort.md) aktiviert ist
 - Behebung des Problems mit [Inline-Editoren](guides/inline-editing.md) und einem scrollbaren Grid, wenn Inline-Editoren direkt nach dem Klick den Fokus verlieren
-- Behebung des Problems, das dazu führte, dass Gantt das [Quick Info](guides/extensions-list.md#quickinfo) Popup schloss, wenn der Benutzer darauf klickte
+- Behebung des Problems, das dazu führte, dass Gantt das [Quick Info](guides/extensions-list.md#quick-info) Popup schloss, wenn der Benutzer darauf klickte
 
 ## 7.0.10
 
@@ -935,7 +935,7 @@ Dieses Update bringt Änderungen an einigen Teilen der Komponente mit sich. Auch
 
 ### Fehlerbehebungen
 
-- Behebung des fehlerhaften Verhaltens von [vertikalen Resizern](guides/layout-config.md#defaultlayout) (Regression in v7.0.9)
+- Behebung des fehlerhaften Verhaltens von [vertikalen Resizern](guides/layout-config.md#default-layout) (Regression in v7.0.9)
 - Verhindern eines unerwarteten Seiten-Reloads, der beim vertikalen Neuordnen von Aufgaben auf Android Chrome (Pull-to-Refresh) auftrat
 - Behebung eines Skriptfehlers, der beim Erstellen eines Links auf mobilen Firefox-Geräten ausgelöst wurde
 - Behebung des fehlerhaften Verhaltens der Aufgabenauswahl, wenn die [multiselect](api/config/multiselect.md) Konfiguration aktiviert ist, aber das [multiselect](guides/extensions-list.md#multitaskselection) Plugin nicht aktiviert ist
@@ -971,7 +971,7 @@ Dieses Update bringt Änderungen an einigen Teilen der Komponente mit sich. Auch
 - Behebung einiger Probleme mit Touch-Support auf Android/iOS-Geräten
 - Behebung einer Regression (aufgetreten in v7.0.6) bei der Linkerstellung und der Methode [gantt.isLinkAllowed](api/method/islinkallowed.md)
 - Behebung eines Skriptfehlers, der ausgelöst wurde, wenn der 'locale'-Parameter in [gantt.getGanttInstance](guides/multiple-gantts.md) verwendet wurde
-- Behebung eines Skriptfehlers, der von [gantt.destructor](api/method/destructor.md) ausgelöst wurde, wenn die [Tastaturnavigation](guides/extensions-list.md#keyboardnavigation) und die [Quick Info](guides/extensions-list.md#quickinfo) Erweiterungen verwendet wurden
+- Behebung eines Skriptfehlers, der von [gantt.destructor](api/method/destructor.md) ausgelöst wurde, wenn die [Tastaturnavigation](guides/extensions-list.md#keyboardnavigation) und die [Quick Info](guides/extensions-list.md#quick-info) Erweiterungen verwendet wurden
 
 ## 7.0.7
 
@@ -1001,7 +1001,7 @@ Dieses Update bringt Änderungen an einigen Teilen der Komponente mit sich. Auch
 
 - Performance-Verbesserungen für die [Arbeitszeitberechnung](guides/working-time.md), wenn die [duration_unit](api/config/duration_unit.md) Konfiguration auf "hour" gesetzt ist
 - Performance-Verbesserungen für die [Arbeitszeitberechnung](guides/working-time.md), wenn die [duration_unit](api/config/duration_unit.md) Konfiguration auf "minute" gesetzt ist
-- Möglichkeit hinzugefügt, Arbeitskalender im Konfigurationsobjekt von [`Gantt.getGanttInstance`](guides/multiple-gantts.md#ganttinstanceconfiguration) anzugeben
+- Möglichkeit hinzugefügt, Arbeitskalender im Konfigurationsobjekt von [`Gantt.getGanttInstance`](guides/multiple-gantts.md#gantt-instance-configuration) anzugeben
 
 ## 7.0.4
 
@@ -1039,7 +1039,7 @@ Dieses Update bringt Änderungen an einigen Teilen der Komponente mit sich. Auch
 ### Fehlerbehebungen
 
 - Behebung des fehlerhaften Verhaltens von [Datumsformatierern](api/other/date.md), wenn [gantt.config.csp](api/config/csp.md) auf true gesetzt ist
-- Behebung einer Regression in den [click_drag](guides/extensions-list.md#advanceddragndrop)- und [drag_timeline](guides/extensions-list.md#dragtimeline)-Erweiterungen, die zu fehlerhaftem Verhalten führte, wenn [mehrere Gantt-Instanzen](guides/multiple-gantts.md) erstellt wurden
+- Behebung einer Regression in den [click_drag](guides/extensions-list.md#advanced-drag-n-drop)- und [drag_timeline](guides/extensions-list.md#drag-timeline)-Erweiterungen, die zu fehlerhaftem Verhalten führte, wenn [mehrere Gantt-Instanzen](guides/multiple-gantts.md) erstellt wurden
 - Behebung der inkorrekten CSS-Klasse eines Aufgabenzeilen-Elements nach Rückgabe des Fehlerstatus aus der [dataProcessor router function](guides/server-side.md#customrouting)
 - Behebung des fehlerhaften Verhaltens von [Inline-Editoren](guides/inline-editing.md) innerhalb von Shadow DOM
 
@@ -1054,7 +1054,7 @@ Dieses Update bringt Änderungen an einigen Teilen der Komponente mit sich. Auch
 - Behebung des Problems bei der [Neuanordnung von Spalten im Grid](api/config/reorder_grid_columns.md), das dazu führte, dass die Zeitleiste beim Ziehen und Ablegen an den Rand des Grids scrollte
 - Behebung der [falschen Position einer Spalte nach deren Ziehen und Ablegen auf die rechte Seite des Grid-Randes](api/config/reorder_grid_columns.md)
 - [dataProcessor custom router](guides/server-side.md#customrouting) funktioniert jetzt korrekt mit abgelehnten Promises
-- Behebung der Regression im [Smart Rendering](guides/performance.md#smartrendering), durch die einige Verknüpfungen nicht sichtbar waren
+- Behebung der Regression im [Smart Rendering](guides/performance.md#smart-rendering), durch die einige Verknüpfungen nicht sichtbar waren
 - [Geteilte Aufgaben](guides/split-tasks.md) zeigen jetzt nicht nur die untergeordneten Aufgaben der ersten Ebene, sondern auch alle verschachtelten Unteraufgaben an
 - Behebung des Problems mit [geteilten Aufgaben](guides/split-tasks.md) und Smart Rendering, das auftrat, wenn eine geteilte Aufgabe den Typ 'task' hatte
 - Behebung des Problems mit [geteilten Aufgaben](guides/split-tasks.md), das dazu führte, dass Gantt die Dauer von 'project'-Aufgaben, die in einer geteilten Aufgabe verschachtelt sind, nicht berechnete
@@ -1079,14 +1079,14 @@ Das Update bringt zahlreiche Änderungen in den API-Methoden mit sich. Siehe den
 - Möglichkeit, [langen Text in Grid-Spalten mit Auslassungszeichen abzuschneiden](guides/styling-guide.md#customizationgridcolumns)
 - Die Konfiguration [dynamic_resource_calendars](api/config/dynamic_resource_calendars.md) und die Methode [mergeCalendars](api/method/mergecalendars.md) wurden hinzugefügt, [um mehrere Kalender automatisch und manuell zusammenzuführen](guides/working-time.md#mergingcalendars)
 - Die Methode [getResourceCalendar](api/method/getresourcecalendar.md) wurde hinzugefügt
-- Möglichkeit, [Arbeitszeit in Minuten anzugeben](guides/working-time.md#globalsettings)
+- Möglichkeit, [Arbeitszeit in Minuten anzugeben](guides/working-time.md#global-settings)
 
 
 ### Aktualisierungen
 
 - Sprachdateien wurden aus dem Paket entfernt, [neue API](api/other/i18n.md) für die Lokalisierung des Gantt-Diagramms wurde hinzugefügt
 - Alle Erweiterungen müssen nun über die Methode [plugins](api/method/plugins.md) aktiviert werden
-- `Gantt.getGanttInstance` [kann jetzt ein Konfigurationsobjekt entgegennehmen](guides/multiple-gantts.md#ganttinstanceconfiguration), wenn eine neue Gantt-Instanz erstellt wird
+- `Gantt.getGanttInstance` [kann jetzt ein Konfigurationsobjekt entgegennehmen](guides/multiple-gantts.md#gantt-instance-configuration), wenn eine neue Gantt-Instanz erstellt wird
 - Die CSP-Erweiterung wurde aus dem Paket entfernt, der [csp mode ist standardmäßig aktiviert](api/config/csp.md)
 - Das settings-Objekt als dritter Parameter der Methode [attachEvent](api/method/attachevent.md) wurde hinzugefügt
 - Das Format zur Festlegung der Arbeitszeiten in der Methode [setWorkTime](api/method/setworktime.md) wurde vereinfacht
@@ -1116,7 +1116,7 @@ Das Update bringt zahlreiche Änderungen in den API-Methoden mit sich. Siehe den
 ### Fehlerbehebungen
 
 - Behebung der Regression in [gantt.resetLayout](api/method/resetlayout.md), die zu einem Skriptfehler führte
-- Behebung des Problems mit dem [QuickInfo-Popup](https://docs.dhtmlx.com/gantt/desktop__extensions_list.html#quickinfo ), das in einigen Fällen hinter dem [Ressourcenpanel](https://docs.dhtmlx.com/gantt/desktop__resource_management.html#resourceviewpanel) positioniert wurde
+- Behebung des Problems mit dem [QuickInfo-Popup](https://docs.dhtmlx.com/gantt/desktop__extensions_list.html#quick-info ), das in einigen Fällen hinter dem [Ressourcenpanel](https://docs.dhtmlx.com/gantt/desktop__resource_management.html#resourceviewpanel) positioniert wurde
 - Behebung des Skriptfehlers, der von der Methode [gantt.getShortcutHandler](api/method/getshortcuthandler.md) ausgelöst wurde
 - Behebung des Skriptfehlers, der von der Methode [tooltip.show(x, y)](https://docs.dhtmlx.com/gantt/desktop__tooltips_ext.html) ausgelöst wurde
 - [gantt.getTaskNode](api/method/gettasknode.md) gibt jetzt das korrekte HTML-Element für [geteilte Aufgaben](https://docs.dhtmlx.com/gantt/desktop__split_tasks.html) zurück
@@ -1132,7 +1132,7 @@ Das Update bringt zahlreiche Änderungen in den API-Methoden mit sich. Siehe den
 - Behebung des Skriptfehlers, der auftrat, wenn die Konfiguration [drag_timeline](api/config/drag_timeline.md) auf `null` gesetzt wurde
 - Behebung der falschen Position von hervorgehobenen Zellen, wenn [static_background](api/config/static_background.md) und [static_background_cells](api/config/static_background_cells.md) aktiviert und [smart_rendering](api/config/smart_rendering.md) deaktiviert sind
 - Behebung des Problems, dass das Event [onAfterBranchLoading](api/event/onafterbranchloading.md) nicht aufgerufen wurde
-- Behebung des fehlerhaften Verhaltens von [Smart Rendering](guides/performance.md#smartrendering), wenn der Wert von [task_height](api/config/task_height.md) kleiner als der Wert von [row_height](api/config/row_height.md) ist
+- Behebung des fehlerhaften Verhaltens von [Smart Rendering](guides/performance.md#smart-rendering), wenn der Wert von [task_height](api/config/task_height.md) kleiner als der Wert von [row_height](api/config/row_height.md) ist
 
 ### Aktualisierungen
 
@@ -1144,10 +1144,10 @@ Das Update bringt zahlreiche Änderungen in den API-Methoden mit sich. Siehe den
 
 ### Fehlerbehebungen
 
-- Behebung von Abstürzen des [Ressourcenlastdiagramms](guides/resource-management.md#resourceviewpanel), wenn [Smart Rendering](guides/performance.md#smartrendering) deaktiviert ist
+- Behebung von Abstürzen des [Ressourcenlastdiagramms](guides/resource-management.md#resourceviewpanel), wenn [Smart Rendering](guides/performance.md#smart-rendering) deaktiviert ist
 - Behebung eines Problems mit der benutzerdefinierten Aufgaben-Eigenschaft "unit", da Gantt diese als Dauer-Einheit interpretierte und die Aufgabendauer nach dem Ziehen vervielfachte
 - Behebung der falschen [Tooltip](guides/tooltips.md)-Position, wenn die [autosize](api/config/autosize.md) Konfiguration aktiviert ist
-- Behebung des falschen Ausrichtungsverhaltens von Grid-Zellen, wenn sowohl die [scrollable](guides/specifying-columns.md#horizontalscrollbar)-Eigenschaft als auch die [autofit](api/config/autofit.md) Konfiguration auf true gesetzt sind
+- Behebung des falschen Ausrichtungsverhaltens von Grid-Zellen, wenn sowohl die [scrollable](guides/specifying-columns.md#horizontal-scrollbar)-Eigenschaft als auch die [autofit](api/config/autofit.md) Konfiguration auf true gesetzt sind
 - Das Erstellen einer Verknüpfung zwischen einer Aufgabe in der Zeitleiste und [einem Platzhalter](api/config/placeholder_task.md) im Grid ist jetzt blockiert
 - Behebung des Fehlers mit der [Auto Scheduling Erweiterung](guides/auto-scheduling.md), der dazu führte, dass Gantt einfriert, wenn eine Aufgabe [den Constraint-Typ (SNET/FNET/SNLT/FNLT)](guides/auto-scheduling.md#timeconstraintsfortasks) ohne Datum oder mit ungültigem Datum hat
 
@@ -1162,7 +1162,7 @@ Das Update bringt zahlreiche Änderungen in den API-Methoden mit sich. Siehe den
 - Kompatibilität mit SalesForce Lightning Aura Components Framework (Evaluation Build) hergestellt
 - Behebung der falschen Position des [Tooltip](guides/tooltips.md) in der SalesForce-Umgebung
 - Behebung der falschen [Tooltip](guides/tooltips.md)-Position, wenn der Gantt-Container einen vertikalen Rand hat
-- Fehlende [WAI-ARIA](guides/accessibility.md#waiariaattributes)-Attribute zu Elementen innerhalb des Gantt hinzugefügt
+- Fehlende [WAI-ARIA](guides/accessibility.md#wai-aria-attributes)-Attribute zu Elementen innerhalb des Gantt hinzugefügt
 - Behebung des fehlerhaften Verhaltens der Konfiguration [min_duration](api/config/min_duration.md)
 - Behebung des fehlerhaften Verhaltens von [Link-Formatierern](guides/formatters-ext.md#linkformatter) mit benutzerdefinierten [Gantt-Instanzen](guides/multiple-gantts.md)
 
@@ -1187,10 +1187,10 @@ Das Update bringt zahlreiche Änderungen in den API-Methoden mit sich. Siehe den
 
 ### Fehlerbehebungen
 
-- Behebung der Regression im [Smart Rendering](api/method/addtasklayer.md#smartrenderingforcustomlayers), die dazu führte, dass Links in einigen Fällen nicht gerendert wurden
+- Behebung der Regression im [Smart Rendering](api/method/addtasklayer.md#smart-rendering-for-custom-layers), die dazu führte, dass Links in einigen Fällen nicht gerendert wurden
 - Behebung des Fehlers, der das Bearbeiten und Erstellen neuer Aufgaben mit [Tastaturnavigation](guides/keyboard-navigation.md) ermöglichte, wenn der [Read-only-Modus](guides/readonly-mode.md) aktiviert war
 - Behebung des Darstellungsproblems mit der [Fullscreen-Erweiterung](guides/fullscreen-mode.md), bei dem einige Seitenelemente im Vollbildmodus über dem Gantt angezeigt wurden
-- Behebung des Fehlers, der dazu führte, dass die [drag-timeline Erweiterung](guides/extensions-list.md#dragtimeline) den Wert der [readonly config](guides/readonly-mode.md) zurücksetzte
+- Behebung des Fehlers, der dazu führte, dass die [drag-timeline Erweiterung](guides/extensions-list.md#drag-timeline) den Wert der [readonly config](guides/readonly-mode.md) zurücksetzte
 
 ## 6.3
 
@@ -1204,7 +1204,7 @@ Das Update bringt zahlreiche Änderungen in den API-Methoden mit sich. Siehe den
 ### Neue Funktionen
 
 - [Möglichkeit, Dezimalstellen für die Aufgabendauer anzugeben](guides/working-time.md#taskdurationindecimalformat)
-- [Möglichkeit, die Zeitleiste per Mausklick und Ziehen zu scrollen](guides/extensions-list.md#dragtimeline)
+- [Möglichkeit, die Zeitleiste per Mausklick und Ziehen zu scrollen](guides/extensions-list.md#drag-timeline)
 - [Möglichkeit, mehrere Aufgaben horizontal per Drag & Drop zu verschieben](guides/multiselection.md#multitaskselectionanddragndrop)
 
 
@@ -1213,7 +1213,7 @@ Das Update bringt zahlreiche Änderungen in den API-Methoden mit sich. Siehe den
 - Möglichkeit, [Tasks außerhalb des expliziten Bereichs](api/config/show_tasks_outside_timescale.md) von [start_date](api/config/start_date.md) und [end_date](api/config/end_date.md) der [Zeitachse](guides/configuring-time-scale.md#range) anzuzeigen
 - Neues [task_end_date](api/template/task_end_date.md) Template zum Formatieren von Enddaten von Tasks hinzugefügt
 - Möglichkeit, benutzerdefinierte Aktionen zum [Undo-Stack](guides/undo-redo.md#undoingredoingchangesmadefromcode) hinzuzufügen
-- Möglichkeit, benutzerdefinierte Layer mit dem [Smart Rendering](api/method/addtasklayer.md#smartrenderingforcustomlayers) zu verbinden
+- Möglichkeit, benutzerdefinierte Layer mit dem [Smart Rendering](api/method/addtasklayer.md#smart-rendering-for-custom-layers) zu verbinden
 - [Inline-Editoren](guides/inline-editing.md) für **Vorgänger** unterstützen jetzt formatierte Werte von Links
 - Entfernen der Standardlimits für Eingabewerte in Datum-[Inline-Editoren](migration.md#inline_editors)
 - Möglichkeit, den Root-Knoten für die [Fullscreen-Erweiterung](guides/fullscreen-mode.md) anzugeben
@@ -1222,7 +1222,7 @@ Das Update bringt zahlreiche Änderungen in den API-Methoden mit sich. Siehe den
 
 ### Fixes
 
-- Absturz der [Ressourcen-Histogramm](guides/resource-management.md#resourceviewpanel) behoben, wenn [Smart Rendering](guides/performance.md#smartrendering) ausgeschaltet ist
+- Absturz der [Ressourcen-Histogramm](guides/resource-management.md#resourceviewpanel) behoben, wenn [Smart Rendering](guides/performance.md#smart-rendering) ausgeschaltet ist
 - Kompatibilität mit r.js Kompressor behoben
 - Verschiedene Konflikte zwischen [Tastaturnavigation](guides/keyboard-navigation.md) und [Inline-Editoren](guides/inline-editing.md) behoben
 - Falscher Status des [DataProcessor](guides/server-side.md#customrouting) behoben, wenn Tasks und Links nacheinander über einen [benutzerdefinierten Router](guides/server-side.md#customrouting) geändert wurden
@@ -1234,7 +1234,7 @@ Das Update bringt zahlreiche Änderungen in den API-Methoden mit sich. Siehe den
 
 ### Fixes
 
-- Problem mit vertikalem Resizing von [Grids mit horizontalem Scroll](guides/specifying-columns.md#horizontalscrollbar) in [komplexen Layouts](guides/resource-management.md#resourceviewpanel) behoben
+- Problem mit vertikalem Resizing von [Grids mit horizontalem Scroll](guides/specifying-columns.md#horizontal-scrollbar) in [komplexen Layouts](guides/resource-management.md#resourceviewpanel) behoben
 - Falsche Arbeitsweise des [Ressourcen-Histogramms](guides/resource-management.md#resourceviewpanel) behoben, wenn der [Skalenschritt](guides/configuring-time-scale.md#timestep) größer als eins ist
 - Wiederauftretender Fehler mit eingeklappten Zweigen nach Aufruf von [gantt.parse](api/method/parse.md) aus dem Bugfix [v6.2.4](#624) behoben
 
@@ -1245,7 +1245,7 @@ Das Update bringt zahlreiche Änderungen in den API-Methoden mit sich. Siehe den
 ### Fixes
 
 - Regression im [v6.2 Smart Rendering](#62) behoben, die in einigen Fällen zu falschen vertikalen Positionen von Tasks nach der [Re-Initialisierung](api/method/init.md) des Gantt führte
-- Problem mit [QuickInfo-Popup](guides/extensions-list.md#quickinfo) behoben, das bei [ungeplanten Tasks](guides/unscheduled-tasks.md) nicht angezeigt wurde
+- Problem mit [QuickInfo-Popup](guides/extensions-list.md#quick-info) behoben, das bei [ungeplanten Tasks](guides/unscheduled-tasks.md) nicht angezeigt wurde
 - Fehlerhafte Arbeitsweise von Erweiterungsdateien mit dem Ultimate Build von Gantt behoben
 
 ## 6.2.5
@@ -1266,7 +1266,7 @@ Das Update bringt zahlreiche Änderungen in den API-Methoden mit sich. Siehe den
 ### Fixes
 
 - Problem mit eingeklappten Task-Zweigen nach Datenaktualisierung mittels [parse](api/method/parse.md) Methode behoben
-- Fehlerhafte Arbeitsweise von [Smart Rendering](guides/performance.md#smartrendering) in der [Ressourcenansicht](guides/resource-management.md#resourceviewpanel) behoben
+- Fehlerhafte Arbeitsweise von [Smart Rendering](guides/performance.md#smart-rendering) in der [Ressourcenansicht](guides/resource-management.md#resourceviewpanel) behoben
 - Problem behoben, das dazu führte, dass das [Zoom-Modul](guides/zooming.md) bei jeder [Re-Initialisierung](api/method/init.md) von Gantt überflüssige DOM-Event-Handler anhängte
 
 ## 6.2.3
@@ -1332,7 +1332,7 @@ Das Update bringt mehrere Änderungen in den API-Methoden. Siehe den [Migrations
 
 - [Erstellen und Auswählen von Tasks per Drag-n-Drop](guides/advanced-dnd.md)
 - Sanftes [Zoomen](guides/zooming.md) per Mausrad
-- Möglichkeit, [Split-Tasks ein- und auszuklappen](guides/split-tasks.md#expandingandcollapsingsplittasks) (PRO)
+- Möglichkeit, [Split-Tasks ein- und auszuklappen](guides/split-tasks.md#expandingcollapsingsplittasks) (PRO)
 
 ### Updates
 
@@ -1355,7 +1355,7 @@ Das Update bringt mehrere Änderungen in den API-Methoden. Siehe den [Migrations
 - Fehlerhaftes Verhalten von [getClosestWorkTime](api/method/getclosestworktime.md) behoben
 - Problem mit [autoscroll](api/config/autoscroll.md) behoben, das nach dem [Umschalten der Sichtbarkeit](api/config/show_chart.md) der Zeitachse auftrat
 - Bug in der [Multiselect-Erweiterung](guides/multiselection.md) behoben, der dazu führte, dass ausgewählte Tasks nach dem Neuladen des Charts nicht mehr hervorgehoben wurden
-- Skriptfehler nach [vertikalem Drag-and-Drop](guides/reordering-tasks.md) behoben, wenn [Smart Rendering](guides/performance.md#smartrendering) und [Tastaturnavigation](guides/keyboard-navigation.md) aktiviert waren
+- Skriptfehler nach [vertikalem Drag-and-Drop](guides/reordering-tasks.md) behoben, wenn [Smart Rendering](guides/performance.md#smart-rendering) und [Tastaturnavigation](guides/keyboard-navigation.md) aktiviert waren
 - Fehlerhaftes Verhalten beim Wechsel zwischen [Inline-Editoren](guides/inline-editing.md) mit der `Tab`-Taste behoben, wenn einige Spalten im Grid [ausgeblendet](guides/specifying-columns.md#visibility) waren
 - Unerwartetes Verhalten behoben, das verhinderte, dass [Lightbox](guides/edit-form.md) und [Inline-Editoren](guides/inline-editing.md) [Constraint-Daten](guides/auto-scheduling.md#timeconstraintsfortasks) überschreiben konnten
 
@@ -1365,8 +1365,8 @@ Das Update bringt mehrere Änderungen in den API-Methoden. Siehe den [Migrations
 
 ### Fixes
 
-- Problem mit nicht funktionierenden [Click-Handlern](api/config/quickinfo_buttons.md) des [QuickInfo-Popups](guides/extensions-list.md#quickinfo) nach einem zweiten [init](api/method/init.md) Aufruf behoben
-- Problem mit [QuickInfo-Popup](guides/extensions-list.md#quickinfo) behoben, das nicht angezeigt wurde, wenn [show_chart](api/config/show_chart.md) auf false gesetzt war
+- Problem mit nicht funktionierenden [Click-Handlern](api/config/quickinfo_buttons.md) des [QuickInfo-Popups](guides/extensions-list.md#quick-info) nach einem zweiten [init](api/method/init.md) Aufruf behoben
+- Problem mit [QuickInfo-Popup](guides/extensions-list.md#quick-info) behoben, das nicht angezeigt wurde, wenn [show_chart](api/config/show_chart.md) auf false gesetzt war
 - Falsches `action`-Argument für [dataProcessor Router](guides/server-side.md#customrouting) nach [vertikalem Drag-and-Drop](guides/reordering-tasks.md) behoben
 - Problem behoben, dass [createTask](api/method/createtask.md) den `index`-Parameter ignoriert hat
 
@@ -1377,7 +1377,7 @@ Das Update bringt mehrere Änderungen in den API-Methoden. Siehe den [Migrations
 ### Fixes
 
 - Skriptfehler beim zweiten [init](api/method/init.md) Aufruf, wenn [show_chart](api/config/show_chart.md) deaktiviert ist, behoben
-- Falsche Position des [vertikalen Drag-and-Drop](guides/reordering-tasks.md) Platzhalters im [Marker-Modus](guides/reordering-tasks.md#improvingperformancewithlargedatasets) behoben
+- Falsche Position des [vertikalen Drag-and-Drop](guides/reordering-tasks.md) Platzhalters im [Marker-Modus](guides/reordering-tasks.md#improving-performance-for-large-datasets) behoben
 
 ## 6.1.4
 
@@ -1399,7 +1399,7 @@ Das Update bringt mehrere Änderungen in den API-Methoden. Siehe den [Migrations
 
 - [gantt.createTask](api/method/createtask.md)/[gantt.addTask](api/method/addtask.md) verwendet jetzt den [root_id](api/config/root_id.md) Konfigurationswert anstelle der fest codierten 0 als ID
 - Performance-Verbesserung bei [Arbeitszeitberechnungen](guides/working-time.md) für die `minute` und `hour` [Dauereinheiten](api/config/duration_unit.md)
-- Geringe Performance-Steigerung beim Rendern großer Aufgabenlisten im [Smart Rendering](guides/performance.md#smartrendering) Modus
+- Geringe Performance-Steigerung beim Rendern großer Aufgabenlisten im [Smart Rendering](guides/performance.md#smart-rendering) Modus
 - Sicherstellen, dass [vertikales Drag-and-Drop](guides/reordering-tasks.md) nicht startet, wenn der Benutzer Text in einem [Inline-Editor](guides/inline-editing.md) markiert
 - Behebung eines Skriptfehlers bei der [Reinitialisierung](api/method/init.md) von Gantt im IE-Browser
 - Behebung eines Skriptfehlers bei der [Tastaturnavigation](guides/keyboard-navigation.md) im `cell`-Modus nach dem Löschen der letzten Aufgaben aus dem Diagramm
@@ -1412,7 +1412,7 @@ Das Update bringt mehrere Änderungen in den API-Methoden. Siehe den [Migrations
 - Behebung einer falschen Positionierung von Aufgaben und [Markierungen](guides/markers.md) mit der [skip_off_time](api/config/skip_off_time.md) Konfiguration
 - Behebung einer falschen Höhe von [Markierungen](guides/markers.md) nach dem Umordnen von Aufgaben per [Drag and Drop](guides/reordering-tasks.md)
 - Neue Aufgaben erhalten den Anfangswert der `progress` Eigenschaft
-- Behebung einer falschen Aufgabenposition nach vertikalem Drag and Drop im [Marker](guides/reordering-tasks.md#improvingperformancewithlargedatasets) Modus
+- Behebung einer falschen Aufgabenposition nach vertikalem Drag and Drop im [Marker](guides/reordering-tasks.md#improving-performance-for-large-datasets) Modus
 - Behebung eines Skriptfehlers von [gantt.destructor](api/method/destructor.md), wenn das [Ressourcen-Panel](guides/resource-management.md#resourceviewpanel) aktiviert ist
 - Behebung eines Fehlers, bei dem eine leere Zeile in einem [typeselect](guides/typeselect.md) Block angezeigt wurde
 - Behebung eines Fehlers, bei dem eine Aufgabe nach einer [ID-Änderung](api/method/changetaskid.md) nicht mehr als Teil des [kritischen Pfads](guides/critical-path.md) erkannt wurde
@@ -1456,7 +1456,7 @@ Das Update bringt mehrere Änderungen in den API-Methoden. Siehe den [Migrations
 
 ### Neue Funktionen
 
-- [Möglichkeit, ein Overlay für das Gantt-Diagramm hinzuzufügen](guides/baselines.md#extraoverlayforthechart) (PRO)
+- [Möglichkeit, ein Overlay für das Gantt-Diagramm hinzuzufügen](guides/baselines.md#extra-overlay-for-the-chart) (PRO)
 - [Zeitliche Einschränkungen für Aufgaben](guides/auto-scheduling.md#timeconstraintsfortasks) (PRO)
 - [Rückwärtsterminierung](guides/auto-scheduling.md#backwardscheduling) (PRO)
 - TypeScript-Typdefinitionen sind im Paket enthalten
@@ -1465,7 +1465,7 @@ Das Update bringt mehrere Änderungen in den API-Methoden. Siehe den [Migrations
 
 - Möglichkeit, [Tooltips für alle Elemente](guides/tooltips.md#tooltipsfordifferentelements) von dhtmlxGantt zu erstellen
 - [Routing-Optionen für dataProcessor](guides/server-side.md#customrouting)
-- [Projektweite Arbeitskalender](guides/working-time.md#assigningcalendartoproject) (PRO)
+- [Projektweite Arbeitskalender](guides/working-time.md#assigning-calendar-to-project) (PRO)
 - Möglichkeit, [dhtmlxGantt als ES6-Modul zu importieren](guides/initializing-gantt-chart.md#moduleimport)
 
 ## 6.0.7
@@ -1522,7 +1522,7 @@ Das Update bringt mehrere Änderungen in den API-Methoden. Siehe den [Migrations
 ### Konfiguration
 
 - [Ressourcensteuerung](guides/resources.md) in der Lightbox zur Ressourcenzuweisung zu einer Aufgabe (PRO Version)
-- [Verbesserte Performance beim Umordnen von Aufgaben](guides/reordering-tasks.md#improvingperformancewithlargedatasets) im "Branch"-Modus
+- [Verbesserte Performance beim Umordnen von Aufgaben](guides/reordering-tasks.md#improving-performance-for-large-datasets) im "Branch"-Modus
 - Performance-Update für die [auto_types](api/config/auto_types.md) Konfiguration (PRO Version)
 
 ### API
@@ -1567,13 +1567,13 @@ Das Update bringt mehrere Änderungen in den API-Methoden. Siehe den [Migrations
 
 - [Ressourcenmanagement](guides/resource-management.md) (PRO Version)
 - [RTL-Modus](guides/rtl-mode.md)
-- [Horizontaler Bildlauf für das Grid](guides/specifying-columns.md#horizontalscrollbar) und [weitere Layout-Verbesserungen](guides/layout-config.md)
+- [Horizontaler Bildlauf für das Grid](guides/specifying-columns.md#horizontal-scrollbar) und [weitere Layout-Verbesserungen](guides/layout-config.md)
 - [Destruktoren für Gantt- und DataProcessor-Instanzen](guides/multiple-gantts.md#destructorofganttanddataprocessorinstances)
 
 ### Konfiguration
 
 - [Möglichkeit, min/max Breiten für Grid-Spalten zu setzen](guides/specifying-columns.md#width)
-- [Möglichkeit, Projekte mit ihren Unteraufgaben per Drag and Drop zu verschieben](guides/dnd.md#draggingprojectsalongwiththeirsubtasks) (PRO Version)
+- [Möglichkeit, Projekte mit ihren Unteraufgaben per Drag and Drop zu verschieben](guides/dnd.md#draggingprojectswithsubtasks) (PRO Version)
 - [Erweiterte Parameter für die Exportmethoden](guides/export-common.md)
 
 ### API
@@ -1609,7 +1609,7 @@ Das Update bringt mehrere Änderungen in den API-Methoden. Siehe den [Migrations
 
 - [Arbeitszeitkalender auf Aufgaben- und Ressourcenebene](guides/working-time.md#multipleworktimecalendars)
 - [Berechnung des WBS-Codes (Gliederungsnummern)](guides/specifying-columns.md#wbscode)
-- [Autoscroll bei Drag-and-Drop-Operationen](guides/dnd.md#autoscrollwhiledraggingtasks)
+- [Autoscroll bei Drag-and-Drop-Operationen](guides/dnd.md#autoscrollduringtasksdragging)
 - [Persische (Farsi) Lokalisierung wurde hinzugefügt](guides/localization.md#predefinedlocales)
 
 ### Konfiguration
@@ -1630,7 +1630,7 @@ Das Update bringt mehrere Änderungen in den API-Methoden. Siehe den [Migrations
 ### Funktionalität
 
 - [Tastaturnavigation](guides/keyboard-navigation.md)
-- [WAI-ARIA-Unterstützung](guides/accessibility.md#waiariaattributes)
+- [WAI-ARIA-Unterstützung](guides/accessibility.md#wai-aria-attributes)
 - [High-Contrast-Themes](guides/accessibility.md#highcontrastthemes)
 - Aktualisierte [Auto Scheduling](guides/auto-scheduling.md) und [Critical Path](guides/critical-path.md) Berechnungen (PRO-Version)
 
@@ -1649,7 +1649,7 @@ Das Update bringt mehrere Änderungen in den API-Methoden. Siehe den [Migrations
 
 ### Funktionalität
 
-- [Smart Rendering](guides/performance.md#smartrendering) für große Datenmengen
+- [Smart Rendering](guides/performance.md#smart-rendering) für große Datenmengen
 - [Undo/Redo](guides/undo-redo.md) Erweiterungen
 
 ### Konfiguration
@@ -1678,8 +1678,8 @@ Das Update bringt mehrere Änderungen in den API-Methoden. Siehe den [Migrations
 ### Konfiguration
 
 - Erste Unterstützung für [Content Security Policy](guides/content-security-policy.md)
-- Möglichkeit, [Spaltensortierung pro Spalte im Grid](guides/sorting.md#sortingpercolumninthegrid) einzustellen
-- Verbesserte Reihenfolgenfunktion - [Drag-and-Drop zwischen Ebenen](guides/reordering-tasks.md#draganddropacrosstheentireganttstructure)
+- Möglichkeit, [Spaltensortierung pro Spalte im Grid](guides/sorting.md#percolumngridsorting) einzustellen
+- Verbesserte Reihenfolgenfunktion - [Drag-and-Drop zwischen Ebenen](guides/reordering-tasks.md#drag-n-drop-within-the-whole-gantt-structure)
 
 ### API
 
@@ -1705,7 +1705,7 @@ Das Update bringt mehrere Änderungen in den API-Methoden. Siehe den [Migrations
 
 ### API
 
-- [Events zur Steuerung der verfügbaren Zielpositionen beim Umordnen von Aufgaben](guides/reordering-tasks.md#restrictingdroppositions)
+- [Events zur Steuerung der verfügbaren Zielpositionen beim Umordnen von Aufgaben](guides/reordering-tasks.md#denyingdroppingtospecificpositions)
 - [Events zur Steuerung des Ladevorgangs](guides/loading.md#eventsflow)
 - Neue Beispiele, Methoden, Events
 
@@ -1771,7 +1771,7 @@ Das Update bringt mehrere Änderungen in den API-Methoden. Siehe den [Migrations
 
 ### Funktionalität
 
-- [Meilensteine](guides/milestones.md) und [Projekte](guides/task-types.md#projecttasks) Unterstützung (PRO-Version)
+- [Meilensteine](guides/milestones.md) und [Projekte](guides/task-types.md#project-tasks) Unterstützung (PRO-Version)
 - [Möglichkeit, die Aufgabendauer in Arbeitstagen/-stunden statt in Kalenderzeit zu berechnen](guides/working-time.md)
 - [Unterstützung für mehrere Gantt-Diagramme auf einer Seite](guides/multiple-gantts.md) (PRO-Version)
 

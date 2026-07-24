@@ -50,7 +50,7 @@ Wenn die [work_time](api/config/work_time.md) Option aktiviert ist, berechnet di
 - Die Methode wird den globalen Arbeitszeitkalender verwenden, wenn keine Aufgabe angegeben wird. 
 - Außerdem kann die Methode direkt für ein [Kalender-Objekt](api/other/calendar.md) aufgerufen werden.
 
-## Eigenschaften des Konfigurationsobjekts
+## Eigenschaften des Konfigurationsobjekts {#configuration-object-properties}
 
 Das Konfigurationsobjekt kann die folgenden Eigenschaften enthalten:
 

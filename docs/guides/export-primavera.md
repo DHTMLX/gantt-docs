@@ -149,7 +149,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-The properties of this object correspond to the appropriate properties of the [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). The list of supported properties can be found [here](guides/properties.md). The properties may contain either fixed values or functions that will be executed when export is called.
+The properties of this object correspond to the appropriate properties of the [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). The list of supported properties can be found [here](guides/primavera-import-properties.md#project-properties). The properties may contain either fixed values or functions that will be executed when export is called.
 
 - **tasks** - (object) allows setting custom properties to the exported task items
 
@@ -173,7 +173,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-The properties of this object correspond to the appropriate properties of the [Task entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)), here is a list of supported [properties](guides/properties.md#tasks-properties).
+The properties of this object correspond to the appropriate properties of the [Task entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)), here is a list of supported [properties](guides/primavera-import-properties.md#task-properties).
 The properties may contain either fixed values or functions that will be called for each task in the dataset when export is called.
 
 - **data** - (object) allows setting a custom data source that will be presented in the output Gantt chart. 
@@ -431,7 +431,7 @@ gantt.importFromPrimaveraP6({
 #### Getting properties of the Project
 
 To get project fields, the **projectProperties** input with an array of necessary fields can be sent to the server.
-It extracts arbitrary properties of [the Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) into the **config** property of the output. Here is the list of supported [properties](guides/properties.md#project-properties).
+It extracts arbitrary properties of [the Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) into the **config** property of the output. Here is the list of supported [properties](guides/primavera-import-properties.md#project-properties).
 
  - **projectProperties** - specifies an array of project properties that should be put into the response.
 
@@ -463,7 +463,7 @@ gantt.importFromPrimaveraP6({
 #### Getting tasks properties
 
 To get task fields, the **taskProperties** input with an array of necessary fields can be sent to the server.
-It extracts arbitrary properties of the [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Here is the list of supported [properties](guides/properties.md#tasks-properties):
+It extracts arbitrary properties of the [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Here is the list of supported [properties](guides/primavera-import-properties.md#task-properties):
 
  - **taskProperties** - specify an array of additional task properties to be imported.
 
@@ -500,7 +500,11 @@ gantt.attachEvent("onTaskLoading", function(task) {
 });
 ~~~
 
+**Related sample**: [Gantt. Import and export Primavera P6 files with additional project, task and resource properties and entities](https://snippet.dhtmlx.com/z1ewe48v)
+
 #### Getting task types
+
+There are three predefined types of tasks in a Gantt chart: regular tasks (default), project tasks, milestones. There is also a possibility to define custom types in the `types` object. Check the detailed description in the related guide [Task types](/guides/task-types).
 
 The following logic allows you to obtain the task type: the tasks with the **Project** type have the `Summary: "1"` property, and the tasks with the **Milestone** type have the `Milestone: "1"` property. We need to import the data with these properties and then set the task type depending on these properties.
 
@@ -545,6 +549,74 @@ gantt.attachEvent("onTaskLoading", function (task) {
 ~~~
 
 **Related sample**: [Gantt. Import Primavera P6 files. Get task type from properties](https://snippet.dhtmlx.com/y95rsxor)
+
+#### Export/import of Primavera P6 activity types
+
+Primavera P6 uses the types of tasks which differ from [task types used in the Gantt chart](/guides/task-types) and MS Project. To preserve the information about the original Primavera P6 type, use the **ActivityType** task property during files import/export. Since **ActivityType** is a custom property for Gantt, it doesn't affect the task type on the Gantt side.
+
+The **ActivityType** property supports the full list of Primavera P6 activity types. The value returned during import is in the PascalCase form, while for export both the PascalCase and the UPPER_SNAKE_CASE form are accepted:
+
+| Value | Description |
+|---|---|
+| TaskDependent / TASK_DEPENDENT | A regular task, scheduled based on its predecessor tasks |
+| ResourceDependent / RESOURCE_DEPENDENT | A regular task, scheduled based on the resource calendar (used by default if **ActivityType** isn't specified) |
+| StartMilestone / START_MILESTONE | A milestone marking the start of an activity |
+| FinishMilestone / FINISH_MILESTONE | A milestone marking the finish of an activity |
+| WbsSummary / WBS_SUMMARY | A WBS summary task |
+| LevelOfEffort / LEVEL_OF_EFFORT | A task whose duration is driven by the activities it supports |
+| Hammock / HAMMOCK | A task whose duration spans from the start of the first linked activity to the finish of the last one |
+| StartFlag / START_FLAG | A flag activity marking a specific point at the start of the project |
+| FinishFlag / FINISH_FLAG | A flag activity marking a specific point at the finish of the project |
+
+##### Support for Primavera P6 milestone types
+
+Notably, the **Start Milestone** and **Finish Milestone** types listed above don't have separate matches on the Gantt side. The dhtmlxGantt library supports only a single milestone task type, which is equivalent to the **Finish Milestone** type of Primavera P6. Thus, during the import of a Primavera P6 project into Gantt, all milestones (regardless of whether they are start or finish milestones in the source file) are converted into tasks of the **milestone** type.
+
+To preserve the information about the original Primavera P6 milestone type, use the **ActivityType** task property during the import, by adding it to the **taskProperties** array. The property comes back in the `$custom_data` object of each task, so copy it to the task itself in the [onTaskLoading](api/event/ontaskloading.md) event:
+
+~~~js
+gantt.importFromPrimaveraP6({
+    data: file,
+    taskProperties: ["ActivityType"],
+    callback: function (project) {
+        if (project) {
+            gantt.clearAll();
+            gantt.parse(project.data);
+        }
+    }
+});
+
+gantt.attachEvent("onTaskLoading", function (task) {
+    if (task.$custom_data) {
+        task.ActivityType = task.$custom_data.ActivityType;
+    }
+    return true;
+});
+~~~
+
+For milestones, the property stores the original Primavera P6 type as a string, e.g. "StartMilestone" or "FinishMilestone". As **ActivityType** doesn't affect the task type on the Gantt side, the task still has the **milestone** type. You can use this property, for example, to customize the appearance of start and finish milestones in the Gantt chart.
+
+To carry the original task type over when exporting data back to Primavera P6, return it from the **ActivityType** property in the [tasks](#export-settings) object of the [exportToPrimaveraP6()](api/method/exporttoprimaverap6.md) call. As **ActivityType** describes all Primavera P6 activities, not only milestones, provide a value for the other task types as well:
+
+~~~js
+gantt.exportToPrimaveraP6({
+    tasks: {
+        ActivityType: function (task) {
+            if (task.type == "milestone") {
+                return task.ActivityType == "StartMilestone" ? "START_MILESTONE" : "FINISH_MILESTONE";
+            }
+            if (task.type == "project") {
+                return "WBS_SUMMARY";
+            }
+            return "TASK_DEPENDENT";
+        }
+    }
+});
+~~~
+
+This way, the exported file will have the same **Start Milestone** / **Finish Milestone** type as the source Primavera P6 file, instead of every milestone being exported as a **Finish Milestone** by default.
+
+**Related sample**: [Gantt. Import and export Primavera P6 files with the ActivityType to get Start and Finish Milestones](https://snippet.dhtmlx.com/elyeppkv)
 
 #### Adding and adjusting calendars
 

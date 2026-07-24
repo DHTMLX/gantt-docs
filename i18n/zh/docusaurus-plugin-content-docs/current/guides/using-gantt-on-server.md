@@ -15,7 +15,7 @@ sidebar_label: "Node.js Gantt"
 
 DHTMLX Gantt for Node.js 的功能与 Commercial/Enterprise/Ultimate 套件相同，这意味着可用的 **Gantt.getGanttInstance** 方法可以创建一个新的 gantt 实例。
 
-## 使用条款
+## 使用条款 {#terms-of-using}
 
 DHTMLX Gantt 的 Node.js 服务器模块作为 Gantt 客户端版本的附加包提供。因此，在购买 Gantt 的任一商业许可下，您可以支付额外费用添加 Node.js 构建；商业许可包括 [Individual]、[Commercial]、[Enterprise]。而 [Ultimate] 许可默认包含它。
 

@@ -5,7 +5,7 @@ sidebar_label: "실습 방법"
 
 # 실습 방법
 
-## 그리드/차트 전환 방법
+## 그리드/차트 전환 방법 {#how-to-toggle-gridchart}
 
 기본 레이아웃 구성(default layout configuration)을 사용하는 경우, [show_grid](api/config/show_grid.md) 또는 [show_chart](api/config/show_chart.md) 매개변수를 변경하고 [render()](api/method/render.md) 메서드를 사용하여 변경 사항을 다시 렌더링할 수 있습니다.
 
@@ -63,7 +63,7 @@ function toggleChart() {
 
 **관련 샘플** [Gantt. Toggle timeline (custom layout)](https://snippet.dhtmlx.com/aukjyqc8)
 
-## 리소스 뷰를 토글하는 방법
+## 리소스 뷰를 토글하는 방법 {#how-to-toggle-the-resource-view}
 
 앞선 사용 사례와 마찬가지로, 리소스 뷰가 있는 구성과 없는 구성을 여러 개 만들어야 합니다. 이를 전환하려면 [gantt.config.layout](api/config/layout.md) 매개변수를 수정하고 변경 사항을 확인하기 위해 [init()](api/method/init.md) 메서드를 적용해야 합니다:
 
@@ -105,7 +105,7 @@ function layoutChange() {
 
 **관련 샘플** [Gantt. Generate layout](https://snippet.dhtmlx.com/3dnzfhit)
 
-## 타임라인에서 무한 스크롤을 구현하는 방법
+## 타임라인에서 무한 스크롤을 구현하는 방법 {#how-to-have-an-infinite-scroll-in-the-timeline}
 
 무한 스크롤을 구현하는 방법은 여러 가지가 있습니다. 그러나 대부분의 경우 표시되는 날짜 범위를 수정해야 합니다([gantt.config.start_date](api/config/start_date.md)와 [gantt.config.end_date](api/config/end_date.md) 매개변수).
 
@@ -219,7 +219,7 @@ gantt.attachEvent("onTaskDrag", function (id, mode, task, original) {
 
 **관련 샘플** [Gantt. Infinite scroll while dragging a task (explicit range settings)](https://snippet.dhtmlx.com/3lrm0wyp)
 
-## 작업을 동적으로 로드하는 방법
+## 작업을 동적으로 로드하는 방법 {#how-to-load-tasks-dynamically}
 
 스크롤하여 마지막으로 보이는 작업에 도달했는지 onGanttScroll 이벤트에서 감지하고 [parse()](api/method/parse.md) 메서드를 사용해 새 작업을 로드할 수 있습니다:
 
@@ -237,7 +237,7 @@ gantt.attachEvent("onGanttScroll", function (left, top) {
 
 **관련 샘플** [Gantt. Load data dynamically](https://snippet.dhtmlx.com/39l7o0rm)
 
-## 버튼으로 모든 작업 확장/축소하는 방법
+## 버튼으로 모든 작업 확장/축소하는 방법 {#how-to-expandcollapse-all-tasks-with-a-button}
 
 [open()](api/method/open.md) 및 [close()](api/method/close.md) 메서드를 사용해 특정 작업을 열고 닫을 수 있습니다. 차트의 모든 작업에서 이를 수행하려면 [eachTask()](api/method/eachtask.md) 함수 안에서 해당 메서드를 사용해야합니다. 변경 사항을 한 번에만 다시 그리려면 [batchUpdate()](api/method/batchupdate.md) 메서드로 래핑하면 됩니다:
 
@@ -263,7 +263,7 @@ function expandAll() {
 
 **관련 샘플** [Gantt. Collapse/expand all tasks](https://snippet.dhtmlx.com/72zahagy)
 
-## 그리드 셀/헤더에 여러 줄 표시 방법
+## 그리드 셀/헤더에 여러 줄 표시 방법 {#how-to-display-several-lines-in-the-grid-cellheader}
 
 스타일 규칙을 조금 추가하면 이를 달성할 수 있습니다.
 
@@ -292,7 +292,7 @@ function expandAll() {
 
 **관련 샘플** [Gantt. Multiline text in cells of a Grid column](https://snippet.dhtmlx.com/bwil9sxs)
 
-## 그리드에 사용자 정의 열 추가 방법
+## 그리드에 사용자 정의 열 추가 방법 {#how-to-add-a-custom-column-in-the-grid}
 
 사용자 정의 열을 추가하려면 [gantt.config.columns](api/config/columns.md) 매개변수를 수정해야 합니다. **name** 매개변수를 지정하면 Gantt는 동일한 이름의 작업 속성 값을 반환합니다. 또한 [template()](guides/specifying-columns.md#datamappingandtemplates) 함수를 사용해 임의의 날짜나 HTML 요소를 반환할 수 있습니다.
 
@@ -317,7 +317,7 @@ gantt.config.columns = [
 
 **관련 샘플** [Gantt. Custom column with template for action buttons](https://snippet.dhtmlx.com/gfsdp121)
 
-## 커스텀 add(+) 버튼 추가 방법
+## 커스텀 add(+) 버튼 추가 방법 {#how-to-add-a-custom-add-button}
 
 [l gantt.config.columns] 매개변수를 통해 커스텀 열을 만들어야 합니다. 해당 열에 원하는 이름을 아무렇게나 설정할 수 있지만, *add* 이름은 예외적으로 사용할 수 없습니다. 그렇지 않으면 Gantt가 기본적인 *add* 열을 추가합니다. 그리드 열에서 HTML 요소를 반환하기 위해 [template] 함수를 사용할 수 있습니다. 즉, 버튼을 반환하고 작업 추가를 위한 커스텀 함수에 클릭 이벤트를 연결할 수 있습니다.
 
@@ -337,7 +337,7 @@ gantt.config.columns = [
 
 **관련 샘플**  [Gantt. Custom columns with templates for add (+) buttons](https://snippet.dhtmlx.com/o36jnko3)
 
-## 커스텀 눈금 추가 방법
+## 커스텀 눈금 추가 방법 {#how-to-add-a-custom-scale}
 
 [custom scale unit](guides/configuring-time-scale.md#customtimeunits)를 만들고 날짜를 계산하는 로직을 추가해야 합니다.
 
@@ -452,7 +452,7 @@ gantt.config.scales = [
 
 **관련 샘플** [Gantt. Weeks of the year on the scale](https://snippet.dhtmlx.com/gbowxpmr)
 
-## 작업 복사 및 붙여넣기 방법
+## 작업 복사 및 붙여넣기 방법 {#how-to-copy-and-paste-tasks}
 
 작업 객체의 깊은 복사본을 만들기 위해 [copy()](api/method/copy.md) 메서드를 사용할 수 있습니다. 그런 다음 복제된 작업의 ID를 바꾼 뒤 [addTask()](api/method/addtask.md) 또는 [createTask()](api/method/createtask.md) 메서드를 사용해 복제된 작업을 추가하면 됩니다.
 
@@ -596,7 +596,7 @@ gantt.ext.keyboardNavigation.addShortcut("ctrl+v", function (e) {
 
 **관련 샘플** [Gantt. Copy and paste tasks via Ctrl+C, Ctrl+V](https://snippet.dhtmlx.com/kck3pnmh)
 
-## 내보낸 PDF 파일에 리소스 차트나 커스텀 스타일 추가 방법
+## 내보낸 PDF 파일에 리소스 차트나 커스텀 스타일 추가 방법 {#how-to-add-resource-chart-or-custom-styles-in-the-exported-pdf-file}
 
 데이터를 [raw] 모드로 내보내고 export 함수의 [header](guides/export.md#customstylefortheoutputfile) 또는 [footer](guides/export.md#customstylefortheoutputfile) 매개변수에 스타일을 포함해야 합니다.
 
@@ -653,7 +653,7 @@ gantt.exportToPDF({
 
 **관련 샘플** [Gantt. Export Gantt with resource histogram to PDF](https://snippet.dhtmlx.com/i9me4oxl)
 
-## 자식 작업에 따라 작업 진행률 계산 방법
+## 자식 작업에 따라 작업 진행률 계산 방법 {#how-to-calculate-task-progress-depending-on-child-tasks}
 
 간단한 구현 방법은 자식 작업을 업데이트한 뒤 부모 작업의 진행률을 계산하는 것입니다. 부모 작업을 순회하려면 [eachParent()](api/method/eachparent.md) 메서드를 사용할 수 있습니다.
 
@@ -793,7 +793,7 @@ gantt.templates.task_class = (start, end, task) =>
 [Calculate Progress of Summary Tasks](https://docs.dhtmlx.com/gantt/samples/08_api/16_dynamic_progress.html)
 
 
-## 타임라인에서 작업을 수직으로 재배열하는 방법
+## 타임라인에서 작업을 수직으로 재배열하는 방법 {#how-to-vertically-reorder-tasks-in-the-timeline}
 
 타임라인에 커스텀 HTML 요소를 표시하고 이를 수직 및 수평으로 드래그할 수 있게 하려면 [addTaskLayer()](api/method/addtasklayer.md) 메서드를 사용할 수 있습니다.
 
@@ -805,7 +805,7 @@ gantt.templates.task_class = (start, end, task) =>
 
 **관련 샘플** [Gantt. Reorder split tasks vertically in timeline](https://snippet.dhtmlx.com/usfulweq)
 
-## 그리드의 열을 고정하는 방법
+## 그리드의 열을 고정하는 방법 {#how-to-freezefix-columns-in-the-grid}
 
 CSS를 사용하여 고정해야 하는 열에 대해 'relative' 위치를 설정하면 됩니다. 'left' 매개변수는 스크롤바 위치와 동일한 값을 가지도록 설정해야 하므로 스크롤바 이벤트 핸들러를 추가하고 CSS 변수를 업데이트해야 합니다:
 

@@ -199,9 +199,9 @@ interface DataCallbackChange<T> {
 
 开发者常用的三种方式来填充它们的 state：
 
-- [本地组件状态](/#localstate)
-- [状态管理器（Redux Toolkit、Zustand、MobX、Jotai、XState、Valtio）](/#statemanagers)
-- [从 API 加载数据](/#loadingfromapi)
+- [本地组件状态](#localstate)
+- [状态管理器（Redux Toolkit、Zustand、MobX、Jotai、XState、Valtio）](#statemanagers)
+- [从 API 加载数据](#loadingfromapi)
 
 ### 本地组件状态 {#localstate}
 

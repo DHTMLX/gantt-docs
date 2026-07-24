@@ -161,7 +161,7 @@ Wenn Sie bereits Gantt mit Aufgaben-Dauern in Minuten, Stunden oder einer andere
 :::
 
 
-## Globale Einstellungen
+## Globale Einstellungen {#global-settings}
 
 ### Arbeitszeit festlegen
 
@@ -313,7 +313,7 @@ gantt.setWorkTime({
 **Related sample** [Using `customWeeks` to make all days in the calendar days-off](https://snippet.dhtmlx.com/i0o74zg7)
 
 
-### Arbeitszeit zurücksetzen
+### Arbeitszeit zurücksetzen {#unsetting-the-working-time}
 
 Sie können die Arbeitszeit mit der [unsetWorkTime](api/method/unsetworktime.md)-Methode zurücksetzen:
 
@@ -369,112 +369,13 @@ Die Bibliothek erlaubt Ihnen lediglich:
 
 - die Arbeitszeit für einen Wochentag festzulegen (Montag, Dienstag, ...)
 - die Arbeitszeit für ein bestimmtes Datum festzulegen (4. Juni 2025)
-- Arbeitszeitregeln für einen Datumsbereich zu überschreiben (1. Juni 2025 – 1. September 2025)
+- Arbeitszeitregeln für einen Datumsbereich zu überschreiben (1. Juni 2025 - 1. September 2025)
 
 Wenn Sie also Ausnahmen zu den Arbeitszeitregeln haben, müssen Sie manuell die Daten finden, die Ihrer Regel entsprechen, und die Arbeitszeiteinstellungen auf jedes dieser Daten separat anwenden.
 
 Beispielsweise haben Sie ein Projekt, das 5 Jahre dauert, und Sie möchten den 1. Januar als freien Tag festlegen und den letzten Freitag jedes Monats als kurzen Tag. 
 
 Um den 1. Januar als freien Tag festzulegen, können Sie einfach Werte wie folgt hartkodieren:
-
-~~~js
-gantt.setWorkTime({ hours: false, date: new Date(2025, 0, 1) });
-gantt.setWorkTime({ hours: false, date: new Date(2026, 0, 1) });
-gantt.setWorkTime({ hours: false, date: new Date(2027, 0, 1) });
-gantt.setWorkTime({ hours: false, date: new Date(2028, 0, 1) });
-gantt.setWorkTime({ hours: false, date: new Date(2029, 0, 1) });
-~~~
-
-Und hier ist ein Code-Beispiel, wie man den letzten Freitag eines Monats als kurzen Tag während des gesamten Projekts festlegt:
-
-~~~js
-const lastFridayOfMonth = (date) => {
-    let lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-
-    if (lastDay.getDay() < 5) {
-        lastDay.setDate(lastDay.getDate() - 7);
-    }
-
-    lastDay.setDate(lastDay.getDate() - (lastDay.getDay() - 5));
-
-    return lastDay;
-};
-
-const projectStart = new Date(2025, 5, 1);
-const projectEnd = new Date(2026, 5, 1);
-let currentDate = new Date(projectStart);
-
-while (currentDate <= projectEnd) {
-    const lastFriday = lastFridayOfMonth(currentDate);
-    gantt.setWorkTime({ hours: ["8:00-12:00", "13:00-15:00"], date: lastFriday });
-    currentDate = gantt.date.add(currentDate, 1, "month");
-}
-~~~
-
-**Related sample** [Using `customWeeks` to make all days in the calendar days-off](https://snippet.dhtmlx.com/i0o74zg7)
-
-
-### Arbeitszeit entfernen
-
-Sie können eine Arbeitszeit durch die Verwendung der [unsetWorkTime](api/method/unsetworktime.md)-Methode entfernen:
-
-~~~js
-// ändert die Arbeitszeit der Arbeitstage von ["8:00-17:00"] zu ["8:00-12:00"]
-gantt.setWorkTime({ hours: ["8:00-12:00"] });
-// setzt die Arbeitszeit zurück
-gantt.unsetWorkTime({ hours: ["8:00-12:00"] });
-~~~
-
-
-### Arbeitszeit prüfen
-
-Um zu prüfen, ob das angegebene Datum Arbeitszeit ist, verwenden Sie die [isWorkTime](api/method/isworktime.md)-Methode:
-
-~~~js
-// macht der 1. Januar 2025 zu einem freien Tag
-gantt.setWorkTime({ date: new Date(2025, 0, 1), hours: false });
-gantt.isWorkTime(new Date(2025, 0, 1)); // -> false  /*!*/
-
-// macht der 15. März 2025 zu einem Arbeitstag von 9:00 bis 18:00
-gantt.setWorkTime({ date: new Date(2025, 2, 15), hours: ["8:00-17:00"] });
-gantt.isWorkTime(new Date(2025, 2, 15, 10, 0), "hour"); // -> true  /*!*/
-gantt.isWorkTime(new Date(2025, 2, 15, 8, 0), "hour"); // -> false  /*!*/
-~~~
-
-
-**Related sample**: [Correct task position on drag](https://docs.dhtmlx.com/gantt/samples/09_worktime/05_adjust_to_worktime.html)
-
-
-### Die Arbeitszeit abrufen
-
-Um die Arbeitsstunden des angegebenen Datums abzurufen, verwenden Sie die Methode [getWorkHours](api/method/getworkhours.md):
-
-~~~js
-gantt.getWorkHours(new Date(2025, 3, 30)); // -> ["8:00-17:00"]
-~~~
-
-Um den nächstgelegenen Arbeitstag zum angegebenen Datum zu erhalten, verwenden Sie die Methode [getClosestWorkTime](api/method/getclosestworktime.md):
-
-~~~js
-gantt.getClosestWorkTime(new Date(2025, 3, 30));
-~~~
-
-
-### Wiederholung der spezifischen Arbeitszeit
-
-Sie müssen oft eine Arbeitszeit festlegen, die sich nur an bestimmten Tagen wiederholt (z. B. der letzte Freitag eines Monats ist ein kurzer Tag, der 25. Dezember ist ein Feiertag), aber über die gesamte Projektdauer hinweg.
-
-Die aktuelle Version von dhtmlxGantt bietet keine Configs zur Festlegung dieser Art von Arbeitszeit. Die Bibliothek erlaubt Ihnen lediglich:
-
-- die Arbeitszeit für einen Wochentag festzulegen (Montag, Dienstag, ...)
-- die Arbeitszeit für ein bestimmtes Datum festzulegen (4. Juni 2025)
-- Arbeitszeitregeln für einen Datumsbereich zu überschreiben (1. Juni 2025 - 1. September 2025)
-
-Wenn Sie Ausnahmen zu den Arbeitszeitregeln haben, müssen Sie manuell die Daten finden, die Ihrer Regel entsprechen, und die Arbeitszeiteinstellungen auf jedes dieser Daten separat anwenden.
-
-Beispielsweise haben Sie ein Projekt, das 5 Jahre dauert, und Sie möchten den 1. Januar als freien Tag festlegen und den letzten Freitag jedes Monats als kurzen Tag. 
-
-Um den 1. Januar als freien Tag festzulegen, können Sie einfach Werte hartkodieren, wie in:
 
 ~~~js
 gantt.setWorkTime({ hours: false, date: new Date(2025, 0, 1) });
@@ -620,7 +521,7 @@ calendar.setWorkTime({ date: new Date(2025, 0, 1), hours: ["8:00-12:00"] });
 ~~~
 
 
-### Calendars abrufen
+### Kalender abrufen {#getting-calendars}
 
 Sie können Objekte von Arbeitskalendern abrufen, um später damit zu arbeiten. Es gibt mehrere verfügbare Optionen, die unten beschrieben sind.
 
@@ -881,7 +782,7 @@ const joinedCalendar = gantt.mergeCalendars(
 Lernen Sie die Logik, wie das Zusammenführen von Arbeitszeiten im [mergeCalendars()](api/method/mergecalendars.md) Artikel durchgeführt wird.
 
 
-## Kalender dem Projekt zuweisen
+## Kalender dem Projekt zuweisen {#assigning-calendar-to-project}
 
 :::info
 Diese Funktionalität ist nur in der PRO-Edition verfügbar.

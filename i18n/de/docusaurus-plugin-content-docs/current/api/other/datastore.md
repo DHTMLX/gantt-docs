@@ -19,7 +19,7 @@ description: "eine Sammlung von datastore-Methoden"
 Eine neue Datastore kann mithilfe der Methode [createDatastore](api/method/createdatastore.md) erstellt werden. 
 Das **datastore**-Objekt besitzt die folgenden [Methoden](#methods) und [Events](#events):
 
-## Methoden
+## Methoden {#methods}
 
 ### parse (data): void 
 Lädt Daten aus einem Array

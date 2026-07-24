@@ -60,7 +60,7 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
 **相关示例**： [Basic initialization](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
 
 
-## 如何将 Gantt 源文件添加到项目中
+## 如何将 Gantt 源文件添加到项目中 {#how-to-add-gantt-source-files-into-a-project}
 
 你可以将 Gantt 代码文件以多种方式添加到你的项目中，具体取决于你创建的应用类型：
 
@@ -71,7 +71,7 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
 - [将文件包含到基于 RequireJS 的应用中](#include-files-into-a-requirejs-based-app)
 
 
-## 通过 \<script\> 标签包含文件
+## 通过 \<script\> 标签包含文件 {#include-files-via-the-script-tag}
 
 dhtmlxGantt 需要在页面中包含 2 个代码文件：
 
@@ -108,7 +108,7 @@ import { gantt, Gantt } from 'dhtmlx-gantt';
 ~~~
 
 
-## 在 Vite 中使用 Gantt
+## 在 Vite 中使用 Gantt {#using-gantt-with-vite}
 
 如果你在项目中使用 Vite，以下设置是为确保 Gantt 正确被应用包含在应用中的必要配置，应用于 **vite.config.js** 文件：
 
@@ -121,7 +121,7 @@ optimizeDeps: {
 ~~~
 
 
-## Svelte 生产构建
+## Svelte 生产构建 {#svelte-production-build}
 
 如果你在 [Svelte 应用中使用 Gantt](integrations/svelte/howtostart-svelte.md)，你需要在生产构建时向 **vite.config.js** 文件添加以下设置，
 将 *gantt_9.0.14_evaluation* 文件夹替换为你自己的 Gantt 文件夹路径：
@@ -138,7 +138,7 @@ build: {
 ~~~
 
 
-## 将文件包含到基于 RequireJS 的应用中
+## 将文件包含到基于 RequireJS 的应用中 {#include-files-into-a-requirejs-based-app}
 
 要将 dhtmlxGantt 文件包含到基于 RequireJS 的应用中，你需要遵循下列示例所示的逻辑：
 

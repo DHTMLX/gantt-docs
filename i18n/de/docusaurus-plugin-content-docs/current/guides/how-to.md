@@ -5,7 +5,7 @@ sidebar_label: "How-tos"
 
 # How-tos
 
-## Wie man Raster/Diagramm umschaltet
+## Wie man Raster/Diagramm umschaltet {#how-to-toggle-gridchart}
 
 Wenn Sie die Standardlayout-Konfiguration verwenden, können Sie die Parameter [show_grid](api/config/show_grid.md) oder [show_chart](api/config/show_chart.md) ändern und die [render()](api/method/render.md) Methode verwenden, um die Änderungen neu zu zeichnen.
 
@@ -65,7 +65,7 @@ function toggleChart() {
 
 **Zugehöriges Beispiel** [Gantt. Zeitleiste umschalten (benutzerdefiniertes Layout)](https://snippet.dhtmlx.com/aukjyqc8)
 
-## Wie man die Ressourcenansicht umschaltet
+## Wie man die Ressourcenansicht umschaltet {#how-to-toggle-the-resource-view}
 
 Wie beim vorherigen Anwendungsfall müssen Sie mehrere Layout-Konfigurationen erstellen – mit und ohne Ressourcenansicht. Um zwischen ihnen zu wechseln, müssen Sie den Parameter [gantt.config.layout](api/config/layout.md) ändern und die [init()](api/method/init.md) Methode anwenden, um die Änderungen zu sehen:
 
@@ -107,7 +107,7 @@ Alternativ können Sie das Layout auch über die Layout-Ansichten erzeugen und G
 
 **Zugehöriges Beispiel** [Gantt. Layout erzeugen](https://snippet.dhtmlx.com/3dnzfhit)
 
-## Wie man unendliches Scrollen in der Timeline ermöglicht
+## Wie man unendliches Scrollen in der Timeline ermöglicht {#how-to-have-an-infinite-scroll-in-the-timeline}
 
 Es gibt mehrere Möglichkeiten, unendliches Scrollen zu implementieren. In den meisten Fällen müssen Sie jedoch den dargestellten Datumsbereich ([gantt.config.start_date](api/config/start_date.md) und [gantt.config.end_date](api/config/end_date.md) Parameter) anpassen:
 
@@ -221,7 +221,7 @@ gantt.attachEvent("onTaskDrag", function (id, mode, task, original) {
 
 **Zugehöriges Beispiel** [Gantt. Infinite scroll while dragging a task (explicit range settings)](https://snippet.dhtmlx.com/3lrm0wyp)
 
-## Wie man Aufgaben dynamisch lädt
+## Wie man Aufgaben dynamisch lädt {#how-to-load-tasks-dynamically}
 
 Sie können erkennen, dass Sie zum letzten sichtbaren Task gescrollt haben, im [onGanttScroll](api/event/onganttscroll.md) Ereignis, und die [parse()](api/method/parse.md) Methode verwenden, um neue Aufgaben zu laden:
 
@@ -239,7 +239,7 @@ gantt.attachEvent("onGanttScroll", function (left, top) {
 
 **Zugehöriges Beispiel** [Gantt. Load data dynamically](https://snippet.dhtmlx.com/39l7o0rm)
 
-## Wie man alle Aufgaben mit einem Button erweitert/einklappen
+## Wie man alle Aufgaben mit einem Button erweitert/einklappen {#how-to-expandcollapse-all-tasks-with-a-button}
 
 Sie können die [open()](api/method/open.md) und [close()](api/method/close.md) Methoden verwenden, um eine Aufgabe zu öffnen bzw. zu schließen. Um dies auch mit allen Aufgaben im Diagramm zu tun, müssen Sie die Methode innerhalb der [eachTask()](api/method/eachtask.md) Funktion verwenden. Um die Änderungen nur einmal neu zu zeichnen, können Sie die Funktion in der [batchUpdate()](api/method/batchupdate.md) Methode einhüllen:
 
@@ -264,7 +264,7 @@ function expandAll() {
 **Zugehöriges Beispiel** [Gantt. Buttons zum Aus-/Einklappen in den Gantt-Header integrieren]
 **Zugehöriges Beispiel** [Gantt. Alle Aufgaben einklappen/ausklappen]
 
-## Wie man mehrere Zeilen in der Grid-Zelle/ im Grid-Header anzeigt
+## Wie man mehrere Zeilen in der Grid-Zelle/ im Grid-Header anzeigt {#how-to-display-several-lines-in-the-grid-cellheader}
 
 Dies kann erreicht werden, indem einige Stilregeln hinzugefügt werden.
 
@@ -293,7 +293,7 @@ Für die Grid-Zellen:
 
 **Zugehöriges Beispiel** [Gantt. Mehrzeiliger Text in Zellen einer Grid-Spalte]
 
-## Wie man eine benutzerdefinierte Spalte im Grid hinzufügt
+## Wie man eine benutzerdefinierte Spalte im Grid hinzufügt {#how-to-add-a-custom-column-in-the-grid}
 
 Um eine benutzerdefinierte Spalte hinzuzufügen, müssen Sie den Parameter [gantt.config.columns](api/config/columns.md) ändern. Wenn Sie den **name**-Parameter festlegen, gibt Gantt den Wert der Task-Eigenschaft mit demselben Namen zurück. Sie können auch die [template()](guides/specifying-columns.md#datamappingandtemplates) Funktion verwenden, um beliebige benutzerdefinierte Daten oder HTML-Elemente zurückzugeben.
 
@@ -317,7 +317,7 @@ gantt.config.columns = [
 **Zugehöriges Beispiel** [Gantt. Benutzerdefinierte Spalte mit Template für Task-Fortschritt]
 **Zugehöriges Beispiel** [Gantt. Benutzerdefinierte Spalte mit Template für Aktions-Schaltflächen]
 
-## Wie man eine benutzerdefinierte Add(+) Schaltfläche hinzufügt
+## Wie man eine benutzerdefinierte Add(+) Schaltfläche hinzufügt {#how-to-add-a-custom-add-button}
 
 Sie müssen eine benutzerdefinierte Spalte über den [gantt.config.columns](api/config/columns.md) Parameter erstellen. Sie können jeden Namen für diese Spalte verwenden, außer *add*. Andernfalls fügt Gantt die Standard-Spalte *add* hinzu.
 Es ist möglich, beliebige HTML-Elemente in der Grid-Spalte mithilfe der [template](guides/specifying-columns.md#datamappingandtemplates) Funktion zurückzugeben. Das bedeutet, dass Sie eine Schaltfläche zurückgeben und ein Klick-Ereignis daran anhängen können, mit einer benutzerdefinierten Funktion zum Hinzufügen von Aufgaben.
@@ -337,7 +337,7 @@ gantt.config.columns = [
 ~~~
 
 **Zugehöriges Beispiel**  [Gantt. Benutzerdefinierte Spalten mit Templates für Add (+)-Schaltflächen]
-## Wie man eine benutzerdefinierte Skala hinzufügt
+## Wie man eine benutzerdefinierte Skala hinzufügt {#how-to-add-a-custom-scale}
 
 Sie müssen eine [benutzerdefinierte Skalen-Einheit](guides/configuring-time-scale.md#customtimeunits) erstellen und eine Logik hinzufügen, um die Daten zu berechnen.
 
@@ -452,7 +452,7 @@ gantt.config.scales = [
 
 **Zugehöriges Beispiel** [Gantt. Wochen des Jahres auf der Skala]
  
-## Wie man Aufgaben kopiert und einfügt
+## Wie man Aufgaben kopiert und einfügt {#how-to-copy-and-paste-tasks}
 
 Sie können die [copy()](api/method/copy.md) Methode verwenden, um eine tiefe Kopie des Aufgabenobjekts zu erstellen. Dann können Sie die ID der geklonten Aufgabe ändern. Danach können Sie die geklonte Aufgabe mit den Methoden [addTask()](api/method/addtask.md) oder [createTask()](api/method/createtask.md) hinzufügen.
 
@@ -596,7 +596,7 @@ gantt.ext.keyboardNavigation.addShortcut("ctrl+v", function (e) {
 
 **Zugehöriges Beispiel** [Gantt. Copy and paste tasks via Ctrl+C, Ctrl+V]
 
-## Wie man Ressourcen-Diagramm oder benutzerdefinierte Stile in die exportierte PDF-Datei hinzufügt
+## Wie man Ressourcen-Diagramm oder benutzerdefinierte Stile in die exportierte PDF-Datei hinzufügt {#how-to-add-resource-chart-or-custom-styles-in-the-exported-pdf-file}
 
 Sie müssen die Daten im [raw](guides/export.md#exportingcustommarkupandstyles) Modus exportieren und die Stile in der [header](guides/export.md#customstylefortheoutputfile) oder [footer](guides/export.md#customstylefortheoutputfile) Parameter der Export-Funktion einbinden.
 
@@ -653,7 +653,7 @@ Beispiele für den Export von Ressourcenlastendiagramm und Histogramm:
 
 **Zugehöriges Beispiel** [Gantt. Export Gantt with resource histogram to PDF](https://snippet.dhtmlx.com/i9me4oxl)
 
-## Wie man den Fortschritt einer Aufgabe abhängig von Kind-Aufgaben berechnet
+## Wie man den Fortschritt einer Aufgabe abhängig von Kind-Aufgaben berechnet {#how-to-calculate-task-progress-depending-on-child-tasks}
 
 Eine einfache Möglichkeit, dies zu realisieren, besteht darin, den Fortschritt einer Elternaufgabe zu berechnen, nachdem Sie eine Kindaufgabe aktualisiert haben. Um über Elternaufgaben zu iterieren, können Sie die Methode [eachParent()](api/method/eachparent.md) verwenden.
 
@@ -793,7 +793,7 @@ gantt.templates.task_class = (start, end, task) =>
 [Calculate Progress of Summary Tasks](https://docs.dhtmlx.com/gantt/samples/08_api/16_dynamic_progress.html)
 
 
-## Wie man Aufgaben in der Timeline vertikal neu anordnet
+## Wie man Aufgaben in der Timeline vertikal neu anordnet {#how-to-vertically-reorder-tasks-in-the-timeline}
 
 Sie können die [addTaskLayer()](api/method/addtasklayer.md) Methode verwenden, um benutzerdefinierte HTML-Elemente in der Timeline anzuzeigen und Funktionen zum vertikalen und horizontalen Ziehen hinzuzufügen.
 
@@ -805,7 +805,7 @@ Im folgenden Beispiel können Sie geteilte Aufgaben neu anordnen und Aufgaben in
 
 **Zugehöriges Beispiel** [Gantt. Getrennte Aufgaben vertikal in der Timeline neu anordnen](https://snippet.dhtmlx.com/usfulweq)
 
-## Wie man Spalten im Grid einfriert/festsetzt
+## Wie man Spalten im Grid einfriert/festsetzt {#how-to-freezefix-columns-in-the-grid}
 
 Dies kann durch CSS erfolgen. Sie müssen die 'relative' Position der Spalte festlegen, die fixiert werden soll. Der 'left'-Parameter sollte denselben Wert wie die Position des Scrollbalkens haben, damit Sie dem Scrollbalken-Element einen Ereignis-Handler hinzufügen und die CSS-Variable aktualisieren können:
 

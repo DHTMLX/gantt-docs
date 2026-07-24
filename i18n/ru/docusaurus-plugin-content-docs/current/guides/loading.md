@@ -47,7 +47,7 @@ gantt.parse(data); /*!*/
 Если ваши объекты данных содержат как значения start_date, так и end_date и даты содержат только часть даты (т.е. 01-12-2025, без 00:00) — может потребоваться дополнительная настройка. Обязательно ознакомьтесь со статьей [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates).
 :::
 
-## Загрузка с сервера
+## Загрузка с сервера {#loading-from-server}
 
 ### Клиентская сторона
 
@@ -155,7 +155,7 @@ app.get("/data", (req, res) => {
 }
 ~~~
 
-## Загрузка дат в ISO-формате
+## Загрузка дат в ISO-формате {#loading-dates-in-iso-format}
 
 С версии 9.1.3 Gantt автоматически распознаёт и парсит даты ISO 8601. Конфигурация не требуется.
 

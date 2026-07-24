@@ -9,15 +9,15 @@ A pair of selectors for setting task duration by specifying the start and end da
 
 ![time_control](/img/time_control.png)
 
-~~~js
-gantt.config.lightbox.sections="["
-    {name:"description", height:70, map_to:"text", type:"textarea", focus:true},
-    {name:"time",        height:72, map_to:"auto", type:"time"} /*!*/
+~~~js {3}
+gantt.config.lightbox.sections = [
+    { name: "description", height: 70, map_to: "text", type: "textarea", focus: true },
+    { name: "time",        height: 72, map_to: "auto", type: "time" }
 ];
 ~~~
 
 
-[Time control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/07_time.html)
+**Related sample**: [Time control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/07_time.html)
 
 
 ## Initialization
@@ -26,10 +26,10 @@ To add the **time** control to the lightbox, follow the steps below:
 
 1) Add a section to the lightbox configuration:
 
-~~~js
-gantt.config.lightbox.sections="["
-    {name:"description", height:70, map_to:"text", type:"textarea",focus:true},
-    {name:"period",      height:72, map_to:"auto", type:"time"}, /*!*/
+~~~js {3}
+gantt.config.lightbox.sections = [
+    { name: "description", height: 70, map_to: "text", type: "textarea", focus: true },
+    { name: "period",      height: 72, map_to: "auto", type: "time" }
 ];
 ~~~
 
@@ -62,11 +62,10 @@ Edited tasks will be specified only by the start date and have a zero duration. 
 
 To configure the selectors of the "duration" or "time" section, use the [time_format](api/config/lightbox.md) property (see [Date Format Specification](guides/date-format.md)):
 
-**Adding the time selector to the 'Time period' section**
-~~~js
+~~~js {3} title="Adding the time selector to the 'Time period' section"
 gantt.config.lightbox.sections = [
-    {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-    {name:"time",type:"time", map_to:"auto", time_format:["%d","%m","%Y","%H:%i"]}/*!*/
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+    { name: "time", type: "time", map_to: "auto", time_format: ["%d","%m","%Y","%H:%i"] }
 ];
 ~~~
 
@@ -79,17 +78,17 @@ Note, the allowable members of the [time_format](api/config/lightbox.md)'s array
 
 You can change just the order and the number of these members in the array but not the data presentation format.
 
- For example, you can change the format as in:
+For example, you can change the format as in:
 
 ~~~js
 // time goes first
-time_format:["%H:%i", "%m", "%d", "%Y"] 
+time_format: ["%H:%i", "%m", "%d", "%Y"] 
 // month goes first
-time_format:["%m","%d", "%Y", "%H:%i"]
+time_format: ["%m","%d", "%Y", "%H:%i"]
 // the year selector is removed
-time_format:["%H:%i", "%m", "%d"]
+time_format: ["%H:%i", "%m", "%d"]
 // incorrect
-time_format:["%H:%i", "%M", "%d", "%Y"] // "%m" was changed to "%M"
+time_format: ["%H:%i", "%M", "%d", "%Y"] // "%m" was changed to "%M"
 ~~~
 
 
@@ -103,18 +102,16 @@ Generally, the time and duration controls are mapped to the mandatory 'start_dat
 
 To map controls to some custom date properties (instead of 'start_date', 'end_date'), use the object notation of the **map_to** property:
 
-~~~js
+~~~js {4,5}
 gantt.config.lightbox.sections = [
-    {name: "description", height: 72, type: "textarea", map_to:"text", focus: true},
-    {name: "time",           height: 72, type: "duration", map_to:"auto"},
-    {name: "deadline",    height: 72, type: "time", /*!*/
-     map_to:{start_date:"planned_start",end_date:"planned_end"}} /*!*/
+    { name: "description", height: 72, type: "textarea", map_to: "text", focus: true },
+    { name: "time",        height: 72, type: "duration", map_to: "auto" },
+    { name: "deadline",    height: 72, type: "time",
+     map_to: { start_date: "planned_start", end_date: "planned_end" } }
 ];
 ~~~
 
-
-[Displaying deadlines](https://docs.dhtmlx.com/gantt/samples/04_customization/14_deadline.html)
-
+**Related sample**: [Displaying deadlines](https://docs.dhtmlx.com/gantt/samples/04_customization/14_deadline.html)
 
 As an object, **map_to** has 3 properties: 
 
@@ -131,10 +128,10 @@ If some property is not specified, the control takes the value of the related ma
 
 It is possible to manipulate the visibility of the time section if you specify **type:"time_optional"** and **button: true** while configuring the section for the lightbox:
 
-~~~js
+~~~js {3}
 gantt.config.lightbox.sections = [
-  {name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
-  {name: "time", map_to: "auto", button: true, type: "time_optional"} /*!*/
+  { name: "description", height: 70, map_to: "text", type: "textarea", focus: true },
+  { name: "time", map_to: "auto", button: true, type: "time_optional" }
 ];
 ~~~
 
@@ -165,5 +162,5 @@ gantt.getTask(1);
 
 This functionality can be helpful if you need to make the task unscheduled. Check the related sample:
 
-**Related sample** [Unscheduled tasks](https://snippet.dhtmlx.com/5/81f51a96d)
+**Related sample**: [Unscheduled tasks](https://snippet.dhtmlx.com/5/81f51a96d)
 

@@ -220,7 +220,7 @@ gantt.config.auto_scheduling = {
 
 v9.0 更新引入了若干重大变更。
 
-### 皮肤切换为 CSS 变量
+### 皮肤切换为 CSS 变量 {#single-css-file}
 
 CSS 皮肤（主题）已完全重构，现在采用 CSS 变量实现。虽然组件的 HTML 结构和 CSS 类名大部分保持不变，但为旧版本 Gantt 编写的 CSS 样式在 v9.0 中可能无法如预期生效。
 
@@ -384,7 +384,7 @@ gantt.config.scales = [
 
 在早期版本的 DHTMLX Gantt 中，资源分配的变更作为任务对象的属性发送到后端，这在某些情况下使后端 API 集成变得更复杂。
 
-从 DHTMLX Gantt v8.0 起，对资源及资源分配的变更可通过 dataProcessor 路由。详见 [Routing CRUD actions of resources and resource assignments](guides/server-side.md#ziyuanjiziyuanfenpeidecrudluyou) 部分。
+从 DHTMLX Gantt v8.0 起，对资源及资源分配的变更可通过 dataProcessor 路由。详见 [Routing CRUD actions of resources and resource assignments](guides/server-side.md#resources_crud) 部分。
 
 ### 导出服务
 
@@ -588,7 +588,7 @@ gantt.config.drag_multiple = false;
 
 ### Google Roboto 字体不再包含在 Material 皮肤中
 
-在 v6.3 之前，Google [Roboto](https://fonts.google.com/specimen/Roboto) 字体通过 `import` 语句包含在 dhtmlxGantt 的 ['Material' 皮肤](guides/skins.md#materialpifu) 中。
+在 v6.3 之前，Google [Roboto](https://fonts.google.com/specimen/Roboto) 字体通过 `import` 语句包含在 dhtmlxGantt 的 ['Material' 皮肤](guides/skins.md#materialskin) 中。
 自 v6.3 起，该导入已被移除，因此您需要手动添加 `Roboto` 字体:
 
 ~~~html
@@ -663,7 +663,7 @@ function (dhx) {
 
 ### 内联编辑器 {#inline_editors}
 
-在 6.3 之前，**date** [内联编辑器](guides/inline-editing.md#bianjiqileixing) 的最小和最大值受时间轴可见日期限制，除非自定义了 min/max。
+在 6.3 之前，**date** [内联编辑器](guides/inline-editing.md#types-of-editors) 的最小和最大值受时间轴可见日期限制，除非自定义了 min/max。
 
 自 v6.3 起，日期编辑器默认不再有最小和最大值限制。
 

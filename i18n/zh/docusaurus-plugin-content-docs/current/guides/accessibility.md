@@ -14,7 +14,7 @@ sidebar_label: "无障碍"
 - 键盘导航
 - 高对比度主题
 
-## WAI-ARIA 属性
+## WAI-ARIA 属性 {#wai-aria-attributes}
 
 DHTMLXGantt 提供 WAI-ARIA 支持，这意味着在组件标记中使用特殊属性。  
 这些属性是额外的，可以使组件对屏幕阅读器更易识别。

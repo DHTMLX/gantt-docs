@@ -26,7 +26,7 @@ var links = gantt.getLinks();
 
 它将返回一个链接对象的数组。
 
-## 获取与某个任务相关的链接
+## 获取与某个任务相关的链接 {#getting-the-links-related-to-a-certain-task}
 
 要获取与任务相关的链接，请使用任务对象的 **$source**、**$target** 属性。
 

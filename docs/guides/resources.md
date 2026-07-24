@@ -13,39 +13,39 @@ A complex control used to [assign multiple resources and their quantity to a tas
 
 ![Resources control server options](/img/resources_control.png)
 
-~~~js
+~~~js {3}
 gantt.config.lightbox.sections = [
- { name: "description", height: 38, map_to: "text", type: "textarea", focus: true},
- { name: "owner", height: 60, type: "resources", default_value: 8},   /*!*/
- { name: "time", type: "duration", map_to: "auto"}
+ { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+ { name: "owner", height: 60, type: "resources", default_value: 8 },
+ { name: "time", type: "duration", map_to: "auto" }
 ];
 ~~~
 
 
-[Assign multiple resources](https://docs.dhtmlx.com/gantt/samples/11_resources/07_assign_multiple_resources.html)
+**Related sample**: [Assign multiple resources](https://docs.dhtmlx.com/gantt/samples/11_resources/07_assign_multiple_resources.html)
 
 
 or
 
 ![Resources control options](/img/resources_control2.png)
 
-~~~js
+~~~js {3-9}
 gantt.config.lightbox.sections = [
-  { name: "description", height: 38, map_to:"text", type: "textarea", focus: true },
+  { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
   { name: "time", type: "duration", map_to: "auto" },
-  { name: "rooms", type: "resources", map_to: "rooms", options: [  /*!*/
-  	  { key: 1, label: "room 1", unit: "hours" },    /*!*/
-	  { key: 2, label: "room 2", unit: "hours" },   /*!*/
-	  { key: 3, label: "room 3", unit: "hours" }   /*!*/
-    ]  /*!*/
-  }	   /*!*/
+  { name: "rooms", type: "resources", map_to: "rooms", options: [
+      { key: 1, label: "room 1", unit: "hours" },
+      { key: 2, label: "room 2", unit: "hours" },
+      { key: 3, label: "room 3", unit: "hours" }
+    ]
+  }
 ];
 
 gantt.locale.labels.section_rooms = "Rooms";
 ~~~
 
 
-[Resources control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/13_resources.html)
+**Related sample**: [Resources control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/13_resources.html)
 
 
 :::note
@@ -58,11 +58,11 @@ To add the **resources** control to the lightbox, follow the steps below:
 
 1. Add a section to the lightbox configuration:
 
-~~~js
+~~~js {5}
 gantt.config.lightbox.sections = [
   { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
   { name: "time", type: "duration", map_to: "auto" },
-  { name: "rooms", type:"resources" }	   /*!*/
+  { name: "rooms", type: "resources" }
 ];
 ~~~
 
@@ -72,8 +72,7 @@ gantt.config.lightbox.sections = [
 gantt.locale.labels.section_resources = "Rooms";
 ~~~
 
-
-[Resources control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/13_resources.html)
+**Related sample**: [Resources control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/13_resources.html)
 
 
 ## Properties
@@ -143,8 +142,8 @@ Generally, to set values for the **resources** control, use the [options](api/co
 
 ~~~js
 gantt.config.lightbox.sections = [
-    { name:"rooms",type:"resources",map_to:"rooms",
-        options:[
+    { name: "rooms", type: "resources", map_to: "rooms",
+        options: [
             { key: 1, label: "room 1", unit: "hours" },
             { key: 2, label: "room 2", unit: "hours" },
             { key: 3, label: "room 3", unit: "hours" }
@@ -166,10 +165,10 @@ To populate the control from the server, set the [options](api/config/lightbox.m
 
 ~~~js
 gantt.config.lightbox.sections = [
- {name: "description", height: 38, map_to: "text", type: "textarea", focus: true},
- {name: "resources", type: "resources", map_to: "owner_id", default_value:8,
-     options: gantt.serverList("resourceOptions")},
- {name: "time", type: "duration", map_to: "auto"}
+ { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+ { name: "resources", type: "resources", map_to: "owner_id", default_value: 8,
+     options: gantt.serverList("resourceOptions") },
+ { name: "time", type: "duration", map_to: "auto" }
 ];
 
 gantt.init("gantt_here");
@@ -188,5 +187,5 @@ gantt.updateCollection("resourceOptions", [
 ~~~
 
 
-[Assign multiple resources](https://docs.dhtmlx.com/gantt/samples/11_resources/07_assign_multiple_resources.html)
+**Related sample**: [Assign multiple resources](https://docs.dhtmlx.com/gantt/samples/11_resources/07_assign_multiple_resources.html)
 

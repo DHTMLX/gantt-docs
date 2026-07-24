@@ -117,7 +117,7 @@ gantt.plugins({
 
 **相关示例**： [Export data from Gantt](https://docs.dhtmlx.com/gantt/samples/08_api/06_export.html)
 
-## 导出方法的参数
+## 导出方法的参数 {#parameters-of-the-export-methods}
 
 [exportToPDF](api/method/exporttopdf.md) 与 [exportToPNG](api/method/exporttopng.md) 方法接收一个对象作为参数，该对象包含若干属性（所有属性均为可选）：
 
@@ -301,7 +301,7 @@ gantt.exportToPDF({
 
 [Check the full list of available Gantt skins](guides/skins.md).
 
-## 输出文件的页眉/页脚
+## 输出文件的页眉/页脚 {#headerfooter-of-the-output-file}
 
 要为输出的 PNG 或 PDF 文件添加页眉/页脚，请在 [exportToPDF/exportToPNG](guides/export.md#parameters-of-the-export-methods) 方法的参数中使用 **header**/**footer** 属性：
 
@@ -342,7 +342,7 @@ gantt.exportToPDF({
 
 请注意，只有在指定了 [margins](#margins-of-the-output-pdf-file) 且有足够的空间正确显示页眉/页脚时，这些设置才会生效。否则，页眉/页脚将被渲染在甘特图之外。对于普通文本行，建议将边距设为 10 的最小值。
 
-## 输出 PDF 文件的边距
+## 输出 PDF 文件的边距 {#margins-of-the-output-pdf-file}
 
 要为输出 PDF 文件添加边距，请在 [exportToPDF](guides/export.md#parameters-of-the-export-methods) 方法的 **additional_settings** 对象中使用 **margins** 属性。该属性同时适用于单页导出和 [multipage export](api/method/exporttopdf.md#multi-page-export)。
 
@@ -460,7 +460,7 @@ gantt.exportToPDF({
 
 请查看 [system requirements](guides/export-requirements.md) 以在本地安装导出服务。
 
-## 导出 HTML 元素
+## 导出 HTML 元素 {#exporting-html-elements}
 
 在将甘特图导出为 PNG 与 PDF 格式时，请注意导出 HTML 元素的限制，因为这些元素可能不够安全。
 

@@ -503,7 +503,7 @@ Sie können hier [die allgemeine Beschreibung](guides/server-side.md#storingtheo
 
 Fügen wir diese Funktionalität nun zu unserer Anwendung hinzu.
 
-### Neuanordnung der Aufgaben auf dem Client aktivieren
+### Neuanordnung der Aufgaben auf dem Client aktivieren {#enable-tasks-reordering-on-the-client}
 
 Zunächst müssen wir es den Benutzern ermöglichen, die Reihenfolge der Aufgaben in der Benutzeroberfläche zu ändern. Öffnen Sie die "Index"-Ansicht und aktualisieren Sie die Konfiguration von gantt:
 

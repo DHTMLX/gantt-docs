@@ -103,7 +103,7 @@ gantt.exportToPrimaveraP6({
 
 **관련 샘플**: [Custom properties for WBS tasks (PrimaveraP6's Summary tasks)](https://snippet.dhtmlx.com/r90hjlvo?tag="gantt")
 
-### Export 설정
+### Export 설정 {#export-settings}
 
 `exportToPrimaveraP6()` 메서드는 여러 속성을 포함하는 객체를 매개변수로 받습니다(모든 속성은 선택적).
 
@@ -144,7 +144,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-이 객체의 속성은 [Project 엔티티](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))의 해당 속성에 대응합니다. 지원되는 속성 목록은 [여기](guides/properties.md)에서 확인할 수 있습니다. 속성은 고정 값이거나 export가 호출될 때 실행될 함수일 수 있습니다.
+이 객체의 속성은 [Project 엔티티](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))의 해당 속성에 대응합니다. 지원되는 속성 목록은 [여기](guides/primavera-import-properties.md)에서 확인할 수 있습니다. 속성은 고정 값이거나 export가 호출될 때 실행될 함수일 수 있습니다.
 
 - **tasks** - (object) 내보낸 작업 항목에 사용자 정의 속성을 설정합니다
 
@@ -168,7 +168,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-이 객체의 속성은 [Task 엔티티](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))의 해당 속성과 대응합니다. 지원되는 [속성들](guides/properties.md#tasks-properties) 목록은 여기에 있습니다.
+이 객체의 속성은 [Task 엔티티](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))의 해당 속성과 대응합니다. 지원되는 [속성들](guides/primavera-import-properties.md#task-properties) 목록은 여기에 있습니다.
 속성은 고정 값이거나 export 호출 시 각 작업에 대해 실행될 함수일 수 있습니다.
 
 - **data** - (object) 출력 Gantt 차트에 표시될 사용자 정의 데이터 소스를 설정합니다.
@@ -307,7 +307,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-## Primavera P6에서 가져오기
+## Primavera P6에서 가져오기 {#import-from-primavera-p6}
 
 XML 또는 XER 파일을 변환하려면 내보내기 서비스에 다음 요청을 보내야 합니다:
 
@@ -391,7 +391,7 @@ gantt.importFromPrimaveraP6({
             - 주의 7일(일요일 0에서 토요일 6까지) 중 1/true는 근무일, 0/false는 비근무일
             - 다른 기록은 날짜
 
-### Import 설정
+### Import 설정 {#import-settings}
 
 #### 지속 시간 단위 설정
 
@@ -421,7 +421,7 @@ gantt.importFromPrimaveraP6({
 #### 프로젝트 속성 얻기
 
 프로젝트 필드를 얻으려면 서버로 **projectProperties** 배열 입력을 보낼 수 있습니다.
-이는 프로젝트 파일로부터 설정 값을 추출하여 출력의 config 속성에 담습니다. 지원되는 [속성 목록](guides/properties.md#project-properties)을 확인하십시오.
+이는 프로젝트 파일로부터 설정 값을 추출하여 출력의 config 속성에 담습니다. 지원되는 [속성 목록](guides/primavera-import-properties.md#project-properties)을 확인하십시오.
 
  - **projectProperties** - 응답에 포함될 프로젝트 속성의 배열을 지정합니다.
 
@@ -453,7 +453,7 @@ gantt.importFromPrimaveraP6({
 #### 작업 속성 얻기
 
 작업 필드를 얻으려면 **taskProperties** 입력에 필요한 필드 배열을 서버로 보낼 수 있습니다.
-이는 [Task 엔티티](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))의 임의 속성을 추출합니다. 지원되는 [속성들](guides/properties.md#tasks-properties) 목록은 아래와 같습니다:
+이는 [Task 엔티티](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))의 임의 속성을 추출합니다. 지원되는 [속성들](guides/primavera-import-properties.md#task-properties) 목록은 아래와 같습니다:
 
  - **taskProperties** - 가져올 추가 작업 속성의 배열을 지정합니다.
 

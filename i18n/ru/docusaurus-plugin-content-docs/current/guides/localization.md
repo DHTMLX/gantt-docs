@@ -9,7 +9,7 @@ sidebar_label: "Локализация"
 
 ![gantt_localized](/img/gantt_localized.png)
 
-## Активация локали
+## Активация локали {#activating-a-locale}
 
 Чтобы реализовать диаграмму Гantt на языке, отличном от английского, вам нужно активировать нужную локаль через метод **setLocale** объекта [gantt.i18n](api/other/i18n.md).
 

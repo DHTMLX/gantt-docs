@@ -37,7 +37,7 @@ gantt.getMarker(todayMarker); //->{css:"today", text:"Now", id:...}
 ### Details
 
 :::note
-note 이 메서드는 **marker** 확장 기능의 일부이므로, [marker](guides/extensions-list.md#verticalmarker) 플러그인이 활성화되어 있는지 확인하세요. 자세한 내용은 [수직 마커 추가하기](guides/markers.md) 문서를 참고하시기 바랍니다. 
+note 이 메서드는 **marker** 확장 기능의 일부이므로, [marker](guides/extensions-list.md#vertical-marker) 플러그인이 활성화되어 있는지 확인하세요. 자세한 내용은 [수직 마커 추가하기](guides/markers.md) 문서를 참고하시기 바랍니다. 
 :::
 
 ### Related API

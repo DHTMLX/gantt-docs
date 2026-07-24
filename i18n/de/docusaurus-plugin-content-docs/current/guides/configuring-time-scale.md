@@ -290,7 +290,7 @@ gantt.init("gantt_here");
 
 [Schritt-Konfiguration für die Quartals-Skala](https://docs.dhtmlx.com/gantt/samples/03_scales/03_full_year.html)
 
-## Höhe
+## Höhe {#height}
 
 ![scale_height](/img/scale_height.png)
 
@@ -593,7 +593,7 @@ Und so sieht sie aus, wenn sie angezeigt werden (gantt.config.skip_off_time ist 
 
 Sie finden ausführliche Beispiele, wie man einen unendlichen Bildlauf in der Timeline implementiert, im entsprechenden Artikel [related](guides/how-to.md#how-to-have-an-infinite-scroll-in-the-timeline).
 
-## Klebende Beschriftungen
+## Klebende Beschriftungen {#sticky-labels}
 
 Ab Version 9.0 sind Zeitachsen-Beschriftungen standardmäßig klebend. Das bedeutet, dass eine Beschriftung sichtbar bleibt, wenn Sie durch die Timeline scrollen, solange ihre Zelle breiter als der Beschriftung ist; sie bleibt attached am Ansichtsfenster, bis sie hinausgescrollt wird. Dies erhöht die Sichtbarkeit der Skalenbeschriftungen, insbesondere beim Vergrößern oder Verkleinern.
 
@@ -621,7 +621,7 @@ gantt.config.scales = [
 gantt.init("gantt_here");
 ~~~
 
-## Feste Spaltenbreite
+## Feste Spaltenbreite {#fixed-column-width}
 
 Standardmäßig haben Timeline-Spalten eine flexible Breite. Sie passen sich entweder der Breite des Containers an oder schrumpfen auf den Wert von 
 [min_column_width](api/config/min_column_width.md), bis die horizontale Bildlaufleiste erscheint.

@@ -1375,8 +1375,28 @@ module.exports = {
                     items: [
                         "guides/export",
                         "guides/excel",
-                        "guides/export-msproject",
-                        "guides/export-primavera",
+                        {
+                            type: "category",
+                            label: "Export and Import from MS Project",
+                            link: {
+                                type: "doc",
+                                id: "guides/export-msproject"
+                            },
+                            items: [
+                                "guides/msp-import-properties"
+                            ]
+                        },
+                        {
+                            type: "category",
+                            label: "Export and Import from Primavera P6",
+                            link: {
+                                type: "doc",
+                                id: "guides/export-primavera"
+                            },
+                            items: [
+                                "guides/primavera-import-properties"
+                            ]
+                        },
                         "guides/serialization",
                         "guides/export-nodejs",
                         {
@@ -1393,8 +1413,7 @@ module.exports = {
                                 "guides/pdf-export-module-whatsnew",
                                 "guides/msp-export-module-whatsnew",
                                 "guides/pdf-export-module",
-                                "guides/msp-export-module",
-                                "guides/tags",
+                                "guides/msp-export-module"
                             ]
                         },
                     ]

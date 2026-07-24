@@ -129,7 +129,7 @@ const tasks = [
 
 **Связанный пример**: [Per-child placement of split subtasks](https://docs.dhtmlx.com/gantt/samples/04_customization/26_custom_child_split_tasks.html)
 
-## Фильтрация разделённых задач
+## Фильтрация разделённых задач {#filtering-split-tasks}
 
 Чтобы отфильтровать подзадачи разделённой задачи, отображаемой на диаграмме Gantt, применяйте событие [`onBeforeSplitTaskDisplay`](api/event/onbeforesplittaskdisplay.md) и возвращайте:
 
@@ -145,7 +145,7 @@ gantt.attachEvent("onBeforeSplitTaskDisplay", (id, task, parent) => {
 });
 ~~~
 
-## Стилизация
+## Стилизация {#styling}
 
 Разделённые задачи определяются как подзадачи родительского элемента, а светло-зеленая полоса на заднем плане является полосой этого элемента-родителя, на которую применяются дополнительные стили.
 

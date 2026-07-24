@@ -48,7 +48,7 @@ Das Exportmodul ist kostenlos, wenn Sie Gantt unter einer Lizenz [Commercial](ht
 [Read more on the usage of the export module for MS Project](guides/msp-export-module.md). 
 
 
-## Export nach MS Project
+## Export nach MS Project {#export-to-ms-project}
 
 Die Gantt-Komponente ermöglicht das Exportieren von Verknüpfungen, Aufgaben und Ressourcen nach MS Project.
 
@@ -86,7 +86,7 @@ Die Methode sendet eine Anfrage an den Remote-Dienst, der entweder eine XML-Proj
 **Zugehöriges Beispiel**: [Export data : MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
 
 
-### Export-Einstellungen
+### Export-Einstellungen {#export-settings}
 
 Die **exportToMSProject()**-Methode nimmt als Parameter ein Objekt mit mehreren Eigenschaften (alle Eigenschaften sind optional):
 
@@ -128,7 +128,7 @@ gantt.exportToMSProject({
 ~~~
 
 Die Eigenschaften dieses Objekts entsprechen den entsprechenden Eigenschaften der [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)).
-Die Liste der unterstützten Eigenschaften finden Sie [hier](guides/tags.md). Die Eigenschaften können entweder feste Werte oder Funktionen enthalten, die beim Aufruf des Exports ausgeführt werden.
+Die Liste der unterstützten Eigenschaften finden Sie [hier](guides/msp-import-properties.md). Die Eigenschaften können entweder feste Werte oder Funktionen enthalten, die beim Aufruf des Exports ausgeführt werden.
 
 - **tasks** - (object) ermöglicht das Festlegen benutzerdefinierter Eigenschaften für die exportierten Aufgaben
  
@@ -153,7 +153,7 @@ gantt.exportToMSProject({
 ~~~
 
 Die Eigenschaften dieses Objekts entsprechen den entsprechenden Eigenschaften der [Task entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)), 
-hier ist eine Liste der unterstützten [Eigenschaften](guides/tags.md#tasks-properties).
+hier ist eine Liste der unterstützten [Eigenschaften](guides/msp-import-properties.md#task-properties).
 Die Eigenschaften können entweder feste Werte oder Funktionen enthalten, die für jede Aufgabe im Datensatz beim Export aufgerufen werden.
 
 - **data** - (object) ermöglicht das Festlegen einer benutzerdefinierten Datenquelle, die im output Gantt-Diagramm dargestellt wird
@@ -291,7 +291,7 @@ gantt.exportToMSProject({
 });
 ~~~
 
-## Import aus MS Project
+## Import aus MS Project {#import-from-ms-project}
 
 Um eine XML- oder MPP-MS-Project-Datei zu konvertieren, müssen Sie die folgende Anfrage an den Exportdienst senden:
 
@@ -382,7 +382,7 @@ die die Ressourcenliste aus der Projektdatei repräsentieren.
             - 7 Tage der Woche (von 0 - Sonntag bis 6 - Samstag), wobei 1/wahr für einen Arbeitstag steht und 0/falsch für einen Nicht-Arbeitstag
             - andere Einträge sind Daten
   
-### Import-Einstellungen
+### Import-Einstellungen {#import-settings}
 
 #### Festlegen der Dauer-Einheit
 
@@ -414,7 +414,7 @@ gantt.importFromMSProject({
 Um Felder des Projekts zu erhalten, kann der Input **projectProperties** mit einem Array der benötigten Felder an den Server gesendet werden.
 Es extrahiert beliebige Eigenschaften der [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))
 in die **config**-Eigenschaft der Ausgabe.
-Hier ist die Liste der unterstützten [Eigenschaften](guides/tags.md#project-properties).
+Hier ist die Liste der unterstützten [Eigenschaften](guides/msp-import-properties.md#project-properties).
 
  - **projectProperties** - gibt ein Array von Projekt-Eigenschaften an, die in die Antwort aufgenommen werden sollen.
 
@@ -446,7 +446,7 @@ gantt.importFromMSProject({
 #### Abfragen von Aufgaben-Eigenschaften
 
 Um Feldwerte der Aufgaben abzurufen, kann der Input **taskProperties** mit einem Array der benötigten Felder an den Server gesendet werden.
-Es extrahiert beliebige Eigenschaften der [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Hier ist die Liste der unterstützten [Eigenschaften](guides/tags.md#tasks-properties):
+Es extrahiert beliebige Eigenschaften der [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Hier ist die Liste der unterstützten [Eigenschaften](guides/msp-import-properties.md#task-properties):
 
  - **taskProperties** - geben Sie ein Array zusätzlicher Eigenschaften der Aufgaben an, die importiert werden sollen.
 
@@ -659,7 +659,7 @@ Wenn es Ressourcen-Zuweisungen gibt, werden diese im Array **assignments** impor
 }
 ~~~
 
-## Grenzen der Anfragesgröße und Import von großen Dateien
+## Grenzen der Anfragesgröße und Import von großen Dateien {#limits-on-request-size-and-import-of-large-files}
 
 Es gibt zwei API-Endpunkte für die MSProject-Export-/Import-Dienste:
 

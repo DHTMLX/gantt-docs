@@ -140,8 +140,7 @@ saveState() 方法在将 id = 1 的任务文本更新为 "modified" 之前，保
 
 有关 saveState() 方法的详细信息，请参阅 [Undo Extension](guides/undo-ext.md) 文章。
 
-## 配置 Undo 功能
-
+## 配置 Undo 功能 {#peizhichexiaogongneng}
 
 有若干设置可帮助调整 Undo 操作。
 

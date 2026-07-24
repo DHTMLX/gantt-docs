@@ -59,7 +59,7 @@ Die folgenden Eigenschaften sind für die **parent**-Steuerung (siehe die vollst
 - **template** - (*function*) legt eine Vorlage für die Auswahloptionen fest
   
 
-## Optionen filtern
+## Optionen filtern {#options-filtering}
 
 Um Optionen im **parent**-Steuerung zu filtern, verwenden Sie die **filter**-Eigenschaft:
 
@@ -92,7 +92,7 @@ und zurückgibt:
 - *false*, für eine Aufgabe, die aus der Auswahlliste entfernt werden soll
 
 
-## Optionen sortieren
+## Optionen sortieren {#options-sorting}
 
 Um Optionen im **parent**-Steuerung zu sortieren, verwenden Sie die **sort**-Eigenschaft:
 

@@ -337,7 +337,7 @@ DHTMLX Gantt는 구성 가능한 기본 내장 작업 편집기인 [Lightbox](gu
 
 필요한 경우 React 기반 모달 또는 다른 컴포넌트로 교체할 수 있으며 아래 중 하나의 방법으로 구현할 수 있습니다:
 
-### `customLightbox` 속성으로 커스텀 컴포넌트 제공
+### `customLightbox` 속성으로 커스텀 컴포넌트 제공 {#by-providing-a-custom-component-via-the-customlightbox-prop}
 
 다음과 같이 **customLightbox** 속성에 컴포넌트를 전달합니다:
 
@@ -725,7 +725,7 @@ return (
 
 ~~~
 
-## 근무 시간 달력
+## 근무 시간 달력 {#working-calendars}
 
 ReactGantt에서 작업 시간 계산을 활성화하려면 [work_time](api/config/work_time.md)을 활성화하십시오:
 

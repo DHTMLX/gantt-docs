@@ -12,7 +12,7 @@ Sie können Gantt auch lokal exportieren, indem Sie [Exportdienste](https://dhtm
 - PNG/PDF/Excel [Export-Anforderungen](guides/export-requirements.md#pdfpngexcel-service)
 - MS Project/Primavera P6 [Import- und Export-Anforderungen](guides/export-requirements.md#import-and-export-from-ms-project-and-primavera-p6) 
 
-## PDF/PNG/Excel-Dienst
+## PDF/PNG/Excel-Dienst {#pdfpngexcel-service}
 
 ### Überblick
 
@@ -34,7 +34,7 @@ Er wird in Form von Quellcode und als Docker-Image verteilt.
 </table>
 
 
-## Import und Export aus MS Project und Primavera P6
+## Import und Export aus MS Project und Primavera P6 {#import-and-export-from-ms-project-and-primavera-p6}
 
 ### Überblick
 

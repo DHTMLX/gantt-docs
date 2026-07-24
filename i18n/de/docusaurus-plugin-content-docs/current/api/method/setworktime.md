@@ -63,7 +63,7 @@ Die Standard-Arbeitszeit ist Folgendes:
 
 Die Methode dient dazu, die Standard-Einstellungen zu ändern.
 
-## Konfigurationsobjekt-Eigenschaften
+## Konfigurationsobjekt-Eigenschaften {#configuration-object-properties}
 
 
 Das Konfigurationsobjekt kann die folgenden Eigenschaften enthalten:

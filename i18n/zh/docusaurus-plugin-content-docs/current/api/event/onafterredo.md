@@ -30,7 +30,7 @@ gantt.attachEvent("onAfterRedo",function(action){
 ### Details
 
 :::note
- 此事件属于 **undo** 扩展的一部分，请确保已启用 [undo](guides/extensions-list.md#chexiao) 插件。更多详情请参阅 [撤销/重做功能](guides/undo-redo.md) 文章。 
+ 此事件属于 **undo** 扩展的一部分，请确保已启用 [undo](guides/extensions-list.md#undo) 插件。更多详情请参阅 [撤销/重做功能](guides/undo-redo.md) 文章。 
 :::
 
 

@@ -35,7 +35,7 @@ sidebar_label: "dhtmlxGantt 시작하기"
 </table>
 
 
-## 서버 측에서 Gantt 시작하기
+## 서버 측에서 Gantt 시작하기 {#how-to-start-with-gantt-on-server-side}
 
 다음은 Node.js 플랫폼의 예를 들어 페이지에 Gantt 차트를 만들고 데이터를 로드하는 방법을 보여주는 비디오 가이드를 시청하실 수 있습니다.
 

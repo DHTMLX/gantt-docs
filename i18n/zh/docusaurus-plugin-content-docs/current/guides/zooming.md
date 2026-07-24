@@ -7,7 +7,7 @@ sidebar_label: "缩放"
 
 dhtmlxGantt 提供一个内置模块，用于便捷地管理时间刻度的缩放。如果你想自定义默认的缩放行为，可以使用 [灵活的 API](guides/zoom.md)，它允许你实现以动态方式更改时间刻度设置的能力。
 
-## 内置缩放模块
+## 内置缩放模块 {#neizhisuofangmokuai}
 
 内嵌的 [zooming module](guides/zoom.md) 在 `gantt.ext.zoom` 扩展中声明。要启用该模块，你需要调用 `gantt.ext.zoom.init(zoomConfig)`，并传入一个包含缩放级别数组的 `zoomConfig` 对象。举例：
 
@@ -86,7 +86,7 @@ gantt.ext.zoom.init(zoomConfig);
 
 **相关示例**： [Mouse wheel zoom](https://docs.dhtmlx.com/gantt/samples/03_scales/14_scale_zoom_by_wheelmouse.html)
 
-### 默认缩放级别
+### 默认缩放级别 {#default-zoom-levels}
 
 如果在没有设置 `levels` 的情况下调用 `gantt.ext.zoom.init()`，扩展将使用一组可直接使用的命名级别 - **"hour"**、**"day"**、**"week"**、**"month"**、以及 **"year"**。这使你可以通过一次调用启用缩放，并按名称切换刻度：
 
@@ -98,7 +98,7 @@ gantt.ext.zoom.setLevel("week");
 
 在需要自定义刻度或标签时，请提供 `levels` 数组。
 
-## 缩放以适应
+## 缩放以适应 {#zoom-to-fit}
 
 Zoom 扩展可以自动选择最详细的缩放级别，使所有任务都能在时间线宽度内显示，没有水平滚动。请调用 [`gantt.ext.zoom.zoomToFit()`](guides/zoom.md#methods)，若要返回到之前的缩放，请调用 [`gantt.ext.zoom.resetZoom()`](guides/zoom.md#methods)：
 

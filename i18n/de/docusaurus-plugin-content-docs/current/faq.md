@@ -84,7 +84,7 @@ Zum Beispiel, der HTML5 DOCTYPE ist:
 <!DOCTYPE html>
 ~~~
 
-## Eine Fehlermeldung erscheint oben rechts
+## Eine Fehlermeldung erscheint oben rechts {#an-error-alert-appears-in-the-right-top-corner}
 
 ![error_alert](/img/error_alert.png)
 
@@ -137,7 +137,7 @@ console.log(gantt.getTask(1).duration);
 
 Standardmäßig wird der letzte Tag der Aufgabe bei der Berechnung der Dauer ausgeschlossen, aber es besteht die Möglichkeit, das Standardverhalten zu ändern und den letzten Tag einzubeziehen. Weitere Details finden Sie im Artikel [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates).
 
-## Fehler zyklischer Referenz
+## Fehler zyklischer Referenz {#cyclic-reference-error}
 
 Wenn Sie fehlerhafte Daten an Gantt übergeben, wird die baumartige Struktur zyklisch, was zu einem Fehler durch zyklische Referenz führt.
 
@@ -161,7 +161,7 @@ Aufgabe #2 kann nicht ihr eigenes übergeordnetes Element sein.
 
 Wenn Sie eine lizenzierte PRO-Version des Gantt-Diagramms installiert haben, aber dennoch die Meldung sehen, dass der Evaluierungszeitraum abgelaufen ist, bedeutet dies, dass sich irgendwo in Ihrer Anwendung noch die Trial-Version befindet. Nur die Trial-Version besitzt die Funktion, das Popup zur abgelaufenen Testphase anzuzeigen.
 
-Stellen Sie daher sicher, dass Sie alle Dateien des Trial-Pakets des Gantt-Diagramms vollständig entfernen, bevor Sie die PRO-Version installieren. Weitere Informationen finden Sie im Abschnitt [Adding PRO Edition into Project](guides/installation.md#addingproeditionintoproject).
+Stellen Sie daher sicher, dass Sie alle Dateien des Trial-Pakets des Gantt-Diagramms vollständig entfernen, bevor Sie die PRO-Version installieren. Weitere Informationen finden Sie im Abschnitt [Adding PRO Edition into Project](guides/installation.md#adding-pro-edition-into-project).
 
 **Tipp:** Um zu prüfen, welche Datei eingebunden ist, können Sie *gantt.license* in der Webkonsole eingeben.
 

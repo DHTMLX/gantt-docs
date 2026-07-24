@@ -96,7 +96,7 @@ gantt.config.readonly_property = "property_name";
 ~~~
 
 
-## Details zur Konfigurationsoption "editable_property"
+## Details zur Konfigurationsoption "editable_property" {#details-of-the-editable_property-config-option}
 
 'editable_property' bezieht sich auf die Eigenschaft des Task-Datenobjekts, nicht auf den Lightbox-Bereich oder die Spalte des linken Grids:
 

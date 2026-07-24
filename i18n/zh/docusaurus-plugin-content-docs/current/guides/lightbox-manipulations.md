@@ -47,7 +47,7 @@ gantt.config.lightbox.sections = [
 ~~~
 
 
-## 为 lightbox 的控件设置默认值
+## 为 lightbox 的控件设置默认值 {#setting-the-default-value-for-a-lightboxs-control}
 
 要为 lightbox 的某个 section 设置默认值，请使用该 section 对象的 **default_value** 属性。
 

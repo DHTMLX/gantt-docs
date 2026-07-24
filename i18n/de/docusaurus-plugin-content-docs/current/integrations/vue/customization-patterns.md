@@ -133,7 +133,7 @@ const collapseAll = () => {
 
 Kombinieren Sie dies mit der `filter`-Eigenschaft für grid-seitige Filterung, gesteuert durch den Toolbar-Status.
 
-## Ersetzen Sie die Aufgaben-Formular (`customLightbox`)
+## Ersetzen Sie die Aufgaben-Formular (`customLightbox`) {#replace-the-task-form-customlightbox}
 
 Verwenden Sie `customLightbox`, wenn die integrierte Lightbox nicht ausreicht und Sie eine Vue-Komponente zum Task-Editing benötigen.
 

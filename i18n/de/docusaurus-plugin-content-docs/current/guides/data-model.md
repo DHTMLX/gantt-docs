@@ -270,7 +270,7 @@ Diese Namen bleiben aus Gründen der Abwärtskompatibilität erhalten, aber `Gan
 
 Für Details und Beispiele siehe [Data Loading - Loading Task Dates](guides/loading.md#loadingtaskdates).
 
-## Benutzerdefinierte Eigenschaften
+## Benutzerdefinierte Eigenschaften {#custom-properties}
 
 Alle Datentypen unterstützen benutzerdefinierte Eigenschaften über `[customProperty: string]: any`. Benutzerdefinierte Eigenschaften bleiben auf der Client-Seite nach dem Laden erhalten und können in Vorlagen, Spalten, Editoren und Backend-Speicher verwendet werden.
 

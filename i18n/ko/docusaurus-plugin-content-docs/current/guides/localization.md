@@ -10,7 +10,7 @@ sidebar_label: "지역화"
 
 ![gantt_localized](/img/gantt_localized.png)
 
-## 로케일 활성화
+## 로케일 활성화 {#activating-a-locale}
 
 비영어권 언어로 Gantt 차트를 구현하려면 필요한 로케일을 [gantt.i18n](api/other/i18n.md) 객체의 **setLocale** 메서드를 통해 활성화해야 합니다.
 

@@ -11,7 +11,7 @@ sidebar_label: "本地化"
 ![gantt_localized](/img/gantt_localized.png)
 
 
-## 激活语言环境
+## 激活语言环境 {#qiyongyuyanhuanjing}
 
 要将甘特图实现为非英语语言，你需要通过 [gantt.i18n](api/other/i18n.md) 对象的 **setLocale** 方法来激活所需的语言环境。 
 

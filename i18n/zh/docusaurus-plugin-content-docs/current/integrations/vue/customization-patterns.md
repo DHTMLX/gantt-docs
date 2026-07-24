@@ -133,7 +133,7 @@ const collapseAll = () => {
 
 将此与 `filter` 属性配对使用，以实现由工具栏状态驱动的网格侧过滤。
 
-## 替换任务表单（`customLightbox`）
+## 替换任务表单（`customLightbox`） {#替换任务表单-customlightbox}
 
 在内置灯箱不足以满足需求且你需要一个用于任务编辑的 Vue 组件时使用 `customLightbox`。
 

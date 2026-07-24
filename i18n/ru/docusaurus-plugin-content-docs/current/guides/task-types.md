@@ -40,7 +40,7 @@ const data = {
 **Связанный пример**: [Проекты и вехи](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 
-## Регулярные задачи
+## Регулярные задачи {#regular-tasks}
 
 По умолчанию dhtmlxGantt обеспечивает создание обычных задач (задач с **type="task"**).
 
@@ -74,7 +74,7 @@ const data = {
 - Может быть скрыта на таймлайне. См. [детали](guides/milestones.md#hiding-tasks-and-milestones).
 
 
-## Задачи проекта
+## Задачи проекта {#project-tasks}
 
 Задача проекта — это задача, которая начинается, когда начинается её самая ранняя дочерняя задача, и заканчивается, когда заканчивается её самая поздняя дочерняя задача.
 
@@ -182,7 +182,7 @@ gantt.config.lightbox.milestone_sections = [
 Чтобы углубиться в детали конфигурации lightbox, можно прочитать раздел [Configuring Edit Form](guides/edit-form.md).
 
 
-## Создание пользовательского типа
+## Создание пользовательского типа {#creating-a-custom-type}
 
 Все типы задач определяются в объекте [types](api/config/types.md).
 

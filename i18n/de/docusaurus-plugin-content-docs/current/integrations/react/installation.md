@@ -67,7 +67,7 @@ Oder, mit Yarn:
 yarn add @dhx/react-gantt
 ~~~
 
-## Umstieg vom Trial-Paket auf das kommerzielle Paket
+## Umstieg vom Trial-Paket auf das kommerzielle Paket {#moving-from-the-trial-package-to-the-commercial-one}
 
 Die meisten Projekte beginnen mit dem Trial-Paket und wechseln später, sobald der Prototyp genehmigt ist und eine kommerzielle Lizenz vorliegt. Beide Pakete verwenden dieselbe API, daher ist der Wechsel größtenteils rein mechanisch: Paketname austauschen, CSS-Import austauschen und neu installieren.
 

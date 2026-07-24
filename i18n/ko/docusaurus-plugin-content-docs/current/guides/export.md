@@ -44,7 +44,7 @@ export 모듈은 Gantt를 [Commercial](https://dhtmlx.com/docs/products/dhtmlxGa
 
 [PDF용 export 모듈 사용법 자세히 보기](guides/pdf-export-module.md).
 
-## PDF로 내보내기
+## PDF로 내보내기 {#export-to-pdf}
 
 Gantt 차트를 PDF 문서로 내보내려면 아래의 단계를 수행합니다:
 
@@ -82,7 +82,7 @@ Gantt 버전이 8.0 미만인 경우, 페이지에 내보내기 기능을 활성
 관련 예제: [Export data from Gantt](https://docs.dhtmlx.com/gantt/samples/08_api/06_export.html)
 
 
-## PNG로 내보내기
+## PNG로 내보내기 {#export-to-png}
 
 Gantt 차트를 PNG 이미지로 내보내려면 아래의 단계를 수행합니다:
 
@@ -118,7 +118,7 @@ Gantt 버전이 8.0 미만인 경우, 온라인 내보내기 서비스를 활성
 관련 예제: [Export data from Gantt](https://docs.dhtmlx.com/gantt/samples/08_api/06_export.html)
 
 
-## export 메서드의 매개변수
+## export 메서드의 매개변수 {#parameters-of-the-export-methods}
 
 [exportToPDF](api/method/exporttopdf.md) 및 [exportToPNG](api/method/exporttopng.md) 메서드는 여러 속성을 가지는 동일한 객체를 매개변수로 받으며(모든 속성은 선택적):
 
@@ -305,7 +305,7 @@ gantt.exportToPDF({
 [사용 가능한 모든 Gantt 스킨의 전체 목록 확인](guides/skins.md).
 
 
-## 출력 파일의 머리말/풋터
+## 출력 파일의 머리말/풋터 {#headerfooter-of-the-output-file}
 
 출력 PNG 또는 PDF 파일에 머리말/풋터를 추가하려면 [exportToPDF/exportToPNG](guides/export.md#parameters-of-the-export-methods) 메서드 매개변수의 <b>header</b>/<b>footer</b> 속성을 사용합니다:
 
@@ -346,7 +346,7 @@ gantt.exportToPDF({
 
 이 설정은 **margins**가 지정되고 헤더/풋터를 올바르게 표시할 충분한 공간이 있을 때만 작동합니다. 그렇지 않으면 헤더/풋터가 가턴트 바깥에 렌더링됩니다. 텍스트 한 줄에 대해 최소 여백으로는 *10*를 설정하는 것이 좋습니다.
 
-## 출력 PDF 파일의 여백
+## 출력 PDF 파일의 여백 {#margins-of-the-output-pdf-file}
 
 출력 PDF 파일에 여백을 추가하려면 [exportToPDF](guides/export.md#parameters-of-the-export-methods) 메서드의 **additional_settings** 객체에서 **margins** 속성을 사용합니다. 이 여백 설정은 단일 페이지 내보내기와 [다중 페이지 내보내기](api/method/exporttopdf.md#multi-page-export) 모두에 작동합니다.
 
@@ -468,7 +468,7 @@ gantt.exportToPDF({
 
 로컬에서 내보내기 서비스를 설치하려면 시스템 요구사항을 확인하십시오( guides/export-requirements.md).
 
-## HTML 요소 내보내기
+## HTML 요소 내보내기 {#exporting-html-elements}
 
 Gantt 차트를 PNG 및 PDF 형식으로 내보내는 동안 HTML 요소의 내보내기가 가능성 있는 보안 문제로 인해 제한될 수 있음을 유의해야 합니다.
 

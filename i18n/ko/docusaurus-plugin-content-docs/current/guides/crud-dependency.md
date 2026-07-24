@@ -68,7 +68,7 @@ gantt.deleteLink(linkId);
 gantt.clearAll();
 ~~~
 
-## UI에서 링크 값 편집
+## UI에서 링크 값 편집 {#editing-link-values-from-ui}
 
 링크의 lag 또는 다른 속성을 편집할 수 있는 내장 UI는 제공되지 않습니다. 따라서 UI가 필요하면 수동으로 구현해야 합니다.
 
