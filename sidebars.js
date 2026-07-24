@@ -1639,7 +1639,6 @@ module.exports = {
                         "guides/undo-redo",
                         "guides/message-boxes",
                         "guides/quick-info",
-                        "guides/accessibility",
                         "guides/keyboard-navigation",
                         "guides/content-security-policy",
                         "guides/jquery-integration",
@@ -1662,6 +1661,21 @@ module.exports = {
                 },
                 "guides/extensions-list",
                 "guides/overview"
+            ]
+        },
+
+        // Accessibility
+        {
+            type: "category",
+            label: "Accessibility",
+            collapsible: true,
+            collapsed: true,
+            link: {
+                type: 'doc',
+                id: "guides/accessibility"
+            },
+            items: [
+                "guides/accessibility-conformance-report"
             ]
         },
 
