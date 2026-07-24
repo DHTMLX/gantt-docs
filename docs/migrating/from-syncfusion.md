@@ -302,11 +302,11 @@ You should see all your tasks and links properly transferred with the correct fi
 | `StartDate`      | `start_date`    | Task start date                                                       |
 | `EndDate`        | `end_date`      | Task end date (calculated in DHTMLX if not provided)                  |
 | `Duration`       | `duration`      | Task duration                                                         |
-| `DurationUnit`   | _(config)_      | DHTMLX Gantt uses a global duration unit configured via `gantt.config.duration_unit`. During migration, it's recommended to normalize all durations to a single unit. If you want to have different duration units for different tasks, i.e. to show durations of some tasks in hours and some tasks in "days", you can use the [formatter module](guides/working-time.md#task-duration-in-decimal-format-taskdurationindecimalformat).                     |
+| `DurationUnit`   | _(config)_      | DHTMLX Gantt uses a global duration unit configured via `gantt.config.duration_unit`. During migration, it's recommended to normalize all durations to a single unit. If you want to have different duration units for different tasks, i.e. to show durations of some tasks in hours and some tasks in "days", you can use the [formatter module](guides/working-time.md#taskdurationindecimalformat).                     |
 | `Progress`       | `progress`      | Syncfusion: 0-100%, DHTMLX: 0-1 (decimal)                             |
 | `ParentId`       | `parent`        | Parent task ID (0 for root tasks)                                     |
 | `Predecessor`    | _(links table)_ | Syncfusion stores as string, DHTMLX uses separate `gantt_links` table |
-| `info` (notes)   | -         | Can be added as a custom column. Check this article for more information: [How to add a custom column in the grid](guides/how-to.md/#how-to-add-a-custom-column-in-the-grid)                                            |
+| `info` (notes)   | -         | Can be added as a custom column. Check this article for more information: [How to add a custom column in the grid](guides/how-to.md#how-to-add-a-custom-column-in-the-grid)                                            |
 | `isExpand`       | `open`          | Expand/collapse state for parent tasks                                |
 | `Indicators`     | `markers`       | DHTMLX uses `gantt.addMarker()` API. Learn more about [adding vertical markers](guides/markers.md)                                   |
 
@@ -523,6 +523,41 @@ function sendResponse(res, action, tid = null, error = null) {
 }
 ```
 
+### Sanitize Task Data (XSS Protection)
+
+DHTMLX Gantt renders fields such as a task's `text` as HTML and does **not** escape them by default, so any markup in your migrated data (or entered later by a user) is rendered as-is — a potential XSS vector. Syncfusion and most other libraries behave the same way, so it's worth handling this explicitly during migration.
+
+**Sanitize on the backend (recommended).** Clean free-text fields before they reach the database:
+
+```bash
+npm install isomorphic-dompurify
+```
+
+```js
+import DOMPurify from 'isomorphic-dompurify';
+
+function getTask(data) {
+  return {
+    text: DOMPurify.sanitize(data.text),
+    notes: data.notes ? DOMPurify.sanitize(data.notes) : null,
+    // ...the remaining fields unchanged
+  };
+}
+```
+
+**Escape on the frontend (defense in depth).** Override the templates that render task text in `src/app/app.ts`:
+
+```ts
+const escapeHTML = (value: unknown) =>
+  String(value ?? '').replace(/[&<>"']/g, (ch) =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch] as string));
+
+gantt.templates.task_text = (start, end, task) => escapeHTML(task.text);
+// also escape any custom grid column that shows task text: template: (task) => escapeHTML(task.text)
+```
+
+For the full set of recommendations — Content Security Policy, lightbox sanitization, and SQL-injection guidance — see the [Application Security](guides/app-security.md) guide.
+
 ---
 
 ## Step 3: Frontend Migration with Vite
@@ -684,11 +719,7 @@ Update your `package.json` scripts to use Vite:
     "build": "vite build",
     "preview": "vite preview",
     "server": "nodemon server.js",
-
-    "serve": "gulp e2e-serve",
-    "test": "gulp e2e-test",
-    "migrate-deps": "node migrate-dependencies.js",
-    "update-webdriver": "gulp e2e-webdriver-update"
+    "migrate-deps": "node migrate-dependencies.js"
   }
 }
 ```

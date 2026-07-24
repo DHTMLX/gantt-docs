@@ -347,8 +347,8 @@ Also, let's add utility functions to process data and send responses:
 function getTask(data) {
     return {
         text: data.text,
-        start_date: data.start_date.date("YYYY-MM-DD"),
-        end_date: data.end_date.date("YYYY-MM-DD"),
+        start_date: data.start_date.date("YYYY-MM-DD hh:mm:ss"),
+        end_date: data.end_date.date("YYYY-MM-DD hh:mm:ss"),
         duration: data.duration,
         progress: data.progress || 0,
         parent: data.parent,
@@ -379,6 +379,41 @@ function sendResponse(res, action, tid, error) {
     res.send(result);
 }
 ```
+
+### Sanitize Task Data (XSS Protection)
+
+DHTMLX Gantt renders fields such as a task's `text` as HTML and does **not** escape them by default, so any markup in your migrated data (or entered later by a user) is rendered as-is — a potential XSS vector. Bryntum and most other libraries behave the same way, so it's worth handling this explicitly during migration.
+
+**Sanitize on the backend (recommended).** Clean free-text fields before they reach the database:
+
+```bash
+npm install isomorphic-dompurify
+```
+
+```js
+import DOMPurify from 'isomorphic-dompurify';
+
+function getTask(data) {
+    return {
+        text: DOMPurify.sanitize(data.text),
+        // ...the remaining fields unchanged
+    };
+}
+```
+
+**Escape on the frontend (defense in depth).** Override the templates that render task text in `src/main.js`:
+
+```js
+const escapeHTML = (value) =>
+    String(value ?? "").replace(/[&<>"']/g, (ch) =>
+        ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
+
+gantt.templates.task_text = (start, end, task) => escapeHTML(task.text);
+gantt.templates.tooltip_text = (start, end, task) => escapeHTML(task.text);
+// also escape the "text" grid column: template: (task) => escapeHTML(task.text)
+```
+
+For the full set of recommendations — Content Security Policy, lightbox sanitization, and SQL-injection guidance — see the [Application Security](guides/app-security.md) guide.
 
 ---
 

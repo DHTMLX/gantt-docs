@@ -434,6 +434,41 @@ function sendResponse(res, action, tid = null, error = null) {
 
 **Note:** The response format is different from Frappe. Frappe endpoints returned the full task object (or HTTP 204 for deletes). DHTMLX's `DataProcessor` expects a JSON object with an `action` field (e.g., `{ action: "inserted", tid: 5 }`, `{ action: "updated" }`, `{ action: "deleted" }`). Learn more the [Request and Responses details](guides/server-side.md#requestresponsedetails).
 
+### Sanitize Task Data (XSS Protection)
+
+DHTMLX Gantt renders fields such as a task's `text` as HTML and does **not** escape them by default, so any markup in your migrated data (or entered later by a user) is rendered as-is — a potential XSS vector. Frappe and most other libraries behave the same way, so it's worth handling this explicitly during migration.
+
+**Sanitize on the backend (recommended).** Clean free-text fields before they reach the database:
+
+```bash
+npm install isomorphic-dompurify
+```
+
+```js
+import DOMPurify from 'isomorphic-dompurify';
+
+function getTask(data) {
+  return {
+    text: DOMPurify.sanitize(data.text),
+    // ...the remaining fields unchanged
+  };
+}
+```
+
+**Escape on the frontend (defense in depth).** Override the templates that render task text in `src/main.js`:
+
+```js
+const escapeHTML = (value) =>
+  String(value ?? '').replace(/[&<>"']/g, (ch) =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+
+gantt.templates.task_text = (start, end, task) => escapeHTML(task.text);
+gantt.templates.tooltip_text = (start, end, task) => escapeHTML(task.text);
+// also escape the "text" grid column via a column template: template: (task) => escapeHTML(task.text)
+```
+
+For the full set of recommendations — Content Security Policy, lightbox sanitization, and SQL-injection guidance — see the [Application Security](guides/app-security.md) guide.
+
 ## Step 3: Frontend Migration
 
 ### Install the DHTMLX Gantt package

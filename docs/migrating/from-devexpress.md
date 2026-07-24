@@ -355,6 +355,27 @@ function sendResponse(res, action, tid = null, error = null) {
 }
 ```
 
+### Sanitize Task Data (XSS Protection)
+
+Gantt charts render free-text fields such as a task's `text`, and any HTML in that text can become an XSS vector. Always sanitize user input on the backend before storing it — clean free-text fields in the `getTask` helper:
+
+```bash
+npm install isomorphic-dompurify
+```
+
+```js
+import DOMPurify from 'isomorphic-dompurify';
+
+function getTask(data) {
+  return {
+    text: DOMPurify.sanitize(data.text),
+    // ...the remaining fields unchanged
+  };
+}
+```
+
+If you add custom cell or tooltip renderers that output raw HTML, escape the values there as well. For the full set of recommendations — Content Security Policy and SQL-injection guidance — see the [Application Security](guides/app-security.md) guide.
+
 ---
 
 ## Step 3: Frontend Migration
