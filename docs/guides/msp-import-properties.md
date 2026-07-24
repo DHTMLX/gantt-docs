@@ -114,6 +114,10 @@ Thus, if you save an MPP file into the XML format, and then open it in MS Projec
 
 Some properties are calculated based on other properties, e.g. CV% and SV%, so files don't have these values. To make it more convenient, we've added calculations on the side of the export module. That's why on importing XML files the mentioned properties will have values, but they may differ from the result of exporting files and opening them in MS Project.
 
+### ConstraintName property
+
+*ConstraintName* is a synthetic property - it doesn't exist in MS Project files. The property actually stored in files is *ConstraintType*. The export module accepts *ConstraintType* as either a number or a string, but on import it always returns a number, for backward compatibility. *ConstraintName* lets you import constraints using values that are understandable for humans instead: if it's set instead of *ConstraintType*, the export module recognizes it and applies the corresponding constraint type.
+
 ## Resource properties
 
 The properties below are supported when importing resources from MS Project files.

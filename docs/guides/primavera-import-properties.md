@@ -107,7 +107,7 @@ Different Primavera file formats support different sets of properties. A propert
 Some properties contain nested properties of their own. When importing files with such properties, you get objects instead of plain values:
 
 - **ActivityCodeValues** - includes both codes and values prepared beforehand, as well as custom ones.
-- **Baseline** - a baseline captures a snapshot of the whole project, not of a standalone task, meaning a task would need a full project with all its dates rather than just a baseline. Gantt doesn't support such a configuration yet. When importing Primavera files with baselines (used only in the XML files), **Baseline** contains all the available baselines.
+- **Baseline** - Primavera handles baselines differently from Gantt and MS Project: a task itself has no baseline. Instead, Primavera keeps a full snapshot of the project, and its values serve as the baseline. On import, all available baselines are taken from this snapshot and added to the project. This works only in the XML files, as only files of this format contain projects' snapshots.
 - **ExpenseItems** - a complex object with many properties, including two nested objects: **Account** and **Category**. Its full property list: *Account*, *AccountUniqueID*, *AccrueType*, *ActualCost*, *ActualUnits*, *AtCompletionCost*, *AutoComputeActuals*, *Category*, *CategoryUniqueID*, *Description*, *DocumentNumber*, *Name*, *PlannedCost*, *PlannedUnits*, *PricePerUnit*, *RemainingCost*, *RemainingUnits*, *UniqueID*, *UnitOfMeasure*, *Vendor*.
 
   - The **Account** object contains the following properties: *ID*, *Name*, *Notes*, *NotesObject*, *Parent*, *ParentUniqueID*, *SequenceNumber*, *UniqueID*.
