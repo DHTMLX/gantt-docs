@@ -177,7 +177,7 @@ const config = {
 		locales: ['en', 'de', 'ru', 'ko', 'zh'],
 		localeConfigs: {
 			zh: {
-				htmlLang: 'zh-ZH',
+				htmlLang: 'zh-Hans',
 				label: '中文'
 			},
 		}

@@ -11,7 +11,7 @@
 /* You can override the default Infima variables here. */
 
 :root {
-  --ifm-color-primary: #0288D1;
+  --ifm-color-primary: #0277BD;
   --ifm-color-primary-dark: rgb(33, 175, 144);
   --ifm-color-primary-darker: rgb(31, 165, 136);
   --ifm-color-primary-darkest: rgb(26, 136, 112);
@@ -97,14 +97,27 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 
 /* Link icons */
 
-.iconExternalLink_lCJq,
-.iconExternalLink_node_modules-\@docusaurus-theme-classic-lib-theme-IconExternalLink-styles-module,
-.iconExternalLink_nPIU,
-.iconExternalLink_node_modules-\@docusaurus-theme-classic-lib-theme-Icon-ExternalLink-styles-module {
-  display: none; /* hides the link icon */
-}
 
 /* end Link icons */
+
+/* Accessibility: non-colour cues for links (WCAG 1.4.1) */
+
+.markdown a:not(.hash-link):not(.card):not(.framework-card) {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.menu__link--active {
+  box-shadow: 3px 0 0 0 currentColor inset;
+}
+
+.markdown a[target="_blank"]::after {
+  content: " \2197"; /* ↗ */
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* end Accessibility */
 
 /* imgs */
 
@@ -272,7 +285,7 @@ p {
   margin-top: 7px;
   left: -18px;
   color: white;
-  background: #E74C3C;
+  background: #C0392B;
   padding: 0px 3px 1px 2px;
   border-radius: 3px;
   position: absolute;
