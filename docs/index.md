@@ -2,7 +2,7 @@
 sidebar_label: DHTMLX Gantt overview
 title: DHTMLX Gantt overview
 slug: /
-description: "Overview of DHTMLX Gantt. Start with installation, editions, framework guides, API docs, samples, AI Tools, npm, and GitHub."
+description: "Explore DHTMLX Gantt features, editions, installation options, framework integrations, API docs, samples, and AI tools for building project planning apps."
 ---
 
 import Link from '@docusaurus/Link';
