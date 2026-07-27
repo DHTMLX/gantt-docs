@@ -6,44 +6,23 @@ description: "DHTMLX Gantt Accessibility Conformance Report, based on VPAT 2.5 -
 
 # Accessibility Conformance Report
 
-This report documents how DHTMLX Gantt conforms to the major accessibility standards. It follows the
-**VPAT® 2.5 (International Edition)** structure, so you can map it directly against your own
-procurement or compliance checklist. For a task-oriented overview of the accessibility features and how
-to configure them, see the [Accessibility](guides/accessibility.md) guide.
+This report documents how DHTMLX Gantt conforms to the major accessibility standards. It follows the **VPAT® 2.5 (International Edition)** structure, so you can map it directly against your own procurement or compliance checklist. For a task-oriented overview of the accessibility features and how to configure them, see the [Accessibility](guides/accessibility.md) guide.
 
 **Name of Product/Version:** DHTMLX Gantt v10.1.0
 
 **Report Date:** July 2026
 
-**Product Description:** DHTMLX Gantt is an interactive JavaScript Gantt-chart component for building
-project-scheduling interfaces in a web browser. It renders a task grid (tree) alongside a timeline,
-supports task dependencies, a resource panel (grid + histogram), inline editors, and a modal task editor
-(the "lightbox"). It is embedded by a host web application.
+**Product Description:** DHTMLX Gantt is an interactive JavaScript Gantt-chart component for building project-scheduling interfaces in a web browser. It renders a task grid (tree) alongside a timeline, supports task dependencies, a resource panel, inline editors, and a modal task editor (the "lightbox"). It is embedded by a host web application.
 
 **Contact Information:** [https://dhtmlx.com/docs/technical-support.shtml](https://dhtmlx.com/docs/technical-support.shtml)
 
 ## Notes
 
-- This report evaluates DHTMLX Gantt in its **recommended accessibility configuration**: the
-  `keyboard_navigation` plugin **enabled**, ARIA output enabled (`gantt.config.accessibility.aria` /
-  `wai_aria_attributes`, on by default), and an AA-conformant colour scheme selected - either the
-  dedicated `contrast-black` / `contrast-white` themes, the built-in **dark** theme, or the default light
-  skin with `gantt.config.accessibility.increase_contrast` enabled. Where a conformance level depends on
-  this configuration, the Remarks say so. See the [Accessibility](guides/accessibility.md) guide for setup
-  instructions.
-- DHTMLX Gantt is **web content** rendered by a host application. Page-level responsibilities - the page
-  title, `<html lang>`, skip/bypass mechanisms, and site-wide navigation - belong to the host application
-  and are reported as *Not Applicable* with an explanation.
-- In the WCAG tables, only the **Web** response is populated. The *Electronic Docs*, *Software*, *Closed*,
-  and *Authoring Tool* rows are *Not Applicable*: the product is not standalone (non-web) software, closed
-  functionality, an authoring tool, or a piece of electronic documentation.
+- This report evaluates DHTMLX Gantt in its **recommended accessibility configuration**: the `keyboard_navigation` plugin **enabled**, ARIA output enabled (`gantt.config.accessibility.aria` / `wai_aria_attributes`, on by default), and an AA-conformant colour scheme selected - either the dedicated `contrast-black` / `contrast-white` themes, the built-in **dark** theme, or the default light skin with `gantt.config.accessibility.increase_contrast` enabled. Where a conformance level depends on this configuration, the Remarks say so. See the [Accessibility](guides/accessibility.md) guide for setup instructions.
+- DHTMLX Gantt is **web content** rendered by a host application. Page-level responsibilities - the page title, `<html lang>`, skip/bypass mechanisms, and site-wide navigation - belong to the host application and are reported as *Not Applicable* with an explanation.
+- In the WCAG tables, only the **Web** response is populated. The *Electronic Docs*, *Software*, *Closed*, and *Authoring Tool* rows are *Not Applicable*: the product is not standalone (non-web) software, closed functionality, an authoring tool, or a piece of electronic documentation.
 
-**Evaluation Methods Used:** Testing was performed by evaluators familiar with the product's common uses,
-using a combination of automated testing (axe-core in a headless browser), manual code review of the
-component source (roles, ARIA attributes, keyboard handling and plugin behaviour), assistive-technology
-testing (manual passes with **NVDA + Firefox** and **JAWS + Chrome** on Windows), and browser overrides
-(colour-vision-deficiency emulation, `prefers-reduced-motion: reduce`, `forced-colors: active`, 200% / 400%
-zoom, and WCAG text-spacing overrides).
+**Evaluation Methods Used:** Testing was performed using a combination of automated testing (axe-core in a headless browser), manual code review of the component source (roles, ARIA attributes, keyboard handling and plugin behaviour), assistive-technology testing (manual passes with **NVDA + Firefox** and **JAWS + Chrome** on Windows), and browser overrides (colour-vision-deficiency emulation, `prefers-reduced-motion: reduce`, `forced-colors: active`, 200% / 400% zoom, and WCAG text-spacing overrides).
 
 ## Applicable standards / guidelines
 

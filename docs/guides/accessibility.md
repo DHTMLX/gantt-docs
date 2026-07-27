@@ -7,8 +7,7 @@ description: "How DHTMLX Gantt meets WCAG 2.2 AA, Section 508 and EN 301 549 - k
 # Accessibility
 
 DHTMLX Gantt is built to be usable by everyone, including people who rely on keyboards, screen readers,
-screen magnification, or high-contrast display modes. Accessibility is a first-class, built-in capability
-of the component - not an add-on - and it is verified with automated and manual testing on every release.
+screen magnification, or high-contrast display modes. 
 
 :::info Target conformance
 DHTMLX Gantt is designed to meet **WCAG 2.2 Level AA**, **Section 508** of the U.S. Rehabilitation Act,
@@ -39,7 +38,7 @@ configure Gantt for an accessible deployment. To try it hands-on, see the live
 ## Scope
 
 This guide covers the Gantt widget itself: the **data grid / tree**, the **timeline** with task bars and
-dependency links, the **time-scale header**, the **resource panel** (grid + histogram), and the
+dependency links, the **time-scale header**, the **resource panel**, and the
 **lightbox** (task editor). Like any embeddable component, the accessibility of the final page also
 depends on the host application (see [Host-page responsibilities](#hostpageresponsibilities)).
 
@@ -56,9 +55,6 @@ configuration is:
 // 2. Enable keyboard navigation
 gantt.plugins({ keyboard_navigation: true });
 
-// 3. Choose an AA-contrast colour scheme - either a high-contrast theme...
-//    <link rel="stylesheet" href="dhtmlxgantt_contrast_black.css">
-//    ...or raise the contrast of the default light skin:
 gantt.config.accessibility = {
     aria: true,
     increase_contrast: true,     // AA contrast for the default light skin

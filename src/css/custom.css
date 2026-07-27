@@ -108,13 +108,13 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 }
 
 .menu__link--active {
-  box-shadow: 3px 0 0 0 currentColor inset;
+  box-shadow: 4px 0 0 0 currentColor inset;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
-.markdown a[target="_blank"]::after {
-  content: " \2197"; /* ↗ */
-  display: inline-block;
-  text-decoration: none;
+[class*="iconExternalLink"] {
+  display: none;
 }
 
 /* end Accessibility */
