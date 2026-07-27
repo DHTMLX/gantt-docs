@@ -53,7 +53,7 @@ This method is defined in the **export** extension, so you need to activate the 
 :::note
 If you use the Gantt version older than 8.0, you need to include the `https://export.dhtmlx.com/gantt/api.js` on your page to enable the online export service, e.g.:
 
-~~~js
+~~~html
 <script src="codebase/dhtmlxgantt.js"></script>
 <script src="https://export.dhtmlx.com/gantt/api.js"></script>
 ~~~
@@ -62,59 +62,20 @@ If you use the Gantt version older than 8.0, you need to include the `https://ex
 
 The [](api/method/exporttopng.md) method takes as a parameter an object with a number of properties (all of the properties are optional):
 
-<table class="webixdoc_links">
-	<tbody>
-  	<tr>
-			<td class="webixdoc_links0"><b>name</b></td>
-			<td>(<i>string</i>) the name of the output file</td>
-		</tr>
-  <tr>
-			<td class="webixdoc_links0"><b>skin</b></td>
-			<td>(<i>'terrace', 'skyblue', 'meadow', 'broadway'</i>) the skin of the output Gantt chart</td>
-		</tr>
-  <tr>
-			<td class="webixdoc_links0"><b>locale</b></td>
-			<td>(<i>string</i>) sets the language that will be used in the output Gantt chart</td>
-		</tr> 
-  <tr>
-			<td class="webixdoc_links0"><b>start</b></td>
-			<td>(<i>string</i>) sets the start date of the data range that will be presented in the output Gantt chart. The date format is defined by the [](api/config/date_format.md) config</td>
-		</tr>
-  <tr>
-			<td class="webixdoc_links0"><b>end</b></td>
-			<td>(<i>string</i>) sets the end date of the data range that will be presented in the output Gantt chart. The date format is defined by the [](api/config/date_format.md) config</td>
-		</tr>
-  <tr>
-			<td class="webixdoc_links0"><b>data</b></td>
-			<td>(<i>object</i>) sets a custom data source that will be presented in the output Gantt chart </td>
-		</tr>
-  <tr>
-			<td class="webixdoc_links0"><b>header</b></td>
-			<td>(<i>string</i>) specifies the header that will be added to the output PDF image. Note, you can use any HTML here</td>
-		</tr>
-  <tr>
-			<td class="webixdoc_links0"><b>footer</b></td>
-			<td>(<i>string</i>) specifies the footer that will be added to the output PDF image. Note, you can use any HTML here</td>
-		</tr>
-  <tr>
-			<td class="webixdoc_links0"><b>server</b></td>
-			<td>(<i>string</i>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is `https://export.dhtmlx.com/gantt`</td>
-		</tr>
-  <tr>
-			<td class="webixdoc_links0"><b>raw</b></td>
-			<td>(<i>boolean</i>) defines that all Gantt markup will be exported as it is, with all custom elements. <em>false</em> by default. [Read the details](guides/export.md#exportingcustommarkupandstyles) </td>
-		</tr>
-		<tr>
-			<td class="webixdoc_links0"><b>callback</b></td>
-			<td>(<i>function</i>) If you want to receive an url to download a generated PNG file, the callback property can be used. It receives a JSON object with the url property</td>
-		</tr>
-		<tr>
-			<td class="webixdoc_links0"><b>additional_settings</b></td>
-			<td>(<i>object</i>) an object with additional settings. The object can contain the following attributes:
-			<ul><li><b>width</b> - (<i>number|string</i>) the width of the output page</li><li><b>height</b> - (<i>number|string</i>) the height of the output page</li>The <b>width</b> and <b>height</b> parameters will be ignored if <b>slice_archive</b> is specified.<li><b>slice_archive</b> - (<i>boolean|object</i>) allows saving large chart by pieces and obtaining them in the archive. As an object, the attribute takes the <b>width</b> and <b>height</b> options. If the piece size is not defined (i.e. <i>slice_archive: true</i>), the default sizes are 1000×1000. </li><li><b>slice_check</b> - (<i>boolean</i>) adds an HTML page to the archive. The page lets you check that all pieces are exported correctly.</li></ul></td>
-		</tr>
-  </tbody>
-</table>
+| Property | Description |
+| --- | --- |
+| **name** | (*string*) the name of the output file |
+| **skin** | (*'terrace', 'skyblue', 'meadow', 'broadway'*) the skin of the output Gantt chart |
+| **locale** | (*string*) sets the language that will be used in the output Gantt chart |
+| **start** | (*string*) sets the start date of the data range that will be presented in the output Gantt chart. The date format is defined by the [](api/config/date_format.md) config |
+| **end** | (*string*) sets the end date of the data range that will be presented in the output Gantt chart. The date format is defined by the [](api/config/date_format.md) config |
+| **data** | (*object*) sets a custom data source that will be presented in the output Gantt chart |
+| **header** | (*string*) specifies the header that will be added to the output PDF image. Note, you can use any HTML here |
+| **footer** | (*string*) specifies the footer that will be added to the output PDF image. Note, you can use any HTML here |
+| **server** | (*string*) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is `https://export.dhtmlx.com/gantt` |
+| **raw** | (*boolean*) defines that all Gantt markup will be exported as it is, with all custom elements. *false* by default. [Read the details](guides/export.md#exportingcustommarkupandstyles) |
+| **callback** | (*function*) If you want to receive an url to download a generated PNG file, the callback property can be used. It receives a JSON object with the url property |
+| **additional_settings** | (*object*) an object with additional settings. The object can contain the following attributes:<ul><li><b>width</b> - (<i>number\|string</i>) the width of the output page</li><li><b>height</b> - (<i>number\|string</i>) the height of the output page</li>The <b>width</b> and <b>height</b> parameters will be ignored if <b>slice_archive</b> is specified.<li><b>slice_archive</b> - (<i>boolean\|object</i>) allows saving large chart by pieces and obtaining them in the archive. As an object, the attribute takes the <b>width</b> and <b>height</b> options. If the piece size is not defined (i.e. <i>slice_archive: true</i>), the default sizes are 1000×1000.</li><li><b>slice_check</b> - (<i>boolean</i>) adds an HTML page to the archive. The page lets you check that all pieces are exported correctly.</li></ul> |
 
 ## Exporting large Gantt by pieces
 

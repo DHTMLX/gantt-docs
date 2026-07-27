@@ -38,7 +38,7 @@ If several people export Gantt at the same time, the process can take more time 
 There is a common API endpoint `https://export.dhtmlx.com/gantt` which serves for all export methods (*exportToPDF*, *exportToPNG*, *exportToMSProject*, etc.). **Max request size is 10 MB**.
 
 There is also a separate API endpoint `https://export.dhtmlx.com/gantt/project` specific for the [MSProject](guides/export-msproject.md) and 
-[Primavera P6](guides/export-primavera.md)export/import services (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* only). **Max request size: 40 MB**.
+[Primavera P6](guides/export-primavera.md) export/import services (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* only). **Max request size: 40 MB**.
 
 ## Using export modules
 
@@ -101,6 +101,7 @@ The **exportToExcel()** method takes as a parameter an object with several prope
     - **'width'** - (*number*) the column width in pixels
     - **'type'** - (*string*) the column type
 - **server** - (*string*) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is `https://export.dhtmlx.com/gantt`
+- **raw** - (*boolean*) defines the way Gantt data is exported. *false* by default. Read more in the [Exporting filtered tasks and hidden columns](#exporting-filtered-tasks-and-hidden-columns) section
 - **callback** - (*function*) If you want to receive an url to download a generated XLSX file, the callback property can be used. It receives a JSON object with the url property
 - **visual** - (*boolean*) adds the timeline chart to an exported Excel document. *false* by default
 - **cellColors** - (*boolean*) if set to *true*, the cells of the exported document will have the colors defined by the [timeline_cell_class](api/template/timeline_cell_class.md) template, the *color* and *background-color* 
@@ -183,6 +184,22 @@ gantt.exportToExcel({
 ~~~
 
 **Related sample**: [Export colors of tasks](https://snippet.dhtmlx.com/t2znjrfj)
+
+### Exporting filtered tasks and hidden columns
+
+By default, the [`exportToExcel()`](api/method/exporttoexcel.md) method exports all tasks and columns of the Gantt chart, regardless of any filtering applied via the [`onBeforeTaskDisplay`](api/event/onbeforetaskdisplay.md) event or any columns [hidden](guides/specifying-columns.md#visibility) via the `hide:true` setting.
+
+To ensure the export excludes tasks filtered out via `onBeforeTaskDisplay` and columns hidden via `hide:true`, set the **raw** property to *true*:
+
+~~~js
+gantt.exportToExcel({
+    raw: true
+});
+~~~
+
+**Related sample**: [Gantt. Export filtered data to PDF, Excel, and MSProject files](https://snippet.dhtmlx.com/twfy116w)
+
+**Related sample**: [Gantt. Export to Excel. Hide grid columns with the raw mode](https://snippet.dhtmlx.com/b7y0ps8m)
 
 ## Import from Excel {#importfromexcel}
 

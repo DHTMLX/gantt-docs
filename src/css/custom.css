@@ -247,6 +247,14 @@ table th:first-child {
 .msp-ext-properties table th:first-child {
     width: 10%;
 }
+.auto-width-table table {
+    width: auto;
+    table-layout: auto;
+}
+.auto-width-table table th:first-child,
+.auto-width-table table td:first-child {
+    width: auto;
+}
 /* end styles for tables */
 
 /* styles for infoblock */

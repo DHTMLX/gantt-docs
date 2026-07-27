@@ -26,6 +26,7 @@ gantt.exportToExcel({
         { id: "start_date",  header: "Start date", width: 250, type: "date" }
     ],
     server: "https://myapp.com/myexport/gantt",
+    raw: true,
     callback: (res) => {
         alert(res.url);
     },
@@ -46,7 +47,7 @@ Read the details in the [](guides/excel.md) article.
 :::note
 If you use the Gantt version older than 8.0, you need to include the `https://export.dhtmlx.com/gantt/api.js` on your page to enable the online export service, e.g.:
 
-~~~js
+~~~html
 <script src="codebase/dhtmlxgantt.js"></script>
 <script src="https://export.dhtmlx.com/gantt/api.js"></script>
 ~~~
@@ -55,40 +56,39 @@ If you use the Gantt version older than 8.0, you need to include the `https://ex
 
 The **exportToExcel()** method takes as a parameter an object with several properties (all the properties are optional):
 
-- **name** - (*string*) sets the name of the output file with the extension '.xlsx' 
-- **columns** - (*array*) allows configuring columns of the output Excel sheet. The properties of the column objects are:
-    - **'id'** - (*string,number*) a property of the event that will be mapped to the column
-    - **'header'** - (*string*) the column header
-    - **'width'** - (*number*) the column width in pixels
-    - **'type'** - (*string*) the column type
-- **server** - (*string*) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is `https://export.dhtmlx.com/gantt`
-- **callback** - (*function*) If you want to receive an url to download a generated XLSX file, the callback property can be used. It receives a JSON object with the url property
-- **visual** - (*boolean*) adds the timeline chart to an exported Excel document; *false* by default. Read [how to add task colors](guides/excel.md#adding-colors-of-tasks-to-export) to the exported file
-- **cellColors** - (*boolean*) if set to *true*, the cells of the exported document will have the colors defined by the [](api/template/timeline_cell_class.md) template, the *color* and *background-color* 
-properties are exported
-- **data** - (*object*) sets a custom data source that will be presented in the output Gantt chart
-- **date_format** - (*string*) sets the format the date will be displayed in the exported Excel document. The following format code can be used:
+| Property | Description |
+| --- | --- |
+| **name** | (*string*) sets the name of the output file with the extension '.xlsx' |
+| **columns** | (*array*) allows configuring columns of the output Excel sheet. The properties of the column objects are:<ul><li><b>'id'</b> - (<i>string,number</i>) a property of the event that will be mapped to the column</li><li><b>'header'</b> - (<i>string</i>) the column header</li><li><b>'width'</b> - (<i>number</i>) the column width in pixels</li><li><b>'type'</b> - (<i>string</i>) the column type</li></ul> |
+| **server** | (*string*) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is `https://export.dhtmlx.com/gantt` |
+| **raw** | (*boolean*) defines the way Gantt data is exported. It performs two tasks:<ul><li>if a task is filtered out via the [`onBeforeTaskDisplay`](api/event/onbeforetaskdisplay.md) event, i.e. isn't displayed in the grid or in the timeline, it isn't exported into the Excel file (by default, all the tasks are exported). <br/> **Related sample**: [Gantt. Export filtered data to PDF, Excel, and MSProject files](https://snippet.dhtmlx.com/twfy116w)</li><li>if a column is [hidden](guides/specifying-columns.md#visibility) via the `hide:true` setting, it isn't exported into the Excel file (all the columns are exported by default). <br/> **Related sample**: [Gantt. Export to Excel. Hide grid columns with the raw mode](https://snippet.dhtmlx.com/b7y0ps8m)</li></ul> *false* by default. [Read the details](guides/excel.md#exporting-filtered-tasks-and-hidden-columns) |
+| **callback** | (*function*) If you want to receive an url to download a generated XLSX file, the callback property can be used. It receives a JSON object with the url property |
+| **visual** | (*boolean*) adds the timeline chart to an exported Excel document; *false* by default. Read [how to add task colors](guides/excel.md#adding-colors-of-tasks-to-export) to the exported file |
+| **cellColors** | (*boolean*) if set to *true*, the cells of the exported document will have the colors defined by the [](api/template/timeline_cell_class.md) template, the *color* and *background-color* properties are exported |
+| **data** | (*object*) sets a custom data source that will be presented in the output Gantt chart |
+| **date_format** | (*string*) sets the format the date will be displayed in the exported Excel document. The following format code can be used: |
 
-Format codeOutput:
+<div class="auto-width-table">
 
-<table class="my_table">
-<tr><td class="version_info">Format code</td><td class="version_info">Output</td></tr>
-<tr><td>d</td><td>9</td></tr>
-<tr><td>dd</td><td>09</td></tr>
-<tr><td>ddd</td><td>Mon</td></tr>
-<tr><td>dddd</td><td>Monday</td></tr>
-<tr><td>mm</td><td>01</td></tr>
-<tr><td>mmm</td><td>Jan</td></tr>
-<tr><td>mmmm</td><td>January</td></tr>
-<tr><td>mmmmm</td><td>J</td></tr>
-<tr><td>yy</td><td>12</td></tr>
-<tr><td>yyyy</td><td>2021</td></tr>
-<tr><td>mm/dd/yyyy</td><td>01/09/2021</td></tr>
-<tr><td>m/d/y</td><td>1/9/21</td></tr>
-<tr><td>ddd, mmm d</td><td>Mon, Jan 9</td></tr>
-<tr><td>mm/dd/yyyy h:mm AM/PM</td><td>01/09/2021 6:20 PM</td></tr>
-<tr><td>dd/mm/yyyy hh:mm:ss</td><td>09/01/2012 16:20:00</td></tr>
-</table>
+| Format code           | Output              |
+| --------------------- | ------------------- |
+| d                     | 9                   |
+| dd                    | 09                  |
+| ddd                   | Mon                 |
+| dddd                  | Monday              |
+| mm                    | 01                  |
+| mmm                   | Jan                 |
+| mmmm                  | January             |
+| mmmmm                 | J                   |
+| yy                    | 12                  |
+| yyyy                  | 2021                |
+| mm/dd/yyyy            | 01/09/2021          |
+| m/d/y                 | 1/9/21              |
+| ddd, mmm d            | Mon, Jan 9          |
+| mm/dd/yyyy h:mm AM/PM | 01/09/2021 6:20 PM  |
+| dd/mm/yyyy hh:mm:ss   | 09/01/2012 16:20:00 |
+
+</div>
 
 
 #### Default date parameters
