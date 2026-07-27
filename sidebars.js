@@ -1675,6 +1675,11 @@ module.exports = {
                 id: "guides/accessibility"
             },
             items: [
+                {
+                    type: "link",
+                    label: "Overview",
+                    href: "/guides/accessibility/"
+                },
                 "guides/accessibility-conformance-report"
             ]
         },

@@ -64,6 +64,30 @@ gantt.config.accessibility = {
 gantt.init("gantt_here");
 ~~~
 
+### Grid setup for keyboard link management {#gridsetup}
+
+For the fullest keyboard and screen-reader experience, set up the task grid so that dependency links can
+be read and created without a mouse:
+
+- Enable **inline editing** so grid cells can be edited from the keyboard (see
+  [Inline editing](guides/inline-editing.md)).
+- Add a **`predecessors`** column, and optionally a **`successors`** column. These columns get a default
+  template and inline editor automatically: a screen reader reads the dependencies as text (for example,
+  *"Predecessors: Office facing finish-to-start"*), and a user can create or change a link by typing the
+  related task's code into the cell - a keyboard, non-drag alternative to dragging link arrows
+  (WCAG 2.5.7 Dragging Movements).
+
+~~~js
+gantt.config.columns = [
+    { name: "text", label: "Task name", tree: true, width: 200, resize: true },
+    { name: "start_date", label: "Start", align: "center", width: 100, resize: true },
+    { name: "duration", label: "Duration", align: "center", width: 70, resize: true },
+    { name: "predecessors", label: "Predecessors", width: 120, align: "left", resize: true },
+    { name: "successors", label: "Successors", width: 120, align: "left", resize: true },
+    { name: "add", width: 44 }
+];
+~~~
+
 The sections below describe each capability in detail.
 
 ## WAI-ARIA Attributes

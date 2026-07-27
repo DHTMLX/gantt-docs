@@ -14,7 +14,7 @@ This report documents how DHTMLX Gantt conforms to the major accessibility stand
 
 **Product Description:** DHTMLX Gantt is an interactive JavaScript Gantt-chart component for building project-scheduling interfaces in a web browser. It renders a task grid (tree) alongside a timeline, supports task dependencies, a resource panel, inline editors, and a modal task editor (the "lightbox"). It is embedded by a host web application.
 
-**Contact Information:** [https://dhtmlx.com/docs/technical-support.shtml](https://dhtmlx.com/docs/technical-support.shtml)
+**Contact Information:** [info@dhtmlx.com](mailto:info@dhtmlx.com)
 
 ## Notes
 
