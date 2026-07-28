@@ -189,15 +189,36 @@ gantt.exportToExcel({
 
 By default, the [`exportToExcel()`](api/method/exporttoexcel.md) method exports all tasks and columns of the Gantt chart, regardless of any filtering applied via the [`onBeforeTaskDisplay`](api/event/onbeforetaskdisplay.md) event or any columns [hidden](guides/specifying-columns.md#visibility) via the `hide:true` setting.
 
-To ensure the export excludes tasks filtered out via `onBeforeTaskDisplay` and columns hidden via `hide:true`, set the **raw** property to *true*:
+To ensure the export excludes tasks filtered out via `onBeforeTaskDisplay`, set the **raw** property to *true*:
 
 ~~~js
+gantt.attachEvent("onBeforeTaskDisplay", function(id, task){
+    // hide tasks that don't match the search value
+    return task.text.toLowerCase().indexOf(filterValue.toLowerCase()) > -1;
+});
+
 gantt.exportToExcel({
     raw: true
 });
 ~~~
 
 **Related sample**: [Gantt. Export filtered data to PDF, Excel, and MSProject files](https://snippet.dhtmlx.com/twfy116w)
+
+Likewise, to exclude columns hidden via the `hide:true` setting, set the **raw** property to *true*:
+
+~~~js
+gantt.config.columns = [
+    { name: "text", tree: true, width: 150, resize: true },
+    { name: "start_date", align: "center", width: 120, resize: true },
+    // hidden columns are excluded from the export when raw: true
+    { name: "end_date", align: "center", label: "End Time", hide: true, width: 120, resize: true },
+    { name: "duration", align: "center", width: 70, hide: true, resize: true }
+];
+
+gantt.exportToExcel({
+    raw: true
+});
+~~~
 
 **Related sample**: [Gantt. Export to Excel. Hide grid columns with the raw mode](https://snippet.dhtmlx.com/b7y0ps8m)
 
