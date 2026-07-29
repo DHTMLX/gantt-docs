@@ -103,6 +103,19 @@ Also, please note, that if you call `gantt.exportToMSProject()` without paramete
 The MSP export module and export server use the MPXJ library to import and export MSP and Primavera files. Unfortunately, there is no way to export MPP files, 
 but you can [import both XML and MPP files](https://www.mpxj.org/faq/).
 
+Even though a direct export to MPP isn't supported, you can still get the changes made in Gantt back into MS Project. A typical round-trip workflow looks like this:
+
+1. A user creates or edits a project in MS Project and saves the file (as MPP or XML).
+2. The file is [imported into Gantt](guides/export-msproject.md#import-from-ms-project), where the data can be viewed or modified.
+3. The Gantt data is [exported into an XML Project file](guides/export-msproject.md#export-to-ms-project).
+4. The resulting XML file is imported back into the original file in MS Project:
+    - If no tasks were deleted in Gantt, import the XML file using the **Merge** option. The existing tasks will be updated, and the new ones will be added.
+    - If some tasks were deleted in Gantt, they won't be removed automatically during the import, since MS Project only updates and adds tasks when merging. In this case, first select and delete the corresponding tasks in MS Project manually, then import the XML file using either the **Append** or the **Merge** option.
+
+:::note
+By default, Gantt imports and exports only the default set of task/project properties. To carry additional properties through the round trip, see [Getting tasks properties](guides/export-msproject.md#getting-tasks-properties) for import, and the `tasks` object described in [Export settings](guides/export-msproject.md#export-settings) for export.
+:::
+
 ### Import of large files
 
 If you want to import large files, you will need to remove the limits on the request size. To do that, you need to open the 
