@@ -117,9 +117,7 @@ Even though a direct export to MPP isn't supported, you can still get the change
 
     ![MS Project import wizard - Append option](/img/msp_import_append.png)
 
-:::note
 By default, Gantt imports and exports only the default set of task/project properties. To carry additional properties through the round trip, see [Getting tasks properties](guides/export-msproject.md#getting-tasks-properties) for import, and the `tasks` object described in [Export settings](guides/export-msproject.md#export-settings) for export.
-:::
 
 ### Import of large files
 
