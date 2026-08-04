@@ -90,13 +90,15 @@ import "@dhx/react-gantt/dist/react-gantt.css";
 Search the project for any remaining mentions of `@dhtmlx/trial-react-gantt`, including the CSS import path - that one is the easiest to forget. Replace the dependency in `package.json`, then `npm install` and run the app. If the watermark is gone and the rest of the UI behaves identically, the swap is done.
 
 
-### Using the registry from CI or shared build environments
+## Using the registry from CI or shared build environments
 
 `npm login` works fine on a developer machine, but CI runners and other shared build environments typically can't run an interactive login. For those, generate a non-interactive access token from a logged-in machine:
 
 ~~~bash
 npm token create --registry=https://npm.dhtmlx.com
 ~~~
+
+npm will prompt for a password. Use the same password that was used to log in to the private repository, which is the password from the Client Area.
 
 The token is printed once in the terminal output - copy it before closing the session, since it cannot be retrieved later. Then expose it through an `.npmrc` file that the build can read:
 
