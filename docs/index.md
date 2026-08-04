@@ -19,11 +19,65 @@ At a high level, DHTMLX Gantt consists of a project data model (tasks, links, re
 
 DHTMLX Gantt works in modern browsers, supports touch interaction and keyboard navigation, can be styled with built‑in and custom themes, and fits accessibility‑focused, localized user interfaces.
 
-## Quick start and developer resources
+## Quick start by framework
+
+You can use DHTMLX Gantt as a vanilla JavaScript widget or integrate it into a modern framework. Start with a step-by-step guide suitable for your preferred technology:
+
+<div className="framework-grid">
+  <div className="framework-card">
+    <FrameworkIcon name="javascript" className="framework-icon" />
+    <div className="framework-title">JavaScript</div>
+    <div className="framework-desc">
+      Minimal setup with script tags or bundlers. Great for simple pages or non-framework apps. Start with the <a href="guides/installation/">installation guide</a>.
+    </div>
+  </div>
+
+  <div className="framework-card">
+    <FrameworkIcon name="react" className="framework-icon" />
+    <div className="framework-title">React</div>
+    <div className="framework-desc">
+      For evaluation and PRO, use the official <a href="integrations/react/quick-start/"><code>ReactGantt</code> wrapper</a>. For Community, integrate the core JavaScript Gantt component using the <a href="integrations/react/js-gantt-react/">React integration guide</a>.
+    </div>
+  </div>
+
+  <div className="framework-card">
+    <FrameworkIcon name="angular" className="framework-icon" />
+    <div className="framework-title">Angular</div>
+    <div className="framework-desc">
+      For evaluation and PRO, use the official <a href="integrations/angular/quick-start/"><code>Angular</code> wrapper</a>. For Community, integrate the core JavaScript Gantt component using the documented <a href="integrations/angular/js-gantt-angular/">Angular integration path</a>.
+    </div>
+  </div>
+
+  <div className="framework-card">
+    <FrameworkIcon name="vue" className="framework-icon" />
+    <div className="framework-title">Vue</div>
+    <div className="framework-desc">
+      For evaluation and PRO, use the official <a href="integrations/vue/quick-start/"><code>VueGantt</code> wrapper</a>. For Community, integrate the core JavaScript Gantt component using the <a href="integrations/vue/js-gantt-vue/">How to Start with Vue</a> guide.
+    </div>
+  </div>
+
+  <div className="framework-card">
+    <FrameworkIcon name="svelte" className="framework-icon" />
+    <div className="framework-title">Svelte</div>
+    <div className="framework-desc">
+      Use Gantt inside Svelte with a simple component that binds configuration and events. Start with the <a href="integrations/svelte/howtostart-svelte/">Svelte guide</a>.
+    </div>
+  </div>
+
+  <div className="framework-card">
+    <FrameworkIcon name="salesforce" className="framework-icon" />
+    <div className="framework-title">Salesforce</div>
+    <div className="framework-desc">
+      Embed Gantt in Salesforce apps, connect to your org data, and keep project timelines in CRM. Start with the <a href="integrations/salesforce/howtostart-salesforce/">Salesforce guide</a>.
+    </div>
+  </div>
+</div>
+
+## Developer resources
 
 - [Installation guide](guides/installation.md) for Community, trial, and PRO setup flows
 - [Community vs PRO comparison](guides/editions-comparison.md) for feature differences between editions
-- [npm package](https://www.npmjs.com/package/dhtmlx-gantt) for the public JavaScript package of the Community edition
+- Public [npm package](https://www.npmjs.com/package/dhtmlx-gantt) of the JavaScript Gantt under the Community edition
 - [GitHub repository](https://github.com/DHTMLX/gantt) for the source code of the Community edition and issue tracking
 - [API reference](api/api-overview.md) and [samples](https://docs.dhtmlx.com/gantt/samples/?sample=%2701_initialization/01_basic_init.html%27&filter=%27%27) for implementation details
 - [What's New](whats-new.md) for releases and migration notes
@@ -110,69 +164,15 @@ Some samples demonstrate PRO functionality, so check the [Community vs PRO compa
 
 ## Editions and licensing 
 
-DHTMLX Gantt is available in two editions: **Community** and **PRO**. You can start with the free Community edition and upgrade to the PRO version later if you need more features. You may also start directly with the PRO edition either through an **official trial** or with a paid license. Choose one of the following options to get started with DHTMLX Gantt:
+DHTMLX Gantt is available in two editions: **Community** and **PRO**. You can start with the free Community edition and upgrade to the PRO version later if you need more features, official support, and a fully maintained Gantt foundation. You may also start directly with the PRO edition either through an **official trial** or with a paid license. Choose one of the following options to get started with DHTMLX Gantt:
 
-- **[Community edition](https://dhtmlx.com/blog/meet-dhtmlx-gantt-community-edition-mit-license/).** Free and MIT-licensed, it covers the core interactive Gantt features for DHTMLX Gantt v10+.
-- **[Official trial](https://dhtmlx.com/docs/download/).** It lets you evaluate the full PRO feature set and receive technical support during the trial period.
-- **[PRO edition](https://dhtmlx.com/docs/products/licenses.shtml).** Built for production environments, it includes advanced planning features, official support and commercial licensing.
+- **[Community edition](https://dhtmlx.com/docs/products/dhtmlxGantt/open-source/).** Free and MIT-licensed, it covers the core interactive Gantt features for DHTMLX Gantt v10+.
+- **[Official trial](https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml).** It lets you evaluate the full PRO feature set and receive technical support during the trial period.
+- **[PRO edition](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing).** Built for production environments, it includes advanced planning features, official support and commercial licensing.
 
 To see the exact feature differences between editions, check the [Community vs PRO comparison](guides/editions-comparison.md). For the setup flow of each option, see the [installation guide](guides/installation.md). 
 
 If you are migrating from an earlier GPL version, use the [migration guide](migration.md). GPL v2 applies only to previous DHTMLX Gantt versions before v10 released under GPL.
-
-## Quick start by framework
-
-You can use DHTMLX Gantt as a vanilla JavaScript widget or integrate it into a modern framework. Start with a step-by-step guide suitable for your preferred technology:
-
-<div className="framework-grid">
-  <div className="framework-card">
-    <FrameworkIcon name="javascript" className="framework-icon" />
-    <div className="framework-title">JavaScript</div>
-    <div className="framework-desc">
-      Minimal setup with script tags or bundlers. Great for simple pages or non-framework apps. Start with the <a href="guides/installation/">installation guide</a>.
-    </div>
-  </div>
-
-  <div className="framework-card">
-    <FrameworkIcon name="react" className="framework-icon" />
-    <div className="framework-title">React</div>
-    <div className="framework-desc">
-      For evaluation and PRO, use the official <a href="integrations/react/quick-start/"><code>ReactGantt</code> wrapper</a>. For Community, integrate the core JavaScript Gantt component using the <a href="integrations/react/js-gantt-react/">React integration guide</a>.
-    </div>
-  </div>
-
-  <div className="framework-card">
-    <FrameworkIcon name="angular" className="framework-icon" />
-    <div className="framework-title">Angular</div>
-    <div className="framework-desc">
-      For evaluation and PRO, use the official <a href="integrations/angular/quick-start/"><code>Angular</code> wrapper</a>. For Community, integrate the core JavaScript Gantt component using the documented <a href="integrations/angular/js-gantt-angular/">Angular integration path</a>.
-    </div>
-  </div>
-
-  <div className="framework-card">
-    <FrameworkIcon name="vue" className="framework-icon" />
-    <div className="framework-title">Vue</div>
-    <div className="framework-desc">
-      For evaluation and PRO, use the official <a href="integrations/vue/quick-start/"><code>VueGantt</code> wrapper</a>. For Community, integrate the core JavaScript Gantt component using the <a href="integrations/vue/js-gantt-vue/">How to Start with Vue</a> guide.
-    </div>
-  </div>
-
-  <div className="framework-card">
-    <FrameworkIcon name="svelte" className="framework-icon" />
-    <div className="framework-title">Svelte</div>
-    <div className="framework-desc">
-      Use Gantt inside Svelte with a simple component that binds configuration and events. Start with the <a href="integrations/svelte/howtostart-svelte/">Svelte guide</a>.
-    </div>
-  </div>
-
-  <div className="framework-card">
-    <FrameworkIcon name="salesforce" className="framework-icon" />
-    <div className="framework-title">Salesforce</div>
-    <div className="framework-desc">
-      Embed Gantt in Salesforce apps, connect to your org data, and keep project timelines in CRM. Start with the <a href="integrations/salesforce/howtostart-salesforce/">Salesforce guide</a>.
-    </div>
-  </div>
-</div>
 
 ## AI coding tools
 
