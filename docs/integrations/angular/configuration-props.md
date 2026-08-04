@@ -210,6 +210,24 @@ templates = {
 - If `config.layout` changes shape (not just nested values), the wrapper may reinitialize the Gantt layout.
 - Keep object identity stable when nothing changed to avoid unnecessary re-application.
 
+### Zoom levels
+
+The `zoom` property of `config` is passed to the [Zoom extension](guides/zoom.md): `levels` defines the available scales and `current` selects the active one. Both are applied when they change, so the set of zoom levels can be replaced at runtime:
+
+~~~ts
+zoomLevels: ZoomLevel[] = quarterlyLevels;
+
+config = { zoom: { levels: this.zoomLevels, current: "month" } };
+
+switchLevels(): void {
+  this.zoomLevels = monthlyLevels;
+  // pass a new config object so the change is detected
+  this.config = { zoom: { levels: this.zoomLevels, current: "month" } };
+}
+~~~
+
+Replacing the levels re-initializes the extension, which resets the active level - keep `current` in the config so the wrapper re-applies it.
+
 ## `events` Input
 
 Use a single event map instead of many Angular outputs.

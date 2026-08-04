@@ -189,6 +189,29 @@ const templates = {
 </template>
 ~~~
 
+### Zoom levels
+
+The `zoom` property of `config` is passed to the [Zoom extension](guides/zoom.md): `levels` defines the available scales and `current` selects the active one. Both are applied when they change, so the set of zoom levels can be replaced at runtime:
+
+~~~vue
+<script setup lang="ts">
+import { computed, ref } from "vue";
+import type { ZoomLevel } from "@dhx/vue-gantt";
+
+const zoomLevels = ref<ZoomLevel[]>(quarterlyLevels);
+const config = computed(() => ({
+  zoom: { levels: zoomLevels.value, current: "month" }
+}));
+</script>
+
+<template>
+  <button @click="zoomLevels = monthlyLevels">Monthly scales</button>
+  <VueGantt :config="config" />
+</template>
+~~~
+
+Replacing the levels re-initializes the extension, which resets the active level - keep `current` in the config so the wrapper re-applies it.
+
 ## Events, Lifecycle, And Instance Access
 
 ### `events`

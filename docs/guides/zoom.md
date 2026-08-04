@@ -14,6 +14,7 @@ The Zoom extension uses a set of the scale settings and allows quickly switching
 `ZoomLevel` is an object that contains the scale settings. It has the following properties:
 
 - <span class="subproperty">**name**</span> - (*string*) - the name of the level
+- <span class="subproperty">**label?**</span> - (*string*) - a caption of the level for zoom controls (a dropdown, a set of buttons). Not used by the chart itself
 - <span class="subproperty">**scale_height?**</span> - (*number*) - the height of the scale
 - <span class="subproperty">**height?**</span> - (*number*) - the height of the scale
 - <span class="subproperty">**min_column_width?**</span> - (*number*) - the minimal width of a column. It has a higher priority than minColumnWidth and maxColumnWidth
