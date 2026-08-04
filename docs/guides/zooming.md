@@ -99,6 +99,25 @@ gantt.ext.zoom.setLevel("week");
 
 Provide the `levels` array when you need custom scales or labels.
 
+### Changing the zoom levels at runtime
+
+To replace the set of levels after the initialization, call `gantt.ext.zoom.init()` again with the new configuration. The extension applies the new levels and activates the level defined by `activeLevelIndex` (the first one by default), so pass `activeLevelIndex` or call [`setLevel()`](guides/zoom.md#methods) afterwards if a particular level should stay active:
+
+~~~js
+const currentLevel = gantt.ext.zoom.getLevels()[gantt.ext.zoom.getCurrentLevel()].name;
+
+gantt.ext.zoom.init({ levels: newLevels });
+
+// keep the previously active level when the new set still contains it
+if (newLevels.some(level => level.name === currentLevel)) {
+    gantt.ext.zoom.setLevel(currentLevel);
+}
+~~~
+
+:::tip
+The React, Vue, and Angular wrappers re-apply the levels for you when they change - see [useZoom](integrations/react/hooks.md#usezoom) (which also keeps the active level) and the `zoom` property of the `config` prop.
+:::
+
 ## Zoom to fit
 
 The Zoom extension can automatically pick the most detailed zoom level at which all tasks fit into the timeline width without horizontal scrolling. Call [`gantt.ext.zoom.zoomToFit()`](guides/zoom.md#methods) and, when you want to return to the previous scale, [`gantt.ext.zoom.resetZoom()`](guides/zoom.md#methods):

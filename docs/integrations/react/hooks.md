@@ -213,7 +213,7 @@ const zoom = useZoom(ganttRef, levels?)
 **Parameters:**
 
 - `ganttRef` - ref to the ReactGantt component
-- `levels` - *(optional)* array of zoom level configurations. Defaults to 5 built-in levels: Day, Week, Month, Quarter, Year.
+- `levels` - *(optional)* array of `ZoomLevel` configurations. Defaults to 5 built-in levels: Day, Week, Month, Quarter, Year.
 
 **Returns:**
 
@@ -262,6 +262,29 @@ const customLevels = [
 
 const zoom = useZoom(ganttRef, customLevels);
 ~~~
+
+The `levels` argument is reactive: when you pass a different set of levels, the hook re-applies it to the chart. The level that is currently active is kept if the new set contains a level with the same `name`, otherwise the closest zoom depth is used:
+
+~~~tsx
+const [zoomLevels, setZoomLevels] = useState(quarterlyLevels);
+
+const { currentLevel, levels, setLevel } = useZoom(ganttRef, zoomLevels);
+
+// the chart switches to the new scales, "month" stays active if both sets define it
+<button onClick={() => setZoomLevels(monthlyLevels)}>Monthly scales</button>
+~~~
+
+:::tip
+Rebuilding the array inline on every render is safe - the hook compares the level definitions by value, so the extension is only reset when they actually change.
+:::
+
+:::info
+`ZoomLevel` is the same type the [`zoom` configuration](guides/zoom.md#zoom-levels) uses, so a levels array can be shared between `useZoom` and `config.zoom`:
+
+~~~tsx
+import type { ZoomLevel } from '@dhx/react-gantt';
+~~~
+:::
 
 ## useSelection
 
