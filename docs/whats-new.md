@@ -9,6 +9,26 @@ sidebar_label: "What's New"
 Updating from an earlier version? Check the [migration guide](migration.md) for required changes and update steps.
 :::
 
+## 10.0.1
+
+<span class='release_date'>August 4, 2026. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue in [React Gantt](integrations/react.md), [Vue Gantt](integrations/vue.md), and [Angular Gantt](integrations/angular.md) where the [zoom levels](guides/zoom.md#zoom-levels) of the `config.zoom` property - and of the [useZoom](integrations/react/hooks.md#usezoom) hook in React - were not applied to the chart when they changed after the initial render
+- Fix the issue in [React Gantt](integrations/react.md) where the exported `ZoomLevel` type did not match the type expected by the `config.zoom` property
+- Fix the issue in [Vue Gantt](integrations/vue.md) where all baseline bars disappeared when the `baselines` prop was updated at runtime - [baselines](guides/inbuilt-baselines.md) passed through the prop are now linked to their tasks both on the initial load and on every update
+- Fix the issue in [Angular Gantt](integrations/angular.md) where the internal `@dhx/gantt` dependency was listed in the published package, so applications using the wrapper failed to build unless `@dhx/gantt` was installed
+- Fix the issue where [isCircularLink](api/method/iscircularlink.md) always returned `false` for links that had not been added to Gantt yet, making it impossible to detect a circular dependency before creating the link
+- Fix the issue where a task disappeared from the chart when it was dragged beyond the visible date range while the [zoom-to-fit](guides/zoom.md#zoom-to-fit) mode was active
+- Fix the issue where an [inline editor](guides/inline-editing.md) stayed open after the [edit form](guides/edit-form.md) had been opened and remained on the screen after the task it belonged to was deleted
+- Fix the issue where the `date_format` property of the [exportToExcel](api/method/exporttoexcel.md) method was ignored, so dates were exported using the default format
+- Fix the error thrown by [exportToExcel](api/method/exporttoexcel.md) when the `visual: true` option was used and the data contained milestones
+- Fix the issue where tasks outside the date range set by the [start_date](api/config/start_date.md) and [end_date](api/config/end_date.md) configs were exported to Excel regardless of the [show_tasks_outside_timescale](api/config/show_tasks_outside_timescale.md) config
+- Fix the `start` and `end` properties of the [exportToExcel](api/method/exporttoexcel.md) method, which threw an error instead of limiting the exported date range
+- Fix the issue where task bars were placed on wrong dates and partially missing in the exported Excel file when the [RTL mode](guides/rtl-mode.md) was enabled
+
+
 ## 10.0
 
 <span class='release_date'>June 11, 2026. Major release</span>
@@ -51,10 +71,12 @@ The reworked [Auto Scheduling](guides/auto-scheduling.md) engine resolves a numb
 - Fix the issue where the [onBeforeTaskAutoSchedule](api/event/onbeforetaskautoschedule.md) event did not fire for tasks that had no links, so they could not be excluded from scheduling
 - Fix incorrect Total Slack and [critical path](guides/critical-path.md) calculation for **Start-to-Finish** and **Start-to-Start** links
 - Fix the issue where a predecessor was not highlighted as critical when a negative-lag link made its successor finish earlier than the predecessor
+- Fix the issue where the [critical path](guides/critical-path.md) was not calculated for predecessor tasks when [Auto Scheduling](guides/auto-scheduling.md) was disabled and a successor task ended earlier than its predecessor
 - Fix the `invalid end_date argument` error thrown by [getTotalSlack](api/method/gettotalslack.md) when a project contained only a single parent task with no subtasks
 - Fix the issue where a subtask with the **ASAP** behavior jumped back and forth between dates on every [Auto Scheduling](guides/auto-scheduling.md) run when a sibling had an [MSO/MFO constraint](guides/constraint.md) and the parent project was connected with a **Finish-to-Finish** or **Start-to-Finish** link
 - Fix the issue where [Auto Scheduling](guides/auto-scheduling.md) still applied [constraint](guides/constraint.md) logic to MSO/MFO tasks when [auto_scheduling_compatibility](api/config/auto_scheduling_compatibility.md) was enabled
 - Fix incorrect scheduling of a linked subtask when its link used a **negative lag** larger than the successor's duration and the parent project was connected with a **Finish-to-Finish** or **Start-to-Finish** link
+- Fix the issue where the relative positions of the child tasks of a linked subproject were not preserved when its parent project was rescheduled after the links had been changed
 
 Other fixes:
 

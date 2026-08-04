@@ -169,6 +169,26 @@ The `@dhx/react-gantt` package re-exports several TypeScript types that you can 
 />
 ~~~
 
+## Zoom Levels
+
+The `zoom` property of `config` is passed to the [Zoom extension](guides/zoom.md): `levels` defines the available scales and `current` selects the active one. Both are applied when they change, so the set of zoom levels can be replaced at runtime:
+
+~~~tsx
+const [zoomLevels, setZoomLevels] = useState<ZoomLevel[]>(quarterlyLevels);
+
+<button onClick={() => setZoomLevels(monthlyLevels)}>Monthly scales</button>
+<ReactGantt
+  tasks={tasks}
+  config={{ zoom: { levels: zoomLevels, current: "month" } }}
+/>
+~~~
+
+Replacing the levels re-initializes the extension, which resets the active level - keep `current` in the config so the wrapper re-applies it.
+
+:::tip
+[useZoom](integrations/react/hooks.md#usezoom) covers the same scenario with ready-made zoom state and controls, and preserves the active level across a change of the levels by itself.
+:::
+
 ## Using Event Props
 
 You can pass any DHTMLX Gantt event as a prop. For example:
