@@ -191,9 +191,34 @@ The same as in the resource load diagram, *resourceGrid* will work in the same w
 - *histogram_cell_class* - the CSS class which is applied to a cell of the resource panel
 
 ~~~js
-gantt.templates.histogram_cell_class =
-    (start_date, end_date, resource, tasks, assignments) => "";
+gantt.templates.histogram_cell_class = function (start_date, end_date, resource, tasks) {
+    // total hours assigned to the resource within this cell
+    let result = 0;
+    tasks.forEach(function (item) {
+        const assignments = gantt.getResourceAssignments(resource.id, item.id);
+        assignments.forEach(function (assignment) {
+            result += assignment.value * 1;
+        });
+    });
+
+    const css = [];
+    css.push("resource_marker");
+    if (result <= 8) {
+        css.push("workday_ok");
+    } else {
+        css.push("workday_over");
+    }
+    return css.join(" ");
+};
 ~~~
+
+When your Gantt version doesn't support resource assignments, or no special styling is needed, this simpler template can be used:
+
+~~~js
+gantt.templates.histogram_cell_class = (start_date, end_date, resource, tasks, assignments) => "";
+~~~
+
+This version doesn't apply any class, leaving the cell with default styling instead of highlighting the resource's workload.
 
 - *histogram_cell_label* - the label inside a cell
 
@@ -210,8 +235,7 @@ If you're running an earlier version of Gantt that doesn't support resource assi
 
 ~~~js
 // assume each task takes 8 hours
-gantt.templates.histogram_cell_label =
-    (start_date, end_date, resource, tasks, assignments) => tasks.length * 8;
+gantt.templates.histogram_cell_label = (start_date, end_date, resource, tasks, assignments) => tasks.length * 8;
 ~~~
 
 This version calculates the label from the task count alone, treating each task as an 8-hour block, rather than pulling the actual assignment values.
@@ -230,8 +254,7 @@ If your version of Gantt is too old to support resource assignments, or you'd ra
 
 ~~~js
 // assume each task takes 8 hours
-gantt.templates.histogram_cell_allocated =
-    (start_date, end_date, resource, tasks, assignments) => tasks.length * 8;
+gantt.templates.histogram_cell_allocated = (start_date, end_date, resource, tasks, assignments) => tasks.length * 8;
 ~~~
 
 This version sizes the filled area purely by task count, treating every task as an 8-hour block regardless of what's actually assigned to the resource.
@@ -239,8 +262,7 @@ This version sizes the filled area purely by task count, treating every task as 
 - *histogram_cell_capacity* - the height of the line that defines the available capacity of the resource. Its value can be set from -1 to *maxCapacity* *. Values less than 0 won't render the line.
 
 ~~~js
-gantt.templates.histogram_cell_capacity =
-    (start_date, end_date, resource, tasks, assignments) => 24;
+gantt.templates.histogram_cell_capacity = (start_date, end_date, resource, tasks, assignments) => 24;
 ~~~
 
 **What maxCapacity is**
