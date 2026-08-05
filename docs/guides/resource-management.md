@@ -73,13 +73,61 @@ gantt.config.layout = {
 Once initialized, *resourceGrid* will work in the same way as the default grid view, but readonly. *resourceTimeline* will inherit the scale configuration from the default timeline and will have two layers:
 
 - background rows, which inherit [task_row_class](api/template/task_row_class.md) and [timeline_cell_class](api/template/timeline_cell_class.md). The templates of *resourceTimeline* can be redefined at the layout level.
-- resource layer - a layer specific for *resourceTimeline*. It will display blocks in cells where the resource has tasks assigned. The block style and content can be templated with 
-the [resource_cell_class](api/template/resource_cell_class.md) and [resource_cell_value](api/template/resource_cell_value.md) templates:
+- resource layer - a layer specific for *resourceTimeline*. It will display blocks in cells where the resource has tasks assigned. The block style and content can be templated with the [resource_cell_class](api/template/resource_cell_class.md) and [resource_cell_value](api/template/resource_cell_value.md) templates:
 
 ~~~js
-gantt.templates.resource_cell_value = (startDate, endDate, resource, tasks, assignments) => 
+gantt.templates.resource_cell_value = function (start_date, end_date, resource, tasks) {
+    let result = 0;
+    // iterate all tasks
+    tasks.forEach(function (item) {
+        const assignments = gantt.getResourceAssignments(resource.id, item.id);
+        // add values from all assignments
+        assignments.forEach(function (assignment) {
+            const task = gantt.getTask(assignment.task_id);
+            result += assignment.value * 1;
+        });
+    });
+
+    if (result % 1) {
+        result = Math.round(result * 10) / 10;
+    }
+    return "<div>" + result + "</div>";
+};
+~~~
+
+This example sums the values of every assignment found for the resource on each task in the cell. Since `getResourceAssignments` is not limited to the cell's date range, the total reflects the resource's overall assigned value for the task rather than a value split across the cells the task spans, so the same total appears in every cell the task touches.
+
+You can also use the same template to render fully custom markup instead of a numeric value, as shown below:
+
+~~~js
+gantt.templates.resource_cell_value = function (start_date, end_date, resource, tasks) {
+    // random bar heights, replace with real values in a production template
+    const capacity1 = `height: ${Math.round(Math.random(100) * 44)}px;`;
+    const capacity2 = `height: ${Math.round(Math.random(100) * 44)}px;`;
+
+    // half of the cell width so both bars fit side by side
+    const barWidth = `width: ${gantt.getScale().col_width / 2}px;`;
+
+    // two bars rendered inside the cell
+    var html = `
+        <div style="height:44px; display:flex; align-items: flex-end;">
+        <div style="background: plum; ${capacity1} ${barWidth}"></div>
+        <div style="background: orange; ${capacity2} ${barWidth}"></div>
+        </div>
+    `
+    return html;
+};
+~~~
+
+If you use an earlier version of Gantt that doesn't support resource assignments, or simply want to visualize resource load without relying on resource assignments, you can use the following approach instead:
+
+~~~js
+// assume each task takes 8 hours
+gantt.templates.resource_cell_value = (start_date, end_date, resource, tasks, assignments) => 
     `<div>${tasks.length * 8}h</div>`;
 ~~~
+
+This example estimates the resource's load from the number of tasks in the cell alone, assuming a fixed 8-hour workload per task, instead of reading actual assignment values.
 
 
 **Related sample**: [Templates of the Resource diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/05_resource_usage_templates.html)
@@ -151,15 +199,42 @@ gantt.templates.histogram_cell_class =
 
 ~~~js
 gantt.templates.histogram_cell_label =
+    function (start_date, end_date, resource, tasks, assignments) {
+        // total hours assigned to the resource within this cell
+        const hours = assignments.reduce((sum, assignment) => sum + assignment.value * 1, 0);
+        return `${hours}h`;
+    };
+~~~
+
+If you're running an earlier version of Gantt that doesn't support resource assignments, or simply want a simpler calculation, use this approach instead:
+
+~~~js
+// assume each task takes 8 hours
+gantt.templates.histogram_cell_label =
     (start_date, end_date, resource, tasks, assignments) => tasks.length * 8;
 ~~~
+
+This version calculates the label from the task count alone, treating each task as an 8-hour block, rather than pulling the actual assignment values.
 
 - *histogram_cell_allocated* - the height of the filled area in the histogram. Its value can be set from 0 to *maxCapacity* *.
 
 ~~~js
 gantt.templates.histogram_cell_allocated =
+    function (start_date, end_date, resource, tasks, assignments) {
+        // height of the filled area matches the resource's total assigned hours for the cell
+        return assignments.reduce((sum, assignment) => sum + assignment.value * 1, 0);
+    };
+~~~
+
+If your version of Gantt is too old to support resource assignments, or you'd rather not depend on them, the filled height can also be approximated like this:
+
+~~~js
+// assume each task takes 8 hours
+gantt.templates.histogram_cell_allocated =
     (start_date, end_date, resource, tasks, assignments) => tasks.length * 8;
 ~~~
+
+This version sizes the filled area purely by task count, treating every task as an 8-hour block regardless of what's actually assigned to the resource.
 
 - *histogram_cell_capacity* - the height of the line that defines the available capacity of the resource. Its value can be set from -1 to *maxCapacity* *. Values less than 0 won't render the line.
 
