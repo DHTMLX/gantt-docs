@@ -201,24 +201,19 @@ gantt.templates.histogram_cell_class = function (start_date, end_date, resource,
         });
     });
 
-    const css = [];
-    css.push("resource_marker");
-    if (result <= 8) {
-        css.push("workday_ok");
-    } else {
-        css.push("workday_over");
-    }
-    return css.join(" ");
+    return result > 8 ? "column_overload" : "";
 };
 ~~~
 
-When your Gantt version doesn't support resource assignments, or no special styling is needed, this simpler template can be used:
+If your Gantt version doesn't support resource assignments, or you'd rather not rely on them, this simpler template can be used instead:
 
 ~~~js
-gantt.templates.histogram_cell_class = (start_date, end_date, resource, tasks, assignments) => "";
+// assume each task takes 8 hours per day
+gantt.templates.histogram_cell_class = (start_date, end_date, resource, tasks, assignments) =>
+    tasks.length * 8 > 8 ? "column_overload" : "";
 ~~~
 
-This version doesn't apply any class, leaving the cell with default styling instead of highlighting the resource's workload.
+This version estimates the same overload state from the task count alone, assuming each task takes 8 hours per day, instead of using actual assignment values.
 
 - *histogram_cell_label* - the label inside a cell
 
