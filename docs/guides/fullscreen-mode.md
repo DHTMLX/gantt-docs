@@ -178,7 +178,7 @@ the gantt won't be able to expand to the fullscreen mode (try it in our snippet 
 
 ### Full screen mode in Salesforce
 
-The Fullscreen extension doesn't work in Salesforce applications that use <a href="https://developer.salesforce.com/docs/atlas.en-us.238.0.lightning.meta/lightning/security_code.htm" target="_blank">Locker Service</a>, since Locker blocks the ability to switch the element to the full screen mode.
+The Fullscreen extension doesn't work in Salesforce applications that use <a href="https://developer.salesforce.com/docs/atlas.en-us.238.0.lightning.meta/lightning/security_code.htm" target="_blank" rel="noopener noreferrer">Locker Service</a>, since Locker blocks the ability to switch the element to the full screen mode.
 
 More specifically, the Fullscreen extension won't work with **Lightning Aura** framework and with **Lightning Web Components** but may work with **Visualforce** framework.
 
