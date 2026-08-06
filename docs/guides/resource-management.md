@@ -9,18 +9,18 @@ sidebar_label: "Resource Management"
 This functionality is available only in the PRO edition.
 :::
 
-Gantt provides predefined resource views for highlighting resource load, methods for breaking project down by a resource for load balancing, 
-task and resource-specific work-time calendars.
+Gantt provides predefined resource views for highlighting resource load, methods for breaking down a project by resource for load balancing, 
+and task- and resource-specific work-time calendars.
 
 ![resource_panel](/img/resource_panel.png)
 
 :::note
-Although Gantt itself does not calculate the resource load, and does not have any methods that can be used out of the box, Gantt provides you with public API for implementing any custom behavior.
+Although Gantt itself does not calculate the resource load and does not have any methods that can be used out of the box, Gantt provides you with a public API for implementing any custom behavior.
 :::
 
 ## Resource view panel {#resourceviewpanel}
 
-dhtmlxGantt has two types of predefined layout view for displaying resource load of gantt: resource load diagram and resource histogram.
+dhtmlxGantt has two types of predefined layout views for displaying resource load in Gantt: resource load diagram and resource histogram.
 
 ### Resource load diagram {#resourceloaddiagram}
 
@@ -28,8 +28,8 @@ It includes corresponding views for the grid and timeline: "resourceGrid" and "r
 
 ![resource_panel](/img/resource_panel.png)
 
-:::note
-You need to pass a separate [config](guides/layout-config.md#configs-and-templates-of-views) for "resourceGrid" (to display columns for resources not for tasks) and "resourceTimeline" views, and [templates](guides/layout-config.md#configs-and-templates-of-views) to configure display of the resource assignments in the panel.
+:::info Note
+You need to pass a separate **[config](guides/layout-config.md#configs-and-templates-of-views)** for "resourceGrid" (to display columns for resources not for tasks) and "resourceTimeline" views, and **[templates](guides/layout-config.md#configs-and-templates-of-views)** to configure display of the resource assignments in the panel.
 :::
 
 ~~~js
@@ -73,13 +73,61 @@ gantt.config.layout = {
 Once initialized, *resourceGrid* will work in the same way as the default grid view, but readonly. *resourceTimeline* will inherit the scale configuration from the default timeline and will have two layers:
 
 - background rows, which inherit [task_row_class](api/template/task_row_class.md) and [timeline_cell_class](api/template/timeline_cell_class.md). The templates of *resourceTimeline* can be redefined at the layout level.
-- resource layer - a layer specific for *resourceTimeline*. It will display blocks in cells where the resource has tasks assigned. The block style and content can be templated with 
-the [resource_cell_class](api/template/resource_cell_class.md) and [resource_cell_value](api/template/resource_cell_value.md) templates:
+- resource layer - a layer specific to *resourceTimeline*. It will display blocks in cells where the resource has tasks assigned. The block style and content can be templated with the [resource_cell_class](api/template/resource_cell_class.md) and [resource_cell_value](api/template/resource_cell_value.md) templates:
 
 ~~~js
-gantt.templates.resource_cell_value = (startDate, endDate, resource, tasks, assignments) => 
+gantt.templates.resource_cell_value = function (start_date, end_date, resource, tasks) {
+    let result = 0;
+    // iterate all tasks
+    tasks.forEach(function (item) {
+        const assignments = gantt.getResourceAssignments(resource.id, item.id);
+        // add values from all assignments
+        assignments.forEach(function (assignment) {
+            const task = gantt.getTask(assignment.task_id);
+            result += assignment.value * 1;
+        });
+    });
+
+    if (result % 1) {
+        result = Math.round(result * 10) / 10;
+    }
+    return "<div>" + result + "</div>";
+};
+~~~
+
+This example sums the values of every assignment found for the resource on each task in the cell. Since `getResourceAssignments` is not limited to the cell's date range, the total reflects the resource's overall assigned value for the task rather than a value split across the cells the task spans, so the same total appears in every cell the task touches.
+
+You can also use the same template to render fully custom markup instead of a numeric value, as shown below:
+
+~~~js
+gantt.templates.resource_cell_value = function (start_date, end_date, resource, tasks) {
+    // random bar heights, replace with real values in a production template
+    const capacity1 = `height: ${Math.round(Math.random(100) * 44)}px;`;
+    const capacity2 = `height: ${Math.round(Math.random(100) * 44)}px;`;
+
+    // half of the cell width so both bars fit side by side
+    const barWidth = `width: ${gantt.getScale().col_width / 2}px;`;
+
+    // two bars rendered inside the cell
+    var html = `
+        <div style="height:44px; display:flex; align-items: flex-end;">
+        <div style="background: plum; ${capacity1} ${barWidth}"></div>
+        <div style="background: orange; ${capacity2} ${barWidth}"></div>
+        </div>
+    `
+    return html;
+};
+~~~
+
+If you use an earlier version of Gantt that doesn't support resource assignments, or simply want to visualize resource load without relying on resource assignments, you can use the following approach instead:
+
+~~~js
+// assume each task takes 8 hours
+gantt.templates.resource_cell_value = (start_date, end_date, resource, tasks, assignments) => 
     `<div>${tasks.length * 8}h</div>`;
 ~~~
+
+This example estimates the resource's load from the number of tasks in the cell alone, assuming a fixed 8-hour workload per task, instead of reading actual assignment values.
 
 
 **Related sample**: [Templates of the Resource diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/05_resource_usage_templates.html)
@@ -87,12 +135,12 @@ gantt.templates.resource_cell_value = (startDate, endDate, resource, tasks, assi
 
 ### Resource histogram
 
-This type of the layout view for displaying resource load of gantt includes the "resourceGrid" and "resourceHistogram" views for the grid and timeline correspondingly.
+This type of layout view for displaying resource load in Gantt includes the "resourceGrid" and "resourceHistogram" views for the grid and timeline, correspondingly.
 
 ![Resource histogram](/img/resource_histogram.png)
 
-:::note
-You need to pass a separate [config](guides/layout-config.md#configs-and-templates-of-views) for "resourceGrid" (to display columns for resources not for tasks) and "resourceHistogram" views, and [templates](guides/layout-config.md#configs-and-templates-of-views) to configure display of the resource assignments in the panel.
+:::info Note
+You need to pass a separate **[config](guides/layout-config.md#configs-and-templates-of-views)** for "resourceGrid" (to display columns for resources not for tasks) and "resourceHistogram" views, and **[templates](guides/layout-config.md#configs-and-templates-of-views)** to configure display of the resource assignments in the panel.
 :::
 
 
@@ -138,50 +186,94 @@ gantt.config.layout = {
 **Related sample**: [Resource histogram](https://docs.dhtmlx.com/gantt/samples/11_resources/09_resource_histogram.html)
 
 
-The same as in the resource load diagram, *resourceGrid* will work in the same way as the default grid view, but readonly. *resourceHistogram* has the following additional templates:
+As with the resource load diagram, *resourceGrid* works the same way as the default grid view, but in readonly mode. *resourceHistogram* has the following additional templates:
 
 - *histogram_cell_class* - the CSS class which is applied to a cell of the resource panel
 
 ~~~js
-gantt.templates.histogram_cell_class =
-    (start_date, end_date, resource, tasks, assignments) => "";
+gantt.templates.histogram_cell_class = function (start_date, end_date, resource, tasks) {
+    // total hours assigned to the resource within this cell
+    let result = 0;
+    tasks.forEach(function (item) {
+        const assignments = gantt.getResourceAssignments(resource.id, item.id);
+        assignments.forEach(function (assignment) {
+            result += assignment.value * 1;
+        });
+    });
+
+    return result > 8 ? "column_overload" : "";
+};
 ~~~
+
+If your Gantt version doesn't support resource assignments, or you'd rather not rely on them, this simpler template can be used instead:
+
+~~~js
+// assume each task takes 8 hours per day
+gantt.templates.histogram_cell_class = (start_date, end_date, resource, tasks, assignments) =>
+    tasks.length * 8 > 8 ? "column_overload" : "";
+~~~
+
+This variant estimates the same overload state from the task count alone, assuming each task takes 8 hours per day, instead of using actual assignment values.
 
 - *histogram_cell_label* - the label inside a cell
 
 ~~~js
 gantt.templates.histogram_cell_label =
-    (start_date, end_date, resource, tasks, assignments) => tasks.length * 8;
+    function (start_date, end_date, resource, tasks, assignments) {
+        // total hours assigned to the resource within this cell
+        const hours = assignments.reduce((sum, assignment) => sum + assignment.value * 1, 0);
+        return `${hours}h`;
+    };
 ~~~
+
+If you're running an earlier version of Gantt that doesn't support resource assignments, or simply want a simpler calculation, use this approach instead:
+
+~~~js
+// assume each task takes 8 hours
+gantt.templates.histogram_cell_label = (start_date, end_date, resource, tasks, assignments) => tasks.length * 8;
+~~~
+
+This approach calculates the label from the task count alone, treating each task as an 8-hour block, rather than pulling the actual assignment values.
 
 - *histogram_cell_allocated* - the height of the filled area in the histogram. Its value can be set from 0 to *maxCapacity* *.
 
 ~~~js
 gantt.templates.histogram_cell_allocated =
-    (start_date, end_date, resource, tasks, assignments) => tasks.length * 8;
+    function (start_date, end_date, resource, tasks, assignments) {
+        // height of the filled area matches the resource's total assigned hours for the cell
+        return assignments.reduce((sum, assignment) => sum + assignment.value * 1, 0);
+    };
 ~~~
+
+If your version of Gantt is too old to support resource assignments, or you'd rather not depend on them, the filled height can also be approximated like this:
+
+~~~js
+// assume each task takes 8 hours
+gantt.templates.histogram_cell_allocated = (start_date, end_date, resource, tasks, assignments) => tasks.length * 8;
+~~~
+
+This alternative sizes the filled area purely by task count, treating every task as an 8-hour block regardless of what's actually assigned to the resource.
 
 - *histogram_cell_capacity* - the height of the line that defines the available capacity of the resource. Its value can be set from -1 to *maxCapacity* *. Values less than 0 won't render the line.
 
 ~~~js
-gantt.templates.histogram_cell_capacity =
-    (start_date, end_date, resource, tasks, assignments) => 24;
+gantt.templates.histogram_cell_capacity = (start_date, end_date, resource, tasks, assignments) => 24;
 ~~~
 
 **What maxCapacity is**
 
-If each row of the histogram is considered as a bar chart, maxCapacity is the height of the Y-scale of this chart. In the image below maxCapacity = 24:
+If each row of the histogram is considered to be a bar chart, maxCapacity is the height of the Y-scale of this chart. In the image below maxCapacity = 24:
 
 
 ![maxCapacity](/img/maxcapacity.png)
 
-Thus, if the templates *histogram_cell_allocated* or *histogram_cell_capacity* are set to value 24, it implies the highest point of the row.
+Thus, if the templates *histogram_cell_allocated* or *histogram_cell_capacity* are set to a value of 24, it implies the highest point of the row.
 
-By default, **maxCapacity** is 24 for all resources. It means that if you return the value bigger than 24 in the *histogram_cell_capacity* template, the numbers will be calculated correctly, but the area of the cells of the resource panel may not be filled as you expected.
+By default, **maxCapacity** is 24 for all resources. It means that if you return a value greater than 24 in the *histogram_cell_capacity* template, the numbers will be calculated correctly, but the area of the cells of the resource panel may not be filled as expected.
 
 ![filled_capacity](/img/filled_capacity.png)
 
-But there is the ability to configure **maxCapacity** for all histogram at once and for each resource separately. Check the example below:
+But there is the ability to configure **maxCapacity** for the whole histogram at once and for each resource separately. Check the example below:
 
 **Related sample**: [Configuring maxCapacity](https://snippet.dhtmlx.com/glnqcsgq)
 
@@ -209,7 +301,7 @@ Capacity defined at the resource level overrides the global capacity of histogra
 
 ## Working with resource view panel
 
-By default both views (either "resourceGrid" and "resourceTimeline" or "resourceGrid" and "resourceHistogram") will be bound to the data store named as specified in the 
+By default both views (either "resourceGrid" and "resourceTimeline" or "resourceGrid" and "resourceHistogram") will be bound to the data store named in the 
 [gantt.config.resource_store](api/config/resource_store.md) configuration option.
 
 ### Auto creation of data store
@@ -355,8 +447,7 @@ gantt.$resourcesStore = gantt.createDatastore({
 **Related sample**: [Show all assigned tasks in the resource panel](https://docs.dhtmlx.com/gantt/samples/11_resources/11_resource_histogram_display_tasks.html)
 
 
-With the **fetchTasks** property set to *true*, Gantt renders all tasks assigned to a certain resource in the resource view panel. This functionality works both for the resource diagram and resource histogram types
-of layout.
+With the **fetchTasks** property set to *true*, Gantt renders all tasks assigned to a certain resource in the resource view panel. This functionality works for both the resource diagram and resource histogram layout types.
 
 There is a shorthand for getting all tasks assigned to a resource - [getResourceAssignments](api/method/getresourceassignments.md).
 
@@ -366,7 +457,7 @@ gantt.getResourceAssignments("6");
 
 ## Assigning resources {#assigningresources}
 
-### Connecting resources to tasks 
+### Connecting resources to tasks
 
 The resource relation is defined by the [resource_property](api/config/resource_property.md) configuration option:
 
@@ -406,10 +497,10 @@ You can use this format with the [custom multiselect control](guides/custom-edit
 }
 ~~~
 
-The resources are assigned to the Task1 as follows: the resource with id="2" - in the quantity of 8 units, while the resource with the id="3" - in the quantity of 4 units.
+The resources are assigned to Task #1 as follows: the resource with id="2" is assigned in a quantity of 8 units, and the resource with id="3" in a quantity of 4 units.
 This format is supported by the [Resources Control](guides/resources.md) and [Resource Assignments control](guides/resource-assignments.md) of the lightbox.
 
-Starting from v8.0 you can also load resource assignments as a separate list, and gantt will connect them to tasks automatically:
+Starting from v8.0, you can also load resource assignments as a separate list, and Gantt will connect them to tasks automatically:
 
 ~~~js
 gantt.parse({
@@ -442,7 +533,7 @@ Read more about it in a [separate article](guides/server-side.md#resources_crud)
 By default, the resource is considered to be assigned for the whole duration of a task.
 
 
-Starting from v7.1, the object of the resource assignment can accept additional optional parameters that allow specifying the dates of the assignment within the task. 
+Starting from v7.1, the resource assignment object can accept additional optional parameters that allow specifying the dates of the assignment within the task. 
 
 The additional properties are:
 
@@ -507,8 +598,8 @@ The assignment object will be accessible for the gantt API via this id:
 const assignment = gantt.getDatastore("resourceAssignments").getItem(5);
 ~~~
 
-:::note
-The ["resourceAssignments"](api/config/resource_assignment_store.md) datastore is only available when the [process_resource_assignments](api/config/process_resource_assignments.md) config is enabled.
+:::info Note
+The **["resourceAssignments"](api/config/resource_assignment_store.md)** datastore is only available when the **[process_resource_assignments](api/config/process_resource_assignments.md)** config is enabled.
 :::
 
 
@@ -799,25 +890,25 @@ gantt.parse({
 
 Starting with v7.1, you can work with the [resource assignments](guides/resource-management.md#resourceassignmenttime) as with objects of the data store. 
 
-The new [process_resource_assignments](api/config/process_resource_assignments.md) property enables the process of parsing of the values from the [gantt.config.resource_property](api/config/resource_property.md) of tasks into the internal objects of the resource assignments.
+The new [process_resource_assignments](api/config/process_resource_assignments.md) property enables parsing the values of the [gantt.config.resource_property](api/config/resource_property.md) from tasks into internal resource assignment objects.
 As a result, you are able to manipulate the resource assignments via the DataStore object. For instance, you can get the necessary assignment object or update it.
 
-**Note**, that this functionality is required if you want to [specify the desired duration and time for the resources](guides/resource-management.md#resourceassignmenttime) when building Resource Diagram and Histogram.
+**Note** that this functionality is required if you want to [specify the desired duration and time for the resources](guides/resource-management.md#resourceassignmenttime) when building the resource diagram and histogram.
 
-The process may add noticeable performance overhead and large projects may start working slower.
+The process may add noticeable performance overhead, and large projects may start working slower.
 Therefore, if you don't need to set time or duration of the assignment, you can disable parsing of the resource assignments using the config:
 
 ~~~js
 gantt.config.process_resource_assignments = false;
 ~~~
 
-When the config is disabled, the `gantt.getDatastore("resourceAssignments")` datastore won't be available and the assignment objects won't have any dynamic properties. The resource diagram and histogram will consider resources to be assigned to the whole duration of the task.
+When the config is disabled, the `gantt.getDatastore("resourceAssignments")` datastore won't be available, and the assignment objects won't have any dynamic properties. The resource diagram and histogram will consider resources to be assigned to the whole duration of the task.
 
 ### Updating resource assignments
 
 The resource assignments are stored in the [data store](api/config/resource_assignment_store.md) which is created automatically. 
 
-By default, the store of the assignments is populated from the task objects. It means, that if you modify the resource property of the task object (e.g. task.users), the changes will be automatically reflected in the data store.
+By default, the store of the assignments is populated from the task objects. This means that if you modify the resource property of the task object (e.g. task.users), the changes will be automatically reflected in the data store.
 
 ~~~js
 task[gantt.config.resource_property] = [
@@ -873,8 +964,8 @@ gantt.attachEvent("onTaskDrag", (id, mode, task, original) => {
 
 ## Showing task resource
 
-The resource name can be displayed as a part of task description or a label of one of the grid cells.
-Gantt doesn't provide a ready method for getting an item specified in the server list by its id, so you'll need to implement a small helper for this:
+The resource name can be displayed as part of the task description or as a label in one of the grid cells.
+Gantt doesn't provide a ready-made method for getting an item specified in the server list by its id, so you'll need to implement a small helper for this:
 
 ~~~js
 const byId = (list, id) => {
@@ -926,7 +1017,7 @@ gantt.templates.resource_cell_value = gantt.ext.resources.editableResourceCellTe
 gantt.templates.resource_cell_class = gantt.ext.resources.editableResourceCellClass;
 ~~~
 
-Normally you won't need to assign these templates for editable diagram manually, it's expected to be handled by Gantt.
+Normally, you won't need to assign these templates for the editable diagram manually; this is expected to be handled by Gantt.
 
 In the example below, a template with editable cells is provided. You can customize it if needed:
 
@@ -975,7 +1066,7 @@ You can use any property to assign calendars to resources. If the resource prope
 **Related sample**: [Resource calendars](https://docs.dhtmlx.com/gantt/samples/11_resources/02_resource_calendars.html)
 
 
-If multiple resources can be assigned to a single task, the gantt can [automatically generate a common calendar](api/config/dynamic_resource_calendars.md) for all assigned resources.
+If multiple resources can be assigned to a single task, Gantt can [automatically generate a common calendar](api/config/dynamic_resource_calendars.md) for all assigned resources.
 
 You can [get more information in the related article](guides/working-time.md#assigningcalendartoresource).
 
@@ -996,7 +1087,7 @@ Read more about task grouping in [the related article](guides/grouping.md).
 
 ### Grouping tasks by multiple resources 
 
-In case you assign several resources to a task, tasks will be grouped by assigned resources. It means that a task assigned to two persons won't be duplicated for each of them. Instead it will be rendered once with 
+If you assign several resources to a task, tasks will be grouped by assigned resources. This means that a task assigned to two persons won't be duplicated for each of them. Instead, it will be rendered once with 
 both persons assigned to it. Note that grouped tasks will be sorted by the start date.
 
 ![Group resources](/img/grouping_resources.png)
@@ -1006,8 +1097,8 @@ both persons assigned to it. Note that grouped tasks will be sorted by the start
 
 
 - If tasks in the loaded data set have several resources assigned to them, Gantt will create groups for them automatically. 
-- For tasks without assigned resources Gantt will create the default group Not assigned. In case there is such a group in the data set that is passed into the **groupBy()** method, 
-it should have the *default:true* config specified to prevent automatic creation of a such a group.
+- For tasks without assigned resources, Gantt will create the default group "Not assigned". If such a group already exists in the data set that is passed into the **groupBy()** method, 
+it should have the *default:true* config specified to prevent automatic creation of such a group.
 
 :::note
 Please note that dragging of tasks grouped by multiple resources is impossible.
