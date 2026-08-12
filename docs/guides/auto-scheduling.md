@@ -415,6 +415,12 @@ gantt.attachEvent("onAutoScheduleCircularLink", (groups) => {
 });
 ~~~
 
+## Auto scheduling on the server
+
+The same auto scheduling engine runs headless in Node.js, so a schedule can be calculated or
+validated on the backend without a browser - useful when the changes come from a mobile client,
+from a third-party system, or from a background job. See [Using Gantt on the server](guides/using-gantt-on-server.md).
+
 ## Version compatibility
 
 When a user changes the date of a task by moving it with the mouse pointer or via the lightbox, the task automatically receives one of the two constraint types: either **start no earlier than+%start date%** or

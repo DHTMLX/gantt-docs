@@ -38,7 +38,7 @@ Sie können dhtmlxGantt für Node.js als lokales Paket installieren:
 
 ~~~js
 "dependencies": {
-    "@dhtmlx/gantt-node": "file:../../gantt_7.0.0_node"
+    "@dhx/gantt-node": "file:../../gantt_7.0.0_node"
     ...
 }
 ~~~
@@ -47,7 +47,7 @@ Sie können dhtmlxGantt für Node.js als lokales Paket installieren:
 Oder Sie können dhtmlxgantt.node.js direkt aus Ihrem Code importieren, wie folgt:
 
 ~~~js
-import { Gantt } from "@dhtmlx/gantt-node";
+import { Gantt } from "@dhx/gantt-node";
 
 const gantt = Gantt.getGanttInstance({
     plugins:{

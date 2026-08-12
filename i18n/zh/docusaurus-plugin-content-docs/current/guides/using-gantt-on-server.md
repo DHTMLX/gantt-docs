@@ -35,7 +35,7 @@ dhtmlxGantt 对 Node.js 包采用与浏览器包相同的版本编号方案（�
 
 ~~~js
 "dependencies": {
-    "@dhtmlx/gantt-node": "file:../../gantt_7.0.0_node"
+    "@dhx/gantt-node": "file:../../gantt_7.0.0_node"
     ...
 }
 ~~~
@@ -43,7 +43,7 @@ dhtmlxGantt 对 Node.js 包采用与浏览器包相同的版本编号方案（�
 或您也可以直接从代码中导入 dhtmlxgantt.node.js，如下所示：
 
 ~~~js
-import { Gantt } from "@dhtmlx/gantt-node";
+import { Gantt } from "@dhx/gantt-node";
 
 const gantt = Gantt.getGanttInstance({
     plugins:{

@@ -38,7 +38,7 @@ Node.js용 dhtmlxGantt를 로컬 패키지로 설치할 수 있습니다:
 
 ~~~js
 "dependencies": {
-    "@dhtmlx/gantt-node": "file:../../gantt_7.0.0_node"
+    "@dhx/gantt-node": "file:../../gantt_7.0.0_node"
     ...
 }
 ~~~
@@ -46,7 +46,7 @@ Node.js용 dhtmlxGantt를 로컬 패키지로 설치할 수 있습니다:
 또는 코드에서 직접 dhtmlxgantt.node.js를 가져와 사용할 수 있습니다. 예는 다음과 같습니다:
 
 ~~~js
-import { Gantt } from "@dhtmlx/gantt-node";
+import { Gantt } from "@dhx/gantt-node";
 
 const gantt = Gantt.getGanttInstance({
     plugins:{

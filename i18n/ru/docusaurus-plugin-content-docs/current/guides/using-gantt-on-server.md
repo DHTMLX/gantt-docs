@@ -39,7 +39,7 @@ dhtmlxGantt применяет к Node.js пакет ту же схему нум
 
 ~~~js
 "dependencies": {
-    "@dhtmlx/gantt-node": "file:../../gantt_7.0.0_node"
+    "@dhx/gantt-node": "file:../../gantt_7.0.0_node"
     ...
 }
 ~~~
@@ -47,7 +47,7 @@ dhtmlxGantt применяет к Node.js пакет ту же схему нум
 Или вы можете импортировать dhtmlxgantt.node.js напрямую из вашего кода, как показано:
 
 ~~~js
-import { Gantt } from "@dhtmlx/gantt-node";
+import { Gantt } from "@dhx/gantt-node";
 
 const gantt = Gantt.getGanttInstance({
     plugins:{
