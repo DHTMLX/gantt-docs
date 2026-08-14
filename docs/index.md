@@ -91,16 +91,16 @@ DHTMLX Gantt includes a scheduling engine, a flexible timeline, and resource too
 At its core, the scheduling engine handles project structure and working time. It covers:
 
 - [Task types and dependencies](guides/task-types.md).
-- [Working-time configuration](guides/working-time.md) with task and project calendars, plus resource-specific calendars (`PRO`).
-- [Auto scheduling](guides/auto-scheduling.md) to recalculate plans (`PRO`).
-- [Critical path](guides/critical-path.md) to highlight the tasks that drive the project finish date (`PRO`).
+- [Working-time configuration](guides/working-time.md) with task and project calendars, plus resource-specific calendars (PRO version).
+- [Auto scheduling](guides/auto-scheduling.md) to recalculate plans (PRO version).
+- [Critical path](guides/critical-path.md) to highlight the tasks that drive the project finish date (PRO version).
 
 ### Grid and timeline
 
 The component combines a data grid on the left with a zoomable time scale on the right. Both parts are extensively configurable:
 
 - [Flexible layout](guides/layout-config.md) with additional grids, right-side columns, and custom panels.
-- [Configurable columns](guides/specifying-columns.md) with inline editing, drag-and-drop, and keyboard navigation, plus [multi-selection](guides/multiselection.md) (`PRO`).
+- [Configurable columns](guides/specifying-columns.md) with inline editing, drag-and-drop, and keyboard navigation, plus [multi-selection](guides/multiselection.md) (PRO version).
 - [Customizable time scale](guides/configuring-time-scale.md) with markers and highlighted time slots.
 
 ### Advanced project controls (PRO)
