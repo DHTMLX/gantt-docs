@@ -2,189 +2,187 @@
 sidebar_label: DHTMLX Gantt overview
 title: DHTMLX Gantt overview
 slug: /
-description: "Overview of the DHTMLX Gantt JavaScript component. Start with quick-start guides, explore detailed guides and API reference, and try live demos."
+description: "Explore DHTMLX Gantt features, editions, installation options, framework integrations, API docs, samples, and AI tools for building project planning apps."
 ---
 
 import Link from '@docusaurus/Link';
 import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
  
+**DHTMLX Gantt** is the most configurable JavaScript Gantt chart, complete with TypeScript definitions. It is designed for building advanced planning and scheduling interfaces. It integrates with React, Angular, Vue, and other frontend frameworks. DHTMLX Gantt also supports AI-assisted development through the DHTMLX MCP Server, Agent Skills, and a structured API. 
 
-**DHTMLX Gantt** is a JavaScript component for displaying and editing project timelines in the browser. 
-It combines a configurable grid, a zoomable time scale, and a scheduling engine that understands working time, dependencies, and constraints.
-
-You can use it to build project and resource planning views for project management tools, construction and manufacturing schedules, field service planning, and any other application that needs a visual project timeline.
-
-DHTMLX Gantt is available in Standard and PRO editions. The PRO edition includes such features as auto scheduling, critical path, resource management, dynamic loading, and more. 
-
-
----
+You can use it in project management, ERP, construction, manufacturing, field service, SaaS, and other business applications that require a configurable visual timeline.
 
 ## Quick start by framework
 
-You can use DHTMLX Gantt as a vanilla JavaScript widget or integrate it into a modern framework. Start with a step-by-step "How to start" guide suitable for your stack: 
+You can use DHTMLX Gantt as a vanilla JavaScript widget or integrate it into a modern framework. Start with a step-by-step guide suitable for your preferred technology:
 
 <div className="framework-grid">
 
   <a className="framework-card" href="guides/initializing-gantt-chart/">
     <FrameworkIcon name="javascript" className="framework-icon" />
     <div className="framework-title">JavaScript</div>
-    <div className="framework-desc">
-    Minimal setup with script tags or bundlers. Great for simple pages or non-framework apps.
-    </div>
   </a>
 
   <a className="framework-card" href="integrations/react/quick-start/">
     <FrameworkIcon name="react" className="framework-icon" />
     <div className="framework-title">React</div>
-    <div className="framework-desc">
-    Use the ready-made <code>ReactGantt</code> component with props and events.
-    </div>
   </a>
-
 
   <a className="framework-card" href="integrations/angular/quick-start/">
     <FrameworkIcon name="angular" className="framework-icon" />
     <div className="framework-title">Angular</div>
-    <div className="framework-desc">
-    Integrate Gantt into Angular projects using a thin wrapper.
-    </div>
   </a>
 
   <a className="framework-card" href="integrations/vue/quick-start/">
     <FrameworkIcon name="vue" className="framework-icon" />
     <div className="framework-title">Vue</div>
-    <div className="framework-desc">
-    Use the ready-made <code>VueGantt</code> component with props and events.
-    </div>
   </a>
 
   <a className="framework-card" href="integrations/svelte/howtostart-svelte/">
     <FrameworkIcon name="svelte" className="framework-icon" />
     <div className="framework-title">Svelte</div>
-    <div className="framework-desc">
-    Use Gantt inside Svelte with a simple component that binds configuration and events.
-    </div>
-  </a>
-
-  <a className="framework-card" href="integrations/react/js-gantt-react/">
-    <FrameworkIcon name="react" className="framework-icon" />
-    <div className="framework-title">React (integration)</div>
-    <div className="framework-desc">
-    Embed the core Gantt widget into your own components for full control over life cycle and data flow.
-    </div>
   </a>
 
   <a className="framework-card" href="integrations/salesforce/howtostart-salesforce/">
     <FrameworkIcon name="salesforce" className="framework-icon" />
     <div className="framework-title">Salesforce</div>
-    <div className="framework-desc">
-    Embed Gantt in Salesforce apps, connect to your org data, and keep project timelines in CRM.
-    </div>
   </a>
 
 </div>
 
----
+React, Angular and Vue support two integration approaches:
 
+- Official [React Gantt](integrations/react/quick-start.md), [Angular Gantt](integrations/angular/quick-start.md), and [Vue Gantt](integrations/vue/quick-start.md) wrappers (recommended for PRO and evaluation projects)
+- Direct integration of the core JavaScript Gantt component with [React](integrations/react/js-gantt-react.md), [Angular](integrations/angular/js-gantt-angular.md), [Vue](integrations/vue/js-gantt-vue.md) (Community edition)
 
 ## Live demos
 
-To see DHTMLX Gantt in action, explore the online demos:
+To see DHTMLX Gantt in action, explore some of the most popular demos:
 
-- [Basic Gantt chart with tasks and links.](https://docs.dhtmlx.com/gantt/samples/?sample=%2701_initialization/01_basic_init.html%27&filter=%27%27)
-- [Auto scheduling](https://docs.dhtmlx.com/gantt/samples/?sample=%2702_extensions/12_auto_scheduling.html%27&filter=%27%27) and [critical path](https://docs.dhtmlx.com/gantt/samples/?sample=%2702_extensions/03_critical_path.html%27&filter=%27%27) examples.
-- Resource management [diagram](https://docs.dhtmlx.com/gantt/samples/?sample=%2711_resources/04_resource_usage_diagram.html%27&filter=%27%27) and [histogram](https://docs.dhtmlx.com/gantt/samples/?sample=%2711_resources/09_resource_histogram.html%27&filter=%27%27).
-- [Browse all samples](https://docs.dhtmlx.com/gantt/samples/) to check the full range of Gantt features.
+- [Basic Gantt Chart with Tasks and Links](https://docs.dhtmlx.com/gantt/samples/?sample=%2701_initialization/01_basic_init.html%27&filter=%27%27)
+- [Auto Scheduling](https://docs.dhtmlx.com/gantt/samples/?sample=%2702_extensions/12_auto_scheduling.html%27&filter=%27%27) and [Critical Path](https://docs.dhtmlx.com/gantt/samples/?sample=%2702_extensions/03_critical_path.html%27&filter=%27%27) examples
+- Resource management: [Diagram](https://docs.dhtmlx.com/gantt/samples/?sample=%2711_resources/04_resource_usage_diagram.html%27&filter=%27%27) and [Histogram](https://docs.dhtmlx.com/gantt/samples/?sample=%2711_resources/09_resource_histogram.html%27&filter=%27%27)
 
----
+![gantt_overview](/img/gantt_sample.png)
 
-## Key capabilities
+View [All Samples](https://docs.dhtmlx.com/gantt/samples/?sample=%2701_initialization/01_basic_init.html%27&filter=%27%27) to check the full range of Gantt features. 
 
-DHTMLX Gantt combines a scheduling engine, a flexible timeline, and resource tools. 
-The sections below highlight the main areas and guide you to more detailed chapters.
+For framework-oriented starting points, see the example repositories for [React](https://github.com/DHTMLX/react-gantt-examples), [Angular](https://github.com/DHTMLX/angular-gantt-examples), and [Vue](https://github.com/DHTMLX/vue-gantt-examples).
+
+:::note
+Some samples demonstrate PRO functionality, so check the [Community vs PRO comparison](guides/editions-comparison.md) before reusing them in a Community edition project.
+:::
+
+## Developer resources
+
+- [Installation guide](guides/installation.md) for Community, trial, and PRO setup flows
+- [Community vs PRO comparison](guides/editions-comparison.md) for feature differences between editions
+- Public [npm package](https://www.npmjs.com/package/dhtmlx-gantt) of the JavaScript Gantt under the Community edition
+- [GitHub repository](https://github.com/DHTMLX/gantt) for the source code of the Community edition and issue tracking
+- [API reference](api/api-overview.md) and [samples](https://docs.dhtmlx.com/gantt/samples/?sample=%2701_initialization/01_basic_init.html%27&filter=%27%27) for implementation details
+- [What's New](whats-new.md) for releases and migration notes
+
+## Gantt feature highlights
+
+DHTMLX Gantt includes a scheduling engine, a flexible timeline, and resource tools.
 
 ### Project scheduling
 
-DHTMLX Gantt includes a scheduling engine that comprehends project structure and working time: 
+At its core, the scheduling engine handles project structure and working time. It covers:
 
-- [Task types](guides/task-types.md) and [dependencies](guides/dependencies.md) - three core task types (task, summary, milestone) linked by dependencies.
-- [Working time calendars](guides/working-time/) on project, task, and resource levels.
-- [Auto scheduling](guides/auto-scheduling/) and [critical path](guides/critical-path/) to recalculate plans and highlight the tasks that drive the project finish date.
+- [Task types and dependencies](guides/task-types.md).
+- [Working-time configuration](guides/working-time.md) with task and project calendars, plus resource-specific calendars (PRO version).
+- [Auto scheduling](guides/auto-scheduling.md) to recalculate plans (PRO version).
+- [Critical path](guides/critical-path.md) to highlight the tasks that drive the project finish date (PRO version).
 
-The scheduling behavior is configurable, so you can align it with your internal rules or tools like MS Project.
+### Grid and timeline
 
-### Timeline & grid
+The component combines a data grid on the left with a zoomable time scale on the right. Both parts are extensively configurable:
 
-The component combines a data grid on the left with a zoomable time scale on the right, both parts being highly tunable:
+- [Flexible layout](guides/layout-config.md) with additional grids, right-side columns, and custom panels.
+- [Configurable columns](guides/specifying-columns.md) with inline editing, drag-and-drop, and keyboard navigation, plus [multi-selection](guides/multiselection.md) (PRO version).
+- [Customizable time scale](guides/configuring-time-scale.md) with markers and highlighted time slots.
 
-- Flexible [layout](guides/layout-config/) with additional grids, right-side columns, and custom panels.
-- Configurable [columns](guides/specifying-columns/) with inline editing, [multi-selection](guides/multiselection/), drag-and-drop, and keyboard navigation.
-- A customizable [time scale](guides/configuring-time-scale/) with [markers](guides/markers/), and [highlighted time slots](guides/highlighting-time-slots/).
+### Advanced project controls (PRO)
 
-### Advanced project controls
+For teams that need more than a simple timeline, the PRO edition of DHTMLX Gantt provides tools for detailed project tracking:
 
-For more detailed project tracking, Gantt supports such features as: 
+- [Baselines](guides/inbuilt-baselines.md#baselines) and [deadlines](guides/inbuilt-baselines.md#deadlines-and-constraints) to compare planned dates with current ones.
+- [Unscheduled tasks](guides/unscheduled-tasks.md) and [split tasks](guides/split-tasks.md) for incomplete, interrupted, or phased work.
 
-- [Baselines](guides/inbuilt-baselines/#baselines) and [deadlines](guides/inbuilt-baselines/#deadlines-and-constraints) to compare planned dates with current ones.
-- [Unscheduled tasks](guides/unscheduled-tasks/) and [split tasks](guides/split-tasks/) for incomplete, interrupted, or phased work.
-- [Undo/redo](guides/undo-redo) history for safe editing.
+### Resource and workload management (PRO)
 
-### Resource & workload management (PRO)
+The PRO edition also adds a dedicated resource layer, turning the Gantt chart into a planning interface that covers both task scheduling and workload visibility. It includes:
 
-The PRO edition adds a dedicated resource layer which provides:
+- [Resource assignments](guides/resource-management.md#assigningresources) that link resources to tasks for precise scheduling.
+- [Resource histograms](guides/resource-management.md#resource-histogram) and [resource load diagrams](guides/resource-management.md#resourceloaddiagram) to visualize team workload.
+- [Grouping tasks by resource](guides/resource-management.md#balancingresourceload) to track workloads, spot conflicts, and balance the team.
 
-- [Resource assignments](guides/resource-management/#assigningresources) attached to tasks.
-- [Resource histogram](guides/resource-management/#resource-histogram) and [resource load diagrams](guides/resource-management/#resourceloaddiagram).
-- [Grouping tasks](guides/resource-management/#balancingresourceload) by resource to see who is doing what.
+### Export and ecosystem
 
-This turns the Gantt chart into a basic tool for managing resources without leaving your application.
+Teams often need to migrate between platforms, keep local backups, or run analytics elsewhere. DHTMLX Gantt integrates with external tools and output formats by supporting:
 
-### Export & ecosystem
+- Export to [PDF/PNG](guides/export.md) and [Excel](guides/excel.md), including a [Node.js export module](guides/export-requirements.md).
+- Export/import to [MS Project](guides/export-msproject.md) and [Primavera](guides/export-primavera.md) via the supported export service.
 
-DHTMLX Gantt integrates with external tools and output formats ensuring great export/import possibilities: 
+### Interactivity and editing
 
-- Export to [PDF/PNG](guides/export/) and [Excel](guides/excel/) (including a [Node.js export module](guides/export-requirements/)).
-- Export/import to [MS Project](guides/export-msproject/) and [Primavera](guides/export-primavera/) (via export service).
+Users can edit data directly in the chart, not just view it. This is supported through:
 
----
+- A configurable [lightbox editor](guides/default-edit-form.md) for viewing and editing task details, with support for custom fields and buttons.
+- [Quick info](guides/quick-info.md) popups and [tooltips](guides/tooltips.md) that surface task details without opening a full form.
+- [Drag-and-drop task creation and selection](guides/advanced-dnd.md), plus [mouse-drag scrolling of the timeline](api/config/drag_timeline.md).
+- [Keyboard navigation](guides/keyboard-navigation.md) and [accessibility support](guides/accessibility.md).
+- [Undo/redo history](guides/undo-redo.md) for safe editing.
 
-## Frameworks and backend integration
+### Customization and styling
 
-### Frontend integration
+The chart's appearance can be adjusted at every level, from a full theme to a single task bar, through:
 
-DHTMLX Gantt is a framework-agnostic, vanilla JavaScript component that works in all modern browsers. It can be used:
+- A set of built-in [skins](guides/skins.md) based on CSS variables, with support for [deep customization](guides/custom-skins.md) and creating new themes.
+- [Templates](guides/common-configuration.md#gantttemplatesobject) to override how tasks, links, and grid cells are rendered.
+- Fine-grained [task coloring](guides/colouring-tasks.md) and [link styling](guides/colouring-lines.md) to visually highlight specific items.
+- [Localization](guides/localization.md) support for interface language and date/time formats.
 
-- As a standalone JS widget on any page.
-- Wrapped into [React](integrations/react), [Angular](integrations/angular/quick-start), [Vue](integrations/vue/quick-start), or [Svelte](integrations/svelte/howtostart-svelte) components. 
+## Editions and licensing 
 
-For **React** you have two options:
+DHTMLX Gantt is available in two editions: **Community** and **PRO**. You can start with the free Community edition and upgrade to the PRO edition later if you need more features, official support, and a fully maintained Gantt foundation. You may also start directly with the PRO edition either through an **official trial** or with a paid license. Choose one of the following options to get started with DHTMLX Gantt:
 
-- Use the [official ReactGantt wrapper](integrations/react), which exposes Gantt as a declarative React component with props for configuration and events. This is usually the best choice for new React projects.
-- Follow the [low-level React integration guide](integrations/react/js-gantt-react/) if you prefer to embed the core Gantt widget yourself and control initialization, destruction, and data flow manually.
+- **[Community edition](https://dhtmlx.com/docs/products/dhtmlxGantt/open-source/).** Free and MIT-licensed, it covers the core interactive Gantt features for DHTMLX Gantt v10+.
+- **[Official trial](https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml).** It lets you evaluate the full PRO feature set and receive technical support during the trial period.
+- **[PRO edition](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing).** Built for production environments, it includes advanced planning features, official support and commercial licensing.
 
-For **Angular**, **Vue**, and **Svelte**, the [How to start](integrations/howtostart-guides) guides show how to build a thin wrapper component that fits your application architecture.
+To see the exact feature differences between editions, check the [Community vs PRO comparison](guides/editions-comparison.md). For the setup flow of each option, see the [installation guide](guides/installation.md). 
 
-### Backend integration
+:::note
+If you are migrating from an earlier GPL version, use the [migration guide](migration.md). DHTMLX Gantt v10 and later are no longer released under GPL; GPL v2 applies only to earlier versions.
+:::
 
-On the backend side, Gantt communicates with a REST-like API:
+## AI coding tools
 
-- Data is typically loaded and saved as [JSON (tasks, links, resources, assignments)](guides/loading/).
-- The built-in [DataProcessor](guides/server-side/) helps routing the create/update/delete operations to your server.
-- There are [tutorials](integrations/howtostart-guides/#how-to-start-with-gantt-on-server-side) for popular backend platforms and frameworks ([Node.js](integrations/node/howtostart-nodejs/), [.NET Core](integrations/dotnet/howtostart-dotnet-core/), [Laravel](integrations/php/howtostart-php-laravel/), etc.) that cover CRUD operations and best practices for syncing Gantt with your database.
+For AI-assisted development, start with the DHTMLX Gantt guides created specifically for coding assistants:
 
-Thus, it is easy to plug Gantt into existing systems or new micro services.
+- [AI Tools guide](integrations/ai-tools.md)
+- [DHTMLX MCP Server guide](integrations/ai-tools/mcp-server.md)
+- [Agent Skills guide](integrations/ai-tools/agent-skills.md)
+- [Lovable AI integration guide](integrations/ai-tools/lovable-ai.md)
 
+## Backend integration
 
+DHTMLX Gantt lets you connect to any backend by implementing a RESTful API on the server:
 
----
+- Data is typically loaded and saved as JSON for [tasks](guides/loading.md), [links](guides/loading.md), [resources](guides/resource-management.md), and [assignments](guides/resource-management.md#connecting-resources-to-tasks).
+- The built-in [DataProcessor](guides/server-side.md) helps route create, update, and delete operations to your server.
+- There are tutorials for popular backend platforms and frameworks ([Node.js](integrations/node/howtostart-nodejs.md), [.NET Core](integrations/dotnet/howtostart-dotnet-core.md), [Laravel](integrations/php/howtostart-php-laravel.md), etc.) that cover CRUD operations and best practices for syncing Gantt with your database.
 
 ## What's next
 
-If you are just getting started:
+If you are just getting started, proceed as follows:
 
-1. Follow a [How to start](#quick-start-by-framework) guide for your preferred front-end framework or plain JavaScript. 
-2. Adjust [grid columns](guides/specifying-columns/), [working time calendars](guides/working-time/), [scales](guides/configuring-time-scale/), and [editing behavior](guides/default-edit-form/). 
-3. [Connect to your backend](integrations/howtostart-guides/#how-to-start-with-gantt-on-server-side) - set up the [DataProcessor](guides/server-side/#customrouting) and REST endpoints for tasks, links, and resources. 
-4. Explore [Guides](/guides) and [API reference](api/api-overview/) for deeper customization (templates, events, extensions). 
+1. Refer to the [How to start guide](integrations/howtostart-guides.md) for your preferred front-end framework or plain JavaScript.
+2. Configure [grid columns](guides/specifying-columns.md), [working time calendars](guides/working-time.md), [scales](guides/configuring-time-scale.md), and [editing behavior](guides/default-edit-form.md).
+3. Connect to your backend, set up the [DataProcessor](guides/server-side.md) and application endpoints for tasks, links, and resources.
+4. Explore [Guides](guides.md) and [API reference](api/api-overview.md) for deeper customization such as templates, events, and extensions.
 
-If you are already using DHTMLX Gantt and upgrading from an earlier version, check the [What's new](whats-new/) for the release notes and a summary of the latest features and migration guides.
+If you are already using DHTMLX Gantt and upgrading from an earlier version, check [What's New](whats-new.md) for the release notes and a summary of the latest features and migration guides.
+
