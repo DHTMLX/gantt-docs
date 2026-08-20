@@ -9,6 +9,18 @@ sidebar_label: "What's New"
 Updating from an earlier version? Check the [migration guide](migration.md) for required changes and update steps.
 :::
 
+## 10.0.2
+
+<span class='release_date'>August 20, 2026. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue where the tasks were sorted by their ids instead of keeping the loading order after the [grouping](guides/grouping.md) was applied or reset - this also affected [React Gantt](integrations/react.md), [Angular Gantt](integrations/angular.md), and [Vue Gantt](integrations/vue.md), where replacing the data collection or adding tasks to it re-sorted the rest of the tasks by id
+- Fix the issue where the timeline scale cells were rendered empty after changing the [zoom](guides/zoom.md) level or scrolling the timeline when the [smart_scales](api/config/smart_scales.md) config was disabled
+- Fix the issue where the [exported](guides/export.md) PDF/PNG chart lost the scale labels of the cells located to the left of the visible timeline area
+- Fix the issue where [Auto Scheduling](guides/auto-scheduling.md) added an incorrect lag to links between nested sub-projects after a subtask was dragged, and repeated [autoSchedule()](api/method/autoschedule.md) calls could not remove it
+
+
 ## 10.0.1
 
 <span class='release_date'>August 4, 2026. Bugfix release</span>
