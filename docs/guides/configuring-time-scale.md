@@ -755,6 +755,11 @@ gantt.config.scales = [
 gantt.init("gantt_here");
 ~~~
 
+:::note
+Sticky labels require the [smart_scales](api/config/smart_scales.md) config to be enabled (which is the default).
+
+:::
+
 ## Fixed column width
 
 By default, Timeline columns have flexible width. They either expand to fill the container's width or shrink down to the value specified by 

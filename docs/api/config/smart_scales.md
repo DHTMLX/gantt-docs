@@ -26,5 +26,11 @@ added in version 4.1
 
 Usage of this config significantly speeds up chart rendering if you have a very long time scale.
 
+:::note
+[Sticky scale labels](guides/configuring-time-scale.md#sticky-labels) require **smart_scales** to be enabled.
+
+:::
+
 ### Related Guides
 - [Performance: Ways to Improve](guides/performance.md#common-techniques)
+- [Configuring the Time Scale: Sticky labels](guides/configuring-time-scale.md#sticky-labels)
