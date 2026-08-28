@@ -18,7 +18,7 @@ sidebar_label: "자주 묻는 질문"
 - `npm install`을 실행합니다.
 - `npm run start`를 실행합니다.
 - 브라우저에서 `http://localhost:9200`를 엽니다.
-- 온라인 샘플과 동일한 인덱스 페이지가 표시되어야 합니다 **https://docs.dhtmlx.com/gantt/samples/**
+- 온라인 샘플과 동일한 인덱스 페이지가 표시되어야 합니다 **https://docs.dhtmlx.com/gantt/demos/**
 
 2) Apache 웹 서버 사용
 

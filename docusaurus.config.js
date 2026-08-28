@@ -270,7 +270,7 @@ const config = {
 			items: [
 				{
 					"label": "Examples",
-					"href": "https://docs.dhtmlx.com/gantt/samples/",
+					"href": "https://docs.dhtmlx.com/gantt/demos/",
 					"position": "right"
 				},
 				{
@@ -307,7 +307,7 @@ const config = {
 						},
 						{
 							"label": "Examples",
-							"href": "https://docs.dhtmlx.com/gantt/samples/",
+							"href": "https://docs.dhtmlx.com/gantt/demos/",
 							"position": "right"
 						},
 						{

@@ -89,10 +89,10 @@ DHTMLX Gantt는 순수 JavaScript 위젯으로 사용하거나 최신 프레임�
 
 DHTMLX Gantt를 직접 확인하려면 온라인 데모를 살펴보세요:
 
-- [작업 및 링크가 포함된 기본 Gantt 차트](https://docs.dhtmlx.com/gantt/samples/?sample=%2701_initialization/01_basic_init.html%27&filter=%27%27)
+- [작업 및 링크가 포함된 기본 Gantt 차트](https://docs.dhtmlx.com/gantt/demos/enterprise-demo/)
 - [자동 스케줄링](https://docs.dhtmlx.com/gantt/samples/?sample=%2702_extensions/12_auto_scheduling.html%27&filter=%27%27) 및 [크리티컬 패스](https://docs.dhtmlx.com/gantt/samples/?sample=%2702_extensions/03_critical_path.html%27&filter=%27%27)
 - 리소스 관리: [사용량 다이어그램](https://docs.dhtmlx.com/gantt/samples/?sample=%2711_resources/04_resource_usage_diagram.html%27&filter=%27%27), [히스토그램](https://docs.dhtmlx.com/gantt/samples/?sample=%2711_resources/09_resource_histogram.html%27&filter=%27%27)
-- [전체 샘플 목록](https://docs.dhtmlx.com/gantt/samples/)
+- [전체 샘플 목록](https://docs.dhtmlx.com/gantt/demos/)
 
 ---
 

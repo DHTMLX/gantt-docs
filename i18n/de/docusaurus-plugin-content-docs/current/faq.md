@@ -19,7 +19,7 @@ Die App benötigt [Node.js](https://nodejs.org/en/) und verwendet einen In-Memor
 - Führen Sie `npm install` aus
 - Führen Sie `npm run start` aus
 - Öffnen Sie `http://localhost:9200` in Ihrem Browser
-- Sie sollten die Indexseite sehen, die identisch mit unseren Online-Beispielen ist: **https://docs.dhtmlx.com/gantt/samples/**
+- Sie sollten die Indexseite sehen, die identisch mit unseren Online-Beispielen ist: **https://docs.dhtmlx.com/gantt/demos/**
 
 2) Verwenden Sie den Apache-Webserver
 

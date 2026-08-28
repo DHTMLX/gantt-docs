@@ -88,10 +88,10 @@ DHTMLX Gantt доступен в редакциях Standard и PRO. PRO-вер�
 
 Чтобы увидеть DHTMLX Gantt в действии, откройте онлайн-демо:
 
-- [Базовая диаграмма Ганта с задачами и связями.](https://docs.dhtmlx.com/gantt/samples/?sample=%2701_initialization/01_basic_init.html%27&filter=%27%27)
+- [Базовая диаграмма Ганта с задачами и связями.](https://docs.dhtmlx.com/gantt/demos/enterprise-demo/)
 - Примеры [авто-планирования](https://docs.dhtmlx.com/gantt/samples/?sample=%2702_extensions/12_auto_scheduling.html%27&filter=%27%27) и [критического пути](https://docs.dhtmlx.com/gantt/samples/?sample=%2702_extensions/03_critical_path.html%27&filter=%27%27).
 - Управление ресурсами: [диаграмма](https://docs.dhtmlx.com/gantt/samples/?sample=%2711_resources/04_resource_usage_diagram.html%27&filter=%27%27) и [гистограмма](https://docs.dhtmlx.com/gantt/samples/?sample=%2711_resources/09_resource_histogram.html%27&filter=%27%27).
-- [Просмотреть все примеры](https://docs.dhtmlx.com/gantt/samples/), чтобы оценить полный набор функций.
+- [Просмотреть все примеры](https://docs.dhtmlx.com/gantt/demos/), чтобы оценить полный набор функций.
 
 ---
 

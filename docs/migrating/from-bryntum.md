@@ -833,4 +833,4 @@ And access the application at `http://localhost:1337`
 
 - Explore [DHTMLX Gantt documentation](https://docs.dhtmlx.com/gantt/) for advanced features
 - Review the [API reference](https://docs.dhtmlx.com/gantt/api__refs__gantt.html) for customization options
-- Check out [DHTMLX Gantt samples](https://docs.dhtmlx.com/gantt/samples/) for implementation examples
+- Check out [DHTMLX Gantt samples](https://docs.dhtmlx.com/gantt/demos/) for implementation examples
