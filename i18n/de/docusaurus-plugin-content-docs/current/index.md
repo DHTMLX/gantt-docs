@@ -88,10 +88,10 @@ Sie können DHTMLX Gantt als Vanilla-JavaScript-Widget verwenden oder in moderne
 
 Um DHTMLX Gantt in Aktion zu sehen, besuchen Sie die Online-Demos:
 
-- [Grundlegendes Gantt-Diagramm mit Aufgaben und Verknüpfungen.](https://docs.dhtmlx.com/gantt/samples/?sample=%2701_initialization/01_basic_init.html%27&filter=%27%27)
+- [Grundlegendes Gantt-Diagramm mit Aufgaben und Verknüpfungen.](https://docs.dhtmlx.com/gantt/demos/enterprise-demo/)
 - Beispiele für [Auto-Scheduling](https://docs.dhtmlx.com/gantt/samples/?sample=%2702_extensions/12_auto_scheduling.html%27&filter=%27%27) und [kritischen Pfad](https://docs.dhtmlx.com/gantt/samples/?sample=%2702_extensions/03_critical_path.html%27&filter=%27%27).
 - Ressourcenmanagement: [Diagramm](https://docs.dhtmlx.com/gantt/samples/?sample=%2711_resources/04_resource_usage_diagram.html%27&filter=%27%27) und [Histogramm](https://docs.dhtmlx.com/gantt/samples/?sample=%2711_resources/09_resource_histogram.html%27&filter=%27%27).
-- [Alle Beispiele durchsuchen](https://docs.dhtmlx.com/gantt/samples/) für den kompletten Funktionsumfang.
+- [Alle Beispiele durchsuchen](https://docs.dhtmlx.com/gantt/demos/) für den kompletten Funktionsumfang.
 
 ---
 

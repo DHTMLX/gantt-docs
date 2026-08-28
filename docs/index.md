@@ -59,13 +59,13 @@ React, Angular and Vue support two integration approaches:
 
 To see DHTMLX Gantt in action, explore some of the most popular demos:
 
-- [Basic Gantt Chart with Tasks and Links](https://docs.dhtmlx.com/gantt/samples/?sample=%2701_initialization/01_basic_init.html%27&filter=%27%27)
+- [Basic Gantt Chart with Tasks and Links](https://docs.dhtmlx.com/gantt/demos/enterprise-demo/)
 - [Auto Scheduling](https://docs.dhtmlx.com/gantt/samples/?sample=%2702_extensions/12_auto_scheduling.html%27&filter=%27%27) and [Critical Path](https://docs.dhtmlx.com/gantt/samples/?sample=%2702_extensions/03_critical_path.html%27&filter=%27%27) examples
 - Resource management: [Diagram](https://docs.dhtmlx.com/gantt/samples/?sample=%2711_resources/04_resource_usage_diagram.html%27&filter=%27%27) and [Histogram](https://docs.dhtmlx.com/gantt/samples/?sample=%2711_resources/09_resource_histogram.html%27&filter=%27%27)
 
 ![gantt_overview](/img/gantt_sample.png)
 
-View [All Samples](https://docs.dhtmlx.com/gantt/samples/?sample=%2701_initialization/01_basic_init.html%27&filter=%27%27) to check the full range of Gantt features. 
+View [All Samples](https://docs.dhtmlx.com/gantt/demos/) to check the full range of Gantt features. 
 
 For framework-oriented starting points, see the example repositories for [React](https://github.com/DHTMLX/react-gantt-examples), [Angular](https://github.com/DHTMLX/angular-gantt-examples), and [Vue](https://github.com/DHTMLX/vue-gantt-examples).
 
@@ -79,7 +79,7 @@ Some samples demonstrate PRO functionality, so check the [Community vs PRO compa
 - [Community vs PRO comparison](guides/editions-comparison.md) for feature differences between editions
 - Public [npm package](https://www.npmjs.com/package/dhtmlx-gantt) of the JavaScript Gantt under the Community edition
 - [GitHub repository](https://github.com/DHTMLX/gantt) for the source code of the Community edition and issue tracking
-- [API reference](api/api-overview.md) and [samples](https://docs.dhtmlx.com/gantt/samples/?sample=%2701_initialization/01_basic_init.html%27&filter=%27%27) for implementation details
+- [API reference](api/api-overview.md) and [samples](https://docs.dhtmlx.com/gantt/demos/) for implementation details
 - [What's New](whats-new.md) for releases and migration notes
 
 ## Gantt feature highlights

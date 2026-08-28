@@ -17,7 +17,7 @@
 	},
 	"link.item.label.Examples": {
 		"message": "示例",
-		"description": "页脚链接标签为示例，链接到 https://docs.dhtmlx.com/gantt/samples/"
+		"description": "页脚链接标签为示例，链接到 https://docs.dhtmlx.com/gantt/demos/"
 	},
 	"link.item.label.Blog": {
 		"message": "博客",

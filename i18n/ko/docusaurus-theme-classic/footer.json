@@ -17,7 +17,7 @@
 	},
 	"link.item.label.Examples": {
 		"message": "예시",
-		"description": "https://docs.dhtmlx.com/gantt/samples/ 링크가 연결된 'Examples' 라벨의 푸터 링크"
+		"description": "https://docs.dhtmlx.com/gantt/demos/ 링크가 연결된 'Examples' 라벨의 푸터 링크"
 	},
 	"link.item.label.Blog": {
 		"message": "블로그",

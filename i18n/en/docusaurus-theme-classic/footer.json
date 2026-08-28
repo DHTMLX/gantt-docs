@@ -17,7 +17,7 @@
   },
   "link.item.label.Examples": {
     "message": "Examples",
-    "description": "The label of footer link with label=Examples linking to https://docs.dhtmlx.com/gantt/samples/"
+    "description": "The label of footer link with label=Examples linking to https://docs.dhtmlx.com/gantt/demos/"
   },
   "link.item.label.Blog": {
     "message": "Blog",

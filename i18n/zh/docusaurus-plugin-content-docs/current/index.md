@@ -89,10 +89,10 @@ DHTMLX Gantt 提供 Standard 和 PRO 两个版本。PRO 版本包括自动排程
 
 要查看 DHTMLX Gantt 的实际效果，请访问在线示例:
 
-- [包含任务与链接的基本 Gantt 图表](https://docs.dhtmlx.com/gantt/samples/?sample=%2701_initialization/01_basic_init.html%27&filter=%27%27)
+- [包含任务与链接的基本 Gantt 图表](https://docs.dhtmlx.com/gantt/demos/enterprise-demo/)
 - [自动排程](https://docs.dhtmlx.com/gantt/samples/?sample=%2702_extensions/12_auto_scheduling.html%27&filter=%27%27) 和 [关键路径](https://docs.dhtmlx.com/gantt/samples/?sample=%2702_extensions/03_critical_path.html%27&filter=%27%27)
 - 资源管理:[资源使用图](https://docs.dhtmlx.com/gantt/samples/?sample=%2711_resources/04_resource_usage_diagram.html%27&filter=%27%27)、[资源直方图](https://docs.dhtmlx.com/gantt/samples/?sample=%2711_resources/09_resource_histogram.html%27&filter=%27%27)
-- [查看所有示例](https://docs.dhtmlx.com/gantt/samples/)
+- [查看所有示例](https://docs.dhtmlx.com/gantt/demos/)
 
 ---
 
