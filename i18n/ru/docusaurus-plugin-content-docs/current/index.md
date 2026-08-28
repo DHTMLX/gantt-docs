@@ -2,184 +2,187 @@
 sidebar_label: Обзор DHTMLX Gantt
 title: Обзор DHTMLX Gantt
 slug: /
-description: "Обзор JavaScript-компонента DHTMLX Gantt. Начните с руководств, изучите подробные гайды и API, попробуйте живые демо."
+description: "Изучите возможности DHTMLX Gantt, версии, варианты установки, интеграции с фреймворками, документацию по API, образцы и инструменты ИИ для создания приложений планирования проектов."
 ---
 
 import Link from '@docusaurus/Link';
 import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
+ 
+**DHTMLX Gantt** — наиболее настраиваемая JavaScript Gantt-диаграмма, полностью со спецификациями TypeScript. Она предназначена для создания продвинутых интерфейсов планирования и составления расписаний. Она интегрируется с React, Angular, Vue и другими фронтенд-фреймворками. DHTMLX Gantt также поддерживает разработку с поддержкой ИИ через DHTMLX MCP Server, Agent Skills и структурированный API. 
 
+Её можно использовать в управлении проектами, ERP, строительстве, производстве, выездном обслуживании, SaaS и других бизнес-приложениях, которые требуют настраиваемой визуальной временной шкалы.
 
-**DHTMLX Gantt** - это JavaScript-компонент для отображения и редактирования проектных таймлайнов в браузере.  
-Он сочетает настраиваемую таблицу, масштабируемую временную шкалу и планировщик, который учитывает рабочее время, зависимости и ограничения.
+## Быстрый старт по фреймворкам
 
-С его помощью можно создавать представления для управления проектами и ресурсами, графики строительства и производства, планирование полевых работ и любые приложения, которым требуется визуальная временная линия проекта.
-
-DHTMLX Gantt доступен в редакциях Standard и PRO. PRO-версия включает такие функции, как авто-планирование, критический путь, управление ресурсами, динамическая загрузка и многое другое.
-
----
-
-## Быстрый старт по фреймворкам {#quick-start-by-framework}
-
-Вы можете использовать DHTMLX Gantt как ванильный JavaScript-виджет или интегрировать его в современные фреймворки. Начните со пошагового руководства, подходящего для вашего стека:
+Вы можете использовать DHTMLX Gantt как обычный виджет JavaScript или интегрировать его в современный фреймворк. Начните с пошагового руководства, подходящего вашей технологии:
 
 <div className="framework-grid">
 
   <a className="framework-card" href="guides/initializing-gantt-chart/">
-  <FrameworkIcon name="javascript" className="framework-icon" />
-  <div className="framework-title">JavaScript</div>
-  <div className="framework-desc">
-  Минимальная настройка через script-теги или сборщики. Отлично подходит для простых страниц или приложений без фреймворков.
-  </div>
-  </a>
-
-  <a className="framework-card" href="integrations/react/">
-  <FrameworkIcon name="react" className="framework-icon" />
-  <div className="framework-title">React</div>
-  <div className="framework-desc">
-  Используйте готовый компонент <code>ReactGantt</code> с пропсами и событиями.
-  </div>
-  </a>
-
-  <a className="framework-card" href="integrations/angular/">
-  <FrameworkIcon name="angular" className="framework-icon" />
-  <div className="framework-title">Angular</div>
-  <div className="framework-desc">
-  Интегрируйте Gantt в Angular-проекты с помощью тонкого обёрточного компонента.
-  </div>
-  </a>
-
-  <a className="framework-card" href="integrations/vue/">
-  <FrameworkIcon name="vue" className="framework-icon" />
-  <div className="framework-title">Vue</div>
-  <div className="framework-desc">
-  Добавьте диаграмму Ганта в Vue-приложения с небольшим wrapper-компонентом и реактивными пропсами.
-  </div>
-  </a>
-
-  <a className="framework-card" href="integrations/svelte/howtostart-svelte/">
-  <FrameworkIcon name="svelte" className="framework-icon" />
-  <div className="framework-title">Svelte</div>
-  <div className="framework-desc">
-  Используйте Gantt в Svelte через простой компонент, который связывает конфигурацию и события.
-  </div>
+    <FrameworkIcon name="javascript" className="framework-icon" />
+    <div className="framework-title">JavaScript</div>
   </a>
 
   <a className="framework-card" href="integrations/react/quick-start/">
-  <FrameworkIcon name="react" className="framework-icon" />
-  <div className="framework-title">React (интеграция)</div>
-  <div className="framework-desc">
-  Встраивайте базовый виджет Gantt в собственные компоненты для полного контроля жизненного цикла и потоков данных.
-  </div>
+    <FrameworkIcon name="react" className="framework-icon" />
+    <div className="framework-title">React</div>
+  </a>
+
+  <a className="framework-card" href="integrations/angular/quick-start/">
+    <FrameworkIcon name="angular" className="framework-icon" />
+    <div className="framework-title">Angular</div>
+  </a>
+
+  <a className="framework-card" href="integrations/vue/quick-start/">
+    <FrameworkIcon name="vue" className="framework-icon" />
+    <div className="framework-title">Vue</div>
+  </a>
+
+  <a className="framework-card" href="integrations/svelte/howtostart-svelte/">
+    <FrameworkIcon name="svelte" className="framework-icon" />
+    <div className="framework-title">Svelte</div>
   </a>
 
   <a className="framework-card" href="integrations/salesforce/howtostart-salesforce/">
-  <FrameworkIcon name="salesforce" className="framework-icon" />
-  <div className="framework-title">Salesforce</div>
-  <div className="framework-desc">
-  Встраивайте Gantt в приложения Salesforce, подключайте данные вашей организации и управляйте проектными таймлайнами в CRM.
-  </div>
+    <FrameworkIcon name="salesforce" className="framework-icon" />
+    <div className="framework-title">Salesforce</div>
   </a>
 
 </div>
 
----
+React, Angular и Vue поддерживают два подхода к интеграции:
+
+- Официальные обёртки [React Gantt](integrations/react/quick-start.md), [Angular Gantt](integrations/angular/quick-start.md) и [Vue Gantt](integrations/vue/quick-start.md) (рекомендуются для PRO и проектов-оценок)
+- Прямая интеграция базового JavaScript Gantt-компонента с [React](integrations/react/js-gantt-react.md), [Angular](integrations/angular/js-gantt-angular.md), [Vue](integrations/vue/js-gantt-vue.md) (Community edition)
 
 ## Живые демо
 
-Чтобы увидеть DHTMLX Gantt в действии, откройте онлайн-демо:
+Чтобы увидеть DHTMLX Gantt в работе, попробуйте некоторые из самых популярных демо:
 
-- [Базовая диаграмма Ганта с задачами и связями.](https://docs.dhtmlx.com/gantt/samples/?sample=%2701_initialization/01_basic_init.html%27&filter=%27%27)
-- Примеры [авто-планирования](https://docs.dhtmlx.com/gantt/samples/?sample=%2702_extensions/12_auto_scheduling.html%27&filter=%27%27) и [критического пути](https://docs.dhtmlx.com/gantt/samples/?sample=%2702_extensions/03_critical_path.html%27&filter=%27%27).
-- Управление ресурсами: [диаграмма](https://docs.dhtmlx.com/gantt/samples/?sample=%2711_resources/04_resource_usage_diagram.html%27&filter=%27%27) и [гистограмма](https://docs.dhtmlx.com/gantt/samples/?sample=%2711_resources/09_resource_histogram.html%27&filter=%27%27).
-- [Просмотреть все примеры](https://docs.dhtmlx.com/gantt/samples/), чтобы оценить полный набор функций.
+- [Базовая диаграмма Ганта с задачами и связями](https://docs.dhtmlx.com/gantt/samples/?sample=%2701_initialization/01_basic_init.html%27&filter=%27%27)
+- [Автоматическое планирование](https://docs.dhtmlx.com/gantt/samples/?sample=%2702_extensions/12_auto_scheduling.html%27&filter=%27%27) и [Критический путь](https://docs.dhtmlx.com/gantt/samples/?sample=%2702_extensions/03_critical_path.html%27&filter=%27%27)
+- Управление ресурсами: [Diagram](https://docs.dhtmlx.com/gantt/samples/?sample=%2711_resources/04_resource_usage_diagram.html%27&filter=%27%27) и [Histogram](https://docs.dhtmlx.com/gantt/samples/?sample=%2711_resources/09_resource_histogram.html%27&filter=%27%27)
 
----
+![gantt_overview](/img/gantt_sample.png)
 
-## Основные возможности
+Посмотрите [Все образцы](https://docs.dhtmlx.com/gantt/samples/?sample=%2701_initialization/01_basic_init.html%27&filter=%27%27), чтобы ознакомиться с полным набором возможностей Gantt. 
 
-DHTMLX Gantt сочетает в себе планировщик, гибкую временную шкалу и инструменты работы с ресурсами. 
-Ниже приведены основные области с ссылками на подробные разделы.
+Для ориентированных на фреймворк стартовых точек смотрите примеры репозиториев для [React](https://github.com/DHTMLX/react-gantt-examples), [Angular](https://github.com/DHTMLX/angular-gantt-examples), и [Vue](https://github.com/DHTMLX/vue-gantt-examples).
+.
+
+:::note
+Некоторые образцы демонстрируют функционал PRO, поэтому перед повторным использованием в проекте Community edition ознакомьтесь с [сравнением Community и PRO](guides/editions-comparison.md).
+:::
+
+## Ресурсы для разработчиков
+
+- [Руководство по установке](guides/installation.md) для процессов установки Community, пробной и PRO версий
+- [Сравнение Community vs PRO](guides/editions-comparison.md) по различиям функционала между редакциями
+- Публичный [npm-пакет](https://www.npmjs.com/package/dhtmlx-gantt) JavaScript Gantt под Community edition
+- [GitHub-репозиторий](https://github.com/DHTMLX/gantt) исходного кода Community edition и отслеживания проблем
+- [Справка по API](api/api-overview.md) и [образцы](https://docs.dhtmlx.com/gantt/samples/?sample=%2701_initialization/01_basic_init.html%27&filter=%27%27) для деталей реализации
+- [What's New](whats-new.md) о выпусках и миграционных заметках
+
+## Основные возможности Gantt
+
+DHTMLX Gantt включает движок планирования, гибкую временную шкалу и инструменты для работы с ресурсами.
 
 ### Планирование проекта
 
-DHTMLX Gantt включает планировщик, понимающий структуру проекта и рабочее время:
+В основе стоит движок планирования, который обрабатывает структуру проекта и рабочее время. Он включает:
 
-- [Типы задач](guides/task-types.md) и [зависимости](guides/dependencies.md) - три базовых типа (задача, суммарная задача, веха) со связями.
-- [Календари рабочего времени](guides/working-time/) на уровне проекта, задач и ресурсов.
-- [Авто-планирование](guides/auto-scheduling/) и [критический путь](guides/critical-path/) для пересчёта планов и выделения задач, влияющих на дату окончания проекта.
+- [Типы задач и зависимости](guides/task-types.md).
+- [Настройку рабочего времени](guides/working-time.md) с календарями задач и проектов, а также календарями, специфичными для ресурсов (версия PRO).
+- [Auto scheduling](guides/auto-scheduling.md) для перерасчета планов (версия PRO).
+- [Critical path](guides/critical-path.md) для выделения задач, влияющих на дату завершения проекта (версия PRO).
 
-Поведение авто-планирования может быть настроено под ваши процессы или такие инструменты, как MS Project.
+### Грид и временная шкала
 
-### Таймлайн и таблица
+Компонент сочетает в себе грид данных слева с масштабируемой по масштабу временной шкалой справа. Обе части настраиваются детально:
 
-Компонент объединяет таблицу слева и масштабируемую временную шкалу справа, обе части гибко настраиваются:
+- [Flexible layout](guides/layout-config.md) с дополнительными гридами, колонками на правой стороне и настраиваемыми панелями.
+- [Configurable columns](guides/specifying-columns.md) с встроенным редактированием, перетаскиванием и управлением клавиатурой, плюс [multi-selection](guides/multiselection.md) (PRO версия).
+- [Customizable time scale](guides/configuring-time-scale.md) с маркерами и выделенными временными интервалами.
 
-- Гибкая [настройка layout](guides/layout-config/) с дополнительными таблицами, правыми колонками и кастомными панелями.
-- Настраиваемые [колонки](guides/specifying-columns/) с inline-редактированием, [множественным выбором](guides/multiselection/), drag-and-drop и навигацией с клавиатуры.
-- Настраиваемая [временная шкала](guides/configuring-time-scale/) с [маркерами](guides/markers/) и [выделением временных интервалов](guides/highlighting-time-slots/).
+### Продвинутые средства управления проектом (PRO)
 
-### Продвинутое управление проектом
+Для команд, которым нужна не просто временная шкала, версия PRO DHTMLX Gantt предоставляет инструменты для детального отслеживания проекта:
 
-Для подробного контроля хода проекта Gantt поддерживает:
+- [Baselines](guides/inbuilt-baselines.md#baselines) и [deadlines](guides/inbuilt-baselines.md#deadlines-and-constraints) для сопоставления планируемых дат с текущими.
+- [Unscheduled tasks](guides/unscheduled-tasks.md) и [split tasks](guides/split-tasks.md) для незапланированной, прерванной или поэтапной работы.
 
-- [Базовые планы](guides/inbuilt-baselines/#baselines) и [дедлайны](guides/inbuilt-baselines/#deadlines-and-constraints) для сравнения плановых и фактических дат.
-- [Непланируемые задачи](guides/unscheduled-tasks/) и [разделённые задачи](guides/split-tasks/) для неполной или прерываемой работы.
-- [Историю действий (undo/redo)](guides/undo-redo).
+### Управление ресурсами и загрузкой (PRO)
 
-### Управление ресурсами (PRO)
+Версия PRO добавляет отдельный уровень ресурсов, превращая диаграмму Ганта в интерфейс планирования, который охватывает и планирование задач, и видимость загрузки. Включает:
 
-PRO-редакция добавляет слой управления ресурсами:
-
-- [Назначение ресурсов](guides/resource-management/#assigningresources) на задачи.
-- [Гистограммы ресурсов](guides/resource-management/#resource-histogram) и [диаграммы нагрузки](guides/resource-management/#resourceloaddiagram).
-- [Группировку задач](guides/resource-management/#balancingresourceload) по ресурсам.
-
-Это превращает диаграмму Ганта в удобный инструмент управления нагрузкой - без выхода из вашего приложения.
+- [Resource assignments](guides/resource-management.md#assigningresources), позволяющие связывать ресурсы с задачами для точного планирования.
+- [Resource histograms](guides/resource-management.md#resource-histogram) и [resource load diagrams](guides/resource-management.md#resourceloaddiagram) для визуализации загрузки команды.
+- [Grouping tasks by resource](guides/resource-management.md#balancingresourceload) для отслеживания рабочих нагрузок, обнаружения конфликтов и балансировки команды.
 
 ### Экспорт и экосистема
 
-DHTMLX Gantt интегрируется с внешними инструментами и поддерживает множество форматов экспорта/импорта:
+Команды часто мигрируют между платформами, сохраняют локальные копии или выполняют аналитику вне системы. DHTMLX Gantt интегрируется с внешними инструментами и форматами экспорта посредством:
 
-- Экспорт в [PDF/PNG](guides/export/) и [Excel](guides/excel/) (включая [Node.js-модуль экспорта](guides/export-requirements/)).
-- Экспорт/импорт в [MS Project](guides/export-msproject/) и [Primavera](guides/export-primavera/) (через сервис экспорта).
+- Экспорт в [PDF/PNG](guides/export.md) и [Excel](guides/excel.md), включая [Node.js export module](guides/export-requirements.md).
+- Экспорт/импорт в [MS Project](guides/export-msproject.md) и [Primavera](guides/export-primavera.md) через поддерживаемый экспорт-сервис.
 
----
+### Взаимодействие и редактирование
 
-## Интеграция с фреймворками и backend
+Пользователи могут редактировать данные прямо на диаграмме, а не только просматривать их. Это поддерживается через:
 
-### Интеграция на frontend
+- Настраиваемый [редактор во всплывающем окне](guides/default-edit-form.md) для просмотра и редактирования сведений о задачах, с поддержкой пользовательских полей и кнопок.
+- [Quick info](guides/quick-info.md) всплывающие подсказки и [tooltips](guides/tooltips.md), которые выводят детали задач без открытия полной формы.
+- [Drag-and-drop создание и выбор задач](guides/advanced-dnd.md), плюс [мышиная прокрутка временной шкалы](api/config/drag_timeline.md).
+- [Keyboard navigation](guides/keyboard-navigation.md) и [поддержка доступности](guides/accessibility.md).
+- [Undo/redo history](guides/undo-redo.md) для безопасного редактирования.
 
-DHTMLX Gantt - независимый от фреймворков компонент на чистом JavaScript, работающий во всех современных браузерах. Его можно использовать:
+### Настройка и стилизация
 
-- как самостоятельный JS-виджет на любой странице;
-- как компонент в [React](integrations/react), [Angular](integrations/angular/), [Vue](integrations/vue/) или [Svelte](integrations/svelte/howtostart-svelte).
+Внешний вид диаграммы можно настраивать на любом уровне — от полной темы до одной полосы задачи, через:
 
-Для **React** доступно два варианта:
+- Набор встроенных [скинов](guides/skins.md), основанных на CSS-переменных, с поддержкой [глубокой настройки](guides/custom-skins.md) и созданием новых тем.
+- [Шаблоны](guides/common-configuration.md#gantttemplatesobject) для переопределения того, как отображаются задачи, связи и клетки грид.
+- Гранулированная [окраска задач](guides/colouring-tasks.md) и [стилизация связей](guides/colouring-lines.md) для визуального выделения конкретных элементов.
+- [Локализация](guides/localization.md) интерфейса и форматов даты/времени.
 
-- Использовать [официальный ReactGantt-wrapper](integrations/react) - декларативный компонент с пропсами и событиями. Оптимальный выбор для новых проектов.
-- Использовать [низкоуровневую интеграцию](integrations/react/quick-start/), если вы хотите полностью контролировать инициализацию, уничтожение и данные.
+## Издания и лицензирование
 
-Для **Angular**, **Vue** и **Svelte** в разделах *How to start* показано, как создать лёгкий wrapper-компонент.
+DHTMLX Gantt доступен в двух редакциях: **Community** и **PRO**. Вы можете начать с бесплатной Community edition и позже перейти к PRO edition, если потребуются дополнительные функции, официальная поддержка и полностью поддерживаемая база Gantt. Также можно сразу начать с PRO edition либо через официальный пробный период, либо с платной лицензией. Выберите один из следующих вариантов для начала работы с DHTMLX Gantt:
 
-### Интеграция с backend
+- **[Community edition](https://dhtmlx.com/docs/products/dhtmlxGantt/open-source/).** Бесплатна и лицензируется по MIT, охватывает основные интерактивные функции Gantt для DHTMLX Gantt v10+.
+- **[Official trial](https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml).** Позволяет оценить полный набор функций PRO и получить техническую поддержку в течение пробного периода.
+- **[PRO edition](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing).** Создана для проблемной среды, включает расширенные функции планирования, официальную поддержку и коммерческую лицензию.
 
-На стороне сервера Gantt работает через REST-подобный API:
+Чтобы увидеть точные различия между редакциями, смотрите [Сравнение Community и PRO](guides/editions-comparison.md). Для пошаговой настройки каждого варианта смотрите [руководство по установке](guides/installation.md).
 
-- Данные обычно загружаются/сохраняются в формате [JSON (задачи, связи, ресурсы, назначения)](guides/loading/).
-- Встроенный [DataProcessor](guides/server-side/) помогает маршрутизировать операции создания/обновления/удаления.
-- Есть [руководства](integrations/howtostart-guides/#how-to-start-with-gantt-on-server-side) для популярных платформ ([Node.js](integrations/node/howtostart-nodejs/), [.NET Core](integrations/dotnet/howtostart-dotnet-core/), [Laravel](integrations/php/howtostart-php-laravel/)), охватывающие CRUD-операции и синхронизацию с БД.
+:::note
+Если вы переходите с более ранней версии GPL, воспользуйтесь [руководством миграции](migration.md). DHTMLX Gantt v10 и далее больше не выпускаются под GPL; GPL v2 применяется только к более ранним версиям.
+:::
 
-Так Gantt легко подключается к существующим системам или микросервисам.
+## Инструменты кодирования с ИИ
 
----
+Для разработки с поддержкой ИИ начните с руководств по DHTMLX Gantt, созданных специально для помощников по кодированию:
 
-## Что дальше?
+- [Руководство по инструментам ИИ](integrations/ai-tools.md)
+- [Руководство DHTMLX MCP Server](integrations/ai-tools/mcp-server.md)
+- [Руководство Agent Skills](integrations/ai-tools/agent-skills.md)
+- [Руководство Lovable AI интеграции](integrations/ai-tools/lovable-ai.md)
 
-Если вы только начинаете:
+## Интеграция с бэкендом
 
-1. Перейдите к [руководству How to start](#quick-start-by-framework) для вашего фреймворка или JavaScript. 
-2. Настройте [колонки таблицы](guides/specifying-columns/), [рабочие календари](guides/working-time/), [временную шкалу](guides/configuring-time-scale/) и [поведение редактирования](guides/default-edit-form/). 
-3. [Подключите backend](integrations/howtostart-guides/#how-to-start-with-gantt-on-server-side) - настройте [DataProcessor](guides/server-side/#customrouting) и REST-эндпоинты для задач, связей и ресурсов. 
-4. Изучите разделы [Guides](guides/) и [API-справочник](api/api-overview/) для глубокой кастомизации (шаблоны, события, расширения).
+DHTMLX Gantt позволяет подключаться к любому бэкенду, реализуя RESTful API на сервере:
 
-Если вы уже используете DHTMLX Gantt и обновляетесь с предыдущей версии, откройте [Что нового](whats-new/) - там собраны Release Notes и миграционные инструкции.
+- Данные обычно загружаются и сохраняются в формате JSON для [задач](guides/loading.md), [связей](guides/loading.md), [ресурсов](guides/resource-management.md) и [назначений](guides/resource-management.md#connecting-resources-to-tasks).
+- Встроенный [DataProcessor](guides/server-side.md) помогает маршрутизировать операции создания, обновления и удаления на ваш сервер.
+- Есть руководства для популярных бэкенд-платформ и фреймворков ([Node.js](integrations/node/howtostart-nodejs.md), [.NET Core](integrations/dotnet/howtostart-dotnet-core.md), [Laravel](integrations/php/howtostart-php-laravel.md) и т. д.), которые охватывают CRUD-операции и лучшие практики синхронизации Gantt с вашей базой данных.
+
+## Что дальше
+
+Если вы только начинаете, действуйте следующим образом:
+
+1. Обратитесь к [Руководству по началу](integrations/howtostart-guides.md) для вашей предпочитаемой фронтенд-технологии или обычного JavaScript.
+2. Настройте [колонки грид](guides/specifying-columns.md), [календари рабочего времени](guides/working-time.md), [шкалы времени](guides/configuring-time-scale.md) и [поведение редактирования](guides/default-edit-form.md).
+3. Подключитесь к вашему бэкенду, настройте [DataProcessor](guides/server-side.md) и конечные точки приложения для задач, связей и ресурсов.
+4. Изучайте [руководства](guides.md) и [API-справочник](api/api-overview.md) для более глубокой настройки, такой как шаблоны, события и расширения.
+
+Если вы уже используете DHTMLX Gantt и обновляетесь с более ранней версии, проверьте [Что нового](whats-new.md) для заметок о релизах и резюме последних функций и миграционных руководств.

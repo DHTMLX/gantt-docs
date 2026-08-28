@@ -1,41 +1,41 @@
 ---
-title: "Migrating from Syncfusion to DHTMLX Gantt"
-sidebar_label: "From Syncfusion"
+title: "Syncfusion에서 DHTMLX Gantt로 마이그레이션하기"
+sidebar_label: "Syncfusion에서"
 ---
 
 :::note
-The complete demo source code is available on GitHub: [https://github.com/DHTMLX/gantt-migrating-from-syncfusion](https://github.com/DHTMLX/gantt-migrating-from-syncfusion).
+완전한 데모 소스 코드는 GitHub에서 확인할 수 있습니다: [https://github.com/DHTMLX/gantt-migrating-from-syncfusion](https://github.com/DHTMLX/gantt-migrating-from-syncfusion).
 :::
 
-# Migrating from Syncfusion Gantt to DHTMLX Gantt
+# Syncfusion Gantt에서 DHTMLX Gantt로 마이그레이션하기
 
-## Introduction
+## 개요
 
-This guide will walk you through the process of migrating an existing application from [Syncfusion Gantt](https://www.syncfusion.com/javascript-ui-controls/js-gantt-chart) to [DHTMLX Gantt](https://dhtmlx.com/docs/products/dhtmlxGantt/). We'll cover all necessary steps including database schema changes, server-side API modifications, and client-side code updates.
+이 가이드는 기존 애플리케이션을 [Syncfusion Gantt](https://www.syncfusion.com/javascript-ui-controls/js-gantt-chart)에서 [DHTMLX Gantt](https://dhtmlx.com/docs/products/dhtmlxGantt/)로 마이그레이션하는 과정을 안내합니다. 데이터베이스 스키마 변경, 서버 측 API 수정, 클라이언트 코드 업데이트 등 필요한 모든 단계들을 다룹니다.
 
-## Prerequisites
+## 전제 조건
 
-Before starting the migration, ensure you have:
+마이그레이션을 시작하기 전에 아래 사항을 확인하십시오.
 
-- An existing working application using Syncfusion Gantt
-- Node.js (>= 20.0.0) installed
-- MySQL database with Syncfusion data structure
-- Basic knowledge of Express.js and JavaScript
+- Syncfusion Gantt를 사용 중인 기존 애플리케이션
+- Node.js 버전(≥ 20.0.0) 설치
+- MySQL 데이터베이스의 Syncfusion 데이터 구조
+- Express.js와 JavaScript에 대한 기본 지식
 
-## Step 1: Database Migration
+## 1단계: 데이터베이스 마이그레이션
 
-### Understanding Current Schema
+### 현재 스키마 이해하기
 
-If you followed the Syncfusion demo setup, you should have one table: `syncfusion_tasks`.
+Syncfusion 데모 설정을 따라갔다면 하나의 테이블 `syncfusion_tasks`를 갖고 있을 가능성이 큽니다.
 
-The `syncfusion_tasks` table structure:
+`syncfusion_tasks` 테이블 구조:
 
 ![Syncfusion tasks table](/img/migrating/syncfusion/syncfusion-tasks-table.png)
 ![Syncfusion tasks table](/img/migrating/syncfusion/syncfusion-tasks-table2.png)
 
-### Create DHTMLX Tables
+### DHTMLX 테이블 생성
 
-Create two new tables compatible with DHTMLX Gantt:
+DHTMLX Gantt에 맞춰 두 개의 새 테이블을 생성합니다.
 
 ```sql
 CREATE TABLE IF NOT EXISTS `gantt_tasks` (
@@ -61,11 +61,11 @@ CREATE TABLE IF NOT EXISTS `gantt_links` (
 );
 ```
 
-### Migrate Existing Data
+### 기존 데이터 마이그레이션
 
-Now migrate your existing Syncfusion data to the new DHTMLX tables.
+이제 기존 Syncfusion 데이터를 새 DHTMLX 테이블로 마이그레이션합니다.
 
-**Migrate tasks:**
+**TASK 마이그레이션:**
 
 ```sql
 INSERT INTO gantt_tasks (id, text, start_date, end_date, duration, progress, parent, notes, open)
@@ -74,44 +74,44 @@ SELECT
     TaskName,                                           -- TaskName → text
     StartDate,
     COALESCE(EndDate,
-        DATE_ADD(StartDate, INTERVAL Duration DAY)),   -- Calculate end_date if missing
+        DATE_ADD(StartDate, INTERVAL Duration DAY)),   -- 엔드 날짜가 없으면 계산
     COALESCE(Duration,
-        DATEDIFF(EndDate, StartDate)),                 -- Calculate duration if missing
-    COALESCE(Progress, 0) / 100,                       -- Convert percentage (0-100) to decimal (0-1)
-    COALESCE(ParentId, 0),                             -- ParentId → parent (0 for root tasks)
+        DATEDIFF(EndDate, StartDate)),                 -- 기간이 없으면 계산
+    COALESCE(Progress, 0) / 100,                       -- 백분율(0-100)을 소수(0-1)로 변환
+    COALESCE(ParentId, 0),                             -- ParentId → parent (루트 태스크의 경우 0)
     info,                                              -- info → notes
     COALESCE(isExpand, TRUE)                           -- isExpand → open
 FROM syncfusion_tasks;
 ```
 
-**Migrate links (dependencies)**
+**링크(의존성) 마이그레이션**
 
-In Syncfusion Gantt's data structure, dependencies are stored as strings in the `Predecessor` column:
+Syncfusion Gantt의 데이터 구조에서 의존성은 `Predecessor` 열에 문자열로 저장됩니다:
 
-- Format examples: `"5"`, `"3,4"`, `"5FS+2"`, `"7SS-1,8FF+3"`, `"2FS-5 days"`
+- 형식 예: `"5"`, `"3,4"`, `"5FS+2"`, `"7SS-1,8FF+3"`, `"2FS-5 days"`
 
-In DHTMLX Gantt, tasks and links are stored in **separate tables**. Each link is a row with:
+DHTMLX Gantt에서는 태스크와 링크가 **별도의 테이블**에 저장됩니다. 각 링크는 한 행으로 저장됩니다.
 
-- `id` - the link id
-- `source` - the id of a task that the dependency will start from
-- `target` - the id of a task that the dependency will end with.
-- `type` - the dependency type: `"0"` (FS), `"1"` (SS), `"2"` (FF), `"3"` (SF)
-- `lag` - optional task's lag
+- `id` - 링크 ID
+- `source` - 의존성이 시작될 태스크의 ID
+- `target` - 의존성이 종료될 태스크의 ID
+- `type` - 의존성 유형: `"0"` (FS), `"1"` (SS), `"2"` (FF), `"3"` (SF)
+- `lag` - 선택적 태스크의 지연
 
-We'll implement a Node.js migration script to parse Syncfusion's string format and convert it to DHTMLX's structured format.
+Syncfusion의 문자열 포맷을 파싱하고 DHTMLX의 구조화된 형식으로 변환하는 Node.js 마이그레이션 스크립트를 구현합니다.
 
-**Understanding Syncfusion Predecessor Format:**
+**Syncfusion Predecessor 포맷 이해하기:**
 
-| Example        | Meaning                             | DHTMLX Equivalent               |
-| -------------- | ----------------------------------- | ------------------------------- |
-| `"5"`          | Task depends on task 5 (default FS) | `source: 5, type: "0"`          |
-| `"3,4"`        | Depends on tasks 3 AND 4            | Two separate links              |
-| `"5FS"`        | Finish-to-Start dependency          | `source: 5, type: "0"`          |
-| `"5FS+2"`      | FS with 2 days positive lag         | `source: 5, type: "0", lag: 2`  |
-| `"5FS-3"`      | FS with 3 days negative lag         | `source: 5, type: "0", lag: -3` |
-| `"2FS-5 days"` | FS with lag including "days" text   | `source: 2, type: "0", lag: -5` |
+| 예시            | 의미                               | DHTMLX 대응                          |
+| -------------- | --------------------------------- | ------------------------------------ |
+| `"5"`          | 태스크 5를 의존(기본 FS)            | `source: 5, type: "0"`                 |
+| `"3,4"`        | 태스크 3 및 4를 의존                   | 두 개의 개별 링크                        |
+| `"5FS"`        | Finish-to-Start 의존성                 | `source: 5, type: "0"`                 |
+| `"5FS+2"`      | FS에 2일의 양의 지연                   | `source: 5, type: "0", lag: 2`         |
+| `"5FS-3"`      | FS에 3일의 음의 지연                   | `source: 5, type: "0", lag: -3`        |
+| `"2FS-5 days"` | 텍스트 "days"를 포함한 지연             | `source: 2, type: "0", lag: -5`        |
 
-Create a `migrate-dependencies.js` file and paste the following code into it:
+다음 코드를 붙여넣어 `migrate-dependencies.js` 파일을 만들고 사용합니다:
 
 ```js
 import { pool } from './server.js';
@@ -267,7 +267,7 @@ async function migrateDependencies() {
 migrateDependencies().catch(console.error);
 ```
 
-Then add a script to your `dhtmlx-demo/package.json`:
+그 다음에 `dhtmlx-demo/package.json`에 스크립트를 추가합니다:
 
 ```json
 {
@@ -277,81 +277,81 @@ Then add a script to your `dhtmlx-demo/package.json`:
 }
 ```
 
-Run the migration:
+마이그레이션을 실행합니다:
 
 ```bash
 cd dhtmlx-demo
 npm run migrate-deps
 ```
 
-You can verify that the data was migrated correctly by running the following commands:
+다음 명령을 실행하여 데이터가 올바르게 마이그레이션되었는지 확인할 수 있습니다:
 
 ```sql
 SELECT * FROM gantt_tasks;
 SELECT * FROM gantt_links;
 ```
 
-You should see all your tasks and links properly transferred with the correct field mappings.
+작업 및 링크가 올바른 필드 매핑으로 전부 전달되었는지 확인합니다.
 
-### Mapping Syncfusion Task Fields to DHTMLX Gantt
+### Syncfusion 태스크 필드를 DHTMLX Gantt로 매핑
 
-| Syncfusion Field | DHTMLX Field    | Notes                                                                 |
-| ---------------- | --------------- | --------------- | 
-| `TaskID`         | `id`            | Task id                                                               |
-| `TaskName`       | `text`          | Task name                                                       |
-| `StartDate`      | `start_date`    | Task start date                                                       |
-| `EndDate`        | `end_date`      | Task end date (calculated in DHTMLX if not provided)                  |
-| `Duration`       | `duration`      | Task duration                                                         |
-| `DurationUnit`   | _(config)_      | DHTMLX Gantt uses a global duration unit configured via `gantt.config.duration_unit`. During migration, it's recommended to normalize all durations to a single unit. If you want to have different duration units for different tasks, i.e. to show durations of some tasks in hours and some tasks in "days", you can use the [formatter module](guides/working-time.md#taskdurationindecimalformat).                     |
-| `Progress`       | `progress`      | Syncfusion: 0-100%, DHTMLX: 0-1 (decimal)                             |
-| `ParentId`       | `parent`        | Parent task ID (0 for root tasks)                                     |
-| `Predecessor`    | _(links table)_ | Syncfusion stores as string, DHTMLX uses separate `gantt_links` table |
-| `info` (notes)   | -         | Can be added as a custom column. Check this article for more information: [How to add a custom column in the grid](guides/how-to.md#how-to-add-a-custom-column-in-the-grid)                                            |
-| `isExpand`       | `open`          | Expand/collapse state for parent tasks                                |
-| `Indicators`     | `markers`       | DHTMLX uses `gantt.addMarker()` API. Learn more about [adding vertical markers](guides/markers.md)                                   |
+| Syncfusion 필드 | DHTMLX 필드    | 비고                                                                 |
+| ---------------- | ------------- | ------------------------------------------------------------------ |
+| `TaskID`         | `id`            | 태스크 ID                                                               |
+| `TaskName`       | `text`          | 태스크 이름                                                               |
+| `StartDate`      | `start_date`    | 태스크 시작 날짜                                                       |
+| `EndDate`        | `end_date`      | 태스크 종료 날짜(없으면 DHTMLX에서 계산)                                 |
+| `Duration`       | `duration`      | 태스크 기간                                                               |
+| `DurationUnit`   | _(config)_      | DHTMLX Gantt는 글로벌 지속 시간 단위를 사용하도록 구성됩니다(`gantt.config.duration_unit`). 마이그레이션 동안 모든 기간을 하나의 단위로 정규화하는 것이 권장됩니다. 다른 태스크에 대해 서로 다른 기간 단위를 사용하려면 예: 일부 태스크의 기간은 시간 단위로, 일부는 "일" 단위로 표시하려면 [formatter 모듈](guides/working-time.md#taskdurationindecimalformat)을 사용하십시오.                     |
+| `Progress`       | `progress`      | Syncfusion: 0-100%, DHTMLX: 0-1(소수)                             |
+| `ParentId`       | `parent`        | 부모 태스크 ID(루트 태스크의 경우 0)                                     |
+| `Predecessor`    | _(links table)_ | Syncfusion은 문자열로 저장, DHTMLX는 별도 `gantt_links` 테이블 사용 |
+| `info` (notes)   | -               | 커스텀 컬럼으로 추가 가능. 자세한 내용은 이 기사 참고: [How to add a custom column in the grid](guides/how-to.md#how-to-add-a-custom-column-in-the-grid)                                            |
+| `isExpand`       | `open`          | 부모 태스크의 확장/축소 상태                                               |
+| `Indicators`     | `markers`       | DHTMLX는 `gantt.addMarker()` API를 사용. 수직 마커 추가에 대한 자세한 내용은 [마커 가이드](guides/markers.md)를 참고                                   |
 
-## Step 2: Backend Migration (server.js)
+## 2단계: 백엔드 마이그레이션 (server.js)
 
-### Remove Syncfusion Endpoints
+### Syncfusion 엔드포인트 제거
 
-Delete the following Syncfusion-specific endpoints from your `server.js`:
+`server.js`에서 Syncfusion 전용 엔드포인트를 제거합니다:
 
-- `app.post('/api/getTasks', ...)` - Syncfusion data loading endpoint
-- `app.post('/api/batchTasks', ...)` - Syncfusion batch sync endpoint
+- `app.post('/api/getTasks', ...)` - Syncfusion 데이터 불러오기 엔드포인트
+- `app.post('/api/batchTasks', ...)` - Syncfusion 배치 동기화 엔드포인트
 
-### Install DHTMLX Gantt Package and Vite
+### DHTMLX Gantt 패키지 및 Vite 설치
 
-Remove Syncfusion dependency:
+Syncfusion 의존성 제거:
 
 ```bash
 npm uninstall @syncfusion/ej2
 ```
 
-Install DHTMLX Gantt following the [installation guide](guides/installation.md).
+설치 가이드를 따라 DHTMLX Gantt를 설치합니다.
 
-For this tutorial, we will use the trial version of DHTMLX Gantt:
+本 실습에서는 DHTMLX Gantt의 트라이얼 버전을 사용합니다:
 
 ```bash
 npm install @dhx/trial-gantt
 ```
 
-Let's also install Vite as a build tool:
+빌드 도구로 Vite도 설치합니다:
 
 ```bash
 npm install --save-dev vite
 ```
 
-### Add Data Loading Endpoint
+### 데이터 로딩 엔드포인트 추가
 
-We'll use the `date-format-lite` library to format dates from MySQL DATETIME format to the format expected by DHTMLX.
+MySQL DATETIME 형식에서 DHTMLX가 기대하는 형식으로 날짜를 포맷하기 위해 `date-format-lite` 라이브러리를 사용합니다.
 
-Install the library:
+라이브러리를 설치합니다:
 
 ```bash
 npm install date-format-lite
 ```
 
-Add the GET endpoint to load data in DHTMLX format:
+데이터를 DHTMLX 형식으로 로드하는 GET 엔드포인트를 추가합니다:
 
 ```js
 import dateFormat from 'date-format-lite';
@@ -382,14 +382,13 @@ app.get('/data', async (req, res) => {
 });
 ```
 
-**Note:** The response format is different from Syncfusion (`{ result: [...], count: number }`). DHTMLX expects `{ tasks: [], links: [] }`.
+참고: 응답 형식은 Syncfusion의 `{ result: [...], count: number }`와 다릅니다. DHTMLX는 `{ tasks: [], links: [] }`를 기대합니다.
 
-### Add CRUD Endpoints for Tasks and Links
+### Tasks 및 Links에 대한 CRUD 엔드포인트 추가
 
-DHTMLX Gantt's `DataProcessor` uses RESTful endpoints to synchronize data with the server. Each operation (create, update, delete) is sent as a separate HTTP request with the appropriate method.
-Learn more about [Server-side integration](guides/server-side.md).
+DHTMLX Gantt의 `DataProcessor`는 서버와 데이터를 동기화하기 위해 RESTful 엔드포인트를 사용합니다. 각 작업은 적절한 HTTP 메서드로 별도의 요청으로 전송됩니다. 서버 측 통합에 대한 자세한 내용은 [Server-side integration](guides/server-side.md)을 참조하십시오.
 
-Add handlers for **task operations**:
+다음은 **태스크 CRUD** 핸들러 예시입니다:
 
 ```js
 // Create a new task
@@ -437,7 +436,7 @@ app.delete('/data/task/:id', async (req, res) => {
 });
 ```
 
-Add handlers for link (dependency) operations:
+링크(의존성) 작업에 대한 핸들러 예시:
 
 ```js
 // POST /data/link - Create new link
@@ -484,9 +483,9 @@ app.delete('/data/link/:id', async (req, res) => {
 });
 ```
 
-### Add Helper Functions
+### 도우미 함수 추가
 
-Also, let's add utility functions to process data and send responses:
+또한 데이터를 처리하고 응답을 보내기 위한 유틸리티 함수를 추가합니다:
 
 ```js
 // Helper: Parse task data from request
@@ -523,11 +522,11 @@ function sendResponse(res, action, tid = null, error = null) {
 }
 ```
 
-### Sanitize Task Data (XSS Protection)
+### 데이터 정 sanitization (XSS 보호)
 
-DHTMLX Gantt renders fields such as a task's `text` as HTML and does **not** escape them by default, so any markup in your migrated data (or entered later by a user) is rendered as-is — a potential XSS vector. Syncfusion and most other libraries behave the same way, so it's worth handling this explicitly during migration.
+DHTMLX Gantt는 텍스트 필드를 HTML로 렌더링하므로 기본적으로 HTML 이스케이프가 적용되지 않습니다. migrated 데이터나 사용자가 입력한 마크업이 그대로 렌더링될 수 있어 XSS 벡터가 될 수 있습니다. 이슈를 방지하기 위해 백엔드에서 데이터를 정제하는 것을 권장합니다.
 
-**Sanitize on the backend (recommended).** Clean free-text fields before they reach the database:
+백엔드에서 정제하기(권장):
 
 ```bash
 npm install isomorphic-dompurify
@@ -540,12 +539,12 @@ function getTask(data) {
   return {
     text: DOMPurify.sanitize(data.text),
     notes: data.notes ? DOMPurify.sanitize(data.notes) : null,
-    // ...the remaining fields unchanged
+    // ...다른 필드는 변경 없이 유지
   };
 }
 ```
 
-**Escape on the frontend (defense in depth).** Override the templates that render task text in `src/app/app.ts`:
+프런트엔드에서 방어를 추가하는 방식도 있습니다(보안 계층 2차 방어):
 
 ```ts
 const escapeHTML = (value: unknown) =>
@@ -553,18 +552,18 @@ const escapeHTML = (value: unknown) =>
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch] as string));
 
 gantt.templates.task_text = (start, end, task) => escapeHTML(task.text);
-// also escape any custom grid column that shows task text: template: (task) => escapeHTML(task.text)
+// 태스크 텍스트를 보여주는 커스텀 그리드 열도 escape하면 좋습니다: template: (task) => escapeHTML(task.text)
 ```
 
-For the full set of recommendations — Content Security Policy, lightbox sanitization, and SQL-injection guidance — see the [Application Security](guides/app-security.md) guide.
+Content Security Policy, 경량화된 정 sanitization, SQL 인젝션 가이드 등 전체 권고사항은 [Application Security](guides/app-security.md) 가이드를 참고하십시오.
 
 ---
 
-## Step 3: Frontend Migration with Vite
+## 3단계: 프론트엔드 마이그레이션 with Vite
 
-### Set Up Vite Configuration
+### Vite 구성 설정
 
-Create a `vite.config.js` file in the root of your project:
+프로젝트의 루트에 `vite.config.js` 파일을 생성합니다:
 
 ```javascript
 import { defineConfig } from 'vite';
@@ -587,30 +586,30 @@ export default defineConfig({
 });
 ```
 
-Organize your project with this structure:
+다음 구조로 프로젝트를 구성합니다:
 
 ```
 dhtmlx-demo/
-├── src/                    # Frontend source code
+├── src/                    # 프런트엔드 소스 코드
 │   ├── app/
-│   │   └── app.ts         # Main Gantt initialization
-│   ├── index.html         # Main HTML file
+│   │   └── app.ts         # 메인 Gantt 초기화
+│   ├── index.html         # 메인 HTML 파일
 │   ├── resources/
 │   └── styles/
-├── e2e/                   # End-to-end tests (optional)
+├── e2e/                   # 엔드-투-엔드 테스트(선택적)
 ├── .env.example
 ├── .gitignore
-├── migrate-dependencies.js  # Dependency migration script
-├── package.json           # Project dependencies
-├── server.js              # Express server
-├── setup.sql              # Database setup script
-├── tsconfig.json          # TypeScript configuration
-└── vite.config.js         # Vite configuration
+├── migrate-dependencies.js  # 종속성 마이그레이션 스크립트
+├── package.json           # 프로젝트 의존성
+├── server.js              # Express 서버
+├── setup.sql              # 데이터베이스 설정 스크립트
+├── tsconfig.json          # TypeScript 설정
+└── vite.config.js         # Vite 구성
 ```
 
-### Update index.html
+### index.html 업데이트
 
-Update `index.html` with the following code:
+다음 코드로 업데이트합니다:
 
 ```html
 <!DOCTYPE html>
@@ -664,13 +663,13 @@ Update `index.html` with the following code:
 </html>
 ```
 
-**Note:** The container ID changed to `gantt_here`, which is DHTMLX Gantt's conventional container ID.
+참고: 컨테이너 ID가 `gantt_here`로 변경되었으며, 이는 DHTMLX Gantt의 표준 컨테이너 ID입니다.
 
-### Update src/app/app.ts
+### src/app/app.ts 업데이트
 
-In the `src/app/app.ts` file, remove all Syncfusion-related imports and code.
+`src/app/app.ts` 파일에서 모든 Syncfusion 관련 import 및 코드를 제거합니다.
 
-Replace with DHTMLX Gantt initialization:
+다음과 같이 DHTMLX Gantt 초기화를 사용합니다:
 
 ```ts
 import '@dhx/trial-gantt/codebase/dhtmlxgantt.css';
@@ -696,21 +695,21 @@ gantt.init('gantt_here');
 gantt.load('/data');
 
 const dp = gantt.createDataProcessor({
-  url: '/data', // Base URL for REST endpoints
-  mode: 'REST', // Use RESTful mode
+  url: '/data', // REST 엔드포인트의 기본 URL
+  mode: 'REST', // RESTful 모드 사용
 });
 ```
 
-The DataProcessor will automatically:
+DataProcessor는 자동으로 다음을 수행합니다:
 
-- Send POST requests to `/data/task` when creating tasks
-- Send PUT requests to `/data/task/:id` when updating tasks
-- Send DELETE requests to `/data/task/:id` when deleting tasks
-- Handle links similarly with `/data/link` endpoints
+- 태스크 생성 시 POST `/data/task`
+- 태스크 업데이트 시 PUT `/data/task/:id`
+- 태스크 삭제 시 DELETE `/data/task/:id`
+- 링크도 `/data/link` 엔드포인트로 처리
 
-### Update package.json Scripts
+### package.json 스크립트 업데이트
 
-Update your `package.json` scripts to use Vite:
+`package.json`의 스크립트를 Vite를 사용하도록 업데이트합니다:
 
 ```json
 {
@@ -726,34 +725,34 @@ Update your `package.json` scripts to use Vite:
 
 ---
 
-## Step 4: Testing the Migration
+## 4단계: 마이그레이션 테스트
 
-### Running the Application
+### 애플리케이션 실행
 
-For development mode, you need to run two processes:
+개발 모드에서는 두 개의 프로세스를 실행해야 합니다.
 
-**Terminal 1 - Backend (Express):**
+- 백엔드(Express): 터미널 1
 
-```bash
-npm run server
-```
+  ```bash
+  npm run server
+  ```
 
-This starts the API server on `http://localhost:1337` (or your configured port)
+  이 서버는 `http://localhost:1337` 에 API를 제공합니다(포트는 구성에 따라 다를 수 있습니다).
 
-**Terminal 2 - Frontend (Vite):**
+- 프런트엔드(Vite): 터미널 2
 
-```bash
-npm run dev
-```
+  ```bash
+  npm run dev
+  ```
 
-This starts the Vite dev server on `http://localhost:5173`. Open your browser and navigate to `http://localhost:5173`. Vite will proxy API requests to the Express backend automatically.
+  이 명령은 `http://localhost:5173` 에서 Vite 개발 서버를 시작합니다. 브라우저를 열고 `http://localhost:5173` 로 접속하면 Vite가 Express 백엔드의 API 요청을 자동으로 프록시합니다.
 
-You should see the DHTMLX Gantt chart with your data loaded from the database:
+데이터베이스에서 불러온 데이터로 DHTMLX Gantt 차트를 확인할 수 있습니다:
 
 ![Gantt with data loaded](/img/migrating/syncfusion/dhtmlx-gantt-data-loaded.png)
 
-## Next Steps
+## 다음 단계
 
-- Explore [DHTMLX Gantt documentation](/) for advanced features
-- Review the [API reference](/api/api-overview/) for customization options
-- Check out [DHTMLX Gantt samples](https://docs.dhtmlx.com/gantt/samples/) for implementation examples
+- 고급 기능을 위한 DHTMLX Gantt 문서 확인: [DHTMLX Gantt documentation](/)
+- 커스터마이징 옵션에 대한 API 참조 확인: [API reference](/api/api-overview/)
+- 구현 예제 확인: [DHTMLX Gantt samples](https://docs.dhtmlx.com/gantt/samples/)

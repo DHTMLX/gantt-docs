@@ -2,185 +2,187 @@
 sidebar_label: DHTMLX Gantt 概览
 title: DHTMLX Gantt 概览
 slug: /
-description: "DHTMLX Gantt JavaScript 组件概览。通过快速入门指南、详细文档和 API 参考开始使用，并尝试在线示例。"
+description: "探索 DHTMLX Gantt 的功能、版本、安装选项、框架集成、API 文档、示例，以及用于构建项目规划应用的 AI 工具。"
 ---
 
 import Link from '@docusaurus/Link';
 import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
+ 
+**DHTMLX Gantt** 是可配置性最高的 JavaScript 甘特图，具备完整的 TypeScript 定义。它旨在构建高级的计划与排程界面。它可与 React、Angular、Vue 以及其他前端框架集成。DHTMLX Gantt 还通过 DHTMLX MCP Server、Agent Skills，以及结构化 API，支持 AI 辅助开发。  
 
+您可以将其用于项目管理、ERP、建筑、制造、现场服务、SaaS 以及其它需要可配置可视时间线的商业应用场景。
 
-**DHTMLX Gantt** 是一个用于在浏览器中展示与编辑项目时间线的 JavaScript 组件。  
-它结合了可配置的数据表格、可缩放时间轴以及能理解工作时间、依赖关系与约束条件的调度引擎。
+## 按框架快速入门
 
-您可以利用它构建用于项目管理工具、建筑与制造计划、现场服务排程，或任何需要可视化时间线的应用程序。
-
-DHTMLX Gantt 提供 Standard 和 PRO 两个版本。PRO 版本包括自动排程、关键路径、资源管理、动态加载等高级功能。
-
----
-
-## 按框架快速开始 {#quick-start-by-framework}
-
-您可以将 DHTMLX Gantt 作为原生 JavaScript 组件使用，也可以集成到现代框架中。 
-从适合您技术栈的分步"入门指南"开始:
+您可以将 DHTMLX Gantt 作为一个原生 JavaScript 小部件使用，或将其集成到现代框架中。请从适合您偏好技术栈的逐步指南开始：
 
 <div className="framework-grid">
 
   <a className="framework-card" href="guides/initializing-gantt-chart/">
-  <FrameworkIcon name="javascript" className="framework-icon" />
-  <div className="framework-title">JavaScript</div>
-  <div className="framework-desc">
-  通过 script 标签或打包工具进行最小化设置。适用于简单页面或无框架的应用。
-  </div>
-  </a>
-
-  <a className="framework-card" href="integrations/react/">
-  <FrameworkIcon name="react" className="framework-icon" />
-  <div className="framework-title">React</div>
-  <div className="framework-desc">
-  使用现成的 <code>ReactGantt</code> 组件（支持 Props 与事件）。
-  </div>
-  </a>
-
-  <a className="framework-card" href="integrations/angular/">
-  <FrameworkIcon name="angular" className="framework-icon" />
-  <div className="framework-title">Angular</div>
-  <div className="framework-desc">
-  通过轻量级封装组件将 Gantt 集成到 Angular 项目中。
-  </div>
-  </a>
-
-  <a className="framework-card" href="integrations/vue/">
-  <FrameworkIcon name="vue" className="framework-icon" />
-  <div className="framework-title">Vue</div>
-  <div className="framework-desc">
-  通过简洁封装与响应式 Props 将 Gantt 添加到 Vue 应用。
-  </div>
-  </a>
-
-  <a className="framework-card" href="integrations/svelte/howtostart-svelte/">
-  <FrameworkIcon name="svelte" className="framework-icon" />
-  <div className="framework-title">Svelte</div>
-  <div className="framework-desc">
-  使用简单组件在 Svelte 中绑定 Gantt 的配置与事件。
-  </div>
+    <FrameworkIcon name="javascript" className="framework-icon" />
+    <div className="framework-title">JavaScript</div>
   </a>
 
   <a className="framework-card" href="integrations/react/quick-start/">
-  <FrameworkIcon name="react" className="framework-icon" />
-  <div className="framework-title">React（低级集成）</div>
-  <div className="framework-desc">
-  在自定义组件中直接嵌入 Gantt 核心部件，以完全控制生命周期与数据流。
-  </div>
+    <FrameworkIcon name="react" className="framework-icon" />
+    <div className="framework-title">React</div>
+  </a>
+
+  <a className="framework-card" href="integrations/angular/quick-start/">
+    <FrameworkIcon name="angular" className="framework-icon" />
+    <div className="framework-title">Angular</div>
+  </a>
+
+  <a className="framework-card" href="integrations/vue/quick-start/">
+    <FrameworkIcon name="vue" className="framework-icon" />
+    <div className="framework-title">Vue</div>
+  </a>
+
+  <a className="framework-card" href="integrations/svelte/howtostart-svelte/">
+    <FrameworkIcon name="svelte" className="framework-icon" />
+    <div className="framework-title">Svelte</div>
   </a>
 
   <a className="framework-card" href="integrations/salesforce/howtostart-salesforce/">
-  <FrameworkIcon name="salesforce" className="framework-icon" />
-  <div className="framework-title">Salesforce</div>
-  <div className="framework-desc">
-  在 Salesforce 应用中嵌入 Gantt，与组织数据集成，将项目时间线引入 CRM。
-  </div>
+    <FrameworkIcon name="salesforce" className="framework-icon" />
+    <div className="framework-title">Salesforce</div>
   </a>
 
 </div>
 
----
+React、Angular 和 Vue 支持两种集成方式：
 
-## 在线示例
+- 官方 [React Gantt](integrations/react/quick-start.md), [Angular Gantt](integrations/angular/quick-start.md), 和 [Vue Gantt](integrations/vue/quick-start.md) 封装（推荐用于 PRO 与评估项目）
+- 将核心 JavaScript Gantt 组件直接与 [React](integrations/react/js-gantt-react.md)、[Angular](integrations/angular/js-gantt-angular.md)、[Vue](integrations/vue/js-gantt-vue.md) 集成（社区版）
 
-要查看 DHTMLX Gantt 的实际效果，请访问在线示例:
+## 实时演示
 
-- [包含任务与链接的基本 Gantt 图表](https://docs.dhtmlx.com/gantt/samples/?sample=%2701_initialization/01_basic_init.html%27&filter=%27%27)
-- [自动排程](https://docs.dhtmlx.com/gantt/samples/?sample=%2702_extensions/12_auto_scheduling.html%27&filter=%27%27) 和 [关键路径](https://docs.dhtmlx.com/gantt/samples/?sample=%2702_extensions/03_critical_path.html%27&filter=%27%27)
-- 资源管理:[资源使用图](https://docs.dhtmlx.com/gantt/samples/?sample=%2711_resources/04_resource_usage_diagram.html%27&filter=%27%27)、[资源直方图](https://docs.dhtmlx.com/gantt/samples/?sample=%2711_resources/09_resource_histogram.html%27&filter=%27%27)
-- [查看所有示例](https://docs.dhtmlx.com/gantt/samples/)
+要查看 DHTMLX Gantt 的实际效果，请探索以下最受欢迎的演示示例：
 
----
+- [带任务和链接的基本甘特图](https://docs.dhtmlx.com/gantt/samples/?sample=%2701_initialization/01_basic_init.html%27&filter=%27%27)
+- [自动排程](https://docs.dhtmlx.com/gantt/samples/?sample=%2702_extensions/12_auto_scheduling.html%27&filter=%27%27) 与 [关键路径](https://docs.dhtmlx.com/gantt/samples/?sample=%2702_extensions/03_critical_path.html%27&filter=%27%27) 示例
+- 资源管理：[Diagram](https://docs.dhtmlx.com/gantt/samples/?sample=%2711_resources/04_resource_usage_diagram.html%27&filter=%27%27), [Histogram](https://docs.dhtmlx.com/gantt/samples/?sample=%2711_resources/09_resource_histogram.html%27&filter=%27%27)
+  图示：
+  
+- ![gantt_overview](/img/gantt_sample.png)
 
-## 核心能力
+查看 [All Samples](https://docs.dhtmlx.com/gantt/samples/?sample=%2701_initialization/01_basic_init.html%27&filter=%27%27) 以了解甘特图全部功能的完整范围。
 
-DHTMLX Gantt 结合了调度引擎、灵活时间线与资源工具。 
-以下部分介绍主要功能领域并指向更深入的文档。
+若要获取面向框架的起步点，请参阅 [React](https://github.com/DHTMLX/react-gantt-examples)、[Angular](https://github.com/DHTMLX/angular-gantt-examples) 和 [Vue](https://github.com/DHTMLX/vue-gantt-examples) 的示例仓库。
 
-### 项目调度
+:::note
+一些示例展示了 PRO 功能，因此在将它们用于 Community 版项目之前，请查看 [Community vs PRO 比较](guides/editions-comparison.md)。
+:::
 
-DHTMLX Gantt 的调度引擎理解项目结构与工作时间:
+## 开发者资源
 
-- [任务类型](guides/task-types.md) 与 [依赖关系](guides/dependencies.md):三类核心任务（普通任务、汇总任务、里程碑）
-- 项目/任务/资源级别的 [工作时间日历](guides/working-time/)
-- [自动排程](guides/auto-scheduling/) 与 [关键路径](guides/critical-path/)，用于重新计算计划与识别影响项目完工日期的关键任务
+- [安装指南](guides/installation.md)，涵盖 Community、试用和 PRO 设置流程
+- [社区版 vs PRO 比较](guides/editions-comparison.md)，了解各版本之间的功能差异
+- 社区版 JavaScript Gantt 的公开 [npm 包](https://www.npmjs.com/package/dhtmlx-gantt)
+- [GitHub 仓库](https://github.com/DHTMLX/gantt)， Community 版源代码和问题跟踪
+- [API 参考](api/api-overview.md) 以及 [示例](https://docs.dhtmlx.com/gantt/samples/?sample=%2701_initialization/01_basic_init.html%27&filter=%27%27) 的实现细节
+- [更新内容](whats-new.md) 及版本发布与迁移说明
 
-调度行为可根据您的规则或例如 MS Project 的逻辑进行调整。
+## Gantt 功能亮点
 
-### 时间线与数据表
+DHTMLX Gantt 包含一个调度引擎、一个灵活的时间线，以及资源工具。
 
-组件由左侧数据表与右侧可缩放时间轴组成，两部分都可以高度自定义:
+### 项目排程
 
-- 支持额外表格、右侧面板、自定义区域的灵活 [布局](guides/layout-config/)
-- 支持内联编辑、[多选](guides/multiselection/)、拖拽和键盘导航的 [列配置](guides/specifying-columns/)
-- 带有 [标记线](guides/markers/) 与 [高亮时间区块](guides/highlighting-time-slots/) 的可自定义 [时间轴](guides/configuring-time-scale/)
+其核心的调度引擎处理项目结构和工作时间。它涵盖：
 
-### 高级项目控制
+- [任务类型与依赖关系](guides/task-types.md)。
+- [工作时间配置](guides/working-time.md)，包括任务日历、项目日历，以及资源特定日历（PRO 版本）。
+- [自动排程](guides/auto-scheduling.md) 用于重新计算计划（PRO 版本）。
+- [关键路径](guides/critical-path.md) 用于突出显示决定项目完成日期的任务（PRO 版本）。
 
-实现更深入的项目跟踪:
+### 网格和时间线
 
-- [基线](guides/inbuilt-baselines/#baselines) 与 [截止日期](guides/inbuilt-baselines/#deadlines-and-constraints)
-- [未排程任务](guides/unscheduled-tasks/) 与 [拆分任务](guides/split-tasks/)
-- [撤销/重做](guides/undo-redo) 编辑历史
+该组件左侧为数据网格，右侧为可缩放的时间线。两部分都可被广泛配置：
 
-### 资源与工作量管理（PRO）
+- [灵活布局](guides/layout-config.md)，可添加额外网格、右侧列和自定义面板。
+- [可配置列](guides/specifying-columns.md)，支持内联编辑、拖放以及键盘导航，外加 [多选](guides/multiselection.md)（PRO 版本）。
+- [可定制的时间尺度](guides/configuring-time-scale.md)，具标记和高亮时间段。
 
-PRO 版本增加完整的资源管理层:
+### 高级项目控制（PRO）
 
-- 任务的 [资源分配](guides/resource-management/#assigningresources)
-- [资源直方图](guides/resource-management/#resource-histogram) 与 [资源负载图](guides/resource-management/#resourceloaddiagram)
-- 按资源对任务进行 [分组](guides/resource-management/#balancingresourceload)
+对于需要超越简单时间线的团队，DHTMLX Gantt 的 PRO 版本提供用于详细项目跟踪的工具：
 
-它将 Gantt 图扩展为应用内的轻量级资源管理工具。
+- [基线](guides/inbuilt-baselines.md#baselines) 与 [截止日期](guides/inbuilt-baselines.md#deadlines-and-constraints) 用于比较计划日期与当前日期。
+- [未排程任务](guides/unscheduled-tasks.md) 与 [拆分任务](guides/split-tasks.md) 用于处理未完成、被中断或分阶段的工作。
 
-### 导出与生态系统
+### 资源与工作负载管理（PRO）
 
-DHTMLX Gantt 可与外部系统集成并支持多种导出/导入格式:
+PRO 版还新增了专门的资源层，将甘特图变成一个覆盖任务排程和工作负载可视性的规划界面。它包括：
 
-- 可导出为 [PDF/PNG](guides/export/) 与 [Excel](guides/excel/)（含 [Node.js 导出模块](guides/export-requirements/)）
-- 可与 [MS Project](guides/export-msproject/) 和 [Primavera](guides/export-primavera/) 互通（通过服务导出）
+- [资源分配](guides/resource-management.md#assigningresources) 将资源与任务关联以实现精确排程。
+- [资源直方图](guides/resource-management.md#resource-histogram) 和 [资源负载图](guides/resource-management.md#resourceloaddiagram) 用于可视化团队工作量。
+- [按资源分组任务](guides/resource-management.md#balancingresourceload) 以跟踪工作量、发现冲突并平衡团队。
 
----
+### 导出和生态系统
 
-## 前端与后端集成
+团队通常需要在平台之间迁移、保留本地备份，或在其他地方进行分析。DHTMLX Gantt 通过支持以下输出格式与外部工具集成：
 
-### 前端集成
+- 导出为 [PDF/PNG](guides/export.md) 和 [Excel](guides/excel.md)，包括一个 [Node.js 导出模块](guides/export-requirements.md)。
+- 通过受支持的导出服务导出/导入到 [MS Project](guides/export-msproject.md) 和 [Primavera](guides/export-primavera.md)。
 
-DHTMLX Gantt 是框架无关的原生 JavaScript 组件，可在所有现代浏览器中运行，可用方式包括:
+### 交互与编辑
 
-- 独立的 JS 组件
-- 在 [React](integrations/react)、[Angular](integrations/angular/)、[Vue](integrations/vue/、[Svelte](integrations/svelte/howtostart-svelte) 中封装使用
+用户可以直接在图表中编辑数据，而不仅仅是查看。通过以下方式支持：
 
-针对 **React**:
+- 可配置的 [Lightbox 编辑器](guides/default-edit-form.md)，用于查看和编辑任务详细信息，支持自定义字段和按钮。
+- [快速信息](guides/quick-info.md) 弹出框和 [工具提示](guides/tooltips.md)，在不打开完整表单的情况下展示任务详情。
+- [拖放任务创建与选择](guides/advanced-dnd.md)，以及 [鼠标拖动滚动时间线](api/config/drag_timeline.md)。
+- [键盘导航](guides/keyboard-navigation.md) 与 [无障碍支持](guides/accessibility.md)。
+- [撤销/重做历史](guides/undo-redo.md)，用于安全编辑。
 
-- 使用 [官方 ReactGantt 封装](integrations/react)，以声明式 props 管理 Gantt（推荐方式）
-- 使用 [低级 React 集成](integrations/react/quick-start/) 以自主管理初始化、销毁与数据流
+### 自定义与样式
 
-针对 **Angular / Vue / Svelte**，可参考各自的 "How to start" 指南构建轻量封装组件。
+图表的外观可以在各个层级上进行调整，从完整主题到单个任务条，通过：
 
-### 后端集成
+- 基于 CSS 变量的一组内置 [皮肤](guides/skins.md)，支持 [深度自定义](guides/custom-skins.md) 和创建新主题。
+- [模板](guides/common-configuration.md#gantttemplatesobject) 用于覆盖任务、链接和网格单元的呈现。
+- 细粒度的 [任务着色](guides/colouring-tasks.md) 和 [链接样式](guides/colouring-lines.md)，以在视觉上突出显示特定项。
+- [本地化](guides/localization.md) 支持界面语言和日期/时间格式。
 
-在后端，Gantt 通过 REST 风格的 API 通信:
+## 版本与许可
 
-- 数据通常以 [JSON（任务、链接、资源、分配）](guides/loading/) 形式加载与保存
-- 内置 [DataProcessor](guides/server-side/) 可辅助处理增删改操作的路由
-- 针对 [Node.js](integrations/node/howtostart-nodejs/)、[.NET Core](integrations/dotnet/howtostart-dotnet-core/)、[Laravel](integrations/php/howtostart-php-laravel/) 等后端框架均提供示例教程
+DHTMLX Gantt 提供两种版本：**Community（社区版）** 和 **PRO**。您可以从免费的 Community 版开始，如后续需要更多功能、官方支持以及一个全面维护的甘特图基础，可以升级到 PRO 版。也可以直接通过 **官方试用** 或购买许可来开启 PRO 版。选择以下选项之一开始使用 DHTMLX Gantt：
 
-因此，Gantt 易于集成进已有系统或新的微服务。
+- **[Community edition](https://dhtmlx.com/docs/products/dhtmlxGantt/open-source/)。** 免费并基于 MIT 许可，涵盖 DHTMLX Gantt v10+ 的核心交互式甘特图特色。
+- **[Official trial](https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml)。** 你可以评估完整的 PRO 功能集，并在试用期内获得技术支持。
+- **[PRO edition](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing)。** 适用于生产环境，包含高级规划功能、官方支持和商业许可。
 
----
+要查看各版本之间的具体功能差异，请查阅 [社区版 vs PRO 比较](guides/editions-comparison.md)。要了解各选项的安装流程，请参阅 [安装指南](guides/installation.md)。 
+
+:::note
+如果您正在从早期的 GPL 版本迁移，请使用 [迁移指南](migration.md)。DHTMLX Gantt v10 及更高版本不再基于 GPL 发布；GPL v2 仅适用于更早的版本。
+:::
+
+## AI 编码工具
+
+对于 AI 辅助开发，请从专为编码助手创建的 DHTMLX Gantt 指南开始：
+
+- [AI Tools guide](integrations/ai-tools.md)
+- [DHTMLX MCP Server guide](integrations/ai-tools/mcp-server.md)
+- [Agent Skills guide](integrations/ai-tools/agent-skills.md)
+- [Lovable AI integration guide](integrations/ai-tools/lovable-ai.md)
+
+## 后端集成
+
+DHTMLX Gantt 允许通过在服务器上实现 RESTful API 来连接任意后端：
+
+- 数据通常以 JSON 形式加载和保存，用于 [任务](guides/loading.md)、[链接](guides/loading.md)、[资源](guides/resource-management.md) 与 [分配](guides/resource-management.md#connecting-resources-to-tasks)。
+- 内置的 [DataProcessor](guides/server-side.md) 有助于将创建、更新和删除操作路由到您的服务器。
+- 针对流行的后端平台和框架有教程（[Node.js](integrations/node/howtostart-nodejs.md)、[.NET Core](integrations/dotnet/howtostart-dotnet-core.md)、[Laravel](integrations/php/howtostart-php-laravel.md) 等），涵盖 CRUD 操作以及将 Gantt 与数据库同步的最佳实践。
 
 ## 下一步
 
-若您刚开始使用:
+如果您刚刚入门，请按以下步骤进行：
 
-1. 选择并完成适用于您框架的 [入门指南](#quick-start-by-framework)。 
-2. 配置 [表格列](guides/specifying-columns/)、[工作时间日历](guides/working-time/)、[时间轴](guides/configuring-time-scale/) 与 [编辑行为](guides/default-edit-form/)。 
-3. [连接后端](integrations/howtostart-guides/#how-to-start-with-gantt-on-server-side)，设置 [DataProcessor](guides/server-side/#customrouting) 与任务/链接/资源的 REST 接口。 
-4. 在需要深度自定义时，查阅 [Guides](guides/) 与 [API 文档](api/api-overview/)。
+1. 参阅 [如何入门指南](integrations/howtostart-guides.md)，了解您首选的前端框架或纯 JavaScript。
+2. 配置 [网格列](guides/specifying-columns.md)、[工作时间日历](guides/working-time.md)、[时间尺度](guides/configuring-time-scale.md) 以及 [编辑行为](guides/default-edit-form.md)。
+3. 连接后端，设置 [DataProcessor](guides/server-side.md) 以及任务、链接和资源的应用端点。
+4. 探索 [Guides](guides.md) 和 [API 参考](api/api-overview.md)，以实现更深层的自定义，例如模板、事件和扩展。
 
-若您正在从旧版本升级，请查看 [更新日志](whats-new/)，了解最新功能与迁移指南。
+如果您已经在使用 DHTMLX Gantt 并且正在从早期版本升级，请查看 [What's New](whats-new.md) 以获取发行说明和最新功能的摘要，以及迁移指南。

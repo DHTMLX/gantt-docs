@@ -1,47 +1,46 @@
 ---
-title: "Migrating from DevExpress to DHTMLX Gantt"
-sidebar_label: "From DevExpress"
+title: "DevExpress에서 DHTMLX Gantt로 마이그레이션하기"
+sidebar_label: "DevExpress에서"
 ---
 
 :::note
-The complete demo source code is available on GitHub: [https://github.com/DHTMLX/gantt-migrating-from-devexpress](https://github.com/DHTMLX/gantt-migrating-from-devexpress).
+완전한 데모 소스 코드는 GitHub에서 확인 가능: [https://github.com/DHTMLX/gantt-migrating-from-devexpress](https://github.com/DHTMLX/gantt-migrating-from-devexpress).
 :::
 
-# Migrating from DevExpress Gantt to DHTMLX Gantt
+# DevExpress Gantt에서 DHTMLX Gantt로 마이그레이션하기
 
-## Introduction
+## 소개
 
-This guide will walk you through the process of migrating an existing application from [DevExpress Gantt](https://js.devexpress.com/React/Documentation/Guide/UI_Components/Gantt/Overview/) to [DHTMLX Gantt](https://dhtmlx.com/docs/products/dhtmlxGantt/). We'll cover all necessary steps including database schema changes, server-side API modifications, and client-side code updates.
+이 가이드는 기존 애플리케이션을 [DevExpress Gantt](https://js.devexpress.com/React/Documentation/Guide/UI_Components/Gantt/Overview/)에서 [DHTMLX Gantt](https://dhtmlx.com/docs/products/dhtmlxGantt/)로 마이그레이션하는 과정에 대해 안내합니다. 데이터베이스 스키마 변경, 서버 측 API 수정, 클라이언트 코드 업데이트 등 필요한 모든 단계를 다룹니다.
 
-## Prerequisites
+## 선행 조건
 
-Before starting the migration, ensure you have:
+마이그레이션을 시작하기 전에 다음을 확인하세요:
 
-- An existing working application using DevExpress Gantt
-- Node.js (>= 20.0.0) installed
-- MySQL database with DevExpress data structure
-- Basic knowledge of Express.js, React, and TypeScript
+- DevExpress Gantt를 사용 중인 기존 애플리케이션
+- Node.js (>= 20.0.0) 설치
+- DevExpress 데이터 구조를 사용하는 MySQL 데이터베이스
+- Express.js, React, TypeScript에 대한 기본 지식
 
-## Step 1: Database Migration
+## 1단계: 데이터베이스 마이그레이션
 
-### Understanding DevExpress Schema
+### DevExpress 스키마 이해하기
 
-If you followed the DevExpress demo setup, you should
-have two tables: `devexpress_tasks` and `devexpress_dependencies`.
+DevExpress의 데모 설정을 따라왔다면 두 개의 테이블이 있을 가능성이 큽니다: `devexpress_tasks`와 `devexpress_dependencies`.
 
-The `devexpress_tasks` table structure:
+`devexpress_tasks` 테이블 구조:
 
-![DevExpress tasks table](/img/migrating/devexpress/devexpress-tasks-table.png)
+![DevExpress 작업 테이블](/img/migrating/devexpress/devexpress-tasks-table.png)
 
-The `devexpress_dependencies` table structure:
+`devexpress_dependencies` 테이블 구조:
 
-![DevExpress links table](/img/migrating/devexpress/devexpress-links-table.png)
+![DevExpress 연결 테이블](/img/migrating/devexpress/devexpress-links-table.png)
 
-This two-table structure is already similar to DHTMLX's approach, making the migration straightforward.
+이 두 테이블 구조는 이미 DHTMLX의 접근 방식과 유사하여 마이그레이션이 비교적 쉽습니다.
 
-### Create DHTMLX Tables
+### DHTMLX 테이블 생성
 
-Create two new tables compatible with DHTMLX Gantt:
+DHTMLX Gantt와 호환되는 두 개의 새로운 테이블을 생성합니다:
 
 ```sql
 CREATE TABLE IF NOT EXISTS gantt_tasks (
@@ -63,13 +62,13 @@ CREATE TABLE IF NOT EXISTS gantt_links (
 );
 ```
 
-**Note:** DHTMLX Gantt will automatically calculate `duration` based on `start_date` and `end_date`.
+**참고:** DHTMLX Gantt는 시작 날짜와 종료 날짜를 기반으로 자동으로 `duration`을 계산합니다.
 
-### Migrate Existing Data
+### 기존 데이터 마이그레이션
 
-Now migrate your existing DevExpress data to the new DHTMLX tables.
+이제 기존 DevExpress 데이터를 새 DHTMLX 테이블로 마이그레이션합니다.
 
-**Migrate tasks:**
+**작업 마이그레이션:**
 
 ```sql
 INSERT INTO gantt_tasks (id, text, start_date, end_date, progress, parent)
@@ -83,9 +82,9 @@ SELECT
 FROM devexpress_tasks;
 ```
 
-**Migrate links (dependencies):**
+**링크(의존성) 마이그레이션:**
 
-DevExpress already stores dependencies in a structured format in the `devexpress_dependencies` table, which makes migration straightforward:
+DevExpress는 의존성을 `devexpress_dependencies` 테이블에 구조화된 형식으로 저장하고 있어 마이그레이션이 간단합니다:
 
 ```sql
 INSERT INTO gantt_links (id, source, target, type)
@@ -103,87 +102,85 @@ SELECT
 FROM devexpress_dependencies;
 ```
 
-You can verify that the data was migrated correctly by running the following commands:
+다음 명령을 실행하여 데이터가 올바르게 마이그레이션되었는지 확인할 수 있습니다:
 
 ```sql
 SELECT * FROM gantt_tasks;
 SELECT * FROM gantt_links;
 ```
 
-You should see all your tasks and links properly transferred with the correct field mappings.
+작업과 링크가 올바르게 이전되었고 필드 매핑이 정확한지 확인하세요.
 
-### Mapping DevExpress Task Fields to DHTMLX Gantt
+### DevExpress 작업 필드를 DHTMLX Gantt로 매핑
 
-| DevExpress Field | DHTMLX Field | Notes                                                                            |
+| DevExpress Field | DHTMLX Field | 비고                                                                             |
 | ---------------- | ------------ | -------------------------------------------------------------------------------- |
 | `id`             | `id`         | Task ID                                                                          |
 | `title`          | `text`       | Task name                                                                        |
 | `start`          | `start_date` | Task start date and time                                                         |
 | `end`            | `end_date`   | Task end date and time                                                           |
-| `progress`       | `progress`   | DevExpress: 0-100 (integer), DHTMLX: 0-1 (float). Divide by 100 during migration |
-| `parentId`       | `parent`     | Parent task ID. NULL values → 0 for root tasks                                   |
+| `progress`       | `progress`   | DevExpress: 0-100 (정수), DHTMLX: 0-1 (부동소수점). 마이그레이션 중 100으로 나누기   |
+| `parentId`       | `parent`     | Parent task ID. NULL 값 → 루트 작업의 경우 0                                       |
 
 More about task properties: [Task Properties](guides/task-properties.md).
 
-### Mapping DevExpress Dependency Fields to DHTMLX Links
+### DevExpress 의존성 필드를 DHTMLX Links로 매핑
 
-| DevExpress Field | DHTMLX Field | Notes                                                                                    |
-| ---------------- | ------------ | ---------------------------------------------------------------------------------------- |
-| `id`             | `id`         | Link ID                                                                                  |
-| `predecessorId`  | `source`     | ID of the task that the dependency starts from                                           |
-| `successorId`    | `target`     | ID of the task that the dependency points to                                             |
-| `type`           | `type`       | Dependency type. DevExpress uses numbers (0-3), DHTMLX uses strings ("0"-"3") by default |
+| DevExpress Field | DHTMLX Field | 비고                                                                                        |
+| ---------------- | ------------ | ----------------------------------------------------------------------------------------    |
+| `id`             | `id`         | Link ID                                                                                     |
+| `predecessorId`  | `source`     | 의존성이 시작되는 작업의 ID                                                                   |
+| `successorId`    | `target`     | 의존성이 가리키는 작업의 ID                                                                   |
+| `type`           | `type`       | 의존성 유형. DevExpress는 숫자(0-3)를 사용하고, 기본적으로 DHTMLX는 문자열("0"-"3")을 사용합니다 |
 
 More about link properties: [Link Properties](guides/link-properties.md).
 
-## Step 2: Backend Migration (server.js)
+## 2단계: 백엔드 마이그레이션 (server.js)
 
-### Remove DevExpress Endpoints
+### DevExpress 엔드포인트 제거
 
-Delete the following DevExpress-specific endpoints from your `server.js`:
+다음 DevExpress 전용 엔드포인트를 `server.js`에서 삭제합니다:
 
-- `app.get('/api/tasks', ...)` - DevExpress tasks loading endpoint
-- `app.post('/api/tasks', ...)` - Create task endpoint
-- `app.put('/api/tasks/:id', ...)` - Update task endpoint
-- `app.delete('/api/tasks/:id', ...)` - Delete task endpoint
-- `app.get('/api/dependencies', ...)` - DevExpress dependencies loading endpoint
-- `app.post('/api/dependencies', ...)` - Create dependency endpoint
-- `app.put('/api/dependencies/:id', ...)` - Update dependency endpoint
-- `app.delete('/api/dependencies/:id', ...)` - Delete dependency endpoint
+- `app.get('/api/tasks', ...)` - DevExpress 작업 로딩 엔드포인트
+- `app.post('/api/tasks', ...)` - 작업 생성 엔드포인트
+- `app.put('/api/tasks/:id', ...)` - 작업 업데이트 엔드포인트
+- `app.delete('/api/tasks/:id', ...)` - 작업 삭제 엔드포인트
+- `app.get('/api/dependencies', ...)` - DevExpress 의존성 로딩 엔드포인트
+- `app.post('/api/dependencies', ...)` - 의존성 생성 엔드포인트
+- `app.put('/api/dependencies/:id', ...)` - 의존성 업데이트 엔드포인트
+- `app.delete('/api/dependencies/:id', ...)` - 의존성 삭제 엔드포인트
 
-Also remove the CustomStore-related response format handling.
+또한 CustomStore 관련 응답 형식 처리를 제거합니다.
 
-### Install DHTMLX Gantt Packages
+### DHTMLX Gantt 패키지 설치
 
-Remove DevExpress dependencies:
+DevExpress 의존성을 제거합니다:
 
 ```bash
 npm uninstall devextreme devextreme-react
 ```
 
-Install DHTMLX React Gantt following the [installation guide](guides/installation.md).
-
-For this tutorial, we will use the trial version of DHTMLX React Gantt:
+설치 가이드를 따라 DHTMLX React Gantt를 설치합니다:
 
 ```bash
 npm install @dhtmlx/trial-react-gantt
 ```
 
-Install date formatting library for MySQL DATETIME conversion:
+MySQL DATETIME 변환을 위한 날짜 형식 라이브러리를 설치합니다:
 
 ```bash
 npm install date-format-lite
 ```
 
-### Add Data Loading Endpoint
+### 데이터 로딩 엔드포인트 추가
 
-Add the GET endpoint to load data in DHTMLX format. Import the `date-format-lite` library at the top of your `server.js`:
+백엔드에서 DHTMLX 포맷 데이터를 로드하는 GET 엔드포인트를 추가합니다. 맨 위에 `date-format-lite` 라이브러리를 임포트합니다:
 
 ```js
 import dateFormat from 'date-format-lite';
 ```
 
-Then add the data loading endpoint:
+다음처럼 데이터 로딩 엔드포인트를 추가합니다:
 
 ```js
 // GET /load - Load all tasks and links
@@ -212,13 +209,13 @@ app.get('/load', async (req, res) => {
 });
 ```
 
-DevExpress returns separate arrays, DHTMLX expects `{ data: [...], links: [...] }`.
+DevExpress는 별도의 배열을 반환하는 반면, DHTMLX는 `{ data: [...], links: [...] }` 형식을 기대합니다.
 
-### Add CRUD Endpoints for Tasks and Links
+### Tasks 및 Links에 대한 CRUD 엔드포인트 추가
 
-DHTMLX React Gantt uses a custom save handler to synchronize data with the server. Each operation (create, update, delete) is sent with the appropriate HTTP method.
+DHTMLX React Gantt는 서버와 데이터를 동기화하기 위해 커스텀 저장 핸들러를 사용합니다. 생성, 업데이트, 삭제 각 작업은 적절한 HTTP 메서드로 전송됩니다.
 
-Add handlers for task operations:
+작업 작업에 대한 핸들러를 추가합니다:
 
 ```js
 // POST /save/task - Create a new task
@@ -266,7 +263,7 @@ app.delete('/save/task/:id', async (req, res) => {
 });
 ```
 
-Add handlers for link (dependency) operations:
+의존성(링크) 작업에 대한 핸들러도 추가합니다:
 
 ```js
 // POST /save/link - Create new link
@@ -317,9 +314,9 @@ app.delete('/save/link/:id', async (req, res) => {
 });
 ```
 
-### Add Helper Functions
+### 유틸리티 함수 추가
 
-Add utility functions to process data and send responses:
+데이터를 처리하고 응답을 보내는 유틸리티 함수들을 추가합니다:
 
 ```js
 // Helper: Parse task data from request
@@ -355,9 +352,9 @@ function sendResponse(res, action, tid = null, error = null) {
 }
 ```
 
-### Sanitize Task Data (XSS Protection)
+### Task 데이터 정 sanitization (XSS 보호)
 
-Gantt charts render free-text fields such as a task's `text`, and any HTML in that text can become an XSS vector. Always sanitize user input on the backend before storing it — clean free-text fields in the `getTask` helper:
+그랜트 차트는 작업의 텍스트(text)와 같은 자유 텍스트 필드를 렌더링하며, 해당 텍스트에 포함된 HTML은 XSS 벡터가 될 수 있습니다. 입력 데이터를 백엔드에서 저장하기 전에 항상 정화하십시오 — `getTask` 헬퍼에서 자유 텍스트 필드를 정화합니다:
 
 ```bash
 npm install isomorphic-dompurify
@@ -369,24 +366,24 @@ import DOMPurify from 'isomorphic-dompurify';
 function getTask(data) {
   return {
     text: DOMPurify.sanitize(data.text),
-    // ...the remaining fields unchanged
+    // ...나머지 필드는 변경 없이
   };
 }
 ```
 
-If you add custom cell or tooltip renderers that output raw HTML, escape the values there as well. For the full set of recommendations — Content Security Policy and SQL-injection guidance — see the [Application Security](guides/app-security.md) guide.
+커스텀 셀 또는 도구 툴팁 렌더러를 추가하여_raw HTML_을 출력하는 경우에도 값은 해당 위치에서 이스케이프하십시오. 전체 권고 사항은 — 콘텐츠 보안 정책(Content Security Policy) 및 SQL 주입 가이드(SQL-injection guidance) — 애플리케이션 보안 안내를 참고하세요: [Application Security](guides/app-security.md)
 
 ---
 
-## Step 3: Frontend Migration
+## 3단계: 프런트엔드 마이그레이션
 
-### Remove DevExpress Components and Services
+### DevExpress 컴포넌트 및 서비스 제거
 
-Delete CustomStore service file (`src/services/dataService.ts`) - DHTMLX React Gantt doesn't use CustomStore
+CustomStore 서비스 파일(`src/services/dataService.ts`)을 삭제합니다 — DHTMLX React Gantt는 CustomStore를 사용하지 않습니다.
 
-Remove DevExpress CSS links from `index.html`
+`index.html`에서 DevExpress CSS 링크를 제거합니다
 
-If you added DevExpress CSS links in your `index.html`, remove them:
+`index.html`에 DevExpress CSS 링크를 추가한 경우 제거합니다:
 
 ```html
 <!-- Remove these lines -->
@@ -394,15 +391,15 @@ If you added DevExpress CSS links in your `index.html`, remove them:
 <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/25.2.4/css/dx-gantt.min.css" />
 ```
 
-DHTMLX React Gantt includes its own styles, which are imported directly in the component:
+DHTMLX React Gantt에는 자체 스타일이 포함되어 있으며, 컴포넌트에 직접 가져옵니다:
 
 ```typescript
 import '@dhtmlx/trial-react-gantt/dist/react-gantt.css';
 ```
 
-### Update Vite Configuration
+### Vite 구성 업데이트
 
-Update your `vite.config.ts` to proxy API requests to the backend server. This is important for development mode:
+백엔드 서버로 API 요청을 프록시하도록 `vite.config.ts`를 업데이트합니다. 개발 모드에서 중요합니다:
 
 ```typescript
 import { defineConfig } from 'vite';
@@ -427,9 +424,9 @@ export default defineConfig({
 });
 ```
 
-### Update package.json
+### package.json 업데이트
 
-Make sure your `package.json` has the correct dependencies:
+다음 의존성이 정확한지 확인합니다:
 
 ```json
 "dependencies": {
@@ -460,9 +457,9 @@ Make sure your `package.json` has the correct dependencies:
 }
 ```
 
-### Update src/App.tsx
+### src/App.tsx 업데이트
 
-Replace your DevExpress Gantt component in `src/App.tsx` with DHTMLX React Gantt:
+DevExpress Gantt 컴포넌트를 DHTMLX React Gantt로 교체합니다:
 
 ```typescript
 import { useCallback, useMemo, useRef } from 'react';
@@ -539,41 +536,40 @@ export default App;
 
 ---
 
-### Running the Application
+### 애플리케이션 실행
 
-For development mode, you need to run two processes:
+개발 모드에서는 두 개의 프로세스를 실행해야 합니다:
 
-Terminal 1 - Backend (Express):
+터미널 1 - 백엔드(Express):
 
 ```bash
 npm run server
 ```
 
-This starts the API server on `http://localhost:1337` (or your configured PORT from `.env`)
+이 명령은 API 서버를 `http://localhost:1337`에서 시작합니다(또는 `.env`에 구성된 PORT).
 
-You should see:
+다음과 같은 메시지를 확인할 수 있습니다:
 
 ```
 Server is running on port 1337
 ```
 
-Terminal 2 - Frontend (Vite):
+터미널 2 - 프런트엔드(Vite):
 
 ```bash
 npm run dev
 ```
 
-This starts the Vite dev server on `http://localhost:5173`. Open your browser and
-navigate to `http://localhost:5173`. Vite will proxy API requests to the Express backend
-automatically.
+이 명령은 Vite 개발 서버를 `http://localhost:5173`에서 시작합니다. 브라우저를 열고
+`http://localhost:5173`로 접속합니다. Vite가 API 요청을 Express 백엔드로 자동으로 프록시합니다.
 
-You should see the DHTMLX Gantt chart with your data loaded from the database:
+데이터베이스에서 로드된 데이터로 채워진 DHTMLX Gantt 차트를 확인할 수 있습니다:
 
 ![Gantt with data loaded](/img/migrating/devexpress/dhtmlx-gantt-data-loaded.png)
 
-### Explore DHTMLX Gantt Features
+### DHTMLX Gantt 기능 탐색
 
-- [DHTMLX Gantt documentation](/)
-- [API reference](/api/api-overview/)
-- [React Gantt configuration](/integrations/react/configuration-props.md)
-- [React Gantt integration](/integrations/react.md)
+- [DHTMLX Gantt 문서](/)
+- [API 레퍼런스](/api/api-overview/)
+- [React Gantt 구성](integrations/react/configuration-props.md)
+- [React Gantt 통합](integrations/react.md)

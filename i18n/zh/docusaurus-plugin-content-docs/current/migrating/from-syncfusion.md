@@ -1,41 +1,41 @@
 ---
-title: "Migrating from Syncfusion to DHTMLX Gantt"
-sidebar_label: "From Syncfusion"
+title: "从 Syncfusion Gantt 迁移到 DHTMLX Gantt"
+sidebar_label: "从 Syncfusion"
 ---
 
 :::note
-The complete demo source code is available on GitHub: [https://github.com/DHTMLX/gantt-migrating-from-syncfusion](https://github.com/DHTMLX/gantt-migrating-from-syncfusion).
+完整的演示源代码可在 GitHub 上获得： [https://github.com/DHTMLX/gantt-migrating-from-syncfusion](https://github.com/DHTMLX/gantt-migrating-from-syncfusion).
 :::
 
-# Migrating from Syncfusion Gantt to DHTMLX Gantt
+# 从 Syncfusion Gantt 迁移到 DHTMLX Gantt
 
-## Introduction
+## 简介
 
-This guide will walk you through the process of migrating an existing application from [Syncfusion Gantt](https://www.syncfusion.com/javascript-ui-controls/js-gantt-chart) to [DHTMLX Gantt](https://dhtmlx.com/docs/products/dhtmlxGantt/). We'll cover all necessary steps including database schema changes, server-side API modifications, and client-side code updates.
+本指南将带您完成将现有应用从 [Syncfusion Gantt](https://www.syncfusion.com/javascript-ui-controls/js-gantt-chart) 迁移到 [DHTMLX Gantt](https://dhtmlx.com/docs/products/dhtmlxGantt/) 的过程。我们将覆盖所有必要的步骤，包括数据库模式更改、服务器端 API 修改，以及客户端代码更新。
 
-## Prerequisites
+## 前提条件
 
-Before starting the migration, ensure you have:
+在开始迁移之前，请确保您具备：
 
-- An existing working application using Syncfusion Gantt
-- Node.js (>= 20.0.0) installed
-- MySQL database with Syncfusion data structure
-- Basic knowledge of Express.js and JavaScript
+- 已有使用 Syncfusion Gantt 的工作应用
+- 安装了 Node.js（>= 20.0.0）
+- 具有 Syncfusion 数据结构的 MySQL 数据库
+- 对 Express.js 和 JavaScript 的基础了解
 
-## Step 1: Database Migration
+## 步骤 1：数据库迁移
 
-### Understanding Current Schema
+### 理解当前模式
 
-If you followed the Syncfusion demo setup, you should have one table: `syncfusion_tasks`.
+如果您遵循了 Syncfusion 演示的设置，您应该只有一个表：`syncfusion_tasks`。
 
-The `syncfusion_tasks` table structure:
+`syncfusion_tasks` 表的结构：
 
 ![Syncfusion tasks table](/img/migrating/syncfusion/syncfusion-tasks-table.png)
 ![Syncfusion tasks table](/img/migrating/syncfusion/syncfusion-tasks-table2.png)
 
-### Create DHTMLX Tables
+### 创建 DHTMLX 表
 
-Create two new tables compatible with DHTMLX Gantt:
+创建两个与 DHTMLX Gantt 兼容的新表：
 
 ```sql
 CREATE TABLE IF NOT EXISTS `gantt_tasks` (
@@ -61,11 +61,11 @@ CREATE TABLE IF NOT EXISTS `gantt_links` (
 );
 ```
 
-### Migrate Existing Data
+### 迁移现有数据
 
-Now migrate your existing Syncfusion data to the new DHTMLX tables.
+现在将现有的 Syncfusion 数据迁移到新的 DHTMLX 表中。
 
-**Migrate tasks:**
+**迁移任务：**
 
 ```sql
 INSERT INTO gantt_tasks (id, text, start_date, end_date, duration, progress, parent, notes, open)
@@ -74,44 +74,44 @@ SELECT
     TaskName,                                           -- TaskName → text
     StartDate,
     COALESCE(EndDate,
-        DATE_ADD(StartDate, INTERVAL Duration DAY)),   -- Calculate end_date if missing
+        DATE_ADD(StartDate, INTERVAL Duration DAY)),   -- 如果缺失则计算 end_date
     COALESCE(Duration,
-        DATEDIFF(EndDate, StartDate)),                 -- Calculate duration if missing
-    COALESCE(Progress, 0) / 100,                       -- Convert percentage (0-100) to decimal (0-1)
-    COALESCE(ParentId, 0),                             -- ParentId → parent (0 for root tasks)
+        DATEDIFF(EndDate, StartDate)),                 -- 如果缺失则计算 duration
+    COALESCE(Progress, 0) / 100,                       -- 将百分比（0-100）转换为小数（0-1）
+    COALESCE(ParentId, 0),                             -- ParentId → parent（根任务为 0）
     info,                                              -- info → notes
     COALESCE(isExpand, TRUE)                           -- isExpand → open
 FROM syncfusion_tasks;
 ```
 
-**Migrate links (dependencies)**
+**迁移链接（依赖关系）**
 
-In Syncfusion Gantt's data structure, dependencies are stored as strings in the `Predecessor` column:
+在 Syncfusion Gantt 的数据结构中，依赖关系以字符串形式存储在 `Predecessor` 列中：
 
-- Format examples: `"5"`, `"3,4"`, `"5FS+2"`, `"7SS-1,8FF+3"`, `"2FS-5 days"`
+- 格式示例：`"5"`、`"3,4"`、`"5FS+2"`、`"7SS-1,8FF+3"`、`"2FS-5 days"`
 
-In DHTMLX Gantt, tasks and links are stored in **separate tables**. Each link is a row with:
+在 DHTMLX Gantt 中，任务和链接存储在**分离的表中**。每个链接是一行，字段如下：
 
-- `id` - the link id
-- `source` - the id of a task that the dependency will start from
-- `target` - the id of a task that the dependency will end with.
-- `type` - the dependency type: `"0"` (FS), `"1"` (SS), `"2"` (FF), `"3"` (SF)
-- `lag` - optional task's lag
+- `id` - 链接ID
+- `source` - 依赖从哪一个任务开始
+- `target` - 依赖到哪一个任务结束
+- `type` - 依赖类型：`"0"`（FS）、`"1"`（SS）、`"2"`（FF）、`"3"`（SF）
+- `lag` - 可选的任务滞后值
 
-We'll implement a Node.js migration script to parse Syncfusion's string format and convert it to DHTMLX's structured format.
+我们将实现一个 Node.js 迁移脚本，用于解析 Syncfusion 的字符串格式并转换为 DHTMLX 的结构化格式。
 
-**Understanding Syncfusion Predecessor Format:**
+**理解 Syncfusion 先行格式（Predecessor）：**
 
-| Example        | Meaning                             | DHTMLX Equivalent               |
+| 示例 | 含义 | DHTMLX 等价 |
 | -------------- | ----------------------------------- | ------------------------------- |
-| `"5"`          | Task depends on task 5 (default FS) | `source: 5, type: "0"`          |
-| `"3,4"`        | Depends on tasks 3 AND 4            | Two separate links              |
-| `"5FS"`        | Finish-to-Start dependency          | `source: 5, type: "0"`          |
-| `"5FS+2"`      | FS with 2 days positive lag         | `source: 5, type: "0", lag: 2`  |
-| `"5FS-3"`      | FS with 3 days negative lag         | `source: 5, type: "0", lag: -3` |
-| `"2FS-5 days"` | FS with lag including "days" text   | `source: 2, type: "0", lag: -5` |
+| `"5"` | 任务依赖于任务 5（默认 FS） | `source: 5, type: "0"` |
+| `"3,4"` | 依赖于任务 3 和任务 4 | 两条独立的链接 |
+| `"5FS"` | Finish-to-Start 依赖 | `source: 5, type: "0"` |
+| `"5FS+2"` | FS 伴随 2 天正滞后 | `source: 5, type: "0", lag: 2` |
+| `"5FS-3"` | FS 伴随 3 天负滞后 | `source: 5, type: "0", lag: -3` |
+| `"2FS-5 days"` | FS 的滞后包含文本 "days" | `source: 2, type: "0", lag: -5` |
 
-Create a `migrate-dependencies.js` file and paste the following code into it:
+创建一个 `migrate-dependencies.js` 文件并粘贴以下代码：
 
 ```js
 import { pool } from './server.js';
@@ -124,15 +124,15 @@ const LINK_TYPE_MAP = {
 };
 
 /**
- * Parse a single predecessor string like "5FS+2" or "7SS-1 days"
- * @param {string} predecessor - Single predecessor string
- * @returns {object|null} - Parsed link object or null if invalid
+ * 解析单个前置字符串，如 "5FS+2" 或 "7SS-1 days"
+ * @param {string} predecessor - 单个前置字符串
+ * @returns {object|null} - 解析后的链接对象，若无效则返回 null
  */
 function parseSinglePredecessor(predecessor) {
   const clean = predecessor.trim();
 
-  // Regex pattern to match: TaskID [Type] [+/-Lag]
-  // Matches: "5", "5FS", "5FS+2", "7SS-1", "3FS+2 days", "8SS-1 days"
+  // 正则模式：TaskID [Type] [+/-Lag]
+  // 匹配："5"、"5FS"、"5FS+2"、"7SS-1"、"3FS+2 days"、"8SS-1 days"
   const pattern = /^(\d+)(FS|SS|FF|SF)?([\+\-]\d+)?(?:\s+days?)?$/i;
   const match = clean.match(pattern);
 
@@ -153,9 +153,9 @@ function parseSinglePredecessor(predecessor) {
 }
 
 /**
- * Parse a full predecessor string that may contain multiple dependencies
- * @param {string} predecessorString - Full predecessor string from database (e.g., "3,4FS+2,5SS-1")
- * @returns {array} - Array of link objects
+ * 解析一个可能包含多个依赖的完整前置字符串
+ * @param {string} predecessorString - 数据库中的完整前置字符串（如 "3,4FS+2,5SS-1"）
+ * @returns {array} - 链接对象数组
  */
 function parsePredecessors(predecessorString) {
   if (!predecessorString || predecessorString.trim() === '') {
@@ -181,7 +181,7 @@ async function migrateDependencies() {
   try {
     console.log('Starting dependency migration...\n');
 
-    // Step 1: Query all tasks that have predecessors
+    // 步骤 1：查询所有有前置的任务
     const [tasks] = await connection.query(
       'SELECT TaskID, TaskName, Predecessor FROM syncfusion_tasks WHERE Predecessor IS NOT NULL AND Predecessor != ""'
     );
@@ -191,7 +191,7 @@ async function migrateDependencies() {
     const linksToInsert = [];
     let skippedCount = 0;
 
-    // Step 2: Parse each task's predecessor string
+    // 步骤 2：解析每个任务的前置字符串
     for (const task of tasks) {
       const targetId = task.TaskID;
       const predecessorString = task.Predecessor;
@@ -203,7 +203,7 @@ async function migrateDependencies() {
         continue;
       }
 
-      // Step 3: Create link objects for insertion
+      // 步骤 3：为插入创建链接对象
       for (const link of links) {
         linksToInsert.push({
           source: link.source,
@@ -222,16 +222,16 @@ async function migrateDependencies() {
     console.log(`Links to create: ${linksToInsert.length}`);
     console.log(`Tasks skipped: ${skippedCount}\n`);
 
-    // Step 4: Insert links into database (with transaction)
+    // 步骤 4：将链接插入数据库（带事务）
     if (linksToInsert.length > 0) {
       await connection.beginTransaction();
 
       try {
-        // Clear existing links to avoid duplicates
+        // 清空现有链接以避免重复
         await connection.query('DELETE FROM gantt_links');
         console.log('Cleared existing links from gantt_links table');
 
-        // Insert each link
+        // 插入每个链接
         for (const link of linksToInsert) {
           await connection.query('INSERT INTO gantt_links (source, target, type, `lag`) VALUES (?, ?, ?, ?)', [
             link.source,
@@ -277,81 +277,81 @@ Then add a script to your `dhtmlx-demo/package.json`:
 }
 ```
 
-Run the migration:
+运行迁移：
 
 ```bash
 cd dhtmlx-demo
 npm run migrate-deps
 ```
 
-You can verify that the data was migrated correctly by running the following commands:
+您可以通过以下命令验证数据是否正确迁移：
 
 ```sql
 SELECT * FROM gantt_tasks;
 SELECT * FROM gantt_links;
 ```
 
-You should see all your tasks and links properly transferred with the correct field mappings.
+您应看到所有任务和链接已正确转移并具有正确的字段映射。
 
-### Mapping Syncfusion Task Fields to DHTMLX Gantt
+### 将 Syncfusion 任务字段映射到 DHTMLX Gantt
 
-| Syncfusion Field | DHTMLX Field    | Notes                                                                 |
+| Syncfusion Field | DHTMLX Field    | 备注                                                                 |
 | ---------------- | --------------- | --------------- | 
 | `TaskID`         | `id`            | Task id                                                               |
 | `TaskName`       | `text`          | Task name                                                       |
 | `StartDate`      | `start_date`    | Task start date                                                       |
-| `EndDate`        | `end_date`      | Task end date (calculated in DHTMLX if not provided)                  |
+| `EndDate`        | `end_date`      | Task end date（若未提供，在 DHTMLX 中计算）                  |
 | `Duration`       | `duration`      | Task duration                                                         |
-| `DurationUnit`   | _(config)_      | DHTMLX Gantt uses a global duration unit configured via `gantt.config.duration_unit`. During migration, it's recommended to normalize all durations to a single unit. If you want to have different duration units for different tasks, i.e. to show durations of some tasks in hours and some tasks in "days", you can use the [formatter module](guides/working-time.md#taskdurationindecimalformat).                     |
-| `Progress`       | `progress`      | Syncfusion: 0-100%, DHTMLX: 0-1 (decimal)                             |
-| `ParentId`       | `parent`        | Parent task ID (0 for root tasks)                                     |
-| `Predecessor`    | _(links table)_ | Syncfusion stores as string, DHTMLX uses separate `gantt_links` table |
-| `info` (notes)   | -         | Can be added as a custom column. Check this article for more information: [How to add a custom column in the grid](guides/how-to.md#how-to-add-a-custom-column-in-the-grid)                                            |
-| `isExpand`       | `open`          | Expand/collapse state for parent tasks                                |
-| `Indicators`     | `markers`       | DHTMLX uses `gantt.addMarker()` API. Learn more about [adding vertical markers](guides/markers.md)                                   |
+| `DurationUnit`   | _(config)_      | DHTMLX Gantt 使用通过 `gantt.config.duration_unit` 配置的全局持续时间单位。在迁移期间，建议将所有持续时间标准化为一个单位。如果要为不同任务使用不同的持续时间单位，例如某些任务显示为小时、某些为“天”，可使用 [formatter module](guides/working-time.md#taskdurationindecimalformat)。 |
+| `Progress`       | `progress`      | Syncfusion: 0-100%，DHTMLX: 0-1（小数）                             |
+| `ParentId`       | `parent`        | 父任务 ID（根任务为 0）                                     |
+| `Predecessor`    | _(links table)_ | Syncfusion 将其存为字符串，DHTMLX 使用单独的 `gantt_links` 表 |
+| `info` (notes)   | -         | 可作为自定义列添加。更多信息请参阅本文：[如何在网格中添加自定义列](guides/how-to.md#how-to-add-a-custom-column-in-the-grid)                                            |
+| `isExpand`       | `open`          | 父任务的展开/折叠状态                                |
+| `Indicators`     | `markers`       | DHTMLX 使用 `gantt.addMarker()` API。了解更多关于 [添加垂直标记](guides/markers.md) 的信息                                   |
 
-## Step 2: Backend Migration (server.js)
+## 步骤 2：后端迁移（server.js）
 
-### Remove Syncfusion Endpoints
+### 删除 Syncfusion 端点
 
-Delete the following Syncfusion-specific endpoints from your `server.js`:
+从 `server.js` 中删除以下与 Syncfusion 相关的端点：
 
-- `app.post('/api/getTasks', ...)` - Syncfusion data loading endpoint
-- `app.post('/api/batchTasks', ...)` - Syncfusion batch sync endpoint
+- `app.post('/api/getTasks', ...)` - Syncfusion 数据加载端点
+- `app.post('/api/batchTasks', ...)` - Syncfusion 批量同步端点
 
-### Install DHTMLX Gantt Package and Vite
+### 安装 DHTMLX Gantt 包和 Vite
 
-Remove Syncfusion dependency:
+卸载 Syncfusion 依赖：
 
 ```bash
 npm uninstall @syncfusion/ej2
 ```
 
-Install DHTMLX Gantt following the [installation guide](guides/installation.md).
+按照 [安装指南](guides/installation.md) 安装 DHTMLX Gantt。
 
-For this tutorial, we will use the trial version of DHTMLX Gantt:
+在本教程中，我们将使用 DHTMLX Gantt 的试用版本：
 
 ```bash
 npm install @dhx/trial-gantt
 ```
 
-Let's also install Vite as a build tool:
+还要安装 Vite 作为构建工具：
 
 ```bash
 npm install --save-dev vite
 ```
 
-### Add Data Loading Endpoint
+### 添加数据加载端点
 
-We'll use the `date-format-lite` library to format dates from MySQL DATETIME format to the format expected by DHTMLX.
+我们将使用 `date-format-lite` 库将 MySQL DATETIME 格式格式化为 DHTMLX 期望的格式。
 
-Install the library:
+安装该库：
 
 ```bash
 npm install date-format-lite
 ```
 
-Add the GET endpoint to load data in DHTMLX format:
+添加用于以 DHTMLX 格式加载数据的 GET 端点：
 
 ```js
 import dateFormat from 'date-format-lite';
@@ -382,14 +382,13 @@ app.get('/data', async (req, res) => {
 });
 ```
 
-**Note:** The response format is different from Syncfusion (`{ result: [...], count: number }`). DHTMLX expects `{ tasks: [], links: [] }`.
+**注意：** 返回格式与 Syncfusion 不同（`{ result: [...], count: number }`）。DHTMLX 期望 `{ tasks: [], links: [] }`。
 
-### Add CRUD Endpoints for Tasks and Links
+### 为任务与链接添加 CRUD 端点
 
-DHTMLX Gantt's `DataProcessor` uses RESTful endpoints to synchronize data with the server. Each operation (create, update, delete) is sent as a separate HTTP request with the appropriate method.
-Learn more about [Server-side integration](guides/server-side.md).
+DHTMLX Gantt 的 `DataProcessor` 使用 RESTful 端点与服务器进行数据同步。每个操作（创建、更新、删除）都作为单独的 HTTP 请求发送。了解更多关于 [Server-side integration](guides/server-side.md)。
 
-Add handlers for **task operations**:
+为 **任务操作** 添加处理程序：
 
 ```js
 // Create a new task
@@ -437,7 +436,7 @@ app.delete('/data/task/:id', async (req, res) => {
 });
 ```
 
-Add handlers for link (dependency) operations:
+为链接（依赖关系）操作添加处理程序：
 
 ```js
 // POST /data/link - Create new link
@@ -484,9 +483,9 @@ app.delete('/data/link/:id', async (req, res) => {
 });
 ```
 
-### Add Helper Functions
+### 添加辅助函数
 
-Also, let's add utility functions to process data and send responses:
+此外，让我们添加用于处理数据和发送响应的工具函数：
 
 ```js
 // Helper: Parse task data from request
@@ -523,11 +522,11 @@ function sendResponse(res, action, tid = null, error = null) {
 }
 ```
 
-### Sanitize Task Data (XSS Protection)
+### 对任务数据进行清洗（XSS 防护）
 
-DHTMLX Gantt renders fields such as a task's `text` as HTML and does **not** escape them by default, so any markup in your migrated data (or entered later by a user) is rendered as-is — a potential XSS vector. Syncfusion and most other libraries behave the same way, so it's worth handling this explicitly during migration.
+DHTMLX Gantt 会将任务的 `text` 字段渲染为 HTML，默认不会对其进行转义，因此迁移的数据中的任意标记都会原样渲染——这可能成为 XSS 向量。Syncfusion 及大多数其他库的行为也大致相同，因此在迁移过程中显式处理此问题是值得的。
 
-**Sanitize on the backend (recommended).** Clean free-text fields before they reach the database:
+**在后端进行清洗（推荐）。** 在到达数据库之前，清理自由文本字段：
 
 ```bash
 npm install isomorphic-dompurify
@@ -540,12 +539,12 @@ function getTask(data) {
   return {
     text: DOMPurify.sanitize(data.text),
     notes: data.notes ? DOMPurify.sanitize(data.notes) : null,
-    // ...the remaining fields unchanged
+    // ...其余字段保持不变
   };
 }
 ```
 
-**Escape on the frontend (defense in depth).** Override the templates that render task text in `src/app/app.ts`:
+**在前端进行转义（前线防御）**。覆盖在 `src/app/app.ts` 中渲染任务文本的模板：
 
 ```ts
 const escapeHTML = (value: unknown) =>
@@ -553,18 +552,18 @@ const escapeHTML = (value: unknown) =>
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch] as string));
 
 gantt.templates.task_text = (start, end, task) => escapeHTML(task.text);
-// also escape any custom grid column that shows task text: template: (task) => escapeHTML(task.text)
+// 也对显示任务文本的任意自定义网格列进行转义：template: (task) => escapeHTML(task.text)
 ```
 
-For the full set of recommendations — Content Security Policy, lightbox sanitization, and SQL-injection guidance — see the [Application Security](guides/app-security.md) guide.
+完整的建议集——包括内容安全策略、灯箱清洗以及防止 SQL 注入的指南——请参阅 [应用程序安全性](guides/app-security.md) 指南。
 
 ---
 
-## Step 3: Frontend Migration with Vite
+## 步骤 3：使用 Vite 的前端迁移
 
-### Set Up Vite Configuration
+### 设置 Vite 配置
 
-Create a `vite.config.js` file in the root of your project:
+在项目根目录创建 `vite.config.js` 文件：
 
 ```javascript
 import { defineConfig } from 'vite';
@@ -587,30 +586,30 @@ export default defineConfig({
 });
 ```
 
-Organize your project with this structure:
+将项目组织成如下结构：
 
 ```
 dhtmlx-demo/
-├── src/                    # Frontend source code
+├── src/                    # 前端源码
 │   ├── app/
-│   │   └── app.ts         # Main Gantt initialization
-│   ├── index.html         # Main HTML file
+│   │   └── app.ts         # 主 Gantt 初始化
+│   ├── index.html         # 主 HTML 文件
 │   ├── resources/
 │   └── styles/
-├── e2e/                   # End-to-end tests (optional)
+├── e2e/                   # 端到端测试（可选）
 ├── .env.example
 ├── .gitignore
-├── migrate-dependencies.js  # Dependency migration script
-├── package.json           # Project dependencies
-├── server.js              # Express server
-├── setup.sql              # Database setup script
-├── tsconfig.json          # TypeScript configuration
-└── vite.config.js         # Vite configuration
+├── migrate-dependencies.js  # 依赖迁移脚本
+├── package.json           # 项目依赖
+├── server.js              # Express 服务器
+├── setup.sql              # 数据库设置脚本
+├── tsconfig.json          # TypeScript 配置
+└── vite.config.js         # Vite 配置
 ```
 
-### Update index.html
+### 更新 index.html
 
-Update `index.html` with the following code:
+将 `index.html` 更新为以下代码：
 
 ```html
 <!DOCTYPE html>
@@ -664,13 +663,13 @@ Update `index.html` with the following code:
 </html>
 ```
 
-**Note:** The container ID changed to `gantt_here`, which is DHTMLX Gantt's conventional container ID.
+注：容器 ID 已更改为 `gantt_here`，这是 DHTMLX Gantt 的常用容器 ID。
 
-### Update src/app/app.ts
+### 更新 src/app/app.ts
 
-In the `src/app/app.ts` file, remove all Syncfusion-related imports and code.
+在 `src/app/app.ts` 文件中，移除所有与 Syncfusion 相关的导入和代码。
 
-Replace with DHTMLX Gantt initialization:
+替换为 DHTMLX Gantt 初始化：
 
 ```ts
 import '@dhx/trial-gantt/codebase/dhtmlxgantt.css';
@@ -696,21 +695,21 @@ gantt.init('gantt_here');
 gantt.load('/data');
 
 const dp = gantt.createDataProcessor({
-  url: '/data', // Base URL for REST endpoints
-  mode: 'REST', // Use RESTful mode
+  url: '/data', // REST 端点的基础 URL
+  mode: 'REST', // 使用 RESTful 模式
 });
 ```
 
-The DataProcessor will automatically:
+DataProcessor 将自动完成以下操作：
 
-- Send POST requests to `/data/task` when creating tasks
-- Send PUT requests to `/data/task/:id` when updating tasks
-- Send DELETE requests to `/data/task/:id` when deleting tasks
-- Handle links similarly with `/data/link` endpoints
+- 创建任务时向 `/data/task` 发送 POST 请求
+- 更新任务时向 `/data/task/:id` 发送 PUT 请求
+- 删除任务时向 `/data/task/:id` 发送 DELETE 请求
+- 同样处理链接，使用 `/data/link` 端点
 
-### Update package.json Scripts
+### 更新 package.json 脚本
 
-Update your `package.json` scripts to use Vite:
+将你的 `package.json` 脚本更新为使用 Vite：
 
 ```json
 {
@@ -726,34 +725,34 @@ Update your `package.json` scripts to use Vite:
 
 ---
 
-## Step 4: Testing the Migration
+## 步骤 4：测试迁移
 
-### Running the Application
+### 运行应用程序
 
-For development mode, you need to run two processes:
+在开发模式下，需要同时运行两个进程：
 
-**Terminal 1 - Backend (Express):**
+- 终端 1——后端（Express）：
 
 ```bash
 npm run server
 ```
 
-This starts the API server on `http://localhost:1337` (or your configured port)
+这会在 `http://localhost:1337`（或您配置的端口）启动 API 服务器
 
-**Terminal 2 - Frontend (Vite):**
+- 终端 2——前端（Vite）：
 
 ```bash
 npm run dev
 ```
 
-This starts the Vite dev server on `http://localhost:5173`. Open your browser and navigate to `http://localhost:5173`. Vite will proxy API requests to the Express backend automatically.
+这会在 `http://localhost:5173` 启动 Vite 开发服务器。打开浏览器，访问 `http://localhost:5173`。Vite 将自动把 API 请求代理到 Express 后端。
 
-You should see the DHTMLX Gantt chart with your data loaded from the database:
+您应该会看到 DHTMLX Gantt 图表以及从数据库加载的数据：
 
 ![Gantt with data loaded](/img/migrating/syncfusion/dhtmlx-gantt-data-loaded.png)
 
-## Next Steps
+## 下一步
 
-- Explore [DHTMLX Gantt documentation](/) for advanced features
-- Review the [API reference](/api/api-overview/) for customization options
-- Check out [DHTMLX Gantt samples](https://docs.dhtmlx.com/gantt/samples/) for implementation examples
+- 了解 [DHTMLX Gantt 文档](/) 的高级功能
+- 查看 [API 参考](/api/api-overview/) 的自定义选项
+- 了解更多实现示例，请查看 [DHTMLX Gantt 示例](https://docs.dhtmlx.com/gantt/samples/)

@@ -1,47 +1,46 @@
 ---
-title: "Migrating from DevExpress to DHTMLX Gantt"
-sidebar_label: "From DevExpress"
+title: "从 DevExpress 迁移到 DHTMLX Gantt"
+sidebar_label: "从 DevExpress"
 ---
 
 :::note
-The complete demo source code is available on GitHub: [https://github.com/DHTMLX/gantt-migrating-from-devexpress](https://github.com/DHTMLX/gantt-migrating-from-devexpress).
+完整的演示源码可在 GitHub 获取：[https://github.com/DHTMLX/gantt-migrating-from-devexpress](https://github.com/DHTMLX/gantt-migrating-from-devexpress)。
 :::
 
-# Migrating from DevExpress Gantt to DHTMLX Gantt
+# 从 DevExpress Gantt 迁移到 DHTMLX Gantt
 
 ## Introduction
 
-This guide will walk you through the process of migrating an existing application from [DevExpress Gantt](https://js.devexpress.com/React/Documentation/Guide/UI_Components/Gantt/Overview/) to [DHTMLX Gantt](https://dhtmlx.com/docs/products/dhtmlxGantt/). We'll cover all necessary steps including database schema changes, server-side API modifications, and client-side code updates.
+本指南将带你完成将现有应用程序从 [DevExpress Gantt](https://js.devexpress.com/React/Documentation/Guide/UI_Components/Gantt/Overview/) 迁移到 [DHTMLX Gantt](https://dhtmlx.com/docs/products/dhtmlxGantt/) 的过程。我们将覆盖所有必要的步骤，包括数据库模式变更、服务端 API 修改以及客户端代码更新。
 
 ## Prerequisites
 
-Before starting the migration, ensure you have:
+在开始迁移之前，请确保你具备：
 
-- An existing working application using DevExpress Gantt
-- Node.js (>= 20.0.0) installed
-- MySQL database with DevExpress data structure
-- Basic knowledge of Express.js, React, and TypeScript
+- 使用 DevExpress Gantt 的现有、可正常工作的应用程序
+- 已安装 Node.js (>= 20.0.0)
+- 具有 DevExpress 数据结构的 MySQL 数据库
+- 对 Express.js、React 和 TypeScript 的基础了解
 
 ## Step 1: Database Migration
 
 ### Understanding DevExpress Schema
 
-If you followed the DevExpress demo setup, you should
-have two tables: `devexpress_tasks` and `devexpress_dependencies`.
+如果你按照 DevExpress 演示设置进行操作，应该拥有两张表：`devexpress_tasks` 和 `devexpress_dependencies`。
 
-The `devexpress_tasks` table structure:
+`devexpress_tasks` 表结构：
 
 ![DevExpress tasks table](/img/migrating/devexpress/devexpress-tasks-table.png)
 
-The `devexpress_dependencies` table structure:
+`devexpress_dependencies` 表结构：
 
 ![DevExpress links table](/img/migrating/devexpress/devexpress-links-table.png)
 
-This two-table structure is already similar to DHTMLX's approach, making the migration straightforward.
+这两张表的结构已经与 DHTMLX 的思路相近，因此迁移相对直接。
 
 ### Create DHTMLX Tables
 
-Create two new tables compatible with DHTMLX Gantt:
+创建两张与 DHTMLX Gantt 兼容的新表：
 
 ```sql
 CREATE TABLE IF NOT EXISTS gantt_tasks (
@@ -63,13 +62,13 @@ CREATE TABLE IF NOT EXISTS gantt_links (
 );
 ```
 
-**Note:** DHTMLX Gantt will automatically calculate `duration` based on `start_date` and `end_date`.
+**Note:** DHTMLX Gantt 将基于 `start_date` 和 `end_date` 自动计算 `duration`。
 
 ### Migrate Existing Data
 
-Now migrate your existing DevExpress data to the new DHTMLX tables.
+现在将现有的 DevExpress 数据迁移到新的 DHTMLX 表中。
 
-**Migrate tasks:**
+**迁移任务：**
 
 ```sql
 INSERT INTO gantt_tasks (id, text, start_date, end_date, progress, parent)
@@ -83,9 +82,9 @@ SELECT
 FROM devexpress_tasks;
 ```
 
-**Migrate links (dependencies):**
+**迁移链接（依赖）：**
 
-DevExpress already stores dependencies in a structured format in the `devexpress_dependencies` table, which makes migration straightforward:
+DevExpress 已将依赖以结构化格式存储在 `devexpress_dependencies` 表中，这使迁移变得简单：
 
 ```sql
 INSERT INTO gantt_links (id, source, target, type)
@@ -103,73 +102,73 @@ SELECT
 FROM devexpress_dependencies;
 ```
 
-You can verify that the data was migrated correctly by running the following commands:
+你可以通过以下命令验证数据是否正确迁移：
 
 ```sql
 SELECT * FROM gantt_tasks;
 SELECT * FROM gantt_links;
 ```
 
-You should see all your tasks and links properly transferred with the correct field mappings.
+你应该能看到所有任务和链接已正确传输并且字段映射正确。
 
 ### Mapping DevExpress Task Fields to DHTMLX Gantt
 
-| DevExpress Field | DHTMLX Field | Notes                                                                            |
-| ---------------- | ------------ | -------------------------------------------------------------------------------- |
-| `id`             | `id`         | Task ID                                                                          |
-| `title`          | `text`       | Task name                                                                        |
-| `start`          | `start_date` | Task start date and time                                                         |
-| `end`            | `end_date`   | Task end date and time                                                           |
-| `progress`       | `progress`   | DevExpress: 0-100 (integer), DHTMLX: 0-1 (float). Divide by 100 during migration |
-| `parentId`       | `parent`     | Parent task ID. NULL values → 0 for root tasks                                   |
+| DevExpress Field | DHTMLX Field | Notes                                                                                |
+| ---------------- | ------------ | --------------------------------------------------------------------------------     |
+| `id`             | `id`         | 任务 ID                                                                               |
+| `title`          | `text`       | 任务名称                                                                              |
+| `start`          | `start_date` | 任务开始日期和时间                                                                     |
+| `end`            | `end_date`   | 任务结束日期和时间                                                                     |
+| `progress`       | `progress`   | DevExpress: 0-100（整数），DHTMLX: 0-1（浮点数）。迁移时除以 100                         |
+| `parentId`       | `parent`     | 父任务 ID。根任务的 NULL 值将转换为 0                                                   |
 
-More about task properties: [Task Properties](guides/task-properties.md).
+更多关于任务属性的信息，请参阅：[Task Properties](guides/task-properties.md)。
 
 ### Mapping DevExpress Dependency Fields to DHTMLX Links
 
 | DevExpress Field | DHTMLX Field | Notes                                                                                    |
 | ---------------- | ------------ | ---------------------------------------------------------------------------------------- |
-| `id`             | `id`         | Link ID                                                                                  |
-| `predecessorId`  | `source`     | ID of the task that the dependency starts from                                           |
-| `successorId`    | `target`     | ID of the task that the dependency points to                                             |
-| `type`           | `type`       | Dependency type. DevExpress uses numbers (0-3), DHTMLX uses strings ("0"-"3") by default |
+| `id`             | `id`         | 链接 ID                                                                                  |
+| `predecessorId`  | `source`     | 依赖起始任务的 ID                                                                         |
+| `successorId`    | `target`     | 依赖指向的目标任务 ID                                                                      |
+| `type`           | `type`       | 依赖类型。DevExpress 使用数字（0-3），DHTMLX 默认使用字符串（"0"-"3"）                       |
 
-More about link properties: [Link Properties](guides/link-properties.md).
+更多关于链接属性的信息：[Link Properties](guides/link-properties.md)。
 
 ## Step 2: Backend Migration (server.js)
 
 ### Remove DevExpress Endpoints
 
-Delete the following DevExpress-specific endpoints from your `server.js`:
+从 `server.js` 中删除以下与 DevExpress 相关的端点：
 
-- `app.get('/api/tasks', ...)` - DevExpress tasks loading endpoint
-- `app.post('/api/tasks', ...)` - Create task endpoint
-- `app.put('/api/tasks/:id', ...)` - Update task endpoint
-- `app.delete('/api/tasks/:id', ...)` - Delete task endpoint
-- `app.get('/api/dependencies', ...)` - DevExpress dependencies loading endpoint
-- `app.post('/api/dependencies', ...)` - Create dependency endpoint
-- `app.put('/api/dependencies/:id', ...)` - Update dependency endpoint
-- `app.delete('/api/dependencies/:id', ...)` - Delete dependency endpoint
+- `app.get('/api/tasks', ...)` - DevExpress 任务加载端点
+- `app.post('/api/tasks', ...)` - 创建任务端点
+- `app.put('/api/tasks/:id', ...)` - 更新任务端点
+- `app.delete('/api/tasks/:id', ...)` - 删除任务端点
+- `app.get('/api/dependencies', ...)` - DevExpress 依赖加载端点
+- `app.post('/api/dependencies', ...)` - 创建依赖端点
+- `app.put('/api/dependencies/:id', ...)` - 更新依赖端点
+- `app.delete('/api/dependencies/:id', ...)` - 删除依赖端点
 
-Also remove the CustomStore-related response format handling.
+同时移除与 CustomStore 相关的响应格式处理。
 
 ### Install DHTMLX Gantt Packages
 
-Remove DevExpress dependencies:
+移除 DevExpress 相关依赖：
 
 ```bash
 npm uninstall devextreme devextreme-react
 ```
 
-Install DHTMLX React Gantt following the [installation guide](guides/installation.md).
+按照 [installation guide](guides/installation.md) 安装 DHTMLX React Gantt。
 
-For this tutorial, we will use the trial version of DHTMLX React Gantt:
+本教程中，我们将使用 DHTMLX React Gantt 的试用版本：
 
 ```bash
 npm install @dhtmlx/trial-react-gantt
 ```
 
-Install date formatting library for MySQL DATETIME conversion:
+为 MySQL 的 DATETIME 转换安装日期格式化库：
 
 ```bash
 npm install date-format-lite
@@ -177,13 +176,13 @@ npm install date-format-lite
 
 ### Add Data Loading Endpoint
 
-Add the GET endpoint to load data in DHTMLX format. Import the `date-format-lite` library at the top of your `server.js`:
+在 `server.js` 顶部导入 `date-format-lite` 库，然后添加用于以 DHTMLX 格式加载数据的 GET 端点：
 
 ```js
 import dateFormat from 'date-format-lite';
 ```
 
-Then add the data loading endpoint:
+然后添加数据加载端点：
 
 ```js
 // GET /load - Load all tasks and links
@@ -212,13 +211,13 @@ app.get('/load', async (req, res) => {
 });
 ```
 
-DevExpress returns separate arrays, DHTMLX expects `{ data: [...], links: [...] }`.
+DevExpress 返回的是单独的数组，而 DHTMLX 期望的是 `{ data: [...], links: [...] }`。
 
 ### Add CRUD Endpoints for Tasks and Links
 
-DHTMLX React Gantt uses a custom save handler to synchronize data with the server. Each operation (create, update, delete) is sent with the appropriate HTTP method.
+DHTMLX React Gantt 使用自定义保存处理程序将数据与服务器同步。每个操作（创建、更新、删除）都以相应的 HTTP 方法提交。
 
-Add handlers for task operations:
+为任务操作添加处理程序：
 
 ```js
 // POST /save/task - Create a new task
@@ -266,7 +265,7 @@ app.delete('/save/task/:id', async (req, res) => {
 });
 ```
 
-Add handlers for link (dependency) operations:
+为链接（依赖）操作添加处理程序：
 
 ```js
 // POST /save/link - Create new link
@@ -319,7 +318,7 @@ app.delete('/save/link/:id', async (req, res) => {
 
 ### Add Helper Functions
 
-Add utility functions to process data and send responses:
+添加用于处理数据和发送响应的工具函数：
 
 ```js
 // Helper: Parse task data from request
@@ -357,7 +356,7 @@ function sendResponse(res, action, tid = null, error = null) {
 
 ### Sanitize Task Data (XSS Protection)
 
-Gantt charts render free-text fields such as a task's `text`, and any HTML in that text can become an XSS vector. Always sanitize user input on the backend before storing it — clean free-text fields in the `getTask` helper:
+Gantt 图表会呈现诸如任务文本之类的自由文本字段，文本中的任何 HTML 都可能成为 XSS 向量。在存储之前始终在后端对用户输入进行清洗——在 `getTask` 助手函数中清理自由文本字段：
 
 ```bash
 npm install isomorphic-dompurify
@@ -369,12 +368,12 @@ import DOMPurify from 'isomorphic-dompurify';
 function getTask(data) {
   return {
     text: DOMPurify.sanitize(data.text),
-    // ...the remaining fields unchanged
+    // ...其余字段保持不变
   };
 }
 ```
 
-If you add custom cell or tooltip renderers that output raw HTML, escape the values there as well. For the full set of recommendations — Content Security Policy and SQL-injection guidance — see the [Application Security](guides/app-security.md) guide.
+如果你新增了输出原始 HTML 的自定义单元格或工具提示渲染器，请在相应位置对值进行转义。有关完整的建议集——内容安全策略（Content Security Policy）和防止 SQL 注入的指南——请参阅 [Application Security](guides/app-security.md) 指南。
 
 ---
 
@@ -382,11 +381,11 @@ If you add custom cell or tooltip renderers that output raw HTML, escape the val
 
 ### Remove DevExpress Components and Services
 
-Delete CustomStore service file (`src/services/dataService.ts`) - DHTMLX React Gantt doesn't use CustomStore
+删除 CustomStore 服务文件（`src/services/dataService.ts`）——DHTMLX React Gantt 不使用 CustomStore
 
-Remove DevExpress CSS links from `index.html`
+从 `index.html` 中移除 DevExpress 的 CSS 链接
 
-If you added DevExpress CSS links in your `index.html`, remove them:
+如果你在 `index.html` 中添加了 DevExpress 的 CSS 链接，请移除它们：
 
 ```html
 <!-- Remove these lines -->
@@ -394,7 +393,7 @@ If you added DevExpress CSS links in your `index.html`, remove them:
 <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/25.2.4/css/dx-gantt.min.css" />
 ```
 
-DHTMLX React Gantt includes its own styles, which are imported directly in the component:
+DHTMLX React Gantt 自带样式，直接在组件中导入：
 
 ```typescript
 import '@dhtmlx/trial-react-gantt/dist/react-gantt.css';
@@ -402,7 +401,7 @@ import '@dhtmlx/trial-react-gantt/dist/react-gantt.css';
 
 ### Update Vite Configuration
 
-Update your `vite.config.ts` to proxy API requests to the backend server. This is important for development mode:
+更新你的 `vite.config.ts`，将 API 请求代理到后端服务器。这对于开发模式很重要：
 
 ```typescript
 import { defineConfig } from 'vite';
@@ -429,7 +428,7 @@ export default defineConfig({
 
 ### Update package.json
 
-Make sure your `package.json` has the correct dependencies:
+确保你的 `package.json` 具备正确的依赖项：
 
 ```json
 "dependencies": {
@@ -462,7 +461,7 @@ Make sure your `package.json` has the correct dependencies:
 
 ### Update src/App.tsx
 
-Replace your DevExpress Gantt component in `src/App.tsx` with DHTMLX React Gantt:
+用 DHTMLX React Gantt 替换 `src/App.tsx` 中的 DevExpress Gantt 组件：
 
 ```typescript
 import { useCallback, useMemo, useRef } from 'react';
@@ -541,39 +540,37 @@ export default App;
 
 ### Running the Application
 
-For development mode, you need to run two processes:
+在开发模式下，你需要同时运行两个进程：
 
-Terminal 1 - Backend (Express):
+终端 1 - 后端（Express）：
 
 ```bash
 npm run server
 ```
 
-This starts the API server on `http://localhost:1337` (or your configured PORT from `.env`)
+这将会在 `http://localhost:1337` 启动 API 服务器（或你在 .env 中配置的端口）
 
-You should see:
+你应该会看到：
 
 ```
 Server is running on port 1337
 ```
 
-Terminal 2 - Frontend (Vite):
+终端 2 - 前端（Vite）：
 
 ```bash
 npm run dev
 ```
 
-This starts the Vite dev server on `http://localhost:5173`. Open your browser and
-navigate to `http://localhost:5173`. Vite will proxy API requests to the Express backend
-automatically.
+这将会在 `http://localhost:5173` 启动 Vite 开发服务器。打开浏览器并访问 `http://localhost:5173`。Vite 将自动把 API 请求代理到 Express 后端。
 
-You should see the DHTMLX Gantt chart with your data loaded from the database:
+你应该看到加载自数据库的数据所呈现的 DHTMLX Gantt 图表：
 
 ![Gantt with data loaded](/img/migrating/devexpress/dhtmlx-gantt-data-loaded.png)
 
 ### Explore DHTMLX Gantt Features
 
-- [DHTMLX Gantt documentation](/)
-- [API reference](/api/api-overview/)
-- [React Gantt configuration](/integrations/react/configuration-props.md)
-- [React Gantt integration](/integrations/react.md)
+- [DHTMLX Gantt 文档](/)
+- [API 参考](/api/api-overview/)
+- [React Gantt 配置](/integrations/react/configuration-props.md)
+- [React Gantt 集成](/integrations/react.md)
