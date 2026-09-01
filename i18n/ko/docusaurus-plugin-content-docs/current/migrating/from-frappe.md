@@ -1,40 +1,40 @@
 ---
-title: "Migrating from Frappe to DHTMLX Gantt"
-sidebar_label: "From Frappe"
+title: "Frappe Gantt에서 DHTMLX Gantt로 마이그레이션"
+sidebar_label: "Frappe에서"
 ---
 
 :::note
-The complete demo source code is available on GitHub: [https://github.com/DHTMLX/gantt-migrating-from-frappe](https://github.com/DHTMLX/gantt-migrating-from-frappe).
+완전한 데모 소스 코드는 GitHub에서 확인할 수 있습니다: [https://github.com/DHTMLX/gantt-migrating-from-frappe](https://github.com/DHTMLX/gantt-migrating-from-frappe).
 :::
 
-# Migrating from Frappe Gantt to DHTMLX Gantt
+# Frappe Gantt에서 DHTMLX Gantt로 마이그레이션
 
-## Introduction
+## 소개
 
-This guide will walk you through the process of migrating an existing application from [Frappe Gantt](https://frappe.io/gantt) to [DHTMLX Gantt](https://dhtmlx.com/docs/products/dhtmlxGantt/). We'll cover all necessary steps including database schema changes, server-side API modifications, and client-side code updates.
+이 가이드는 기존 애플리케이션을 [Frappe Gantt](https://frappe.io/gantt)에서 [DHTMLX Gantt](https://dhtmlx.com/docs/products/dhtmlxGantt/)로 마이그레이션하는 과정을 안내합니다. 데이터베이스 스키마 변경, 서버 측 API 수정, 클라이언트 측 코드 업데이트를 포함한 필요한 모든 단계를 다룹니다.
 
-## Prerequisites
+## 전제 조건
 
-Before starting the migration, ensure you have:
+마이그레이션을 시작하기 전에 아래를 확인하세요:
 
-- An existing working application using Frappe Gantt
-- Node.js (>= 20.0.0) installed
-- MySQL database with Frappe Gantt data structure
-- Basic knowledge of Express.js and JavaScript
+- Frappe Gantt를 사용하는 기존의 작동 중인 애플리케이션
+- Node.js (>= 20.0.0) 설치
+- Frappe Gantt 데이터 구조를 가진 MySQL 데이터베이스
+- Express.js 및 JavaScript에 대한 기본 지식
 
-## Step 1: Database Migration
+## 1단계: 데이터베이스 마이그레이션
 
-### Understanding Current Schema
+### 현재 스키마 이해하기
 
-If you followed the Frappe Gantt demo setup, you should have one table: `frappe_tasks`.
+Frappe Gantt 데모 설정을 따라왔다면 하나의 테이블이 있어야 합니다: `frappe_tasks`.
 
-The `frappe_tasks` table structure:
+`frappe_tasks` 테이블 구조:
 
 ![Frappe tasks table](/img/migrating/frappe/frappe-tasks-table.png)
 
-### Create DHTMLX Tables
+### DHTMLX 테이블 생성
 
-DHTMLX Gantt uses two separate tables: one for tasks and one for dependency links. Create them in the same database:
+DHTMLX Gantt는 작업용 테이블과 의존성 링크용 별도 테이블 두 개를 사용합니다. 동일한 데이터베이스 내에 두 테이블을 생성합니다:
 
 ```sql
 USE frappe_dhtmlx;
@@ -59,11 +59,11 @@ CREATE TABLE IF NOT EXISTS gantt_links (
 );
 ```
 
-### Migrate Existing Data
+### 기존 데이터 마이그레이션
 
-Now migrate your existing Frappe data to the new DHTMLX tables.
+이제 기존 Frappe 데이터를 새 DHTMLX 테이블로 마이그레이션합니다.
 
-**Migrate tasks:**
+**작업(Tasks) 마이그레이션:**
 
 ```sql
 INSERT INTO gantt_tasks (id, text, start_date, end_date, duration, progress, parent)
@@ -72,32 +72,33 @@ SELECT
     name,                           -- name → text
     start,                          -- start → start_date
     end,                            -- end → end_date
-    GREATEST(DATEDIFF(end, start), 1),  -- Duration in days (minimum 1)
-    progress / 100.0,               -- Convert percentage (0-100) to decimal (0-1)
-    '0'                             -- No hierarchy in Frappe, all tasks are root-level
+    GREATEST(DATEDIFF(end, start), 1),  -- 기간(일 단위, 최소 1일)
+    progress / 100.0,               -- 백분율(0-100)을 소수점(0-1)으로 변환
+    '0'                             -- Frappe에는 계층 구조가 없으므로 모든 작업은 루트
+
 FROM frappe_tasks;
 ```
 
-You can verify the result:
+결과를 확인할 수 있습니다:
 
 ```sql
 SELECT * FROM gantt_tasks;
 ```
 
-**Migrate links (dependencies)**
+**링크(의존성) 마이그레이션**
 
-In Frappe Gantt's data structure, dependencies are stored as strings in the `dependencies` column of the `frappe_tasks` table.
+Frappe Gantt의 데이터 구조에서 의존성은 `frappe_tasks` 테이블의 `dependencies` 열에 문자열로 저장됩니다.
 
-In DHTMLX Gantt, tasks and links are stored in **separate tables**. Each link is a row with:
+DHTMLX Gantt에서 작업 및 링크는 **별도 테이블**에 저장됩니다. 각 링크는 다음과 같은 열을 가진 한 행입니다:
 
-- `id` - the link id
-- `source` - the id of the task the dependency starts from
-- `target` - the id of the task the dependency ends at
-- `type` - the dependency type: `"0"` (FS), `"1"` (SS), `"2"` (FF), `"3"` (SF)
+- `id` - 링크 ID
+- `source` - 의존성이 시작되는 작업의 ID
+- `target` - 의존성이 끝나는 작업의 ID
+- `type` - 의존성 유형: `"0"`(FS), `"1"`(SS), `"2"`(FF), `"3"`(SF)
 
-Since all Frappe dependencies are FS, the migration always sets `type = "0"`.
+모든 Frappe 의존성이 FS이므로 마이그레이션 시 항상 `type = "0"`으로 설정합니다.
 
-Create a `migrate-frappe-to-dhtmlx.js` file and paste the following code into it:
+다음 코드를 파일 `migrate-frappe-to-dhtmlx.js`로 생성하고 아래 코드를 붙여넣으세요:
 
 ```js
 import mysql from 'mysql2/promise';
@@ -116,7 +117,7 @@ async function migrateFrappeToDHtmlX() {
   try {
     connection = await mysql.createConnection(dbConfig);
 
-    // Query all tasks that have dependencies
+    // 의존성이 있는 모든 작업 조회
     const [tasks] = await connection.execute(
       'SELECT id, dependencies FROM frappe_tasks WHERE dependencies IS NOT NULL AND dependencies != ""',
     );
@@ -134,7 +135,7 @@ async function migrateFrappeToDHtmlX() {
       const targetId = task.id;
       const dependencies = task.dependencies;
 
-      // Split comma-separated dependency IDs
+      // 쉼표로 구분된 의존성 ID 분리
       const depIds = dependencies
         .split(',')
         .map((dep) => dep.trim())
@@ -142,7 +143,7 @@ async function migrateFrappeToDHtmlX() {
 
       console.log(`\nTask ${targetId} depends on: ${depIds.join(', ')}`);
 
-      // Each dependency becomes a Finish-to-Start link (type "0")
+      // 각 의존성은 FS 유형의 링크(type "0")가 됨
       for (const sourceId of depIds) {
         links.push({
           source: sourceId,
@@ -195,7 +196,7 @@ async function migrateFrappeToDHtmlX() {
 migrateFrappeToDHtmlX();
 ```
 
-Then add a script to your `package.json`:
+그런 다음 이 파일을 `package.json`에 스크립트로 추가합니다:
 
 ```json
 {
@@ -205,62 +206,62 @@ Then add a script to your `package.json`:
 }
 ```
 
-Run the migration:
+마이그레이션을 실행합니다:
 
 ```bash
 npm run migrate
 ```
 
-You can verify that the links were migrated correctly:
+의존성이 올바르게 마이그레이션되었는지 확인하려면:
 
 ```sql
 SELECT * FROM gantt_links;
 ```
 
-You should see one row per dependency, with correct `source` and `target` IDs.
+의존성마다 하나의 행이 생성되었고, 올바른 `source`와 `target` ID를 확인할 수 있습니다.
 
-### Mapping Frappe Task Fields to DHTMLX Gantt
+### Frappe Task 필드를 DHTMLX Gantt로 매핑하기
 
-| Frappe Field      | DHTMLX Field    | Notes                                                                                                                             |
+| Frappe 필드      | DHTMLX 필드    | 비고                                                                                                                             |
 | ----------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `id`              | `id`            | Task id                                                                                                                           |
-| `name`            | `text`          | Task name                                                                                                                         |
-| `start`           | `start_date`    | The start date of the task                                                                                                        |
-| `end`             | `end_date`      | The end date of the task                                                                                                          |
-| _(not stored)_    | `duration`      | The task duration. In DHTMLX Gantt, if not specified, Gantt will calculate it based on the `start_date` and `end_date` properties |
-| `progress`        | `progress`      | Frappe: integer 0–100; DHTMLX: decimal 0.0–1.0                                                                                    |
-| _(not supported)_ | `parent`        | Frappe has no hierarchy. In DHTMLX Gantt you can specify the parent task                                                          |
-| `dependencies`    | _(links table)_ | Frappe stores as strings; DHTMLX uses a separate `gantt_links` table                                                              |
+| `id`              | `id`            | Task ID                                                                                                                           |
+| `name`            | `text`          | Task 이름                                                                                                                         |
+| `start`           | `start_date`    | 작업의 시작 날짜                                                                                                                   |
+| `end`             | `end_date`      | 작업의 종료 날짜                                                                                                                   |
+| _(저장되지 않음)_ | `duration`      | 작업 기간. DHTMLX Gantt에서 지정되지 않으면 `start_date`와 `end_date` 속성으로부터 자동 계산합니다 |
+| `progress`        | `progress`      | Frappe: 정수 0–100; DHTMLX: 소수점 0.0–1.0                                                                                      |
+| _(지원되지 않음)_ | `parent`        | Frappe에는 계층 구조가 없으며, DHTMLX Gantt에서 부모 작업을 지정할 수 있습니다                                                               |
+| `dependencies`    | _(링크 테이블)_ | Frappe는 문자열로 저장합니다; DHTMLX는 별도의 `gantt_links` 테이블을 사용합니다                                                              |
 
 ---
 
-## Step 2: Backend Migration (server.js)
+## 2단계: 백엔드 마이그레이션 (server.js)
 
-### Remove Frappe-Specific Endpoints and Helper
+### Frappe 전용 엔드포인트 및 헬퍼 제거
 
-In the Frappe server, data loading and CRUD for tasks go through `/data/tasks`. Delete or replace all of the following:
+Frappe 서버에서 데이터 로딩 및 작업 CRUD는 `/data/tasks`를 통해 이루어집니다. 아래 모든 항목을 삭제하거나 대체합니다:
 
-- `function formatTaskForClient(dbTask)` - the Frappe-specific response formatter
-- `app.get('/data/tasks', ...)` - returns a plain array of task objects
-- `app.post('/data/tasks', ...)` - creates a task; response returns the full task object
-- `app.put('/data/tasks/:id', ...)` - updates a task; response returns the updated task object
-- `app.delete('/data/tasks/:id', ...)` - deletes a task; returns HTTP 204 with no body
+- `function formatTaskForClient(dbTask)` - Frappe 전용 응답 포매터
+- `app.get('/data/tasks', ...)` - 작업 객체의 plain 배열 반환
+- `app.post('/data/tasks', ...)` - 작업 생성; 응답은 전체 작업 객체
+- `app.put('/data/tasks/:id', ...)` - 작업 업데이트; 응답은 업데이트된 작업 객체
+- `app.delete('/data/tasks/:id', ...)` - 작업 삭제; HTTP 204를 응답으로 반환
 
-### Install DHTMLX Gantt Package
+### DHTMLX Gantt 패키지 설치
 
-Install DHTMLX Gantt following the [installation guide](guides/installation.md).
+다음 설치 가이드를 따라 DHTMLX Gantt를 설치합니다.
 
-For this tutorial, we will use the trial version of DHTMLX Gantt:
+이 튜토리얼에서는 DHTMLX Gantt의 체험판 버전을 사용합니다:
 
 ```bash
 npm install @dhx/trial-gantt
 ```
 
-### Add Data Loading Endpoint
+### 데이터 로딩 엔드포인트 추가
 
-DHTMLX expects both tasks and links to be returned in a single `GET /data` response as `{ tasks: [], links: [] }`.
+DHTMLX는 데이터 로딩 시 작업과 링크를 단일 GET /data 응답으로 `{ tasks: [], links: [] }` 형태로 반환할 것을 기대합니다.
 
-Replace the Frappe `GET /data/tasks` endpoint with:
+Frappe의 `GET /data/tasks` 엔드포인트를 아래와 같이 대체합니다:
 
 ```js
 import dateFormat from 'date-format-lite';
@@ -288,11 +289,11 @@ app.get('/data', async (req, res) => {
 });
 ```
 
-### Add CRUD Endpoints for Tasks and Links
+### Task와 Link에 대한 CRUD 엔드포인트 추가
 
-DHTMLX Gantt's `DataProcessor` uses RESTful endpoints to synchronize data with the server. Each operation (create, update, delete) is sent as a separate HTTP request. Learn more about [Server-side integration](guides/server-side.md).
+DHTMLX Gantt의 `DataProcessor`는 서버와 데이터를 동기화하기 위해 RESTful 엔드포인트를 사용합니다. 각 작업(생성, 수정, 삭제)은 별도의 HTTP 요청으로 전송됩니다. 서버 사이드 통합에 대해 자세히 알아보기: [Server-side integration](guides/server-side.md).
 
-Replace the Frappe task endpoints (`POST /data/tasks`, `PUT /data/tasks/:id`, `DELETE /data/tasks/:id`) with:
+Frappe 작업 엔드포인트(`POST /data/tasks`, `PUT /data/tasks/:id`, `DELETE /data/tasks/:id`)를 아래로 교체합니다:
 
 ```js
 import { randomUUID } from 'crypto';
@@ -343,7 +344,7 @@ app.delete('/data/task/:id', async (req, res) => {
 });
 ```
 
-Add handlers for link (dependency) operations:
+의존성 작업에 대한 핸들러 추가(링크):
 
 ```js
 // POST /data/link — Create a new link
@@ -394,9 +395,9 @@ app.delete('/data/link/:id', async (req, res) => {
 });
 ```
 
-### Add Helper Functions
+### 헬퍼 함수 추가
 
-Replace the Frappe `formatTaskForClient` function with DHTMLX-compatible helpers:
+Frappe의 `formatTaskForClient` 함수를 DHTMLX-호환 헬퍼로 교체합니다:
 
 ```js
 // Parse task data from request body
@@ -432,13 +433,13 @@ function sendResponse(res, action, tid = null, error = null) {
 }
 ```
 
-**Note:** The response format is different from Frappe. Frappe endpoints returned the full task object (or HTTP 204 for deletes). DHTMLX's `DataProcessor` expects a JSON object with an `action` field (e.g., `{ action: "inserted", tid: 5 }`, `{ action: "updated" }`, `{ action: "deleted" }`). Learn more the [Request and Responses details](guides/server-side.md#requestresponsedetails).
+참고: 응답 형식은 Frappe와 다릅니다. Frappe 엔드포인트는 전체 작업 객체를 반환하거나 삭제 시 HTTP 204를 반환했습니다. DHTMLX의 `DataProcessor`는 `{ action: "inserted", tid: 5 }`, `{ action: "updated" }`, `{ action: "deleted" }`와 같은 `action` 필드를 가진 JSON 객체를 기대합니다. 자세한 내용은 [Request and Responses details](guides/server-side.md#requestresponsedetails)를 참조하세요.
 
-### Sanitize Task Data (XSS Protection)
+### 데이터 정 sanitization (XSS 보호)
 
-DHTMLX Gantt renders fields such as a task's `text` as HTML and does **not** escape them by default, so any markup in your migrated data (or entered later by a user) is rendered as-is — a potential XSS vector. Frappe and most other libraries behave the same way, so it's worth handling this explicitly during migration.
+DHTMLX Gantt는 텍스트와 같은 필드를 HTML로 렌더링하고 기본적으로 이를 이스케이프하지 않으므로, 마이그레이션 데이터에 포함된 마크업(또는 이후 사용자가 입력한 내용)이 있는 경우 그대로 렌더링될 수 있어 잠재적인 XSS 벡터가 됩니다. Frappe 및 대부분의 라이브러리도 같은 방식이므로 이를 마이그레이션 단계에서 명시적으로 처리하는 것이 좋습니다.
 
-**Sanitize on the backend (recommended).** Clean free-text fields before they reach the database:
+**백엔드에서 정 sanitization 권장:** 데이터베이스에 도달하기 전에 자유 텍스트 필드를 정리합니다.
 
 ```bash
 npm install isomorphic-dompurify
@@ -450,12 +451,12 @@ import DOMPurify from 'isomorphic-dompurify';
 function getTask(data) {
   return {
     text: DOMPurify.sanitize(data.text),
-    // ...the remaining fields unchanged
+    // ...나머지 필드는 변경 없이 유지
   };
 }
 ```
 
-**Escape on the frontend (defense in depth).** Override the templates that render task text in `src/main.js`:
+**프론트엔드에서 이스케이프(깊이 방어) 처리:** `src/main.js`에서 템플릿을 재정의하여 작업 텍스트를 이스케이프합니다.
 
 ```js
 const escapeHTML = (value) =>
@@ -464,24 +465,24 @@ const escapeHTML = (value) =>
 
 gantt.templates.task_text = (start, end, task) => escapeHTML(task.text);
 gantt.templates.tooltip_text = (start, end, task) => escapeHTML(task.text);
-// also escape the "text" grid column via a column template: template: (task) => escapeHTML(task.text)
+// 또한 텍스트 그리드 열도 템플릿으로 이스케이프: template: (task) => escapeHTML(task.text)
 ```
 
-For the full set of recommendations — Content Security Policy, lightbox sanitization, and SQL-injection guidance — see the [Application Security](guides/app-security.md) guide.
+전체 보안 세부사항 — 콘텐츠 보안 정책(CSP), 라이트박스 정 sanitization, SQL 인젝션 가이드라인 등은 [Application Security](guides/app-security.md) 가이드를 참고하세요.
 
-## Step 3: Frontend Migration
+## 3단계: 프런트엔드 마이그레이션
 
-### Install the DHTMLX Gantt package
+### DHTMLX Gantt 패키지 설치
 
-For this tutorial, we will use the trial version of DHTMLX Gantt:
+이 튜토리얼에서는 DHTMLX Gantt의 체험판을 사용합니다:
 
 ```
 npm install @dhx/trial-gantt
 ```
 
-### Update vite.config.js
+### vite.config.js 업데이트
 
-In the Frappe demo, the Vite proxy was scoped to `/data/tasks`:
+Frappe 데모에서 Vite 프록시는 `/data/tasks`로 한정되어 있었습니다:
 
 ```js
 proxy: {
@@ -492,7 +493,7 @@ proxy: {
 },
 ```
 
-Update it to proxy all `/data` requests (which now cover tasks, task CRUD, and link CRUD):
+이 프록시를 `/data` 전체 요청으로 업데이트합니다(이제 작업 CRUD 및 링크 CRUD를 모두 포함합니다):
 
 ```js
 proxy: {
@@ -503,27 +504,27 @@ proxy: {
 },
 ```
 
-### Update index.html
+### index.html 업데이트
 
-In the Frappe demo, `frappe-gantt` is loaded from a CDN. There is also a complex custom UI with modals, checkboxes, and control buttons - all of which are no longer needed because DHTMLX Gantt provides a built-in lightbox for editing tasks.
+Frappe 데모에서 `frappe-gantt`는 CDN에서 로드되었습니다. 모달, 체크박스, 컨트롤 버튼 등 복잡한 커스텀 UI도 더 이상 필요하지 않습니다. DHTMLX Gantt가 작업 편집을 위한 내장 라이트박스를 제공하기 때문입니다.
 
-Replace the entire `index.html` content:
+전체 `index.html` 내용을 교체합니다:
 
-Remove:
+제거:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.umd.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.css" />
 ```
 
-Also remove the entire custom UI markup inside `<body>` including:
+또한 `<body>` 안의 모든 커스텀 UI 마크업도 제거합니다(다음 포함):
 
-- The `.controls` div with `#add-task`, `#refresh`, and `#delete-task` buttons
-- The `.delete-section` div with task checkboxes
-- The `#add-task-modal` overlay
-- The `<div id="gantt">` container
+- `#add-task`, `#refresh`, `#delete-task` 버튼이 있는 `.controls` div
+- 작업 체크박스가 있는 `.delete-section` div
+- `#add-task-modal` 오버레이
+- `<div id="gantt">` 컨테이너
 
-Replace with a minimal structure:
+다음과 같은 최소 구조로 교체합니다:
 
 ```html
 <!DOCTYPE html>
@@ -541,9 +542,9 @@ Replace with a minimal structure:
 </html>
 ```
 
-### Update src/style.css
+### src/style.css 업데이트
 
-The Frappe demo's `style.css` contains custom styles for the control panel, buttons, modals, and checkboxes. Since all that custom UI is removed, replace the file with DHTMLX-specific styles:
+Frappe 데모의 `style.css`에는 컨트롤 패널, 버튼, 모달, 체크박스 등에 대한 커스텀 스타일이 포함되어 있습니다. 모든 커스텀 UI를 제거했으므로 DHTMLX 전용 스타일로 교체합니다:
 
 ```css
 html,
@@ -564,11 +565,11 @@ body {
 }
 ```
 
-The `.weekend` class is used by DHTMLX Gantt templates to highlight weekend columns (see `src/main.js`).
+`.weekend` 클래스는 DHTMLX Gantt 템플릿에서 주말 칼럼을 하이라이트하는 데 사용됩니다(예: `src/main.js` 참고).
 
-### Replace src/main.js
+### src/main.js 교체
 
-Remove all Frappe related code and replace `src/main.js` with:
+Frappe 관련 코드를 모두 제거하고 `src/main.js`를 아래로 교체합니다:
 
 ```js
 import '@dhx/trial-gantt/codebase/dhtmlxgantt.css';
@@ -658,45 +659,45 @@ const dp = gantt.createDataProcessor({
 });
 ```
 
-The `DataProcessor` will automatically:
+DataProcessor는 자동으로 다음 요청을 보냅니다:
 
-- Send `POST` to `/data/task` when creating a task
-- Send `PUT` to `/data/task/:id` when updating a task
-- Send `DELETE` to `/data/task/:id` when deleting a task
-- Send `POST` to `/data/link` when creating a dependency link
-- Send `PUT` to `/data/link/:id` when updating a link
-- Send `DELETE` to `/data/link/:id` when deleting a link
+- 작업 생성 시 POST /data/task
+- 작업 수정 시 PUT /data/task/:id
+- 작업 삭제 시 DELETE /data/task/:id
+- 의존성 링크 생성 시 POST /data/link
+- 링크 수정 시 PUT /data/link/:id
+- 링크 삭제 시 DELETE /data/link/:id
 
 ---
 
-## Step 4: Testing the Migration
+## 4단계: 마이그레이션 테스트
 
-### Running the Application
+### 애플리케이션 실행
 
-For development mode, you need to run two processes.
+개발 모드에서는 두 가지 프로세스를 실행해야 합니다.
 
-**Terminal 1 — Backend (Express):**
+- 터미널 1 — 백엔드(Express):
 
 ```bash
 npm run server
 ```
 
-This starts the API server on `http://localhost:1337` (or your configured port).
+API 서버가 `http://localhost:1337` (또는 구성된 포트)에서 시작됩니다.
 
-**Terminal 2 — Frontend (Vite):**
+- 터미널 2 — 프런트엔드(Vite):
 
 ```bash
 npm run dev
 ```
 
-This starts the Vite dev server on `http://localhost:5173`. Open your browser and navigate to `http://localhost:5173`. Vite will proxy `/data` requests to the Express backend automatically.
+Vite 개발 서버가 `http://localhost:5173` 에서 시작됩니다. 브라우저를 열고 `http://localhost:5173` 로 접속하면 Vite가 `/data` 요청을 Express 백엔드로 자동 프록시합니다.
 
-You should see the DHTMLX Gantt chart with your migrated data loaded from the database.
+데이터베이스에서 마이그레이션된 데이터를 로드한 DHTMLX Gantt 차트를 보실 수 있습니다.
 
 ![DHTMLX Gantt Chart](/img/migrating/frappe/dhtmlx-gantt-chart.png)
 
-## Next Steps
+## 다음 단계
 
-- Explore [DHTMLX Gantt documentation](/) for advanced features
-- Review the [API reference](/api/api-overview/) for customization options
-- Check out [DHTMLX Gantt samples](https://docs.dhtmlx.com/gantt/demos/) for implementation examples
+- 고급 기능을 위한 DHTMLX Gantt 문서를 탐색해 보세요: [DHTMLX Gantt documentation](/)
+- 커스터마이즈 옵션을 보려면 API 참조를 확인하세요: [API reference](/api/api-overview/)
+- 구현 예제는 DHTMLX Gantt 샘플 [DHTMLX Gantt samples](https://docs.dhtmlx.com/gantt/demos/) 에서도 확인할 수 있습니다

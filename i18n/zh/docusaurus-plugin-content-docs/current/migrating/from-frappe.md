@@ -1,40 +1,40 @@
 ---
-title: "Migrating from Frappe to DHTMLX Gantt"
-sidebar_label: "From Frappe"
+title: "从 Frappe Gantt 迁移到 DHTMLX Gantt"
+sidebar_label: "来自 Frappe"
 ---
 
 :::note
-The complete demo source code is available on GitHub: [https://github.com/DHTMLX/gantt-migrating-from-frappe](https://github.com/DHTMLX/gantt-migrating-from-frappe).
+完整的演示源代码可在 GitHub 上获取： [https://github.com/DHTMLX/gantt-migrating-from-frappe](https://github.com/DHTMLX/gantt-migrating-from-frappe).
 :::
 
-# Migrating from Frappe Gantt to DHTMLX Gantt
+# 从 Frappe Gantt 迁移到 DHTMLX Gantt
 
-## Introduction
+## 简介
 
-This guide will walk you through the process of migrating an existing application from [Frappe Gantt](https://frappe.io/gantt) to [DHTMLX Gantt](https://dhtmlx.com/docs/products/dhtmlxGantt/). We'll cover all necessary steps including database schema changes, server-side API modifications, and client-side code updates.
+本指南将带您了解将现有应用从 [Frappe Gantt](https://frappe.io/gantt) 迁移到 [DHTMLX Gantt](https://dhtmlx.com/docs/products/dhtmlxGantt/) 的过程。我们将涵盖所有必要步骤，包括数据库架构变更、服务器端 API 修改，以及客户端代码更新。
 
-## Prerequisites
+## 前提条件
 
-Before starting the migration, ensure you have:
+在开始迁移之前，请确保你具备：
 
-- An existing working application using Frappe Gantt
-- Node.js (>= 20.0.0) installed
-- MySQL database with Frappe Gantt data structure
-- Basic knowledge of Express.js and JavaScript
+- 一个正在使用 Frappe Gantt 的现有应用
+- 已安装 Node.js (>= 20.0.0)
+- 具有 Frappe Gantt 数据结构的 MySQL 数据库
+- 对 Express.js 和 JavaScript 有基本了解
 
-## Step 1: Database Migration
+## 步骤 1：数据库迁移
 
-### Understanding Current Schema
+### 理解当前架构
 
-If you followed the Frappe Gantt demo setup, you should have one table: `frappe_tasks`.
+如果你按照 Frappe Gantt 演示设置，你应该只有一个表：`frappe_tasks`。
 
-The `frappe_tasks` table structure:
+`frappe_tasks` 表结构：
 
-![Frappe tasks table](/img/migrating/frappe/frappe-tasks-table.png)
+![Frappe 任务表](/img/migrating/frappe/frappe-tasks-table.png)
 
-### Create DHTMLX Tables
+### 创建 DHTMLX 表
 
-DHTMLX Gantt uses two separate tables: one for tasks and one for dependency links. Create them in the same database:
+DHTMLX Gantt 使用两张独立的表：一张用于任务，一张用于依赖链接。请在同一个数据库中创建它们：
 
 ```sql
 USE frappe_dhtmlx;
@@ -59,11 +59,11 @@ CREATE TABLE IF NOT EXISTS gantt_links (
 );
 ```
 
-### Migrate Existing Data
+### 迁移现有数据
 
-Now migrate your existing Frappe data to the new DHTMLX tables.
+现在将你现有的 Frappe 数据迁移到新的 DHTMLX 表中。
 
-**Migrate tasks:**
+**迁移任务（tasks）：**
 
 ```sql
 INSERT INTO gantt_tasks (id, text, start_date, end_date, duration, progress, parent)
@@ -72,32 +72,32 @@ SELECT
     name,                           -- name → text
     start,                          -- start → start_date
     end,                            -- end → end_date
-    GREATEST(DATEDIFF(end, start), 1),  -- Duration in days (minimum 1)
-    progress / 100.0,               -- Convert percentage (0-100) to decimal (0-1)
-    '0'                             -- No hierarchy in Frappe, all tasks are root-level
+    GREATEST(DATEDIFF(end, start), 1),  -- 以天为单位的持续时间（最小 1 天）
+    progress / 100.0,               -- 将百分比（0-100）转换为小数（0-1）
+    '0'                             -- Frappe 中没有层级结构，所有任务都是根级
 FROM frappe_tasks;
 ```
 
-You can verify the result:
+你可以验证结果：
 
 ```sql
 SELECT * FROM gantt_tasks;
 ```
 
-**Migrate links (dependencies)**
+**迁移链接（依赖关系）**
 
-In Frappe Gantt's data structure, dependencies are stored as strings in the `dependencies` column of the `frappe_tasks` table.
+在 Frappe Gantt 的数据结构中，依赖关系存储在 `frappe_tasks` 表的 `dependencies` 列中，作为字符串形式。
 
-In DHTMLX Gantt, tasks and links are stored in **separate tables**. Each link is a row with:
+在 DHTMLX Gantt 中，任务和链接存储在分别的表中。每个链接是一行，字段为：
 
-- `id` - the link id
-- `source` - the id of the task the dependency starts from
-- `target` - the id of the task the dependency ends at
-- `type` - the dependency type: `"0"` (FS), `"1"` (SS), `"2"` (FF), `"3"` (SF)
+- `id` - 链接的唯一标识
+- `source` - 依赖起始任务的 id
+- `target` - 依赖结束的任务的 id
+- `type` - 依赖类型：`"0"`（FS）、`"1"`（SS）、`"2"`（FF）、`"3"`（SF）
 
-Since all Frappe dependencies are FS, the migration always sets `type = "0"`.
+由于所有 Frappe 依赖都是 FS，迁移时始终将 `type` 设置为 `"0"`。
 
-Create a `migrate-frappe-to-dhtmlx.js` file and paste the following code into it:
+创建一个 `migrate-frappe-to-dhtmlx.js` 文件并粘贴以下代码：
 
 ```js
 import mysql from 'mysql2/promise';
@@ -116,7 +116,7 @@ async function migrateFrappeToDHtmlX() {
   try {
     connection = await mysql.createConnection(dbConfig);
 
-    // Query all tasks that have dependencies
+    // 查询所有具有依赖关系的任务
     const [tasks] = await connection.execute(
       'SELECT id, dependencies FROM frappe_tasks WHERE dependencies IS NOT NULL AND dependencies != ""',
     );
@@ -134,7 +134,7 @@ async function migrateFrappeToDHtmlX() {
       const targetId = task.id;
       const dependencies = task.dependencies;
 
-      // Split comma-separated dependency IDs
+      // 以逗号分隔的依赖 ID 拆分
       const depIds = dependencies
         .split(',')
         .map((dep) => dep.trim())
@@ -142,7 +142,7 @@ async function migrateFrappeToDHtmlX() {
 
       console.log(`\nTask ${targetId} depends on: ${depIds.join(', ')}`);
 
-      // Each dependency becomes a Finish-to-Start link (type "0")
+      // 每个依赖关系转化为 Finish-to-Start 链接（type "0"）
       for (const sourceId of depIds) {
         links.push({
           source: sourceId,
@@ -195,7 +195,7 @@ async function migrateFrappeToDHtmlX() {
 migrateFrappeToDHtmlX();
 ```
 
-Then add a script to your `package.json`:
+然后在你的 `package.json` 中添加一个脚本：
 
 ```json
 {
@@ -205,67 +205,67 @@ Then add a script to your `package.json`:
 }
 ```
 
-Run the migration:
+执行迁移：
 
 ```bash
 npm run migrate
 ```
 
-You can verify that the links were migrated correctly:
+你可以验证链接是否正确迁移：
 
 ```sql
 SELECT * FROM gantt_links;
 ```
 
-You should see one row per dependency, with correct `source` and `target` IDs.
+你应该看到每个依赖关系对应一行，并且 `source` 与 `target` 的 ID 正确。
 
-### Mapping Frappe Task Fields to DHTMLX Gantt
+### 将 Frappe 任务字段映射到 DHTMLX Gantt
 
-| Frappe Field      | DHTMLX Field    | Notes                                                                                                                             |
+| Frappe 字段      | DHTMLX 字段    | 说明                                                                                                                               |
 | ----------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `id`              | `id`            | Task id                                                                                                                           |
-| `name`            | `text`          | Task name                                                                                                                         |
-| `start`           | `start_date`    | The start date of the task                                                                                                        |
-| `end`             | `end_date`      | The end date of the task                                                                                                          |
-| _(not stored)_    | `duration`      | The task duration. In DHTMLX Gantt, if not specified, Gantt will calculate it based on the `start_date` and `end_date` properties |
-| `progress`        | `progress`      | Frappe: integer 0–100; DHTMLX: decimal 0.0–1.0                                                                                    |
-| _(not supported)_ | `parent`        | Frappe has no hierarchy. In DHTMLX Gantt you can specify the parent task                                                          |
-| `dependencies`    | _(links table)_ | Frappe stores as strings; DHTMLX uses a separate `gantt_links` table                                                              |
+| `id`              | `id`            | 任务 ID                                                                                                                           |
+| `name`            | `text`          | 任务名称                                                                                                                         |
+| `start`           | `start_date`    | 任务的开始时间                                                                                                                   |
+| `end`             | `end_date`      | 任务的结束时间                                                                                                                   |
+| _(not stored)_    | `duration`      | 任务持续时间。在 DHTMLX Gantt 中如果未指定，系统会基于 `start_date` 和 `end_date` 自动计算                                                  |
+| `progress`        | `progress`      | Frappe：整数 0–100；DHTMLX：小数 0.0–1.0                                                                                    |
+| _(not supported)_ | `parent`        | Frappe 没有层级关系。在 DHTMLX Gantt 中你可以指定父任务                                                                 |
+| `dependencies`    | _(links table)_ | Frappe 以字符串形式存储；DHTMLX 使用单独的 `gantt_links` 表                                                              |
 
 ---
 
-## Step 2: Backend Migration (server.js)
+## 步骤 2：后端迁移（server.js）
 
-### Remove Frappe-Specific Endpoints and Helper
+### 删除 Frappe 特定端点与辅助函数
 
-In the Frappe server, data loading and CRUD for tasks go through `/data/tasks`. Delete or replace all of the following:
+在 Frappe 服务器中，数据加载和任务的 CRUD 操作通过 `/data/tasks` 进行。删除或替换以下所有内容：
 
-- `function formatTaskForClient(dbTask)` - the Frappe-specific response formatter
-- `app.get('/data/tasks', ...)` - returns a plain array of task objects
-- `app.post('/data/tasks', ...)` - creates a task; response returns the full task object
-- `app.put('/data/tasks/:id', ...)` - updates a task; response returns the updated task object
-- `app.delete('/data/tasks/:id', ...)` - deletes a task; returns HTTP 204 with no body
+- `function formatTaskForClient(dbTask)` - Frappe 特定的响应格式化函数
+- `app.get('/data/tasks', ...)` - 返回一个简单的任务对象数组
+- `app.post('/data/tasks', ...)` - 创建任务；响应返回完整的任务对象
+- `app.put('/data/tasks/:id', ...)` - 更新任务；响应返回更新后的任务对象
+- `app.delete('/data/tasks/:id', ...)` - 删除任务；返回 HTTP 204 无主体
 
-### Install DHTMLX Gantt Package
+### 安装 DHTMLX Gantt 包
 
-Install DHTMLX Gantt following the [installation guide](guides/installation.md).
+按照 [安装指南](guides/installation.md) 安装 DHTMLX Gantt。
 
-For this tutorial, we will use the trial version of DHTMLX Gantt:
+本教程中，我们将使用 DHTMLX Gantt 的试用版本：
 
 ```bash
 npm install @dhx/trial-gantt
 ```
 
-### Add Data Loading Endpoint
+### 添加数据加载端点
 
-DHTMLX expects both tasks and links to be returned in a single `GET /data` response as `{ tasks: [], links: [] }`.
+DHTMLX 期望在一个单独的 `GET /data` 响应中返回任务和链接，格式为 `{ tasks: [], links: [] }`。
 
-Replace the Frappe `GET /data/tasks` endpoint with:
+将 Frappe 的 `GET /data/tasks` 端点替换为：
 
 ```js
 import dateFormat from 'date-format-lite';
 
-// GET /data - Load tasks and links
+// GET /data - 加载任务和链接
 app.get('/data', async (req, res) => {
   try {
     const [tasks] = await pool.query('SELECT * FROM gantt_tasks ORDER BY start_date');
@@ -288,16 +288,16 @@ app.get('/data', async (req, res) => {
 });
 ```
 
-### Add CRUD Endpoints for Tasks and Links
+### 为任务和链接添加 CRUD 端点
 
-DHTMLX Gantt's `DataProcessor` uses RESTful endpoints to synchronize data with the server. Each operation (create, update, delete) is sent as a separate HTTP request. Learn more about [Server-side integration](guides/server-side.md).
+DHTMLX Gantt 的 `DataProcessor` 使用 RESTful 端点与服务器同步数据。每个操作（创建、更新、删除）作为单独的 HTTP 请求发送。了解更多关于 [Server-side integration](guides/server-side.md) 的信息。
 
-Replace the Frappe task endpoints (`POST /data/tasks`, `PUT /data/tasks/:id`, `DELETE /data/tasks/:id`) with:
+用以下内容替换 Frappe 的任务端点（`POST /data/tasks`、`PUT /data/tasks/:id`、`DELETE /data/tasks/:id`）：
 
 ```js
 import { randomUUID } from 'crypto';
 
-// POST /data/task — Create a new task
+// POST /data/task — 创建新任务
 app.post('/data/task', async (req, res) => {
   try {
     const task = getTask(req.body);
@@ -314,7 +314,7 @@ app.post('/data/task', async (req, res) => {
   }
 });
 
-// PUT /data/task/:id — Update an existing task
+// PUT /data/task/:id — 更新现有任务
 app.put('/data/task/:id', async (req, res) => {
   try {
     const taskId = req.params.id;
@@ -331,7 +331,7 @@ app.put('/data/task/:id', async (req, res) => {
   }
 });
 
-// DELETE /data/task/:id — Delete a task
+// DELETE /data/task/:id — 删除任务
 app.delete('/data/task/:id', async (req, res) => {
   try {
     const taskId = req.params.id;
@@ -343,10 +343,10 @@ app.delete('/data/task/:id', async (req, res) => {
 });
 ```
 
-Add handlers for link (dependency) operations:
+为链接（依赖）操作添加处理器：
 
 ```js
-// POST /data/link — Create a new link
+// POST /data/link — 创建新链接
 app.post('/data/link', async (req, res) => {
   try {
     const link = getLink(req.body);
@@ -364,7 +364,7 @@ app.post('/data/link', async (req, res) => {
   }
 });
 
-// PUT /data/link/:id — Update an existing link
+// PUT /data/link/:id — 更新现有链接
 app.put('/data/link/:id', async (req, res) => {
   try {
     const linkId = req.params.id;
@@ -382,7 +382,7 @@ app.put('/data/link/:id', async (req, res) => {
   }
 });
 
-// DELETE /data/link/:id — Delete a link
+// DELETE /data/link/:id — 删除链接
 app.delete('/data/link/:id', async (req, res) => {
   try {
     const linkId = req.params.id;
@@ -394,12 +394,12 @@ app.delete('/data/link/:id', async (req, res) => {
 });
 ```
 
-### Add Helper Functions
+### 添加辅助函数
 
-Replace the Frappe `formatTaskForClient` function with DHTMLX-compatible helpers:
+用 DHTMLX 兼容的助手函数替换 Frappe 的 `formatTaskForClient` 函数：
 
 ```js
-// Parse task data from request body
+// 从请求体解析任务数据
 function getTask(data) {
   return {
     text: data.text,
@@ -411,7 +411,7 @@ function getTask(data) {
   };
 }
 
-// Parse link data from request body
+// 从请求体解析链接数据
 function getLink(data) {
   return {
     source: data.source,
@@ -420,7 +420,7 @@ function getLink(data) {
   };
 }
 
-// Send DataProcessor-compatible response
+// 发送 DataProcessor 兼容的响应
 function sendResponse(res, action, tid = null, error = null) {
   if (error) {
     console.error('Error:', error);
@@ -432,13 +432,13 @@ function sendResponse(res, action, tid = null, error = null) {
 }
 ```
 
-**Note:** The response format is different from Frappe. Frappe endpoints returned the full task object (or HTTP 204 for deletes). DHTMLX's `DataProcessor` expects a JSON object with an `action` field (e.g., `{ action: "inserted", tid: 5 }`, `{ action: "updated" }`, `{ action: "deleted" }`). Learn more the [Request and Responses details](guides/server-side.md#requestresponsedetails).
+**注意：** 响应格式与 Frappe 不同。Frappe 端点返回完整的任务对象（删除时返回 HTTP 204）。DHTMLX 的 `DataProcessor` 期望的是包含 `action` 字段的 JSON 对象，例如 `{ action: "inserted", tid: 5 }`、`{ action: "updated" }`、`{ action: "deleted" }`。了解更多请参阅 [Request and Responses details](guides/server-side.md#requestresponsedetails)。
 
-### Sanitize Task Data (XSS Protection)
+### 对任务数据进行清洗（XSS 防护）
 
-DHTMLX Gantt renders fields such as a task's `text` as HTML and does **not** escape them by default, so any markup in your migrated data (or entered later by a user) is rendered as-is — a potential XSS vector. Frappe and most other libraries behave the same way, so it's worth handling this explicitly during migration.
+DHTMLX Gantt 会将任务的 `text` 等字段渲染为 HTML，并且默认不会对其进行转义，因此迁移的数据（或用户后续输入的数据）中的任意标记都将原样呈现——可能成为 XSS 向量。Frappe 以及大多数其他库的行为也是如此，因此在迁移阶段显式处理这点是值得的。
 
-**Sanitize on the backend (recommended).** Clean free-text fields before they reach the database:
+**后端进行清洗（推荐）。** 在进入数据库之前清理纯文本字段：
 
 ```bash
 npm install isomorphic-dompurify
@@ -450,12 +450,12 @@ import DOMPurify from 'isomorphic-dompurify';
 function getTask(data) {
   return {
     text: DOMPurify.sanitize(data.text),
-    // ...the remaining fields unchanged
+    // ...其余字段保持不变
   };
 }
 ```
 
-**Escape on the frontend (defense in depth).** Override the templates that render task text in `src/main.js`:
+**在前端进行转义（深入防护）** 覆盖在 `src/main.js` 中渲染任务文本的模板：
 
 ```js
 const escapeHTML = (value) =>
@@ -464,24 +464,24 @@ const escapeHTML = (value) =>
 
 gantt.templates.task_text = (start, end, task) => escapeHTML(task.text);
 gantt.templates.tooltip_text = (start, end, task) => escapeHTML(task.text);
-// also escape the "text" grid column via a column template: template: (task) => escapeHTML(task.text)
+// 也可以通过列模板对 "text" 网格列进行转义，例如：template: (task) => escapeHTML(task.text)
 ```
 
-For the full set of recommendations — Content Security Policy, lightbox sanitization, and SQL-injection guidance — see the [Application Security](guides/app-security.md) guide.
+关于 Content Security Policy、轻量级对话框清洗和 SQL 注入等建议，请参阅 [应用程序安全性](guides/app-security.md) 指南。
 
-## Step 3: Frontend Migration
+## 步骤 3：前端迁移
 
-### Install the DHTMLX Gantt package
+### 安装 DHTMLX Gantt 包
 
-For this tutorial, we will use the trial version of DHTMLX Gantt:
+本教程中，我们将使用 DHTMLX Gantt 的试用版本：
 
 ```
 npm install @dhx/trial-gantt
 ```
 
-### Update vite.config.js
+### 更新 vite.config.js
 
-In the Frappe demo, the Vite proxy was scoped to `/data/tasks`:
+在 Frappe 演示中，Vite 代理的作用域限定在 `/data/tasks`：
 
 ```js
 proxy: {
@@ -492,7 +492,7 @@ proxy: {
 },
 ```
 
-Update it to proxy all `/data` requests (which now cover tasks, task CRUD, and link CRUD):
+将其更新为将所有 `/data` 请求代理（现在包含任务、任务 CRUD 与链接 CRUD）：
 
 ```js
 proxy: {
@@ -503,27 +503,27 @@ proxy: {
 },
 ```
 
-### Update index.html
+### 更新 index.html
 
-In the Frappe demo, `frappe-gantt` is loaded from a CDN. There is also a complex custom UI with modals, checkboxes, and control buttons - all of which are no longer needed because DHTMLX Gantt provides a built-in lightbox for editing tasks.
+在 Frappe 演示中，`frappe-gantt` 是从 CDN 加载的。此外还有一个包含模态框、复选框和控制按钮的自定义 UI——现在都不再需要，因为 DHTMLX Gantt 提供了内置的编辑对话框用于编辑任务。
 
-Replace the entire `index.html` content:
+替换整个 `index.html` 内容：
 
-Remove:
+删除：
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.umd.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.css" />
 ```
 
-Also remove the entire custom UI markup inside `<body>` including:
+还要删除位于 `<body>` 内的整个自定义 UI 标记，包括：
 
-- The `.controls` div with `#add-task`, `#refresh`, and `#delete-task` buttons
-- The `.delete-section` div with task checkboxes
-- The `#add-task-modal` overlay
-- The `<div id="gantt">` container
+- 带有 `#add-task`、`#refresh`、`#delete-task` 按钮的 `.controls` 容器
+- 带有任务复选框的 `.delete-section` 容器
+- `#add-task-modal` 覆盖层
+- `<div id="gantt">` 容器
 
-Replace with a minimal structure:
+替换为一个简化结构：
 
 ```html
 <!DOCTYPE html>
@@ -541,9 +541,9 @@ Replace with a minimal structure:
 </html>
 ```
 
-### Update src/style.css
+### 更新 src/style.css
 
-The Frappe demo's `style.css` contains custom styles for the control panel, buttons, modals, and checkboxes. Since all that custom UI is removed, replace the file with DHTMLX-specific styles:
+Frappe 演示中的 `style.css` 包含用于控制面板、按钮、模态框和复选框的自定义样式。由于所有自定义 UI 已移除，请将文件替换为 DHTMLX 专用样式：
 
 ```css
 html,
@@ -564,11 +564,11 @@ body {
 }
 ```
 
-The `.weekend` class is used by DHTMLX Gantt templates to highlight weekend columns (see `src/main.js`).
+`.weekend` 类用于 DHTMLX Gantt 模板以高亮显示周末列（请参阅 `src/main.js`）。
 
-### Replace src/main.js
+### 替换 src/main.js
 
-Remove all Frappe related code and replace `src/main.js` with:
+移除所有 Frappe 相关代码，并将 `src/main.js` 替换为：
 
 ```js
 import '@dhx/trial-gantt/codebase/dhtmlxgantt.css';
@@ -658,45 +658,41 @@ const dp = gantt.createDataProcessor({
 });
 ```
 
-The `DataProcessor` will automatically:
+`DataProcessor` 将自动执行：
 
-- Send `POST` to `/data/task` when creating a task
-- Send `PUT` to `/data/task/:id` when updating a task
-- Send `DELETE` to `/data/task/:id` when deleting a task
-- Send `POST` to `/data/link` when creating a dependency link
-- Send `PUT` to `/data/link/:id` when updating a link
-- Send `DELETE` to `/data/link/:id` when deleting a link
+- 创建任务时向 `POST /data/task` 发送请求
+- 更新任务时向 `PUT /data/task/:id` 发送请求
+- 删除任务时向 `DELETE /data/task/:id` 发送请求
+- 创建依赖链接时向 `POST /data/link` 发送请求
+- 更新链接时向 `PUT /data/link/:id` 发送请求
+- 删除链接时向 `DELETE /data/link/:id` 发送请求
 
 ---
 
-## Step 4: Testing the Migration
+## 步骤 4：迁移测试
 
-### Running the Application
+### 运行应用程序
 
-For development mode, you need to run two processes.
+在开发模式下，需要同时运行两个进程。
 
-**Terminal 1 — Backend (Express):**
-
+终端 1 — 后端（Express）：
 ```bash
 npm run server
 ```
+这会在 `http://localhost:1337` 启动 API 服务器（或你配置的端口）。
 
-This starts the API server on `http://localhost:1337` (or your configured port).
-
-**Terminal 2 — Frontend (Vite):**
-
+终端 2 — 前端（Vite）：
 ```bash
 npm run dev
 ```
+这会在 `http://localhost:5173` 启动 Vite 开发服务器。打开浏览器并访问 `http://localhost:5173`。Vite 会自动将 `/data` 请求代理到 Express 后端。
 
-This starts the Vite dev server on `http://localhost:5173`. Open your browser and navigate to `http://localhost:5173`. Vite will proxy `/data` requests to the Express backend automatically.
-
-You should see the DHTMLX Gantt chart with your migrated data loaded from the database.
+你应该看到 DHTMLX Gantt 图表以及从数据库迁移过来的数据。
 
 ![DHTMLX Gantt Chart](/img/migrating/frappe/dhtmlx-gantt-chart.png)
 
-## Next Steps
+## 下一步
 
-- Explore [DHTMLX Gantt documentation](/) for advanced features
-- Review the [API reference](/api/api-overview/) for customization options
-- Check out [DHTMLX Gantt samples](https://docs.dhtmlx.com/gantt/demos/) for implementation examples
+- 了解 [DHTMLX Gantt 文档](/) 以获取高级功能
+- 查看 [API 参考](/api/api-overview/) 以获取自定义选项
+- 参考 [DHTMLX Gantt 示例](https://docs.dhtmlx.com/gantt/demos/) 以获取实现示例

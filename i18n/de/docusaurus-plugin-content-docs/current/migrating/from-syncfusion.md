@@ -1,41 +1,40 @@
 ---
-title: "Migrating from Syncfusion to DHTMLX Gantt"
-sidebar_label: "From Syncfusion"
+title: "Migration von Syncfusion Gantt zu DHTMLX Gantt"
+sidebar_label: "Von Syncfusion"
 ---
 
 :::note
-The complete demo source code is available on GitHub: [https://github.com/DHTMLX/gantt-migrating-from-syncfusion](https://github.com/DHTMLX/gantt-migrating-from-syncfusion).
+Der vollständige Demo-Quellcode ist auf GitHub verfügbar: [https://github.com/DHTMLX/gantt-migrating-from-syncfusion](https://github.com/DHTMLX/gantt-migrating-from-syncfusion).
 :::
 
-# Migrating from Syncfusion Gantt to DHTMLX Gantt
+# Migration von Syncfusion Gantt zu DHTMLX Gantt
 
-## Introduction
+## Einführung
 
-This guide will walk you through the process of migrating an existing application from [Syncfusion Gantt](https://www.syncfusion.com/javascript-ui-controls/js-gantt-chart) to [DHTMLX Gantt](https://dhtmlx.com/docs/products/dhtmlxGantt/). We'll cover all necessary steps including database schema changes, server-side API modifications, and client-side code updates.
+Diese Anleitung führt Sie Schritt für Schritt durch den Prozess der Migration einer bestehenden Anwendung von [Syncfusion Gantt](https://www.syncfusion.com/javascript-ui-controls/js-gantt-chart) zu [DHTMLX Gantt](https://dhtmlx.com/docs/products/dhtmlxGantt/). Wir behandeln alle notwendigen Schritte, einschließlich Änderungen des Datenbankschemas, Modifikationen der serverseitigen API und Aktualisierungen des clientseitigen Codes.
 
-## Prerequisites
+## Voraussetzungen
 
-Before starting the migration, ensure you have:
+Bevor Sie mit der Migration beginnen, stellen Sie sicher, dass Sie:
+- Eine bereits funktionierende Anwendung mit Syncfusion Gantt
+- Node.js (>= 20.0.0) installiert
+- Eine MySQL-Datenbank mit Syncfusion-Datenstruktur
+- Grundkenntnisse in Express.js und JavaScript
 
-- An existing working application using Syncfusion Gantt
-- Node.js (>= 20.0.0) installed
-- MySQL database with Syncfusion data structure
-- Basic knowledge of Express.js and JavaScript
+## Schritt 1: Migration der Datenbank
 
-## Step 1: Database Migration
+### Verstehen des aktuellen Schemas
 
-### Understanding Current Schema
+Wenn Sie dem Syncfusion-Demo-Setup gefolgt sind, sollten Sie eine Tabelle haben: `syncfusion_tasks`.
 
-If you followed the Syncfusion demo setup, you should have one table: `syncfusion_tasks`.
+Die Struktur der Tabelle `syncfusion_tasks`:
 
-The `syncfusion_tasks` table structure:
+![Syncfusion-Aufgabentabelle](/img/migrating/syncfusion/syncfusion-tasks-table.png)
+![Syncfusion-Aufgabentabelle2](/img/migrating/syncfusion/syncfusion-tasks-table2.png)
 
-![Syncfusion tasks table](/img/migrating/syncfusion/syncfusion-tasks-table.png)
-![Syncfusion tasks table](/img/migrating/syncfusion/syncfusion-tasks-table2.png)
+### Erstellen Sie DHTMLX-Tabellen
 
-### Create DHTMLX Tables
-
-Create two new tables compatible with DHTMLX Gantt:
+Erstellen Sie zwei neue Tabellen, die mit DHTMLX Gantt kompatibel sind:
 
 ```sql
 CREATE TABLE IF NOT EXISTS `gantt_tasks` (
@@ -61,11 +60,11 @@ CREATE TABLE IF NOT EXISTS `gantt_links` (
 );
 ```
 
-### Migrate Existing Data
+### Bestehende Daten migrieren
 
-Now migrate your existing Syncfusion data to the new DHTMLX tables.
+Migrieren Sie nun Ihre bestehenden Syncfusion-Daten in die neuen DHTMLX-Tabellen.
 
-**Migrate tasks:**
+**Aufgaben migrieren:**
 
 ```sql
 INSERT INTO gantt_tasks (id, text, start_date, end_date, duration, progress, parent, notes, open)
@@ -74,44 +73,44 @@ SELECT
     TaskName,                                           -- TaskName → text
     StartDate,
     COALESCE(EndDate,
-        DATE_ADD(StartDate, INTERVAL Duration DAY)),   -- Calculate end_date if missing
+        DATE_ADD(StartDate, INTERVAL Duration DAY)),   -- EndDate berechnen, falls fehlt
     COALESCE(Duration,
-        DATEDIFF(EndDate, StartDate)),                 -- Calculate duration if missing
-    COALESCE(Progress, 0) / 100,                       -- Convert percentage (0-100) to decimal (0-1)
-    COALESCE(ParentId, 0),                             -- ParentId → parent (0 for root tasks)
+        DATEDIFF(EndDate, StartDate)),                 -- duration berechnen, falls fehlt
+    COALESCE(Progress, 0) / 100,                       -- Prozentsatz (0-100) in Dezimalzahl (0-1) umwandeln
+    COALESCE(ParentId, 0),                             -- ParentId → parent (0 für Wurzelaufgaben)
     info,                                              -- info → notes
     COALESCE(isExpand, TRUE)                           -- isExpand → open
 FROM syncfusion_tasks;
 ```
 
-**Migrate links (dependencies)**
+**Links migrieren (Abhängigkeiten)**
 
-In Syncfusion Gantt's data structure, dependencies are stored as strings in the `Predecessor` column:
+In der Datenstruktur von Syncfusion Gantt werden Abhängigkeiten als Zeichenketten in der Spalte `Predecessor` gespeichert:
 
-- Format examples: `"5"`, `"3,4"`, `"5FS+2"`, `"7SS-1,8FF+3"`, `"2FS-5 days"`
+- Formatbeispiele: `"5"`, `"3,4"`, `"5FS+2"`, `"7SS-1,8FF+3"`, `"2FS-5 days"`
 
-In DHTMLX Gantt, tasks and links are stored in **separate tables**. Each link is a row with:
+In DHTMLX Gantt werden Aufgaben und Links in **getrennten Tabellen** gespeichert. Jede Verknüpfung ist eine Zeile mit:
 
-- `id` - the link id
-- `source` - the id of a task that the dependency will start from
-- `target` - the id of a task that the dependency will end with.
-- `type` - the dependency type: `"0"` (FS), `"1"` (SS), `"2"` (FF), `"3"` (SF)
-- `lag` - optional task's lag
+- `id` - die Link-ID
+- `source` - die ID einer Aufgabe, von der die Abhängigkeit beginnt
+- `target` - die ID einer Aufgabe, an der die Abhängigkeit endet
+- `type` - der Abhängigkeitstyp: `"0"` (FS), `"1"` (SS), `"2"` (FF), `"3"` (SF)
+- `lag` - optionale Verzögerung der Aufgabe
 
-We'll implement a Node.js migration script to parse Syncfusion's string format and convert it to DHTMLX's structured format.
+Wir implementieren ein Node.js-Migrationsskript, um das String-Format von Syncfusion zu parsen und in das strukturierte Format von DHTMLX zu konvertieren.
 
-**Understanding Syncfusion Predecessor Format:**
+**Verständnis des Predecessor-Formats von Syncfusion:**
 
-| Example        | Meaning                             | DHTMLX Equivalent               |
-| -------------- | ----------------------------------- | ------------------------------- |
-| `"5"`          | Task depends on task 5 (default FS) | `source: 5, type: "0"`          |
-| `"3,4"`        | Depends on tasks 3 AND 4            | Two separate links              |
-| `"5FS"`        | Finish-to-Start dependency          | `source: 5, type: "0"`          |
-| `"5FS+2"`      | FS with 2 days positive lag         | `source: 5, type: "0", lag: 2`  |
-| `"5FS-3"`      | FS with 3 days negative lag         | `source: 5, type: "0", lag: -3` |
-| `"2FS-5 days"` | FS with lag including "days" text   | `source: 2, type: "0", lag: -5` |
+| Beispiel        | Bedeutung                                      | DHTMLX-Entsprechung               |
+| -------------- | ---------------------------------------------- | --------------------------------- |
+| `"5"`          | Aufgabe hängt von Aufgabe 5 ab (Standard FS)  | `source: 5, type: "0"`              |
+| `"3,4"`        | Hängt von Aufgaben 3 UND 4 ab                   | Zwei separate Links                 |
+| `"5FS"`        | Finish-to-Start-Abhängigkeit                    | `source: 5, type: "0"`              |
+| `"5FS+2"`      | FS mit 2 Tagen positiver Verzögerung            | `source: 5, type: "0", lag: 2`      |
+| `"5FS-3"`      | FS mit 3 Tagen negativer Verzögerung            | `source: 5, type: "0", lag: -3`     |
+| `"2FS-5 days"` | FS mit Verzögerung einschließlich "days"-Text  | `source: 2, type: "0", lag: -5`     |
 
-Create a `migrate-dependencies.js` file and paste the following code into it:
+Erstellen Sie eine Datei `migrate-dependencies.js` und fügen Sie folgenden Code ein:
 
 ```js
 import { pool } from './server.js';
@@ -267,7 +266,7 @@ async function migrateDependencies() {
 migrateDependencies().catch(console.error);
 ```
 
-Then add a script to your `dhtmlx-demo/package.json`:
+Dann fügen Sie ein Skript zu Ihrer `dhtmlx-demo/package.json` hinzu:
 
 ```json
 {
@@ -277,81 +276,81 @@ Then add a script to your `dhtmlx-demo/package.json`:
 }
 ```
 
-Run the migration:
+Führen Sie die Migration aus:
 
 ```bash
 cd dhtmlx-demo
 npm run migrate-deps
 ```
 
-You can verify that the data was migrated correctly by running the following commands:
+Sie können überprüfen, dass die Daten korrekt migriert wurden, indem Sie folgende Befehle ausführen:
 
 ```sql
 SELECT * FROM gantt_tasks;
 SELECT * FROM gantt_links;
 ```
 
-You should see all your tasks and links properly transferred with the correct field mappings.
+Sie sollten alle Ihre Aufgaben und Links korrekt übertragen sehen mit den richtigen Feldzuordnungen.
 
-### Mapping Syncfusion Task Fields to DHTMLX Gantt
+### Zuordnung der Syncfusion-Aufgabenfelder zu DHTMLX Gantt
 
-| Syncfusion Field | DHTMLX Field    | Notes                                                                 |
+| Syncfusion-Feld | DHTMLX-Feld    | Hinweise                                                                 |
 | ---------------- | --------------- | --------------- | 
-| `TaskID`         | `id`            | Task id                                                               |
-| `TaskName`       | `text`          | Task name                                                       |
-| `StartDate`      | `start_date`    | Task start date                                                       |
-| `EndDate`        | `end_date`      | Task end date (calculated in DHTMLX if not provided)                  |
-| `Duration`       | `duration`      | Task duration                                                         |
-| `DurationUnit`   | _(config)_      | DHTMLX Gantt uses a global duration unit configured via `gantt.config.duration_unit`. During migration, it's recommended to normalize all durations to a single unit. If you want to have different duration units for different tasks, i.e. to show durations of some tasks in hours and some tasks in "days", you can use the [formatter module](guides/working-time.md#taskdurationindecimalformat).                     |
-| `Progress`       | `progress`      | Syncfusion: 0-100%, DHTMLX: 0-1 (decimal)                             |
-| `ParentId`       | `parent`        | Parent task ID (0 for root tasks)                                     |
-| `Predecessor`    | _(links table)_ | Syncfusion stores as string, DHTMLX uses separate `gantt_links` table |
-| `info` (notes)   | -         | Can be added as a custom column. Check this article for more information: [How to add a custom column in the grid](guides/how-to.md#how-to-add-a-custom-column-in-the-grid)                                            |
-| `isExpand`       | `open`          | Expand/collapse state for parent tasks                                |
-| `Indicators`     | `markers`       | DHTMLX uses `gantt.addMarker()` API. Learn more about [adding vertical markers](guides/markers.md)                                   |
+| `TaskID`         | `id`            | Aufgaben-ID                                                               |
+| `TaskName`       | `text`          | Aufgabenname                                                       |
+| `StartDate`      | `start_date`    | Aufgabenstartdatum                                                       |
+| `EndDate`        | `end_date`      | Aufgabenenddatum (in DHTMLX wird es berechnet, falls nicht angegeben)                  |
+| `Duration`       | `duration`      | Aufgabendauer                                                         |
+| `DurationUnit`   | _(config)_      | DHTMLX Gantt verwendet eine globale Dauer-Einheit, konfiguriert über `gantt.config.duration_unit`. Während der Migration wird empfohlen, alle Dauern auf eine einzige Einheit zu normalisieren. Wenn Sie unterschiedliche Dauer-Einheiten für verschiedene Aufgaben möchten, z. B. Dauern einiger Aufgaben in Stunden und anderer in "Tagen", können Sie das [formatter module](guides/working-time.md#taskdurationindecimalformat) verwenden.                     |
+| `Progress`       | `progress`      | Syncfusion: 0-100%, DHTMLX: 0-1 (Dezimal)                             |
+| `ParentId`       | `parent`        | Elternaufgaben-ID (0 für Wurzelaufgaben)                                     |
+| `Predecessor`    | _(links table)_ | Syncfusion speichert als Zeichenkette, DHTMLX verwendet separate `gantt_links`-Tabelle |
+| `info` (notes)   | -         | Kann als benutzerdefinierte Spalte hinzugefügt werden. Siehe diesen Artikel für weitere Informationen: [How to add a custom column in the grid](guides/how-to.md#how-to-add-a-custom-column-in-the-grid)                                            |
+| `isExpand`       | `open`          | Expand-/Zusammenklappzustand für Elternaufgaben                                |
+| `Indicators`     | `markers`       | DHTMLX verwendet die API `gantt.addMarker()`. Erfahren Sie mehr über [das Hinzufügen vertikaler Marker](guides/markers.md)                                   |
 
-## Step 2: Backend Migration (server.js)
+## Schritt 2: Backend-Migration (server.js)
 
-### Remove Syncfusion Endpoints
+### Entfernen Sie Syncfusion-Endpunkte
 
-Delete the following Syncfusion-specific endpoints from your `server.js`:
+Entfernen Sie die folgenden Syncfusion-spezifischen Endpunkte aus Ihrem `server.js`:
 
-- `app.post('/api/getTasks', ...)` - Syncfusion data loading endpoint
-- `app.post('/api/batchTasks', ...)` - Syncfusion batch sync endpoint
+- `app.post('/api/getTasks', ...)` - Syncfusion-Datenlade-Endpunkt
+- `app.post('/api/batchTasks', ...)` - Syncfusion-Batch-Sync-Endpunkt
 
-### Install DHTMLX Gantt Package and Vite
+### Installieren Sie DHTMLX Gantt Paket und Vite
 
-Remove Syncfusion dependency:
+Entfernen Sie die Syncfusion-Abhängigkeit:
 
 ```bash
 npm uninstall @syncfusion/ej2
 ```
 
-Install DHTMLX Gantt following the [installation guide](guides/installation.md).
+Installieren Sie DHTMLX Gantt gemäß der [Installationsanleitung](guides/installation.md).
 
-For this tutorial, we will use the trial version of DHTMLX Gantt:
+Für dieses Tutorial verwenden wir die Testversion von DHTMLX Gantt:
 
 ```bash
 npm install @dhx/trial-gantt
 ```
 
-Let's also install Vite as a build tool:
+Lassen Sie uns außerdem Vite als Build-Tool installieren:
 
 ```bash
 npm install --save-dev vite
 ```
 
-### Add Data Loading Endpoint
+### Fügen Sie einen Data Loading-Endpunkt hinzu
 
-We'll use the `date-format-lite` library to format dates from MySQL DATETIME format to the format expected by DHTMLX.
+Wir verwenden die Bibliothek `date-format-lite`, um Daten aus dem MySQL-DATETIME-Format in das von DHTMLX erwartete Format zu formatieren.
 
-Install the library:
+Installieren Sie die Bibliothek:
 
 ```bash
 npm install date-format-lite
 ```
 
-Add the GET endpoint to load data in DHTMLX format:
+Fügen Sie den GET-Endpunkt zum Laden von Daten im DHTMLX-Format hinzu:
 
 ```js
 import dateFormat from 'date-format-lite';
@@ -382,14 +381,14 @@ app.get('/data', async (req, res) => {
 });
 ```
 
-**Note:** The response format is different from Syncfusion (`{ result: [...], count: number }`). DHTMLX expects `{ tasks: [], links: [] }`.
+**Hinweis:** Das Antwortformat unterscheidet sich von Syncfusion (`{ result: [...], count: number }`). DHTMLX erwartet `{ tasks: [], links: [] }`.
 
-### Add CRUD Endpoints for Tasks and Links
+### Fügen Sie CRUD-Endpunkte für Tasks und Links hinzu
 
-DHTMLX Gantt's `DataProcessor` uses RESTful endpoints to synchronize data with the server. Each operation (create, update, delete) is sent as a separate HTTP request with the appropriate method.
-Learn more about [Server-side integration](guides/server-side.md).
+DHTMLX Gantt's `DataProcessor` verwendet REST-Endpoints, um Daten mit dem Server zu synchronisieren. Jede Operation (Erstellen, Aktualisieren, Löschen) wird als separate HTTP-Anfrage mit der passenden Methode gesendet.
+Weitere Informationen finden Sie unter [Server-side integration](guides/server-side.md).
 
-Add handlers for **task operations**:
+Fügen Sie Handler für **Task-Operationen** hinzu:
 
 ```js
 // Create a new task
@@ -437,7 +436,7 @@ app.delete('/data/task/:id', async (req, res) => {
 });
 ```
 
-Add handlers for link (dependency) operations:
+Fügen Sie Handler für Link- (Abhängigkeits-) Operationen hinzu:
 
 ```js
 // POST /data/link - Create new link
@@ -484,9 +483,9 @@ app.delete('/data/link/:id', async (req, res) => {
 });
 ```
 
-### Add Helper Functions
+### Hilfsfunktionen hinzufügen
 
-Also, let's add utility functions to process data and send responses:
+Fügen Sie außerdem Hilfsfunktionen hinzu, um Daten zu verarbeiten und Antworten zu senden:
 
 ```js
 // Helper: Parse task data from request
@@ -523,11 +522,11 @@ function sendResponse(res, action, tid = null, error = null) {
 }
 ```
 
-### Sanitize Task Data (XSS Protection)
+### Bereinigen von Task-Daten (XSS-Schutz)
 
-DHTMLX Gantt renders fields such as a task's `text` as HTML and does **not** escape them by default, so any markup in your migrated data (or entered later by a user) is rendered as-is — a potential XSS vector. Syncfusion and most other libraries behave the same way, so it's worth handling this explicitly during migration.
+DHTMLX Gantt rendert Felder wie den Text einer Aufgabe als HTML und escaped sie standardmäßig nicht – jeder Markup in migrierten Daten (oder später vom Benutzer eingegeben) wird unverändert gerendert – potenzieller XSS-Vektor. Syncfusion und die meisten anderen Bibliotheken verhalten sich ähnlich, daher lohnt es sich, dies explizit während der Migration zu berücksichtigen.
 
-**Sanitize on the backend (recommended).** Clean free-text fields before they reach the database:
+**Bereinigung im Backend (empfohlen).** Bereinigen Sie freizügige Textfelder, bevor sie in die Datenbank gelangen:
 
 ```bash
 npm install isomorphic-dompurify
@@ -540,12 +539,12 @@ function getTask(data) {
   return {
     text: DOMPurify.sanitize(data.text),
     notes: data.notes ? DOMPurify.sanitize(data.notes) : null,
-    // ...the remaining fields unchanged
+    // ...die verbleibenden Felder unverändert
   };
 }
 ```
 
-**Escape on the frontend (defense in depth).** Override the templates that render task text in `src/app/app.ts`:
+**Escape im Frontend (Defense in Depth).** Überschreiben Sie die Vorlagen, die den Task-Text in `src/app/app.ts` rendern:
 
 ```ts
 const escapeHTML = (value: unknown) =>
@@ -553,18 +552,18 @@ const escapeHTML = (value: unknown) =>
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch] as string));
 
 gantt.templates.task_text = (start, end, task) => escapeHTML(task.text);
-// also escape any custom grid column that shows task text: template: (task) => escapeHTML(task.text)
+// auch jeden benutzerdefinierten Grid-Spalten-Text sichern: template: (task) => escapeHTML(task.text)
 ```
 
-For the full set of recommendations — Content Security Policy, lightbox sanitization, and SQL-injection guidance — see the [Application Security](guides/app-security.md) guide.
+Für das vollständige Set an Empfehlungen – Content Security Policy, Lightbox-Sanitisierung und Hinweise zur SQL-Injektion – siehe den Guide [Application Security](guides/app-security.md).
 
 ---
 
-## Step 3: Frontend Migration with Vite
+## Schritt 3: Frontend-Migration mit Vite
 
-### Set Up Vite Configuration
+### Vite-Konfiguration einrichten
 
-Create a `vite.config.js` file in the root of your project:
+Erstellen Sie eine Datei `vite.config.js` im Stamm Ihres Projekts:
 
 ```javascript
 import { defineConfig } from 'vite';
@@ -587,30 +586,30 @@ export default defineConfig({
 });
 ```
 
-Organize your project with this structure:
+Organisieren Sie Ihr Projekt folgender Struktur:
 
 ```
 dhtmlx-demo/
-├── src/                    # Frontend source code
+├── src/                    # Frontend-Quellcode
 │   ├── app/
-│   │   └── app.ts         # Main Gantt initialization
-│   ├── index.html         # Main HTML file
+│   │   └── app.ts         # Haupt-Gantt-Initialisierung
+│   ├── index.html         # Haupt-HTML-Datei
 │   ├── resources/
 │   └── styles/
-├── e2e/                   # End-to-end tests (optional)
+├── e2e/                   # End-to-End-Tests (optional)
 ├── .env.example
 ├── .gitignore
-├── migrate-dependencies.js  # Dependency migration script
-├── package.json           # Project dependencies
-├── server.js              # Express server
-├── setup.sql              # Database setup script
-├── tsconfig.json          # TypeScript configuration
-└── vite.config.js         # Vite configuration
+├── migrate-dependencies.js  # Abhängigkeits-Migrationsskript
+├── package.json           # Projektabhängigkeiten
+├── server.js              # Express-Server
+├── setup.sql              # Datenbank-Setup-Skript
+├── tsconfig.json          # TypeScript-Konfiguration
+└── vite.config.js         # Vite-Konfiguration
 ```
 
-### Update index.html
+### Aktualisieren Sie index.html
 
-Update `index.html` with the following code:
+Aktualisieren Sie `index.html` mit dem folgenden Code:
 
 ```html
 <!DOCTYPE html>
@@ -664,13 +663,13 @@ Update `index.html` with the following code:
 </html>
 ```
 
-**Note:** The container ID changed to `gantt_here`, which is DHTMLX Gantt's conventional container ID.
+**Hinweis:** Die Container-ID wurde zu `gantt_here` geändert, dies ist die konventionelle Container-ID von DHTMLX Gantt.
 
-### Update src/app/app.ts
+### Aktualisieren Sie `src/app/app.ts`
 
-In the `src/app/app.ts` file, remove all Syncfusion-related imports and code.
+Entfernen Sie in der Datei `src/app/app.ts` alle Syncfusion-bezogenen Importe und Codes.
 
-Replace with DHTMLX Gantt initialization:
+Ersetzen Sie diese durch die DHTMLX Gantt-Initialisierung:
 
 ```ts
 import '@dhx/trial-gantt/codebase/dhtmlxgantt.css';
@@ -696,21 +695,21 @@ gantt.init('gantt_here');
 gantt.load('/data');
 
 const dp = gantt.createDataProcessor({
-  url: '/data', // Base URL for REST endpoints
-  mode: 'REST', // Use RESTful mode
+  url: '/data', // Base-URL für REST-Endpunkte
+  mode: 'REST', // REST-Modus verwenden
 });
 ```
 
-The DataProcessor will automatically:
+Der DataProcessor wird automatisch:
 
-- Send POST requests to `/data/task` when creating tasks
-- Send PUT requests to `/data/task/:id` when updating tasks
-- Send DELETE requests to `/data/task/:id` when deleting tasks
-- Handle links similarly with `/data/link` endpoints
+- POST-Anfragen an `/data/task` senden, wenn Aufgaben erstellt werden
+- PUT-Anfragen an `/data/task/:id` senden, wenn Aufgaben aktualisiert werden
+- DELETE-Anfragen an `/data/task/:id` senden, wenn Aufgaben gelöscht werden
+- Links ähnlich mit `/data/link`-Endpunkten behandeln
 
-### Update package.json Scripts
+### Aktualisieren Sie die Paket.json-Skripte
 
-Update your `package.json` scripts to use Vite:
+Aktualisieren Sie Ihre `package.json`-Skripte, um Vite zu verwenden:
 
 ```json
 {
@@ -726,34 +725,34 @@ Update your `package.json` scripts to use Vite:
 
 ---
 
-## Step 4: Testing the Migration
+## Schritt 4: Migration testen
 
-### Running the Application
+### Anwendung ausführen
 
-For development mode, you need to run two processes:
+Für den Entwicklungsmodus müssen zwei Prozesse ausgeführt werden:
 
-**Terminal 1 - Backend (Express):**
+**Terminal 1 – Backend (Express):**
 
 ```bash
 npm run server
 ```
 
-This starts the API server on `http://localhost:1337` (or your configured port)
+Dadurch wird der API-Server auf `http://localhost:1337` gestartet (oder dem konfigurierten Port)
 
-**Terminal 2 - Frontend (Vite):**
+**Terminal 2 – Frontend (Vite):**
 
 ```bash
 npm run dev
 ```
 
-This starts the Vite dev server on `http://localhost:5173`. Open your browser and navigate to `http://localhost:5173`. Vite will proxy API requests to the Express backend automatically.
+Dies startet den Vite-Dev-Server auf `http://localhost:5173`. Öffnen Sie Ihren Browser und navigieren Sie zu `http://localhost:5173`. Vite wird API-Anfragen automatisch an das Express-Backend weiterleiten.
 
-You should see the DHTMLX Gantt chart with your data loaded from the database:
+Sie sollten das DHTMLX Gantt-Diagramm sehen, das Ihre Daten aus der Datenbank lädt:
 
-![Gantt with data loaded](/img/migrating/syncfusion/dhtmlx-gantt-data-loaded.png)
+![Gantt mit geladenen Daten](/img/migrating/syncfusion/dhtmlx-gantt-data-loaded.png)
 
-## Next Steps
+## Nächste Schritte
 
-- Explore [DHTMLX Gantt documentation](/) for advanced features
-- Review the [API reference](/api/api-overview/) for customization options
-- Check out [DHTMLX Gantt samples](https://docs.dhtmlx.com/gantt/demos/) for implementation examples
+- Erkunden Sie die [DHTMLX Gantt-Dokumentation](/) für fortgeschrittene Funktionen
+- Überprüfen Sie die [API-Referenz](/api/api-overview/) für Anpassungsoptionen
+- Werfen Sie einen Blick auf [DHTMLX Gantt-Beispiele](https://docs.dhtmlx.com/gantt/demos/) für Implementierungsbeispiele

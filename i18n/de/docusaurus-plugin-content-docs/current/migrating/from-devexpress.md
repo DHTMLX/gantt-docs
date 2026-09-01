@@ -1,47 +1,46 @@
----
-title: "Migrating from DevExpress to DHTMLX Gantt"
-sidebar_label: "From DevExpress"
----
+--- 
+title: "Migration von DevExpress Gantt zu DHTMLX Gantt" 
+sidebar_label: "Von DevExpress" 
+--- 
 
 :::note
-The complete demo source code is available on GitHub: [https://github.com/DHTMLX/gantt-migrating-from-devexpress](https://github.com/DHTMLX/gantt-migrating-from-devexpress).
-:::
+Der vollständige Demo-Quellcode ist auf GitHub verfügbar: [https://github.com/DHTMLX/gantt-migrating-from-devexpress](https://github.com/DHTMLX/gantt-migrating-from-devexpress).
+:::  
 
-# Migrating from DevExpress Gantt to DHTMLX Gantt
+# Migration von DevExpress Gantt zu DHTMLX Gantt
 
-## Introduction
+## Einführung
 
-This guide will walk you through the process of migrating an existing application from [DevExpress Gantt](https://js.devexpress.com/React/Documentation/Guide/UI_Components/Gantt/Overview/) to [DHTMLX Gantt](https://dhtmlx.com/docs/products/dhtmlxGantt/). We'll cover all necessary steps including database schema changes, server-side API modifications, and client-side code updates.
+Diese Anleitung führt Sie durch den Prozess der Migration einer bestehenden Anwendung von [DevExpress Gantt](https://js.devexpress.com/React/Documentation/Guide/UI_Components/Gantt/Overview/) zu [DHTMLX Gantt](https://dhtmlx.com/docs/products/dhtmlxGantt/). Wir behandeln alle erforderlichen Schritte, einschließlich Änderungen am Datenbankschema, Modifikationen der serverseitigen API und Aktualisierungen des Client-Codes.
 
-## Prerequisites
+## Voraussetzungen
 
-Before starting the migration, ensure you have:
+Bevor Sie mit der Migration beginnen, stellen Sie sicher, dass Sie:
 
-- An existing working application using DevExpress Gantt
-- Node.js (>= 20.0.0) installed
-- MySQL database with DevExpress data structure
-- Basic knowledge of Express.js, React, and TypeScript
+- Eine bestehende, funktionsfähige Anwendung mit DevExpress Gantt
+- Node.js (>= 20.0.0) installiert
+- MySQL-Datenbank mit DevExpress-Datenstruktur
+- Grundkenntnisse in Express.js, React und TypeScript
 
-## Step 1: Database Migration
+## Schritt 1: Datenbank-Migration
 
-### Understanding DevExpress Schema
+### Verständnis des DevExpress-Schemas
 
-If you followed the DevExpress demo setup, you should
-have two tables: `devexpress_tasks` and `devexpress_dependencies`.
+Wenn Sie dem Demo-Setup von DevExpress gefolgt sind, sollten Sie zwei Tabellen haben: `devexpress_tasks` und `devexpress_dependencies`.
 
-The `devexpress_tasks` table structure:
+Die Struktur der Tabelle `devexpress_tasks`:
 
 ![DevExpress tasks table](/img/migrating/devexpress/devexpress-tasks-table.png)
 
-The `devexpress_dependencies` table structure:
+Die Struktur der Tabelle `devexpress_dependencies`:
 
 ![DevExpress links table](/img/migrating/devexpress/devexpress-links-table.png)
 
-This two-table structure is already similar to DHTMLX's approach, making the migration straightforward.
+Diese Zwei-Tabellen-Struktur ähnelt bereits dem Ansatz von DHTMLX, wodurch die Migration unkompliziert wird.
 
-### Create DHTMLX Tables
+### Erstellung der DHTMLX-Tabellen
 
-Create two new tables compatible with DHTMLX Gantt:
+Erstellen Sie zwei neue Tabellen, die mit DHTMLX Gantt kompatibel sind:
 
 ```sql
 CREATE TABLE IF NOT EXISTS gantt_tasks (
@@ -61,15 +60,15 @@ CREATE TABLE IF NOT EXISTS gantt_links (
     type             VARCHAR(1)     NOT NULL,
     PRIMARY KEY (id)
 );
-```
+``` 
 
-**Note:** DHTMLX Gantt will automatically calculate `duration` based on `start_date` and `end_date`.
+Hinweis: DHTMLX Gantt berechnet automatisch `duration` basierend auf `start_date` und `end_date`.
 
-### Migrate Existing Data
+### Bestehende Daten migrieren
 
-Now migrate your existing DevExpress data to the new DHTMLX tables.
+Migrieren Sie nun Ihre bestehenden DevExpress-Daten in die neuen DHTMLX-Tabellen.
 
-**Migrate tasks:**
+**Aufgaben migrieren:**  
 
 ```sql
 INSERT INTO gantt_tasks (id, text, start_date, end_date, progress, parent)
@@ -83,9 +82,9 @@ SELECT
 FROM devexpress_tasks;
 ```
 
-**Migrate links (dependencies):**
+**Verknüpfungen (Abhängigkeiten) migrieren:**  
 
-DevExpress already stores dependencies in a structured format in the `devexpress_dependencies` table, which makes migration straightforward:
+DevExpress speichert Abhängigkeiten bereits in einem strukturierten Format in der Tabelle `devexpress_dependencies`, was die Migration erleichtert:
 
 ```sql
 INSERT INTO gantt_links (id, source, target, type)
@@ -103,87 +102,87 @@ SELECT
 FROM devexpress_dependencies;
 ```
 
-You can verify that the data was migrated correctly by running the following commands:
+Sie können überprüfen, dass die Daten korrekt migriert wurden, indem Sie die folgenden Befehle ausführen:
 
 ```sql
 SELECT * FROM gantt_tasks;
 SELECT * FROM gantt_links;
 ```
 
-You should see all your tasks and links properly transferred with the correct field mappings.
+Sie sollten alle Aufgaben und Verknüpfungen mit den korrekten Feldzuordnungen übertragen sehen.
 
-### Mapping DevExpress Task Fields to DHTMLX Gantt
+### Zuordnung DevExpress-Felder zu DHTMLX Gantt
 
-| DevExpress Field | DHTMLX Field | Notes                                                                            |
-| ---------------- | ------------ | -------------------------------------------------------------------------------- |
-| `id`             | `id`         | Task ID                                                                          |
-| `title`          | `text`       | Task name                                                                        |
-| `start`          | `start_date` | Task start date and time                                                         |
-| `end`            | `end_date`   | Task end date and time                                                           |
-| `progress`       | `progress`   | DevExpress: 0-100 (integer), DHTMLX: 0-1 (float). Divide by 100 during migration |
-| `parentId`       | `parent`     | Parent task ID. NULL values → 0 for root tasks                                   |
+| DevExpress-Feld | DHTMLX-Feld | Hinweise                                                                                |
+| ---------------- | ------------ | --------------------------------------------------------------------------------------- |
+| `id`             | `id`         | Aufgaben-ID                                                                           |
+| `title`          | `text`       | Aufgabentitel                                                                          |
+| `start`          | `start_date` | Aufgabenstartdatum und -uhrzeit                                                       |
+| `end`            | `end_date`   | Aufgabenenddatum und -uhrzeit                                                         |
+| `progress`       | `progress`   | DevExpress: 0-100 (Ganzzahl), DHTMLX: 0-1 (Fließkomma). Während der Migration durch 100 teilen |
+| `parentId`       | `parent`     | Übergeordnete Aufgaben-ID. NULL-Werte → 0 für Wurzelaufgaben                          |
 
-More about task properties: [Task Properties](guides/task-properties.md).
+Weitere Informationen zu Aufgaben-Eigenschaften: [Task Properties](guides/task-properties.md).
 
-### Mapping DevExpress Dependency Fields to DHTMLX Links
+### Mapping DevExpress-Abhängigkeitsfelder zu DHTMLX-Verknüpfungen
 
-| DevExpress Field | DHTMLX Field | Notes                                                                                    |
-| ---------------- | ------------ | ---------------------------------------------------------------------------------------- |
-| `id`             | `id`         | Link ID                                                                                  |
-| `predecessorId`  | `source`     | ID of the task that the dependency starts from                                           |
-| `successorId`    | `target`     | ID of the task that the dependency points to                                             |
-| `type`           | `type`       | Dependency type. DevExpress uses numbers (0-3), DHTMLX uses strings ("0"-"3") by default |
+| DevExpress-Feld | DHTMLX-Feld | Hinweise                                                                                          |
+| ---------------- | ------------ | ------------------------------------------------------------------------------------------------- |
+| `id`             | `id`         | Verknüpfungs-ID                                                                                    |
+| `predecessorId`  | `source`     | ID der Aufgabe, von der die Abhängigkeit ausgeht                                                     |
+| `successorId`    | `target`     | ID der Aufgabe, auf die die Abhängigkeit verweist                                                     |
+| `type`           | `type`       | Abhängigkeitstyp. DevExpress verwendet Zahlen (0-3), DHTMLX verwendet standardmäßig Strings ("0"-"3") |
 
-More about link properties: [Link Properties](guides/link-properties.md).
+Weitere Informationen zu Verknüpfungseigenschaften: [Link Properties](guides/link-properties.md).
 
-## Step 2: Backend Migration (server.js)
+## Schritt 2: Backend-Migration (server.js)
 
-### Remove DevExpress Endpoints
+### DevExpress-Endpunkte entfernen
 
-Delete the following DevExpress-specific endpoints from your `server.js`:
+Löschen Sie die folgenden DevExpress-spezifischen Endpunkte aus Ihrer `server.js`:
 
-- `app.get('/api/tasks', ...)` - DevExpress tasks loading endpoint
-- `app.post('/api/tasks', ...)` - Create task endpoint
-- `app.put('/api/tasks/:id', ...)` - Update task endpoint
-- `app.delete('/api/tasks/:id', ...)` - Delete task endpoint
-- `app.get('/api/dependencies', ...)` - DevExpress dependencies loading endpoint
-- `app.post('/api/dependencies', ...)` - Create dependency endpoint
-- `app.put('/api/dependencies/:id', ...)` - Update dependency endpoint
-- `app.delete('/api/dependencies/:id', ...)` - Delete dependency endpoint
+- `app.get('/api/tasks', ...)` - Endpunkt zum Laden von DevExpress-Aufgaben
+- `app.post('/api/tasks', ...)` - Endpunkt zum Erstellen von Aufgaben
+- `app.put('/api/tasks/:id', ...)` - Endpunkt zum Aktualisieren von Aufgaben
+- `app.delete('/api/tasks/:id', ...)` - Endpunkt zum Löschen von Aufgaben
+- `app.get('/api/dependencies', ...)` - Endpunkt zum Laden von DevExpress-Abhängigkeiten
+- `app.post('/api/dependencies', ...)` - Endpunkt zum Erstellen von Abhängigkeiten
+- `app.put('/api/dependencies/:id', ...)` - Endpunkt zum Aktualisieren von Abhängigkeiten
+- `app.delete('/api/dependencies/:id', ...)` - Endpunkt zum Löschen von Abhängigkeiten
 
-Also remove the CustomStore-related response format handling.
+Entfernen Sie außerdem die CustomStore-bezogene Antwortformat-Verarbeitung.
 
-### Install DHTMLX Gantt Packages
+### DHTMLX Gantt-Pakete installieren
 
-Remove DevExpress dependencies:
+DevExpress-Abhängigkeiten entfernen:
 
 ```bash
 npm uninstall devextreme devextreme-react
 ```
 
-Install DHTMLX React Gantt following the [installation guide](guides/installation.md).
+Installieren Sie DHTMLX React Gantt gemäß der [Installationsanleitung](guides/installation.md).
 
-For this tutorial, we will use the trial version of DHTMLX React Gantt:
+Für dieses Tutorial verwenden wir die Testversion von DHTMLX React Gantt:
 
 ```bash
 npm install @dhtmlx/trial-react-gantt
 ```
 
-Install date formatting library for MySQL DATETIME conversion:
+Installieren Sie eine Datum-Formatierungsbibliothek für die MySQL-DATETIME-Konvertierung:
 
 ```bash
 npm install date-format-lite
 ```
 
-### Add Data Loading Endpoint
+### Data Loading Endpoint hinzufügen
 
-Add the GET endpoint to load data in DHTMLX format. Import the `date-format-lite` library at the top of your `server.js`:
+Fügen Sie den GET-Endpunkt hinzu, um Daten im DHTMLX-Format zu laden. Importieren Sie die Bibliothek `date-format-lite` oben in Ihrer `server.js`:
 
 ```js
 import dateFormat from 'date-format-lite';
 ```
 
-Then add the data loading endpoint:
+Dann fügen Sie den Data-Loading-Endpunkt hinzu:
 
 ```js
 // GET /load - Load all tasks and links
@@ -212,13 +211,13 @@ app.get('/load', async (req, res) => {
 });
 ```
 
-DevExpress returns separate arrays, DHTMLX expects `{ data: [...], links: [...] }`.
+DevExpress gibt separate Arrays zurück, DHTMLX erwartet `{ data: [...], links: [...] }`.
 
-### Add CRUD Endpoints for Tasks and Links
+### CRUD-Endpunkte für Tasks und Links hinzufügen
 
-DHTMLX React Gantt uses a custom save handler to synchronize data with the server. Each operation (create, update, delete) is sent with the appropriate HTTP method.
+DHTMLX React Gantt verwendet einen benutzerdefinierten Save-Handler, um Daten mit dem Server zu synchronisieren. Jede Operation (create, update, delete) wird mit der passenden HTTP-Methode gesendet.
 
-Add handlers for task operations:
+Fügen Sie Handler für Aufgaben-Operationen hinzu:
 
 ```js
 // POST /save/task - Create a new task
@@ -266,7 +265,7 @@ app.delete('/save/task/:id', async (req, res) => {
 });
 ```
 
-Add handlers for link (dependency) operations:
+Fügen Sie Handler für Verknüpfungs- (Abhängigkeits-) Operationen hinzu:
 
 ```js
 // POST /save/link - Create new link
@@ -317,9 +316,9 @@ app.delete('/save/link/:id', async (req, res) => {
 });
 ```
 
-### Add Helper Functions
+### Hilfsfunktionen hinzufügen
 
-Add utility functions to process data and send responses:
+Fügen Sie Hilfsfunktionen hinzu, um Daten zu verarbeiten und Antworten zu senden:
 
 ```js
 // Helper: Parse task data from request
@@ -355,9 +354,9 @@ function sendResponse(res, action, tid = null, error = null) {
 }
 ```
 
-### Sanitize Task Data (XSS Protection)
+### Task-Daten bereinigen (XSS-Schutz)
 
-Gantt charts render free-text fields such as a task's `text`, and any HTML in that text can become an XSS vector. Always sanitize user input on the backend before storing it — clean free-text fields in the `getTask` helper:
+Gantt-Diagramme rendern Freitextfelder wie den Task-Text, und HTML in diesem Text kann eine XSS-Vektor darstellen. Bereinigen Sie daher Benutzereingaben im Backend, bevor Sie sie speichern – säubern Sie Freitextfelder in der `getTask`-Hilfsfunktion:
 
 ```bash
 npm install isomorphic-dompurify
@@ -369,40 +368,40 @@ import DOMPurify from 'isomorphic-dompurify';
 function getTask(data) {
   return {
     text: DOMPurify.sanitize(data.text),
-    // ...the remaining fields unchanged
+    // ...die verbleibenden Felder unverändert
   };
 }
 ```
 
-If you add custom cell or tooltip renderers that output raw HTML, escape the values there as well. For the full set of recommendations — Content Security Policy and SQL-injection guidance — see the [Application Security](guides/app-security.md) guide.
+Wenn Sie benutzerdefinierte Zell- oder Tooltip-Renderer hinzufügen, die rohes HTML ausgeben, maskieren Sie die Werte dort ebenfalls. Für die vollständige Sammlung von Empfehlungen – Richtlinien zur Anwendungen-Sicherheit (Content Security Policy) und Hinweise zu SQL-Injektion – siehe den Leitfaden [Application Security](guides/app-security.md).
 
 ---
 
-## Step 3: Frontend Migration
+## Schritt 3: Frontend-Migration
 
-### Remove DevExpress Components and Services
+### DevExpress-Komponenten und -Dienste entfernen
 
-Delete CustomStore service file (`src/services/dataService.ts`) - DHTMLX React Gantt doesn't use CustomStore
+Löschen Sie die CustomStore-Service-Datei (`src/services/dataService.ts`) – DHTMLX React Gantt verwendet CustomStore nicht.
 
-Remove DevExpress CSS links from `index.html`
+Entfernen Sie außerdem DevExpress-CSS-Verknüpfungen aus `index.html`.
 
-If you added DevExpress CSS links in your `index.html`, remove them:
+Wenn Sie DevExpress-CSS-Verknüpfungen in Ihrer `index.html` hinzugefügt haben, entfernen Sie sie:
 
 ```html
-<!-- Remove these lines -->
+<!-- Entfernen Sie diese Zeilen -->
 <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/25.2.4/css/dx.fluent.blue.light.css" />
 <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/25.2.4/css/dx-gantt.min.css" />
 ```
 
-DHTMLX React Gantt includes its own styles, which are imported directly in the component:
+DHTMLX React Gantt beinhaltet eigene Styles, die direkt in der Komponente importiert werden:
 
 ```typescript
 import '@dhtmlx/trial-react-gantt/dist/react-gantt.css';
 ```
 
-### Update Vite Configuration
+### Vite-Konfiguration aktualisieren
 
-Update your `vite.config.ts` to proxy API requests to the backend server. This is important for development mode:
+Aktualisieren Sie Ihre `vite.config.ts`, um API-Anfragen an den Backend-Server zu proxyen. Dies ist wichtig im Entwicklungsmodus:
 
 ```typescript
 import { defineConfig } from 'vite';
@@ -427,9 +426,9 @@ export default defineConfig({
 });
 ```
 
-### Update package.json
+### Update von package.json
 
-Make sure your `package.json` has the correct dependencies:
+Stellen Sie sicher, dass Ihre `package.json` die richtigen Abhängigkeiten enthält:
 
 ```json
 "dependencies": {
@@ -460,9 +459,9 @@ Make sure your `package.json` has the correct dependencies:
 }
 ```
 
-### Update src/App.tsx
+### Update von src/App.tsx
 
-Replace your DevExpress Gantt component in `src/App.tsx` with DHTMLX React Gantt:
+Ersetzen Sie Ihre DevExpress-Gantt-Komponente in `src/App.tsx` durch DHTMLX React Gantt:
 
 ```typescript
 import { useCallback, useMemo, useRef } from 'react';
@@ -539,41 +538,39 @@ export default App;
 
 ---
 
-### Running the Application
+### Anwendung ausführen
 
-For development mode, you need to run two processes:
+Für den Entwicklungsmodus müssen Sie zwei Prozesse starten:
 
-Terminal 1 - Backend (Express):
+Terminal 1 – Backend (Express):
 
 ```bash
 npm run server
 ```
 
-This starts the API server on `http://localhost:1337` (or your configured PORT from `.env`)
+Damit wird der API-Server unter `http://localhost:1337` gestartet (oder der in Ihrer `.env` konfigurierten PORT).
 
-You should see:
+Sie sollten sehen:
 
 ```
 Server is running on port 1337
 ```
 
-Terminal 2 - Frontend (Vite):
+Terminal 2 – Frontend (Vite):
 
 ```bash
 npm run dev
 ```
 
-This starts the Vite dev server on `http://localhost:5173`. Open your browser and
-navigate to `http://localhost:5173`. Vite will proxy API requests to the Express backend
-automatically.
+Damit wird der Vite-Entwicklungsserver unter `http://localhost:5173` gestartet. Öffnen Sie Ihren Browser und navigieren Sie zu `http://localhost:5173`. Vite leitet API-Anfragen automatisch an das Express-Backend weiter.
 
-You should see the DHTMLX Gantt chart with your data loaded from the database:
+Sie sollten das DHTMLX Gantt-Diagramm mit Ihren Daten sehen, die aus der Datenbank geladen wurden:
 
 ![Gantt with data loaded](/img/migrating/devexpress/dhtmlx-gantt-data-loaded.png)
 
-### Explore DHTMLX Gantt Features
+### Erkundung der DHTMLX Gantt-Funktionen
 
-- [DHTMLX Gantt documentation](/)
-- [API reference](/api/api-overview/)
-- [React Gantt configuration](/integrations/react/configuration-props.md)
-- [React Gantt integration](/integrations/react.md)
+- [Dokumentation zu DHTMLX Gantt](/) 
+- [API-Referenz](/api/api-overview/) 
+- [React Gantt-Konfiguration](integrations/react/configuration-props.md) 
+- [React Gantt-Integration](integrations/react.md)
