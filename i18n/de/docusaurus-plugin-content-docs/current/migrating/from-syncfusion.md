@@ -755,4 +755,4 @@ Sie sollten das DHTMLX Gantt-Diagramm sehen, das Ihre Daten aus der Datenbank l�
 
 - Erkunden Sie die [DHTMLX Gantt-Dokumentation](/) für fortgeschrittene Funktionen
 - Überprüfen Sie die [API-Referenz](/api/api-overview/) für Anpassungsoptionen
-- Werfen Sie einen Blick auf [DHTMLX Gantt-Beispiele](https://docs.dhtmlx.com/gantt/samples/) für Implementierungsbeispiele
+- Werfen Sie einen Blick auf [DHTMLX Gantt-Beispiele](https://docs.dhtmlx.com/gantt/demos/) für Implementierungsbeispiele

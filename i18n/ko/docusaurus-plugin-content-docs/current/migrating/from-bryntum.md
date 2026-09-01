@@ -831,5 +831,5 @@ npm run server
 
 - 고급 기능을 위한 DHTMLX Gantt 문서 확인하기: [DHTMLX Gantt documentation](/)
 - API 참조 확인: [API reference](/api/api-overview/)
-- 구현 예제 확인: [DHTMLX Gantt samples](https://docs.dhtmlx.com/gantt/samples/)
+- 구현 예제 확인: [DHTMLX Gantt samples](https://docs.dhtmlx.com/gantt/demos/)
 

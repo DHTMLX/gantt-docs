@@ -695,4 +695,4 @@ npm run dev
 
 - 了解 [DHTMLX Gantt 文档](/) 以获取高级功能
 - 查看 [API 参考](/api/api-overview/) 以获取自定义选项
-- 参考 [DHTMLX Gantt 示例](https://docs.dhtmlx.com/gantt/samples/) 以获取实现示例
+- 参考 [DHTMLX Gantt 示例](https://docs.dhtmlx.com/gantt/demos/) 以获取实现示例

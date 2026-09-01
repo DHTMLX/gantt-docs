@@ -700,4 +700,4 @@ Vite 개발 서버가 `http://localhost:5173` 에서 시작됩니다. 브라우�
 
 - 고급 기능을 위한 DHTMLX Gantt 문서를 탐색해 보세요: [DHTMLX Gantt documentation](/)
 - 커스터마이즈 옵션을 보려면 API 참조를 확인하세요: [API reference](/api/api-overview/)
-- 구현 예제는 DHTMLX Gantt 샘플 [DHTMLX Gantt samples](https://docs.dhtmlx.com/gantt/samples/) 에서도 확인할 수 있습니다
+- 구현 예제는 DHTMLX Gantt 샘플 [DHTMLX Gantt samples](https://docs.dhtmlx.com/gantt/demos/) 에서도 확인할 수 있습니다

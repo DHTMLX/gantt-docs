@@ -755,4 +755,4 @@ npm run dev
 
 - 了解 [DHTMLX Gantt 文档](/) 的高级功能
 - 查看 [API 参考](/api/api-overview/) 的自定义选项
-- 了解更多实现示例，请查看 [DHTMLX Gantt 示例](https://docs.dhtmlx.com/gantt/samples/)
+- 了解更多实现示例，请查看 [DHTMLX Gantt 示例](https://docs.dhtmlx.com/gantt/demos/)

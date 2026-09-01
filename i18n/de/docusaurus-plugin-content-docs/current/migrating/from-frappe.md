@@ -698,4 +698,4 @@ Sie sollten das DHTMLX Gantt-Diagramm mit den aus der Datenbank geladenen Migrie
 
 - Erfahren Sie mehr in der [DHTMLX Gantt-Dokumentation](/) zu fortgeschrittenen Funktionen
 - Prüfen Sie die [API-Referenz](/api/api-overview/) für Anpassungsoptionen
-- Werfen Sie einen Blick auf [DHTMLX Gantt-Beispiele](https://docs.dhtmlx.com/gantt/samples/) für Implementierungsbeispiele
+- Werfen Sie einen Blick auf [DHTMLX Gantt-Beispiele](https://docs.dhtmlx.com/gantt/demos/) für Implementierungsbeispiele

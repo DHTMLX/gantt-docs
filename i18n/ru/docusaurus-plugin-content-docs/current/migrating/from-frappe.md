@@ -699,4 +699,4 @@ npm run dev
 
 - Изучайте [документацию DHTMLX Gantt](/) для продвинутых возможностей
 - Ознакомьтесь с [API-reference](/api/api-overview/) для вариантов настройки
-- Посмотрите [образцы DHTMLX Gantt](https://docs.dhtmlx.com/gantt/samples/) для примеров реализации
+- Посмотрите [образцы DHTMLX Gantt](https://docs.dhtmlx.com/gantt/demos/) для примеров реализации

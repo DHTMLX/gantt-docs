@@ -822,4 +822,4 @@ npm run server
 ## 下一步
 - 浏览 [DHTMLX Gantt 文档](/) 以了解高级特性
 - 查看 [API 参考](/api/api-overview/) 以了解自定义选项
-- 参考 [DHTMLX Gantt 示例](https://docs.dhtmlx.com/gantt/samples/) 以获取实现示例
+- 参考 [DHTMLX Gantt 示例](https://docs.dhtmlx.com/gantt/demos/) 以获取实现示例

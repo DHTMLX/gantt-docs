@@ -752,4 +752,4 @@ npm run dev
 
 - Ознакомьтесь с документацией по DHTMLX Gantt для расширенных возможностей: [DHTMLX Gantt documentation](/) 
 - Просмотрите [API reference](/api/api-overview/) для вариантов кастомизации
-- Посмотрите примеры [DHTMLX Gantt samples](https://docs.dhtmlx.com/gantt/samples/) для примеров реализации
+- Посмотрите примеры [DHTMLX Gantt samples](https://docs.dhtmlx.com/gantt/demos/) для примеров реализации
