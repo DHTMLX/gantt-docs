@@ -9,6 +9,31 @@ sidebar_label: "What's New"
 Updating from an earlier version? Check the [migration guide](migration.md) for required changes and update steps.
 :::
 
+## 10.0.3
+
+<span class='release_date'>September 3, 2026. Bugfix release</span>
+
+### Updates
+
+- Improve the performance of loading tasks - parsing large datasets no longer slows down quadratically as the number of tasks on the same level grows, so the gain is largest on flat or wide structures and minimal on deep trees that hold few tasks per level
+- Improve the performance of re-loading data with [parse()](api/method/parse.md)
+- Improve the performance of [Auto Scheduling](guides/auto-scheduling.md) on charts with many project tasks - both [autoSchedule()](api/method/autoschedule.md) and [parse()](api/method/parse.md) are significantly faster and no longer take time proportional to the square of the number of tasks
+- Improve the performance of applying an [Auto Scheduling](guides/auto-scheduling.md) result - the time it takes no longer grows with the number of links in the chart, but with the number of tasks that actually moved
+- Improve the performance of bulk changes applied inside [batchUpdate()](api/method/batchupdate.md)
+- Improve the performance of selecting a task, editing a task, and rendering the chart on large datasets
+
+### Fixes
+
+- Fix the issue where [Auto Scheduling](guides/auto-scheduling.md) moved an unlinked subtask to the start of its project when a sibling subtask had an incoming link of its own
+- Fix the issue where a project's subtasks lost their relative positions when one subtask's own link moved it past the date the project's link landed on
+- Fix the issue where dragging a project forward increased the distance between its subtasks instead of preserving it
+- Fix the issue where dragging a project backward could squeeze or overlap its subtasks instead of refusing a move that would violate a link
+- Fix the issue where calling [autoSchedule()](api/method/autoschedule.md) for a single task could break an existing link to a task outside the scheduled scope
+- Fix the issue where dragging a project could reduce the protected slack of the tasks that precede it
+- Fix the issue where saving or closing the lightbox threw an error when the timeline was hidden ([show_chart](api/config/show_chart.md): false), which also made the lightbox impossible to close
+- Fix the issue where calling [clearAll()](api/method/clearall.md) on a silent datastore left its internal caches unrefreshed, so methods like getItems() and eachItem() kept returning the tasks that had just been removed
+
+
 ## 10.0.2
 
 <span class='release_date'>August 20, 2026. Bugfix release</span>
