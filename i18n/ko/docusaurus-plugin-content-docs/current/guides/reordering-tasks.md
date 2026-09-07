@@ -19,7 +19,7 @@ gantt.config.order_branch = true;
 gantt.init("gantt_here");
 ~~~
 
-[브랜치 정렬](https://docs.dhtmlx.com/gantt/samples/07_grid/02_branch_ordering.html)
+**관련 샘플**: [브랜치 정렬](https://docs.dhtmlx.com/gantt/samples/07_grid/02_branch_ordering.html)
 
 그리드에서 작업을 정렬하고 재배치하는 방법을 보여주는 비디오 가이드를 확인해 보세요.
 
@@ -40,7 +40,7 @@ gantt.config.order_branch_free = true;
 gantt.init("gantt_here");
 ~~~
 
-[그리드에서 행 드래그-드롭](https://docs.dhtmlx.com/gantt/samples/07_grid/08_drag_between_levels.html)
+**관련 샘플**: [그리드에서 행 드래그-드롭](https://docs.dhtmlx.com/gantt/samples/07_grid/08_drag_between_levels.html)
 
 ## 특정 위치로의 드롭 거부{#denyingdroppingtospecificpositions}
 
@@ -73,7 +73,7 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 gantt.config.order_branch = "marker";
 ~~~
 
-[브랜치 정렬 - 하이라이팅 모드](https://docs.dhtmlx.com/gantt/samples/07_grid/14_branch_ordering_highlight.html)
+**관련 샘플**: [브랜치 정렬 - 하이라이팅 모드](https://docs.dhtmlx.com/gantt/samples/07_grid/14_branch_ordering_highlight.html)
 
 이 모드에서는 이름만 재정렬되고(왼쪽 마우스 버튼을 길게 누르고 있음) 작업이 대상 위치에 드롭될 때만 Gantt가 다시 렌더링됩니다(키를 놓을 때).
 기본 모드와 달리 작업 위치 변경은 onBeforeTaskMove/onAfterTaskMove 이벤트를 발생시키지 않습니다.

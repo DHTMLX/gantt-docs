@@ -366,7 +366,7 @@ gantt.getResourceAssignments("6");
 
 ## 将资源分配给任务 {#assigningresources}
 
-### 将资源连接到任务
+### 将资源连接到任务 {#connecting-resources-to-tasks}
 
 资源关系由 [resource_property](api/config/resource_property.md) 配置选项定义：
 
@@ -448,7 +448,7 @@ gantt.config.resources = {
 - **end_date** - (*Date|string*) 分配计划完成的日期
 - **delay** - (*number*) 分配开始日期与任务开始日期之间的差值
 - **duration** - (*number*) 分配的持续时间
-- **mode** - (*string*) 资源分配时间的计算模式：“default”|"fixedDates"|"fixedDuration"
+- **mode** - (*string*) 资源分配时间的计算模式："default"|"fixedDates"|"fixedDuration"
 
 ~~~js {8,13-15,20-22}
 {

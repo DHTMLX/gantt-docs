@@ -19,7 +19,7 @@ gantt.config.order_branch = true;
 gantt.init("gantt_here");
 ~~~
 
-[Branch ordering](https://docs.dhtmlx.com/gantt/samples/07_grid/02_branch_ordering.html)
+**相关示例**：[Branch ordering](https://docs.dhtmlx.com/gantt/samples/07_grid/02_branch_ordering.html)
 
 你可以观看视频指南，了解如何在网格中对任务进行排序和重新排序。
 
@@ -39,7 +39,7 @@ gantt.config.order_branch_free = true;
 gantt.init("gantt_here");
 ~~~
 
-[Drag and drop rows in Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/08_drag_between_levels.html)
+**相关示例**：[Drag and drop rows in Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/08_drag_between_levels.html)
 
 ## 禁止在特定位置拖放 {#denyingdroppingtospecificpositions}
 
@@ -65,17 +65,17 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 
 ## 针对大型数据集的性能提升 {#tishengdashujujixiadexingneng}
 
-如果你的 Gantt 含有大量任务，默认的分支重新排序模式可能会降低性能。要提速，可以使用“marker”模式。
+如果你的 Gantt 含有大量任务，默认的分支重新排序模式可能会降低性能。要提速，可以使用 `marker` 模式。
 
 ~~~js
 gantt.config.order_branch = "marker";
 ~~~
 
-[Branch ordering - highlighting mode](https://docs.dhtmlx.com/gantt/samples/07_grid/14_branch_ordering_highlight.html)
+**相关示例**：[Branch ordering - highlighting mode](https://docs.dhtmlx.com/gantt/samples/07_grid/14_branch_ordering_highlight.html)
 
 在此模式下，只对任务的名称进行重新排序（在按住左键时），只有在任务被拖放到目标位置并释放按键时才重新渲染 Gantt。与默认模式不同，任务位置的變更不会触发 onBeforeTaskMove/onAfterTaskMove 事件。
 
-要防止将任务拖放到特定位置，请改用 [onBeforeRowDragMove](api/event/onbeforerowdragmove.md) 事件（仅在“marker”模式下工作）。
+要防止将任务拖放到特定位置，请改用 [onBeforeRowDragMove](api/event/onbeforerowdragmove.md) 事件（仅在 `marker` 模式下工作）。
 
 ## 拖拽时高亮显示可用的放置位置
 

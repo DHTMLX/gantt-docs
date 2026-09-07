@@ -48,7 +48,7 @@ sidebar_label: "Руководства"
 - ### [Указание столбцов](guides/specifying-columns.md)
 - ### [Изменение размера строк в грид](guides/resizing-rows.md)
 - ### [Настройка столбца дерева](guides/tree-column.md)
-- ### [Переупорядочение задач](guides/reordering-tasks.md)
+- ### [Изменение порядка задач](guides/reordering-tasks.md)
 - ### [Множественный выбор задач](guides/multiselection.md)
 - ### [Сортировка столбцов](guides/sorting.md)
 - ### [Группировка задач](guides/grouping.md)

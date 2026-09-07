@@ -20,7 +20,7 @@ gantt.init("gantt_here");
 ~~~
 
 
-[Verzweigungsreihenfolge](https://docs.dhtmlx.com/gantt/samples/07_grid/02_branch_ordering.html)
+**Zugehöriges Beispiel**: [Verzweigungsreihenfolge](https://docs.dhtmlx.com/gantt/samples/07_grid/02_branch_ordering.html)
 
  
 Sie können sich die Video-Anleitung ansehen, die zeigt, wie man Aufgaben im Grid sortiert und neu anordnet.
@@ -43,7 +43,7 @@ gantt.init("gantt_here");
 ~~~
  
 
-[Drag and drop rows in Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/08_drag_between_levels.html)
+**Zugehöriges Beispiel**: [Drag and drop rows in Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/08_drag_between_levels.html)
  
 
 
@@ -79,7 +79,7 @@ gantt.config.order_branch = "marker";
 ~~~
 
 
-[Branch ordering - highlighting mode](https://docs.dhtmlx.com/gantt/samples/07_grid/14_branch_ordering_highlight.html)
+**Zugehöriges Beispiel**: [Branch ordering - highlighting mode](https://docs.dhtmlx.com/gantt/samples/07_grid/14_branch_ordering_highlight.html)
 
 
 In diesem Modus wird nur der Name der Aufgabe neu geordnet (bei gedrückter linker Maustaste) und Gantt wird neu gerendert, nur wenn eine Aufgabe an der Zielposition abgelegt wird (bei Loslassen der Maustaste).

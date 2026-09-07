@@ -20,7 +20,7 @@ gantt.init("gantt_here");
 ~~~
 
 
-[Branch ordering](https://docs.dhtmlx.com/gantt/samples/07_grid/02_branch_ordering.html)
+**Related sample**: [Branch ordering](https://docs.dhtmlx.com/gantt/samples/07_grid/02_branch_ordering.html)
 
  
 You can take a look at the video guide that shows how to sort and reorder tasks in the grid.
@@ -43,7 +43,7 @@ gantt.init("gantt_here");
 ~~~
  
 
-[Drag and drop rows in Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/08_drag_between_levels.html)
+**Related sample**: [Drag and drop rows in Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/08_drag_between_levels.html)
  
 
 
@@ -79,7 +79,7 @@ gantt.config.order_branch = "marker";
 ~~~
 
 
-[Branch ordering - highlighting mode](https://docs.dhtmlx.com/gantt/samples/07_grid/14_branch_ordering_highlight.html)
+**Related sample**: [Branch ordering - highlighting mode](https://docs.dhtmlx.com/gantt/samples/07_grid/14_branch_ordering_highlight.html)
 
 
 In this mode only the name of the task is reordered (on holding the left mouse key) and Gantt is re-rendered only when a task is dropped in the target position (on releasing the key).
