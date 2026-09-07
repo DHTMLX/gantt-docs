@@ -1431,6 +1431,7 @@ module.exports = {
                         "guides/specifying-columns",
                         "guides/resizing-rows",
                         "guides/tree-column",
+                        "guides/reordering-tasks",
                         "guides/sorting",
                         {
                             type: "doc",

@@ -54,4 +54,4 @@ gantt.config.order_branch = "marker";
 - [onBeforeRowDragMove](api/event/onbeforerowdragmove.md)
 
 ### Related Guides
-- [Переупорядочение задач](guides/reordering-tasks.md)
+- [Изменение порядка задач](guides/reordering-tasks.md)
