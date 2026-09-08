@@ -137,7 +137,7 @@ docker build -t msp_export_module
 To run the docker image for testing purposes, you can use the following command:
 
 ~~~
-docker run -p 65163:80 msp_export_module 
+docker run -p 8080:8080 msp_export_module 
 ~~~
 
 You will be able to stop the container with the `Ctrl+C` hotkey combination.
@@ -145,5 +145,5 @@ You will be able to stop the container with the `Ctrl+C` hotkey combination.
 If you run the docker image in the "detached" mode, it will run in the background:
 
 ~~~
-docker run -p 65163:80 msp_export_module 
+docker run -p -d 8080:8080 msp_export_module 
 ~~~
