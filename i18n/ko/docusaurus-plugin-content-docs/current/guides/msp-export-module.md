@@ -112,7 +112,7 @@ docker build -t msp_export_module
 테스트 목적의 도커 이미지를 실행하려면 다음 명령어를 사용할 수 있습니다:
 
 ~~~
-docker run -p 65163:80 msp_export_module 
+docker run -p 8080:8080 msp_export_module 
 ~~~
 
 컨테이너를 `Ctrl+C` 단축키 조합으로 중지할 수 있습니다.
@@ -120,5 +120,5 @@ docker run -p 65163:80 msp_export_module
 도커 이미지를 "분리(detached)" 모드로 실행하면 백그라운드에서 실행됩니다:
 
 ~~~
-docker run -p 65163:80 msp_export_module 
+docker run -d -p 8080:8080 msp_export_module 
 ~~~

@@ -114,7 +114,7 @@ docker build -t msp_export_module
 Um das Docker-Image zu Testzwecken auszuführen, können Sie folgenden Befehl verwenden:
 
 ~~~
-docker run -p 65163:80 msp_export_module 
+docker run -p 8080:8080 msp_export_module 
 ~~~
 
 Sie können den Container mit der Tastenkombination Ctrl+C stoppen.
@@ -122,5 +122,5 @@ Sie können den Container mit der Tastenkombination Ctrl+C stoppen.
 Wenn Sie das Docker-Image im "detached" Modus ausführen, läuft es im Hintergrund:
 
 ~~~
-docker run -p 65163:80 msp_export_module 
+docker run -d -p 8080:8080 msp_export_module 
 ~~~

@@ -145,5 +145,5 @@ You will be able to stop the container with the `Ctrl+C` hotkey combination.
 If you run the docker image in the "detached" mode, it will run in the background:
 
 ~~~
-docker run -p -d 8080:8080 msp_export_module 
+docker run -d -p 8080:8080 msp_export_module 
 ~~~

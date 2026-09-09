@@ -112,7 +112,7 @@ docker build -t msp_export_module
 Чтобы запустить Docker-образ для тестирования, можно использовать следующую команду:
 
 ~~~
-docker run -p 65163:80 msp_export_module 
+docker run -p 8080:8080 msp_export_module 
 ~~~
 
 Вы сможете остановить контейнер сочетанием горячих клавиш `Ctrl+C`.
@@ -120,5 +120,5 @@ docker run -p 65163:80 msp_export_module
 Если запустить Docker-образ в режиме «detached» (отсоединённом от терминала), он будет работать в фоновом режиме:
 
 ~~~
-docker run -p 65163:80 msp_export_module 
+docker run -d -p 8080:8080 msp_export_module 
 ~~~

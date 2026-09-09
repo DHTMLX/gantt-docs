@@ -115,7 +115,7 @@ docker build -t msp_export_module
 要为测试目的运行该 Docker 镜像，请使用以下命令：
 
 ~~~
-docker run -p 65163:80 msp_export_module 
+docker run -p 8080:8080 msp_export_module 
 ~~~
 
 您可以使用 `Ctrl+C` 快捷键组合停止容器。
@@ -123,5 +123,5 @@ docker run -p 65163:80 msp_export_module
 如果以“分离（detached）”模式运行 Docker 镜像，它将在后台运行：
 
 ~~~
-docker run -p 65163:80 msp_export_module 
+docker run -d -p 8080:8080 msp_export_module 
 ~~~
