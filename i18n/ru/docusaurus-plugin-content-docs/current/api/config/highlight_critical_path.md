@@ -35,9 +35,12 @@ gantt.init("gantt_here");
 Этот параметр определяется в расширении **critical_path**, поэтому вам нужно активировать плагин [critical_path](guides/extensions-list.md#critical-path). Подробнее см. в статье [Критический путь](guides/critical-path.md).
 :::
 
+Пока параметр включён, каждое изменение задачи или связи перерисовывает всю диаграмму. На больших диаграммах включайте параметр только тогда, когда пользователям нужно видеть критический путь, либо группируйте изменения с помощью [batchUpdate](api/method/batchupdate.md).
+
 ### Related API
 - [isCriticalTask](api/method/iscriticaltask.md)
 - [isCriticalLink](api/method/iscriticallink.md)
 
 ### Related Guides
 - [Критический путь](guides/critical-path.md)
+- [Производительность: Способы повышения](guides/performance.md#common-techniques)

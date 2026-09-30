@@ -25,4 +25,7 @@ gantt.init("gantt_here");
 
 ### Details
 
-当属性被设为 *'false'* 时，它将禁用对单个单元格的渲染——仅渲染行。它可用于提升性能，尤其是在图表中显示大量任务时。
+当属性被设为 *'false'* 时，它将禁用对单个单元格的渲染——仅渲染行。
+
+### Related API
+- [timeline_cell_class](api/template/timeline_cell_class.md)
