@@ -24,7 +24,7 @@ description: "if dynamic loading is enabled, fires after a user expands the task
 ~~~jsx
 gantt.attachEvent("onBeforeBranchLoading", function(settings){
     var task = gantt.getTask(settings.taskId);
-    config.url += "&value=" + encodeURIComponent(task.text);
+    settings.url += "&value=" + encodeURIComponent(task.text);
     return true;
 });
 ~~~
@@ -42,7 +42,7 @@ This event can be used to add extra parameters to dynamic loading requests. The 
 
 The request url can be modified from code.
 
-This event fires only when [Dynamic loading](guides/loading.md) is enabled.
+This event fires before a branch request when [dynamic loading](guides/dynamic-loading.md) is enabled with [branch_loading](api/config/branch_loading.md).
 
 The event is blockable, returning *false* will cancel the dynamic loading request.
 
@@ -52,5 +52,7 @@ The event is blockable, returning *false* will cancel the dynamic loading reques
 - [branch_loading_property](api/config/branch_loading_property.md)
 
 ### Related Guides
+- [Dynamic Loading (on demand)](guides/dynamic-loading.md)
 - [Data Loading](guides/loading.md)
+- [Performance](guides/performance.md)
 
