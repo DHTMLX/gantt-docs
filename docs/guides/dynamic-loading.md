@@ -9,9 +9,11 @@ sidebar_label: "Dynamic Loading (on demand)"
 This functionality is available only in the PRO edition
 :::
 
-By default, dhtmlxGantt loads all data at once. It may become problematic when you have a big number of tasks.
+By default, dhtmlxGantt loads all supplied tasks and links at once. It supports loading large datasets in full, see the [JavaScript Gantt benchmarks](https://github.com/DHTMLX/js-gantt-benchmarks) for published performance measurements.
 
-In such a situation you may use the dynamic loading mode and load data by branches (sub-projects), level by level as the user opens them. 
+Dynamic loading is an optional way to load data by branches (sub-projects), level by level as the user opens them. Use it to reduce the initial data transfer and browser memory use when users need only part of a project or portfolio.
+
+[Smart rendering](guides/performance.md#smart-rendering), enabled by default since v6.2, renders only the tasks and links visible on the screen. Dynamic loading controls which data is loaded from the server; smart rendering controls which loaded data is rendered.
 
 ## How it works
 
@@ -21,7 +23,7 @@ expecting the response to contain only the top-level tasks, and all the nested b
 When the user clicks on the Expand icon, gantt automatically calls the [load](api/method/load.md) method sending the id of a clicked task to the server:
 
 ~~~js
-gantt.load("url?parent_id="123"");
+gantt.load("url?parent_id=123");
 ~~~
 
 And expects the response to contain subtasks of the expanded item.
