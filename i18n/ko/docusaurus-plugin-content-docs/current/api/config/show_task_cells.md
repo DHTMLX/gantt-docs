@@ -25,4 +25,7 @@ gantt.init("gantt_here");
 
 ### Details
 
-속성이 *'false'*로 설정되면 개별 셀의 렌더링이 비활성화되어 행만 렌더링됩니다. 차트에 많은 작업을 표시하는 경우 성능을 높이는 데 사용할 수 있습니다.
+속성이 *'false'*로 설정되면 개별 셀의 렌더링이 비활성화되어 행만 렌더링됩니다.
+
+### Related API
+- [timeline_cell_class](api/template/timeline_cell_class.md)

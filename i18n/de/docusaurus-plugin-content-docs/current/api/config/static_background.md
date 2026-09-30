@@ -37,8 +37,13 @@ Wenn Sie zum Verhalten von v6.1 zurückkehren möchten (das nur das Hintergrundb
 gantt.config.static_background_cells = false;
 ~~~
 
+Die hervorgehobenen Zellen werden nur gerendert, wenn die Konfiguration [show_task_cells](api/config/show_task_cells.md) aktiviert ist (Standard).
+
+Ab v6.3 rendert das [Smart Rendering](guides/performance.md#smart-rendering) nur die Zellen im sichtbaren Teil der Timeline, daher ist der Effekt dieser Konfiguration auf die Rendering-Geschwindigkeit geringer als in früheren Versionen. Die Konfiguration verringert außerdem die Größe der Anfrage an den Export-Server beim Exportieren von Daten.
+
 ### Related API
 - [static_background_cells](api/config/static_background_cells.md)
+- [show_task_cells](api/config/show_task_cells.md)
 
 ### Related Guides
 - [Performance: Möglichkeiten zur Verbesserung](guides/performance.md)

@@ -35,6 +35,10 @@ In case Gantt should fit a certain area on a page, the size of the Gantt contain
 - autosizing should be disabled
 - width/height of a div should be calculated either by HTML layout if some ready solution for responsive layouts is used, or manually by code
 
+:::note
+자동 크기 조정 모드에서는 차트의 모든 행이 보이는 영역에 있으므로 [스마트 렌더링](guides/performance.md#smart-rendering)이 모든 작업을 렌더링합니다. 작업 수가 많은 차트에서는 자동 크기 조정을 비활성화하고 대신 컨테이너의 크기를 직접 관리하십시오.
+:::
+
 ## Scrolling to hidden elements
 
 In the default mode, Gantt is scrolled automatically when you use the [`showTask()`](api/method/showtask.md) or [`showDate()`](api/method/showdate.md) method.
@@ -90,3 +94,6 @@ const showTask = (id) => {
 
 ### Related API
 - [autosize_min_width](api/config/autosize_min_width.md)
+
+### Related Guides
+- [성능: 개선 방법](guides/performance.md#common-techniques)
