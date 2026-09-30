@@ -131,6 +131,6 @@ Otherwise, the Gantt data won't be exported. [Check the related example](https:/
 
 ### Related Guides
 
-- [Export/Import for Excel, Export to iCal](guides/excel.md)
+- [Export and Import for Excel](guides/excel.md)
 
 

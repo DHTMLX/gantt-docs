@@ -1,16 +1,11 @@
 ---
-title: "Export Service - System Requirements for a standalone install"
-sidebar_label: "Export Service - System Requirements for a standalone install"
+title: "Export Modules: System Requirements"
+sidebar_label: "System requirements"
 ---
 
-# Export Service - System Requirements for a standalone install
+# Export Modules: System Requirements
 
-dhtmlxGantt library provides you with the possibility of exporting and importing data from the Gantt chart using export as online service.
-
-You can also export Gantt locally by installing [export services](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) on your computer. You need to ensure your system meets the system requirements in order to use export modules:
-
-- PNG/PDF/Excel [export requirements](guides/export-requirements.md#pdfpngexcel-service)
-- MS Project/Primavera P6 [import and export requirements](guides/export-requirements.md#import-and-export-from-ms-project-and-primavera-p6) 
+To install the [export modules](guides/export-modules.md) on your own server, make sure that your system meets the requirements of each module below.
 
 ## PDF/PNG/Excel Service
 
@@ -30,7 +25,7 @@ It is distributed in the form of source code and as a Docker image.
   <tr>
   <td>- 1 CPU core (shared virtual core will do) - at least 500MB RAM</td>
   <td>- Linux - Windows - MacOS</td>
-  <td>- Node.js v12.03 or newer, v18 or v20 are recommended or - Docker</td>
+  <td>- Node.js v20 or newer or - Docker</td>
   </tr>
 </table>
 

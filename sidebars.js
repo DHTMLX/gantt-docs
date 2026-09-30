@@ -1367,17 +1367,16 @@ module.exports = {
                     type: "category",
                     label: "Exporting and Importing Data",
                     link: {
-                        type: 'generated-index',
-                        title: 'Exporting and Importing Data',
-                        keywords: ['Exporting and Importing Data'],
-                        image: '/img/docusaurus.png',
+                        type: "doc",
+                        id: "guides/export-common"
                     },
                     items: [
                         "guides/export",
                         "guides/excel",
+                        "guides/ical",
                         {
                             type: "category",
-                            label: "Export and Import from MS Project",
+                            label: "MS Project",
                             link: {
                                 type: "doc",
                                 id: "guides/export-msproject"
@@ -1388,7 +1387,7 @@ module.exports = {
                         },
                         {
                             type: "category",
-                            label: "Export and Import from Primavera P6",
+                            label: "Primavera P6",
                             link: {
                                 type: "doc",
                                 id: "guides/export-primavera"
@@ -1403,17 +1402,21 @@ module.exports = {
                             type: "category",
                             label: "Export Modules",
                             link: {
-                                type: 'generated-index',
-                                title: 'Export Modules',
-                                keywords: ['Export Modules'],
-                                image: '/img/docusaurus.png',
+                                type: "doc",
+                                id: "guides/export-modules"
                             },
                             items: [
                                 "guides/export-requirements",
-                                "guides/pdf-export-module-whatsnew",
-                                "guides/msp-export-module-whatsnew",
                                 "guides/pdf-export-module",
-                                "guides/msp-export-module"
+                                "guides/msp-export-module",
+                                {
+                                    type: "category",
+                                    label: "Version history",
+                                    items: [
+                                        "guides/pdf-export-module-whatsnew",
+                                        "guides/msp-export-module-whatsnew"
+                                    ]
+                                }
                             ]
                         },
                     ]

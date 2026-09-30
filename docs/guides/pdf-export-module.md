@@ -1,14 +1,18 @@
 ---
-title: "Export Module for PDF"
-sidebar_label: "Export Module for PDF"
+title: "Export Module for PDF, PNG, Excel, and iCal"
+sidebar_label: "PDF/PNG/Excel module"
 ---
 
-# Export Module for PDF
+# Export Module for PDF, PNG, Excel, and iCal
 
 This export module can export data to PDF, PNG, Excel, and iCal files. It can be installed on any platform as a Node.js application or as a Docker image.
 
 It doesn't include the import/export functionality for the MS Project and Primavera files. If you need such a functionality, you should use 
 the [corresponding export module](guides/msp-export-module.md) or our online server.
+
+:::note
+By default, this module forwards MS Project and Primavera P6 requests to the online export service at `https://export.dhtmlx.com/msproject`. To send them to your own MS Project export module, set the `MSP_SERVICE_ENDPOINT` environment variable. See [How the two modules work together](guides/export-modules.md#service-topology).
+:::
 
 
 ## Installation guide
@@ -22,7 +26,7 @@ You can download the export module in the Client's Area on the Downloads tab. Ch
 After downloading that file, unpack it somewhere, then open the command line and navigate to the folder with the export module. For example:
 
 ~~~
-cd C:export_module
+cd C:\export_module
 ~~~
 
 Then you need to install the modules for the application:
@@ -75,11 +79,7 @@ xvfb-run node index.js
 
 ### Old Node.js version
 
-The export module is compatible with the node version 12.03 and newer. If you have an older version, you need to install the older version of Electron:
-
-~~~
-npm install electron@6.1
-~~~
+The export module is compatible with Node.js v20 and newer. If you have an older version, update Node.js.
 
 ### Export to PDF never ends
 
@@ -123,7 +123,7 @@ docker build -t dhtmlx/scheduler-gantt-export ./
 Run the Docker image using the command below:
 
 ~~~
-docker run -d -p 3200:80 dhtmlx/scheduler-gantt-export
+docker run -d -p 3200:3200 dhtmlx/scheduler-gantt-export
 ~~~
 
 3200 is the port on which the docker service will work.

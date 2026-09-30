@@ -1,6 +1,6 @@
 ---
 title: "Export to PDF and PNG"
-sidebar_label: "Export to PDF and PNG"
+sidebar_label: "PDF and PNG"
 ---
 
 # Export to PDF and PNG
@@ -21,35 +21,12 @@ read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/ex
 ## Online export service restrictions
 
 :::note
-The export service has time and request size restrictions.
+The online export service has time and request size limits. See [Online export service limits](guides/export-common.md#service-limits).
 :::
-
-### Time limits
-
-If the process takes more than 20 seconds, the export will be canceled and the following error will occur:
-
-~~~html
-Error: Timeout trigger 20 seconds
-~~~
-
-If several people export Gantt at the same time, the process can take more time than usual. But that's fine because the time which is spent for export request from a specific user is counted separately.
-
-### Limits on request size
-
-There is a common API endpoint `https://export.dhtmlx.com/gantt` which serves for all export methods (*exportToPDF*, *exportToPNG*, *exportToMSProject*, etc.). **Max request size is 10 MB**.
-
-There is also a separate API endpoint `https://export.dhtmlx.com/gantt/project` specific for the [MSProject](guides/export-msproject.md) and 
-[Primavera P6](guides/export-primavera.md) 
-export/import services (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* only). **Max request size: 40 MB**.
 
 ## Using export modules
 
-:::note
-If you need to export large charts, you can use a [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). 
-The export module is provided free of charge if you've obtained Gantt under [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) or [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) license, or you can [buy the module separately](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
-:::
-
-[Read more on the usage of the export module for PDF](guides/pdf-export-module.md).
+To export large charts, to export without the limits of the online export service, or to keep your data in your network, install an [export module](guides/export-modules.md) on your own server. Read more on the usage of the [export module for PDF, PNG, Excel, and iCal](guides/pdf-export-module.md).
 
 ## Export to PDF
 

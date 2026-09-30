@@ -1,53 +1,29 @@
 ---
-title: "Export/Import for Excel, Export to iCal"
-sidebar_label: "Export/Import for Excel, Export to iCal"
+title: "Export and Import for Excel"
+sidebar_label: "Excel"
 ---
 
-# Export/Import for Excel, Export to iCal
+# Export and Import for Excel
 
-The dhtmlxGantt library allows you to export data from the Gantt chart in the Excel and iCal formats. You can also import data into Gantt from an Excel file.
+The dhtmlxGantt library allows you to export data from the Gantt chart in the Excel format. You can also import data into Gantt from an Excel file. To export data in the iCal format, see [Export to iCal](guides/ical.md).
 
 :::note
-The service is free, but the output Excel/iCal file will contain the library's watermark.
-To export without the watermark you need a valid license - the result of export will be available without a watermark
-during the valid support period (12 months for all PRO licenses).
+The online export service is free. For the license terms, see [License and watermark](guides/export-common.md#license-and-watermark).
 :::
 
-There are several export services available. You can install them on your computer and export Gantt chart to Excel or iCal locally.
+There are several export services available. You can install them on your computer and export Gantt chart to Excel locally.
 Note that export services are not included into the Gantt package, 
 read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) to learn the terms of using each of them.
 
 ## Online export service restrictions
 
 :::note
-The export service has time and request size restrictions.
+The online export service has time and request size limits. See [Online export service limits](guides/export-common.md#service-limits).
 :::
-
-### Time limits
-
-If the process takes over than 20 seconds, the export will be canceled and the following error will occur:
-
-~~~html
-Error: Timeout trigger 20 seconds
-~~~
-
-If several people export Gantt at the same time, the process can take more time than usual. But that's fine because the time which is spent for export request from a specific user is counted separately.
-
-### Limits on request size
-
-There is a common API endpoint `https://export.dhtmlx.com/gantt` which serves for all export methods (*exportToPDF*, *exportToPNG*, *exportToMSProject*, etc.). **Max request size is 10 MB**.
-
-There is also a separate API endpoint `https://export.dhtmlx.com/gantt/project` specific for the [MSProject](guides/export-msproject.md) and 
-[Primavera P6](guides/export-primavera.md) export/import services (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* only). **Max request size: 40 MB**.
 
 ## Using export modules
 
-:::note
-If you need to export large charts, you can use a [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). 
-The export module is provided free of charge if you've obtained Gantt under [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) or [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) license, or you can [buy the module separately](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
-:::
-
-[Read more on the usage of the export module for PDF](guides/pdf-export-module.md). This export module can export data to PDF, PNG, Excel, and iCal files.
+To export large charts, to export without the limits of the online export service, or to keep your data in your network, install an [export module](guides/export-modules.md) on your own server. Read more on the usage of the [export module for PDF, PNG, Excel, and iCal](guides/pdf-export-module.md).
 
 ## Export to Excel
 
@@ -308,44 +284,4 @@ gantt.importFromExcel({
 
 ## Export to iCal
 
-To export data from the Gantt chart to an iCal string, do the following:
-
-- To use the online export service, enable the <b>export_api</b> plugin via the [plugins](api/method/plugins.md) method:
-
-~~~js
-gantt.plugins({
-    export_api: true
-});
-~~~
-
-- Call the [exportToICal](api/method/exporttoical.md) method to export data from the Gantt chart: 
-
-~~~html
-<input value="Export to iCal" type="button" onclick='gantt.exportToICal()'>
-
-<script>
-    gantt.init("gantt_here");
-    gantt.parse(demo_tasks);
-</script>
-~~~
-
-
-**Related sample**: [Export data: MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
-
-
-**Related sample**: [Export data: store online](https://docs.dhtmlx.com/gantt/samples/08_api/09_export_store.html)
-
-
-#### Parameters of the export method
-
-The [exportToICal()](api/method/exporttoical.md) method takes as a parameter an object with the following properties (optional):
-
-- **server** - (*string*) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is `https://export.dhtmlx.com/gantt`;
-- **name** - (*string*) allows specifying custom name and extension for the file but the file will still be exported in the iCal format.
-  
-~~~jsx title="Calling the export method with optional properties"
-gantt.exportToICal({
-    server:"https://myapp.com/myexport/gantt"
-});
-~~~
-
+Export to iCal is described in the [Export to iCal](guides/ical.md) article.
