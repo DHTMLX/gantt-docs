@@ -37,8 +37,13 @@ If you need to revert to v6.1 behavior (that is to render just the background im
 gantt.config.static_background_cells = false;
 ~~~
 
+The highlighted cells are rendered only when the [show_task_cells](api/config/show_task_cells.md) config is enabled (default).
+
+Starting from v6.3, [smart rendering](guides/performance.md#smart-rendering) renders only the cells in the visible part of the timeline, so the effect of this config on rendering speed is smaller than in earlier versions. The config also decreases the size of the request to the export server when you export data.
+
 ### Related API
 - [static_background_cells](api/config/static_background_cells.md)
+- [show_task_cells](api/config/show_task_cells.md)
 
 ### Related Guides
 - [Performance: Ways to Improve](guides/performance.md)
