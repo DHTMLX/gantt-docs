@@ -41,7 +41,7 @@ gantt.importFromPrimaveraP6({
 :::
 
 :::note
-Этот метод определяется в расширении **export**, поэтому вам нужно активировать плагин [export_api](guides/extensions-list.md#export-service). Подробности смотрите в статье [Export/Import for Excel, Export to iCal](guides/excel.md#importfromexcel).
+Этот метод определяется в расширении **export**, поэтому вам нужно активировать плагин [export_api](guides/extensions-list.md#export-service). Подробности смотрите в статье [Экспорт и импорт из Primavera P6](guides/export-primavera.md#import-from-primavera-p6).
 :::
 
 :::note
@@ -62,7 +62,7 @@ gantt.importFromPrimaveraP6({
 - **projectProperties** - задаёт массив свойств проекта, которые должны быть включены в ответ.
 - **taskProperties** - задаёт массив дополнительных свойств задач для импорта.
 
-См. подробные описания настроек импорта в соответствующем разделе guides/export-primavera.md#import-settings.
+См. подробные описания настроек импорта в [соответствующем разделе](guides/export-primavera.md#import-settings).
 
 ## Response
 

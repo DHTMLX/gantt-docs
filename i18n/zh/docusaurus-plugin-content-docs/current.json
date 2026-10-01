@@ -71,17 +71,21 @@
     "message": "导出和导入数据",
     "description": "侧边栏文档中类别导出和导入数据的标签"
   },
-  "sidebar.docs.category.Exporting and Importing Data.link.generated-index.title": {
-    "message": "导出和导入数据",
-    "description": "侧边栏文档中类别导出和导入数据的生成索引页面标题"
-  },
   "sidebar.docs.category.Export Modules": {
     "message": "导出模块",
     "description": "侧边栏文档中类别导出模块的标签"
   },
-  "sidebar.docs.category.Export Modules.link.generated-index.title": {
-    "message": "导出模块",
-    "description": "侧边栏文档中类别导出模块的生成索引页面标题"
+  "sidebar.docs.category.MS Project": {
+    "message": "MS Project",
+    "description": "侧边栏文档中类别 MS Project 的标签"
+  },
+  "sidebar.docs.category.Primavera P6": {
+    "message": "Primavera P6",
+    "description": "侧边栏文档中类别 Primavera P6 的标签"
+  },
+  "sidebar.docs.category.Version history": {
+    "message": "版本历史",
+    "description": "侧边栏文档中类别版本历史的标签"
   },
   "sidebar.docs.category.Configuring Grid": {
     "message": "配置网格",

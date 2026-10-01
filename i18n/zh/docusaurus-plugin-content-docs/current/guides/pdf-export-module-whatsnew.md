@@ -1,10 +1,34 @@
 ---
 title: "PDF 导出模块的新特性"
-sidebar_label: "PDF 导出模块的新特性"
+sidebar_label: "PDF/PNG/Excel 模块"
 ---
 
 PDF 导出模块的新特性
 ================================
+
+## 0.8.4
+
+- 修复带水印的 Scheduler PDF 导出使页面高度约为 Scheduler 的两倍、下方出现空白区域的问题
+- 修复当 Scheduler 高度不足 720px 时，Scheduler PDF 与 PNG 导出使页面高度至少为 720px、导致下方留有空白的问题
+- 修复 Scheduler 7.x 的 PDF 与 PNG 导出在除 Month 之外的所有视图中忽略所请求的 `format` 和 `orientation` 宽度的问题
+- 修复 Scheduler PDF 与 PNG 导出的 `zoom` 参数不改变页面宽度的问题
+- 将 Scheduler 测试页面（包括 `/test`）更新到 Scheduler 7.2
+
+## 0.8.3
+
+- 将基础 Docker 镜像更新到 Debian 13 (trixie)
+- 更新用于构建 Docker 镜像的依赖包
+
+## 0.8.2
+
+- 将 Docker 镜像更新到 Debian 12 (bookworm)
+- 从 Docker 镜像中移除未使用的 libgconf-2-4 包
+- 为 Docker 镜像中的 `pptruser` 设置固定的用户 ID，使挂载的卷在重新构建后仍可写入
+
+## 0.8.1
+
+- 修复 0.8.0 中引入的 Gantt v6.0 及更早版本的 PDF 与 PNG 导出损坏的问题
+- 修复高负载下孤立的 Chrome 进程不断累积、最终可能导致导出服务无响应的问题
 
 ## 0.8.0
 
@@ -26,6 +50,10 @@ PDF 导出模块的新特性
 
 - 提高对 Gantt 与 Scheduler 的 PDF 与 PNG 导出中 HTML 内容的清理
 - 修复远程代码执行与文件读取漏洞
+
+## 0.7.5
+
+- 修复 Excel 导入中的 ReDoS 漏洞
 
 ## 0.7.4
 

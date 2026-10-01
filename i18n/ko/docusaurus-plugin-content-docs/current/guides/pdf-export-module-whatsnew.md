@@ -1,10 +1,34 @@
 ---
 title: "PDF Export 모듈의 새로운 기능"
-sidebar_label: "PDF Export 모듈의 새로운 기능"
+sidebar_label: "PDF/PNG/Excel 모듈"
 ---
 
 PDF Export 모듈의 새로운 기능
 ================================
+
+## 0.8.4
+
+- Scheduler PDF 내보내기에서 워터마크로 인해 페이지 높이가 Scheduler의 약 두 배가 되어 아래에 빈 영역이 생기던 문제 수정
+- Scheduler가 720px보다 낮을 때 Scheduler PDF 및 PNG 내보내기에서 페이지 높이가 최소 720px로 설정되어 아래에 빈 공간이 생기던 문제 수정
+- Scheduler 7.x PDF 및 PNG 내보내기에서 Month를 제외한 모든 뷰에서 요청한 `format` 및 `orientation`의 너비가 무시되던 문제 수정
+- Scheduler PDF 및 PNG 내보내기의 `zoom` 매개변수가 페이지 너비를 변경하지 않던 문제 수정
+- `/test`를 포함한 Scheduler 테스트 페이지를 Scheduler 7.2로 업데이트
+
+## 0.8.3
+
+- 기본 Docker 이미지를 Debian 13 (trixie)으로 업데이트
+- Docker 이미지 빌드용 종속 패키지 업데이트
+
+## 0.8.2
+
+- Docker 이미지를 Debian 12 (bookworm)로 업데이트
+- Docker 이미지에서 사용되지 않는 libgconf-2-4 패키지 제거
+- Docker 이미지에서 `pptruser`의 사용자 ID를 고정하여 재빌드 후에도 마운트된 볼륨에 계속 쓸 수 있도록 함
+
+## 0.8.1
+
+- 0.8.0에서 발생한 Gantt v6.0 이하의 PDF 및 PNG 내보내기 오류 수정
+- 부하 상황에서 고아 Chrome 프로세스가 누적되어 결국 내보내기 서비스가 응답하지 않을 수 있던 문제 수정
 
 ## 0.8.0
 
@@ -26,6 +50,10 @@ PDF Export 모듈의 새로운 기능
 
 - Gantt 및 Scheduler의 PDF 및 PNG 내보내기에 대한 HTML 콘텐츠 정화(sanitize) 기능 개선
 - 원격 코드 실행(Remote Code Execution) 및 파일 읽기(File Read) 취약점 수정
+
+## 0.7.5
+
+- Excel 가져오기의 ReDos 취약점 수정
 
 ## 0.7.4
 

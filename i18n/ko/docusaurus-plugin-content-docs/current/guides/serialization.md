@@ -1,9 +1,9 @@
 ---
-title: "XML 및 JSON으로 데이터 직렬화"
-sidebar_label: "XML 및 JSON으로 데이터 직렬화"
+title: "JSON 및 XML로 데이터 직렬화"
+sidebar_label: "JSON 및 XML"
 ---
 
-# XML 및 JSON으로 데이터 직렬화
+# JSON 및 XML로 데이터 직렬화
 
 ## JSON 형식
 

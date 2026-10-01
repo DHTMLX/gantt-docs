@@ -26,6 +26,7 @@ gantt.exportToExcel({
         { id: "start_date",  header: "Start date", width: 250, type: "date" }
     ],
     server: "https://myapp.com/myexport/gantt",
+    raw: true,
     callback: (res) => {
         alert(res.url);
     },
@@ -46,65 +47,48 @@ gantt.exportToExcel({
 :::note
 Если вы используете версию Gantt ниже 8.0, на вашей странице нужно подключить `https://export.dhtmlx.com/gantt/api.js`, чтобы включить онлайн-сервис экспорта, например:
 
-~~~js
+~~~html
 <script src="codebase/dhtmlxgantt.js"></script>
 <script src="https://export.dhtmlx.com/gantt/api.js"></script>
 ~~~
 
 :::
 
-The **exportToExcel()** метод принимает в качестве параметра объект, у которого несколько свойств (все свойства являются необязательными):
+Метод **exportToExcel()** принимает в качестве параметра объект с несколькими свойствами (все свойства необязательные):
 
-- **name** - (*string*) устанавливает имя выходного файла с расширением '.xlsx' 
-- **columns** - (*array*) позволяет настроить столбцы выходного Excel-листа. Свойства объектов столбца:
-    - **'id'** - (*string,number*) свойство события, которое будет сопоставлено столбцу
-    - **'header'** - (*string*) заголовок столбца
-    - **'width'** - (*number*) ширина столбца в пикселях
-    - **'type'** - (*string*) тип столбца
-- **server** - (*string*) задаёт API-ендпойнт для запроса. Можно использовать с локальной установкой сервиса экспорта. Значение по умолчанию: `https://export.dhtmlx.com/gantt`
-- **callback** - (*function*) если вы хотите получить url для загрузки сгенерированного XLSX-файла, можно использовать свойство callback. Оно принимает JSON-объект с полем url
-- **visual** - (*boolean*) добавляет timeline диаграмму к экспортируемому Excel-документу; по умолчанию — *false*. Узнайте, как добавить цвета задач к экспортированному файлу, в guides/excel.md#adding-colors-of-tasks-to-export
-- **cellColors** - (*boolean*) если значение равно *true*, ячейки экспортированного документа будут иметь цвета, определённые в шаблоне [](api/template/timeline_cell_class.md); будут экспортированы свойства *color* и *background-color*
-- **data** - (*object*) задаёт пользовательский источник данных, который будет представлен в итоговой диаграмме Ганта
-- **date_format** - (*string*) задаёт формат отображения даты в экспортируемом Excel-документе. Можно использовать следующий код формата:
+| Property | Description |
+| --- | --- |
+| **name** | (*string*) задаёт имя выходного файла с расширением '.xlsx' |
+| **columns** | (*array*) позволяет настроить столбцы выходного Excel-листа. Свойства объектов столбца:<ul><li><b>'id'</b> - (<i>string,number</i>) свойство события, которое будет сопоставлено столбцу</li><li><b>'header'</b> - (<i>string</i>) заголовок столбца</li><li><b>'width'</b> - (<i>number</i>) ширина столбца в пикселях</li><li><b>'type'</b> - (<i>string</i>) тип столбца</li></ul> |
+| **server** | (*string*) задаёт API-ендпойнт для запроса. Можно использовать с локальной установкой сервиса экспорта. Значение по умолчанию: `https://export.dhtmlx.com/gantt` |
+| **raw** | (*boolean*) определяет способ экспорта данных Gantt. Выполняет две задачи:<ul><li>если задача отфильтрована через событие [`onBeforeTaskDisplay`](api/event/onbeforetaskdisplay.md), т.е. не отображается ни в гриде, ни в timeline, она не экспортируется в файл Excel (по умолчанию экспортируются все задачи). <br/> **Related sample**: [Gantt. Export filtered data to PDF, Excel, and MSProject files](https://snippet.dhtmlx.com/twfy116w)</li><li>если столбец [скрыт](guides/specifying-columns.md#visibility) с помощью настройки `hide:true`, он не экспортируется в файл Excel (по умолчанию экспортируются все столбцы). <br/> **Related sample**: [Gantt. Export to Excel. Hide grid columns with the raw mode](https://snippet.dhtmlx.com/b7y0ps8m)</li></ul> По умолчанию — *false*. [Подробнее](guides/excel.md#exporting-filtered-tasks-and-hidden-columns) |
+| **callback** | (*function*) если вы хотите получить url для загрузки сгенерированного XLSX-файла, можно использовать свойство callback. Оно принимает JSON-объект с полем url |
+| **visual** | (*boolean*) добавляет timeline диаграмму к экспортируемому Excel-документу; по умолчанию — *false*. Узнайте, [как добавить цвета задач](guides/excel.md#adding-colors-of-tasks-to-export) к экспортированному файлу |
+| **cellColors** | (*boolean*) если значение равно *true*, ячейки экспортированного документа будут иметь цвета, определённые в шаблоне [](api/template/timeline_cell_class.md); будут экспортированы свойства *color* и *background-color* |
+| **data** | (*object*) задаёт пользовательский источник данных, который будет представлен в итоговой диаграмме Ганта |
+| **date_format** | (*string*) задаёт формат отображения даты в экспортируемом Excel-документе. Можно использовать следующий код формата: |
 
-~~~css
-table.my_table {
-    width: 70%;
-    padding: 0 20px;
-}
-table.my_table tr td {
-    text-align: left;
-    vertical-align: middle;
-    width: 35%;
-    border-bottom: 1px solid grey;
-}
-table.my_table td.version_info {
-    text-align: left;
-    font-weight: bold;
-}
-~~~
+<div class="auto-width-table">
 
-Format codeOutput:
+| Format code           | Output              |
+| --------------------- | ------------------- |
+| d                     | 9                   |
+| dd                    | 09                  |
+| ddd                   | Mon                 |
+| dddd                  | Monday              |
+| mm                    | 01                  |
+| mmm                   | Jan                 |
+| mmmm                  | January             |
+| mmmmm                 | J                   |
+| yy                    | 12                  |
+| yyyy                  | 2021                |
+| mm/dd/yyyy            | 01/09/2021          |
+| m/d/y                 | 1/9/21              |
+| ddd, mmm d            | Mon, Jan 9          |
+| mm/dd/yyyy h:mm AM/PM | 01/09/2021 6:20 PM  |
+| dd/mm/yyyy hh:mm:ss   | 09/01/2012 16:20:00 |
 
-<table class="my_table">
-<tr><td class="version_info">Format code</td><td class="version_info">Output</td></tr>
-<tr><td>d</td><td>9</td></tr>
-<tr><td>dd</td><td>09</td></tr>
-<tr><td>ddd</td><td>Mon</td></tr>
-<tr><td>dddd</td><td>Monday</td></tr>
-<tr><td>mm</td><td>01</td></tr>
-<tr><td>mmm</td><td>Jan</td></tr>
-<tr><td>mmmm</td><td>January</td></tr>
-<tr><td>mmmmm</td><td>J</td></tr>
-<tr><td>yy</td><td>12</td></tr>
-<tr><td>yyyy</td><td>2021</td></tr>
-<tr><td>mm/dd/yyyy</td><td>01/09/2021</td></tr>
-<tr><td>m/d/y</td><td>1/9/21</td></tr>
-<tr><td>ddd, mmm d</td><td>Mon, Jan 9</td></tr>
-<tr><td>mm/dd/yyyy h:mm AM/PM</td><td>01/09/2021 6:20 PM</td></tr>
-<tr><td>dd/mm/yyyy hh:mm:ss</td><td>09/01/2012 16:20:00</td></tr>
-</table>
+</div>
 
 
 #### Default date parameters
@@ -147,4 +131,4 @@ gantt.config.columns = [
 
 ### Related Guides
 
-- [Export/Import for Excel, Экспорт в iCal](guides/excel.md)
+- [Экспорт и импорт для Excel](guides/excel.md)

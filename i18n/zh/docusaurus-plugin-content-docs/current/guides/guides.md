@@ -115,15 +115,17 @@ sidebar_label: "指南"
 
 ## 导出与导入数据
 
-讨论以各种格式导出和导入甘特图数据的方法，以及将数据序列化为 XML 和 JSON。
+讨论以各种格式导出和导入甘特图数据的方法、将数据序列化为 JSON 和 XML，以及在您自己的服务器上安装导出模块。
 
-- ### [导出服务 - 独立安装的系统要求](guides/export-requirements.md)
+- ### [数据导出与导入](guides/export-common.md)
 - ### [导出为 PDF 和 PNG](guides/export.md)
-- ### [Excel 的导出/导入，导出到 iCal](guides/excel.md)
+- ### [Excel 的导出和导入](guides/excel.md)
+- ### [导出为 iCal](guides/ical.md)
 - ### [从 MS Project 导出和导入](guides/export-msproject.md)
 - ### [从 Primavera P6 导出和导入](guides/export-primavera.md)
-- ### [将数据序列化为 XML 和 JSON](guides/serialization.md)
+- ### [将数据序列化为 JSON 与 XML](guides/serialization.md)
 - ### [在 Node.js 上导出和导入数据](guides/export-nodejs.md)
+- ### [导出模块](guides/export-modules.md)
 
 
 ## 样式
@@ -164,6 +166,16 @@ sidebar_label: "指南"
 从最终用户的角度描述甘特图界面的元素。
 
 - ### [甘特图界面概览](guides/overview.md)
+
+## 从其他甘特图库迁移
+
+分步教程，介绍如何将现有应用从 Bryntum、Syncfusion、DevExpress 或 Frappe Gantt 迁移到 DHTMLX Gantt，并附有 GitHub 上的配套演示仓库。
+
+- ### [迁移到 DHTMLX Gantt](/migrating/)
+- ### [从 Bryntum](/migrating/from-bryntum)
+- ### [从 Syncfusion](/migrating/from-syncfusion)
+- ### [从 DevExpress](/migrating/from-devexpress)
+- ### [从 Frappe](/migrating/from-frappe)
 
 
 </div>

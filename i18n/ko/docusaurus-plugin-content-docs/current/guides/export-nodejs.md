@@ -1,6 +1,6 @@
 ---
 title: "Node.js에서 데이터 내보내기 및 가져오기"
-sidebar_label: "Node.js에서 데이터 내보내기 및 가져오기"
+sidebar_label: "Node.js"
 ---
 
 # Node.js에서 데이터 내보내기 및 가져오기

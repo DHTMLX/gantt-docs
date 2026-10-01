@@ -1,10 +1,10 @@
 ---
-title: "Neuigkeiten im MSP Project Export Module"
-sidebar_label: "Neuigkeiten im MSP Project Export Module"
+title: "Neuigkeiten im MS-Project-Export-Modul"
+sidebar_label: "MS Project/P6-Modul"
 ---
 
-Neuigkeiten im MSP Project Export Module
-========================================
+Neuigkeiten im MS-Project-Export-Modul
+======================================
 
 ## 2.4.1.0
 
@@ -23,6 +23,10 @@ Neuigkeiten im MSP Project Export Module
 - Der Import von Primavera-Dateien mit leeren oder fehlenden Kalendern wurde korrigiert.
 - Experimentelle Unterstützung für den Import von Dateien aus anderen Planungsprogrammen (Asta, ProjectLibre usw.) hinzugefügt.
 
+## 2.3.1.0
+
+- Behebung des Imports der benutzerdefinierten Eigenschaften mit benutzerdefinierten Namen
+
 ## 2.3.0.0
 
 - Aktualisierte MPXJ-Bibliothek auf Version 12.10.3.
@@ -36,6 +40,7 @@ Neuigkeiten im MSP Project Export Module
 - Eine Möglichkeit hinzugefügt, die meisten Standardressourcen-Eigenschaften mit einer einzigen Eigenschaft zu importieren (damit Sie nicht alle Eigenschaften auflisten müssen)
 - Behebung des Ressourcenexports, wenn Zuweisungen keinen Einheitenwert haben
 - Verschiedene Fehler behoben, die den Datei-Import und -Export aufgrund bestimmter Werte in den Aufgaben-Eigenschaften verhindert hatten
+- Behebung des Imports der benutzerdefinierten Eigenschaften mit benutzerdefinierten Namen
 
 ## 2.2.1.0
 

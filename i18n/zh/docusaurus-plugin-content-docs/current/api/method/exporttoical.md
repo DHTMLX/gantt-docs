@@ -27,7 +27,7 @@ gantt.exportToICal({
 ### Details
 
 :::note
-此方法在 **export** 扩展中定义，因此需要激活 [export_api](guides/extensions-list.md#export-service) 插件。请在 [Export/Import for Excel, Export to iCal](guides/excel.md) 文章中阅读详细信息。
+此方法在 **export** 扩展中定义，因此需要激活 [export_api](guides/extensions-list.md#export-service) 插件。请在 [导出为 iCal](guides/ical.md) 文章中阅读详细信息。
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
 <script src="https://export.dhtmlx.com/gantt/api.js"></script>
@@ -51,4 +51,4 @@ gantt.exportToICal({
 - [importFromMSProject](api/method/importfrommsproject.md)
 
 ### Related Guides
-- [Excel 的导出/导入，导出到 iCal](guides/excel.md#export-to-ical)
+- [导出为 iCal](guides/ical.md)

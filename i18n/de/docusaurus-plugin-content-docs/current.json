@@ -71,17 +71,21 @@
     "message": "Daten exportieren und importieren",
     "description": "Das Label für die Kategorie 'Daten exportieren und importieren' in der Sidebar-Dokumentation"
   },
-  "sidebar.docs.category.Exporting and Importing Data.link.generated-index.title": {
-    "message": "Daten exportieren und importieren",
-    "description": "Der Titel der generierten Index-Seite für die Kategorie 'Daten exportieren und importieren' in der Sidebar-Dokumentation"
-  },
   "sidebar.docs.category.Export Modules": {
     "message": "Export-Module",
     "description": "Das Label für die Kategorie 'Export-Module' in der Sidebar-Dokumentation"
   },
-  "sidebar.docs.category.Export Modules.link.generated-index.title": {
-    "message": "Export-Module",
-    "description": "Der Titel der generierten Index-Seite für die Kategorie 'Export-Module' in der Sidebar-Dokumentation"
+  "sidebar.docs.category.MS Project": {
+    "message": "MS Project",
+    "description": "Das Label für die Kategorie 'MS Project' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Primavera P6": {
+    "message": "Primavera P6",
+    "description": "Das Label für die Kategorie 'Primavera P6' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Version history": {
+    "message": "Versionshistorie",
+    "description": "Das Label für die Kategorie 'Versionshistorie' in der Sidebar-Dokumentation"
   },
   "sidebar.docs.category.Configuring Grid": {
     "message": "Gitter konfigurieren",

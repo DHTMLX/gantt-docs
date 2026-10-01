@@ -1,6 +1,6 @@
 ---
 title: "在 Node.js 上导出与导入数据"
-sidebar_label: "在 Node.js 上导出与导入数据"
+sidebar_label: "在 Node.js 上"
 ---
 
 # 在 Node.js 上导出与导入数据

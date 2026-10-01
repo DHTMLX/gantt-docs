@@ -115,15 +115,17 @@ Behandelt die Grundlagen der Durchführung allgemeiner Operationen an Abhängigk
 
 ## Daten exportieren und importieren 
 
-Behandelt die Möglichkeiten des Exports und Imports von Gantt-Daten in verschiedenen Formaten sowie die Serialisierung von Daten in XML und JSON.
+Behandelt die Möglichkeiten des Exports und Imports von Gantt-Daten in verschiedenen Formaten, die Serialisierung von Daten in JSON und XML sowie die Installation der Export-Module auf Ihrem eigenen Server.
 
-- ### [Export-Service - Systemanforderungen für eine eigenständige Installation](guides/export-requirements.md)
+- ### [Exportieren und Importieren von Daten](guides/export-common.md)
 - ### [Export nach PDF und PNG](guides/export.md)
-- ### [Export/Import für Excel, Export nach iCal](guides/excel.md)
+- ### [Export und Import für Excel](guides/excel.md)
+- ### [Export nach iCal](guides/ical.md)
 - ### [Export und Import aus MS Project](guides/export-msproject.md)
 - ### [Export und Import aus Primavera P6](guides/export-primavera.md)
-- ### [Serialisierung von Daten in XML und JSON](guides/serialization.md)
+- ### [Daten in JSON und XML serialisieren](guides/serialization.md)
 - ### [Export und Import von Daten in Node.js](guides/export-nodejs.md)
+- ### [Export-Module](guides/export-modules.md)
 
 
 ## Gestaltung 

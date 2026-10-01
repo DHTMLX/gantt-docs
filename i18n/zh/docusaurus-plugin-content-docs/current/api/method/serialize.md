@@ -29,5 +29,5 @@ gantt.serialize('xml');
 - [parse](api/method/parse.md)
 
 ### Related Guides
-- [将数据序列化为 XML 和 JSON](guides/serialization.md)
+- [将数据序列化为 JSON 与 XML](guides/serialization.md)
 - [支持的数据格式](guides/supported-data-formats.md)

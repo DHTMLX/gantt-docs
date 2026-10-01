@@ -43,7 +43,7 @@ gantt.importFromMSProject({
 
 
 :::note
-이 메서드는 **export** 확장에 정의되어 있으므로 [export_api](guides/extensions-list.md#export-service) 플러그인을 활성화해야 합니다. [Export/Import for Excel, Export to iCal](guides/excel.md#importfromexcel) 문서의 세부 정보를 확인하십시오.
+이 메서드는 **export** 확장에 정의되어 있으므로 [export_api](guides/extensions-list.md#export-service) 플러그인을 활성화해야 합니다. [MS Project에서의 내보내기 및 가져오기](guides/export-msproject.md#import-from-ms-project) 문서의 세부 정보를 확인하십시오.
  
 ::: 
 
