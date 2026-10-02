@@ -1,13 +1,18 @@
 ---
-title: "PDF용 내보내기 모듈"
-sidebar_label: "PDF용 내보내기 모듈"
+title: "PDF, PNG, Excel 및 iCal용 내보내기 모듈"
+sidebar_label: "PDF/PNG/Excel 모듈"
 ---
 
-# PDF용 내보내기 모듈
+# PDF, PNG, Excel 및 iCal용 내보내기 모듈
 
 이 내보내기 모듈은 데이터를 PDF, PNG, Excel 및 iCal 파일로 내보낼 수 있습니다. Node.js 애플리케이션 또는 Docker 이미지로 어떤 플랫폼에서도 설치할 수 있습니다.
 
 MS Project 및 Primavera 파일에 대한 가져오기/내보내기 기능은 포함되어 있지 않습니다. 이러한 기능이 필요하면 [해당 내보내기 모듈](guides/msp-export-module.md)이나 온라인 서버를 사용해야 합니다.
+
+:::note
+기본적으로 이 모듈은 MS Project 및 Primavera P6 요청을 `https://export.dhtmlx.com/msproject`의 온라인 내보내기 서비스로 전달합니다. 요청을 자체 MS Project 내보내기 모듈로 보내려면 `MSP_SERVICE_ENDPOINT` 환경 변수를 설정하십시오. [두 모듈의 상호 작용 방식](guides/export-modules.md#service-topology)을 참조하십시오.
+:::
+
 
 ## 설치 가이드
 
@@ -20,7 +25,7 @@ MS Project 및 Primavera 파일에 대한 가져오기/내보내기 기능은 �
 해당 파일을 다운로드한 후 어느 곳에 풀고, 명령줄을 열어 내보내기 모듈이 있는 폴더로 이동합니다. 예를 들면:
 
 ~~~
-cd C:export_module
+cd C:\export_module
 ~~~
 
 그런 다음 애플리케이션용 모듈을 설치해야 합니다:
@@ -73,11 +78,7 @@ xvfb-run node index.js
 
 ### 구버전 Node.js
 
-내보내기 모듈은 Node.js 버전 12.03 이상과 호환됩니다. 더 오래된 버전이 있다면 Electron의 더 이른 버전을 설치해야 합니다:
-
-~~~
-npm install electron@6.1
-~~~
+내보내기 모듈은 Node.js v20 이상과 호환됩니다. 이전 버전을 사용 중이라면 Node.js를 업데이트하십시오.
 
 ### PDF로 내보내기가 끝나지 않음
 
@@ -120,7 +121,7 @@ docker build -t dhtmlx/scheduler-gantt-export ./
 다음 명령으로 Docker 이미지를 실행합니다:
 
 ~~~
-docker run -d -p 3200:80 dhtmlx/scheduler-gantt-export
+docker run -d -p 3200:3200 dhtmlx/scheduler-gantt-export
 ~~~
 
 3200은 Docker 서비스가 작동하는 포트입니다.

@@ -26,6 +26,7 @@ gantt.exportToExcel({
         { id: "start_date",  header: "Start date", width: 250, type: "date" }
     ],
     server: "https://myapp.com/myexport/gantt",
+    raw: true,
     callback: (res) => {
         alert(res.url);
     },
@@ -62,6 +63,11 @@ Die **exportToExcel()**-Methode nimmt als Parameter ein Objekt mit mehreren Eige
     - **'width'** - (*number*) die Spaltenbreite in Pixeln
     - **'type'** - (*string*) der Spaltentyp
 - **server** - (*string*) legt den API-Endpunkt für die Anfrage fest. Kann mit der lokalen Installation des Export-Services verwendet werden. Standardwert ist `https://export.dhtmlx.com/gantt`
+- **raw** - (*boolean*) legt fest, wie die Gantt-Daten exportiert werden. Die Eigenschaft erfüllt zwei Aufgaben:
+    - Wenn eine Aufgabe über das Ereignis [`onBeforeTaskDisplay`](api/event/onbeforetaskdisplay.md) herausgefiltert wird, d. h. weder im Grid noch in der Timeline angezeigt wird, wird sie nicht in die Excel-Datei exportiert (standardmäßig werden alle Aufgaben exportiert). <br/> **Related sample**: [Gantt. Export filtered data to PDF, Excel, and MSProject files](https://snippet.dhtmlx.com/twfy116w)
+    - Wenn eine Spalte über die Einstellung `hide:true` [ausgeblendet](guides/specifying-columns.md#visibility) ist, wird sie nicht in die Excel-Datei exportiert (standardmäßig werden alle Spalten exportiert). <br/> **Related sample**: [Gantt. Export to Excel. Hide grid columns with the raw mode](https://snippet.dhtmlx.com/b7y0ps8m)
+
+  Standardmäßig *false*. [Details lesen](guides/excel.md#exporting-filtered-tasks-and-hidden-columns)
 - **callback** - (*function*) Wenn Sie eine URL zum Herunterladen einer generierten XLSX-Datei erhalten möchten, kann die callback-Eigenschaft verwendet werden. Sie erhält ein JSON-Objekt mit der Eigenschaft url
 - **visual** - (*boolean*) fügt dem exportierten Excel-Dokument das Timeline-Diagramm hinzu; standardmäßig *false*. Lesen Sie [wie man Task-Farben zur exportierten Datei hinzufügt](guides/excel.md#adding-colors-of-tasks-to-export) zum exportierten Dokument
 - **cellColors** - (*boolean*) wenn auf *true* gesetzt, erhalten die Zellen des exportierten Dokuments die Farben, die durch die Vorlage [](api/template/timeline_cell_class.md) festgelegt sind; die Eigenschaften *color* und *background-color* werden exportiert
@@ -148,4 +154,4 @@ Andernfalls werden die Gantt-Daten nicht exportiert. [Siehe das zugehörige Beis
 
 ### Related Guides
 
-- [Export/Import for Excel, Export to iCal](guides/excel.md)
+- [Export und Import für Excel](guides/excel.md)

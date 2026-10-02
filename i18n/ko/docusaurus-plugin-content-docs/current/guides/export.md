@@ -1,6 +1,6 @@
 ---
 title: "PDF 및 PNG로 내보내기"
-sidebar_label: "PDF 및 PNG로 내보내기"
+sidebar_label: "PDF 및 PNG"
 ---
 
 # PDF 및 PNG로 내보내기
@@ -16,33 +16,12 @@ Gantt 차트를 PDF 또는 PNG로 로컬에서 내보내기 위해 직접 설정
 ## 온라인 내보내기 서비스 제한
 
 :::note
-내보내기 서비스에는 시간 제한과 요청 크기 제한이 있습니다.
+온라인 내보내기 서비스에는 시간 제한과 요청 크기 제한이 있습니다. [온라인 내보내기 서비스 제한](guides/export-common.md#service-limits)을 참조하십시오.
 :::
-
-### 시간 제한
-
-과정이 20초를 넘길 경우 내보내기가 취소되고 다음 오류가 발생합니다:
-
-~~~html
-Error: Timeout trigger 20 seconds
-~~~
-
-동시에 여러 사용자가 Gantt를 내보낼 경우 프로세스가 일반적으로 더 오래 걸릴 수 있습니다. 다만 특정 사용자의 내보내기 요청에 소요된 시간은 개별적으로 계산되므로 문제되지 않습니다.
-
-### 요청 크기 제한
-
-모든 내보내기 방법(exportToPDF, exportToPNG, exportToMSProject 등)에 사용되는 공통 API 엔드포인트 `https://export.dhtmlx.com/gantt`가 있습니다. **최대 요청 크기는 10 MB**입니다.
-
-또한 MSProject 및 Primavera P6용 내보내기/가져오기 서비스에 특화된 별도의 API 엔드포인트 `https://export.dhtmlx.com/gantt/project`도 있습니다(exportToMSProject / importFromMSProject / exportToPrimaveraP6 / importFromPrimaveraP6에 한정). **최대 요청 크기: 40 MB**.
 
 ## export 모듈 사용하기
 
-:::note
-큰 차트를 내보내야 하는 경우, [독립 실행형 export 모듈](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)을 사용할 수 있습니다. 
-export 모듈은 Gantt를 [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 또는 [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 라이선스로 얻은 경우 무료로 제공되며, 또는 모듈을 별도로 구입할 수 있습니다(https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
-:::
-
-[PDF용 export 모듈 사용법 자세히 보기](guides/pdf-export-module.md).
+대용량 차트를 내보내거나, 온라인 내보내기 서비스의 제한 없이 내보내거나, 데이터를 사내 네트워크에 보관하려면 자체 서버에 [내보내기 모듈](guides/export-modules.md)을 설치하십시오. [PDF, PNG, Excel 및 iCal용 내보내기 모듈](guides/pdf-export-module.md) 사용에 대한 자세한 내용을 확인하십시오.
 
 ## PDF로 내보내기 {#export-to-pdf}
 

@@ -115,15 +115,17 @@ Covers the basics of performing general operations over dependency objects, such
 
 ## Exporting and Importing Data 
 
-Discusses the ways of exporting and importing Gantt data in various formats, and serializing data into XML and JSON.
+Discusses the ways of exporting and importing Gantt data in various formats, serializing data into JSON and XML, and installing the export modules on your own server.
 
-- ### [Export Service - System Requirements for a standalone install](guides/export-requirements.md)
+- ### [Exporting and Importing Data](guides/export-common.md)
 - ### [Export to PDF and PNG](guides/export.md)
-- ### [Export/Import for Excel, Export to iCal](guides/excel.md)
+- ### [Export and Import for Excel](guides/excel.md)
+- ### [Export to iCal](guides/ical.md)
 - ### [Export and Import from MS Project](guides/export-msproject.md)
 - ### [Export and Import from Primavera P6](guides/export-primavera.md)
-- ### [Serializing Data into XML and JSON](guides/serialization.md)
+- ### [Serializing Data into JSON and XML](guides/serialization.md)
 - ### [Export and Import Data on Node.js](guides/export-nodejs.md)
+- ### [Export Modules](guides/export-modules.md)
 
 
 ## Styling 

@@ -1,17 +1,21 @@
 ---
-title: "PDF 导出模块"
-sidebar_label: "PDF 导出模块"
+title: "PDF、PNG、Excel 和 iCal 的导出模块"
+sidebar_label: "PDF/PNG/Excel 模块"
 ---
 
-# PDF 导出模块
+# PDF、PNG、Excel 和 iCal 的导出模块
 
 本导出模块可以将数据导出为 PDF、PNG、Excel 和 iCal 文件。它可以在任意平台上作为 Node.js 应用程序或作为 Docker 镜像进行安装。
 
 它不包含 MS Project 和 Primavera 文件的导入/导出功能。如果你需要这样的功能，你应该使用 [对应的导出模块](guides/msp-export-module.md) 或我们的在线服务器。
 
+:::note
+默认情况下，此模块会将 MS Project 和 Primavera P6 请求转发到 `https://export.dhtmlx.com/msproject` 的在线导出服务。若要将它们发送到你自己的 MS Project 导出模块，请设置 `MSP_SERVICE_ENDPOINT` 环境变量。请参阅[两个模块如何协同工作](guides/export-modules.md#service-topology)。
+:::
+
 ## 安装指南
 
-首先，你需要下载并安装 Node.js。你可以在其官方网站上找到安装说明。
+首先，你需要下载并安装 Node.js。你可以在[其官方网站](https://nodejs.org/en/)上找到安装说明。
 
 你可以在客户端区域的 Downloads 选项卡中下载导出模块。请查看下图：
 
@@ -20,7 +24,7 @@ sidebar_label: "PDF 导出模块"
 下载该文件后，将其解压到任意位置，然后打开命令行并导航到包含导出模块的文件夹。例如：
 
 ~~~
-cd C:export_module
+cd C:\export_module
 ~~~
 
 然后你需要为应用安装模块：
@@ -73,11 +77,7 @@ xvfb-run node index.js
 
 ### 旧版 Node.js
 
-该导出模块兼容 Node 版本 12.03 及更新版本。如果你有较旧的版本，你需要安装较旧的 Electron 版本：
-
-~~~
-npm install electron@6.1
-~~~
+该导出模块兼容 Node.js v20 及更新版本。如果你有较旧的版本，请更新 Node.js。
 
 ### 导出到 PDF 永远不结束
 
@@ -120,7 +120,7 @@ docker build -t dhtmlx/scheduler-gantt-export ./
 使用下面的命令运行 Docker 镜像：
 
 ~~~
-docker run -d -p 3200:80 dhtmlx/scheduler-gantt-export
+docker run -d -p 3200:3200 dhtmlx/scheduler-gantt-export
 ~~~
 
 3200 是 Docker 服务将要监听的端口。

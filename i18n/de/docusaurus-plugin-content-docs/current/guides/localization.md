@@ -129,7 +129,7 @@ gantt.i18n.setLocale("lang");
 
 **Hinweis**, 
 
-- Sie können Ihre benutzerdefinierte Lokalisierungsdatei an **support@dhtmlx.com** senden – dann wird sie in der nächsten Veröffentlichung berücksichtigt.
+- Sie können Ihre benutzerdefinierte Lokalisierungsdatei an **info@dhtmlx.com** senden – dann wird sie in der nächsten Veröffentlichung berücksichtigt.
 - Die derzeit aktive Lokalisierung ist auch im **gantt.locale** Objekt verfügbar
 - **month_full** - die vollständigen Monatsnamen beginnend mit Januar;
 - **month_short** - die kurzen Monatsnamen beginnend mit Januar;

@@ -1,6 +1,6 @@
 ---
 title: "Properties for importing from MS Project"
-sidebar_label: "Properties for importing from MS Project"
+sidebar_label: "Import properties"
 ---
 
 # Properties for importing from MS Project

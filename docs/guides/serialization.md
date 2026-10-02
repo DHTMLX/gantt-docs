@@ -1,9 +1,9 @@
 ---
-title: "Serializing Data into XML and JSON"
-sidebar_label: "Serializing Data into XML and JSON"
+title: "Serializing Data into JSON and XML"
+sidebar_label: "JSON and XML"
 ---
 
-# Serializing Data into XML and JSON 
+# Serializing Data into JSON and XML
 
 ## JSON format
 

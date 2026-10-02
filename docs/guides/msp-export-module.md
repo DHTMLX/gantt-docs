@@ -1,9 +1,9 @@
 ---
-title: "Export Module for MS Project"
-sidebar_label: "Export Module for MS Project"
+title: "Export Module for MS Project and Primavera P6"
+sidebar_label: "MS Project/P6 module"
 ---
 
-# Export Module for MS Project
+# Export Module for MS Project and Primavera P6
 
 This export module can import/export MS Project and Primavera files. It is a .NET Core application that you can run inside the dotnet environment 
 or inside the docker image.
@@ -14,7 +14,7 @@ the [corresponding export module](guides/pdf-export-module.md) or our online ser
 ## Installation guide
 
 You will need to install the [.NET Core 7 environment](https://learn.microsoft.com/en-us/dotnet/core/install/) before you run the application.
-Once you're ready, you can download the MSP export module in the Client's Area on the Downloads tab. Check the image below: 
+Once you're ready, you can download the MS Project export module in the Client's Area on the Downloads tab. Check the image below: 
 
 ![MS export module download](/img/msp_export_module_download.png)
 
@@ -89,18 +89,18 @@ Now you can export data with the button.
 
 ### Export to PDF/PNG/Excel doesn't work
 
-The MSP export module doesn't work for methods other than gantt.exportToMSProject/exportToPrimaveraP6, 
-i.e. it won't work if you call 
+The MS Project export module works only with the gantt.exportToMSProject(), gantt.importFromMSProject(), gantt.exportToPrimaveraP6(),
+and gantt.importFromPrimaveraP6() methods. It doesn't export to PDF, PNG, Excel, or iCal, i.e. it won't work if you call 
 
 ~~~
 gantt.exportToPDF({server:"gantt-to-msproject-url"});
 ~~~
 
-Also, please note, that if you call `gantt.exportToMSProject()` without parameters, it will call our online service at `export.dhtmlx.com` by default.
+Also, please note, that if you call `gantt.exportToMSProject()` without parameters, it will call our online service at `export.dhtmlx.com` by default. See [How the two modules work together](guides/export-modules.md#service-topology).
 
 ### Export of MPP files
 
-The MSP export module and export server use the MPXJ library to import and export MSP and Primavera files. Unfortunately, there is no way to export MPP files, 
+The MS Project export module and the export server use the MPXJ library to import and export MS Project and Primavera files. Unfortunately, there is no way to export MPP files, 
 but you can [import both XML and MPP files](https://www.mpxj.org/faq/).
 
 Even though a direct export to MPP isn't supported, you can still get the changes made in Gantt back into MS Project. A typical round-trip workflow looks like this:
@@ -124,14 +124,25 @@ By default, Gantt imports and exports only the default set of task/project prope
 If you want to import large files, you will need to remove the limits on the request size. To do that, you need to open the 
 `GanttToMSProject/Controllers/MspConversionController.cs` file. There, you need to uncomment the `DisableRequestSizeLimit` and the line that follows it.
 
-After saving the changes and restarting the server, you should be able to import large files. It was tested that importing a 244Mb file requires up to 4Gb RAM.
+After saving the changes and restarting the server, you should be able to import large files.
+
+The memory that an import needs depends on the file format and on the project, not only on the file size. An MPP file needs much more memory than an XML file of the same size. Test results:
+
+| File | File size | RAM |
+|---|---|---|
+| XML | 244Mb | up to 4Gb |
+| XML | 400Mb | around 4.7Gb |
+| MPP | 220Mb | around 12Gb |
+| XML, the same project as the 220Mb MPP file, saved from MS Project | 1.1Gb | around 12Gb |
+
+The memory use of the same file can be different from one import to the next: in one test, two imports of the same file required 6Gb and 8Gb RAM. If the server runs out of memory, the import fails. Give the server enough memory for your largest files, with a margin, and test the import with them.
 
 ### Using a Docker image
 
 To build a docker image, run the following command:
 
 ~~~
-docker build -t msp_export_module 
+docker build -t msp_export_module .
 ~~~
 
 To run the docker image for testing purposes, you can use the following command:

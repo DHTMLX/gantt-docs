@@ -41,7 +41,7 @@ gantt.importFromPrimaveraP6({
 :::
 
 :::note
-이 메서드는 **export** 확장에 정의되어 있으므로 [export_api](guides/extensions-list.md#export-service) 플러그인을 활성화해야 합니다. [Export/Import for Excel, Export to iCal](guides/excel.md#importfromexcel) 문서에서 자세한 내용을 확인하십시오.
+이 메서드는 **export** 확장에 정의되어 있으므로 [export_api](guides/extensions-list.md#export-service) 플러그인을 활성화해야 합니다. [Primavera P6에서 내보내기 및 가져오기](guides/export-primavera.md#import-from-primavera-p6) 문서에서 자세한 내용을 확인하십시오.
 :::
 
 :::note
