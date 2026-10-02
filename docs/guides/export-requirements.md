@@ -25,9 +25,11 @@ It is distributed in the form of source code and as a Docker image.
   <tr>
   <td>- 1 CPU core (shared virtual core will do) - at least 500MB RAM</td>
   <td>- Linux - Windows - MacOS</td>
-  <td>- Node.js v20 or newer or - Docker</td>
+  <td>- Node.js v22.12 or newer or - Docker</td>
   </tr>
 </table>
+
+The memory that an export needs depends on the size of the chart. For export of large charts to PDF, 4GB RAM is usually enough. For export to PNG of the maximum image size, 10000x10000 pixels, 4GB RAM is the minimum.
 
 
 ## Import and Export from MS Project and Primavera P6
@@ -48,6 +50,8 @@ The source project is compatible with MS VisualStudio 2022+.
   <tr>
   <td>- 1 CPU core (shared virtual core will do) - at least 1000MB RAM</td>
   <td>- Windows - MacOS - Linux</td>
-  <td>- .NET Core 7.0+</td>
+  <td>- .NET Core 7.0+ or - Docker</td>
   </tr>
 </table>
+
+The memory that an import or export needs depends on the file. A large MS Project file can take 6GB RAM and more, because the module keeps the whole loaded project in memory. See [Import of large files](guides/msp-export-module.md#import-of-large-files).

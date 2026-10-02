@@ -124,7 +124,18 @@ By default, Gantt imports and exports only the default set of task/project prope
 If you want to import large files, you will need to remove the limits on the request size. To do that, you need to open the 
 `GanttToMSProject/Controllers/MspConversionController.cs` file. There, you need to uncomment the `DisableRequestSizeLimit` and the line that follows it.
 
-After saving the changes and restarting the server, you should be able to import large files. It was tested that importing a 244Mb file requires up to 4Gb RAM, and a 400Mb file requires around 4.7Gb RAM.
+After saving the changes and restarting the server, you should be able to import large files.
+
+The memory that an import needs depends on the file format and on the project, not only on the file size. An MPP file needs much more memory than an XML file of the same size. Test results:
+
+| File | File size | RAM |
+|---|---|---|
+| XML | 244Mb | up to 4Gb |
+| XML | 400Mb | around 4.7Gb |
+| MPP | 220Mb | around 12Gb |
+| XML, the same project as the 220Mb MPP file, saved from MS Project | 1.1Gb | around 12Gb |
+
+The memory use of the same file can be different from one import to the next: in one test, two imports of the same file required 6Gb and 8Gb RAM. If the server runs out of memory, the import fails. Give the server enough memory for your largest files, with a margin, and test the import with them.
 
 ### Using a Docker image
 

@@ -12,6 +12,7 @@ dhtmlxGantt provides an online export service that allows you to export the Gant
 The service is free, but the output PDF/PNG file will contain the library's watermark.
 To export without the watermark you need a valid license - the result of export will be available without a watermark
 during the valid support period (12 months for all PRO licenses).
+Your domain must also be on the list of licensed domains of the service, see [License and watermark](guides/export-common.md#license-and-watermark).
 :::
 
 There are several export services available. You can install them on your computer and export Gantt chart to PDF or PNG locally.

@@ -35,9 +35,9 @@ Then you need to install the modules for the application:
 npm install
 ~~~
 
-You can [install the components to the computer without graphical interface](#using-server-without-graphical-interface).
+In version 0.7.7 and older, you need to [install additional components to the computer without graphical interface](#using-server-without-graphical-interface).
 
-To run on a server with a graphical interface, you can use the following command to start the export module:
+To start the export module, use the following command:
 
 ~~~
 npm start
@@ -48,6 +48,8 @@ To test how it works, you can open the following URL: **http://localhost:3200/te
 Or open the main page and click the Test link: **http://localhost:3200**.
 
 ## Using server without graphical interface
+
+This section applies to version 0.7.7 and older, which renders the chart with Electron. Version 0.8.0 and newer renders the chart with Puppeteer in headless Chrome and doesn't need Xvfb.
 
 If you plan to use the export module on a headless server, you need to install additional components. Here is the command for the Deb-based distros:
 
@@ -79,11 +81,11 @@ xvfb-run node index.js
 
 ### Old Node.js version
 
-The export module is compatible with Node.js v20 and newer. If you have an older version, update Node.js.
+The export module is compatible with Node.js v22.12 and newer. If you have an older version, update Node.js.
 
 ### Export to PDF never ends
 
-If you use Windows with the custom DPI settings or fonts, there is a bug in the Electron component. To make it work, you need to install an earlier version:
+If you use Windows with the custom DPI settings or fonts, there is a bug in the Electron component of version 0.7.7 and older. To make it work, you need to install an earlier version:
 
 ~~~
 npm install electron@6.1
@@ -91,13 +93,15 @@ npm install electron@6.1
 
 ### Export to PDF/PNG doesn't work on Mac M1
 
-The Electron version that is currently used, doesn't have builds for the Darwin-ARM64 architecture. As a workaround, you can try installing Electron 11. 
+This problem occurs in version 0.6.7 and older. To solve it, update the export module.
+
+The Electron version that these versions use doesn't have builds for the Darwin-ARM64 architecture. If you can't update the module, you can try installing Electron 11 as a workaround:
 
 ~~~
 npm install electron@11
 ~~~
 
-The basic export functionality should work, but we didn't check whether all features work correctly with that version:
+The basic export functionality should work, but we didn't check whether all features work correctly with that version.
 
 ### Export to PDF doesn't work
 
@@ -109,8 +113,14 @@ If you get one of the following errors:
 
 * Electron crashed!
 
-most likely, it means that the export module is working on a headless server. You will need to 
-[install the necessary components to use PDF and PNG export](#using-server-without-graphical-interface). Or you can build a Docker image.
+* Chrome launch failed
+
+most likely, it means that the browser that renders the chart can't start on your server:
+
+- Version 0.8.0 and newer renders the chart with Puppeteer and writes `Chrome launch failed` to its console output. Check that the server has the system libraries that Chrome needs, see [Chrome doesn't launch on Linux](https://pptr.dev/troubleshooting#chrome-doesnt-launch-on-linux) in the Puppeteer documentation.
+- Version 0.7.7 and older renders the chart with Electron. If the export module is working on a headless server, you will need to [install the necessary components to use PDF and PNG export](#using-server-without-graphical-interface).
+
+Or you can build a Docker image: it includes all the components that the export module needs.
 
 ### Using a Docker image
 

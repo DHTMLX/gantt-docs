@@ -35,6 +35,8 @@ To export and import data on the server side, see [Export and Import Data on Nod
 3. The export service creates the file, or reads the imported file.
 4. The browser receives the file. For import, the `callback` function of the method receives the data. For export, a `callback` function can receive a URL of the generated file instead.
 
+When the export service has sent the result, it deletes the temporary files of the request. If you export with a `callback` function, the export service saves the generated file to give you its URL, so the file stays on the server. The online export service deletes such files after some time. An export module keeps them until you delete them.
+
 By default, all methods send requests to the online export service at `https://export.dhtmlx.com/gantt`. To send them to another export service, for example, to your own export module, set the `server` parameter of the method:
 
 ~~~js
@@ -45,10 +47,10 @@ gantt.exportToPDF({
 
 ## Online export service or your own install
 
-- **Watermark.** The online export service is free, but the PDF and PNG files that it creates contain a watermark unless you have a valid license. See [License and watermark](#license-and-watermark).
+- **Watermark.** The online export service is free, but the PDF and PNG files that it creates contain a watermark unless you have a valid license and your domain is on the list of licensed domains of the service. See [License and watermark](#license-and-watermark).
 - **Limits.** The online export service has time and request size limits. See [Online export service limits](#service-limits). An export module that you install has the limits that you configure.
 - **Data location.** The online export service processes your data on DHTMLX servers. With export modules, you can keep the data in your network. See [How the two modules work together](guides/export-modules.md#service-topology).
-- **Setup.** The online export service needs no setup. An export module needs a server: Node.js or Docker for the PDF/PNG/Excel module, .NET for the MS Project/P6 module. See [Export Modules](guides/export-modules.md).
+- **Setup.** The online export service needs no setup. An export module needs a server: Node.js or Docker for the PDF/PNG/Excel module, .NET or Docker for the MS Project/P6 module. See [Export Modules](guides/export-modules.md).
 
 ## Online export service limits {#service-limits}
 
@@ -58,7 +60,15 @@ The online export service has time and request size restrictions.
 
 ### Time limits
 
-If the process takes more than 20 seconds, the export will be canceled and the following error will occur:
+If the process takes more than 20 seconds, the export will be canceled and the following error will occur.
+
+For export to PDF and PNG:
+
+~~~html
+Error: Page render timeout: 20 seconds. Read more here: https://docs.dhtmlx.com/gantt/desktop__export.html#onlineexportservicerestrictions
+~~~
+
+For export to Excel and import from Excel:
 
 ~~~html
 Error: Timeout trigger 20 seconds
@@ -79,5 +89,7 @@ The online export service is free, but the output PDF and PNG files will contain
 To export without the watermark you need a valid license - the result of export will be available without a watermark
 during the valid support period (12 months for all PRO licenses).
 :::
+
+A license does not remove the watermark automatically. The online export service removes it only for requests from the domains on its list of licensed domains, so the files that you export from other domains still contain the watermark. After you get a license, send the domains of your application to [support@dhtmlx.com](mailto:support@dhtmlx.com) and ask us to add them to the list.
 
 Export modules are not included in the Gantt package. An export module is provided free of charge if you've obtained Gantt under [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) or [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) license, or you can [buy the module separately](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210). Read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) to learn the terms of using each of them.

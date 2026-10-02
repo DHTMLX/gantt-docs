@@ -20,7 +20,7 @@ Use an export module when you need to export large charts, export without the li
 | Module | Built with | Formats | Requirements | Installation | Version history |
 |---|---|---|---|---|---|
 | PDF/PNG/Excel module | Node.js, also available as a Docker image | PDF, PNG, Excel (export and import), iCal, JSON | [System requirements](guides/export-requirements.md#pdfpngexcel-service) | [Export Module for PDF, PNG, Excel, and iCal](guides/pdf-export-module.md) | [What's new](guides/pdf-export-module-whatsnew.md) |
-| MS Project/P6 module | .NET (C#) | MS Project and Primavera P6 (export and import) | [System requirements](guides/export-requirements.md#import-and-export-from-ms-project-and-primavera-p6) | [Export Module for MS Project and Primavera P6](guides/msp-export-module.md) | [What's new](guides/msp-export-module-whatsnew.md) |
+| MS Project/P6 module | .NET (C#), also available as a Docker image | MS Project and Primavera P6 (export and import) | [System requirements](guides/export-requirements.md#import-and-export-from-ms-project-and-primavera-p6) | [Export Module for MS Project and Primavera P6](guides/msp-export-module.md) | [What's new](guides/msp-export-module-whatsnew.md) |
 
 You can download both modules in the [Client's Area](https://dhtmlx.com/clients/) on the Downloads tab.
 
