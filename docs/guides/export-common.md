@@ -60,18 +60,10 @@ The online export service has time and request size restrictions.
 
 ### Time limits
 
-If the process takes more than 20 seconds, the export will be canceled and the following error will occur.
-
-For export to PDF and PNG:
+If the process takes more than 20 seconds, the export will be canceled and the following error will occur:
 
 ~~~html
-Error: Page render timeout: 20 seconds. Read more here: https://docs.dhtmlx.com/gantt/desktop__export.html#onlineexportservicerestrictions
-~~~
-
-For export to Excel and import from Excel:
-
-~~~html
-Error: Timeout trigger 20 seconds
+Error: Page render timeout: 20 seconds. Read more here: https://docs.dhtmlx.com/gantt/guides/export-common/#service-limits
 ~~~
 
 If several people export Gantt at the same time, the process can take more time than usual. But that's fine because the time which is spent for export request from a specific user is counted separately.
@@ -90,6 +82,6 @@ To export without the watermark you need a valid license - the result of export 
 during the valid support period (12 months for all PRO licenses).
 :::
 
-A license does not remove the watermark automatically. The online export service removes it only for requests from the domains on its list of licensed domains, so the files that you export from other domains still contain the watermark. After you get a license, send the domains of your application to [support@dhtmlx.com](mailto:support@dhtmlx.com) and ask us to add them to the list.
+A license does not remove the watermark automatically. The online export service removes it only for requests from the domains on its list of licensed domains, so the files that you export from other domains still contain the watermark. After you get a license, send the domains of your application to [info@dhtmlx.com](mailto:info@dhtmlx.com) and ask us to add them to the list.
 
 Export modules are not included in the Gantt package. An export module is provided free of charge if you've obtained Gantt under [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) or [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) license, or you can [buy the module separately](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210). Read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) to learn the terms of using each of them.

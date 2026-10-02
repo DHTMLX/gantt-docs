@@ -85,7 +85,7 @@ The export module is compatible with Node.js v22.12 and newer. If you have an ol
 
 ### Export to PDF never ends
 
-If you use Windows with the custom DPI settings or fonts, there is a bug in the Electron component of version 0.7.7 and older. To make it work, you need to install an earlier version:
+If you use Windows with the custom DPI settings or fonts, there is a bug in the Electron component of version 0.6.7 and older. To make it work, you need to install an earlier version:
 
 ~~~
 npm install electron@6.1
