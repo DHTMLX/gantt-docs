@@ -22,7 +22,7 @@ This report documents how DHTMLX Gantt conforms to the major accessibility stand
 - DHTMLX Gantt is **web content** rendered by a host application. Page-level responsibilities - the page title, `<html lang>`, skip/bypass mechanisms, and site-wide navigation - belong to the host application and are reported as *Not Applicable* with an explanation.
 - In the WCAG tables, only the **Web** response is populated. The *Electronic Docs*, *Software*, *Closed*, and *Authoring Tool* rows are *Not Applicable*: the product is not standalone (non-web) software, closed functionality, an authoring tool, or a piece of electronic documentation.
 
-**Evaluation Methods Used:** Testing was performed using a combination of automated testing (axe-core in a headless browser), manual code review of the component source (roles, ARIA attributes, keyboard handling and plugin behaviour), assistive-technology testing (manual passes with **NVDA + Firefox** and **JAWS + Chrome** on Windows), and browser overrides (colour-vision-deficiency emulation, `prefers-reduced-motion: reduce`, `forced-colors: active`, 200% / 400% zoom, and WCAG text-spacing overrides).
+**Evaluation Methods Used:** Testing was performed using a combination of automated testing (axe-core in a headless browser), manual code review of the component source (roles, ARIA attributes, keyboard handling and plugin behaviour), assistive-technology testing (manual passes with **NVDA + Firefox** and **JAWS + Chrome** on Windows, and **VoiceOver + Safari** on macOS), and browser overrides (colour-vision-deficiency emulation, `prefers-reduced-motion: reduce`, `forced-colors: active`, 200% / 400% zoom, and WCAG text-spacing overrides).
 
 ## Applicable standards / guidelines
 
@@ -126,7 +126,7 @@ is Not Applicable - DHTMLX Gantt is a software component with no hardware or phy
 
 | Criteria | Conformance level | Remarks and explanations |
 |---|---|---|
-| 302.1 Without Vision | Supports | Operable with a screen reader (NVDA/JAWS) through the treegrid, text labels, live-region announcements and the keyboard model (requires the `keyboard_navigation` plugin). See WCAG 1.3.1, 4.1.2, 4.1.3. |
+| 302.1 Without Vision | Supports | Operable with a screen reader (NVDA/JAWS/VoiceOver) through the treegrid, text labels, live-region announcements and the keyboard model (requires the `keyboard_navigation` plugin). See WCAG 1.3.1, 4.1.2, 4.1.3. |
 | 302.2 With Limited Vision | Supports | Zoom to 400%, text resize, text-spacing and forced-colors are supported. AA contrast is met by the built-in dark and contrast themes out of the box, and by the default skin with `accessibility.increase_contrast` enabled (see 1.4.3). |
 | 302.3 Without Perception of Color | Supports | Non-colour cues are built in and enabled via `accessibility.colorblind_friendly`; verified under colour-blindness simulation (see 1.4.1). |
 | 302.4 Without Hearing | Supports | No information is conveyed by sound. |
