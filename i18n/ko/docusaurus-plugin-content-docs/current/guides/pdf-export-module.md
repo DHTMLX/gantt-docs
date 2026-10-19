@@ -120,7 +120,7 @@ docker build -t dhtmlx/scheduler-gantt-export ./
 다음 명령으로 Docker 이미지를 실행합니다:
 
 ~~~
-docker run -d -p 3200:80 dhtmlx/scheduler-gantt-export
+docker run -d -p 3200:3200 dhtmlx/scheduler-gantt-export
 ~~~
 
 3200은 Docker 서비스가 작동하는 포트입니다.

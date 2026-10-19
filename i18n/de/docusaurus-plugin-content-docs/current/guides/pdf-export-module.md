@@ -119,7 +119,7 @@ docker build -t dhtmlx/scheduler-gantt-export ./
 Führen Sie das Docker-Image mit dem folgenden Befehl aus:
 
 ~~~
-docker run -d -p 3200:80 dhtmlx/scheduler-gantt-export
+docker run -d -p 3200:3200 dhtmlx/scheduler-gantt-export
 ~~~
 
 3200 ist der Port, auf dem der Docker-Dienst läuft.

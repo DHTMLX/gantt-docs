@@ -121,7 +121,7 @@ docker build -t dhtmlx/scheduler-gantt-export ./
 Запустите Docker-образ следующей командой:
 
 ~~~
-docker run -d -p 3200:80 dhtmlx/scheduler-gantt-export
+docker run -d -p 3200:3200 dhtmlx/scheduler-gantt-export
 ~~~
 
 3200 — порт, на котором будет работать сервис внутри Docker.

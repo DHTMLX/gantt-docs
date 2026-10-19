@@ -120,7 +120,7 @@ docker build -t dhtmlx/scheduler-gantt-export ./
 使用下面的命令运行 Docker 镜像：
 
 ~~~
-docker run -d -p 3200:80 dhtmlx/scheduler-gantt-export
+docker run -d -p 3200:3200 dhtmlx/scheduler-gantt-export
 ~~~
 
 3200 是 Docker 服务将要监听的端口。
