@@ -29,5 +29,5 @@ gantt.serialize('xml');
 - [parse](api/method/parse.md)
 
 ### Related Guides
-- [XML 및 JSON으로 데이터 직렬화](guides/serialization.md)
+- [JSON 및 XML로 데이터 직렬화](guides/serialization.md)
 - [지원 가능한 데이터 포맷](guides/supported-data-formats.md)

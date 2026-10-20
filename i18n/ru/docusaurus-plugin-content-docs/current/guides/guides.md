@@ -115,15 +115,17 @@ sidebar_label: "Руководства"
 
 ## Экспорт и импорт данных 
 
-Обсуждаются способы экспорта и импорта данных Gantt в различных форматах, а также сериализация данных в XML и JSON.
+Обсуждаются способы экспорта и импорта данных Gantt в различных форматах, сериализация данных в JSON и XML, а также установка модулей экспорта на собственный сервер.
 
-- ### [Export Service - системные требования для автономной установки](guides/export-requirements.md)
+- ### [Экспорт и импорт данных](guides/export-common.md)
 - ### [Экспорт в PDF и PNG](guides/export.md)
-- ### [Экспорт/импорт для Excel, экспорт в iCal](guides/excel.md)
+- ### [Экспорт и импорт для Excel](guides/excel.md)
+- ### [Экспорт в iCal](guides/ical.md)
 - ### [Экспорт и импорт для MS Project](guides/export-msproject.md)
 - ### [Экспорт и импорт для Primavera P6](guides/export-primavera.md)
-- ### [Сериализация данных в XML и JSON](guides/serialization.md)
+- ### [Сериализация данных в JSON и XML](guides/serialization.md)
 - ### [Экспорт и импорт данных на Node.js](guides/export-nodejs.md)
+- ### [Модули экспорта](guides/export-modules.md)
 
 
 ## Стилизация 
@@ -164,6 +166,16 @@ sidebar_label: "Руководства"
 Описывает элементы интерфейса диаграммы Gantt с точки зрения конечного пользователя.
 
 - ### [Интерфейс диаграммы Gantt](guides/overview.md)
+
+## Миграция с других библиотек Gantt
+
+Пошаговые руководства по переносу существующего приложения с Bryntum, Syncfusion, DevExpress или Frappe Gantt на DHTMLX Gantt, с сопутствующими демонстрационными репозиториями на GitHub.
+
+- ### [Миграция на DHTMLX Gantt](/migrating/)
+- ### [Из Bryntum](/migrating/from-bryntum)
+- ### [Из Syncfusion](/migrating/from-syncfusion)
+- ### [Из DevExpress](/migrating/from-devexpress)
+- ### [Из Frappe](/migrating/from-frappe)
 
 
 </div>

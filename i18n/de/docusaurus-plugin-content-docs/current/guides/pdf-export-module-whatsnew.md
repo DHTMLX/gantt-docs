@@ -1,10 +1,34 @@
 ---
-title: "Was gibt es Neues im PDF-Export-Modul"
-sidebar_label: "Was gibt es Neues im PDF-Export-Modul"
+title: "Neuigkeiten im PDF-Export-Modul"
+sidebar_label: "PDF/PNG/Excel-Modul"
 ---
 
 Neuigkeiten im PDF-Export-Modul
-================================
+===============================
+
+## 0.8.4
+
+- Behebung des Scheduler-PDF-Exports mit Wasserzeichen, bei dem die Seite etwa doppelt so hoch wie der Scheduler war und darunter ein leerer Bereich blieb
+- Behebung des Scheduler-PDF- und PNG-Exports, bei dem die Seite mindestens 720 px hoch war, wenn der Scheduler niedriger war, sodass darunter leerer Platz blieb
+- Behebung des Scheduler-7.x-PDF- und PNG-Exports, der die Breite des angeforderten `format` und der `orientation` in allen Ansichten außer Month ignorierte
+- Behebung des Parameters `zoom` beim Scheduler-PDF- und PNG-Export, der die Seitenbreite nicht änderte
+- Scheduler-Testseiten, einschließlich `/test`, auf Scheduler 7.2 aktualisiert
+
+## 0.8.3
+
+- Basis-Docker-Image auf Debian 13 (trixie) aktualisiert
+- Abhängigkeitspakete zum Erstellen des Docker-Images aktualisiert
+
+## 0.8.2
+
+- Docker-Image auf Debian 12 (bookworm) aktualisiert
+- Nicht verwendetes Paket libgconf-2-4 aus dem Docker-Image entfernt
+- Feste Benutzer-ID für `pptruser` im Docker-Image festgelegt, damit eingebundene Volumes nach einem Neuaufbau beschreibbar bleiben
+
+## 0.8.1
+
+- Behebung des fehlerhaften PDF- und PNG-Exports für Gantt v6.0 und älter, der in 0.8.0 eingeführt wurde
+- Behebung verwaister Chrome-Prozesse, die sich unter Last ansammelten und schließlich dazu führen konnten, dass der Exportdienst nicht mehr reagierte
 
 ## 0.8.0
 
@@ -26,6 +50,10 @@ Neuigkeiten im PDF-Export-Modul
 
 - Verbesserte Sanitierung von HTML-Inhalten für den PDF- und PNG-Export von Gantt und Scheduler
 - Behebung von Remote-Code-Ausführung- und File-Read-Sicherheitslücken
+
+## 0.7.5
+
+- Behebung der ReDoS-Sicherheitslücke beim Excel-Import
 
 ## 0.7.4
 

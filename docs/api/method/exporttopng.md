@@ -120,7 +120,7 @@ The export service has time restrictions.
 If the process takes over than 20 seconds, the export will be canceled and the following error will occur:
 
 ~~~html
-Error: Timeout trigger 20 seconds
+Error: Page render timeout: 20 seconds. Read more here: https://docs.dhtmlx.com/gantt/guides/export-common/#service-limits
 ~~~
 
 If several people export Gantt at the same time, the process can take more time than usual. But that's fine because the time which is spent for export request from a specific user is counted separately.

@@ -1,16 +1,11 @@
 --- 
-title: "Export Service - Systemvoraussetzungen für eine eigenständige Installation" 
-sidebar_label: "Export Service - Systemvoraussetzungen für eine eigenständige Installation" 
+title: "Export-Module: Systemvoraussetzungen" 
+sidebar_label: "Systemvoraussetzungen" 
 ---
 
-# Export Service - Systemvoraussetzungen für eine eigenständige Installation
+# Export-Module: Systemvoraussetzungen
 
-Die dhtmlxGantt-Bibliothek bietet Ihnen die Möglichkeit, Daten aus dem Gantt-Diagramm über den Export als Online-Dienst zu exportieren und zu importieren.
-
-Sie können Gantt auch lokal exportieren, indem Sie [Exportdienste](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) auf Ihrem Computer installieren. Sie müssen sicherstellen, dass Ihr System die Systemanforderungen erfüllt, um Exportmodule verwenden zu können:
-
-- PNG/PDF/Excel [Export-Anforderungen](guides/export-requirements.md#pdfpngexcel-service)
-- MS Project/Primavera P6 [Import- und Export-Anforderungen](guides/export-requirements.md#import-and-export-from-ms-project-and-primavera-p6) 
+Um die [Export-Module](guides/export-modules.md) auf Ihrem eigenen Server zu installieren, stellen Sie sicher, dass Ihr System die unten aufgeführten Anforderungen des jeweiligen Moduls erfüllt.
 
 ## PDF/PNG/Excel-Dienst {#pdfpngexcel-service}
 
@@ -29,7 +24,7 @@ Er wird in Form von Quellcode und als Docker-Image verteilt.
   <tr>
   <td>- 1 CPU-Kern (geteilte virtuelle Kerne reichen) - mindestens 500 MB RAM</td>
   <td>- Linux - Windows - macOS</td>
-  <td>- Node.js v12.03 oder neuer, v18 oder v20 werden empfohlen oder - Docker</td>
+  <td>- Node.js v20 oder neuer oder - Docker</td>
   </tr>
 </table>
 

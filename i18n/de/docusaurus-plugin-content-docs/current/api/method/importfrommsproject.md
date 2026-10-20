@@ -41,7 +41,7 @@ Die Methode erfordert Unterstützung der HTML5 File API.
 :::
 
 :::note
-Diese Methode ist im **export**-Erweiterung definiert, daher müssen Sie das [export_api](guides/extensions-list.md#export-service) Plugin aktivieren. Lesen Sie die Details im Artikel Export/Import für Excel, Export nach iCal.
+Diese Methode ist in der **export**-Erweiterung definiert, daher müssen Sie das [export_api](guides/extensions-list.md#export-service) Plugin aktivieren. Lesen Sie die Details im Artikel [Export und Import aus MS Project](guides/export-msproject.md#import-from-ms-project).
  
 :::
 

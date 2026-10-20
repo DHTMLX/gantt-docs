@@ -1,6 +1,6 @@
 ---
 title: "Export und Import von Daten in Node.js"
-sidebar_label: "Export und Import von Daten in Node.js"
+sidebar_label: "In Node.js"
 ---
 
 # Export und Import von Daten in Node.js

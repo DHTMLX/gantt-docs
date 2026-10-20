@@ -71,17 +71,21 @@
 		"message": "Экспорт и импорт данных",
 		"description": "Метка категории Экспорт и импорт данных в боковой панели документации"
 	},
-	"sidebar.docs.category.Exporting and Importing Data.link.generated-index.title": {
-		"message": "Экспорт и импорт данных",
-		"description": "Заголовок сгенерированной страницы для категории Экспорт и импорт данных в боковой панели документации"
-	},
 	"sidebar.docs.category.Export Modules": {
 		"message": "Модули экспорта",
 		"description": "Метка категории Модули экспорта в боковой панели документации"
 	},
-	"sidebar.docs.category.Export Modules.link.generated-index.title": {
-		"message": "Модули экспорта",
-		"description": "Заголовок сгенерированной страницы для категории Модули экспорта в боковой панели документации"
+	"sidebar.docs.category.MS Project": {
+		"message": "MS Project",
+		"description": "Метка категории MS Project в боковой панели документации"
+	},
+	"sidebar.docs.category.Primavera P6": {
+		"message": "Primavera P6",
+		"description": "Метка категории Primavera P6 в боковой панели документации"
+	},
+	"sidebar.docs.category.Version history": {
+		"message": "История версий",
+		"description": "Метка категории История версий в боковой панели документации"
 	},
 	"sidebar.docs.category.Configuring Grid": {
 		"message": "Настройка сетки",

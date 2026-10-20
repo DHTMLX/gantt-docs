@@ -1,6 +1,6 @@
 ---
 title: "Export und Import aus MS Project"
-sidebar_label: "Export und Import aus MS Project"
+sidebar_label: "MS Project"
 ---
 
 # Export und Import aus MS Project
@@ -8,8 +8,7 @@ sidebar_label: "Export und Import aus MS Project"
 Die dhtmlxGantt-Bibliothek ermöglicht es, Daten aus dem Gantt-Diagramm nach MS Project zu exportieren. Sie können außerdem Daten aus MS Project in den Gantt importieren.
 
 :::note
-Der Service ist kostenfrei, aber die Ausgabedatei enthält das Wasserzeichen der Bibliothek.
-Um ohne Wasserzeichen zu exportieren, benötigen Sie eine gültige Lizenz – das Exportergebnis wird während des gültigen Support-Zeitraums (12 Monate für alle PRO-Lizenzen) ohne Wasserzeichen verfügbar sein.
+Der Online-Exportdienst ist kostenlos. Die Lizenzbedingungen finden Sie unter [Lizenz und Wasserzeichen](guides/export-common.md#license-and-watermark).
 ::: 
 
 Es gibt mehrere Exportdienste. Sie können sie auf Ihrem Computer installieren und das Gantt-Diagramm lokal nach MS Project exportieren.
@@ -18,35 +17,12 @@ Beachten Sie, dass Exportdienste nicht im Gantt-Paket enthalten sind; lesen Sie 
 ## Einschränkungen des Online-Exportdienstes
 
 :::note
-Der Exportdienst hat Zeit- und Größenbeschränkungen der Anfragen.
+Der Online-Exportdienst hat Zeit- und Größenlimits. Siehe [Limits des Online-Exportdienstes](guides/export-common.md#service-limits).
 :::
-
-### Zeitbegrenzungen
-
-Wenn der Prozess länger als 20 Sekunden dauert, wird der Export abgebrochen und folgender Fehler erscheint:
-
-~~~html
-Error: Timeout trigger 20 seconds
-~~~
-
-Wenn mehrere Personen gleichzeitig Gantt exportieren, kann der Prozess länger dauern als üblich. Das ist jedoch in Ordnung, da die für eine Exportanfrage eines bestimmten Benutzers aufgewendete Zeit separat gezählt wird.
-
-### Beschränkungen der Anfragegröße
-
-Es gibt einen gemeinsamen API-Endpunkt `https://export.dhtmlx.com/gantt`, der alle Exportmethoden bedient (*exportToPDF*, *exportToPNG*, *exportToMSProject*, etc.). Die maximale Anfragesgröße beträgt **10 MB**.
-
-Es gibt auch einen separaten API-Endpunkt `https://export.dhtmlx.com/gantt/project`, der speziell für die [MSProject](#limits-on-request-size-and-import-of-large-files) und 
-[Primavera P6](guides/export-primavera.md) Export-/Import-Services (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* nur). **Maximale Anfragesgröße: 40 MB**.
 
 ## Verwendung von Exportmodulen
 
-:::note
-Wenn Sie große Diagramme exportieren müssen, können Sie ein [Standalone-Exportmodul](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) verwenden. 
-Das Exportmodul ist kostenlos, wenn Sie Gantt unter einer Lizenz [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) oder [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) erworben haben, oder Sie können das Modul separat [kaufen](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
-:::
-
-[Read more on the usage of the export module for MS Project](guides/msp-export-module.md). 
-
+Um große Diagramme zu exportieren, den Export ohne die Limits des Online-Exportdienstes durchzuführen oder Ihre Daten in Ihrem Netzwerk zu behalten, installieren Sie ein [Exportmodul](guides/export-modules.md) auf Ihrem eigenen Server. Lesen Sie mehr über die Verwendung des [Exportmoduls für MS Project und Primavera P6](guides/msp-export-module.md).
 
 ## Export nach MS Project {#export-to-ms-project}
 
@@ -443,7 +419,7 @@ gantt.importFromMSProject({
 });
 ~~~
 
-#### Abfragen von Aufgaben-Eigenschaften
+#### Abfragen von Aufgaben-Eigenschaften {#getting-tasks-properties}
 
 Um Feldwerte der Aufgaben abzurufen, kann der Input **taskProperties** mit einem Array der benötigten Felder an den Server gesendet werden.
 Es extrahiert beliebige Eigenschaften der [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Hier ist die Liste der unterstützten [Eigenschaften](guides/msp-import-properties.md#task-properties):
@@ -661,51 +637,23 @@ Wenn es Ressourcen-Zuweisungen gibt, werden diese im Array **assignments** impor
 
 ## Grenzen der Anfragesgröße und Import von großen Dateien {#limits-on-request-size-and-import-of-large-files}
 
-Es gibt zwei API-Endpunkte für die MSProject-Export-/Import-Dienste:
+Der Online-Exportdienst hat einen separaten Endpunkt für große MS-Project-Dateien: `https://export.dhtmlx.com/gantt/project`. Er akzeptiert Anfragen bis zu 40 MB, während der Standard-Endpunkt `https://export.dhtmlx.com/gantt` Anfragen bis zu 10 MB akzeptiert. Siehe [Limits des Online-Exportdienstes](guides/export-common.md#service-limits).
 
-- `https://export.dhtmlx.com/gantt` - der Standard-Endpunkt, der alle Exportmethoden bedient (*exportToPDF*, *exportToPNG*, *exportToMSProject*, etc.). **Maximale Anfragesgröße: 10 MB**.
-- `https://export.dhtmlx.com/gantt/project` - der Endpunkt, der speziell für die [MSProject](guides/export-msproject.md) und 
-[Primavera P6](guides/export-primavera.md) 
-Export-/Import-Dienste bestimmt ist (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*). **Maximale Anfragesgröße: 40 MB**.
-
-Der Endpunkt kann durch die Eigenschaft **server** des Export-Konfigurationsobjekts festgelegt werden:
-
-~~~js
-gantt.importFromMSProject({
-    server: "https://export.dhtmlx.com/gantt",
-    data: file,
-    callback: function(project){
-       // einige Logik
-    }
-}); 
-~~~
-
-Wenn kein Endpunkt angegeben ist, wird standardmäßig `https://export.dhtmlx.com/gantt` verwendet. Der folgende Aufruf entspricht dem obenstehenden:
-
-~~~js
-gantt.importFromMSProject({
-    data: file,
-    callback: function(project){
-       // einige Logik
-    }
-});
-~~~
-
-Um große Projekte zu exportieren oder zu importieren, die die 4 MB-Grenze überschreiten, kann der zweite Endpunkt verwendet werden:
+Um ein Projekt zu exportieren oder zu importieren, das die 10 MB-Grenze überschreitet, geben Sie den Endpunkt in der Eigenschaft **server** des Konfigurationsobjekts an:
 
 ~~~js
 gantt.importFromMSProject({
     server: "https://export.dhtmlx.com/gantt/project",
     data: file,
-    callback: function(project){
-       // einige Logik
+    callback: (project) => {
+        // einige Logik
     }
-}); 
+});
 ~~~
 
-Er ermöglicht das Senden von Anfragen bis zu 40 MB Größe und unterstützt MS Project Exporte und Importe. Er kann nur für MS Project Exporte verwendet werden. 
+Der Endpunkt unterstützt nur MS Project- und Primavera P6-Exporte und -Importe. Andere Methoden, z. B. `gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})`, sollten einen Serverfehler zurückgeben.
 
-Andere Methoden, z. B. `gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})`, sollten einen Serverfehler zurückgeben.
+Informationen zum Import großer Dateien mit Ihrem eigenen Exportmodul finden Sie unter [Import großer Dateien](guides/msp-export-module.md#import-of-large-files).
 
 ## dhtmlxGantt vs MS Project Zeitberechnung
 

@@ -30,7 +30,7 @@ gantt.exportToICal({
 ### Details
 
 :::note
-Diese Methode ist in der **export**-Erweiterung definiert, daher müssen Sie das [export_api](guides/extensions-list.md#export-service)-Plugin aktivieren. Lesen Sie die Details im Artikel [Export/Import für Excel, Export zu iCal](guides/excel.md).
+Diese Methode ist in der **export**-Erweiterung definiert, daher müssen Sie das [export_api](guides/extensions-list.md#export-service)-Plugin aktivieren. Lesen Sie die Details im Artikel [Export nach iCal](guides/ical.md).
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -55,4 +55,4 @@ Die **exportToICal()**-Methode nimmt als Parameter ein Objekt mit den folgenden 
 - [importFromMSProject](api/method/importfrommsproject.md)
 
 ### Related Guides
-- [Export/Import für Excel, Export zu iCal](guides/excel.md#export-to-ical)
+- [Export nach iCal](guides/ical.md)

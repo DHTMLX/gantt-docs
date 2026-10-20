@@ -130,7 +130,7 @@ gantt.i18n.setLocale("lang");
 
 **Note**, 
 
-- You can send your custom locale file to **support@dhtmlx.com** - so we will include it in the next release.
+- You can send your custom locale file to **info@dhtmlx.com** - so we will include it in the next release.
 - The currently active locale is also available in the **gantt.locale** object
 - **month_full** - the full names of months starting from January;
 - **month_short** - the short names of months starting from January;

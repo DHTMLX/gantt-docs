@@ -1,15 +1,15 @@
 ---
 title: "导出与从 Primavera P6 导入"
-sidebar_label: "导出与从 Primavera P6 导入"
+sidebar_label: "Primavera P6"
 ---
 
 # 导出与从 Primavera P6 导入
 
 dhtmlxGantt 库允许将甘特图中的数据导出到 Primavera P6。你也可以将 Primavera P6 的数据导入到 Gantt。
 
-:::note  
-该服务是免费的，但导出输出文件会包含库的水印。若要导出而不带水印，需要有效许可证——在有效支持期内（所有 PRO 许可证为 12 个月）导出的结果将不带水印。  
-:::  
+:::note
+在线导出服务是免费的。有关许可条款，请参阅[许可证和水印](guides/export-common.md#license-and-watermark)。
+:::
 
 有多种导出服务可用。你可以在本地计算机上安装它们，将甘特图本地导出到 Primavera P6。请注意，导出服务不包含在 Gantt 包中，
 请阅读 [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) 以了解每种服务的使用条款。
@@ -17,37 +17,12 @@ dhtmlxGantt 库允许将甘特图中的数据导出到 Primavera P6。你也可�
 ## 在线导出服务限制
 
 :::note
-导出服务有时间和请求大小的限制。
+在线导出服务对时间和请求大小有限制。请参阅[在线导出服务的限制](guides/export-common.md#service-limits)。
 :::
-
-### 时间限制
-
-如果进程超过 20 秒，导出将被取消，并出现以下错误：
-
-~~~html
-Error: Timeout trigger 20 seconds
-~~~
-
-如果多个人同时导出 Gantt，处理时间可能比平时更长。但没关系，因为来自特定用户的导出请求所耗费的时间是单独计算的。
-
-### 请求大小限制
-
-存在一个通用 API 端点 `https://export.dhtmlx.com/gantt`，用于所有导出方法（*exportToPDF*、*exportToPNG*、*exportToMSProject* 等）。**最大请求大小为 10 MB**。
-
-还有一个针对 [MSProject](guides/export-msproject.md) 与
-[Primavera P6](#limits-on-request-size-and-import-of-large-files) 的单独 API 端点 `https://export.dhtmlx.com/gantt/project`，
-用于特定的导出/导入服务（仅 *exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*）。**最大请求大小：40 MB**。
 
 ## 使用导出模块
 
-:::note
-如果你需要导出大型图表，可以使用一个 [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)。
-若你在 [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing)、[Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 或 [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 许可下取得 Gantt，导出模块免费提供，或者你也可以单独购买模块使用。
-
-:::
-
-[在 MS Project 上使用导出模块的更多用法](guides/msp-export-module.md)。该导出模块提供 MS Project 和
-Primavera P6 的导出/导入功能。
+要导出较大的图表、在不受在线导出服务限制的情况下导出，或将数据保留在你的网络内，请在自己的服务器上安装[导出模块](guides/export-modules.md)。有关[用于 MS Project 和 Primavera P6 的导出模块](guides/msp-export-module.md)的用法，请阅读相应文章。
 
 ## 导出到 Primavera P6 {#exporttoprimaverap6}
 
@@ -147,7 +122,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-该对象的属性对应 [Project entity] 的相应属性。支持的属性列表可在 [这里](guides/primavera-import-properties.md) 找到。属性可以包含固定值或在导出调用时执行的函数。
+该对象的属性对应 [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 的相应属性。支持的属性列表可在 [这里](guides/primavera-import-properties.md#project-properties) 找到。属性可以包含固定值或在导出调用时执行的函数。
 
 - **tasks** - (object) 允许为导出的任务项设置自定义属性
 
@@ -171,7 +146,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-该对象的属性对应 [Task entity] 的相应属性，这里是 [properties] 的支持列表。属性可以包含固定值或在导出调用时对每个任务执行的函数。
+该对象的属性对应 [Task entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 的相应属性，这里是 [properties](guides/primavera-import-properties.md#task-properties) 的支持列表。属性可以包含固定值或在导出调用时对每个任务执行的函数。
 
 - **data** - (object) 允许设置将在导出 Gantt 图中呈现的自定义数据源。 
 
@@ -496,9 +471,13 @@ gantt.attachEvent("onTaskLoading", function(task) {
 });
 ~~~
 
+**相关示例**： [Gantt. Import and export Primavera P6 files with additional project, task and resource properties and entities](https://snippet.dhtmlx.com/z1ewe48v)
+
 #### 获取任务类型
 
-以下逻辑可帮助你获取任务类型：Project 类型的任务具有 Summary: "1" 属性，Milestone 类型的任务具有 Milestone: "1" 属性。我们需要导入带有这些属性的数据，然后根据这些属性设置任务类型。
+Gantt 图中有三种预定义的任务类型：常规任务（默认）、项目任务、里程碑。你也可以在 `types` 对象中定义自定义类型。详细说明请参阅相关指南 [任务类型](/guides/task-types)。
+
+以下逻辑可帮助你获取任务类型：**Project** 类型的任务具有 `Summary: "1"` 属性，**Milestone** 类型的任务具有 `Milestone: "1"` 属性。我们需要导入带有这些属性的数据，然后根据这些属性设置任务类型。
 
 调用导入函数的示例看起来像这样：
 
@@ -541,6 +520,74 @@ gantt.attachEvent("onTaskLoading", function (task) {
 ~~~
 
 **相关示例**： [Gantt. Import Primavera P6 files. Get task type from properties](https://snippet.dhtmlx.com/y95rsxor)
+
+#### Primavera P6 活动类型的导出/导入
+
+Primavera P6 使用的任务类型与 [Gantt 图中使用的任务类型](/guides/task-types)以及 MS Project 中的任务类型不同。若要保留原始 Primavera P6 类型的信息，请在导入/导出文件时使用 **ActivityType** 任务属性。由于 **ActivityType** 对 Gantt 而言是自定义属性，因此它不会影响 Gantt 端的任务类型。
+
+**ActivityType** 属性支持 Primavera P6 活动类型的完整列表。导入时返回的值采用 PascalCase 形式，而导出时 PascalCase 和 UPPER_SNAKE_CASE 两种形式均可接受：
+
+| 值 | 描述 |
+|---|---|
+| TaskDependent / TASK_DEPENDENT | 常规任务，根据其前置任务进行排程 |
+| ResourceDependent / RESOURCE_DEPENDENT | 常规任务，根据资源日历进行排程（未指定 **ActivityType** 时默认使用） |
+| StartMilestone / START_MILESTONE | 标记活动开始的里程碑 |
+| FinishMilestone / FINISH_MILESTONE | 标记活动完成的里程碑 |
+| WbsSummary / WBS_SUMMARY | WBS 汇总任务 |
+| LevelOfEffort / LEVEL_OF_EFFORT | 工期由其所支持的活动决定的任务 |
+| Hammock / HAMMOCK | 工期从第一个关联活动的开始持续到最后一个关联活动的完成的任务 |
+| StartFlag / START_FLAG | 标记项目开始时某个特定时间点的标志活动 |
+| FinishFlag / FINISH_FLAG | 标记项目完成时某个特定时间点的标志活动 |
+
+##### 对 Primavera P6 里程碑类型的支持
+
+值得注意的是，上面列出的 **Start Milestone** 和 **Finish Milestone** 类型在 Gantt 端没有各自对应的类型。dhtmlxGantt 库仅支持一种里程碑任务类型，它等同于 Primavera P6 的 **Finish Milestone** 类型。因此，在将 Primavera P6 项目导入 Gantt 时，所有里程碑（无论它们在源文件中是开始里程碑还是完成里程碑）都会被转换为 **milestone** 类型的任务。
+
+若要保留原始 Primavera P6 里程碑类型的信息，请在导入时使用 **ActivityType** 任务属性，将其添加到 **taskProperties** 数组中。该属性会在每个任务的 `$custom_data` 对象中返回，因此请在 [onTaskLoading](api/event/ontaskloading.md) 事件中将其复制到任务本身：
+
+~~~js
+gantt.importFromPrimaveraP6({
+    data: file,
+    taskProperties: ["ActivityType"],
+    callback: function (project) {
+        if (project) {
+            gantt.clearAll();
+            gantt.parse(project.data);
+        }
+    }
+});
+
+gantt.attachEvent("onTaskLoading", function (task) {
+    if (task.$custom_data) {
+        task.ActivityType = task.$custom_data.ActivityType;
+    }
+    return true;
+});
+~~~
+
+对于里程碑，该属性以字符串形式存储原始 Primavera P6 类型，例如 "StartMilestone" 或 "FinishMilestone"。由于 **ActivityType** 不会影响 Gantt 端的任务类型，该任务仍然是 **milestone** 类型。例如，你可以使用此属性来自定义开始里程碑和完成里程碑在甘特图中的外观。
+
+若要在将数据导出回 Primavera P6 时保留原始任务类型，请在 [exportToPrimaveraP6()](api/method/exporttoprimaverap6.md) 调用的 [tasks](#export-settings) 对象中，通过 **ActivityType** 属性返回该类型。由于 **ActivityType** 描述的是所有 Primavera P6 活动，而不仅仅是里程碑，因此请同时为其他任务类型提供值：
+
+~~~js
+gantt.exportToPrimaveraP6({
+    tasks: {
+        ActivityType: function (task) {
+            if (task.type == "milestone") {
+                return task.ActivityType == "StartMilestone" ? "START_MILESTONE" : "FINISH_MILESTONE";
+            }
+            if (task.type == "project") {
+                return "WBS_SUMMARY";
+            }
+            return "TASK_DEPENDENT";
+        }
+    }
+});
+~~~
+
+这样，导出的文件将具有与源 Primavera P6 文件相同的 **Start Milestone** / **Finish Milestone** 类型，而不是默认把每个里程碑都导出为 **Finish Milestone**。
+
+**相关示例**： [Gantt. Import and export Primavera P6 files with the ActivityType to get Start and Finish Milestones](https://snippet.dhtmlx.com/elyeppkv)
 
 #### 添加和调整日历
 
@@ -672,45 +719,20 @@ gantt.importFromPrimaveraP6({
 
 ## 请求大小限制与大文件导入 {#limits-on-request-size-and-import-of-large-files}
 
- Primavera P6 导出/导入服务有两个 API 端点：
+在线导出服务为大型 Primavera P6 文件提供了单独的端点：`https://export.dhtmlx.com/gantt/project`。该端点接受高达 40 MB 的请求，而默认端点 `https://export.dhtmlx.com/gantt` 接受高达 10 MB 的请求。请参阅[在线导出服务的限制](guides/export-common.md#service-limits)。
 
-- `https://export.dhtmlx.com/gantt` - 默认端点，提供所有导出方法（*exportToPDF*、*exportToPNG*、*exportToPrimaveraP6* 等）。**最大请求大小为 10 MB**。
-- `https://export.dhtmlx.com/gantt/project` - 针对 [MSProject](guides/export-msproject.md) 与
-[Primavera P6](guides/export-primavera.md) 的导出/导入服务专用端点（仅 *exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*）。**最大请求大小：40 MB**。
-
-该端点可以通过导出配置对象的 **server** 属性指定：
-
-~~~js
-gantt.importFromPrimaveraP6({
-    server: "https://export.dhtmlx.com/gantt",
-    data: file,
-    callback: function(project){
-       // 某些逻辑
-    }
-}); 
-~~~
-
-如果未指定端点，默认使用 `https://export.dhtmlx.com/gantt`。下述调用等价于上面的调用：
-
-~~~js
-gantt.importFromPrimaveraP6({
-    data: file,
-    callback: function(project){
-       // 某些逻辑
-    }
-});
-~~~
-
-为了导出或导入超过 4MB 限制的大型项目，可以使用第二个端点：
+如要导出或导入超过 10 MB 限制的项目，请在配置对象的 `server` 属性中指定该端点：
 
 ~~~js
 gantt.importFromPrimaveraP6({
     server: "https://export.dhtmlx.com/gantt/project",
     data: file,
-    callback: function(project){
-       // 某些逻辑
+    callback: (project) => {
+        // 某些逻辑
     }
-}); 
+});
 ~~~
 
-它允许发送高达 40MB 的请求，并支持 Primavera P6 的导出和导入。它可用于 Primavera P6 的导出，但其他方法（例如，`gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})`）应返回服务器错误。
+该端点仅支持 MS Project 和 Primavera P6 的导出和导入。其他任何方法，例如 `gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})`，都应返回服务器错误。
+
+如需使用自己的导出模块导入大文件，请参阅[导入大文件](guides/msp-export-module.md#import-of-large-files)。

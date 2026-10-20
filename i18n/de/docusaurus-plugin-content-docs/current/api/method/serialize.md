@@ -29,5 +29,5 @@ gantt.serialize('xml');
 - [parse](api/method/parse.md)
 
 ### Related Guides
-- [Serializing Data into XML and JSON](guides/serialization.md)
+- [Daten in JSON und XML serialisieren](guides/serialization.md)
 - [Supported Data Formats](guides/supported-data-formats.md)

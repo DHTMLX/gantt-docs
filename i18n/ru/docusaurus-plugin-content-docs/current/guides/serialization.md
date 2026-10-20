@@ -1,9 +1,9 @@
 ---
-title: "Сериализация данных в XML и JSON"
-sidebar_label: "Сериализация данных в XML и JSON"
+title: "Сериализация данных в JSON и XML"
+sidebar_label: "JSON и XML"
 ---
 
-# Сериализация данных в XML и JSON
+# Сериализация данных в JSON и XML
 
 ## Формат JSON
 

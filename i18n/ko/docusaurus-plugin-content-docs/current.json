@@ -71,17 +71,21 @@
 		"message": "데이터 내보내기 및 가져오기",
 		"description": "사이드바 문서의 Exporting and Importing Data 카테고리 라벨"
 	},
-	"sidebar.docs.category.Exporting and Importing Data.link.generated-index.title": {
-		"message": "데이터 내보내기 및 가져오기",
-		"description": "사이드바 문서의 Exporting and Importing Data 카테고리 생성된 인덱스 페이지 제목"
-	},
 	"sidebar.docs.category.Export Modules": {
 		"message": "내보내기 모듈",
 		"description": "사이드바 문서의 Export Modules 카테고리 라벨"
 	},
-	"sidebar.docs.category.Export Modules.link.generated-index.title": {
-		"message": "내보내기 모듈",
-		"description": "사이드바 문서의 Export Modules 카테고리 생성된 인덱스 페이지 제목"
+	"sidebar.docs.category.MS Project": {
+		"message": "MS Project",
+		"description": "사이드바 문서의 MS Project 카테고리 라벨"
+	},
+	"sidebar.docs.category.Primavera P6": {
+		"message": "Primavera P6",
+		"description": "사이드바 문서의 Primavera P6 카테고리 라벨"
+	},
+	"sidebar.docs.category.Version history": {
+		"message": "버전 기록",
+		"description": "사이드바 문서의 Version history 카테고리 라벨"
 	},
 	"sidebar.docs.category.Configuring Grid": {
 		"message": "그리드 구성",

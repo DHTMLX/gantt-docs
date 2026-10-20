@@ -1,9 +1,9 @@
 ---
-title: "Properties for importing from Primavera"
-sidebar_label: "Properties for importing from Primavera"
+title: "Properties for importing from Primavera P6"
+sidebar_label: "Import properties"
 ---
 
-# Properties for importing from Primavera
+# Properties for importing from Primavera P6
 
 This article lists the project, task, and resource properties that Gantt supports when importing Primavera P6 files (XML and XER), along with format-specific limitations and properties that require special handling.
 

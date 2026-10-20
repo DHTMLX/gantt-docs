@@ -38,7 +38,7 @@ gantt.importFromExcel({
 :::
 
 :::note
-该方法在 **export** 扩展中定义，因此需要激活 [export_api](guides/extensions-list.md#export-service) 插件。请在 [Excel 的导出/导入，导出到 iCal](guides/excel.md#importfromexcel) 文章中查看详细信息。
+该方法在 **export** 扩展中定义，因此需要激活 [export_api](guides/extensions-list.md#export-service) 插件。请在 [Excel 的导出和导入](guides/excel.md#importfromexcel) 文章中查看详细信息。
 :::
 
 :::note
@@ -85,4 +85,4 @@ gantt.importFromExcel({
 - [importFromMSProject](api/method/importfrommsproject.md)
 
 ### Related Guides
-- [Excel 的导出/导入，导出到 iCal](guides/excel.md#importfromexcel)
+- [Excel 的导出和导入](guides/excel.md#importfromexcel)

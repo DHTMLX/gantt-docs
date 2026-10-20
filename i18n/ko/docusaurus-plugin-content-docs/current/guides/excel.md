@@ -1,49 +1,27 @@
 ---
-title: "Excel용 내보내기/가져오기, iCal로 내보내기"
-sidebar_label: "Excel용 내보내기/가져오기, iCal로 내보내기"
+title: "Excel용 내보내기 및 가져오기"
+sidebar_label: "Excel"
 ---
 
-# Excel용 내보내기/가져오기, iCal로 내보내기
+# Excel용 내보내기 및 가져오기
 
-dhtmlxGantt 라이브러리는 Gantt 차트의 데이터를 Excel 및 iCal 형식으로 내보내는 기능을 제공합니다. 또한 Excel 파일로부터 Gantt에 데이터를 가져올 수도 있습니다.
+dhtmlxGantt 라이브러리는 Gantt 차트의 데이터를 Excel 형식으로 내보내는 기능을 제공합니다. 또한 Excel 파일로부터 Gantt에 데이터를 가져올 수도 있습니다. iCal 형식으로 데이터를 내보내려면 [iCal로 내보내기](guides/ical.md)를 참조하십시오.
 
 :::note
-서비스는 무료이지만 출력되는 Excel/iCal 파일에는 라이브러리의 워터마크가 포함됩니다.
-워터마크 없이 내보내려면 유효한 라이선스가 필요합니다 - 워터마크 없는 내보내기 결과는 유효한 지원 기간(모든 PRO 라이선스의 경우 12개월) 동안 제공됩니다.
+온라인 내보내기 서비스는 무료입니다. 라이선스 조건은 [라이선스 및 워터마크](guides/export-common.md#license-and-watermark)를 참조하십시오.
 :::
 
-다양한 내보내기 서비스가 있습니다. 이들을 컴퓨터에 설치하고 로컬에서 Gantt 차트를 Excel 또는 iCal로 내보낼 수 있습니다. 내보내기 서비스는 Gantt 패키지에 포함되어 있지 않으므로, 각 서비스의 이용 조건을 알아보려면 해당 문서(링크의 기사)를 읽어보시기 바랍니다.
+다양한 내보내기 서비스가 있습니다. 이들을 컴퓨터에 설치하고 로컬에서 Gantt 차트를 Excel로 내보낼 수 있습니다. 내보내기 서비스는 Gantt 패키지에 포함되어 있지 않으므로, 각 서비스의 이용 조건을 알아보려면 해당 문서(링크의 기사)를 읽어보시기 바랍니다.
 
 ## Online export service restrictions
 
 :::note
-온라인 내보내기 서비스에는 시간 제한과 요청 크기 제한이 있습니다.
+온라인 내보내기 서비스에는 시간 제한과 요청 크기 제한이 있습니다. [온라인 내보내기 서비스 제한](guides/export-common.md#service-limits)을 참조하십시오.
 :::
-
-### Time limits
-
-과정이 20초를 넘으면 내보내기가 취소되고 다음과 같은 오류가 발생합니다:
-
-~~~html
-Error: Timeout trigger 20 seconds
-~~~
-
-동시에 여러 명이 Gantt를 내보내는 경우, 과정이 일반적으로보다 오래 걸릴 수 있습니다. 다만 특정 사용자의 내보내기 요청에 쓰인 시간은 각각 독립적으로 계산되므로 문제되지 않습니다.
-
-### Limits on request size
-
-모든 내보내기 메서드에 공통으로 사용되는 API 엔드포인트 `https://export.dhtmlx.com/gantt`가 있습니다(ex: *exportToPDF*, *exportToPNG*, *exportToMSProject* 등). **최대 요청 크기는 10 MB**입니다.
-
-MSProject 및 Primavera P6 내보내기/가져오기 서비스에 특화된 별도 엔드포인트 `https://export.dhtmlx.com/gantt/project`도 있습니다(*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* 만 해당). **최대 요청 크기: 40 MB**입니다.
 
 ## Using export modules
 
-:::note
-대용량 차트를 내보내야 하는 경우 [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)을 사용할 수 있습니다. 
-Export 모듈은 Gantt를 [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 또는 [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 라이선스로 획득한 경우 무료로 제공되며, 모듈을 별도로 [구매할 수 있습니다](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
-:::
-
-[PDF용 export 모듈 사용에 대한 자세한 내용](guides/pdf-export-module.md). 이 export 모듈은 데이터를 PDF, PNG, Excel, 및 iCal 파일로 내보낼 수 있습니다.
+대용량 차트를 내보내거나, 온라인 내보내기 서비스의 제한 없이 내보내거나, 데이터를 사내 네트워크에 보관하려면 자체 서버에 [내보내기 모듈](guides/export-modules.md)을 설치하십시오. [PDF, PNG, Excel 및 iCal용 내보내기 모듈](guides/pdf-export-module.md) 사용에 대한 자세한 내용을 확인하십시오.
 
 ## Excel로 내보내기
 
@@ -94,6 +72,7 @@ Gantt 버전이 8.0 미만인 경우 Django 페이지에 내보내기 기능을 
     - **'width'** - (*number*) 픽셀 단위의 열 너비
     - **'type'** - (*string*) 열 타입
 - **server** - (*string*) 요청의 API 엔드포인트를 설정합니다. 로컬 설치의 내보내기 서비스와 함께 사용할 수 있습니다. 기본값은 `https://export.dhtmlx.com/gantt`
+- **raw** - (*boolean*) Gantt 데이터를 내보내는 방식을 정의합니다. 기본값은 false입니다. 자세한 내용은 [Exporting filtered tasks and hidden columns](#exporting-filtered-tasks-and-hidden-columns) 섹션을 참조하십시오
 - **callback** - (*function*) 생성된 XLSX 파일의 다운로드 URL을 받으려면 callback 속성을 사용할 수 있습니다. url 속성이 있는 JSON 객체를 수신합니다
 - **visual** - (*boolean*) 내보낸 Excel 문서에 타임라인 차트를 추가합니다. 기본값은 false
 - **cellColors** - (*boolean*) 이 값을 *true*로 설정하면, 내보낸 문서의 셀에 [timeline_cell_class](api/template/timeline_cell_class.md) 템플릿에 정의된 색상이 적용되며, *color* 과 *background-color* 속성이 내보내집니다
@@ -122,7 +101,7 @@ gantt.exportToExcel({
 
 Export 모듈은 **start_date** 와 **end_date** 열이 *Date* 타입이고, **duration** 열이 *number* 타입이길 기대합니다. 
 
-커스텀 템플릿을 적용하는 경우에는 기대하는 타입의 값을 반환하거나, 열 구성의 **name** 속성에 다른 값을 정의해야 합니다. 예를 들면:
+[커스텀 템플릿](guides/specifying-columns.md#datamappingandtemplates)을 적용하는 경우에는 기대하는 타입의 값을 반환하거나, 열 구성의 **name** 속성에 다른 값을 정의해야 합니다. 예를 들면:
 
 ~~~jsx {7,10-12}
 gantt.config.columns = [
@@ -175,6 +154,43 @@ gantt.exportToExcel({
 ~~~
 
 **관련 샘플**: [Export colors of tasks](https://snippet.dhtmlx.com/t2znjrfj)
+
+### Exporting filtered tasks and hidden columns
+
+기본적으로 [`exportToExcel()`](api/method/exporttoexcel.md) 메서드는 [`onBeforeTaskDisplay`](api/event/onbeforetaskdisplay.md) 이벤트를 통해 적용된 필터링이나 `hide:true` 설정으로 [숨겨진](guides/specifying-columns.md#visibility) 열과 관계없이 Gantt 차트의 모든 작업과 열을 내보냅니다.
+
+`onBeforeTaskDisplay`를 통해 필터링된 작업을 내보내기에서 제외하려면 **raw** 속성을 *true*로 설정합니다:
+
+~~~js
+gantt.attachEvent("onBeforeTaskDisplay", function(id, task){
+    // hide tasks that don't match the search value
+    return task.text.toLowerCase().indexOf(filterValue.toLowerCase()) > -1;
+});
+
+gantt.exportToExcel({
+    raw: true
+});
+~~~
+
+**관련 샘플**: [Gantt. Export filtered data to PDF, Excel, and MSProject files](https://snippet.dhtmlx.com/twfy116w)
+
+마찬가지로 `hide:true` 설정으로 숨겨진 열을 제외하려면 **raw** 속성을 *true*로 설정합니다:
+
+~~~js
+gantt.config.columns = [
+    { name: "text", tree: true, width: 150, resize: true },
+    { name: "start_date", align: "center", width: 120, resize: true },
+    // hidden columns are excluded from the export when raw: true
+    { name: "end_date", align: "center", label: "End Time", hide: true, width: 120, resize: true },
+    { name: "duration", align: "center", width: 70, hide: true, resize: true }
+];
+
+gantt.exportToExcel({
+    raw: true
+});
+~~~
+
+**관련 샘플**: [Gantt. Export to Excel. Hide grid columns with the raw mode](https://snippet.dhtmlx.com/b7y0ps8m)
 
 ## Import from Excel {#importfromexcel}
 
@@ -257,45 +273,6 @@ gantt.importFromExcel({
 ~~~
 
 
-## iCal로 Export
+## iCal로 Export {#export-to-ical}
 
-Gantt 차트의 데이터를 iCal 문자열로 내보내려면 아래와 같이 수행합니다:
-
-- 온라인 내보내기 서비스를 사용하려면 [plugins] 메서드를 통해 <b>export_api</b> 플러그인을 활성화합니다:
-
-~~~js
-gantt.plugins({
-    export_api: true
-});
-~~~
-
-- Gantt 차트의 데이터를 iCal로 내보내려면 [exportToICal](api/method/exporttoical.md) 메서드를 호출합니다: 
-
-~~~html
-<input value="Export to iCal" type="button" onclick='gantt.exportToICal()'>
-
-<script>
-    gantt.init("gantt_here");
-    gantt.parse(demo_tasks);
-</script>
-~~~
-
-
-**관련 샘플**: [Export data: MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
-
-
-**관련 샘플**: [Export data: store online](https://docs.dhtmlx.com/gantt/samples/08_api/09_export_store.html)
-
-
-#### Parameters of the export method
-
-[exportToICal()](api/method/exporttoical.md) 메서드는 선택적으로 아래 속성을 가진 객체를 매개변수로 받습니다:
-
-- **server** - (*string*) 요청의 API 엔드포인트를 설정합니다. 로컬 설치의 내보내기 서비스와 함께 사용할 수 있습니다. 기본값은 `https://export.dhtmlx.com/gantt`;
-- **name** - (*string*) 파일의 사용자 정의 이름과 확장자를 지정할 수 있지만, 파일은 여전히 iCal 형식으로 내보내집니다.
-  
-~~~jsx title="선택적 속성으로 exportToICal 메서드 호출"
-gantt.exportToICal({
-    server:"https://myapp.com/myexport/gantt"
-});
-~~~
+iCal로 내보내기는 [iCal로 내보내기](guides/ical.md) 문서에 설명되어 있습니다.

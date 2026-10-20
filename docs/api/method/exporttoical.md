@@ -27,7 +27,7 @@ gantt.exportToICal({
 ### Details
 
 :::note
-This method is defined in the **export** extension, so you need to activate the [export_api](guides/extensions-list.md#export-service) plugin. Read the details in the [Export/Import for Excel, Export to iCal](guides/excel.md) article.
+This method is defined in the **export** extension, so you need to activate the [export_api](guides/extensions-list.md#export-service) plugin. Read the details in the [Export to iCal](guides/ical.md) article.
 
 ~~~html
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -55,5 +55,5 @@ The **exportToICal()** method takes as a parameter an object with the following 
 
 ### Related Guides
 
-- [Export/Import for Excel, Export to iCal](guides/excel.md#export-to-ical)
+- [Export to iCal](guides/ical.md)
 

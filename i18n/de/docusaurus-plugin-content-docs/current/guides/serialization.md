@@ -1,9 +1,9 @@
 ---
-title: "Daten in XML und JSON serialisieren"
-sidebar_label: "Daten in XML und JSON serialisieren"
+title: "Daten in JSON und XML serialisieren"
+sidebar_label: "JSON und XML"
 ---
 
-# Daten in XML und JSON serialisieren
+# Daten in JSON und XML serialisieren
 
 ## JSON-Format
 

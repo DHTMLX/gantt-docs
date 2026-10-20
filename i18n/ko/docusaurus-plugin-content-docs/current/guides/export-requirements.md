@@ -1,16 +1,11 @@
 ---
-title: "Export Service - 독립 설치를 위한 시스템 요구사항"
-sidebar_label: "Export Service - 독립 설치를 위한 시스템 요구사항"
+title: "내보내기 모듈: 시스템 요구사항"
+sidebar_label: "시스템 요구사항"
 ---
 
-# Export Service - 독립 설치를 위한 시스템 요구사항
+# 내보내기 모듈: 시스템 요구사항
 
-dhtmlxGantt 라이브러리는 온라인 서비스로 내보내기(export as online service)를 사용하여 간트 차트의 데이터를 내보내고 가져올 수 있는 기능을 제공합니다.
-
-또한 컴퓨터에 [내보내기 서비스](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) 를 설치하여 로컬에서 Gantt를 내보낼 수도 있습니다. 내보내기 모듈을 사용하려면 시스템이 시스템 요구사항을 충족하는지 확인해야 합니다:
-
-- PNG/PDF/Excel [내보내기 요건](guides/export-requirements.md#pdfpngexcel-service)
-- MS Project/Primavera P6 [가져오기 및 내보내기 요건](guides/export-requirements.md#import-and-export-from-ms-project-and-primavera-p6)
+자체 서버에 [내보내기 모듈](guides/export-modules.md)을 설치하려면 시스템이 아래 각 모듈의 요구사항을 충족하는지 확인하십시오.
 
 ## PDF/PNG/Excel 서비스 {#pdfpngexcel-service}
 
@@ -29,7 +24,7 @@ PDF/PNG/Excel로의 내보내기는 자바스크립트로 구축된 크로스 �
   <tr>
   <td>- 1 CPU 코어(공유 가상 코어 가능) - 최소 500MB RAM</td>
   <td>- Linux - Windows - macOS</td>
-  <td>- Node.js v12.03 이상, 권장: v18 또는 v20, 또는 Docker</td>
+  <td>- Node.js v20 이상 또는 Docker</td>
   </tr>
 </table>
 

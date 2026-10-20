@@ -1,6 +1,6 @@
 ---
 title: " Primavera P6에서 내보내기 및 가져오기 "
-sidebar_label: " Primavera P6에서 내보내기 및 가져오기 "
+sidebar_label: "Primavera P6"
 ---
 
 # Primavera P6에서 내보내기 및 가져오기
@@ -8,8 +8,7 @@ sidebar_label: " Primavera P6에서 내보내기 및 가져오기 "
 dhtmlxGantt 라이브러리는 간트 차트의 데이터를 Primavera P6로 내보낼 수 있게 해줍니다. 또한 Primavera P6에서 Gantt로 데이터를 가져올 수도 있습니다.
 
 :::note
-해당 서비스는 무료이지만 출력 파일에는 라이브러리의 워터마크가 포함됩니다.
-워터마크 없이 내보내려면 유효한 라이선스가 필요합니다 - 지원 기간 동안(모든 PRO 라이선스의 경우 12개월) 워터마크 없는 내보내기 결과를 사용할 수 있습니다.
+온라인 내보내기 서비스는 무료입니다. 라이선스 조건은 [라이선스 및 워터마크](guides/export-common.md#license-and-watermark)를 참조하십시오.
 :::
 
 여러 가지 내보내기 서비스가 있습니다. 이를 컴퓨터에 설치하고 로컬에서 Gantt 차트를 Primavera P6로 내보낼 수 있습니다.
@@ -19,34 +18,12 @@ dhtmlxGantt 라이브러리는 간트 차트의 데이터를 Primavera P6로 내
 ## 온라인 내보내기 서비스의 제약
 
 :::note
-내보내기 서비스에는 시간 제한과 요청 크기 제한이 있습니다.
+온라인 내보내기 서비스에는 시간 제한과 요청 크기 제한이 있습니다. [온라인 내보내기 서비스 제한](guides/export-common.md#service-limits)을 참조하십시오.
 :::
-
-### 시간 제한
-
-프로세스가 20초를 초과하면 내보내기가 취소되고 다음과 같은 오류가 발생합니다:
-
-~~~html
-Error: Timeout trigger 20 seconds
-~~~
-
-동시에 여러 사용자가 Gantt를 내보내면, 일반적으로보다 오래 걸릴 수 있습니다. 다만 특정 사용자로부터의 내보내기 요청에 소요된 시간은 각각 따로 계산되므로 문제되지 않습니다.
-
-### 요청 크기 제한
-
-모든 내보내기 메서드(*exportToPDF*, *exportToPNG*, *exportToMSProject* 등)에 공통으로 사용되는 엔드포인트 `https://export.dhtmlx.com/gantt`가 있습니다. **최대 요청 크기 10 MB**.
-
-MS Project 및 Primavera P6의 내보내기/가져오기 서비스에 대해 별도로 제공되는 엔드포인트도 있습니다. (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* 만 해당). **최대 요청 크기: 40 MB**.
 
 ## 내보내기 모듈 사용하기
 
-:::note
-대용량 차트를 내보내려면 [독립 실행형 내보내기 모듈](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)을 사용할 수 있습니다. 
-내보내기 모듈은 [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 또는 [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 라이선스 하에 Gantt를 받은 경우 무료로 제공되며, 모듈을 별도로 구입할 수도 있습니다.
-:::
-
-[MS Project를 위한 내보내기 모듈 사용 방법 읽기](guides/msp-export-module.md). 이 내보내기 모듈은 MS Project와 
-Primavera P6의 내보내기/가져오기 기능을 제공합니다.
+대용량 차트를 내보내거나, 온라인 내보내기 서비스의 제한 없이 내보내거나, 데이터를 사내 네트워크에 보관하려면 자체 서버에 [내보내기 모듈](guides/export-modules.md)을 설치하십시오. [MS Project 및 Primavera P6용 내보내기 모듈](guides/msp-export-module.md) 사용에 대한 자세한 내용을 확인하십시오.
 
 ## Primavera P6로 내보내기 {#exporttoprimaverap6}
 
@@ -491,6 +468,8 @@ gantt.attachEvent("onTaskLoading", function(task) {
 
 #### 작업 유형 얻기
 
+Gantt 차트에는 세 가지 사전 정의된 작업 유형이 있습니다: 일반 작업(기본값), 프로젝트 작업, 마일스톤. `types` 객체에서 사용자 정의 유형을 정의할 수도 있습니다. 자세한 설명은 관련 가이드 [작업 유형](/guides/task-types)을 참조하십시오.
+
 다음 로직은 작업 유형을 얻는 방법을 보여줍니다: 프로젝트 타입의 작업은 `Summary: "1"` 속성을 가지며, 마일스톤 타입의 작업은 `Milestone: "1"` 속성을 가집니다. 이러한 속성들을 가진 데이터를 먼저 가져온 후, 이 속성들에 따라 작업 유형을 설정해야 합니다.
 
 가져오기 함수 호출은 다음과 같이 보입니다:
@@ -534,6 +513,74 @@ gantt.attachEvent("onTaskLoading", function (task) {
 ~~~
 
 **관련 샘플**: [Gantt. Import Primavera P6 files. Get task type from properties](https://snippet.dhtmlx.com/y95rsxor)
+
+#### Primavera P6 활동 유형의 내보내기/가져오기
+
+Primavera P6는 [Gantt 차트에서 사용하는 작업 유형](/guides/task-types) 및 MS Project와는 다른 작업 유형을 사용합니다. 원래 Primavera P6 유형에 대한 정보를 보존하려면 파일을 가져오거나 내보낼 때 **ActivityType** 작업 속성을 사용하십시오. **ActivityType**은 Gantt에서 사용자 정의 속성이므로 Gantt 측의 작업 유형에는 영향을 주지 않습니다.
+
+**ActivityType** 속성은 Primavera P6 활동 유형의 전체 목록을 지원합니다. 가져올 때 반환되는 값은 PascalCase 형식이며, 내보낼 때는 PascalCase와 UPPER_SNAKE_CASE 형식을 모두 사용할 수 있습니다:
+
+| 값 | 설명 |
+|---|---|
+| TaskDependent / TASK_DEPENDENT | 선행 작업을 기준으로 일정이 잡히는 일반 작업 |
+| ResourceDependent / RESOURCE_DEPENDENT | 리소스 달력을 기준으로 일정이 잡히는 일반 작업(**ActivityType**을 지정하지 않으면 기본적으로 사용됨) |
+| StartMilestone / START_MILESTONE | 활동의 시작을 나타내는 마일스톤 |
+| FinishMilestone / FINISH_MILESTONE | 활동의 완료를 나타내는 마일스톤 |
+| WbsSummary / WBS_SUMMARY | WBS 요약 작업 |
+| LevelOfEffort / LEVEL_OF_EFFORT | 기간이 지원 대상 활동에 의해 결정되는 작업 |
+| Hammock / HAMMOCK | 기간이 연결된 첫 번째 활동의 시작부터 마지막 활동의 완료까지 이어지는 작업 |
+| StartFlag / START_FLAG | 프로젝트 시작 시점의 특정 지점을 나타내는 플래그 활동 |
+| FinishFlag / FINISH_FLAG | 프로젝트 완료 시점의 특정 지점을 나타내는 플래그 활동 |
+
+##### Primavera P6 마일스톤 유형 지원
+
+위에 나열된 **Start Milestone**과 **Finish Milestone** 유형은 Gantt 측에 각각 대응하는 유형이 없습니다. dhtmlxGantt 라이브러리는 단일 마일스톤 작업 유형만 지원하며, 이는 Primavera P6의 **Finish Milestone** 유형과 동일합니다. 따라서 Primavera P6 프로젝트를 Gantt로 가져올 때 모든 마일스톤은(원본 파일에서 시작 마일스톤인지 완료 마일스톤인지와 관계없이) **milestone** 유형의 작업으로 변환됩니다.
+
+원래 Primavera P6 마일스톤 유형에 대한 정보를 보존하려면 가져올 때 **ActivityType** 작업 속성을 **taskProperties** 배열에 추가하여 사용하십시오. 이 속성은 각 작업의 `$custom_data` 객체에 담겨 반환되므로 [onTaskLoading](api/event/ontaskloading.md) 이벤트에서 작업 자체로 복사하십시오:
+
+~~~js
+gantt.importFromPrimaveraP6({
+    data: file,
+    taskProperties: ["ActivityType"],
+    callback: function (project) {
+        if (project) {
+            gantt.clearAll();
+            gantt.parse(project.data);
+        }
+    }
+});
+
+gantt.attachEvent("onTaskLoading", function (task) {
+    if (task.$custom_data) {
+        task.ActivityType = task.$custom_data.ActivityType;
+    }
+    return true;
+});
+~~~
+
+마일스톤의 경우 이 속성에는 원래 Primavera P6 유형이 문자열(예: "StartMilestone" 또는 "FinishMilestone")로 저장됩니다. **ActivityType**은 Gantt 측의 작업 유형에 영향을 주지 않으므로 해당 작업은 여전히 **milestone** 유형입니다. 예를 들어 이 속성을 사용하여 Gantt 차트에서 시작 마일스톤과 완료 마일스톤의 모양을 다르게 설정할 수 있습니다.
+
+데이터를 Primavera P6로 다시 내보낼 때 원래 작업 유형을 유지하려면 [exportToPrimaveraP6()](api/method/exporttoprimaverap6.md) 호출의 [tasks](#export-settings) 객체에 있는 **ActivityType** 속성에서 해당 값을 반환하십시오. **ActivityType**은 마일스톤만이 아니라 모든 Primavera P6 활동을 설명하므로 다른 작업 유형에 대해서도 값을 제공하십시오:
+
+~~~js
+gantt.exportToPrimaveraP6({
+    tasks: {
+        ActivityType: function (task) {
+            if (task.type == "milestone") {
+                return task.ActivityType == "StartMilestone" ? "START_MILESTONE" : "FINISH_MILESTONE";
+            }
+            if (task.type == "project") {
+                return "WBS_SUMMARY";
+            }
+            return "TASK_DEPENDENT";
+        }
+    }
+});
+~~~
+
+이렇게 하면 내보낸 파일은 모든 마일스톤이 기본적으로 **Finish Milestone**으로 내보내지는 대신 원본 Primavera P6 파일과 동일한 **Start Milestone** / **Finish Milestone** 유형을 갖게 됩니다.
+
+**관련 샘플**: [Gantt. Import and export Primavera P6 files with the ActivityType to get Start and Finish Milestones](https://snippet.dhtmlx.com/elyeppkv)
 
 #### 달력 추가 및 조정
 
@@ -662,48 +709,22 @@ gantt.importFromPrimaveraP6({
 }
 ~~~
 
-## 큰 파일의 요청 크기 제한 및 가져오기 제한
+## 큰 파일의 요청 크기 제한 및 가져오기 제한 {#limits-on-request-size-and-import-of-large-files}
 
-Primavera P6 내보내기/가져오기 서비스에는 두 개의 API 엔드포인트가 있습니다:
+온라인 내보내기 서비스에는 대용량 Primavera P6 파일을 위한 별도의 엔드포인트 `https://export.dhtmlx.com/gantt/project`가 있습니다. 이 엔드포인트는 최대 40 MB의 요청을 받으며, 기본 엔드포인트 `https://export.dhtmlx.com/gantt`는 최대 10 MB의 요청을 받습니다. [온라인 내보내기 서비스 제한](guides/export-common.md#service-limits)을 참조하십시오.
 
-- `https://export.dhtmlx.com/gantt` - 기본 엔드포인트로 모든 내보내기 메서드(*exportToPDF*, *exportToPNG*, *exportToPrimaveraP6* 등)을 제공합니다. **최대 요청 크기 10 MB**.
-- `https://export.dhtmlx.com/gantt/project` - [MSProject](guides/export-msproject.md) 및 [Primavera P6](guides/export-primavera.md) 내보내기/가져오기 서비스에 대해 특화된 엔드포인트(*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* 만 해당). **최대 요청 크기: 40 MB**.
-
-엔드포인트는 export 구성 객체의 **server** 속성으로 지정할 수 있습니다:
-
-~~~js
-gantt.importFromPrimaveraP6({
-    server: "https://export.dhtmlx.com/gantt",
-    data: file,
-    callback: function(project){
-       // 일부 로직
-    }
-}); 
-~~~
-
-엔드포인트가 지정되지 않은 경우 기본값은 `https://export.dhtmlx.com/gantt`입니다. 위의 호출과 동등한 것은 다음과 같습니다:
-
-~~~js
-gantt.importFromPrimaveraP6({
-    data: file,
-    callback: function(project){
-       // 일부 로직
-    }
-});
-~~~
-
-4MB를 초과하는 대용량 프로젝트를 내보내거나 가져오기 위해서는 두 번째 엔드포인트를 사용할 수 있습니다:
+10 MB 제한을 초과하는 프로젝트를 내보내거나 가져오려면 구성 객체의 `server` 속성에 엔드포인트를 지정하십시오:
 
 ~~~js
 gantt.importFromPrimaveraP6({
     server: "https://export.dhtmlx.com/gantt/project",
     data: file,
-    callback: function(project){
-       // 일부 로직
+    callback: (project) => {
+        // 일부 로직
     }
-}); 
+});
 ~~~
 
-이 엔드포인트는 최대 40MB까지의 요청을 보낼 수 있으며 Primavera P6의 내보내기 및 가져오기를 지원합니다. Primavera P6 내보내기 전용으로 사용할 수도 있습니다. 
+이 엔드포인트는 MS Project 및 Primavera P6의 내보내기와 가져오기만 지원합니다. 다른 메서드, 예를 들어 `gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})`는 서버 오류를 반환해야 합니다.
 
-다른 메서드는 예를 들어, `gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})` 와 같은 호출은 서버 오류를 반환해야 합니다.
+자체 내보내기 모듈로 대용량 파일을 가져오려면 [대용량 파일 가져오기](guides/msp-export-module.md#import-of-large-files)를 참조하십시오.
