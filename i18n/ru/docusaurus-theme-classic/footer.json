@@ -1,5 +1,5 @@
 {
-	"link.title.Development center": {
+	"link.title.Development Center": {
 		"message": "Центр разработки",
 		"description": "Заголовок колонки ссылок в подвале с названием Центр разработки"
 	},
@@ -14,6 +14,10 @@
 	"link.item.label.Download Gantt": {
 		"message": "Скачать Gantt",
 		"description": "Метка ссылки в подвале с надписью Скачать Gantt"
+	},
+	"link.item.label.Product Page": {
+		"message": "Страница продукта",
+		"description": "Метка ссылки в подвале с надписью Страница продукта"
 	},
 	"link.item.label.Examples": {
 		"message": "Примеры",

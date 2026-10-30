@@ -1,7 +1,7 @@
 {
-  "link.title.Development center": {
-    "message": "Development center",
-    "description": "The title of the footer links column with title=Development center in the footer"
+  "link.title.Development Center": {
+    "message": "Development Center",
+    "description": "The title of the footer links column with title=Development Center in the footer"
   },
   "link.title.Community": {
     "message": "Community",
@@ -14,6 +14,10 @@
   "link.item.label.Download Gantt": {
     "message": "Download Gantt",
     "description": "The label of footer link with label=Download Gantt linking to https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml"
+  },
+  "link.item.label.Product Page": {
+    "message": "Product Page",
+    "description": "The label of footer link with label=Product Page linking to https://dhtmlx.com/docs/products/dhtmlxGantt/"
   },
   "link.item.label.Examples": {
     "message": "Examples",
@@ -57,6 +61,6 @@
   },
   "link.item.label.Licensing": {
     "message": "Licensing",
-    "description": "The label of footer link with label=Licensing linking to https://dhtmlx.com/docs/products/dhtmlxEventCalendar/#licensing"
+    "description": "The label of footer link with label=Licensing linking to https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing"
   }
 }

@@ -1,5 +1,5 @@
 {
-	"link.title.Development center": {
+	"link.title.Development Center": {
 		"message": "开发中心",
 		"description": "页脚中标题为开发中心的链接栏标题"
 	},
@@ -14,6 +14,10 @@
 	"link.item.label.Download Gantt": {
 		"message": "下载甘特图",
 		"description": "页脚链接标签为下载甘特图，链接到 https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml"
+	},
+	"link.item.label.Product Page": {
+		"message": "产品页面",
+		"description": "页脚链接标签为产品页面，链接到 https://dhtmlx.com/docs/products/dhtmlxGantt/"
 	},
 	"link.item.label.Examples": {
 		"message": "示例",
@@ -57,6 +61,6 @@
 	},
 	"link.item.label.Licensing": {
 		"message": "许可协议",
-		"description": "页脚链接标签为许可协议，链接到 https://dhtmlx.com/docs/products/dhtmlxEventCalendar/#licensing"
+		"description": "页脚链接标签为许可协议，链接到 https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing"
 	}
 }
