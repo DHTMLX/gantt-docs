@@ -1,7 +1,7 @@
 {
-	"link.title.Development center": {
+	"link.title.Development Center": {
 		"message": "개발 센터",
-		"description": "푸터 내 'Development center' 제목을 가진 링크 열의 제목"
+		"description": "푸터 내 'Development Center' 제목을 가진 링크 열의 제목"
 	},
 	"link.title.Community": {
 		"message": "커뮤니티",
@@ -14,6 +14,10 @@
 	"link.item.label.Download Gantt": {
 		"message": "간트 다운로드",
 		"description": "https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml 링크가 연결된 'Download Gantt' 라벨의 푸터 링크"
+	},
+	"link.item.label.Product Page": {
+		"message": "제품 페이지",
+		"description": "https://dhtmlx.com/docs/products/dhtmlxGantt/ 링크가 연결된 'Product Page' 라벨의 푸터 링크"
 	},
 	"link.item.label.Examples": {
 		"message": "예시",
@@ -47,16 +51,16 @@
 		"message": "링크드인",
 		"description": "https://www.linkedin.com/groups/3345009/ 링크가 연결된 'Linkedin' 라벨의 푸터 링크"
 	},
-	"link.item.label.About us": {
+	"link.item.label.About Us": {
 		"message": "회사 소개",
-		"description": "https://dhtmlx.com/docs/company.shtml 링크가 연결된 'About us' 라벨의 푸터 링크"
+		"description": "https://dhtmlx.com/docs/company.shtml 링크가 연결된 'About Us' 라벨의 푸터 링크"
 	},
-	"link.item.label.Contact us": {
+	"link.item.label.Contact Us": {
 		"message": "문의하기",
-		"description": "https://dhtmlx.com/docs/contact.shtml 링크가 연결된 'Contact us' 라벨의 푸터 링크"
+		"description": "https://dhtmlx.com/docs/contact.shtml 링크가 연결된 'Contact Us' 라벨의 푸터 링크"
 	},
 	"link.item.label.Licensing": {
 		"message": "라이선스",
-		"description": "https://dhtmlx.com/docs/products/dhtmlxEventCalendar/#licensing 링크가 연결된 'Licensing' 라벨의 푸터 링크"
+		"description": "https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing 링크가 연결된 'Licensing' 라벨의 푸터 링크"
 	}
 }

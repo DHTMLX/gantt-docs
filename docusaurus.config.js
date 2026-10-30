@@ -306,6 +306,10 @@ const config = {
 							"position": "right"
 						},
 						{
+							"label": "Product Page",
+							"href": "https://dhtmlx.com/docs/products/dhtmlxGantt/"
+						},
+						{
 							"label": "Examples",
 							"href": "https://docs.dhtmlx.com/gantt/demos/",
 							"position": "right"
@@ -359,7 +363,7 @@ const config = {
 						},
 						{
 							"label": "Licensing",
-							"href": "https://dhtmlx.com/docs/products/dhtmlxEventCalendar/#licensing"
+							"href": "https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing"
 						}
 					]
 				}
