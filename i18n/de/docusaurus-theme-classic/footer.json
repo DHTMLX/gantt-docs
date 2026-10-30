@@ -51,11 +51,11 @@
     "message": "LinkedIn",
     "description": "Das Label des Footer-Links 'LinkedIn', der auf https://www.linkedin.com/groups/3345009/ verweist"
   },
-  "link.item.label.About us": {
+  "link.item.label.About Us": {
     "message": "Über uns",
     "description": "Das Label des Footer-Links 'Über uns', der auf https://dhtmlx.com/docs/company.shtml verweist"
   },
-  "link.item.label.Contact us": {
+  "link.item.label.Contact Us": {
     "message": "Kontaktieren Sie uns",
     "description": "Das Label des Footer-Links 'Kontaktieren Sie uns', der auf https://dhtmlx.com/docs/contact.shtml verweist"
   },

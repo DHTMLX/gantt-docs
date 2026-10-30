@@ -51,13 +51,13 @@
 		"message": "링크드인",
 		"description": "https://www.linkedin.com/groups/3345009/ 링크가 연결된 'Linkedin' 라벨의 푸터 링크"
 	},
-	"link.item.label.About us": {
+	"link.item.label.About Us": {
 		"message": "회사 소개",
-		"description": "https://dhtmlx.com/docs/company.shtml 링크가 연결된 'About us' 라벨의 푸터 링크"
+		"description": "https://dhtmlx.com/docs/company.shtml 링크가 연결된 'About Us' 라벨의 푸터 링크"
 	},
-	"link.item.label.Contact us": {
+	"link.item.label.Contact Us": {
 		"message": "문의하기",
-		"description": "https://dhtmlx.com/docs/contact.shtml 링크가 연결된 'Contact us' 라벨의 푸터 링크"
+		"description": "https://dhtmlx.com/docs/contact.shtml 링크가 연결된 'Contact Us' 라벨의 푸터 링크"
 	},
 	"link.item.label.Licensing": {
 		"message": "라이선스",

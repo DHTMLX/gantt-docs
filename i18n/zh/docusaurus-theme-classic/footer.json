@@ -51,11 +51,11 @@
 		"message": "LinkedIn",
 		"description": "页脚链接标签为LinkedIn，链接到 https://www.linkedin.com/groups/3345009/"
 	},
-	"link.item.label.About us": {
+	"link.item.label.About Us": {
 		"message": "关于我们",
 		"description": "页脚链接标签为关于我们，链接到 https://dhtmlx.com/docs/company.shtml"
 	},
-	"link.item.label.Contact us": {
+	"link.item.label.Contact Us": {
 		"message": "联系我们",
 		"description": "页脚链接标签为联系我们，链接到 https://dhtmlx.com/docs/contact.shtml"
 	},

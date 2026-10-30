@@ -51,13 +51,13 @@
     "message": "Linkedin",
     "description": "The label of footer link with label=Linkedin linking to https://www.linkedin.com/groups/3345009/"
   },
-  "link.item.label.About us": {
-    "message": "About us",
-    "description": "The label of footer link with label=About us linking to https://dhtmlx.com/docs/company.shtml"
+  "link.item.label.About Us": {
+    "message": "About Us",
+    "description": "The label of footer link with label=About Us linking to https://dhtmlx.com/docs/company.shtml"
   },
-  "link.item.label.Contact us": {
-    "message": "Contact us",
-    "description": "The label of footer link with label=Contact us linking to https://dhtmlx.com/docs/contact.shtml"
+  "link.item.label.Contact Us": {
+    "message": "Contact Us",
+    "description": "The label of footer link with label=Contact Us linking to https://dhtmlx.com/docs/contact.shtml"
   },
   "link.item.label.Licensing": {
     "message": "Licensing",

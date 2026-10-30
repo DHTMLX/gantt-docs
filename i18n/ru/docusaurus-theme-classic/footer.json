@@ -51,11 +51,11 @@
 		"message": "Linkedin",
 		"description": "Метка ссылки в подвале с надписью Linkedin"
 	},
-	"link.item.label.About us": {
+	"link.item.label.About Us": {
 		"message": "О нас",
 		"description": "Метка ссылки в подвале с надписью О нас"
 	},
-	"link.item.label.Contact us": {
+	"link.item.label.Contact Us": {
 		"message": "Контакты",
 		"description": "Метка ссылки в подвале с надписью Контакты"
 	},
