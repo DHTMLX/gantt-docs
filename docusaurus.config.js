@@ -254,6 +254,7 @@ const config = {
     ({
 		image: 'img/og-default-gantt.png',
 		metadata: [
+			{ property: 'google-site-verification', content: 'I3Bba_n3ObJwPztYySmpufZ_b8l6-BMTs15svf4ql_8' },
 			{ property: 'og:type', content: 'website' },
 			{ property: 'og:site_name', content: 'DHTMLX Gantt Docs' },
 			{ property: 'og:locale', content: 'en_US' },

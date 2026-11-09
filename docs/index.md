@@ -8,7 +8,7 @@ description: "Explore DHTMLX Gantt features, editions, installation options, fra
 import Link from '@docusaurus/Link';
 import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
  
-**DHTMLX Gantt** is the most configurable JavaScript Gantt chart, complete with TypeScript definitions. It is designed for building advanced planning and scheduling interfaces. It integrates with React, Angular, Vue, and other frontend frameworks. DHTMLX Gantt also supports AI-assisted development through the DHTMLX MCP Server, Agent Skills, and a structured API. 
+[**DHTMLX Gantt**](https://dhtmlx.com/docs/products/dhtmlxGantt/) is the most configurable JavaScript Gantt chart, complete with TypeScript definitions. It is designed for building advanced planning and scheduling interfaces. It integrates with React, Angular, Vue, and other frontend frameworks. DHTMLX Gantt also supports AI-assisted development through the DHTMLX MCP Server, Agent Skills, and a structured API. 
 
 You can use it in project management, ERP, construction, manufacturing, field service, SaaS, and other business applications that require a configurable visual timeline.
 
