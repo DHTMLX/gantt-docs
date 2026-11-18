@@ -597,6 +597,25 @@ If there are resource assignments, they will be imported in the `assignments` ar
 }
 ~~~
 
+To get additional and custom properties of resource assignments, send the `assignmentProperties` input with an array of the necessary fields, or with the "populated" string to get all assignment fields that have values. The values come in the `$custom_data` object of each assignment. The input is available for MS Project files starting from v10.0.4 and requires version 2.5.0.0 or later of the export module:
+
+~~~js
+gantt.importFromMSProject({
+    data: file,
+    assignmentProperties: ["Cost", "Text1"],
+    callback: (project) => {
+        project.data.assignments.forEach((assignment) => {
+            if (assignment.$custom_data) {
+                assignment.cost = assignment.$custom_data["Cost"];
+                assignment.comment = assignment.$custom_data["Text1"];
+                delete assignment.$custom_data;
+            }
+        });
+        gantt.parse(project.data);
+    }
+});
+~~~
+
 ## Limits on request size and import of large files
 
 The online export service has a separate endpoint for large MS Project files: `https://export.dhtmlx.com/gantt/project`. It accepts requests up to 40 MB, while the default endpoint `https://export.dhtmlx.com/gantt` accepts requests up to 10 MB. See [Online export service limits](guides/export-common.md#service-limits).

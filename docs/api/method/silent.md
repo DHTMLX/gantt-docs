@@ -29,5 +29,9 @@ gantt.silent(function () {
 gantt.render();
 ~~~
 
+### Details
+
+A task moved inside `silent()`, for example with [moveTask()](api/method/movetask.md) or by changing its parent, doesn't fire the [onBeforeTaskMove](api/event/onbeforetaskmove.md) and [onAfterTaskMove](api/event/onaftertaskmove.md) events, isn't added to the undo history, and isn't sent to the server.
+
 ### Related Guides
 - [Server-Side Integration](guides/server-side.md#error-handling)

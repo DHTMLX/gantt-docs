@@ -10,10 +10,10 @@ description: "returns the id of the selected task"
 
 @short: Returns the id of the selected task
 
-@signature: getSelectedId: () =\> string
+@signature: getSelectedId: () =\> string | number | null
 
 ### Returns
-- ` id` - (string) - the id of the selected task or <i>null</i> if no tasks are selected in the Gantt chart
+- ` id` - (string | number | null) - the id of the selected task or <i>null</i> if no tasks are selected in the Gantt chart
 
 ### Example
 

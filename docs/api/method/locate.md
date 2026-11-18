@@ -17,7 +17,7 @@ description: "gets the id of a task from the specified HTML event"
 - `e` - (required) *Event* - a native event
 
 ### Returns
-- ` id` - (string | number) - the task id
+- ` id` - (string | number) - the task id, with the type the task has (for example, a number for the task with the id 12)
 
 ### Example
 

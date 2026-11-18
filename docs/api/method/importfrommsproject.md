@@ -63,6 +63,7 @@ The method takes as a parameter an object with configuration properties of an im
 - **durationUnit** - sets an expected duration unit ("minute", "hour", "day", "week", "month", "year").
 - **projectProperties** - specifies an array of project properties that should be put into the response.
 - **taskProperties** - specifies an array of additional task properties to be imported.
+- **assignmentProperties** - specifies an array of additional resource assignment properties to be imported, or the "populated" string to import all assignment properties that have values. The parameter is added in v10.0.4 and requires version 2.5.0.0 or later of the export module.
 
 Check the detailed descriptions of the import settings in the [related section](guides/export-msproject.md#import-settings).
 
