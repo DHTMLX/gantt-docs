@@ -91,7 +91,7 @@ The calendar configuration object can contain the following attributes:
     - **_[timespan: string]_** - (*object*) - the time span with the working time settings. The name of that object is used as the name of the time span
         - **_from_** - (*Date*) - the date when the time span is scheduled to begin
         - **_to_** - (*Date*) - the date when the time span is scheduled to be completed
-        - **_hours?_** - (*Array&lt;string | number&gt;*) - optional, an array of working hours as 'from'-'to' pairs.'false' value sets a day-off, 'true' (default value) applies the default hours (["8:00-17:00"])
+        - **_hours?_** - (*Array&lt;string | number&gt; | boolean*) - optional, an array of working hours as 'from'-'to' pairs.'false' value sets a day-off, 'true' (default value) applies the default hours (["8:00-17:00"])
         - **_days?_** - (*WorkDaysTuple* | *object*) - optional, it can be:
             -  either an array of 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day
             - or an object that contains weekdays and dates. It can include:
