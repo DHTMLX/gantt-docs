@@ -11,7 +11,7 @@ Updating from an earlier version? Check the [migration guide](migration.md) for 
 
 ## 10.0.4
 
-<span class='release_date'>November 18, 2026. Bugfix release</span>
+<span class='release_date'>November 19, 2026. Bugfix release</span>
 
 ### Updates
 
