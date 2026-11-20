@@ -40,6 +40,7 @@ The method can take one of the following types of parameters:
     - **_url_** - (*string*) - the URL to the server side
     - **_mode?_** - (*string*) - optional, the mode of sending data to the server: "JSON" | "REST-JSON" | "JSON" | "POST" | "GET"
     - **_deleteAfterConfirmation?_** - (*boolean*) - optional, defines whether the task must be deleted from the gantt only after a successful response from the server. Dependency links and subtasks will be deleted after the deletion of the parent task is confirmed.
+    - **_batch?_** - (*boolean*) - enables [batched JSON requests](guides/server-side.md#batched-json-requests). Defaults to `false`. Use only with `mode: "JSON"`.
 
 
 ~~~js

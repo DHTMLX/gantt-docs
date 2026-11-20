@@ -243,6 +243,32 @@ Use `groupTasks`, `calendars`, and `markers` for advanced timeline scenarios wit
 
 The wrapper does not expose a separate Angular-only `inlineEditors` input. Use the core Gantt inline editing config in `config.columns[].editor` (and other core inline editing APIs) when you need grid editing.
 
+## Effort-driven tasks {#effort-driven-tasks}
+
+Use the `[config]`, `[tasks]` and `[resources]` inputs to [enable and populate effort-driven task calculations](guides/effort-driven-tasks.md). Store the Gantt instance from the `(ready)` output. To edit an existing task's work, update its `work` field and call `updateTask()` on that instance.
+
+~~~ts
+import type { GanttStatic } from "@dhx/angular-gantt";
+
+export class EffortChart {
+    private ganttInstance?: GanttStatic;
+
+    onReady({ instance }: { instance: GanttStatic }): void {
+        this.ganttInstance = instance;
+    }
+
+    setReviewWork(): void {
+        const gantt = this.ganttInstance;
+        if (!gantt || !gantt.isTaskExists(1)) return;
+
+        gantt.getTask(1).work = 40;
+        gantt.updateTask(1);
+    }
+}
+~~~
+
+This example assumes task `1` uses hours as its work unit.
+
 ## Public Sample Scenario Map
 
 The public Angular samples cover these wrapper scenarios:

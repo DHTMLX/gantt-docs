@@ -46,3 +46,17 @@ const myGantt = Gantt.getGanttInstance();
 ...
 myGantt.destructor();
 ~~~
+
+### registerSchedulingEngine {#registerschedulingengine}
+
+`Gantt.registerSchedulingEngine(name: string, createEngine: () => SchedulingEngine): void` registers a named scheduling provider. The factory must return a new provider for each chart. The built-in name `"v2"` is reserved. Re-registering another name updates the factory used for later engine instances.
+
+Set [auto_scheduling.engine](api/config/auto_scheduling.md#engine) to select the registered engine for a chart that uses the PRO auto-scheduling plugin.
+
+### createPlanningEngine {#createplanningengine}
+
+`Gantt.createPlanningEngine(plen: PlanningEngineModule): SchedulingEngine` creates a Gantt adapter for a separately loaded, initialized PlanningEngine module. The module must expose a compatible `Project` constructor, which accepts an optional setting `{ dates?: "string" | "date" }`.
+
+Use this method in the factory function you pass to `registerSchedulingEngine()`. It is available in PRO browser and Node.js bundles that expose the adapter. See [Using PlanningEngine with Gantt](guides/planning-engine.md) for an example.
+
+Both scheduling-provider methods were added in v10.1.

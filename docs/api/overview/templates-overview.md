@@ -48,6 +48,7 @@ description: You can explore a templates overview in the documentation of the DH
 | [](../template/task_text.md)                               | @getshort(../template/task_text.md)                |
 | [](../template/task_time.md)                               | @getshort(../template/task_time.md)                |
 | [](../template/task_unscheduled_time.md)       | @getshort(../template/task_unscheduled_time.md)    |
+| [](../template/task_work.md) | @getshort(../template/task_work.md) |
 | [](../template/timeline_cell_class.md)           | @getshort(../template/timeline_cell_class.md)      |
 | [](../template/timeline_cell_content.md)       | @getshort(../template/timeline_cell_content.md)    |
 | [](../template/time_picker.md)                           | @getshort(../template/time_picker.md)              |

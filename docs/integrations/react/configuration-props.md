@@ -234,6 +234,39 @@ See the dedicated **[Hooks](integrations/react/hooks.md)** page for the complete
 - [useSelection](integrations/react/hooks.md#useselection) - task selection tracking
 - [useWorkTime](integrations/react/hooks.md#useworktime) - work time calculations
 
+### Advanced task form
+
+In the paid wrapper, enable `task_form` through the `plugins` prop. Use `getDefaultTaskFormSections()` to copy a built-in layout before mounting. The `useTaskForm` hook exposes form state and actions and can validate tasks before saving.
+
+~~~tsx
+import { useRef } from "react";
+import ReactGantt, { getDefaultTaskFormSections, useTaskForm } from "@dhx/react-gantt";
+import type { ReactGanttRef } from "@dhx/react-gantt";
+
+const plugins = { task_form: true };
+const config = {
+    lightbox: {
+        sections: getDefaultTaskFormSections("task"),
+        project_sections: getDefaultTaskFormSections("project"),
+        milestone_sections: getDefaultTaskFormSections("milestone")
+    }
+};
+
+function TaskChart() {
+    const ganttRef = useRef<ReactGanttRef>(null);
+    const form = useTaskForm(ganttRef, {
+        validate: task => task.text?.trim() ? null : { description: "Enter a task name" }
+    });
+
+    return <>
+        {form.isOpen && <p>Editing task {form.taskId}</p>}
+        <ReactGantt ref={ganttRef} plugins={plugins} config={config} />
+    </>;
+}
+~~~
+
+Return errors keyed by section name, or return `null` to allow saving. To select the classic lightbox, set `config.lightbox.advanced` to `false`. See [Advanced Task Form](guides/advanced-task-form.md) for layout options and validation.
+
 ### Direct access to Gantt instance with ref
 
 While hooks handle most advanced needs, you might still want direct access to the entire Gantt instance. For that, the ref approach remains available:

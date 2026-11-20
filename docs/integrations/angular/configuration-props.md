@@ -316,6 +316,49 @@ Queue behavior summary:
 - dropping `create` + `delete` pairs,
 - stripping internal `!nativeeditor_status` from payloads.
 
+## Advanced task form
+
+In the paid wrapper, pass `task_form: true` through `[plugins]`. Use `getDefaultTaskFormSections()` to copy a built-in layout before mounting. Provide `GanttTaskFormService` on the component and connect it when the wrapper emits `ready`. The service exposes form state as signals and can validate tasks before saving.
+
+~~~ts
+import { Component, inject } from "@angular/core";
+import {
+    DhxGanttComponent,
+    GanttTaskFormService,
+    getDefaultTaskFormSections,
+    type GanttStatic
+} from "@dhx/angular-gantt";
+
+@Component({
+    selector: "app-task-chart",
+    standalone: true,
+    imports: [DhxGanttComponent],
+    providers: [GanttTaskFormService],
+    template: `
+        <dhx-gantt [plugins]="plugins" [config]="config" (ready)="onReady($event)"></dhx-gantt>
+    `
+})
+export class TaskChartComponent {
+    readonly form = inject(GanttTaskFormService);
+    readonly plugins = { task_form: true };
+    readonly config = {
+        lightbox: {
+            sections: getDefaultTaskFormSections("task"),
+            project_sections: getDefaultTaskFormSections("project"),
+            milestone_sections: getDefaultTaskFormSections("milestone")
+        }
+    };
+
+    onReady({ instance }: { instance: GanttStatic }) {
+        this.form.connect(instance, {
+            validate: task => task.text?.trim() ? null : { description: "Enter a task name" }
+        });
+    }
+}
+~~~
+
+Read `form.isOpen()` to check whether the form is open. Return errors keyed by section name, or return `null` to allow saving. To select the classic lightbox, set `config.lightbox.advanced` to `false`. See [Advanced Task Form](guides/advanced-task-form.md) for layout options and validation.
+
 ## `customLightbox` Input
 
 Use `customLightbox` to replace the built-in Gantt lightbox with an Angular component.
@@ -436,6 +479,9 @@ Useful public exports from the wrapper package:
 - `GanttStatic`
 - `CustomLightboxConfig`
 - `Calendar`, `Marker`
+- `WBSConfig`, `WBSRequest`, `WBSResult`, `WBSOperationPlan` and related WBS types
+
+To work with [stored WBS codes](guides/wbs-and-task-numbering.md), pass `[plugins]="{ wbs: true }"` and call `instance.ext.wbs` on the ready Gantt instance.
 
 ### `SerializedTask` vs `Task`
 

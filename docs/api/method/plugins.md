@@ -31,6 +31,9 @@ gantt.plugins({
 
 ### Related Guides
 - [Full List of Extensions](guides/extensions-list.md)
+- [Toolbar](guides/toolbar.md) (`toolbar`)
+- [Context Menu](guides/context-menu.md) (`context_menu`)
+- [Advanced Task Form](guides/advanced-task-form.md) (`task_form`)
 
 ### Change log
 - The **export_api** plugin was included into the list of plugins in v8.0. To activate export service in earlier versions, you need to include the `https://export.dhtmlx.com/gantt/api.js` file on your page. Check the [Migration](migration.md#71---80) article.

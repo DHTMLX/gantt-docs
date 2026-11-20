@@ -429,7 +429,7 @@ const templates = defineGanttTemplates({
 
 ### Composables
 
-The wrapper exposes five composables that wrap common instance-side calls in a ref-aware, lifecycle-safe form. Each one takes a `Ref<VueGanttRef | null>` so it can wait for the instance to become available.
+The wrapper exposes composables that wrap common instance-side calls. Each one takes a `Ref<VueGanttRef | null>` so it can wait for the instance to become available.
 
 #### `useGanttActions(ganttRef)`
 
@@ -534,6 +534,39 @@ const { detach } = useGanttEvent(ganttRef, "onTaskDblClick", id => {
 ~~~
 
 Use this when one-off listeners do not fit cleanly into the `events` map (for example listeners that need to update or unsubscribe based on local state).
+
+### Advanced task form
+
+In the paid wrapper, pass `task_form: true` through `:plugins`. Use `getDefaultTaskFormSections()` to copy a built-in layout before mounting. Use `useTaskForm` to access form state as refs and to validate tasks before saving.
+
+~~~vue
+<script setup lang="ts">
+import { ref } from "vue";
+import VueGantt, { getDefaultTaskFormSections, useTaskForm } from "@dhx/vue-gantt";
+import type { VueGanttRef } from "@dhx/vue-gantt";
+
+const ganttRef = ref<VueGanttRef | null>(null);
+const { isOpen, taskId } = useTaskForm(ganttRef, {
+    validate: task => task.text?.trim() ? null : { description: "Enter a task name" }
+});
+
+const plugins = { task_form: true };
+const config = {
+    lightbox: {
+        sections: getDefaultTaskFormSections("task"),
+        project_sections: getDefaultTaskFormSections("project"),
+        milestone_sections: getDefaultTaskFormSections("milestone")
+    }
+};
+</script>
+
+<template>
+    <p v-if="isOpen">Editing task {{ taskId }}</p>
+    <VueGantt ref="ganttRef" :plugins="plugins" :config="config" />
+</template>
+~~~
+
+Return errors keyed by section name, or return `null` to allow saving. To select the classic lightbox, set `config.lightbox.advanced` to `false`. See [Advanced Task Form](guides/advanced-task-form.md) for layout options and validation.
 
 ## What To Read Next
 

@@ -56,6 +56,9 @@ To apply the default skin, include the default CSS file:
 
 [Default skin](https://docs.dhtmlx.com/gantt/samples/06_skins/01_default.html)
 
+Use [`accessibility.increase_contrast`](api/config/accessibility.md) to increase text contrast
+while keeping the Terrace skin.
+
 
 ## 'Dark' skin {#darkskin}
 
@@ -70,6 +73,9 @@ gantt.skin = "dark";
 ~~~
 
 ![gantt_dark_skin](/img/gantt_dark_skin.png)
+
+The [Accessibility Conformance Report](guides/accessibility-conformance-report.md) includes
+the dark skin in its evaluation of minimum text contrast.
 
 
 [Dark skin](https://docs.dhtmlx.com/gantt/samples/06_skins/10_dark.html)

@@ -36,10 +36,37 @@ To use this type of navigation, set the [keyboard_navigation_cells](api/config/k
 
 ### Focus on Gantt
 
-When the Tab key is pressed, Gantt gets focus the same as any usual element. 
-After that to navigate Gantt, you can use the arrow keys and other ones. 
+Press **Tab** to reach the focusable views and controls in layout order. For example, a layout can
+place the task grid first, followed by a custom control, the resource grid and the resource timeline.
+Tab moves to the next element on the page after the last stop inside Gantt. Use **Shift+Tab** to move
+in reverse.
 
-When the Tab key is pressed for the second time, the focus leaves Gantt and is moved to some other place on the page.
+### Resource panel
+
+Tab reaches the resource grid and resource timeline separately. Gantt skips a view that has no
+focusable content.
+
+- Use the arrow keys and **Home** or **End** to move between rows in the resource grid or cells in
+  the resource timeline. Set `keyboard_navigation_cells` to `true` to move between individual
+  resource-grid cells.
+- In the resource grid, **Ctrl+Left Arrow** collapses a group and **Ctrl+Right Arrow** expands it.
+
+### Split grid views
+
+When multiple grid views share the same store, cell navigation follows a continuous column order.
+Left and Right Arrow can cross from one panel to the next, and Home and End go to the first and
+last column across the panels. On a grid cell or header cell, Tab and Shift+Tab can jump to the
+first or last column of the adjacent panel.
+
+### Toolbar and context menu
+
+With keyboard navigation active when the [toolbar](guides/toolbar.md) mounts, Tab enters the
+toolbar at a single stop. Use Left and Right Arrow, Home and End to move between its controls.
+When keyboard navigation is off, Tab and Shift+Tab follow the native order of enabled controls.
+
+In an open [context menu](guides/context-menu.md), use the arrow keys to move between items,
+Enter to activate an item, and Escape to close the menu. Use your application's keyboard
+command to open the menu when one is configured.
 
 ### Focus on a modal window
 
@@ -55,6 +82,14 @@ The default navigation actions in a modal window are as follows:
 - *Escape* - close without any changes
 
 If the focus is set on some button of the form, pressing *Space* or *Enter* will call pressing the button under focus and not the action.
+
+#### Resource assignments in the classic lightbox
+
+In the rich resource selector, Tab moves through **Add Assignment**, editable cells and **Delete**.
+Use Enter or Space to activate a focused button. Delete opens a confirmation dialog.
+From the assignment grid, **Ctrl+Enter** or **Cmd+Enter** moves focus to **Save**. Press Shift+Tab
+from Save to reach Cancel. Start, End and Duration become editable when you configure editors for
+those columns. See [Resource Assignments](guides/resource-assignments.md).
 
 
 :::note
@@ -139,7 +174,7 @@ There is a set of ready shortcuts that you can use to navigate the Gantt chart:
 
 ### General keyboard shortcuts:
 
-- **Tab** - set focus on Gantt
+- **Tab** - move to the next focusable view or control
 - **Alt+Up/Down** - scroll Gantt vertically
 - **Alt+Left/Right** - scroll Gantt horizontally
 - **Ctrl+Enter** - create a new task

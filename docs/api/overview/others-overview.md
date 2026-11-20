@@ -19,6 +19,7 @@ description: You can explore Others overview in the documentation of the DHTMLX 
 | [](../other/date.md)                        | @getshort(../other/date.md)             |
 | [](../other/env.md)                          | @getshort(../other/env.md)              |
 | [](../other/ext.md)                          | @getshort(../other/ext.md)              |
+| [](../other/autoscheduling-ext.md) | @getshort(../other/autoscheduling-ext.md) |
 | [](../other/form_blocks.md)          | @getshort(../other/form_blocks.md)      |
 | [](api/other/i18n.md)                     | @getshort(../other/i18n.md)             |
 | [](../other/ignore_time.md)          | @getshort(../other/ignore_time.md)      |
