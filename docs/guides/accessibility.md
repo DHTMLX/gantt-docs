@@ -1,7 +1,7 @@
 ---
 title: "Accessibility"
 sidebar_label: "Accessibility"
-description: "How DHTMLX Gantt meets WCAG 2.2 AA, Section 508 and EN 301 549 - keyboard operation, screen-reader support, high-contrast themes, and how to configure them."
+description: "Configure keyboard navigation, screen-reader support, contrast and non-colour cues in DHTMLX Gantt."
 ---
 
 # Accessibility
@@ -10,10 +10,8 @@ DHTMLX Gantt is built to be usable by everyone, including people who rely on key
 screen magnification, or high-contrast display modes. 
 
 :::info Target conformance
-DHTMLX Gantt is designed to meet **WCAG 2.2 Level AA**, **Section 508** of the U.S. Rehabilitation Act,
-and **EN 301 549** (the technical baseline of the European Accessibility Act). Because WCAG 2.2 AA also
-satisfies ADA and Section 508 expectations, a single conformance target covers the major regulatory
-requirements.
+DHTMLX Gantt targets **WCAG 2.2 Level AA**. The Accessibility Conformance Report describes the
+evaluated configuration and the applicable criteria for WCAG 2.2, Section 508 and EN 301 549.
 
 A detailed, criterion-by-criterion **Accessibility Conformance Report (VPAT® 2.5)** is available:
 [Accessibility Conformance Report](guides/accessibility-conformance-report.md).
@@ -23,11 +21,11 @@ A detailed, criterion-by-criterion **Accessibility Conformance Report (VPAT® 2.
 
 | Area | Support |
 |---|---|
-| Keyboard operation | Full: every primary action has a keyboard equivalent |
+| Keyboard operation | Built-in shortcuts through the `keyboard_navigation` plugin |
 | WAI-ARIA semantics | Built-in (`grid` / `treegrid` model), enabled by default |
-| Screen readers | Tested with NVDA, JAWS and VoiceOver |
+| Screen readers | See the conformance report for the tested screen readers and browsers |
 | Visual accessibility | Dedicated high-contrast themes, an increase-contrast option, and non-colour cues |
-| Text resize / zoom | Layout remains operable up to 400% zoom / text spacing overrides |
+| Text resize / zoom | See the evaluated zoom and text-spacing settings in the conformance report |
 | Customization | Public API to change every screen-reader description and announce dynamic changes |
 | Standards | WCAG 2.2 AA, Section 508, EN 301 549 |
 
@@ -44,22 +42,15 @@ depends on the host application (see [Host-page responsibilities](#hostpagerespo
 
 ## Setting up an accessible Gantt {#recommendedconfiguration}
 
-Gantt ships accessible by default (ARIA output is on), but a fully WCAG 2.2 AA-compliant deployment needs
-two more things: keyboard navigation enabled, and an AA-contrast colour scheme selected. The recommended
-configuration is:
+ARIA output is on by default. Enable keyboard navigation, select a contrast option, and enable
+non-colour cues. This example uses the default Terrace skin. Evaluate the final page with your
+application's controls, templates and styles.
 
 ~~~js
-// 1. ARIA output is enabled by default - no action needed.
-//    (You can be explicit: gantt.config.accessibility = { aria: true };)
-
-// 2. Enable keyboard navigation
 gantt.plugins({ keyboard_navigation: true });
 
-gantt.config.accessibility = {
-    aria: true,
-    increase_contrast: true,     // AA contrast for the default light skin
-    colorblind_friendly: true    // non-colour cues (patterns, outlines)
-};
+gantt.config.accessibility.increase_contrast = true;
+gantt.config.accessibility.colorblind_friendly = true;
 
 gantt.init("gantt_here");
 ~~~
@@ -76,6 +67,10 @@ be read and created without a mouse:
   *"Predecessors: Office facing finish-to-start"*), and a user can create or change a link by typing the
   related task's code into the cell - a keyboard, non-drag alternative to dragging link arrows
   (WCAG 2.5.7 Dragging Movements).
+
+The default editors are `predecessor` and `successor`. A custom template or editor overrides its own
+default. Set `template: null` or `editor: null` to turn off the respective default. See
+[Specifying Columns](guides/specifying-columns.md#dependencycolumns) for details.
 
 ~~~js
 gantt.config.columns = [
@@ -131,14 +126,13 @@ it closes, so keyboard and screen-reader users never lose their place.
 ARIA output is controlled by a single master switch and is **on by default**:
 
 ~~~js
-gantt.config.accessibility = {
-    aria: true,           // master switch for all ARIA output
-    announcements: true,  // enable the live region for dynamic messages
-    grid_semantics: true  // verbose treegrid position info (row/column counts and indices)
-};
+gantt.config.accessibility.aria = true;
+gantt.config.accessibility.announcements = true;
+gantt.config.accessibility.grid_semantics = true;
 ~~~
 
-All three flags default to `true`, so Gantt is fully accessible out of the box.
+All three flags default to `true`. See the [accessibility configuration reference](api/config/accessibility.md)
+for the effect of each setting.
 
 :::note
 The legacy [wai_aria_attributes](api/config/wai_aria_attributes.md) config is still supported for backward
@@ -148,13 +142,8 @@ decides. You can check the resolved state at any time with `gantt.ext.accessibil
 
 ## Screen reader support
 
-DHTMLX Gantt is tested against the most widely used assistive technologies:
-
-| Screen reader | Browser | Platform |
-|---|---|---|
-| NVDA | Firefox, Chrome | Windows |
-| JAWS | Chrome, Edge | Windows |
-| VoiceOver | Safari | macOS |
+See the evaluation methods in the [Accessibility Conformance Report](guides/accessibility-conformance-report.md)
+for the screen readers, browsers and platforms used in testing.
 
 By default, a screen reader reads a task as **type + name + dates + duration + progress**, for example
 *"Task: Interior office, Start date: 3 Apr, End date: 11 Apr, Duration: 7, 60% complete"*. Milestones are
@@ -173,10 +162,15 @@ automatically); you override only what you want to change.
 | `labels.taskBar(task)` | the task | the bar on the timeline |
 | `labels.taskRow(task)` | the task | the row in the grid |
 | `labels.link(link)` | the link | a dependency arrow |
-| `labels.timelineCell(date, scale)` | date + scale | a header cell of the time scale |
-| `labels.resourceCell(resource, date, value)` | resource + cell | a cell in the resource panel |
+| `labels.timelineCell(date, scale, precomputedText?)` | date, scale and optional display text | a header cell of the time scale |
+| `labels.resourceCell(resource, date, value)` | resource, date and `{ used, capacity? }` | a cell in the resource panel |
 | `labels.resourceRow(resource)` | the resource | a row in the resource grid |
-| `labels.gridCell(column, textValue, task)` | column, cell text, task | a cell in the task grid |
+| `labels.gridCell(column, textValue, task)` | column, cell text, task | a cell in the task grid (JavaScript) |
+
+Histogram cells can include capacity in their labels. Load-matrix cells supply the hours used, and
+histogram cells with no positive capacity use the same hours-only wording. The default task-grid
+cell label describes dependencies by task name, link type and lag in the `predecessors` and
+`successors` columns, including when a custom template supplies the displayed value.
 
 ~~~js
 // Describe a task row for a medical schedule
@@ -225,8 +219,7 @@ All of them ship translated in every bundled locale.
 
 ## Keyboard Navigation
 
-All Gantt interactions can be performed from the keyboard. Keyboard navigation is provided by a plugin that
-you enable once, using the [gantt.plugins](api/method/plugins.md) method:
+Enable keyboard navigation with the [gantt.plugins](api/method/plugins.md) method:
 
 ~~~js
 gantt.plugins({ keyboard_navigation: true });
@@ -235,9 +228,9 @@ gantt.plugins({ keyboard_navigation: true });
 gantt.config.keyboard_navigation_cells = true;
 ~~~
 
-`Tab` places focus into the accessible views in turn (task grid → any custom layout cell → resource grid →
-resource timeline → next element on the page); arrow keys, `Home` / `End` move within the focused view. A
-selection of the built-in shortcuts:
+`Tab` follows the focusable views and controls in your layout. Arrow keys and `Home` / `End` move
+within the focused view. The [keyboard navigation guide](guides/keyboard-navigation.md) covers resource
+panels, split grids and resource assignments. Common task-grid shortcuts include:
 
 | Keys | Action |
 |---|---|
@@ -287,31 +280,31 @@ There are two dedicated high-contrast skins:
 
 [High contrast theme - White](https://docs.dhtmlx.com/gantt/samples/06_skins/08_high_contrast_white.html)
 
-The built-in **dark** theme also meets AA contrast out of the box. See the [Skins](guides/skins.md) guide
-for how to switch themes.
+The conformance report includes the built-in **dark** theme in its assessment of minimum text
+contrast. See [Skins](guides/skins.md) for how to switch themes.
 
 ### Increase contrast and colour-blind cues
 
-If you keep the default light skin, two options make it accessible without changing the theme:
+You can raise text contrast in the default light skin and add visual cues for specific states:
 
 ~~~js
-gantt.config.accessibility = {
-    increase_contrast: true,     // raises the default light skin to AA contrast
-    colorblind_friendly: true    // adds non-colour cues
-};
+gantt.config.accessibility.increase_contrast = true;
+gantt.config.accessibility.colorblind_friendly = true;
 ~~~
 
-- **`increase_contrast`** (default off) raises the default (terrace) light skin to AA contrast.
-- **`colorblind_friendly`** (default off) adds non-colour cues so meaning is never carried by colour alone:
+- **`increase_contrast`** (default off) raises text contrast in the Terrace skin for WCAG 2.2 criterion 1.4.3.
+- **`colorblind_friendly`** (default off) adds non-colour cues:
   a line at the progress boundary, a hatch on project bars, an outline/shadow on critical tasks, and a
   hatch on over-allocated resource cells.
 
 Both take effect on the next `gantt.render()`.
 
+For a custom non-colour cue on weekends or non-working time, add a class with `timeline_cell_class`
+and style it in your application. See [Highlighting Time Slots](guides/highlighting-time-slots.md).
+
 ### Other low-vision support
 
-- **Colour is never the only signal.** Status and hierarchy are conveyed through text labels and ARIA
-  state, not colour alone (see `colorblind_friendly` above).
+- **Status and hierarchy.** Text labels, ARIA states and the built-in non-colour cues convey these details.
 - **Zoom and reflow.** The grid/timeline layout remains operable when the page is zoomed up to 400%.
 - **Text spacing.** Applying WCAG text-spacing overrides does not clip or overlap text in grid cells or on
   bars.
@@ -333,8 +326,7 @@ Accessibility is validated continuously:
 
 1. **Automated testing** with [axe-core](https://github.com/dequelabs/axe-core) across representative
    samples: basic init, high-contrast skins, the lightbox, keyboard navigation, and the resource panel.
-2. **Manual testing**: keyboard-only walkthroughs of every scope, and screen-reader passes with NVDA,
-   JAWS and VoiceOver.
+2. **Manual testing**: keyboard walkthroughs and screen-reader passes documented in the conformance report.
 3. **Conformance reporting**: results are published openly in the
    [Accessibility Conformance Report](guides/accessibility-conformance-report.md).
 

@@ -5,6 +5,9 @@ sidebar_label: "Split Tasks"
 
 # Split Tasks
 
+Split tasks use separate child records. To represent a work interruption within a single task
+record, use [task pauses](guides/resource-leveling.md).
+
 :::note
 This functionality is available in the PRO edition only.
 :::

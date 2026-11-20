@@ -50,6 +50,9 @@ const onAtNotationMatch = (data, { key }) => {
 };
 
 const onAtNotationFunctionMatch = (data, { key, fullMatch, dir }) => {
+	if (key !== 'getshort') {
+		return fullMatch;
+	}
 	if (data.indexOf('.md') !== -1 || data.indexOf('.mdx') !== -1 || data.indexOf('.') === -1) {
 		const result = readFile(dir, data);
 		return result ? /@short: (.*)/g.exec(result)[1] : fullMatch;

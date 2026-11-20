@@ -33,6 +33,8 @@ gantt.attachEvent("onContextMenu", function (taskId, linkId, event) {
 
 ### Details
 
+With the [context menu plugin](guides/context-menu.md) enabled, Gantt uses this event to detect the zone and open its built-in menu. Use [onBeforeContextMenu](api/event/onbeforecontextmenu.md) to change or cancel the resolved menu.
+
 Right clicks in the Gantt chart open the default browser context menu, if there are no other conditions. 
 In the following example a click on a task shows a [DHTMLX context menu](https://docs.dhtmlx.com/menu__index.html) and hides the default browser context menu.
 

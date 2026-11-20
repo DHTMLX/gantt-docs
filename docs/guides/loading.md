@@ -430,6 +430,9 @@ A data source for the Gantt chart is an object that stores 2 types of informatio
 
 ### Properties of a task object {#task_properties}
 
+Task parent references must form an acyclic hierarchy. Starting in v10.1, a cyclic hierarchy
+also raises an invalid-tree error when you reload tasks with `gantt.parse()`.
+
 :::note
 The full list of properties of a task object is given in the [Task properties](guides/task-properties.md) article.
 :::

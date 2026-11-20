@@ -40,6 +40,8 @@ time.setValue(null,{
 
 ### Details
 
+The method returns `null` at runtime if the section is missing or was skipped. Check the result before accessing a section that depends on an optional feature.
+
 The section object contains the following members:
 
 ## Properties

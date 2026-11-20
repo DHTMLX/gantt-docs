@@ -187,6 +187,32 @@ gantt.init("gantt_here");
 ~~~
 
 
+### Predecessor and successor columns {#dependencycolumns}
+
+Add columns named `predecessors` and `successors` to show incoming and outgoing dependencies as text.
+
+~~~js
+gantt.config.columns = [
+    { name: "text", tree: true, width: "*" },
+    { name: "predecessors", width: 130 },
+    { name: "successors", width: 130 }
+];
+~~~
+
+Gantt supplies a display template and an [inline editor](guides/inline-editing.md#linkformatter) for each column. If you configure an editor with its own link formatter, the default template uses that formatter. You can set a custom template and keep the built-in editor, or set a custom editor and keep the built-in template.
+
+Set `template: null` to display the task's own field of the same name. Set `editor: null` to leave the column without an editor.
+
+### Duration column format {#durationcolumn}
+
+A column named `duration` displays the stored number by default. Set `default_formatter: true` to use the [default duration formatter](guides/formatters-ext.md#durationformatter) when the column has no explicit template.
+
+~~~js
+{ name: "duration", align: "center", default_formatter: true }
+~~~
+
+For example, the paid editions can display `5 days` in place of `5`. The Community edition displays the number without a unit. An explicit template takes precedence. To remove a default template after the grid has read the definition, provide a new column object.
+
 ## Text alignment 
 
 To set the horizontal alignment of the text in a column, use the [align](api/config/columns.md) attribute in the related column's object:
@@ -203,6 +229,8 @@ gantt.init("gantt_here");
 
 
 ## WBS code {#wbscode}
+
+This section uses the legacy display-order WBS number. For hierarchy-based numbers or codes saved with the task, see [WBS Codes and Task Numbering](guides/wbs-and-task-numbering.md).
 
 You can add a column that will display the outline numbers of tasks (their WBS code). For this, you need to use the [getWBSCode](api/method/getwbscode.md) method in the column template.
 
@@ -250,6 +278,20 @@ const task = gantt.getTaskByWBSCode("1.2");
 // => { id: 3, text: "Task #2", start_date: …}
 ~~~
 
+
+### Task number columns {#task-number-columns}
+
+Use a template to display canonical outline numbers or row numbers. These values follow the task hierarchy and stay stable when the grid is sorted, filtered or collapsed.
+
+~~~js
+gantt.config.columns = [
+    { name: "outline", label: "Outline", template: gantt.getOutlineNumber },
+    { name: "row_number", label: "Row", template: task => gantt.getRowNumber(task) || "" },
+    { name: "text", tree: true, width: "*" }
+];
+~~~
+
+To display a stored code with the default WBS configuration, add a column named `wbs_code`. It reads the task field of that name. See [WBS Codes and Task Numbering](guides/wbs-and-task-numbering.md) for custom field names and updates.
 
 ## Time constraints for tasks {#timeconstraintsfortasks}
 

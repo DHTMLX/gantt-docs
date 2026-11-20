@@ -20,6 +20,9 @@ read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/ex
 
 ## Online export service restrictions
 
+The PDF and PNG export service renders a [paused task](guides/resource-leveling.md) as a single
+bar across its date span.
+
 :::note
 The export service has time and request size restrictions.
 :::

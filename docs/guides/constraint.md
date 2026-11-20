@@ -27,6 +27,8 @@ gantt.config.lightbox.sections = [
 
 ## Initialization
 
+Use [constraint conflict resolution](guides/auto-scheduling.md#resolving-constraint-conflicts) to show choices when a lightbox save introduces a new dependency conflict.
+
 To add the **constraint** control to the lightbox, follow the steps below:
 
 1. Add a section to the lightbox configuration:

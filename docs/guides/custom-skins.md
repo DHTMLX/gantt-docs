@@ -97,6 +97,33 @@ Key CSS Variables:
 
 All variables can be found in the **codebase/sources/less/src/themes/variables.less** file of the package.
 
+### Toolbar theme variables
+
+Use these variables to style the [toolbar](guides/toolbar.md). The color defaults refer to the corresponding `--dhx-gantt-base-colors-*` variables.
+
+| Variable | Default | Contrast White and Contrast Black |
+| --- | --- | --- |
+| `--dhx-gantt-toolbar-height` | 44 px | 44 px |
+| `--dhx-gantt-toolbar-background` | `background` | `background` |
+| `--dhx-gantt-toolbar-border` | `border` | `border` |
+| `--dhx-gantt-toolbar-segmented-background` | `background-alt` | `background` |
+| `--dhx-gantt-toolbar-segmented-border` | `transparent` | `border` |
+| `--dhx-gantt-toolbar-segmented-color` | `text-light` | `text-base` |
+
+Set the `--dhx-gantt-*` variables on `:root` for a theme-wide change. For contrast skins, override their values on `:root[data-gantt-theme="contrast-white"]` and `:root[data-gantt-theme="contrast-black"]`. When changing the height of a toolbar inside the chart, give its [explicit layout cell](guides/toolbar.md#add-a-toolbar) a matching `height`.
+
+To change one toolbar's segmented control, give the toolbar a class with `gantt.config.toolbar.css` and set the `--dhx-ui-toolbar-segmented-*` variables on that class:
+
+~~~css
+.project-toolbar {
+    --dhx-ui-toolbar-segmented-background: var(--dhx-gantt-base-colors-background);
+    --dhx-ui-toolbar-segmented-border: var(--dhx-gantt-base-colors-border);
+    --dhx-ui-toolbar-segmented-color: var(--dhx-gantt-base-colors-text-base);
+}
+~~~
+
+For custom styles written against a pre-release build, the current selector for the selected segment is `.dhx_ui_segmented.dhx_ui_radio_group .dhx_ui_radio_row:has(.dhx_ui_radio:checked)`. Load any selected-state overrides after the Gantt stylesheet and scope them to `@media (forced-colors: none)` to preserve system colors in forced-colors mode.
+
 ## How to customize skins
 
 The easiest method to customize the Gantt's appearance is by overriding the relevant CSS variables in your stylesheet. Here's an example:

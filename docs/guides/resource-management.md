@@ -459,6 +459,8 @@ gantt.getResourceAssignments("6");
 
 ### Connecting resources to tasks
 
+When [effort-driven calculations](guides/effort-driven-tasks.md) are enabled, an assignment's `value` is the allocation per full working day in the configured work unit, hours per day by default.
+
 The resource relation is defined by the [resource_property](api/config/resource_property.md) configuration option:
 
 ~~~js
@@ -532,6 +534,7 @@ Read more about it in a [separate article](guides/server-side.md#resources_crud)
 
 By default, the resource is considered to be assigned for the whole duration of a task.
 
+On a [paused task](guides/resource-leveling.md#assignments-and-resource-load), the assignment's delay and fixed duration count work time, skipping pauses. Inactive tasks are excluded from resource load calculations. See [Inactive Tasks and Links](guides/inactive-tasks-links.md#how-gantt-determines-activity).
 
 Starting from v7.1, the resource assignment object can accept additional optional parameters that allow specifying the dates of the assignment within the task. 
 
@@ -1072,6 +1075,8 @@ You can [get more information in the related article](guides/working-time.md#ass
 
 
 ## Balancing resource load {#balancingresourceload}
+
+To calculate a leveled schedule that reduces overloads, use a [scheduling provider with resource leveling](guides/planning-engine.md#resource-scheduling). See [Resource Leveling and Paused Tasks](guides/resource-leveling.md) for how Gantt stores and displays the resulting delays and pauses.
 
 You can use the [grouping extension](guides/extensions-list.md#grouping) to break down the whole project by the **resource** property. 
 

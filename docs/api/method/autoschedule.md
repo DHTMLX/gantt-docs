@@ -37,5 +37,7 @@ gantt.autoSchedule(taskId);
 The method requires the [auto_scheduling](guides/extensions-list.md#autoscheduling) plugin to be included on the page. 
 :::
 
+To recalculate the schedule and read the updates and conflicts, use [ext.autoScheduling.solve()](api/other/autoscheduling-ext.md).
+
 ### Related Guides
 - [Auto Scheduling](guides/auto-scheduling.md)

@@ -45,6 +45,8 @@ The **group** parameter presents an object which includes a group of tasks and l
 The method requires the [auto_scheduling](guides/extensions-list.md#autoscheduling) plugin to be activated. 
 :::
 
+In v10.1 and later, when [constraint conflict resolution](api/config/auto_scheduling.md#resolve_constraint_conflicts) is set to `"prompt"`, drawing a link that would create a cycle opens a circular-link notice. Return `false` from the event handler to hide the notice. Gantt rejects the invalid link either way.
+
 ### Related API
 - [auto_scheduling](api/config/auto_scheduling.md)
 - [auto_scheduling_descendant_links](api/config/auto_scheduling_descendant_links.md)

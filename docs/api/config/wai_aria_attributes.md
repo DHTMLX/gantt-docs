@@ -20,11 +20,15 @@ gantt.config.wai_aria_attributes = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Default value:** undefined. ARIA output is enabled by default through
+[`gantt.config.accessibility.aria`](api/config/accessibility.md).
 
 ### Details
 
-added in version 4.1
+An explicit `true` or `false` takes precedence over `gantt.config.accessibility.aria`. Use
+`gantt.config.accessibility` for new configurations.
+
+Added in version 4.1.
 
 ### Related Guides
 - [Accessibility](guides/accessibility.md#wai-aria-attributes)

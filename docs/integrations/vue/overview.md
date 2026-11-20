@@ -188,6 +188,54 @@ const modals = {
 
 Use `filter` for task filtering and `resourceFilter` for resource-panel filtering.
 
+## Effort-driven tasks {#effort-driven-tasks}
+
+Configure [effort-driven task calculations](guides/effort-driven-tasks.md) through the `config` prop and provide the task assignments and resources. Use `useEffortDriven(ganttRef)` to read and edit work, scheduling modes and the effort-driven flag. It returns a computed value, so access the helpers through `.value` in script.
+
+~~~vue
+<script setup lang="ts">
+import { ref } from "vue";
+import VueGantt, {
+    defineGanttConfig,
+    useEffortDriven,
+    type SerializedTask,
+    type VueGanttRef
+} from "@dhx/vue-gantt";
+
+const config = defineGanttConfig({
+    date_format: "%Y-%m-%d",
+    work_time: true,
+    effort: {
+        enabled: true,
+        mode: "fixed_work",
+        effort_driven: false,
+        work_unit: "hour",
+        hours_per_day: 8
+    }
+});
+const resources = [{ id: 2, text: "Maya" }];
+const tasks = ref<SerializedTask[]>([{
+    id: 1,
+    text: "Review design",
+    start_date: "2027-04-05",
+    duration: 3,
+    owner_id: [{ resource_id: 2, value: 8 }]
+}]);
+
+const ganttRef = ref<VueGanttRef | null>(null);
+const effort = useEffortDriven(ganttRef);
+
+function setReviewWork() {
+    effort.value.setWork(1, 40);
+}
+</script>
+
+<template>
+    <button @click="setReviewWork">Set work to 40 hours</button>
+    <VueGantt ref="ganttRef" :config="config" :tasks="tasks" :resources="resources" />
+</template>
+~~~
+
 ## Public Sample Scenario Map
 
 These wrapper features are covered in public sample routes. Run them locally from [`vue-gantt-examples` on GitHub](https://github.com/DHTMLX/vue-gantt-examples) or try the [live demo](https://dhtmlx.github.io/vue-gantt-examples/).

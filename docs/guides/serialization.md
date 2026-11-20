@@ -22,6 +22,15 @@ As a result, the **json** variable from the code above will look something like 
 }
 ~~~
 
+Set the JSON task order explicitly with the second argument of `serialize()`:
+
+~~~js
+const canonical = gantt.serialize("json", { order: "canonical" });
+const display = gantt.serialize("json", { order: "display" });
+~~~
+
+Canonical order follows the current task hierarchy and sibling order. Display order follows the grid. JSON uses canonical order by default when the [stored WBS codes extension](guides/wbs-and-task-numbering.md) is active and display order otherwise.
+
 ## XML format
 
 To serialize data from a Gantt chart into an XML string, use the [serialize](api/method/serialize.md) method as in:
