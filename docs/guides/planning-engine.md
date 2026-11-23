@@ -17,30 +17,30 @@ In v10.1, Gantt uses its built-in v2 engine by default. To extend scheduling wit
 Load and initialize a compatible separate PlanningEngine module before creating the chart. It must expose the `Project` constructor accepted by [Gantt.createPlanningEngine](api/other/gantt.md#createplanningengine). Register the provider, enable auto scheduling and select its name in the chart's configuration before initialization.
 
 ~~~js
-function initWithPlanningEngine(planningEngineModule, projectData) {
-    Gantt.registerSchedulingEngine(
-        "plen",
-        () => Gantt.createPlanningEngine(planningEngineModule)
-    );
+Gantt.registerSchedulingEngine(
+    "plen",
+    () => Gantt.createPlanningEngine(planningEngineModule)
+);
 
-    gantt.plugins({ auto_scheduling: true });
-    gantt.config.auto_scheduling = { enabled: true, engine: "plen" };
-    gantt.init("gantt_here");
-    gantt.parse(projectData);
-}
+gantt.plugins({ auto_scheduling: true });
+gantt.config.auto_scheduling = { enabled: true, engine: "plen" };
+gantt.init("gantt_here");
 ~~~
+
 
 Registration is global. Each chart uses its own provider instance. Gantt creates the instance on first use and disposes it when replaced or when the chart is destroyed. Re-registering a name affects later provider instances. The built-in name `"v2"` is reserved. An unregistered name or an incompatible provider raises an error when first used.
 
-### Load project data into Gantt
+## Where scheduling data comes from {#scheduling-data}
 
-Pass your application's project data to Gantt in its usual [data format](guides/loading.md).
-The module passed to `Gantt.createPlanningEngine()` supplies the engine. The project data goes
-to `gantt.parse()`, or you can load it from a server with [gantt.load()](api/method/load.md).
-For example, after loading the compatible PlanningEngine module:
+PlanningEngine schedules the data loaded into the chart. You do not pass project data to the provider or to the [ext.autoScheduling](api/other/autoscheduling-ext.md) methods.
+
+- Load tasks, links, resources and assignments into Gantt in its usual [data format](guides/loading.md), with [gantt.parse()](api/method/parse.md) or [gantt.load()](api/method/load.md).
+- Each call reads the chart as it is at that moment: its tasks, links, calendars and scheduling settings. Calls that use resources also read the chart's resources and assignments. Later edits and reloads are used by the next call without any extra step.
+- The methods take options and, where supported, a [change set](api/other/autoscheduling-ext.md#scheduling-changes). A change set adds, updates or removes tasks, links and assignments relative to the chart. Use it to schedule a proposed change without loading it.
+- `preview()`, `analyze()`, `evaluate()`, `slots()` and `suggestAssignments()` write nothing. `solve()`, `level()` and `apply()` write to the chart.
 
 ~~~js
-initWithPlanningEngine(planningEngineModule, {
+gantt.parse({
     tasks: [
         { id: 1, text: "Design", start_date: new Date(2027, 3, 5), duration: 2,
             owner_id: [{ resource_id: 10, value: 8 }] },
@@ -49,20 +49,58 @@ initWithPlanningEngine(planningEngineModule, {
     links: [{ id: 1, source: 1, target: 2, type: "0" }],
     resources: [{ id: 10, text: "Maya", capacity: 8 }]
 });
+
+const scheduling = gantt.ext.autoScheduling;
+const changes = {
+    tasks: { add: [{ id: 3, text: "QA", start_date: new Date(2027, 3, 8), duration: 1 }] },
+    links: { add: [{ source: 2, target: 3 }] }
+};
+
+// The chart plus the new task, scheduled. Nothing is written.
+const proposal = scheduling.preview(changes);
+
+// Write the task and link, then schedule the chart.
+scheduling.apply(changes, { solve: true });
 ~~~
 
-When you run a scheduling operation, Gantt builds a model from that chart's tasks,
-dependencies, calendars, and scheduling settings. The adapter converts the model to
-PlanningEngine's format and passes it to the engine's `Project` API. Calls that use resources
-also read the chart's resources and assignments. You only load the project once, into Gantt.
-`preview()` models a proposed change without writing it to the chart. `solve()` and `level()`
-write the resulting updates to Gantt.
+With auto scheduling enabled, Gantt schedules the data when it is parsed. See [schedule_on_parse](api/config/auto_scheduling.md#schedule_on_parse). A `preview()` result shows the dates that the change set would produce. Only `apply()` adds the task and link to the chart. A `solve()` call without changes schedules the chart as loaded, so it would not include task 3.
+
+### Schedule data that is not in the chart {#separate-dataset}
+
+To schedule a dataset without adding it to your chart, load it into a separate Gantt instance. For example, use this for a scenario from your server or a project you plan to import. Without a `container`, [Gantt.getGanttInstance()](guides/multiple-gantts.md) initializes the instance without rendering it. Give it the same plugin, provider, working time, calendars and duration unit as your chart. Then call the scheduling methods on that instance, read the result with [serialize()](api/method/serialize.md), and release the instance with [destructor()](api/method/destructor.md).
+
+~~~js
+function levelDataset(dataset, datasetCalendars) {
+    const scratch = Gantt.getGanttInstance({
+        plugins: { auto_scheduling: true },
+        config: {
+            work_time: gantt.config.work_time,
+            duration_unit: gantt.config.duration_unit,
+            auto_scheduling: { enabled: true, engine: "plen" }
+        },
+        calendars: datasetCalendars // the calendars that the dataset uses
+    });
+
+    try {
+        scratch.parse(dataset);
+        const result = scratch.ext.autoScheduling.level({ allowSplits: false });
+        return { result, data: scratch.serialize() };
+    } finally {
+        scratch.destructor();
+    }
+}
+~~~
+
+Calls on the separate instance read and write only that instance. Your chart and its data processor are not affected. The instance gets its own provider instance, which Gantt disposes with it.
 
 ## Capabilities
 
-| Capability | Built-in v2 | PlanningEngine adapter |
+| Capability | Built-in | PlanningEngine adapter |
 | --- | --- | --- |
-| Scheduling, previews, slack and critical path | Yes | Yes |
+| Scheduling | Yes | Yes |
+| Previews | Yes | Yes |
+| Slack | Yes | Yes |
+| Critical path | Yes | Yes |
 | Resource leveling, load profiles and overload reporting | No | Yes |
 | Candidate evaluation | No | Yes |
 | Skill matching and assignment proposals | No | Yes |
