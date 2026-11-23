@@ -30,6 +30,7 @@ Updating from an earlier version? Check the [migration guide](migration.md) for 
 ### Updates
 
 - Remove the v1 scheduling and analysis engines and their fallback settings. See [migration from 10.0](migration.md#legacy-scheduling-engine).
+- Read the `active`, `pauses` and `leveling_delay` data fields in every chart. Rename these fields if your data already uses them for other values. See [migration from 10.0](migration.md#new-task-fields).
 - Improve text contrast in the dark theme and refine support for forced colors and reduced motion. See the [Accessibility guide](guides/accessibility.md).
 - Refresh toolbar segmented controls and labeled toggles and add [three theme variables](guides/toolbar.md) to style segmented controls.
 - Refresh fixed project dates to 2027 in the public examples, including the Microsoft Project, Primavera P6 and Excel import demos.

@@ -32,6 +32,33 @@ gantt.config.auto_scheduling = { enabled: true };
 The built-in engine is the default. See [PlanningEngine](guides/planning-engine.md) to register
 and select an additional provider.
 
+### Task and link fields with a new meaning {#new-task-fields}
+
+Gantt 10.1 reads these fields in every chart. No plugin or setting turns them on.
+
+| Field | Meaning in 10.1 |
+| --- | --- |
+| `active` on a task or link | `false` makes the item inactive. Gantt applies the inactive style, leaves the item out of auto scheduling and the critical path, and leaves an inactive task out of the dates of an active parent summary and out of resource load. A task's `false` also applies to its descendants and to the links that connect to it. |
+| `pauses` on a task | Pause records in the form `{ at, length }`. For regular tasks in minute, hour or day duration units, Gantt fits the work around the pauses when it calculates the end date and draws the bar in segments. |
+| `leveling_delay` on a task | A resource leveling delay. The built-in auto-scheduling engine shifts the task by this amount. |
+
+If your data already uses one of these names for something else, rename the field before you
+load the data, and use the new name when you save it. Otherwise existing tasks and links can
+change their appearance, dates or scheduling after the upgrade.
+
+~~~js
+data.tasks.forEach(task => {
+    if ("active" in task) {
+        task.enabled = task.active;
+        delete task.active;
+    }
+});
+gantt.parse(data);
+~~~
+
+See [Inactive Tasks and Links](guides/inactive-tasks-links.md) and
+[Resource Leveling and Paused Tasks](guides/resource-leveling.md).
+
 ### Columns named predecessors or successors {#dependency-column-defaults}
 
 A column named `predecessors` or `successors` now lists dependencies and gets an inline editor
