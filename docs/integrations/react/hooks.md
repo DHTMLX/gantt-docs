@@ -310,6 +310,31 @@ function TaskDetails({ ganttRef }) {
 }
 ~~~
 
+## useWBS
+
+Use `useWBS(ganttRef)` to read and edit [stored WBS codes](guides/wbs-and-task-numbering.md) in the React wrapper. Enable the extension with `plugins={{ wbs: true }}`.
+
+~~~tsx
+import { useRef } from "react";
+import ReactGantt, { useWBS, type ReactGanttRef } from "@dhx/react-gantt";
+
+export function ProjectGantt() {
+  const ganttRef = useRef<ReactGanttRef | null>(null);
+  const { available, generate } = useWBS(ganttRef);
+
+  return (
+    <>
+      <button disabled={!available} onClick={() => generate({ mode: "assignMissing" })}>
+        Assign missing codes
+      </button>
+      <ReactGantt ref={ganttRef} plugins={{ wbs: true }} />
+    </>
+  );
+}
+~~~
+
+The hook exposes the stored-code operations, outline-number lookups and `lastOperation`, which updates when an applied WBS operation changes codes. Use the Gantt instance to read row numbers.
+
 ## useWorkTime
 
 Bridge to Gantt's built-in work time calculation functions. Use this for highlighting non-working time and for date arithmetic that respects work calendars.
@@ -341,6 +366,42 @@ function GanttWithWeekends() {
   return <ReactGantt ref={ganttRef} templates={templates} tasks={tasks} />;
 }
 ~~~
+
+## useEffortDriven {#useeffortdriven}
+
+Use `useEffortDriven(ganttRef)` with a chart configured for [effort-driven tasks](guides/effort-driven-tasks.md). Call the returned helpers from callbacks after the chart has mounted.
+
+| Helper | Effect |
+| --- | --- |
+| `isEnabled()` | Returns whether effort calculations are enabled. |
+| `getTaskWork(id)`, `setWork(id, work)` | Read or set task work in the configured work unit. |
+| `getSchedulingMode(id)`, `setSchedulingMode(id, mode)` | Read or set a task's `SchedulingMode` (`"fixed_duration"`, `"fixed_units"` or `"fixed_work"`). |
+| `isEffortDriven(id)`, `setEffortDriven(id, enabled)` | Read or set the task's effort-driven flag. |
+
+Pass the chart's task ID as a string or number. Setters call `updateTask()` and have no effect if the chart or task is unavailable. Changing the mode or flag alone does not recalculate work. Pass an existing task ID to `getTaskWork()`.
+
+~~~tsx
+import { useRef } from "react";
+import ReactGantt, {
+    useEffortDriven,
+    type ReactGanttProps,
+    type ReactGanttRef
+} from "@dhx/react-gantt";
+
+function EffortChart({ config, tasks, resources }: Pick<ReactGanttProps, "config" | "tasks" | "resources">) {
+    const ganttRef = useRef<ReactGanttRef>(null);
+    const effort = useEffortDriven(ganttRef);
+
+    return (
+        <>
+            <button onClick={() => effort.setWork(1, 40)}>Set work to 40 hours</button>
+            <ReactGantt ref={ganttRef} config={config} tasks={tasks} resources={resources} />
+        </>
+    );
+}
+~~~
+
+This example assumes task `1` exists and `config.effort` enables effort calculations in hours.
 
 ## Composing hooks
 

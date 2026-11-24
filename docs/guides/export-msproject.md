@@ -23,6 +23,8 @@ If you need a ready-to-use tool, try GanttPRO - [project management Gantt chart 
 
 ## Online export service restrictions
 
+MS Project import and export omit [task pauses](guides/resource-leveling.md).
+
 :::note
 The export service has time and request size restrictions.
 :::

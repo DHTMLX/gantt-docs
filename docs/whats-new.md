@@ -9,6 +9,46 @@ sidebar_label: "What's New"
 Updating from an earlier version? Check the [migration guide](migration.md) for required changes and update steps.
 :::
 
+## 10.1
+
+### New Functionality
+
+- Add [accessibility settings](api/config/accessibility.md) for screen-reader announcements, grid semantics, increased text contrast in the Terrace skin, and non-colour cues. The [accessibility API](guides/accessibility.md#customizing-what-screen-readers-announce) supports custom labels and live announcements.
+- Add [keyboard navigation](guides/keyboard-navigation.md) for the resource panel and classic lightbox resource assignments. Improve screen-reader descriptions for task rows, dependency cells and resource load.
+- Add [scheduling methods](api/other/autoscheduling-ext.md) to solve a schedule, preview a change set, analyze slack and critical paths, and apply edits. Add [link-drag events](api/event/onlinkdragmove.md) for previews while a link is being drawn.
+- Add [constraint conflict resolution](guides/auto-scheduling.md#resolving-constraint-conflicts) for user edits, including a dialog and events to inspect the choices or supply a custom decision.
+- Add [scheduling engine selection](guides/planning-engine.md) with optional PlanningEngine integration for resource leveling, candidate evaluation and staffing.
+- Add [resource leveling adjustments and task pauses](guides/resource-leveling.md) to the task data model and timeline.
+- Add [effort-driven tasks](guides/effort-driven-tasks.md) with Fixed duration, Fixed units and Fixed work modes, and helpers for React and Vue.
+- Add [inactive tasks and links](guides/inactive-tasks-links.md) to keep work visible while excluding it from scheduling.
+- Add [stored WBS codes, canonical outline numbers and row numbers](guides/wbs-and-task-numbering.md), including WBS masks, locking, bulk generation and new dependency reference modes.
+- Add [batched JSON DataProcessor requests](api/other/dataprocessor.md) and a serialization order option in [serialize](api/method/serialize.md).
+- Add [automatic templates and editors](guides/specifying-columns.md#dependencycolumns) for configured `predecessors` and `successors` columns, the `successor` inline editor, and opt-in [duration column formatting](api/config/columns.md).
+- Add the configurable [toolbar](guides/toolbar.md) and [context menu](guides/context-menu.md). The paid packages include a toolbar sample with the default preset.
+- Add the [advanced task form](guides/advanced-task-form.md) with configurable tabs and fields, task and link lists, and resource assignment editing.
+
+### Updates
+
+- Remove the v1 scheduling and analysis engines and their fallback settings. See [migration from 10.0](migration.md#legacy-scheduling-engine).
+- Read the `active`, `pauses` and `leveling_delay` data fields in every chart. Rename these fields if your data already uses them for other values. See [migration from 10.0](migration.md#new-task-fields).
+- Improve text contrast in the dark theme and refine support for forced colors and reduced motion. See the [Accessibility guide](guides/accessibility.md).
+- Refresh toolbar segmented controls and labeled toggles and add [three theme variables](guides/toolbar.md) to style segmented controls.
+- Refresh fixed project dates to 2027 in the public examples, including the Microsoft Project, Primavera P6 and Excel import demos.
+
+### Fixes
+
+- Fix the issue where reloading tasks with [parse](api/method/parse.md) could freeze the page when parent relationships changed. A cyclic task hierarchy now reports an invalid-tree error on reload.
+- Fix redundant resource-panel repaints and resource-cell template calls during task updates.
+- Fix overlapping timeline drag targets that made dependency links difficult to create.
+- Fix rescheduling from a remaining summary predecessor after deleting a dependency.
+- Fix a performance regression during bulk task updates with [batchUpdate](api/method/batchupdate.md).
+- Fix effort recalculation after editing resource assignments in the advanced task form or in a batch update.
+- Fix the number inline editor in narrow columns. The input stays visible and stepper buttons hide below 90 px of stepper width.
+- Fix toolbar Tab and Shift+Tab navigation when the Gantt keyboard navigation plugin is off.
+- Fix disappearing tasks when zooming with Ctrl+wheel in the wheel-zoom sample.
+- Fix the issue where Enter, Ctrl+Enter, Shift+Right and Shift+Left changed a [read-only task](guides/readonly-mode.md) with keyboard navigation (thanks to Stepan Kuntso). See [migration from 10.0](migration.md#readonly-task-add-button).
+- Fix [undo](guides/undo-ext.md) of an action that updates the same task more than once, such as a task-form save that reschedules the task. One undo now restores the state from before the first update.
+
 ## 10.0.1
 
 <span class='release_date'>August 4, 2026. Bugfix release</span>

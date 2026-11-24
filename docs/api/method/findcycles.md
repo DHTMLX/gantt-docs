@@ -87,6 +87,7 @@ The *gantt.findCycles* method will return the following value:
 
 ### Related Guides
 - [Auto Scheduling](guides/auto-scheduling.md)
+- [Analyze cycles, slack and the critical path](api/other/autoscheduling-ext.md)
 
 ### Change log
 - added in version 4.1

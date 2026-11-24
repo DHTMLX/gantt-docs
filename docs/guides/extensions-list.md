@@ -9,6 +9,25 @@ dhtmlxGantt includes a set of extensions which add extra functionality to the st
 
 To use an extension, you should activate the plugin with the help of the [gantt.plugins](api/method/plugins.md) method. 
 
+## Toolbar
+
+Enable `toolbar` to add a configurable action bar above the chart or in a toolbar layout cell.
+See [Toolbar](guides/toolbar.md) for the default actions and customization options.
+
+## Context menu
+
+Enable `context_menu` to add actions for tasks, links and empty chart space. See
+[Context Menu](guides/context-menu.md) for built-in actions and custom items.
+
+## Advanced task form
+
+In the PRO version, enable `task_form` for a task editor with tabs, field layouts and custom
+actions. See [Advanced Task Form](guides/advanced-task-form.md).
+
+## Stored WBS codes
+
+Enable `wbs` to generate, validate and store WBS codes. This extension is available in paid editions. See [WBS Codes and Task Numbering](guides/wbs-and-task-numbering.md).
+
 ## Advanced drag-n-drop
 
 Provides the possibility to create and select tasks with drag-n-drop.
@@ -50,6 +69,8 @@ Article: [Auto Scheduling](guides/auto-scheduling.md)
 
 
 API: [auto_scheduling](api/config/auto_scheduling.md)
+
+API: [gantt.ext.autoScheduling](api/other/autoscheduling-ext.md)
 
 
 Sample: [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)

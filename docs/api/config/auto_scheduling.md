@@ -279,6 +279,24 @@ gantt.config.auto_scheduling = {
 
 When set to `true`, the [onAutoScheduleConflict](api/event/onautoscheduleconflict.md) event fires (with `kind: "calendar-non-working"`) whenever scheduling moves a task onto its own non-working time. The task date is applied in both modes - this option only controls whether the situation is reported, so you can surface it in the UI.
 
+#### resolve_constraint_conflicts
+
+**Type**: `"keep" | "prompt" | "adjust"`
+
+**Default**: `"keep"`
+
+Controls how Gantt resolves new constraint conflicts from user edits. Set both `enabled` and `apply_constraints` to `true` to use this setting. The default keeps the constraint. Use `"prompt"` to let the user choose a remedy or `"adjust"` to move the constraint date automatically while keeping its type.
+
+See [Resolving constraint conflicts](guides/auto-scheduling.md#resolving-constraint-conflicts) for supported edits and the dialog behavior.
+
+#### engine
+
+**Type**: `string`
+
+**Default**: `"v2"`
+
+Selects the scheduling and analysis engine for the chart. With the default setting, Gantt uses its built-in engine. To select another engine, [register it by name](api/other/gantt.md#registerschedulingengine) before the first scheduling or analysis call, then set `engine` to the registered name. See [Using PlanningEngine with Gantt](guides/planning-engine.md).
+
 ### Related API
 - [project_start](api/config/project_start.md)
 - [project_end](api/config/project_end.md)
@@ -299,11 +317,15 @@ When set to `true`, the [onAutoScheduleConflict](api/event/onautoscheduleconflic
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 - [onAutoScheduleConflict](api/event/onautoscheduleconflict.md)
 - [onAutoScheduleNoConverge](api/event/onautoschedulenoconverge.md)
+- [onBeforeAutoScheduleConflictResolve](api/event/onbeforeautoscheduleconflictresolve.md)
+- [onAfterAutoScheduleConflictResolve](api/event/onafterautoscheduleconflictresolve.md)
+- [ext.autoScheduling](api/other/autoscheduling-ext.md)
 
 ### Related Guides
 - [Auto Scheduling](guides/auto-scheduling.md)
 
 ### Change log
+- Added `resolve_constraint_conflicts` and `engine` in v10.1.
 - the `strict_calendar` option has been added in v10.0
 - since v9.1, using the object configuration for `auto_scheduling` is the recommended approach
 - Can be set as an object since v9.0

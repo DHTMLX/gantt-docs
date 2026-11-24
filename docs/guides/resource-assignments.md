@@ -121,6 +121,10 @@ The initial *start_date*, *end_date*, and *duration* properties may have `null` 
 
 ## Configuring resource grid columns in the lightbox
 
+The Hours/Day column defaults to 90 px and the Delete column to 60 px. The Hours/Day editor keeps its numeric input and drops its increment and decrement buttons when the stepper is narrower than 90 px.
+
+With [effort-driven scheduling](guides/effort-driven-tasks.md) enabled, an assignment's `value` expresses work units per full working day (hours per day by default). See [Assignments and resource load](guides/resource-leveling.md#assignments-and-resource-load) for how delay and pauses affect the assignment's working time.
+
 The default configuration of columns of the resource table in the lightbox is given below:
 
 ~~~js
@@ -147,7 +151,7 @@ const defaultResourceLightboxConfig = {
             }
         },
         {
-            name: "hours/Day", label: "Hours/Day", align: "center", width: 70,
+            name: "hours/Day", label: "Hours/Day", align: "center", width: 90,
             editor: numberEditor, template: function (assignment) {
             return assignment.value ? +assignment.value : ``;
             }
@@ -175,7 +179,7 @@ const defaultResourceLightboxConfig = {
             }
         },
         {
-            name: "delete", label: "Delete", align: "center", width: 80, 
+            name: "delete", label: "Delete", align: "center", width: 60,
             template: function (assignment) {
                 return `<div
                     data-assignment-id='${assignment.id}'

@@ -44,17 +44,26 @@ gantt.form_blocks["date_local_editor"] = {
 
 The object has the following types:
 
+- **calendar** - (*LightboxControl*) - selects a task calendar
 - **checkbox** - (*LightboxControl*) - the [Checkbox](guides/checkbox.md) control
+- **combo** - (*LightboxControl*) - selects a value from a searchable list
 - **constraint** - (*LightboxControl*) - the [Constraint](guides/constraint.md) control
+- **datepicker** - (*LightboxControl*) - edits a single date
 - **duration** - (*LightboxControl*) - the [Duration](guides/duration.md) control
 - **duration_optional** - (*LightboxControl*) - the [Duration](guides/duration.md) control that allows changing the [section visibility](guides/duration.md#switching-section-visibility)
 - **parent** - (*LightboxControl*) - the [Parent](guides/parent.md) control
+- **progress** - (*LightboxControl*) - edits progress as a percentage and stores a fraction
 - **radio** - (*LightboxControl*) - the [Radio button](guides/radio.md) control
 - **resources** - (*LightboxControl*) - the [Resources](guides/resources.md) control
 - **select** - (*LightboxControl*) - the [Select](guides/select.md) control
+- **stepper** - (*LightboxControl*) - edits a numeric value
+- **switch** - (*LightboxControl*) - toggles a boolean value
 - **template** - (*LightboxControl*) - the [Template](guides/template.md) control
+- **text** - (*LightboxControl*) - edits a single line of text
 - **textarea** - (*LightboxControl*) - the [Textarea](guides/textarea.md) control
 - **time** - (*LightboxControl*) - the [Time](guides/time.md) control
 - **time_optional** - (*LightboxControl*) - the [Time](guides/time.md) control that allows changing the [section visibility](guides/time.md#switching-section-visibility)
 - **typeselect** - (*LightboxControl*) - the [Typeselect](guides/typeselect.md) control
 - **[ControlName: string]** - (*LightboxControl | undefined*) - a custom control
+
+See the [advanced task form](guides/advanced-task-form.md#fields) for dependency editing and effort fields.

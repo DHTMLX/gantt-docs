@@ -42,6 +42,8 @@ const wbs_code = gantt.getWBSCode(gantt.getTask(3)) // -> returns "1.2"
 
 ### Details
 
+This legacy method follows the display order. Sorting the grid can change the returned number. Use [getOutlineNumber](api/method/getoutlinenumber.md) for a number based on the task hierarchy and sibling order.
+
 added in version 4.2
 
 ### Related API
@@ -49,4 +51,5 @@ added in version 4.2
 
 ### Related Guides
 - [Specifying Columns](guides/specifying-columns.md#wbscode)
+- [WBS Codes and Task Numbering](guides/wbs-and-task-numbering.md)
 

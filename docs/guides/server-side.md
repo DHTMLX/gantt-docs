@@ -252,6 +252,40 @@ Read more [here](guides/server-side.md#resources_crud).
 :::
 
 
+### Batched JSON requests {#batched-json-requests}
+
+Set `batch: true` with `mode: "JSON"` to send pending changes in a POST for each entity type. For example, task changes and link changes are sent in separate requests. Other modes, including `REST-JSON`, do not support this option.
+
+~~~js
+gantt.createDataProcessor({
+    url: "/api",
+    mode: "JSON",
+    batch: true
+});
+~~~
+
+Each entry contains the row ID, its action and the data. For example:
+
+~~~json
+{
+    "batch": [
+        { "id": 12, "action": "updated", "data": { "wbs_code": "1.2" } },
+        { "id": 13, "action": "updated", "data": { "wbs_code": "1.3" } }
+    ]
+}
+~~~
+
+Return one result per row. The response can be a JSON array or an object with the array under `batch`. Use `sid` for the original row ID and `tid` if the server assigns a new ID. A row omitted from the response remains pending for a later send.
+
+~~~json
+[
+    { "sid": 12, "action": "updated" },
+    { "sid": 13, "action": "error" }
+]
+~~~
+
+Batching reduces the number of HTTP requests. The server decides how to validate, apply and commit the changes. When enforcing uniqueness for [stored WBS codes](guides/wbs-and-task-numbering.md), handle code swaps by validating the final set of task codes before saving the batch.
+
 ### Request parameters {#requestparams}
 
 Create/Update/Delete requests will contain all public properties of a client-side task or link object:
@@ -753,8 +787,7 @@ gantt.render();
 By default, deletion of a task invokes a chain deletion of its nested task and related links. Gantt will send a *delete* request for each removed task and link.
 Thus, you don't have to maintain data integrity on a backend, it can be handled by the Gantt reasonably well.
 
-On the other hand, this strategy can generate a large number of AJAX calls to the backend API, since dhtmlxGantt has no batch-request support for AJAX
-and the number of tasks and links is not limited. 
+This strategy can generate many requests when sending individual records. If the server accepts [batched JSON requests](#batched-json-requests), enable batching to group pending task and link changes by entity type.
 
 In that case, cascade deletion can be disabled using the [](api/config/cascade_delete.md) config. 
 Thus, when a project branch is deleted, the client will send a delete request only for the top item and will expect the backend to delete the related links and subtasks.

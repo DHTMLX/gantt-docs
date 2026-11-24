@@ -22,7 +22,10 @@ gantt.ext.inlineEditors.init();
 
 The **ext** object includes the following extensions:
 
+- [gantt.ext.accessibility](guides/accessibility.md#customizing-what-screen-readers-announce)
+- [gantt.ext.autoScheduling](api/other/autoscheduling-ext.md)
 - [gantt.ext.clickDrag](guides/click-drag-ext.md)
+- [gantt.ext.contextMenu](guides/context-menu.md)
 - [gantt.ext.emptyStateElement](guides/empty-state-element-ext.md)
 - [gantt.ext.formatters](guides/formatters-ext.md)
 - [gantt.ext.fullscreen](guides/fullscreen-ext.md)
@@ -30,6 +33,9 @@ The **ext** object includes the following extensions:
 - [gantt.ext.keyboardNavigation](guides/keynav-ext.md)
 - [gantt.ext.overlay](guides/overlay-ext.md)
 - [gantt.ext.quickInfo](guides/quickinfo-ext.md)
+- [gantt.ext.taskForm](guides/advanced-task-form.md)
+- [gantt.ext.toolbar](guides/toolbar.md)
 - [gantt.ext.tooltips](guides/tooltips-ext.md)
 - [gantt.ext.undo](guides/undo-ext.md)
+- [gantt.ext.wbs](guides/wbs-and-task-numbering.md)
 - [gantt.ext.zoom](guides/zoom.md)

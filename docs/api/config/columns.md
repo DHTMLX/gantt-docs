@@ -39,6 +39,7 @@ Each object in the array specifies a single column. An object can take the follo
 - **max_width?** - (*number*) - sets the maximum column width in case of resize operations;
 - **min_width?** - (*number*) - sets the minimum column width in case of resize operations;
 - **name?** - (*string | number*) - defines the column's id. The name 'add' allows you to add a column with the '+' sign;
+- **default_formatter?** - (*boolean*) - formats the value in a column named `duration` when the column has no explicit template. Defaults to `false`. The default formatter adds units in paid editions and displays a number in the Community edition;
 - **resize?** - (*boolean*) - enables the possibility to resize a column by dragging the column's border (PRO);
 - **sort? (task1, task2): number** - (*boolean | string | Function*) - the configuration of sorting after clicking on the column header. When the property is set to *false*, sorting is disabled. You can also set a different task property in the *string* to sort the column or use a custom sorting function.
     - **_task1_** - (*Task*) - an object of the first task that will be sorted.
@@ -56,7 +57,9 @@ Each object in the array specifies a single column. An object can take the follo
     - **_min?_** - (*Date | number*) - minimal value for the date and duration types.
     - **_max?_** - (*Date | number*) - maximal value for the date and duration types.
     - **_options?_** - (*Array &lt;any&gt;*) - an array with the options for the select types.
-    - **_formatter?_** - (*DurationFormatter | LinkFormatter*) - formatter for the date and predecessor types.
+    - **_formatter?_** - (*DurationFormatter | LinkFormatter*) - formatter for the duration, predecessor and successor editors.
+
+Columns named `predecessors` or `successors` get a default template and an inline editor when the grid reads the column configuration. Each default applies only when its property is `undefined`. Use `template: null` to display the task property of the same name and `editor: null` to disable the default editor. See [Predecessor and successor columns](guides/specifying-columns.md#dependencycolumns).
 
 
 The width of Grid columns depends on two attributes: the **width** of the column and [grid_width](api/config/grid_width.md). If the sum of the width of columns is not equal to the width of the grid, Gantt changes one of the parameters.
