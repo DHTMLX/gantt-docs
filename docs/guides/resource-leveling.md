@@ -36,6 +36,29 @@ gantt.batchUpdate(() => {
 
 The built-in scheduler uses the delay to shift a task's start later in forward scheduling, or its end earlier in backward scheduling. Constraints may limit the shift. Clear existing adjustments or level again if you change scheduling direction. Manually changing the leading date clears the delay through the auto-scheduling edit flow. Changing only the trailing edge keeps the delay. Moving the task moves its pauses with it.
 
+### Edit the delay in the task form {#edit-delay-in-task-form}
+
+Add a `stepper` section to the lightbox to edit `leveling_delay` in the task form. The `samples/11_resources/16_leveling_delay.html` sample uses this configuration:
+
+~~~js
+gantt.config.lightbox.sections = [
+    { name: "description", height: 70, map_to: "text", type: "textarea", focus: true },
+    { name: "leveling_delay", label: "Leveling delay, days", type: "stepper",
+        map_to: "leveling_delay", min: 0, step: 1 },
+    { name: "time", type: "duration", map_to: "auto" }
+];
+~~~
+
+Saving the form with an empty field clears the delay. `step: 1` snaps an edited value to whole units. A stored fractional delay stays unchanged when the user does not edit the field.
+
+With auto scheduling enabled, a task-form save that changes only `leveling_delay` reschedules the task, and so does a change made inside `gantt.ext.autoScheduling.asUserEdit()`. Both follow the rules of an interactive edit under the existing constraints. A longer delay moves the task further from the date its dependency links imply. A shorter or cleared delay moves the task back only as far as an interactive edit allows. A task without predecessors keeps its start.
+
+The task's stored constraint is kept, both in constraint mode and in preferred-date mode. A remedy chosen to resolve a [constraint conflict](guides/auto-scheduling.md#resolving-constraint-conflicts) can still change constraints. Cancelling the conflict restores the original delay, or removes `leveling_delay` if the task did not have it. With the [Undo](guides/undo-ext.md) plugin, one undo restores the delay and the dates from before the save.
+
+:::note
+A plain `gantt.updateTask()` that changes `leveling_delay` does not reschedule the task. An inline editor mapped to `leveling_delay` does not reschedule it either. Call [gantt.autoSchedule()](api/method/autoschedule.md) afterwards, or make the change inside [asUserEdit()](api/other/autoscheduling-ext.md).
+:::
+
 ## Schedule a task with pauses
 
 Pauses affect regular scheduled tasks when `duration_unit` is `"minute"`, `"hour"`, or `"day"` and `duration_step` is 1. Gantt fits work into the working time outside the pauses. A pause that falls entirely in non-working time or after the task's work finishes adds no time to the task.

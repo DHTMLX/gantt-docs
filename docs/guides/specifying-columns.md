@@ -31,7 +31,7 @@ By default, the grid contains 4 columns:
 1. Task name
 2. Start date
 3. Duration 
-4. '+' column. A special column with the <code>name="add"</code> that displays the '+' sign which allows users to add children for a task.
+4. '+' column. A special column with the <code>name="add"</code> that displays the '+' sign which allows users to add children for a task. The button is shown disabled, with the `gantt_add_disabled` class, for read-only tasks and in a read-only chart (see [Read-Only Mode](guides/readonly-mode.md)).
 
 :::note
 Note, you needn't to specify the [columns](api/config/columns.md) parameter to present the default columns in the grid.

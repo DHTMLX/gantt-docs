@@ -202,6 +202,10 @@ There is a set of ready shortcuts that you can use to navigate the Gantt chart:
 - **Shift+Down/Up** - expand/collapse branch 
 
 
+:::note
+Enter, Ctrl+Enter, Shift+Left/Right and Delete do nothing on a [read-only task](guides/readonly-mode.md#readonlymodeforspecifictaskslinks). In a read-only chart, Enter opens the lightbox of tasks with `editable: true`.
+:::
+
 [Keyboard Navigation](https://docs.dhtmlx.com/gantt/samples/02_extensions/16_keyboard_navigation.html)
 
 

@@ -96,6 +96,22 @@ can include the task grid, custom controls, a resource grid and a resource timel
 host page handles Tab assuming that one press leaves the chart, let focus move through the
 layout in its natural order. See [Keyboard Navigation](guides/keyboard-navigation.md#focus-on-gantt).
 
+### Add button and shortcuts for read-only tasks {#readonly-task-add-button}
+
+In 10.0, the "+" button of a task with `readonly: true` added a subtask. Enter, Ctrl+Enter,
+Shift+Left and Shift+Right also acted on such a task. In 10.1, the button stays in place but is
+disabled, and these actions do nothing on a read-only task. If your application lets users add
+subtasks under a read-only task, provide your own control that calls the API. To hide the
+disabled button, use this CSS:
+
+~~~css
+.gantt_add_disabled {
+    display: none;
+}
+~~~
+
+See [Read-Only Mode](guides/readonly-mode.md#readonlymodeforspecifictaskslinks).
+
 ### TypeScript lightbox section configuration {#lightbox-section-types}
 
 Standard lightbox section settings now accept `LightboxSectionEntry[] | LightboxTabSections`.

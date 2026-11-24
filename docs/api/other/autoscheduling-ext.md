@@ -80,6 +80,8 @@ A conflict has `kind: "constraint-violation"` with `task`, `constraint`, `violat
 
 `asUserEdit()` returns an object with the same optional `resolution`. Wait for [onAfterAutoScheduleConflictResolve](api/event/onafterautoscheduleconflictresolve.md) if an edit returns `"pending"`.
 
+An `asUserEdit()` call that changes only `leveling_delay` reschedules the task in the same way as a task-form save and keeps the task's stored constraint. A plain [updateTask()](api/method/updatetask.md) call that changes `leveling_delay` does not reschedule the task. See [Edit the delay in the task form](guides/resource-leveling.md#edit-delay-in-task-form).
+
 ## Invalid changes and timing
 
 `preview()` rejects malformed changes, such as updates to unknown IDs or a new task without dates. It reports a proposed dependency cycle in the result. `apply()` validates the change set before writing and rejects a new cycle. It also rejects task deletes when [deleteAfterConfirmation](api/other/dataprocessor.md) is enabled.

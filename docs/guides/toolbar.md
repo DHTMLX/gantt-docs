@@ -83,6 +83,7 @@ gantt.config.toolbar = {
 | `width`, `ariaLabel` | Input width in pixels and accessible name for combo, text, stepper and datepicker items. Omit `width` to use the compact default. A visible input `label` is associated with the input. Use `ariaLabel` to give each field a specific name when the toolbar uses a shared visible caption. |
 | `config` | Options passed to the input control, such as `min`, `max` and `step` for a stepper. |
 | `disabled`, `hidden` | Disable or hide the item. |
+| `overflow` | Where the item goes on a narrow toolbar: `"auto"` (default), `"never"` or `"always"`. See [Narrow screens](guides/toolbar.md#narrow-screens). |
 
 ~~~js
 gantt.config.toolbar = [
@@ -118,6 +119,61 @@ gantt.config.toolbar = [
 ~~~
 
 Use `themes` to supply an array of `{ id, label?, mode?, contrast?, icon? }` options. Use a hyphenated skin ID such as `contrast-black` and a mode of `"light"`, `"dark"` or `"auto"`. With `remember: true`, Gantt stores the choice in `localStorage["gantt_theme"]`. To restore it at startup, apply the stored skin before initializing Gantt. The toolbar's selection follows choices made through the item. An external call to `setSkin()` can change the chart without updating the item.
+
+## Narrow screens {#narrow-screens}
+
+The toolbar stays usable on narrow screens. By default it stays one row, and items that do not fit move into a **More** menu button. Set `overflow` in [`gantt.config.toolbar`](api/config/toolbar.md) to choose another behavior.
+
+| Mode | Behavior |
+| --- | --- |
+| `"menu"` (default) | The toolbar stays one row. Items that do not fit move, starting from the end, into a "More" menu button. |
+| `"collapse"` | All non-pinned items are always in one burger menu button. |
+| `"wrap"` | Items wrap onto more lines and the toolbar row grows. |
+
+With `"menu"`, set `collapseWidth` to a width in CSS px. When the toolbar is narrower than this value, all items except pinned ones go into one burger menu button. The width is the toolbar's own width, not the viewport width. `collapseWidth` is not set by default.
+
+Each item has its own `overflow` property. It controls where the item goes:
+
+| Item `overflow` | Behavior |
+| --- | --- |
+| `"auto"` (default) | The item can move into the menu. |
+| `"never"` | The item is pinned and stays in the row. |
+| `"always"` | The item shows only in the menu. |
+
+Pinned items (`overflow: "never"`) stay in the row. Moved items keep their order in the menu. To change an item at runtime, call `updateItem`:
+
+~~~js
+gantt.ext.toolbar.updateItem("critical_path", { overflow: "always" });
+~~~
+
+The example below keeps the "New task" button in the row. Below 480 px, the other items go into one menu.
+
+~~~js
+gantt.plugins({ toolbar: true, undo: true, critical_path: true });
+gantt.config.toolbar = {
+    collapseWidth: 480,
+    items: [
+        { id: "add_task", overflow: "never" }, "|",
+        "undo", "redo", "|",
+        "zoom_in", "zoom_out", "zoom_level", "|",
+        "critical_path", "expand_all", "collapse_all",
+        "spacer", "theme", "fullscreen"
+    ]
+};
+gantt.init("gantt_here");
+~~~
+
+Items appear in the menu as follows:
+
+- Buttons become menu items.
+- Toggles become checkable items.
+- Menus, the zoom controls and the theme controls become submenus.
+- Segmented controls and combos become submenus with the current choice checked.
+- Text, stepper and datepicker fields open in a popup from the menu.
+
+A `comp: "label"` caption labels the item right after it. The caption is hidden while that item is in the menu, and a caption is never listed in the menu. A caption next to an item with `hidden: true` stays shown.
+
+The menu button and its menu share one accessible name: "Menu" for the burger menu, and "More" otherwise. The menu button is one keyboard stop. Press Enter or Space to open the menu, and ArrowDown to move to the first item. Escape closes the menu and returns focus to the menu button. Items in the menu fire the same `onToolbarItemClick` and `onToolbarItemChange` events as inline items. Returning `false` cancels the action in the same way.
 
 ## Change a mounted toolbar
 
@@ -161,6 +217,6 @@ The standalone widget also exposes `getControl(id)` for access to a mounted inpu
 
 With [keyboard navigation](guides/keyboard-navigation.md) enabled when the toolbar mounts, Tab enters the toolbar and the arrow keys move between its enabled items. Home and End move to the first and last item. With Gantt keyboard navigation off, Tab and Shift+Tab reach each enabled item in the browser's normal tab order. Inside a menu, use the arrow keys to navigate and Escape to close it.
 
-The `css` option adds a class to the `.dhx_ui_toolbar` element. To change the toolbar's height, colors or segmented control track, see [Toolbar theme variables](guides/custom-skins.md#toolbar-theme-variables). The selected segmented option is drawn as a raised chip. Labelled toggles display a switch with a thumb that mirrors in a right-to-left container. Items wrap onto another line when the available width is too small.
+The `css` option adds a class to the `.dhx_ui_toolbar` element. To change the toolbar's height, colors or segmented control track, see [Toolbar theme variables](guides/custom-skins.md#toolbar-theme-variables). The selected segmented option is drawn as a raised chip. Labelled toggles display a switch with a thumb that mirrors in a right-to-left container. By default the toolbar stays one row and moves items that do not fit into a menu. Set `overflow: "wrap"` to let items wrap instead. See [Narrow screens](guides/toolbar.md#narrow-screens).
 
-Use locale labels such as `ui_toolbar_label`, `ui_toolbar_add_task` and the `ui_theme_*` keys to customize built-in text. See [Localization](guides/localization.md).
+Use locale labels such as `ui_toolbar_label`, `ui_toolbar_add_task`, `ui_toolbar_more`, `ui_toolbar_menu` and the `ui_theme_*` keys to customize built-in text. See [Localization](guides/localization.md).

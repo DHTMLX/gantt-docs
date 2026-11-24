@@ -109,7 +109,8 @@ screen readers use.
 Use the `ui_toolbar_*` and `ui_theme_*` labels for the [toolbar](guides/toolbar.md) and skin
 selector, and `ui_menu_*` labels for the built-in [context menu](guides/context-menu.md). For
 example, set `gantt.locale.labels.ui_menu_add_task = "Create task"`. Some bundled locales use
-English toolbar and theme labels.
+English toolbar and theme labels. The toolbar menu button uses `ui_toolbar_more` ("More")
+and, in the collapsed form, `ui_toolbar_menu` ("Menu").
 
 The custom locale can be applied to the Gantt chart in two ways:
 

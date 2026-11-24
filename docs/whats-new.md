@@ -46,6 +46,8 @@ Updating from an earlier version? Check the [migration guide](migration.md) for 
 - Fix the number inline editor in narrow columns. The input stays visible and stepper buttons hide below 90 px of stepper width.
 - Fix toolbar Tab and Shift+Tab navigation when the Gantt keyboard navigation plugin is off.
 - Fix disappearing tasks when zooming with Ctrl+wheel in the wheel-zoom sample.
+- Fix the issue where Enter, Ctrl+Enter, Shift+Right and Shift+Left changed a [read-only task](guides/readonly-mode.md) with keyboard navigation (thanks to Stepan Kuntso). See [migration from 10.0](migration.md#readonly-task-add-button).
+- Fix [undo](guides/undo-ext.md) of an action that updates the same task more than once, such as a task-form save that reschedules the task. One undo now restores the state from before the first update.
 
 ## 10.0.1
 

@@ -62,6 +62,8 @@ By default, the mentioned behavior is binded to the 'editable' property of a tas
 gantt.config.editable_property = "property_name";
 ~~~
 
+In a read-only chart, the header "+" of the grid and the "+" of each row are shown disabled. The exception is rows of tasks with `editable: true`. With keyboard navigation, Enter opens these tasks as a double click does. A grid view with its own `readonly: true` behaves the same way.
+
 
 ## Read-only mode for specific tasks/links {#readonlymodeforspecifictaskslinks}
 
@@ -79,6 +81,16 @@ By default, the gantt checks whether a task/link has this property with a no-neg
 :::
 
 When the task/link is read-only, it won't react on clicks, double clicks, isn't draggable or editable in any way.
+
+The "+" button of a read-only task in the grid's add column (`name: "add"`) stays in place, but it is shown disabled, and a click on it does nothing. The disabled button has the `gantt_add_disabled` class. When accessibility attributes are enabled, it also has `aria-disabled="true"`. By default, it is dimmed, with the default cursor and no hover highlight. To hide disabled buttons, use this CSS:
+
+~~~css
+.gantt_add_disabled {
+    display: none;
+}
+~~~
+
+With keyboard navigation, Enter, Ctrl+Enter, Shift+Left and Shift+Right do nothing on a read-only task. Delete does nothing too. Group rows created by `gantt.groupBy()` keep their "+" button and Ctrl+Enter, which add a task into the group, unless `gantt.config.readonly` is set to `true`.
 
 In case you want to show the lightbox for read-only tasks, you can manually call it using [gantt.showLightbox(id)](api/method/showlightbox.md):
 
