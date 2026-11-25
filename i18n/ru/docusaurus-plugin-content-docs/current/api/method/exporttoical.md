@@ -27,9 +27,9 @@ gantt.exportToICal({
 ### Details
 
 :::note
-This method is defined in the **export** extension, so you need to activate the [export_api](guides/extensions-list.md#export-service) plugin. Read the details in the [Export/Import for Excel, Export to iCal](guides/excel.md) article.
+Этот метод определяется в расширении **export**, поэтому необходимо активировать плагин [export_api](guides/extensions-list.md#export-service). Подробности смотрите в статье [Экспорт в iCal](guides/ical.md).
 
-~~~js
+~~~html
 <script src="codebase/dhtmlxgantt.js"></script>
 <script src="https://export.dhtmlx.com/gantt/api.js"></script>
 ~~~
@@ -41,6 +41,7 @@ The **exportToICal()** method takes as a parameter an object with the following 
 - **name** - (*string*) allows specifying custom name and extension for the file but the file will still be exported in the iCal format. [Check the example](https://snippet.dhtmlx.com/atbhz9vq).
 
 ### Related API
+
 - [exportToMSProject](api/method/exporttomsproject.md)
 - [exportToPrimaveraP6](api/method/exporttoprimaverap6.md)
 - [exportToExcel](api/method/exporttoexcel.md)
@@ -52,4 +53,5 @@ The **exportToICal()** method takes as a parameter an object with the following 
 - [importFromMSProject](api/method/importfrommsproject.md)
 
 ### Related Guides
-- [Экспорт/Импорт для Excel, Экспорт в iCal](guides/excel.md#export-to-ical)
+
+- [Экспорт в iCal](guides/ical.md)

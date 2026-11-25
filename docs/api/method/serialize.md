@@ -34,6 +34,6 @@ JSON normally follows the current display order. With the [wbs extension](guides
 - [parse](api/method/parse.md)
 
 ### Related Guides
-- [Serializing Data into XML and JSON](guides/serialization.md)
+- [Serializing Data into JSON and XML](guides/serialization.md)
 - [Supported Data Formats](guides/supported-data-formats.md)
 

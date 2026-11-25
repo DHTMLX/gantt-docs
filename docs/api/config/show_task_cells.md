@@ -25,4 +25,9 @@ gantt.init("gantt_here");
 
 ### Details
 
-When the property is set to *'false'*, it disables rendering of individial cells - renders just rows. It can be used to increase the performance, especially if you are displaying a big amount of tasks in the chart.
+When the property is set to *'false'*, it disables rendering of individual cells - renders just rows.
+
+### Related API
+
+- [timeline_cell_class](api/template/timeline_cell_class.md)
+

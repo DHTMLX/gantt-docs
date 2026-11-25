@@ -113,7 +113,7 @@ function layoutChange() {
 
 ### При использовании полосы прокрутки
 
-Необходимо получить положение прокрутки ([scroll position](api/event/onganttscroll.md)) и увеличить диапазон дат. Заметьте, что слишком частая переработка перерисовки Gantt может повлиять на производительность, поэтому её стоит выполнять после тайм-аута:
+Необходимо получить [положение прокрутки](api/event/onganttscroll.md) и увеличить диапазон дат. Заметьте, что слишком частая [перерисовка](api/method/render.md) Gantt может повлиять на производительность, поэтому её стоит выполнять после тайм-аута:
 
 ~~~js
 gantt.init("gantt_here");
@@ -193,7 +193,7 @@ gantt.attachEvent("onTaskDrag", function (id, mode, task, original) {
 
 **Связанный пример** [Gantt. Бесконечная прокрутка при перетаскивании задачи (значения диапазона по умолчанию)](https://snippet.dhtmlx.com/44qcunjc)
 
-Если [date range](api/config/start_date.md) установлен, необходимо будет изменить его:
+Если [диапазон дат](api/config/start_date.md) установлен, необходимо будет изменить его:
 
 ~~~js
 gantt.init("gantt_here");
@@ -795,11 +795,11 @@ gantt.templates.task_class = (start, end, task) =>
 [Calculate Progress of Summary Tasks](https://docs.dhtmlx.com/gantt/samples/08_api/16_dynamic_progress.html)
 
 
-## КакVertically reorder tasks in the timeline {#how-to-vertically-reorder-tasks-in-the-timeline}
+## Как изменять порядок задач в таймлайне по вертикали {#how-to-vertically-reorder-tasks-in-the-timeline}
 
-You can use the [addTaskLayer()](api/method/addtasklayer.md) method to display custom HTML elements in the timeline and add functions to drag them vertically and horizontally.
+Вы можете использовать метод [addTaskLayer()](api/method/addtasklayer.md), чтобы отображать в таймлайне пользовательские HTML-элементы и добавить функции для их перетаскивания по вертикали и горизонтали.
 
-В следующем примере это будет работать как обычная переработка задач в гриде:
+В следующем примере это будет работать как обычное изменение порядка задач в гриде:
 
 **Связанный пример** [Gantt. Перемещение задач по вертикали в таймлайне](https://snippet.dhtmlx.com/fla78m0y)
 

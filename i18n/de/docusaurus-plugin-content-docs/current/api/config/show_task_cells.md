@@ -25,4 +25,7 @@ gantt.init("gantt_here");
 
 ### Details
 
-Wenn die Eigenschaft auf *'false'* gesetzt ist, deaktiviert sie das Rendering der einzelnen Zellen – es werden nur Zeilen gerendert. Dies kann die Leistung erhöhen, insbesondere wenn im Diagramm eine große Anzahl von Aufgaben angezeigt wird.
+Wenn die Eigenschaft auf *'false'* gesetzt ist, deaktiviert sie das Rendering der einzelnen Zellen – es werden nur Zeilen gerendert.
+
+### Related API
+- [timeline_cell_class](api/template/timeline_cell_class.md)

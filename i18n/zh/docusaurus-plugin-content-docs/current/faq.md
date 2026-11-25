@@ -19,7 +19,7 @@ sidebar_label: "FAQ"
 - 运行 `npm install`
 - 运行 `npm run start`
 - 在浏览器中打开 `http://localhost:9200`
-- 你应该能看到与我们在线示例页面 **https://docs.dhtmlx.com/gantt/samples/** 相同的索引页
+- 你应该能看到与我们在线示例页面 **https://docs.dhtmlx.com/gantt/demos/** 相同的索引页
 
 2) 使用 Apache Web 服务器
 

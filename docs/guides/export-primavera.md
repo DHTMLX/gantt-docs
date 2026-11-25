@@ -1,6 +1,6 @@
 ---
 title: "Export and Import from Primavera P6"
-sidebar_label: "Export and Import from Primavera P6"
+sidebar_label: "Primavera P6"
 ---
 
 # Export and Import from Primavera P6
@@ -8,9 +8,7 @@ sidebar_label: "Export and Import from Primavera P6"
 The dhtmlxGantt library allows you to export data from the Gantt chart into Primavera P6. You can also import data into Gantt from Primavera P6.
 
 :::note
-The service is free, but the output file will contain the library's watermark.
-To export without the watermark you need a valid license - the result of export will be available without a watermark
-during the valid support period (12 months for all PRO licenses).
+The online export service is free. For the license terms, see [License and watermark](guides/export-common.md#license-and-watermark).
 :::
 
 There are several export services available. You can install them on your computer and export Gantt chart to Primavera P6 locally.
@@ -20,36 +18,12 @@ read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/ex
 ## Online export service restrictions
 
 :::note
-The export service has time and request size restrictions.
+The online export service has time and request size limits. See [Online export service limits](guides/export-common.md#service-limits).
 :::
-
-### Time limits
-
-If the process takes over than 20 seconds, the export will be canceled and the following error will occur:
-
-~~~html
-Error: Timeout trigger 20 seconds
-~~~
-
-If several people export Gantt at the same time, the process can take more time than usual. But that's fine because the time which is spent for export request from a specific user is counted separately.
-
-### Limits on request size
-
-There is a common API endpoint `https://export.dhtmlx.com/gantt` which serves for all export methods (*exportToPDF*, *exportToPNG*, *exportToMSProject*, etc.). **Max request size is 10 MB**.
-
-There is also a separate API endpoint `https://export.dhtmlx.com/gantt/project` specific for the [MSProject](guides/export-msproject.md) and 
-[Primavera P6](#limits-on-request-size-and-import-of-large-files) 
-export/import services (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* only). **Max request size: 40 MB**.
 
 ## Using export modules
 
-:::note
-If you need to export large charts, you can use a [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). 
-The export module is provided free of charge if you've obtained Gantt under [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) or [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) license, or you can [buy the module separately](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
-:::
-
-[Read more on the usage of the export module for MS Project](guides/msp-export-module.md). This export module provides export/import functionality for MS Project and 
-Primavera P6.
+To export large charts, to export without the limits of the online export service, or to keep your data in your network, install an [export module](guides/export-modules.md) on your own server. Read more on the usage of the [export module for MS Project and Primavera P6](guides/msp-export-module.md).
 
 ## Export to Primavera P6 {#exporttoprimaverap6}
 
@@ -751,49 +725,20 @@ If there are resource assignments, they will be imported in the **assignments** 
 
 ## Limits on request size and import of large files
 
-There are two API endpoints for the Primavera P6 export/import services:
+The online export service has a separate endpoint for large Primavera P6 files: `https://export.dhtmlx.com/gantt/project`. It accepts requests up to 40 MB, while the default endpoint `https://export.dhtmlx.com/gantt` accepts requests up to 10 MB. See [Online export service limits](guides/export-common.md#service-limits).
 
-- `https://export.dhtmlx.com/gantt` - the default endpoint which serves all export methods (*exportToPDF*, *exportToPNG*, *exportToPrimaveraP6*, etc.). **Max request size is 10 MB**.
-- `https://export.dhtmlx.com/gantt/project` - the endpoint specific for the [MSProject](guides/export-msproject.md) and 
-[Primavera P6](guides/export-primavera.md) 
-export/import services (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* only). **Max request size: 40 MB**.
-
-The endpoint can be specified by the **server** property of the export configuration object:
-
-~~~js
-gantt.importFromPrimaveraP6({
-    server: "https://export.dhtmlx.com/gantt",
-    data: file,
-    callback: function(project){
-       // some logic
-    }
-}); 
-~~~
-
-If no endpoint is specified, `https://export.dhtmlx.com/gantt` is used by default. The following call is equivalent to the one above:
-
-~~~js
-gantt.importFromPrimaveraP6({
-    data: file,
-    callback: function(project){
-       // some logic
-    }
-});
-~~~
-
-In order to export or import large projects that exceed the 4MB limit, the second endpoint can be used:
+To export or import a project that exceeds the 10 MB limit, specify the endpoint in the `server` property of the configuration object:
 
 ~~~js
 gantt.importFromPrimaveraP6({
     server: "https://export.dhtmlx.com/gantt/project",
     data: file,
-    callback: function(project){
-       // some logic
+    callback: (project) => {
+        // some logic
     }
-}); 
+});
 ~~~
 
-It allows sending requests up to 40MB in size and supports Primavera P6 exports and imports. It can be used for Primavera P6 exports only. 
+The endpoint supports only MS Project and Primavera P6 exports and imports. Any other methods, for example, `gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})` should return a server error.
 
-Any other methods, for example, `gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})` should return a server error.
-
+To import large files with your own export module, see [Import of large files](guides/msp-export-module.md#import-of-large-files).

@@ -41,7 +41,7 @@ gantt.importFromPrimaveraP6({
 :::
 
 :::note
-该方法在 **export** 扩展中定义，因此需要激活 [export_api](guides/extensions-list.md#export-service) 插件。请在 [Export/Import for Excel, Export to iCal](guides/excel.md#importfromexcel) 文章中阅读详情。
+该方法在 **export** 扩展中定义，因此需要激活 [export_api](guides/extensions-list.md#export-service) 插件。请在 [导出与从 Primavera P6 导入](guides/export-primavera.md#import-from-primavera-p6) 文章中阅读详情。
 :::
 
 :::note
@@ -56,11 +56,11 @@ gantt.importFromPrimaveraP6({
 
 该方法的参数是一个包含导入文件配置属性的对象：
 
-- **data** - (*object*) 一个 gantt [data object](guides/supported-data-formats.md)。每个任务具有以下属性：*id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*。日期以 "%Y-%m-%d %H:%i" 格式字符串化。
-- **callback** - (*function*) 回调函数。
-- **durationUnit** - (*string*) 设置期望的持续单位（"minute", "hour", "day", "week", "month", "year"）。
-- **projectProperties** - (*array*) 指定应放入响应中的项目属性数组。
-- **taskProperties** - (*array*) 指定要导入的附加任务属性数组。
+- **data** - 一个 [File](https://developer.mozilla.org/en-US/docs/Web/API/File) 实例，应包含 XER 或 XML 项目文件。
+- **callback** - 回调函数。
+- **durationUnit** - 设置期望的持续时间单位（"minute", "hour", "day", "week", "month", "year"）。
+- **projectProperties** - 指定应放入响应中的项目属性数组。
+- **taskProperties** - 指定要导入的附加任务属性数组。
 
 请在 [相关部分](guides/export-primavera.md#import-settings) 查看导入设置的详细描述。
 

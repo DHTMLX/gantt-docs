@@ -41,7 +41,7 @@ gantt.importFromMSProject({
 :::
 
 :::note
- 此方法属于 **export** 扩展的一部分，请确保启用 [export_api](guides/extensions-list.md) 插件。更多详情请参见 [从 MS Project 导出与导入](guides/export-msproject.md) 文章。
+ 此方法属于 **export** 扩展的一部分，请确保启用 [export_api](guides/extensions-list.md#export-service) 插件。更多详情请参见 [从 MS Project 导出和导入](guides/export-msproject.md#import-from-ms-project) 文章。
 :::
 
 :::note
@@ -61,6 +61,8 @@ gantt.importFromMSProject({
 - **durationUnit** - 指定预期的持续时间单位（"minute"、"hour"、"day"、"week"、"month"、"year"）。
 - **projectProperties** - 一个数组，列出要包含在响应中的项目属性。
 - **taskProperties** - 一个数组，列出要导入的额外任务属性。
+
+有关导入设置的详细说明，请参阅[相关部分](guides/export-msproject.md#import-settings)。
 
 ## 响应
 

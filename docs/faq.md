@@ -19,7 +19,7 @@ The app requires [Node.js](https://nodejs.org/en/) and uses in-memory storage fo
 - run `npm install`
 - run `npm run start`
 - open `http://localhost:9200` in your browser
-- you should see the index page identical to our online samples **https://docs.dhtmlx.com/gantt/samples/**
+- you should see the index page identical to our online samples **https://docs.dhtmlx.com/gantt/demos/**
 
 2) Use Apache web server
 

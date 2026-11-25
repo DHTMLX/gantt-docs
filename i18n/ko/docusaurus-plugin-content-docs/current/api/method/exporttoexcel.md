@@ -26,6 +26,7 @@ gantt.exportToExcel({
         { id: "start_date",  header: "Start date", width: 250, type: "date" }
     ],
     server: "https://myapp.com/myexport/gantt",
+    raw: true,
     callback: (res) => {
         alert(res.url);
     },
@@ -39,7 +40,7 @@ gantt.exportToExcel({
 ### Details
 
 :::note
-이 메서드는 **export** 확장에 정의되어 있으므로 export_api 플러그인을 활성화해야 합니다. [export_api](guides/extensions-list.md#export-service) 플러그인에 대한 자세한 내용은 guides/excel.md 문서를 참조하십시오.
+이 메서드는 **export** 확장에 정의되어 있으므로 export_api 플러그인을 활성화해야 합니다. [export_api](guides/extensions-list.md#export-service) 플러그인에 대한 자세한 내용은 [](guides/excel.md) 문서를 참조하십시오.
 :::
 
 :::note
@@ -61,6 +62,11 @@ The **exportToExcel()** 메서드는 매개변수로 여러 속성을 가진 객
     - **'width'** - (*number*) 열 너비(픽셀 단위)
     - **'type'** - (*string*) 열 유형
 - **server** - (*string*) 요청의 API 엔드포인트를 설정합니다. 로컬에 설치된 export 서비스와 함께 사용할 수 있습니다. 기본값은 `https://export.dhtmlx.com/gantt`
+- **raw** - (*boolean*) Gantt 데이터를 내보내는 방식을 정의합니다. 두 가지 작업을 수행합니다:
+    - [`onBeforeTaskDisplay`](api/event/onbeforetaskdisplay.md) 이벤트를 통해 작업이 필터링되어 그리드나 타임라인에 표시되지 않으면, 해당 작업은 Excel 파일로 내보내지지 않습니다(기본적으로 모든 작업이 내보내집니다). <br/> **Related sample**: [Gantt. Export filtered data to PDF, Excel, and MSProject files](https://snippet.dhtmlx.com/twfy116w)
+    - `hide:true` 설정으로 열이 [숨겨진](guides/specifying-columns.md#visibility) 경우, 해당 열은 Excel 파일로 내보내지지 않습니다(기본적으로 모든 열이 내보내집니다). <br/> **Related sample**: [Gantt. Export to Excel. Hide grid columns with the raw mode](https://snippet.dhtmlx.com/b7y0ps8m)
+
+    기본값은 *false*입니다. [자세한 내용은 여기에서 확인하십시오](guides/excel.md#exporting-filtered-tasks-and-hidden-columns)
 - **callback** - (*function*) 생성된 XLSX 파일의 다운로드 URL을 받고 싶다면 callback 속성을 사용할 수 있습니다. 이 콜백은 url 속성을 가진 JSON 객체를 받습니다.
 - **visual** - (*boolean*) 내보낸 Excel 문서에 타임라인 차트를 추가합니다; 기본값은 false입니다. 내보낸 파일에 작업 색상을 추가하는 방법은 [how to add task colors](guides/excel.md#adding-colors-of-tasks-to-export) 문서를 참조하십시오.
 - **cellColors** - (*boolean*) true로 설정되면 내보낸 문서의 셀은 [template](api/template/timeline_cell_class.md)에서 정의된 색상을 가지며, color 및 background-color 속성이 내보냅니다
@@ -147,5 +153,5 @@ gantt.config.columns = [
 
 ### Related Guides
 
-- [Export/Import for Excel, Export to iCal](guides/excel.md)
+- [Excel용 내보내기 및 가져오기](guides/excel.md)
 

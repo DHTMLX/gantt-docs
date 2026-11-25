@@ -37,8 +37,13 @@ gantt.init("gantt_here");
 gantt.config.static_background_cells = false;
 ~~~  
 
+Выделенные ячейки отрисовываются только при включённой (по умолчанию) конфигурации [show_task_cells](api/config/show_task_cells.md).
+
+Начиная с v6.3, [умная отрисовка](guides/performance.md#smart-rendering) отрисовывает только ячейки в видимой части временной шкалы, поэтому влияние этой конфигурации на скорость отрисовки меньше, чем в более ранних версиях. Конфигурация также уменьшает размер запроса к серверу экспорта при экспорте данных.
+
 ### Related API
 - [static_background_cells](api/config/static_background_cells.md)
+- [show_task_cells](api/config/show_task_cells.md)
 
 ### Related Guides
 - [Производительность: Способы повышения](guides/performance.md)

@@ -1,9 +1,9 @@
 ---
-title: "将数据序列化为 XML 与 JSON"
-sidebar_label: "将数据序列化为 XML 与 JSON"
+title: "将数据序列化为 JSON 与 XML"
+sidebar_label: "JSON 与 XML"
 ---
 
-# 将数据序列化为 XML 与 JSON
+# 将数据序列化为 JSON 与 XML
 
 ## JSON 格式
 

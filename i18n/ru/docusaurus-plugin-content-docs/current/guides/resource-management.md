@@ -395,7 +395,7 @@ gantt.getResourceAssignments("6");
 
 ## Назначение ресурсов {#assigningresources}
 
-### Связывание ресурсов с задачами
+### Связывание ресурсов с задачами {#connecting-resources-to-tasks}
 
 Связь с ресурсом определяется параметром конфигурации [resource_property](api/config/resource_property.md):
 

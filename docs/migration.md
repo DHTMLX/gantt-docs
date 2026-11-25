@@ -138,6 +138,41 @@ field. When reading a custom task-type key from the lightbox config, narrow the 
 before treating it as a section list because the index signature also allows booleans and
 `undefined`. See [Advanced Task Form](guides/advanced-task-form.md) for layout examples.
 
+## 10.0.3 -> 10.0.4
+
+### React Gantt uses its own copy of the config prop {#react-config-copy}
+
+Before v10.0.4, [React Gantt](integrations/react.md) used the objects of the `config` prop directly and wrote into them. Starting from v10.0.4, Gantt gets its own copy of each `config` value (see [Configuration & Props](integrations/react/overview.md#configuration--props)). Update your application if it does one of the following:
+
+1. Reads the values that Gantt writes back from your own config object, for example, the width of a resized column. Read them from the Gantt instance or get them from the related event instead:
+
+~~~js
+// before v10.0.4
+const width = config.columns[0].width;
+
+// from v10.0.4
+const width = ganttRef.current.instance.config.columns[0].width;
+// or use the onColumnResizeEnd event
+~~~
+
+2. Changes the passed object in place and calls `render()`. Pass a new `config` value instead:
+
+~~~js
+// before v10.0.4
+config.columns[0].label = "Name";
+ganttRef.current.instance.render();
+
+// from v10.0.4
+setConfig({
+  ...config,
+  columns: config.columns.map((column) =>
+    column.name === "text" ? { ...column, label: "Name" } : column
+  ),
+});
+~~~
+
+3. Puts a [serverList()](api/method/serverlist.md) array in `config`, for example, as the `options` of a lightbox section or of a column editor. [updateCollection()](api/method/updatecollection.md) and the `collections` of the loaded data fill the server list in place, so the copy used by Gantt doesn't get the new options. Keep the options in the application state and pass a new `config` value when they change.
+
 ## 9.1 -> 10.0
 
 ### Migrating from the GPL edition to the Community (MIT) edition {#gpl-to-mit}

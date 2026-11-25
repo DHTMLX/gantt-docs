@@ -129,7 +129,7 @@ gantt.i18n.setLocale("lang");
 
 **注**，
 
-- 你可以将你的自定义语言环境文件发送至 **support@dhtmlx.com** - 我们将在下一个版本中将其包含。
+- 你可以将你的自定义语言环境文件发送至 **info@dhtmlx.com** - 我们将在下一个版本中将其包含。
 - 当前活动的语言环境也可在 **gantt.locale** 对象中访问
 - **month_full** - 从一月开始的月份全名；
 - **month_short** - 从一月开始的月份简称；

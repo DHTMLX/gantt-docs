@@ -35,6 +35,10 @@ In case Gantt should fit a certain area on a page, the size of the Gantt contain
 - autosizing should be disabled
 - width/height of a div should be calculated either by HTML layout if some ready solution for responsive layouts is used, or manually by code
 
+:::note
+In the autosize mode, all rows of the chart are in the visible area, so [smart rendering](guides/performance.md#smart-rendering) renders all tasks. For charts with a large number of tasks, disable autosizing and manage the size of the container instead.
+:::
+
 ## Scrolling to hidden elements
 
 In the default mode, Gantt is scrolled automatically when you use the [`showTask()`](api/method/showtask.md) or [`showDate()`](api/method/showdate.md) method.
@@ -90,3 +94,6 @@ Sample: [Scrolling to the specified element](https://snippet.dhtmlx.com/or73u6a5
 
 ### Related API
 - [autosize_min_width](api/config/autosize_min_width.md)
+
+### Related Guides
+- [Performance: Ways to Improve](guides/performance.md#common-techniques)

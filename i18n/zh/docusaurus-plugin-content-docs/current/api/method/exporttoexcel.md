@@ -26,6 +26,7 @@ gantt.exportToExcel({
         { id: "start_date",  header: "Start date", width: 250, type: "date" }
     ],
     server: "https://myapp.com/myexport/gantt",
+    raw: true,
     callback: (res) => {
         alert(res.url);
     },
@@ -39,8 +40,8 @@ gantt.exportToExcel({
 ### Details
 
 :::note
- 此方法属于**export**扩展，请确保已激活[export_api](guides/extensions-list.md)插件。
-更多详情请参阅[导出/导入 Excel，导出 iCal](guides/excel.md)文章。
+ 此方法属于**export**扩展，请确保已激活[export_api](guides/extensions-list.md#export-service)插件。
+更多详情请参阅[](guides/excel.md)文章。
  
 :::
 
@@ -63,6 +64,9 @@ The **exportToExcel()** 方法接受一个包含若干属性的对象作为参�
     - **'width'** - (*number*) 列宽，单位为像素
     - **'type'** - (*string*) 列类型
 - **server** - (*string*) 设置请求的 API 端点。可与导出服务的本地安装一起使用。默认值为 `https://export.dhtmlx.com/gantt`
+- **raw** - (*boolean*) 定义甘特图数据的导出方式，默认值为 *false*。[阅读详情](guides/excel.md#exporting-filtered-tasks-and-hidden-columns)。它执行两项任务：
+    - 如果某个任务通过 [`onBeforeTaskDisplay`](api/event/onbeforetaskdisplay.md) 事件被过滤掉，即未显示在网格或时间轴中，则该任务不会导出到 Excel 文件中（默认情况下会导出所有任务）。<br/> **相关示例**：[Gantt. Export filtered data to PDF, Excel, and MSProject files](https://snippet.dhtmlx.com/twfy116w)
+    - 如果某列通过 `hide:true` 设置被[隐藏](guides/specifying-columns.md#visibility)，则该列不会导出到 Excel 文件中（默认情况下会导出所有列）。<br/> **相关示例**：[Gantt. Export to Excel. Hide grid columns with the raw mode](https://snippet.dhtmlx.com/b7y0ps8m)
 - **callback** - (*function*) 如果你希望接收下载生成的 XLSX 文件的 URL，可以使用 callback 属性。它接收一个包含 url 属性的 JSON 对象
 - **visual** - (*boolean*) 将时间轴图添加到导出的 Excel 文档中；默认值为 false。有关如何将任务颜色添加到导出的文件，请参阅 [如何向导出文件添加任务颜色](guides/excel.md#adding-colors-of-tasks-to-export)
 - **cellColors** - (*boolean*) 如果设置为 true，导出文档的单元格将具有由 [](api/template/timeline_cell_class.md) 模板定义的颜色，导出的将是 *color* 与 *background-color* 属性
@@ -147,4 +151,4 @@ gantt.config.columns = [
 
 ### Related Guides
 
-- [Export/Import for Excel, Export to iCal](guides/excel.md)
+- [Excel 的导出和导入](guides/excel.md)

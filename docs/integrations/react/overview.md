@@ -194,6 +194,29 @@ This approach makes your React (or global) state the single source of truth. It 
 
 For more examples (including integrations with specific managers) see [React state as the source of truth](integrations/react/state/state-management-basics.md#reactstateasthesourceoftruth).
 
+#### Row order of the tasks array {#taskorder}
+
+The `syncTaskOrder` prop controls how the row order of the `tasks` array reaches the chart:
+
+| Value | Behavior |
+|---|---|
+| `"changes"` | The default value. A branch takes the order of the `tasks` array when the array itself changed the order of that branch. A task that the application adds, or puts under another parent than the chart shows, takes its position from the array. |
+| `"never"` | React Gantt doesn't change the row order, and a new task goes to the end of its branch. |
+
+~~~tsx
+<ReactGantt tasks={tasks} links={links} syncTaskOrder="never" />
+~~~
+
+With the `"changes"` value, a new task goes before the next task of the same branch in the `tasks` array. A task with no next task in its branch goes to the end of the branch. So a task that receives a new id keeps its position, a task inserted in the middle of the array goes to that position, and a task appended to the array goes to the end of its branch.
+
+A task that the user dragged to another branch stays where the user dropped it, with both values, when the application writes the new parent back without changing the order of the array.
+
+Note the following:
+
+- While the `groupTasks` prop is active, the grouping defines the row order. The order of the array is applied when the grouping is turned off.
+- A row order that the user makes in the chart, and that the application doesn't put into its array, stays until the application changes the order of that branch in its array. For example, drag and drop with the [order_branch](api/config/order_branch.md) config, or sorting with [sort()](api/method/sort.md) or a click on a grid column header. Drag and drop with `order_branch` works with the default value. Use `"never"` only when the chart, not the array, defines the row order.
+- React Gantt applies the order with [sort()](api/method/sort.md), so the [onAfterSort](api/event/onaftersort.md) event fires when the order changes. The reorder doesn't fire the [onBeforeTaskMove](api/event/onbeforetaskmove.md) and [onAfterTaskMove](api/event/onaftertaskmove.md) events, isn't sent through `data.save` or `data.batchSave`, and isn't added to the undo history.
+
 ### Gantt as the source of truth
 
 In this approach, **Gantt itself** keeps the authoritative copy of the data. You still initialize or load tasks and links (via props or URLs), but once the chart is running, Gantt handles changes internally and forwards updates to your backend or a custom handler, without going through React state on every edit.
@@ -260,6 +283,13 @@ The React wrapper accepts the `config` prop (mapped to [gantt.config](api/overvi
   }}
 />
 ~~~
+
+ReactGantt gives Gantt its own copy of each `config` value. So the `config` prop can come straight from frozen state (for example, a Valtio snapshot, or Immer and Redux Toolkit state in development mode), and Gantt doesn't write into your objects. Functions (templates, scale formats), class instances, `Date` values, and React elements in `config` work as usual. Keep in mind the following:
+
+- To change the configuration, pass a new `config` value. If you change the passed object in place and call `render()`, the change doesn't reach Gantt.
+- Read runtime values from the Gantt instance, not from your config object. For example, after the user resizes a column, its width is in `ref.current.instance.config.columns` (or comes with the [onColumnResizeEnd](api/event/oncolumnresizeend.md) event). The object passed in `config` keeps the width set by the application.
+- When `config` changes, only the values that changed are applied. Values changed at runtime are kept: a resized column width, the scales of the current zoom level, or a value set through `ref.current.instance.config`. To reset such a value, set it on the instance or pass a changed value.
+- A frozen class instance in the `config` of a layout cell (for example, a column editor `formatter` in the `config.columns` of a grid cell) still throws an error. Put such columns in `config.columns`, or don't freeze the instance (in Valtio, wrap it in `ref()`).
 
 ### Using React components in templates 
 

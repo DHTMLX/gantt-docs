@@ -37,8 +37,13 @@ gantt.init("gantt_here");
 gantt.config.static_background_cells = false;
 ~~~
 
+仅当启用 [show_task_cells](api/config/show_task_cells.md) 配置（默认启用）时，才会渲染高亮单元格。
+
+自 v6.3 起，[智能渲染](guides/performance.md#smart-rendering)仅渲染时间轴可见部分中的单元格，因此该配置对渲染速度的影响小于早期版本。导出数据时，该配置还会减小发送到导出服务器的请求的大小。
+
 ### Related API
 - [static_background_cells](api/config/static_background_cells.md)
+- [show_task_cells](api/config/show_task_cells.md)
 
 ### Related Guides
 - [性能：提升方法](guides/performance.md)

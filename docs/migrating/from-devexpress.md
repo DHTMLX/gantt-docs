@@ -123,7 +123,7 @@ You should see all your tasks and links properly transferred with the correct fi
 | `progress`       | `progress`   | DevExpress: 0-100 (integer), DHTMLX: 0-1 (float). Divide by 100 during migration |
 | `parentId`       | `parent`     | Parent task ID. NULL values → 0 for root tasks                                   |
 
-More about task properties: [Task Properties](https://docs.dhtmlx.com/gantt/guides/task-properties/).
+More about task properties: [Task Properties](guides/task-properties.md).
 
 ### Mapping DevExpress Dependency Fields to DHTMLX Links
 
@@ -134,7 +134,7 @@ More about task properties: [Task Properties](https://docs.dhtmlx.com/gantt/guid
 | `successorId`    | `target`     | ID of the task that the dependency points to                                             |
 | `type`           | `type`       | Dependency type. DevExpress uses numbers (0-3), DHTMLX uses strings ("0"-"3") by default |
 
-More about link properties: [Link Properties](https://docs.dhtmlx.com/gantt/guides/link-properties/).
+More about link properties: [Link Properties](guides/link-properties.md).
 
 ## Step 2: Backend Migration (server.js)
 
@@ -161,7 +161,7 @@ Remove DevExpress dependencies:
 npm uninstall devextreme devextreme-react
 ```
 
-Install DHTMLX React Gantt following the [installation guide](https://docs.dhtmlx.com/gantt/guides/installation/).
+Install DHTMLX React Gantt following the [installation guide](guides/installation.md).
 
 For this tutorial, we will use the trial version of DHTMLX React Gantt:
 
@@ -573,7 +573,7 @@ You should see the DHTMLX Gantt chart with your data loaded from the database:
 
 ### Explore DHTMLX Gantt Features
 
-- [DHTMLX Gantt documentation](https://docs.dhtmlx.com/gantt/)
-- [API reference](https://docs.dhtmlx.com/gantt/api/api-overview/)
-- [React Gantt configuration](https://docs.dhtmlx.com/gantt/integrations/react/configuration-props/)
-- [React Gantt integration](https://docs.dhtmlx.com/gantt/integrations/react/)
+- [DHTMLX Gantt documentation](/)
+- [API reference](/api/api-overview/)
+- [React Gantt configuration](/integrations/react/configuration-props.md)
+- [React Gantt integration](/integrations/react.md)

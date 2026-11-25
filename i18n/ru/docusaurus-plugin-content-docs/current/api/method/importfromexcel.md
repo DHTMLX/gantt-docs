@@ -38,7 +38,7 @@ gantt.importFromExcel({
 :::
 
 :::note
-Этот метод определяется в расширении **export**, поэтому необходимо активировать плагин [export_api](guides/extensions-list.md#export-service). Подробности смотрите в статье [Экспорт/Импорт для Excel, Экспорт в iCal](guides/excel.md#importfromexcel).
+Этот метод определяется в расширении **export**, поэтому необходимо активировать плагин [export_api](guides/extensions-list.md#export-service). Подробности смотрите в статье [Экспорт и импорт для Excel](guides/excel.md#importfromexcel).
 :::
 
 :::note
@@ -85,4 +85,4 @@ gantt.importFromExcel({
 - [importFromMSProject](api/method/importfrommsproject.md)
 
 ### Related Guides
-- [Экспорт/Импорт для Excel, Экспорт в iCal](guides/excel.md#importfromexcel)
+- [Экспорт и импорт для Excel](guides/excel.md#importfromexcel)

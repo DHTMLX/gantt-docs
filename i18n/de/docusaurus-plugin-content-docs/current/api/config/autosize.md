@@ -34,6 +34,10 @@ Falls Gantt in einem bestimmten Bereich der Seite platziert werden soll, muss di
 - automatische Größenanpassung sollte deaktiviert sein
 - Breite/Höhe eines div sollten entweder durch HTML-Layout berechnet werden, wenn eine fertige Lösung für responsive Layouts verwendet wird, oder manuell durch Code
 
+:::note
+Im Autosize-Modus befinden sich alle Zeilen des Diagramms im sichtbaren Bereich, daher rendert das [Smart Rendering](guides/performance.md#smart-rendering) alle Aufgaben. Deaktivieren Sie bei Diagrammen mit einer großen Anzahl von Aufgaben die automatische Größenanpassung und verwalten Sie stattdessen die Größe des Containers.
+:::
+
 ## Scrolling to hidden elements
 
 Im Standardmodus wird Gantt automatisch gescrollt, wenn Sie die Methode [`showTask()`](api/method/showtask.md) oder [`showDate()`](api/method/showdate.md) verwenden.
@@ -88,3 +92,6 @@ Beispiel: [Scrolling to the specified element](https://snippet.dhtmlx.com/or73u6
 
 ### Related API
 - [autosize_min_width](api/config/autosize_min_width.md)
+
+### Related Guides
+- [Leistung: Wege zur Verbesserung](guides/performance.md#common-techniques)

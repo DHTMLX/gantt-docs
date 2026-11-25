@@ -35,9 +35,12 @@ gantt.init("gantt_here");
 Diese Option ist in der **critical_path**-Erweiterung definiert, daher müssen Sie das [critical_path](guides/extensions-list.md#critical-path) Plugin aktivieren. Lesen Sie die Details im Artikel [Kritischer Pfad](guides/critical-path.md). 
 :::
 
+Solange die Option aktiviert ist, wird bei jeder Änderung einer Aufgabe oder Verknüpfung das gesamte Diagramm neu gezeichnet. Aktivieren Sie die Option bei großen Diagrammen nur dann, wenn Benutzer den kritischen Pfad sehen müssen, oder fassen Sie Änderungen mit [batchUpdate](api/method/batchupdate.md) zusammen.
+
 ### Related API
 - [isCriticalTask](api/method/iscriticaltask.md)
 - [isCriticalLink](api/method/iscriticallink.md)
 
 ### Related Guides
 - [Kritischer Pfad](guides/critical-path.md)
+- [Leistung: Wege zur Verbesserung](guides/performance.md#common-techniques)

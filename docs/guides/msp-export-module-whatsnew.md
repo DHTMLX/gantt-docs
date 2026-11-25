@@ -1,10 +1,10 @@
 ---
-title: "What's new in MSP Project Export Module"
-sidebar_label: "What's new in MSP Project Export Module"
+title: "What's New in the MS Project Export Module"
+sidebar_label: "MS Project/P6 module"
 ---
 
-What's new in MSP Project Export Module
-===========================================
+What's New in the MS Project Export Module
+==========================================
 
 ## 2.4.1.0
 
@@ -23,6 +23,10 @@ Project Expenses, Roles, Project Codes, Activity Codes, Resource Codes, Cost Acc
 - Added a way to export link lag with custom duration format
 - Fixed import of Primavera files that had null or empty calendars
 - Added experimental support to import files from other planning programs (Asta, ProjectLibre, etc.)
+
+## 2.3.1.0
+
+- Fixed import of the custom properties with custom names
 
 ## 2.3.0.0
 

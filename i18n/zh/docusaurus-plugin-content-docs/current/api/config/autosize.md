@@ -34,6 +34,10 @@ The  `autosize` 配置定义 Gantt 是否会将数据适配到初始化时所在
 - 应该禁用自动调整大小
 - div 的宽度/高度应通过 HTML 布局计算（如果使用了某些现成的响应式布局解决方案），或通过代码手动计算
 
+:::note
+在 autosize 模式下，图表的所有行都位于可见区域内，因此[智能渲染](guides/performance.md#smart-rendering)会渲染所有任务。对于任务数量很多的图表，请禁用自动调整大小，并改为自行管理容器的大小。
+:::
+
 ## Scrolling to hidden elements
 
 在默认模式下，当你使用 [`showTask()`](api/method/showtask.md) 或 [`showDate()`](api/method/showdate.md) 方法时，Gantt 会自动滚动。
@@ -88,3 +92,6 @@ const showTask = (id) => {
 
 ### Related API
 - [autosize_min_width](api/config/autosize_min_width.md)
+
+### Related Guides
+- [性能：提升性能的方法](guides/performance.md#common-techniques)

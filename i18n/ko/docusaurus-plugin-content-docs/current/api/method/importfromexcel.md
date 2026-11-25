@@ -38,7 +38,7 @@ gantt.importFromExcel({
 :::
 
 :::note
-이 메서드는 **export** 확장에 정의되어 있으므로 [export_api](guides/extensions-list.md#export-service) 플러그인을 활성화해야 합니다. [Export/Import for Excel, Export to iCal](guides/excel.md#importfromexcel) 문서에서 세부 정보를 확인하세요.
+이 메서드는 **export** 확장에 정의되어 있으므로 [export_api](guides/extensions-list.md#export-service) 플러그인을 활성화해야 합니다. [Excel용 내보내기 및 가져오기](guides/excel.md#importfromexcel) 문서에서 세부 정보를 확인하세요.
 :::
 
 :::note
@@ -85,4 +85,4 @@ Gantt 버전이 8.0 미만인 경우 온라인 내보내기 서비스를 활성�
 - [importFromMSProject](api/method/importfrommsproject.md)
 
 ### Related Guides
-- [Export/Import for Excel, Export to iCal](guides/excel.md#importfromexcel)
+- [Excel용 내보내기 및 가져오기](guides/excel.md#importfromexcel)

@@ -1,6 +1,6 @@
 ---
 title: "MS Project에서의 내보내기 및 가져오기"
-sidebar_label: "MS Project에서의 내보내기 및 가져오기"
+sidebar_label: "MS Project"
 ---
 
 # MS Project에서의 내보내기 및 가져오기
@@ -8,42 +8,24 @@ sidebar_label: "MS Project에서의 내보내기 및 가져오기"
 dhtmlxGantt 라이브러리는 Gantt 차트의 데이터를 MS Project로 내보낼 수 있게 해줍니다. 또한 MS Project에서 Gantt로 데이터를 가져올 수도 있습니다.
 
 :::note
-서비스는 무료이지만 출력 파일에는 라이브러리의 워터마크가 포함됩니다.
-워터마크 없이 내보내려면 유효한 라이선스가 필요합니다 - 유효한 지원 기간(모든 PRO 라이선스의 경우 12개월) 동안 워터마크 없이 내보낸 결과를 얻을 수 있습니다.
+온라인 내보내기 서비스는 무료입니다. 라이선스 조건은 [라이선스 및 워터마크](guides/export-common.md#license-and-watermark)를 참조하십시오.
 :::
 
 여러 개의 내보내기 서비스가 있습니다. 로컬에서 컴퓨터에 설치하고 Gantt 차트를 MS Project로 로컬로 내보낼 수 있습니다. 내보내기 서비스는 Gantt 패키지에 포함되어 있지 않다는 점에 유의하시고, 각 서비스의 이용 약관을 알아보려면 해당 문서를 읽으십시오.
 
+:::info
+바로 사용할 수 있는 도구가 필요하다면 GanttPRO - 당사의 Gantt 스케줄러 컴포넌트를 사용하는 [프로젝트 관리 Gantt 차트 소프트웨어](https://ganttpro.com/)를 사용해 보십시오.
+:::
+
 ## 온라인 내보내기 서비스 제한
 
 :::note
-온라인 내보내기 서비스에는 시간 제한과 요청 크기 제한이 있습니다.
+온라인 내보내기 서비스에는 시간 제한과 요청 크기 제한이 있습니다. [온라인 내보내기 서비스 제한](guides/export-common.md#service-limits)을 참조하십시오.
 :::
-
-### 시간 제한
-
-프로세스가 20초를 초과하면 내보내기가 취소되며 다음과 같은 오류가 발생합니다:
-
-~~~html
-Error: Timeout trigger 20 seconds
-~~~
-
-동시에 여러 사용자가 Gantt를 내보내면, 특정 사용자의 내보내기 요청에 소요되는 시간이 일반적으로 더 길어질 수 있습니다. 하지만 특정 사용자의 요청에 소요된 시간은 별도로 계산되므로 괜찮습니다.
-
-### 요청 크기 제한
-
-모든 내보내기 메서드(*exportToPDF*, *exportToPNG*, *exportToMSProject* 등)에 공용 API 엔드포인트 `https://export.dhtmlx.com/gantt`가 있습니다. **최대 요청 크기 10 MB**입니다.
-
-MS Project 및 Primavera P6의 내보내기/가져오기에 특화된 별도 API 엔드포인트 `https://export.dhtmlx.com/gantt/project`도 있습니다 (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* 만 해당). **최대 요청 크기 40 MB**.
 
 ## 내보내기 모듈 사용
 
-:::note
-대용량 차트를 내보내야 하는 경우 [Standalone 내보내기 모듈](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)을 사용할 수 있습니다.  
-Gantt를 [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 또는 [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 라이선스 하에 얻은 경우 이 모듈은 무료로 제공되며, 그렇지 않으면 모듈을 따로 구입할 수 있습니다.
-:::
-
-[MS Project용 내보내기 모듈 사용 방법 읽기](guides/msp-export-module.md).
+대용량 차트를 내보내거나, 온라인 내보내기 서비스의 제한 없이 내보내거나, 데이터를 사내 네트워크에 보관하려면 자체 서버에 [내보내기 모듈](guides/export-modules.md)을 설치하십시오. [MS Project 및 Primavera P6용 내보내기 모듈](guides/msp-export-module.md) 사용에 대한 자세한 내용을 확인하십시오.
 
 ## MS Project로 내보내기 {#export-to-ms-project}
 
@@ -365,7 +347,7 @@ gantt.importFromMSProject({
             - 주의 요일 7일(0은 일요일부터 6은 토요일까지), 1/true는 작업일, 0/false는 비작업일
             - 기타 레코드는 날짜
 
-### Import 설정
+### Import 설정 {#import-settings}
 
 #### 지속 시간 단위 설정
 
@@ -423,7 +405,7 @@ gantt.importFromMSProject({
 });
 ~~~
 
-#### 작업 속성 얻기
+#### 작업 속성 얻기 {#getting-tasks-properties}
 
 작업 필드를 얻으려면 필요한 필드들의 배열을 포함하는 taskProperties 입력을 서버로 보낼 수 있습니다. 이는 MS Project Task 엔티티의 임의 속성을 추출합니다. 지원되는 [속성] 목록은 [여기](guides/msp-import-properties.md#task-properties)에서 확인할 수 있습니다:
 
@@ -634,51 +616,25 @@ gantt.importFromMSProject({
 }
 ~~~
 
-## 대용량 파일의 요청 크기 제한 및 가져오기
+## 대용량 파일의 요청 크기 제한 및 가져오기 {#limits-on-request-size-and-import-of-large-files}
 
-MSProject 내보내기/가져오기 서비스에는 두 개의 API 엔드포인트가 있습니다:
+온라인 내보내기 서비스에는 대용량 MS Project 파일을 위한 별도의 엔드포인트 `https://export.dhtmlx.com/gantt/project`가 있습니다. 이 엔드포인트는 최대 40 MB의 요청을 받으며, 기본 엔드포인트 `https://export.dhtmlx.com/gantt`는 최대 10 MB의 요청을 받습니다. [온라인 내보내기 서비스 제한](guides/export-common.md#service-limits)을 참조하십시오.
 
-- `https://export.dhtmlx.com/gantt` - 기본 엔드포인트로 모든 내보내기 메서드(*exportToPDF*, *exportToPNG*, *exportToMSProject*, 등)에 사용됩니다. **최대 요청 크기 10 MB**.
-- `https://export.dhtmlx.com/gantt/project` - [MSProject](guides/export-msproject.md) 및 [ Primavera P6](guides/export-primavera.md) 내보내기/가져오기 서비스에 특화된 엔드포인트(*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*만 해당). **최대 요청 크기: 40 MB**.
-
-엔드포인트는 export 구성 객체의 **server** 속성으로 지정할 수 있습니다:
-
-~~~js
-gantt.importFromMSProject({
-    server: "https://export.dhtmlx.com/gantt",
-    data: file,
-    callback: function(project){
-       // 일부 로직
-    }
-}); 
-~~~
-
-엔드포인트가 명시되지 않은 경우 기본값인 `https://export.dhtmlx.com/gantt`가 사용됩니다. 위와 같은 동작은 아래의 호출과 동일합니다:
-
-~~~js
-gantt.importFromMSProject({
-    data: file,
-    callback: function(project){
-       // 일부 로직
-    }
-});
-~~~
-
-4MB를 초과하는 대형 프로젝트를 내보내거나 가져오기 위해서는 두 번째 엔드포인트를 사용할 수 있습니다:
+10 MB 제한을 초과하는 프로젝트를 내보내거나 가져오려면 구성 객체의 `server` 속성에 엔드포인트를 지정하십시오:
 
 ~~~js
 gantt.importFromMSProject({
     server: "https://export.dhtmlx.com/gantt/project",
     data: file,
-    callback: function(project){
-       // 일부 로직
+    callback: (project) => {
+        // 일부 로직
     }
-}); 
+});
 ~~~
 
-이 엔드포인트는 최대 40MB 크기의 요청 전송을 가능하게 하며 MS Project의 내보내기 및 가져오기를 지원합니다. 이는 MS Project 내보내기 전용으로 사용할 수 있습니다.
+이 엔드포인트는 MS Project 및 Primavera P6의 내보내기와 가져오기만 지원합니다. 다른 메서드, 예를 들어 `gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})`는 서버 오류를 반환해야 합니다.
 
-다른 메서드 예: `gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})` 는 서버 오류를 반환해야 합니다.
+자체 내보내기 모듈로 대용량 파일을 가져오려면 [대용량 파일 가져오기](guides/msp-export-module.md#import-of-large-files)를 참조하십시오.
 
 ## dhtmlxGantt vs MS Project 시간 계산
 

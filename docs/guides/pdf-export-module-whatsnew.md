@@ -1,10 +1,29 @@
 ---
-title: "What's new in PDF Export Module"
-sidebar_label: "What's new in PDF Export Module"
+title: "What's New in the PDF Export Module"
+sidebar_label: "PDF/PNG/Excel module"
 ---
 
-What's new in PDF Export Module
-================================
+What's New in the PDF Export Module
+===================================
+
+## 0.8.4
+
+- Fixed Scheduler PDF export with a watermark making the page about twice as tall as the Scheduler, with a blank area below it
+- Fixed Scheduler PDF and PNG export making the page at least 720px tall when the Scheduler was shorter, which left blank space below it
+- Fixed Scheduler 7.x PDF and PNG export ignoring the width of the requested `format` and `orientation` in all views except Month
+- Fixed the `zoom` parameter of Scheduler PDF and PNG export not changing the page width
+- Updated the Scheduler test pages, including `/test`, to Scheduler 7.2
+
+## 0.8.3
+
+- Updated the base Docker image to Debian 13 (trixie)
+- Updated dependency packages for building the Docker image
+
+## 0.8.2
+
+- Updated the Docker image to Debian 12 (bookworm)
+- Removed the unused libgconf-2-4 package from the Docker image
+- Set a fixed user id for `pptruser` in the Docker image, so mounted volumes stay writable after a rebuild
 
 ## 0.8.1
 

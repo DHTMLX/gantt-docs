@@ -1,50 +1,27 @@
 ---
-title: "Excel 的导出/导入，iCal 的导出"
-sidebar_label: "Excel 导出/导入，iCal 导出"
+title: "Excel 的导出和导入"
+sidebar_label: "Excel"
 ---
 
-# Excel 的导出/导入，iCal 的导出
+# Excel 的导出和导入
 
-dhtmlxGantt 库允许将甘特图数据导出为 Excel 和 iCal 格式。你也可以从 Excel 文件将数据导入到甘特图中。
+dhtmlxGantt 库允许将甘特图数据导出为 Excel 格式。你也可以从 Excel 文件将数据导入到甘特图中。如需导出为 iCal 格式，请参阅[导出为 iCal](guides/ical.md)。
 
 :::note
-服务是免费的，但导出的 Excel/iCal 文件会包含本库的水印。
-要在导出时去除水印，你需要获得有效的许可证——在有效的支持期内（所有 PRO 许可证为 12 个月）导出的结果将不带水印。
+在线导出服务是免费的。有关许可条款，请参阅[许可证和水印](guides/export-common.md#license-and-watermark)。
 :::
 
-有多种导出服务可用。你可以在本地计算机上安装它们，并将甘特图导出为 Excel 或 iCal。本地导出服务并不包含在 Gantt 包中，请阅读 [相应文章](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) 以了解每种服务的使用条款。
+有多种导出服务可用。你可以在本地计算机上安装它们，并将甘特图导出为 Excel。本地导出服务并不包含在 Gantt 包中，请阅读 [相应文章](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) 以了解每种服务的使用条款。
 
 ## 在线导出服务的限制
 
 :::note
-导出服务对时间和请求大小有限制。
+在线导出服务对时间和请求大小有限制。请参阅[在线导出服务的限制](guides/export-common.md#service-limits)。
 :::
-
-### 时间限制
-
-如果处理时间超过 20 秒，导出将被取消，并出现以下错误：
-
-~~~html
-Error: Timeout trigger 20 seconds
-~~~
-
-若多人同时导出甘特图，处理时间可能比平时长一些。但这也没关系，因为针对某个用户的导出请求所花费的时间是分开统计的。
-
-### 请求大小限制
-
-存在一个通用的 API 端点 `https://export.dhtmlx.com/gantt`，用于所有导出方法（*exportToPDF*、*exportToPNG*、*exportToMSProject* 等）。**最大请求大小为 10 MB**。
-
-另有一个专用端点 `https://export.dhtmlx.com/gantt/project`，专用于 [MSProject](guides/export-msproject.md) 与 
-[Primavera P6](guides/export-primavera.md) 的导出/导入服务（仅有 *exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*）。**最大请求大小：40 MB**。
 
 ## 使用导出模块
 
-:::note
-如果你需要导出较大图表，可以使用一个 [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)。 
-如果你在 [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing)、[Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 或 [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 授权下获得了 Gantt，导出模块可免费使用，或你也可以 [单独购买模块](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210)。
-:::
-
-[更多关于导出模块用于 PDF 的用法](guides/pdf-export-module.md) 的信息。该导出模块可将数据导出为 PDF、PNG、Excel 及 iCal 文件。
+要导出较大的图表、在不受在线导出服务限制的情况下导出，或将数据保留在你的网络内，请在自己的服务器上安装[导出模块](guides/export-modules.md)。有关[用于 PDF、PNG、Excel 和 iCal 的导出模块](guides/pdf-export-module.md)的用法，请阅读相应文章。
 
 ## 导出到 Excel
 
@@ -98,6 +75,7 @@ gantt.plugins({
     - **'width'** - (*number*) 列宽（像素）
     - **'type'** - (*string*) 列类型
 - **server** - (*string*) 设置请求的 API 端点。可用于本地安装的导出服务。默认值为 `https://export.dhtmlx.com/gantt`
+- **raw** - (*boolean*) 定义甘特图数据的导出方式。默认值为 *false*。详见[导出筛选后的任务和隐藏列](#exporting-filtered-tasks-and-hidden-columns)部分
 - **callback** - (*function*) 如果你希望收到用于下载生成的 XLSX 文件的 URL，可以使用 callback 属性。它会接收一个具有 url 属性的 JSON 对象
 - **visual** - (*boolean*) 在导出的 Excel 文档中添加时间线图。默认值为 false
 - **cellColors** - (*boolean*) 如果设为 true，导出文档的单元格将具有由 [timeline_cell_class](api/template/timeline_cell_class.md) 模板定义的颜色，导出 color 与 background-color 属性
@@ -179,6 +157,43 @@ gantt.exportToExcel({
 ~~~
 
 **相关示例**: [Export colors of tasks](https://snippet.dhtmlx.com/t2znjrfj)
+
+### 导出筛选后的任务和隐藏列 {#exporting-filtered-tasks-and-hidden-columns}
+
+默认情况下，[`exportToExcel()`](api/method/exporttoexcel.md) 方法会导出甘特图的所有任务和列，无论是否通过 [`onBeforeTaskDisplay`](api/event/onbeforetaskdisplay.md) 事件应用了筛选，也无论是否通过 `hide:true` 设置[隐藏](guides/specifying-columns.md#visibility)了某些列。
+
+若要使导出排除通过 `onBeforeTaskDisplay` 过滤掉的任务，请将 **raw** 属性设为 *true*：
+
+~~~js
+gantt.attachEvent("onBeforeTaskDisplay", function(id, task){
+    // 隐藏与搜索值不匹配的任务
+    return task.text.toLowerCase().indexOf(filterValue.toLowerCase()) > -1;
+});
+
+gantt.exportToExcel({
+    raw: true
+});
+~~~
+
+**相关示例**: [Gantt. Export filtered data to PDF, Excel, and MSProject files](https://snippet.dhtmlx.com/twfy116w)
+
+同样，若要排除通过 `hide:true` 设置隐藏的列，也请将 **raw** 属性设为 *true*：
+
+~~~js
+gantt.config.columns = [
+    { name: "text", tree: true, width: 150, resize: true },
+    { name: "start_date", align: "center", width: 120, resize: true },
+    // 当 raw: true 时，隐藏的列不会被导出
+    { name: "end_date", align: "center", label: "End Time", hide: true, width: 120, resize: true },
+    { name: "duration", align: "center", width: 70, hide: true, resize: true }
+];
+
+gantt.exportToExcel({
+    raw: true
+});
+~~~
+
+**相关示例**: [Gantt. Export to Excel. Hide grid columns with the raw mode](https://snippet.dhtmlx.com/b7y0ps8m)
 
 ## 从 Excel 导入 {#importfromexcel}
 
@@ -265,43 +280,4 @@ gantt.importFromExcel({
 
 ## 导出到 iCal {#export-to-ical}
 
-要将甘特图的数据导出为 iCal 字符串，请执行以下操作：
-
-- 要使用在线导出服务，请通过 [plugins](api/method/plugins.md) 方法启用 <b>export_api</b> 插件：
-
-~~~js
-gantt.plugins({
-    export_api: true
-});
-~~~
-
-- 调用 [exportToICal](api/method/exporttoical.md) 方法将数据从甘特图导出为 iCal： 
-
-~~~html
-<input value="Export to iCal" type="button" onclick='gantt.exportToICal()'>
-
-<script>
-    gantt.init("gantt_here");
-    gantt.parse(demo_tasks);
-</script>
-~~~
-
-
-**相关示例**: [Export data: MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
-
-
-**相关示例**: [Export data: store online](https://docs.dhtmlx.com/gantt/samples/08_api/09_export_store.html)
-
-
-#### 导出方法的参数
-
-[exportToICal()](api/method/exporttoical.md) 方法的参数是一个包含以下属性（可选）的对象：
-
-- **server** - (*string*) 设置请求的 API 端点。可用于本地安装的导出服务。默认值为 `https://export.dhtmlx.com/gantt`;
-- **name** - (*string*) 允许为文件指定自定义名称和扩展名，但文件仍将以 iCal 的格式导出。
-  
-~~~jsx title="Calling the export method with optional properties"
-gantt.exportToICal({
-    server:"https://myapp.com/myexport/gantt"
-});
-~~~
+iCal 导出的说明请参阅[导出为 iCal](guides/ical.md)一文。

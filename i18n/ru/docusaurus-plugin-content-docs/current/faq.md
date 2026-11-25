@@ -19,7 +19,7 @@ sidebar_label: "FAQ"
 - выполните `npm install`
 - выполните `npm run start`
 - откройте `http://localhost:9200` в вашем браузере
-- вы должны увидеть индексную страницу, идентичную нашим онлайн‑образцам **https://docs.dhtmlx.com/gantt/samples/**
+- вы должны увидеть индексную страницу, идентичную нашим онлайн‑образцам **https://docs.dhtmlx.com/gantt/demos/**
 
 2) Использовать веб-сервер Apache
 

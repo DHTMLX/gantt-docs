@@ -1,18 +1,13 @@
 --- 
-title: "导出服务 - 独立安装的系统要求" 
-sidebar_label: "导出服务 - 独立安装的系统要求" 
+title: "导出模块：系统要求" 
+sidebar_label: "系统要求" 
 ---
 
-# 导出服务 - 独立安装的系统要求
+# 导出模块：系统要求
 
-dhtmlxGantt 库为您提供通过在线服务导出和导入甘特图数据的可能性。
+若要在您自己的服务器上安装[导出模块](guides/export-modules.md)，请确保您的系统满足下面每个模块的要求。
 
-您也可以通过在本地计算机上安装 [export services](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) 来导出甘特图。使用导出模块前，您需要确保系统符合以下系统要求：
-
-- PNG/PDF/Excel [导出要求](guides/export-requirements.md#pdfpngexcel-service)
-- MS Project/Primavera P6 [导入和导出要求](guides/export-requirements.md#import-and-export-from-ms-project-and-primavera-p6)
-
-## PDF/PNG/Excel Service
+## PDF/PNG/Excel Service {#pdfpngexcel-service}
 
 ### 概述
 
@@ -29,7 +24,7 @@ dhtmlxGantt 库为您提供通过在线服务导出和导入甘特图数据的�
   <tr>
   <td>- 1 个 CPU 内核（共享虚拟核心也可用）- 至少 500MB RAM</td>
   <td>- Linux - Windows - MacOS</td>
-  <td>- Node.js v12.03 或更高版本，推荐使用 v18 或 v20，或 - Docker</td>
+  <td>- Node.js v20 或更高版本，或 - Docker</td>
   </tr>
 </table>
 

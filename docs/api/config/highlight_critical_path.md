@@ -35,10 +35,13 @@ gantt.init("gantt_here");
 This option is defined in the **critical_path** extension, so you need to activate the [critical_path](guides/extensions-list.md#critical-path) plugin. Read the details in the [Critical Path](guides/critical-path.md) article. 
 :::
 
+While the option is enabled, each change of a task or link repaints the whole chart. On large charts, enable the option only when users need to see the critical path, or group changes with [batchUpdate](api/method/batchupdate.md).
+
 ### Related API
 - [isCriticalTask](api/method/iscriticaltask.md)
 - [isCriticalLink](api/method/iscriticallink.md)
 
 ### Related Guides
 - [Critical Path](guides/critical-path.md)
+- [Performance: Ways to Improve](guides/performance.md#common-techniques)
 

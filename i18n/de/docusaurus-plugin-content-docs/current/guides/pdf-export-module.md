@@ -1,13 +1,17 @@
 --- 
-title: "PDF-Exportmodul" 
-sidebar_label: "PDF-Exportmodul" 
+title: "Export-Modul für PDF, PNG, Excel und iCal" 
+sidebar_label: "PDF/PNG/Excel-Modul" 
 ---
 
-# PDF-Exportmodul
+# Export-Modul für PDF, PNG, Excel und iCal
 
 Dieses Exportmodul kann Daten in PDF-, PNG-, Excel- und iCal-Dateien exportieren. Es kann auf jeder Plattform als Node.js-Anwendung oder als Docker-Image installiert werden.
 
 Es enthält keine Import-/Export-Funktionalität für MS Project- und Primavera-Dateien. Falls Sie eine solche Funktionalität benötigen, sollten Sie das entsprechende Exportmodul [das entsprechende Exportmodul](guides/msp-export-module.md) oder unseren Online-Server verwenden.
+
+:::note
+Standardmäßig leitet dieses Modul Anfragen für MS Project und Primavera P6 an den Online-Exportdienst unter `https://export.dhtmlx.com/msproject` weiter. Um sie an Ihr eigenes MS-Project-Exportmodul zu senden, legen Sie die Umgebungsvariable `MSP_SERVICE_ENDPOINT` fest. Siehe [Zusammenspiel der beiden Module](guides/export-modules.md#service-topology).
+:::
 
 ## Installationsanleitung
 
@@ -20,7 +24,7 @@ Sie können das Exportmodul im Client-Bereich im Download-Tab herunterladen. Sie
 Nachdem Sie diese Datei heruntergeladen haben, entpacken Sie sie an einem beliebigen Ort, öffnen Sie dann die Befehlszeile und wechseln Sie zum Ordner des Exportmoduls. Zum Beispiel:
 
 ~~~
-cd C:export_module
+cd C:\export_module
 ~~~
 
 Dann müssen Sie die Module der Anwendung installieren:
@@ -73,11 +77,7 @@ xvfb-run node index.js
 
 ### Alte Node.js-Version
 
-Das Exportmodul ist mit der Node.js-Version 12.03 und neuer kompatibel. Wenn Sie eine ältere Version haben, müssen Sie die ältere Version von Electron installieren:
-
-~~~
-npm install electron@6.1
-~~~
+Das Exportmodul ist mit Node.js v20 und neuer kompatibel. Wenn Sie eine ältere Version haben, aktualisieren Sie Node.js.
 
 ### Export nach PDF endet nie
 
@@ -106,7 +106,7 @@ Wenn Sie eine der folgenden Fehlermeldungen erhalten:
 * Failed to get crash dump id
 * Electron crashed!
 
-wahrscheinlich bedeutet dies, dass das Exportmodul auf einem headless-Server läuft. Sie müssen die notwendigen Komponenten installieren, um PDF- und PNG-Export zu verwenden. Oder Sie können ein Docker-Image erstellen.
+wahrscheinlich bedeutet dies, dass das Exportmodul auf einem headless-Server läuft. Sie müssen [die notwendigen Komponenten installieren, um PDF- und PNG-Export zu verwenden](#using-server-without-graphical-interface). Oder Sie können ein Docker-Image erstellen.
 
 ### Verwendung eines Docker-Images
 
@@ -119,7 +119,7 @@ docker build -t dhtmlx/scheduler-gantt-export ./
 Führen Sie das Docker-Image mit dem folgenden Befehl aus:
 
 ~~~
-docker run -d -p 3200:80 dhtmlx/scheduler-gantt-export
+docker run -d -p 3200:3200 dhtmlx/scheduler-gantt-export
 ~~~
 
 3200 ist der Port, auf dem der Docker-Dienst läuft.

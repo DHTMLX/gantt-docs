@@ -1,6 +1,6 @@
 ---
 title: "导出为 PDF 和 PNG"
-sidebar_label: "导出为 PDF 和 PNG"
+sidebar_label: "PDF 和 PNG"
 ---
 
 # 导出为 PDF 和 PNG
@@ -18,34 +18,12 @@ dhtmlxGantt 提供一个在线导出服务，允许您将甘特图导出为 [PDF
 ## 在线导出服务的限制
 
 :::note
-导出服务有时间与请求大小的限制。
+在线导出服务对时间和请求大小有限制。请参阅[在线导出服务的限制](guides/export-common.md#service-limits)。
 :::
-
-### 时间限制
-
-如果处理时间超过 20 秒，导出将被取消，并出现以下错误：
-
-~~~html
-Error: Timeout trigger 20 seconds
-~~~
-
-如果多人同时导出甘特图，处理时间可能比平时长一些。但没关系，因为来自特定用户的导出请求所花费的时间将单独计数。
-
-### 请求大小限制
-
-有一个通用的 API 端点 `https://export.dhtmlx.com/gantt`，用于所有导出方法（*exportToPDF*、*exportToPNG*、*exportToMSProject* 等）。**最大请求大小为 10 MB**。
-
-还有一个单独的 API 端点 `https://export.dhtmlx.com/gantt/project`，专门用于 [MSProject](guides/export-msproject.md) 与  
-[Primavera P6](guides/export-primavera.md) 的导出/导入服务（仅限 *exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*）。**最大请求大小：40 MB**。
 
 ## 使用导出模块
 
-:::note
-如果您需要导出较大的图表，可以使用一个 [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)。
-如果您是通过 [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing)、[Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 或 [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 许可获取 Gantt，则导出模块免费提供，或者您也可以 [单独购买该模块](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210)。
-:::
-
-[Read more on the usage of the export module for PDF](guides/pdf-export-module.md).
+要导出较大的图表、在不受在线导出服务限制的情况下导出，或将数据保留在您的网络内，请在自己的服务器上安装[导出模块](guides/export-modules.md)。有关[用于 PDF、PNG、Excel 和 iCal 的导出模块](guides/pdf-export-module.md)的用法，请阅读相应文章。
 
 ## Export to PDF
 
@@ -169,7 +147,7 @@ gantt.plugins({
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>additional_settings</b></td>
-  <td>(<i>object</i>) 一个包含 <b>exportToPDF()</b> 方法的附加设置的对象。该对象可包含以下属性：<ul> <li><b>format</b> - (<i>string</i>) 输出文件的格式： <i>"A0", "A1", "A2", "A3", "A4", "A5", "A6", "Legal", "Ledger", "Letter", "Tabloid"</i></li> <li><b>landscape</b> - (<i>boolean</i>) 输出文件的纵向或横向。仅在指定了 "format" 属性时生效。</li> <li><b>width</b> - (<i>string | number | "content"</i>) 输出页面的宽度。该属性在导出多页时使用。 </li> <li><b>height</b> - (<i>string | number | "content"</i>) 输出页面的高度。该属性在导出多页时使用。</li> <li><b>merge_pages</b> - (<i>boolean</i>) 启用在一个文件中的多页导出；若设为 <i>false</i>，需要多次导出以获取全部甘特数据</li> <li><b>fixed_headers</b> - (<i>boolean</i>) 启用在每页上显示网格和时间线标题；默认 <i>false</i>。仅在启用 <b>merge_pages</b> 设置时生效</li> <li><b>margins</b> - (<i>object</i>) 输出 PDF 文件的上、下、左、右边距对象。<a href="#margins-of-the-output-pdf-file">下面的详细信息请参阅</a></li> <li><b>header</b> - (<i>string</i>) 指定将添加到每一页输出 PDF 文件的页眉。<a href="#headerfooter-of-the-output-file">下面的详细信息请参阅</a></li> <li><b>footer</b> - (<i>string</i>) 指定将添加到每一页输出 PDF 文件的页脚。<a href="#headerfooter-of-the-output-file">下面的详细信息请参阅</a></li> </ul></td>
+  <td>(<i>object</i>) 一个包含 <b>exportToPDF()</b> 方法的附加设置的对象。该对象可包含以下属性：<ul> <li><b>format</b> - (<i>string</i>) 输出文件的格式： <i>"A0", "A1", "A2", "A3", "A4", "A5", "A6", "Legal", "Ledger", "Letter", "Tabloid"</i></li> <li><b>landscape</b> - (<i>boolean</i>) 输出文件的纵向或横向。仅在指定了 "format" 属性时生效。</li> <li><b>width</b> - (<i>string | number | "content"</i>) 输出页面的宽度。该属性在导出多页时使用。 </li> <li><b>height</b> - (<i>string | number | "content"</i>) 输出页面的高度。该属性在导出多页时使用。</li> <li><b>merge_pages</b> - (<i>boolean</i>) 启用在一个文件中的[多页导出](api/method/exporttopdf.md#multi-page-export)；若设为 <i>false</i>，需要多次导出以获取全部甘特数据</li> <li><b>fixed_headers</b> - (<i>boolean</i>) 启用在每页上显示网格和时间线标题；默认 <i>false</i>。仅在启用 <b>merge_pages</b> 设置时生效</li> <li><b>margins</b> - (<i>object</i>) 输出 PDF 文件的上、下、左、右边距对象。<a href="#margins-of-the-output-pdf-file">下面的详细信息请参阅</a></li> <li><b>header</b> - (<i>string</i>) 指定将添加到每一页输出 PDF 文件的页眉。<a href="#headerfooter-of-the-output-file">下面的详细信息请参阅</a></li> <li><b>footer</b> - (<i>string</i>) 指定将添加到每一页输出 PDF 文件的页脚。<a href="#headerfooter-of-the-output-file">下面的详细信息请参阅</a></li> </ul></td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>additional_settings</b></td>

@@ -37,8 +37,13 @@ gantt.init("gantt_here");
 gantt.config.static_background_cells = false;
 ~~~
 
+하이라이트된 셀은 [show_task_cells](api/config/show_task_cells.md) 구성이 활성화된 경우(기본값)에만 렌더링됩니다.
+
+v6.3부터 [스마트 렌더링](guides/performance.md#smart-rendering)은 타임라인의 보이는 부분에 있는 셀만 렌더링하므로, 이 구성이 렌더링 속도에 미치는 영향은 이전 버전보다 작습니다. 또한 이 구성은 데이터를 내보낼 때 export 서버로 보내는 요청의 크기를 줄여 줍니다.
+
 ### Related API
 - [static_background_cells](api/config/static_background_cells.md)
+- [show_task_cells](api/config/show_task_cells.md)
 
 ### Related Guides
 - [성능: 개선 방법](guides/performance.md)

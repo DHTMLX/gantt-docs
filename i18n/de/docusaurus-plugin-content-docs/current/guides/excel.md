@@ -1,50 +1,27 @@
 ---
-title: "Export/Import für Excel, Export nach iCal"
-sidebar_label: "Export/Import für Excel, Export nach iCal"
+title: "Export und Import für Excel"
+sidebar_label: "Excel"
 ---
 
-# Export/Import für Excel, Export nach iCal
+# Export und Import für Excel
 
-Die dhtmlxGantt-Bibliothek ermöglicht das Exportieren von Daten aus dem Gantt-Diagramm in die Formate Excel und iCal. Sie können auch Daten aus einer Excel-Datei in den Gantt importieren.
+Die dhtmlxGantt-Bibliothek ermöglicht das Exportieren von Daten aus dem Gantt-Diagramm in das Excel-Format. Sie können auch Daten aus einer Excel-Datei in den Gantt importieren. Informationen zum Export von Daten im iCal-Format finden Sie im Artikel [Export nach iCal](guides/ical.md).
 
 :::note
-Der Service ist kostenlos, aber die exportierte Excel-/iCal-Datei enthält das Wasserzeichen der Bibliothek.
-Um ohne Wasserzeichen zu exportieren, benötigen Sie eine gültige Lizenz – das Export-Ergebnis steht ohne Wasserzeichen zur Verfügung
-während der gültigen Support-Periode (12 Monate für alle PRO-Lizenzen).
+Der Online-Exportdienst ist kostenlos. Die Lizenzbedingungen finden Sie unter [Lizenz und Wasserzeichen](guides/export-common.md#license-and-watermark).
 :::
 
-Es gibt mehrere Export-Dienste. Sie können sie lokal auf Ihrem Computer installieren und das Gantt-Diagramm lokal nach Excel oder iCal exportieren. Beachten Sie, dass Export-Dienste nicht im Gantt-Paket enthalten sind. Lesen Sie den [entsprechenden Artikel](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml), um die Nutzungsbedingungen jedes Dienstes zu erfahren.
+Es gibt mehrere Export-Dienste. Sie können sie lokal auf Ihrem Computer installieren und das Gantt-Diagramm lokal nach Excel exportieren. Beachten Sie, dass Export-Dienste nicht im Gantt-Paket enthalten sind. Lesen Sie den [entsprechenden Artikel](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml), um die Nutzungsbedingungen jedes Dienstes zu erfahren.
 
 ## Einschränkungen des Online-Exportdienstes
 
 :::note
-Der Exportdienst unterliegt Zeit- und Größenbeschränkungen.
+Der Online-Exportdienst hat Zeit- und Größenlimits. Siehe [Limits des Online-Exportdienstes](guides/export-common.md#service-limits).
 :::
-
-### Zeitlimits
-
-Wenn der Prozess länger als 20 Sekunden dauert, wird der Export abgebrochen und folgender Fehler tritt auf:
-
-~~~html
-Error: Timeout trigger 20 seconds
-~~~
-
-Wenn mehrere Personen gleichzeitig Gantt exportieren, kann der Prozess länger dauern als üblich. Das ist jedoch unproblematisch, da die Zeit, die für die Exportanfrage eines bestimmten Benutzers aufgewendet wird, separat gezählt wird.
-
-### Beschränkungen der Anfragesgröße
-
-Es gibt einen gemeinsamen API-Endpunkt `https://export.dhtmlx.com/gantt`, der für alle Exportmethoden (*exportToPDF*, *exportToPNG*, *exportToMSProject*, etc.) dient. **Maximale Anfragesgröße ist 10 MB**.
-
-Es gibt auch einen separaten API-Endpunkt `https://export.dhtmlx.com/gantt/project`, der speziell für die [MSProject](guides/export-msproject.md) und [Primavera P6](guides/export-primavera.md) Export-/Import-Dienste (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* nur) vorgesehen ist. **Maximale Anfragesgröße: 40 MB**.
 
 ## Verwendung von Export-Modulen
 
-:::note
-Wenn Sie große Diagramme exportieren müssen, können Sie ein [Standalone-Exportmodul](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) verwenden. 
-Das Exportmodul wird kostenlos bereitgestellt, wenn Sie Gantt unter [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) oder [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) Lizenz erhalten haben, oder Sie können das Modul separat [kaufen](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
-:::
-
-[Read more on the usage of the export module for PDF](guides/pdf-export-module.md). Dieses Exportmodul kann Daten nach PDF-, PNG-, Excel- und iCal-Dateien exportieren.
+Um große Diagramme zu exportieren, den Export ohne die Limits des Online-Exportdienstes durchzuführen oder Ihre Daten in Ihrem Netzwerk zu behalten, installieren Sie ein [Exportmodul](guides/export-modules.md) auf Ihrem eigenen Server. Lesen Sie mehr über die Verwendung des [Exportmoduls für PDF, PNG, Excel und iCal](guides/pdf-export-module.md).
 
 ## Export nach Excel
 
@@ -97,6 +74,7 @@ Die **exportToExcel()**-Methode nimmt als Parameter ein Objekt mit mehreren Eige
     - **'width'** - (*number*) die Spaltenbreite in Pixeln
     - **'type'** - (*string*) der Spaltentyp
 - **server** - (*string*) setzt den API-Endpunkt für die Anfrage. Kann mit der lokalen Installation des Exportdienstes verwendet werden. Der Standardwert ist `https://export.dhtmlx.com/gantt`
+- **raw** - (*boolean*) legt fest, wie die Gantt-Daten exportiert werden. Standardmäßig *false*. Weitere Informationen finden Sie im Abschnitt [Gefilterte Aufgaben und ausgeblendete Spalten exportieren](#exporting-filtered-tasks-and-hidden-columns)
 - **callback** - (*function*) Falls Sie eine URL zum Herunterladen einer generierten XLSX-Datei erhalten möchten, kann die callback-Eigenschaft verwendet werden. Sie erhält ein JSON-Objekt mit der Eigenschaft url
 - **visual** - (*boolean*) fügt dem exportierten Excel-Dokument die Timeline-Grafik hinzu. Standardwert: false
 - **cellColors** - (*boolean*) wenn auf *true* gesetzt, erhalten die Zellen des exportierten Dokuments die Farben, die durch die timeline_cell_class-Vorlage definiert sind; die Eigenschaften *color* und *background-color* werden exportiert
@@ -178,6 +156,43 @@ gantt.exportToExcel({
 ~~~
 
 **Related sample**: [Export colors of tasks](https://snippet.dhtmlx.com/t2znjrfj)
+
+### Gefilterte Aufgaben und ausgeblendete Spalten exportieren {#exporting-filtered-tasks-and-hidden-columns}
+
+Standardmäßig exportiert die Methode [`exportToExcel()`](api/method/exporttoexcel.md) alle Aufgaben und Spalten des Gantt-Diagramms, unabhängig von einer Filterung über das Ereignis [`onBeforeTaskDisplay`](api/event/onbeforetaskdisplay.md) oder von Spalten, die über die Einstellung `hide:true` [ausgeblendet](guides/specifying-columns.md#visibility) wurden.
+
+Damit beim Export die über `onBeforeTaskDisplay` herausgefilterten Aufgaben ausgeschlossen werden, setzen Sie die Eigenschaft **raw** auf *true*:
+
+~~~js
+gantt.attachEvent("onBeforeTaskDisplay", function(id, task){
+    // hide tasks that don't match the search value
+    return task.text.toLowerCase().indexOf(filterValue.toLowerCase()) > -1;
+});
+
+gantt.exportToExcel({
+    raw: true
+});
+~~~
+
+**Related sample**: [Gantt. Export filtered data to PDF, Excel, and MSProject files](https://snippet.dhtmlx.com/twfy116w)
+
+Um ebenso die über die Einstellung `hide:true` ausgeblendeten Spalten auszuschließen, setzen Sie die Eigenschaft **raw** auf *true*:
+
+~~~js
+gantt.config.columns = [
+    { name: "text", tree: true, width: 150, resize: true },
+    { name: "start_date", align: "center", width: 120, resize: true },
+    // hidden columns are excluded from the export when raw: true
+    { name: "end_date", align: "center", label: "End Time", hide: true, width: 120, resize: true },
+    { name: "duration", align: "center", width: 70, hide: true, resize: true }
+];
+
+gantt.exportToExcel({
+    raw: true
+});
+~~~
+
+**Related sample**: [Gantt. Export to Excel. Hide grid columns with the raw mode](https://snippet.dhtmlx.com/b7y0ps8m)
 
 ## Import aus Excel {#importfromexcel}
 
@@ -264,43 +279,4 @@ gantt.importFromExcel({
 
 ## Export nach iCal {#export-to-ical}
 
-Um Daten aus dem Gantt-Diagramm in eine iCal-Zeichenfolge zu exportieren, führen Sie Folgendes aus:
-
-- Um den Online-Exportdienst zu verwenden, aktivieren Sie das <b>export_api</b>-Plugin über die [plugins](api/method/plugins.md) Methode:
-
-~~~js
-gantt.plugins({
-    export_api: true
-});
-~~~
-
-- Rufen Sie die [exportToICal](api/method/exporttoical.md) Methode auf, um Daten aus dem Gantt-Diagramm zu exportieren: 
-
-~~~html
-<input value="Export to iCal" type="button" onclick='gantt.exportToICal()'>
-
-<script>
-    gantt.init("gantt_here");
-    gantt.parse(demo_tasks);
-</script>
-~~~
-
-
-**Related sample**: [Export data: MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
-
-
-**Related sample**: [Export data: store online](https://docs.dhtmlx.com/gantt/samples/08_api/09_export_store.html)
-
-
-#### Parameter der Export-Methode
-
-Die [exportToICal()](api/method/exporttoical.md) Methode nimmt als Parameter ein Objekt mit den folgenden Eigenschaften (optional):
-
-- **server** - (*string*) setzt den API-Endpunkt für die Anfrage. Kann mit der lokalen Installation des Exportdienstes verwendet werden. Der Standardwert ist `https://export.dhtmlx.com/gantt`;
-- **name** - (*string*) ermöglicht die Angabe eines benutzerdefinierten Namens und einer Erweiterung für die Datei, aber die Datei wird weiterhin im iCal-Format exportiert.
-  
-~~~jsx title="Aufruf der Export-Methode mit optionalen Eigenschaften"
-gantt.exportToICal({
-    server:"https://myapp.com/myexport/gantt"
-});
-~~~
+Der Export nach iCal wird im Artikel [Export nach iCal](guides/ical.md) beschrieben.

@@ -44,4 +44,6 @@ There is also a possibility to set a custom unit. Read more on the topic [here](
     - **_date_** - (*Date*) - a date that will be converted
 - **css? (date): any** - a function that returns the name of a CSS class that will be applied to the scale units. Takes a date object as a parameter.
     - **_date_** - (*Date*) - a date that will be checked
-- **sticky?** - (*boolean*) - makes the scale label visible if the scale cell is larger than the viewport width
+- **sticky?** - (*boolean*) - makes the scale label visible if the scale cell is larger than the viewport width.
+Applied only when the [smart_scales](api/config/smart_scales.md) config is enabled (which is the default). If **smart_scales**
+is disabled, the scale labels are always centered in their cells, no matter what the **sticky** property is set to

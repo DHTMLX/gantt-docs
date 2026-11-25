@@ -72,7 +72,7 @@ gantt.config.layout = {
 Nach der Initialisierung funktioniert *resourceGrid* wie die Standard-Grid-Ansicht, jedoch schreibgeschützt. *resourceTimeline* erbt die Skalenkonfiguration aus der Standard-Timeline und besitzt zwei Ebenen:
 
 - Hintergrundzeilen, die [task_row_class](api/template/task_row_class.md) und [timeline_cell_class](api/template/timeline_cell_class.md) erben. Die Templates von *resourceTimeline* können auf Layout-Ebene neu definiert werden.
-- Ressourcenschicht – eine Schicht, die speziell für *resourceTimeline* ist. Sie zeigt Blöcke in Zellen an, in denen der Resource Tasks zugewiesen sind. Der Stil der Blöcke und deren Inhalt können mit den Templates [resource_cell_class](api/template/resource_cell_class.md) und [resource_cell_value](api/template/resource_cell_value.md) definiert werden:
+- Ressourcenschicht - eine Schicht, die speziell für *resourceTimeline* ist. Sie zeigt Blöcke in Zellen an, in denen der Resource Tasks zugewiesen sind. Der Stil der Blöcke und deren Inhalt können mit den Templates [resource_cell_class](api/template/resource_cell_class.md) und [resource_cell_value](api/template/resource_cell_value.md) definiert werden:
 
 ~~~js
 gantt.templates.resource_cell_value = (startDate, endDate, resource, tasks, assignments) => 
@@ -137,28 +137,28 @@ gantt.config.layout = {
 
 Wie im Ressourcen-Auslastungsdiagramm funktioniert auch hier *resourceGrid* wie die Standard-Grid-Ansicht, jedoch schreibgeschützt. *resourceHistogram* hat die folgenden zusätzlichen Templates:
 
-- *histogram_cell_class* – die CSS-Klasse, die auf eine Zelle des Ressourcen-Panel angewendet wird
+- *histogram_cell_class* - die CSS-Klasse, die auf eine Zelle des Ressourcen-Panel angewendet wird
 
 ~~~js
 gantt.templates.histogram_cell_class =
     (start_date, end_date, resource, tasks, assignments) => "";
 ~~~
 
-- *histogram_cell_label* – das Label innerhalb einer Zelle
+- *histogram_cell_label* - das Label innerhalb einer Zelle
 
 ~~~js
 gantt.templates.histogram_cell_label =
     (start_date, end_date, resource, tasks, assignments) => tasks.length * 8;
 ~~~
 
-- *histogram_cell_allocated* – die Höhe des gefüllten Bereichs im Histogramm. Der Wert kann von 0 bis *maxCapacity* festgelegt werden.
+- *histogram_cell_allocated* - die Höhe des gefüllten Bereichs im Histogramm. Der Wert kann von 0 bis *maxCapacity* festgelegt werden.
 
 ~~~js
 gantt.templates.histogram_cell_allocated =
     (start_date, end_date, resource, tasks, assignments) => tasks.length * 8;
 ~~~
 
-- *histogram_cell_capacity* – die Höhe der Linie, die die verfügbare Kapazität der Ressource definiert. Der Wert kann von -1 bis *maxCapacity* festgelegt werden. Werte kleiner als 0 rendern die Linie nicht.
+- *histogram_cell_capacity* - die Höhe der Linie, die die verfügbare Kapazität der Ressource definiert. Der Wert kann von -1 bis *maxCapacity* festgelegt werden. Werte kleiner als 0 rendern die Linie nicht.
 
 ~~~js
 gantt.templates.histogram_cell_capacity =
@@ -356,7 +356,7 @@ gantt.$resourcesStore = gantt.createDatastore({
 
 Mit der Eigenschaft **fetchTasks** auf *true* gesetzt, rendert Gantt alle Aufgaben, die einer bestimmten Ressource zugewiesen sind, im Ressourcen-Ansichtsbereich. Diese Funktionalität funktioniert sowohl für das Ressourcen-Diagramm als auch für das Ressourcen-Histogramm.
 
-Es gibt eine Kurzform, um alle einer Ressource zugewiesenen Aufgaben abzurufen – [getResourceAssignments](api/method/getresourceassignments.md).
+Es gibt eine Kurzform, um alle einer Ressource zugewiesenen Aufgaben abzurufen - [getResourceAssignments](api/method/getresourceassignments.md).
 
 ~~~js
 gantt.getResourceAssignments("6"); 
@@ -364,7 +364,7 @@ gantt.getResourceAssignments("6");
 
 ## Zuordnungen von Ressourcen {#assigningresources}
 
-### Ressourcen mit Aufgaben verbinden 
+### Ressourcen mit Aufgaben verbinden {#connecting-resources-to-tasks}
 
 Die Ressourcenzuordnung wird durch die Konfigurationsoption [resource_property](api/config/resource_property.md) definiert:
 
@@ -404,7 +404,7 @@ Sie können dieses Format mit dem [custom multiselect control](guides/custom-edi
 }
 ~~~
 
-Die Ressourcen werden der Task1 wie folgt zugewiesen: Die Ressource mit der id="2" – in der Menge von 8 Einheiten, während die Ressource mit der id="3" – in der Menge von 4 Einheiten.
+Die Ressourcen werden der Aufgabe "Task #1" wie folgt zugewiesen: die Ressource mit der id="2" mit einer Menge von 8 Einheiten, die Ressource mit der id="3" mit einer Menge von 4 Einheiten.
 Dieses Format wird vom [Resources Control](guides/resources.md) und dem [Resource Assignments control](guides/resource-assignments.md) des Lightboxes unterstützt.
 
 Seit Version 8.0 können Sie Ressourcenzuweisungen auch als separate Liste laden, und Gantt wird sie automatisch mit Tasks verknüpfen:
@@ -593,7 +593,7 @@ Nachfolgend eine kurze Zusammenfassung, wie Zuweisungsdaten in jedem Modus berec
 
 ### Aufgaben, denen eine Ressource zugewiesen ist abrufen 
 
-Es gibt eine Kurzform, um alle Aufgaben abzurufen, denen eine Ressource zugewiesen ist – [getResourceAssignments](api/method/getresourceassignments.md).
+Es gibt eine Kurzform, um alle Aufgaben abzurufen, denen eine Ressource zugewiesen ist - [getResourceAssignments](api/method/getresourceassignments.md).
 
 ~~~js
 gantt.getResourceAssignments("6"); 
@@ -620,15 +620,15 @@ Die Methode nimmt als Parameter die ID der Ressource und gibt ein Array von Obje
 
 Jedes Objekt enthält die folgenden Eigenschaften:
 
-- *task_id* – die ID der Aufgabe
-- *resource_id* – die ID der Ressource
-- *value* – die Zuordnungsmenge der Ressource zu einer Aufgabe
-- *delay* – der Unterschied zwischen dem Startdatum der Zuweisung und dem Startdatum der Aufgabe
-- *duration* – die Dauer der Zuweisung
-- *start_date* – das Datum, an dem die Zuweisung beginnen soll
-- *end_date* – das Datum, an dem die Zuweisung beendet werden soll
-- *id* – die ID der Zuweisung
-- *mode* – der Berechnungsmodus der Zeit der Ressourcenzuweisung: "default"|"fixedDates"|"fixedDuration"
+- *task_id* - die ID der Aufgabe
+- *resource_id* - die ID der Ressource
+- *value* - die Zuordnungsmenge der Ressource zu einer Aufgabe
+- *delay* - der Unterschied zwischen dem Startdatum der Zuweisung und dem Startdatum der Aufgabe
+- *duration* - die Dauer der Zuweisung
+- *start_date* - das Datum, an dem die Zuweisung beginnen soll
+- *end_date* - das Datum, an dem die Zuweisung beendet werden soll
+- *id* - die ID der Zuweisung
+- *mode* - der Berechnungsmodus der Zeit der Ressourcenzuweisung: "default"|"fixedDates"|"fixedDuration"
 
 
 ### Ressourcen-Zuweisungen einer Aufgabe abrufen
@@ -929,9 +929,9 @@ Im untenstehenden Beispiel wird ein Template mit bearbeitbaren Zellen bereitgest
 
 Für Farbgebung benötigen Sie üblicherweise die folgenden Templates:
 
-- [gantt.templates.grid_row_class](api/template/grid_row_class.md) – die CSS-Klasse einer Zeile im linken Grid
-- [gantt.templates.task_row_class](api/template/task_row_class.md) – der Hintergrund der Timeline-Zeile (wird nicht aufgerufen, falls [smart_rendering](api/config/smart_rendering.md) aktiviert ist)
-- [gantt.templates.task_class](api/template/task_class.md) – die CSS-Klasse eines Aufgabenbalkens
+- [gantt.templates.grid_row_class](api/template/grid_row_class.md) - die CSS-Klasse einer Zeile im linken Grid
+- [gantt.templates.task_row_class](api/template/task_row_class.md) - der Hintergrund der Timeline-Zeile (wird nicht aufgerufen, falls [smart_rendering](api/config/smart_rendering.md) aktiviert ist)
+- [gantt.templates.task_class](api/template/task_class.md) - die CSS-Klasse eines Aufgabenbalkens
 
 Je nach Kontext können Sie
 - entweder vordefinierte Klassen für jede Ressource verwenden, oder

@@ -1,6 +1,6 @@
 ---
 title: "Export und Import aus Primavera P6"
-sidebar_label: "Export und Import aus Primavera P6"
+sidebar_label: "Primavera P6"
 ---
 
 # Export und Import aus Primavera P6
@@ -8,45 +8,20 @@ sidebar_label: "Export und Import aus Primavera P6"
 Die dhtmlxGantt-Bibliothek ermöglicht das Exportieren von Daten aus dem Gantt-Diagramm nach Primavera P6. Sie können außerdem Daten aus Primavera P6 in Gantt importieren.
 
 :::note
-Der Dienst ist kostenlos, aber die Ausgabedatei enthält das Wasserzeichen der Bibliothek.
-Um ohne Wasserzeichen zu exportieren, benötigen Sie eine gültige Lizenz - das Exportergebnis wird während der gültigen Support-Periode (12 Monate für alle PRO-Lizenzen) ohne Wasserzeichen verfügbar sein.
+Der Online-Exportdienst ist kostenlos. Die Lizenzbedingungen finden Sie unter [Lizenz und Wasserzeichen](guides/export-common.md#license-and-watermark).
 ::: 
 
-Es gibt mehrere Exportdienste. Sie können sie lokal auf Ihrem Computer installieren und das Gantt-Diagramm lokal nach Primavera P6 exportieren. Beachten Sie, dass Exportdienste nicht im Gantt-Paket enthalten sind; lesen Sie den [entsprechenden Artikel], um die Nutzungsbedingungen jedes einzelnen Dienstes zu erfahren.
+Es gibt mehrere Exportdienste. Sie können sie lokal auf Ihrem Computer installieren und das Gantt-Diagramm lokal nach Primavera P6 exportieren. Beachten Sie, dass Exportdienste nicht im Gantt-Paket enthalten sind; lesen Sie den [entsprechenden Artikel](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml), um die Nutzungsbedingungen jedes einzelnen Dienstes zu erfahren.
 
 ## Einschränkungen des Online-Exportdienstes
 
 :::note
-Der Exportdienst hat Zeit- und Größenbeschränkungen für Anfragen.
+Der Online-Exportdienst hat Zeit- und Größenlimits. Siehe [Limits des Online-Exportdienstes](guides/export-common.md#service-limits).
 :::
-
-### Zeitlimits
-
-Falls der Prozess länger als 20 Sekunden dauert, wird der Export abgebrochen und folgender Fehler tritt auf:
-
-~~~html
-Error: Timeout trigger 20 seconds
-~~~
-
-Wenn mehrere Personen gleichzeitig Gantt exportieren, kann der Prozess länger dauern als üblich. Das ist jedoch unproblematisch, da die für einen bestimmten Benutzer aufgewendete Exportanforderung separat gezählt wird.
-
-### Begrenzung der Anfragengröße
-
-Es gibt einen gemeinsamen API-Endpunkt `https://export.dhtmlx.com/gantt`, der alle Exportmethoden bedient (*exportToPDF*, *exportToPNG*, *exportToMSProject*, etc.). **Maximale Anfragengröße ist 10 MB**.
-
-Es gibt zudem einen separaten API-Endpunkt `https://export.dhtmlx.com/gantt/project`, der speziell für die [MSProject](guides/export-msproject.md) und 
-[Primavera P6](#limits-on-request-size-and-import-of-large-files) 
-Export/Import-Dienste (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* nur). **Maximale Anfragengröße: 40 MB**.
 
 ## Verwendung von Export-Modulen
 
-:::note
-Wenn Sie große Diagramme exportieren müssen, können Sie ein [Standalone-Exportmodul](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) verwenden. 
-Das Exportmodul ist kostenlos, wenn Sie Gantt unter einer der Lizenzen [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) oder [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) erworben haben, oder Sie können das Modul auch [separat kaufen](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
-:::
-
-[Weitere Informationen zur Nutzung des Exportmoduls für MS Project lesen](guides/msp-export-module.md). Dieses Exportmodul bietet Export/Import-Funktionalität für MS Project und 
-Primavera P6.
+Um große Diagramme zu exportieren, den Export ohne die Limits des Online-Exportdienstes durchzuführen oder Ihre Daten in Ihrem Netzwerk zu behalten, installieren Sie ein [Exportmodul](guides/export-modules.md) auf Ihrem eigenen Server. Lesen Sie mehr über die Verwendung des [Exportmoduls für MS Project und Primavera P6](guides/msp-export-module.md).
 
 ## Export nach Primavera P6 {#exporttoprimaverap6}
 
@@ -395,7 +370,7 @@ Dates werden im Format "%Y-%m-%d %H:%i" als Strings angegeben.
             - 7 Tage der Woche (von 0 - Sonntag bis 6 - Samstag), wobei 1/true für einen Arbeitstag steht und 0/false - ein Nicht-Arbeitstag
             - andere Datensätze sind Daten
 
-### Import-Einstellungen
+### Import-Einstellungen {#import-settings}
 
 #### Festlegung der Dauer-Einheit
 
@@ -739,48 +714,20 @@ Falls es Ressourcen-Zuweisungen gibt, werden sie im Array **assignments** import
 
 ## Grenzen bei der Anfragengröße und Import großer Dateien {#limits-on-request-size-and-import-of-large-files}
 
-Es gibt zwei API-Endpunkte für die Primavera P6 Export/Import-Dienste:
+Der Online-Exportdienst hat einen separaten Endpunkt für große Primavera P6-Dateien: `https://export.dhtmlx.com/gantt/project`. Er akzeptiert Anfragen bis zu 40 MB, während der Standard-Endpunkt `https://export.dhtmlx.com/gantt` Anfragen bis zu 10 MB akzeptiert. Siehe [Limits des Online-Exportdienstes](guides/export-common.md#service-limits).
 
-- `https://export.dhtmlx.com/gantt` - der Standard-Endpunkt, der alle Exportmethoden bedient (*exportToPDF*, *exportToPNG*, *exportToPrimaveraP6*, etc.). **Maximale Anfragengröße 10 MB**.
-- `https://export.dhtmlx.com/gantt/project` - der Endpunkt, der speziell für die [MSProject](guides/export-msproject.md) und 
-[Primavera P6](guides/export-primavera.md) 
-Export/Import-Dienste (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* nur). **Maximale Anfragengröße: 40 MB**.
-
-Der Endpunkt kann durch die Eigenschaft **server** des Export-Konfigurationsobjekts festgelegt werden:
-
-~~~js
-gantt.importFromPrimaveraP6({
-    server: "https://export.dhtmlx.com/gantt",
-    data: file,
-    callback: function(project){
-       // some logic
-    }
-}); 
-~~~
-
-Wenn kein Endpunkt angegeben wird, gilt standardmäßig `https://export.dhtmlx.com/gantt`. Der folgende Aufruf entspricht dem oben Gezeigten:
-
-~~~js
-gantt.importFromPrimaveraP6({
-    data: file,
-    callback: function(project){
-       // some logic
-    }
-});
-~~~
-
-Um große Projekte zu exportieren oder zu importieren, die die 4 MB-Grenze überschreiten, kann der zweite Endpunkt verwendet werden:
+Um ein Projekt zu exportieren oder zu importieren, das die 10 MB-Grenze überschreitet, geben Sie den Endpunkt in der Eigenschaft **server** des Konfigurationsobjekts an:
 
 ~~~js
 gantt.importFromPrimaveraP6({
     server: "https://export.dhtmlx.com/gantt/project",
     data: file,
-    callback: function(project){
-       // some logic
+    callback: (project) => {
+        // einige Logik
     }
-}); 
+});
 ~~~
 
-Dieser Endpunkt ermöglicht das Senden von Anfragen bis zu 40 MB und unterstützt Primavera P6 Exporte und Importe. Er kann ausschließlich für Primavera P6-Exporte verwendet werden. 
+Der Endpunkt unterstützt nur MS Project- und Primavera P6-Exporte und -Importe. Andere Methoden, zum Beispiel `gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})`, sollten einen Serverfehler zurückgeben.
 
-Andere Methoden, zum Beispiel `gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})`, sollten dagegen einen Serverfehler zurückgeben.
+Informationen zum Import großer Dateien mit Ihrem eigenen Exportmodul finden Sie unter [Import großer Dateien](guides/msp-export-module.md#import-of-large-files).

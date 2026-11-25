@@ -1,6 +1,6 @@
 ---
 title: "Export nach PDF und PNG"
-sidebar_label: "Export nach PDF und PNG"
+sidebar_label: "PDF und PNG"
 ---
 
 # Export nach PDF und PNG
@@ -20,35 +20,12 @@ lesen Sie den [entsprechenden Artikel](https://dhtmlx.com/docs/products/dhtmlxGa
 ## Einschränkungen des Online-Exportdienstes
 
 :::note
-Der Exportdienst unterliegt zeitlichen Beschränkungen sowie Beschränkungen der Anfragedatenmenge.
+Der Online-Exportdienst hat Zeit- und Größenlimits. Siehe [Limits des Online-Exportdienstes](guides/export-common.md#service-limits).
 :::
-
-### Zeitlimits
-
-Wenn der Prozess länger als 20 Sekunden dauert, wird der Export abgebrochen und Folgendes tritt ein:
-
-~~~html
-Error: Timeout trigger 20 seconds
-~~~
-
-Wenn mehrere Personen das Gantt zum selben Zeitpunkt exportieren, kann der Prozess länger dauern als üblich. Das ist jedoch unproblematisch, da die Zeit, die für die Exportanfrage eines bestimmten Benutzers aufgewendet wird, separat gezählt wird.
-
-### Beschränkungen der Anfragedatenmenge
-
-Es gibt einen gemeinsamen API-Endpunkt `https://export.dhtmlx.com/gantt`, der für alle Exportmethoden (*exportToPDF*, *exportToPNG*, *exportToMSProject*, etc.) dient. **Maximale Anfragedatenmenge: 10 MB**.
-
-Es gibt außerdem einen separaten API-Endpunkt `https://export.dhtmlx.com/gantt/project`, der speziell für die [MSProject](guides/export-msproject.md) und
-[Primavera P6](guides/export-primavera.md)
-Export/Import-Dienste (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* nur). **Maximale Anfragedatenmenge: 40 MB**.
 
 ## Verwendung der Exportmodule
 
-:::note
-Wenn Sie große Diagramme exportieren müssen, können Sie ein eigenständiges Exportmodul verwenden. 
-Das Exportmodul ist kostenlos, falls Sie Gantt unter einer Commercial-, Enterprise- oder Ultimate-Lizenz erworben haben, oder Sie können das Modul separat erwerben.
-:::
-
-[Mehr zur Nutzung des Exportmoduls für PDF lesen](guides/pdf-export-module.md).
+Um große Diagramme zu exportieren, den Export ohne die Limits des Online-Exportdienstes durchzuführen oder Ihre Daten in Ihrem Netzwerk zu behalten, installieren Sie ein [Exportmodul](guides/export-modules.md) auf Ihrem eigenen Server. Lesen Sie mehr über die Verwendung des [Exportmoduls für PDF, PNG, Excel und iCal](guides/pdf-export-module.md).
 
 ## Export nach PDF {#export-to-pdf}
 

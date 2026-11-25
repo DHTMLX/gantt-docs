@@ -115,15 +115,17 @@ sidebar_label: "가이드"
 
 ## 데이터 내보내기 및 가져오기 
 
-다양한 형식으로 간트 차트 데이터를 내보내고 가져오는 방법과 XML 및 JSON으로 데이터를 직렬화하는 방법을 다룹니다.
+다양한 형식으로 간트 차트 데이터를 내보내고 가져오는 방법, JSON 및 XML로 데이터를 직렬화하는 방법, 그리고 자체 서버에 내보내기 모듈을 설치하는 방법을 다룹니다.
 
-- ### [Export Service - 독립 실행 설치를 위한 시스템 요구사항](guides/export-requirements.md)
+- ### [데이터 내보내기 및 가져오기](guides/export-common.md)
 - ### [PDF 및 PNG로 내보내기](guides/export.md)
-- ### [Excel 내보내기/가져오기, iCal로 내보내기](guides/excel.md)
+- ### [Excel용 내보내기 및 가져오기](guides/excel.md)
+- ### [iCal로 내보내기](guides/ical.md)
 - ### [MS Project로부터 내보내기/가져오기](guides/export-msproject.md)
 - ### [Primavera P6로부터 내보내기/가져오기](guides/export-primavera.md)
-- ### [XML 및 JSON으로 데이터 직렬화](guides/serialization.md)
+- ### [JSON 및 XML로 데이터 직렬화](guides/serialization.md)
 - ### [Node.js에서 데이터 내보내기/가져오기](guides/export-nodejs.md)
+- ### [내보내기 모듈](guides/export-modules.md)
 
 
 ## 스타일링 

@@ -41,7 +41,7 @@ gantt.importFromMSProject({
 :::
 
 :::note
-Этот метод определён в расширении **export**, поэтому необходимо активировать плагин [export_api](guides/extensions-list.md#export-service). Подробности смотрите в статье [Export/Import for Excel, Export to iCal](guides/excel.md#importfromexcel).
+Этот метод определён в расширении **export**, поэтому необходимо активировать плагин [export_api](guides/extensions-list.md#export-service). Подробности смотрите в статье [Экспорт и импорт из MS Project](guides/export-msproject.md#import-from-ms-project).
 
  
 ::: 

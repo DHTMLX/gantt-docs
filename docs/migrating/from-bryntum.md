@@ -142,7 +142,7 @@ Bryntum Gantt's [TaskModel](https://bryntum.com/products/gantt/docs/api/Gantt/mo
 | Bryntum Field | Description | Recommended Approach |
 |--------------|-------------|---------------------|
 | `effort` / `effortUnit` | Amount of work required to complete a task (e.g. 16h), used for effort-driven and resource-based scheduling | DHTMLX Gantt does not support effort-driven scheduling at the task level. As an alternative, you can use the [Resource Management](guides/resource-management.md) module to assign resources and visualize workload. Resource assignments can represent effort (e.g. hours per day), but task duration is not recalculated automatically and must be managed manually or via custom logic. |
-| `durationUnit` | Unit used to interpret the task duration (hours, days, weeks, etc.) | DHTMLX Gantt uses a global duration unit configured via `gantt.config.duration_unit`. During migration, it's recommended to normalize all durations to a single unit. If you want to have different duration units for different tasks, i.e. to show durations of some tasks in hours and some tasks in "days", you can use the [formatter module](https://docs.dhtmlx.com/gantt/guides/working-time/#taskdurationindecimalformat). |
+| `durationUnit` | Unit used to interpret the task duration (hours, days, weeks, etc.) | DHTMLX Gantt uses a global duration unit configured via `gantt.config.duration_unit`. During migration, it's recommended to normalize all durations to a single unit. If you want to have different duration units for different tasks, i.e. to show durations of some tasks in hours and some tasks in "days", you can use the [formatter module](guides/working-time.md#taskdurationindecimalformat). |
 | `schedulingMode` | Defines how task scheduling behaves (Normal, FixedDuration, FixedEffort, etc.) | No direct equivalent. DHTMLX Gantt does not support per-task scheduling modes. You can store this value as a custom field and, if required, enforce custom behavior using Gantt events (e.g., [onBeforeTaskUpdate](api/event/onbeforetaskupdate.md)). |
 | `note` | Free-text notes or description attached to a task | Can be migrated directly as a custom text field (e.g. `note` or `description`) and shown in the lightbox, tooltip, or a custom grid column. |
 | `manuallyScheduled` | Indicates whether a task is excluded from automatic scheduling | The `task.auto_scheduling` property of the task can be used which allows individual tasks to be excluded from auto scheduling while keeping it enabled globally. See [Disabling auto scheduling for specific tasks](guides/auto-scheduling.md#disabling-auto-scheduling-for-specific-tasks). |
@@ -831,6 +831,6 @@ And access the application at `http://localhost:1337`
 
 ## Next Steps
 
-- Explore [DHTMLX Gantt documentation](https://docs.dhtmlx.com/gantt/) for advanced features
-- Review the [API reference](https://docs.dhtmlx.com/gantt/api__refs__gantt.html) for customization options
-- Check out [DHTMLX Gantt samples](https://docs.dhtmlx.com/gantt/samples/) for implementation examples
+- Explore [DHTMLX Gantt documentation](/) for advanced features
+- Review the [API reference](/api/api-overview/) for customization options
+- Check out [DHTMLX Gantt samples](https://docs.dhtmlx.com/gantt/demos/) for implementation examples

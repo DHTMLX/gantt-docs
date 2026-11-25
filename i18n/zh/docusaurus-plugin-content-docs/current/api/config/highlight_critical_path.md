@@ -35,9 +35,12 @@ gantt.init("gantt_here");
 此选项在 **critical_path** 扩展中定义，因此您需要激活 [critical_path](guides/extensions-list.md#critical-path) 插件。请在 [关键路径](guides/critical-path.md) 文章中查看详细信息。 
 :::
 
+启用此选项后，任务或链接的每次更改都会重绘整个图表。对于大型图表，请仅在用户需要查看关键路径时才启用该选项，或使用 [batchUpdate](api/method/batchupdate.md) 对更改进行分组。
+
 ### Related API
 - [isCriticalTask](api/method/iscriticaltask.md)
 - [isCriticalLink](api/method/iscriticallink.md)
 
 ### Related Guides
 - [关键路径](guides/critical-path.md)
+- [性能：提升性能的方法](guides/performance.md#common-techniques)

@@ -60,4 +60,4 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 - [order_branch](api/config/order_branch.md)
 
 ### Related Guides
-- [Переупорядочение задач](guides/reordering-tasks.md)
+- [Изменение порядка задач](guides/reordering-tasks.md)

@@ -41,7 +41,7 @@ Die Methode erfordert HTML5 File API-Unterstützung.
 :::
 
 :::note
-Diese Methode ist in der **export**-Erweiterung definiert, daher muss das [export_api](guides/extensions-list.md#export-service) Plugin aktiviert werden. Lesen Sie die Details im Artikel [Export/Import für Excel, Export nach iCal](guides/excel.md#importfromexcel).
+Diese Methode ist in der **export**-Erweiterung definiert, daher muss das [export_api](guides/extensions-list.md#export-service) Plugin aktiviert werden. Lesen Sie die Details im Artikel [Export und Import aus Primavera P6](guides/export-primavera.md#import-from-primavera-p6).
 :::
 
 :::note
@@ -62,7 +62,7 @@ Die Methode nimmt als Parameter ein Objekt mit Konfigurationsparametern einer im
 - **projectProperties** - gibt ein Array von Projekt-Eigenschaften an, die in die Antwort aufgenommen werden sollen.
 - **taskProperties** - gibt ein Array zusätzlicher Task-Eigenschaften an, die importiert werden sollen.
 
-Überprüfen Sie die detaillierten Beschreibungen der Import-Einstellungen im entsprechenden Abschnitt.
+Überprüfen Sie die detaillierten Beschreibungen der Import-Einstellungen im [entsprechenden Abschnitt](guides/export-primavera.md#import-settings).
 
 ## Response
 

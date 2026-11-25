@@ -37,7 +37,7 @@ This page describes the props accepted by React Gantt and how they map to DHTMLX
   <tr>
   <td>config</td>
   <td>GanttConfig</td>
-  <td>Merged into [gantt.config](api/overview/properties-overview.md), for example: [scales_config](api/config/scales.md), [columns_config](api/config/columns.md), [autosize_config](api/config/autosize.md).</td>
+  <td>Merged into [gantt.config](api/overview/properties-overview.md), for example: [scales_config](api/config/scales.md), [columns_config](api/config/columns.md), [autosize_config](api/config/autosize.md). Gantt gets its own copy of each value, so the prop can come from frozen state, and Gantt doesn't change your objects (see [Configuration & Props](integrations/react/overview.md#configuration--props)).</td>
   </tr>
   <tr>
   <td>calendars</td>
@@ -93,6 +93,11 @@ This page describes the props accepted by React Gantt and how they map to DHTMLX
   <td>groupTasks</td>
   <td>GroupConfig | boolean | null</td>
   <td>Grouping configuration object or false/null to disable grouping (see [Grouping Tasks ](api/method/groupby.md).).</td>
+  </tr>
+  <tr>
+  <td>syncTaskOrder</td>
+  <td>"changes" | "never"</td>
+  <td>Controls how the row order of the <code>tasks</code> array reaches the chart. <code>"changes"</code> (default) applies the order of the array when the application changes it; <code>"never"</code> keeps the row order of the chart. See [Row order of the tasks array](integrations/react/overview.md#taskorder).</td>
   </tr>
   <tr>
   <td>filter</td>
