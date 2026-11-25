@@ -97,11 +97,13 @@ description: You can explore a methods overview in the documentation of the DHTM
 | [](../method/getnext.md)                                             | @getshort(../method/getnext.md)                      |
 | [](../method/getnextsibling.md)                               | @getshort(../method/getnextsibling.md)               |
 | [](../method/getparent.md)                                         | @getshort(../method/getparent.md)                    |
+| [](../method/getoutlinenumber.md) | @getshort(../method/getoutlinenumber.md) |
 | [](../method/getprev.md)                                             | @getshort(../method/getprev.md)                      |
 | [](../method/getprevsibling.md)                               | @getshort(../method/getprevsibling.md)               |
 | [](../method/getredostack.md)                                   | @getshort(../method/getredostack.md)                 |
 | [](../method/getresourceassignments.md)               | @getshort(../method/getresourceassignments.md)       |
 | [](../method/getresourcecalendar.md)                     | @getshort(../method/getresourcecalendar.md)          |
+| [](../method/getrownumber.md) | @getshort(../method/getrownumber.md) |
 | [](../method/getscale.md)                                           | @getshort(../method/getscale.md)                     |
 | [](../method/getscrollstate.md)                               | @getshort(../method/getscrollstate.md)               |
 | [](../method/getselectedid.md)                                 | @getshort(../method/getselectedid.md)                |
@@ -118,6 +120,8 @@ description: You can explore a methods overview in the documentation of the DHTM
 | [](../method/gettaskbaselines.md)                           | @getshort(../method/gettaskbaselines.md)             |
 | [](../method/gettaskby.md)                                         | @getshort(../method/gettaskby.md)                    |
 | [](../method/gettaskbyindex.md)                               | @getshort(../method/gettaskbyindex.md)               |
+| [](../method/gettaskbyoutlinenumber.md) | @getshort(../method/gettaskbyoutlinenumber.md) |
+| [](../method/gettaskbyrownumber.md) | @getshort(../method/gettaskbyrownumber.md) |
 | [](../method/gettaskbytime.md)                                 | @getshort(../method/gettaskbytime.md)                |
 | [](../method/gettaskbywbscode.md)                           | @getshort(../method/gettaskbywbscode.md)             |
 | [](../method/gettaskcalendar.md)                             | @getshort(../method/gettaskcalendar.md)              |
@@ -130,6 +134,7 @@ description: You can explore a methods overview in the documentation of the DHTM
 | [](../method/gettaskrownode.md)                               | @getshort(../method/gettaskrownode.md)               |
 | [](../method/gettasktop.md)                                       | @getshort(../method/gettasktop.md)                   |
 | [](../method/gettasktype.md)                                     | @getshort(../method/gettasktype.md)                  |
+| [](../method/gettaskwork.md) | @getshort(../method/gettaskwork.md) |
 | [](../method/gettotalslack.md)                                 | @getshort(../method/gettotalslack.md)                |
 | [](../method/getundostack.md)                                   | @getshort(../method/getundostack.md)                 |
 | [](../method/getvisibletaskcount.md)                     | @getshort(../method/getvisibletaskcount.md)          |
@@ -148,12 +153,14 @@ description: You can explore a methods overview in the documentation of the DHTM
 | [](../method/iscircularlink.md)                               | @getshort(../method/iscircularlink.md)               |
 | [](../method/iscriticallink.md)                               | @getshort(../method/iscriticallink.md)               |
 | [](../method/iscriticaltask.md)                               | @getshort(../method/iscriticaltask.md)               |
+| [](../method/islinkactive.md) | @getshort(../method/islinkactive.md) |
 | [](../method/islinkallowed.md)                                 | @getshort(../method/islinkallowed.md)                |
 | [](../method/islinkexists.md)                                   | @getshort(../method/islinkexists.md)                 |
 | [](../method/isreadonly.md)                                       | @getshort(../method/isreadonly.md)                   |
 | [](../method/isselectedtask.md)                               | @getshort(../method/isselectedtask.md)               |
 | [](../method/issplittask.md)                                     | @getshort(../method/issplittask.md)                  |
 | [](../method/issummarytask.md)                                 | @getshort(../method/issummarytask.md)                |
+| [](../method/istaskactive.md) | @getshort(../method/istaskactive.md) |
 | [](../method/istaskexists.md)                                   | @getshort(../method/istaskexists.md)                 |
 | [](../method/istaskvisible.md)                                 | @getshort(../method/istaskvisible.md)                |
 | [](../method/isunscheduledtask.md)                         | @getshort(../method/isunscheduledtask.md)            |

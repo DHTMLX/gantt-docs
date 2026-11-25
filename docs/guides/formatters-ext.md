@@ -6,7 +6,7 @@ sidebar_label: "Formatters Extension"
 # Formatters Extension
 
 :::note
-This functionality is available in the PRO edition only.
+The examples with duration units, link types and lag or lead values apply to the paid editions. The Community edition provides numeric duration formatting and basic dependency references.
 :::
 
 The **gantt.ext.formatters** extension provides two formatting methods:
@@ -18,14 +18,16 @@ You can also specify a [custom formatter](#customformatter) based on the existin
 
 ## Duration Formatter {#durationformatter}
 
-The **gantt.ext.formatters.durationFormatter(config)** method returns a new instance of the *DurationFormatter*. 
+Call **gantt.ext.formatters.durationFormatter()** to use the shared default formatter for the current duration unit. Pass a configuration object to create a separate formatter.
+
+In a grid column named `duration`, set [default_formatter: true](guides/specifying-columns.md#durationcolumn) to use this default for display. The raw duration remains the default display value when this option is off.
 
 ### **Configuration**
 
 - <span class="submethod">**durationFormatter (config): DurationFormatter**</span> - creates a Duration Formatter
     - **_config?_** - (*object*) - optional, a configuration object which can include the following attributes:
-        - **_enter?_** - (*string*) - specifies the default format for the **parse** method, which is used when an input value is entering without units. Default value: "day".
-        - **_store?_** - (*string*) - specifies the format for the duration values storage in the gantt. This property affects the output value of the **parse** method. Default value: "hour".
+        - **_enter?_** - (*string*) - sets the unit used by **parse** when the input has no unit. Defaults to [duration_unit](api/config/duration_unit.md).
+        - **_store?_** - (*string*) - sets the unit for stored duration values and the result of **parse**. Defaults to [duration_unit](api/config/duration_unit.md).
         - **_format?_** - (*string | Array &lt;string&gt;*) - specifies the format for the output value. Supported values: "auto", "minute", "hour", "day", "week", "month", "year", "an array containing any of these values". The "auto" value  means the formatter will try to select an appropriate unit depending on provided value (i.e. larger values will be formatted as days/months/years, smaller values will be formatted as minutes/hours).
         - **_short?_** - (*boolean*) - sets short labels (abbreviations) for time units. Default value: *false*
         - **_minutesPerHour?_** - (*number*) - defines how duration values will be converted from minutes to hours and vice-versa. *Default value: 60*
@@ -200,12 +202,13 @@ Read details about the **durationFormatter** method in the [Work Time Calculatio
 
 ## Link Formatter {#linkformatter}
 
-The **gantt.ext.formatters.linkFormatter(config)** method returns a new instance of the *LinkFormatter*. It reuses some methods and the configuration of the Duration Formatter
+Call **gantt.ext.formatters.linkFormatter()** to use the shared default formatter. Pass a configuration object to create a separate formatter. The full link formatter uses a Duration Formatter for lag and lead values.
 
 ### **Configuration**
 
 - <span class="submethod">**linkFormatter (config): LinkFormatter**</span> - create a Link Formatter
     - **_config?_** - (*object*) - optional, a configuration object which can include the following attributes:
+        - **_reference?_** - (*string*) - selects the [task reference](#task-references) used for both display and parsing. Defaults to `"legacy"`.
         - **_durationFormatter?_** - (*DurationFormatter*) - an instance of the *DurationFormatter* created by the *gantt.ext.formatters.durationFormatter()*. It affects how lag/lead values of links are parsed and formatted:
         - **_labels?_** - (*object*) - locale labels for different types of links
             - **_finish_to_start?_** - (*string*) - labels for the Finish to Start links
@@ -220,7 +223,7 @@ Initialize Link Formatter with the default settings:
 
 ~~~js
 const formatter = gantt.ext.formatters.linkFormatter();
-// an instance of the formatter object is created using the factory method
+// uses the shared default link formatter
 ~~~
 
 - **_short_**:
@@ -253,6 +256,18 @@ const formatter = gantt.ext.formatters.linkFormatter({
 });
 ~~~
 
+
+### Task references {#task-references}
+
+| `reference` | Value |
+| --- | --- |
+| `"legacy"` | The display-order WBS number from [getWBSCode](api/method/getwbscode.md). In MIT, the basic formatter displays the task ID and accepts numeric IDs as dependency references. |
+| `"outline"` | A dotted hierarchy number from [getOutlineNumber](api/method/getoutlinenumber.md), such as `2.1`. Requires the numbering API available in paid editions. |
+| `"row"` | A positive integer from [getRowNumber](api/method/getrownumber.md), such as `12`. Requires the numbering API available in paid editions. |
+
+Use one reference format for displaying and editing a dependency column. Stored WBS codes such as `PRJ-A.001` are task fields and cannot be used as link references. See [WBS Codes and Task Numbering](guides/wbs-and-task-numbering.md).
+
+The paid formatter accepts a link type and lag or lead after the number. For example, `2.1SS+2 days` refers to outline number `2.1` when `reference` is `"outline"`.
 
 ### **API**
 
@@ -296,7 +311,7 @@ formatter.parse("1SS+5 days");
 The *LinkFormatter* supports two formats of links:
 
  - **$(WBS)** - short format
-   - **$(WBS)** - [task WBS code](api/method/getwbscode.md)
+   - **$(WBS)** - a number in the selected [task reference format](#task-references)
 
 ~~~js
 const formatter = gantt.ext.formatters.linkFormatter();
@@ -309,7 +324,7 @@ console.log(formatter.format({id:2, type:"0", source: 1, target: 3, lag: 0}));
 ~~~
 
  - **$(WBS)$(TYPE)$(LAG)** - complete format
-   - **$(WBS)** - [task WBS code](api/method/getwbscode.md)
+   - **$(WBS)** - a number in the selected [task reference format](#task-references)
    - **$(TYPE)** - [link type](api/config/links.md). **Supported values:** 'FF', 'FS', 'SS', 'SF', or as defined by the **labels** config of the *LinkFormatter*.
    - **$(LAG)** - [link lag](guides/auto-scheduling.md#settinglagandleadtimesbetweentasks). It's value can be either positive or negative - **+1 day**, **-1 day**. Supported format is defined by the **durationFormatter** parameter provided into the constructor method of the *LinkFormatter*.
 
@@ -324,7 +339,7 @@ console.log(formatter.format({id:1, type:"1", source: 2, target: 3, lag: 1}));
 ~~~
 
 Finish-To-Start links with no lag/lead will be formatted using the short format, while the other links will be formatted using the complete format.
-Similarly, if only WBS code of a task is provided into the **parse** method, the formatter will assume Finish-to-Start type and zero lag time.
+If you pass only the task reference to **parse**, the formatter uses a Finish-to-Start link with zero lag.
 
 Read details about the linkFormatter method in the [Inline Editing in Grid](guides/inline-editing.md#linkformatter) article.
 

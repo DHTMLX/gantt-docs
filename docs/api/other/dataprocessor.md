@@ -125,6 +125,7 @@ dp.setTransactionMode("POST", true);
 	<li><b><i>mode</i></b> - (<i>string</i>) - data sending mode, "GET", "POST", "REST", "JSON", "REST-JSON"</li>
 	<li><b><i>headers</i></b> - (<i>object</i>) - a set of headers, defined as <code>"key":"value"</code> pairs that should be sent with a request</li>
 	<li><b><i>payload</i></b> - (<i>object</i>) - additional data, set as <code>"key":"value"</code> pairs that should be sent to the server together with headers</li>
+	<li><b><i>batch</i></b> - (<i>boolean</i>) - sends pending changes in batch requests in JSON mode. Defaults to <code>false</code>.</li>
 </ul>
 ~~~js
 dp.setTransactionMode({
@@ -138,7 +139,13 @@ dp.setTransactionMode({
 	}
 }, true);
 ~~~
+
+~~~js
+dp.setTransactionMode({ mode: "JSON", batch: true });
+~~~
 </ul>
+
+See [Batched JSON requests](guides/server-side.md#batched-json-requests) for the request and response format.
 
 <ul id="setUpdated">
 	<li>

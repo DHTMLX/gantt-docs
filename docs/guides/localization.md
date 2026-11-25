@@ -103,6 +103,15 @@ The [gantt.i18n](api/other/i18n.md) object is added in v7.0. In previous version
 The easiest way to create a custom locale is to make a copy of the default (English) locale from the sample below, 
 and translate all strings from it into the required language.
 
+See [Accessibility](guides/accessibility.md#translatable-screen-reader-names) for the labels that
+screen readers use.
+
+Use the `ui_toolbar_*` and `ui_theme_*` labels for the [toolbar](guides/toolbar.md) and skin
+selector, and `ui_menu_*` labels for the built-in [context menu](guides/context-menu.md). For
+example, set `gantt.locale.labels.ui_menu_add_task = "Create task"`. Some bundled locales use
+English toolbar and theme labels. The toolbar menu button uses `ui_toolbar_more` ("More")
+and, in the collapsed form, `ui_toolbar_menu` ("Menu").
+
 The custom locale can be applied to the Gantt chart in two ways:
 
 - either override the current locale via passing an object of the locale as a parameter to the **setLocale** method:

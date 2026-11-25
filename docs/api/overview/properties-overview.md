@@ -8,6 +8,7 @@ description: You can explore a properties overview in the documentation of the D
 
 | Name                                                                 | Description                                                                 |
 |----------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| [](../config/accessibility.md) | @getshort(../config/accessibility.md) |
 | [](../config/auto_scheduling.md)                                       | @getshort(../config/auto_scheduling.md)                    |
 | [](../config/auto_types.md)                                                 | @getshort(../config/auto_types.md)                         |
 | [](../config/autofit.md)                                                       | @getshort(../config/autofit.md)                            |
@@ -29,6 +30,7 @@ description: You can explore a properties overview in the documentation of the D
 | [](../config/constraint_types.md)                                     | @getshort(../config/constraint_types.md)                   |
 | [](../config/container_resize_method.md)                       | @getshort(../config/container_resize_method.md)            |
 | [](../config/container_resize_timeout.md)                     | @getshort(../config/container_resize_timeout.md)           |
+| [](../config/context_menu.md) | @getshort(../config/context_menu.md) |
 | [](../config/correct_work_time.md)                                   | @getshort(../config/correct_work_time.md)                  |
 | [](../config/csp.md)                                                               | @getshort(../config/csp.md)                                |
 | [](../config/date_format.md)                                               | @getshort(../config/date_format.md)                        |
@@ -51,6 +53,7 @@ description: You can explore a properties overview in the documentation of the D
 | [](../config/dynamic_resource_calendars.md)                 | @getshort(../config/dynamic_resource_calendars.md)         |
 | [](../config/editable_property.md)                                   | @getshort(../config/editable_property.md)                  |
 | [](../config/editor_types.md)                                             | @getshort(../config/editor_types.md)                       |
+| [](../config/effort.md) | @getshort(../config/effort.md) |
 | [](../config/end_date.md)                                                     | @getshort(../config/end_date.md)                           |
 | [](../config/external_render.md)                                       | @getshort(../config/external_render.md)                    |
 | [](../config/fit_tasks.md)                                                   | @getshort(../config/fit_tasks.md)                          |
@@ -69,6 +72,7 @@ description: You can explore a properties overview in the documentation of the D
 | [](../config/keyboard_navigation_cells.md)                   | @getshort(../config/keyboard_navigation_cells.md)          |
 | [](../config/layer_attribute.md)                                       | @getshort(../config/layer_attribute.md)                    |
 | [](../config/layout.md)                                                         | @getshort(../config/layout.md)                             |
+| [](../config/leveling_delays.md)                                       | @getshort(../config/leveling_delays.md)                    |
 | [](../config/lightbox.md)                                                     | @getshort(../config/lightbox.md)                           |
 | [](../config/link_arrow_size.md)                                       | @getshort(../config/link_arrow_size.md)                    |
 | [](../config/link_attribute.md)                                         | @getshort(../config/link_attribute.md)                     |
@@ -143,6 +147,7 @@ description: You can explore a properties overview in the documentation of the D
 | [](../config/time_picker.md)                                               | @getshort(../config/time_picker.md)                        |
 | [](../config/time_step.md)                                                   | @getshort(../config/time_step.md)                          |
 | [](../config/timeline_placeholder.md)                             | @getshort(../config/timeline_placeholder.md)               |
+| [](../config/toolbar.md) | @getshort(../config/toolbar.md) |
 | [](../config/tooltip_hide_timeout.md)                             | @getshort(../config/tooltip_hide_timeout.md)               |
 | [](../config/tooltip_offset_x.md)                                     | @getshort(../config/tooltip_offset_x.md)                   |
 | [](../config/tooltip_offset_y.md)                                     | @getshort(../config/tooltip_offset_y.md)                   |
@@ -158,6 +163,7 @@ description: You can explore a properties overview in the documentation of the D
 | [](../config/undo_steps.md)                                                 | @getshort(../config/undo_steps.md)                         |
 | [](../config/undo_types.md)                                                 | @getshort(../config/undo_types.md)                         |
 | [](../config/wai_aria_attributes.md)                               | @getshort(../config/wai_aria_attributes.md)                |
+| [](../config/wbs.md) | @getshort(../config/wbs.md) |
 | [](../config/wheel_scroll_sensitivity.md)                     | @getshort(../config/wheel_scroll_sensitivity.md)           |
 | [](../config/wide_form.md)                                                   | @getshort(../config/wide_form.md)                          |
 | [](../config/work_time.md)                                                   | @getshort(../config/work_time.md)                          |

@@ -8,6 +8,7 @@ sidebar_label: "Configuring Edit Form"
 ![lightbox](/img/lightbox.png)
 
 - [Configuring Lightbox Elements](guides/default-edit-form.md)
+- [Advanced Task Form](guides/advanced-task-form.md)
 - [Working with Lightbox Elements](guides/lightbox-manipulations.md)
 - [Creating Custom Element](guides/custom-editor.md)
 - [Custom Lightbox](guides/custom-edit-form.md)

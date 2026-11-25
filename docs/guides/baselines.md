@@ -170,16 +170,16 @@ The full code of the considered example you can see in the related sample.
 
 The following samples show you different ways of applying the [`addTaskLayer()`](api/method/addtasklayer.md) method to enrich the timeline of the Gantt chart with different custom elements:
 
-- <a href="https://snippet.dhtmlx.com/wv23be05" target="_blank">Custom baselines</a>
-- <a href="https://snippet.dhtmlx.com/bk5m6his" target="_blank">Highlighting cells with overdue time</a>
-- <a href="https://snippet.dhtmlx.com/p74m3du2" target="_blank">Highlighting overdue tasks</a>
-- <a href="https://snippet.dhtmlx.com/cuc7d4vn" target="_blank">Showing the missed deadline for the whole project</a>
-- <a href="https://snippet.dhtmlx.com/bpupkrce" target="_blank">Displaying task progress value</a>
-- <a href="https://snippet.dhtmlx.com/quqe9s2o" target="_blank">Adding custom elements for tasks</a>
-- <a href="https://snippet.dhtmlx.com/pmuy0lj8" target="_blank">Draggable baselines</a>
-- <a href="https://snippet.dhtmlx.com/38h66bni" target="_blank">Baselines with a draggable progress knob</a>
-- <a href="https://snippet.dhtmlx.com/3oy6052q" target="_blank">Custom milestones</a>
-- <a href="" target="_blank">Recurring tasks</a>
+- <a href="https://snippet.dhtmlx.com/wv23be05" target="_blank" rel="noopener noreferrer">Custom baselines</a>
+- <a href="https://snippet.dhtmlx.com/bk5m6his" target="_blank" rel="noopener noreferrer">Highlighting cells with overdue time</a>
+- <a href="https://snippet.dhtmlx.com/p74m3du2" target="_blank" rel="noopener noreferrer">Highlighting overdue tasks</a>
+- <a href="https://snippet.dhtmlx.com/cuc7d4vn" target="_blank" rel="noopener noreferrer">Showing the missed deadline for the whole project</a>
+- <a href="https://snippet.dhtmlx.com/bpupkrce" target="_blank" rel="noopener noreferrer">Displaying task progress value</a>
+- <a href="https://snippet.dhtmlx.com/quqe9s2o" target="_blank" rel="noopener noreferrer">Adding custom elements for tasks</a>
+- <a href="https://snippet.dhtmlx.com/pmuy0lj8" target="_blank" rel="noopener noreferrer">Draggable baselines</a>
+- <a href="https://snippet.dhtmlx.com/38h66bni" target="_blank" rel="noopener noreferrer">Baselines with a draggable progress knob</a>
+- <a href="https://snippet.dhtmlx.com/3oy6052q" target="_blank" rel="noopener noreferrer">Custom milestones</a>
+- <a href="" target="_blank" rel="noopener noreferrer">Recurring tasks</a>
 
 ## Drag-and-drop for custom elements
 

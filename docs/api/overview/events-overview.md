@@ -9,6 +9,7 @@ description: You can explore a methods overview in the documentation of the DHTM
 | Name                                                    | Description                                                    |
 |---------------------------------------------------------|----------------------------------------------------------------|
 | [](../event/onafterautoschedule.md)                      | @getshort(../event/onafterautoschedule.md)        |
+| [](../event/onafterautoscheduleconflictresolve.md) | @getshort(../event/onafterautoscheduleconflictresolve.md) |
 | [](../event/onafterbatchupdate.md)                        | @getshort(../event/onafterbatchupdate.md)         |
 | [](../event/onafterbranchloading.md)                    | @getshort(../event/onafterbranchloading.md)       |
 | [](../event/onafterlightbox.md)                              | @getshort(../event/onafterlightbox.md)            |
@@ -26,13 +27,17 @@ description: You can explore a methods overview in the documentation of the DHTM
 | [](../event/onaftertaskmove.md)                              | @getshort(../event/onaftertaskmove.md)            |
 | [](../event/onaftertaskupdate.md)                          | @getshort(../event/onaftertaskupdate.md)          |
 | [](../event/onafterundo.md)                                      | @getshort(../event/onafterundo.md)                |
+| [](../event/onafterundostackchange.md) | @getshort(../event/onafterundostackchange.md) |
+| [](../event/onafterwbsoperation.md) | @getshort(../event/onafterwbsoperation.md) |
 | [](../event/onajaxerror.md)                                      | @getshort(../event/onajaxerror.md)                |
 | [](../event/onautoschedulecircularlink.md)        | @getshort(../event/onautoschedulecircularlink.md) |
 | [](../event/onbeforeautoschedule.md)                    | @getshort(../event/onbeforeautoschedule.md)       |
+| [](../event/onbeforeautoscheduleconflictresolve.md) | @getshort(../event/onbeforeautoscheduleconflictresolve.md) |
 | [](../event/onbeforebatchupdate.md)                      | @getshort(../event/onbeforebatchupdate.md)        |
 | [](../event/onbeforebranchloading.md)                  | @getshort(../event/onbeforebranchloading.md)      |
 | [](../event/onbeforecollapse.md)                            | @getshort(../event/onbeforecollapse.md)           |
 | [](../event/onbeforedatarender.md)                        | @getshort(../event/onbeforedatarender.md)         |
+| [](../event/onbeforecontextmenu.md) | @getshort(../event/onbeforecontextmenu.md) |
 | [](../event/onbeforeexpand.md)                                | @getshort(../event/onbeforeexpand.md)             |
 | [](../event/onbeforeganttready.md)                        | @getshort(../event/onbeforeganttready.md)         |
 | [](../event/onbeforeganttrender.md)                      | @getshort(../event/onbeforeganttrender.md)        |
@@ -63,6 +68,7 @@ description: You can explore a methods overview in the documentation of the DHTM
 | [](../event/onbeforetaskupdate.md)                        | @getshort(../event/onbeforetaskupdate.md)         |
 | [](../event/onbeforeundo.md)                                    | @getshort(../event/onbeforeundo.md)               |
 | [](../event/onbeforeundostack.md)                          | @getshort(../event/onbeforeundostack.md)          |
+| [](../event/onbeforewbsoperation.md) | @getshort(../event/onbeforewbsoperation.md) |
 | [](../event/oncircularlinkerror.md)                      | @getshort(../event/oncircularlinkerror.md)        |
 | [](../event/onclear.md)                                              | @getshort(../event/onclear.md)                    |
 | [](../event/oncollapse.md)                                        | @getshort(../event/oncollapse.md)                 |
@@ -70,6 +76,7 @@ description: You can explore a methods overview in the documentation of the DHTM
 | [](../event/oncolumnresizeend.md)                          | @getshort(../event/oncolumnresizeend.md)          |
 | [](../event/oncolumnresizestart.md)                      | @getshort(../event/oncolumnresizestart.md)        |
 | [](../event/oncontextmenu.md)                                  | @getshort(../event/oncontextmenu.md)              |
+| [](../event/oncontextmenuitemclick.md) | @getshort(../event/oncontextmenuitemclick.md) |
 | [](../event/ondataprocessorready.md)                    | @getshort(../event/ondataprocessorready.md)       |
 | [](../event/ondatarender.md)                                    | @getshort(../event/ondatarender.md)               |
 | [](../event/ondestroy.md)                                          | @getshort(../event/ondestroy.md)                  |
@@ -93,6 +100,9 @@ description: You can explore a methods overview in the documentation of the DHTM
 | [](../event/onlinkclick.md)                                      | @getshort(../event/onlinkclick.md)                |
 | [](../event/onlinkcreated.md)                                  | @getshort(../event/onlinkcreated.md)              |
 | [](../event/onlinkdblclick.md)                                | @getshort(../event/onlinkdblclick.md)             |
+| [](../event/onlinkdragend.md) | @getshort(../event/onlinkdragend.md) |
+| [](../event/onlinkdragmove.md) | @getshort(../event/onlinkdragmove.md) |
+| [](../event/onlinkdragstart.md) | @getshort(../event/onlinkdragstart.md) |
 | [](../event/onlinkidchange.md)                                | @getshort(../event/onlinkidchange.md)             |
 | [](../event/onlinkvalidation.md)                            | @getshort(../event/onlinkvalidation.md)           |
 | [](../event/onloadend.md)                                          | @getshort(../event/onloadend.md)                  |
@@ -112,6 +122,8 @@ description: You can explore a methods overview in the documentation of the DHTM
 | [](../event/ontaskcreated.md)                                  | @getshort(../event/ontaskcreated.md)              |
 | [](../event/ontaskdblclick.md)                                | @getshort(../event/ontaskdblclick.md)             |
 | [](../event/ontaskdrag.md)                                        | @getshort(../event/ontaskdrag.md)                 |
+| [](../event/ontaskformrender.md) | @getshort(../event/ontaskformrender.md) |
+| [](../event/ontaskformtabchange.md) | @getshort(../event/ontaskformtabchange.md) |
 | [](../event/ontaskidchange.md)                                | @getshort(../event/ontaskidchange.md)             |
 | [](../event/ontaskloading.md)                                  | @getshort(../event/ontaskloading.md)              |
 | [](../event/ontaskmultiselect.md)                          | @getshort(../event/ontaskmultiselect.md)          |
@@ -120,5 +132,7 @@ description: You can explore a methods overview in the documentation of the DHTM
 | [](../event/ontaskselected.md)                                | @getshort(../event/ontaskselected.md)             |
 | [](../event/ontaskunselected.md)                            | @getshort(../event/ontaskunselected.md)           |
 | [](../event/ontemplatesready.md)                            | @getshort(../event/ontemplatesready.md)           |
+| [](../event/ontoolbaritemchange.md) | @getshort(../event/ontoolbaritemchange.md) |
+| [](../event/ontoolbaritemclick.md) | @getshort(../event/ontoolbaritemclick.md) |
 
 

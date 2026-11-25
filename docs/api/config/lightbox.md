@@ -26,9 +26,14 @@ gantt.init("gantt_here");
 
 ### Details
 
-The lightbox object has 1 property:
+Use the lightbox settings to choose the form and configure its fields.
 
-- **sections** - (*array*) - specifies lightbox sections
+- **advanced?** - (*boolean*) - set to `false` to use the classic lightbox with the `task_form` plugin enabled. If you enable the plugin and omit this setting or set it to `true`, Gantt uses the [advanced task form](guides/advanced-task-form.md). Without the plugin, Gantt uses the classic lightbox.
+- **sections?**, **project_sections?**, **milestone_sections?** - (*LightboxSectionEntry[] | LightboxTabSections*) - shared, project and milestone layouts. For a custom task type, use its name followed by `_sections`.
+
+In the advanced form, Gantt chooses the type-specific layout, the shared `sections` layout, or the built-in layout, in that order. Use an array for a single panel or `{ tabs: [...] }` for a tabbed layout. Entries can contain fields or nested `cols` and `rows` groups.
+
+The classic lightbox uses its default sections when no applicable sections are configured. It shows fields from grouped sections in tab order in a single column. It skips `cols` and `rows` groups. Use the advanced form for editable predecessor and successor sections.
 
 ~~~js
 // default lightbox definition
@@ -49,6 +54,7 @@ Objects in the **sections** array can have the following properties, depending o
 - **height?** - (*number*) - optional, the section's height. Not used with the [checkbox](guides/checkbox.md) and [radio](guides/radio.md) sections.
 - **focus?** - (*boolean*) - optional, if set to *true*, the section will take focus on opening the lightbox
 - **formatter?** - (*DurationFormatter | LinkFormatter*) - optional, a formatter for the section
+- **width?** - (*number | string*) - width in the advanced layout. Use pixels, a percentage of available row width, or fractional units such as `"2fr"`.
 
 #### Time and Duration controls
 

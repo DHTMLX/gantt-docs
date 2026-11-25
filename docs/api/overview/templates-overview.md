@@ -26,6 +26,7 @@ description: You can explore a templates overview in the documentation of the DH
 | [](../template/histogram_cell_class.md)         | @getshort(../template/histogram_cell_class.md)     |
 | [](../template/histogram_cell_label.md)         | @getshort(../template/histogram_cell_label.md)     |
 | [](../template/leftside_text.md)                       | @getshort(../template/leftside_text.md)            |
+| [](../template/leveling_delay_text.md)           | @getshort(../template/leveling_delay_text.md)      |
 | [](../template/lightbox_header.md)                   | @getshort(../template/lightbox_header.md)          |
 | [](../template/link_class.md)                             | @getshort(../template/link_class.md)               |
 | [](../template/link_description.md)                 | @getshort(../template/link_description.md)         |
@@ -48,6 +49,7 @@ description: You can explore a templates overview in the documentation of the DH
 | [](../template/task_text.md)                               | @getshort(../template/task_text.md)                |
 | [](../template/task_time.md)                               | @getshort(../template/task_time.md)                |
 | [](../template/task_unscheduled_time.md)       | @getshort(../template/task_unscheduled_time.md)    |
+| [](../template/task_work.md) | @getshort(../template/task_work.md) |
 | [](../template/timeline_cell_class.md)           | @getshort(../template/timeline_cell_class.md)      |
 | [](../template/timeline_cell_content.md)       | @getshort(../template/timeline_cell_content.md)    |
 | [](../template/time_picker.md)                           | @getshort(../template/time_picker.md)              |

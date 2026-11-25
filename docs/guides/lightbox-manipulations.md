@@ -17,6 +17,7 @@ var value = gantt.getLightboxSection('description').getValue();
 gantt.getLightboxSection('description').setValue('abc');
 ~~~
 
+For the advanced task form, use [`gantt.ext.taskForm`](guides/advanced-task-form.md#api) to access a mounted control or locate a field in its layout.
 
 ## Checking whether the lighbox is open
 

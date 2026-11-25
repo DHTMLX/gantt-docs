@@ -5,6 +5,138 @@ sidebar_label: "Migration from Older Versions"
 
 # Migration from Older Versions
 
+## 10.0 -> 10.1
+
+### Removal of the legacy scheduling engine {#legacy-scheduling-engine}
+
+Gantt 10.1 removes the v1 scheduling and analysis engines and their fallback settings.
+If you set `_engine` or `_analysis_engine`, remove those keys and keep your other scheduling
+options.
+
+Before:
+
+~~~js
+gantt.config.auto_scheduling = {
+    enabled: true,
+    _engine: "v1",
+    _analysis_engine: "v1"
+};
+~~~
+
+After:
+
+~~~js
+gantt.config.auto_scheduling = { enabled: true };
+~~~
+
+The built-in engine is the default. See [PlanningEngine](guides/planning-engine.md) to register
+and select an additional provider.
+
+### Task and link fields with a new meaning {#new-task-fields}
+
+Gantt 10.1 reads these fields in every chart. No plugin or setting turns them on.
+
+| Field | Meaning in 10.1 |
+| --- | --- |
+| `active` on a task or link | `false` makes the item inactive. Gantt applies the inactive style, leaves the item out of auto scheduling and the critical path, and leaves an inactive task out of the dates of an active parent summary and out of resource load. A task's `false` also applies to its descendants and to the links that connect to it. |
+| `pauses` on a task | Pause records in the form `{ at, length }`. For regular tasks in minute, hour or day duration units, Gantt fits the work around the pauses when it calculates the end date and draws the bar in segments. |
+| `leveling_delay` on a task | A resource leveling delay. The built-in auto-scheduling engine shifts the task by this amount. |
+
+If your data already uses one of these names for something else, rename the field before you
+load the data, and use the new name when you save it. Otherwise existing tasks and links can
+change their appearance, dates or scheduling after the upgrade.
+
+~~~js
+data.tasks.forEach(task => {
+    if ("active" in task) {
+        task.enabled = task.active;
+        delete task.active;
+    }
+});
+gantt.parse(data);
+~~~
+
+See [Inactive Tasks and Links](guides/inactive-tasks-links.md) and
+[Resource Leveling and Paused Tasks](guides/resource-leveling.md).
+
+### Columns named predecessors or successors {#dependency-column-defaults}
+
+A column named `predecessors` or `successors` now lists dependencies and gets an inline editor
+if the corresponding properties are omitted. If the column previously displayed a custom task
+property and had no editor, keep that behavior by turning off both defaults:
+
+~~~js
+{ name: "predecessors", label: "Predecessors", template: null, editor: null }
+~~~
+
+You can also rename the column and display the old value with a template. See
+[Specifying Columns](guides/specifying-columns.md#dependencycolumns).
+
+### Serialization order with stored WBS codes {#wbs-serialization-order}
+
+With the `wbs` plugin enabled, `gantt.serialize()` produces tasks in canonical tree order,
+even after a display sort. If a consumer relies on the previous display order, request it
+explicitly:
+
+~~~js
+gantt.serialize("json", { order: "display" });
+~~~
+
+The default task payloads for iCal, MS Project, Primavera P6, JSON export, and non-raw PDF/PNG export
+also use canonical order with WBS enabled. Those exports call `serialize()` internally.
+The option above applies only to your direct serialization call. Excel export explicitly uses
+display order by default, and raw PDF/PNG export captures the rendered chart.
+
+See [WBS Codes and Task Numbering](guides/wbs-and-task-numbering.md).
+
+### Tab order in Gantt layouts {#keyboard-layout-tab-order}
+
+With keyboard navigation enabled, Tab can reach several separate stops inside Gantt. Layouts
+can include the task grid, custom controls, a resource grid and a resource timeline. If your
+host page handles Tab assuming that one press leaves the chart, let focus move through the
+layout in its natural order. See [Keyboard Navigation](guides/keyboard-navigation.md#focus-on-gantt).
+
+### Add button and shortcuts for read-only tasks {#readonly-task-add-button}
+
+In 10.0, the "+" button of a task with `readonly: true` added a subtask. Enter, Ctrl+Enter,
+Shift+Left and Shift+Right also acted on such a task. In 10.1, the button stays in place but is
+disabled, and these actions do nothing on a read-only task. If your application lets users add
+subtasks under a read-only task, provide your own control that calls the API. To hide the
+disabled button, use this CSS:
+
+~~~css
+.gantt_add_disabled {
+    display: none;
+}
+~~~
+
+See [Read-Only Mode](guides/readonly-mode.md#readonlymodeforspecifictaskslinks).
+
+### TypeScript lightbox section configuration {#lightbox-section-types}
+
+Standard lightbox section settings now accept `LightboxSectionEntry[] | LightboxTabSections`.
+An array can contain row or column layouts as well as fields. This type also applies to
+applications that use the classic lightbox. Narrow the value before calling array methods.
+
+Before:
+
+~~~ts
+gantt.config.lightbox.sections!.push(section);
+~~~
+
+After:
+
+~~~ts
+const sections = gantt.config.lightbox.sections;
+if (Array.isArray(sections)) {
+    sections.push(section);
+}
+~~~
+
+When reading field properties in an array, use `"name" in entry` to narrow the entry to a
+field. When reading a custom task-type key from the lightbox config, narrow the value
+before treating it as a section list because the index signature also allows booleans and
+`undefined`. See [Advanced Task Form](guides/advanced-task-form.md) for layout examples.
 
 ## 10.0.3 -> 10.0.4
 
@@ -109,7 +241,8 @@ v10.0 ships a reworked auto-scheduling engine. It fixes a number of long-standin
 
 The public API and the visible behavior stay the same, except for cases that previously worked incorrectly. The changes that may affect existing code are listed below.
 
-The new engine is used by default. If you need to switch back to the previous one during the transition, use the opt-out flags:
+In v10.0, the new engine was used by default. The following opt-out flags were available
+in v10.0 for applications that needed the previous engine during the transition:
 
 ~~~js
 gantt.config.auto_scheduling = {
@@ -119,7 +252,7 @@ gantt.config.auto_scheduling = {
 };
 ~~~
 
-These flags are transitional and will be removed in v10.1, so plan to migrate before then.
+These flags were [removed in v10.1](#legacy-scheduling-engine).
 
 #### Behavior changes
 

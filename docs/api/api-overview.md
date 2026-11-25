@@ -99,11 +99,13 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/method/getnext.md)                                             | @getshort(api/method/getnext.md)                      |
 | [](api/method/getnextsibling.md)                               | @getshort(api/method/getnextsibling.md)               |
 | [](api/method/getparent.md)                                         | @getshort(api/method/getparent.md)                    |
+| [](api/method/getoutlinenumber.md) | @getshort(api/method/getoutlinenumber.md) |
 | [](api/method/getprev.md)                                             | @getshort(api/method/getprev.md)                      |
 | [](api/method/getprevsibling.md)                               | @getshort(api/method/getprevsibling.md)               |
 | [](api/method/getredostack.md)                                   | @getshort(api/method/getredostack.md)                 |
 | [](api/method/getresourceassignments.md)               | @getshort(api/method/getresourceassignments.md)       |
 | [](api/method/getresourcecalendar.md)                     | @getshort(api/method/getresourcecalendar.md)          |
+| [](api/method/getrownumber.md) | @getshort(api/method/getrownumber.md) |
 | [](api/method/getscale.md)                                           | @getshort(api/method/getscale.md)                     |
 | [](api/method/getscrollstate.md)                               | @getshort(api/method/getscrollstate.md)               |
 | [](api/method/getselectedid.md)                                 | @getshort(api/method/getselectedid.md)                |
@@ -120,6 +122,8 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/method/gettaskbaselines.md)                           | @getshort(api/method/gettaskbaselines.md)             |
 | [](api/method/gettaskby.md)                                         | @getshort(api/method/gettaskby.md)                    |
 | [](api/method/gettaskbyindex.md)                               | @getshort(api/method/gettaskbyindex.md)               |
+| [](api/method/gettaskbyoutlinenumber.md) | @getshort(api/method/gettaskbyoutlinenumber.md) |
+| [](api/method/gettaskbyrownumber.md) | @getshort(api/method/gettaskbyrownumber.md) |
 | [](api/method/gettaskbytime.md)                                 | @getshort(api/method/gettaskbytime.md)                |
 | [](api/method/gettaskbywbscode.md)                           | @getshort(api/method/gettaskbywbscode.md)             |
 | [](api/method/gettaskcalendar.md)                             | @getshort(api/method/gettaskcalendar.md)              |
@@ -132,6 +136,7 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/method/gettaskrownode.md)                               | @getshort(api/method/gettaskrownode.md)               |
 | [](api/method/gettasktop.md)                                       | @getshort(api/method/gettasktop.md)                   |
 | [](api/method/gettasktype.md)                                     | @getshort(api/method/gettasktype.md)                  |
+| [](api/method/gettaskwork.md) | @getshort(api/method/gettaskwork.md) |
 | [](api/method/gettotalslack.md)                                 | @getshort(api/method/gettotalslack.md)                |
 | [](api/method/getundostack.md)                                   | @getshort(api/method/getundostack.md)                 |
 | [](api/method/getvisibletaskcount.md)                     | @getshort(api/method/getvisibletaskcount.md)          |
@@ -150,12 +155,14 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/method/iscircularlink.md)                               | @getshort(api/method/iscircularlink.md)               |
 | [](api/method/iscriticallink.md)                               | @getshort(api/method/iscriticallink.md)               |
 | [](api/method/iscriticaltask.md)                               | @getshort(api/method/iscriticaltask.md)               |
+| [](api/method/islinkactive.md) | @getshort(api/method/islinkactive.md) |
 | [](api/method/islinkallowed.md)                                 | @getshort(api/method/islinkallowed.md)                |
 | [](api/method/islinkexists.md)                                   | @getshort(api/method/islinkexists.md)                 |
 | [](api/method/isreadonly.md)                                       | @getshort(api/method/isreadonly.md)                   |
 | [](api/method/isselectedtask.md)                               | @getshort(api/method/isselectedtask.md)               |
 | [](api/method/issplittask.md)                                     | @getshort(api/method/issplittask.md)                  |
 | [](api/method/issummarytask.md)                                 | @getshort(api/method/issummarytask.md)                |
+| [](api/method/istaskactive.md) | @getshort(api/method/istaskactive.md) |
 | [](api/method/istaskexists.md)                                   | @getshort(api/method/istaskexists.md)                 |
 | [](api/method/istaskvisible.md)                                 | @getshort(api/method/istaskvisible.md)                |
 | [](api/method/isunscheduledtask.md)                         | @getshort(api/method/isunscheduledtask.md)            |
@@ -219,6 +226,7 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | Name                                                                 | Description                                                                 |
 |----------------------------------------------------------------------|-----------------------------------------------------------------------------|
 | [](api/config/auto_scheduling_compatibility.md)           | @getshort(api/config/auto_scheduling_compatibility.md)      |
+| [](api/config/accessibility.md) | @getshort(api/config/accessibility.md) |
 | [](api/config/auto_scheduling.md)                                       | @getshort(api/config/auto_scheduling.md)                    |
 | [](api/config/auto_scheduling_descendant_links.md)     | @getshort(api/config/auto_scheduling_descendant_links.md)   |
 | [](api/config/auto_scheduling_initial.md)                       | @getshort(api/config/auto_scheduling_initial.md)            |
@@ -246,6 +254,7 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/config/constraint_types.md)                                     | @getshort(api/config/constraint_types.md)                   |
 | [](api/config/container_resize_method.md)                       | @getshort(api/config/container_resize_method.md)            |
 | [](api/config/container_resize_timeout.md)                     | @getshort(api/config/container_resize_timeout.md)           |
+| [](api/config/context_menu.md) | @getshort(api/config/context_menu.md) |
 | [](api/config/correct_work_time.md)                                   | @getshort(api/config/correct_work_time.md)                  |
 | [](api/config/csp.md)                                                               | @getshort(api/config/csp.md)                                |
 | [](api/config/date_format.md)                                               | @getshort(api/config/date_format.md)                        |
@@ -269,6 +278,7 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/config/dynamic_resource_calendars.md)                 | @getshort(api/config/dynamic_resource_calendars.md)         |
 | [](api/config/editable_property.md)                                   | @getshort(api/config/editable_property.md)                  |
 | [](api/config/editor_types.md)                                             | @getshort(api/config/editor_types.md)                       |
+| [](api/config/effort.md) | @getshort(api/config/effort.md) |
 | [](api/config/end_date.md)                                                     | @getshort(api/config/end_date.md)                           |
 | [](api/config/external_render.md)                                       | @getshort(api/config/external_render.md)                    |
 | [](api/config/fit_tasks.md)                                                   | @getshort(api/config/fit_tasks.md)                          |
@@ -289,6 +299,7 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/config/keyboard_navigation_cells.md)                   | @getshort(api/config/keyboard_navigation_cells.md)          |
 | [](api/config/layer_attribute.md)                                       | @getshort(api/config/layer_attribute.md)                    |
 | [](api/config/layout.md)                                                         | @getshort(api/config/layout.md)                             |
+| [](api/config/leveling_delays.md)                                       | @getshort(api/config/leveling_delays.md)                    |
 | [](api/config/lightbox.md)                                                     | @getshort(api/config/lightbox.md)                           |
 | [](api/config/lightbox_additional_height.md)                 | @getshort(api/config/lightbox_additional_height.md)         |
 | [](api/config/link_arrow_size.md)                                       | @getshort(api/config/link_arrow_size.md)                    |
@@ -368,6 +379,7 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/config/time_picker.md)                                               | @getshort(api/config/time_picker.md)                        |
 | [](api/config/time_step.md)                                                   | @getshort(api/config/time_step.md)                          |
 | [](api/config/timeline_placeholder.md)                             | @getshort(api/config/timeline_placeholder.md)               |
+| [](api/config/toolbar.md) | @getshort(api/config/toolbar.md) |
 | [](api/config/tooltip_hide_timeout.md)                             | @getshort(api/config/tooltip_hide_timeout.md)               |
 | [](api/config/tooltip_offset_x.md)                                     | @getshort(api/config/tooltip_offset_x.md)                   |
 | [](api/config/tooltip_offset_y.md)                                     | @getshort(api/config/tooltip_offset_y.md)                   |
@@ -383,6 +395,7 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/config/undo_steps.md)                                                 | @getshort(api/config/undo_steps.md)                         |
 | [](api/config/undo_types.md)                                                 | @getshort(api/config/undo_types.md)                         |
 | [](api/config/wai_aria_attributes.md)                               | @getshort(api/config/wai_aria_attributes.md)                |
+| [](api/config/wbs.md) | @getshort(api/config/wbs.md) |
 | [](api/config/wheel_scroll_sensitivity.md)                     | @getshort(api/config/wheel_scroll_sensitivity.md)           |
 | [](api/config/wide_form.md)                                                   | @getshort(api/config/wide_form.md)                          |
 | [](api/config/work_time.md)                                                   | @getshort(api/config/work_time.md)                          |
@@ -393,6 +406,7 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | Name                                                    | Description                                                    |
 |---------------------------------------------------------|----------------------------------------------------------------|
 | [](api/event/onafterautoschedule.md)               | @getshort(api/event/onafterautoschedule.md)        |
+| [](api/event/onafterautoscheduleconflictresolve.md) | @getshort(api/event/onafterautoscheduleconflictresolve.md) |
 | [](api/event/onafterbatchupdate.md)                 | @getshort(api/event/onafterbatchupdate.md)         |
 | [](api/event/onafterbranchloading.md)             | @getshort(api/event/onafterbranchloading.md)       |
 | [](api/event/onafterlightbox.md)                       | @getshort(api/event/onafterlightbox.md)            |
@@ -410,13 +424,17 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/event/onaftertaskmove.md)                       | @getshort(api/event/onaftertaskmove.md)            |
 | [](api/event/onaftertaskupdate.md)                   | @getshort(api/event/onaftertaskupdate.md)          |
 | [](api/event/onafterundo.md)                               | @getshort(api/event/onafterundo.md)                |
+| [](api/event/onafterundostackchange.md) | @getshort(api/event/onafterundostackchange.md) |
+| [](api/event/onafterwbsoperation.md) | @getshort(api/event/onafterwbsoperation.md) |
 | [](api/event/onajaxerror.md)                               | @getshort(api/event/onajaxerror.md)                |
 | [](api/event/onautoschedulecircularlink.md) | @getshort(api/event/onautoschedulecircularlink.md) |
 | [](api/event/onbeforeautoschedule.md)             | @getshort(api/event/onbeforeautoschedule.md)       |
+| [](api/event/onbeforeautoscheduleconflictresolve.md) | @getshort(api/event/onbeforeautoscheduleconflictresolve.md) |
 | [](api/event/onbeforebatchupdate.md)               | @getshort(api/event/onbeforebatchupdate.md)        |
 | [](api/event/onbeforebranchloading.md)           | @getshort(api/event/onbeforebranchloading.md)      |
 | [](api/event/onbeforecollapse.md)                     | @getshort(api/event/onbeforecollapse.md)           |
 | [](api/event/onbeforedatarender.md)                 | @getshort(api/event/onbeforedatarender.md)         |
+| [](api/event/onbeforecontextmenu.md) | @getshort(api/event/onbeforecontextmenu.md) |
 | [](api/event/onbeforeexpand.md)                         | @getshort(api/event/onbeforeexpand.md)             |
 | [](api/event/onbeforeganttready.md)                 | @getshort(api/event/onbeforeganttready.md)         |
 | [](api/event/onbeforeganttrender.md)               | @getshort(api/event/onbeforeganttrender.md)        |
@@ -447,6 +465,7 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/event/onbeforetaskupdate.md)                 | @getshort(api/event/onbeforetaskupdate.md)         |
 | [](api/event/onbeforeundo.md)                             | @getshort(api/event/onbeforeundo.md)               |
 | [](api/event/onbeforeundostack.md)                   | @getshort(api/event/onbeforeundostack.md)          |
+| [](api/event/onbeforewbsoperation.md) | @getshort(api/event/onbeforewbsoperation.md) |
 | [](api/event/oncircularlinkerror.md)               | @getshort(api/event/oncircularlinkerror.md)        |
 | [](api/event/onclear.md)                                       | @getshort(api/event/onclear.md)                    |
 | [](api/event/oncollapse.md)                                 | @getshort(api/event/oncollapse.md)                 |
@@ -454,6 +473,7 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/event/oncolumnresizeend.md)                   | @getshort(api/event/oncolumnresizeend.md)          |
 | [](api/event/oncolumnresizestart.md)               | @getshort(api/event/oncolumnresizestart.md)        |
 | [](api/event/oncontextmenu.md)                           | @getshort(api/event/oncontextmenu.md)              |
+| [](api/event/oncontextmenuitemclick.md) | @getshort(api/event/oncontextmenuitemclick.md) |
 | [](api/event/ondataprocessorready.md)             | @getshort(api/event/ondataprocessorready.md)       |
 | [](api/event/ondatarender.md)                             | @getshort(api/event/ondatarender.md)               |
 | [](api/event/ondestroy.md)                                   | @getshort(api/event/ondestroy.md)                  |
@@ -477,6 +497,9 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/event/onlinkclick.md)                               | @getshort(api/event/onlinkclick.md)                |
 | [](api/event/onlinkcreated.md)                           | @getshort(api/event/onlinkcreated.md)              |
 | [](api/event/onlinkdblclick.md)                         | @getshort(api/event/onlinkdblclick.md)             |
+| [](api/event/onlinkdragend.md) | @getshort(api/event/onlinkdragend.md) |
+| [](api/event/onlinkdragmove.md) | @getshort(api/event/onlinkdragmove.md) |
+| [](api/event/onlinkdragstart.md) | @getshort(api/event/onlinkdragstart.md) |
 | [](api/event/onlinkidchange.md)                         | @getshort(api/event/onlinkidchange.md)             |
 | [](api/event/onlinkvalidation.md)                     | @getshort(api/event/onlinkvalidation.md)           |
 | [](api/event/onloadend.md)                                   | @getshort(api/event/onloadend.md)                  |
@@ -496,6 +519,8 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/event/ontaskcreated.md)                           | @getshort(api/event/ontaskcreated.md)              |
 | [](api/event/ontaskdblclick.md)                         | @getshort(api/event/ontaskdblclick.md)             |
 | [](api/event/ontaskdrag.md)                                 | @getshort(api/event/ontaskdrag.md)                 |
+| [](api/event/ontaskformrender.md) | @getshort(api/event/ontaskformrender.md) |
+| [](api/event/ontaskformtabchange.md) | @getshort(api/event/ontaskformtabchange.md) |
 | [](api/event/ontaskidchange.md)                         | @getshort(api/event/ontaskidchange.md)             |
 | [](api/event/ontaskloading.md)                           | @getshort(api/event/ontaskloading.md)              |
 | [](api/event/ontaskmultiselect.md)                   | @getshort(api/event/ontaskmultiselect.md)          |
@@ -504,6 +529,8 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/event/ontaskselected.md)                         | @getshort(api/event/ontaskselected.md)             |
 | [](api/event/ontaskunselected.md)                     | @getshort(api/event/ontaskunselected.md)           |
 | [](api/event/ontemplatesready.md)                     | @getshort(api/event/ontemplatesready.md)           |
+| [](api/event/ontoolbaritemchange.md) | @getshort(api/event/ontoolbaritemchange.md) |
+| [](api/event/ontoolbaritemclick.md) | @getshort(api/event/ontoolbaritemclick.md) |
 
 ## Gantt templates
 
@@ -527,6 +554,7 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/template/histogram_cell_class.md)         | @getshort(api/template/histogram_cell_class.md)     |
 | [](api/template/histogram_cell_label.md)         | @getshort(api/template/histogram_cell_label.md)     |
 | [](api/template/leftside_text.md)                       | @getshort(api/template/leftside_text.md)            |
+| [](api/template/leveling_delay_text.md)           | @getshort(api/template/leveling_delay_text.md)      |
 | [](api/template/lightbox_header.md)                   | @getshort(api/template/lightbox_header.md)          |
 | [](api/template/link_class.md)                             | @getshort(api/template/link_class.md)               |
 | [](api/template/link_description.md)                 | @getshort(api/template/link_description.md)         |
@@ -549,6 +577,7 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/template/task_text.md)                               | @getshort(api/template/task_text.md)                |
 | [](api/template/task_time.md)                               | @getshort(api/template/task_time.md)                |
 | [](api/template/task_unscheduled_time.md)       | @getshort(api/template/task_unscheduled_time.md)    |
+| [](api/template/task_work.md) | @getshort(api/template/task_work.md) |
 | [](api/template/timeline_cell_class.md)           | @getshort(api/template/timeline_cell_class.md)      |
 | [](api/template/timeline_cell_content.md)       | @getshort(api/template/timeline_cell_content.md)    |
 | [](api/template/time_picker.md)                           | @getshort(api/template/time_picker.md)              |
@@ -573,6 +602,7 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/other/date.md)                     | @getshort(api/other/date.md)             |
 | [](api/other/env.md)                       | @getshort(api/other/env.md)              |
 | [](api/other/ext.md)                       | @getshort(api/other/ext.md)              |
+| [](api/other/autoscheduling-ext.md) | @getshort(api/other/autoscheduling-ext.md) |
 | [](api/other/form_blocks.md)       | @getshort(api/other/form_blocks.md)      |
 | [i18n](api/other/i18n.md)                     | @getshort(api/other/i18n.md)             |
 | [](api/other/ignore_time.md)       | @getshort(api/other/ignore_time.md)      |

@@ -136,7 +136,7 @@ gantt.ext.fullscreen.getFullscreenElement();
 ~~~
 
 :::note
-By default this method returns an HTML container of the Gantt chart. It means that only Gantt will be expanded to full screen.
+By default, this method returns the Gantt chart container, which includes the [built-in toolbar](guides/toolbar.md) when it is part of the Gantt layout. The toolbar's `fullscreen` item requires the `fullscreen` plugin.
 :::
 
 In case you want to display the gantt with additional elements (such as a header or toolbar) in the full screen, you need to add a custom container on the page, as in:
@@ -178,7 +178,7 @@ the gantt won't be able to expand to the fullscreen mode (try it in our snippet 
 
 ### Full screen mode in Salesforce
 
-The Fullscreen extension doesn't work in Salesforce applications that use <a href="https://developer.salesforce.com/docs/atlas.en-us.238.0.lightning.meta/lightning/security_code.htm" target="_blank">Locker Service</a>, since Locker blocks the ability to switch the element to the full screen mode.
+The Fullscreen extension doesn't work in Salesforce applications that use <a href="https://developer.salesforce.com/docs/atlas.en-us.238.0.lightning.meta/lightning/security_code.htm" target="_blank" rel="noopener noreferrer">Locker Service</a>, since Locker blocks the ability to switch the element to the full screen mode.
 
 More specifically, the Fullscreen extension won't work with **Lightning Aura** framework and with **Lightning Web Components** but may work with **Visualforce** framework.
 

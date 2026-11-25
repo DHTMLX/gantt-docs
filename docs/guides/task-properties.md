@@ -81,9 +81,39 @@ These properties may or may not be defined. The default logic and templates of g
   <th>Name</th><th>Type</th><th>Description</th>
   </tr>
   <tr>
+  <td><b class="subproperty">active</b></td>
+  <td><i>boolean</i></td>
+  <td>Set to <i>false</i> to make the task and its descendants [inactive](guides/inactive-tasks-links.md).</td>
+  </tr>
+  <tr>
   <td><b class="subproperty">auto_scheduling</b></td>
   <td><i>boolean</i></td>
   <td>Defines whether gantt should do auto-scheduling of the task (<i>true</i> or not specified) or not (<i>false</i>)</td>
+  </tr>
+  <tr>
+  <td><b class="subproperty">work</b></td>
+  <td><i>number</i></td>
+  <td>The task's work in the configured [effort work unit](guides/effort-driven-tasks.md). The default unit is hours.</td>
+  </tr>
+  <tr>
+  <td><b class="subproperty">scheduling_mode</b></td>
+  <td><i>string</i></td>
+  <td>The task's [effort scheduling mode](guides/effort-driven-tasks.md): <i>fixed_duration</i>, <i>fixed_units</i> or <i>fixed_work</i>. Defaults to the configured effort mode when the feature is enabled.</td>
+  </tr>
+  <tr>
+  <td><b class="subproperty">effort_driven</b></td>
+  <td><i>boolean</i></td>
+  <td>Controls how adding or removing assignments affects a task in Fixed duration or Fixed units mode. Defaults to the configured [effort setting](guides/effort-driven-tasks.md) when the feature is enabled.</td>
+  </tr>
+  <tr>
+  <td><b class="subproperty">leveling_delay</b></td>
+  <td><i>number</i></td>
+  <td>A finite, nonnegative [resource leveling delay](guides/resource-leveling.md) in elapsed <b>duration_unit</b> units. Numeric strings are accepted when loading data. The [leveling_delays](api/config/leveling_delays.md) config shows it in the timeline.</td>
+  </tr>
+  <tr>
+  <td><b class="subproperty">pauses</b></td>
+  <td><i>TaskPause[]</i></td>
+  <td>Ordered, nonoverlapping [task pauses](guides/resource-leveling.md) with an elapsed offset <b>at</b>, a positive elapsed <b>length</b>, and an optional <b>by</b> marker of <i>leveling</i>. Both numbers use <b>duration_unit</b>. A JSON string containing the array is also accepted when loading data.</td>
   </tr>
   <tr>
   <td><b class="subproperty">bar_height</b></td>

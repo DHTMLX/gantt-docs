@@ -76,6 +76,11 @@ Note, these values affect only the way the dependency type is stored, not the be
   <th>Name</th><th>Type</th><th>Description</th>
   </tr>
   <tr>
+  <td><b class="subproperty">active</b></td>
+  <td><i>boolean</i></td>
+  <td>Set to <i>false</i> to make the link [inactive](guides/inactive-tasks-links.md). A link is also inactive when either endpoint task is inactive.</td>
+  </tr>
+  <tr>
   <td><b class="subproperty">lag</b></td>
   <td><i>number</i></td>
   <td>[the task's lag](guides/auto-scheduling.md#settinglagandleadtimesbetweentasks)</td>

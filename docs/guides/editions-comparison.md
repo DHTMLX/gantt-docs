@@ -48,6 +48,31 @@ Starting from DHTMLX Gantt v10, the free edition is the **Community edition** di
   <td style="text-align:center;">✔️</td>
   </tr>
   <tr>
+  <td>[Advanced task form](guides/advanced-task-form.md)</td>
+  <td style="text-align:center;">❌</td>
+  <td style="text-align:center;">✔️</td>
+  </tr>
+  <tr>
+  <td>[Built-in toolbar](guides/toolbar.md) and [context menu](guides/context-menu.md)</td>
+  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">✔️</td>
+  </tr>
+  <tr>
+  <td>[Effort-driven task scheduling with resource assignments](guides/effort-driven-tasks.md)</td>
+  <td style="text-align:center;">❌</td>
+  <td style="text-align:center;">✔️</td>
+  </tr>
+  <tr>
+  <td>[Inactive tasks and links](guides/inactive-tasks-links.md)</td>
+  <td style="text-align:center;">✔️</td>
+  <td style="text-align:center;">✔️</td>
+  </tr>
+  <tr>
+  <td>[Stored WBS codes, outline numbers and row numbers](guides/wbs-and-task-numbering.md)</td>
+  <td style="text-align:center;">❌</td>
+  <td style="text-align:center;">✔️</td>
+  </tr>
+  <tr>
   <td>[Assigning Calendar to Project](guides/working-time.md#assigning-calendar-to-project)</td>
   <td style="text-align:center;">❌</td>
   <td style="text-align:center;">✔️</td>

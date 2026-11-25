@@ -55,7 +55,7 @@ The inline editors are stored in the [editor_types](api/config/editor_types.md) 
 There are several predefined inline editors:
 
 - **text** editor - for editing text columns, e.g. task name
-- **number** editor - for editing number columns, e.g. task duration, order, etc.
+- **number** or **stepper** editor - for editing numbers. Supports `min`, `max`, `step` and `placeholder`.
 - **duration** editor - for editing duration columns, i.e. task duration. Works only when the **map_to: "duration"** config is used and the editor type is set 
 to the **"duration"** type:
 
@@ -68,9 +68,27 @@ For example: `5 days`.
 Uses the [Duration Formatter](guides/formatters-ext.md#durationformatter) by default.
 Instead of using the default duration formatter, you can also change its configuration or set a [custom formatter](guides/formatters-ext.md#customformatter).
 
-- **date** editor - for editing date columns, e.g. start and end dates of the task
-- **select** editor - for choosing an option from a list
-- **predecessor** editor - for setting task-predecessor for the currently edited task. This editor gets the [WBS codes of tasks](guides/specifying-columns.md#wbscode) to set connection with the predecessor task.
+- **date** or **datepicker** editor - for editing dates through a calendar. Supports `format`, `min`, `max` and `placeholder`.
+- **datetime** editor - for editing the date and time in one cell. Use `format` for the date part and `time_format` and `time_step` for the time part.
+- **select** or **combo** editor - for choosing an option from a list. Pass an `options` array containing objects with `key` and `label`.
+- **predecessor** editor - for editing the incoming dependencies of the current task.
+- **successor** editor - for editing the outgoing dependencies of the current task.
+
+The `number` and `stepper` editors hide their increment and decrement buttons when the stepper is narrower than 90 px. The input remains available. To hide the buttons at a wider size, add a container query for `dhx_inline_stepper`. For example, the Contrast Black and Contrast White skins can benefit from a wider cutoff when the input needs to show three digits next to the buttons.
+
+~~~css
+@container dhx_inline_stepper (width < 110px) {
+    .dhx_ui_inline_editor .dhx_ui_stepper_btn {
+        display: none;
+    }
+
+    .dhx_ui_inline_editor .dhx_ui_stepper .dhx_ui_input {
+        border: var(--dhx-ui-input-border);
+    }
+}
+~~~
+
+See also [editing effort fields](guides/effort-driven-tasks.md#editing-effort-fields).
 
 ~~~js
 const editors = {
@@ -153,15 +171,30 @@ gantt.templates.grid_date_format = (date, column) =>
 
 For more details on formatting end dates, see the [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates) article.
 
-### Formatting values of the Predecessor editor {#linkformatter}
+### Formatting predecessor and successor values {#linkformatter}
 
 :::note
-This functionality is available in the PRO edition only.
+Editing link types and lag or lead values requires a paid edition. The Community edition provides a basic link formatter for editing dependency references.
 :::
 
 Starting from v6.3 Gantt allows specifying types of links as well as lag/lead values directly from inline editor. 
 
-In order to do so, you need to use the [Link Formatter](guides/formatters-ext.md#linkformatter) module and provide an instance of the *LinksFormatter* into the **predecessor** editor:
+Columns named `predecessors` and `successors` get the matching editor by default. Each editor uses `map_to: "auto"` and accepts a comma-separated list of references. Set `delimiter` on the editor to use a different separator. Clear the value to remove the links in that direction.
+
+The default template uses the formatter supplied in the editor. To use outline or row numbers in a supported edition, set the [link formatter reference](guides/formatters-ext.md#task-references). For example:
+
+~~~js
+{
+    name: "successors",
+    editor: {
+        type: "successor",
+        map_to: "auto",
+        formatter: gantt.ext.formatters.linkFormatter({ reference: "row" })
+    }
+}
+~~~
+
+To configure link types and lag or lead formatting in a paid edition, pass a configured [Link Formatter](guides/formatters-ext.md#linkformatter) to the editor:
 
 ~~~js
 const formatter = gantt.ext.formatters.durationFormatter({
@@ -194,21 +227,36 @@ gantt.config.columns = [
     { name: "start_date", label: "Start", width: 80, align: "center",
         editor: editors.start_date, resize: true },
     { name: "predecessors", label: "Predecessors", width: 80, align: "left",
-        editor: editors.predecessors, resize: true, template: task => {
-            const links = task.$target || [];
-            const labels = links.map(id => {
-                const link = gantt.getLink(id);
-                return linksFormatter.format(link);
-            });
-            return labels.join(", ");
-        }
-    },
+        editor: editors.predecessors, resize: true },
     { name: "add" }
 ];
 ~~~
 
 
 [Inline editing - keyboard navigation mode](https://docs.dhtmlx.com/gantt/samples/07_grid/12_inline_edit_key_nav.html)
+
+### Editing stored WBS codes
+
+With the [wbs extension](guides/wbs-and-task-numbering.md) enabled, use a text editor mapped to the stored code field. For the default field names, the column is:
+
+~~~js
+{ name: "wbs_code", label: "WBS", editor: { type: "text", map_to: "wbs_code" } }
+~~~
+
+Use the inline editor's `onBeforeSave` event to check for duplicate codes in loaded tasks. The lookup throws when a code already has more than one match.
+
+~~~js
+gantt.ext.inlineEditors.attachEvent("onBeforeSave", ({ columnName, newValue, id }) => {
+    if (columnName !== "wbs_code" || !newValue) return true;
+
+    try {
+        const existing = gantt.ext.wbs.getTaskByCode(newValue);
+        return !existing || String(existing.id) === String(id);
+    } catch {
+        return false;
+    }
+});
+~~~
 
 
 The section below provides you with code samples for the following custom editors:

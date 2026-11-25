@@ -186,4 +186,5 @@ There is a set of helpful Undo/Redo-related events:
 - [onAfterRedo](api/event/onafterredo.md) - fires after the [redo](api/method/redo.md) method was called
 - [onBeforeRedoStack](api/event/onbeforeredostack.md) - fires before an action is added into the redo stack
 - [onBeforeUndoStack](api/event/onbeforeundostack.md) - fires before an action is added into the undo stack
+- [onAfterUndoStackChange](api/event/onafterundostackchange.md) - reports the current sizes of the undo and redo stacks after either stack changes
 

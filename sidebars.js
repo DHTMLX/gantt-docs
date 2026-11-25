@@ -388,6 +388,7 @@ module.exports = {
                         "api/method/getmarker",
                         "api/method/getnext",
                         "api/method/getnextsibling",
+                        "api/method/getoutlinenumber",
                         "api/method/getparent",
                         "api/method/getprev",
                         "api/method/getprevsibling",
@@ -402,6 +403,7 @@ module.exports = {
                             id: "api/method/getresourcecalendar",
                             className: "pro-version"
                         },
+                        "api/method/getrownumber",
                         "api/method/getscale",
                         "api/method/getscrollstate",
                         "api/method/getselectedid",
@@ -430,6 +432,8 @@ module.exports = {
                         },
                         "api/method/gettaskby",
                         "api/method/gettaskbyindex",
+                        "api/method/gettaskbyoutlinenumber",
+                        "api/method/gettaskbyrownumber",
                         "api/method/gettaskbytime",
                         "api/method/gettaskbywbscode",
                         "api/method/gettaskcalendar",
@@ -446,6 +450,11 @@ module.exports = {
                         "api/method/gettaskrownode",
                         "api/method/gettasktop",
                         "api/method/gettasktype",
+                        {
+                            type: "doc",
+                            id: "api/method/gettaskwork",
+                            className: "pro-version"
+                        },
                         {
                             type: "doc",
                             id: "api/method/gettotalslack",
@@ -484,6 +493,7 @@ module.exports = {
                             id: "api/method/iscriticaltask",
                             className: "pro-version"
                         },
+                        "api/method/islinkactive",
                         "api/method/islinkallowed",
                         "api/method/islinkexists",
                         "api/method/isreadonly",
@@ -498,6 +508,7 @@ module.exports = {
                             id: "api/method/issummarytask",
                             className: "pro-version"
                         },
+                        "api/method/istaskactive",
                         "api/method/istaskexists",
                         "api/method/istaskvisible",
                         "api/method/isunscheduledtask",
@@ -588,6 +599,7 @@ module.exports = {
                         id: "api/overview/properties-overview"
                     },
                     items: [
+                        "api/config/accessibility",
                         {
                             type: "doc",
                             id: "api/config/auto_scheduling",
@@ -633,6 +645,7 @@ module.exports = {
                         },
                         "api/config/container_resize_method",
                         "api/config/container_resize_timeout",
+                        "api/config/context_menu",
                         "api/config/correct_work_time",
                         "api/config/csp",
                         "api/config/date_format",
@@ -667,6 +680,11 @@ module.exports = {
                         },
                         "api/config/editable_property",
                         "api/config/editor_types",
+                        {
+                            type: "doc",
+                            id: "api/config/effort",
+                            className: "pro-version"
+                        },
                         "api/config/end_date",
                         "api/config/external_render",
                         "api/config/fit_tasks",
@@ -705,6 +723,11 @@ module.exports = {
                             className: "pro-version"
                         },
                         "api/config/layout",
+                        {
+                            type: "doc",
+                            id: "api/config/leveling_delays",
+                            className: "pro-version"
+                        },
                         "api/config/lightbox",
                         "api/config/link_arrow_size",
                         "api/config/link_attribute",
@@ -835,6 +858,7 @@ module.exports = {
                         "api/config/time_picker",
                         "api/config/time_step",
                         "api/config/timeline_placeholder",
+                        "api/config/toolbar",
                         "api/config/tooltip_hide_timeout",
                         "api/config/tooltip_offset_x",
                         "api/config/tooltip_offset_y",
@@ -858,6 +882,7 @@ module.exports = {
                         "api/config/undo_steps",
                         "api/config/undo_types",
                         "api/config/wai_aria_attributes",
+                        "api/config/wbs",
                         "api/config/wheel_scroll_sensitivity",
                         "api/config/wide_form",
                         "api/config/work_time",
@@ -959,6 +984,11 @@ module.exports = {
                             id: "api/event/onafterautoschedule",
                             className: "pro-version"
                         },
+                        {
+                            type: "doc",
+                            id: "api/event/onafterautoscheduleconflictresolve",
+                            className: "pro-version"
+                        },
                         "api/event/onafterbatchupdate",
                         {
                             type: "doc",
@@ -984,6 +1014,8 @@ module.exports = {
                         "api/event/onaftertaskmove",
                         "api/event/onaftertaskupdate",
                         "api/event/onafterundo",
+                        "api/event/onafterundostackchange",
+                        "api/event/onafterwbsoperation",
                         "api/event/onajaxerror",
                         {
                             type: "doc",
@@ -1005,6 +1037,11 @@ module.exports = {
                             id: "api/event/onbeforeautoschedule",
                             className: "pro-version"
                         },
+                        {
+                            type: "doc",
+                            id: "api/event/onbeforeautoscheduleconflictresolve",
+                            className: "pro-version"
+                        },
                         "api/event/onbeforebatchupdate",
                         {
                             type: "doc",
@@ -1013,6 +1050,7 @@ module.exports = {
                         },
                         "api/event/onbeforecollapse",
                         "api/event/onbeforedatarender",
+                        "api/event/onbeforecontextmenu",
                         "api/event/onbeforeexpand",
                         "api/event/onbeforeganttready",
                         "api/event/onbeforeganttrender",
@@ -1047,6 +1085,7 @@ module.exports = {
                         "api/event/onbeforetaskupdate",
                         "api/event/onbeforeundo",
                         "api/event/onbeforeundostack",
+                        "api/event/onbeforewbsoperation",
                         {
                             type: "doc",
                             id: "api/event/oncircularlinkerror",
@@ -1070,6 +1109,7 @@ module.exports = {
                             className: "pro-version"
                         },
                         "api/event/oncontextmenu",
+                        "api/event/oncontextmenuitemclick",
                         "api/event/ondataprocessorready",
                         "api/event/ondatarender",
                         "api/event/ondestroy",
@@ -1105,6 +1145,9 @@ module.exports = {
                         "api/event/onlinkclick",
                         "api/event/onlinkcreated",
                         "api/event/onlinkdblclick",
+                        "api/event/onlinkdragend",
+                        "api/event/onlinkdragmove",
+                        "api/event/onlinkdragstart",
                         "api/event/onlinkidchange",
                         "api/event/onlinkvalidation",
                         "api/event/onloadend",
@@ -1124,6 +1167,16 @@ module.exports = {
                         "api/event/ontaskcreated",
                         "api/event/ontaskdblclick",
                         "api/event/ontaskdrag",
+                        {
+                            type: "doc",
+                            id: "api/event/ontaskformrender",
+                            className: "pro-version"
+                        },
+                        {
+                            type: "doc",
+                            id: "api/event/ontaskformtabchange",
+                            className: "pro-version"
+                        },
                         "api/event/ontaskidchange",
                         "api/event/ontaskloading",
                         "api/event/ontaskmultiselect",
@@ -1132,6 +1185,8 @@ module.exports = {
                         "api/event/ontaskselected",
                         "api/event/ontaskunselected",
                         "api/event/ontemplatesready",
+                        "api/event/ontoolbaritemchange",
+                        "api/event/ontoolbaritemclick",
                     ]
                 },
                 // Gantt templates
@@ -1182,6 +1237,11 @@ module.exports = {
                             id: "api/template/histogram_cell_label",
                             className: "pro-version"
                         },
+                        {
+                            type: "doc",
+                            id: "api/template/leveling_delay_text",
+                            className: "pro-version"
+                        },
                         "api/template/link_class",
                         "api/template/link_description",
                         "api/template/lightbox_header",
@@ -1213,6 +1273,11 @@ module.exports = {
                         "api/template/task_text",
                         "api/template/task_time",
                         "api/template/task_unscheduled_time",
+                        {
+                            type: "doc",
+                            id: "api/template/task_work",
+                            className: "pro-version"
+                        },
                         "api/template/timeline_cell_class",
                         "api/template/timeline_cell_content",
                         "api/template/time_picker",
@@ -1261,6 +1326,11 @@ module.exports = {
                                 id: "api/other/ext",
                             },
                             items: [
+                                {
+                                    type: "doc",
+                                    id: "api/other/autoscheduling-ext",
+                                    className: "pro-version"
+                                },
                                 "guides/click-drag-ext",
                                 "guides/empty-state-element-ext",
                                 {
@@ -1327,6 +1397,12 @@ module.exports = {
                         {
                             type: "doc",
                             id: "guides/resource-management",
+                            className: "pro-version"
+                        },
+                        "guides/resource-leveling",
+                        {
+                            type: "doc",
+                            id: "guides/effort-driven-tasks",
                             className: "pro-version"
                         },
                         "guides/handling-events",
@@ -1432,6 +1508,7 @@ module.exports = {
                     },
                     items: [
                         "guides/specifying-columns",
+                        "guides/wbs-and-task-numbering",
                         "guides/resizing-rows",
                         "guides/tree-column",
                         "guides/reordering-tasks",
@@ -1500,6 +1577,11 @@ module.exports = {
                                 "guides/constraint",
                                 "guides/baseline",
                             ]
+                        },
+                        {
+                            type: "doc",
+                            id: "guides/advanced-task-form",
+                            className: "pro-version"
                         },
                         "guides/lightbox-manipulations",
                         "guides/custom-editor",
@@ -1575,11 +1657,17 @@ module.exports = {
                     },
                     items: [
                         "guides/link-properties",
+                        "guides/inactive-tasks-links",
                         "guides/link-object-operations",
                         "guides/crud-dependency",
                         {
                             type: "doc",
                             id: "guides/auto-scheduling",
+                            className: "pro-version"
+                        },
+                        {
+                            type: "doc",
+                            id: "guides/planning-engine",
                             className: "pro-version"
                         },
                     ]
@@ -1643,8 +1731,9 @@ module.exports = {
                         "guides/undo-redo",
                         "guides/message-boxes",
                         "guides/quick-info",
-                        "guides/accessibility",
                         "guides/keyboard-navigation",
+                        "guides/toolbar",
+                        "guides/context-menu",
                         "guides/content-security-policy",
                         "guides/jquery-integration",
                         "guides/multiuser-live-updates",
@@ -1666,6 +1755,26 @@ module.exports = {
                 },
                 "guides/extensions-list",
                 "guides/overview"
+            ]
+        },
+
+        // Accessibility
+        {
+            type: "category",
+            label: "Accessibility",
+            collapsible: true,
+            collapsed: true,
+            link: {
+                type: 'doc',
+                id: "guides/accessibility"
+            },
+            items: [
+                {
+                    type: "link",
+                    label: "Overview",
+                    href: "/guides/accessibility/"
+                },
+                "guides/accessibility-conformance-report"
             ]
         },
 

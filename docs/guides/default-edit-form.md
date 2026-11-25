@@ -7,6 +7,8 @@ sidebar_label: "Configuring Lightbox Elements"
 
 Lightbox is an edit form used to change task details.
 
+Use the [advanced task form](guides/advanced-task-form.md) for tabs, rows and columns, or built-in dependency editing.
+
 The default lightbox is shown in the image below.
 
 ![lightbox](/img/lightbox.png)
@@ -22,10 +24,11 @@ For details, see [Task Types](guides/task-types.md#specificlightboxpertasktype).
 
 The overall type structure looks like this:
 
-- <span class="subproperty">**sections?**</span> - (*LightboxSection[]*) - optional, the lightbox sections array for regular tasks
-- <span class="subproperty">**project_sections?**</span> - (*LightboxSection[]*) - optional, the lightbox sections array for project tasks
-- <span class="subproperty">**milestone_sections?**</span> - (*LightboxSection[]*) - optional, the lightbox sections array for milestones
-- <span class="subproperty">**[lightboxType: string]**</span> - (*LightboxSection[] | undefined*) - the lightbox sections array for the custom type
+- <span class="subproperty">**advanced?**</span> - (*boolean*) - controls the form mode when the `task_form` plugin is enabled
+- <span class="subproperty">**sections?**</span> - (*LightboxSectionEntry[] | LightboxTabSections*) - sections for regular tasks and the shared layout in the advanced form
+- <span class="subproperty">**project_sections?**</span> - (*LightboxSectionEntry[] | LightboxTabSections*) - sections for project tasks
+- <span class="subproperty">**milestone_sections?**</span> - (*LightboxSectionEntry[] | LightboxTabSections*) - sections for milestones
+- <span class="subproperty">**`<type>_sections`**</span> - (*LightboxSectionEntry[] | LightboxTabSections*) - sections for a custom task type
 
 
 :::note
@@ -46,7 +49,7 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-Each item in the **sections** array is an object that defines a single section in the lightbox.
+Each item in this classic **sections** array defines a single section in the lightbox.
 See [lightbox config](api/config/lightbox.md) for available section properties.
 
 
@@ -55,6 +58,13 @@ See [lightbox config](api/config/lightbox.md) for available section properties.
 Each section of the lightbox is based on some control. The following types of controls are available for use in the lightbox:
 
 - [Textarea](guides/textarea.md) - a multiline text field
+- `text` - a single-line text input
+- `combo` - a searchable list of options
+- `datepicker` - an input for a single date
+- `stepper` - a numeric input with increment and decrement buttons
+- `switch` - a boolean toggle
+- `progress` - a percentage input that saves a fraction
+- `calendar` - a task calendar selector
 - [Time](guides/time.md) - a pair of selectors for setting the task duration by specifying the task's start and end dates
 - [Duration](guides/duration.md) - a set of selectors for setting the task duration by specifying the task's start date and the number of days
 - [Select](guides/select.md) - a simple select box
@@ -67,6 +77,8 @@ Each section of the lightbox is based on some control. The following types of co
 - [Resource Assignments](guides/resource-assignments.md) - an extended control for assigning resources to a task
 - [Constraint](guides/constraint.md) - a complex control for setting constraints for a task
 - [Baselines](guides/baseline.md) - a complex control for setting baselines for a task
+
+See the [advanced form field list](guides/advanced-task-form.md#fields) for dependency sections and the [effort field guide](guides/effort-driven-tasks.md#editing-effort-fields) for work and scheduling mode controls.
 
 ~~~js
 const opts = [

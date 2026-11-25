@@ -48,8 +48,9 @@ If the [work_time](api/config/work_time.md) option is enabled, the method calcul
 :::
 
 
-- The method will use the [global work time calendar](guides/working-time.md#getting-calendars) if no task is specified. 
-- Besides, the method can be called directly for a [calendar object](api/other/calendar.md).
+- With work time enabled, the method uses the task's calendar if you pass `task`. Otherwise it uses an explicit `calendar` or the [global work time calendar](guides/working-time.md#getting-calendars).
+- In JavaScript, use `gantt.calculateDuration({ start_date, end_date, calendar })`. The Gantt method's TypeScript declaration omits `calendar`. Call `calendar.calculateDuration({ start_date, end_date })` on the [calendar object](api/other/calendar.md) in typed code.
+- Pass the task or include it as `task` to measure work around its [pauses](guides/resource-leveling.md). Gantt accounts for pauses when the end follows the start and the unit and step match the chart's duration settings. Calling the calendar directly measures the working span without subtracting the pauses.
 
 ## Configuration object properties
 
@@ -58,6 +59,7 @@ The configuration object can contain the following properties:
 - **start_date** - (*Date*) the date when a task is scheduled to begin
 - **end_date** - (*Date*) the date when a task is scheduled to be completed
 * **task** - (*object*)    optional, the object of the task the duration of which should be calculated
+* **calendar** - (*object*) optional, the work-time calendar to use in the JavaScript object form when no task is given
 
 ### Related API
 - [calculateEndDate](api/method/calculateenddate.md)

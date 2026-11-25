@@ -1,4 +1,4 @@
-﻿---
+---
 title: Vue Gantt Customization
 sidebar_label: Customization
 description: "Customization patterns for Vue Gantt: templates, custom lightbox, inline editors, modals, events, ready hook, and template wrapping."
@@ -318,6 +318,29 @@ Use this instead of `customLightbox` when:
 - The editor should remain mounted after navigation (for example unsaved-changes flows)
 
 For modal-style replacement, prefer [`customLightbox`](#replace-the-task-form-customlightbox).
+
+## useWBS
+
+Use `useWBS(ganttRef)` to read and edit [stored WBS codes](guides/wbs-and-task-numbering.md) in the Vue wrapper. Enable the extension with the `plugins` prop.
+
+~~~vue
+<script setup lang="ts">
+import { ref } from "vue";
+import { VueGantt, useWBS, type VueGanttRef } from "@dhtmlx/trial-vue-gantt";
+
+const ganttRef = ref<VueGanttRef | null>(null);
+const { available, generate } = useWBS(ganttRef);
+</script>
+
+<template>
+  <button :disabled="!available" @click="generate({ mode: 'assignMissing' })">
+    Assign missing codes
+  </button>
+  <VueGantt ref="ganttRef" :plugins="{ wbs: true }" />
+</template>
+~~~
+
+`available` and `lastOperation` are Vue refs. `lastOperation` updates when an applied WBS operation changes codes. The composable also exposes outline-number lookups. Use the Gantt instance to read row numbers.
 
 ## Custom Grid Inline Editors
 
