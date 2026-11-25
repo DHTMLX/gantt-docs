@@ -72,6 +72,7 @@ description: You can explore a properties overview in the documentation of the D
 | [](../config/keyboard_navigation_cells.md)                   | @getshort(../config/keyboard_navigation_cells.md)          |
 | [](../config/layer_attribute.md)                                       | @getshort(../config/layer_attribute.md)                    |
 | [](../config/layout.md)                                                         | @getshort(../config/layout.md)                             |
+| [](../config/leveling_delays.md)                                       | @getshort(../config/leveling_delays.md)                    |
 | [](../config/lightbox.md)                                                     | @getshort(../config/lightbox.md)                           |
 | [](../config/link_arrow_size.md)                                       | @getshort(../config/link_arrow_size.md)                    |
 | [](../config/link_attribute.md)                                         | @getshort(../config/link_attribute.md)                     |

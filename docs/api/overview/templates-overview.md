@@ -26,6 +26,7 @@ description: You can explore a templates overview in the documentation of the DH
 | [](../template/histogram_cell_class.md)         | @getshort(../template/histogram_cell_class.md)     |
 | [](../template/histogram_cell_label.md)         | @getshort(../template/histogram_cell_label.md)     |
 | [](../template/leftside_text.md)                       | @getshort(../template/leftside_text.md)            |
+| [](../template/leveling_delay_text.md)           | @getshort(../template/leveling_delay_text.md)      |
 | [](../template/lightbox_header.md)                   | @getshort(../template/lightbox_header.md)          |
 | [](../template/link_class.md)                             | @getshort(../template/link_class.md)               |
 | [](../template/link_description.md)                 | @getshort(../template/link_description.md)         |

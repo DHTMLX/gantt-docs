@@ -108,7 +108,7 @@ These properties may or may not be defined. The default logic and templates of g
   <tr>
   <td><b class="subproperty">leveling_delay</b></td>
   <td><i>number</i></td>
-  <td>A finite, nonnegative [resource leveling delay](guides/resource-leveling.md) in elapsed <b>duration_unit</b> units. Numeric strings are accepted when loading data.</td>
+  <td>A finite, nonnegative [resource leveling delay](guides/resource-leveling.md) in elapsed <b>duration_unit</b> units. Numeric strings are accepted when loading data. The [leveling_delays](api/config/leveling_delays.md) config shows it in the timeline.</td>
   </tr>
   <tr>
   <td><b class="subproperty">pauses</b></td>

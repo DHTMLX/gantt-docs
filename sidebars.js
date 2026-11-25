@@ -723,6 +723,11 @@ module.exports = {
                             className: "pro-version"
                         },
                         "api/config/layout",
+                        {
+                            type: "doc",
+                            id: "api/config/leveling_delays",
+                            className: "pro-version"
+                        },
                         "api/config/lightbox",
                         "api/config/link_arrow_size",
                         "api/config/link_attribute",
@@ -1230,6 +1235,11 @@ module.exports = {
                        {
                             type: "doc",
                             id: "api/template/histogram_cell_label",
+                            className: "pro-version"
+                        },
+                        {
+                            type: "doc",
+                            id: "api/template/leveling_delay_text",
                             className: "pro-version"
                         },
                         "api/template/link_class",

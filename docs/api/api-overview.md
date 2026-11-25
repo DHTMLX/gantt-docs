@@ -299,6 +299,7 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/config/keyboard_navigation_cells.md)                   | @getshort(api/config/keyboard_navigation_cells.md)          |
 | [](api/config/layer_attribute.md)                                       | @getshort(api/config/layer_attribute.md)                    |
 | [](api/config/layout.md)                                                         | @getshort(api/config/layout.md)                             |
+| [](api/config/leveling_delays.md)                                       | @getshort(api/config/leveling_delays.md)                    |
 | [](api/config/lightbox.md)                                                     | @getshort(api/config/lightbox.md)                           |
 | [](api/config/lightbox_additional_height.md)                 | @getshort(api/config/lightbox_additional_height.md)         |
 | [](api/config/link_arrow_size.md)                                       | @getshort(api/config/link_arrow_size.md)                    |
@@ -553,6 +554,7 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/template/histogram_cell_class.md)         | @getshort(api/template/histogram_cell_class.md)     |
 | [](api/template/histogram_cell_label.md)         | @getshort(api/template/histogram_cell_label.md)     |
 | [](api/template/leftside_text.md)                       | @getshort(api/template/leftside_text.md)            |
+| [](api/template/leveling_delay_text.md)           | @getshort(api/template/leveling_delay_text.md)      |
 | [](api/template/lightbox_header.md)                   | @getshort(api/template/lightbox_header.md)          |
 | [](api/template/link_class.md)                             | @getshort(api/template/link_class.md)               |
 | [](api/template/link_description.md)                 | @getshort(api/template/link_description.md)         |

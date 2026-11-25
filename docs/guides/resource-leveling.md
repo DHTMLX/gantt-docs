@@ -36,6 +36,32 @@ gantt.batchUpdate(() => {
 
 The built-in scheduler uses the delay to shift a task's start later in forward scheduling, or its end earlier in backward scheduling. Constraints may limit the shift. Clear existing adjustments or level again if you change scheduling direction. Manually changing the leading date clears the delay through the auto-scheduling edit flow. Changing only the trailing edge keeps the delay. Moving the task moves its pauses with it.
 
+### Show the delay in the timeline {#show-delay-in-timeline}
+
+:::info
+This functionality is available in the PRO edition only.
+:::
+
+Enable the [leveling_delays](api/config/leveling_delays.md) config to show the delay in the timeline. Gantt draws a hatched area next to each task that has a `leveling_delay`. In forward scheduling, the area lies before the bar. With backward scheduling, it lies after the bar. Set the config before `gantt.init()`.
+
+~~~js
+gantt.config.leveling_delays = true;
+gantt.templates.leveling_delay_text = function(task, delay, unit) {
+    return "delay " + delay + " d";
+};
+gantt.init("gantt_here");
+~~~
+
+The [leveling_delay_text](api/template/leveling_delay_text.md) template sets the label and the tooltip of the area. The default text is the delay with a short unit name, for example "+2d".
+
+The area has the `gantt_leveling_delay` CSS class, and also `gantt_leveling_delay_forward` or `gantt_leveling_delay_backward`. To change its color, set the `--dhx-gantt-leveling-delay-color` variable. By default, it is the task bar color.
+
+~~~css
+:root {
+    --dhx-gantt-leveling-delay-color: #7a7a7a;
+}
+~~~
+
 ### Edit the delay in the task form {#edit-delay-in-task-form}
 
 Add a `stepper` section to the lightbox to edit `leveling_delay` in the task form. The `samples/11_resources/16_leveling_delay.html` sample uses this configuration:
